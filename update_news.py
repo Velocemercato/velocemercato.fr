@@ -24,7 +24,8 @@ QUERIES = {
 HEADERS = {'User-Agent': 'Mozilla/5.0 (compatible; VeloceMercatoTest/1.0)'}
 MAX_AGE = dt.timedelta(hours=36)
 KEYWORDS = re.compile(r'\b(transfert|mercato|recrut|prolong|sign(?:e|ature)|pr[eê]t|d[eé]part|arriv[eé]e|officialis|engag[eé])', re.I)
-EXCLUDE = re.compile(r'\b(programme tv|cha[iî]ne tv|diffusion tv|o[uù] regarder|heure et cha[iî]ne)\b', re.I)
+EXCLUDE = re.compile(r'\b(programme tv|cha[iî]ne tv|diffusion tv|o[uù] regarder|heure et cha[iî]ne|pronostic|cote[s]?|paris sportif[s]?|compositions? probables?|r[eé]sultat[s]?|score|calendrier|programme des matchs|tactique|classement|direct live)\b', re.I)
+ACTION = re.compile(r'\b(transfert|recrut|prolong|pr[eê]t|d[eé]part|arriv[eé]e|officialis|engag[eé]|sign[eé]|signature)\b', re.I)
 
 
 def get_xml(query):
@@ -54,7 +55,7 @@ def collect():
                     continue
                 if not (now - MAX_AGE <= date <= now + dt.timedelta(minutes=10)):
                     continue
-                if not KEYWORDS.search(title) or EXCLUDE.search(title):
+                if not KEYWORDS.search(title) or not ACTION.search(title) or EXCLUDE.search(title):
                     continue
                 identity = hashlib.sha256(re.sub(r'\s+', ' ', title.casefold()).encode()).hexdigest()
                 if identity in seen or not link or not source:
@@ -118,7 +119,9 @@ def main():
     found = collect()
     print('TOTAL TITRES CANDIDATS :', len(found))
     for item in found[:8]:
-        print(item['zone'], '|', item['titre_source'], '|', item['source'])
+        print(item['zone'], '|', item['titre_source'], '|', item['source'], '|', item['url_rss'])
+    # Aucune validation automatique : un titre RSS seul ne prouve pas un fait.
+    # Les brouillons ne sont jamais publies et ne constituent pas une verification.
     if found:
         claude_preview(found[0])
     else:
