@@ -20,6 +20,10 @@ jobs:
 
       - name: Tester la collecte
         run: python update_news.py
+      - name: Tester la collecte
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python update_news.py
 
       - name: Tester Claude IA
         env:
