@@ -1,29 +1,43 @@
-name: Veille football
+name: Veille football - TEST
+
 on:
-  schedule:
-    - cron: '*/5 * * * *'
   workflow_dispatch:
+
 permissions:
-  contents: write
-concurrency:
-  group: veille-football
-  cancel-in-progress: false
+  contents: read
+
 jobs:
-  veille:
+  test-veille:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Recuperer le depot
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Collecter les nouvelles sources
+
+      - name: Tester la collecte
         run: python update_news.py
-      - name: Enregistrer les nouvelles entrées
+
+      - name: Afficher le resultat
         run: |
-          if ! git diff --quiet -- articles.json; then
-            git config user.name 'Veloce Mercato Bot'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add articles.json
-            git commit -m 'Veille automatique football'
-            git push
-          fi
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("articles.json")
+          articles = json.loads(path.read_text(encoding="utf-8"))
+          veille = [a for a in articles if a.get("format") == "veille"]
+
+          print("Articles dans le fichier de test :", len(articles))
+          print("Fiches de veille detectees :", len(veille))
+          for article in veille[:10]:
+              print(article.get("zone"), "-", article.get("titre"))
+          PY
+
+      - name: Verifier les changements sans publier
+        run: |
+          git status --short
+          echo "TEST TERMINE : aucun commit ni push effectue."
