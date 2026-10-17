@@ -19,8 +19,50 @@ jobs:
           python-version: '3.12'
 
       - name: Tester la collecte
-        run: python update_news.py
+        run: python update_news.py                                   
+      - name: Tester Claude IA
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
 
+          key = os.environ.get("ANTHROPIC_API_KEY")
+          if not key:
+              raise SystemExit("Cle API absente")
+
+          payload = {
+              "model": "claude-haiku-4-5-20251001",
+              "max_tokens": 80,
+              "messages": [
+                  {
+                      "role": "user",
+                      "content": "Reponds uniquement : Test Veloce Mercato OK"
+                  }
+              ]
+          }
+
+          request = urllib.request.Request(
+              "https://api.anthropic.com/v1/messages",
+              data=json.dumps(payload).encode("utf-8"),
+              headers={
+                  "x-api-key": key,
+                  "anthropic-version": "2023-06-01",
+                  "content-type": "application/json"
+              },
+              method="POST"
+          )
+
+          try:
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  result = json.load(response)
+              print(result["content"][0]["text"])
+              print("Connexion Claude reussie")
+          except Exception as error:
+              raise SystemExit(f"Test Claude echoue : {type(error).__name__}")
+          PY   
       - name: Afficher le resultat
         run: |
           python - <<'PY'
