@@ -1,42 +1,42 @@
-name: Actualites football - toutes les 30 minutes
+Name: Football News - every 30 minutes
 
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: '*/30 * * * *'
+workflow_dispatch:
+Calendar:
+- cron: '*/30 * *' Works every 30 minutes
 
-permissions:
-  contents: write
+Permissions:
+Content: writing
 
-concurrency:
-  group: publication-actualites
-  cancel-in-progress: false
+Competition:
+Group: Publication - News
+Cancellation in progress: False
 
-jobs:
-  publier:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: Recuperer le depot
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: true
-      - name: Installer Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Collecter les nouvelles breves
-        run: python update_news.py
-      - name: Verifier le JSON
-        run: python -m json.tool articles.json > /dev/null
-      - name: Enregistrer seulement si des articles ont change
-        run: |
-          if git diff --quiet -- articles.json; then
-            echo 'Aucun nouvel article a publier.'
-            exit 0
-          fi
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add articles.json
-          git commit -m 'Actualiser les breves football'
-          git push
+Jobs:
+Publish:
+Run-on: Ubuntu - Last
+Time out - 10 minutes
+Steps:
+Name: Retrieve Deposit
+uses: actions/checkout@v4
+To:
+Persistence - Claims: True
+Name: Install Python
+uses: actions/setup-python@v5
+To:
+Python version: '3.12'
+Name: Collecting the new patents
+Run: Python update_news.py
+Name: Check the JSON
+run: python -m json.tool articles.json > /dev/null
+- name: Save only if items have changed
+Running: |
+If it is different - silent - articles.json; then
+Echo 'No new articles have been published.'
+Output 0
+Fi
+git config user.name 'github-actions[bot]'
+git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+Add articles.json
+git commit - m 'Update football briefs'
+Push with Git
