@@ -1,95 +1,130 @@
 #!/usr/bin/env python3
-"""Veille RSS football : diagnostic et aperçu, sans publication ni modification."""
+"""Veloce Mercato: collecte RSS et brouillon Claude, SANS publication."""
 import datetime as dt
 import email.utils
 import hashlib
-import html
 import json
-import pathlib
+import os
 import re
+import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+from pathlib import Path
 
-ROOT = pathlib.Path(__file__).resolve().parent
 QUERIES = {
-    "LIGUE_1": '"Ligue 1" football mercato',
-    "LIGUE_2": '"Ligue 2" football transfert',
-    "NATIONAL": '"National" football recrutement club',
-    "N2_N3": '"National 2" OR "National 3" football recrutement',
-    "FEMININ": 'football féminin transfert Première Ligue Seconde Ligue',
-    "AMATEUR": 'football régional amateur recrutement mutation',
-    "INTERNATIONAL": 'football mercato Premier League Liga Bundesliga Serie A',
+    'LIGUE_1': '"Ligue 1" (transfert OR mercato OR recrute OR prolongation OR signe)',
+    'LIGUE_2': '"Ligue 2" (transfert OR mercato OR recrute OR prolongation OR signe)',
+    'NATIONAL': '"National" football (transfert OR recrute OR signe)',
+    'N2_N3': '"National 2" OR "National 3" football recrutement',
+    'FEMININ': 'football feminin (transfert OR mercato OR recrute OR prolongation)',
+    'AMATEUR': 'football amateur club recrutement transfert',
+    'INTERNATIONAL': 'football transfert mercato officialise club joueur',
 }
+HEADERS = {'User-Agent': 'Mozilla/5.0 (compatible; VeloceMercatoTest/1.0)'}
+MAX_AGE = dt.timedelta(hours=36)
+KEYWORDS = re.compile(r'\b(transfert|mercato|recrut|prolong|sign(?:e|ature)|pr[eê]t|d[eé]part|arriv[eé]e|officialis|engag[eé])', re.I)
+EXCLUDE = re.compile(r'\b(programme tv|cha[iî]ne tv|diffusion tv|o[uù] regarder|heure et cha[iî]ne)\b', re.I)
 
 
-def clean(value):
-    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", value or ""))).strip()
+def get_xml(query):
+    params = urllib.parse.urlencode({'q': query, 'hl': 'fr', 'gl': 'FR', 'ceid': 'FR:fr'})
+    request = urllib.request.Request('https://news.google.com/rss/search?' + params, headers=HEADERS)
+    with urllib.request.urlopen(request, timeout=25) as response:
+        return ET.fromstring(response.read())
 
 
-def fetch(zone, query, now):
-    params = urllib.parse.urlencode({"q": query, "hl": "fr", "gl": "FR", "ceid": "FR:fr"})
-    req = urllib.request.Request(
-        "https://news.google.com/rss/search?" + params,
-        headers={"User-Agent": "Mozilla/5.0 (compatible; VeloceMercatoPreview/1.0)"},
-    )
-    with urllib.request.urlopen(req, timeout=20) as response:
-        root = ET.fromstring(response.read(1_500_000))
-    items = root.findall("./channel/item")
-    recent = []
-    for item in items:
-        title = clean(item.findtext("title"))
-        link = (item.findtext("link") or "").strip()
+def collect():
+    now = dt.datetime.now(dt.timezone.utc)
+    found, seen = [], set()
+    for zone, query in QUERIES.items():
         try:
-            date = email.utils.parsedate_to_datetime(item.findtext("pubDate") or "")
-            date = date.astimezone(dt.timezone.utc)
-        except (TypeError, ValueError, OverflowError):
-            continue
-        if not title or not link.startswith("https://"):
-            continue
-        if not now - dt.timedelta(hours=36) <= date <= now + dt.timedelta(minutes=10):
-            continue
-        source_node = item.find("source")
-        source = clean(source_node.text if source_node is not None else "") or "Source non précisée"
-        recent.append({
-            "id": "rss-" + hashlib.sha256((title.casefold() + "|" + source.casefold()).encode()).hexdigest()[:16],
-            "zone_proposee": zone,
-            "titre": title[:180],
-            "publishedAt": date.isoformat(timespec="seconds").replace("+00:00", "Z"),
-            "sources": [{"nom": source, "url": link}],
-            "statut": "A_VERIFIER",
-        })
-    return len(items), recent
+            root = get_xml(query)
+            count = 0
+            for item in root.findall('./channel/item'):
+                title = (item.findtext('title') or '').strip()
+                link = (item.findtext('link') or '').strip()
+                source_el = item.find('source')
+                source = (source_el.text or '').strip() if source_el is not None else ''
+                source_url = (source_el.get('url') or '').strip() if source_el is not None else ''
+                pub = item.findtext('pubDate') or ''
+                try:
+                    date = email.utils.parsedate_to_datetime(pub).astimezone(dt.timezone.utc)
+                except (ValueError, TypeError):
+                    continue
+                if not (now - MAX_AGE <= date <= now + dt.timedelta(minutes=10)):
+                    continue
+                if not KEYWORDS.search(title) or EXCLUDE.search(title):
+                    continue
+                identity = hashlib.sha256(re.sub(r'\s+', ' ', title.casefold()).encode()).hexdigest()
+                if identity in seen or not link or not source:
+                    continue
+                seen.add(identity)
+                count += 1
+                found.append({'zone': zone, 'titre_source': title, 'source': source,
+                              'url_rss': link, 'site_source': source_url,
+                              'date': date.isoformat()})
+            print(f'{zone}: {count} titres potentiels (non verifies)')
+        except Exception as exc:
+            print(f'{zone}: erreur collecte {type(exc).__name__}')
+    return found
+
+
+def claude_preview(candidate):
+    key = os.environ.get('ANTHROPIC_API_KEY')
+    if not key:
+        print('Claude non lance: secret ANTHROPIC_API_KEY absent')
+        return
+    prompt = (
+        'Tu es un assistant editorial pour un site de football. '
+        'Tu disposes UNIQUEMENT de metadonnees RSS, pas du texte de la source. '
+        'N affirme jamais avoir verifie un article ni inventer une citation, un montant, '
+        'une date de contrat ou un fait non present dans le titre. '
+        'Ne presente jamais une rumeur comme une officialisation. '
+        'Redige en francais un brouillon tres prudent de 100 a 150 mots maximum, '
+        'avec un titre, un court resume, puis une section "A confirmer" expliquant '
+        'les limites de la verification. Indique clairement "BROUILLON NON VERIFIE". '
+        'Aucune publication ne sera faite.\n\n'
+        + json.dumps(candidate, ensure_ascii=False)
+    )
+    body = {'model': 'claude-haiku-4-5-20251001', 'max_tokens': 400,
+            'messages': [{'role': 'user', 'content': prompt}]}
+    request = urllib.request.Request(
+        'https://api.anthropic.com/v1/messages',
+        data=json.dumps(body).encode('utf-8'),
+        headers={'x-api-key': key, 'anthropic-version': '2023-06-01',
+                 'content-type': 'application/json'}, method='POST')
+    try:
+        with urllib.request.urlopen(request, timeout=45) as response:
+            result = json.load(response)
+        output = '\n'.join(x.get('text', '') for x in result.get('content', []) if x.get('type') == 'text')
+        print('\n--- BROUILLON CLAUDE (NON VERIFIE, NON PUBLIE) ---')
+        print(output[:3500])
+        print('--- FIN BROUILLON ---')
+    except urllib.error.HTTPError as exc:
+        print(f'Erreur API Claude HTTP {exc.code} (aucune publication)')
+    except Exception as exc:
+        print(f'Erreur Claude {type(exc).__name__} (aucune publication)')
 
 
 def main():
-    path = ROOT / "articles.json"
-    if not path.is_file():
-        raise SystemExit("articles.json absent : test interrompu")
-    existing = json.loads(path.read_text(encoding="utf-8"))
-    if not isinstance(existing, list):
-        raise SystemExit("articles.json n'est pas une liste : test interrompu")
-    print("Articles existants :", len(existing), flush=True)
-    now = dt.datetime.now(dt.timezone.utc)
-    seen = {str(article.get("id")) for article in existing if isinstance(article, dict)}
-    previews = []
-    for zone, query in QUERIES.items():
+    path = Path('articles.json')
+    if path.exists():
         try:
-            count, recent = fetch(zone, query, now)
-            unique = []
-            for article in recent:
-                if article["id"] not in seen:
-                    seen.add(article["id"])
-                    unique.append(article)
-            previews.extend(unique)
-            print(f"{zone} : {count} resultats RSS, {len(recent)} recents, {len(unique)} nouveaux", flush=True)
-            for article in unique[:3]:
-                print("  -", article["titre"], "|", article["sources"][0]["nom"], flush=True)
-        except Exception as exc:
-            print(f"{zone} : ERREUR {type(exc).__name__}: {str(exc)[:160]}", flush=True)
-    print("TOTAL FICHES A VERIFIER :", len(previews), flush=True)
-    print("AUCUN FICHIER MODIFIE. AUCUNE PUBLICATION.", flush=True)
+            articles = json.loads(path.read_text(encoding='utf-8'))
+            print('Articles existants preserves :', len(articles))
+        except (ValueError, OSError) as exc:
+            print('Lecture articles.json impossible :', type(exc).__name__)
+    found = collect()
+    print('TOTAL TITRES CANDIDATS :', len(found))
+    for item in found[:8]:
+        print(item['zone'], '|', item['titre_source'], '|', item['source'])
+    if found:
+        claude_preview(found[0])
+    else:
+        print('Aucun titre candidat pour le test Claude.')
+    print('MODE TEST : AUCUN FICHIER MODIFIE. AUCUNE PUBLICATION.')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
