@@ -19,7 +19,8 @@ jobs:
           python-version: '3.12'
 
       - name: Tester la collecte
-        run: python update_news.py                                   
+        run: python update_news.py
+
       - name: Tester Claude IA
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -27,59 +28,61 @@ jobs:
           python - <<'PY'
           import json
           import os
+          import urllib.error
           import urllib.request
 
-          key = os.environ.get("ANTHROPIC_API_KEY")
+          key = os.environ.get('ANTHROPIC_API_KEY')
           if not key:
-              raise SystemExit("Cle API absente")
+              raise SystemExit('Cle API absente : verifier le secret GitHub ANTHROPIC_API_KEY')
 
           payload = {
-              "model": "claude-haiku-4-5-20251001",
-              "max_tokens": 80,
-              "messages": [
-                  {
-                      "role": "user",
-                      "content": "Reponds uniquement : Test Veloce Mercato OK"
-                  }
+              'model': 'claude-haiku-4-5-20251001',
+              'max_tokens': 80,
+              'messages': [
+                  {'role': 'user', 'content': 'Reponds uniquement : Test Veloce Mercato OK'}
               ]
           }
 
           request = urllib.request.Request(
-              "https://api.anthropic.com/v1/messages",
-              data=json.dumps(payload).encode("utf-8"),
+              'https://api.anthropic.com/v1/messages',
+              data=json.dumps(payload).encode('utf-8'),
               headers={
-                  "x-api-key": key,
-                  "anthropic-version": "2023-06-01",
-                  "content-type": "application/json"
+                  'x-api-key': key,
+                  'anthropic-version': '2023-06-01',
+                  'content-type': 'application/json',
               },
-              method="POST"
+              method='POST',
           )
 
           try:
               with urllib.request.urlopen(request, timeout=30) as response:
                   result = json.load(response)
-              print(result["content"][0]["text"])
-              print("Connexion Claude reussie")
+              print(result['content'][0]['text'])
+              print('Connexion Claude reussie')
+          except urllib.error.HTTPError as error:
+              print('Erreur API Claude HTTP :', error.code)
+              raise SystemExit(1)
           except Exception as error:
-              raise SystemExit(f"Test Claude echoue : {type(error).__name__}")
-          PY   
+              print('Erreur de connexion Claude :', type(error).__name__)
+              raise SystemExit(1)
+          PY
+
       - name: Afficher le resultat
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
 
-          path = Path("articles.json")
-          articles = json.loads(path.read_text(encoding="utf-8"))
-          veille = [a for a in articles if a.get("format") == "veille"]
-
-          print("Articles dans le fichier de test :", len(articles))
-          print("Fiches de veille detectees :", len(veille))
+          path = Path('articles.json')
+          articles = json.loads(path.read_text(encoding='utf-8'))
+          veille = [a for a in articles if a.get('format') == 'veille']
+          print('Articles dans le fichier de test :', len(articles))
+          print('Fiches de veille detectees :', len(veille))
           for article in veille[:10]:
-              print(article.get("zone"), "-", article.get("titre"))
+              print(article.get('zone'), '-', article.get('titre'))
           PY
 
       - name: Verifier les changements sans publier
         run: |
           git status --short
-          echo "TEST TERMINE : aucun commit ni push effectue."
+          echo 'TEST TERMINE : aucun commit ni push effectue.'
