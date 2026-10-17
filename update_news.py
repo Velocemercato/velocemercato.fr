@@ -1,132 +1,122 @@
 #!/usr/bin/env python3
-"""Veloce Mercato: collecte RSS et brouillon Claude, SANS publication."""
+"""Veille football : brèves attribuées à leur source, sans IA ni invention."""
 import datetime as dt
 import email.utils
 import hashlib
+import html
 import json
-import os
 import re
-import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+PATH = Path('articles.json')
+NOW = dt.datetime.now(dt.timezone.utc)
+MAX_AGE = dt.timedelta(hours=18)
+MAX_NEW = 5
+MAX_TOTAL = 150
 QUERIES = {
-    'LIGUE_1': '"Ligue 1" (transfert OR mercato OR recrute OR prolongation OR signe)',
-    'LIGUE_2': '"Ligue 2" (transfert OR mercato OR recrute OR prolongation OR signe)',
-    'NATIONAL': '"National" football (transfert OR recrute OR signe)',
-    'N2_N3': '"National 2" OR "National 3" football recrutement',
-    'FEMININ': 'football feminin (transfert OR mercato OR recrute OR prolongation)',
-    'AMATEUR': 'football amateur club recrutement transfert',
-    'INTERNATIONAL': 'football transfert mercato officialise club joueur',
+    'FRANCE': 'football Ligue 1 Ligue 2 National mercato',
+    'INTERNATIONAL': 'football mercato Europe international',
+    'FEMININ': 'football féminin France Europe',
+    'AMATEUR': 'football National 2 National 3 amateur',
 }
-HEADERS = {'User-Agent': 'Mozilla/5.0 (compatible; VeloceMercatoTest/1.0)'}
-MAX_AGE = dt.timedelta(hours=36)
-KEYWORDS = re.compile(r'\b(transfert|mercato|recrut|prolong|sign(?:e|ature)|pr[eê]t|d[eé]part|arriv[eé]e|officialis|engag[eé])', re.I)
-EXCLUDE = re.compile(r'\b(programme tv|cha[iî]ne tv|diffusion tv|o[uù] regarder|heure et cha[iî]ne|pronostic|cote[s]?|paris sportif[s]?|compositions? probables?|r[eé]sultat[s]?|score|calendrier|programme des matchs|tactique|classement|direct live)\b', re.I)
-ACTION = re.compile(r'\b(transfert|recrut|prolong|pr[eê]t|d[eé]part|arriv[eé]e|officialis|engag[eé]|sign[eé]|signature)\b', re.I)
+# Noms de médias acceptés : ne constitue pas une vérification indépendante.
+SOURCES = ('lequipe', "l'equipe", 'l’équipe', 'rmc sport', 'franceinfo',
+           'france bleu', 'ouest-france', 'le parisien', 'afp', 'reuters',
+           'bbc sport', 'the guardian', 'goal.com', 'goal', 'eurosport',
+           'foot mercato', 'maxifoot', 'so foot', 'skysports', 'sky sports')
+BLOCK = re.compile(r'\b(pronostic|paris sportifs|cote[s]?|casino|billetterie|streaming ill[eé]gal)\b', re.I)
+MATCH = re.compile(r'\b(match|r[eé]sultat|score|victoire|d[eé]faite|classement|journ[eé]e|calendrier)\b', re.I)
+MERCATO = re.compile(r'\b(mercato|transfert|recrutement|prolongation|pr[eê]t|signature|s.engage|rejoindrait|quitterait)\b', re.I)
 
 
-def get_xml(query):
+def clean(s):
+    return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]*>', '', s or ''))).strip()
+
+
+def fetch(query):
     params = urllib.parse.urlencode({'q': query, 'hl': 'fr', 'gl': 'FR', 'ceid': 'FR:fr'})
-    request = urllib.request.Request('https://news.google.com/rss/search?' + params, headers=HEADERS)
-    with urllib.request.urlopen(request, timeout=25) as response:
-        return ET.fromstring(response.read())
+    req = urllib.request.Request('https://news.google.com/rss/search?' + params,
+                                 headers={'User-Agent': 'VeloceMercatoBot/1.0'})
+    with urllib.request.urlopen(req, timeout=25) as resp:
+        return ET.fromstring(resp.read(2_000_000))
 
 
-def collect():
-    now = dt.datetime.now(dt.timezone.utc)
-    found, seen = [], set()
-    for zone, query in QUERIES.items():
-        try:
-            root = get_xml(query)
-            count = 0
-            for item in root.findall('./channel/item'):
-                title = (item.findtext('title') or '').strip()
-                link = (item.findtext('link') or '').strip()
-                source_el = item.find('source')
-                source = (source_el.text or '').strip() if source_el is not None else ''
-                source_url = (source_el.get('url') or '').strip() if source_el is not None else ''
-                pub = item.findtext('pubDate') or ''
-                try:
-                    date = email.utils.parsedate_to_datetime(pub).astimezone(dt.timezone.utc)
-                except (ValueError, TypeError):
-                    continue
-                if not (now - MAX_AGE <= date <= now + dt.timedelta(minutes=10)):
-                    continue
-                if not KEYWORDS.search(title) or not ACTION.search(title) or EXCLUDE.search(title):
-                    continue
-                identity = hashlib.sha256(re.sub(r'\s+', ' ', title.casefold()).encode()).hexdigest()
-                if identity in seen or not link or not source:
-                    continue
-                seen.add(identity)
-                count += 1
-                found.append({'zone': zone, 'titre_source': title, 'source': source,
-                              'url_rss': link, 'site_source': source_url,
-                              'date': date.isoformat()})
-            print(f'{zone}: {count} titres potentiels (non verifies)')
-        except Exception as exc:
-            print(f'{zone}: erreur collecte {type(exc).__name__}')
-    return found
+def accepted(source):
+    s = source.casefold().replace('é', 'e').replace('è', 'e').replace('ê', 'e')
+    return any(name.replace('é', 'e').replace('è', 'e').replace('ê', 'e') in s for name in SOURCES)
 
 
-def claude_preview(candidate):
-    key = os.environ.get('ANTHROPIC_API_KEY')
-    if not key:
-        print('Claude non lance: secret ANTHROPIC_API_KEY absent')
-        return
-    prompt = (
-        'Tu es un assistant editorial pour un site de football. '
-        'Tu disposes UNIQUEMENT de metadonnees RSS, pas du texte de la source. '
-        'N affirme jamais avoir verifie un article ni inventer une citation, un montant, '
-        'une date de contrat ou un fait non present dans le titre. '
-        'Ne presente jamais une rumeur comme une officialisation. '
-        'Redige en francais un brouillon tres prudent de 100 a 150 mots maximum, '
-        'avec un titre, un court resume, puis une section "A confirmer" expliquant '
-        'les limites de la verification. Indique clairement "BROUILLON NON VERIFIE". '
-        'Aucune publication ne sera faite.\n\n'
-        + json.dumps(candidate, ensure_ascii=False)
-    )
-    body = {'model': 'claude-haiku-4-5-20251001', 'max_tokens': 400,
-            'messages': [{'role': 'user', 'content': prompt}]}
-    request = urllib.request.Request(
-        'https://api.anthropic.com/v1/messages',
-        data=json.dumps(body).encode('utf-8'),
-        headers={'x-api-key': key, 'anthropic-version': '2023-06-01',
-                 'content-type': 'application/json'}, method='POST')
-    try:
-        with urllib.request.urlopen(request, timeout=45) as response:
-            result = json.load(response)
-        output = '\n'.join(x.get('text', '') for x in result.get('content', []) if x.get('type') == 'text')
-        print('\n--- BROUILLON CLAUDE (NON VERIFIE, NON PUBLIE) ---')
-        print(output[:3500])
-        print('--- FIN BROUILLON ---')
-    except urllib.error.HTTPError as exc:
-        print(f'Erreur API Claude HTTP {exc.code} (aucune publication)')
-    except Exception as exc:
-        print(f'Erreur Claude {type(exc).__name__} (aucune publication)')
+def load_existing():
+    if not PATH.exists():
+        return []
+    value = json.loads(PATH.read_text(encoding='utf-8'))
+    if not isinstance(value, list):
+        raise ValueError('articles.json doit contenir une liste JSON')
+    return value
 
 
 def main():
-    path = Path('articles.json')
-    if path.exists():
+    existing = load_existing()
+    seen = {str(a.get('id')) for a in existing if isinstance(a, dict)}
+    additions = []
+    for zone, query in QUERIES.items():
         try:
-            articles = json.loads(path.read_text(encoding='utf-8'))
-            print('Articles existants preserves :', len(articles))
-        except (ValueError, OSError) as exc:
-            print('Lecture articles.json impossible :', type(exc).__name__)
-    found = collect()
-    print('TOTAL TITRES CANDIDATS :', len(found))
-    for item in found[:8]:
-        print(item['zone'], '|', item['titre_source'], '|', item['source'], '|', item['url_rss'])
-    # Aucune validation automatique : un titre RSS seul ne prouve pas un fait.
-    # Les brouillons ne sont jamais publies et ne constituent pas une verification.
-    if found:
-        claude_preview(found[0])
-    else:
-        print('Aucun titre candidat pour le test Claude.')
-    print('MODE TEST : AUCUN FICHIER MODIFIE. AUCUNE PUBLICATION.')
+            root = fetch(query)
+        except Exception as exc:
+            print(f'{zone}: source RSS inaccessible ({type(exc).__name__})')
+            continue
+        for item in root.findall('./channel/item'):
+            title = clean(item.findtext('title'))
+            link = clean(item.findtext('link'))
+            source_el = item.find('source')
+            source = clean(source_el.text if source_el is not None else '')
+            pub = clean(item.findtext('pubDate'))
+            if not title or not link or not source or not accepted(source) or BLOCK.search(title):
+                continue
+            if not link.startswith('https://'):
+                continue
+            try:
+                date = email.utils.parsedate_to_datetime(pub).astimezone(dt.timezone.utc)
+            except (TypeError, ValueError, OverflowError):
+                continue
+            if not NOW - MAX_AGE <= date <= NOW + dt.timedelta(minutes=10):
+                continue
+            # Retirer le suffixe « - Média » si Google News l'ajoute.
+            if title.casefold().endswith(' - ' + source.casefold()):
+                title = title[:-(len(source) + 3)].strip()
+            if len(title) < 25 or len(title) > 190:
+                continue
+            ident = 'rss-' + hashlib.sha256((source.casefold() + '|' + title.casefold()).encode()).hexdigest()[:20]
+            if ident in seen:
+                continue
+            seen.add(ident)
+            cat = 'MERCATO' if MERCATO.search(title) else ('MATCHS' if MATCH.search(title) else 'ACTUALITES')
+            # Un titre de média ne prouve pas une information : attribution explicite.
+            resume = f'{source} rapporte : « {title} ». Consultez la source pour les détails et les éventuelles mises à jour.'
+            additions.append({
+                'id': ident,
+                'publishedAt': date.isoformat(timespec='seconds').replace('+00:00', 'Z'),
+                'titre': title,
+                'resume': resume,
+                'texte': resume + '\n\nCette brève reprend uniquement le titre publié par la source citée. Véloce Mercato ne confirme pas indépendamment cette information.',
+                'zone': 'FRANCE' if zone in ('FRANCE', 'AMATEUR', 'FEMININ') else 'INTERNATIONAL',
+                'categorie': cat,
+                'championnat': 'FEMININ' if zone == 'FEMININ' else ('NATIONAL' if zone == 'AMATEUR' else ''),
+                'tag': 'RUMEUR' if cat == 'MERCATO' else cat,
+                'sources': [{'nom': source, 'url': link}],
+            })
+    additions.sort(key=lambda a: a['publishedAt'], reverse=True)
+    additions = additions[:MAX_NEW]
+    if not additions:
+        print('Aucune nouvelle brève admissible ; aucun changement.')
+        return
+    merged = additions + existing
+    merged.sort(key=lambda a: str(a.get('publishedAt', '')), reverse=True)
+    PATH.write_text(json.dumps(merged[:MAX_TOTAL], ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    print(f'{len(additions)} nouvelles brèves attribuées ; {len(merged[:MAX_TOTAL])} articles conservés.')
 
 
 if __name__ == '__main__':
