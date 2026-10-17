@@ -1,43 +1,35 @@
-
-Name: Football News - every 30 minutes
+name: Veloce Mercato - Actualites
 
 on:
-workflow_dispatch:
-Calendar:
-- cron: '*/30 * *' Works every 30 minutes
+  workflow_dispatch:
+  schedule:
+    - cron: '*/30 * * * *'
 
-Permissions:
-Content: writing
+permissions:
+  contents: write
 
-Competition:
-Group: Publication - News
-Cancellation in progress: False
-
-Jobs:
-Publish:
-Run-on: Ubuntu - Last
-Time out - 10 minutes
-Steps:
-Name: Retrieve Deposit
-uses: actions/checkout@v4
-To:
-Persistence - Claims: True
-Name: Install Python
-uses: actions/setup-python@v5
-To:
-Python version: '3.12'
-Name: Collecting the new patents
-Run: Python update_news.py
-Name: Check the JSON
-run: python -m json.tool articles.json > /dev/null
-- name: Save only if items have changed
-Running: |
-If it is different - silent - articles.json; then
-Echo 'No new articles have been published.'
-Output 0
-Fi
-git config user.name 'github-actions[bot]'
-git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-Add articles.json
-git commit - m 'Update football briefs'
-Push with Git
+jobs:
+  actualites:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Update news
+        run: python update_news.py
+      - name: Validate articles
+        run: python -m json.tool articles.json > /dev/null
+      - name: Save articles
+        run: |
+          git add articles.json
+          if git diff --cached --quiet; then
+            echo 'No new articles'
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'Update football news'
+            git push
+          fi
