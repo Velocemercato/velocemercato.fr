@@ -2,65 +2,187 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Véloce Arena – Défis et tournois EA SPORTS FC – Véloce Mercato</title>
-<meta name="description" content="Véloce Arena : défie Romain, participe aux tournois et soirées EA SPORTS FC de la communauté Véloce Mercato, en live sur Twitch.">
+<title>Véloce Arena – Ligues, coupes et défis EA SPORTS FC – Véloce Mercato</title>
+<meta name="description" content="Véloce Arena : la ligue gratuite des joueurs EA SPORTS FC de la communauté Véloce Mercato. Clubs, points, montées, Coupe Véloce, joueur de la semaine et Ballon Véloce.">
 <link rel="canonical" href="https://velocemercato.fr/gaming.html">
-<meta property="og:title" content="Véloce Arena – défis et tournois FC"><meta property="og:description" content="Défie Romain et la communauté Véloce Mercato sur EA SPORTS FC."><meta property="og:url" content="https://velocemercato.fr/gaming.html">
+<meta property="og:title" content="Véloce Arena – la ligue FC de Véloce Mercato"><meta property="og:description" content="Crée ton club, gagne des points, monte jusqu'en Ligue Féroce 1. Gratuit."><meta property="og:url" content="https://velocemercato.fr/gaming.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2470'/%3E%3Ctext x='32' y='44' font-family='Impact,sans-serif' font-size='30' font-style='italic' text-anchor='middle' fill='%23f4cf55'%3EVM%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="/pages.css">
+<style>
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tabs button{font:700 .9rem/1 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.05em;border:2px solid var(--line);border-radius:999px;padding:9px 13px;background:var(--bg);color:var(--ink);cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--gold-hi);color:#0b1533}
+.tablewrap{overflow-x:auto}
+table.std td:first-child,table.std th:first-child{width:2.2em;text-align:center}
+.up{color:var(--green);font-weight:700}.down{color:var(--red);font-weight:700}
+.empty{border:2px dashed rgba(29,63,184,.35);border-radius:12px;padding:16px;color:var(--muted);text-align:center}
+.ladder{display:grid;gap:10px}
+.rung{display:flex;align-items:center;gap:12px;border:2px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--surface)}
+.rung b{font:400 1.25rem/1 Impact,Anton,sans-serif;text-transform:uppercase;min-width:9em}
+.rung span{color:var(--muted);font-size:.92rem}
+.rung.top{background:var(--gold-hi);color:#0b1533}.rung.top span{color:#0b1533}
+.pts{display:grid;gap:8px;grid-template-columns:1fr 1fr}@media(min-width:640px){.pts{grid-template-columns:repeat(4,1fr)}}
+.pts div{border:2px solid var(--line);border-radius:12px;padding:12px;text-align:center;background:var(--surface)}
+.pts b{display:block;font:400 2rem/1 Impact,Anton,sans-serif;color:var(--royal)}
+.cal{display:grid;gap:10px}
+.cal div{display:flex;gap:14px;align-items:center;border:2px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--surface)}
+.cal time{font:700 1rem/1.1 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;color:var(--royal);min-width:7.5em}
+.star{display:flex;gap:16px;align-items:center}
+.star .big{font:400 2.4rem/1 Impact,Anton,sans-serif;color:var(--gold)}
+form.join{display:grid;gap:12px}
+form.join label{display:grid;gap:4px;font:700 .82rem/1.2 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+form.join input,form.join select{font:500 1rem/1.3 Barlow,system-ui,sans-serif;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:8px;padding:9px 10px;width:100%}
+.row2{display:grid;gap:12px}@media(min-width:560px){.row2{grid-template-columns:1fr 1fr}}
+.copybox{border:2px solid var(--line);border-radius:10px;padding:12px;background:var(--bg);white-space:pre-wrap;font:500 .95rem/1.45 Barlow,system-ui,sans-serif}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateX(-50%);background:var(--gold-hi);color:#0b1533;border:3px solid #000;border-radius:999px;padding:9px 16px;font:700 .9rem/1 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;z-index:50}
+</style>
 </head>
 <body>
 <header><a class="logo" href="/">VÉLOCE <b>MERCATO</b></a><nav><a href="/">Brèves</a><a href="/soutenir.html">Soutenir</a></nav></header>
 <main>
 
 <section class="card hero">
-<span class="tag">🎮 Communauté</span>
+<span class="tag">🎮 Bêta gratuite · <span id="season">Saison 1</span></span>
 <h1>Véloce <em>Arena</em></h1>
-<p>Tu joues à EA SPORTS FC (FC 25, FC 26…) sur console ou PC ? Défie Romain, affronte la communauté, joue les soirées Ligue des champions et les Coupes du monde Véloce, en live sur Twitch.</p>
+<p>La ligue des joueurs EA SPORTS FC de la communauté. Crée ton club avec tes potes, gagne des points match après match, monte du championnat amateur jusqu'en Ligue Féroce 1, et vise la Coupe Véloce et le Ballon Véloce.</p>
 <div class="actions">
-<a id="duelBtn" class="btn gold" href="#">⚔️ Défier Romain</a>
+<a class="btn gold" href="#inscription">🏆 Inscrire mon club ou moi</a>
+<a id="duelBtn" class="btn red" href="#">⚔️ Défier Romain</a>
 <a id="discordBtn" class="btn" href="#" aria-disabled="true">💬 Discord : bientôt</a>
 </div>
 </section>
 
-<section class="card" id="event">
-<h2>📅 Prochain rendez-vous</h2>
-<p id="eventTxt">Le premier tournoi Véloce Arena sera annoncé ici et sur nos réseaux. Inscris-toi pour être prévenu en premier.</p>
-<div class="actions"><a id="joinBtn" class="btn red" href="#">🏆 Je veux jouer le prochain tournoi</a></div>
+<section class="card" aria-labelledby="t-ladder">
+<h2 id="t-ladder">🪜 L'échelle des ligues</h2>
+<p>Chaque club démarre en championnat amateur. À la fin de chaque mois, les 2 premiers de chaque ligue montent et les 2 derniers descendent.</p>
+<div class="ladder" style="margin-top:12px">
+<div class="rung top"><b>Ligue Féroce 1</b><span>L'élite de la communauté</span></div>
+<div class="rung"><b>Ligue Féroce 2</b><span>Les confirmés</span></div>
+<div class="rung"><b>Ligue Féroce 3</b><span>La montée</span></div>
+<div class="rung"><b>Amateur</b><span>Tout le monde commence ici</span></div>
+</div>
 </section>
 
-<section class="grid three" aria-label="Les formats">
-<div class="tile"><div class="ico">⚔️</div><h3>Duels 1 contre 1</h3><p>Lance un défi à Romain ou à un autre joueur. Les meilleurs matchs passent en live.</p></div>
-<div class="tile"><div class="ico">🏆</div><h3>Tournois</h3><p>Coupe du monde Véloce, soirées Ligue des champions : un tableau, des éliminations directes, un vainqueur.</p></div>
-<div class="tile"><div class="ico">📺</div><h3>Lives Twitch</h3><p>Les grands matchs et les finales sont diffusés et commentés en direct.</p><p><a href="https://www.twitch.tv/heineguez87" target="_blank" rel="noopener">Suivre la chaîne Twitch →</a></p></div>
+<section class="card" aria-labelledby="t-std">
+<h2 id="t-std">📊 Classements</h2>
+<div class="tabs" role="tablist" id="tabs"></div>
+<div class="tablewrap" id="standing"></div>
+<p class="muted" id="majTxt"></p>
 </section>
 
-<section class="card" style="margin-top:26px">
-<h2>📜 Le règlement en bref</h2>
+<section class="grid two" aria-label="Joueurs">
+<div class="card" style="margin-bottom:0">
+<h2>⭐ Joueur de la semaine</h2>
+<div id="potw" class="empty">Désigné chaque lundi : le joueur qui a pris le plus de points sur la semaine.</div>
+</div>
+<div class="card" style="margin-bottom:0">
+<h2>🥇 Course au Ballon Véloce</h2>
+<div id="topPlayers" class="empty">Le meilleur joueur de la saison, au total des points individuels.</div>
+</div>
+</section>
+
+<section class="card" style="margin-top:26px" aria-labelledby="t-pts">
+<h2 id="t-pts">🔢 Comment on gagne des points</h2>
+<div class="pts">
+<div><b>3</b>Victoire</div>
+<div><b>1</b>Match nul</div>
+<div><b>0</b>Défaite</div>
+<div><b>+1</b>Victoire avec 3 buts d'écart ou plus</div>
+</div>
+<p style="margin-top:12px">Les points comptent deux fois : pour ton <strong>club</strong> (classement de ta ligue) et pour <strong>toi</strong> (ton gamertag). Tu progresses donc comme joueur sans quitter ton groupe. Les meilleurs joueurs de la saison forment l'<strong>Équipe Véloce</strong> pour les grands événements.</p>
+</section>
+
+<section class="card" aria-labelledby="t-cal">
+<h2 id="t-cal">📅 Calendrier et coupes</h2>
+<div id="cal" class="cal"><div class="empty" style="display:block">Les premières soirées de ligue et la Coupe Véloce seront annoncées ici. Inscris-toi pour être prévenu.</div></div>
+<p style="margin-top:12px"><strong id="cupName">Coupe Véloce</strong> : <span id="cupStatus">inscriptions ouvertes</span>. Élimination directe, ouverte à tous les clubs, quelle que soit leur ligue.</p>
+</section>
+
+<section class="card" id="inscription" aria-labelledby="t-join">
+<h2 id="t-join">✍️ Inscription</h2>
+<p>Remplis le formulaire : ton inscription est prête à envoyer à l'organisateur, par Discord ou par mail.</p>
+<form class="join" id="joinForm" autocomplete="off">
+<div class="row2">
+<label>Ton gamertag<input id="jTag" required placeholder="Ex. : Heineguez87"></label>
+<label>Ta plateforme<select id="jPlat"><option>PlayStation</option><option>Xbox</option><option>PC</option></select></label>
+</div>
+<div class="row2">
+<label>Nom de ton club (ton groupe)<input id="jClub" placeholder="Laisse vide si tu cherches un club"></label>
+<label>Tes disponibilités<input id="jDispo" placeholder="Ex. : soirs après 21 h, dimanche"></label>
+</div>
+<label>Tu as moins de 18 ans ?<select id="jMin"><option value="non">Non</option><option value="oui">Oui (autorisation parentale demandée pour les lots)</option></select></label>
+<div class="copybox" id="joinTxt" aria-live="polite"></div>
+<div class="actions">
+<button class="btn gold" type="button" id="joinCopy">Copier mon inscription</button>
+<a class="btn" id="joinMail" href="#">Envoyer par mail</a>
+</div>
+<p class="muted">Adresse de l'organisateur : <strong style="user-select:all">Velocemercato87@gmail.com</strong></p>
+</form>
+</section>
+
+<section class="card" aria-labelledby="t-rules">
+<h2 id="t-rules">📜 Le règlement en bref</h2>
 <ol class="rules">
 <li><strong>Participation gratuite</strong>, sans aucun achat ni mise d'argent.</li>
-<li>Pseudo, plateforme (PlayStation, Xbox ou PC) et disponibilités sont demandés à l'inscription. Le cross-play dépend du jeu et des réglages de chacun.</li>
-<li>Format conseillé : mi-temps de 6 minutes, équipes de club ou sélections selon le tournoi annoncé.</li>
-<li>Après chaque match, une photo du score final est envoyée à l'organisateur.</li>
-<li>Fair-play obligatoire : insultes, triche ou abandon répété entraînent l'exclusion.</li>
-<li>Les éventuels lots sont annoncés à l'avance. Pour un participant mineur, une autorisation parentale est demandée avant toute remise de lot ou tout déplacement.</li>
+<li>Un club compte de 1 à 5 joueurs. Un joueur appartient à un seul club par saison ; un changement de club est possible entre deux mois de compétition.</li>
+<li>Format conseillé : mi-temps de 6 minutes. Le jeu de la saison est indiqué en haut de page.</li>
+<li>Après chaque match, les deux joueurs envoient une photo du score final à l'organisateur.</li>
+<li>Fair-play obligatoire : insultes, triche ou abandons répétés entraînent l'exclusion.</li>
+<li>Les éventuels lots (maillots, places de match, rencontres…) sont annoncés à l'avance avec leur règlement. Pour un participant mineur, une autorisation parentale est demandée avant toute remise de lot ou tout déplacement.</li>
 </ol>
-<p class="muted">EA SPORTS FC est une marque d'Electronic Arts. Véloce Arena est une initiative de la communauté Véloce Mercato, sans lien avec Electronic Arts.</p>
+<p class="muted">EA SPORTS FC est une marque d'Electronic Arts. Véloce Arena est une initiative de la communauté Véloce Mercato, sans lien avec Electronic Arts, la FFF, l'UEFA ou la FIFA.</p>
 </section>
 
 </main>
 <footer><a href="/">← Retour aux brèves</a> · <a href="/mentions-legales.html">Mentions légales</a></footer>
+<div class="toast" id="toast" hidden></div>
 <script>
 (function(){
+  var $=function(id){return document.getElementById(id);};
+  var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});};
   var MAIL='Velocemercato87@gmail.com';
-  function mailto(subject, body){return 'mailto:'+MAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);}
-  document.getElementById('duelBtn').href=mailto('Défi Véloce Arena','Salut Romain, je te défie sur EA SPORTS FC !\n\nMon pseudo : \nMa plateforme (PS5, Xbox, PC) : \nMes disponibilités : \nMon message : ');
-  document.getElementById('joinBtn').href=mailto('Inscription tournoi Véloce Arena','Je veux participer au prochain tournoi Véloce Arena.\n\nMon pseudo : \nMa plateforme (PS5, Xbox, PC) : \nMes disponibilités (soirs, week-end) : \nJ\'ai moins de 18 ans (oui / non) : ');
-  fetch('/liens.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():{};}).then(function(l){
-    var https=function(u){return typeof u==='string'&&u.indexOf('https://')===0;};
-    if(https(l.discord)){var b=document.getElementById('discordBtn');b.href=l.discord;b.target='_blank';b.rel='noopener';b.textContent='💬 Rejoindre le Discord';b.removeAttribute('aria-disabled');}
-    if(typeof l.evenement==='string'&&l.evenement.trim()){document.getElementById('eventTxt').textContent=l.evenement;}
-  }).catch(function(){});
+  var mailto=function(su,bo){return 'mailto:'+MAIL+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(bo);};
+  var toast=function(m){var t=$('toast');t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(function(){t.hidden=true;},2400);};
+  $('duelBtn').href=mailto('Défi Véloce Arena','Salut Romain, je te défie sur EA SPORTS FC !\n\nMon gamertag : \nMa plateforme (PlayStation, Xbox, PC) : \nMes disponibilités : ');
+
+  /* inscription */
+  var joinText=function(){return 'Inscription Véloce Arena\nGamertag : '+($('jTag').value.trim()||'—')+'\nPlateforme : '+$('jPlat').value+'\nClub : '+($('jClub').value.trim()||'je cherche un club')+'\nDisponibilités : '+($('jDispo').value.trim()||'—')+'\nMoins de 18 ans : '+$('jMin').value;};
+  var refresh=function(){var t=joinText();$('joinTxt').textContent=t;$('joinMail').href=mailto('Inscription Véloce Arena',t);};
+  $('joinForm').addEventListener('input',refresh);$('joinForm').addEventListener('change',refresh);$('joinForm').addEventListener('submit',function(e){e.preventDefault();});refresh();
+  $('joinCopy').onclick=function(){if(!$('jTag').value.trim()){toast('Indique ton gamertag');$('jTag').focus();return;}
+    var t=joinText(),fb=function(){var r=document.createRange();r.selectNodeContents($('joinTxt'));var s=getSelection();s.removeAllRanges();s.addRange(r);toast('Texte sélectionné : copie-le');};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){toast('Inscription copiée');},fb);}else fb();};
+
+  var get=function(f){return fetch(f+'?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():{};}).catch(function(){return {};});};
+  get('/liens.json').then(function(l){
+    if(typeof l.discord==='string'&&l.discord.indexOf('https://')===0){var b=$('discordBtn');b.href=l.discord;b.target='_blank';b.rel='noopener';b.textContent='💬 Rejoindre le Discord';b.removeAttribute('aria-disabled');}
+  });
+
+  /* classements */
+  get('/arena.json').then(function(A){
+    if(A.saison)$('season').textContent=A.saison+(A.jeu?' · '+A.jeu:'');
+    if(A.maj)$('majTxt').textContent='Mis à jour le '+A.maj+'.';
+    var ligues=Array.isArray(A.ligues)?A.ligues:[];var cur=0;
+    var sortClubs=function(c){return c.slice().sort(function(a,b){return (b.points||0)-(a.points||0)||((b.bp||0)-(b.bc||0))-((a.bp||0)-(a.bc||0))||(b.bp||0)-(a.bp||0);});};
+    var draw=function(){
+      $('tabs').innerHTML=ligues.map(function(l,i){return '<button type="button" role="tab" aria-selected="'+(i===cur)+'" data-i="'+i+'">'+esc(l.nom)+'</button>';}).join('');
+      [].forEach.call($('tabs').children,function(b){b.onclick=function(){cur=+b.dataset.i;draw();};});
+      var L=ligues[cur];if(!L){$('standing').innerHTML='';return;}
+      var clubs=sortClubs(Array.isArray(L.clubs)?L.clubs:[]);
+      if(!clubs.length){$('standing').innerHTML='<div class="empty">Aucun club pour l\'instant en '+esc(L.nom)+'. Les premiers inscrits démarrent en championnat amateur.</div>';return;}
+      $('standing').innerHTML='<table class="std"><thead><tr><th>#</th><th>Club</th><th class="n">Pts</th><th class="n">J</th><th class="n">G</th><th class="n">N</th><th class="n">P</th><th class="n">Diff.</th></tr></thead><tbody>'+
+        clubs.map(function(c,i){var d=(c.bp||0)-(c.bc||0);var cls=i<2?'up':(i>=clubs.length-2&&clubs.length>4?'down':'');
+          return '<tr><td class="'+cls+'">'+(i+1)+'</td><td>'+esc(c.nom)+(Array.isArray(c.joueurs)&&c.joueurs.length?'<br><span class="muted">'+esc(c.joueurs.join(', '))+'</span>':'')+'</td><td class="n"><strong>'+(c.points||0)+'</strong></td><td class="n">'+(c.j||0)+'</td><td class="n">'+(c.g||0)+'</td><td class="n">'+(c.n||0)+'</td><td class="n">'+(c.p||0)+'</td><td class="n">'+(d>0?'+':'')+d+'</td></tr>';}).join('')+'</tbody></table>';
+    };
+    draw();
+    var J=Array.isArray(A.joueurs)?A.joueurs.slice().sort(function(a,b){return (b.points||0)-(a.points||0);}):[];
+    if(J.length){$('topPlayers').className='';$('topPlayers').innerHTML='<table><thead><tr><th>#</th><th>Joueur</th><th>Club</th><th class="n">Pts</th></tr></thead><tbody>'+J.slice(0,10).map(function(p,i){return '<tr><td>'+(i+1)+'</td><td>'+esc(p.gamertag)+'</td><td>'+esc(p.club||'—')+'</td><td class="n"><strong>'+(p.points||0)+'</strong></td></tr>';}).join('')+'</tbody></table>';}
+    var W=A.joueur_semaine;
+    if(W&&W.gamertag){$('potw').className='star';$('potw').innerHTML='<span class="big">⭐</span><div><strong style="font-size:1.3rem">'+esc(W.gamertag)+'</strong><br>'+esc(W.club||'')+(W.points?' · '+esc(W.points)+' points':'')+(W.semaine?'<br><span class="muted">'+esc(W.semaine)+'</span>':'')+'</div>';}
+    var C=Array.isArray(A.calendrier)?A.calendrier.slice().sort(function(a,b){return String(a.date).localeCompare(String(b.date));}):[];
+    if(C.length){$('cal').innerHTML=C.map(function(e){var d=new Date(String(e.date)+'T12:00:00');var dl=isNaN(d)?esc(e.date):d.toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'});return '<div><time>'+dl+(e.heure?' · '+esc(e.heure):'')+'</time><span>'+esc(e.titre)+'</span></div>';}).join('');}
+    if(A.coupe){if(A.coupe.nom)$('cupName').textContent=A.coupe.nom;if(A.coupe.statut)$('cupStatus').textContent=A.coupe.statut.toLowerCase();}
+  });
 })();
 </script>
 </body>
