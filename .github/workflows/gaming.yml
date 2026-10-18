@@ -1,0 +1,69 @@
+name: VM Gaming - Actualites
+
+on:
+  workflow_dispatch:
+    inputs:
+      test:
+        description: 'Mode test (1 brève maximum)'
+        type: boolean
+        default: true
+  schedule:
+    - cron: '15,45 * * * *'   # décalé du robot foot (0 et 30) pour éviter qu'ils publient en même temps
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gaming
+  cancel-in-progress: false
+
+jobs:
+  gaming:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          echo "Passage gaming du $(date -u '+%Y-%m-%d %H:%M UTC') (${{ github.event_name }}, ${{ github.ref_name }})" > vm-gaming/robot-log.txt
+          pip install --quiet trafilatura 2>&1 | tail -3 | tee -a vm-gaming/robot-log.txt
+
+      - name: Update gaming news
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          VM_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.test && '1' || '' }}
+        run: |
+          set -o pipefail
+          python update_gaming.py 2>&1 | tee -a vm-gaming/robot-log.txt
+
+      - name: Validate JSON
+        id: validate
+        if: always()
+        run: |
+          python -m json.tool vm-gaming/news.json > /dev/null
+          python -m json.tool vm-gaming/flash.json > /dev/null
+
+      - name: Save
+        if: always() && steps.validate.outcome == 'success'
+        run: |
+          git add vm-gaming/news.json vm-gaming/flash.json vm-gaming/robot-log.txt
+          if git diff --cached --quiet; then
+            echo 'Rien de nouveau.'
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'Update gaming news'
+            if git pull --rebase origin "${{ github.ref_name }}" && git push origin "HEAD:${{ github.ref_name }}"; then
+              echo 'Publié.'
+            else
+              git rebase --abort 2>/dev/null || true
+              echo "::warning::Un autre passage a publié en même temps ; nouvel essai au prochain passage."
+            fi
+          fi

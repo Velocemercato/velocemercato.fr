@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0a1c">
+<meta property="og:image" content="https://velocemercato.fr/vm-gaming/img/vm-gaming.webp">
+<title>VM GAMING — Trouve des potes pour jouer</title>
+<meta name="description" content="Les actus Warzone, Battlefield REDSEC, EA SPORTS FC et GTA VI toutes les 30 minutes, et un Discord pour trouver des potes de jeu. Gratuit.">
+<meta property="og:title" content="VM GAMING — Trouve des potes pour jouer">
+<meta property="og:description" content="Actus gaming toutes les 30 minutes et un Discord pour jouer ensemble. Gratuit.">
+<link rel="canonical" href="https://velocemercato.fr/vm-gaming/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d6ff6e'/%3E%3Ctext x='32' y='43' font-family='Impact,sans-serif' font-size='30' font-style='italic' text-anchor='middle' fill='%23091019'%3EVM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=DM+Sans:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0a1c;--card:#151a2e;--line:#2f3a58;--text:#f4f6fb;--muted:#b4bdd3;--lime:#d6ff6e;--sun:#ff9a3c;--pink:#ff4f9a;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:500 17px/1.5 'DM Sans',system-ui,sans-serif}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(rgba(214,255,110,.035) 1px,transparent 1px) 0 0/34px 34px,linear-gradient(90deg,rgba(214,255,110,.035) 1px,transparent 1px) 0 0/34px 34px}
+a{color:inherit}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px}
+.big{font-family:'Barlow Condensed',Impact,sans-serif;text-transform:uppercase;line-height:.95}
+
+/* En-tête + affiche */
+.bar{position:sticky;top:0;z-index:20;background:rgba(11,10,28,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:10px;padding-bottom:10px}
+.logo{font:900 1.5rem/1 'Barlow Condensed',Impact,sans-serif;letter-spacing:.04em;text-decoration:none}
+.logo b{background:var(--lime);color:#0b0a1c;border-radius:8px;padding:4px 8px;margin-right:6px}
+.mini-cta{font-weight:700;font-size:.9rem;text-decoration:none;border:1px solid var(--lime);color:var(--lime);border-radius:10px;padding:7px 12px}
+.banner{display:block;background:#000}
+.banner img{display:block;width:100%;height:auto;max-height:520px;object-fit:cover}
+.hero{padding:26px 16px 6px;text-align:center}
+h1{font-size:clamp(2.6rem,11vw,4.6rem);font-weight:900;margin:0 0 12px}
+h1 span{color:var(--lime);display:block}
+.lead{margin:0 auto 22px;max-width:470px;color:var(--muted)}
+.cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:420px;margin:0 auto;padding:18px 22px;border-radius:16px;background:var(--lime);color:#0b0a1c;font:900 1.5rem/1 'Barlow Condensed',Impact,sans-serif;text-transform:uppercase;text-decoration:none;box-shadow:0 10px 30px #0006}
+.cta:active{transform:scale(.98)}
+.free{display:block;margin-top:10px;font-size:.85rem;color:var(--muted)}
+
+h2{font-size:2.2rem;font-weight:900;margin:34px 0 14px;text-align:center}
+h2 small{display:block;font:700 .85rem/1.3 'DM Sans',sans-serif;text-transform:none;color:var(--muted);margin-top:6px}
+
+/* Cases des jeux, chacune avec son illustration */
+.games{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.game{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;min-height:150px;padding:14px;border-radius:16px;text-decoration:none;border:1px solid #ffffff22;isolation:isolate}
+.game svg{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.game::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(transparent 35%,#000b)}
+.game .big{font-size:1.7rem;font-weight:900}
+.game small{color:#e6ecf5;font-size:.8rem}
+
+/* Actus */
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:12px}
+.chip{flex:none;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:8px 14px;font:700 .85rem/1 'DM Sans',sans-serif;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--lime);color:#0b0a1c;border-color:var(--lime)}
+.news{display:grid;gap:10px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.item summary{list-style:none;cursor:pointer}
+.item summary::-webkit-details-marker{display:none}
+.meta{display:flex;gap:8px;align-items:center;font-size:.75rem;color:var(--muted);margin-bottom:4px}
+.tag{font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:6px;padding:2px 7px;color:#0b0a1c}
+.t-WARZONE{background:#9be15d}.t-REDSEC{background:#ff8a4c}.t-FC{background:#6fa8ff}.t-GTA{background:#ff6fb5}.t-GAMING{background:#c9c9d9}
+.item h3{margin:0;font-size:1.05rem;line-height:1.3}
+.item .more{color:var(--lime);font-size:.8rem;font-weight:700;margin-top:6px;display:inline-block}
+.item[open] .more{display:none}
+.item .body{margin-top:10px;color:#dfe5f2;font-size:.95rem}
+.item .body p{margin:0 0 10px}
+.src{font-size:.8rem;color:var(--muted)}
+.empty{text-align:center;color:var(--muted);background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:22px}
+
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.steps li{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.steps .n{flex:none;width:40px;height:40px;border-radius:50%;background:var(--lime);color:#0b0a1c;display:grid;place-items:center;font:900 1.4rem/1 'Barlow Condensed',Impact,sans-serif}
+#rdv{display:none}
+.event{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px}
+.event time{color:var(--lime);font-weight:700;display:block}
+.rules{color:var(--muted);font-size:.92rem;text-align:center;margin:30px 0 0}
+.rules b{color:var(--text)}
+footer{margin-top:40px;padding:24px 0 32px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted);text-align:center}
+footer a{color:var(--text)}
+@media(min-width:680px){.games{grid-template-columns:repeat(4,minmax(0,1fr))}.game{min-height:180px}}
+/* VM SHOW */
+.show{margin-top:34px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.show img{display:block;width:100%;height:auto}
+.show .txt{padding:18px 18px 20px}
+.show .soon{display:inline-block;background:#ff4d61;color:#fff;border-radius:999px;padding:4px 12px;font-size:.75rem;font-weight:700;text-transform:uppercase}
+.show h2{text-align:left;margin:10px 0 6px}
+.show p{color:var(--muted);margin:0 0 14px}
+.btn2{display:inline-block;border:1px solid var(--lime);color:var(--lime);border-radius:12px;padding:12px 16px;font-weight:700;text-decoration:none}
+</style>
+</head>
+<body>
+
+<header class="bar"><div class="wrap"><a class="logo" href="./"><b>VM</b>GAMING</a><a class="mini-cta" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener noreferrer">Discord ↗</a></div></header>
+
+<a class="banner" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener noreferrer" aria-label="VM Gaming : rejoindre la communauté sur Discord">
+<img src="img/vm-gaming-960.webp" srcset="img/vm-gaming-960.webp 960w, img/vm-gaming.webp 1916w" sizes="100vw" width="1916" height="821" alt="Affiche VM Gaming : des joueurs regardent une ville au coucher du soleil et un champ de bataille" fetchpriority="high">
+</a>
+
+<section class="hero wrap">
+<h1 class="big">Tu cherches des potes <span>pour jouer&nbsp;?</span></h1>
+<p class="lead">Les actus de tes jeux toutes les 30 minutes, et un Discord pour jouer ensemble.</p>
+<a class="cta" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener noreferrer">💬 Rejoindre le Discord</a>
+<span class="free">Gratuit · Sans inscription sur ce site</span>
+</section>
+
+<main class="wrap">
+
+<h2 class="big">Ton jeu</h2>
+<div class="games">
+ <a class="game" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener noreferrer">
+  <svg viewBox="0 0 200 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="200" height="180" fill="#1d3a2a"/><g fill="none" stroke-width="3"><circle cx="120" cy="80" r="90" stroke="#ff5a3c" stroke-dasharray="6 6"/><circle cx="120" cy="80" r="48" stroke="#fff" opacity=".7"/></g><path d="M0 120q40-20 80 0t120-10V180H0z" fill="#16301f"/><g transform="translate(60 40)" fill="#e9f3e0"><path d="M-22 0q22-26 44 0z"/><path d="M-20 0L0 26M20 0L0 26M0 0v26" stroke="#e9f3e0" stroke-width="1.5"/><circle cx="0" cy="30" r="4"/></g></svg>
+  <span class="big">Warzone</span><small>Duo, trio, squad</small></a>
+ <a class="game" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener noreferrer">
+  <svg viewBox="0 0 200 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="200" height="180" fill="#3a1d16"/><circle cx="150" cy="60" r="60" fill="#ff7a2f" opacity=".55"/><circle cx="150" cy="60" r="30" fill="#ffc15a" opacity=".7"/><path d="M0 140h200v40H0z" fill="#22120e"/><g fill="#120a08" transform="translate(40 112)"><rect x="0" y="10" width="90" height="20" rx="6"/><rect x="22" y="-2" width="44" height="16" rx="4"/><rect x="60" y="2" width="58" height="5"/></g><g transform="translate(70 40)" fill="#120a08"><rect x="-30" y="-10" width="60" height="2"/><ellipse cx="0" cy="0" rx="16" ry="7"/><rect x="12" y="-2" width="30" height="3"/></g></svg>
+  <span class="big">REDSEC</span><small>Battlefield</small></a>
+ <a class="game" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener noreferrer">
+  <svg viewBox="0 0 200 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="200" height="180" fill="#1f6b3a"/><g fill="#237a42"><rect x="0" y="0" width="40" height="180"/><rect x="80" y="0" width="40" height="180"/><rect x="160" y="0" width="40" height="180"/></g><g fill="none" stroke="#e8ffe9" stroke-width="3" opacity=".8"><line x1="100" y1="0" x2="100" y2="180"/><circle cx="100" cy="90" r="34"/><rect x="-2" y="40" width="40" height="100"/></g><g transform="translate(150 120)"><circle r="16" fill="#fff"/><path d="M0-7l7 5-3 8h-8l-3-8z" fill="#1b1b1b"/></g></svg>
+  <span class="big">EA FC</span><small>Matchs entre potes</small></a>
+ <a class="game" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener noreferrer">
+  <svg viewBox="0 0 200 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="g6" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b1a6b"/><stop offset=".6" stop-color="#ff4f9a"/><stop offset="1" stop-color="#ffb347"/></linearGradient></defs><rect width="200" height="180" fill="url(#g6)"/><circle cx="100" cy="120" r="44" fill="#ffe27a" opacity=".9"/><g fill="#2a0f3a"><path d="M0 180v-40h20v-20h18v30h20v-50h22v80h24v-40h20v-30h18v70h22v-20h36V180z"/><path d="M40 180c2-30 4-56 12-84l4 1c-6 28-8 54-10 83z"/><path d="M54 98c-16-8-32-2-42 8 14-4 28-5 42-3zM56 96c10-16 28-20 44-16-16 2-30 8-42 18zM56 98c16-2 30 4 38 16-12-6-26-12-38-14z"/></g></svg>
+  <span class="big">GTA VI</span><small>On se prépare</small></a>
+</div>
+
+<section aria-labelledby="t-actus">
+<h2 class="big" id="t-actus">Les actus<small id="maj">Mises à jour toutes les 30 minutes</small></h2>
+<div class="chips" role="group" aria-label="Filtrer par jeu">
+ <button class="chip" type="button" data-f="" aria-pressed="true">Tout</button>
+ <button class="chip" type="button" data-f="WARZONE" aria-pressed="false">Warzone</button>
+ <button class="chip" type="button" data-f="REDSEC" aria-pressed="false">REDSEC</button>
+ <button class="chip" type="button" data-f="FC" aria-pressed="false">EA FC</button>
+ <button class="chip" type="button" data-f="GTA" aria-pressed="false">GTA VI</button>
+</div>
+<div class="news" id="news"><p class="empty">Les premières actus arrivent bientôt.</p></div>
+</section>
+
+<section class="show" aria-labelledby="t-show">
+<img src="img/vm-show-840.webp" srcset="img/vm-show-840.webp 840w, img/vm-show.webp 1672w" sizes="(min-width:820px) 788px, 100vw" width="1672" height="941" loading="lazy" alt="Projet de plateau du VM Show : bureau des présentateurs, écrans foot et gaming, éclairage rouge et bleu">
+<div class="txt">
+<span class="soon">Bientôt</span>
+<h2 class="big" id="t-show">Le VM Show</h2>
+<p>Une émission foot et gaming : débats, défis, invités et ton avis en direct. Le plateau ci-dessus est un projet ; aucun direct n'est encore programmé.</p>
+<a class="btn2" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener noreferrer">💡 Proposer une idée sur Discord</a>
+</div>
+</section>
+
+<h2 class="big">Comment ça marche</h2>
+<ol class="steps">
+<li><span class="n">1</span>Tu rejoins le Discord.</li>
+<li><span class="n">2</span>Tu vas dans le salon de ton jeu.</li>
+<li><span class="n">3</span>Tu écris « Qui joue ce soir ? » 🎮</li>
+</ol>
+
+<section id="rdv" aria-labelledby="t-rdv">
+<h2 class="big" id="t-rdv">Prochaines soirées</h2>
+<div id="events"></div>
+</section>
+
+<p class="rules"><b>Les règles :</b> respect pour tout le monde · jamais d'adresse, de téléphone ou de mot de passe · un souci ? préviens un modérateur sur Discord.</p>
+<p class="rules">Tu veux de la compétition sur EA FC ? Le championnat se joue sur <a href="https://velocemercato.fr/gaming.html">Véloce Arena</a>.</p>
+</main>
+
+<footer><div class="wrap">
+<a href="https://velocemercato.fr">Véloce Mercato</a> · <a href="https://velocemercato.fr/gaming.html">Véloce Arena</a> · <a href="https://velocemercato.fr/mentions-legales.html">Mentions légales</a><br>
+Site de fans indépendant, non affilié à Activision, Electronic Arts ou Rockstar Games. Visuels originaux créés pour VM.<br>
+Les actus sont des résumés courts écrits avec l'aide d'une IA, avec un lien vers l'article d'origine.
+</div></footer>
+
+<script>
+(function(){
+  var NOMS={WARZONE:'Warzone',REDSEC:'REDSEC',FC:'EA FC',GTA:'GTA VI',GAMING:'Gaming'};
+  var all=[],filtre='';
+  function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+  function ago(d){var m=Math.round((Date.now()-Date.parse(d))/60000);if(!(m>=0))return '';if(m<60)return 'il y a '+Math.max(1,m)+' min';var h=Math.round(m/60);if(h<24)return 'il y a '+h+' h';return new Date(d).toLocaleDateString('fr-FR',{day:'numeric',month:'short'});}
+  function safeUrl(u){return typeof u==='string'&&/^https:\/\//.test(u)?u:null;}
+  function draw(){
+    var root=document.getElementById('news');root.textContent='';
+    var list=all.filter(function(a){return !filtre||a.championnat===filtre;}).slice(0,15);
+    if(!list.length){root.appendChild(el('p','empty',all.length?'Pas encore d’actu pour ce jeu.':'Les premières actus arrivent bientôt.'));return;}
+    list.forEach(function(a){
+      var d=el('details','item'),s=el('summary'),meta=el('div','meta'),k=NOMS[a.championnat]?a.championnat:'GAMING';
+      meta.appendChild(el('span','tag t-'+k,NOMS[k]));meta.appendChild(el('span',null,ago(a.publishedAt)));
+      s.appendChild(meta);s.appendChild(el('h3',null,a.titre));s.appendChild(el('span','more','Lire la suite ▾'));d.appendChild(s);
+      var body=el('div','body');String(a.texte||'').split(/\n\s*\n/).forEach(function(p){if(p.trim())body.appendChild(el('p',null,p.trim()));});
+      var src=(a.sources||[])[0],u=src&&safeUrl(src.url);
+      if(u){var p=el('p','src','Source : '),l=el('a',null,src.nom||'article');l.href=u;l.target='_blank';l.rel='noopener noreferrer';p.appendChild(l);body.appendChild(p);}
+      d.appendChild(body);root.appendChild(d);
+    });
+  }
+  document.querySelectorAll('.chip').forEach(function(b){b.addEventListener('click',function(){filtre=b.getAttribute('data-f');document.querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});draw();});});
+  fetch('./news.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():[];}).then(function(rows){
+    if(!Array.isArray(rows))return;
+    all=rows.filter(function(a){return a&&a.titre&&a.publishedAt;}).sort(function(a,b){return String(b.publishedAt).localeCompare(String(a.publishedAt));});
+    draw();
+  }).catch(function(){});
+
+  // « Prochaines soirées » : affiché seulement s'il y a de vrais rendez-vous
+  fetch('./data/events.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():[];}).then(function(rows){
+    if(!Array.isArray(rows))return;
+    var now=Date.now(),list=rows.filter(function(x){return x&&x.titre&&Date.parse(x.date)>=now;}).sort(function(a,b){return Date.parse(a.date)-Date.parse(b.date);}).slice(0,3);
+    if(!list.length)return;
+    var root=document.getElementById('events');
+    list.forEach(function(x){var box=el('div','event'),t=el('time',null,new Date(x.date).toLocaleString('fr-FR',{weekday:'long',day:'numeric',month:'long',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Paris'}));t.dateTime=x.date;box.appendChild(t);box.appendChild(el('div',null,String(x.titre).slice(0,110)+(x.jeu?' · '+String(x.jeu).slice(0,50):'')));root.appendChild(box);});
+    document.getElementById('rdv').style.display='block';
+  }).catch(function(){});
+})();
+</script>
+</body>
+</html>
