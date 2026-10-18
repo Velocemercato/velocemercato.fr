@@ -2,34 +2,70 @@ name: Veloce Mercato - Actualites
 
 on:
   workflow_dispatch:
+    inputs:
+      test:
+        description: 'Mode test (2 brèves maximum)'
+        type: boolean
+        default: true
   schedule:
     - cron: '*/30 * * * *'
 
 permissions:
   contents: write
 
+concurrency:
+  group: actualites
+  cancel-in-progress: false
+
 jobs:
   actualites:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Update news
-        run: python update_news.py
-      - name: Validate articles
-        run: python -m json.tool articles.json > /dev/null
-      - name: Save articles
+
+      - name: Install dependencies
+        run: pip install --quiet trafilatura
+
+      - name: Check API key (sans l'afficher)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          git add articles.json
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error::Le secret ANTHROPIC_API_KEY est absent."
+            exit 1
+          fi
+          echo "Secret ANTHROPIC_API_KEY présent (${#ANTHROPIC_API_KEY} caractères)."
+
+      - name: Update news
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          VM_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.test && '1' || '' }}
+        run: python update_news.py
+
+      - name: Validate JSON
+        id: validate
+        if: always()
+        run: |
+          python -m json.tool articles.json > /dev/null
+          python -m json.tool flash.json > /dev/null
+
+      - name: Save articles and flashs
+        if: always() && steps.validate.outcome == 'success'
+        run: |
+          git add articles.json flash.json
           if git diff --cached --quiet; then
-            echo 'No new articles'
+            echo 'Aucun nouvel article.'
           else
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
             git commit -m 'Update football news'
+            git pull --rebase origin main
             git push
           fi
