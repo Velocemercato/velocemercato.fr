@@ -35,11 +35,17 @@ form.join input,form.join select{font:500 1rem/1.3 Barlow,system-ui,sans-serif;c
 .row2{display:grid;gap:12px}@media(min-width:560px){.row2{grid-template-columns:1fr 1fr}}
 .copybox{border:2px solid var(--line);border-radius:10px;padding:12px;background:var(--bg);white-space:pre-wrap;font:500 .95rem/1.45 Barlow,system-ui,sans-serif}
 .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateX(-50%);background:var(--gold-hi);color:#0b1533;border:3px solid #000;border-radius:999px;padding:9px 16px;font:700 .9rem/1 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;z-index:50}
+details.fold>summary{cursor:pointer;list-style:none;font:700 1.25rem/1.2 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.03em;display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.fold>summary::after{content:'+';font-size:1.6rem;line-height:1;color:var(--gold,#c9971a)}
+details.fold[open]>summary::after{content:'–'}
+details.fold>summary::-webkit-details-marker{display:none}
+details.fold[open]>summary{margin-bottom:12px}
 </style>
 </head>
 <body>
 <header><a class="logo" href="/">VÉLOCE <b>MERCATO</b></a><nav><a href="/">Brèves</a><a href="/vm-gaming/">VM Gaming</a><a href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener">Discord</a></nav></header>
 <main>
+
 
 <section class="card hero">
 <span class="tag">🎮 Bêta gratuite · <span id="season">Saison 1</span></span>
@@ -50,6 +56,30 @@ form.join input,form.join select{font:500 1rem/1.3 Barlow,system-ui,sans-serif;c
 <a id="duelBtn" class="btn red" href="#">⚔️ Défier Romain</a>
 <a id="discordBtn" class="btn" href="#" aria-disabled="true">💬 Discord : bientôt</a>
 </div>
+</section>
+
+<section class="card" id="inscription" aria-labelledby="t-join">
+<h2 id="t-join">✍️ Inscription</h2>
+<p>Remplis le formulaire : ton inscription est prête à envoyer à l'organisateur, par Discord ou par mail.</p>
+<form class="join" id="joinForm" autocomplete="off">
+<div class="row2">
+<label>Ton gamertag<input id="jTag" required placeholder="Ex. : Heineguez87"></label>
+<label>Ta plateforme<select id="jPlat"><option>PlayStation</option><option>Xbox</option><option>PC</option></select></label>
+</div>
+<div class="row2">
+<label>Nom de ton club (ton groupe)<input id="jClub" placeholder="Laisse vide si tu cherches un club"></label>
+<label>Tes disponibilités<input id="jDispo" placeholder="Ex. : soirs après 21 h, dimanche"></label>
+</div>
+<label>Tu as moins de 18 ans ?<select id="jMin"><option value="non">Non</option><option value="oui">Oui (autorisation parentale demandée pour les lots)</option></select></label>
+<label style="display:flex;gap:8px;align-items:flex-start;text-transform:none;letter-spacing:0;font:500 .95rem/1.4 Barlow,system-ui,sans-serif;color:var(--ink)"><input type="checkbox" id="jOk" style="width:auto;margin-top:3px"> J'ai lu le règlement (en bas de page) et j'accepte que mon gamertag et le nom de mon club apparaissent dans les classements publics.</label>
+<div class="copybox" id="joinTxt" aria-live="polite"></div>
+<div class="actions">
+<button class="btn gold" type="button" id="joinCopy">Copier mon inscription</button>
+<a class="btn" id="joinMail" href="#">Envoyer par mail</a>
+</div>
+<p class="muted">Adresse de l'organisateur : <strong style="user-select:all">Velocemercato87@gmail.com</strong></p>
+<p class="muted">Seuls ton gamertag, ton club et tes résultats sont publiés. Ton adresse mail et tes disponibilités restent privées. Tu peux demander à tout moment le retrait de tes informations.</p>
+</form>
 </section>
 
 <section class="card" aria-labelledby="t-ladder">
@@ -70,7 +100,13 @@ form.join input,form.join select{font:500 1rem/1.3 Barlow,system-ui,sans-serif;c
 <p class="muted" id="majTxt"></p>
 </section>
 
-<section class="grid two" aria-label="Joueurs">
+<section class="card" aria-labelledby="t-cal">
+<h2 id="t-cal">📅 Calendrier et coupes</h2>
+<div id="cal" class="cal"><div class="empty" style="display:block">Les premières soirées de ligue et la Coupe Véloce seront annoncées ici. Inscris-toi pour être prévenu.</div></div>
+<p style="margin-top:12px"><strong id="cupName">Coupe Véloce</strong> : <span id="cupStatus">inscriptions ouvertes</span>. Élimination directe, ouverte à tous les clubs, quelle que soit leur ligue.</p>
+</section>
+
+<details class="card fold"><summary>⭐ Joueur de la semaine · 🥇 Ballon Véloce</summary>
 <div class="card" style="margin-bottom:0">
 <h2>⭐ Joueur de la semaine</h2>
 <div id="potw" class="empty">Désigné chaque lundi : le joueur qui a pris le plus de points sur la semaine.</div>
@@ -79,10 +115,10 @@ form.join input,form.join select{font:500 1rem/1.3 Barlow,system-ui,sans-serif;c
 <h2>🥇 Course au Ballon Véloce</h2>
 <div id="topPlayers" class="empty">Le meilleur joueur de la saison, au total des points individuels.</div>
 </div>
-</section>
+</details>
 
-<section class="card" style="margin-top:26px" aria-labelledby="t-pts">
-<h2 id="t-pts">🔢 Comment on gagne des points</h2>
+<details class="card fold"><summary>🔢 Comment on gagne des points</summary>
+
 <div class="pts">
 <div><b>3</b>Victoire</div>
 <div><b>1</b>Match nul</div>
@@ -90,40 +126,10 @@ form.join input,form.join select{font:500 1rem/1.3 Barlow,system-ui,sans-serif;c
 <div><b>+1</b>Victoire avec 3 buts d'écart ou plus</div>
 </div>
 <p style="margin-top:12px">Les points comptent deux fois : pour ton <strong>club</strong> (classement de ta ligue) et pour <strong>toi</strong> (ton gamertag). Tu progresses donc comme joueur sans quitter ton groupe. Les meilleurs joueurs de la saison forment l'<strong>Équipe Véloce</strong> pour les grands événements.</p>
-</section>
+</details>
 
-<section class="card" aria-labelledby="t-cal">
-<h2 id="t-cal">📅 Calendrier et coupes</h2>
-<div id="cal" class="cal"><div class="empty" style="display:block">Les premières soirées de ligue et la Coupe Véloce seront annoncées ici. Inscris-toi pour être prévenu.</div></div>
-<p style="margin-top:12px"><strong id="cupName">Coupe Véloce</strong> : <span id="cupStatus">inscriptions ouvertes</span>. Élimination directe, ouverte à tous les clubs, quelle que soit leur ligue.</p>
-</section>
+<details class="card fold"><summary>📜 Le règlement (à lire avant de t'inscrire)</summary>
 
-<section class="card" id="inscription" aria-labelledby="t-join">
-<h2 id="t-join">✍️ Inscription</h2>
-<p>Remplis le formulaire : ton inscription est prête à envoyer à l'organisateur, par Discord ou par mail.</p>
-<form class="join" id="joinForm" autocomplete="off">
-<div class="row2">
-<label>Ton gamertag<input id="jTag" required placeholder="Ex. : Heineguez87"></label>
-<label>Ta plateforme<select id="jPlat"><option>PlayStation</option><option>Xbox</option><option>PC</option></select></label>
-</div>
-<div class="row2">
-<label>Nom de ton club (ton groupe)<input id="jClub" placeholder="Laisse vide si tu cherches un club"></label>
-<label>Tes disponibilités<input id="jDispo" placeholder="Ex. : soirs après 21 h, dimanche"></label>
-</div>
-<label>Tu as moins de 18 ans ?<select id="jMin"><option value="non">Non</option><option value="oui">Oui (autorisation parentale demandée pour les lots)</option></select></label>
-<label style="display:flex;gap:8px;align-items:flex-start;text-transform:none;letter-spacing:0;font:500 .95rem/1.4 Barlow,system-ui,sans-serif;color:var(--ink)"><input type="checkbox" id="jOk" style="width:auto;margin-top:3px"> J'ai lu le règlement ci-dessous et j'accepte que mon gamertag et le nom de mon club apparaissent dans les classements publics.</label>
-<div class="copybox" id="joinTxt" aria-live="polite"></div>
-<div class="actions">
-<button class="btn gold" type="button" id="joinCopy">Copier mon inscription</button>
-<a class="btn" id="joinMail" href="#">Envoyer par mail</a>
-</div>
-<p class="muted">Adresse de l'organisateur : <strong style="user-select:all">Velocemercato87@gmail.com</strong></p>
-<p class="muted">Seuls ton gamertag, ton club et tes résultats sont publiés. Ton adresse mail et tes disponibilités restent privées. Tu peux demander à tout moment le retrait de tes informations.</p>
-</form>
-</section>
-
-<section class="card" aria-labelledby="t-rules">
-<h2 id="t-rules">📜 Le règlement en bref</h2>
 <ol class="rules">
 <li><strong>Participation gratuite</strong>, sans aucun achat ni mise d'argent.</li>
 <li>Un club compte de 1 à 5 joueurs. Un joueur appartient à un seul club par saison ; un changement de club est possible entre deux mois de compétition.</li>
@@ -135,7 +141,7 @@ form.join input,form.join select{font:500 1rem/1.3 Barlow,system-ui,sans-serif;c
 <li>Les éventuels lots (maillots, places de match, rencontres…) sont annoncés à l'avance avec leur règlement. Pour un participant mineur, une autorisation parentale est demandée avant toute remise de lot ou tout déplacement.</li>
 </ol>
 <p class="muted">EA SPORTS FC est une marque d'Electronic Arts. Véloce Arena est une initiative de la communauté Véloce Mercato, sans lien avec Electronic Arts, la FFF, l'UEFA ou la FIFA.</p>
-</section>
+</details>
 
 </main>
 <footer><a href="/">← Retour aux brèves</a> · <a href="/mentions-legales.html">Mentions légales</a></footer>
