@@ -35,7 +35,7 @@ CHANNELS = [
     ('ETRANGER', 'Bundesliga', ['Bundesliga', 'bundesliga']),
 ]
 
-GOAL = re.compile(r"\b(buts?|goals?|golazo|résumé|resume|highlights|all goals|tous les buts|frappe|lucarne|retourné|bicyclette|panenka|ciseaux|volée)\b", re.I)
+GOAL = re.compile(r"(\b(buts?|goals?|golazo|goles|gol|gols|tore?|résumé|resume|resumen|highlights|all goals|tous les buts|frappe|lucarne|retourné|bicyclette|panenka|ciseaux|volée)\b|\(\d+\s*[-–]\s*\d+\)|\b\d+\s*[-–]\s*\d+\b)", re.I)
 BEST = re.compile(r"(plus beaux?|plus belles?|top ?\d+|best goals?|best of|but du mois|but de la saison|goal of the (month|season|week)|golazo|chef[- ]d['’]oeuvre|incroyable|amazing|stunning|screamer|bicyclette|retourné|ciseaux|lucarne)", re.I)
 GAG = re.compile(r"(gag|fails?|bloopers?|insolite|dr[ôo]le|funny|bourde|boulette|gaffe|contre son camp|own goals?|raté|ratés|miss(es)?|moments? (fous|wtf)|wtf|lol)", re.I)
 SKIP = re.compile(r"(live|en direct|direct |conférence|conference|press|billet|ticket|pronostic|paris sportifs|bande-annonce|trailer)", re.I)
