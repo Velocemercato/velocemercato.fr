@@ -87,12 +87,25 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 :root[data-theme=dark] .arena-band,:root[data-theme=dark] .gstrip{border-color:#000}
 .pastille-band{display:flex;align-items:center;gap:12px;margin:-8px 0 22px;padding:10px 14px;background:#e1243a;color:#fff;text-decoration:none;border:3px solid #000;border-radius:16px;box-shadow:6px 6px 0 var(--gold-hi);transition:transform .15s}
 .pastille-band:hover{transform:translate(-3px,-3px)}
-#pastille,#videos{scroll-margin-top:150px}
+#pastille,#videos,#agenda{scroll-margin-top:150px}
 .pastille-band img{flex:none;width:58px;height:58px;object-fit:cover;object-position:center 20%;border-radius:50%;border:3px solid #000;background:#fff}
 .pb-txt{flex:1;min-width:0;display:flex;flex-direction:column}
 .pb-txt b{font-family:Bangers,Impact,sans-serif;font-weight:400;font-size:1.5rem;letter-spacing:.06em;line-height:1;text-shadow:2px 2px 0 #000}
 .pb-txt span{font-size:.9rem;line-height:1.25}
 @media(max-width:420px){.pastille-band .arena-go{display:none}}
+/* === Agenda de la semaine === */
+.agenda{margin-top:34px;padding:16px;border:3px solid #000;border-radius:18px;box-shadow:6px 6px 0 #14a35a;background:var(--surface)}
+.agenda h2{font-family:Bangers,Impact,sans-serif;font-size:2.3rem;letter-spacing:.06em;margin:0 0 4px;line-height:1;text-shadow:3px 3px 0 #14a35a}
+.agenda .sub{margin:0 0 12px;color:var(--muted);font-size:.9rem}
+.aday{margin:14px 0 6px;font-family:Bangers,Impact,sans-serif;letter-spacing:.06em;font-size:1.3rem;color:var(--gold-hi);text-shadow:2px 2px 0 #000;text-transform:uppercase}
+.aitem{display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:start;padding:9px 10px;border:2px solid #000;border-radius:12px;background:rgba(0,0,0,.18);margin-bottom:8px}
+.aitem time{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem}
+.aitem b{display:block;line-height:1.25}
+.atags{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.atag{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;border-radius:999px;padding:2px 8px;background:var(--royal);color:#fff}
+.atag.tv{background:#000;color:var(--gold-hi)}.atag.radio{background:#e1243a}.atag.vm{background:#14a35a}
+.aitem.vm{border-color:#14a35a;background:rgba(20,163,90,.15)}
+.aempty{padding:18px;text-align:center;color:var(--muted);border:2px dashed var(--line);border-radius:12px}
 /* === Vidéos (chaînes YouTube officielles) === */
 .vids{margin-top:34px;padding:16px;border:3px solid var(--line);border-radius:18px;box-shadow:6px 6px 0 var(--line);background:var(--surface)}
 .vids h2{font-family:Bangers,Impact,sans-serif;font-size:2.3rem;letter-spacing:.06em;margin:0 0 4px;line-height:1;text-shadow:3px 3px 0 var(--gold-hi)}
@@ -151,6 +164,7 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 <button class="chip" type="button" data-cat="FEMININ" aria-pressed="false">Féminin</button>
 <button class="chip" type="button" data-cat="OFFICIEL" aria-pressed="false">Officiel</button>
 <a class="chip" href="#pastille" style="background:#000;border-color:#000;color:#f4cf55">🎙️ La Pastille</a>
+<a class="chip" href="#agenda" style="background:#14a35a;border-color:#000;color:#fff">📅 Agenda</a>
 <a class="chip" href="#videos" style="background:#e1243a;border-color:#000;color:#fff">🎬 Vidéos</a>
 <a class="chip" href="/gaming.html" style="background:#14a35a;border-color:#14a35a;color:#fff">⚽ EA FC · Véloce Arena</a>
 <a class="chip" href="/vm-gaming/" style="background:#0b0a1c;border-color:#d6ff6e;color:#d6ff6e">🎮 VM Gaming</a>
@@ -162,6 +176,11 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 <a href="/gaming.html" class="arena-band" aria-label="Véloce Arena est en ligne : rejoindre la ligue FC gratuite"><span class="arena-live" id="arenaLive"><span class="arena-dot" id="arenaDot" style="background:#9aa3b8"></span><span id="arenaLiveTxt">Communauté Discord</span></span><span class="arena-txt"><b>🎮 VÉLOCE ARENA</b><span>La ligue EA SPORTS FC gratuite des fans : crée ton club, gagne des points, monte en Ligue Féroce 1</span></span><span class="arena-go">Rejoindre →</span></a>
 <a href="#pastille" class="pastille-band" aria-label="La Pastille : podcasts et interviews, voir l'émission"><img src="/img/avatar-veloce.webp" width="400" height="367" alt=""><span class="pb-txt"><b>🎙️ LA PASTILLE</b><span>Podcasts, interviews et invités foot · bientôt sur YouTube et Twitch</span></span><span class="arena-go">Voir →</span></a>
 <div class="grid lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] gap-8 mt-2"><section aria-labelledby="feed-title" class="min-w-0"><div class="flex items-end justify-between gap-3 mb-5 flex-wrap"><h2 id="feed-title" class="font-comic text-[2.4rem] leading-none tracking-wide">LE FIL DU JOUR <span style="color:var(--royal)">!</span></h2><span id="count" class="font-cond font-bold uppercase text-sm tracking-widest" style="color:var(--muted)"></span></div><div id="feed" class="grid sm:grid-cols-2 gap-7"></div><div id="empty" class="panel p-8 text-center flex flex-col gap-2 items-center" style="border-radius:14px" hidden><span class="burst text-xl">BIENTÔT !</span><p id="emptyTxt" class="font-cond font-bold uppercase tracking-wider" style="color:var(--muted)">Chargement du fil…</p></div></section><aside aria-labelledby="flash-title" class="min-w-0"><div class="panel overflow-hidden lg:sticky" style="top:calc(env(safe-area-inset-top,0px) + 130px);border-radius:14px"><div class="flex items-center justify-between gap-2 px-4 py-3" style="background:var(--royal);border-bottom:3px solid var(--line)"><h2 id="flash-title" class="font-comic text-2xl tracking-wider text-white">FLASH VÉLOCE · 24H</h2><span class="flex items-center gap-1.5 font-cond font-bold text-xs uppercase text-white"><span class="live w-2.5 h-2.5 rounded-full" style="background:#ff4d61"></span>Actu</span></div><ol id="timeline" class="tl flex flex-col gap-5 p-4 max-h-[600px] overflow-y-auto" aria-live="polite"></ol><p class="px-4 pb-3 text-xs font-cond uppercase tracking-wider" style="color:var(--muted)">Actualisation de l'affichage toutes les 5 minutes</p></div></aside></div>
+<section class="agenda" id="agenda" aria-labelledby="t-agenda">
+<h2 id="t-agenda">📅 L'AGENDA DE LA SEMAINE</h2>
+<p class="sub">Les matchs des 7 prochains jours, les lives et les tournois Véloce Mercato. Chaînes et radios indiquées quand elles sont confirmées officiellement.</p>
+<div id="agendaList"><p class="aempty">Chargement de l'agenda…</p></div>
+</section>
 <section class="vids" id="videos" aria-labelledby="t-vids">
 <h2 id="t-vids">🎬 LES VIDÉOS</h2>
 <p class="sub">Les buts du moment, depuis les chaînes YouTube officielles. Mis à jour toutes les 30 minutes.</p>
@@ -260,5 +279,32 @@ function group(sel,attr,set){document.querySelectorAll(sel+' .vchip').forEach(fu
 group('.vtype','data-t',function(v){t=v;});group('.vleague','data-l',function(v){l=v;});
 fetch('/videos.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():[];}).then(function(rows){all=Array.isArray(rows)?rows.filter(function(v){return v&&v.id&&v.titre;}):[];draw();}).catch(function(){all=[];draw();});
 })();
+</script>
+<script>
+// Agenda : matchs (matchs.json, robot) + lives, tournois et diffuseurs confirmés (agenda.json, saisie manuelle)
+(function(){var root=document.getElementById('agendaList');
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e;}
+function get(f){return fetch(f+'?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():[];}).catch(function(){return [];});}
+Promise.all([get('/matchs.json'),get('/agenda.json')]).then(function(res){
+ var matchs=Array.isArray(res[0])?res[0]:[],manuel=Array.isArray(res[1])?res[1]:[],extra={},items=[];
+ manuel.forEach(function(a){if(a&&a.match_id)extra[a.match_id]=a;});
+ matchs.forEach(function(m){if(!m||!m.date)return;var x=extra[m.id]||{};items.push({date:m.date,titre:m.domicile+' – '+m.exterieur,comp:m.competition,score:(m.statut==='FINISHED'&&m.score&&m.score[0]!=null)?m.score[0]+' – '+m.score[1]:'',chaine:x.chaine,radio:x.radio});});
+ manuel.forEach(function(a){if(a&&!a.match_id&&a.date&&a.titre)items.push({date:a.date,titre:a.titre,comp:a.competition||'',chaine:a.chaine,radio:a.radio,vm:a.type==='live'||a.type==='tournoi',type:a.type,lien:a.lien});});
+ var now=Date.now(),from=now-36e5*48,to=now+864e5*7;
+ items=items.filter(function(i){var t=Date.parse(i.date);return t>=from&&t<=to;}).sort(function(a,b){return Date.parse(a.date)-Date.parse(b.date);});
+ root.textContent='';
+ if(!items.length){root.appendChild(el('p','aempty','Le calendrier des matchs de la semaine arrive très bientôt. Les lives et tournois Véloce Mercato seront annoncés ici.'));return;}
+ var last='';items.slice(0,60).forEach(function(i){var d=new Date(i.date),day=d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',timeZone:'Europe/Paris'});
+  if(day!==last){root.appendChild(el('h3','aday',day));last=day;}
+  var it=el('div','aitem'+(i.vm?' vm':''));it.appendChild(el('time',null,d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Paris'})));
+  var body=el('div');body.appendChild(el('b',null,i.titre+(i.score?'  ·  '+i.score:'')));var tags=el('div','atags');
+  if(i.vm)tags.appendChild(el('span','atag vm',i.type==='tournoi'?'Tournoi VM':'Live VM'));
+  if(i.comp)tags.appendChild(el('span','atag',i.comp));
+  if(i.chaine)tags.appendChild(el('span','atag tv','📺 '+i.chaine));
+  if(i.radio)tags.appendChild(el('span','atag radio','📻 '+i.radio));
+  body.appendChild(tags);
+  if(i.lien&&/^https:\/\//.test(i.lien)){var a=el('a',null,'Rejoindre →');a.href=i.lien;a.target='_blank';a.rel='noopener';a.style.fontSize='.85rem';body.appendChild(a);}
+  it.appendChild(body);root.appendChild(it);});
+});})();
 </script>
 </body></html>
