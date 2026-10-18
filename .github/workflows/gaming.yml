@@ -7,6 +7,10 @@ on:
         description: 'Mode test (1 brève maximum)'
         type: boolean
         default: true
+      rattrapage:
+        description: 'Rattrapage : actus des 7 derniers jours'
+        type: boolean
+        default: false
   schedule:
     - cron: '15,45 * * * *'   # décalé du robot foot (0 et 30) pour éviter qu'ils publient en même temps
 
@@ -39,6 +43,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           VM_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.test && '1' || '' }}
+          VM_RATTRAPAGE: ${{ github.event_name == 'workflow_dispatch' && inputs.rattrapage && '1' || '' }}
         run: |
           set -o pipefail
           python update_gaming.py 2>&1 | tee -a vm-gaming/robot-log.txt

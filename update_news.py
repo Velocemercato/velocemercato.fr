@@ -30,9 +30,12 @@ FLASH = Path('flash.json')
 NOW = dt.datetime.now(dt.timezone.utc)
 PARIS = ZoneInfo('Europe/Paris')
 MAX_AGE_HOURS = 36
-MAX_PER_RUN = 4
+MAX_PER_RUN = 6
 MAX_PER_DAY = 100
 MAX_ARTICLES_TO_EXAMINE = 30
+MAX_REJECTS = 8
+# Rattrapage manuel (lancé depuis GitHub) : remonte plus loin dans le temps et rédige davantage de brèves.
+CATCH_UP = os.getenv('VM_RATTRAPAGE', '').strip() == '1'
 # Modèle rapide et économique ; on essaie le suivant si un modèle n'existe pas (HTTP 404).
 MODELS = [m for m in dict.fromkeys([os.getenv('ANTHROPIC_MODEL', '').strip(),
                                     'claude-haiku-5-5', 'claude-haiku-4-5']) if m]
@@ -40,6 +43,12 @@ API_KEY = os.getenv('ANTHROPIC_API_KEY', '').strip()
 TEST_MODE = os.getenv('VM_TEST', '').strip() == '1'   # test : 2 brèves maximum
 if TEST_MODE:
     MAX_PER_RUN = 2
+
+
+def apply_catch_up():
+    """Réglages du rattrapage : 7 jours en arrière, jusqu'à 20 brèves."""
+    global MAX_AGE_HOURS, MAX_PER_RUN, MAX_ARTICLES_TO_EXAMINE, MAX_REJECTS
+    MAX_AGE_HOURS, MAX_PER_RUN, MAX_ARTICLES_TO_EXAMINE, MAX_REJECTS = 168, 20, 120, 30
 
 
 THINKING_OFF = [True]
@@ -390,7 +399,7 @@ def main():
     for post in candidates[:MAX_ARTICLES_TO_EXAMINE]:
         if len(additions) >= quota:
             break
-        if stats['rejet_lecture_ou_ia'] >= 8:
+        if stats['rejet_lecture_ou_ia'] >= MAX_REJECTS:
             print('Trop de rejets IA dans ce passage : arrêt pour limiter le coût.', flush=True)
             break
         if similar_story(post['title'], previous_titles):
@@ -476,4 +485,6 @@ def main():
 
 
 if __name__ == '__main__':
+    if CATCH_UP:
+        apply_catch_up()
     main()
