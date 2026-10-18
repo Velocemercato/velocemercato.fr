@@ -196,7 +196,7 @@ def extract_article(url):
 def call_claude(system, user):
     """Appelle l'API Claude. La clé n'est jamais affichée dans les journaux."""
     while MODELS:
-        body = json.dumps({'model': MODELS[0], 'max_tokens': 650,
+        body = json.dumps({'model': MODELS[0], 'max_tokens': 2000,
                            'system': system, 'messages': [{'role': 'user', 'content': user}]},
                           ensure_ascii=False).encode('utf-8')
         req = urllib.request.Request('https://api.anthropic.com/v1/messages', data=body,
