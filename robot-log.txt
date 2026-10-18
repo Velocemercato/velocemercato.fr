@@ -1,37 +1,25 @@
-Passage du 2026-10-18 08:55 UTC (schedule)
-Nettoyage : 0 breves vides retirees, 4 gardees.
+Passage du 2026-10-18 09:00 UTC (workflow_dispatch)
+Nettoyage : 0 breves vides retirees, 10 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 4 articles conservés et 9 flashs existants.
-RSS Foot National / LIGUE_1 : 10 actualités récentes.
+Départ : 10 articles conservés et 9 flashs existants.
 RSS Foot National / NATIONAL : 12 actualités récentes.
-RSS Foot National / LIGUE_2 : 8 actualités récentes.
+RSS Foot National / LIGUE_1 : 9 actualités récentes.
+RSS Foot National / NATIONAL : 8 actualités récentes.
 RSS RMC Sport / FRANCE : 26 actualités récentes.
 RSS RMC Sport / LIGUE_1 : 18 actualités récentes.
 RSS RMC Sport / INTERNATIONAL : 4 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 37 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 0 actualités récentes.
-RSS Foot National / NATIONAL : 8 actualités récentes.
+RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 88, column 0
 RSS BBC Sport / FEMININ : 4 actualités récentes.
+RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 88, column 0
 RSS Foot01 / FRANCE : 42 actualités récentes.
-RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 88, column 0
-RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 88, column 0
+RSS Foot National / LIGUE_2 : 8 actualités récentes.
 RSS inaccessible Foot Mercato : HTTPError - HTTP Error 429: Too Many Requests
-169 titres collectés, 150 nouveaux liens, quota 8.
-Brève prête : RMC Sport - Le Barça s'impose 5-2 au Betis Séville, Lamine Yamal élu homme du match
-Brève prête : RMC Sport - PSG-Barça en Ligue des champions : Michael Oliver au sifflet
-Brève prête : Foot01 - Lille : un manifestant blessé après avoir été touché par une vitre de boutique
-Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève prête : Foot01 - PSG : Kvaratskhelia critiqué par des journalistes après son match à Strasbourg
-Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève prête : Foot01 - OM : Mc Court fermerait la porte à un intérêt pour un joueur, selon Foot01
-Brève ignorée (BBC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (Foot01) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève prête : Foot National - Blois s'impose 3-0 face au Gazélec, dont le voyage perturbé a décalé le coup d'envoi
-Brève prête : RMC Sport - Betis-Barça : Lamine Yamal élu homme du match lors de la victoire 5-2
-Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève prête : Foot01 - L'OM intéressé par un défenseur argentin, Mc Court ferme la porte
-Bilan : brèves_rédigées=8, rejet_lecture_ou_ia=8, source_inaccessible_ou_trop_courte=2
-Publié : 8 brèves (total 12). Flash : 11.
+168 titres collectés, 128 nouveaux liens, quota 2.
+Brève ignorée (RMC Sport) : ValueError - Réponse IA sans JSON (stop=max_tokens, blocs=thinking,text) : '{"titre": "Liga : Pellegrini dénonce 
+Brève ignorée (RMC Sport) : ValueError - Réponse IA sans JSON (stop=max_tokens, blocs=thinking,text) : '{"titre": "Messi signe un doublé en q
+Brève prête : BBC Sport - Martinez opéré après sa blessure à Everton, de retour dans quelques semaines
+Brève prête : RMC Sport - PSG-Barça : Acherchour salue Lamine Yamal avant le choc de Ligue des champions
+Bilan : brèves_rédigées=2, non_pertinent=3, rejet_lecture_ou_ia=2, source_inaccessible_ou_trop_courte=2
+Publié : 2 brèves (total 12). Flash : 11.
