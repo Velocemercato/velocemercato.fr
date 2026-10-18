@@ -30,8 +30,8 @@ FLASH = Path('flash.json')
 NOW = dt.datetime.now(dt.timezone.utc)
 PARIS = ZoneInfo('Europe/Paris')
 MAX_AGE_HOURS = 36
-MAX_PER_RUN = 8
-MAX_PER_DAY = 40
+MAX_PER_RUN = 4
+MAX_PER_DAY = 100
 MAX_ARTICLES_TO_EXAMINE = 30
 # Modèle rapide et économique ; on essaie le suivant si un modèle n'existe pas (HTTP 404).
 MODELS = [m for m in dict.fromkeys([os.getenv('ANTHROPIC_MODEL', '').strip(),
