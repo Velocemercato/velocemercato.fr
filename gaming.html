@@ -111,12 +111,14 @@ form.join input,form.join select{font:500 1rem/1.3 Barlow,system-ui,sans-serif;c
 <label>Tes disponibilités<input id="jDispo" placeholder="Ex. : soirs après 21 h, dimanche"></label>
 </div>
 <label>Tu as moins de 18 ans ?<select id="jMin"><option value="non">Non</option><option value="oui">Oui (autorisation parentale demandée pour les lots)</option></select></label>
+<label style="display:flex;gap:8px;align-items:flex-start;text-transform:none;letter-spacing:0;font:500 .95rem/1.4 Barlow,system-ui,sans-serif;color:var(--ink)"><input type="checkbox" id="jOk" style="width:auto;margin-top:3px"> J'ai lu le règlement ci-dessous et j'accepte que mon gamertag et le nom de mon club apparaissent dans les classements publics.</label>
 <div class="copybox" id="joinTxt" aria-live="polite"></div>
 <div class="actions">
 <button class="btn gold" type="button" id="joinCopy">Copier mon inscription</button>
 <a class="btn" id="joinMail" href="#">Envoyer par mail</a>
 </div>
 <p class="muted">Adresse de l'organisateur : <strong style="user-select:all">Velocemercato87@gmail.com</strong></p>
+<p class="muted">Seuls ton gamertag, ton club et tes résultats sont publiés. Ton adresse mail et tes disponibilités restent privées. Tu peux demander à tout moment le retrait de tes informations.</p>
 </form>
 </section>
 
@@ -127,7 +129,9 @@ form.join input,form.join select{font:500 1rem/1.3 Barlow,system-ui,sans-serif;c
 <li>Un club compte de 1 à 5 joueurs. Un joueur appartient à un seul club par saison ; un changement de club est possible entre deux mois de compétition.</li>
 <li>Format conseillé : mi-temps de 6 minutes. Le jeu de la saison est indiqué en haut de page.</li>
 <li>Après chaque match, les deux joueurs envoient une photo du score final à l'organisateur.</li>
-<li>Fair-play obligatoire : insultes, triche ou abandons répétés entraînent l'exclusion.</li>
+<li>Fair-play obligatoire : insultes, triche ou abandons répétés entraînent l'exclusion. Les résultats sont vérifiés par l'organisateur avant d'apparaître au classement, et tout litige est tranché sur la photo du score.</li>
+<li>Un match n'est diffusé en direct ou en vidéo qu'avec l'accord des deux joueurs, et celui d'un parent pour un joueur mineur.</li>
+<li>Un don à Véloce Mercato ne donne aucun avantage : ni points, ni place dans un tournoi, ni meilleure chance de gagner un lot.</li>
 <li>Les éventuels lots (maillots, places de match, rencontres…) sont annoncés à l'avance avec leur règlement. Pour un participant mineur, une autorisation parentale est demandée avant toute remise de lot ou tout déplacement.</li>
 </ol>
 <p class="muted">EA SPORTS FC est une marque d'Electronic Arts. Véloce Arena est une initiative de la communauté Véloce Mercato, sans lien avec Electronic Arts, la FFF, l'UEFA ou la FIFA.</p>
@@ -149,7 +153,9 @@ form.join input,form.join select{font:500 1rem/1.3 Barlow,system-ui,sans-serif;c
   var joinText=function(){return 'Inscription Véloce Arena\nGamertag : '+($('jTag').value.trim()||'—')+'\nPlateforme : '+$('jPlat').value+'\nClub : '+($('jClub').value.trim()||'je cherche un club')+'\nDisponibilités : '+($('jDispo').value.trim()||'—')+'\nMoins de 18 ans : '+$('jMin').value;};
   var refresh=function(){var t=joinText();$('joinTxt').textContent=t;$('joinMail').href=mailto('Inscription Véloce Arena',t);};
   $('joinForm').addEventListener('input',refresh);$('joinForm').addEventListener('change',refresh);$('joinForm').addEventListener('submit',function(e){e.preventDefault();});refresh();
-  $('joinCopy').onclick=function(){if(!$('jTag').value.trim()){toast('Indique ton gamertag');$('jTag').focus();return;}
+  var guard=function(){if(!$('jTag').value.trim()){toast('Indique ton gamertag');$('jTag').focus();return false;}if(!$('jOk').checked){toast('Accepte d\'abord le règlement');$('jOk').focus();return false;}return true;};
+  $('joinMail').addEventListener('click',function(e){if(!guard())e.preventDefault();});
+  $('joinCopy').onclick=function(){if(!guard())return;
     var t=joinText(),fb=function(){var r=document.createRange();r.selectNodeContents($('joinTxt'));var s=getSelection();s.removeAllRanges();s.addRange(r);toast('Texte sélectionné : copie-le');};
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){toast('Inscription copiée');},fb);}else fb();};
 
