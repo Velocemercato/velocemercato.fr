@@ -42,6 +42,9 @@ if TEST_MODE:
     MAX_PER_RUN = 2
 
 
+THINKING_OFF = [True]
+
+
 class SkipStory(Exception):
     """Actualité volontairement écartée."""
 
@@ -200,9 +203,11 @@ def extract_article(url):
 def call_claude(system, user):
     """Appelle l'API Claude. La clé n'est jamais affichée dans les journaux."""
     while MODELS:
-        body = json.dumps({'model': MODELS[0], 'max_tokens': 2000,
-                           'system': system, 'messages': [{'role': 'user', 'content': user}]},
-                          ensure_ascii=False).encode('utf-8')
+        payload = {'model': MODELS[0], 'max_tokens': 4000,
+                   'system': system, 'messages': [{'role': 'user', 'content': user}]}
+        if THINKING_OFF[0]:
+            payload['thinking'] = {'type': 'disabled'}  # brève courte : pas besoin de réflexion, moins cher
+        body = json.dumps(payload, ensure_ascii=False).encode('utf-8')
         req = urllib.request.Request('https://api.anthropic.com/v1/messages', data=body,
                                      headers={'x-api-key': API_KEY, 'anthropic-version': '2023-06-01',
                                               'content-type': 'application/json'}, method='POST')
@@ -216,6 +221,9 @@ def call_claude(system, user):
                 continue
             if exc.code in (400, 401, 403, 429):
                 detail = exc.read(400).decode('utf-8', errors='replace')
+                if exc.code == 400 and THINKING_OFF[0] and 'thinking' in detail:
+                    THINKING_OFF[0] = False  # modèle qui refuse ce réglage : on réessaie sans
+                    continue
                 detail = detail.replace(API_KEY, '***') if API_KEY else detail
                 raise FatalAPIError(f'API Claude HTTP {exc.code} : vérifier clé, crédit ou quota. {detail[:250]}') from exc
             raise
