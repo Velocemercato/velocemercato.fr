@@ -45,6 +45,15 @@ if TEST_MODE:
 THINKING_OFF = [True]
 
 
+# Classement Claude -> (championnat, zone) compris par le site
+CHAMPIONNATS = {
+    'LIGUE_1': ('LIGUE_1', 'FRANCE'), 'LIGUE_2': ('LIGUE_2', 'FRANCE'),
+    'NATIONAL': ('NATIONAL', 'FRANCE'), 'FEMININ': ('FEMININ', 'FEMININ'),
+    'BLEUS': ('BLEUS', 'FRANCE'), 'EUROPE': ('EUROPE', 'INTERNATIONAL'),
+    'ETRANGER': ('ETRANGER', 'INTERNATIONAL'),
+}
+
+
 class SkipStory(Exception):
     """Actualité volontairement écartée."""
 
@@ -242,7 +251,12 @@ def summarize(post, material):
         'N’affirme JAMAIS qu’une rumeur est officielle ; utilise le conditionnel si nécessaire. '
         'Fais comprendre QUI, QUOI, et les 2 à 4 éléments de contexte vraiment utiles. '
         'Style simple, énergique, accessible, lecture en 35 à 50 secondes. '
-        'Format strictement JSON (sans bloc markdown), avec les clés titre, resume, texte. '
+        'Format strictement JSON (sans bloc markdown), avec les clés titre, resume, texte, categorie, championnat, officiel. '
+        'categorie : MERCATO (transferts, prêts, prolongations, rumeurs), MATCHS (avant-match, résultat, analyse d’un match) ou ACTUALITES (le reste). '
+        'championnat : LIGUE_1, LIGUE_2, NATIONAL (National, N2, N3, amateur français), FEMININ (tout football féminin), '
+        'BLEUS (équipes de France), EUROPE (Ligue des champions, Ligue Europa, Conference League) ou ETRANGER (autres championnats). '
+        'Choisis selon le club ou la compétition concernés, pas selon le média. '
+        'officiel : true seulement si le club, la fédération ou le joueur l’a officiellement annoncé, sinon false. '
         'titre : 30 à 105 caractères en français, factuel, pas de sensationnalisme. '
         'resume : 100 à 220 caractères résumant l’essentiel. '
         'texte : 65 à 120 mots en français, 2 paragraphes séparés par \\n\\n ; '
@@ -279,7 +293,10 @@ def summarize(post, material):
     if normal(post['source']).split()[0] not in normal(texte):
         # Attribution ajoutée explicitement, sans prétendre à une confirmation indépendante.
         texte = f"Selon {post['source']}, " + texte[:1].lower() + texte[1:]
-    return title, resume, texte
+    meta = {'categorie': str(result.get('categorie', '')).upper(),
+            'championnat': str(result.get('championnat', '')).upper(),
+            'officiel': result.get('officiel') is True}
+    return title, resume, texte, meta
 
 
 def category(post):
@@ -381,7 +398,7 @@ def main():
             if material is None:
                 stats['source_inaccessible_ou_trop_courte'] += 1
                 continue
-            title, resume, texte = summarize(post, material)
+            title, resume, texte, meta = summarize(post, material)
             if similar_story(title, previous_titles):
                 stats['sujet_deja_traite'] += 1
                 previous_titles.append(post['title'])
@@ -389,11 +406,24 @@ def main():
             cat = category(post)
             if cat == 'ACTUALITES' and category({'title': title}) != 'ACTUALITES':
                 cat = category({'title': title})
+            if meta['categorie'] in ('MERCATO', 'MATCHS', 'ACTUALITES'):
+                cat = meta['categorie']  # classement de Claude, plus fiable que le flux
+            championship, zone = post['championnat'], post['zone']
+            if meta['championnat'] in CHAMPIONNATS:
+                championship, zone = CHAMPIONNATS[meta['championnat']]
+            if meta['officiel']:
+                tag = 'OFFICIEL'
+            elif cat == 'MERCATO':
+                tag = 'RUMEUR'
+            elif championship == 'EUROPE':
+                tag = 'EUROPE'
+            else:
+                tag = cat
             additions.append({
                 'id': ident(post), 'publishedAt': post['date'].isoformat(timespec='seconds').replace('+00:00', 'Z'),
                 'titre': title, 'resume': resume, 'texte': texte,
-                'zone': post['zone'], 'championnat': post['championnat'],
-                'categorie': cat, 'tag': 'RUMEUR' if cat == 'MERCATO' else cat,
+                'zone': zone, 'championnat': championship,
+                'categorie': cat, 'tag': tag,
                 'sources': [{'nom': post['source'], 'url': post['url']}],
                 'titreSource': post['title'],
             })
