@@ -42,6 +42,10 @@ if TEST_MODE:
     MAX_PER_RUN = 2
 
 
+class SkipStory(Exception):
+    """Actualité volontairement écartée."""
+
+
 class FatalAPIError(RuntimeError):
     """Clé, quota ou crédit API invalide : inutile de continuer ce passage."""
 
@@ -235,7 +239,11 @@ def summarize(post, material):
         'resume : 100 à 220 caractères résumant l’essentiel. '
         'texte : 65 à 120 mots en français, 2 paragraphes séparés par \\n\\n ; '
         'intègre une attribution, par exemple « Selon RMC Sport ». '
-        'Ne reproduis aucune citation textuelle longue, n’ajoute aucun fait externe.'
+        'Ne reproduis aucune citation textuelle longue, n’ajoute aucun fait externe. '
+        'Ne parle JAMAIS de la source elle-même : pas de « partie accessible », de commentaires de lecteurs, '
+        'd’éléments non détaillés ou de ce que le texte ne dit pas. Écris seulement les faits. '
+        'Si le contenu n’est pas une vraie information de football, ou trop pauvre pour une brève complète, '
+        'réponds uniquement {"ignorer": true}.'
     )
     user = json.dumps({'media': post['source'], 'titre_source': post['title'],
                        'date_utc': post['date'].isoformat(), 'contenu_accessible': material}, ensure_ascii=False)
@@ -243,7 +251,13 @@ def summarize(post, material):
     raw =''.join(part.get('text', '') for part in reply.get('content', []) if part.get('type') == 'text').strip()
     if raw.startswith('```'):
         raw = re.sub(r'^```(?:json)?\s*|\s*```$', '', raw).strip()
-    result = json.loads(raw[raw.find('{'):raw.rfind('}') + 1])
+    start, end = raw.find('{'), raw.rfind('}')
+    if start < 0 or end < start:
+        kinds = ','.join(str(p.get('type')) for p in reply.get('content', []))
+        raise ValueError(f"Réponse IA sans JSON (stop={reply.get('stop_reason')}, blocs={kinds}) : {raw[:80]!r}")
+    result = json.loads(raw[start:end + 1])
+    if result.get('ignorer'):
+        raise SkipStory('jugée non pertinente par Claude')
     title = clean(result.get('titre'))
     resume = clean(result.get('resume'))
     texte = str(result.get('texte', '')).strip().replace('\\n', '\n')
@@ -275,15 +289,21 @@ def ident(post):
 def similar_story(new_title, older_titles):
     # Évite plusieurs brèves quasiment identiques sur un même événement.
     newer = normal(new_title)
+    def names(t):  # noms propres : clubs, joueurs, entraîneurs
+        return {normal(w) for w in re.findall(r"\b[A-ZÀ-Ý][\w'’-]+", t) if len(w) >= 2} - {'selon', 'officiel', 'le', 'la', 'les', 'l'}
+    new_names = names(new_title)
     for old_title in older_titles:
+        shared = new_names & names(old_title)
+        if len(shared) >= 2 and len(shared) / max(1, min(len(new_names), len(names(old_title)))) >= 0.6:
+            return True
         prior = normal(old_title)
         if difflib.SequenceMatcher(None, newer, prior).ratio() >= 0.86:
             return True
         newer_words = set(re.findall(r'[a-z0-9]{4,}', newer))
         prior_words = set(re.findall(r'[a-z0-9]{4,}', prior))
-        if len(newer_words) >= 5 and len(prior_words) >= 5:
+        if len(newer_words) >= 3 and len(prior_words) >= 3:
             overlap = len(newer_words & prior_words) / len(newer_words | prior_words)
-            if overlap > 0.81:
+            if overlap >= 0.5:
                 return True
     return False
 
@@ -340,6 +360,9 @@ def main():
     for post in candidates[:MAX_ARTICLES_TO_EXAMINE]:
         if len(additions) >= quota:
             break
+        if stats['rejet_lecture_ou_ia'] >= 8:
+            print('Trop de rejets IA dans ce passage : arrêt pour limiter le coût.', flush=True)
+            break
         if similar_story(post['title'], previous_titles):
             stats['sujet_deja_traite'] += 1
             continue
@@ -351,6 +374,10 @@ def main():
                 stats['source_inaccessible_ou_trop_courte'] += 1
                 continue
             title, resume, texte = summarize(post, material)
+            if similar_story(title, previous_titles):
+                stats['sujet_deja_traite'] += 1
+                previous_titles.append(post['title'])
+                continue
             cat = category(post)
             if cat == 'ACTUALITES' and category({'title': title}) != 'ACTUALITES':
                 cat = category({'title': title})
@@ -362,9 +389,12 @@ def main():
                 'sources': [{'nom': post['source'], 'url': post['url']}],
                 'titreSource': post['title'],
             })
-            previous_titles.append(post['title'])
+            previous_titles.extend([post['title'], title])
             stats['brèves_rédigées'] += 1
             print(f"Brève prête : {post['source']} - {title[:90]}", flush=True)
+        except SkipStory:
+            stats['non_pertinent'] += 1
+            continue
         except FatalAPIError as exc:
             # On garde les brèves déjà rédigées, puis on arrête ce passage.
             fatal_error = exc

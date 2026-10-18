@@ -82,6 +82,10 @@ jobs:
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
             git commit -m 'Update football news'
-            git pull --rebase origin main
-            git push
+            if git pull --rebase origin main && git push; then
+              echo 'Publié.'
+            else
+              git rebase --abort 2>/dev/null || true
+              echo "::warning::Un autre passage a publié en même temps ; ces brèves seront refaites au prochain passage."
+            fi
           fi
