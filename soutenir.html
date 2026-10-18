@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Soutenir Véloce Mercato – dons et transparence</title>
+<meta name="description" content="Soutiens Véloce Mercato : chaque don est publié, chaque dépense est justifiée. Cadeaux pour la communauté, déplacements, interviews.">
+<link rel="canonical" href="https://velocemercato.fr/soutenir.html">
+<meta property="og:title" content="Soutenir Véloce Mercato"><meta property="og:description" content="Chaque don est publié, chaque dépense est justifiée."><meta property="og:url" content="https://velocemercato.fr/soutenir.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2470'/%3E%3Ctext x='32' y='44' font-family='Impact,sans-serif' font-size='30' font-style='italic' text-anchor='middle' fill='%23f4cf55'%3EVM%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/pages.css">
+</head>
+<body>
+<header><a class="logo" href="/">VÉLOCE <b>MERCATO</b></a><nav><a href="/">Brèves</a><a href="/gaming.html">Gaming</a></nav></header>
+<main>
+
+<section class="card hero">
+<span class="tag">❤️ Soutien</span>
+<h1>Soutiens <em>Véloce Mercato</em></h1>
+<p>Véloce Mercato est un projet indépendant, né dans un petit village. Tes dons servent à faire grandir le site et, surtout, à faire vivre de vrais moments à la communauté.</p>
+<div class="actions"><a id="donBtn" class="btn gold" href="#" aria-disabled="true">💛 Les dons ouvrent bientôt</a></div>
+</section>
+
+<section class="grid three" aria-label="À quoi servent les dons">
+<div class="tile"><div class="ico">🎁</div><h3>Cadeaux aux fans</h3><p>Maillots, places, lots pour les gagnants des jeux et des tournois Véloce Arena.</p></div>
+<div class="tile"><div class="ico">🚆</div><h3>Emmener un gagnant</h3><p>Train, taxi, billet : offrir à un membre de la communauté un match à Paris, Marseille ou Lyon.</p></div>
+<div class="tile"><div class="ico">🎤</div><h3>Interviews</h3><p>Aller à la rencontre de joueurs et d'acteurs du foot, avec un jeune de la communauté.</p></div>
+</section>
+
+<section class="card" style="margin-top:26px">
+<h2>🔍 Transparence totale</h2>
+<p>Chaque don reçu et chaque euro dépensé sont publiés ici, avec la date et l'objet. Les justificatifs (billets, factures) sont montrés sur nos réseaux.</p>
+<div class="stats" style="margin:16px 0">
+<div><b id="sIn">0 €</b><span>Reçus</span></div>
+<div><b id="sOut">0 €</b><span>Dépensés</span></div>
+<div><b id="sBal">0 €</b><span>En caisse</span></div>
+</div>
+<h3 id="goalTitle">Objectif en cours</h3>
+<div class="bar" role="progressbar" aria-labelledby="goalTitle" id="goalBar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="goalFill" style="width:0"></i></div>
+<p class="muted" id="goalTxt"></p>
+
+<h3>Derniers dons</h3>
+<table><thead><tr><th>Date</th><th>Donateur</th><th class="n">Montant</th></tr></thead><tbody id="tDons"><tr><td colspan="3" class="muted">Aucun don pour le moment. Le premier sera affiché ici.</td></tr></tbody></table>
+
+<h3>Dépenses</h3>
+<table><thead><tr><th>Date</th><th>Objet</th><th class="n">Montant</th></tr></thead><tbody id="tDep"><tr><td colspan="3" class="muted">Aucune dépense pour le moment.</td></tr></tbody></table>
+</section>
+
+<section class="card">
+<h2>ℹ️ Bon à savoir</h2>
+<p>Les dons sont libres et sans contrepartie. Ils ne donnent pas droit à une réduction d'impôt.</p>
+<p>Les jeux et tournois de la communauté restent toujours gratuits, sans obligation de don ni d'achat.</p>
+<p>Pour toute question sur un don ou une dépense : <a href="mailto:Velocemercato87@gmail.com">Velocemercato87@gmail.com</a>.</p>
+</section>
+
+</main>
+<footer><a href="/">← Retour aux brèves</a> · <a href="/mentions-legales.html">Mentions légales</a></footer>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var eur=function(n){return (Math.round(Number(n||0)*100)/100).toLocaleString('fr-FR',{style:'currency',currency:'EUR'});};
+  var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});};
+  var day=function(d){var x=new Date(d);return isNaN(x)?esc(d):x.toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'});};
+  var get=function(f){return fetch(f+'?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():{};}).catch(function(){return {};});};
+  get('/liens.json').then(function(l){
+    if(typeof l.dons==='string'&&l.dons.indexOf('https://')===0){var b=$('donBtn');b.href=l.dons;b.target='_blank';b.rel='noopener';b.removeAttribute('aria-disabled');b.textContent='💛 Faire un don'+(l.dons_nom?' via '+l.dons_nom:'');}
+  });
+  get('/transparence.json').then(function(t){
+    var dons=Array.isArray(t.dons)?t.dons:[],dep=Array.isArray(t.depenses)?t.depenses:[];
+    var sum=function(a){return a.reduce(function(s,x){return s+(Number(x.montant)||0);},0);};
+    var tin=sum(dons),tout=sum(dep);
+    $('sIn').textContent=eur(tin);$('sOut').textContent=eur(tout);$('sBal').textContent=eur(tin-tout);
+    var g=t.objectif||{};
+    if(g.titre&&Number(g.montant)>0){var pct=Math.max(0,Math.min(100,Math.round((tin-tout)/g.montant*100)));
+      $('goalTitle').textContent='Objectif en cours : '+g.titre;$('goalFill').style.width=pct+'%';$('goalBar').setAttribute('aria-valuenow',pct);
+      $('goalTxt').textContent=eur(Math.max(0,tin-tout))+' sur '+eur(g.montant)+' ('+pct+' %)';}
+    var by=function(a,b){return String(b.date||'').localeCompare(String(a.date||''));};
+    if(dons.length)$('tDons').innerHTML=dons.slice().sort(by).slice(0,30).map(function(x){return '<tr><td>'+day(x.date)+'</td><td>'+esc(x.nom||'Anonyme')+'</td><td class="n">'+eur(x.montant)+'</td></tr>';}).join('');
+    if(dep.length)$('tDep').innerHTML=dep.slice().sort(by).map(function(x){return '<tr><td>'+day(x.date)+'</td><td>'+esc(x.objet)+'</td><td class="n">'+eur(x.montant)+'</td></tr>';}).join('');
+  });
+})();
+</script>
+</body>
+</html>

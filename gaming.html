@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Véloce Arena – Défis et tournois EA SPORTS FC – Véloce Mercato</title>
+<meta name="description" content="Véloce Arena : défie Romain, participe aux tournois et soirées EA SPORTS FC de la communauté Véloce Mercato, en live sur Twitch.">
+<link rel="canonical" href="https://velocemercato.fr/gaming.html">
+<meta property="og:title" content="Véloce Arena – défis et tournois FC"><meta property="og:description" content="Défie Romain et la communauté Véloce Mercato sur EA SPORTS FC."><meta property="og:url" content="https://velocemercato.fr/gaming.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2470'/%3E%3Ctext x='32' y='44' font-family='Impact,sans-serif' font-size='30' font-style='italic' text-anchor='middle' fill='%23f4cf55'%3EVM%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/pages.css">
+</head>
+<body>
+<header><a class="logo" href="/">VÉLOCE <b>MERCATO</b></a><nav><a href="/">Brèves</a><a href="/soutenir.html">Soutenir</a></nav></header>
+<main>
+
+<section class="card hero">
+<span class="tag">🎮 Communauté</span>
+<h1>Véloce <em>Arena</em></h1>
+<p>Tu joues à EA SPORTS FC (FC 25, FC 26…) sur console ou PC ? Défie Romain, affronte la communauté, joue les soirées Ligue des champions et les Coupes du monde Véloce, en live sur Twitch.</p>
+<div class="actions">
+<a id="duelBtn" class="btn gold" href="#">⚔️ Défier Romain</a>
+<a id="discordBtn" class="btn" href="#" aria-disabled="true">💬 Discord : bientôt</a>
+</div>
+</section>
+
+<section class="card" id="event">
+<h2>📅 Prochain rendez-vous</h2>
+<p id="eventTxt">Le premier tournoi Véloce Arena sera annoncé ici et sur nos réseaux. Inscris-toi pour être prévenu en premier.</p>
+<div class="actions"><a id="joinBtn" class="btn red" href="#">🏆 Je veux jouer le prochain tournoi</a></div>
+</section>
+
+<section class="grid three" aria-label="Les formats">
+<div class="tile"><div class="ico">⚔️</div><h3>Duels 1 contre 1</h3><p>Lance un défi à Romain ou à un autre joueur. Les meilleurs matchs passent en live.</p></div>
+<div class="tile"><div class="ico">🏆</div><h3>Tournois</h3><p>Coupe du monde Véloce, soirées Ligue des champions : un tableau, des éliminations directes, un vainqueur.</p></div>
+<div class="tile"><div class="ico">📺</div><h3>Lives Twitch</h3><p>Les grands matchs et les finales sont diffusés et commentés en direct.</p><p><a href="https://www.twitch.tv/heineguez87" target="_blank" rel="noopener">Suivre la chaîne Twitch →</a></p></div>
+</section>
+
+<section class="card" style="margin-top:26px">
+<h2>📜 Le règlement en bref</h2>
+<ol class="rules">
+<li><strong>Participation gratuite</strong>, sans aucun achat ni mise d'argent.</li>
+<li>Pseudo, plateforme (PlayStation, Xbox ou PC) et disponibilités sont demandés à l'inscription. Le cross-play dépend du jeu et des réglages de chacun.</li>
+<li>Format conseillé : mi-temps de 6 minutes, équipes de club ou sélections selon le tournoi annoncé.</li>
+<li>Après chaque match, une photo du score final est envoyée à l'organisateur.</li>
+<li>Fair-play obligatoire : insultes, triche ou abandon répété entraînent l'exclusion.</li>
+<li>Les éventuels lots sont annoncés à l'avance. Pour un participant mineur, une autorisation parentale est demandée avant toute remise de lot ou tout déplacement.</li>
+</ol>
+<p class="muted">EA SPORTS FC est une marque d'Electronic Arts. Véloce Arena est une initiative de la communauté Véloce Mercato, sans lien avec Electronic Arts.</p>
+</section>
+
+</main>
+<footer><a href="/">← Retour aux brèves</a> · <a href="/mentions-legales.html">Mentions légales</a></footer>
+<script>
+(function(){
+  var MAIL='Velocemercato87@gmail.com';
+  function mailto(subject, body){return 'mailto:'+MAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);}
+  document.getElementById('duelBtn').href=mailto('Défi Véloce Arena','Salut Romain, je te défie sur EA SPORTS FC !\n\nMon pseudo : \nMa plateforme (PS5, Xbox, PC) : \nMes disponibilités : \nMon message : ');
+  document.getElementById('joinBtn').href=mailto('Inscription tournoi Véloce Arena','Je veux participer au prochain tournoi Véloce Arena.\n\nMon pseudo : \nMa plateforme (PS5, Xbox, PC) : \nMes disponibilités (soirs, week-end) : \nJ\'ai moins de 18 ans (oui / non) : ');
+  fetch('/liens.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():{};}).then(function(l){
+    var https=function(u){return typeof u==='string'&&u.indexOf('https://')===0;};
+    if(https(l.discord)){var b=document.getElementById('discordBtn');b.href=l.discord;b.target='_blank';b.rel='noopener';b.textContent='💬 Rejoindre le Discord';b.removeAttribute('aria-disabled');}
+    if(typeof l.evenement==='string'&&l.evenement.trim()){document.getElementById('eventTxt').textContent=l.evenement;}
+  }).catch(function(){});
+})();
+</script>
+</body>
+</html>
