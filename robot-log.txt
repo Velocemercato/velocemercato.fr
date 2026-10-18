@@ -1,25 +1,23 @@
-Passage du 2026-10-18 09:00 UTC (workflow_dispatch)
-Nettoyage : 0 breves vides retirees, 10 gardees.
+Passage du 2026-10-18 09:01 UTC (workflow_dispatch)
+Nettoyage : 0 breves vides retirees, 12 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 10 articles conservés et 9 flashs existants.
+Départ : 12 articles conservés et 11 flashs existants.
 RSS Foot National / NATIONAL : 12 actualités récentes.
 RSS Foot National / LIGUE_1 : 9 actualités récentes.
 RSS Foot National / NATIONAL : 8 actualités récentes.
-RSS RMC Sport / FRANCE : 26 actualités récentes.
-RSS RMC Sport / LIGUE_1 : 18 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 4 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 37 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 0 actualités récentes.
-RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 88, column 0
-RSS BBC Sport / FEMININ : 4 actualités récentes.
-RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 88, column 0
-RSS Foot01 / FRANCE : 42 actualités récentes.
 RSS Foot National / LIGUE_2 : 8 actualités récentes.
-RSS inaccessible Foot Mercato : HTTPError - HTTP Error 429: Too Many Requests
-168 titres collectés, 128 nouveaux liens, quota 2.
-Brève ignorée (RMC Sport) : ValueError - Réponse IA sans JSON (stop=max_tokens, blocs=thinking,text) : '{"titre": "Liga : Pellegrini dénonce 
-Brève ignorée (RMC Sport) : ValueError - Réponse IA sans JSON (stop=max_tokens, blocs=thinking,text) : '{"titre": "Messi signe un doublé en q
-Brève prête : BBC Sport - Martinez opéré après sa blessure à Everton, de retour dans quelques semaines
-Brève prête : RMC Sport - PSG-Barça : Acherchour salue Lamine Yamal avant le choc de Ligue des champions
-Bilan : brèves_rédigées=2, non_pertinent=3, rejet_lecture_ou_ia=2, source_inaccessible_ou_trop_courte=2
-Publié : 2 brèves (total 12). Flash : 11.
+RSS RMC Sport / FRANCE : 26 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 4 actualités récentes.
+RSS RMC Sport / LIGUE_1 : 18 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 0 actualités récentes.
+RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 37 actualités récentes.
+RSS BBC Sport / FEMININ : 4 actualités récentes.
+RSS Foot01 / FRANCE : 42 actualités récentes.
+RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 88, column 0
+RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 88, column 0
+213 titres collectés, 158 nouveaux liens, quota 2.
+Brève prête : RMC Sport - Liga : Pellegrini dénonce un arbitrage « lamentable » après la défaite du Betis face au Ba
+Brève prête : RMC Sport - Messi signe un doublé en quatre minutes et Miami s'impose à Atlanta
+Bilan : brèves_rédigées=2, source_inaccessible_ou_trop_courte=6
+Publié : 2 brèves (total 14). Flash : 13.
