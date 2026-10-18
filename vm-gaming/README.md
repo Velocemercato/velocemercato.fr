@@ -10,3 +10,9 @@ Page simple : rejoindre le Discord, choisir son jeu, jouer.
 ## Discord conseillé
 
 Un salon par jeu : #warzone, #redsec, #fc, #gta-vi, plus #bienvenue, #règles, #général.
+
+## Actus automatiques (toutes les 30 minutes)
+
+- Robot : `update_gaming.py` (réutilise le robot foot `update_news.py`), lancé par `.github/workflows/gaming.yml` à h15 et h45.
+- Seulement Warzone / Call of Duty, Battlefield / REDSEC, EA SPORTS FC et GTA ; promos, concours et fuites écartés.
+- Brèves originales écrites par Claude avec lien vers l'article, dans `vm-gaming/news.json`. Journal : `vm-gaming/robot-log.txt`.

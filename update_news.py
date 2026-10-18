@@ -269,6 +269,11 @@ def summarize(post, material):
     )
     user = json.dumps({'media': post['source'], 'titre_source': post['title'],
                        'date_utc': post['date'].isoformat(), 'contenu_accessible': material}, ensure_ascii=False)
+    return summarize_with(system, user, post)
+
+
+def summarize_with(system, user, post):
+    """Envoie la consigne à Claude et vérifie la brève (partagé avec le robot VM GAMING)."""
     reply = call_claude(system, user)
     raw =''.join(part.get('text', '') for part in reply.get('content', []) if part.get('type') == 'text').strip()
     if raw.startswith('```'):
