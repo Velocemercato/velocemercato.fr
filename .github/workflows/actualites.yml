@@ -74,6 +74,13 @@ jobs:
         if: always()
         run: python build_pages.py 2>&1 | tee -a robot-log.txt
 
+      - name: Update agenda (matchs de la semaine)
+        if: always()
+        continue-on-error: true
+        env:
+          FOOTBALL_DATA_KEY: ${{ secrets.FOOTBALL_DATA_KEY }}
+        run: python update_agenda.py 2>&1 | tee -a robot-log.txt
+
       - name: Update videos (chaînes YouTube officielles)
         if: always()
         continue-on-error: true
@@ -89,7 +96,7 @@ jobs:
       - name: Save articles, flashs and report
         if: always() && steps.validate.outcome == 'success'
         run: |
-          git add articles.json flash.json robot-log.txt sitemap.xml a/ videos.json video-channels.json
+          git add articles.json flash.json robot-log.txt sitemap.xml a/ videos.json video-channels.json matchs.json
           if git diff --cached --quiet; then
             echo 'Rien de nouveau.'
           else
