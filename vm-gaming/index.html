@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b0a1c">
+<meta property="og:image" content="https://velocemercato.fr/vm-gaming/img/vm-gaming.webp">
 <title>VM GAMING — Trouve des potes pour jouer</title>
 <meta name="description" content="Les actus Warzone, Battlefield REDSEC, EA SPORTS FC et GTA VI toutes les 30 minutes, et un Discord pour trouver des potes de jeu. Gratuit.">
 <meta property="og:title" content="VM GAMING — Trouve des potes pour jouer">
@@ -24,20 +25,21 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .wrap{max-width:820px;margin:0 auto;padding:0 16px}
 .big{font-family:'Barlow Condensed',Impact,sans-serif;text-transform:uppercase;line-height:.95}
 
-/* En-tête + décor coucher de soleil (dessin original) */
-.top{position:relative;overflow:hidden;background:linear-gradient(180deg,#24124a 0%,#7a2a6e 42%,#ff6a4d 72%,#ffb347 100%)}
-.top::after{content:'';position:absolute;left:0;right:0;bottom:0;height:70px;background:linear-gradient(transparent,var(--bg))}
-.skyline{position:absolute;left:0;right:0;bottom:0;width:100%;height:58%;display:block}
-header{position:relative;z-index:2;padding:16px 0}
-.logo{font:900 1.6rem/1 'Barlow Condensed',Impact,sans-serif;letter-spacing:.04em;text-decoration:none;text-shadow:0 2px 8px #0006}
-.logo b{background:var(--lime);color:#0b0a1c;border-radius:8px;padding:4px 8px;margin-right:6px;text-shadow:none}
-.hero{position:relative;z-index:2;padding:20px 0 170px;text-align:center}
-h1{font-size:clamp(2.9rem,12vw,5.2rem);font-weight:900;margin:0 0 12px;text-shadow:0 4px 0 #0005}
+/* En-tête + affiche */
+.bar{position:sticky;top:0;z-index:20;background:rgba(11,10,28,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:10px;padding-bottom:10px}
+.logo{font:900 1.5rem/1 'Barlow Condensed',Impact,sans-serif;letter-spacing:.04em;text-decoration:none}
+.logo b{background:var(--lime);color:#0b0a1c;border-radius:8px;padding:4px 8px;margin-right:6px}
+.mini-cta{font-weight:700;font-size:.9rem;text-decoration:none;border:1px solid var(--lime);color:var(--lime);border-radius:10px;padding:7px 12px}
+.banner{display:block;background:#000}
+.banner img{display:block;width:100%;height:auto;max-height:520px;object-fit:cover}
+.hero{padding:26px 16px 6px;text-align:center}
+h1{font-size:clamp(2.6rem,11vw,4.6rem);font-weight:900;margin:0 0 12px}
 h1 span{color:var(--lime);display:block}
-.lead{margin:0 auto 22px;max-width:470px;font-weight:700;text-shadow:0 1px 6px #0007}
+.lead{margin:0 auto 22px;max-width:470px;color:var(--muted)}
 .cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:420px;margin:0 auto;padding:18px 22px;border-radius:16px;background:var(--lime);color:#0b0a1c;font:900 1.5rem/1 'Barlow Condensed',Impact,sans-serif;text-transform:uppercase;text-decoration:none;box-shadow:0 10px 30px #0006}
 .cta:active{transform:scale(.98)}
-.free{display:block;margin-top:10px;font-size:.85rem;font-weight:700;text-shadow:0 1px 6px #000a}
+.free{display:block;margin-top:10px;font-size:.85rem;color:var(--muted)}
 
 h2{font-size:2.2rem;font-weight:900;margin:34px 0 14px;text-align:center}
 h2 small{display:block;font:700 .85rem/1.3 'DM Sans',sans-serif;text-transform:none;color:var(--muted);margin-top:6px}
@@ -79,38 +81,31 @@ h2 small{display:block;font:700 .85rem/1.3 'DM Sans',sans-serif;text-transform:n
 .rules b{color:var(--text)}
 footer{margin-top:40px;padding:24px 0 32px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted);text-align:center}
 footer a{color:var(--text)}
-@media(min-width:680px){.games{grid-template-columns:repeat(4,minmax(0,1fr))}.game{min-height:180px}.hero{padding-bottom:210px}}
-@media(prefers-reduced-motion:no-preference){.sunrays{animation:spin 60s linear infinite;transform-origin:600px 330px}@keyframes spin{to{transform:rotate(360deg)}}}
+@media(min-width:680px){.games{grid-template-columns:repeat(4,minmax(0,1fr))}.game{min-height:180px}}
+/* VM SHOW */
+.show{margin-top:34px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.show img{display:block;width:100%;height:auto}
+.show .txt{padding:18px 18px 20px}
+.show .soon{display:inline-block;background:#ff4d61;color:#fff;border-radius:999px;padding:4px 12px;font-size:.75rem;font-weight:700;text-transform:uppercase}
+.show h2{text-align:left;margin:10px 0 6px}
+.show p{color:var(--muted);margin:0 0 14px}
+.btn2{display:inline-block;border:1px solid var(--lime);color:var(--lime);border-radius:12px;padding:12px 16px;font-weight:700;text-decoration:none}
 </style>
 </head>
 <body>
 
-<div class="top">
-<!-- Décor original : soleil couchant, ville, palmiers, hélicoptère au loin -->
-<svg class="skyline" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
- <defs><linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe27a"/><stop offset="1" stop-color="#ff5f6d"/></linearGradient></defs>
- <g class="sunrays" opacity=".14" fill="#fff">
-  <polygon points="600,330 560,0 640,0"/><polygon points="600,330 900,0 980,40"/><polygon points="600,330 220,0 300,0"/><polygon points="600,330 1200,180 1200,260"/><polygon points="600,330 0,180 0,260"/>
- </g>
- <circle cx="600" cy="330" r="150" fill="url(#sun)"/>
- <g fill="#ffb347" opacity=".9"><rect x="430" y="300" width="340" height="7"/><rect x="420" y="318" width="360" height="9"/><rect x="430" y="338" width="340" height="11"/></g>
- <g fill="#1a0f2e">
-  <path d="M0 400V300h40v-30h30v50h25v-90h45v110h30v-60h20v-40h30v100h40v-140h50v160h30v-70h40v100h30v-50h35v-60h25v90h40v-120h55v150h25v-80h40v60h30v-110h45v140h30v-70h35v90h40v-130h50v160h35v-60h30v40h40v-90h40v120h30v-60h40v-30h30v80H1200V400z"/>
-  <!-- palmiers -->
-  <path d="M140 400c6-60 10-110 22-160l6 2c-10 50-14 100-16 158z"/><path d="M165 242c-30-14-60-6-80 12 26-6 52-8 80-4zM168 240c20-28 52-38 82-30-30 4-56 14-80 34zM166 240c-8-30-30-50-60-54 24 12 42 30 54 56zM168 242c30-6 58 6 74 28-24-12-48-20-74-22z"/>
-  <path d="M1040 400c-4-70-8-120-24-180l6-2c16 58 22 110 26 182z"/><path d="M1018 222c-32-12-62-2-80 18 26-8 52-10 80-6zM1020 220c18-30 48-42 80-36-30 6-56 18-78 38zM1018 220c-10-30-34-48-64-50 26 10 46 28 58 54zM1020 222c30-4 58 10 72 32-22-14-46-24-72-28z"/>
-  <!-- hélicoptère au loin -->
-  <g transform="translate(905 120)"><rect x="-38" y="-14" width="76" height="3"/><ellipse cx="0" cy="0" rx="20" ry="9"/><rect x="14" y="-3" width="40" height="4"/><rect x="50" y="-10" width="3" height="14"/><rect x="-14" y="10" width="30" height="2"/></g>
- </g>
-</svg>
-<header><div class="wrap"><a class="logo" href="./"><b>VM</b>GAMING</a></div></header>
+<header class="bar"><div class="wrap"><a class="logo" href="./"><b>VM</b>GAMING</a><a class="mini-cta" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener noreferrer">Discord ↗</a></div></header>
+
+<a class="banner" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener noreferrer" aria-label="VM Gaming : rejoindre la communauté sur Discord">
+<img src="img/vm-gaming-960.webp" srcset="img/vm-gaming-960.webp 960w, img/vm-gaming.webp 1916w" sizes="100vw" width="1916" height="821" alt="Affiche VM Gaming : des joueurs regardent une ville au coucher du soleil et un champ de bataille" fetchpriority="high">
+</a>
+
 <section class="hero wrap">
 <h1 class="big">Tu cherches des potes <span>pour jouer&nbsp;?</span></h1>
 <p class="lead">Les actus de tes jeux toutes les 30 minutes, et un Discord pour jouer ensemble.</p>
 <a class="cta" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener noreferrer">💬 Rejoindre le Discord</a>
 <span class="free">Gratuit · Sans inscription sur ce site</span>
 </section>
-</div>
 
 <main class="wrap">
 
@@ -142,6 +137,16 @@ footer a{color:var(--text)}
 <div class="news" id="news"><p class="empty">Les premières actus arrivent bientôt.</p></div>
 </section>
 
+<section class="show" aria-labelledby="t-show">
+<img src="img/vm-show-840.webp" srcset="img/vm-show-840.webp 840w, img/vm-show.webp 1672w" sizes="(min-width:820px) 788px, 100vw" width="1672" height="941" loading="lazy" alt="Projet de plateau du VM Show : bureau des présentateurs, écrans foot et gaming, éclairage rouge et bleu">
+<div class="txt">
+<span class="soon">Bientôt</span>
+<h2 class="big" id="t-show">Le VM Show</h2>
+<p>Une émission foot et gaming : débats, défis, invités et ton avis en direct. Le plateau ci-dessus est un projet ; aucun direct n'est encore programmé.</p>
+<a class="btn2" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener noreferrer">💡 Proposer une idée sur Discord</a>
+</div>
+</section>
+
 <h2 class="big">Comment ça marche</h2>
 <ol class="steps">
 <li><span class="n">1</span>Tu rejoins le Discord.</li>
@@ -160,7 +165,7 @@ footer a{color:var(--text)}
 
 <footer><div class="wrap">
 <a href="https://velocemercato.fr">Véloce Mercato</a> · <a href="https://velocemercato.fr/gaming.html">Véloce Arena</a> · <a href="https://velocemercato.fr/mentions-legales.html">Mentions légales</a><br>
-Site de fans indépendant, non affilié à Activision, Electronic Arts ou Rockstar Games. Illustrations originales.<br>
+Site de fans indépendant, non affilié à Activision, Electronic Arts ou Rockstar Games. Visuels originaux créés pour VM.<br>
 Les actus sont des résumés courts écrits avec l'aide d'une IA, avec un lien vers l'article d'origine.
 </div></footer>
 
