@@ -76,6 +76,9 @@ def summarize_gaming(post, material):
 robot.summarize = summarize_gaming
 
 if __name__ == '__main__':
+    if robot.CATCH_UP:
+        robot.apply_catch_up()
+        robot.MAX_PER_RUN = 12
     robot.ARTICLES.parent.mkdir(exist_ok=True)
     for path in (robot.ARTICLES, robot.FLASH):
         if not path.exists():

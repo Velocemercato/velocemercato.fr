@@ -7,6 +7,10 @@ on:
         description: 'Mode test (2 brèves maximum)'
         type: boolean
         default: true
+      rattrapage:
+        description: 'Rattrapage : actus des 7 derniers jours'
+        type: boolean
+        default: false
   schedule:
     - cron: '*/30 * * * *'
 
@@ -61,6 +65,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           VM_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.test && '1' || '' }}
+          VM_RATTRAPAGE: ${{ github.event_name == 'workflow_dispatch' && inputs.rattrapage && '1' || '' }}
         run: |
           set -o pipefail
           python update_news.py 2>&1 | tee -a robot-log.txt
