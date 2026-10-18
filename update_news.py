@@ -1,122 +1,167 @@
 #!/usr/bin/env python3
-"""Veille football : brèves attribuées à leur source, sans IA ni invention."""
+"""Veille foot : courtes brèves sourcées, sans création de faits ni texte copié."""
 import datetime as dt
 import email.utils
 import hashlib
 import html
 import json
 import re
+import unicodedata
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+from collections import Counter
 from pathlib import Path
 
 PATH = Path('articles.json')
 NOW = dt.datetime.now(dt.timezone.utc)
-MAX_AGE = dt.timedelta(hours=18)
+MAX_AGE = dt.timedelta(hours=30)
 MAX_NEW = 5
-MAX_TOTAL = 150
-QUERIES = {
-    'FRANCE': 'football Ligue 1 Ligue 2 National mercato',
-    'INTERNATIONAL': 'football mercato Europe international',
-    'FEMININ': 'football féminin France Europe',
-    'AMATEUR': 'football National 2 National 3 amateur',
-}
-# Noms de médias acceptés : ne constitue pas une vérification indépendante.
-SOURCES = ('lequipe', "l'equipe", 'l’équipe', 'rmc sport', 'franceinfo',
-           'france bleu', 'ouest-france', 'le parisien', 'afp', 'reuters',
-           'bbc sport', 'the guardian', 'goal.com', 'goal', 'eurosport',
-           'foot mercato', 'maxifoot', 'so foot', 'skysports', 'sky sports')
-BLOCK = re.compile(r'\b(pronostic|paris sportifs|cote[s]?|casino|billetterie|streaming ill[eé]gal)\b', re.I)
-MATCH = re.compile(r'\b(match|r[eé]sultat|score|victoire|d[eé]faite|classement|journ[eé]e|calendrier)\b', re.I)
+
+# Requêtes simples : une recherche trop longue peut masquer les actus récentes.
+QUERIES = (
+    ('FRANCE', 'football Ligue 1'),
+    ('FRANCE', 'football Ligue 2'),
+    ('FRANCE', 'football National'),
+    ('INTERNATIONAL', 'football mercato transferts'),
+    ('INTERNATIONAL', 'football Ligue des champions'),
+    ('FEMININ', 'football féminin'),
+    ('AMATEUR', 'football National 2 National 3'),
+)
+
+# Sources identifiables ; leur présence ne vaut pas vérification indépendante.
+SOURCES = (
+    'lequipe', "l'equipe", 'rmc sport', 'franceinfo', 'france bleu',
+    'ici', 'ouest-france', 'le parisien', 'afp', 'reuters', 'bbc sport',
+    'the guardian', 'goal', 'eurosport', 'foot mercato', 'maxifoot',
+    'so foot', 'sky sports', 'skysports', 'sports.fr', 'onze mondial',
+    'france football', 'france 3', 'france televisions', 'fff', 'uefa',
+)
+BLOCK = re.compile(r'\b(pronostic|paris sportifs|cotes?|casino|billetterie|streaming ill[eé]gal)\b', re.I)
+MATCH = re.compile(r'\b(match|matches|r[eé]sultat|score|victoire|d[eé]faite|classement|journ[eé]e|calendrier)\b', re.I)
 MERCATO = re.compile(r'\b(mercato|transfert|recrutement|prolongation|pr[eê]t|signature|s.engage|rejoindrait|quitterait)\b', re.I)
 
 
-def clean(s):
-    return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]*>', '', s or ''))).strip()
+def clean(value):
+    return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]*>', '', value or ''))).strip()
 
 
-def fetch(query):
-    params = urllib.parse.urlencode({'q': query, 'hl': 'fr', 'gl': 'FR', 'ceid': 'FR:fr'})
-    req = urllib.request.Request('https://news.google.com/rss/search?' + params,
-                                 headers={'User-Agent': 'VeloceMercatoBot/1.0'})
-    with urllib.request.urlopen(req, timeout=25) as resp:
-        return ET.fromstring(resp.read(2_000_000))
+def normal(value):
+    decomposed = unicodedata.normalize('NFKD', value.casefold())
+    return ''.join(c for c in decomposed if not unicodedata.combining(c)).replace('’', "'")
 
 
 def accepted(source):
-    s = source.casefold().replace('é', 'e').replace('è', 'e').replace('ê', 'e')
-    return any(name.replace('é', 'e').replace('è', 'e').replace('ê', 'e') in s for name in SOURCES)
+    name = normal(source)
+    return any(re.search(r'(?<!\w)' + re.escape(alias) + r'(?!\w)', name) for alias in SOURCES)
+
+
+def fetch(query):
+    args = urllib.parse.urlencode({'q': query, 'hl': 'fr', 'gl': 'FR', 'ceid': 'FR:fr'})
+    request = urllib.request.Request(
+        'https://news.google.com/rss/search?' + args,
+        headers={'User-Agent': 'Mozilla/5.0 (compatible; VeloceMercato/1.1; +https://velocemercato.fr/)'},
+    )
+    with urllib.request.urlopen(request, timeout=25) as response:
+        return ET.fromstring(response.read(2_000_000))
 
 
 def load_existing():
     if not PATH.exists():
-        return []
-    value = json.loads(PATH.read_text(encoding='utf-8'))
-    if not isinstance(value, list):
-        raise ValueError('articles.json doit contenir une liste JSON')
-    return value
+        raise FileNotFoundError('articles.json absent : aucun article existant ne sera écrasé')
+    articles = json.loads(PATH.read_text(encoding='utf-8'))
+    if not isinstance(articles, list) or not all(isinstance(a, dict) for a in articles):
+        raise ValueError('articles.json doit contenir une liste d’articles')
+    return articles
+
+
+def build_article(item, zone, seen, stats):
+    stats['lus'] += 1
+    title = clean(item.findtext('title'))
+    link = clean(item.findtext('link'))
+    source_element = item.find('source')
+    source = clean(source_element.text if source_element is not None else '')
+    pub = clean(item.findtext('pubDate'))
+    if not title or not source or not accepted(source):
+        stats['source_ou_titre'] += 1
+        return None
+    if BLOCK.search(title):
+        stats['publicite_ou_paris'] += 1
+        return None
+    if not link.startswith('https://'):
+        stats['lien_invalide'] += 1
+        return None
+    try:
+        date = email.utils.parsedate_to_datetime(pub)
+        if date.tzinfo is None:
+            date = date.replace(tzinfo=dt.timezone.utc)
+        date = date.astimezone(dt.timezone.utc)
+    except (TypeError, ValueError, OverflowError):
+        stats['date_invalide'] += 1
+        return None
+    if not NOW - MAX_AGE <= date <= NOW + dt.timedelta(minutes=10):
+        stats['trop_ancien'] += 1
+        return None
+    if normal(title).endswith(' - ' + normal(source)):
+        title = title[:-(len(source) + 3)].strip()
+    if not 25 <= len(title) <= 190:
+        stats['longueur_titre'] += 1
+        return None
+    ident = 'rss-' + hashlib.sha256((normal(source) + '|' + normal(title)).encode()).hexdigest()[:20]
+    if ident in seen:
+        stats['doublon'] += 1
+        return None
+    seen.add(ident)
+    cat = 'MERCATO' if MERCATO.search(title) else ('MATCHS' if MATCH.search(title) else 'ACTUALITES')
+    resume = f'{source} publie : « {title} ». Consultez la source pour les détails et les mises à jour.'
+    stats['retenus'] += 1
+    return {
+        'id': ident,
+        'publishedAt': date.isoformat(timespec='seconds').replace('+00:00', 'Z'),
+        'titre': title,
+        'resume': resume,
+        'texte': resume + '\n\nBrève basée uniquement sur le titre et la date de la source. Véloce Mercato ne confirme pas indépendamment cette information.',
+        'zone': 'FRANCE' if zone in ('FRANCE', 'AMATEUR', 'FEMININ') else 'INTERNATIONAL',
+        'categorie': cat,
+        'championnat': 'FEMININ' if zone == 'FEMININ' else ('NATIONAL' if zone == 'AMATEUR' else ''),
+        'tag': 'MERCATO' if cat == 'MERCATO' else cat,
+        'sources': [{'nom': source, 'url': link}],
+    }
 
 
 def main():
     existing = load_existing()
-    seen = {str(a.get('id')) for a in existing if isinstance(a, dict)}
+    print(f'Articles déjà présents : {len(existing)}. Aucune suppression prévue.', flush=True)
+    seen = {str(a.get('id')) for a in existing}
     additions = []
-    for zone, query in QUERIES.items():
+    successes = 0
+    summary = Counter()
+    for zone, query in QUERIES:
+        stats = Counter()
         try:
             root = fetch(query)
+            successes += 1
+            for item in root.findall('./channel/item'):
+                article = build_article(item, zone, seen, stats)
+                if article:
+                    additions.append(article)
+            summary.update(stats)
+            print(f'{zone} [{query}] : ' + ', '.join(f'{k}={v}' for k, v in sorted(stats.items())), flush=True)
         except Exception as exc:
-            print(f'{zone}: source RSS inaccessible ({type(exc).__name__})')
-            continue
-        for item in root.findall('./channel/item'):
-            title = clean(item.findtext('title'))
-            link = clean(item.findtext('link'))
-            source_el = item.find('source')
-            source = clean(source_el.text if source_el is not None else '')
-            pub = clean(item.findtext('pubDate'))
-            if not title or not link or not source or not accepted(source) or BLOCK.search(title):
-                continue
-            if not link.startswith('https://'):
-                continue
-            try:
-                date = email.utils.parsedate_to_datetime(pub).astimezone(dt.timezone.utc)
-            except (TypeError, ValueError, OverflowError):
-                continue
-            if not NOW - MAX_AGE <= date <= NOW + dt.timedelta(minutes=10):
-                continue
-            # Retirer le suffixe « - Média » si Google News l'ajoute.
-            if title.casefold().endswith(' - ' + source.casefold()):
-                title = title[:-(len(source) + 3)].strip()
-            if len(title) < 25 or len(title) > 190:
-                continue
-            ident = 'rss-' + hashlib.sha256((source.casefold() + '|' + title.casefold()).encode()).hexdigest()[:20]
-            if ident in seen:
-                continue
-            seen.add(ident)
-            cat = 'MERCATO' if MERCATO.search(title) else ('MATCHS' if MATCH.search(title) else 'ACTUALITES')
-            # Un titre de média ne prouve pas une information : attribution explicite.
-            resume = f'{source} rapporte : « {title} ». Consultez la source pour les détails et les éventuelles mises à jour.'
-            additions.append({
-                'id': ident,
-                'publishedAt': date.isoformat(timespec='seconds').replace('+00:00', 'Z'),
-                'titre': title,
-                'resume': resume,
-                'texte': resume + '\n\nCette brève reprend uniquement le titre publié par la source citée. Véloce Mercato ne confirme pas indépendamment cette information.',
-                'zone': 'FRANCE' if zone in ('FRANCE', 'AMATEUR', 'FEMININ') else 'INTERNATIONAL',
-                'categorie': cat,
-                'championnat': 'FEMININ' if zone == 'FEMININ' else ('NATIONAL' if zone == 'AMATEUR' else ''),
-                'tag': 'RUMEUR' if cat == 'MERCATO' else cat,
-                'sources': [{'nom': source, 'url': link}],
-            })
+            print(f'{zone} [{query}] : ERREUR RSS {type(exc).__name__} : {str(exc)[:160]}', flush=True)
+    if not successes:
+        raise RuntimeError('Aucun flux RSS accessible : vérifier réseau et accès Google News')
+    print('Diagnostic global : ' + ', '.join(f'{k}={v}' for k, v in sorted(summary.items())), flush=True)
     additions.sort(key=lambda a: a['publishedAt'], reverse=True)
     additions = additions[:MAX_NEW]
     if not additions:
-        print('Aucune nouvelle brève admissible ; aucun changement.')
+        print('Aucune nouvelle brève admissible ; articles.json conservé sans changement.', flush=True)
         return
+    # Aucun article antérieur n'est supprimé, même au-delà de 150 entrées.
     merged = additions + existing
     merged.sort(key=lambda a: str(a.get('publishedAt', '')), reverse=True)
-    PATH.write_text(json.dumps(merged[:MAX_TOTAL], ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    print(f'{len(additions)} nouvelles brèves attribuées ; {len(merged[:MAX_TOTAL])} articles conservés.')
+    PATH.write_text(json.dumps(merged, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    print(f'{len(additions)} nouvelles brèves ; {len(existing)} anciens articles conservés.', flush=True)
 
 
 if __name__ == '__main__':
