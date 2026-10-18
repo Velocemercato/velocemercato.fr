@@ -243,7 +243,7 @@ def summarize(post, material):
     raw =''.join(part.get('text', '') for part in reply.get('content', []) if part.get('type') == 'text').strip()
     if raw.startswith('```'):
         raw = re.sub(r'^```(?:json)?\s*|\s*```$', '', raw).strip()
-    result = json.loads(raw)
+        result = json.loads(raw[raw.find('{'):raw.rfind('}') + 1])
     title = clean(result.get('titre'))
     resume = clean(result.get('resume'))
     texte = str(result.get('texte', '')).strip().replace('\\n', '\n')
