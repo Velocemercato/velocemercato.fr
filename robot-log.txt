@@ -1,48 +1,44 @@
-Passage du 2026-10-18 08:33 UTC (workflow_dispatch)
+Passage du 2026-10-18 08:39 UTC (workflow_dispatch)
 Nettoyage : 0 breves vides retirees, 4 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
 Départ : 4 articles conservés et 9 flashs existants.
-RSS Foot National / LIGUE_1 : 11 actualités récentes.
 RSS Foot National / NATIONAL : 8 actualités récentes.
 RSS Foot National / NATIONAL : 12 actualités récentes.
-RSS Foot National / LIGUE_2 : 8 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 0 actualités récentes.
+RSS Foot National / LIGUE_1 : 10 actualités récentes.
 RSS RMC Sport / FRANCE : 26 actualités récentes.
-RSS RMC Sport / LIGUE_1 : 17 actualités récentes.
-RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 3 actualités récentes.
+RSS RMC Sport / LIGUE_1 : 18 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 37 actualités récentes.
+RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 88, column 0
 RSS BBC Sport / INTERNATIONAL : 0 actualités récentes.
+RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 88, column 0
 RSS BBC Sport / FEMININ : 4 actualités récentes.
 RSS Foot01 / FRANCE : 42 actualités récentes.
-RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 88, column 0
-RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 88, column 0
-210 titres collectés, 196 nouveaux liens, quota 2.
-Brève ignorée (Foot Mercato) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (Foot Mercato) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (Foot Mercato) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (Foot Mercato) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (Foot01) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (Foot Mercato) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (Foot Mercato) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (Foot01) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (BBC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (Foot Mercato) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (Foot Mercato) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (Foot01) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (Foot National) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (Foot Mercato) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (Foot Mercato) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (Foot01) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (BBC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (Foot National) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Brève ignorée (Foot01) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
-Bilan : rejet_lecture_ou_ia=27, source_inaccessible_ou_trop_courte=3
+RSS Foot National / LIGUE_2 : 8 actualités récentes.
+RSS inaccessible Foot Mercato : HTTPError - HTTP Error 429: Too Many Requests
+168 titres collectés, 150 nouveaux liens, quota 2.
+Brève ignorée (Foot01) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (Foot01) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (Foot01) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (BBC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (Foot01) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (Foot National) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (Foot01) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (BBC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (Foot National) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (Foot01) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (Foot National) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (Foot01) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Brève ignorée (BBC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
+Bilan : rejet_lecture_ou_ia=23, source_inaccessible_ou_trop_courte=7
 Aucune brève de qualité suffisante ; fichiers JSON inchangés.
