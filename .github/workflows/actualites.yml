@@ -31,23 +31,39 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install --quiet trafilatura
+        run: |
+          echo "Passage du $(date -u '+%Y-%m-%d %H:%M UTC') (${{ github.event_name }})" > robot-log.txt
+          pip install --quiet trafilatura 2>&1 | tail -3 | tee -a robot-log.txt
+
+      - name: Remove empty old briefs
+        run: |
+          python - <<'EOF' 2>&1 | tee -a robot-log.txt
+          import json
+          rows = json.load(open('articles.json', encoding='utf-8'))
+          keep = [a for a in rows if 'Consultez la source' not in str(a.get('texte', ''))
+                  and 'uniquement sur le titre' not in str(a.get('texte', ''))]
+          if len(keep) != len(rows):
+              open('articles.json', 'w', encoding='utf-8').write(json.dumps(keep, ensure_ascii=False, indent=2) + '\n')
+          print(f'Nettoyage : {len(rows) - len(keep)} breves vides retirees, {len(keep)} gardees.')
+          EOF
 
       - name: Check API key (sans l'afficher)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           if [ -z "$ANTHROPIC_API_KEY" ]; then
-            echo "::error::Le secret ANTHROPIC_API_KEY est absent."
+            echo "ERREUR : le secret ANTHROPIC_API_KEY est absent." | tee -a robot-log.txt
             exit 1
           fi
-          echo "Secret ANTHROPIC_API_KEY présent (${#ANTHROPIC_API_KEY} caractères)."
+          echo "Secret ANTHROPIC_API_KEY present (${#ANTHROPIC_API_KEY} caracteres)." | tee -a robot-log.txt
 
       - name: Update news
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           VM_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.test && '1' || '' }}
-        run: python update_news.py
+        run: |
+          set -o pipefail
+          python update_news.py 2>&1 | tee -a robot-log.txt
 
       - name: Validate JSON
         id: validate
@@ -56,12 +72,12 @@ jobs:
           python -m json.tool articles.json > /dev/null
           python -m json.tool flash.json > /dev/null
 
-      - name: Save articles and flashs
+      - name: Save articles, flashs and report
         if: always() && steps.validate.outcome == 'success'
         run: |
-          git add articles.json flash.json
+          git add articles.json flash.json robot-log.txt
           if git diff --cached --quiet; then
-            echo 'Aucun nouvel article.'
+            echo 'Rien de nouveau.'
           else
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
