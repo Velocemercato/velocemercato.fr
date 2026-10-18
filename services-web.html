@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Véloce Web Studio – Création de sites pour artisans, commerces et associations</title>
+<meta name="description" content="Des sites internet simples, clairs sur téléphone et faciles à faire évoluer, pour les artisans, commerçants, indépendants et associations. Devis clair, le client reste propriétaire.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2470'/%3E%3Ctext x='32' y='44' font-family='Impact,sans-serif' font-size='30' font-style='italic' text-anchor='middle' fill='%23f4cf55'%3EVW%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/pages.css">
+<style>
+.notice{display:flex;gap:10px;align-items:flex-start;background:var(--gold-hi);color:#0b1533;border:3px solid var(--line);border-radius:12px;padding:12px 14px;font-weight:600;margin-bottom:22px}
+.offer{display:flex;flex-direction:column;gap:8px}
+.offer .price{margin-top:auto;font:700 1rem/1.2 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.05em;color:var(--royal)}
+.offer ul{margin:.2em 0;padding-left:1.1em}.offer li{margin:.2em 0}
+.steps{display:grid;gap:12px}@media(min-width:760px){.steps{grid-template-columns:repeat(4,1fr)}}
+.step{border:2px solid var(--line);border-radius:12px;padding:14px;background:var(--surface)}
+.step b{display:block;font:400 1.6rem/1 Impact,Anton,sans-serif;color:var(--gold)}
+.split{display:grid;gap:16px}@media(min-width:700px){.split{grid-template-columns:1fr 1fr}}
+.yes li::marker{content:"✓  ";color:var(--green)}.no li::marker{content:"✗  ";color:var(--red)}
+.yes,.no{padding-left:1.4em;margin:.4em 0}
+form.q{display:grid;gap:12px}
+form.q label{display:grid;gap:4px;font:700 .82rem/1.2 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+form.q input,form.q select,form.q textarea{font:500 1rem/1.35 Barlow,system-ui,sans-serif;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:8px;padding:9px 10px;width:100%}
+form.q textarea{min-height:80px;resize:vertical}
+.row2{display:grid;gap:12px}@media(min-width:560px){.row2{grid-template-columns:1fr 1fr}}
+.copybox{border:2px solid var(--line);border-radius:10px;padding:12px;background:var(--bg);white-space:pre-wrap;font:500 .95rem/1.45 Barlow,system-ui,sans-serif}
+details.faq{border-top:2px dashed rgba(29,63,184,.25);padding:10px 0}details.faq summary{cursor:pointer;font-weight:700}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateX(-50%);background:var(--gold-hi);color:#0b1533;border:3px solid #000;border-radius:999px;padding:9px 16px;font:700 .9rem/1 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;z-index:50}
+</style>
+</head>
+<body>
+<header><a class="logo" href="/services-web.html">VÉLOCE <b>WEB STUDIO</b></a><nav><a href="#offres">Offres</a><a href="#devis">Devis</a></nav></header>
+<main>
+
+<p class="notice" role="note"><span>🛠️</span><span>Ouverture prochaine. Les devis seront proposés dès la création officielle de l'activité. Tu peux déjà décrire ton projet : on en discute sans engagement.</span></p>
+
+<section class="card hero">
+<span class="tag">Artisans · commerces · associations · indépendants</span>
+<h1>Ton activité mérite <em>un vrai site</em></h1>
+<p>Un site clair sur téléphone, rapide à consulter et simple à faire évoluer. Les gens te trouvent, voient ce que tu proposes et t'appellent en un toucher. Création assistée par l'intelligence artificielle, conception et vérification humaines.</p>
+<div class="actions"><a class="btn gold" href="#devis">Décrire mon projet</a><a class="btn" href="#realisations">Voir des réalisations</a></div>
+</section>
+
+<section id="offres" aria-labelledby="t-off">
+<h2 id="t-off" style="margin-bottom:14px">Trois formules simples</h2>
+<div class="grid three">
+<article class="tile offer">
+<h3>Essentiel</h3>
+<p>Une page complète pour exister en ligne.</p>
+<ul><li>Présentation, services, horaires</li><li>Bouton d'appel et itinéraire</li><li>Lisible sur téléphone</li><li>Mentions légales à compléter avec toi</li></ul>
+<span class="price">Prix sur devis</span>
+</article>
+<article class="tile offer">
+<h3>Évolutif</h3>
+<p>Trois à cinq pages pour présenter ton activité en détail.</p>
+<ul><li>Pages services, galerie photo, FAQ</li><li>Formulaire de contact simple</li><li>Bases du référencement Google</li><li>Deux séries de corrections comprises</li></ul>
+<span class="price">Prix sur devis</span>
+</article>
+<article class="tile offer">
+<h3>Suivi</h3>
+<p>Ton site reste à jour sans que tu t'en occupes.</p>
+<ul><li>Changements de textes, horaires, photos</li><li>Vérification que le site fonctionne</li><li>Sans engagement de durée</li></ul>
+<span class="price">Formule mensuelle sur devis</span>
+</article>
+</div>
+</section>
+
+<section class="card" style="margin-top:26px" aria-labelledby="t-steps">
+<h2 id="t-steps">Comment ça se passe</h2>
+<div class="steps">
+<div class="step"><b>1</b>Tu décris ton activité et ce que tu veux. On en parle au téléphone.</div>
+<div class="step"><b>2</b>Tu reçois un devis écrit : ce qui est compris, ce qui ne l'est pas, le délai.</div>
+<div class="step"><b>3</b>Après ton accord, je crée le site et tu le vérifies avant sa mise en ligne.</div>
+<div class="step"><b>4</b>Le site est en ligne. Tu reçois tous les accès, il t'appartient.</div>
+</div>
+</section>
+
+<section class="card" aria-labelledby="t-clear">
+<h2 id="t-clear">Clair dès le départ</h2>
+<div class="split">
+<div><h3>Ce qui est garanti</h3>
+<ul class="yes"><li>Ton nom de domaine et tes contenus restent à ton nom</li><li>Un devis détaillé avant tout travail</li><li>Tu valides le site avant sa mise en ligne</li><li>Tous les accès te sont remis</li></ul></div>
+<div><h3>Ce que je ne promets pas</h3>
+<ul class="no"><li>La première place sur Google : personne ne peut la garantir</li><li>Un nombre de clients ou de ventes</li><li>De la maintenance sur un hébergement que je ne gère pas</li></ul></div>
+</div>
+</section>
+
+<section class="card" id="realisations" aria-labelledby="t-real">
+<h2 id="t-real">Des réalisations visibles</h2>
+<div class="grid two">
+<div class="tile"><h3>Véloce Mercato</h3><p>Média foot avec brèves publiées automatiquement, ligue de jeu vidéo communautaire et page de soutien transparente.</p><p><a href="https://velocemercato.fr">velocemercato.fr ↗</a></p></div>
+<div class="tile"><h3>Papiers Sans Galère</h3><p>Projet bénévole d'aide aux démarches : générateurs de bail, de quittance, d'état des lieux et de lettre de congé, guides pratiques.</p><p><a href="https://velocemercato.github.io/Papiers-sans-galere/">Voir le site ↗</a></p></div>
+</div>
+<p class="muted" style="margin-top:12px">Réalisations développées avec l'assistance d'outils d'intelligence artificielle. D'autres exemples seront ajoutés avec l'accord des clients.</p>
+</section>
+
+<section class="card" id="devis" aria-labelledby="t-devis">
+<h2 id="t-devis">Décris ton projet</h2>
+<p>Remplis ce que tu peux. Rien n'est envoyé automatiquement : tu copies le texte ou tu l'envoies par mail.</p>
+<form class="q" id="qForm" autocomplete="off">
+<div class="row2">
+<label>Ton activité<input id="qAct" placeholder="Ex. : boulangerie, plombier, club de foot"></label>
+<label>Ta ville<input id="qVille" placeholder="Ex. : Champagney"></label>
+</div>
+<div class="row2">
+<label>Type de site<select id="qType"><option>Essentiel (une page)</option><option>Évolutif (3 à 5 pages)</option><option>Je ne sais pas encore</option></select></label>
+<label>As-tu déjà un nom de domaine ?<select id="qDom"><option>Non</option><option>Oui</option><option>Je ne sais pas</option></select></label>
+</div>
+<div class="row2">
+<label>Textes et photos disponibles ?<select id="qCont"><option>Oui, j'ai tout</option><option>En partie</option><option>Non, il faudra m'aider</option></select></label>
+<label>Délai souhaité<input id="qDelai" placeholder="Ex. : d'ici fin novembre"></label>
+</div>
+<label>Ce que tu veux sur ton site<textarea id="qBesoin" placeholder="Ex. : présenter mes services, mes horaires, une galerie de mes réalisations et un bouton pour m'appeler"></textarea></label>
+<p class="muted">N'écris pas d'informations sensibles (coordonnées bancaires, numéro de sécurité sociale).</p>
+<div class="copybox" id="qTxt" aria-live="polite"></div>
+<div class="actions"><button class="btn gold" type="button" id="qCopy">Copier ma demande</button><a class="btn" id="qMail" href="#">Envoyer par mail</a></div>
+<p class="muted">Adresse : <strong style="user-select:all">Velocemercato87@gmail.com</strong></p>
+</form>
+</section>
+
+<section class="card" aria-labelledby="t-faq">
+<h2 id="t-faq">Questions fréquentes</h2>
+<details class="faq"><summary>Combien de temps pour créer mon site ?</summary><p>Le délai est indiqué dans le devis. Il dépend surtout du nombre de pages et du moment où tes textes et photos sont prêts.</p></details>
+<details class="faq"><summary>Est-ce que je dois payer un hébergement ?</summary><p>Un site simple peut être hébergé gratuitement. Le nom de domaine (par exemple tonactivite.fr) coûte quelques euros à une quinzaine d'euros par an chez un registrar, et il est enregistré à ton nom.</p></details>
+<details class="faq"><summary>Je pourrai modifier mon site moi-même ?</summary><p>Oui pour les textes simples, ou tu peux choisir la formule Suivi pour qu'on s'en charge.</p></details>
+<details class="faq"><summary>Pourquoi l'intelligence artificielle ?</summary><p>Elle permet d'aller plus vite et de proposer des prix accessibles. Chaque page est relue, testée sur téléphone et validée par un humain, puis par toi, avant sa mise en ligne.</p></details>
+</section>
+
+</main>
+<footer>Véloce Web Studio · un projet de Romain, créateur de Véloce Mercato · <a href="/mentions-legales.html">Mentions légales</a></footer>
+<div class="toast" id="toast" hidden></div>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var MAIL='Velocemercato87@gmail.com';
+  var toast=function(m){var t=$('toast');t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(function(){t.hidden=true;},2400);};
+  var txt=function(){var v=function(id){return ($(id).value||'').trim()||'—';};
+    return 'Demande de site – Véloce Web Studio\nActivité : '+v('qAct')+'\nVille : '+v('qVille')+'\nType de site : '+$('qType').value+'\nNom de domaine : '+$('qDom').value+'\nTextes et photos : '+$('qCont').value+'\nDélai souhaité : '+v('qDelai')+'\n\nMon besoin :\n'+v('qBesoin');};
+  var refresh=function(){var t=txt();$('qTxt').textContent=t;$('qMail').href='mailto:'+MAIL+'?subject='+encodeURIComponent('Demande de site')+'&body='+encodeURIComponent(t);};
+  $('qForm').addEventListener('input',refresh);$('qForm').addEventListener('change',refresh);$('qForm').addEventListener('submit',function(e){e.preventDefault();});refresh();
+  $('qCopy').onclick=function(){if(!$('qAct').value.trim()){toast('Indique ton activité');$('qAct').focus();return;}
+    var t=txt(),fb=function(){var r=document.createRange();r.selectNodeContents($('qTxt'));var s=getSelection();s.removeAllRanges();s.addRange(r);toast('Texte sélectionné : copie-le');};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){toast('Demande copiée');},fb);}else fb();};
+})();
+</script>
+</body>
+</html>
