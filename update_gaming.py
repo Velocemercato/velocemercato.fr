@@ -58,7 +58,7 @@ def summarize_gaming(post, material):
         'Écris une brève originale et courte, sans copier la rédaction source, en attribuant l’information au média. '
         'Ne garde que les vraies infos sur Call of Duty Warzone, Battlefield (dont REDSEC), EA SPORTS FC ou GTA VI : '
         'mises à jour, saisons, événements, sorties, annonces officielles. '
-        'N’invente RIEN (date, prix, contenu, chiffre). Une rumeur ou une fuite reste au conditionnel, et si l’article '
+        'N’invente RIEN (date, prix, contenu, chiffre). Chaque date citée doit dire clairement à quoi elle se rapporte (sortie du jeu, d’une bande-annonce, d’une mise à jour) ; en cas de doute, ne cite pas la date. Une rumeur ou une fuite reste au conditionnel, et si l’article '
         'ne repose que sur une fuite, une promo, un concours ou un test d’un autre jeu, réponds uniquement {"ignorer": true}. '
         'Style simple et direct, tutoiement interdit, pas de sensationnalisme. '
         'Format strictement JSON (sans markdown) avec les clés titre, resume, texte, categorie, championnat, officiel. '
