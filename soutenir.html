@@ -2,54 +2,66 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Soutenir Véloce Mercato – dons et transparence</title>
-<meta name="description" content="Soutiens Véloce Mercato : chaque don est publié, chaque dépense est justifiée. Cadeaux pour la communauté, déplacements, interviews.">
+<title>Soutenir Véloce Mercato – contributions et transparence</title>
+<meta name="description" content="Deux façons de soutenir : le média Véloce Mercato et le lancement de l'activité professionnelle. Contributions facultatives, chaque euro publié.">
 <link rel="canonical" href="https://velocemercato.fr/soutenir.html">
-<meta property="og:title" content="Soutenir Véloce Mercato"><meta property="og:description" content="Chaque don est publié, chaque dépense est justifiée."><meta property="og:url" content="https://velocemercato.fr/soutenir.html">
+<meta property="og:title" content="Soutenir Véloce Mercato"><meta property="og:description" content="Contributions facultatives, chaque euro reçu et dépensé est publié."><meta property="og:url" content="https://velocemercato.fr/soutenir.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2470'/%3E%3Ctext x='32' y='44' font-family='Impact,sans-serif' font-size='30' font-style='italic' text-anchor='middle' fill='%23f4cf55'%3EVM%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="/pages.css">
+<style>
+.goal{display:flex;flex-direction:column;gap:10px}
+.goal .tag{align-self:flex-start}
+.goal ul{margin:.2em 0;padding-left:1.1em}
+.goal .actions{margin-top:auto}
+.who{font:700 .82rem/1.2 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.tablewrap{overflow-x:auto}
+</style>
 </head>
 <body>
 <header><a class="logo" href="/">VÉLOCE <b>MERCATO</b></a><nav><a href="/">Brèves</a><a href="/gaming.html">Gaming</a></nav></header>
 <main>
 
 <section class="card hero">
-<span class="tag">❤️ Soutien</span>
+<span class="tag">❤️ Soutien facultatif</span>
 <h1>Soutiens <em>Véloce Mercato</em></h1>
-<p>Véloce Mercato est un projet indépendant, né dans un petit village. Tes dons servent à faire grandir le site et, surtout, à faire vivre de vrais moments à la communauté.</p>
-<div class="actions"><a id="donBtn" class="btn gold" href="#" aria-disabled="true">💛 Les dons ouvrent bientôt</a></div>
+<p>Deux projets, deux cagnottes séparées, et une règle : chaque euro reçu et chaque euro dépensé est publié ici. Tout reste gratuit sur le site, que tu contribues ou non.</p>
 </section>
 
-<section class="grid three" aria-label="À quoi servent les dons">
-<div class="tile"><div class="ico">🎁</div><h3>Cadeaux aux fans</h3><p>Maillots, places, lots pour les gagnants des jeux et des tournois Véloce Arena.</p></div>
-<div class="tile"><div class="ico">🚆</div><h3>Emmener un gagnant</h3><p>Train, taxi, billet : offrir à un membre de la communauté un match à Paris, Marseille ou Lyon.</p></div>
-<div class="tile"><div class="ico">🎤</div><h3>Interviews</h3><p>Aller à la rencontre de joueurs et d'acteurs du foot, avec un jeune de la communauté.</p></div>
+<section class="grid two" aria-label="Les deux objectifs">
+<article class="card goal" style="margin-bottom:0" id="g-media">
+<span class="tag">⚽ Le média</span>
+<h2>Soutenir Véloce Mercato</h2>
+<p>Pour faire vivre le site et la communauté :</p>
+<ul><li>le site et ses outils</li><li>les reportages et les invités de la Pastille</li><li>les événements de Véloce Arena</li><li>des récompenses pour la communauté, une fois leur règlement validé</li></ul>
+<div class="actions"><a class="btn gold" id="btn-media" href="#" aria-disabled="true">Contributions bientôt ouvertes</a></div>
+</article>
+<article class="card goal" style="margin-bottom:0" id="g-pro">
+<span class="tag">🛠️ Le lancement pro</span>
+<h2>Soutenir le lancement de l'activité</h2>
+<p>Pour aider Romain à démarrer son activité de création de sites, Véloce Web Studio :</p>
+<ul><li>logiciels et abonnements nécessaires</li><li>matériel informatique</li><li>hébergement et noms de domaine</li><li>développement des outils et des offres</li></ul>
+<div class="actions"><a class="btn" id="btn-pro" href="#" aria-disabled="true">Contributions bientôt ouvertes</a></div>
+</article>
 </section>
 
-<section class="card" style="margin-top:26px">
-<h2>🔍 Transparence totale</h2>
-<p>Chaque don reçu et chaque euro dépensé sont publiés ici, avec la date et l'objet. Les justificatifs (billets, factures) sont montrés sur nos réseaux.</p>
-<div class="stats" style="margin:16px 0">
-<div><b id="sIn">0 €</b><span>Reçus</span></div>
-<div><b id="sOut">0 €</b><span>Dépensés</span></div>
-<div><b id="sBal">0 €</b><span>En caisse</span></div>
-</div>
-<h3 id="goalTitle">Objectif en cours</h3>
-<div class="bar" role="progressbar" aria-labelledby="goalTitle" id="goalBar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="goalFill" style="width:0"></i></div>
-<p class="muted" id="goalTxt"></p>
+<section class="card" style="margin-top:26px" aria-labelledby="t-transp">
+<h2 id="t-transp">🔍 Transparence totale</h2>
+<p>Chaque contribution et chaque dépense est publiée avec sa date, son objet et la cagnotte concernée. Les justificatifs sont montrés sur nos réseaux.</p>
+<div id="goals"></div>
 
-<h3>Derniers dons</h3>
-<table><thead><tr><th>Date</th><th>Donateur</th><th class="n">Montant</th></tr></thead><tbody id="tDons"><tr><td colspan="3" class="muted">Aucun don pour le moment. Le premier sera affiché ici.</td></tr></tbody></table>
+<h3>Dernières contributions</h3>
+<div class="tablewrap"><table><thead><tr><th>Date</th><th>Contributeur</th><th>Cagnotte</th><th class="n">Montant</th></tr></thead><tbody id="tIn"><tr><td colspan="4" class="muted">Aucune contribution pour le moment.</td></tr></tbody></table></div>
 
 <h3>Dépenses</h3>
-<table><thead><tr><th>Date</th><th>Objet</th><th class="n">Montant</th></tr></thead><tbody id="tDep"><tr><td colspan="3" class="muted">Aucune dépense pour le moment.</td></tr></tbody></table>
+<div class="tablewrap"><table><thead><tr><th>Date</th><th>Objet</th><th>Cagnotte</th><th class="n">Montant</th></tr></thead><tbody id="tOut"><tr><td colspan="4" class="muted">Aucune dépense pour le moment.</td></tr></tbody></table></div>
 </section>
 
-<section class="card">
-<h2>ℹ️ Bon à savoir</h2>
-<p>Les dons sont libres et sans contrepartie. Ils ne donnent pas droit à une réduction d'impôt.</p>
-<p>Les jeux et tournois de la communauté restent toujours gratuits, sans obligation de don ni d'achat. Un don ne donne aucun avantage dans les jeux, les tournois ou les tirages au sort.</p>
-<p>Pour toute question sur un don ou une dépense : <a href="mailto:Velocemercato87@gmail.com">Velocemercato87@gmail.com</a>.</p>
+<section class="card" aria-labelledby="t-know">
+<h2 id="t-know">ℹ️ Bon à savoir</h2>
+<p><strong>Les contributions sont facultatives et sans contrepartie.</strong> Elles ne donnent aucun avantage dans les jeux, les tournois ou les tirages au sort, et les jeux de la communauté restent toujours gratuits.</p>
+<p><strong>Aucune réduction d'impôt.</strong> Véloce Mercato n'est pas une association reconnue d'intérêt général : les contributions ne donnent droit à aucun reçu fiscal.</p>
+<p><strong>Deux cagnottes bien séparées.</strong> Une contribution au lancement de l'activité professionnelle soutient une future entreprise individuelle, ce n'est pas un don à une association. Les paiements passent par une plateforme sécurisée ; aucune coordonnée bancaire n'est demandée sur ce site.</p>
+<p>Une question sur une contribution ou une dépense : <a href="mailto:Velocemercato87@gmail.com">Velocemercato87@gmail.com</a>.</p>
 </section>
 
 </main>
@@ -61,21 +73,25 @@
   var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});};
   var day=function(d){var x=new Date(d);return isNaN(x)?esc(d):x.toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'});};
   var get=function(f){return fetch(f+'?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():{};}).catch(function(){return {};});};
+  var https=function(u){return typeof u==='string'&&u.indexOf('https://')===0;};
   get('/liens.json').then(function(l){
-    if(typeof l.dons==='string'&&l.dons.indexOf('https://')===0){var b=$('donBtn');b.href=l.dons;b.target='_blank';b.rel='noopener';b.removeAttribute('aria-disabled');b.textContent='💛 Faire un don'+(l.dons_nom?' via '+l.dons_nom:'');}
+    var nom=l.soutien_nom||l.dons_nom||'';
+    [['media',l.soutien_media||l.dons,'💛 Soutenir le média'],['pro',l.soutien_pro,'🛠️ Soutenir le lancement']].forEach(function(x){
+      if(!https(x[1]))return;var b=$('btn-'+x[0]);b.href=x[1];b.target='_blank';b.rel='noopener';b.removeAttribute('aria-disabled');b.textContent=x[2]+(nom?' via '+nom:'');});
   });
   get('/transparence.json').then(function(t){
-    var dons=Array.isArray(t.dons)?t.dons:[],dep=Array.isArray(t.depenses)?t.depenses:[];
-    var sum=function(a){return a.reduce(function(s,x){return s+(Number(x.montant)||0);},0);};
-    var tin=sum(dons),tout=sum(dep);
-    $('sIn').textContent=eur(tin);$('sOut').textContent=eur(tout);$('sBal').textContent=eur(tin-tout);
-    var g=t.objectif||{};
-    if(g.titre&&Number(g.montant)>0){var pct=Math.max(0,Math.min(100,Math.round((tin-tout)/g.montant*100)));
-      $('goalTitle').textContent='Objectif en cours : '+g.titre;$('goalFill').style.width=pct+'%';$('goalBar').setAttribute('aria-valuenow',pct);
-      $('goalTxt').textContent=eur(Math.max(0,tin-tout))+' sur '+eur(g.montant)+' ('+pct+' %)';}
+    var goals=Array.isArray(t.objectifs)?t.objectifs:(t.objectif?[{id:'media',titre:'Soutenir Véloce Mercato',but:t.objectif.titre,montant:t.objectif.montant}]:[]);
+    var ins=Array.isArray(t.contributions)?t.contributions:(Array.isArray(t.dons)?t.dons:[]);
+    var outs=Array.isArray(t.depenses)?t.depenses:[];
+    var label={};goals.forEach(function(g){label[g.id]=g.titre;});
+    var sum=function(a,id){return a.filter(function(x){return (x.objectif||'media')===id;}).reduce(function(s,x){return s+(Number(x.montant)||0);},0);};
+    $('goals').innerHTML=goals.map(function(g){var tin=sum(ins,g.id),tout=sum(outs,g.id),bal=tin-tout,has=Number(g.montant)>0,pct=has?Math.max(0,Math.min(100,Math.round(bal/g.montant*100))):0;
+      return '<div class="tile" style="margin:14px 0"><h3 style="margin-top:0">'+esc(g.titre)+'</h3>'+(g.but?'<p class="muted">Objectif : '+esc(g.but)+'</p>':'')+
+        '<div class="stats" style="margin:10px 0"><div><b>'+eur(tin)+'</b><span>Reçus</span></div><div><b>'+eur(tout)+'</b><span>Dépensés</span></div><div><b>'+eur(bal)+'</b><span>En caisse</span></div></div>'+
+        (has?'<div class="bar" role="progressbar" aria-label="Avancement : '+esc(g.titre)+'" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pct+'"><i style="width:'+pct+'%"></i></div><p class="muted">'+eur(Math.max(0,bal))+' sur '+eur(g.montant)+' ('+pct+' %)</p>':'<p class="muted">Montant de l\'objectif à définir.</p>')+'</div>';}).join('');
     var by=function(a,b){return String(b.date||'').localeCompare(String(a.date||''));};
-    if(dons.length)$('tDons').innerHTML=dons.slice().sort(by).slice(0,30).map(function(x){return '<tr><td>'+day(x.date)+'</td><td>'+esc(x.nom||'Anonyme')+'</td><td class="n">'+eur(x.montant)+'</td></tr>';}).join('');
-    if(dep.length)$('tDep').innerHTML=dep.slice().sort(by).map(function(x){return '<tr><td>'+day(x.date)+'</td><td>'+esc(x.objet)+'</td><td class="n">'+eur(x.montant)+'</td></tr>';}).join('');
+    if(ins.length)$('tIn').innerHTML=ins.slice().sort(by).slice(0,40).map(function(x){return '<tr><td>'+day(x.date)+'</td><td>'+esc(x.nom||'Anonyme')+'</td><td>'+esc(label[x.objectif||'media']||'—')+'</td><td class="n">'+eur(x.montant)+'</td></tr>';}).join('');
+    if(outs.length)$('tOut').innerHTML=outs.slice().sort(by).map(function(x){return '<tr><td>'+day(x.date)+'</td><td>'+esc(x.objet)+'</td><td>'+esc(label[x.objectif||'media']||'—')+'</td><td class="n">'+eur(x.montant)+'</td></tr>';}).join('');
   });
 })();
 </script>
