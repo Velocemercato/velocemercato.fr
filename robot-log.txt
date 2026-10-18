@@ -1,0 +1,61 @@
+Passage du 2026-10-18 08:28 UTC (workflow_dispatch)
+Nettoyage : 15 breves vides retirees, 4 gardees.
+Secret ANTHROPIC_API_KEY present (106 caracteres).
+Départ : 4 articles conservés et 9 flashs existants.
+RSS Foot National / LIGUE_2 : 8 actualités récentes.
+RSS Foot National / NATIONAL : 8 actualités récentes.
+RSS Foot National / NATIONAL : 12 actualités récentes.
+RSS Foot National / LIGUE_1 : 11 actualités récentes.
+RSS RMC Sport / LIGUE_1 : 18 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 0 actualités récentes.
+RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
+RSS RMC Sport / FRANCE : 26 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 37 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 0 actualités récentes.
+RSS BBC Sport / FEMININ : 4 actualités récentes.
+RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 88, column 0
+RSS Foot01 / FRANCE : 42 actualités récentes.
+RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 88, column 0
+211 titres collectés, 196 nouveaux liens, quota 2.
+ARRÊT : API Claude HTTP 400 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"invalid_request_error","message":"`temperature` is deprecated for this model."},"request_id":"req_011Cg9PSwiDXtr2zp1xUHyaX"}
+Bilan : 
+Aucune brève de qualité suffisante ; fichiers JSON inchangés.
+Traceback (most recent call last):
+  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 206, in call_claude
+    with urllib.request.urlopen(req, timeout=40) as resp:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/urllib/request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/urllib/request.py", line 521, in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/urllib/request.py", line 630, in http_response
+    response = self.parent.error(
+               ^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/urllib/request.py", line 559, in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/urllib/request.py", line 492, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/urllib/request.py", line 639, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 400: Bad Request
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 406, in <module>
+    main()
+  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 383, in main
+    raise fatal_error
+  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 353, in main
+    title, resume, texte = summarize(post, material)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 242, in summarize
+    reply = call_claude(system, user)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 216, in call_claude
+    raise FatalAPIError(f'API Claude HTTP {exc.code} : vérifier clé, crédit ou quota. {detail[:250]}') from exc
+FatalAPIError: API Claude HTTP 400 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"invalid_request_error","message":"`temperature` is deprecated for this model."},"request_id":"req_011Cg9PSwiDXtr2zp1xUHyaX"}
