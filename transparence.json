@@ -1,5 +1,18 @@
 {
-  "objectif": {"titre": "Emmener un gagnant de la communauté voir un match", "montant": 300},
-  "dons": [],
+  "objectifs": [
+    {
+      "id": "media",
+      "titre": "Soutenir Véloce Mercato",
+      "but": "Emmener un gagnant de la communauté voir un match",
+      "montant": 300
+    },
+    {
+      "id": "pro",
+      "titre": "Soutenir le lancement de l'activité professionnelle",
+      "but": "Logiciels, matériel, hébergement et développement de Véloce Web Studio",
+      "montant": null
+    }
+  ],
+  "contributions": [],
   "depenses": []
 }
