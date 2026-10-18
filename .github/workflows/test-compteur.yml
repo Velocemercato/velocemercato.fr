@@ -1,0 +1,14 @@
+name: Test compteur (temporaire)
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          W=velocemercatos-team-5947
+          for u in "v2/$W/vm-test" "v2/$W/vm-test/up" "v2/$W/vm-test"; do
+            echo "=== GET $u"
+            curl -s -i -m 15 -H 'Origin: https://velocemercato.fr' "https://api.counterapi.dev/$u" | grep -iE '^HTTP|access-control|^\{' ; echo
+          done
+          echo "=== OPTIONS"
+          curl -s -i -m 15 -X OPTIONS -H 'Origin: https://velocemercato.fr' -H 'Access-Control-Request-Method: GET' "https://api.counterapi.dev/v2/$W/vm-test/up" | grep -iE '^HTTP|access-control'
