@@ -1,44 +1,37 @@
-Passage du 2026-10-18 08:39 UTC (workflow_dispatch)
+Passage du 2026-10-18 08:55 UTC (schedule)
 Nettoyage : 0 breves vides retirees, 4 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
 Départ : 4 articles conservés et 9 flashs existants.
-RSS Foot National / NATIONAL : 8 actualités récentes.
-RSS Foot National / NATIONAL : 12 actualités récentes.
 RSS Foot National / LIGUE_1 : 10 actualités récentes.
+RSS Foot National / NATIONAL : 12 actualités récentes.
+RSS Foot National / LIGUE_2 : 8 actualités récentes.
 RSS RMC Sport / FRANCE : 26 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 3 actualités récentes.
 RSS RMC Sport / LIGUE_1 : 18 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 4 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 37 actualités récentes.
-RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 88, column 0
 RSS BBC Sport / INTERNATIONAL : 0 actualités récentes.
-RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 88, column 0
+RSS Foot National / NATIONAL : 8 actualités récentes.
 RSS BBC Sport / FEMININ : 4 actualités récentes.
 RSS Foot01 / FRANCE : 42 actualités récentes.
-RSS Foot National / LIGUE_2 : 8 actualités récentes.
+RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 88, column 0
+RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 88, column 0
 RSS inaccessible Foot Mercato : HTTPError - HTTP Error 429: Too Many Requests
-168 titres collectés, 150 nouveaux liens, quota 2.
-Brève ignorée (Foot01) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (Foot01) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (Foot01) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (BBC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (Foot01) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (Foot National) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (Foot01) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (BBC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (Foot National) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (Foot01) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (Foot National) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (Foot01) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (RMC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Brève ignorée (BBC Sport) : UnboundLocalError - cannot access local variable 'result' where it is not associated with a value
-Bilan : rejet_lecture_ou_ia=23, source_inaccessible_ou_trop_courte=7
-Aucune brève de qualité suffisante ; fichiers JSON inchangés.
+169 titres collectés, 150 nouveaux liens, quota 8.
+Brève prête : RMC Sport - Le Barça s'impose 5-2 au Betis Séville, Lamine Yamal élu homme du match
+Brève prête : RMC Sport - PSG-Barça en Ligue des champions : Michael Oliver au sifflet
+Brève prête : Foot01 - Lille : un manifestant blessé après avoir été touché par une vitre de boutique
+Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
+Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
+Brève prête : Foot01 - PSG : Kvaratskhelia critiqué par des journalistes après son match à Strasbourg
+Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
+Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
+Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
+Brève prête : Foot01 - OM : Mc Court fermerait la porte à un intérêt pour un joueur, selon Foot01
+Brève ignorée (BBC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
+Brève ignorée (Foot01) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
+Brève prête : Foot National - Blois s'impose 3-0 face au Gazélec, dont le voyage perturbé a décalé le coup d'envoi
+Brève prête : RMC Sport - Betis-Barça : Lamine Yamal élu homme du match lors de la victoire 5-2
+Brève ignorée (RMC Sport) : JSONDecodeError - Expecting value: line 1 column 1 (char 0)
+Brève prête : Foot01 - L'OM intéressé par un défenseur argentin, Mc Court ferme la porte
+Bilan : brèves_rédigées=8, rejet_lecture_ou_ia=8, source_inaccessible_ou_trop_courte=2
+Publié : 8 brèves (total 12). Flash : 11.
