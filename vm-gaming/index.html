@@ -192,7 +192,7 @@ h2.big small{text-shadow:none;color:var(--muted);letter-spacing:0;font-family:'D
 
 <footer><div class="wrap">
 <a href="https://velocemercato.fr">Véloce Mercato</a> · <a href="https://velocemercato.fr/gaming.html">Véloce Arena</a> · <a href="https://velocemercato.fr/mentions-legales.html">Mentions légales</a><br>
-Site de fans indépendant, non affilié à Activision, Electronic Arts ou Rockstar Games. Visuels originaux créés pour VM.<br>
+Contact : <a href="mailto:vmgaming.fr@gmail.com">vmgaming.fr@gmail.com</a> · <a id="vmgSoutien" href="/soutenir.html" hidden>💚 Soutenir VM Gaming</a><br>Site de fans indépendant, non affilié à Activision, Electronic Arts ou Rockstar Games. Visuels originaux créés pour VM.<br>
 Les actus sont des résumés courts écrits avec l'aide d'une IA, avec un lien vers l'article d'origine.
 </div></footer>
 
@@ -234,6 +234,9 @@ Les actus sont des résumés courts écrits avec l'aide d'une IA, avec un lien v
     document.getElementById('rdv').style.display='block';
   }).catch(function(){});
 })();
+</script>
+<script>
+fetch('/liens.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():{};}).then(function(l){var u=l&&l.soutien_gaming;if(typeof u==='string'&&u.indexOf('https://')===0){var a=document.getElementById('vmgSoutien');a.href=u;a.target='_blank';a.rel='noopener';a.hidden=false;}}).catch(function(){});
 </script>
 </body>
 </html>

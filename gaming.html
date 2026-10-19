@@ -77,7 +77,7 @@ details.fold[open]>summary{margin-bottom:12px}
 <button class="btn gold" type="button" id="joinCopy">Copier mon inscription</button>
 <a class="btn" id="joinMail" href="#">Envoyer par mail</a>
 </div>
-<p class="muted">Adresse de l'organisateur : <strong style="user-select:all">Velocemercato87@gmail.com</strong></p>
+<p class="muted">Adresse de l'organisateur : <strong style="user-select:all">velocemercato.fr@gmail.com</strong></p>
 <p class="muted">Seuls ton gamertag, ton club et tes résultats sont publiés. Ton adresse mail et tes disponibilités restent privées. Tu peux demander à tout moment le retrait de tes informations.</p>
 </form>
 </section>
@@ -150,7 +150,7 @@ details.fold[open]>summary{margin-bottom:12px}
 (function(){
   var $=function(id){return document.getElementById(id);};
   var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});};
-  var MAIL='Velocemercato87@gmail.com';
+  var MAIL='velocemercato.fr@gmail.com';
   var mailto=function(su,bo){return 'mailto:'+MAIL+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(bo);};
   var toast=function(m){var t=$('toast');t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(function(){t.hidden=true;},2400);};
   $('duelBtn').href=mailto('Défi Véloce Arena','Salut Romain, je te défie sur EA SPORTS FC !\n\nMon gamertag : \nMa plateforme (PlayStation, Xbox, PC) : \nMes disponibilités : ');
