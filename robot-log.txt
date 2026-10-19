@@ -1,23 +1,23 @@
-Passage du 2026-10-19 02:59 UTC (schedule)
+Passage du 2026-10-19 03:30 UTC (schedule)
 Nettoyage : 0 breves vides retirees, 115 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
 Départ : 115 articles conservés et 45 flashs existants.
-RSS Foot National / LIGUE_2 : 1 actualités récentes.
-RSS Foot National / LIGUE_1 : 18 actualités récentes.
 RSS Foot National / NATIONAL : 10 actualités récentes.
+RSS Foot National / LIGUE_2 : 1 actualités récentes.
 RSS Foot National / NATIONAL : 10 actualités récentes.
 RSS RMC Sport / LIGUE_1 : 27 actualités récentes.
 RSS RMC Sport / FRANCE : 30 actualités récentes.
 RSS RMC Sport / INTERNATIONAL : 8 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 42 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 0 actualités récentes.
-RSS Foot01 / FRANCE : 44 actualités récentes.
-RSS BBC Sport / FEMININ : 7 actualités récentes.
-RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 73, column 0
+RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
 RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 92, column 0
-RSS inaccessible Foot Mercato : HTTPError - HTTP Error 429: Too Many Requests
-197 titres collectés, 49 nouveaux liens, quota 6.
-Bilan : non_pertinent=1, source_inaccessible_ou_trop_courte=20, sujet_deja_traite=9
+RSS BBC Sport / INTERNATIONAL : 41 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 0 actualités récentes.
+RSS BBC Sport / FEMININ : 7 actualités récentes.
+RSS Foot01 / FRANCE : 44 actualités récentes.
+RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 85, column 0
+RSS Foot National / LIGUE_1 : 18 actualités récentes.
+241 titres collectés, 54 nouveaux liens, quota 6.
+Bilan : non_pertinent=1, source_inaccessible_ou_trop_courte=19, sujet_deja_traite=10
 Aucune brève de qualité suffisante ; fichiers JSON inchangés.
 Pages : 115 brèves avec leur propre page, sitemap à jour.
 Agenda : secret FOOTBALL_DATA_KEY absent, matchs.json inchangé.
@@ -31,8 +31,8 @@ Chaîne @ChampionsLeague : introuvable (HTTPError)
 Chaîne @UEFAChampionsLeague : introuvable (HTTPError)
 Ligue des champions : aucune chaîne officielle trouvée, ignorée.
 UEFA : flux illisible (HTTPError)
-Premier League : 15 vidéos lues, 2 vidéos de buts gardées.
-LaLiga : 15 vidéos lues, 4 vidéos de buts gardées.
+Premier League : flux illisible (HTTPError)
+LaLiga : flux illisible (HTTPError)
 Serie A : flux illisible (HTTPError)
 Bundesliga : flux illisible (HTTPError)
-Vidéos publiées : 38.
+Aucune vidéo trouvée : videos.json inchangé.
