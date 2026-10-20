@@ -264,6 +264,17 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 .srun{display:inline-block;white-space:nowrap;padding-left:100%;animation:tick 45s linear infinite;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem}
 .srun span{margin-right:2.2em}.srun .on{color:#ff6b7a}.srun .c{color:#ffdc72;font-size:.78rem;margin-right:.4em}
 @media(prefers-reduced-motion:reduce){.srun{animation:none;padding-left:0}}
+
+.poll{background:#fff;color:#0b1533;border:3px solid #000;border-radius:18px;box-shadow:5px 5px 0 #1d3fb8}
+.poll-in{padding:16px}
+.poll-tag{display:inline-block;background:#1d3fb8;color:#fff;font:700 .78rem/1 'Barlow Condensed',sans-serif;letter-spacing:.08em;padding:7px 12px;border-radius:999px}
+.poll h2{font-family:Anton,Impact,sans-serif;text-transform:uppercase;font-size:1.6rem;margin:8px 0 6px;line-height:1}
+.pq{margin:12px 0 0}.pq b{display:block;font-size:1.05rem;line-height:1.3;margin-bottom:8px}
+.po{position:relative;overflow:hidden;display:flex;justify-content:space-between;gap:8px;width:100%;text-align:left;font:600 .95rem/1.3 system-ui,sans-serif;padding:11px 12px;margin:6px 0;border-radius:12px;border:2px solid #0b1533;background:#f3f5fb;color:#0b1533;cursor:pointer}
+.po i{position:absolute;left:0;top:0;bottom:0;width:0;background:rgba(29,63,184,.18);transition:width .5s}
+.po span,.po em{position:relative}.po em{font-style:normal;font-weight:800}
+.po.me{border-color:#1d3fb8;box-shadow:0 0 0 2px #1d3fb8}
+.pinfo{font-size:.8rem;color:#4e5b7d}
 /* Accueil allégé */
 .tonight{display:grid;gap:16px;margin:18px 0 26px}
 @media(min-width:1000px){.tonight{grid-template-columns:1.4fr 1fr;align-items:start}}
@@ -338,7 +349,7 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 </section>
 <main id="top" class="gutter max-w-6xl mx-auto" style="padding-block:24px 56px">
 <nav class="quick" aria-label="Accès rapide">
-<a href="#prono" class="qt q-vid"><span class="qi">🔮</span><b>Prono du soir</b><small>Donne ton avis</small></a>
+<a href="#sondages" class="qt q-vid"><span class="qi">🗳️</span><b>Sondage du jour</b><small>Donne ton avis</small></a>
 <a href="/soutenir.html" class="qt q-don"><span class="qi">💛</span><b>Soutenir</b><small>Aider le média</small></a>
 <a href="/gaming.html" class="qt q-arena"><span class="qi">🏆</span><b>Tournois EA FC</b><small><span class="arena-dot" id="arenaDot" style="background:#9aa3b8"></span> <span id="arenaLiveTxt">Communauté Discord</span></small></a>
 <a href="#pastille-tv" class="qt q-pas"><span class="qi">📺</span><b>La Pastille TV</b><small>Émissions du jour</small></a>
@@ -356,7 +367,10 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 <button type="button" class="bell" id="bellBtn">🔔 Recevoir les buts en notification</button>
 <div class="lres-row" id="liveRow"><p class="lempty">Les matchs de Ligue 1 et de Ligue des champions du jour s’affichent ici.</p></div>
 </section>
-<div class="tonight"><section class="ptv" id="pastille-tv" aria-labelledby="t-ptv">
+<div class="tonight"><section class="poll" id="sondages" aria-labelledby="t-poll" hidden>
+<div class="poll-in"><span class="poll-tag">🗳️ LE SONDAGE VM</span><h2 id="t-poll">Ton avis compte</h2><div id="pollList"></div></div>
+</section>
+<section class="ptv" id="pastille-tv" aria-labelledby="t-ptv">
 <div class="ptv-in">
 <div class="ptv-head"><span class="ptv-live">📺 LA PASTILLE TV</span><h2 id="t-ptv">Les émissions du jour</h2><p>Journaux matin · midi · soir, spéciales avant-match et débats du soir, par nos chroniqueurs VM. Générées par IA.</p></div>
 <div class="ptv-main" id="ptvMain"><a class="ptv-big" href="/studio.html#tv"><span class="ptv-play">▶</span><b>Voir les émissions</b></a></div>
@@ -577,7 +591,7 @@ fetch('/studio/emissions.json?v='+Date.now(),{cache:'no-store'}).then(function(r
 (function(){
 var $=function(i){return document.getElementById(i)},C='https://countapi.mileshilliard.com/api/v1/';
 fetch('/prono.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(p){
- if(!p||!p.match)return;var age=Date.now()-Date.parse(p.date);if(!(age<30*3600000))return;
+ if(!p||!p.match)return;var age=Date.now()-Date.parse(p.date);if(!(age<30*3600000))return;if(p.fin&&Date.now()>Date.parse(p.fin))return;
  $('pMatch').textContent=p.match;$('pSub').textContent=p.competition+' · '+p.heure;$('pScore').textContent=p.score;$('pAvis').textContent=p.avis||'';
  $('pFaits').innerHTML='';(p.faits||[]).forEach(function(f){var li=document.createElement('li');li.textContent=f;$('pFaits').appendChild(li)});
  var opts=[['dom',p.dom],['nul','Match nul'],['ext',p.ext]],key=function(k){return 'vm-prono-'+String(p.id).replace(/[^a-z0-9-]/gi,'')+'-'+k},mine=null;
@@ -617,5 +631,26 @@ load();setInterval(load,60000);
 b.onclick=function(){m.hidden=false;document.getElementById('nClose').focus();};
 document.getElementById('nClose').onclick=function(){m.hidden=true;b.focus();};
 m.onclick=function(e){if(e.target===m)m.hidden=true;};document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=true;});})();
+</script>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},C='https://countapi.mileshilliard.com/api/v1/';
+function k(p,i){return 'vm-sondage-'+String(p.id).replace(/[^a-z0-9-]/gi,'')+'-'+i}
+function get(key){return fetch(C+'get/'+key,{cache:'no-store'}).then(function(r){return r.ok?r.json():{}}).then(function(j){var v=j&&(j.value!=null?j.value:j.count);return typeof v==='number'?v:0}).catch(function(){return 0})}
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function render(p,box){var mine=null;try{mine=localStorage.getItem('vm-sondage-'+p.id)}catch(e){}
+ var q=el('div','pq');q.appendChild(el('b',null,p.question));var btns=[];
+ p.options.forEach(function(o,i){var b=el('button','po');b.type='button';b.appendChild(el('i'));b.appendChild(el('span',null,o));b.appendChild(el('em',null,''));q.appendChild(b);btns.push(b);
+  b.onclick=function(){if(mine!=null)return;mine=String(i);try{localStorage.setItem('vm-sondage-'+p.id,mine)}catch(e){}fetch(C+'hit/'+k(p,i),{cache:'no-store'}).then(show,show)}});
+ var info=el('p','pinfo','');q.appendChild(info);box.appendChild(q);
+ function show(){Promise.all(p.options.map(function(o,i){return get(k(p,i))})).then(function(n){var t=n.reduce(function(a,b){return a+b},0);
+  btns.forEach(function(b,i){var pc=t?Math.round(n[i]*100/t):0;b.querySelector('i').style.width=(mine!=null?pc:0)+'%';b.querySelector('em').textContent=mine!=null&&t?pc+' %':'';b.classList.toggle('me',mine===String(i))});
+  info.textContent=mine!=null?(t+(t>1?' votes':' vote')+' · merci !'):'Touche ta réponse pour voir les résultats'})}
+ show()}
+fetch('/sondage.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():[]}).then(function(rows){
+ var now=Date.now(),list=(Array.isArray(rows)?rows:[]).filter(function(p){return p&&p.question&&Array.isArray(p.options)&&p.options.length>1&&(!p.debut||Date.parse(p.debut)<=now)&&(!p.fin||Date.parse(p.fin)>now)}).slice(0,3);
+ if(!list.length)return;var box=$('pollList');list.forEach(function(p){render(p,box)});$('sondages').hidden=false;
+}).catch(function(){});
+})();
 </script>
 </body></html>
