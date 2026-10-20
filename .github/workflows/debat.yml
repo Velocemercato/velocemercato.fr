@@ -32,7 +32,9 @@ jobs:
 
       - name: Voix de synthèse (Piper, gratuit) et outils
         run: |
-          sudo apt-get install -y -qq espeak-ng >/dev/null 2>&1 || true
+          sudo apt-get update -qq >/dev/null 2>&1 || true
+          sudo apt-get install -y -qq ffmpeg espeak-ng >/dev/null 2>&1
+          ffmpeg -version | head -1
           pip install --quiet "piper-tts==1.2.0" pillow 2>&1 | tail -2 || true
 
       - name: Cache des voix
