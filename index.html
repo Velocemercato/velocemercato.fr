@@ -232,6 +232,20 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 .prono-vote small{color:#c9d3f5}
 .prono-warn{font-size:.8rem;color:#aab4d3;margin:12px 0 0}
 
+
+.live{margin:4px 0 18px;background:#060b1d;color:#fff;border:3px solid #000;border-radius:16px;padding:12px 12px 14px;box-shadow:5px 5px 0 #e1243a}
+.live-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.live h2{margin:0;font:700 1rem/1.1 'Barlow Condensed',sans-serif;letter-spacing:.06em;display:flex;align-items:center;gap:8px}
+.ldot{width:10px;height:10px;border-radius:50%;background:#ff4d61;box-shadow:0 0 10px #ff4d61;animation:blink 1.4s infinite}
+.live small{color:#9aa6c8;font-size:.75rem}
+.live-row{display:flex;gap:10px;overflow-x:auto;padding:10px 2px 2px;scrollbar-width:thin}
+.lm{flex:none;min-width:170px;background:#101833;border:2px solid #2a3560;border-radius:12px;padding:8px 10px}
+.lm.on{border-color:#ff4d61;box-shadow:0 0 0 1px #ff4d61}
+.lm .c{font:700 .68rem/1 'Barlow Condensed',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#ffdc72}
+.lm .t{display:flex;justify-content:space-between;gap:8px;margin-top:5px;font-weight:600;font-size:.92rem}
+.lm .t b{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:1.05rem}
+.lm .s{margin-top:5px;font:700 .72rem/1 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.05em;color:#9aa6c8}
+.lm.on .s{color:#ff4d61}
 /* Accueil allégé */
 .tonight{display:grid;gap:16px;margin:18px 0 26px}
 @media(min-width:1000px){.tonight{grid-template-columns:1.4fr 1fr;align-items:start}}
@@ -303,6 +317,10 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 <a href="/gaming.html" class="qt q-arena"><span class="qi">🏆</span><b>Tournois EA FC</b><small><span class="arena-dot" id="arenaDot" style="background:#9aa3b8"></span> <span id="arenaLiveTxt">Communauté Discord</span></small></a>
 <a href="#pastille-tv" class="qt q-pas"><span class="qi">📺</span><b>La Pastille TV</b><small>Émissions du jour</small></a>
 </nav>
+<section class="live" id="live" aria-labelledby="t-live" hidden>
+<div class="live-head"><h2 id="t-live"><span class="ldot"></span>RÉSULTATS · LIGUE 1 & LIGUE DES CHAMPIONS</h2><small id="liveMaj"></small></div>
+<div class="live-row" id="liveRow"></div>
+</section>
 <div class="tonight"><section class="ptv" id="pastille-tv" aria-labelledby="t-ptv">
 <div class="ptv-in">
 <div class="ptv-head"><span class="ptv-live">📺 LA PASTILLE TV</span><h2 id="t-ptv">Les émissions du jour</h2><p>Journaux matin · midi · soir, spéciales avant-match et débats du soir, par nos chroniqueurs VM. Générées par IA.</p></div>
@@ -528,6 +546,23 @@ fetch('/prono.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.
  $('pVote').querySelectorAll('button').forEach(function(b){b.onclick=function(){if(mine)return;mine=b.dataset.k;try{localStorage.setItem('vm-prono-'+p.id,mine)}catch(e){}fetch(C+'hit/'+key(mine),{cache:'no-store'}).then(show,show);}});
  $('prono').hidden=false;show();
 }).catch(function(){});
+})();
+</script>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+var HM=new Intl.DateTimeFormat('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Paris'}),DAY=new Intl.DateTimeFormat('fr-FR',{weekday:'short',timeZone:'Europe/Paris'});
+function load(){fetch('/scores.json?v='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){
+ var ms=(j&&j.matchs)||[];if(!ms.length){$('live').hidden=true;return}
+ var live=ms.filter(function(m){return m.statut==='IN_PLAY'||m.statut==='PAUSED'});
+ var order=live.concat(ms.filter(function(m){return live.indexOf(m)<0}).sort(function(a,b){var fa=a.statut==='FINISHED',fb=b.statut==='FINISHED';if(fa!==fb)return fa?1:-1;return String(a.date).localeCompare(String(b.date))}));
+ $('liveRow').innerHTML=order.map(function(m){var on=m.statut==='IN_PLAY'||m.statut==='PAUSED',fin=m.statut==='FINISHED',d=new Date(m.date),sc=m.score||[];
+  var st=on?(m.statut==='PAUSED'?'● Mi-temps':'● En direct'):fin?'Terminé · '+DAY.format(d):(m.statut==='POSTPONED'?'Reporté':DAY.format(d)+' · '+HM.format(d));
+  var show=on||fin;return '<div class="lm'+(on?' on':'')+'"><div class="c">'+esc(m.comp)+'</div><div class="t"><span>'+esc(m.dom)+'</span><b>'+(show?esc(sc[0]):'')+'</b></div><div class="t"><span>'+esc(m.ext)+'</span><b>'+(show?esc(sc[1]):'')+'</b></div><div class="s">'+st+'</div></div>'}).join('');
+ $('liveMaj').textContent=j.maj?'Source football-data.org · mis à jour à '+HM.format(new Date(j.maj)):'';$('live').hidden=false;
+}).catch(function(){});}
+load();setInterval(load,60000);
 })();
 </script>
 </body></html>

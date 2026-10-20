@@ -1,0 +1,36 @@
+name: Resultats en direct
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/5 10-22 * * *'   # toutes les 5 minutes, de midi à minuit (heure de Paris l'été)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scores
+  cancel-in-progress: true
+
+jobs:
+  scores:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Lire les scores (football-data.org)
+        env:
+          FOOTBALL_DATA_KEY: ${{ secrets.FOOTBALL_DATA_KEY }}
+        run: python update_scores.py
+      - name: Enregistrer
+        run: |
+          [ -f scores.json ] || exit 0
+          git add scores.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Résultats en direct'
+          for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 4; done
