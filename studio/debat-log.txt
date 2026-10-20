@@ -1,17 +1,2 @@
 Voix : Piper
-Traceback (most recent call last):
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_debat.py", line 342, in <module>
-    main()
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_debat.py", line 319, in main
-    total, engines = build_video(script, mp4)
-                     ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_debat.py", line 278, in build_video
-    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'lavfi', '-i', 'anullsrc=r=22050:cl=mono', '-t', '4', str(tmp / 'sil4.wav')], check=True)
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 548, in run
-    with Popen(*popenargs, **kwargs) as process:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 1026, in __init__
-    self._execute_child(args, executable, preexec_fn, close_fds,
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 1955, in _execute_child
-    raise child_exception_type(errno_num, err_msg, err_filename)
-FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+Débat prêt : Débat VM : PSG-Barça, Güler au milieu et Ballon d'or of All-Time · 26 répliques · 344 s · brouillon à valider · studio/brouillons/debat-2026-10-20-18h17.mp4
