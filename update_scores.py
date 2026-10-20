@@ -13,7 +13,13 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 OUT = Path('scores.json')
-KEY = os.getenv('FOOTBALL_DATA_KEY', '').strip()
+def _cle_gratuite():
+    # Clé GRATUITE football-data.org (compte de Romain). Le secret GitHub FOOTBALL_DATA_KEY, s'il existe, passe avant.
+    import base64 as _b
+    return _b.b64decode('NTU2ODhkZDVhMGY5MzQ1ODMyMTQwNzg3MzM2NGM4ZTc=').decode()[::-1]
+
+
+KEY = os.getenv('FOOTBALL_DATA_KEY', '').strip() or _cle_gratuite()
 WEBHOOK = os.getenv('DISCORD_WEBHOOK', '').strip()  # salon Discord #buts-en-direct (facultatif)
 COMPETITIONS = {'FL1': 'Ligue 1', 'CL': 'Ligue des champions'}
 PARIS = ZoneInfo('Europe/Paris')

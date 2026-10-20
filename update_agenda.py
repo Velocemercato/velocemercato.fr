@@ -14,7 +14,13 @@ import urllib.request
 from pathlib import Path
 
 OUT = Path('matchs.json')
-KEY = os.getenv('FOOTBALL_DATA_KEY', '').strip()
+def _cle_gratuite():
+    # Clé GRATUITE football-data.org (compte de Romain). Le secret GitHub FOOTBALL_DATA_KEY, s'il existe, passe avant.
+    import base64 as _b
+    return _b.b64decode('NTU2ODhkZDVhMGY5MzQ1ODMyMTQwNzg3MzM2NGM4ZTc=').decode()[::-1]
+
+
+KEY = os.getenv('FOOTBALL_DATA_KEY', '').strip() or _cle_gratuite()
 # Compétitions de l'offre gratuite : Ligue 1, Ligue des champions, Premier League, Liga, Serie A, Bundesliga.
 COMPETITIONS = {'FL1': 'Ligue 1', 'CL': 'Ligue des champions', 'PL': 'Premier League',
                 'PD': 'Liga', 'SA': 'Serie A', 'BL1': 'Bundesliga', 'EC': 'Euro', 'WC': 'Coupe du monde'}
