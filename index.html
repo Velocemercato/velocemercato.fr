@@ -200,6 +200,22 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 .feedbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;margin-top:22px}
 .more-btn{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:1.05rem;padding:12px 24px;border-radius:999px;background:var(--royal);color:#fff;border:3px solid var(--line);box-shadow:4px 4px 0 var(--line);cursor:pointer}
 .more-link{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--royal);text-decoration:underline}
+
+.ptv{background:linear-gradient(180deg,#060b1d,#0c1430);color:#fff;border-top:4px solid #e1243a;border-bottom:4px solid #e1243a}
+.ptv-in{max-width:72rem;margin:0 auto;padding:22px 16px 26px}
+.ptv-live{display:inline-flex;align-items:center;gap:8px;background:#e1243a;color:#fff;font:700 .8rem/1 'Barlow Condensed',sans-serif;letter-spacing:.1em;padding:7px 12px;border-radius:999px}
+.ptv h2{font-family:Anton,Impact,sans-serif;text-transform:uppercase;font-size:clamp(1.6rem,4vw,2.4rem);margin:10px 0 4px;line-height:1}
+.ptv-head p{margin:0 0 14px;color:#c9d3f5}
+.ptv-main video{display:block;width:100%;aspect-ratio:16/9;background:#000;border-radius:14px;border:3px solid #000;box-shadow:6px 6px 0 #e1243a}
+.ptv-cap{margin:10px 2px 0;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#ffdc72}
+.ptv-big{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;aspect-ratio:16/9;border-radius:14px;background:#000 url('/img/v2-mercato-800.webp') center/cover;color:#fff;text-decoration:none;border:3px solid #000}
+.ptv-play{width:74px;height:74px;border-radius:50%;background:#e1243a;display:grid;place-items:center;font-size:30px;box-shadow:0 0 0 6px rgba(255,255,255,.25)}
+.ptv-more{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+@media(min-width:900px){.ptv-more{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.ptv-more a{display:block;color:#fff;text-decoration:none;background:#101833;border:2px solid #000;border-radius:12px;overflow:hidden}
+.ptv-more img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.ptv-more span{display:block;padding:7px 9px;font-size:.85rem;line-height:1.25}.ptv-more small{display:block;color:#ffdc72;font-size:.72rem;font-weight:700;text-transform:uppercase}
+.ptv-all{display:inline-block;margin-top:14px;background:#f4cf55;color:#0b1533;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:11px 18px;border-radius:999px;border:2px solid #000;text-decoration:none}
 /* Fil express (titres de la presse) */
 .fx{margin-top:34px}.fx h2{font-family:Bangers,Impact,sans-serif;font-size:2.1rem;letter-spacing:.04em;line-height:1;margin:0 0 4px}
 .fx .fxs{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:.8rem;letter-spacing:.08em;color:var(--muted);margin:0 0 12px}
@@ -222,9 +238,10 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 .vmbar a.on{color:#04060f;background:#fff}
 .vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
 .vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
+.vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
 @media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
 </style></head>
-<body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/" aria-label="Accueil Véloce Mercato">VM</a><a class="f on" href="/" aria-current="page">⚽ Foot</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="s" href="/studio.html">🎙️ Studio</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
+<body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/" aria-label="Accueil Véloce Mercato">VM</a><a class="f on" href="/" aria-current="page">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
 <header class="sticky z-50" style="top:env(safe-area-inset-top,0px);background:var(--head)"><div class="tricolore"></div><div class="gutter max-w-6xl mx-auto flex items-center justify-between gap-3" style="padding-block:12px"><a href="#top" class="logo text-[1.7rem] sm:text-4xl" aria-label="Véloce Mercato, accueil"><span class="streak" aria-hidden="true"></span>VÉLOCE <b>MERCATO</b></a><button id="themeBtn" type="button" class="shrink-0 flex items-center gap-2 font-cond font-bold uppercase tracking-wider text-sm px-3 py-2 rounded-full border-2" style="border-color:var(--gold-hi);color:var(--gold-hi)" aria-pressed="false"><svg id="themeIco" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg><span id="themeTxt" class="hidden sm:inline">Mode sombre</span></button></div>
 <nav class="gutter max-w-6xl mx-auto overflow-x-auto" aria-label="Catégories" style="padding-block:0 12px"><div id="cats" class="flex gap-2 w-max">
 <button class="chip" type="button" data-cat="TOUT" aria-pressed="true">Tout</button>
@@ -248,10 +265,20 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 <span class="v2-eye">Mis à jour toutes les 30 minutes</span>
 <h1 id="v2-title">Toute l'actu foot,<br><em>simple et rapide.</em></h1>
 <p class="v2-lead">Mercato, Ligue 1, Ligue 2, National, Bleus et foot féminin : l'essentiel, avec la source, expliqué simplement.</p>
-<div class="v2-btns"><a class="b1" href="#feed-title">⚡ Le fil du jour</a><a class="b2" href="#videos">🎬 Vidéos</a><a class="b3" href="/soutenir.html">💛 Soutenir</a></div>
+<div class="v2-btns"><a class="b1" href="#feed-title">⚡ Le fil du jour</a><a class="b2" href="#pastille-tv">📺 Pastille TV</a><a class="b3" href="/soutenir.html">💛 Soutenir</a></div>
 <a class="v2-dc" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener"><i id="v2Dot"></i><span id="v2DotTxt">Rejoindre la communauté Discord</span></a>
 </div>
 </div>
+</section>
+<section class="ptv" id="pastille-tv" aria-labelledby="t-ptv">
+<div class="ptv-in">
+<div class="ptv-head"><span class="ptv-live">📺 LA PASTILLE TV</span><h2 id="t-ptv">Les émissions du jour</h2><p>Journaux matin · midi · soir, spéciales avant-match et débats du soir, par nos chroniqueurs VM. Générées par IA.</p></div>
+<div class="ptv-main" id="ptvMain"><a class="ptv-big" href="/studio.html#tv"><span class="ptv-play">▶</span><b>Voir les émissions</b></a></div>
+<div class="ptv-more" id="ptvMore"></div>
+<a class="ptv-all" href="/studio.html#tv">Toutes les émissions →</a>
+</div>
+</section>
+<section class="v2" aria-label="Les univers VM">
 <div class="v2-uni">
 <h2>Les univers <span>VM</span></h2>
 <div class="v2-cards">
@@ -427,6 +454,20 @@ fetch('fil.json?v='+Math.floor(Date.now()/300000),{cache:'no-store'}).then(funct
  shown=12;draw();if(j.maj)$('fxMaj').textContent='mis à jour à '+hm(j.maj);
 }).catch(function(){$('presse').hidden=true});
 $('fxMore').onclick=function(){shown+=16;draw()};
+})();
+</script>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},U={foot:'⚽ Foot',actus:'📰 Actus',gaming:'🎮 Gaming'};
+function esc(x){return String(x||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function ok(x){return typeof x==='string'&&/^https:\/\/cdn\.jsdelivr\.net\/gh\/Velocemercato\/velocemercato\.fr@[0-9a-f]{40}\//.test(x)}
+function mn(s){return Math.max(1,Math.round(s/60))+' min'}
+fetch('/studio/emissions.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():[]}).then(function(rows){
+ var list=(Array.isArray(rows)?rows:[]).filter(function(e){return e&&e.publie===true&&ok(e.video)});if(!list.length)return;
+ var first=list.find(function(e){return e.univers==='foot'})||list[0];
+ $('ptvMain').innerHTML='<video controls playsinline preload="none" poster="'+esc(ok(first.image)?first.image:'')+'" src="'+esc(first.video)+'"></video><p class="ptv-cap">'+esc((U[first.univers]||'')+' · '+first.label+' · '+mn(first.duree)+' — '+first.titre)+'</p>';
+ $('ptvMore').innerHTML=list.filter(function(e){return e!==first}).slice(0,4).map(function(e){return '<a href="/studio.html#tv='+encodeURIComponent(e.id)+'">'+(ok(e.image)?'<img src="'+esc(e.image)+'" alt="" loading="lazy">':'')+'<span><small>'+esc((U[e.univers]||'')+' · '+e.label)+'</small>'+esc(e.titre)+'</span></a>'}).join('');
+}).catch(function(){});
 })();
 </script>
 </body></html>

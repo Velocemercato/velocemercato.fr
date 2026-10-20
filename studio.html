@@ -44,19 +44,7 @@ h2{font:400 2rem/1 Impact,Anton,sans-serif;text-transform:uppercase;margin:34px 
 .note{margin-top:26px;font-size:.88rem;color:var(--muted);border-left:4px solid var(--gold);padding-left:12px}
 footer{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 34px}footer a{color:var(--gold)}
 </style>
-<style id="vmbar-css">
-.vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:relative;z-index:70}
-.vmbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:6px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
-.vmbar-in::-webkit-scrollbar{display:none}
-.vmbar a{flex:none;color:#cfd6ea;text-decoration:none;padding:7px 10px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
-.vmbar a:hover{background:rgba(255,255,255,.08);color:#fff}
-.vmbar a:focus-visible{outline:2px solid #f4cf55;outline-offset:2px}
-.vmbar .vmb-logo{font:italic 900 16px/1 Impact,"Arial Black",sans-serif;color:#04060f;background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);padding:6px 9px;border-radius:8px;margin-right:4px;letter-spacing:.02em}
-.vmbar a.on{color:#04060f;background:#fff}
-.vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
-.vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
-@media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
-</style><style id="tv-css">
+<style id="tv-css">
 .tv{max-width:1000px;margin:20px auto 34px;padding:18px;background:#060b1d;color:#f3f6ff;border:3px solid #000;border-radius:18px;box-shadow:6px 6px 0 #f4cf55}
 .tv h2{font:italic 900 clamp(1.8rem,5vw,2.6rem)/1 Impact,'Arial Black',sans-serif;margin:0 0 6px;color:#f4cf55;letter-spacing:.02em}
 .tv-head p{margin:0 0 12px;color:#c9d3f5}
@@ -74,8 +62,21 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 3
 .tv-list img{width:120px;height:68px;object-fit:cover;border-radius:8px;flex:none;background:#000}
 .tv-list b{display:block;font-size:.92rem;line-height:1.25}.tv-list small{color:#c9d3f5;font-size:.75rem}
 .tv-empty{color:#c9d3f5}
+</style><style id="vmbar-css">
+.vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:relative;z-index:70}
+.vmbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:6px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
+.vmbar-in::-webkit-scrollbar{display:none}
+.vmbar a{flex:none;color:#cfd6ea;text-decoration:none;padding:7px 10px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.vmbar a:hover{background:rgba(255,255,255,.08);color:#fff}
+.vmbar a:focus-visible{outline:2px solid #f4cf55;outline-offset:2px}
+.vmbar .vmb-logo{font:italic 900 16px/1 Impact,"Arial Black",sans-serif;color:#04060f;background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);padding:6px 9px;border-radius:8px;margin-right:4px;letter-spacing:.02em}
+.vmbar a.on{color:#04060f;background:#fff}
+.vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
+.vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
+.vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
+@media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
 </style></head>
-<body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/" aria-label="Accueil Véloce Mercato">VM</a><a class="f" href="/">⚽ Foot</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="s on" href="/studio.html" aria-current="page">🎙️ Studio</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
+<body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/" aria-label="Accueil Véloce Mercato">VM</a><a class="f" href="/">⚽ Foot</a><a class="s on" href="/studio.html#tv" aria-current="page">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
 <header><a class="logo" href="/">VÉLOCE <b>MERCATO</b></a><nav><a href="/">Brèves</a><a href="/#videos">Vidéos</a><a href="/archives.html">Rechercher</a><a class="don" href="/soutenir.html">💛 Soutenir</a></nav></header>
 <main>
 <section class="tv" id="tv" aria-labelledby="t-tv">
