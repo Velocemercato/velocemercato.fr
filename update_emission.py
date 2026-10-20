@@ -159,6 +159,7 @@ def make(univers, fmt, moment):
     script['sous_titre'] = label + ' · ' + dt.datetime.now(D.PARIS).strftime('%d/%m')
     D.PERSOS = U['persos']
     D.BG_IMG = U['bg']
+    D.FOOT_MODE = univers == 'foot'
     D.SHOW = U['nom'].upper()
     D.OUTRO_SMALL = f'Merci d’avoir suivi {U["nom"]} !'
     now = dt.datetime.now(D.PARIS)

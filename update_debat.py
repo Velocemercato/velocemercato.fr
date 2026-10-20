@@ -41,6 +41,37 @@ OUTRO_SMALL = 'Merci d’avoir suivi le Débat VM !'
 FOOT_NOTE = 'Fiction humoristique générée par IA · faits tirés des brèves de velocemercato.fr'
 PARIS = robot.PARIS
 
+# Mode foot : grandes images de foot à gauche, et l'écharpe aux couleurs du club dont on parle
+# (couleurs seulement, jamais de logo officiel).
+FOOT_MODE = True
+FOOT_SCENES = [('img/v2-mercato.webp', (980, 250, 1440, 700)), ('img/v2-mercato.webp', (1000, 420, 1440, 810)),
+               ('img/banniere-foot.webp', (560, 0, 1140, 624)), ('img/v2-mercato.webp', (0, 0, 560, 640)),
+               ('img/v2-mercato.webp', (700, 0, 1240, 520))]
+CLUBS = [  # (motif, nom affiché, couleurs)
+    (r'\bPSG\b|Paris Saint-Germain|Parisiens?', 'PARIS', [(10, 30, 92), (218, 41, 28), (255, 255, 255)]),
+    (r'Barça|Barca|Barcelone|Catalans?', 'BARCELONE', [(0, 77, 152), (165, 0, 68)]),
+    (r'\bOM\b|Marseille|Marseillais', 'MARSEILLE', [(255, 255, 255), (47, 174, 224)]),
+    (r'\bOL\b|Lyon|Lyonnais', 'LYON', [(255, 255, 255), (0, 51, 160), (218, 41, 28)]),
+    (r'\bReal\b|Madrid|Merengue', 'MADRID', [(255, 255, 255), (254, 190, 16)]),
+    (r'Lille|LOSC|Dogues', 'LILLE', [(218, 41, 28), (10, 30, 92)]),
+    (r'Monaco|Monégasques?', 'MONACO', [(218, 41, 28), (255, 255, 255)]),
+    (r'\bLens\b|Sang et Or', 'LENS', [(255, 214, 0), (218, 41, 28)]),
+    (r'Rennes|Rennais', 'RENNES', [(218, 41, 28), (20, 20, 20)]),
+    (r'\bNice\b|Niçois', 'NICE', [(218, 41, 28), (20, 20, 20)]),
+    (r'Nantes|Canaris', 'NANTES', [(255, 214, 0), (0, 128, 60)]),
+    (r'Strasbourg', 'STRASBOURG', [(0, 90, 170), (255, 255, 255)]),
+    (r'Bayern', 'MUNICH', [(220, 5, 45), (255, 255, 255)]),
+    (r'Arsenal|Gunners', 'ARSENAL', [(239, 1, 7), (255, 255, 255)]),
+    (r'Liverpool|Reds\b', 'LIVERPOOL', [(200, 16, 46), (246, 235, 97)]),
+    (r'Manchester City|\bCity\b', 'MANCHESTER', [(108, 171, 221), (255, 255, 255)]),
+    (r'Juventus|Juve\b', 'TURIN', [(20, 20, 20), (255, 255, 255)]),
+    (r'\bInter\b', 'INTER', [(0, 104, 168), (20, 20, 20)]),
+    (r'\bMilan\b', 'MILAN', [(251, 9, 11), (20, 20, 20)]),
+    (r'Dortmund', 'DORTMUND', [(253, 225, 0), (20, 20, 20)]),
+    (r'Bleus|équipe de France|Bleues', 'FRANCE', [(0, 35, 149), (255, 255, 255), (237, 41, 57)]),
+]
+CURRENT_CLUB = [None]
+
 PERSOS = {
     'PRESENTATEUR': {'nom': 'Le Présentateur', 'role': 'Il anime le débat', 'img': 'img/avatar-veloce.webp',
                      'voix': ('upmc', 'medium', 1), 'esp': 'fr+m3', 'couleur': (244, 207, 85)},
@@ -205,15 +236,59 @@ def chunks(text, max_chars=150):
     return parts
 
 
-def frame(bg, perso, sub, title, order):
+def club_of(text):
+    for pattern, name, colors in CLUBS:
+        if re.search(pattern, text, re.I):
+            return name, colors
+    return None
+
+
+def scarf(im, box, club):
+    x0, y0, x1, y1 = box
+    w, h = x1 - x0, y1 - y0
+    name, colors = club
+    band = Image.new('RGB', (w, h))
+    bd = ImageDraw.Draw(band)
+    stripe = 38
+    for i, x in enumerate(range(-h, w + stripe, stripe)):
+        bd.polygon([(x, h), (x + stripe, h), (x + stripe + h, 0), (x + h, 0)], fill=colors[i % len(colors)])
+    im.paste(band, (x0, y0))
+    d = ImageDraw.Draw(im)
+    d.rectangle(box, outline=(0, 0, 0), width=3)
+    f = font('Poppins-BoldItalic.ttf', 26)
+    tw = d.textlength(name, font=f)
+    d.rounded_rectangle(((x0 + x1 - tw) / 2 - 14, y0 + 6, (x0 + x1 + tw) / 2 + 14, y1 - 6), 10, fill=(0, 0, 0))
+    d.text(((x0 + x1 - tw) / 2, y0 + 7), name, font=f, fill='white')
+
+
+def frame(bg, perso, sub, title, order, scene=0):
     p = PERSOS[perso]
     im = bg.copy()
     d = ImageDraw.Draw(im)
-    # Portrait de celui qui parle
-    port = cover(Image.open(ROOT / p['img']).convert('RGB'), 470, 590)
-    im.paste((0, 0, 0), (36, 66, 36 + 470 + 8, 66 + 590 + 8))
-    im.paste(port, (40, 70))
-    d.rectangle((40, 70, 40 + 470, 70 + 590), outline=p['couleur'], width=5)
+    club = club_of(sub)
+    if club:
+        CURRENT_CLUB[0] = club
+    if FOOT_MODE:
+        # Grande image de foot, portrait du chroniqueur en médaillon, écharpe du club dont on parle
+        src, crop = FOOT_SCENES[scene % len(FOOT_SCENES)]
+        pic = cover(Image.open(ROOT / src).convert('RGB').crop(crop), 470, 590)
+        im.paste((0, 0, 0), (36, 66, 36 + 470 + 8, 66 + 590 + 8))
+        im.paste(pic, (40, 70))
+        ring = CURRENT_CLUB[0][1][0] if CURRENT_CLUB[0] else p['couleur']
+        port = cover(Image.open(ROOT / p['img']).convert('RGB'), 230, 230)
+        mask = Image.new('L', (230, 230), 0)
+        ImageDraw.Draw(mask).ellipse((0, 0, 229, 229), fill=255)
+        d.ellipse((52, 330, 52 + 246, 330 + 246), fill=(0, 0, 0))
+        d.ellipse((56, 334, 56 + 238, 334 + 238), fill=ring)
+        im.paste(port, (60, 338), mask)
+        if CURRENT_CLUB[0]:
+            scarf(im, (40, 70, 510, 124), CURRENT_CLUB[0])
+        d.rectangle((40, 70, 40 + 470, 70 + 590), outline=p['couleur'], width=5)
+    else:
+        port = cover(Image.open(ROOT / p['img']).convert('RGB'), 470, 590)
+        im.paste((0, 0, 0), (36, 66, 36 + 470 + 8, 66 + 590 + 8))
+        im.paste(port, (40, 70))
+        d.rectangle((40, 70, 40 + 470, 70 + 590), outline=p['couleur'], width=5)
     d.rounded_rectangle((60, 590, 490, 650), 14, fill=(0, 0, 0))
     d.text((78, 596), p['nom'].upper(), font=font('Poppins-BoldItalic.ttf', 30), fill=p['couleur'])
     d.text((80, 630), p['role'], font=font('Poppins-Medium.ttf', 15), fill=(230, 235, 245))
@@ -274,7 +349,12 @@ def build_video(script, out_mp4):
                  'Émission de fiction humoristique générée par IA · personnages inventés')
     intro.save(tmp / 'intro.png')
     segs.append(('intro.png', 4.0, None))
+    scene = 0
+    CURRENT_CLUB[0] = None
     for i, (perso, text) in enumerate(script['repliques']):
+        if perso == 'PRESENTATEUR' and i:
+            scene += 1
+            CURRENT_CLUB[0] = None
         wav = tmp / f'l{i:03d}.wav'
         engines.add(speak(text, perso, wav, use_piper))
         total = duration(wav) + 0.2
@@ -282,7 +362,7 @@ def build_video(script, out_mp4):
         weights = [len(c) for c in parts]
         for j, c in enumerate(parts):
             name = f'f{i:03d}_{j}.png'
-            frame(bg, perso, c, script['titre'], order).save(tmp / name)
+            frame(bg, perso, c, script['titre'], order, scene).save(tmp / name)
             segs.append((name, total * weights[j] / sum(weights), wav if j == 0 else None))
     outro = card(bg, OUTRO_BIG, OUTRO_SMALL,
                  'Fiction humoristique générée par IA · aucune déclaration réelle de joueurs')
