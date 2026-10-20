@@ -1,18 +1,6 @@
 {
  "matchs": [
   {
-   "id": 575360,
-   "date": "2026-10-20T16:45:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Fenerbahçe",
-   "ext": "Slavia Praha",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    2
-   ]
-  },
-  {
    "id": 575359,
    "date": "2026-10-20T16:45:00Z",
    "comp": "Ligue des champions",
@@ -25,39 +13,15 @@
    ]
   },
   {
-   "id": 575364,
-   "date": "2026-10-20T19:00:00Z",
+   "id": 575360,
+   "date": "2026-10-20T16:45:00Z",
    "comp": "Ligue des champions",
-   "dom": "Roma",
-   "ext": "Sl. Bratislava",
+   "dom": "Fenerbahçe",
+   "ext": "Slavia Praha",
    "statut": "FINISHED",
    "score": [
-    4,
-    0
-   ]
-  },
-  {
-   "id": 575366,
-   "date": "2026-10-20T19:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Napoli",
-   "ext": "Bodø/Glimt",
-   "statut": "FINISHED",
-   "score": [
-    4,
-    3
-   ]
-  },
-  {
-   "id": 575362,
-   "date": "2026-10-20T19:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Stuttgart",
-   "ext": "Atleti",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    1
+    2,
+    2
    ]
   },
   {
@@ -109,15 +73,39 @@
    ]
   },
   {
-   "id": 575368,
-   "date": "2026-10-21T16:45:00Z",
+   "id": 575366,
+   "date": "2026-10-20T19:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Como 1907",
-   "ext": "Man United",
-   "statut": "2026-10-21 15:45:00Z",
+   "dom": "Napoli",
+   "ext": "Bodø/Glimt",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    4,
+    3
+   ]
+  },
+  {
+   "id": 575362,
+   "date": "2026-10-20T19:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Stuttgart",
+   "ext": "Atleti",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    1
+   ]
+  },
+  {
+   "id": 575364,
+   "date": "2026-10-20T19:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Roma",
+   "ext": "Sl. Bratislava",
+   "statut": "FINISHED",
+   "score": [
+    4,
+    0
    ]
   },
   {
@@ -126,19 +114,19 @@
    "comp": "Ligue des champions",
    "dom": "Lille",
    "ext": "Galatasaray",
-   "statut": "2026-10-21 15:45:00Z",
+   "statut": "TIMED",
    "score": [
     null,
     null
    ]
   },
   {
-   "id": 575374,
-   "date": "2026-10-21T19:00:00Z",
+   "id": 575368,
+   "date": "2026-10-21T16:45:00Z",
    "comp": "Ligue des champions",
-   "dom": "Aston Villa",
-   "ext": "Viking",
-   "statut": "2026-10-21 18:00:00Z",
+   "dom": "Como 1907",
+   "ext": "Man United",
+   "statut": "TIMED",
    "score": [
     null,
     null
@@ -150,7 +138,7 @@
    "comp": "Ligue des champions",
    "dom": "Real Madrid",
    "ext": "RB Leipzig",
-   "statut": "2026-10-21 18:00:00Z",
+   "statut": "TIMED",
    "score": [
     null,
     null
@@ -162,7 +150,7 @@
    "comp": "Ligue des champions",
    "dom": "Real Betis",
    "ext": "Feyenoord",
-   "statut": "2026-10-21 18:00:00Z",
+   "statut": "TIMED",
    "score": [
     null,
     null
@@ -174,19 +162,19 @@
    "comp": "Ligue des champions",
    "dom": "Bayern",
    "ext": "Arsenal",
-   "statut": "2026-10-21 18:00:00Z",
+   "statut": "TIMED",
    "score": [
     null,
     null
    ]
   },
   {
-   "id": 575373,
+   "id": 575374,
    "date": "2026-10-21T19:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Club Brugge",
-   "ext": "RC Lens",
-   "statut": "2026-10-21 18:00:00Z",
+   "dom": "Aston Villa",
+   "ext": "Viking",
+   "statut": "TIMED",
    "score": [
     null,
     null
@@ -198,7 +186,7 @@
    "comp": "Ligue des champions",
    "dom": "Sporting CP",
    "ext": "LASK",
-   "statut": "2026-10-21 18:00:00Z",
+   "statut": "TIMED",
    "score": [
     null,
     null
@@ -210,12 +198,24 @@
    "comp": "Ligue des champions",
    "dom": "Inter",
    "ext": "Shaktar",
-   "statut": "2026-10-21 18:00:00Z",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 575373,
+   "date": "2026-10-21T19:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Club Brugge",
+   "ext": "RC Lens",
+   "statut": "TIMED",
    "score": [
     null,
     null
    ]
   }
  ],
- "maj": "2026-10-20T23:44:05Z"
+ "maj": "2026-10-20T23:46:00Z"
 }
