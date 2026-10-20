@@ -86,6 +86,11 @@ jobs:
         continue-on-error: true
         run: python update_videos.py 2>&1 | tee -a robot-log.txt
 
+      - name: Fil express (titres de la presse, sans IA, gratuit)
+        if: always()
+        continue-on-error: true
+        run: python update_fil.py 2>&1 | tee -a robot-log.txt
+
       - name: Validate JSON
         id: validate
         if: always()
@@ -96,7 +101,7 @@ jobs:
       - name: Save articles, flashs and report
         if: always() && steps.validate.outcome == 'success'
         run: |
-          git add articles.json flash.json robot-log.txt sitemap.xml a/ videos.json video-channels.json matchs.json
+          git add articles.json flash.json robot-log.txt sitemap.xml a/ videos.json video-channels.json matchs.json fil.json
           if git diff --cached --quiet; then
             echo 'Rien de nouveau.'
           else

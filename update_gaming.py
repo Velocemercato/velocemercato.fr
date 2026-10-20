@@ -14,8 +14,8 @@ import update_news as robot
 
 robot.ARTICLES = Path('vm-gaming/news.json')
 robot.FLASH = Path('vm-gaming/flash.json')
-robot.MAX_PER_RUN = 1 if robot.TEST_MODE else 4
-robot.MAX_PER_DAY = 50
+robot.MAX_PER_RUN = 1
+robot.MAX_PER_DAY = 16
 robot.MAX_AGE_HOURS = 48
 
 # (zone, jeu par défaut, média, flux) — les flux muets ou disparus sont simplement ignorés et notés dans le journal.

@@ -13,10 +13,10 @@ import update_news as robot
 
 robot.ARTICLES = Path('actus/news.json')
 robot.FLASH = Path('actus/flash.json')
-robot.MAX_PER_RUN = 2 if robot.TEST_MODE else 6
-robot.MAX_PER_DAY = 120
+robot.MAX_PER_RUN = 1 if robot.TEST_MODE else 2
+robot.MAX_PER_DAY = 36
 robot.MAX_AGE_HOURS = 24
-robot.MAX_REJECTS = 12
+robot.MAX_REJECTS = 6
 
 # (zone, rubrique par défaut, média, flux) — les flux muets ou disparus sont notés dans le journal.
 robot.FEEDS = [

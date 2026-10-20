@@ -13,8 +13,8 @@ import update_news as robot
 
 robot.ARTICLES = Path('psg/news.json')
 robot.FLASH = Path('psg/flash.json')
-robot.MAX_PER_RUN = 1 if robot.TEST_MODE else 3
-robot.MAX_PER_DAY = 15
+robot.MAX_PER_RUN = 1
+robot.MAX_PER_DAY = 6
 robot.MAX_AGE_HOURS = 168
 robot.MAX_REJECTS = 6
 
@@ -25,7 +25,6 @@ robot.FEEDS = [
     ('FRANCE', 'TRAVAIL', 'franceinfo', 'https://www.francetvinfo.fr/economie/emploi.rss'),
     ('FRANCE', 'RETRAITE', 'franceinfo', 'https://www.francetvinfo.fr/economie/retraite.rss'),
     ('FRANCE', 'LOGEMENT', 'franceinfo', 'https://www.francetvinfo.fr/economie/immobilier.rss'),
-    ('FRANCE', 'CONSO', 'franceinfo', 'https://www.francetvinfo.fr/economie/consommation.rss'),
     ('FRANCE', 'JUSTICE', 'franceinfo', 'https://www.francetvinfo.fr/societe/justice.rss'),
     ('FRANCE', 'AUTRE', 'franceinfo', 'https://www.francetvinfo.fr/economie.rss'),
 ]

@@ -30,10 +30,12 @@ FLASH = Path('flash.json')
 NOW = dt.datetime.now(dt.timezone.utc)
 PARIS = ZoneInfo('Europe/Paris')
 MAX_AGE_HOURS = 36
-MAX_PER_RUN = 8
-MAX_PER_DAY = 160
+MAX_PER_RUN = 2
+MAX_PER_DAY = 48          # budget serré : environ 1 brève par passage, réparties sur la journée
 MAX_ARTICLES_TO_EXAMINE = 30
-MAX_REJECTS = 15
+MAX_REJECTS = 6
+MAX_IGNORED = 4          # au-delà, on arrête le passage : chaque refus de l'IA coûte aussi
+MAX_CHARS = 3500         # texte envoyé à l'IA : assez pour les faits, moins cher
 # Rattrapage manuel (lancé depuis GitHub) : remonte plus loin dans le temps et rédige davantage de brèves.
 CATCH_UP = os.getenv('VM_RATTRAPAGE', '').strip() == '1'
 # Modèle rapide et économique ; on essaie le suivant si un modèle n'existe pas (HTTP 404).
@@ -42,13 +44,13 @@ MODELS = [m for m in dict.fromkeys([os.getenv('ANTHROPIC_MODEL', '').strip(),
 API_KEY = os.getenv('ANTHROPIC_API_KEY', '').strip()
 TEST_MODE = os.getenv('VM_TEST', '').strip() == '1'   # test : 2 brèves maximum
 if TEST_MODE:
-    MAX_PER_RUN = 2
+    MAX_PER_RUN = 1
 
 
 def apply_catch_up():
     """Réglages du rattrapage : 7 jours en arrière, jusqu'à 20 brèves."""
-    global MAX_AGE_HOURS, MAX_PER_RUN, MAX_ARTICLES_TO_EXAMINE, MAX_REJECTS
-    MAX_AGE_HOURS, MAX_PER_RUN, MAX_ARTICLES_TO_EXAMINE, MAX_REJECTS = 168, 20, 120, 30
+    global MAX_AGE_HOURS, MAX_PER_RUN, MAX_ARTICLES_TO_EXAMINE, MAX_REJECTS, MAX_IGNORED
+    MAX_AGE_HOURS, MAX_PER_RUN, MAX_ARTICLES_TO_EXAMINE, MAX_REJECTS, MAX_IGNORED = 168, 20, 120, 30, 30
 
 
 THINKING_OFF = [True]
@@ -227,13 +229,13 @@ def extract_article(url):
     if len(text) < 420:
         return None
     # Ne transmet à Claude qu'une portion raisonnable du texte pour un résumé de faits.
-    return text[:6500]
+    return text[:MAX_CHARS]
 
 
 def call_claude(system, user):
     """Appelle l'API Claude. La clé n'est jamais affichée dans les journaux."""
     while MODELS:
-        payload = {'model': MODELS[0], 'max_tokens': 4000,
+        payload = {'model': MODELS[0], 'max_tokens': 1200,
                    'system': system, 'messages': [{'role': 'user', 'content': user}]}
         if THINKING_OFF[0]:
             payload['thinking'] = {'type': 'disabled'}  # brève courte : pas besoin de réflexion, moins cher
@@ -379,6 +381,11 @@ def main():
     previous_today = sum(1 for a in old if str(a.get('id', '')).startswith('rss-v2-')
                          and (parse_date(str(a.get('publishedAt', ''))) or dt.datetime(2000, 1, 1, tzinfo=dt.timezone.utc)).astimezone(PARIS).date() == today)
     quota = min(MAX_PER_RUN, MAX_PER_DAY - previous_today)
+    if not CATCH_UP:
+        # Étale le budget du jour : à 12 h, on a droit à environ la moitié des brèves du jour.
+        paris = NOW.astimezone(PARIS)
+        hours = paris.hour + paris.minute / 60 + 0.5
+        quota = min(quota, int(MAX_PER_DAY * hours / 24 + 0.999) - previous_today)
     if quota <= 0:
         print(f'Limite de {MAX_PER_DAY} brèves par jour atteinte, aucune nouvelle publication.', flush=True)
         return
@@ -414,13 +421,16 @@ def main():
         if stats['rejet_lecture_ou_ia'] >= MAX_REJECTS:
             print('Trop de rejets IA dans ce passage : arrêt pour limiter le coût.', flush=True)
             break
+        if stats['non_pertinent'] >= MAX_IGNORED:
+            print('Assez de sujets refusés dans ce passage : arrêt pour limiter le coût.', flush=True)
+            break
         if similar_story(post['title'], previous_titles):
             stats['sujet_deja_traite'] += 1
             continue
         try:
             material = extract_article(post['url'])
             if material is None and len(post.get('feed_text', '')) >= 420:
-                material = post['feed_text'][:6500]
+                material = post['feed_text'][:MAX_CHARS]
             if material is None:
                 stats['source_inaccessible_ou_trop_courte'] += 1
                 continue
