@@ -246,6 +246,17 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 .lm .t b{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:1.05rem}
 .lm .s{margin-top:5px;font:700 .72rem/1 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.05em;color:#9aa6c8}
 .lm.on .s{color:#ff4d61}
+
+.bell{margin-top:10px;font:700 .95rem/1 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.05em;padding:10px 14px;border-radius:999px;border:2px solid #000;background:#5865f2;color:#fff;cursor:pointer;box-shadow:3px 3px 0 #000}
+.lempty{color:#9aa6c8;margin:4px 2px;font-size:.88rem}
+.nmodal{position:fixed;inset:0;z-index:90;background:rgba(5,9,23,.78);display:flex;align-items:center;justify-content:center;padding:16px}
+.nbox{background:#fff;color:#0b1533;max-width:440px;width:100%;border:3px solid #000;border-radius:18px;box-shadow:6px 6px 0 #5865f2;padding:18px 18px 16px;max-height:90vh;overflow:auto}
+.nbox h3{margin:0 0 6px;font-family:Anton,Impact,sans-serif;font-weight:400;font-size:1.5rem;line-height:1.1}
+.nbox ul,.nbox ol{margin:6px 0 10px 20px;padding:0}.nbox li{margin:4px 0}
+.nsmall{font-size:.82rem;color:#4e5b7d}
+.nbtns{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.njoin{background:#5865f2;color:#fff;text-decoration:none;font-weight:700;padding:11px 16px;border-radius:999px;border:2px solid #000}
+.nbtns button{font-weight:700;padding:11px 16px;border-radius:999px;border:2px solid #000;background:#fff;color:#0b1533;cursor:pointer}
 /* Accueil allégé */
 .tonight{display:grid;gap:16px;margin:18px 0 26px}
 @media(min-width:1000px){.tonight{grid-template-columns:1.4fr 1fr;align-items:start}}
@@ -317,9 +328,10 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 <a href="/gaming.html" class="qt q-arena"><span class="qi">🏆</span><b>Tournois EA FC</b><small><span class="arena-dot" id="arenaDot" style="background:#9aa3b8"></span> <span id="arenaLiveTxt">Communauté Discord</span></small></a>
 <a href="#pastille-tv" class="qt q-pas"><span class="qi">📺</span><b>La Pastille TV</b><small>Émissions du jour</small></a>
 </nav>
-<section class="lres" id="live" aria-labelledby="t-live" hidden>
+<section class="lres" id="live" aria-labelledby="t-live">
 <div class="lres-head"><h2 id="t-live"><span class="ldot"></span>RÉSULTATS · LIGUE 1 & LIGUE DES CHAMPIONS</h2><small id="liveMaj"></small></div>
-<div class="lres-row" id="liveRow"></div>
+<button type="button" class="bell" id="bellBtn">🔔 Recevoir les buts en notification</button>
+<div class="lres-row" id="liveRow"><p class="lempty">Les matchs de Ligue 1 et de Ligue des champions du jour s’affichent ici.</p></div>
 </section>
 <div class="tonight"><section class="ptv" id="pastille-tv" aria-labelledby="t-ptv">
 <div class="ptv-in">
@@ -390,6 +402,14 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 </main>
 <footer style="background:var(--head);color:var(--head-fg)"><div class="tricolore"></div><div class="gutter max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6" style="padding-block:34px"><div><p class="logo text-3xl"><span class="streak" aria-hidden="true"></span>VÉLOCE <b>MERCATO</b></p><p class="mt-3 text-sm opacity-75 flex flex-wrap items-center gap-2">Contact : <span id="mail" class="font-semibold select-all break-all">velocemercato.fr@gmail.com</span><button id="copyBtn" type="button" class="font-cond font-bold uppercase text-xs px-2 py-1 rounded-full border" style="border-color:var(--gold-hi);color:var(--gold-hi)">Copier</button></p></div><ul class="flex flex-wrap gap-3" aria-label="Réseaux Véloce Mercato"><li><a class="soc" href="https://www.instagram.com/veloce.mercato" target="_blank" rel="noopener" aria-label="Instagram">IG</a></li><li><a class="soc" href="https://www.tiktok.com/@velocemercato" target="_blank" rel="noopener" aria-label="TikTok">♪</a></li><li><a class="soc" href="https://www.youtube.com/@VeloceMercato" target="_blank" rel="noopener" aria-label="YouTube">▶</a></li><li><a class="soc" href="https://www.facebook.com/share/1cekdv2RrD/" target="_blank" rel="noopener" aria-label="Facebook">f</a></li><li><a class="soc" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener" aria-label="Discord">DC</a></li><li><a class="soc" href="https://www.twitch.tv/heineguez87" target="_blank" rel="noopener" aria-label="Twitch">TV</a></li></ul></div><div class="gutter max-w-6xl mx-auto border-t border-white/10 flex flex-wrap justify-between gap-2 text-xs opacity-60" style="padding-block:14px"><span>© <span id="yr"></span> Véloce Mercato. Tous droits réservés.</span><span>Reproduction interdite sans autorisation · <a href="/gaming.html" class="underline">Véloce Arena</a> · <a href="/soutenir.html" class="underline">Soutenir</a> · <a href="/studio.html" class="underline">VM Studio</a> · <a href="https://velocemercato.github.io/Papiers-sans-galere/" class="underline">Papiers Sans Galère</a> · <a href="/mentions-legales.html" class="underline">Mentions légales</a></span></div></footer>
 <div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mTitle"><div class="modal-box panel pop" style="border-radius:16px"><div id="mCover" class="cover cover-1"><div class="lines"></div></div><div class="p-5 sm:p-7 flex flex-col gap-3"><div class="flex items-center gap-3 flex-wrap"><span id="mBadge" class="badge"></span><time id="mTime" class="font-cond font-bold text-sm tabular" style="color:var(--muted)"></time><button id="mShare" type="button" class="ml-auto font-cond font-bold uppercase text-sm px-3 py-1.5 rounded-full text-white" style="background:var(--royal)">Partager ↗</button><button id="mClose" type="button" class=" font-cond font-bold uppercase text-sm px-3 py-1.5 rounded-full border-2" style="border-color:var(--line)">Fermer ✕</button></div><h3 id="mTitle" class="font-display uppercase text-2xl sm:text-3xl leading-tight"></h3><div id="mBody" class="leading-relaxed text-[1.05rem] flex flex-col gap-3"></div><div id="mSources" class="pt-3 mt-1 border-t-2 text-sm" style="border-color:var(--dot)"></div><p class="font-cond text-xs uppercase tracking-wider" style="color:var(--muted)">Véloce Mercato · Retrouvez les sources citées ci-dessus.</p></div></div></div>
+<div class="nmodal" id="notifModal" hidden role="dialog" aria-modal="true" aria-labelledby="nTitle"><div class="nbox">
+<h3 id="nTitle">🔔 Les buts en direct sur ton téléphone</h3>
+<p>Gratuit, via notre Discord. Tu reçois :</p>
+<ul><li>🟢 le <b>coup d’envoi</b></li><li>⚽ chaque <b>but</b> avec le score</li><li>⏸ la <b>mi-temps</b></li><li>🏁 la <b>fin du match</b> et le <b>score final</b></li></ul>
+<p class="nsmall">Ligue 1 et Ligue des champions, environ 5 minutes après l’action. Buteurs, passeurs et compositions arrivent bientôt.</p>
+<ol><li>Appuie sur <b>Rejoindre le Discord</b> (crée un compte gratuit si besoin).</li><li>Ouvre le salon <b>#général</b> (ou #buts-en-direct).</li><li>Appui long sur le salon → <b>Paramètres de notification</b> → <b>Tous les messages</b>.</li><li>C’est tout : les notifs arrivent même appli fermée 🔥</li></ol>
+<div class="nbtns"><a class="njoin" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener">💬 Rejoindre le Discord</a><button type="button" id="nClose">Fermer</button></div>
+</div></div>
 <div id="toast" class="toast panel px-4 py-2.5 font-cond font-bold uppercase text-sm rounded-full" hidden></div>
 <script>
 (function(){
@@ -554,7 +574,7 @@ var $=function(i){return document.getElementById(i)};
 function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 var HM=new Intl.DateTimeFormat('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Paris'}),DAY=new Intl.DateTimeFormat('fr-FR',{weekday:'short',timeZone:'Europe/Paris'});
 function load(){fetch('/scores.json?v='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){
- var ms=(j&&j.matchs)||[];if(!ms.length){$('live').hidden=true;return}
+ var ms=(j&&j.matchs)||[];if(!ms.length)return;
  var live=ms.filter(function(m){return m.statut==='IN_PLAY'||m.statut==='PAUSED'});
  var order=live.concat(ms.filter(function(m){return live.indexOf(m)<0}).sort(function(a,b){var fa=a.statut==='FINISHED',fb=b.statut==='FINISHED';if(fa!==fb)return fa?1:-1;return String(a.date).localeCompare(String(b.date))}));
  $('liveRow').innerHTML=order.map(function(m){var on=m.statut==='IN_PLAY'||m.statut==='PAUSED',fin=m.statut==='FINISHED',d=new Date(m.date),sc=m.score||[];
@@ -564,5 +584,11 @@ function load(){fetch('/scores.json?v='+Math.floor(Date.now()/60000),{cache:'no-
 }).catch(function(){});}
 load();setInterval(load,60000);
 })();
+</script>
+<script>
+(function(){var m=document.getElementById('notifModal'),b=document.getElementById('bellBtn');if(!m||!b)return;
+b.onclick=function(){m.hidden=false;document.getElementById('nClose').focus();};
+document.getElementById('nClose').onclick=function(){m.hidden=true;b.focus();};
+m.onclick=function(e){if(e.target===m)m.hidden=true;};document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=true;});})();
 </script>
 </body></html>
