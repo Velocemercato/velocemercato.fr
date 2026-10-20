@@ -3,35 +3,38 @@ name: Resultats en direct
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/5 10-23 * * *'   # toutes les 5 minutes, de midi à 1 h du matin (heure de Paris l'été)
+    - cron: '*/15 10-23 * * *'   # relance régulière ; chaque passage surveille les scores pendant ~50 minutes
 
 permissions:
   contents: write
 
 concurrency:
   group: scores
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   scores:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 58
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Lire les scores (football-data.org)
+      - name: Surveiller les scores toutes les 2 minutes (football-data.org) et notifier Discord
         env:
           FOOTBALL_DATA_KEY: ${{ secrets.FOOTBALL_DATA_KEY }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        run: python update_scores.py
-      - name: Enregistrer
         run: |
-          [ -f scores.json ] || exit 0
-          git add scores.json
-          if git diff --cached --quiet; then exit 0; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Résultats en direct'
-          for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 4; done
+          for i in $(seq 1 25); do
+            git pull -q --rebase origin main || true
+            python update_scores.py
+            if [ -f scores.json ] && ! git diff --quiet -- scores.json; then
+              git add scores.json
+              git commit -qm 'Résultats en direct'
+              for t in 1 2 3; do git pull -q --rebase origin main && git push -q && break; sleep 4; done
+            fi
+            sleep 110
+          done
