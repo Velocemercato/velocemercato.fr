@@ -69,7 +69,7 @@ jobs:
       - name: Save
         if: always() && steps.validate.outcome == 'success'
         run: |
-          git add actus/news.json actus/flash.json actus/robot-log.txt psg/news.json psg/flash.json
+          git add actus/news.json actus/flash.json actus/robot-log.txt psg/news.json psg/flash.json actus/ignores.json psg/ignores.json
           if git diff --cached --quiet; then
             echo 'Rien de nouveau.'
           else

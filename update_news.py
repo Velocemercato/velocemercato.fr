@@ -371,6 +371,23 @@ def load_json(path):
     return rows
 
 
+def load_ignored():
+    try:
+        rows = json.loads(ignored_path().read_text(encoding='utf-8'))
+        return [u for u in rows if isinstance(u, str)]
+    except Exception:
+        return []
+
+
+def ignored_path():
+    # Liens déjà refusés par l'IA : on ne les renvoie plus (chaque envoi coûte).
+    return ARTICLES.with_name('ignores.json')
+
+
+def save_ignored(rows):
+    ignored_path().write_text(json.dumps(rows[-800:], ensure_ascii=False, indent=0) + '\n', encoding='utf-8')
+
+
 def main():
     old = load_json(ARTICLES)
     old_flashes = load_json(FLASH)
@@ -405,6 +422,9 @@ def main():
         raise RuntimeError('Aucun flux RSS accessible : aucun article modifié')
     seen_urls = {s.get('url', '').split('?')[0] for a in old for s in a.get('sources', []) if isinstance(s, dict)}
     seen_ids = {a.get('id') for a in old}
+    ignored = load_ignored()
+    seen_urls.update(ignored)
+    ignored_before = len(ignored)
     previous_titles = [t for a in old for t in (a.get('titre'), a.get('titreSource')) if isinstance(t, str) and t]
     unique = {}
     for post in sorted(all_candidates, key=lambda p: p['date'], reverse=True):
@@ -468,6 +488,7 @@ def main():
             print(f"Brève prête : {post['source']} - {title[:90]}", flush=True)
         except SkipStory:
             stats['non_pertinent'] += 1
+            ignored.append(post['url'].split('?')[0])
             continue
         except FatalAPIError as exc:
             # On garde les brèves déjà rédigées, puis on arrête ce passage.
@@ -479,8 +500,11 @@ def main():
             print(f"Claude indisponible ({post['source']}) : HTTP {exc.code}", flush=True)
         except Exception as exc:
             stats['rejet_lecture_ou_ia'] += 1
+            ignored.append(post['url'].split('?')[0])
             print(f"Brève ignorée ({post['source']}) : {type(exc).__name__} - {str(exc)[:100]}", flush=True)
     print('Bilan : ' + ', '.join(f'{k}={v}' for k, v in sorted(stats.items())), flush=True)
+    if len(ignored) != ignored_before:
+        save_ignored(ignored)
     if not additions:
         print('Aucune brève de qualité suffisante ; fichiers JSON inchangés.', flush=True)
         if fatal_error:
