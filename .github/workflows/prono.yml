@@ -1,0 +1,35 @@
+name: Le Prono VM
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 15 * * 0,2,3,4,6'   # 17 h 30 à Paris l'été (16 h 30 l'hiver), les jours de match
+
+permissions:
+  contents: write
+
+concurrency:
+  group: prono
+  cancel-in-progress: false
+
+jobs:
+  prono:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Écrire le prono du soir
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python update_prono.py
+      - name: Enregistrer
+        run: |
+          git add prono.json
+          if git diff --cached --quiet; then echo 'Pas de nouveau prono.'; exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Le Prono VM du soir'
+          for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 5; done
