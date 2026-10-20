@@ -16,7 +16,7 @@ CSS='''<style id="vmbar-css">
 @media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
 </style>'''
 def bar(active):
-    items=[('f','/','⚽ Foot'),('s','/studio.html#tv','📺 Pastille TV'),('g','/vm-gaming/','🎮 Gaming'),('a','/actus/','📰 Actus'),('v','/#videos','🎬 Vidéos')]
+    items=[('f','/','⚽ Foot'),('s','/studio.html#tv','📺 Pastille TV'),('g','/vm-gaming/','🎮 Gaming'),('a','/actus/','📰 Actus'),('r','/radio.html','📻 Radio'),('v','/#videos','🎬 Vidéos')]
     links=''.join(f'<a class="{k}{" on" if k==active else ""}" href="{h}"{" aria-current=\"page\"" if k==active else ""}>{t}</a>' for k,h,t in items)
     return f'<nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/" aria-label="Accueil Véloce Mercato">VM</a>{links}<a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>'
 def inject(s,active):
@@ -29,5 +29,5 @@ def apply(path,active):
     s=inject(open(path,encoding='utf-8').read(),active)
     open(path,'w',encoding='utf-8').write(s)
 if __name__=='__main__':
-    for p,a in [('index.html','f'),('vm-gaming/index.html','g'),('actus/index.html','a'),('archives.html','f'),('studio.html','s'),('gaming.html','f'),('soutenir.html',''),('mentions-legales.html','')]:
+    for p,a in [('index.html','f'),('vm-gaming/index.html','g'),('actus/index.html','a'),('archives.html','f'),('studio.html','s'),('radio.html','r'),('gaming.html','f'),('soutenir.html',''),('mentions-legales.html','')]:
         apply(p,a); print('ok',p)

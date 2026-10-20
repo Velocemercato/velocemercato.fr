@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VM Radio – les émissions VM à écouter en continu</title>
+<meta name="description" content="VM Radio : écoute en continu les journaux foot, actu et gaming et les débats de La Pastille TV. Rediffusions d'émissions générées par IA.">
+<link rel="canonical" href="https://velocemercato.fr/radio.html">
+<meta property="og:title" content="VM Radio"><meta property="og:description" content="Les journaux et débats VM à écouter en continu."><meta property="og:url" content="https://velocemercato.fr/radio.html"><meta property="og:image" content="https://velocemercato.fr/img/partage-velocemercato.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2470'/%3E%3Ctext x='32' y='44' font-family='Impact,sans-serif' font-size='30' font-style='italic' text-anchor='middle' fill='%23f4cf55'%3EVM%3C/text%3E%3C/svg%3E">
+<style>
+:root{color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:#060b1d;color:#f3f6ff;font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.hero{position:relative;min-height:260px;display:flex;align-items:flex-end;background:#060b1d url('/img/v2-actus.webp') center 30%/cover;border-bottom:4px solid #f4cf55}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,11,29,.25),rgba(6,11,29,.95))}
+.hero .in{position:relative;max-width:900px;margin:0 auto;width:100%;padding:24px 16px}
+.hero h1{margin:0;font:italic 900 clamp(2.4rem,9vw,4rem)/1 Impact,"Arial Black",sans-serif;color:#f4cf55;letter-spacing:.02em;text-shadow:3px 3px 0 #000}
+.hero p{margin:6px 0 0;color:#dfe6fb;max-width:36rem}
+main{max-width:900px;margin:0 auto;padding:20px 16px 40px}
+.player{background:#101833;border:3px solid #000;border-radius:18px;box-shadow:6px 6px 0 #e1243a;padding:16px;display:flex;flex-direction:column;gap:12px}
+.now{display:flex;gap:14px;align-items:center}
+.now img{width:96px;height:96px;object-fit:cover;border-radius:12px;border:2px solid #000;flex:none;background:#000}
+.badge{display:inline-block;background:#e1243a;color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.08em;padding:4px 9px;border-radius:999px}
+.now b{display:block;font-size:1.05rem;line-height:1.3;margin-top:5px}
+.now small{color:#c9d3f5}
+.ctrl{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.ctrl button{font:700 1rem/1 system-ui,sans-serif;border:2px solid #000;border-radius:999px;padding:12px 18px;cursor:pointer;background:#fff;color:#0b1533}
+.ctrl .play{background:#f4cf55;font-size:1.1rem;min-width:150px}
+audio{width:100%}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 10px}
+.tabs button{font:700 .9rem/1 system-ui,sans-serif;text-transform:uppercase;padding:9px 14px;border-radius:999px;border:2px solid #000;background:#fff;color:#0b1533;cursor:pointer}
+.tabs button[aria-pressed=true]{background:#f4cf55}
+ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+ol button{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:#101833;color:#fff;border:2px solid #000;border-radius:12px;padding:8px;cursor:pointer}
+ol button.on{border-color:#f4cf55;box-shadow:0 0 0 2px #f4cf55}
+ol img{width:72px;height:40px;object-fit:cover;border-radius:6px;flex:none;background:#000}
+ol b{display:block;font-size:.92rem;line-height:1.25}ol small{color:#c9d3f5;font-size:.75rem}
+.note{color:#c9d3f5;font-size:.85rem;margin-top:22px}
+.note a{color:#f4cf55}
+.empty{color:#c9d3f5}
+a:focus-visible,button:focus-visible{outline:3px solid #f4cf55;outline-offset:2px}
+</style>
+<style id="vmbar-css">
+.vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:relative;z-index:70}
+.vmbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:6px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
+.vmbar-in::-webkit-scrollbar{display:none}
+.vmbar a{flex:none;color:#cfd6ea;text-decoration:none;padding:7px 10px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.vmbar a:hover{background:rgba(255,255,255,.08);color:#fff}
+.vmbar a:focus-visible{outline:2px solid #f4cf55;outline-offset:2px}
+.vmbar .vmb-logo{font:italic 900 16px/1 Impact,"Arial Black",sans-serif;color:#04060f;background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);padding:6px 9px;border-radius:8px;margin-right:4px;letter-spacing:.02em}
+.vmbar a.on{color:#04060f;background:#fff}
+.vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
+.vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
+.vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
+@media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
+</style></head>
+<body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/" aria-label="Accueil Véloce Mercato">VM</a><a class="f" href="/">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r on" href="/radio.html" aria-current="page">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
+<header class="hero"><div class="in"><span class="badge">📻 EN CONTINU</span><h1>VM RADIO</h1><p>Les journaux foot, actu et gaming et les débats du soir de La Pastille TV, à écouter à la suite, comme une radio. Écran éteint possible.</p></div></header>
+<main>
+<section class="player" aria-label="Lecteur VM Radio">
+<div class="now"><img id="nowImg" alt="" src="/img/avatar-veloce.webp"><div><span class="badge">REDIFFUSION · IA</span><b id="nowTitle">Choisis une émission ou appuie sur Écouter</b><small id="nowMeta"></small></div></div>
+<audio id="audio" controls preload="none"></audio>
+<div class="ctrl"><button type="button" class="play" id="playBtn">▶ Écouter</button><button type="button" id="nextBtn">⏭ Suivante</button></div>
+</section>
+<div class="tabs" role="group" aria-label="Choisir l'univers"><button type="button" data-u="" aria-pressed="true">Tout</button><button type="button" data-u="foot" aria-pressed="false">⚽ Foot</button><button type="button" data-u="actus" aria-pressed="false">📰 Actus</button><button type="button" data-u="gaming" aria-pressed="false">🎮 Gaming</button></div>
+<ol id="list"><li class="empty">Chargement des émissions…</li></ol>
+<p class="note">Émissions générées par IA, avec des personnages inventés ; les faits viennent des brèves de velocemercato.fr, avec leurs sources. Ce n'est pas un direct. La version vidéo est sur <a href="/studio.html#tv">La Pastille TV</a>.</p>
+</main>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},all=[],list=[],idx=-1,u='',a=$('audio');
+var U={foot:'⚽ Foot',actus:'📰 Actus',gaming:'🎮 Gaming'};
+function esc(x){return String(x||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function ok(x){return typeof x==='string'&&/^https:\/\/cdn\.jsdelivr\.net\/gh\/Velocemercato\/velocemercato\.fr@[0-9a-f]{40}\//.test(x)}
+function mn(s){return Math.max(1,Math.round(s/60))+' min'}
+function day(d){try{return new Date(d).toLocaleString('fr-FR',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}catch(e){return ''}}
+function load(i,go){if(!list.length)return;idx=(i+list.length)%list.length;var e=list[idx];a.src=e.video;$('nowTitle').textContent=e.titre;$('nowMeta').textContent=(U[e.univers]||'')+' · '+e.label+' · '+day(e.date)+' · '+mn(e.duree);
+ $('nowImg').src=ok(e.image)?e.image:'/img/avatar-veloce.webp';
+ document.querySelectorAll('#list button').forEach(function(b){b.classList.toggle('on',+b.dataset.i===idx)});
+ if('mediaSession' in navigator){try{navigator.mediaSession.metadata=new MediaMetadata({title:e.titre,artist:'VM Radio',album:e.label,artwork:ok(e.image)?[{src:e.image,sizes:'640x360',type:'image/jpeg'}]:[]});navigator.mediaSession.setActionHandler('nexttrack',function(){load(idx+1,true)});}catch(x){}}
+ if(go)a.play().catch(function(){});}
+function draw(){list=all.filter(function(e){return !u||e.univers===u});idx=-1;
+ if(!list.length){$('list').innerHTML='<li class="empty">Pas encore d’émission ici : la prochaine arrive bientôt.</li>';return;}
+ $('list').innerHTML=list.map(function(e,i){return '<li><button type="button" data-i="'+i+'">'+(ok(e.image)?'<img src="'+esc(e.image)+'" alt="" loading="lazy">':'')+'<span><b>'+esc(e.titre)+'</b><small>'+esc((U[e.univers]||'')+' · '+e.label+' · '+day(e.date)+' · '+mn(e.duree))+'</small></span></button></li>'}).join('');
+ document.querySelectorAll('#list button').forEach(function(b){b.onclick=function(){load(+b.dataset.i,true)}});}
+a.addEventListener('ended',function(){load(idx+1,true)});
+a.addEventListener('play',function(){$('playBtn').textContent='⏸ Pause'});a.addEventListener('pause',function(){$('playBtn').textContent='▶ Écouter'});
+$('playBtn').onclick=function(){if(idx<0)load(0,true);else if(a.paused)a.play().catch(function(){});else a.pause();};
+$('nextBtn').onclick=function(){load(idx+1,true)};
+document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){u=b.dataset.u;document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});a.pause();draw();}});
+fetch('/studio/emissions.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():[]}).then(function(rows){all=(Array.isArray(rows)?rows:[]).filter(function(e){return e&&e.publie===true&&ok(e.video)});draw();}).catch(function(){$('list').innerHTML='<li class="empty">Impossible de charger les émissions pour le moment.</li>'});
+})();
+</script>
+</body>
+</html>
