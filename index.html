@@ -160,6 +160,53 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 
 .card .cover{background-blend-mode:overlay}
 .card:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--line)}
+
+/* ===== V2 : grand dessin d'accueil + univers (toujours sombre, style cinéma) ===== */
+.v2{background:#060b1d;color:#f3f6ff;position:relative;overflow:hidden}
+.v2-hero{position:relative;max-width:1440px;margin:0 auto}
+.v2-hero img.bg{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.v2-txt{padding:18px 16px 22px;display:flex;flex-direction:column;gap:12px}
+.v2-eye{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;color:#ffdc72;display:flex;align-items:center;gap:8px}
+.v2-eye::before{content:"";width:8px;height:8px;border-radius:50%;background:#ff4d61;box-shadow:0 0 10px #ff4d61;animation:blink 1.6s infinite}
+.v2 h1{font-family:Anton,Impact,sans-serif;text-transform:uppercase;font-size:clamp(2.1rem,6.4vw,4.6rem);line-height:.95;margin:0;letter-spacing:.01em;text-shadow:0 4px 18px rgba(0,0,0,.6)}
+.v2 h1 em{font-style:italic;background:linear-gradient(180deg,#fff2b8,#f4cf55 45%,#c9971a);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block;transform:skew(-6deg)}
+.v2-lead{margin:0;max-width:34rem;font-size:1.05rem;line-height:1.5;color:#c9d3f5}
+.v2-btns{display:flex;flex-wrap:wrap;gap:10px}
+.v2-btns a{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:1rem;padding:11px 18px;border-radius:999px;border:2px solid #000;box-shadow:3px 3px 0 #000;transition:transform .15s}
+.v2-btns a:hover{transform:translate(-2px,-2px)}
+.v2-btns .b1{background:#1d3fb8;color:#fff}.v2-btns .b2{background:#e1243a;color:#fff}.v2-btns .b3{background:#f4cf55;color:#0b1533}
+.v2-dc{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:.85rem;color:#fff;background:rgba(88,101,242,.22);border:1px solid rgba(140,150,255,.55);padding:7px 13px;border-radius:999px}
+.v2-dc i{width:10px;height:10px;border-radius:50%;background:#9aa3b8;display:inline-block}
+@media(min-width:900px){
+ .v2-hero img.bg{aspect-ratio:auto;height:min(76vh,48vw);min-height:460px}
+ .v2-txt{position:absolute;inset:0 auto 0 0;width:min(46%,600px);justify-content:center;padding:32px 40px;background:linear-gradient(90deg,rgba(6,11,29,.94) 0%,rgba(6,11,29,.82) 62%,rgba(6,11,29,0) 100%)}
+ .v2-hero::after{content:"";position:absolute;inset:auto 0 0;height:90px;background:linear-gradient(transparent,#060b1d);pointer-events:none}
+}
+.v2-uni{max-width:72rem;margin:0 auto;padding:8px 16px 30px}
+.v2-uni h2{font-family:Anton,Impact,sans-serif;text-transform:uppercase;font-size:clamp(1.5rem,3.4vw,2.2rem);margin:0 0 12px;letter-spacing:.02em}
+.v2-uni h2 span{color:#f4cf55}
+.v2-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(min-width:900px){.v2-cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}}
+.v2-card{position:relative;display:block;border-radius:14px;overflow:hidden;border:2px solid rgba(255,255,255,.14);aspect-ratio:4/3;background:#0d1530;transition:transform .2s,border-color .2s}
+.v2-card:hover{transform:translateY(-4px);border-color:#f4cf55}
+.v2-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.v2-card:hover img{transform:scale(1.05)}
+.v2-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(4,8,22,.92))}
+.v2-card .t{position:absolute;left:12px;right:12px;bottom:10px;z-index:1}
+.v2-card b{display:block;font-family:Anton,Impact,sans-serif;text-transform:uppercase;font-size:clamp(1.05rem,2.4vw,1.45rem);line-height:1}
+.v2-card small{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.78rem;color:#c9d3f5;margin-top:4px}
+.v2-card .tag{position:absolute;top:10px;left:10px;z-index:1;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:.7rem;letter-spacing:.08em;padding:3px 9px;border-radius:999px;background:#f4cf55;color:#0b1533}
+@media(prefers-reduced-motion:reduce){.v2 *{animation:none!important;transition:none!important}}
+/* Fil express (titres de la presse) */
+.fx{margin-top:34px}.fx h2{font-family:Bangers,Impact,sans-serif;font-size:2.1rem;letter-spacing:.04em;line-height:1;margin:0 0 4px}
+.fx .fxs{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:.8rem;letter-spacing:.08em;color:var(--muted);margin:0 0 12px}
+.fx ol{list-style:none;margin:0;padding:0;display:grid;gap:0}
+@media(min-width:900px){.fx ol{grid-template-columns:1fr 1fr;column-gap:26px}}
+.fx li a{display:flex;gap:10px;align-items:baseline;padding:9px 2px;border-bottom:1px dashed var(--dot);border-bottom-color:rgba(127,140,180,.35)}
+.fx li a:hover b{text-decoration:underline}
+.fx time{font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--royal);min-width:3.2em;font-variant-numeric:tabular-nums}
+.fx b{font-weight:600;line-height:1.35}.fx em{font-style:normal;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:.75rem;color:var(--muted);white-space:nowrap}
+.fx .more{margin-top:12px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:9px 16px;border-radius:999px;border:2px solid var(--line);background:var(--surface);color:var(--ink)}
 </style>
 </head>
 <body>
@@ -176,17 +223,33 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 <button class="chip" type="button" data-cat="NATIONAL" aria-pressed="false">National</button>
 <button class="chip" type="button" data-cat="FEMININ" aria-pressed="false">Féminin</button>
 <button class="chip" type="button" data-cat="OFFICIEL" aria-pressed="false">Officiel</button>
-<a class="chip" href="#pastille" style="background:#000;border-color:#000;color:#f4cf55">🎙️ La Pastille</a>
-<a class="chip" href="/studio.html" style="background:#9b5de5;border-color:#000;color:#fff">🎬 VM Studio</a>
 <a class="chip" href="/archives.html" style="background:#fff;border-color:#000;color:#0b1533">🔎 Rechercher</a>
-<a class="chip" href="#agenda" style="background:#14a35a;border-color:#000;color:#fff">📅 Agenda</a>
-<a class="chip" href="#videos" style="background:#e1243a;border-color:#000;color:#fff">🎬 Vidéos</a>
-<a class="chip" href="/gaming.html" style="background:#14a35a;border-color:#14a35a;color:#fff">⚽ EA FC · Véloce Arena</a>
 <a class="chip" href="/actus/" style="background:#e1243a;border-color:#000;color:#fff">📰 VM Actus</a>
 <a class="chip" href="/vm-gaming/" style="background:#0b0a1c;border-color:#d6ff6e;color:#d6ff6e">🎮 VM Gaming</a>
-<a class="chip" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener" style="background:#5865f2;border-color:#5865f2;color:#fff">💬 Rejoindre la communauté</a>
-<a class="chip" href="/soutenir.html" style="border-color:var(--gold-hi);color:var(--gold-hi)">❤ Soutenir</a>
+<a class="chip" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener" style="background:#5865f2;border-color:#5865f2;color:#fff">💬 Discord</a>
+<a class="chip" href="/soutenir.html" style="background:#f4cf55;border-color:#000;color:#0b1533">💛 Soutenir</a>
 </div></nav><a id="ticker" class="ticker lg:hidden" href="#flash-title" hidden aria-label="Flash Véloce : voir tous les flashs"><span class="lbl">FLASH</span><span class="flex-1 overflow-hidden"><span id="tickerRun" class="run"></span></span></a></header>
+<section class="v2" aria-labelledby="v2-title">
+<div class="v2-hero">
+<img class="bg" src="/img/v2-mercato-800.webp" srcset="/img/v2-mercato-800.webp 800w, /img/v2-mercato.webp 1440w" sizes="100vw" width="1440" height="810" alt="Dessin BD : le présentateur de Véloce Mercato en maillot bleu devant Paris et un stade" fetchpriority="high">
+<div class="v2-txt">
+<span class="v2-eye">Mis à jour toutes les 30 minutes</span>
+<h1 id="v2-title">Toute l'actu foot,<br><em>simple et rapide.</em></h1>
+<p class="v2-lead">Mercato, Ligue 1, Ligue 2, National, Bleus et foot féminin : l'essentiel, avec la source, expliqué simplement.</p>
+<div class="v2-btns"><a class="b1" href="#feed-title">⚡ Le fil du jour</a><a class="b2" href="#videos">🎬 Vidéos</a><a class="b3" href="/soutenir.html">💛 Soutenir</a></div>
+<a class="v2-dc" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener"><i id="v2Dot"></i><span id="v2DotTxt">Rejoindre la communauté Discord</span></a>
+</div>
+</div>
+<div class="v2-uni">
+<h2>Les univers <span>VM</span></h2>
+<div class="v2-cards">
+<a class="v2-card" href="/actus/"><img src="/img/v2-actus-640.webp" alt="" loading="lazy" width="640" height="494"><span class="tag">Matin · midi · soir</span><span class="t"><b>VM Actus</b><small>L'actu générale du jour</small></span></a>
+<a class="v2-card" href="/vm-gaming/"><img src="/vm-gaming/img/vm-gaming-960.webp" alt="" loading="lazy" width="960" height="411"><span class="tag">Discord</span><span class="t"><b>VM Gaming</b><small>Warzone · REDSEC · EA FC · GTA</small></span></a>
+<a class="v2-card" href="/gaming.html"><img src="/img/v2-arena-430.webp" alt="" loading="lazy" width="430" height="322"><span class="tag">Gratuit</span><span class="t"><b>Véloce Arena</b><small>Tournois EA FC entre potes</small></span></a>
+<a class="v2-card" href="https://velocemercato.github.io/Papiers-sans-galere/"><img src="/img/v2-papiers-800.webp" alt="" loading="lazy" width="800" height="450"><span class="tag">Gratuit</span><span class="t"><b>Papiers Sans Galère</b><small>Tes démarches, simplement</small></span></a>
+</div>
+</div>
+</section>
 <main id="top" class="gutter max-w-6xl mx-auto" style="padding-block:24px 56px">
 <div class="vm-banner"><img src="/img/banniere-foot-960.webp" srcset="/img/banniere-foot-960.webp 960w, /img/banniere-foot.webp 1696w" sizes="(min-width:1152px) 1120px, 100vw" width="1696" height="624" alt="Véloce Mercato, actualités foot : dessin BD d'un stade et de chroniqueurs" fetchpriority="high"></div>
 <nav class="quick" aria-label="Accès rapide">
@@ -216,6 +279,7 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 <div class="vgrid" id="vgrid"><p class="vempty">Chargement des vidéos…</p></div>
 </section>
 <div class="grid lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] gap-8 mt-2"><section aria-labelledby="feed-title" class="min-w-0"><div class="flex items-end justify-between gap-3 mb-5 flex-wrap"><h2 id="feed-title" class="font-comic text-[2.4rem] leading-none tracking-wide">LE FIL DU JOUR <span style="color:var(--royal)">!</span></h2><span id="count" class="font-cond font-bold uppercase text-sm tracking-widest" style="color:var(--muted)"></span></div><div id="feed" class="grid sm:grid-cols-2 gap-7"></div><div id="empty" class="panel p-8 text-center flex flex-col gap-2 items-center" style="border-radius:14px" hidden><span class="burst text-xl">BIENTÔT !</span><p id="emptyTxt" class="font-cond font-bold uppercase tracking-wider" style="color:var(--muted)">Chargement du fil…</p></div></section><aside aria-labelledby="flash-title" class="min-w-0"><div class="panel overflow-hidden lg:sticky" style="top:calc(env(safe-area-inset-top,0px) + 130px);border-radius:14px"><div class="flex items-center justify-between gap-2 px-4 py-3" style="background:var(--royal);border-bottom:3px solid var(--line)"><h2 id="flash-title" class="font-comic text-2xl tracking-wider text-white">FLASH VÉLOCE · 24H</h2><span class="flex items-center gap-1.5 font-cond font-bold text-xs uppercase text-white"><span class="live w-2.5 h-2.5 rounded-full" style="background:#ff4d61"></span>Actu</span></div><ol id="timeline" class="tl flex flex-col gap-5 p-4 max-h-[600px] overflow-y-auto" aria-live="polite"></ol><p class="px-4 pb-3 text-xs font-cond uppercase tracking-wider" style="color:var(--muted)">Actualisation de l'affichage toutes les 5 minutes</p></div></aside></div>
+<section class="fx" id="presse" aria-labelledby="t-fx"><h2 id="t-fx">📰 EN CONTINU : LA PRESSE FOOT</h2><p class="fxs">Les derniers titres des médias, avec le lien vers l'article d'origine · <span id="fxMaj"></span></p><ol id="fxList"><li><em>Chargement…</em></li></ol><button type="button" class="more" id="fxMore" hidden>Voir plus de titres</button></section>
 <section class="agenda" id="agenda" aria-labelledby="t-agenda">
 <h2 id="t-agenda">📅 L'AGENDA DE LA SEMAINE</h2>
 <p class="sub">Les matchs des 7 prochains jours, les lives et les tournois Véloce Mercato. Chaînes et radios indiquées quand elles sont confirmées officiellement.</p>
@@ -224,7 +288,7 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 <div class="mt-10"></div>
 <a href="/vm-gaming/" class="gstrip" aria-label="VM Gaming : EA FC et tous tes jeux, avec le Discord"><div class="gh"><span class="gt">🎮 VM GAMING</span><span class="gg">J'Y VAIS →</span></div><p class="gp">EA FC en premier, et aussi Warzone, REDSEC, GTA VI : les actus de tes jeux et le Discord pour trouver des potes.</p><ul id="gList"></ul></a>
 <section id="pastille" class="panel overflow-hidden" aria-labelledby="hero-title" style="border-radius:18px"><div class="grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]"><div class="hero-visual speed relative flex items-center justify-center overflow-hidden" style="padding-block:34px"><div class="halftone absolute inset-0"></div><span class="burst absolute top-4 left-4 text-xl sm:text-2xl -rotate-6 z-10">PROCHAINEMENT</span><div class="phone"><div class="notch"></div><div class="screen"><div class="absolute inset-0 speed spin-slow" style="transform-origin:50% 55%;opacity:.55"></div><div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(0,0,0,.35),transparent 30%,transparent 60%,rgba(0,0,0,.85))"></div><div class="absolute top-12 left-3 right-3 flex justify-between items-center z-[2]"><span class="flex items-center gap-1.5 bg-black/55 text-white text-[11px] font-cond font-bold uppercase tracking-wider px-2 py-1 rounded-full"><span class="w-2 h-2 rounded-full live" style="background:#ff4d61"></span>Live</span><span class="bg-black/55 text-white text-[11px] font-cond font-bold px-2 py-1 rounded-full">Bientôt</span></div><button id="playBtn" type="button" class="play absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[2]" aria-label="Être prévenu du premier épisode de la Pastille"><svg width="32" height="32" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#1d3fb8"/></svg></button><div class="absolute bottom-0 inset-x-0 p-3.5 z-[2]"><p class="text-white font-display uppercase text-[15px] leading-tight">Les invités de la Pastille</p><p class="text-white/70 text-[11px] font-cond font-bold uppercase tracking-wider">Interviews · podcasts · reportages</p></div></div></div></div>
-<div class="p-5 sm:p-7 flex flex-col justify-center gap-4 min-w-0"><img class="host" src="/img/avatar-veloce.webp" width="400" height="367" alt="Romain, animateur de Véloce Mercato" loading="lazy"><div class="flex items-center gap-3 flex-wrap"><span id="pBadge" class="badge b-EXCLU">BIENTÔT</span><span class="font-cond font-bold uppercase text-sm tracking-widest" style="color:var(--royal)">La Pastille · rendez-vous à venir</span></div><h1 id="hero-title" class="font-display uppercase text-[1.6rem] sm:text-4xl leading-[1.02]">La Pastille : <span style="color:var(--royal)">les invités du foot</span> en <span class="italic" style="color:var(--gold)">direct</span></h1><p class="text-[1.05rem] leading-relaxed max-w-prose" style="color:var(--muted)" id="pTxt">Interviews, podcasts en live, infos croustillantes et reportages les soirs de match. Les premiers épisodes se préparent.</p><details class="pollbox"><summary class="font-cond font-bold uppercase tracking-wider text-sm">🗳️ Vote : qui veux-tu voir dans la Pastille ?</summary><div class="flex flex-col gap-2" style="margin-top:10px"><div id="poll" class="flex flex-col gap-2"><button type="button" class="pollopt" data-key="joueur"><i></i><span>⚽ Un joueur pro</span><b class="tabular"></b></button><button type="button" class="pollopt" data-key="journaliste"><i></i><span>📰 Un journaliste mercato</span><b class="tabular"></b></button><button type="button" class="pollopt" data-key="chroniqueur"><i></i><span>🎙️ Un chroniqueur en live</span><b class="tabular"></b></button><button type="button" class="pollopt" data-key="match"><i></i><span>🏟️ Un reportage un soir de match</span><b class="tabular"></b></button><div class="flex flex-wrap items-center justify-between gap-2"><span id="pollInfo" class="font-cond font-bold uppercase text-xs tracking-wider" style="color:var(--muted)">Touche ton choix pour voter</span><button type="button" id="pollIdea" class="font-cond font-bold uppercase text-xs underline">💡 Proposer mon idée</button></div></div></details></div><div class="flex flex-wrap gap-3"><button id="playBtn2" type="button" class="font-cond font-bold uppercase tracking-wider px-5 py-3 rounded-full text-white flex items-center gap-2" style="background:var(--royal);box-shadow:4px 4px 0 var(--line)">🔔 Préviens-moi du 1er épisode</button><a href="https://www.youtube.com/@VeloceMercato" target="_blank" rel="noopener" class="font-cond font-bold uppercase tracking-wider px-4 py-3 rounded-full flex items-center gap-2" style="background:#e1243a;color:#fff;box-shadow:4px 4px 0 var(--line)">▶ YouTube</a><a href="https://www.twitch.tv/heineguez87" target="_blank" rel="noopener" class="font-cond font-bold uppercase tracking-wider px-4 py-3 rounded-full flex items-center gap-2" style="background:#9146ff;color:#fff;box-shadow:4px 4px 0 var(--line)">● Twitch</a><span class="self-center font-cond font-bold uppercase text-sm tabular" style="color:var(--muted)" id="heroDate"></span></div></div></div></section></main>
+<div class="p-5 sm:p-7 flex flex-col justify-center gap-4 min-w-0"><img class="host" src="/img/avatar-veloce.webp" width="400" height="367" alt="Romain, animateur de Véloce Mercato" loading="lazy"><div class="flex items-center gap-3 flex-wrap"><span id="pBadge" class="badge b-EXCLU">BIENTÔT</span><span class="font-cond font-bold uppercase text-sm tracking-widest" style="color:var(--royal)">La Pastille · rendez-vous à venir</span></div><h2 id="hero-title" class="font-display uppercase text-[1.6rem] sm:text-4xl leading-[1.02]">La Pastille : <span style="color:var(--royal)">les invités du foot</span> en <span class="italic" style="color:var(--gold)">direct</span></h2><p class="text-[1.05rem] leading-relaxed max-w-prose" style="color:var(--muted)" id="pTxt">Interviews, podcasts en live, infos croustillantes et reportages les soirs de match. Les premiers épisodes se préparent.</p><details class="pollbox"><summary class="font-cond font-bold uppercase tracking-wider text-sm">🗳️ Vote : qui veux-tu voir dans la Pastille ?</summary><div class="flex flex-col gap-2" style="margin-top:10px"><div id="poll" class="flex flex-col gap-2"><button type="button" class="pollopt" data-key="joueur"><i></i><span>⚽ Un joueur pro</span><b class="tabular"></b></button><button type="button" class="pollopt" data-key="journaliste"><i></i><span>📰 Un journaliste mercato</span><b class="tabular"></b></button><button type="button" class="pollopt" data-key="chroniqueur"><i></i><span>🎙️ Un chroniqueur en live</span><b class="tabular"></b></button><button type="button" class="pollopt" data-key="match"><i></i><span>🏟️ Un reportage un soir de match</span><b class="tabular"></b></button><div class="flex flex-wrap items-center justify-between gap-2"><span id="pollInfo" class="font-cond font-bold uppercase text-xs tracking-wider" style="color:var(--muted)">Touche ton choix pour voter</span><button type="button" id="pollIdea" class="font-cond font-bold uppercase text-xs underline">💡 Proposer mon idée</button></div></div></details></div><div class="flex flex-wrap gap-3"><button id="playBtn2" type="button" class="font-cond font-bold uppercase tracking-wider px-5 py-3 rounded-full text-white flex items-center gap-2" style="background:var(--royal);box-shadow:4px 4px 0 var(--line)">🔔 Préviens-moi du 1er épisode</button><a href="https://www.youtube.com/@VeloceMercato" target="_blank" rel="noopener" class="font-cond font-bold uppercase tracking-wider px-4 py-3 rounded-full flex items-center gap-2" style="background:#e1243a;color:#fff;box-shadow:4px 4px 0 var(--line)">▶ YouTube</a><a href="https://www.twitch.tv/heineguez87" target="_blank" rel="noopener" class="font-cond font-bold uppercase tracking-wider px-4 py-3 rounded-full flex items-center gap-2" style="background:#9146ff;color:#fff;box-shadow:4px 4px 0 var(--line)">● Twitch</a><span class="self-center font-cond font-bold uppercase text-sm tabular" style="color:var(--muted)" id="heroDate"></span></div></div></div></section></main>
 <footer style="background:var(--head);color:var(--head-fg)"><div class="tricolore"></div><div class="gutter max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6" style="padding-block:34px"><div><p class="logo text-3xl"><span class="streak" aria-hidden="true"></span>VÉLOCE <b>MERCATO</b></p><p class="mt-3 text-sm opacity-75 flex flex-wrap items-center gap-2">Contact : <span id="mail" class="font-semibold select-all break-all">velocemercato.fr@gmail.com</span><button id="copyBtn" type="button" class="font-cond font-bold uppercase text-xs px-2 py-1 rounded-full border" style="border-color:var(--gold-hi);color:var(--gold-hi)">Copier</button></p></div><ul class="flex flex-wrap gap-3" aria-label="Réseaux Véloce Mercato"><li><a class="soc" href="https://www.instagram.com/veloce.mercato" target="_blank" rel="noopener" aria-label="Instagram">IG</a></li><li><a class="soc" href="https://www.tiktok.com/@velocemercato" target="_blank" rel="noopener" aria-label="TikTok">♪</a></li><li><a class="soc" href="https://www.youtube.com/@VeloceMercato" target="_blank" rel="noopener" aria-label="YouTube">▶</a></li><li><a class="soc" href="https://www.facebook.com/share/1cekdv2RrD/" target="_blank" rel="noopener" aria-label="Facebook">f</a></li><li><a class="soc" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener" aria-label="Discord">DC</a></li><li><a class="soc" href="https://www.twitch.tv/heineguez87" target="_blank" rel="noopener" aria-label="Twitch">TV</a></li></ul></div><div class="gutter max-w-6xl mx-auto border-t border-white/10 flex flex-wrap justify-between gap-2 text-xs opacity-60" style="padding-block:14px"><span>© <span id="yr"></span> Véloce Mercato. Tous droits réservés.</span><span>Reproduction interdite sans autorisation · <a href="/gaming.html" class="underline">Véloce Arena</a> · <a href="/soutenir.html" class="underline">Soutenir</a> · <a href="/mentions-legales.html" class="underline">Mentions légales</a></span></div></footer>
 <div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mTitle"><div class="modal-box panel pop" style="border-radius:16px"><div id="mCover" class="cover cover-1"><div class="lines"></div></div><div class="p-5 sm:p-7 flex flex-col gap-3"><div class="flex items-center gap-3 flex-wrap"><span id="mBadge" class="badge"></span><time id="mTime" class="font-cond font-bold text-sm tabular" style="color:var(--muted)"></time><button id="mShare" type="button" class="ml-auto font-cond font-bold uppercase text-sm px-3 py-1.5 rounded-full text-white" style="background:var(--royal)">Partager ↗</button><button id="mClose" type="button" class=" font-cond font-bold uppercase text-sm px-3 py-1.5 rounded-full border-2" style="border-color:var(--line)">Fermer ✕</button></div><h3 id="mTitle" class="font-display uppercase text-2xl sm:text-3xl leading-tight"></h3><div id="mBody" class="leading-relaxed text-[1.05rem] flex flex-col gap-3"></div><div id="mSources" class="pt-3 mt-1 border-t-2 text-sm" style="border-color:var(--dot)"></div><p class="font-cond text-xs uppercase tracking-wider" style="color:var(--muted)">Véloce Mercato · Retrouvez les sources citées ci-dessus.</p></div></div></div>
 <div id="toast" class="toast panel px-4 py-2.5 font-cond font-bold uppercase text-sm rounded-full" hidden></div>
@@ -326,5 +390,29 @@ Promise.all([get('/matchs.json'),get('/agenda.json')]).then(function(res){
   if(i.lien&&/^https:\/\//.test(i.lien)){var a=el('a',null,'Rejoindre →');a.href=i.lien;a.target='_blank';a.rel='noopener';a.style.fontSize='.85rem';body.appendChild(a);}
   it.appendChild(body);root.appendChild(it);});
 });})();
+</script>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+// Voyant Discord du grand dessin (même réglage que la tuile Arena)
+fetch('liens.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():{}}).then(function(l){
+ var id=String(l.discord_serveur_id||'');if(!/^\d{15,22}$/.test(id))return;
+ return fetch('https://discord.com/api/guilds/'+id+'/widget.json').then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(w){
+  var n=w&&w.presence_count;if(typeof n!=='number')throw 0;var d=$('v2Dot');d.style.background=n>0?'#14a35a':'#e1243a';if(n>0)d.classList.add('live');
+  $('v2DotTxt').textContent=n+(n>1?' membres connectés sur Discord':' membre connecté sur Discord');});
+}).catch(function(){});
+// Fil express : titres de la presse (sans IA), lien vers l'article d'origine
+var all=[],shown=0;
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function safe(u){try{var x=new URL(u);return /^https?:$/.test(x.protocol)?x.href:''}catch(e){return ''}}
+function hm(d){try{return new Intl.DateTimeFormat('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Paris'}).format(new Date(d))}catch(e){return ''}}
+function draw(){var n=Math.min(all.length,shown);$('fxList').innerHTML=all.slice(0,n).map(function(t){return '<li><a href="'+esc(safe(t.u))+'" target="_blank" rel="noopener nofollow"><time>'+hm(t.d)+'</time><b>'+esc(t.t)+'</b><em>'+esc(t.s)+' ↗</em></a></li>'}).join('');$('fxMore').hidden=n>=all.length||n>=60;}
+fetch('fil.json?v='+Math.floor(Date.now()/300000),{cache:'no-store'}).then(function(r){return r.ok?r.json():{}}).then(function(j){
+ all=((j&&j.titres)||[]).filter(function(t){return t.k==='foot'&&safe(t.u)});
+ if(!all.length){$('presse').hidden=true;return}
+ shown=12;draw();if(j.maj)$('fxMaj').textContent='mis à jour à '+hm(j.maj);
+}).catch(function(){$('presse').hidden=true});
+$('fxMore').onclick=function(){shown+=16;draw()};
+})();
 </script>
 </body></html>
