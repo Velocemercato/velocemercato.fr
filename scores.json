@@ -25,18 +25,6 @@
    ]
   },
   {
-   "id": 575361,
-   "date": "2026-10-20T19:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Man City",
-   "ext": "PAE AEK",
-   "statut": "FINISHED",
-   "score": [
-    5,
-    1
-   ]
-  },
-  {
    "id": 575367,
    "date": "2026-10-20T19:00:00Z",
    "comp": "Ligue des champions",
@@ -73,15 +61,15 @@
    ]
   },
   {
-   "id": 575366,
+   "id": 575361,
    "date": "2026-10-20T19:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Napoli",
-   "ext": "Bodø/Glimt",
+   "dom": "Man City",
+   "ext": "PAE AEK",
    "statut": "FINISHED",
    "score": [
-    4,
-    3
+    5,
+    1
    ]
   },
   {
@@ -109,6 +97,18 @@
    ]
   },
   {
+   "id": 575366,
+   "date": "2026-10-20T19:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Napoli",
+   "ext": "Bodø/Glimt",
+   "statut": "FINISHED",
+   "score": [
+    4,
+    3
+   ]
+  },
+  {
    "id": 575369,
    "date": "2026-10-21T16:45:00Z",
    "comp": "Ligue des champions",
@@ -126,18 +126,6 @@
    "comp": "Ligue des champions",
    "dom": "Como 1907",
    "ext": "Man United",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 575371,
-   "date": "2026-10-21T19:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Inter",
-   "ext": "Shaktar",
    "statut": "TIMED",
    "score": [
     null,
@@ -169,11 +157,11 @@
    ]
   },
   {
-   "id": 575376,
+   "id": 575371,
    "date": "2026-10-21T19:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Real Betis",
-   "ext": "Feyenoord",
+   "dom": "Inter",
+   "ext": "Shaktar",
    "statut": "TIMED",
    "score": [
     null,
@@ -215,7 +203,19 @@
     null,
     null
    ]
+  },
+  {
+   "id": 575376,
+   "date": "2026-10-21T19:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Real Betis",
+   "ext": "Feyenoord",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
   }
  ],
- "maj": "2026-10-20T23:34:37Z"
+ "maj": "2026-10-20T23:36:31Z"
 }
