@@ -48,6 +48,17 @@ jobs:
           set -o pipefail
           python update_actus.py 2>&1 | tee -a actus/robot-log.txt
 
+      - name: Update Papiers Sans Galère (nouveautés officielles)
+        if: always()
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          VM_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.test && '1' || '' }}
+          VM_RATTRAPAGE: ${{ github.event_name == 'workflow_dispatch' && inputs.rattrapage && '1' || '' }}
+        run: |
+          echo "--- Papiers Sans Galère ---" >> actus/robot-log.txt
+          python update_demarches.py 2>&1 | tee -a actus/robot-log.txt
+
       - name: Validate JSON
         id: validate
         if: always()
@@ -58,7 +69,7 @@ jobs:
       - name: Save
         if: always() && steps.validate.outcome == 'success'
         run: |
-          git add actus/news.json actus/flash.json actus/robot-log.txt
+          git add actus/news.json actus/flash.json actus/robot-log.txt psg/news.json psg/flash.json
           if git diff --cached --quiet; then
             echo 'Rien de nouveau.'
           else
