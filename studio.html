@@ -56,10 +56,34 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 3
 .vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
 .vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
 @media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
+</style><style id="tv-css">
+.tv{max-width:1000px;margin:20px auto 34px;padding:18px;background:#060b1d;color:#f3f6ff;border:3px solid #000;border-radius:18px;box-shadow:6px 6px 0 #f4cf55}
+.tv h2{font:italic 900 clamp(1.8rem,5vw,2.6rem)/1 Impact,'Arial Black',sans-serif;margin:0 0 6px;color:#f4cf55;letter-spacing:.02em}
+.tv-head p{margin:0 0 12px;color:#c9d3f5}
+.tv-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tv-tabs button{font:700 .9rem/1 system-ui,sans-serif;text-transform:uppercase;padding:9px 14px;border-radius:999px;border:2px solid #000;background:#fff;color:#0b1533;cursor:pointer}
+.tv-tabs button[aria-pressed=true]{background:#f4cf55}
+.tv-player video{display:block;width:100%;aspect-ratio:16/9;background:#000;border-radius:12px;border:2px solid #000}
+.tv-info{padding:10px 2px}.tv-info h3{margin:6px 0 2px;font-size:1.2rem}.tv-info p{margin:0;color:#c9d3f5;font-size:.9rem}
+.tv-badge{display:inline-block;background:#e1243a;color:#fff;font:700 .7rem/1 system-ui,sans-serif;letter-spacing:.08em;padding:5px 9px;border-radius:999px}
+.tv-views{margin-top:4px!important;color:#d6ff6e!important;font-weight:700}
+.tv-list{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:10px}
+@media(min-width:700px){.tv-list{grid-template-columns:1fr 1fr}}
+.tv-list button{display:flex;gap:10px;width:100%;text-align:left;background:#101833;color:#fff;border:2px solid #000;border-radius:12px;padding:8px;cursor:pointer;align-items:center}
+.tv-list button:hover,.tv-list button.on{border-color:#f4cf55}
+.tv-list img{width:120px;height:68px;object-fit:cover;border-radius:8px;flex:none;background:#000}
+.tv-list b{display:block;font-size:.92rem;line-height:1.25}.tv-list small{color:#c9d3f5;font-size:.75rem}
+.tv-empty{color:#c9d3f5}
 </style></head>
 <body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/" aria-label="Accueil Véloce Mercato">VM</a><a class="f" href="/">⚽ Foot</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="s on" href="/studio.html" aria-current="page">🎙️ Studio</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
 <header><a class="logo" href="/">VÉLOCE <b>MERCATO</b></a><nav><a href="/">Brèves</a><a href="/#videos">Vidéos</a><a href="/archives.html">Rechercher</a><a class="don" href="/soutenir.html">💛 Soutenir</a></nav></header>
 <main>
+<section class="tv" id="tv" aria-labelledby="t-tv">
+<div class="tv-head"><h2 id="t-tv">📺 LA PASTILLE TV</h2><p>Journaux matin · midi · soir, spéciales avant-match et débats du soir. Émissions <b>générées par IA</b>, personnages inventés, faits tirés des brèves du site.</p></div>
+<div class="tv-tabs" role="group" aria-label="Univers"><button type="button" data-u="" aria-pressed="true">Tout</button><button type="button" data-u="foot" aria-pressed="false">⚽ Foot</button><button type="button" data-u="actus" aria-pressed="false">📰 Actus</button><button type="button" data-u="gaming" aria-pressed="false">🎮 Gaming</button></div>
+<div class="tv-player" id="tvPlayer" hidden><video id="tvVideo" controls playsinline preload="none"></video><div class="tv-info"><span class="tv-badge">ENREGISTRÉ · IA</span><h3 id="tvTitle"></h3><p id="tvMeta"></p><p class="tv-views" id="tvViews"></p></div></div>
+<ol class="tv-list" id="tvList"><li class="tv-empty">Les premières émissions arrivent très bientôt.</li></ol>
+</section>
 <span class="tag">🎬 VM Studio</span>
 <h1>La rumeur du siècle <span>(ou pas)</span></h1>
 <p class="lead">La première BD du studio Véloce Mercato. Notre règle d'or, en 4 cases : chez nous, une info sans source reste une rumeur.</p>
@@ -70,5 +94,25 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 3
 <p class="note">Personnages originaux créés pour Véloce Mercato. Toute ressemblance avec des personnes réelles serait fortuite. Prochain épisode bientôt : propose ton idée sur le Discord !</p>
 </main>
 <footer><a href="/">← Retour aux brèves</a> · <a href="https://discord.gg/JEgfrUtJaX">Discord</a> · <a href="/mentions-legales.html">Mentions légales</a></footer>
-</body>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},all=[],u='',CNT='https://countapi.mileshilliard.com/api/v1/';
+function esc(x){return String(x||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function ok(x){return typeof x==='string'&&/^https:\/\/github\.com\/Velocemercato\/velocemercato\.fr\/releases\/download\//.test(x)}
+function mn(s){var m=Math.round(s/60);return m+' min'}
+function day(d){try{return new Date(d).toLocaleString('fr-FR',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}catch(e){return ''}}
+var U={foot:'⚽ Foot',actus:'📰 Actus',gaming:'🎮 Gaming'};
+function views(id,add){var k='vm-tv-'+id.replace(/[^a-z0-9-]/gi,'');fetch(CNT+(add?'hit/':'get/')+k,{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){var n=j&&(j.value!=null?j.value:j.count);if(typeof n==='number')$('tvViews').textContent='👁 '+n+(n>1?' vues':' vue');}).catch(function(){});}
+function play(e,start){$('tvPlayer').hidden=false;var v=$('tvVideo');v.src=e.video;v.poster=ok(e.image)?e.image:'';$('tvTitle').textContent=e.titre;$('tvMeta').textContent=(U[e.univers]||'')+' · '+e.label+' · '+day(e.date)+' · '+mn(e.duree);$('tvViews').textContent='';views(e.id,false);
+ document.querySelectorAll('.tv-list button').forEach(function(b){b.classList.toggle('on',b.dataset.id===e.id)});
+ v.onplay=function(){if(!v.dataset.counted||v.dataset.counted!==e.id){v.dataset.counted=e.id;views(e.id,true);}};if(start)v.play().catch(function(){});}
+function draw(){var list=all.filter(function(e){return !u||e.univers===u});
+ if(!list.length){$('tvList').innerHTML='<li class="tv-empty">Pas encore d’émission ici : la prochaine arrive bientôt.</li>';$('tvPlayer').hidden=true;return;}
+ $('tvList').innerHTML=list.slice(0,30).map(function(e){return '<li><button type="button" data-id="'+esc(e.id)+'">'+(ok(e.image)?'<img src="'+esc(e.image)+'" alt="" loading="lazy">':'')+'<span><b>'+esc(e.titre)+'</b><small>'+esc((U[e.univers]||'')+' · '+e.label+' · '+day(e.date)+' · '+mn(e.duree))+'</small></span></button></li>'}).join('');
+ $('tvList').querySelectorAll('button').forEach(function(b){b.onclick=function(){var e=all.find(function(x){return x.id===b.dataset.id});if(e){play(e,true);$('tv').scrollIntoView({behavior:'smooth'});}}});
+ var want=(location.hash.match(/^#tv=(.+)$/)||[])[1],first=list.find(function(e){return e.id===want})||list[0];play(first,false);}
+document.querySelectorAll('.tv-tabs button').forEach(function(b){b.onclick=function(){u=b.dataset.u;document.querySelectorAll('.tv-tabs button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});draw();}});
+fetch('/studio/emissions.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():[]}).then(function(rows){all=(Array.isArray(rows)?rows:[]).filter(function(e){return e&&e.publie===true&&ok(e.video)});draw();}).catch(function(){});
+})();
+</script></body>
 </html>

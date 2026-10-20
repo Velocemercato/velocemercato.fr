@@ -183,13 +183,23 @@ def wrap(text, fnt, width, draw):
 
 
 def chunks(text, max_chars=150):
+    """Découpe une réplique en sous-titres de 150 caractères maximum (phrases, sinon virgules, sinon mots)."""
+    pieces = []
+    for sentence in re.split(r'(?<=[.!?…])\s+', text):
+        while len(sentence) > max_chars:
+            cut = max(sentence.rfind(', ', 0, max_chars), sentence.rfind(' ', 0, max_chars))
+            cut = cut if cut > 40 else max_chars
+            pieces.append(sentence[:cut + 1].strip())
+            sentence = sentence[cut + 1:].strip()
+        if sentence:
+            pieces.append(sentence)
     parts, cur = [], ''
-    for s in re.split(r'(?<=[.!?…])\s+', text):
-        if cur and len(cur) + len(s) > max_chars:
+    for s_ in pieces:
+        if cur and len(cur) + len(s_) + 1 > max_chars:
             parts.append(cur)
-            cur = s
+            cur = s_
         else:
-            cur = (cur + ' ' + s).strip()
+            cur = (cur + ' ' + s_).strip()
     if cur:
         parts.append(cur)
     return parts
