@@ -3,7 +3,7 @@ name: Resultats en direct
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/5 10-22 * * *'   # toutes les 5 minutes, de midi à minuit (heure de Paris l'été)
+    - cron: '*/5 10-23 * * *'   # toutes les 5 minutes, de midi à 1 h du matin (heure de Paris l'été)
 
 permissions:
   contents: write
@@ -24,6 +24,7 @@ jobs:
       - name: Lire les scores (football-data.org)
         env:
           FOOTBALL_DATA_KEY: ${{ secrets.FOOTBALL_DATA_KEY }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: python update_scores.py
       - name: Enregistrer
         run: |

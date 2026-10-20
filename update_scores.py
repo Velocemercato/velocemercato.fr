@@ -14,8 +14,40 @@ from zoneinfo import ZoneInfo
 
 OUT = Path('scores.json')
 KEY = os.getenv('FOOTBALL_DATA_KEY', '').strip()
+WEBHOOK = os.getenv('DISCORD_WEBHOOK', '').strip()  # salon Discord #buts-en-direct (facultatif)
 COMPETITIONS = {'FL1': 'Ligue 1', 'CL': 'Ligue des champions'}
 PARIS = ZoneInfo('Europe/Paris')
+
+
+def notify(old_rows, rows):
+    """Envoie dans le salon Discord : coup d'envoi, but, mi-temps, fin de match (scores officiels seulement)."""
+    if not WEBHOOK.startswith('https://discord.com/api/webhooks/') or not old_rows:
+        return
+    before = {m['id']: m for m in old_rows}
+    msgs = []
+    for m in rows:
+        o = before.get(m['id'])
+        if not o:
+            continue
+        sc, so = m['score'], o['score']
+        tag = f"**{m['dom']} {sc[0] if sc[0] is not None else 0}-{sc[1] if sc[1] is not None else 0} {m['ext']}** · {m['comp']}"
+        if o['statut'] in ('SCHEDULED', 'TIMED') and m['statut'] == 'IN_PLAY':
+            msgs.append(f"🟢 Coup d'envoi : {m['dom']} – {m['ext']} ({m['comp']})")
+        elif m['statut'] in ('IN_PLAY', 'PAUSED', 'FINISHED') and sc != so and None not in sc:
+            msgs.append(f"⚽ BUT ! {tag}")
+        if o['statut'] == 'IN_PLAY' and m['statut'] == 'PAUSED':
+            msgs.append(f"⏸ Mi-temps : {tag}")
+        if o['statut'] != 'FINISHED' and m['statut'] == 'FINISHED':
+            msgs.append(f"🏁 Terminé : {tag}")
+    for text in msgs[:10]:
+        body = json.dumps({'content': text + '\n<https://velocemercato.fr>', 'username': 'Véloce Mercato · Flash'}).encode('utf-8')
+        try:
+            urllib.request.urlopen(urllib.request.Request(WEBHOOK, data=body, headers={'Content-Type': 'application/json',
+                                   'User-Agent': 'VeloceMercato/1.0'}, method='POST'), timeout=10).read()
+        except Exception as exc:
+            print(f'Discord : envoi impossible ({type(exc).__name__})')
+    if msgs:
+        print(f'Discord : {len(msgs)} notification(s).')
 
 
 def main():
@@ -43,6 +75,7 @@ def main():
     if old.get('matchs') == rows:
         print('Scores inchangés.')
         return
+    notify(old.get('matchs') or [], rows)
     new['maj'] = dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds').replace('+00:00', 'Z')
     OUT.write_text(json.dumps(new, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
     print(f'Scores : {len(rows)} matchs mis à jour.')
