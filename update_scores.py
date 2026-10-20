@@ -45,7 +45,8 @@ def notify(old_rows, rows):
         tag = f"**{m['dom']} {sc[0] if sc[0] is not None else 0}-{sc[1] if sc[1] is not None else 0} {m['ext']}** · {m['comp']}"
         if o['statut'] in ('SCHEDULED', 'TIMED') and m['statut'] == 'IN_PLAY':
             msgs.append(f"🟢 Coup d'envoi : {m['dom']} – {m['ext']} ({m['comp']})")
-        elif m['statut'] in ('IN_PLAY', 'PAUSED', 'FINISHED') and sc != so and None not in sc:
+        elif (o['statut'] in ('IN_PLAY', 'PAUSED') and m['statut'] in ('IN_PLAY', 'PAUSED', 'FINISHED')
+              and None not in sc and None not in so and sum(sc) > sum(so)):
             msgs.append(f"⚽ BUT ! {tag}")
         if o['statut'] == 'IN_PLAY' and m['statut'] == 'PAUSED':
             msgs.append(f"⏸ Mi-temps : {tag}")
@@ -82,8 +83,20 @@ def main():
                      'dom': home.get('shortName') or home.get('name') or '?', 'ext': away.get('shortName') or away.get('name') or '?',
                      'statut': m.get('status'), 'score': [full.get('home'), full.get('away')]})
     rows.sort(key=lambda x: (str(x['date']), x['comp']))
-    new = {'matchs': rows}
     old = json.loads(OUT.read_text(encoding='utf-8')) if OUT.exists() else {}
+    # La source renvoie parfois une ancienne version : on ne revient jamais en arrière
+    # (un match commencé ne redevient pas « à venir », un score ne descend pas).
+    rank = {'SCHEDULED': 0, 'TIMED': 0, 'POSTPONED': 0, 'IN_PLAY': 1, 'PAUSED': 1, 'FINISHED': 2}
+    before = {m['id']: m for m in old.get('matchs') or []}
+    for i, m in enumerate(rows):
+        o = before.get(m['id'])
+        if not o:
+            continue
+        older_status = rank.get(m['statut'], 0) < rank.get(o['statut'], 0)
+        lower_score = None not in o['score'] and (None in m['score'] or sum(m['score']) < sum(o['score']))
+        if older_status or lower_score:
+            rows[i] = o
+    new = {'matchs': rows}
     if old.get('matchs') == rows:
         print('Scores inchangés.')
         return
