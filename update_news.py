@@ -30,10 +30,10 @@ FLASH = Path('flash.json')
 NOW = dt.datetime.now(dt.timezone.utc)
 PARIS = ZoneInfo('Europe/Paris')
 MAX_AGE_HOURS = 36
-MAX_PER_RUN = 6
-MAX_PER_DAY = 100
+MAX_PER_RUN = 8
+MAX_PER_DAY = 160
 MAX_ARTICLES_TO_EXAMINE = 30
-MAX_REJECTS = 8
+MAX_REJECTS = 15
 # Rattrapage manuel (lancé depuis GitHub) : remonte plus loin dans le temps et rédige davantage de brèves.
 CATCH_UP = os.getenv('VM_RATTRAPAGE', '').strip() == '1'
 # Modèle rapide et économique ; on essaie le suivant si un modèle n'existe pas (HTTP 404).
@@ -88,11 +88,15 @@ FEEDS = [
     ('INTERNATIONAL', 'INTERNATIONAL', 'BBC Sport', 'https://feeds.bbci.co.uk/sport/football/european/rss.xml'),
     ('INTERNATIONAL', 'FEMININ', 'BBC Sport', 'https://feeds.bbci.co.uk/sport/football/womens/rss.xml'),
     ('FRANCE', 'FRANCE', 'Foot01', 'https://www.foot01.com/news.rss'),
+    ('FRANCE', 'LIGUE_2', 'RMC Sport', 'https://rmcsport.bfmtv.com/rss/football/ligue-2/'),
+    ('FRANCE', 'BLEUS', 'RMC Sport', 'https://rmcsport.bfmtv.com/rss/football/equipe-de-france/'),
+    ('FRANCE', 'FRANCE', 'franceinfo', 'https://www.francetvinfo.fr/sports/foot.rss'),
+    ('FRANCE', 'FRANCE', 'Maxifoot', 'https://www.maxifoot.fr/rss/actu.xml'),
 ]
 
 ALLOWED_HOSTS = {
     'foot-national.com', 'footamateur.ouest-france.fr', 'rmcsport.bfmtv.com',
-    'footmercato.net', 'bbc.co.uk', 'bbci.co.uk', 'bbc.com', 'foot01.com',
+    'footmercato.net', 'bbc.co.uk', 'bbci.co.uk', 'bbc.com', 'foot01.com', 'francetvinfo.fr', 'maxifoot.fr',
 }
 BLOCK = re.compile(
     r'\b(pronostic|paris sportifs|casino|cotes de paris|billetterie|streaming ill[eé]gal|'
@@ -148,7 +152,15 @@ def request_bytes(url, limit=2_000_000, timeout=12):
 
 def rss_items(feed):
     zone, championship, source, url = feed
-    root = ET.fromstring(request_bytes(url, timeout=15))
+    data = request_bytes(url, timeout=15)
+    try:
+        root = ET.fromstring(data)
+    except ET.ParseError:
+        # Certains flux utilisent des préfixes XML non déclarés : on les retire puis on relit.
+        text = data.decode('utf-8', errors='replace')
+        text = re.sub(r'<(/?)[A-Za-z][\w.-]*:([A-Za-z])', r'<\1\2', text)
+        text = re.sub(r'\s[A-Za-z][\w.-]*:([A-Za-z][\w.-]*=)', r' \1', text)
+        root = ET.fromstring(text.encode('utf-8'))
     posts = []
     nodes = root.findall('./channel/item')
     if not nodes:
@@ -212,7 +224,7 @@ def extract_article(url):
     text = extract(data.decode('utf-8', errors='replace'), include_comments=False,
                    include_tables=False, favor_precision=True, output_format='txt')
     text = re.sub(r'\n{3,}', '\n\n', text or '').strip()
-    if len(text) < 650:
+    if len(text) < 420:
         return None
     # Ne transmet à Claude qu'une portion raisonnable du texte pour un résumé de faits.
     return text[:6500]
@@ -407,7 +419,7 @@ def main():
             continue
         try:
             material = extract_article(post['url'])
-            if material is None and len(post.get('feed_text', '')) >= 650:
+            if material is None and len(post.get('feed_text', '')) >= 420:
                 material = post['feed_text'][:6500]
             if material is None:
                 stats['source_inaccessible_ou_trop_courte'] += 1
