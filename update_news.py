@@ -96,7 +96,7 @@ FEEDS = [
 
 ALLOWED_HOSTS = {
     'foot-national.com', 'footamateur.ouest-france.fr', 'rmcsport.bfmtv.com',
-    'footmercato.net', 'bbc.co.uk', 'bbci.co.uk', 'bbc.com', 'foot01.com', 'francetvinfo.fr', 'maxifoot.fr',
+    'footmercato.net', 'bbc.co.uk', 'bbci.co.uk', 'bbc.com', 'foot01.com', 'francetvinfo.fr', 'franceinfo.fr', 'maxifoot.fr',
 }
 BLOCK = re.compile(
     r'\b(pronostic|paris sportifs|casino|cotes de paris|billetterie|streaming ill[eé]gal|'

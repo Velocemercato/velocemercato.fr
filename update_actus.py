@@ -33,7 +33,7 @@ robot.FEEDS = [
     ('FRANCE', 'REGIONS', 'Ouest-France', 'https://www.ouest-france.fr/rss/une'),
 ]
 robot.ALLOWED_HOSTS = {
-    'francetvinfo.fr', '20minutes.fr', 'france24.com', 'rfi.fr', 'ouest-france.fr',
+    'francetvinfo.fr', 'franceinfo.fr', '20minutes.fr', 'france24.com', 'rfi.fr', 'ouest-france.fr',
 }
 # Pas de pubs, jeux, horoscopes, directs ou programmes TV.
 robot.BLOCK = re.compile(r'\b(horoscope|bon plan|promo(tion)?s?|soldes?|code promo|jeu concours|concours|'
