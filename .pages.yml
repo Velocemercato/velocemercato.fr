@@ -1,0 +1,204 @@
+# Back-office Véloce Mercato (Pages CMS : https://app.pagescms.org)
+# Permet à Romain de modifier ces fichiers depuis son téléphone, sans toucher au code.
+# Les articles restent gérés par le robot (articles.json n'est pas éditable ici pour éviter les conflits).
+
+media:
+  input: img
+  output: /img
+
+content:
+  - name: agenda
+    label: "📅 Agenda (lives, tournois, matchs avec chaîne/radio)"
+    type: file
+    path: agenda.json
+    format: json
+    list: true
+    fields:
+      - name: type
+        label: Type
+        type: select
+        options:
+          values:
+            - name: live
+              label: Live VM
+            - name: tournoi
+              label: Tournoi VM
+            - name: match
+              label: Match (avec chaîne / radio confirmées)
+      - name: date
+        label: Date et heure (heure de Paris)
+        type: date
+        options:
+          time: true
+          format: yyyy-MM-dd'T'HH:mm
+      - name: titre
+        label: Titre (ex. « PSG – OM » ou « Live EA FC avec Heineguez »)
+        type: string
+      - name: competition
+        label: Compétition (facultatif)
+        type: string
+      - name: chaine
+        label: Chaîne TV confirmée (facultatif)
+        type: string
+      - name: radio
+        label: Radio confirmée (facultatif)
+        type: string
+      - name: lien
+        label: Lien (Twitch, YouTube, Discord… en https://)
+        type: string
+
+  - name: transparence
+    label: "💛 Dons et dépenses (transparence)"
+    type: file
+    path: transparence.json
+    format: json
+    fields:
+      - name: objectifs
+        label: Objectifs
+        type: object
+        list: true
+        fields:
+          - { name: id, label: "Identifiant (media ou pro)", type: string }
+          - { name: titre, label: Titre, type: string }
+          - { name: but, label: Objectif, type: string }
+          - { name: montant, label: "Montant visé (€)", type: number }
+      - name: contributions
+        label: "Dons reçus (uniquement de vrais dons !)"
+        type: object
+        list: true
+        fields:
+          - name: date
+            label: Date
+            type: date
+            options: { format: yyyy-MM-dd }
+          - { name: nom, label: "Prénom ou pseudo (vide = Anonyme)", type: string }
+          - { name: montant, label: "Montant (€)", type: number }
+          - name: objectif
+            label: Cagnotte
+            type: select
+            options:
+              values:
+                - { name: media, label: Soutenir Véloce Mercato }
+                - { name: pro, label: Lancement pro }
+      - name: depenses
+        label: Dépenses
+        type: object
+        list: true
+        fields:
+          - name: date
+            label: Date
+            type: date
+            options: { format: yyyy-MM-dd }
+          - { name: objet, label: "Objet (ex. nom de domaine)", type: string }
+          - { name: montant, label: "Montant (€)", type: number }
+          - name: objectif
+            label: Cagnotte
+            type: select
+            options:
+              values:
+                - { name: media, label: Soutenir Véloce Mercato }
+                - { name: pro, label: Lancement pro }
+
+  - name: liens
+    label: "🔗 Liens (Discord, paiements Stripe, Pastille)"
+    type: file
+    path: liens.json
+    format: json
+    fields:
+      - { name: discord, label: Invitation Discord, type: string }
+      - { name: discord_serveur_id, label: "ID du serveur Discord (voyant vert/rouge)", type: string }
+      - { name: soutien_media, label: "Lien Stripe « Soutenir Véloce Mercato »", type: string }
+      - { name: soutien_gaming, label: "Lien Stripe « Soutenir VM Gaming »", type: string }
+      - { name: soutien_pro, label: "Lien Stripe « Lancement pro » (seulement après la micro-entreprise)", type: string }
+      - { name: soutien_nom, label: Nom affiché du paiement, type: string }
+      - { name: pastille_texte, label: Texte de La Pastille, type: string }
+      - { name: pastille_lien, label: Lien de La Pastille, type: string }
+      - { name: evenement, label: Événement, type: string }
+      - { name: dons, label: "Ancien lien de don (laisser vide)", type: string }
+      - { name: dons_nom, label: "Ancien nom de don (laisser vide)", type: string }
+
+  - name: arena
+    label: "🏆 Véloce Arena (classements, calendrier, coupe)"
+    type: file
+    path: arena.json
+    format: json
+    fields:
+      - { name: saison, label: Saison, type: string }
+      - { name: jeu, label: Jeu, type: string }
+      - { name: maj, label: "Dernière mise à jour (texte)", type: string }
+      - name: ligues
+        label: Ligues
+        type: object
+        list: true
+        fields:
+          - { name: id, label: "Identifiant (f1, f2, f3, am)", type: string }
+          - { name: nom, label: Nom, type: string }
+          - { name: niveau, label: Niveau, type: string }
+          - name: clubs
+            label: Clubs
+            type: object
+            list: true
+            fields:
+              - { name: nom, label: Nom du club, type: string }
+              - { name: joueurs, label: "Joueurs (gamertags)", type: string, list: true }
+              - { name: j, label: Joués, type: number }
+              - { name: g, label: Gagnés, type: number }
+              - { name: n, label: Nuls, type: number }
+              - { name: p, label: Perdus, type: number }
+              - { name: bp, label: Buts pour, type: number }
+              - { name: bc, label: Buts contre, type: number }
+              - { name: points, label: Points, type: number }
+      - name: joueurs
+        label: Classement des joueurs (Ballon Véloce)
+        type: object
+        list: true
+        fields:
+          - { name: gamertag, label: Gamertag, type: string }
+          - { name: club, label: Club, type: string }
+          - { name: points, label: Points, type: number }
+      - name: joueur_semaine
+        label: Joueur de la semaine
+        type: object
+        fields:
+          - { name: gamertag, label: Gamertag, type: string }
+          - { name: club, label: Club, type: string }
+          - { name: points, label: Points, type: number }
+          - { name: semaine, label: "Semaine (ex. du 20 au 26 octobre)", type: string }
+      - name: calendrier
+        label: Calendrier
+        type: object
+        list: true
+        fields:
+          - name: date
+            label: Date
+            type: date
+            options: { format: yyyy-MM-dd }
+          - { name: heure, label: "Heure (ex. 21h00)", type: string }
+          - { name: titre, label: Titre, type: string }
+      - name: coupe
+        label: Coupe Véloce
+        type: object
+        fields:
+          - { name: nom, label: Nom, type: string }
+          - { name: statut, label: Statut, type: string }
+          - { name: tours, label: "Tours (texte libre)", type: string, list: true }
+
+  - name: rdv_gaming
+    label: "🎮 Soirées VM Gaming"
+    type: file
+    path: vm-gaming/data/events.json
+    format: json
+    list: true
+    fields:
+      - name: date
+        label: Date et heure (heure de Paris)
+        type: date
+        options:
+          time: true
+          format: yyyy-MM-dd'T'HH:mm
+      - { name: titre, label: "Titre (ex. Soirée Warzone)", type: string }
+      - name: jeu
+        label: Jeu
+        type: select
+        options:
+          values: [Warzone, REDSEC, EA FC, GTA VI, Autre]

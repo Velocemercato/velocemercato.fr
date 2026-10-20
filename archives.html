@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Archives et recherche – Véloce Mercato</title>
+<meta name="description" content="Toutes les brèves foot de Véloce Mercato : recherche par club, joueur ou championnat, et archives jour par jour.">
+<link rel="canonical" href="https://velocemercato.fr/archives.html">
+<meta property="og:title" content="Archives et recherche – Véloce Mercato"><meta property="og:url" content="https://velocemercato.fr/archives.html"><meta property="og:image" content="https://velocemercato.fr/img/partage-velocemercato.jpg"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2470'/%3E%3Ctext x='32' y='44' font-family='Impact,sans-serif' font-size='30' font-style='italic' text-anchor='middle' fill='%23f4cf55'%3EVM%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/pages.css">
+<style>
+.search{display:flex;flex-direction:column;gap:10px}
+.search input,.search select{width:100%;font:inherit;padding:12px 14px;border:3px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink)}
+.search input:focus,.search select:focus{outline:3px solid var(--gold-hi);outline-offset:2px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.day{font:400 1.2rem/1 Impact,Anton,sans-serif;text-transform:uppercase;margin:22px 0 8px;color:var(--royal)}
+.item{display:block;text-decoration:none;color:inherit;background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px;box-shadow:3px 3px 0 var(--line)}
+.item:hover{transform:translate(-2px,-2px)}
+.item small{display:block;font:700 .78rem/1.3 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.item b{display:block;line-height:1.3}
+mark{background:var(--gold-hi);color:#0b1533;border-radius:3px;padding:0 2px}
+.more{display:block;width:100%;margin-top:12px;justify-content:center}
+.empty{text-align:center;color:var(--muted);padding:24px}
+</style>
+</head>
+<body>
+<header><a class="logo" href="/">VÉLOCE <b>MERCATO</b></a><nav><a href="/">Brèves</a><a href="/#videos">Vidéos</a><a href="/soutenir.html">Soutenir</a></nav></header>
+<main>
+<section class="card hero">
+<span class="tag">🔎 Archives</span>
+<h1>Toutes les <em>brèves</em></h1>
+<p>Cherche un club, un joueur ou un entraîneur, ou remonte le fil jour par jour. Aucune brève n'est supprimée.</p>
+</section>
+
+<section class="card" aria-label="Recherche">
+<div class="search">
+<label class="muted" for="q">Rechercher</label>
+<input id="q" type="search" placeholder="Ex. : Lens, Mbappé, mercato…" autocomplete="off">
+<div class="row">
+<select id="champ" aria-label="Championnat"><option value="">Tous les championnats</option><option value="LIGUE_1">Ligue 1</option><option value="LIGUE_2">Ligue 2</option><option value="NATIONAL">National &amp; amateurs</option><option value="BLEUS">Équipes de France</option><option value="EUROPE">Coupes d'Europe</option><option value="ETRANGER">Étranger</option><option value="FEMININ">Féminin</option></select>
+<select id="cat" aria-label="Type"><option value="">Tous les types</option><option value="MERCATO">Mercato</option><option value="MATCHS">Matchs</option><option value="ACTUALITES">Actualités</option></select>
+</div>
+<p class="muted" id="count" aria-live="polite">Chargement…</p>
+</div>
+</section>
+
+<section aria-label="Résultats"><div id="list"></div><button class="btn more" id="more" type="button" hidden>Voir plus de brèves</button></section>
+</main>
+<footer><a href="/">← Retour aux brèves</a> · <a href="/mentions-legales.html">Mentions légales</a></footer>
+<script>
+(function(){
+  var all=[],shown=50,$=function(i){return document.getElementById(i);};
+  var norm=function(s){return String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();};
+  var safe=function(id){return String(id).replace(/[^A-Za-z0-9_-]/g,'-').slice(0,80);};
+  var N={LIGUE_1:'Ligue 1',LIGUE_2:'Ligue 2',NATIONAL:'National',BLEUS:'Bleus',EUROPE:'Europe',ETRANGER:'Étranger',FEMININ:'Féminin'};
+  function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e;}
+  function highlight(parent,text,q){
+    if(!q){parent.textContent=text;return;}
+    var n=norm(text),i=n.indexOf(q);
+    if(i<0){parent.textContent=text;return;}
+    parent.appendChild(document.createTextNode(text.slice(0,i)));
+    parent.appendChild(el('mark',null,text.slice(i,i+q.length)));
+    parent.appendChild(document.createTextNode(text.slice(i+q.length)));
+  }
+  function draw(){
+    var q=norm($('q').value.trim()),c=$('champ').value,k=$('cat').value;
+    var list=all.filter(function(a){
+      if(c&&a.championnat!==c)return false;
+      if(k&&a.categorie!==k)return false;
+      return !q||norm(a.titre+' '+a.resume+' '+(a.texte||'')).indexOf(q)>=0;
+    });
+    $('count').textContent=list.length+(list.length>1?' brèves trouvées':' brève trouvée')+(all.length?' sur '+all.length:'');
+    var root=$('list');root.textContent='';
+    if(!list.length){root.appendChild(el('p','empty','Aucune brève ne correspond. Essaie un autre mot.'));$('more').hidden=true;return;}
+    var last='';
+    list.slice(0,shown).forEach(function(a){
+      var d=new Date(a.publishedAt),day=d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'Europe/Paris'});
+      if(day!==last){root.appendChild(el('h2','day',day));last=day;}
+      var it=el('a','item');it.href='/a/'+safe(a.id)+'.html';
+      it.appendChild(el('small',null,d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Paris'})+' · '+(N[a.championnat]||'Foot')+' · '+(a.tag||a.categorie||'')));
+      var b=el('b');highlight(b,a.titre||'',q);it.appendChild(b);
+      root.appendChild(it);
+    });
+    $('more').hidden=list.length<=shown;
+  }
+  ['q','champ','cat'].forEach(function(id){$(id).addEventListener('input',function(){shown=50;draw();});});
+  $('more').addEventListener('click',function(){shown+=50;draw();});
+  var p=new URLSearchParams(location.search);if(p.get('q'))$('q').value=p.get('q');
+  fetch('/articles.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():[];}).then(function(rows){
+    all=(Array.isArray(rows)?rows:[]).filter(function(a){return a&&a.id&&a.titre&&a.publishedAt;}).sort(function(a,b){return String(b.publishedAt).localeCompare(String(a.publishedAt));});
+    draw();
+  }).catch(function(){$('count').textContent='Archives indisponibles pour le moment.';});
+})();
+</script>
+</body>
+</html>
