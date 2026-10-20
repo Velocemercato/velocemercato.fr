@@ -1,26 +1,26 @@
-Passage du 2026-10-20 10:58 UTC (schedule)
-Nettoyage : 0 breves vides retirees, 208 gardees.
+Passage du 2026-10-20 11:29 UTC (schedule)
+Nettoyage : 0 breves vides retirees, 210 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 208 articles conservés et 45 flashs existants.
+Départ : 210 articles conservés et 45 flashs existants.
 RSS Foot National / LIGUE_1 : 9 actualités récentes.
 RSS Foot National / NATIONAL : 5 actualités récentes.
+RSS Foot National / LIGUE_2 : 5 actualités récentes.
 RSS Foot National / NATIONAL : 7 actualités récentes.
-RSS RMC Sport / LIGUE_1 : 7 actualités récentes.
 RSS RMC Sport / FRANCE : 27 actualités récentes.
 RSS RMC Sport / INTERNATIONAL : 20 actualités récentes.
+RSS RMC Sport / LIGUE_1 : 4 actualités récentes.
 RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 36 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 2 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 35 actualités récentes.
+RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 64, column 0
 RSS BBC Sport / FEMININ : 4 actualités récentes.
 RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 60, column 0
-RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 60, column 0
 RSS Foot01 / FRANCE : 43 actualités récentes.
-RSS Foot National / LIGUE_2 : 5 actualités récentes.
-210 titres collectés, 46 nouveaux liens, quota 6.
-Brève prête : BBC Sport - La SPFL lance un appel d'offres pour les droits TV de la Premiership écossaise
-Brève prête : Foot Mercato - Ligue 1 : le calendrier des 13e à 18e journées dévoilé
-Bilan : brèves_rédigées=2, non_pertinent=7, source_inaccessible_ou_trop_courte=11, sujet_deja_traite=10
-Publié : 2 brèves (total 210). Flash : 45.
+206 titres collectés, 42 nouveaux liens, quota 6.
+Brève ignorée (BBC Sport) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève ignorée (BBC Sport) : ValueError - Résumé IA incomplet ou trop long : non publié
+Bilan : non_pertinent=10, rejet_lecture_ou_ia=2, source_inaccessible_ou_trop_courte=12, sujet_deja_traite=6
+Aucune brève de qualité suffisante ; fichiers JSON inchangés.
 Pages : 210 brèves avec leur propre page, sitemap à jour.
 Agenda : secret FOOTBALL_DATA_KEY absent, matchs.json inchangé.
 Ligue 1 : 15 vidéos lues, 6 vidéos de buts gardées.
@@ -32,7 +32,7 @@ Chaîne @EquipedeFrance : introuvable (HTTPError)
 Chaîne @ChampionsLeague : introuvable (HTTPError)
 Chaîne @UEFAChampionsLeague : introuvable (HTTPError)
 Ligue des champions : aucune chaîne officielle trouvée, ignorée.
-UEFA : 15 vidéos lues, 5 vidéos de buts gardées.
+UEFA : 15 vidéos lues, 4 vidéos de buts gardées.
 Premier League : 15 vidéos lues, 3 vidéos de buts gardées.
 LaLiga : 15 vidéos lues, 2 vidéos de buts gardées.
 Serie A : 15 vidéos lues, 8 vidéos de buts gardées.
