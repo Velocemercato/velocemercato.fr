@@ -1,38 +1,29 @@
-Passage du 2026-10-20 13:14 UTC (schedule)
-Nettoyage : 0 breves vides retirees, 212 gardees.
+Passage du 2026-10-20 13:35 UTC (workflow_dispatch)
+Nettoyage : 0 breves vides retirees, 218 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 212 articles conservés et 45 flashs existants.
+Départ : 218 articles conservés et 45 flashs existants.
 RSS Foot National / LIGUE_1 : 10 actualités récentes.
-RSS Foot National / NATIONAL : 7 actualités récentes.
 RSS Foot National / LIGUE_2 : 6 actualités récentes.
+RSS Foot National / NATIONAL : 7 actualités récentes.
 RSS Foot National / NATIONAL : 5 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 20 actualités récentes.
 RSS RMC Sport / FRANCE : 30 actualités récentes.
 RSS RMC Sport / LIGUE_1 : 4 actualités récentes.
-RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 21 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 2 actualités récentes.
-RSS BBC Sport / FEMININ : 4 actualités récentes.
+RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 36 actualités récentes.
+RSS BBC Sport / FEMININ : 4 actualités récentes.
+RSS Foot01 / FRANCE : 43 actualités récentes.
 RSS inaccessible RMC Sport : HTTPError - HTTP Error 404: Not Found
 RSS RMC Sport / BLEUS : 0 actualités récentes.
-RSS Foot01 / FRANCE : 43 actualités récentes.
 RSS Foot Amateur / NATIONAL : 3 actualités récentes.
+RSS franceinfo / FRANCE : 5 actualités récentes.
 RSS Foot Amateur / NATIONAL : 7 actualités récentes.
 RSS inaccessible Maxifoot : HTTPError - HTTP Error 404: Not Found
-RSS franceinfo / FRANCE : 5 actualités récentes.
-228 titres collectés, 58 nouveaux liens, quota 8.
-Brève ignorée (RMC Sport) : ValueError - Résumé IA incomplet ou trop long : non publié
-Brève prête : Foot Mercato - Super League : le Real Madrid réclamerait 80 M€ aux clubs anglais
-Brève prête : RMC Sport - Ligue 2 : Rodez privé de son entraîneur Didier Santini, opéré des cervicales
-Brève prête : RMC Sport - Lille : Davide Ancelotti réagit aux violences du 17 octobre avant Galatasaray
-Brève prête : RMC Sport - Jordan Pickford et sa femme surpris par les manifestations à Paris pendant leur week-end
-Brève prête : Foot Amateur - Un ex-éducateur jugé à Angers pour avoir filmé de jeunes joueuses dans les vestiaires
-Brève ignorée (RMC Sport) : ValueError - Résumé IA incomplet ou trop long : non publié
-Brève prête : RMC Sport - PSG-Barça : les Catalans joueront avec un maillot orange de la saison dernière
-Brève ignorée (Foot Mercato) : ValueError - Résumé IA incomplet ou trop long : non publié
-Brève ignorée (Foot Amateur) : ValueError - Résumé IA incomplet ou trop long : non publié
-Bilan : brèves_rédigées=6, non_pertinent=11, rejet_lecture_ou_ia=4, source_inaccessible_ou_trop_courte=3, sujet_deja_traite=6
-Publié : 6 brèves (total 218). Flash : 45.
+227 titres collectés, 50 nouveaux liens, quota 1.
+Assez de sujets refusés dans ce passage : arrêt pour limiter le coût.
+Bilan : non_pertinent=4, sujet_deja_traite=2
+Aucune brève de qualité suffisante ; fichiers JSON inchangés.
 Pages : 218 brèves avec leur propre page, sitemap à jour.
 Agenda : secret FOOTBALL_DATA_KEY absent, matchs.json inchangé.
 Ligue 1 : 15 vidéos lues, 5 vidéos de buts gardées.
@@ -50,3 +41,7 @@ LaLiga : 15 vidéos lues, 3 vidéos de buts gardées.
 Serie A : 15 vidéos lues, 8 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 10 vidéos de buts gardées.
 Vidéos publiées : 56.
+Flux muet RMC Sport : HTTPError
+Flux muet Maxifoot : HTTPError
+Flux muet Millenium : HTTPError
+Fil express : actus 120, foot 120, gaming 60
