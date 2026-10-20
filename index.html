@@ -93,6 +93,19 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 .pb-txt b{font-family:Bangers,Impact,sans-serif;font-weight:400;font-size:1.5rem;letter-spacing:.06em;line-height:1;text-shadow:2px 2px 0 #000}
 .pb-txt span{font-size:.9rem;line-height:1.25}
 @media(max-width:420px){.pastille-band .arena-go{display:none}}
+/* === Accès rapide (4 tuiles) === */
+.quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 6px}
+@media(min-width:768px){.quick{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.qt{display:flex;flex-direction:column;gap:2px;padding:12px 12px 10px;border:3px solid #000;border-radius:14px;text-decoration:none;color:#fff;box-shadow:4px 4px 0 #000;transition:transform .15s;min-width:0}
+.qt:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #000}
+.qt .qi{font-size:1.6rem;line-height:1}
+.qt b{font-family:Bangers,Impact,sans-serif;font-weight:400;font-size:1.45rem;letter-spacing:.05em;line-height:1.05;text-shadow:2px 2px 0 #000}
+.qt small{font-size:.8rem;line-height:1.25;opacity:.95;display:flex;align-items:center;gap:4px}
+.q-vid{background:#e1243a}.q-arena{background:#14a35a}.q-pas{background:#5865f2}
+.q-don{background:var(--gold-hi);color:#0b1533}.q-don b{text-shadow:2px 2px 0 #fff}
+.q-don{animation:qpulse 2.4s ease-in-out infinite}@keyframes qpulse{50%{box-shadow:4px 4px 0 #000,0 0 0 5px rgba(244,207,85,.35)}}
+@media(prefers-reduced-motion:reduce){.q-don{animation:none}}
+.vids{margin-top:18px}
 /* === Agenda de la semaine === */
 .agenda{margin-top:34px;padding:16px;border:3px solid #000;border-radius:18px;box-shadow:6px 6px 0 #14a35a;background:var(--surface)}
 .agenda h2{font-family:Bangers,Impact,sans-serif;font-size:2.3rem;letter-spacing:.06em;margin:0 0 4px;line-height:1;text-shadow:3px 3px 0 #14a35a}
@@ -173,14 +186,12 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 </div></nav><a id="ticker" class="ticker lg:hidden" href="#flash-title" hidden aria-label="Flash Véloce : voir tous les flashs"><span class="lbl">FLASH</span><span class="flex-1 overflow-hidden"><span id="tickerRun" class="run"></span></span></a></header>
 <main id="top" class="gutter max-w-6xl mx-auto" style="padding-block:24px 56px">
 <div class="vm-banner"><img src="/img/banniere-foot-960.webp" srcset="/img/banniere-foot-960.webp 960w, /img/banniere-foot.webp 1696w" sizes="(min-width:1152px) 1120px, 100vw" width="1696" height="624" alt="Véloce Mercato, actualités foot : dessin BD d'un stade et de chroniqueurs" fetchpriority="high"></div>
-<a href="/gaming.html" class="arena-band" aria-label="Véloce Arena est en ligne : rejoindre la ligue FC gratuite"><span class="arena-live" id="arenaLive"><span class="arena-dot" id="arenaDot" style="background:#9aa3b8"></span><span id="arenaLiveTxt">Communauté Discord</span></span><span class="arena-txt"><b>🎮 VÉLOCE ARENA</b><span>La ligue EA SPORTS FC gratuite des fans : crée ton club, gagne des points, monte en Ligue Féroce 1</span></span><span class="arena-go">Rejoindre →</span></a>
-<a href="#pastille" class="pastille-band" aria-label="La Pastille : podcasts et interviews, voir l'émission"><img src="/img/avatar-veloce.webp" width="400" height="367" alt=""><span class="pb-txt"><b>🎙️ LA PASTILLE</b><span>Podcasts, interviews et invités foot · bientôt sur YouTube et Twitch</span></span><span class="arena-go">Voir →</span></a>
-<div class="grid lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] gap-8 mt-2"><section aria-labelledby="feed-title" class="min-w-0"><div class="flex items-end justify-between gap-3 mb-5 flex-wrap"><h2 id="feed-title" class="font-comic text-[2.4rem] leading-none tracking-wide">LE FIL DU JOUR <span style="color:var(--royal)">!</span></h2><span id="count" class="font-cond font-bold uppercase text-sm tracking-widest" style="color:var(--muted)"></span></div><div id="feed" class="grid sm:grid-cols-2 gap-7"></div><div id="empty" class="panel p-8 text-center flex flex-col gap-2 items-center" style="border-radius:14px" hidden><span class="burst text-xl">BIENTÔT !</span><p id="emptyTxt" class="font-cond font-bold uppercase tracking-wider" style="color:var(--muted)">Chargement du fil…</p></div></section><aside aria-labelledby="flash-title" class="min-w-0"><div class="panel overflow-hidden lg:sticky" style="top:calc(env(safe-area-inset-top,0px) + 130px);border-radius:14px"><div class="flex items-center justify-between gap-2 px-4 py-3" style="background:var(--royal);border-bottom:3px solid var(--line)"><h2 id="flash-title" class="font-comic text-2xl tracking-wider text-white">FLASH VÉLOCE · 24H</h2><span class="flex items-center gap-1.5 font-cond font-bold text-xs uppercase text-white"><span class="live w-2.5 h-2.5 rounded-full" style="background:#ff4d61"></span>Actu</span></div><ol id="timeline" class="tl flex flex-col gap-5 p-4 max-h-[600px] overflow-y-auto" aria-live="polite"></ol><p class="px-4 pb-3 text-xs font-cond uppercase tracking-wider" style="color:var(--muted)">Actualisation de l'affichage toutes les 5 minutes</p></div></aside></div>
-<section class="agenda" id="agenda" aria-labelledby="t-agenda">
-<h2 id="t-agenda">📅 L'AGENDA DE LA SEMAINE</h2>
-<p class="sub">Les matchs des 7 prochains jours, les lives et les tournois Véloce Mercato. Chaînes et radios indiquées quand elles sont confirmées officiellement.</p>
-<div id="agendaList"><p class="aempty">Chargement de l'agenda…</p></div>
-</section>
+<nav class="quick" aria-label="Accès rapide">
+<a href="#videos" class="qt q-vid"><span class="qi">🎬</span><b>Vidéos</b><small>Les buts du moment</small></a>
+<a href="/soutenir.html" class="qt q-don"><span class="qi">💛</span><b>Soutenir</b><small>Aider le média</small></a>
+<a href="/gaming.html" class="qt q-arena"><span class="qi">🏆</span><b>Tournois EA FC</b><small><span class="arena-dot" id="arenaDot" style="background:#9aa3b8"></span> <span id="arenaLiveTxt">Communauté Discord</span></small></a>
+<a href="#pastille" class="qt q-pas"><span class="qi">🎙️</span><b>La Pastille</b><small>Podcasts &amp; interviews</small></a>
+</nav>
 <section class="vids" id="videos" aria-labelledby="t-vids">
 <h2 id="t-vids">🎬 LES VIDÉOS</h2>
 <p class="sub">Les buts du moment, depuis les chaînes YouTube officielles. Mis à jour toutes les 30 minutes.</p>
@@ -200,6 +211,12 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 <button class="vchip" type="button" data-l="FEMININ" aria-pressed="false">Féminin</button>
 </div>
 <div class="vgrid" id="vgrid"><p class="vempty">Chargement des vidéos…</p></div>
+</section>
+<div class="grid lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] gap-8 mt-2"><section aria-labelledby="feed-title" class="min-w-0"><div class="flex items-end justify-between gap-3 mb-5 flex-wrap"><h2 id="feed-title" class="font-comic text-[2.4rem] leading-none tracking-wide">LE FIL DU JOUR <span style="color:var(--royal)">!</span></h2><span id="count" class="font-cond font-bold uppercase text-sm tracking-widest" style="color:var(--muted)"></span></div><div id="feed" class="grid sm:grid-cols-2 gap-7"></div><div id="empty" class="panel p-8 text-center flex flex-col gap-2 items-center" style="border-radius:14px" hidden><span class="burst text-xl">BIENTÔT !</span><p id="emptyTxt" class="font-cond font-bold uppercase tracking-wider" style="color:var(--muted)">Chargement du fil…</p></div></section><aside aria-labelledby="flash-title" class="min-w-0"><div class="panel overflow-hidden lg:sticky" style="top:calc(env(safe-area-inset-top,0px) + 130px);border-radius:14px"><div class="flex items-center justify-between gap-2 px-4 py-3" style="background:var(--royal);border-bottom:3px solid var(--line)"><h2 id="flash-title" class="font-comic text-2xl tracking-wider text-white">FLASH VÉLOCE · 24H</h2><span class="flex items-center gap-1.5 font-cond font-bold text-xs uppercase text-white"><span class="live w-2.5 h-2.5 rounded-full" style="background:#ff4d61"></span>Actu</span></div><ol id="timeline" class="tl flex flex-col gap-5 p-4 max-h-[600px] overflow-y-auto" aria-live="polite"></ol><p class="px-4 pb-3 text-xs font-cond uppercase tracking-wider" style="color:var(--muted)">Actualisation de l'affichage toutes les 5 minutes</p></div></aside></div>
+<section class="agenda" id="agenda" aria-labelledby="t-agenda">
+<h2 id="t-agenda">📅 L'AGENDA DE LA SEMAINE</h2>
+<p class="sub">Les matchs des 7 prochains jours, les lives et les tournois Véloce Mercato. Chaînes et radios indiquées quand elles sont confirmées officiellement.</p>
+<div id="agendaList"><p class="aempty">Chargement de l'agenda…</p></div>
 </section>
 <div class="mt-10"></div>
 <a href="/vm-gaming/" class="gstrip" aria-label="VM Gaming : EA FC et tous tes jeux, avec le Discord"><div class="gh"><span class="gt">🎮 VM GAMING</span><span class="gg">J'Y VAIS →</span></div><p class="gp">EA FC en premier, et aussi Warzone, REDSEC, GTA VI : les actus de tes jeux et le Discord pour trouver des potes.</p><ul id="gList"></ul></a>
