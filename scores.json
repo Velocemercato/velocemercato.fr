@@ -6,7 +6,7 @@
    "comp": "Ligue des champions",
    "dom": "Fenerbahçe",
    "ext": "Slavia Praha",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     2,
     2
@@ -18,7 +18,7 @@
    "comp": "Ligue des champions",
    "dom": "Sabah FK",
    "ext": "Dortmund",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     1,
     2
@@ -30,10 +30,10 @@
    "comp": "Ligue des champions",
    "dom": "Napoli",
    "ext": "Bodø/Glimt",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -42,10 +42,10 @@
    "comp": "Ligue des champions",
    "dom": "Stuttgart",
    "ext": "Atleti",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -54,22 +54,10 @@
    "comp": "Ligue des champions",
    "dom": "Roma",
    "ext": "Sl. Bratislava",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 575365,
-   "date": "2026-10-20T19:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Porto",
-   "ext": "PSV",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -78,10 +66,10 @@
    "comp": "Ligue des champions",
    "dom": "Man City",
    "ext": "PAE AEK",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -90,10 +78,10 @@
    "comp": "Ligue des champions",
    "dom": "PSG",
    "ext": "Barça",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -102,12 +90,24 @@
    "comp": "Ligue des champions",
    "dom": "Liverpool",
    "ext": "Villarreal",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
+   ]
+  },
+  {
+   "id": 575365,
+   "date": "2026-10-20T19:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Porto",
+   "ext": "PSV",
+   "statut": "IN_PLAY",
+   "score": [
+    0,
+    0
    ]
   }
  ],
- "maj": "2026-10-20T18:40:12Z"
+ "maj": "2026-10-20T19:08:57Z"
 }
