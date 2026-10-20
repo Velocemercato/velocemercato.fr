@@ -1,0 +1,74 @@
+name: VM Actus - Actualites
+
+on:
+  workflow_dispatch:
+    inputs:
+      test:
+        description: 'Mode test (2 brèves maximum)'
+        type: boolean
+        default: true
+      rattrapage:
+        description: 'Rattrapage : actus des 7 derniers jours'
+        type: boolean
+        default: false
+  schedule:
+    - cron: '10,40 * * * *'   # décalé des robots foot (0, 30) et gaming (15, 45)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: actus
+  cancel-in-progress: false
+
+jobs:
+  actus:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          echo "Passage actus du $(date -u '+%Y-%m-%d %H:%M UTC') (${{ github.event_name }}, ${{ github.ref_name }})" > actus/robot-log.txt
+          pip install --quiet trafilatura 2>&1 | tail -3 | tee -a actus/robot-log.txt
+
+      - name: Update general news
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          VM_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.test && '1' || '' }}
+          VM_RATTRAPAGE: ${{ github.event_name == 'workflow_dispatch' && inputs.rattrapage && '1' || '' }}
+        run: |
+          set -o pipefail
+          python update_actus.py 2>&1 | tee -a actus/robot-log.txt
+
+      - name: Validate JSON
+        id: validate
+        if: always()
+        run: |
+          python -m json.tool actus/news.json > /dev/null
+          python -m json.tool actus/flash.json > /dev/null
+
+      - name: Save
+        if: always() && steps.validate.outcome == 'success'
+        run: |
+          git add actus/news.json actus/flash.json actus/robot-log.txt
+          if git diff --cached --quiet; then
+            echo 'Rien de nouveau.'
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'Update general news'
+            if git pull --rebase origin "${{ github.ref_name }}" && git push origin "HEAD:${{ github.ref_name }}"; then
+              echo 'Publié.'
+            else
+              git rebase --abort 2>/dev/null || true
+              echo "::warning::Un autre passage a publié en même temps ; nouvel essai au prochain passage."
+            fi
+          fi
