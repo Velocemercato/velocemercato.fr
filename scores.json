@@ -1,18 +1,6 @@
 {
  "matchs": [
   {
-   "id": 575359,
-   "date": "2026-10-20T16:45:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Sabah FK",
-   "ext": "Dortmund",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    2
-   ]
-  },
-  {
    "id": 575360,
    "date": "2026-10-20T16:45:00Z",
    "comp": "Ligue des champions",
@@ -25,27 +13,51 @@
    ]
   },
   {
-   "id": 575367,
-   "date": "2026-10-20T19:00:00Z",
+   "id": 575359,
+   "date": "2026-10-20T16:45:00Z",
    "comp": "Ligue des champions",
-   "dom": "PSG",
-   "ext": "Barça",
+   "dom": "Sabah FK",
+   "ext": "Dortmund",
    "statut": "FINISHED",
    "score": [
-    4,
+    1,
     2
    ]
   },
   {
-   "id": 575363,
+   "id": 575364,
    "date": "2026-10-20T19:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Liverpool",
-   "ext": "Villarreal",
+   "dom": "Roma",
+   "ext": "Sl. Bratislava",
+   "statut": "FINISHED",
+   "score": [
+    4,
+    0
+   ]
+  },
+  {
+   "id": 575366,
+   "date": "2026-10-20T19:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Napoli",
+   "ext": "Bodø/Glimt",
    "statut": "FINISHED",
    "score": [
     4,
     3
+   ]
+  },
+  {
+   "id": 575362,
+   "date": "2026-10-20T19:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Stuttgart",
+   "ext": "Atleti",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    1
    ]
   },
   {
@@ -73,35 +85,23 @@
    ]
   },
   {
-   "id": 575362,
+   "id": 575367,
    "date": "2026-10-20T19:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Stuttgart",
-   "ext": "Atleti",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    1
-   ]
-  },
-  {
-   "id": 575364,
-   "date": "2026-10-20T19:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Roma",
-   "ext": "Sl. Bratislava",
+   "dom": "PSG",
+   "ext": "Barça",
    "statut": "FINISHED",
    "score": [
     4,
-    0
+    2
    ]
   },
   {
-   "id": 575366,
+   "id": 575363,
    "date": "2026-10-20T19:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Napoli",
-   "ext": "Bodø/Glimt",
+   "dom": "Liverpool",
+   "ext": "Villarreal",
    "statut": "FINISHED",
    "score": [
     4,
@@ -109,5 +109,5 @@
    ]
   }
  ],
- "maj": "2026-10-20T21:04:17Z"
+ "maj": "2026-10-20T21:06:11Z"
 }
