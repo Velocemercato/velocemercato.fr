@@ -202,3 +202,30 @@ content:
         type: select
         options:
           values: [Warzone, REDSEC, EA FC, GTA VI, Autre]
+
+  - name: shop
+    label: "🛍️ VM Shop – annonces validées"
+    type: file
+    path: shop/annonces.json
+    format: json
+    list: true
+    fields:
+      - { name: id, label: "Numéro (ex. 2026-001)", type: string }
+      - { name: titre, label: Titre de l'annonce, type: string }
+      - name: categorie
+        label: Catégorie
+        type: select
+        options:
+          values: [Maillots, Jeux vidéo, Consoles, Matériel de foot, Goodies, Autre]
+      - { name: prix, label: "Prix en euros (0 = à donner)", type: number }
+      - { name: ville, label: "Ville ou département", type: string }
+      - name: etat
+        label: État
+        type: select
+        options:
+          values: [Neuf, Très bon état, Bon état, État correct]
+      - { name: description, label: Description, type: text }
+      - { name: photo, label: Photo, type: image }
+      - { name: contact, label: "Contact du vendeur (pseudo Discord ou e-mail qu'il accepte de montrer)", type: string }
+      - { name: date, label: Date de publication, type: date }
+      - { name: vendu, label: Vendu, type: boolean }

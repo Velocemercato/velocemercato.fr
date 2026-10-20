@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VM Shop – les petites annonces de la communauté VM</title>
+<meta name="description" content="VM Shop : maillots, jeux vidéo, consoles, matériel de foot. Petites annonces entre passionnés, vérifiées par Véloce Mercato avant publication. Gratuit.">
+<link rel="canonical" href="https://velocemercato.fr/shop/">
+<meta property="og:title" content="VM Shop – annonces entre passionnés"><meta property="og:description" content="Maillots, jeux, consoles, matériel de foot : annonces vérifiées, gratuites."><meta property="og:url" content="https://velocemercato.fr/shop/"><meta property="og:image" content="https://velocemercato.fr/img/partage-velocemercato.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2470'/%3E%3Ctext x='32' y='44' font-family='Impact,sans-serif' font-size='30' font-style='italic' text-anchor='middle' fill='%23f4cf55'%3EVM%3C/text%3E%3C/svg%3E">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f3f5fb;color:#0b1533;font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:inherit}
+.hero{background:linear-gradient(135deg,#0f2470 0%,#1d3fb8 55%,#e1243a 140%);color:#fff;padding:30px 16px 26px}
+.hero .in{max-width:1080px;margin:0 auto}
+.hero h1{margin:0;font:italic 900 clamp(2.2rem,8vw,3.6rem)/1 Impact,"Arial Black",sans-serif;letter-spacing:.02em}
+.hero h1 span{color:#f4cf55}
+.hero p{margin:8px 0 16px;color:#e3e9ff;max-width:38rem}
+.bar{display:flex;gap:8px;flex-wrap:wrap}
+.bar input{flex:1;min-width:200px;font:inherit;padding:13px 14px;border-radius:12px;border:3px solid #000}
+.bar select{font:inherit;padding:12px;border-radius:12px;border:3px solid #000;background:#fff}
+.post{display:inline-flex;align-items:center;gap:6px;background:#f4cf55;color:#0b1533;font-weight:900;text-decoration:none;padding:12px 18px;border-radius:12px;border:3px solid #000;box-shadow:3px 3px 0 #000;cursor:pointer}
+main{max-width:1080px;margin:0 auto;padding:16px 16px 50px}
+.cats{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 14px;scrollbar-width:none}.cats::-webkit-scrollbar{display:none}
+.cats button{flex:none;font:800 .9rem/1 system-ui,sans-serif;padding:10px 14px;border-radius:999px;border:2px solid #0b1533;background:#fff;cursor:pointer}
+.cats button[aria-pressed=true]{background:#0b1533;color:#fff}
+.count{color:#4e5b7d;font-size:.9rem;margin:0 0 10px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}@media(min-width:760px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}}
+.ad{background:#fff;border:2px solid #0b1533;border-radius:16px;overflow:hidden;box-shadow:4px 4px 0 #0b1533;display:flex;flex-direction:column;text-align:left;font:inherit;color:inherit;padding:0;cursor:pointer}
+.ad .ph{aspect-ratio:4/3;background:#dfe5f3 center/cover;display:grid;place-items:center;font-size:52px;position:relative}
+.ad .tag{position:absolute;top:8px;left:8px;background:#f4cf55;font-weight:800;font-size:.7rem;padding:4px 8px;border-radius:999px;border:1px solid #000}
+.ad .sold{position:absolute;inset:0;background:rgba(11,21,51,.7);color:#fff;font:900 1.4rem Impact,sans-serif;display:grid;place-items:center;letter-spacing:.05em}
+.ad .in{padding:10px 12px 12px;display:flex;flex-direction:column;gap:3px}
+.ad .pr{font:900 1.25rem system-ui,sans-serif;color:#1d3fb8}
+.ad b{line-height:1.25}.ad small{color:#4e5b7d}
+.empty{background:#fff;border:2px dashed #0b1533;border-radius:16px;padding:22px;text-align:center}
+.more{display:block;margin:18px auto 0;font:800 1rem system-ui,sans-serif;padding:12px 20px;border-radius:999px;border:2px solid #0b1533;background:#fff;cursor:pointer}
+.rules{margin-top:30px;background:#fff;border:2px solid #0b1533;border-radius:16px;padding:16px 18px}
+.rules h2{margin:0 0 8px;font:italic 900 1.4rem Impact,"Arial Black",sans-serif;text-transform:uppercase;color:#0f2470}
+.rules ul{margin:6px 0 0 18px;padding:0}.rules li{margin:4px 0}
+dialog{border:3px solid #000;border-radius:18px;padding:0;max-width:min(94vw,520px);width:100%;box-shadow:6px 6px 0 #f4cf55}
+dialog::backdrop{background:rgba(5,9,23,.75)}
+.dl{padding:16px 18px 18px;max-height:85vh;overflow:auto}
+.dl h3{margin:0 0 6px;font-size:1.3rem}
+.dl label{display:block;font-weight:700;font-size:.9rem;margin:10px 0 4px}
+.dl input,.dl select,.dl textarea{width:100%;font:inherit;padding:10px 12px;border:2px solid #0b1533;border-radius:10px}
+.dl textarea{min-height:90px}
+.dl .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.dl .ghost{background:#fff;border:2px solid #0b1533;border-radius:999px;padding:11px 16px;font-weight:800;cursor:pointer}
+.dl .ph{aspect-ratio:4/3;border-radius:12px;background:#dfe5f3 center/cover;display:grid;place-items:center;font-size:60px;margin-bottom:10px}
+.note{font-size:.82rem;color:#4e5b7d}
+.warn{background:#fff8dd;border:2px solid #f4cf55;border-radius:12px;padding:10px 12px;font-size:.88rem;margin-top:10px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #f4cf55;outline-offset:2px}
+</style>
+<style id="vmbar-css">
+.vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:relative;z-index:70}
+.vmbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:6px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
+.vmbar-in::-webkit-scrollbar{display:none}
+.vmbar a{flex:none;color:#cfd6ea;text-decoration:none;padding:7px 10px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.vmbar a:hover{background:rgba(255,255,255,.08);color:#fff}
+.vmbar a:focus-visible{outline:2px solid #f4cf55;outline-offset:2px}
+.vmbar .vmb-logo{font:italic 900 16px/1 Impact,"Arial Black",sans-serif;color:#04060f;background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);padding:6px 9px;border-radius:8px;margin-right:4px;letter-spacing:.02em}
+.vmbar a.on{color:#04060f;background:#fff}
+.vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
+.vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
+.vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
+@media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
+</style></head>
+<body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/" aria-label="Accueil Véloce Mercato">VM</a><a class="f" href="/">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
+<header class="hero"><div class="in">
+<h1>VM <span>SHOP</span></h1>
+<p>Les petites annonces de la communauté VM : maillots, jeux vidéo, consoles, matériel de foot. <b>Gratuit</b>, et chaque annonce est <b>vérifiée par nous</b> avant d'être publiée.</p>
+<div class="bar"><input id="q" type="search" placeholder="🔎 Chercher : maillot, FC 26, manette…" aria-label="Chercher une annonce"><select id="sort" aria-label="Trier"><option value="new">Plus récentes</option><option value="low">Prix croissant</option><option value="high">Prix décroissant</option></select><button class="post" id="postBtn" type="button">➕ Déposer une annonce</button></div>
+</div></header>
+<main>
+<div class="cats" id="cats" role="group" aria-label="Catégories">
+<button type="button" data-c="" aria-pressed="true">Tout</button>
+<button type="button" data-c="Maillots" aria-pressed="false">👕 Maillots</button>
+<button type="button" data-c="Jeux vidéo" aria-pressed="false">🎮 Jeux vidéo</button>
+<button type="button" data-c="Consoles" aria-pressed="false">🕹️ Consoles</button>
+<button type="button" data-c="Matériel de foot" aria-pressed="false">⚽ Matériel de foot</button>
+<button type="button" data-c="Goodies" aria-pressed="false">🎁 Goodies</button>
+<button type="button" data-c="Autre" aria-pressed="false">📦 Autre</button>
+</div>
+<p class="count" id="count"></p>
+<div class="grid" id="grid"><p class="empty">Chargement des annonces…</p></div>
+<button class="more" id="more" type="button" hidden>Voir plus d'annonces</button>
+
+<section class="rules" aria-labelledby="t-rules">
+<h2 id="t-rules">Les règles du VM Shop</h2>
+<ul>
+<li>✅ Annonces <b>gratuites</b>, entre particuliers. Le paiement et la remise se font <b>directement entre vous</b> : VM ne touche pas d'argent et ne garantit pas les ventes.</li>
+<li>✅ Chaque annonce est <b>relue par VM</b> avant publication, et retirée quand l'objet est vendu.</li>
+<li>⛔ Interdit : <b>contrefaçons</b> (faux maillots, faux jeux), objets volés, armes, alcool, tabac, médicaments, comptes de jeux ou codes piratés, billets de match revendus plus cher.</li>
+<li>⛔ Pas d'annonces de <b>mineurs</b> sans l'accord d'un parent.</li>
+<li>🛡️ Anti-arnaque : remise en main propre dans un lieu public, ne payez jamais avant d'avoir vu l'objet, méfiez-vous des prix trop bas et des demandes de paiement par coupon. Signalez tout problème : <a href="mailto:velocemercato.fr@gmail.com?subject=VM%20Shop%20%3A%20signalement">velocemercato.fr@gmail.com</a>.</li>
+<li>🔒 Vos coordonnées n'apparaissent que si vous le demandez (pseudo Discord ou e-mail de votre choix).</li>
+</ul>
+</section>
+</main>
+
+<dialog id="adDlg" aria-labelledby="adT"><div class="dl"><div class="ph" id="adPh"></div><h3 id="adT"></h3><p class="pr" id="adPr" style="font:900 1.4rem system-ui;color:#1d3fb8;margin:0"></p><p class="note" id="adMeta"></p><p id="adDesc"></p><div id="adContact"></div><div class="warn">🛡️ En main propre dans un lieu public, et jamais de paiement avant d'avoir vu l'objet.</div><div class="row"><button class="ghost" type="button" id="adShare">Partager ↗</button><button class="ghost" type="button" id="adClose">Fermer ✕</button></div></div></dialog>
+
+<dialog id="postDlg" aria-labelledby="postT"><div class="dl">
+<h3 id="postT">➕ Déposer une annonce</h3>
+<p class="note">Remplis ce petit formulaire : ton application e-mail s'ouvre avec l'annonce prête. Ajoute 1 à 3 photos dans le mail. On la vérifie et on la publie (gratuit).</p>
+<form id="postForm">
+<label for="p-t">Titre</label><input id="p-t" required maxlength="80" placeholder="Ex. : Maillot domicile taille M">
+<label for="p-c">Catégorie</label><select id="p-c"><option>Maillots</option><option>Jeux vidéo</option><option>Consoles</option><option>Matériel de foot</option><option>Goodies</option><option>Autre</option></select>
+<label for="p-p">Prix (€) — 0 si à donner</label><input id="p-p" type="number" min="0" step="1" required>
+<label for="p-e">État</label><select id="p-e"><option>Neuf</option><option>Très bon état</option><option>Bon état</option><option>État correct</option></select>
+<label for="p-v">Ville ou département</label><input id="p-v" required placeholder="Ex. : Belfort (90)">
+<label for="p-d">Description</label><textarea id="p-d" required maxlength="600"></textarea>
+<label for="p-k">Comment te contacter (affiché sur l'annonce)</label><input id="p-k" required placeholder="Pseudo Discord ou e-mail">
+<label style="font-weight:600;display:flex;gap:8px;align-items:flex-start"><input type="checkbox" required style="width:auto;margin-top:4px"> J'ai 18 ans ou l'accord d'un parent, l'objet m'appartient et ce n'est pas une contrefaçon.</label>
+<div class="row"><button class="post" type="submit">✉️ Envoyer mon annonce</button><button class="ghost" type="button" id="postClose">Annuler</button></div>
+</form></div></dialog>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},all=[],cat='',shown=12;
+var EM={'Maillots':'👕','Jeux vidéo':'🎮','Consoles':'🕹️','Matériel de foot':'⚽','Goodies':'🎁','Autre':'📦'};
+function norm(s){return String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase()}
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function price(a){return Number(a.prix)>0?Number(a.prix).toLocaleString('fr-FR')+' €':'À donner'}
+function safeImg(u){return typeof u==='string'&&/^(\/img\/|https:\/\/velocemercato\.fr\/img\/)[\w\-./]+\.(webp|jpe?g|png)$/i.test(u)?u:''}
+function card(a){var b=el('button','ad');b.type='button';var ph=el('div','ph'),img=safeImg(a.photo);
+ if(img)ph.style.backgroundImage='url("'+img+'")';else ph.textContent=EM[a.categorie]||'📦';
+ if(a.exemple)ph.appendChild(el('span','tag','EXEMPLE'));if(a.vendu)ph.appendChild(el('span','sold','VENDU'));
+ b.appendChild(ph);var i=el('div','in');i.appendChild(el('span','pr',price(a)));i.appendChild(el('b',null,a.titre));i.appendChild(el('small',null,(a.categorie||'')+' · '+(a.ville||'')));b.appendChild(i);
+ b.onclick=function(){open(a)};return b}
+function list(){var q=norm($('q').value.trim()),s=$('sort').value;
+ var r=all.filter(function(a){return (!cat||a.categorie===cat)&&(!q||norm(a.titre+' '+a.description+' '+a.ville).indexOf(q)>=0)});
+ r.sort(function(a,b){if(a.vendu!==b.vendu)return a.vendu?1:-1;if(s==='low')return (+a.prix||0)-(+b.prix||0);if(s==='high')return (+b.prix||0)-(+a.prix||0);return String(b.date).localeCompare(String(a.date))});return r}
+function draw(){var r=list(),g=$('grid');g.textContent='';
+ $('count').textContent=r.length+(r.length>1?' annonces':' annonce');
+ if(!r.length){var e=el('p','empty');e.textContent=all.length?'Aucune annonce ici pour le moment.':'Pas encore d’annonce : sois le premier à en déposer une !';g.appendChild(e);$('more').hidden=true;return}
+ r.slice(0,shown).forEach(function(a){g.appendChild(card(a))});$('more').hidden=r.length<=shown}
+function open(a){var d=$('adDlg'),ph=$('adPh'),img=safeImg(a.photo);ph.style.backgroundImage=img?'url("'+img+'")':'';ph.textContent=img?'':(EM[a.categorie]||'📦');
+ $('adT').textContent=a.titre+(a.exemple?' (annonce d’exemple)':'');$('adPr').textContent=a.vendu?'Vendu':price(a);
+ $('adMeta').textContent=[a.categorie,a.etat,a.ville,a.date?'publiée le '+new Date(a.date).toLocaleDateString('fr-FR'):''].filter(Boolean).join(' · ');
+ $('adDesc').textContent=a.description||'';var c=$('adContact');c.textContent='';
+ if(a.contact&&!a.vendu){c.appendChild(el('b',null,'Contact : '));c.appendChild(document.createTextNode(a.contact))}
+ try{history.replaceState(null,'','#a='+encodeURIComponent(a.id))}catch(e){}
+ if(d.showModal)d.showModal()}
+$('adClose').onclick=function(){$('adDlg').close();try{history.replaceState(null,'',location.pathname)}catch(e){}};
+$('adShare').onclick=function(){var d={title:$('adT').textContent+' – VM Shop',url:location.href};if(navigator.share)navigator.share(d).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(location.href)};
+$('cats').querySelectorAll('button').forEach(function(b){b.onclick=function(){cat=b.dataset.c;shown=12;$('cats').querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});draw()}});
+$('q').addEventListener('input',function(){shown=12;draw()});$('sort').onchange=draw;$('more').onclick=function(){shown+=12;draw()};
+$('postBtn').onclick=function(){$('postDlg').showModal()};$('postClose').onclick=function(){$('postDlg').close()};
+$('postForm').addEventListener('submit',function(e){e.preventDefault();var v=function(i){return $(i).value.trim()};
+ var body='Nouvelle annonce VM Shop\n\nTitre : '+v('p-t')+'\nCatégorie : '+v('p-c')+'\nPrix : '+v('p-p')+' €\nÉtat : '+v('p-e')+'\nVille : '+v('p-v')+'\nContact à afficher : '+v('p-k')+'\n\nDescription :\n'+v('p-d')+'\n\n(J’ajoute 1 à 3 photos à ce mail.)\nJe confirme avoir 18 ans ou l’accord d’un parent, que l’objet m’appartient et que ce n’est pas une contrefaçon.';
+ location.href='mailto:velocemercato.fr@gmail.com?subject='+encodeURIComponent('VM Shop – annonce : '+v('p-t'))+'&body='+encodeURIComponent(body);$('postDlg').close()});
+fetch('annonces.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():[]}).then(function(rows){
+ all=(Array.isArray(rows)?rows:[]).filter(function(a){return a&&a.titre});var real=all.filter(function(a){return !a.exemple});if(real.length)all=real;draw();
+ var m=location.hash.match(/^#a=(.+)$/);if(m){var a=all.find(function(x){return x.id===decodeURIComponent(m[1])});if(a)open(a)}
+}).catch(function(){all=[];draw()});
+})();
+</script>
+</body>
+</html>

@@ -29,5 +29,5 @@ def apply(path,active):
     s=inject(open(path,encoding='utf-8').read(),active)
     open(path,'w',encoding='utf-8').write(s)
 if __name__=='__main__':
-    for p,a in [('index.html','f'),('vm-gaming/index.html','g'),('actus/index.html','a'),('archives.html','f'),('studio.html','s'),('radio.html','r'),('gaming.html','f'),('soutenir.html',''),('groupe.html',''),('web-studio.html',''),('mentions-legales.html','')]:
+    for p,a in [('index.html','f'),('vm-gaming/index.html','g'),('actus/index.html','a'),('archives.html','f'),('studio.html','s'),('radio.html','r'),('gaming.html','f'),('soutenir.html',''),('groupe.html',''),('shop/index.html',''),('web-studio.html',''),('mentions-legales.html','')]:
         apply(p,a); print('ok',p)
