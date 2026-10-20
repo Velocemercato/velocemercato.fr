@@ -38,6 +38,8 @@ jobs:
     timeout-minutes: 75
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
 
       - uses: actions/setup-python@v5
         with:
@@ -78,9 +80,13 @@ jobs:
       - name: Enregistrer la liste des émissions
         if: always()
         run: |
-          git add studio/emissions.json studio/emission-log.txt || true
-          if git diff --cached --quiet; then echo 'Rien de nouveau.'; exit 0; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add studio/tv studio/emission-log.txt || true
+          if git diff --cached --quiet; then echo 'Rien de nouveau.'; exit 0; fi
           git commit -m 'La Pastille TV : nouvelle émission'
-          for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 5; done
+          for i in 1 2 3 4; do
+            git pull --rebase -X theirs origin main || { git rebase --abort; sleep 5; continue; }
+            python update_emission.py liste && git add studio/emissions.json && git commit -m 'La Pastille TV : liste à jour' || true
+            git push && break; sleep 5
+          done

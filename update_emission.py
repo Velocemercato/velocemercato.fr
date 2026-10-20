@@ -123,6 +123,18 @@ def write_script(univers, fmt, moment, news):
     return {'titre': str(data.get('titre', U['nom']))[:90], 'accroche': str(data.get('accroche', ''))[:180], 'repliques': lines}
 
 
+def rebuild_list():
+    """La liste des émissions est reconstruite à partir d'un petit fichier par émission (pas de conflit entre robots)."""
+    rows = []
+    for f in (ROOT / 'studio' / 'tv').glob('*.json'):
+        try:
+            rows.append(json.loads(f.read_text(encoding='utf-8')))
+        except Exception:
+            pass
+    rows.sort(key=lambda r: str(r.get('date', '')), reverse=True)
+    LIST.write_text(json.dumps(rows[:120], ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+
+
 def publish(path_mp4, path_jpg, tag, title, prerelease):
     cmd = ['gh', 'release', 'create', tag, str(path_mp4), str(path_jpg), '--repo', REPO, '--title', title,
            '--notes', 'Émission VM Studio générée par IA (personnages inventés, faits tirés des brèves de velocemercato.fr).']
@@ -162,9 +174,9 @@ def make(univers, fmt, moment):
         entry['video'], entry['image'] = publish(out, out.with_suffix('.jpg'), 'tv-' + ident, f"{U['nom']} · {label} · {script['titre']}", not auto)
         out.unlink(missing_ok=True)
         out.with_suffix('.jpg').unlink(missing_ok=True)
-    rows = json.loads(LIST.read_text(encoding='utf-8')) if LIST.exists() else []
-    rows = [entry] + [r for r in rows if r.get('id') != ident]
-    LIST.write_text(json.dumps(rows[:120], ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+    (ROOT / 'studio' / 'tv').mkdir(parents=True, exist_ok=True)
+    (ROOT / 'studio' / 'tv' / f'{ident}.json').write_text(json.dumps(entry, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+    rebuild_list()
     print(f"Émission prête : {U['nom']} · {label} · {script['titre']} · {len(script['repliques'])} répliques · {round(total)} s · "
           f"{'publiée' if auto else 'brouillon à valider'}", flush=True)
     return entry
@@ -180,6 +192,9 @@ PLANS = {
 
 
 def main():
+    if sys.argv[1:2] == ['liste']:
+        rebuild_list()
+        return
     args = sys.argv[1:] or ['plan', 'soir']
     jobs = PLANS.get(args[1] if len(args) > 1 else 'soir', []) if args[0] == 'plan' else [(args[0], args[1] if len(args) > 1 else 'edition',
                                                     args[2] if len(args) > 2 else 'soir')]
