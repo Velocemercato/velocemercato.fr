@@ -1,31 +1,30 @@
-Passage du 2026-10-20 14:06 UTC (schedule)
-Nettoyage : 0 breves vides retirees, 218 gardees.
+Passage du 2026-10-20 14:17 UTC (workflow_dispatch)
+Nettoyage : 0 breves vides retirees, 220 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 218 articles conservés et 45 flashs existants.
+Départ : 220 articles conservés et 45 flashs existants.
 RSS Foot National / LIGUE_1 : 10 actualités récentes.
 RSS Foot National / NATIONAL : 7 actualités récentes.
 RSS Foot National / LIGUE_2 : 6 actualités récentes.
 RSS RMC Sport / FRANCE : 30 actualités récentes.
 RSS RMC Sport / LIGUE_1 : 4 actualités récentes.
 RSS RMC Sport / INTERNATIONAL : 21 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 37 actualités récentes.
 RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 36 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 3 actualités récentes.
-RSS Foot Amateur / NATIONAL : 3 actualités récentes.
 RSS Foot01 / FRANCE : 43 actualités récentes.
-RSS Foot Amateur / NATIONAL : 7 actualités récentes.
-RSS inaccessible RMC Sport : HTTPError - HTTP Error 404: Not Found
 RSS BBC Sport / FEMININ : 4 actualités récentes.
+RSS inaccessible RMC Sport : HTTPError - HTTP Error 404: Not Found
 RSS RMC Sport / BLEUS : 0 actualités récentes.
-RSS inaccessible Maxifoot : HTTPError - HTTP Error 404: Not Found
 RSS franceinfo / FRANCE : 5 actualités récentes.
+RSS Foot Amateur / NATIONAL : 7 actualités récentes.
+RSS inaccessible Maxifoot : HTTPError - HTTP Error 404: Not Found
+RSS Foot Amateur / NATIONAL : 3 actualités récentes.
 RSS Foot National / NATIONAL : 5 actualités récentes.
-229 titres collectés, 51 nouveaux liens, quota 2.
-Brève prête : Foot Mercato - Bodø/Glimt et Viking FK : le football norvégien s'impose en Europe
-Brève prête : RMC Sport - Youth League : le PSG et le Barça se neutralisent sur le score de 1-1
-Bilan : brèves_rédigées=2, non_pertinent=1
-Publié : 2 brèves (total 220). Flash : 45.
-Pages : 220 brèves avec leur propre page, sitemap à jour.
+230 titres collectés, 48 nouveaux liens, quota 1.
+Brève prête : RMC Sport - Vinicius Junior : Mourinho assure que tous ses joueurs peuvent finir sur le banc
+Bilan : brèves_rédigées=1, non_pertinent=2, sujet_deja_traite=1
+Publié : 1 brèves (total 221). Flash : 45.
+Pages : 221 brèves avec leur propre page, sitemap à jour.
 Agenda : secret FOOTBALL_DATA_KEY absent, matchs.json inchangé.
 Ligue 1 : 15 vidéos lues, 5 vidéos de buts gardées.
 Ligue 2 : 0 vidéos lues, 0 vidéos de buts gardées.
@@ -44,5 +43,6 @@ Bundesliga : 15 vidéos lues, 10 vidéos de buts gardées.
 Vidéos publiées : 56.
 Flux muet RMC Sport : HTTPError
 Flux muet Maxifoot : HTTPError
+Flux muet France 24 : ParseError
 Flux muet Millenium : HTTPError
 Fil express : actus 120, foot 120, gaming 60
