@@ -216,6 +216,21 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 .ptv-more img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
 .ptv-more span{display:block;padding:7px 9px;font-size:.85rem;line-height:1.25}.ptv-more small{display:block;color:#ffdc72;font-size:.72rem;font-weight:700;text-transform:uppercase}
 .ptv-all{display:inline-block;margin-top:14px;background:#f4cf55;color:#0b1533;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:11px 18px;border-radius:999px;border:2px solid #000;text-decoration:none}
+
+.prono{background:#0f1a3d;color:#fff;border-bottom:4px solid #f4cf55}
+.prono-in{max-width:72rem;margin:0 auto;padding:20px 16px 22px}
+.prono-tag{display:inline-block;background:#f4cf55;color:#0b1533;font:700 .78rem/1 'Barlow Condensed',sans-serif;letter-spacing:.08em;padding:7px 12px;border-radius:999px}
+.prono h2{font-family:Anton,Impact,sans-serif;text-transform:uppercase;font-size:clamp(1.7rem,5vw,2.6rem);margin:10px 0 2px;line-height:1}
+.prono-sub{margin:0 0 10px;color:#c9d3f5;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.prono-score{display:inline-block;background:#fff;color:#0b1533;border:3px solid #000;box-shadow:4px 4px 0 #e1243a;border-radius:12px;padding:8px 14px;font-size:1.15rem}
+.prono-score span{font-family:Anton,Impact,sans-serif;font-size:1.6rem;margin-left:4px}
+.prono ul{margin:10px 0;padding-left:18px;color:#dfe6fb}.prono li{margin:3px 0}
+.prono-vote{margin-top:12px}.pv{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0}
+.pv button{position:relative;overflow:hidden;min-width:96px;font:700 1rem/1 'Barlow Condensed',sans-serif;text-transform:uppercase;padding:11px 14px;border-radius:12px;border:2px solid #000;background:#fff;color:#0b1533;cursor:pointer}
+.pv button i{position:absolute;left:0;top:0;bottom:0;background:rgba(244,207,85,.55);width:0;transition:width .4s}
+.pv button span{position:relative}
+.prono-vote small{color:#c9d3f5}
+.prono-warn{font-size:.8rem;color:#aab4d3;margin:12px 0 0}
 /* Fil express (titres de la presse) */
 .fx{margin-top:34px}.fx h2{font-family:Bangers,Impact,sans-serif;font-size:2.1rem;letter-spacing:.04em;line-height:1;margin:0 0 4px}
 .fx .fxs{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;font-size:.8rem;letter-spacing:.08em;color:var(--muted);margin:0 0 12px}
@@ -276,6 +291,18 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 <div class="ptv-main" id="ptvMain"><a class="ptv-big" href="/studio.html#tv"><span class="ptv-play">▶</span><b>Voir les émissions</b></a></div>
 <div class="ptv-more" id="ptvMore"></div>
 <a class="ptv-all" href="/studio.html#tv">Toutes les émissions →</a> <a class="ptv-all" href="/radio.html" style="background:#fff">📻 Écouter en radio</a>
+</div>
+</section>
+<section class="prono" id="prono" aria-labelledby="t-prono" hidden>
+<div class="prono-in">
+<span class="prono-tag">🔮 LE PRONO VM · POUR LE PLAISIR</span>
+<h2 id="t-prono"><span id="pMatch"></span></h2>
+<p class="prono-sub" id="pSub"></p>
+<div class="prono-score"><b>Notre avis :</b> <span id="pScore"></span></div>
+<p id="pAvis"></p>
+<ul id="pFaits"></ul>
+<div class="prono-vote"><b>Et toi ?</b><div class="pv" id="pVote"></div><small id="pVoteInfo">Touche ton choix</small></div>
+<p class="prono-warn">Un simple avis de passionnés, aucune garantie. Véloce Mercato ne propose pas de paris et n'en fait pas la promotion. Les paris sportifs sont interdits aux moins de 18 ans.</p>
 </div>
 </section>
 <section class="v2" aria-label="Les univers VM">
@@ -467,6 +494,24 @@ fetch('/studio/emissions.json?v='+Date.now(),{cache:'no-store'}).then(function(r
  var first=list.find(function(e){return e.univers==='foot'})||list[0];
  $('ptvMain').innerHTML='<video controls playsinline preload="none" poster="'+esc(ok(first.image)?first.image:'')+'" src="'+esc(first.video)+'"></video><p class="ptv-cap">'+esc((U[first.univers]||'')+' · '+first.label+' · '+mn(first.duree)+' — '+first.titre)+'</p>';
  $('ptvMore').innerHTML=list.filter(function(e){return e!==first}).slice(0,4).map(function(e){return '<a href="/studio.html#tv='+encodeURIComponent(e.id)+'">'+(ok(e.image)?'<img src="'+esc(e.image)+'" alt="" loading="lazy">':'')+'<span><small>'+esc((U[e.univers]||'')+' · '+e.label)+'</small>'+esc(e.titre)+'</span></a>'}).join('');
+}).catch(function(){});
+})();
+</script>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},C='https://countapi.mileshilliard.com/api/v1/';
+fetch('/prono.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(p){
+ if(!p||!p.match)return;var age=Date.now()-Date.parse(p.date);if(!(age<30*3600000))return;
+ $('pMatch').textContent=p.match;$('pSub').textContent=p.competition+' · '+p.heure;$('pScore').textContent=p.score;$('pAvis').textContent=p.avis||'';
+ $('pFaits').innerHTML='';(p.faits||[]).forEach(function(f){var li=document.createElement('li');li.textContent=f;$('pFaits').appendChild(li)});
+ var opts=[['dom',p.dom],['nul','Match nul'],['ext',p.ext]],key=function(k){return 'vm-prono-'+String(p.id).replace(/[^a-z0-9-]/gi,'')+'-'+k},mine=null;
+ try{mine=localStorage.getItem('vm-prono-'+p.id)}catch(e){}
+ $('pVote').innerHTML=opts.map(function(o){return '<button type="button" data-k="'+o[0]+'"><i></i><span>'+o[1].replace(/[<>&]/g,'')+' <b></b></span></button>'}).join('');
+ function show(){Promise.all(opts.map(function(o){return fetch(C+'get/'+key(o[0]),{cache:'no-store'}).then(function(r){return r.ok?r.json():{}}).then(function(j){var v=j&&(j.value!=null?j.value:j.count);return typeof v==='number'?v:0}).catch(function(){return 0})})).then(function(n){var t=n.reduce(function(a,b){return a+b},0);
+  $('pVote').querySelectorAll('button').forEach(function(b,i){var pc=t?Math.round(n[i]*100/t):0;b.querySelector('i').style.width=pc+'%';b.querySelector('b').textContent=t?pc+' %':''});
+  $('pVoteInfo').textContent=t?(t+(t>1?' votes':' vote'))+(mine?' · merci pour ton vote !':''):'Sois le premier à voter';});}
+ $('pVote').querySelectorAll('button').forEach(function(b){b.onclick=function(){if(mine)return;mine=b.dataset.k;try{localStorage.setItem('vm-prono-'+p.id,mine)}catch(e){}fetch(C+'hit/'+key(mine),{cache:'no-store'}).then(show,show);}});
+ $('prono').hidden=false;show();
 }).catch(function(){});
 })();
 </script>
