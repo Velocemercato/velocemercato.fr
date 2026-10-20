@@ -11,6 +11,8 @@ import json
 import re
 from pathlib import Path
 
+import vmbar
+
 SITE = 'https://velocemercato.fr'
 OUT = Path('a')
 ARTICLES = json.loads(Path('articles.json').read_text(encoding='utf-8'))
@@ -140,6 +142,7 @@ def main():
                            label=e(label), iso=e(a.get('publishedAt')), date=e(date), body=body,
                            sources=sources, site=SITE, color=COLORS.get(champ, '#1d3fb8'),
                            badge=badge, related=related)
+        page = vmbar.inject(page, 'f')
         path = OUT / name
         if not path.exists() or path.read_text(encoding='utf-8') != page:
             path.write_text(page, encoding='utf-8')

@@ -143,9 +143,43 @@ h2.big small{text-shadow:none;color:var(--muted);letter-spacing:0;font-family:'D
 .presse #fxMore{margin:12px auto 0;display:block}
 .presse #fxMore[hidden]{display:none}
 @media(prefers-reduced-motion:reduce){.dot.on{animation:none}}
+
+/* Escouade VM */
+.squad h2.big{margin-top:22px}
+.sqrow{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 14px;scrollbar-width:thin}
+.sq{flex:none;width:min(46vw,190px);scroll-snap-align:start;position:relative;border:3px solid #000;border-radius:16px;overflow:hidden;padding:0;background:#000;box-shadow:5px 5px 0 #000,5px 5px 0 2px #ff4f9a;cursor:pointer;color:#fff;text-align:left;transition:transform .2s}
+.sq:hover{transform:translateY(-4px) rotate(-1deg)}
+.sq img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.sq span{position:absolute;inset:auto 0 0;padding:28px 10px 9px;background:linear-gradient(transparent,#000d 45%)}
+.sq b{display:block;font:400 1.35rem/1 Bangers,Impact,sans-serif;letter-spacing:.05em}
+.sq small{display:block;font-size:.72rem;color:#d6ff6e;margin-top:3px}
+#sqDlg{border:3px solid #000;border-radius:18px;padding:0;background:#0b0a1c;color:#fff;max-width:min(94vw,520px);box-shadow:0 0 0 3px #d6ff6e}
+#sqDlg::backdrop{background:rgba(0,0,0,.8)}
+#sqDlg img{display:block;width:100%;height:auto;max-height:72vh;object-fit:cover;object-position:top}
+#sqDlg p{margin:10px 14px 4px}#sqDlg b{font:400 1.5rem Bangers,Impact,sans-serif;letter-spacing:.05em;color:#d6ff6e}
+#sqDlg button{margin:6px 14px 14px;background:#d6ff6e;color:#0b0a1c;border:2px solid #000;border-radius:10px;padding:9px 14px;font-weight:700;cursor:pointer}
+.pastb{margin-top:30px;display:flex;align-items:center;gap:14px;background:linear-gradient(90deg,#3a0f3f,#151a2e);border:2px solid #000;box-shadow:4px 4px 0 #000;border-radius:16px;padding:10px 14px}
+.pastb img{width:60px;height:60px;object-fit:cover;object-position:top;border-radius:50%;border:2px solid #d6ff6e;flex:none;background:#fff}
+.pastb div{flex:1;min-width:0}.pastb b{display:block}.pastb span{display:block;color:var(--muted);font-size:.88rem}
+.pastb a{flex:none;background:#d6ff6e;color:#0b0a1c;font-weight:700;text-decoration:none;padding:9px 14px;border-radius:999px;border:2px solid #000}
+@media(prefers-reduced-motion:reduce){.sq{transition:none}}
+.gq{display:block;width:100%;margin:0 0 12px;padding:12px 14px;border-radius:12px;border:2px solid #000;background:var(--card);color:var(--text);font:inherit;box-shadow:3px 3px 0 #000}
+.gmore{display:block;margin:14px auto 0}.gmore[hidden]{display:none}
 </style>
-</head>
-<body>
+<style id="vmbar-css">
+.vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:relative;z-index:70}
+.vmbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:6px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
+.vmbar-in::-webkit-scrollbar{display:none}
+.vmbar a{flex:none;color:#cfd6ea;text-decoration:none;padding:7px 10px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.vmbar a:hover{background:rgba(255,255,255,.08);color:#fff}
+.vmbar a:focus-visible{outline:2px solid #f4cf55;outline-offset:2px}
+.vmbar .vmb-logo{font:italic 900 16px/1 Impact,"Arial Black",sans-serif;color:#04060f;background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);padding:6px 9px;border-radius:8px;margin-right:4px;letter-spacing:.02em}
+.vmbar a.on{color:#04060f;background:#fff}
+.vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
+.vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
+@media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
+</style></head>
+<body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/" aria-label="Accueil Véloce Mercato">VM</a><a class="f" href="/">⚽ Foot</a><a class="g on" href="/vm-gaming/" aria-current="page">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="s" href="/studio.html">🎙️ Studio</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
 
 <header class="bar"><div class="wrap"><a class="logo" href="./"><img src="img/logo-vm-gaming.webp" width="640" height="185" alt="VM Gaming"></a><a class="mini-cta" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener noreferrer">Discord ↗</a></div></header>
 
@@ -163,6 +197,12 @@ h2.big small{text-shadow:none;color:var(--muted);letter-spacing:0;font-family:'D
 </section>
 
 <main class="wrap">
+
+<section class="squad" aria-labelledby="t-squad">
+<h2 class="big" id="t-squad">L’escouade VM<small>7 personnages originaux, inventés pour VM Gaming · touche une carte</small></h2>
+<div class="sqrow"><button type="button" class="sq" data-img="img/escouade/presentateur-900.webp" data-n="Le Présentateur" data-r="Anime les soirées et le Discord"><img src="img/escouade/presentateur-360.webp" width="360" height="450" alt="Le Présentateur, personnage VM Gaming" loading="lazy"><span><b>Le Présentateur</b><small>Anime les soirées et le Discord</small></span></button><button type="button" class="sq" data-img="img/escouade/hackeuse-900.webp" data-n="La Hackeuse" data-r="Infiltration et renseignement"><img src="img/escouade/hackeuse-360.webp" width="360" height="450" alt="La Hackeuse, personnage VM Gaming" loading="lazy"><span><b>La Hackeuse</b><small>Infiltration et renseignement</small></span></button><button type="button" class="sq" data-img="img/escouade/titan-900.webp" data-n="Titan" data-r="Commando lourd, chef d’escouade"><img src="img/escouade/titan-360.webp" width="360" height="450" alt="Titan, personnage VM Gaming" loading="lazy"><span><b>Titan</b><small>Commando lourd, chef d’escouade</small></span></button><button type="button" class="sq" data-img="img/escouade/sniper-900.webp" data-n="Le Sniper" data-r="Précision et discipline"><img src="img/escouade/sniper-360.webp" width="360" height="450" alt="Le Sniper, personnage VM Gaming" loading="lazy"><span><b>Le Sniper</b><small>Précision et discipline</small></span></button><button type="button" class="sq" data-img="img/escouade/operatrice-900.webp" data-n="L’Opératrice" data-r="Reconnaissance et soutien"><img src="img/escouade/operatrice-360.webp" width="360" height="450" alt="L’Opératrice, personnage VM Gaming" loading="lazy"><span><b>L’Opératrice</b><small>Reconnaissance et soutien</small></span></button><button type="button" class="sq" data-img="img/escouade/commandant-900.webp" data-n="Le Commandant" data-r="Stratégie et commandement"><img src="img/escouade/commandant-360.webp" width="360" height="450" alt="Le Commandant, personnage VM Gaming" loading="lazy"><span><b>Le Commandant</b><small>Stratégie et commandement</small></span></button><button type="button" class="sq" data-img="img/escouade/nex-900.webp" data-n="Nex" data-r="Le stratège des stats"><img src="img/escouade/nex-360.webp" width="360" height="450" alt="Nex, personnage VM Gaming" loading="lazy"><span><b>Nex</b><small>Le stratège des stats</small></span></button></div>
+</section>
+<dialog id="sqDlg" aria-labelledby="sqName"><img id="sqImg" alt="" width="900" height="1125"><p><b id="sqName"></b> <span id="sqRole"></span></p><button type="button" id="sqClose">Fermer ✕</button></dialog>
 
 <h2 class="big" id="jeux">Ton jeu</h2>
 <div class="games">
@@ -198,8 +238,11 @@ h2.big small{text-shadow:none;color:var(--muted);letter-spacing:0;font-family:'D
  <button class="chip" type="button" data-f="REDSEC" aria-pressed="false">REDSEC</button>
  <button class="chip" type="button" data-f="FC" aria-pressed="false">EA FC</button>
  <button class="chip" type="button" data-f="GTA" aria-pressed="false">GTA VI</button>
+ <button class="chip" type="button" data-f="GAMING" aria-pressed="false">Autres jeux</button>
 </div>
+<input class="gq" id="gq" type="search" placeholder="🔎 Chercher un jeu, une actu…" aria-label="Chercher dans les actus gaming">
 <div class="news" id="news"><p class="empty">Les premières actus arrivent bientôt.</p></div>
+<button type="button" class="chip gmore" id="gMore" hidden>⬇ Voir plus d’actus</button>
 </section>
 
 <section class="presse" id="presse" aria-labelledby="t-presse">
@@ -218,6 +261,7 @@ h2.big small{text-shadow:none;color:var(--muted);letter-spacing:0;font-family:'D
 </div>
 </section>
 
+<section class="pastb" aria-label="La Pastille"><img src="/img/avatar-veloce.webp" alt="" width="400" height="367" loading="lazy"><div><b>🎙️ La Pastille · invités & podcasts</b><span>Interviews foot et gaming, débats et invités : les premiers épisodes se préparent.</span></div><a href="/#pastille">Voir</a></section>
 <h2 class="big">Comment ça marche</h2>
 <ol class="steps">
 <li><span class="n">1</span>Tu rejoins le Discord.</li>
@@ -242,13 +286,13 @@ Les actus sont des résumés courts écrits avec l'aide d'une IA, avec un lien v
 <script>
 (function(){
   var NOMS={WARZONE:'Warzone',REDSEC:'REDSEC',FC:'EA FC',GTA:'GTA VI',GAMING:'Gaming'};
-  var all=[],filtre='';
+  var all=[],filtre='',shownG=12;
   function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
   function ago(d){var m=Math.round((Date.now()-Date.parse(d))/60000);if(!(m>=0))return '';if(m<60)return 'il y a '+Math.max(1,m)+' min';var h=Math.round(m/60);if(h<24)return 'il y a '+h+' h';return new Date(d).toLocaleDateString('fr-FR',{day:'numeric',month:'short'});}
   function safeUrl(u){return typeof u==='string'&&/^https:\/\//.test(u)?u:null;}
   function draw(){
     var root=document.getElementById('news');root.textContent='';
-    var list=all.filter(function(a){return !filtre||a.championnat===filtre;}).slice(0,15);
+    var q=(document.getElementById('gq').value||'').toLowerCase().trim(),full=all.filter(function(a){return (!filtre||a.championnat===filtre)&&(!q||(a.titre+' '+(a.resume||'')+' '+(a.texte||'')).toLowerCase().indexOf(q)>=0);}),list=full.slice(0,shownG);document.getElementById('gMore').hidden=full.length<=shownG;
     if(!list.length){root.appendChild(el('p','empty',all.length?'Pas encore d’actu pour ce jeu.':'Les premières actus arrivent bientôt.'));return;}
     list.forEach(function(a){
       var d=el('details','item'),s=el('summary'),meta=el('div','meta'),k=NOMS[a.championnat]?a.championnat:'GAMING';
@@ -260,7 +304,9 @@ Les actus sont des résumés courts écrits avec l'aide d'une IA, avec un lien v
       d.appendChild(body);root.appendChild(d);
     });
   }
-  document.querySelectorAll('.chip').forEach(function(b){b.addEventListener('click',function(){filtre=b.getAttribute('data-f');document.querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});draw();});});
+  document.querySelectorAll('.chips .chip').forEach(function(b){b.addEventListener('click',function(){filtre=b.getAttribute('data-f');shownG=12;document.querySelectorAll('.chips .chip').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});draw();});});
+  document.getElementById('gq').addEventListener('input',function(){shownG=12;draw();});
+  document.getElementById('gMore').onclick=function(){shownG+=12;draw();};
   fetch('./news.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():[];}).then(function(rows){
     if(!Array.isArray(rows))return;
     all=rows.filter(function(a){return a&&a.titre&&a.publishedAt;}).sort(function(a,b){return String(b.publishedAt).localeCompare(String(a.publishedAt));});
@@ -301,6 +347,11 @@ fetch('/fil.json?v='+Math.floor(Date.now()/300000),{cache:'no-store'}).then(func
 }).catch(function(){$('presse').hidden=true});
 $('fxMore').onclick=function(){shown+=12;draw()};
 })();
+</script>
+<script>
+(function(){var d=document.getElementById('sqDlg');if(!d||!d.showModal)return;
+document.querySelectorAll('.sq').forEach(function(b){b.onclick=function(){var i=document.getElementById('sqImg');i.src=b.dataset.img;i.alt=b.dataset.n+', personnage VM Gaming';document.getElementById('sqName').textContent=b.dataset.n;document.getElementById('sqRole').textContent='· '+b.dataset.r;d.showModal();};});
+document.getElementById('sqClose').onclick=function(){d.close()};d.addEventListener('click',function(e){if(e.target===d)d.close();});})();
 </script>
 </body>
 </html>
