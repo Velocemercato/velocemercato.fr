@@ -1,25 +1,27 @@
-Passage du 2026-10-20 05:32 UTC (schedule)
+Passage du 2026-10-20 06:26 UTC (schedule)
 Nettoyage : 0 breves vides retirees, 194 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
 Départ : 194 articles conservés et 45 flashs existants.
-RSS Foot National / LIGUE_1 : 13 actualités récentes.
+RSS Foot National / NATIONAL : 5 actualités récentes.
+RSS Foot National / LIGUE_1 : 12 actualités récentes.
 RSS Foot National / NATIONAL : 6 actualités récentes.
 RSS Foot National / LIGUE_2 : 4 actualités récentes.
-RSS Foot National / NATIONAL : 5 actualités récentes.
 RSS RMC Sport / LIGUE_1 : 10 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 16 actualités récentes.
 RSS RMC Sport / FRANCE : 27 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 42 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 1 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 17 actualités récentes.
 RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 1 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 39 actualités récentes.
+RSS Foot01 / FRANCE : 43 actualités récentes.
 RSS BBC Sport / FEMININ : 6 actualités récentes.
-RSS Foot01 / FRANCE : 42 actualités récentes.
 RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 60, column 0
 RSS inaccessible Foot Amateur : ParseError - unbound prefix: line 60, column 0
-217 titres collectés, 47 nouveaux liens, quota 6.
-Bilan : non_pertinent=4, source_inaccessible_ou_trop_courte=17, sujet_deja_traite=9
-Aucune brève de qualité suffisante ; fichiers JSON inchangés.
-Pages : 194 brèves avec leur propre page, sitemap à jour.
+215 titres collectés, 47 nouveaux liens, quota 6.
+Brève prête : RMC Sport - PSG-Barça : Kvaratskhelia attendu au tournant après un début de saison terne
+Brève prête : Foot Mercato - MU : Gary Neville évoque des tensions dans le vestiaire après la sortie de Martinez
+Bilan : brèves_rédigées=2, non_pertinent=4, source_inaccessible_ou_trop_courte=17, sujet_deja_traite=7
+Publié : 2 brèves (total 196). Flash : 45.
+Pages : 196 brèves avec leur propre page, sitemap à jour.
 Agenda : secret FOOTBALL_DATA_KEY absent, matchs.json inchangé.
 Ligue 1 : flux illisible (HTTPError)
 Ligue 2 : flux illisible (HTTPError)
@@ -28,11 +30,11 @@ Chaîne @equipedefrance : introuvable (HTTPError)
 Chaîne @EquipedeFrance : introuvable (HTTPError)
 Équipe de France : aucune chaîne officielle trouvée, ignorée.
 Chaîne @ChampionsLeague : introuvable (HTTPError)
-Chaîne @UEFAChampionsLeague : introuvable (HTTPError)
+Chaîne @UEFAChampionsLeague : introuvable (TimeoutError)
 Ligue des champions : aucune chaîne officielle trouvée, ignorée.
 UEFA : flux illisible (HTTPError)
-Premier League : 15 vidéos lues, 3 vidéos de buts gardées.
+Premier League : flux illisible (HTTPError)
 LaLiga : flux illisible (HTTPError)
 Serie A : flux illisible (HTTPError)
 Bundesliga : flux illisible (HTTPError)
-Vidéos publiées : 47.
+Aucune vidéo trouvée : videos.json inchangé.
