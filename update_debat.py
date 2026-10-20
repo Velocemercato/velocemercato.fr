@@ -388,8 +388,8 @@ def build_video(script, out_mp4):
         'ffmpeg', '-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', str(tmp / 'images.txt'),
         '-i', str(tmp / 'voix.wav'), '-stream_loop', '-1', '-i', str(ASSETS / 'beat.m4a'),
         '-filter_complex', '[1:a]apad,volume=1.6[v];[2:a]volume=0.10[m];[v][m]amix=inputs=2:duration=first:dropout_transition=0[a]',
-        '-map', '0:v', '-map', '[a]', '-t', f'{total:.2f}', '-r', '12', '-c:v', 'libx264', '-preset', 'veryfast', '-tune', 'stillimage', '-crf', '30',
-        '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '64k', '-ac', '1', '-movflags', '+faststart', str(out_mp4)], check=True)
+        '-map', '0:v', '-map', '[a]', '-t', f'{total:.2f}', '-r', '12', '-c:v', 'libx264', '-preset', 'veryfast', '-tune', 'stillimage', '-crf', '31', '-maxrate', '600k', '-bufsize', '1200k',
+        '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '56k', '-ac', '1', '-movflags', '+faststart', str(out_mp4)], check=True)
     intro.resize((640, 360)).save(out_mp4.with_suffix('.jpg'), quality=80)
     shutil.rmtree(tmp, ignore_errors=True)
     return total, sorted(engines)

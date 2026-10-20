@@ -98,7 +98,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 3
 (function(){
 var $=function(i){return document.getElementById(i)},all=[],u='',CNT='https://countapi.mileshilliard.com/api/v1/';
 function esc(x){return String(x||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-function ok(x){return typeof x==='string'&&/^https:\/\/github\.com\/Velocemercato\/velocemercato\.fr\/releases\/download\//.test(x)}
+function ok(x){return typeof x==='string'&&/^https:\/\/cdn\.jsdelivr\.net\/gh\/Velocemercato\/velocemercato\.fr@[0-9a-f]{40}\//.test(x)}
 function mn(s){var m=Math.round(s/60);return m+' min'}
 function day(d){try{return new Date(d).toLocaleString('fr-FR',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}catch(e){return ''}}
 var U={foot:'⚽ Foot',actus:'📰 Actus',gaming:'🎮 Gaming'};

@@ -123,26 +123,64 @@ def write_script(univers, fmt, moment, news):
     return {'titre': str(data.get('titre', U['nom']))[:90], 'accroche': str(data.get('accroche', ''))[:180], 'repliques': lines}
 
 
+TV_KEEP = 24  # nombre de vidéos gardées en ligne
+SHA_FILE = ROOT / 'studio' / 'tv' / '_branche.json'
+
+
 def rebuild_list():
-    """La liste des émissions est reconstruite à partir d'un petit fichier par émission (pas de conflit entre robots)."""
+    """La liste est reconstruite à partir d'un petit fichier par émission (pas de conflit entre robots).
+    Les vidéos sont servies par jsDelivr depuis la branche « tv » (bon format vidéo pour iPhone et Android)."""
+    info = json.loads(SHA_FILE.read_text(encoding='utf-8')) if SHA_FILE.exists() else {'sha': '', 'fichiers': []}
+    base = f"https://cdn.jsdelivr.net/gh/{REPO}@{info['sha']}/" if info.get('sha') else ''
     rows = []
     for f in (ROOT / 'studio' / 'tv').glob('*.json'):
+        if f.name.startswith('_'):
+            continue
         try:
-            rows.append(json.loads(f.read_text(encoding='utf-8')))
+            r = json.loads(f.read_text(encoding='utf-8'))
         except Exception:
-            pass
+            continue
+        name = r.get('fichier') or r['id'] + '.mp4'
+        if base and name in info.get('fichiers', []):
+            r['video'] = base + name
+            r['image'] = base + name.replace('.mp4', '.jpg')
+        rows.append(r)
     rows.sort(key=lambda r: str(r.get('date', '')), reverse=True)
     LIST.write_text(json.dumps(rows[:120], ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
 
 
-def publish(path_mp4, path_jpg, tag, title, prerelease):
-    cmd = ['gh', 'release', 'create', tag, str(path_mp4), str(path_jpg), '--repo', REPO, '--title', title,
-           '--notes', 'Émission VM Studio générée par IA (personnages inventés, faits tirés des brèves de velocemercato.fr).']
-    if prerelease:
-        cmd.append('--prerelease')
-    subprocess.run(cmd, check=True)
-    base = f'https://github.com/{REPO}/releases/download/{tag}/'
-    return base + path_mp4.name, base + path_jpg.name
+def git(*args, cwd=None):
+    return subprocess.run(['git', *args], cwd=cwd, check=True, capture_output=True, text=True).stdout.strip()
+
+
+def publish(path_mp4, path_jpg):
+    """Ajoute la vidéo sur la branche « tv » (un seul commit, réécrit à chaque fois pour rester léger)."""
+    work = ROOT / 'studio' / 'tmp' / 'branche-tv'
+    if work.exists():
+        subprocess.run(['rm', '-rf', str(work)], check=True)
+    url = f"https://x-access-token:{os.environ['GH_TOKEN']}@github.com/{REPO}.git"
+    try:
+        git('clone', '--quiet', '--depth', '1', '--branch', 'tv', url, str(work))
+    except subprocess.CalledProcessError:
+        work.mkdir(parents=True)
+        git('init', '--quiet', '-b', 'tv', cwd=work)
+        git('remote', 'add', 'origin', url, cwd=work)
+    for f in (path_mp4, path_jpg):
+        (work / f.name).write_bytes(f.read_bytes())
+    vids = sorted(work.glob('*.mp4'), key=lambda f: f.name[-17:], reverse=True)  # trié par date (AAAAMMJJ-HHMM)
+    for old in vids[TV_KEEP:]:
+        old.unlink()
+        old.with_suffix('.jpg').unlink(missing_ok=True)
+    git('checkout', '--quiet', '--orphan', 'neuf', cwd=work)
+    git('add', '-A', cwd=work)
+    git('-c', 'user.name=github-actions[bot]', '-c', 'user.email=41898282+github-actions[bot]@users.noreply.github.com',
+        'commit', '--quiet', '-m', 'La Pastille TV : vidéos', cwd=work)
+    git('push', '--quiet', '-f', 'origin', 'neuf:tv', cwd=work)
+    sha = git('rev-parse', 'HEAD', cwd=work)
+    files = sorted(f.name for f in work.glob('*.mp4'))
+    SHA_FILE.write_text(json.dumps({'sha': sha, 'fichiers': files}, ensure_ascii=False) + '\n', encoding='utf-8')
+    check = subprocess.run(['curl', '-sSI', f'https://cdn.jsdelivr.net/gh/{REPO}@{sha}/{path_mp4.name}'], capture_output=True, text=True)
+    print('jsDelivr :', ' | '.join(l for l in check.stdout.splitlines() if l.lower().startswith(('http/', 'content-type', 'content-length'))), flush=True)
 
 
 def make(univers, fmt, moment):
@@ -171,8 +209,9 @@ def make(univers, fmt, moment):
     entry = {'id': ident, 'univers': univers, 'format': fmt, 'moment': moment, 'label': label,
              'titre': script['titre'], 'accroche': script['accroche'], 'duree': round(total),
              'date': now.isoformat(timespec='minutes'), 'publie': auto, 'voix': engines}
+    entry['fichier'] = out.name
     if os.getenv('GITHUB_ACTIONS'):
-        entry['video'], entry['image'] = publish(out, out.with_suffix('.jpg'), 'tv-' + ident, f"{U['nom']} · {label} · {script['titre']}", not auto)
+        publish(out, out.with_suffix('.jpg'))
         out.unlink(missing_ok=True)
         out.with_suffix('.jpg').unlink(missing_ok=True)
     (ROOT / 'studio' / 'tv').mkdir(parents=True, exist_ok=True)
