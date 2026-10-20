@@ -232,10 +232,10 @@ def extract_article(url):
     return text[:MAX_CHARS]
 
 
-def call_claude(system, user):
+def call_claude(system, user, max_tokens=1200):
     """Appelle l'API Claude. La clé n'est jamais affichée dans les journaux."""
     while MODELS:
-        payload = {'model': MODELS[0], 'max_tokens': 1200,
+        payload = {'model': MODELS[0], 'max_tokens': max_tokens,
                    'system': system, 'messages': [{'role': 'user', 'content': user}]}
         if THINKING_OFF[0]:
             payload['thinking'] = {'type': 'disabled'}  # brève courte : pas besoin de réflexion, moins cher

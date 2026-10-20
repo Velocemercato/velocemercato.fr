@@ -1,0 +1,60 @@
+name: VM Studio - Le Debat VM
+
+on:
+  workflow_dispatch:
+    inputs:
+      moment:
+        description: 'Moment du débat (fin de journée ou soir)'
+        type: choice
+        options: ['fin de journée', 'soir']
+        default: 'fin de journée'
+  schedule:
+    - cron: '30 16 * * *'   # 18 h 30 à Paris (heure d'été) : débat de fin de journée
+    - cron: '50 21 * * *'   # 23 h 50 à Paris (heure d'été) : débat du soir / après-match
+
+permissions:
+  contents: write
+
+concurrency:
+  group: debat
+  cancel-in-progress: false
+
+jobs:
+  debat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Voix de synthèse (Piper, gratuit) et outils
+        run: |
+          sudo apt-get install -y -qq espeak-ng >/dev/null 2>&1 || true
+          pip install --quiet "piper-tts==1.2.0" pillow 2>&1 | tail -2 || true
+
+      - name: Cache des voix
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/vm-voices
+          key: vm-voices-v1
+
+      - name: Écrire, faire parler et monter le débat
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          VM_DEBAT_MOMENT: ${{ github.event_name == 'workflow_dispatch' && inputs.moment || '' }}
+        run: |
+          set -o pipefail
+          python update_debat.py 2>&1 | tee studio/debat-log.txt
+
+      - name: Enregistrer
+        if: always()
+        run: |
+          git add studio/ || true
+          if git diff --cached --quiet; then echo 'Rien de nouveau.'; exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'VM Studio : nouveau Débat VM'
+          for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 5; done
