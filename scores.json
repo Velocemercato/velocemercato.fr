@@ -30,7 +30,7 @@
    "comp": "Ligue des champions",
    "dom": "Porto",
    "ext": "PSV",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
     0,
     0
@@ -42,7 +42,7 @@
    "comp": "Ligue des champions",
    "dom": "Man City",
    "ext": "PAE AEK",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
     2,
     0
@@ -54,7 +54,7 @@
    "comp": "Ligue des champions",
    "dom": "PSG",
    "ext": "Barça",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
     1,
     0
@@ -66,22 +66,10 @@
    "comp": "Ligue des champions",
    "dom": "Liverpool",
    "ext": "Villarreal",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
     2,
     2
-   ]
-  },
-  {
-   "id": 575364,
-   "date": "2026-10-20T19:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Roma",
-   "ext": "Sl. Bratislava",
-   "statut": "PAUSED",
-   "score": [
-    2,
-    0
    ]
   },
   {
@@ -90,7 +78,7 @@
    "comp": "Ligue des champions",
    "dom": "Napoli",
    "ext": "Bodø/Glimt",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
     2,
     1
@@ -102,12 +90,24 @@
    "comp": "Ligue des champions",
    "dom": "Stuttgart",
    "ext": "Atleti",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
     1,
     0
    ]
+  },
+  {
+   "id": 575364,
+   "date": "2026-10-20T19:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Roma",
+   "ext": "Sl. Bratislava",
+   "statut": "IN_PLAY",
+   "score": [
+    2,
+    0
+   ]
   }
  ],
- "maj": "2026-10-20T20:00:50Z"
+ "maj": "2026-10-20T20:02:44Z"
 }
