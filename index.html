@@ -257,6 +257,13 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 .nbtns{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
 .njoin{background:#5865f2;color:#fff;text-decoration:none;font-weight:700;padding:11px 16px;border-radius:999px;border:2px solid #000}
 .nbtns button{font-weight:700;padding:11px 16px;border-radius:999px;border:2px solid #000;background:#fff;color:#0b1533;cursor:pointer}
+
+.sticker{display:flex;align-items:center;gap:10px;overflow:hidden;background:#060b1d;color:#fff;border-top:2px solid #0b1533;border-bottom:2px solid #0b1533;text-decoration:none}
+.sticker .slbl{flex:none;font-family:Bangers,Impact,sans-serif;letter-spacing:.08em;background:#14a35a;color:#fff;padding:7px 10px 5px;font-size:1rem}
+.sviewport{flex:1;overflow:hidden}
+.srun{display:inline-block;white-space:nowrap;padding-left:100%;animation:tick 45s linear infinite;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem}
+.srun span{margin-right:2.2em}.srun .on{color:#ff6b7a}.srun .c{color:#ffdc72;font-size:.78rem;margin-right:.4em}
+@media(prefers-reduced-motion:reduce){.srun{animation:none;padding-left:0}}
 /* Accueil allégé */
 .tonight{display:grid;gap:16px;margin:18px 0 26px}
 @media(min-width:1000px){.tonight{grid-template-columns:1.4fr 1fr;align-items:start}}
@@ -308,7 +315,7 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 <button class="chip" type="button" data-cat="OFFICIEL" aria-pressed="false">Officiel</button>
 <a class="chip" href="/archives.html" style="background:#fff;border-color:#000;color:#0b1533">🔎 Rechercher</a>
 <a class="chip" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener" style="background:#5865f2;border-color:#5865f2;color:#fff">💬 Discord</a>
-</div></nav><a id="ticker" class="ticker lg:hidden" href="#flash-title" hidden aria-label="Flash Véloce : voir tous les flashs"><span class="lbl">FLASH</span><span class="flex-1 overflow-hidden"><span id="tickerRun" class="run"></span></span></a></header>
+</div></nav><a id="ticker" class="ticker lg:hidden" href="#flash-title" hidden aria-label="Flash Véloce : voir tous les flashs"><span class="lbl">FLASH</span><span class="flex-1 overflow-hidden"><span id="tickerRun" class="run"></span></span></a><a id="sTicker" class="sticker" href="#live" hidden aria-label="Résultats en direct : voir le bandeau des résultats"><span class="slbl">⚽ SCORES</span><span class="sviewport"><span id="sRun" class="srun"></span></span></a></header>
 <section class="v2" aria-labelledby="v2-title">
 <div class="v2-hero">
 <img class="bg" src="/img/v2-mercato-800.webp" srcset="/img/v2-mercato-800.webp 800w, /img/v2-mercato.webp 1440w" sizes="100vw" width="1440" height="810" alt="Dessin BD : le présentateur de Véloce Mercato en maillot bleu devant Paris et un stade" fetchpriority="high">
@@ -580,6 +587,10 @@ function load(){fetch('/scores.json?v='+Math.floor(Date.now()/60000),{cache:'no-
  $('liveRow').innerHTML=order.map(function(m){var on=m.statut==='IN_PLAY'||m.statut==='PAUSED',fin=m.statut==='FINISHED',d=new Date(m.date),sc=m.score||[];
   var st=on?(m.statut==='PAUSED'?'● Mi-temps':'● En direct'):fin?'Terminé · '+DAY.format(d):(m.statut==='POSTPONED'?'Reporté':DAY.format(d)+' · '+HM.format(d));
   var show=on||fin;return '<div class="lm'+(on?' on':'')+'"><div class="c">'+esc(m.comp)+'</div><div class="t"><span>'+esc(m.dom)+'</span><b>'+(show?esc(sc[0]):'')+'</b></div><div class="t"><span>'+esc(m.ext)+'</span><b>'+(show?esc(sc[1]):'')+'</b></div><div class="s">'+st+'</div></div>'}).join('');
+ var TK=order.filter(function(m){return m.statut!=='SCHEDULED'&&m.statut!=='POSTPONED'}).map(function(m){var on=m.statut==='IN_PLAY'||m.statut==='PAUSED',fin=m.statut==='FINISHED',sc=m.score||[],d=new Date(m.date);
+  var mid=(on||fin)?' '+esc(sc[0])+'-'+esc(sc[1])+' ':' – ';var tag=on?(m.statut==='PAUSED'?'⏸ MT':'🔴 LIVE'):fin?'🏁 FIN':'⏰ '+HM.format(d);
+  return '<span class="'+(on?'on':'')+'"><b class="c">'+(m.comp==='Ligue 1'?'L1':'LDC')+'</b>'+tag+' · '+esc(m.dom)+mid+esc(m.ext)+'</span>'}).join('');
+ if(TK){$('sRun').innerHTML=TK;$('sTicker').hidden=false;}
  $('liveMaj').textContent=j.maj?'Source football-data.org · mis à jour à '+HM.format(new Date(j.maj)):'';$('live').hidden=false;
 }).catch(function(){});}
 load();setInterval(load,60000);
