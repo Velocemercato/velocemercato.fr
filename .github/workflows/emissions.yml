@@ -1,0 +1,86 @@
+name: VM Studio - La Pastille TV
+
+on:
+  workflow_dispatch:
+    inputs:
+      univers:
+        description: 'Univers'
+        type: choice
+        options: ['foot', 'actus', 'gaming']
+        default: 'foot'
+      format:
+        description: 'Format'
+        type: choice
+        options: ['edition', 'speciale', 'debat']
+        default: 'edition'
+      moment:
+        description: 'Moment'
+        type: choice
+        options: ['matin', 'midi', 'soir']
+        default: 'soir'
+  schedule:
+    - cron: '0 5 * * *'      # journal du matin (7 h à Paris l'été, 6 h l'hiver)
+    - cron: '0 10 * * *'     # journal du midi
+    - cron: '0 16 * * *'     # journal du soir (foot, actus, gaming)
+    - cron: '15 17 * * 0,2,3,4,6'  # spéciale avant-match les jours de match
+    - cron: '30 21 * * *'    # débat du soir / après-match
+
+permissions:
+  contents: write
+
+concurrency:
+  group: emissions
+  cancel-in-progress: false
+
+jobs:
+  emission:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Outils (ffmpeg, voix Piper gratuites)
+        run: |
+          sudo apt-get update -qq >/dev/null 2>&1 || true
+          sudo apt-get install -y -qq ffmpeg espeak-ng >/dev/null 2>&1
+          pip install --quiet "piper-tts==1.2.0" pillow 2>&1 | tail -2 || true
+
+      - name: Cache des voix
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/vm-voices
+          key: vm-voices-v1
+
+      - name: Écrire, faire parler et monter l'émission
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+          CRON: ${{ github.event.schedule }}
+        run: |
+          set -o pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            ARGS="${{ inputs.univers }} ${{ inputs.format }} ${{ inputs.moment }}"
+          else
+            case "$CRON" in
+              "0 5 * * *")  ARGS="plan matin" ;;
+              "0 10 * * *") ARGS="plan midi" ;;
+              "0 16 * * *") ARGS="plan soir" ;;
+              "30 21 * * *") ARGS="plan debat" ;;
+              *) ARGS="plan speciale" ;;
+            esac
+          fi
+          python update_emission.py $ARGS 2>&1 | tee studio/emission-log.txt
+
+      - name: Enregistrer la liste des émissions
+        if: always()
+        run: |
+          git add studio/emissions.json studio/emission-log.txt || true
+          if git diff --cached --quiet; then echo 'Rien de nouveau.'; exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'La Pastille TV : nouvelle émission'
+          for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 5; done

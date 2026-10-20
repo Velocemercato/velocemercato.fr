@@ -34,17 +34,22 @@ DRAFTS = ROOT / 'studio' / 'brouillons'
 PUBLISHED = ROOT / 'studio' / 'debats'
 VOICES = Path(os.getenv('VM_VOICES', str(Path.home() / '.cache' / 'vm-voices')))
 W, H = 1280, 720
+SHOW = 'LE DÉBAT VM'
+BG_IMG = 'img/v2-mercato.webp'
+OUTRO_BIG = 'Les vraies infos sont sur velocemercato.fr'
+OUTRO_SMALL = 'Merci d’avoir suivi le Débat VM !'
+FOOT_NOTE = 'Fiction humoristique générée par IA · faits tirés des brèves de velocemercato.fr'
 PARIS = robot.PARIS
 
 PERSOS = {
     'PRESENTATEUR': {'nom': 'Le Présentateur', 'role': 'Il anime le débat', 'img': 'img/avatar-veloce.webp',
-                     'voix': ('tom', 'medium', None), 'esp': 'fr+m3', 'couleur': (244, 207, 85)},
+                     'voix': ('upmc', 'medium', 1), 'esp': 'fr+m3', 'couleur': (244, 207, 85)},
     'COMMANDANT': {'nom': 'Le Commandant', 'role': 'Le vieux briscard de la tactique', 'img': 'vm-gaming/img/escouade/commandant-900.webp',
                    'voix': ('gilles', 'low', None), 'esp': 'fr+m7', 'couleur': (225, 36, 58)},
     'HACKEUSE': {'nom': 'La Hackeuse', 'role': 'Spécialiste mercato et coulisses', 'img': 'vm-gaming/img/escouade/hackeuse-900.webp',
                  'voix': ('siwis', 'medium', None), 'esp': 'fr+f3', 'couleur': (255, 79, 154)},
     'TITAN': {'nom': 'Titan', 'role': 'Le supporter qui parle fort', 'img': 'vm-gaming/img/escouade/titan-900.webp',
-              'voix': ('upmc', 'medium', 1), 'esp': 'fr+m1', 'couleur': (255, 122, 60)},
+              'voix': ('tom', 'medium', None), 'esp': 'fr+m1', 'couleur': (255, 122, 60)},
     'NEX': {'nom': 'Nex', 'role': 'Les chiffres, rien que les chiffres', 'img': 'vm-gaming/img/escouade/nex-900.webp',
             'voix': ('mls', 'medium', None), 'esp': 'fr+m5', 'couleur': (90, 200, 255)},
     'OPERATRICE': {'nom': "L'Opératrice", 'role': 'Reporter, ambiance et terrain', 'img': 'vm-gaming/img/escouade/operatrice-900.webp',
@@ -133,14 +138,14 @@ def speak(text, perso, out, use_piper):
         try:
             name, quality, speaker = p['voix']
             cmd = [sys.executable, '-m', 'piper', '--model', str(voice_model(name, quality)), '--output_file', str(out),
-                   '--length_scale', '0.93', '--sentence_silence', '0.15']
+                   '--length_scale', '0.84', '--sentence_silence', '0.15']
             if speaker is not None:
                 cmd += ['--speaker', str(speaker)]
             subprocess.run(cmd, input=text.encode('utf-8'), check=True, capture_output=True, timeout=180)
             return 'piper'
         except Exception as exc:
             print(f'Piper indisponible pour {perso} ({type(exc).__name__}), eSpeak à la place.', flush=True)
-    subprocess.run(['espeak-ng', '-v', p['esp'], '-s', '165', '-w', str(out), text], check=True, capture_output=True)
+    subprocess.run(['espeak-ng', '-v', p['esp'], '-s', '180', '-w', str(out), text], check=True, capture_output=True)
     return 'espeak'
 
 
@@ -158,7 +163,7 @@ def cover(img, w, h):
 
 
 def base_scene():
-    bg = Image.open(ROOT / 'img' / 'v2-mercato.webp').convert('RGB')
+    bg = Image.open(ROOT / BG_IMG).convert('RGB')
     bg = cover(bg, W, H).filter(ImageFilter.GaussianBlur(16))
     return ImageEnhance.Brightness(bg).enhance(0.32)
 
@@ -204,7 +209,7 @@ def frame(bg, perso, sub, title, order):
     d.text((80, 630), p['role'], font=font('Poppins-Medium.ttf', 15), fill=(230, 235, 245))
     # Bandeau titre
     d.rounded_rectangle((540, 34, 1244, 104), 16, fill=(10, 14, 32), outline=(244, 207, 85), width=3)
-    d.text((562, 44), 'LE DÉBAT VM', font=font('Poppins-BoldItalic.ttf', 22), fill=(244, 207, 85))
+    d.text((562, 44), SHOW, font=font('Poppins-BoldItalic.ttf', 22), fill=(244, 207, 85))
     tf = font('Poppins-Bold.ttf', 22)
     t = title if d.textlength(title, font=tf) < 660 else title[:52].rsplit(' ', 1)[0] + '…'
     d.text((562, 70), t, font=tf, fill='white')
@@ -226,7 +231,7 @@ def frame(bg, perso, sub, title, order):
         im.paste(th, (x, 600))
         d.rectangle((x, 600, x + 72, 672), outline=PERSOS[k]['couleur'] if k == perso else (60, 66, 90), width=3)
         x += 84
-    d.text((1244, 690), 'Fiction humoristique générée par IA · faits tirés des brèves de velocemercato.fr',
+    d.text((1244, 690), FOOT_NOTE,
            font=font('Poppins-Medium.ttf', 13), fill=(200, 205, 220), anchor='rs')
     return im
 
@@ -255,28 +260,28 @@ def build_video(script, out_mp4):
     bg = base_scene()
     tmp = Path(tempfile.mkdtemp(prefix='debat-'))
     segs, engines = [], set()
-    intro = card(bg, script['titre'], 'Le débat du ' + dt.datetime.now(PARIS).strftime('%d/%m'),
+    intro = card(bg, script['titre'], script.get('sous_titre') or 'Le débat du ' + dt.datetime.now(PARIS).strftime('%d/%m'),
                  'Émission de fiction humoristique générée par IA · personnages inventés')
     intro.save(tmp / 'intro.png')
     segs.append(('intro.png', 4.0, None))
     for i, (perso, text) in enumerate(script['repliques']):
         wav = tmp / f'l{i:03d}.wav'
         engines.add(speak(text, perso, wav, use_piper))
-        total = duration(wav) + 0.35
+        total = duration(wav) + 0.2
         parts = chunks(text)
         weights = [len(c) for c in parts]
         for j, c in enumerate(parts):
             name = f'f{i:03d}_{j}.png'
             frame(bg, perso, c, script['titre'], order).save(tmp / name)
             segs.append((name, total * weights[j] / sum(weights), wav if j == 0 else None))
-    outro = card(bg, 'Les vraies infos sont sur velocemercato.fr', 'Merci d’avoir suivi le Débat VM !',
+    outro = card(bg, OUTRO_BIG, OUTRO_SMALL,
                  'Fiction humoristique générée par IA · aucune déclaration réelle de joueurs')
     outro.save(tmp / 'outro.png')
     segs.append(('outro.png', 5.0, None))
     # Piste voix : silences + répliques, collées dans l'ordre
     with open(tmp / 'voix.txt', 'w') as f:
         subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'lavfi', '-i', 'anullsrc=r=22050:cl=mono', '-t', '4', str(tmp / 'sil4.wav')], check=True)
-        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'lavfi', '-i', 'anullsrc=r=22050:cl=mono', '-t', '0.35', str(tmp / 'gap.wav')], check=True)
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'lavfi', '-i', 'anullsrc=r=22050:cl=mono', '-t', '0.2', str(tmp / 'gap.wav')], check=True)
         f.write("file 'sil4.wav'\n")
         for i in range(len(script['repliques'])):
             f.write(f"file 'r{i:03d}.wav'\nfile 'gap.wav'\n")
@@ -293,8 +298,8 @@ def build_video(script, out_mp4):
         'ffmpeg', '-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', str(tmp / 'images.txt'),
         '-i', str(tmp / 'voix.wav'), '-stream_loop', '-1', '-i', str(ASSETS / 'beat.m4a'),
         '-filter_complex', '[1:a]apad,volume=1.6[v];[2:a]volume=0.10[m];[v][m]amix=inputs=2:duration=first:dropout_transition=0[a]',
-        '-map', '0:v', '-map', '[a]', '-t', f'{total:.2f}', '-r', '25', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '27',
-        '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '96k', '-movflags', '+faststart', str(out_mp4)], check=True)
+        '-map', '0:v', '-map', '[a]', '-t', f'{total:.2f}', '-r', '12', '-c:v', 'libx264', '-preset', 'veryfast', '-tune', 'stillimage', '-crf', '30',
+        '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '64k', '-ac', '1', '-movflags', '+faststart', str(out_mp4)], check=True)
     intro.resize((640, 360)).save(out_mp4.with_suffix('.jpg'), quality=80)
     shutil.rmtree(tmp, ignore_errors=True)
     return total, sorted(engines)

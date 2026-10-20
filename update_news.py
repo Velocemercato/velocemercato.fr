@@ -232,7 +232,7 @@ def extract_article(url):
     return text[:MAX_CHARS]
 
 
-def call_claude(system, user, max_tokens=1200):
+def call_claude(system, user, max_tokens=1200, timeout=40):
     """Appelle l'API Claude. La clé n'est jamais affichée dans les journaux."""
     while MODELS:
         payload = {'model': MODELS[0], 'max_tokens': max_tokens,
@@ -244,7 +244,7 @@ def call_claude(system, user, max_tokens=1200):
                                      headers={'x-api-key': API_KEY, 'anthropic-version': '2023-06-01',
                                               'content-type': 'application/json'}, method='POST')
         try:
-            with urllib.request.urlopen(req, timeout=40) as resp:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
                 return json.load(resp)
         except urllib.error.HTTPError as exc:
             if exc.code == 404:
