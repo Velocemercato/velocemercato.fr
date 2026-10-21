@@ -71,9 +71,20 @@ $('vmS-more').onclick=function(){navigator.share({title:document.title,url:url()
 $('vmS-cp').onclick=function(){var b=this;(navigator.clipboard?navigator.clipboard.writeText(url()):Promise.reject()).then(function(){b.lastChild.textContent='Copié ✓'}).catch(function(){prompt('Copie ce lien :',url())})};
 document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=true});
 if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
-var ib=$('vmInst'),dp=null,standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone,ios=/iphone|ipad|ipod/i.test(navigator.userAgent),no=false;try{no=localStorage.getItem('vm-app-non')==='1'}catch(e){}
-if(!standalone&&!no){addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;ib.classList.add('show')});if(ios)ib.classList.add('show');}
-ib.onclick=function(){if(dp){dp.prompt();dp.userChoice.then(function(){ib.classList.remove('show')});dp=null}else{alert('Pour installer l\u2019app VM sur iPhone : — 1. Appuie sur le bouton Partager \u2191 en bas de Safari — 2. Choisis \u00ab Sur l\u2019\u00e9cran d\u2019accueil \u00bb — 3. Appuie sur \u00ab Ajouter \u00bb');try{localStorage.setItem('vm-app-non','1')}catch(e){}ib.classList.remove('show')}};
+var ib=$('vmInst'),dp=null,standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone,ios=/iphone|ipad|ipod/i.test(navigator.userAgent),andr=/android/i.test(navigator.userAgent);
+var mf=(($('vmapp-m')||{}).getAttribute&&$('vmapp-m').getAttribute('href'))||'',app=(mf.match(/app[/]([a-z]+)[.]webmanifest/)||[,'foot'])[1];
+var NOMS={foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'VM TV',annonces:'VM Annonces',allolivre:'AlloLivre'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
+ib.textContent='📲 Installer '+nom;
+function show(){if(!no)ib.classList.add('show')}
+if(standalone){if(app!=='foot'&&!ios)show();}
+else{addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;show()});if(ios)show();else setTimeout(show,2500);}
+addEventListener('appinstalled',function(){ib.classList.remove('show')});
+ib.onclick=function(){
+ if(dp){dp.prompt();dp.userChoice.then(function(){ib.classList.remove('show')});dp=null;return}
+ if(standalone&&andr){location.href='intent://'+location.host+location.pathname+'#Intent;scheme=https;package=com.android.chrome;end';return}
+ if(ios){alert('Pour installer '+nom+' sur iPhone : — 1. Ouvre cette page dans Safari — 2. Bouton Partager \u2191 en bas — 3. « Sur l\u2019\u00e9cran d\u2019accueil » — 4. « Ajouter »')}
+ else{alert('Pour installer '+nom+' : — 1. Touche le menu \u22ee en haut \u00e0 droite de Chrome — 2. Choisis « Ajouter \u00e0 l\u2019\u00e9cran d\u2019accueil » (ou « Installer l\u2019application ») — 3. Confirme « Installer ».')}
+ try{localStorage.setItem(key,'1')}catch(e){}ib.classList.remove('show')};
 })();
 </script>'''
 
