@@ -1,50 +1,80 @@
 {
- "id": "2026-10-21-03",
- "date": "2026-10-21T03:17:53+02:00",
+ "id": "2026-10-21-09",
+ "date": "2026-10-21T09:17:22+02:00",
  "questions": [
   {
-   "q": "Combien de buts Victor Osimhen a-t-il inscrits avec Galatasaray en 81 matchs sur deux ans et demi ?",
+   "q": "Combien de matchs Josh Acheampong a-t-il joués sur les neuf derniers de Chelsea ?",
    "choix": [
-    "54",
-    "65",
-    "72",
-    "58"
+    "Quatre",
+    "Six",
+    "Huit",
+    "Neuf"
    ],
    "bonne": 1,
-   "explication": "Selon RMC Sport, Osimhen totalise 65 buts en 81 rencontres avec Galatasaray sur deux ans et demi.",
+   "explication": "La brève indique qu'il a joué six des neuf derniers matchs toutes compétitions confondues.",
    "source": {
-    "titre": "Osimhen reste à Galatasaray, où il multiplie les buts et les passes",
-    "id": "rss-v2-aa9fc518f8cf862372c04f"
+    "titre": "Acheampong, un défenseur de Chelsea qui s'impose et pose question au club",
+    "id": "rss-v2-0c9cab2f70e52514a01b7b"
    }
   },
   {
-   "q": "Quel est le score final de la victoire du PSG face au FC Barcelone en Ligue des Champions ?",
+   "q": "Quel est le score du match PSG - FC Barcelone en Ligue des Champions ?",
    "choix": [
     "3-2",
     "4-2",
-    "2-1",
-    "4-3"
+    "4-3",
+    "2-1"
    ],
    "bonne": 1,
-   "explication": "Selon Foot Mercato, le PSG s'est imposé 4-2 face au FC Barcelone dans le choc de Ligue des Champions.",
+   "explication": "Selon Foot Mercato, le PSG s'est imposé 4-2 face au FC Barcelone.",
    "source": {
     "titre": "PSG : Désiré Doué réagit à chaud après la victoire face au Barça (4-2)",
     "id": "rss-v2-b499a3b3907e448e24d4bc"
    }
   },
   {
-   "q": "Combien de buts Teemu Pukki a-t-il inscrits avec la sélection finlandaise ?",
+   "q": "Quel est le score de la victoire de Liverpool face à Villarreal ?",
    "choix": [
-    "29",
-    "38",
-    "43",
-    "51"
+    "4-2",
+    "3-3",
+    "4-3",
+    "5-2"
    ],
    "bonne": 2,
-   "explication": "Selon BBC Sport, Pukki est recordman de buts de la Finlande avec 43 réalisations en 133 sélections.",
+   "explication": "La brève précise que Liverpool s'est imposé 4-3 face à Villarreal, match riche en sept buts.",
    "source": {
-    "titre": "Teemu Pukki annonce sa retraite à 36 ans",
-    "id": "rss-v2-afc77acb042d2d37c914b5"
+    "titre": "Ngumoha éblouit Anfield et guide Liverpool vers une victoire 4-3 face à Villarreal",
+    "id": "rss-v2-3ed58515bf92c13f6df060"
+   }
+  },
+  {
+   "q": "Combien de buts Victor Osimhen a-t-il marqués avec Galatasaray en 81 matchs ?",
+   "choix": [
+    "48",
+    "57",
+    "65",
+    "72"
+   ],
+   "bonne": 2,
+   "explication": "Selon RMC Sport, l'attaquant totalise 65 buts en 81 rencontres avec le club stambouliote.",
+   "source": {
+    "titre": "Osimhen reste à Galatasaray, où il multiplie les buts et les passes",
+    "id": "rss-v2-aa9fc518f8cf862372c04f"
+   }
+  },
+  {
+   "q": "Combien de dirigeants de clubs turcs ont été suspendus pour paris illégaux ?",
+   "choix": [
+    "45",
+    "301",
+    "147",
+    "448"
+   ],
+   "bonne": 2,
+   "explication": "La TFF a sanctionné 147 responsables de clubs de première et deuxième division, suspendus 45 jours.",
+   "source": {
+    "titre": "Turquie : 147 dirigeants de clubs suspendus 45 jours pour paris illégaux",
+    "id": "rss-v2-33418caeeceaf81a92979e"
    }
   }
  ]
