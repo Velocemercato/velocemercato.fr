@@ -21,6 +21,8 @@ a{color:inherit}
 main{max-width:1080px;margin:0 auto;padding:26px 16px 50px}
 h2{font:italic 900 1.6rem/1.1 Impact,"Arial Black",sans-serif;text-transform:uppercase;margin:30px 0 12px;letter-spacing:.02em}
 h2 .n{color:#f4cf55}
+.sub{margin:-6px 0 12px;color:#8f9bbd;font-size:.92rem}
+.jump{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:16px}.jump a{text-decoration:none;font-weight:800;font-size:.9rem;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
 .card{position:relative;display:flex;flex-direction:column;background:#101833;border:2px solid #000;border-radius:16px;overflow:hidden;text-decoration:none;box-shadow:5px 5px 0 #000;transition:transform .2s}
 a.card:hover{transform:translateY(-3px)}
@@ -60,28 +62,35 @@ a:focus-visible{outline:3px solid #f4cf55;outline-offset:3px}
 <h1>GROUPE <span>VM</span></h1>
 <p>Tous les projets VM au même endroit : des médias, une communauté et des services, construits par Romain, un passionné de foot. Les initiales VM sont aussi un hommage.</p>
 <small>Projet indépendant · aucune société constituée à ce jour</small>
+<nav class="jump" aria-label="Aller à"><a href="#medias">⚽ Médias</a><a href="#communaute">🤝 Communauté</a><a href="#services">🛠️ Services</a><a href="#bientot">🚀 Bientôt</a></nav>
 </header>
 <main>
-<h2><span class="n">01</span> · Déjà en ligne</h2>
+<h2 id="medias"><span class="n">01</span> · ⚽ Les médias</h2>
+<p class="sub">Le foot d'abord, puis la TV, la radio, le gaming et l'actu.</p>
 <div class="grid">
 <a class="card" href="/"><div class="img" style="background-image:url('/img/v2-mercato-800.webp')"></div><div class="in"><span class="st on">En ligne</span><b>⚽ Véloce Mercato</b><p>Le média foot : brèves sourcées toutes les 30 min, scores en direct, vidéos, prono.</p><span class="go">Ouvrir →</span></div></a>
 <a class="card" href="/studio.html#tv"><div class="img" style="background-image:url('/vm-gaming/img/escouade/presentateur-360.webp');background-position:top"></div><div class="in"><span class="st on">En ligne</span><b>📺 La Pastille TV & 📻 VM Radio</b><p>Journaux et débats vidéo faits par IA, chaque jour, avec nos chroniqueurs inventés.</p><span class="go">Regarder →</span></div></a>
 <a class="card" href="/vm-gaming/"><div class="img" style="background-image:url('/vm-gaming/img/vm-gaming-univers-960.webp')"></div><div class="in"><span class="st on">En ligne</span><b>🎮 VM Gaming</b><p>Actus jeux vidéo, l'escouade VM et le Discord pour trouver des potes de jeu.</p><span class="go">Ouvrir →</span></div></a>
 <a class="card" href="/actus/"><div class="img" style="background-image:url('/img/v2-actus-640.webp')"></div><div class="in"><span class="st on">En ligne</span><b>📰 VM Actus</b><p>L'actu générale en brèves courtes et sourcées : matin, midi, soir.</p><span class="go">Ouvrir →</span></div></a>
+</div>
+<h2 id="communaute"><span class="n">02</span> · 🤝 La communauté</h2>
+<p class="sub">Jouer, échanger, se retrouver.</p>
+<div class="grid">
 <a class="card" href="/gaming.html"><div class="img" style="background-image:url('/img/v2-arena-430.webp')"></div><div class="in"><span class="st on">En ligne</span><b>🏆 Véloce Arena</b><p>Tournois EA FC gratuits entre membres de la communauté.</p><span class="go">Ouvrir →</span></div></a>
-<a class="card" href="https://velocemercato.github.io/Papiers-sans-galere/"><div class="img" style="background-image:url('/img/v2-papiers-800.webp')"></div><div class="in"><span class="st on">En ligne</span><b>📄 Papiers Sans Galère</b><p>Les démarches expliquées simplement, avec des outils gratuits.</p><span class="go">Ouvrir →</span></div></a>
-</div>
-<h2><span class="n">02</span> · En préparation</h2>
-<div class="grid">
-<a class="card" href="/web-studio.html"><div class="em">💻</div><div class="in"><span class="st prep">Bientôt</span><b>Véloce Web Studio</b><p>Des sites internet pour les artisans, commerces, clubs et associations, faits vite et à petit prix.</p><span class="go">Voir l'offre →</span></div></a>
 <a class="card" href="/shop/"><div class="em">🛍️</div><div class="in"><span class="st on">Nouveau</span><b>VM Shop</b><p>Les petites annonces de la communauté : maillots, jeux, consoles, matériel de foot. Gratuit et vérifié.</p><span class="go">Voir les annonces →</span></div></a>
-<a class="card" href="/allolivre/"><div class="img" style="background-image:url('/img/projet-allolivre.webp')"></div><div class="in"><span class="st prep">Phase test</span><b>⚡ AlloLivre</b><p>Livraisons et petits services entre voisins : courses, colis, baguette, coup de main.</p><span class="go">Ouvrir →</span></div></a>
-<a class="card" href="/comparateur/"><div class="img" style="background-image:url('/img/projet-annonces.webp')"></div><div class="in"><span class="st on">Nouveau</span><b>🔎 VM Comparateur</b><p>Neuf, occasion, auto, immo : cherche sur les grands sites en un clic et compare le prix total.</p><span class="go">Comparer →</span></div></a>
-<div class="card"><div class="em">🏗️</div><div class="in"><span class="st prep">À l'étude</span><b>VM Location</b><p>Des boxes de stockage à louer, en Haute-Saône.</p></div></div>
 </div>
-<h2><span class="n">03</span> · Idées pour la suite</h2>
+<h2 id="services"><span class="n">03</span> · 🛠️ Les services</h2>
+<p class="sub">Des outils utiles, gratuits ou à petit prix.</p>
 <div class="grid">
-
+<a class="card" href="https://velocemercato.github.io/Papiers-sans-galere/"><div class="img" style="background-image:url('/img/v2-papiers-800.webp')"></div><div class="in"><span class="st on">En ligne</span><b>📄 Papiers Sans Galère</b><p>Les démarches expliquées simplement, avec des outils gratuits.</p><span class="go">Ouvrir →</span></div></a>
+<a class="card" href="/comparateur/"><div class="img" style="background-image:url('/img/projet-annonces.webp')"></div><div class="in"><span class="st on">Nouveau</span><b>🔎 VM Comparateur</b><p>Neuf, occasion, auto, immo : cherche sur les grands sites en un clic et compare le prix total.</p><span class="go">Comparer →</span></div></a>
+<a class="card" href="/allolivre/"><div class="img" style="background-image:url('/img/projet-allolivre.webp')"></div><div class="in"><span class="st prep">Phase test</span><b>⚡ AlloLivre</b><p>Livraisons et petits services entre voisins : courses, colis, baguette, coup de main.</p><span class="go">Ouvrir →</span></div></a>
+<a class="card" href="/web-studio.html"><div class="em">💻</div><div class="in"><span class="st on">En ligne</span><b>Véloce Web Studio</b><p>Des sites internet pour les artisans, commerces, clubs et associations, faits vite et à petit prix.</p><span class="go">Voir l'offre →</span></div></a>
+</div>
+<h2 id="bientot"><span class="n">04</span> · 🚀 Bientôt</h2>
+<p class="sub">Les projets en préparation.</p>
+<div class="grid">
+<div class="card"><div class="em">🏗️</div><div class="in"><span class="st prep">À l'étude</span><b>VM Location</b><p>Des boxes de stockage à louer, en Haute-Saône.</p></div></div>
 <div class="card"><div class="em">🎙️</div><div class="in"><span class="st idea">Idée</span><b>La Pastille en vrai</b><p>Des invités, des podcasts et des directs les soirs de match, avec un vrai plateau.</p></div></div>
 </div>
 <div class="cta"><div><b>Un projet, une idée, un partenariat ?</b><p>Écris-nous : on répond à tout le monde.</p></div><a class="btn" href="mailto:velocemercato.fr@gmail.com?subject=Groupe%20VM%20%3A%20prise%20de%20contact">✉️ velocemercato.fr@gmail.com</a></div>
