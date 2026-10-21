@@ -25,6 +25,18 @@
    ]
   },
   {
+   "id": 575365,
+   "date": "2026-10-20T19:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Porto",
+   "ext": "PSV",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    1
+   ]
+  },
+  {
    "id": 575361,
    "date": "2026-10-20T19:00:00Z",
    "comp": "Ligue des champions",
@@ -61,15 +73,15 @@
    ]
   },
   {
-   "id": 575365,
+   "id": 575364,
    "date": "2026-10-20T19:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Porto",
-   "ext": "PSV",
+   "dom": "Roma",
+   "ext": "Sl. Bratislava",
    "statut": "FINISHED",
    "score": [
-    0,
-    1
+    4,
+    0
    ]
   },
   {
@@ -97,18 +109,6 @@
    ]
   },
   {
-   "id": 575364,
-   "date": "2026-10-20T19:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Roma",
-   "ext": "Sl. Bratislava",
-   "statut": "FINISHED",
-   "score": [
-    4,
-    0
-   ]
-  },
-  {
    "id": 575369,
    "date": "2026-10-21T16:45:00Z",
    "comp": "Ligue des champions",
@@ -126,6 +126,18 @@
    "comp": "Ligue des champions",
    "dom": "Como 1907",
    "ext": "Man United",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 575375,
+   "date": "2026-10-21T19:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Sporting CP",
+   "ext": "LASK",
    "statut": "TIMED",
    "score": [
     null,
@@ -157,11 +169,23 @@
    ]
   },
   {
-   "id": 575375,
+   "id": 575374,
    "date": "2026-10-21T19:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Sporting CP",
-   "ext": "LASK",
+   "dom": "Aston Villa",
+   "ext": "Viking",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 575370,
+   "date": "2026-10-21T19:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Real Madrid",
+   "ext": "RB Leipzig",
    "statut": "TIMED",
    "score": [
     null,
@@ -191,31 +215,7 @@
     null,
     null
    ]
-  },
-  {
-   "id": 575374,
-   "date": "2026-10-21T19:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Aston Villa",
-   "ext": "Viking",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 575370,
-   "date": "2026-10-21T19:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Real Madrid",
-   "ext": "RB Leipzig",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
   }
  ],
- "maj": "2026-10-21T15:14:02Z"
+ "maj": "2026-10-21T15:15:57Z"
 }
