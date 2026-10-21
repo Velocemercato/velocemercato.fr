@@ -1,0 +1,44 @@
+name: Le Sondage VM
+
+on:
+  workflow_dispatch:
+    inputs:
+      moment:
+        type: choice
+        options: ['matin', 'soir']
+        default: 'matin'
+  schedule:
+    - cron: '0 6 * * *'     # 8 h à Paris l'été : sondages sur l'actu du jour
+    - cron: '20 21 * * *'   # 23 h 20 à Paris l'été : sondage d'après-match (seulement s'il y a eu des matchs)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sondage
+  cancel-in-progress: false
+
+jobs:
+  sondage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Écrire les sondages
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then M="${{ inputs.moment }}";
+          elif [ "${{ github.event.schedule }}" = "0 6 * * *" ]; then M=matin; else M=soir; fi
+          python update_sondage.py $M
+      - name: Enregistrer
+        run: |
+          git add sondage.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Le Sondage VM'
+          for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 4; done
