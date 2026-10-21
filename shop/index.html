@@ -131,7 +131,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 <label for="p-d">Description</label><textarea id="p-d" required maxlength="600"></textarea>
 <label for="p-k">Comment te contacter (affiché sur l'annonce)</label><input id="p-k" required placeholder="Pseudo Discord ou e-mail">
 <label style="font-weight:600;display:flex;gap:8px;align-items:flex-start"><input type="checkbox" required style="width:auto;margin-top:4px"> J'ai 18 ans ou l'accord d'un parent, l'objet m'appartient et ce n'est pas une contrefaçon.</label>
-<div class="row"><button class="post" type="submit">✉️ Envoyer mon annonce</button><button class="ghost" type="button" id="postClose">Annuler</button></div>
+<div class="row"><button class="post" type="submit">✉️ Préparer mon e-mail</button><button class="ghost" type="button" id="postClose">Annuler</button></div>
 </form></div></dialog>
 
 <script>
@@ -168,7 +168,7 @@ $('q').addEventListener('input',function(){shown=12;draw()});$('sort').onchange=
 $('postBtn').onclick=function(){$('postDlg').showModal()};$('postClose').onclick=function(){$('postDlg').close()};
 $('postForm').addEventListener('submit',function(e){e.preventDefault();var v=function(i){return $(i).value.trim()};
  var body='Nouvelle annonce VM Shop\n\nTitre : '+v('p-t')+'\nCatégorie : '+v('p-c')+'\nPrix : '+v('p-p')+' €\nÉtat : '+v('p-e')+'\nVille : '+v('p-v')+'\nContact à afficher : '+v('p-k')+'\n\nDescription :\n'+v('p-d')+'\n\n(J’ajoute 1 à 3 photos à ce mail.)\nJe confirme avoir 18 ans ou l’accord d’un parent, que l’objet m’appartient et que ce n’est pas une contrefaçon.';
- location.href='mailto:velocemercato.fr@gmail.com?subject='+encodeURIComponent('VM Shop – annonce : '+v('p-t'))+'&body='+encodeURIComponent(body);$('postDlg').close()});
+ vmMail('VM Shop – annonce : '+v('p-t'),body);$('postDlg').close()});
 fetch('annonces.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():[]}).then(function(rows){
  all=(Array.isArray(rows)?rows:[]).filter(function(a){return a&&a.titre});var real=all.filter(function(a){return !a.exemple});if(real.length)all=real;draw();
  var m=location.hash.match(/^#a=(.+)$/);if(m){var a=all.find(function(x){return x.id===decodeURIComponent(m[1])});if(a)open(a)}
@@ -220,6 +220,12 @@ ib.onclick=function(){
  if(ios){alert('Pour installer '+nom+' sur iPhone : — 1. Ouvre cette page dans Safari — 2. Bouton Partager ↑ en bas — 3. « Sur l’écran d’accueil » — 4. « Ajouter »')}
 
  try{localStorage.setItem(key,'1')}catch(e){}ib.classList.remove('show')};
+window.vmMail=function(su,bo){var to='velocemercato.fr@gmail.com';location.href='mailto:'+to+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(bo);
+ var d=document.getElementById('vmMailBox');if(d)d.remove();d=document.createElement('div');d.id='vmMailBox';d.setAttribute('role','dialog');
+ d.style.cssText='position:fixed;left:12px;right:12px;bottom:12px;z-index:95;max-width:440px;margin:0 auto;background:#fff;color:#0b1533;border:3px solid #000;border-radius:16px;padding:14px;box-shadow:5px 5px 0 #1d3fb8;font:15px/1.4 system-ui,sans-serif';
+ d.innerHTML='<b>✉️ Ton appli e-mail s’ouvre avec le message prêt.</b><br>Appuie sur « Envoyer » dedans : tant que ce n’est pas fait, rien n’est envoyé.<br><small>Rien ne s’ouvre ? Copie la demande et envoie-la à '+to+'.</small><div style="display:flex;gap:8px;margin-top:10px"><button type="button" id="vmMailCp" style="flex:1;font:800 .95rem system-ui;padding:10px;border-radius:999px;border:2px solid #000;background:#f4cf55;cursor:pointer">📋 Copier la demande</button><button type="button" id="vmMailX" style="font:800 .95rem system-ui;padding:10px 14px;border-radius:999px;border:2px solid #000;background:#fff;cursor:pointer">OK</button></div>';
+ document.body.appendChild(d);document.getElementById('vmMailX').onclick=function(){d.remove()};
+ document.getElementById('vmMailCp').onclick=function(){var t='À : '+to+'\nObjet : '+su+'\n\n'+bo,b=this;function ok(){b.textContent='✅ Copié !'}if(navigator.clipboard)navigator.clipboard.writeText(t).then(ok,function(){prompt('Copie ce texte :',t)});else prompt('Copie ce texte :',t)}};
 })();
 </script></body>
 </html>

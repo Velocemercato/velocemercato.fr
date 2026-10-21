@@ -83,15 +83,26 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add studio/tv studio/emission-log.txt || true
-          if git diff --cached --quiet; then echo 'Rien de nouveau.'; exit 0; fi
-          git commit -m 'La Pastille TV : nouvelle émission'
-          for i in 1 2 3 4 5; do
+          # Sauvegarde des fichiers produits, puis republication sur une copie propre de main (évite « unstaged changes »)
+          rm -rf /tmp/sauve && mkdir -p /tmp/sauve
+          # uniquement les fichiers créés ou modifiés par CE passage
+          git status --porcelain -uall studio/tv studio/emission-log.txt | sed 's/^...//' > /tmp/sauve/liste.txt
+          echo "Fichiers produits :"; cat /tmp/sauve/liste.txt
+          while read -r f; do [ -f "$f" ] && mkdir -p "/tmp/sauve/f/$(dirname "$f")" && cp "$f" "/tmp/sauve/f/$f"; done < /tmp/sauve/liste.txt
+          ok=0
+          for i in 1 2 3 4 5 6; do
             git fetch -q origin main
-            git rebase -X theirs origin/main || { git rebase --abort; git reset -q --soft origin/main; git commit -qm 'La Pastille TV : nouvelle émission' || true; }
+            git reset -q --hard origin/main
+            git clean -qfd studio || true
+            [ -d /tmp/sauve/f ] && cp -r /tmp/sauve/f/. ./
             python update_emission.py liste
-            git add studio/emissions.json
-            git diff --cached --quiet || git commit -qm 'La Pastille TV : liste à jour'
-            if git push -q origin HEAD:main; then echo 'Publié.'; break; fi
-            sleep 6
+            git add studio/tv studio/emission-log.txt studio/emissions.json
+            if git diff --cached --quiet; then echo 'Rien de nouveau.'; ok=1; break; fi
+            git commit -qm 'La Pastille TV : nouvelle émission et liste à jour'
+            if git push -q origin HEAD:main; then echo 'Publié.'; ok=1; break; fi
+            sleep $((i*5))
           done
+          # Vérification finale : la liste publiée contient bien les émissions du jour
+          git fetch -q origin main
+          git show origin/main:studio/emissions.json | python -c "import json,sys,datetime; d=json.load(sys.stdin); L=d if isinstance(d,list) else d.get('emissions',[]); print('Émissions dans la liste publiée :',len(L))"
+          [ "$ok" = 1 ] || { echo '::error::Publication de la liste impossible après 6 essais'; exit 1; }

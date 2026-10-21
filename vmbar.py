@@ -83,6 +83,12 @@ ib.onclick=function(){
  if(ios){alert('Pour installer '+nom+' sur iPhone : — 1. Ouvre cette page dans Safari — 2. Bouton Partager \u2191 en bas — 3. « Sur l\u2019\u00e9cran d\u2019accueil » — 4. « Ajouter »')}
 
  try{localStorage.setItem(key,'1')}catch(e){}ib.classList.remove('show')};
+window.vmMail=function(su,bo){var to='velocemercato.fr@gmail.com';location.href='mailto:'+to+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(bo);
+ var d=document.getElementById('vmMailBox');if(d)d.remove();d=document.createElement('div');d.id='vmMailBox';d.setAttribute('role','dialog');
+ d.style.cssText='position:fixed;left:12px;right:12px;bottom:12px;z-index:95;max-width:440px;margin:0 auto;background:#fff;color:#0b1533;border:3px solid #000;border-radius:16px;padding:14px;box-shadow:5px 5px 0 #1d3fb8;font:15px/1.4 system-ui,sans-serif';
+ d.innerHTML='<b>✉️ Ton appli e-mail s\u2019ouvre avec le message prêt.</b><br>Appuie sur « Envoyer » dedans : tant que ce n\u2019est pas fait, rien n\u2019est envoyé.<br><small>Rien ne s\u2019ouvre ? Copie la demande et envoie-la à '+to+'.</small><div style="display:flex;gap:8px;margin-top:10px"><button type="button" id="vmMailCp" style="flex:1;font:800 .95rem system-ui;padding:10px;border-radius:999px;border:2px solid #000;background:#f4cf55;cursor:pointer">📋 Copier la demande</button><button type="button" id="vmMailX" style="font:800 .95rem system-ui;padding:10px 14px;border-radius:999px;border:2px solid #000;background:#fff;cursor:pointer">OK</button></div>';
+ document.body.appendChild(d);document.getElementById('vmMailX').onclick=function(){d.remove()};
+ document.getElementById('vmMailCp').onclick=function(){var t='À : '+to+'\\nObjet : '+su+'\\n\\n'+bo,b=this;function ok(){b.textContent='✅ Copié !'}if(navigator.clipboard)navigator.clipboard.writeText(t).then(ok,function(){prompt('Copie ce texte :',t)});else prompt('Copie ce texte :',t)}};
 })();
 </script>'''
 
@@ -105,14 +111,16 @@ def apply(path,active,app='foot'):
     s=inject(open(path,encoding='utf-8').read(),active,app)
     open(path,'w',encoding='utf-8').write(s)
 
+REDIRECT='<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>L\'univers VM</title><link rel="canonical" href="https://velocemercato.fr/vm/"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=/vm/"><script>location.replace("/vm/"+location.hash)</script></head><body><a href="/vm/">L\'univers VM</a></body></html>\n'
 def build_vm():
     """velocemercato.fr/vm/ : le site VM à part (annuaire de toutes les applis, sans le menu foot)."""
-    s=open('groupe.html',encoding='utf-8').read()
+    s=open('_vm_source.html',encoding='utf-8').read()
     s=re.sub(r'<nav class="vmbar".*?</div></nav>','',s,flags=re.S)
-    s=s.replace('href="https://velocemercato.fr/groupe.html"','href="https://velocemercato.fr/vm/"')
+    s=s.replace('https://velocemercato.fr/groupe.html','https://velocemercato.fr/vm/')
     s=s.replace('<title>L\'univers VM – toutes les applis VM</title>','<title>VM – toutes les applis VM</title>')
     open('vm/index.html','w',encoding='utf-8').write(s)
+    open('groupe.html','w',encoding='utf-8').write(REDIRECT)
 if __name__=='__main__':
-    for p,a,*x in [('index.html','f'),('vm-gaming/index.html','g','gaming'),('actus/index.html','a','actus'),('archives.html','f'),('studio.html','s','tv'),('radio.html','r','tv'),('gaming.html','f','arena'),('soutenir.html',''),('groupe.html','','univers'),('shop/index.html','','annonces'),('allolivre/index.html','','allolivre'),('comparateur/index.html','','annonces'),('web-studio.html',''),('boutique/index.html',''),('mentions-legales.html','')]:
+    for p,a,*x in [('index.html','f'),('vm-gaming/index.html','g','gaming'),('actus/index.html','a','actus'),('archives.html','f'),('studio.html','s','tv'),('radio.html','r','tv'),('gaming.html','f','arena'),('soutenir.html',''),('_vm_source.html','','univers'),('shop/index.html','','annonces'),('allolivre/index.html','','allolivre'),('comparateur/index.html','','annonces'),('web-studio.html',''),('boutique/index.html',''),('mentions-legales.html','')]:
         apply(p,a,*x); print('ok',p)
     build_vm(); print('ok vm/')
