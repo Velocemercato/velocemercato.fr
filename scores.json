@@ -61,6 +61,18 @@
    ]
   },
   {
+   "id": 575363,
+   "date": "2026-10-20T19:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Liverpool",
+   "ext": "Villarreal",
+   "statut": "FINISHED",
+   "score": [
+    4,
+    3
+   ]
+  },
+  {
    "id": 575365,
    "date": "2026-10-20T19:00:00Z",
    "comp": "Ligue des champions",
@@ -97,18 +109,6 @@
    ]
   },
   {
-   "id": 575363,
-   "date": "2026-10-20T19:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Liverpool",
-   "ext": "Villarreal",
-   "statut": "FINISHED",
-   "score": [
-    4,
-    3
-   ]
-  },
-  {
    "id": 575368,
    "date": "2026-10-21T16:45:00Z",
    "comp": "Ligue des champions",
@@ -133,11 +133,11 @@
    ]
   },
   {
-   "id": 575371,
+   "id": 575374,
    "date": "2026-10-21T19:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Inter",
-   "ext": "Shaktar",
+   "dom": "Aston Villa",
+   "ext": "Viking",
    "statut": "TIMED",
    "score": [
     null,
@@ -145,23 +145,11 @@
    ]
   },
   {
-   "id": 575373,
+   "id": 575370,
    "date": "2026-10-21T19:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Club Brugge",
-   "ext": "RC Lens",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 575375,
-   "date": "2026-10-21T19:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Sporting CP",
-   "ext": "LASK",
+   "dom": "Real Madrid",
+   "ext": "RB Leipzig",
    "statut": "TIMED",
    "score": [
     null,
@@ -193,11 +181,11 @@
    ]
   },
   {
-   "id": 575374,
+   "id": 575373,
    "date": "2026-10-21T19:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Aston Villa",
-   "ext": "Viking",
+   "dom": "Club Brugge",
+   "ext": "RC Lens",
    "statut": "TIMED",
    "score": [
     null,
@@ -205,11 +193,23 @@
    ]
   },
   {
-   "id": 575370,
+   "id": 575375,
    "date": "2026-10-21T19:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Real Madrid",
-   "ext": "RB Leipzig",
+   "dom": "Sporting CP",
+   "ext": "LASK",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 575371,
+   "date": "2026-10-21T19:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Inter",
+   "ext": "Shaktar",
    "statut": "TIMED",
    "score": [
     null,
@@ -217,5 +217,5 @@
    ]
   }
  ],
- "maj": "2026-10-21T10:22:27Z"
+ "maj": "2026-10-21T10:24:21Z"
 }
