@@ -17,7 +17,10 @@ CSS='''<style id="vmbar-css">
 @media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
 </style>'''
 
+APP_HEAD='<link rel="manifest" href="/manifest.webmanifest" id="vmapp-m"><meta name="theme-color" content="#060b1d" id="vmapp-t"><link rel="apple-touch-icon" href="/app/apple-touch-icon.png" id="vmapp-i">'
 SHARE_CSS='''<style id="vmshare-css">
+.vminst{display:none;position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#1d3fb8;color:#fff;box-shadow:3px 3px 0 #000;cursor:pointer}
+.vminst.show{display:flex}
 .vmfab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;display:flex;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#f4cf55;color:#0b1533;box-shadow:3px 3px 0 #000;cursor:pointer}
 .vmsh{position:fixed;inset:0;z-index:90;background:rgba(5,9,23,.78);display:flex;align-items:flex-end;justify-content:center;padding:12px}
 .vmsh[hidden]{display:none}
@@ -32,6 +35,7 @@ SHARE_CSS='''<style id="vmshare-css">
 @media print{.vmfab{display:none}}
 </style>'''
 SHARE_HTML='''<button type="button" class="vmfab" id="vmFab" aria-haspopup="dialog">📤 Partager</button>
+<button type="button" class="vminst" id="vmInst">📲 Installer l\'app</button>
 <div class="vmsh" id="vmSh" hidden role="dialog" aria-modal="true" aria-labelledby="vmShT"><div class="vmsh-box">
 <h3 id="vmShT">📤 Partager cette page</h3><p class="vmsh-t" id="vmShU"></p>
 <div class="vmsh-g">
@@ -61,7 +65,12 @@ function open(){var u=url(),t=document.title,e=encodeURIComponent;$('vmShU').tex
 f.onclick=open;$('vmShX').onclick=function(){m.hidden=true;f.focus()};m.onclick=function(e){if(e.target===m)m.hidden=true};
 $('vmS-more').onclick=function(){navigator.share({title:document.title,url:url()}).catch(function(){})};
 $('vmS-cp').onclick=function(){var b=this;(navigator.clipboard?navigator.clipboard.writeText(url()):Promise.reject()).then(function(){b.lastChild.textContent='Copié ✓'}).catch(function(){prompt('Copie ce lien :',url())})};
-document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=true});})();
+document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=true});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
+var ib=$('vmInst'),dp=null,standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone,ios=/iphone|ipad|ipod/i.test(navigator.userAgent),no=false;try{no=localStorage.getItem('vm-app-non')==='1'}catch(e){}
+if(!standalone&&!no){addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;ib.classList.add('show')});if(ios)ib.classList.add('show');}
+ib.onclick=function(){if(dp){dp.prompt();dp.userChoice.then(function(){ib.classList.remove('show')});dp=null}else{alert('Pour installer l\u2019app VM sur iPhone : — 1. Appuie sur le bouton Partager \u2191 en bas de Safari — 2. Choisis \u00ab Sur l\u2019\u00e9cran d\u2019accueil \u00bb — 3. Appuie sur \u00ab Ajouter \u00bb');try{localStorage.setItem('vm-app-non','1')}catch(e){}ib.classList.remove('show')}};
+})();
 </script>'''
 
 def bar(active):
@@ -73,7 +82,8 @@ def inject(s,active):
     s=re.sub(r'<nav class="vmbar".*?</div></nav>','',s,flags=re.S)
     s=re.sub(r'<style id="vmshare-css">.*?</style>','',s,flags=re.S)
     s=re.sub(r'<button type="button" class="vmfab".*?</script>','',s,flags=re.S)
-    s=s.replace('</head>',CSS+SHARE_CSS+'</head>',1)
+    s=re.sub(r'<link rel="manifest"[^>]*id="vmapp-m"><meta[^>]*id="vmapp-t"><link[^>]*id="vmapp-i">','',s)
+    s=s.replace('</head>',APP_HEAD+CSS+SHARE_CSS+'</head>',1)
     s=re.sub(r'(<body[^>]*>)',lambda m:m.group(1)+bar(active),s,count=1)
     i=s.rfind('</body>')
     s=s[:i]+SHARE_HTML+s[i:]

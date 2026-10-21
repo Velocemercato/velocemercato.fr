@@ -81,7 +81,7 @@ footer a{color:var(--gold)}
 .sb{display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 6px;border-radius:12px;border:2px solid #000;color:#fff;text-decoration:none;font:800 .92rem/1 system-ui,sans-serif;box-shadow:3px 3px 0 #000;transition:transform .15s}
 .sb:hover{transform:translateY(-2px)}.sb svg{width:20px;height:20px;flex:none}
 .s-tt{background:#000}.s-ig{background:linear-gradient(45deg,#f9a825,#e1306c 45%,#833ab4)}.s-fb{background:#1877f2}.s-yt{background:#e62117}.s-tw{background:#9146ff}.s-dc{background:#5865f2}
-</style><style id="vmbar-css">
+</style><link rel="manifest" href="/manifest.webmanifest" id="vmapp-m"><meta name="theme-color" content="#060b1d" id="vmapp-t"><link rel="apple-touch-icon" href="/app/apple-touch-icon.png" id="vmapp-i"><style id="vmbar-css">
 .vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:relative;z-index:70}
 .vmbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:6px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
 .vmbar-in::-webkit-scrollbar{display:none}
@@ -96,6 +96,8 @@ footer a{color:var(--gold)}
 .vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
 @media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
 </style><style id="vmshare-css">
+.vminst{display:none;position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#1d3fb8;color:#fff;box-shadow:3px 3px 0 #000;cursor:pointer}
+.vminst.show{display:flex}
 .vmfab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;display:flex;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#f4cf55;color:#0b1533;box-shadow:3px 3px 0 #000;cursor:pointer}
 .vmsh{position:fixed;inset:0;z-index:90;background:rgba(5,9,23,.78);display:flex;align-items:flex-end;justify-content:center;padding:12px}
 .vmsh[hidden]{display:none}
@@ -215,6 +217,7 @@ $('fxMore').onclick=function(){shown+=20;draw()};
 })();
 </script>
 <button type="button" class="vmfab" id="vmFab" aria-haspopup="dialog">📤 Partager</button>
+<button type="button" class="vminst" id="vmInst">📲 Installer l'app</button>
 <div class="vmsh" id="vmSh" hidden role="dialog" aria-modal="true" aria-labelledby="vmShT"><div class="vmsh-box">
 <h3 id="vmShT">📤 Partager cette page</h3><p class="vmsh-t" id="vmShU"></p>
 <div class="vmsh-g">
@@ -244,6 +247,11 @@ function open(){var u=url(),t=document.title,e=encodeURIComponent;$('vmShU').tex
 f.onclick=open;$('vmShX').onclick=function(){m.hidden=true;f.focus()};m.onclick=function(e){if(e.target===m)m.hidden=true};
 $('vmS-more').onclick=function(){navigator.share({title:document.title,url:url()}).catch(function(){})};
 $('vmS-cp').onclick=function(){var b=this;(navigator.clipboard?navigator.clipboard.writeText(url()):Promise.reject()).then(function(){b.lastChild.textContent='Copié ✓'}).catch(function(){prompt('Copie ce lien :',url())})};
-document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=true});})();
+document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=true});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
+var ib=$('vmInst'),dp=null,standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone,ios=/iphone|ipad|ipod/i.test(navigator.userAgent),no=false;try{no=localStorage.getItem('vm-app-non')==='1'}catch(e){}
+if(!standalone&&!no){addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;ib.classList.add('show')});if(ios)ib.classList.add('show');}
+ib.onclick=function(){if(dp){dp.prompt();dp.userChoice.then(function(){ib.classList.remove('show')});dp=null}else{alert('Pour installer l’app VM sur iPhone : — 1. Appuie sur le bouton Partager ↑ en bas de Safari — 2. Choisis « Sur l’écran d’accueil » — 3. Appuie sur « Ajouter »');try{localStorage.setItem('vm-app-non','1')}catch(e){}ib.classList.remove('show')}};
+})();
 </script></body>
 </html>

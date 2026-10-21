@@ -1,0 +1,21 @@
+{
+  "name": "Véloce Mercato – l'univers VM",
+  "short_name": "VM",
+  "description": "Foot, scores en direct, La Pastille TV, VM Radio, Gaming et Actus.",
+  "start_url": "/?app=1",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#060b1d",
+  "theme_color": "#060b1d",
+  "lang": "fr",
+  "icons": [
+    {"src": "/app/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "/app/icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "/app/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ],
+  "shortcuts": [
+    {"name": "Pastille TV", "url": "/studio.html#tv", "icons": [{"src": "/app/icon-192.png", "sizes": "192x192"}]},
+    {"name": "VM Radio", "url": "/radio.html", "icons": [{"src": "/app/icon-192.png", "sizes": "192x192"}]},
+    {"name": "Tous les sites VM", "url": "/groupe.html", "icons": [{"src": "/app/icon-192.png", "sizes": "192x192"}]}
+  ]
+}
