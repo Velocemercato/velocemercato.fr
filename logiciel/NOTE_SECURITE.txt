@@ -1,0 +1,24 @@
+VM Performance 1.1 — Avertissement matériel et sécurité
+======================================================
+AUCUNE fonctionnalité ne commande l'ouverture, le démarrage, la copie de clé,
+la programmation antidémarrage ou le contournement de protections.
+
+En cas de perte de toutes les clés, le logiciel permet de documenter l'intervention
+et d'orienter le propriétaire vers un professionnel habilité ou constructeur.
+Il ne permet pas de déplacer un véhicule sans clé autorisée.
+
+Le diagnostic OBD2 lit des données standards seulement ; compatibilité limitée
+aux véhicules et adaptateurs pris en charge. Toujours sur véhicule stationné.
+
+Les justificatifs ne sont pas copiés dans la base de données. La vérification
+est déclarative et doit être réalisée dans la réalité par l'intervenant.
+La base SQLite stockée localement n'est PAS chiffrée. Ne jamais y saisir de noms,
+coordonnées, plaques d'immatriculation, VIN ou documents d'identité.
+
+La présente version a été validée par tests unitaires sous Linux uniquement :
+pas de certification, pas de test sur véhicule, Windows ou boîtier réel.
+
+VERSION 1.2 : le nouveau module ne programme pas de clés et n'agit pas sur le véhicule.
+Les attestations d'habilitation, la conformité des clés et les essais ne sont que
+des déclarations saisies par le professionnel, jamais contrôlées par logiciel.
+Aucune authentification SERMI ou constructeur n'est stockée ou automatisée.

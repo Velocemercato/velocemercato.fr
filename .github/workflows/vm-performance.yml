@@ -1,0 +1,53 @@
+name: VM Performance 2.0 - tests et EXE Windows
+
+on:
+  push:
+    branches: [vm-performance]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: logiciel
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Dépendances (PyInstaller + python-OBD)
+        run: python -m pip install --quiet pyinstaller==6.10.0 obd==0.7.3
+      - name: Tests unitaires (Windows, tkinter réel)
+        run: python -m unittest -v test_vm test_dossiers_cles test_remplacement_cles test_v2 2>&1 | Tee-Object -FilePath tests-windows.txt
+        shell: pwsh
+      - name: Selftest en Python (interface ouverte, mode démo)
+        shell: pwsh
+        run: |
+          python vm_performance.py --selftest selftest-python.txt
+          Get-Content selftest-python.txt
+          if (-not (Select-String -Path selftest-python.txt -Pattern 'RESULTAT OK' -Quiet)) { exit 1 }
+      - name: Construire l'EXE
+        run: python -m PyInstaller --noconfirm --onefile --windowed --name VM_Performance_2_0 --collect-data pint --hidden-import obd --hidden-import fenetres_v2 --hidden-import dossiers_cles --hidden-import remplacement_cles vm_performance.py
+      - name: Lancer l'EXE en selftest
+        shell: pwsh
+        run: |
+          $p = Start-Process -FilePath dist\VM_Performance_2_0.exe -ArgumentList '--selftest', "$PWD\selftest-exe.txt" -Wait -PassThru
+          Get-Content selftest-exe.txt
+          "Code de sortie : $($p.ExitCode)"
+          if ($p.ExitCode -ne 0) { exit 1 }
+      - name: Rassembler le paquet
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force paquet | Out-Null
+          Copy-Item dist\VM_Performance_2_0.exe, tests-windows.txt, selftest-python.txt, selftest-exe.txt, LICENSE, GUIDE_INTERVENTION_AUTORISEE.md, NOTE_SECURITE.txt paquet\
+          if (Test-Path ..\docs) { Copy-Item ..\docs\* paquet\ }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: VM_Performance_2_0_Windows
+          path: logiciel/paquet
+          retention-days: 30
