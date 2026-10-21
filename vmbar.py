@@ -89,7 +89,7 @@ ib.onclick=function(){
 def bar(active):
     items=[('f','/','⚽ Foot'),('s','/studio.html#tv','📺 Pastille TV'),('g','/vm-gaming/','🎮 Gaming'),('a','/actus/','📰 Actus'),('r','/radio.html','📻 Radio'),('v','/#videos','🎬 Vidéos')]
     links=''.join(f'<a class="{k}{" on" if k==active else ""}" href="{h}"{" aria-current=\"page\"" if k==active else ""}>{t}</a>' for k,h,t in items)
-    return f'<nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/groupe.html" aria-label="Tous les sites VM">VM <small>TOUS LES SITES</small></a>{links}<a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>'
+    return f'<nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/vm/" aria-label="Tous les sites VM">VM <small>TOUS LES SITES</small></a>{links}<a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>'
 def inject(s,active,app='foot'):
     s=re.sub(r'<style id="vmbar-css">.*?</style>','',s,flags=re.S)
     s=re.sub(r'<nav class="vmbar".*?</div></nav>','',s,flags=re.S)
@@ -104,6 +104,15 @@ def inject(s,active,app='foot'):
 def apply(path,active,app='foot'):
     s=inject(open(path,encoding='utf-8').read(),active,app)
     open(path,'w',encoding='utf-8').write(s)
+
+def build_vm():
+    """velocemercato.fr/vm/ : le site VM à part (annuaire de toutes les applis, sans le menu foot)."""
+    s=open('groupe.html',encoding='utf-8').read()
+    s=re.sub(r'<nav class="vmbar".*?</div></nav>','',s,flags=re.S)
+    s=s.replace('href="https://velocemercato.fr/groupe.html"','href="https://velocemercato.fr/vm/"')
+    s=s.replace('<title>L\'univers VM – toutes les applis VM</title>','<title>VM – toutes les applis VM</title>')
+    open('vm/index.html','w',encoding='utf-8').write(s)
 if __name__=='__main__':
     for p,a,*x in [('index.html','f'),('vm-gaming/index.html','g','gaming'),('actus/index.html','a','actus'),('archives.html','f'),('studio.html','s','tv'),('radio.html','r','tv'),('gaming.html','f','arena'),('soutenir.html',''),('groupe.html','','univers'),('shop/index.html','','annonces'),('allolivre/index.html','','allolivre'),('comparateur/index.html','','annonces'),('web-studio.html',''),('boutique/index.html',''),('mentions-legales.html','')]:
         apply(p,a,*x); print('ok',p)
+    build_vm(); print('ok vm/')

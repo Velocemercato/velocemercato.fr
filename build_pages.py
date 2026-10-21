@@ -169,6 +169,7 @@ def main():
              f'  <url><loc>{SITE}/comparateur/</loc></url>',
              f'  <url><loc>{SITE}/web-studio.html</loc></url>',
              f'  <url><loc>{SITE}/boutique/</loc></url>',
+             f'  <url><loc>{SITE}/vm/</loc></url>',
              f'  <url><loc>{SITE}/actus/</loc><changefreq>hourly</changefreq></url>']
     lines += [f'  <url><loc>{html.escape(u)}</loc>' + (f'<lastmod>{html.escape(d[:10])}</lastmod>' if d else '') + '</url>'
               for u, d in urls]
