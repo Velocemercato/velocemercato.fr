@@ -11,6 +11,7 @@
 *{box-sizing:border-box}
 body{margin:0;background:#f3f5fb;color:#0b1533;font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 a{color:inherit}
+.banner{background:#000;border-bottom:4px solid #000}.banner img{display:block;width:100%;height:auto;max-height:420px;object-fit:cover}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .hero{background:linear-gradient(135deg,#0f2470 0%,#1d3fb8 55%,#e1243a 140%);color:#fff;padding:30px 16px 26px}
 .hero .in{max-width:1080px;margin:0 auto}
 .hero h1{margin:0;font:italic 900 clamp(2.2rem,8vw,3.6rem)/1 Impact,"Arial Black",sans-serif;letter-spacing:.02em}
@@ -26,7 +27,7 @@ main{max-width:1080px;margin:0 auto;padding:16px 16px 50px}
 .cats button[aria-pressed=true]{background:#0b1533;color:#fff}
 .count{color:#4e5b7d;font-size:.9rem;margin:0 0 10px}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}@media(min-width:760px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}}
-.ad{background:#fff;border:2px solid #0b1533;border-radius:16px;overflow:hidden;box-shadow:4px 4px 0 #0b1533;display:flex;flex-direction:column;text-align:left;font:inherit;color:inherit;padding:0;cursor:pointer}
+.ad{background:#fff;border:3px solid #000;border-radius:14px;overflow:hidden;box-shadow:5px 5px 0 #e1243a;transform:rotate(-.4deg);display:flex;flex-direction:column;text-align:left;font:inherit;color:inherit;padding:0;cursor:pointer}
 .ad .ph{aspect-ratio:4/3;background:#dfe5f3 center/cover;display:grid;place-items:center;font-size:52px;position:relative}
 .ad .tag{position:absolute;top:8px;left:8px;background:#f4cf55;font-weight:800;font-size:.7rem;padding:4px 8px;border-radius:999px;border:1px solid #000}
 .ad .sold{position:absolute;inset:0;background:rgba(11,21,51,.7);color:#fff;font:900 1.4rem Impact,sans-serif;display:grid;place-items:center;letter-spacing:.05em}
@@ -59,16 +60,18 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .vmbar a{flex:none;color:#cfd6ea;text-decoration:none;padding:7px 10px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
 .vmbar a:hover{background:rgba(255,255,255,.08);color:#fff}
 .vmbar a:focus-visible{outline:2px solid #f4cf55;outline-offset:2px}
-.vmbar .vmb-logo{font:italic 900 16px/1 Impact,"Arial Black",sans-serif;color:#04060f;background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);padding:6px 9px;border-radius:8px;margin-right:4px;letter-spacing:.02em}
+.vmbar .vmb-logo small{font:800 9px/1 system-ui,sans-serif;font-style:normal;letter-spacing:.06em;margin-left:4px;vertical-align:middle}
+.vmbar .vmb-logo{font:italic 900 18px/1 Impact,"Arial Black",sans-serif;color:#04060f;background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);padding:6px 9px;border-radius:8px;margin-right:4px;letter-spacing:.02em}
 .vmbar a.on{color:#04060f;background:#fff}
 .vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
 .vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
 .vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
 @media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
 </style></head>
-<body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/" aria-label="Accueil Véloce Mercato">VM</a><a class="f" href="/">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
+<body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/groupe.html" aria-label="Tous les sites VM">VM <small>TOUS LES SITES</small></a><a class="f" href="/">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
+<div class="banner"><img src="shop-hero-800.webp" srcset="shop-hero-800.webp 800w, shop-hero.webp 1600w" sizes="100vw" width="1600" height="640" alt="VM Shop : univers Gaming, GTA, REDSEC et foot en cases de BD" fetchpriority="high"></div>
 <header class="hero"><div class="in">
-<h1>VM <span>SHOP</span></h1>
+<h1 class="sr">VM SHOP</h1>
 <p>Les petites annonces de la communauté VM : maillots, jeux vidéo, consoles, matériel de foot. <b>Gratuit</b>, et chaque annonce est <b>vérifiée par nous</b> avant d'être publiée.</p>
 <div class="bar"><input id="q" type="search" placeholder="🔎 Chercher : maillot, FC 26, manette…" aria-label="Chercher une annonce"><select id="sort" aria-label="Trier"><option value="new">Plus récentes</option><option value="low">Prix croissant</option><option value="high">Prix décroissant</option></select><button class="post" id="postBtn" type="button">➕ Déposer une annonce</button></div>
 </div></header>
