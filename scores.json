@@ -114,7 +114,7 @@
    "comp": "Ligue des champions",
    "dom": "Lille",
    "ext": "Galatasaray",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     2,
     2
@@ -126,22 +126,10 @@
    "comp": "Ligue des champions",
    "dom": "Como 1907",
    "ext": "Man United",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     1,
     0
-   ]
-  },
-  {
-   "id": 575375,
-   "date": "2026-10-21T19:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Sporting CP",
-   "ext": "LASK",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
    ]
   },
   {
@@ -169,11 +157,11 @@
    ]
   },
   {
-   "id": 575370,
+   "id": 575375,
    "date": "2026-10-21T19:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Real Madrid",
-   "ext": "RB Leipzig",
+   "dom": "Sporting CP",
+   "ext": "LASK",
    "statut": "TIMED",
    "score": [
     null,
@@ -215,7 +203,19 @@
     null,
     null
    ]
+  },
+  {
+   "id": 575370,
+   "date": "2026-10-21T19:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Real Madrid",
+   "ext": "RB Leipzig",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
   }
  ],
- "maj": "2026-10-21T17:46:47Z"
+ "maj": "2026-10-21T17:48:42Z"
 }
