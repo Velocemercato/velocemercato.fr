@@ -1,0 +1,29 @@
+{
+ "id": "/app/univers",
+ "name": "VM – toutes les applis VM",
+ "short_name": "VM",
+ "start_url": "/groupe.html?app=1",
+ "scope": "/groupe.html",
+ "display": "standalone",
+ "background_color": "#000000",
+ "theme_color": "#000000",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/univers-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/univers-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/univers-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}
