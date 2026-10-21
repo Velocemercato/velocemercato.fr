@@ -1,51 +1,49 @@
-Passage du 2026-10-21 02:59 UTC (schedule)
+Passage du 2026-10-21 03:31 UTC (schedule)
 
 [notice] A new release of pip is available: 26.2.1 -> 26.2.2
 [notice] To update, run: pip install --upgrade pip
-Nettoyage : 0 breves vides retirees, 252 gardees.
+Nettoyage : 0 breves vides retirees, 253 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 252 articles conservés et 45 flashs existants.
-RSS Foot National / NATIONAL : 2 actualités récentes.
-RSS Foot National / LIGUE_1 : 7 actualités récentes.
+Départ : 253 articles conservés et 45 flashs existants.
 RSS Foot National / LIGUE_2 : 5 actualités récentes.
-RSS RMC Sport / LIGUE_1 : 2 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 27 actualités récentes.
-RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
+RSS Foot National / LIGUE_1 : 7 actualités récentes.
+RSS Foot National / NATIONAL : 2 actualités récentes.
+RSS Foot National / NATIONAL : 5 actualités récentes.
 RSS RMC Sport / FRANCE : 30 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 27 actualités récentes.
+RSS RMC Sport / LIGUE_1 : 2 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 31 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 5 actualités récentes.
 RSS BBC Sport / FEMININ : 2 actualités récentes.
-RSS Foot Amateur / NATIONAL : 4 actualités récentes.
+RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
 RSS RMC Sport / BLEUS : 0 actualités récentes.
+RSS Foot Amateur / NATIONAL : 4 actualités récentes.
 RSS inaccessible RMC Sport : HTTPError - HTTP Error 404: Not Found
-RSS Foot Amateur / NATIONAL : 6 actualités récentes.
-RSS inaccessible Maxifoot : HTTPError - HTTP Error 404: Not Found
 RSS Foot01 / FRANCE : 43 actualités récentes.
+RSS Foot Amateur / NATIONAL : 6 actualités récentes.
 RSS franceinfo / FRANCE : 6 actualités récentes.
-RSS Foot National / NATIONAL : 6 actualités récentes.
-221 titres collectés, 18 nouveaux liens, quota 2.
-Brève ignorée (BBC Sport) : ValueError - Résumé IA incomplet ou trop long : non publié
-Brève prête : Foot Amateur - Rosario Latouchent (Chambly) : « Il ne faut pas s’enflammer ! »
-Bilan : brèves_rédigées=1, rejet_lecture_ou_ia=1, source_inaccessible_ou_trop_courte=9, sujet_deja_traite=7
-Publié : 1 brèves (total 253). Flash : 45.
+RSS inaccessible Maxifoot : HTTPError - HTTP Error 404: Not Found
+220 titres collectés, 15 nouveaux liens, quota 2.
+Bilan : source_inaccessible_ou_trop_courte=8, sujet_deja_traite=7
+Aucune brève de qualité suffisante ; fichiers JSON inchangés.
 Pages : 253 brèves avec leur propre page, sitemap à jour.
 Agenda : 74 matchs enregistrés.
 Ligue 1 : flux illisible (HTTPError)
-Ligue 2 : 0 vidéos lues, 0 vidéos de buts gardées.
-FFF : flux illisible (HTTPError)
+Ligue 2 : flux illisible (HTTPError)
+FFF : 15 vidéos lues, 2 vidéos de buts gardées.
 Chaîne @equipedefrance : introuvable (HTTPError)
 Chaîne @EquipedeFrance : introuvable (HTTPError)
 Équipe de France : aucune chaîne officielle trouvée, ignorée.
 Chaîne @ChampionsLeague : introuvable (HTTPError)
 Chaîne @UEFAChampionsLeague : introuvable (HTTPError)
 Ligue des champions : aucune chaîne officielle trouvée, ignorée.
-UEFA : 15 vidéos lues, 4 vidéos de buts gardées.
-Premier League : 15 vidéos lues, 5 vidéos de buts gardées.
-LaLiga : 15 vidéos lues, 5 vidéos de buts gardées.
-Serie A : 15 vidéos lues, 8 vidéos de buts gardées.
-Bundesliga : 15 vidéos lues, 10 vidéos de buts gardées.
+UEFA : flux illisible (HTTPError)
+Premier League : flux illisible (HTTPError)
+LaLiga : flux illisible (HTTPError)
+Serie A : flux illisible (HTTPError)
+Bundesliga : flux illisible (HTTPError)
 Vidéos publiées : 60.
 Flux muet RMC Sport : HTTPError
 Flux muet Maxifoot : HTTPError
 Flux muet Millenium : HTTPError
-Fil express : foot 120, actus 120, gaming 52
+Fil express : actus 120, foot 120, gaming 51

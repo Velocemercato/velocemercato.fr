@@ -108,18 +108,6 @@
   ]
  },
  {
-  "id": 575363,
-  "date": "2026-10-20T19:00:00Z",
-  "competition": "Ligue des champions",
-  "domicile": "Liverpool",
-  "exterieur": "Villarreal",
-  "statut": "FINISHED",
-  "score": [
-   4,
-   3
-  ]
- },
- {
   "id": 575365,
   "date": "2026-10-20T19:00:00Z",
   "competition": "Ligue des champions",
@@ -153,6 +141,18 @@
   "score": [
    4,
    2
+  ]
+ },
+ {
+  "id": 575363,
+  "date": "2026-10-20T19:00:00Z",
+  "competition": "Ligue des champions",
+  "domicile": "Liverpool",
+  "exterieur": "Villarreal",
+  "statut": "FINISHED",
+  "score": [
+   4,
+   3
   ]
  },
  {
@@ -240,18 +240,6 @@
   ]
  },
  {
-  "id": 575373,
-  "date": "2026-10-21T19:00:00Z",
-  "competition": "Ligue des champions",
-  "domicile": "Club Brugge",
-  "exterieur": "RC Lens",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
   "id": 575375,
   "date": "2026-10-21T19:00:00Z",
   "competition": "Ligue des champions",
@@ -269,6 +257,18 @@
   "competition": "Ligue des champions",
   "domicile": "Inter",
   "exterieur": "Shaktar",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
+  "id": 575373,
+  "date": "2026-10-21T19:00:00Z",
+  "competition": "Ligue des champions",
+  "domicile": "Club Brugge",
+  "exterieur": "RC Lens",
   "statut": "TIMED",
   "score": [
    null,
@@ -312,11 +312,11 @@
   ]
  },
  {
-  "id": 560620,
+  "id": 564719,
   "date": "2026-10-23T19:00:00Z",
-  "competition": "Premier League",
-  "domicile": "Ipswich Town",
-  "exterieur": "Nottingham",
+  "competition": "Liga",
+  "domicile": "Alavés",
+  "exterieur": "Málaga",
   "statut": "TIMED",
   "score": [
    null,
@@ -324,11 +324,11 @@
   ]
  },
  {
-  "id": 564719,
+  "id": 560620,
   "date": "2026-10-23T19:00:00Z",
-  "competition": "Liga",
-  "domicile": "Alavés",
-  "exterieur": "Málaga",
+  "competition": "Premier League",
+  "domicile": "Ipswich Town",
+  "exterieur": "Nottingham",
   "statut": "TIMED",
   "score": [
    null,
@@ -612,42 +612,6 @@
   ]
  },
  {
-  "id": 560619,
-  "date": "2026-10-25T14:00:00Z",
-  "competition": "Premier League",
-  "domicile": "Hull City",
-  "exterieur": "Brentford",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
-  "id": 560615,
-  "date": "2026-10-25T14:00:00Z",
-  "competition": "Premier League",
-  "domicile": "Man United",
-  "exterieur": "Bournemouth",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
-  "id": 560613,
-  "date": "2026-10-25T14:00:00Z",
-  "competition": "Premier League",
-  "domicile": "Crystal Palace",
-  "exterieur": "Newcastle",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
   "id": 559650,
   "date": "2026-10-25T14:00:00Z",
   "competition": "Ligue 1",
@@ -672,11 +636,47 @@
   ]
  },
  {
+  "id": 560613,
+  "date": "2026-10-25T14:00:00Z",
+  "competition": "Premier League",
+  "domicile": "Crystal Palace",
+  "exterieur": "Newcastle",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
   "id": 558568,
   "date": "2026-10-25T14:00:00Z",
   "competition": "Serie A",
   "domicile": "Genoa",
   "exterieur": "Venezia FC",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
+  "id": 560619,
+  "date": "2026-10-25T14:00:00Z",
+  "competition": "Premier League",
+  "domicile": "Hull City",
+  "exterieur": "Brentford",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
+  "id": 560615,
+  "date": "2026-10-25T14:00:00Z",
+  "competition": "Premier League",
+  "domicile": "Man United",
+  "exterieur": "Bournemouth",
   "statut": "TIMED",
   "score": [
    null,
