@@ -91,6 +91,11 @@ jobs:
         continue-on-error: true
         run: python update_fil.py 2>&1 | tee -a robot-log.txt
 
+      - name: VM Belfort (actu locale, titres sans IA, gratuit)
+        if: always()
+        continue-on-error: true
+        run: python update_region.py 2>&1 | tee -a robot-log.txt
+
       - name: Validate JSON
         id: validate
         if: always()
@@ -101,7 +106,7 @@ jobs:
       - name: Save articles, flashs and report
         if: always() && steps.validate.outcome == 'success'
         run: |
-          git add articles.json flash.json robot-log.txt sitemap.xml a/ videos.json video-channels.json matchs.json fil.json ignores.json
+          git add articles.json flash.json robot-log.txt sitemap.xml a/ videos.json video-channels.json matchs.json fil.json ignores.json belfort/actus.json
           if git diff --cached --quiet; then
             echo 'Rien de nouveau.'
           else
