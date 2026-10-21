@@ -1,0 +1,29 @@
+{
+ "id": "/app/actus",
+ "name": "VM Actus",
+ "short_name": "VM Actus",
+ "start_url": "/actus/?app=1",
+ "scope": "/actus/",
+ "display": "standalone",
+ "background_color": "#060b1d",
+ "theme_color": "#14080e",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/actus-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/actus-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/actus-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

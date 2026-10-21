@@ -17,7 +17,11 @@ CSS='''<style id="vmbar-css">
 @media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
 </style>'''
 
-APP_HEAD='<link rel="manifest" href="/manifest.webmanifest" id="vmapp-m"><meta name="theme-color" content="#060b1d" id="vmapp-t"><link rel="apple-touch-icon" href="/app/apple-touch-icon.png" id="vmapp-i">'
+APP_COL={'foot':'#060b1d','gaming':'#0b0a1c','actus':'#14080e','arena':'#051e10','tv':'#0a0814'}
+def app_head(app='foot'):
+    app=app if app in APP_COL else 'foot'
+    return f'<link rel="manifest" href="/app/{app}.webmanifest" id="vmapp-m"><meta name="theme-color" content="{APP_COL[app]}" id="vmapp-t"><link rel="apple-touch-icon" href="/app/{app}-apple.png" id="vmapp-i">'
+APP_HEAD=app_head()
 SHARE_CSS='''<style id="vmshare-css">
 .vminst{display:none;position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#1d3fb8;color:#fff;box-shadow:3px 3px 0 #000;cursor:pointer}
 .vminst.show{display:flex}
@@ -77,20 +81,20 @@ def bar(active):
     items=[('f','/','⚽ Foot'),('s','/studio.html#tv','📺 Pastille TV'),('g','/vm-gaming/','🎮 Gaming'),('a','/actus/','📰 Actus'),('r','/radio.html','📻 Radio'),('v','/#videos','🎬 Vidéos')]
     links=''.join(f'<a class="{k}{" on" if k==active else ""}" href="{h}"{" aria-current=\"page\"" if k==active else ""}>{t}</a>' for k,h,t in items)
     return f'<nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/groupe.html" aria-label="Tous les sites VM">VM <small>TOUS LES SITES</small></a>{links}<a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>'
-def inject(s,active):
+def inject(s,active,app='foot'):
     s=re.sub(r'<style id="vmbar-css">.*?</style>','',s,flags=re.S)
     s=re.sub(r'<nav class="vmbar".*?</div></nav>','',s,flags=re.S)
     s=re.sub(r'<style id="vmshare-css">.*?</style>','',s,flags=re.S)
     s=re.sub(r'<button type="button" class="vmfab".*?</script>','',s,flags=re.S)
     s=re.sub(r'<link rel="manifest"[^>]*id="vmapp-m"><meta[^>]*id="vmapp-t"><link[^>]*id="vmapp-i">','',s)
-    s=s.replace('</head>',APP_HEAD+CSS+SHARE_CSS+'</head>',1)
+    s=s.replace('</head>',app_head(app)+CSS+SHARE_CSS+'</head>',1)
     s=re.sub(r'(<body[^>]*>)',lambda m:m.group(1)+bar(active),s,count=1)
     i=s.rfind('</body>')
     s=s[:i]+SHARE_HTML+s[i:]
     return s
-def apply(path,active):
-    s=inject(open(path,encoding='utf-8').read(),active)
+def apply(path,active,app='foot'):
+    s=inject(open(path,encoding='utf-8').read(),active,app)
     open(path,'w',encoding='utf-8').write(s)
 if __name__=='__main__':
-    for p,a in [('index.html','f'),('vm-gaming/index.html','g'),('actus/index.html','a'),('archives.html','f'),('studio.html','s'),('radio.html','r'),('gaming.html','f'),('soutenir.html',''),('groupe.html',''),('shop/index.html',''),('allolivre/index.html',''),('comparateur/index.html',''),('web-studio.html',''),('mentions-legales.html','')]:
-        apply(p,a); print('ok',p)
+    for p,a,*x in [('index.html','f'),('vm-gaming/index.html','g','gaming'),('actus/index.html','a','actus'),('archives.html','f'),('studio.html','s','tv'),('radio.html','r','tv'),('gaming.html','f','arena'),('soutenir.html',''),('groupe.html',''),('shop/index.html',''),('allolivre/index.html',''),('comparateur/index.html',''),('web-studio.html',''),('mentions-legales.html','')]:
+        apply(p,a,*x); print('ok',p)

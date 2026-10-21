@@ -1,0 +1,29 @@
+{
+ "id": "/app/tv",
+ "name": "La Pastille TV & VM Radio",
+ "short_name": "VM TV",
+ "start_url": "/studio.html?app=1#tv",
+ "scope": "/",
+ "display": "standalone",
+ "background_color": "#060b1d",
+ "theme_color": "#0a0814",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/tv-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/tv-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/tv-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "id": "/?app=1",
+ "name": "Véloce Mercato",
+ "short_name": "VM Foot",
+ "start_url": "/?app=1",
+ "scope": "/",
+ "display": "standalone",
+ "background_color": "#060b1d",
+ "theme_color": "#060b1d",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/foot-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/foot-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/foot-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ],
+ "shortcuts": [
+  {
+   "name": "Pastille TV",
+   "url": "/studio.html#tv"
+  },
+  {
+   "name": "VM Radio",
+   "url": "/radio.html"
+  },
+  {
+   "name": "Tous les sites VM",
+   "url": "/groupe.html"
+  }
+ ]
+}

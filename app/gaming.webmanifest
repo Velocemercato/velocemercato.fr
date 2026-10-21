@@ -1,0 +1,29 @@
+{
+ "id": "/app/gaming",
+ "name": "VM Gaming",
+ "short_name": "VM Gaming",
+ "start_url": "/vm-gaming/?app=1",
+ "scope": "/vm-gaming/",
+ "display": "standalone",
+ "background_color": "#060b1d",
+ "theme_color": "#0b0a1c",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/gaming-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/gaming-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/gaming-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}
