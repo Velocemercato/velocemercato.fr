@@ -61,6 +61,7 @@ main{max-width:1000px;margin:0 auto;padding:16px}h2{color:#f4cf55;font:italic 80
 <h2 id="contact">Réserver un encart</h2>
 <p>Écrivez-nous avec le nom de votre commerce et l'offre choisie : réponse sous 48 h.</p>
 <button class="btn" type="button" id="go">✉️ Préparer mon e-mail</button>
+<p style="font-size:.78rem;color:#8d8670;text-align:center;margin-top:24px">Romain Oriez – entrepreneur individuel – SIRET 528 102 916 00012 – TVA non applicable, art. 293 B du CGI · <a href="/mentions-legales.html" style="color:inherit">Mentions légales</a></p>
 </main>
 <script>document.getElementById('go').onclick=function(){var b='Bonjour,\n\nJe souhaite réserver un encart publicitaire.\n\nCommerce :\nVille :\nOffre choisie :\nTéléphone :\n';if(window.vmMail)vmMail('Publicité VM – réservation',b);else location.href='mailto:velocemercato.fr@gmail.com?subject=Publicit%C3%A9%20VM&body='+encodeURIComponent(b)};</script>
 <button type="button" class="vmfab" id="vmFab" aria-haspopup="dialog">📤 Partager</button>
