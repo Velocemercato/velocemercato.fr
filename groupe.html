@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Groupe VM – tous les projets de Romain</title>
+<title>L'univers VM – toutes les applis VM</title>
 <meta name="description" content="Groupe VM : la vitrine de tous les projets VM. Véloce Mercato, VM Gaming, VM Actus, La Pastille TV, Papiers Sans Galère, Véloce Web Studio et les projets en préparation.">
 <link rel="canonical" href="https://velocemercato.fr/groupe.html">
 <meta property="og:title" content="Groupe VM – tous nos projets"><meta property="og:description" content="Médias, communauté, services : la vitrine des projets VM."><meta property="og:url" content="https://velocemercato.fr/groupe.html"><meta property="og:image" content="https://velocemercato.fr/img/partage-velocemercato.jpg">
@@ -41,7 +41,29 @@ a.card:hover{transform:translateY(-3px)}
 .note{color:#8f9bbd;font-size:.82rem;margin-top:26px}
 a:focus-visible{outline:3px solid #f4cf55;outline-offset:3px}
 </style>
-<link rel="manifest" href="/app/foot.webmanifest" id="vmapp-m"><meta name="theme-color" content="#060b1d" id="vmapp-t"><link rel="apple-touch-icon" href="/app/foot-apple.png" id="vmapp-i"><style id="vmbar-css">
+<style id="hub-css">
+.hub{text-align:center;padding:26px 16px 10px;background:radial-gradient(ellipse at 50% 20%,#3a2a06 0%,#0d0a04 45%,transparent 75%)}
+.hub .hl{width:min(200px,50vw);height:auto;filter:drop-shadow(0 8px 26px rgba(244,190,60,.35))}
+.hub h1{margin:4px 0 2px;font:italic 900 clamp(2rem,8vw,3.2rem)/1 Poppins,Impact,sans-serif;color:#fff;text-shadow:3px 3px 0 #000}.hub h1 span{color:#f4cf55}
+.hub p{margin:4px auto 14px;color:#cfd6ea;max-width:32rem}
+.srch{display:flex;align-items:center;gap:8px;max-width:560px;margin:0 auto;background:#fff;border:3px solid #000;border-radius:999px;padding:6px 16px;box-shadow:4px 4px 0 #f4cf55}
+.srch input{flex:1;border:0;outline:0;font:600 1rem system-ui,sans-serif;padding:8px 0;background:transparent;color:#0b1533;min-width:0}
+.tools{display:flex;justify-content:space-between;align-items:center;gap:10px;max-width:1100px;margin:16px auto 0}
+.cats{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}.cats button,.views button{flex:none;font:800 .85rem system-ui,sans-serif;padding:8px 12px;border-radius:999px;border:2px solid #000;background:#18213f;color:#fff;cursor:pointer}
+.cats button.on,.views button.on{background:#f4cf55;color:#0b1533}.views{display:flex;gap:6px;flex:none}
+.apps{max-width:1100px;margin:14px auto 0;display:grid;gap:16px}
+.ap{position:relative;display:block;border:3px solid #000;border-radius:20px;overflow:hidden;color:#fff;text-decoration:none;box-shadow:5px 5px 0 #000;background:#0b1533}
+.ai{display:block;background-size:cover;background-position:center top}
+.ab{display:flex;align-items:center;gap:10px;padding:10px 12px;background:linear-gradient(0deg,rgba(5,8,20,.97),rgba(5,8,20,.85))}
+.ab img{border-radius:12px;flex:none;border:2px solid #fff}.ab b{display:block;font-size:1.05rem}.ab small{display:block;color:#b8c1dd;font-size:.85rem;line-height:1.3}
+.ab>span:nth-child(2){flex:1;min-width:0}.go{flex:none;font-weight:800;color:#0b1533;background:#f4cf55;border-radius:999px;padding:7px 12px;font-size:.85rem}
+.apps.big{grid-template-columns:1fr}@media(min-width:760px){.apps.big{grid-template-columns:1fr 1fr}}
+.apps.big .ai{aspect-ratio:16/8}
+.apps.grid4{grid-template-columns:repeat(2,1fr);gap:12px}@media(min-width:760px){.apps.grid4{grid-template-columns:repeat(4,1fr)}}
+.apps.grid4 .ai{aspect-ratio:1}.apps.grid4 .ab{position:absolute;left:0;right:0;bottom:0;padding:8px;gap:6px}.apps.grid4 .ab img{width:30px;height:30px;border-radius:8px}
+.apps.grid4 .ab small,.apps.grid4 .go{display:none}.apps.grid4 .ab b{font-size:.85rem;line-height:1.15}
+.ap[hidden]{display:none}.none{text-align:center;color:#cfd6ea;margin:20px}
+</style><link rel="manifest" href="/app/foot.webmanifest" id="vmapp-m"><meta name="theme-color" content="#060b1d" id="vmapp-t"><link rel="apple-touch-icon" href="/app/foot-apple.png" id="vmapp-i"><style id="vmbar-css">
 .vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:relative;z-index:70}
 .vmbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:6px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
 .vmbar-in::-webkit-scrollbar{display:none}
@@ -72,47 +94,27 @@ a:focus-visible{outline:3px solid #f4cf55;outline-offset:3px}
 @media print{.vmfab{display:none}}
 </style></head>
 <body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/groupe.html" aria-label="Tous les sites VM">VM <small>TOUS LES SITES</small></a><a class="f" href="/">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
-<header class="hero">
-<span class="mono">VM</span>
-<h1>GROUPE <span>VM</span></h1>
-<p>Tous les projets VM au même endroit : des médias, une communauté et des services, construits par Romain, un passionné de foot. Les initiales VM sont aussi un hommage.</p>
-<small>Projet indépendant · aucune société constituée à ce jour</small>
-<nav class="jump" aria-label="Aller à"><a href="#medias">⚽ Médias</a><a href="#communaute">🤝 Communauté</a><a href="#services">🛠️ Services</a><a href="#bientot">🚀 Bientôt</a><a href="#applis">📲 Applis</a></nav>
+<header class="hub"><img class="hl" src="/img/logo-vm-officiel.png" alt="VM" width="220" height="220">
+<h1>L'UNIVERS <span>VM</span></h1><p>Toutes les applis VM au même endroit. Cherche, choisis, ouvre.</p>
+<label class="srch"><span>🔎</span><input id="q" type="search" placeholder="Que cherches-tu ? foot, jeux, papiers, livraison…" autocomplete="off"></label>
+<div class="tools"><div class="cats" id="cats"><button class="on" data-c="all">Tout</button><button data-c="medias">⚽ Médias</button><button data-c="communaute">🤝 Communauté</button><button data-c="services">🛠️ Services</button></div>
+<div class="views"><button id="vBig" aria-label="Grandes images">🖼️</button><button id="vGrid" aria-label="Mosaïque 4 carrés">▦</button></div></div>
 </header>
 <main>
-<h2 id="medias"><span class="n">01</span> · ⚽ Les médias</h2>
-<p class="sub">Le foot d'abord, puis la TV, la radio, le gaming et l'actu.</p>
-<div class="grid">
-<a class="card" href="/"><div class="img" style="background-image:url('/img/v2-mercato-800.webp')"></div><div class="in"><span class="st on">En ligne</span><b>⚽ Véloce Mercato</b><p>Le média foot : brèves sourcées toutes les 30 min, scores en direct, vidéos, prono.</p><span class="go">Ouvrir →</span></div></a>
-<a class="card" href="/studio.html#tv"><div class="img" style="background-image:url('/vm-gaming/img/escouade/presentateur-360.webp');background-position:top"></div><div class="in"><span class="st on">En ligne</span><b>📺 La Pastille TV & 📻 VM Radio</b><p>Journaux et débats vidéo faits par IA, chaque jour, avec nos chroniqueurs inventés.</p><span class="go">Regarder →</span></div></a>
-<a class="card" href="/vm-gaming/"><div class="img" style="background-image:url('/vm-gaming/img/vm-gaming-univers-960.webp')"></div><div class="in"><span class="st on">En ligne</span><b>🎮 VM Gaming</b><p>Actus jeux vidéo, l'escouade VM et le Discord pour trouver des potes de jeu.</p><span class="go">Ouvrir →</span></div></a>
-<a class="card" href="/actus/"><div class="img" style="background-image:url('/img/v2-actus-640.webp')"></div><div class="in"><span class="st on">En ligne</span><b>📰 VM Actus</b><p>L'actu générale en brèves courtes et sourcées : matin, midi, soir.</p><span class="go">Ouvrir →</span></div></a>
-</div>
-<h2 id="communaute"><span class="n">02</span> · 🤝 La communauté</h2>
-<p class="sub">Jouer, échanger, se retrouver.</p>
-<div class="grid">
-<a class="card" href="/gaming.html"><div class="img" style="background-image:url('/img/v2-arena-430.webp')"></div><div class="in"><span class="st on">En ligne</span><b>🏆 Véloce Arena</b><p>Tournois EA FC gratuits entre membres de la communauté.</p><span class="go">Ouvrir →</span></div></a>
-<a class="card" href="/boutique/"><div class="em">👕</div><div class="in"><span class="st">Bientôt</span><b>VM Boutique</b><p>T-shirts, sweats, casquettes et goodies au logo VM, imprimés à la demande et livrés chez toi.</p></div></a><a class="card" href="/shop/"><div class="em">🛍️</div><div class="in"><span class="st on">Nouveau</span><b>VM Shop</b><p>Les petites annonces de la communauté : maillots, jeux, consoles, matériel de foot. Gratuit et vérifié.</p><span class="go">Voir les annonces →</span></div></a>
-</div>
-<h2 id="services"><span class="n">03</span> · 🛠️ Les services</h2>
-<p class="sub">Des outils utiles, gratuits ou à petit prix.</p>
-<div class="grid">
-<a class="card" href="https://velocemercato.github.io/Papiers-sans-galere/"><div class="img" style="background-image:url('/img/v2-papiers-800.webp')"></div><div class="in"><span class="st on">En ligne</span><b>📄 Papiers Sans Galère</b><p>Les démarches expliquées simplement, avec des outils gratuits.</p><span class="go">Ouvrir →</span></div></a>
-<a class="card" href="/comparateur/"><div class="img" style="background-image:url('/img/projet-annonces.webp')"></div><div class="in"><span class="st on">Nouveau</span><b>🔎 VM Comparateur</b><p>Neuf, occasion, auto, immo : cherche sur les grands sites en un clic et compare le prix total.</p><span class="go">Comparer →</span></div></a>
-<a class="card" href="/allolivre/"><div class="img" style="background-image:url('/img/projet-allolivre.webp')"></div><div class="in"><span class="st prep">Phase test</span><b>⚡ AlloLivre</b><p>Livraisons et petits services entre voisins : courses, colis, baguette, coup de main.</p><span class="go">Ouvrir →</span></div></a>
-<a class="card" href="/web-studio.html"><div class="em">💻</div><div class="in"><span class="st on">En ligne</span><b>Véloce Web Studio</b><p>Des sites internet pour les artisans, commerces, clubs et associations, faits vite et à petit prix.</p><span class="go">Voir l'offre →</span></div></a>
-</div>
-<h2 id="bientot"><span class="n">04</span> · 🚀 Bientôt</h2>
-<p class="sub">Les projets en préparation.</p>
-<div class="grid">
-<div class="card"><div class="em">🎙️</div><div class="in"><span class="st idea">Idée</span><b>La Pastille en vrai</b><p>Des invités, des podcasts et des directs les soirs de match, avec un vrai plateau.</p></div></div>
-</div>
+<div class="apps big" id="apps"><a class="ap" data-c="medias" data-k="véloce mercato foot football mercato transfert transferts score scores direct live ligue 1 champions ldc quiz prono sondage match psg om" href="/"><span class="ai" style="background-image:url('/img/apps/foot.webp')"></span><span class="ab"><img src="/app/foot-192.png" alt="" width="48" height="48" loading="lazy"><span><b>Véloce Mercato</b><small>Le foot : mercato, scores en direct, quiz, pronos</small></span><span class="go">Ouvrir ›</span></span></a><a class="ap" data-c="medias" data-k="la pastille tv & radio tv télé television pastille radio emission émission débat debat jt journal podcast video vidéo" href="/studio.html#tv"><span class="ai" style="background-image:url('/vm-gaming/img/escouade/presentateur-360.webp')"></span><span class="ab"><img src="/app/tv-192.png" alt="" width="48" height="48" loading="lazy"><span><b>La Pastille TV & Radio</b><small>Émissions, débats et JT foot, actu, gaming</small></span><span class="go">Ouvrir ›</span></span></a><a class="ap" data-c="medias" data-k="vm gaming jeu jeux video vidéo gaming gamer esport fc fifa warzone gta call of duty fortnite console ps5 xbox live twitch" href="/vm-gaming/"><span class="ai" style="background-image:url('/img/apps/gaming.webp')"></span><span class="ab"><img src="/app/gaming-192.png" alt="" width="48" height="48" loading="lazy"><span><b>VM Gaming</b><small>Jeux vidéo, lives, esport</small></span><span class="go">Ouvrir ›</span></span></a><a class="ap" data-c="medias" data-k="vm actus actu actus actualité actualite info infos news monde france politique économie" href="/actus/"><span class="ai" style="background-image:url('/img/apps/actus.webp')"></span><span class="ab"><img src="/app/actus-192.png" alt="" width="48" height="48" loading="lazy"><span><b>VM Actus</b><small>L'actu France et monde, matin, midi et soir</small></span><span class="go">Ouvrir ›</span></span></a><a class="ap" data-c="communaute" data-k="véloce arena jeux jeu tournoi tournois arena ea fc fifa compétition competition jouer" href="/gaming.html"><span class="ai" style="background-image:url('/img/v2-arena-430.webp')"></span><span class="ab"><img src="/app/arena-192.png" alt="" width="48" height="48" loading="lazy"><span><b>Véloce Arena</b><small>Tournois EA FC gratuits</small></span><span class="go">Ouvrir ›</span></span></a><a class="ap" data-c="communaute" data-k="vm annonces annonce annonces vendre vente acheter achat occasion shop maillot console troc" href="/shop/"><span class="ai" style="background-image:url('/img/apps/annonces.webp')"></span><span class="ab"><img src="/app/annonces-192.png" alt="" width="48" height="48" loading="lazy"><span><b>VM Annonces</b><small>Petites annonces de la communauté</small></span><span class="go">Ouvrir ›</span></span></a><a class="ap" data-c="communaute" data-k="vm boutique boutique vetement vêtement vêtements t-shirt tshirt sweat casquette mug goodies stickers merch" href="/boutique/"><span class="ai" style="background-image:url('/img/boutique/tshirt-noir.webp')"></span><span class="ab"><img src="/img/logo-vm-192.png" alt="" width="48" height="48" loading="lazy"><span><b>VM Boutique</b><small>T-shirts, sweats, casquettes VM</small></span><span class="go">Ouvrir ›</span></span></a><a class="ap" data-c="services" data-k="vm comparateur comparer comparateur prix moins cher neuf occasion auto voiture immo immobilier maison" href="/comparateur/"><span class="ai" style="background-image:url('/img/projet-annonces.webp')"></span><span class="ab"><img src="/app/annonces-192.png" alt="" width="48" height="48" loading="lazy"><span><b>VM Comparateur</b><small>Comparer les prix neuf, occasion, auto, immo</small></span><span class="go">Ouvrir ›</span></span></a><a class="ap" data-c="services" data-k="allolivre livraison livrer courses colis voisin voisins entraide baguette pain service services bricolage" href="/allolivre/"><span class="ai" style="background-image:url('/img/apps/allolivre.webp')"></span><span class="ab"><img src="/app/allolivre-192.png" alt="" width="48" height="48" loading="lazy"><span><b>AlloLivre</b><small>Livraison et entraide entre voisins</small></span><span class="go">Ouvrir ›</span></span></a><a class="ap" data-c="services" data-k="papiers sans galère papier papiers démarche démarches administratif caf impôts impots lettre courrier bail quittance succession mariage divorce aide" href="https://velocemercato.github.io/Papiers-sans-galere/"><span class="ai" style="background-image:url('/img/v2-papiers-800.webp')"></span><span class="ab"><img src="https://velocemercato.github.io/Papiers-sans-galere/app/icon-192.png" alt="" width="48" height="48" loading="lazy"><span><b>Papiers Sans Galère</b><small>Démarches et papiers expliqués simplement</small></span><span class="go">Ouvrir ›</span></span></a><a class="ap" data-c="services" data-k="véloce web studio site internet web création creation logo appli application pro artisan commerce devis flyer" href="/web-studio.html"><span class="ai" style="background-image:url('/img/apps/univers.webp')"></span><span class="ab"><img src="/img/logo-vm-192.png" alt="" width="48" height="48" loading="lazy"><span><b>Véloce Web Studio</b><small>Ton site et ton appli, faits pour toi</small></span><span class="go">Ouvrir ›</span></span></a><a class="ap" data-c="communaute" data-k="soutenir vm soutenir don aider soutien tipeee" href="/soutenir.html"><span class="ai" style="background-image:url('/img/apps/univers.webp')"></span><span class="ab"><img src="/img/logo-vm-192.png" alt="" width="48" height="48" loading="lazy"><span><b>Soutenir VM</b><small>Aider le projet à grandir</small></span><span class="go">Ouvrir ›</span></span></a></div>
+<p class="none" id="none" hidden>Rien trouvé 🤔 Essaie un autre mot (foot, jeux, actu, papiers, livraison, annonces…)</p>
+<h2 id="bientot" style="margin-top:34px">🚀 Bientôt</h2>
+<p class="sub">La Pastille en vrai : des invités, des podcasts et des directs les soirs de match, avec un vrai plateau.</p>
 <div class="cta"><div><b>Un projet, une idée, un partenariat ?</b><p>Écris-nous : on répond à tout le monde.</p></div><a class="btn" href="mailto:velocemercato.fr@gmail.com?subject=Groupe%20VM%20%3A%20prise%20de%20contact">✉️ velocemercato.fr@gmail.com</a></div>
 <p class="note">Groupe VM est le nom de la famille de projets de Romain ; ce n'est pas (encore) une société. Les chiffres d'audience et de revenus ne sont pas publiés tant qu'ils ne sont pas vérifiés.</p>
-<section id="applis" class="applis"><style>.applis{max-width:1000px;margin:28px auto;padding:0 16px}.applis h2{font:800 1.4rem Poppins,system-ui;color:#f4cf55;margin:0 0 6px}.applis p{color:#cfd6ea;margin:0 0 14px;font-size:.95rem}.appg{display:flex;flex-wrap:wrap;gap:14px}.appi{display:flex;flex-direction:column;align-items:center;gap:6px;width:96px;text-decoration:none;color:#fff;font-size:.8rem;text-align:center}.appi img{border-radius:20px;box-shadow:0 6px 16px rgba(0,0,0,.4)}</style>
-<h2>📲 Les applis VM</h2><p>Chaque univers s'installe comme une appli. Ouvre-le, puis touche <b>« 📲 Installer l'appli »</b> (ou menu ⋮ → « Installer l'application » dans <b>Chrome</b>). Sur iPhone : Partager → « Sur l'écran d'accueil ».</p><div class="appg"><a class="appi" href="/?app=1"><img src="/app/foot-192.png" alt="" width="72" height="72"><b>VM Foot</b></a><a class="appi" href="/vm-gaming/"><img src="/app/gaming-192.png" alt="" width="72" height="72"><b>VM Gaming</b></a><a class="appi" href="/actus/"><img src="/app/actus-192.png" alt="" width="72" height="72"><b>VM Actus</b></a><a class="appi" href="/gaming.html"><img src="/app/arena-192.png" alt="" width="72" height="72"><b>VM Arena</b></a><a class="appi" href="/studio.html#tv"><img src="/app/tv-192.png" alt="" width="72" height="72"><b>VM TV · Radio</b></a><a class="appi" href="/shop/"><img src="/app/annonces-192.png" alt="" width="72" height="72"><b>VM Annonces</b></a><a class="appi" href="/allolivre/"><img src="/app/allolivre-192.png" alt="" width="72" height="72"><b>AlloLivre</b></a><a class="appi" href="https://velocemercato.github.io/Papiers-sans-galere/"><img src="https://velocemercato.github.io/Papiers-sans-galere/app/icon-192.png" alt="" width="72" height="72"><b>VM Papiers</b></a></div></section>
 </main>
-<button type="button" class="vmfab" id="vmFab" aria-haspopup="dialog">📤 Partager</button>
+<script id="hub-js">(function(){var q=document.getElementById('q'),apps=document.getElementById('apps'),items=[].slice.call(apps.children),none=document.getElementById('none'),cat='all';
+function norm(t){return (t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')}
+function f(){var w=norm(q.value).split(/\s+/).filter(Boolean),n=0;items.forEach(function(a){var k=norm(a.dataset.k),ok=(cat==='all'||a.dataset.c===cat)&&w.every(function(x){return k.indexOf(x)>-1});a.hidden=!ok;if(ok)n++});none.hidden=n>0}
+q.addEventListener('input',f);document.getElementById('cats').onclick=function(e){var b=e.target.closest('button');if(!b)return;cat=b.dataset.c;[].forEach.call(this.children,function(x){x.classList.toggle('on',x===b)});f()};
+var vb=document.getElementById('vBig'),vg=document.getElementById('vGrid');function v(m){apps.className='apps '+m;vb.classList.toggle('on',m==='big');vg.classList.toggle('on',m==='grid4');try{localStorage.setItem('vm-hub-vue',m)}catch(e){}}
+vb.onclick=function(){v('big')};vg.onclick=function(){v('grid4')};var m='big';try{m=localStorage.getItem('vm-hub-vue')||'big'}catch(e){}v(m);
+var h=location.hash.slice(1);if(h&&!document.getElementById(h)){q.value=decodeURIComponent(h);f()}})();</script><button type="button" class="vmfab" id="vmFab" aria-haspopup="dialog">📤 Partager</button>
 <button type="button" class="vminst" id="vmInst">📲 Installer l'app</button>
 <div class="vmsh" id="vmSh" hidden role="dialog" aria-modal="true" aria-labelledby="vmShT"><div class="vmsh-box">
 <h3 id="vmShT">📤 Partager cette page</h3><p class="vmsh-t" id="vmShU"></p>
@@ -150,14 +152,12 @@ var mf=(($('vmapp-m')||{}).getAttribute&&$('vmapp-m').getAttribute('href'))||'',
 var NOMS={foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'VM TV',annonces:'VM Annonces',allolivre:'AlloLivre'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
 ib.textContent='📲 Installer '+nom;
 function show(){if(!no)ib.classList.add('show')}
-if(standalone){if(app!=='foot'&&!ios)show();}
-else{addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;show()});if(ios)show();else setTimeout(show,2500);}
+if(!standalone){addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;show()});if(ios)show();}
 addEventListener('appinstalled',function(){ib.classList.remove('show')});
 ib.onclick=function(){
  if(dp){dp.prompt();dp.userChoice.then(function(){ib.classList.remove('show')});dp=null;return}
- if(standalone&&andr){location.href='intent://'+location.host+location.pathname+'#Intent;scheme=https;package=com.android.chrome;end';return}
  if(ios){alert('Pour installer '+nom+' sur iPhone : — 1. Ouvre cette page dans Safari — 2. Bouton Partager ↑ en bas — 3. « Sur l’écran d’accueil » — 4. « Ajouter »')}
- else{alert('Pour installer '+nom+' : — 1. Touche le menu ⋮ en haut à droite de Chrome — 2. Choisis « Ajouter à l’écran d’accueil » (ou « Installer l’application ») — 3. Confirme « Installer ».')}
+
  try{localStorage.setItem(key,'1')}catch(e){}ib.classList.remove('show')};
 })();
 </script></body>

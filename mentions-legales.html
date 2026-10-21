@@ -124,14 +124,12 @@ var mf=(($('vmapp-m')||{}).getAttribute&&$('vmapp-m').getAttribute('href'))||'',
 var NOMS={foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'VM TV',annonces:'VM Annonces',allolivre:'AlloLivre'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
 ib.textContent='📲 Installer '+nom;
 function show(){if(!no)ib.classList.add('show')}
-if(standalone){if(app!=='foot'&&!ios)show();}
-else{addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;show()});if(ios)show();else setTimeout(show,2500);}
+if(!standalone){addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;show()});if(ios)show();}
 addEventListener('appinstalled',function(){ib.classList.remove('show')});
 ib.onclick=function(){
  if(dp){dp.prompt();dp.userChoice.then(function(){ib.classList.remove('show')});dp=null;return}
- if(standalone&&andr){location.href='intent://'+location.host+location.pathname+'#Intent;scheme=https;package=com.android.chrome;end';return}
  if(ios){alert('Pour installer '+nom+' sur iPhone : — 1. Ouvre cette page dans Safari — 2. Bouton Partager ↑ en bas — 3. « Sur l’écran d’accueil » — 4. « Ajouter »')}
- else{alert('Pour installer '+nom+' : — 1. Touche le menu ⋮ en haut à droite de Chrome — 2. Choisis « Ajouter à l’écran d’accueil » (ou « Installer l’application ») — 3. Confirme « Installer ».')}
+
  try{localStorage.setItem(key,'1')}catch(e){}ib.classList.remove('show')};
 })();
 </script></body>
