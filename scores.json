@@ -25,18 +25,6 @@
    ]
   },
   {
-   "id": 575363,
-   "date": "2026-10-20T19:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Liverpool",
-   "ext": "Villarreal",
-   "statut": "FINISHED",
-   "score": [
-    4,
-    3
-   ]
-  },
-  {
    "id": 575365,
    "date": "2026-10-20T19:00:00Z",
    "comp": "Ligue des champions",
@@ -73,15 +61,15 @@
    ]
   },
   {
-   "id": 575364,
+   "id": 575363,
    "date": "2026-10-20T19:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Roma",
-   "ext": "Sl. Bratislava",
+   "dom": "Liverpool",
+   "ext": "Villarreal",
    "statut": "FINISHED",
    "score": [
     4,
-    0
+    3
    ]
   },
   {
@@ -109,6 +97,18 @@
    ]
   },
   {
+   "id": 575364,
+   "date": "2026-10-20T19:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Roma",
+   "ext": "Sl. Bratislava",
+   "statut": "FINISHED",
+   "score": [
+    4,
+    0
+   ]
+  },
+  {
    "id": 575369,
    "date": "2026-10-21T16:45:00Z",
    "comp": "Ligue des champions",
@@ -133,24 +133,12 @@
    ]
   },
   {
-   "id": 575373,
-   "date": "2026-10-21T19:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Club Brugge",
-   "ext": "RC Lens",
-   "statut": "IN_PLAY",
-   "score": [
-    1,
-    0
-   ]
-  },
-  {
    "id": 575375,
    "date": "2026-10-21T19:00:00Z",
    "comp": "Ligue des champions",
    "dom": "Sporting CP",
    "ext": "LASK",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     1,
     1
@@ -162,9 +150,21 @@
    "comp": "Ligue des champions",
    "dom": "Inter",
    "ext": "Shaktar",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     0,
+    0
+   ]
+  },
+  {
+   "id": 575373,
+   "date": "2026-10-21T19:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Club Brugge",
+   "ext": "RC Lens",
+   "statut": "PAUSED",
+   "score": [
+    1,
     0
    ]
   },
@@ -174,7 +174,7 @@
    "comp": "Ligue des champions",
    "dom": "Aston Villa",
    "ext": "Viking",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     2,
     0
@@ -186,7 +186,7 @@
    "comp": "Ligue des champions",
    "dom": "Real Madrid",
    "ext": "RB Leipzig",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     1,
     0
@@ -198,7 +198,7 @@
    "comp": "Ligue des champions",
    "dom": "Real Betis",
    "ext": "Feyenoord",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     0,
     0
@@ -210,12 +210,12 @@
    "comp": "Ligue des champions",
    "dom": "Bayern",
    "ext": "Arsenal",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     1,
     1
    ]
   }
  ],
- "maj": "2026-10-21T20:02:50Z"
+ "maj": "2026-10-21T20:04:46Z"
 }
