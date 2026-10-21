@@ -1,0 +1,29 @@
+{
+ "id": "/app/cv",
+ "name": "VM CV – ton CV pro",
+ "short_name": "VM CV",
+ "start_url": "/cv/?app=1",
+ "scope": "/cv/",
+ "display": "standalone",
+ "background_color": "#05080f",
+ "theme_color": "#05080f",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/cv-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/cv-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/cv-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

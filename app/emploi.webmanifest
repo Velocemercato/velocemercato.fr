@@ -1,0 +1,29 @@
+{
+ "id": "/app/emploi",
+ "name": "VM Emploi",
+ "short_name": "VM Emploi",
+ "start_url": "/emploi/?app=1",
+ "scope": "/emploi/",
+ "display": "standalone",
+ "background_color": "#05080f",
+ "theme_color": "#05080f",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/emploi-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/emploi-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/emploi-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

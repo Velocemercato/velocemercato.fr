@@ -1,0 +1,29 @@
+{
+ "id": "/app/pro",
+ "name": "VM Pro Local",
+ "short_name": "Pro Local",
+ "start_url": "/pro/?app=1",
+ "scope": "/pro/",
+ "display": "standalone",
+ "background_color": "#05080f",
+ "theme_color": "#05080f",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/pro-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/pro-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/pro-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}
