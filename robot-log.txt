@@ -1,4 +1,4 @@
-Passage du 2026-10-21 05:58 UTC (schedule)
+Passage du 2026-10-21 06:37 UTC (schedule)
 
 [notice] A new release of pip is available: 26.2.1 -> 26.2.2
 [notice] To update, run: pip install --upgrade pip
@@ -6,27 +6,28 @@ Nettoyage : 0 breves vides retirees, 254 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
 Départ : 254 articles conservés et 45 flashs existants.
 RSS Foot National / LIGUE_2 : 6 actualités récentes.
+RSS Foot National / NATIONAL : 5 actualités récentes.
 RSS Foot National / LIGUE_1 : 7 actualités récentes.
-RSS Foot National / NATIONAL : 4 actualités récentes.
 RSS Foot National / NATIONAL : 1 actualités récentes.
+RSS RMC Sport / FRANCE : 26 actualités récentes.
 RSS RMC Sport / INTERNATIONAL : 24 actualités récentes.
 RSS RMC Sport / LIGUE_1 : 1 actualités récentes.
-RSS RMC Sport / FRANCE : 26 actualités récentes.
+RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 29 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 6 actualités récentes.
-RSS Foot01 / FRANCE : 44 actualités récentes.
 RSS BBC Sport / FEMININ : 1 actualités récentes.
-RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
 RSS RMC Sport / BLEUS : 0 actualités récentes.
 RSS inaccessible RMC Sport : HTTPError - HTTP Error 404: Not Found
-RSS franceinfo / FRANCE : 7 actualités récentes.
+RSS Foot01 / FRANCE : 44 actualités récentes.
 RSS Foot Amateur / NATIONAL : 5 actualités récentes.
-RSS inaccessible Maxifoot : HTTPError - HTTP Error 404: Not Found
 RSS Foot Amateur / NATIONAL : 3 actualités récentes.
-209 titres collectés, 18 nouveaux liens, quota 2.
-Bilan : non_pertinent=1, source_inaccessible_ou_trop_courte=7, sujet_deja_traite=10
-Aucune brève de qualité suffisante ; fichiers JSON inchangés.
-Pages : 254 brèves avec leur propre page, sitemap à jour.
+RSS inaccessible Maxifoot : HTTPError - HTTP Error 404: Not Found
+RSS franceinfo / FRANCE : 7 actualités récentes.
+210 titres collectés, 18 nouveaux liens, quota 2.
+Brève prête : BBC Sport - Acheampong, un défenseur de Chelsea qui s'impose et pose question au club
+Bilan : brèves_rédigées=1, source_inaccessible_ou_trop_courte=7, sujet_deja_traite=10
+Publié : 1 brèves (total 255). Flash : 45.
+Pages : 255 brèves avec leur propre page, sitemap à jour.
 Agenda : 74 matchs enregistrés.
 Ligue 1 : flux illisible (HTTPError)
 Ligue 2 : flux illisible (HTTPError)
@@ -37,13 +38,13 @@ Chaîne @EquipedeFrance : introuvable (HTTPError)
 Chaîne @ChampionsLeague : introuvable (HTTPError)
 Chaîne @UEFAChampionsLeague : introuvable (HTTPError)
 Ligue des champions : aucune chaîne officielle trouvée, ignorée.
-UEFA : 15 vidéos lues, 4 vidéos de buts gardées.
+UEFA : flux illisible (HTTPError)
 Premier League : flux illisible (HTTPError)
 LaLiga : flux illisible (HTTPError)
 Serie A : flux illisible (HTTPError)
 Bundesliga : flux illisible (HTTPError)
-Vidéos publiées : 60.
+Aucune vidéo trouvée : videos.json inchangé.
 Flux muet RMC Sport : HTTPError
 Flux muet Maxifoot : HTTPError
 Flux muet Millenium : HTTPError
-Fil express : actus 120, foot 120, gaming 49
+Fil express : actus 120, foot 120, gaming 51
