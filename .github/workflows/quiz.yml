@@ -1,0 +1,36 @@
+name: Le Quiz VM
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 6 * * *'    # 8 h 30 à Paris l'été
+
+permissions:
+  contents: write
+
+concurrency:
+  group: quiz
+  cancel-in-progress: false
+
+jobs:
+  quiz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Écrire le quiz du jour
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python update_quiz.py
+      - name: Enregistrer
+        run: |
+          [ -f quiz.json ] || exit 0
+          git add quiz.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Le Quiz VM du jour'
+          for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 4; done
