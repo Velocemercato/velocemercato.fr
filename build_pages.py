@@ -162,6 +162,8 @@ def main():
              f'  <url><loc>{SITE}/radio.html</loc></url>',
              f'  <url><loc>{SITE}/groupe.html</loc></url>',
              f'  <url><loc>{SITE}/shop/</loc></url>',
+             f'  <url><loc>{SITE}/allolivre/</loc></url>',
+             f'  <url><loc>{SITE}/comparateur/</loc></url>',
              f'  <url><loc>{SITE}/web-studio.html</loc></url>',
              f'  <url><loc>{SITE}/actus/</loc><changefreq>hourly</changefreq></url>']
     lines += [f'  <url><loc>{html.escape(u)}</loc>' + (f'<lastmod>{html.escape(d[:10])}</lastmod>' if d else '') + '</url>'

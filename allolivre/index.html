@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AlloLivre – livraison et entraide entre voisins</title>
+<meta name="description" content="AlloLivre : courses, baguette, colis, petits services. Demande un coup de main à un voisin ou deviens voisin livreur. Phase test en Franche-Comté.">
+<link rel="canonical" href="https://velocemercato.fr/allolivre/">
+<meta property="og:title" content="AlloLivre – entraide entre voisins"><meta property="og:description" content="Courses, colis, baguette, petits services : un voisin te donne un coup de main."><meta property="og:url" content="https://velocemercato.fr/allolivre/"><meta property="og:image" content="https://velocemercato.fr/allolivre/allolivre-836.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e1243a'/%3E%3Cpath d='M36 6 16 36h13l-5 22 22-32H33z' fill='%23ffd60a'/%3E%3C/svg%3E">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#fff7e0;color:#1a0d00;font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:inherit}
+.banner img{display:block;width:100%;height:auto;max-height:520px;object-fit:cover;border-bottom:5px solid #000}
+.hero{background:repeating-conic-gradient(from 0deg at 50% 120%,#e1243a 0 8deg,#c81428 8deg 16deg);color:#fff;padding:26px 16px 30px;text-align:center;border-bottom:5px solid #000}
+.hero h1{margin:0;font:italic 900 clamp(2.4rem,10vw,4.2rem)/1 Impact,"Arial Black",sans-serif;letter-spacing:.02em;text-shadow:4px 4px 0 #000;color:#fff}
+.hero h1 span{color:#ffd60a}
+.hero p{margin:8px auto 16px;max-width:34rem;font-weight:600;text-shadow:1px 1px 0 #000}
+.beta{display:inline-block;background:#ffd60a;color:#1a0d00;font-weight:900;font-size:.78rem;letter-spacing:.06em;padding:6px 12px;border-radius:999px;border:2px solid #000;margin-bottom:10px}
+.btn{display:inline-block;font:900 1.05rem/1 system-ui,sans-serif;padding:15px 20px;border-radius:14px;border:3px solid #000;box-shadow:4px 4px 0 #000;text-decoration:none;margin:5px;cursor:pointer;transform:skew(-4deg)}
+.y{background:#ffd60a;color:#1a0d00}.w{background:#fff;color:#1a0d00}
+main{max-width:980px;margin:0 auto;padding:10px 16px 50px}
+h2{font:italic 900 1.8rem/1.05 Impact,"Arial Black",sans-serif;text-transform:uppercase;margin:34px 0 12px;color:#e1243a;text-shadow:2px 2px 0 #ffd60a}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}@media(min-width:760px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.c{background:#fff;border:3px solid #000;border-radius:16px;padding:14px;box-shadow:5px 5px 0 #e1243a;text-align:center}
+.c .e{font-size:40px}.c b{display:block;font-size:1.05rem}.c small{color:#5b4a3a}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.steps li{display:flex;gap:12px;align-items:flex-start;background:#fff;border:3px solid #000;border-radius:14px;padding:12px 14px}
+.steps .n{flex:none;width:38px;height:38px;border-radius:50%;background:#ffd60a;border:2px solid #000;display:grid;place-items:center;font:900 1.2rem Impact,sans-serif}
+.box{background:#fff;border:3px solid #000;border-radius:18px;padding:16px;box-shadow:6px 6px 0 #ffd60a}
+label{display:block;font-weight:800;font-size:.92rem;margin:10px 0 4px}
+input,select,textarea{width:100%;font:inherit;padding:11px 12px;border:2px solid #000;border-radius:12px;background:#fff}
+textarea{min-height:90px}
+.chk{display:flex;gap:8px;align-items:flex-start;font-weight:600}.chk input{width:auto;margin-top:4px}
+.rules li{margin:5px 0}
+.warn{background:#fff1b8;border:3px solid #000;border-radius:14px;padding:12px 14px;margin-top:14px;font-size:.92rem}
+footer{text-align:center;color:#5b4a3a;font-size:.85rem;padding:20px 16px 34px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #1d3fb8;outline-offset:2px}
+</style>
+<style id="vmbar-css">
+.vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:relative;z-index:70}
+.vmbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:6px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
+.vmbar-in::-webkit-scrollbar{display:none}
+.vmbar a{flex:none;color:#cfd6ea;text-decoration:none;padding:7px 10px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.vmbar a:hover{background:rgba(255,255,255,.08);color:#fff}
+.vmbar a:focus-visible{outline:2px solid #f4cf55;outline-offset:2px}
+.vmbar .vmb-logo small{font:800 9px/1 system-ui,sans-serif;font-style:normal;letter-spacing:.06em;margin-left:4px;vertical-align:middle}
+.vmbar .vmb-logo{font:italic 900 18px/1 Impact,"Arial Black",sans-serif;color:#04060f;background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);padding:6px 9px;border-radius:8px;margin-right:4px;letter-spacing:.02em}
+.vmbar a.on{color:#04060f;background:#fff}
+.vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
+.vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
+.vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
+@media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
+</style></head>
+<body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/groupe.html" aria-label="Tous les sites VM">VM <small>TOUS LES SITES</small></a><a class="f" href="/">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
+<div class="banner"><img src="allolivre-836.webp" srcset="allolivre-836.webp 836w, allolivre.webp 1672w" sizes="100vw" width="1672" height="941" alt="AlloLivre : un livreur héros en BD apporte courses, colis et baguette aux voisins" fetchpriority="high"></div>
+<header class="hero">
+<span class="beta">⚡ PHASE TEST · FRANCHE-COMTÉ</span>
+<h1>ALLO<span>LIVRE</span></h1>
+<p>Une course, une baguette, un colis, un coup de main ? Un voisin passe pour toi. Simple, local, entre gens du coin.</p>
+<a class="btn y" href="#demande">⚡ J'ai besoin d'un coup de main</a><a class="btn w" href="#voisin">🦸 Je deviens voisin livreur</a>
+</header>
+<main>
+<h2>Ce qu'on peut faire pour toi</h2>
+<div class="grid">
+<div class="c"><div class="e">🛒</div><b>Courses</b><small>Ta liste, ton magasin</small></div>
+<div class="c"><div class="e">🥖</div><b>Baguette & dépannage</b><small>Le petit oubli du matin</small></div>
+<div class="c"><div class="e">📦</div><b>Colis</b><small>Point relais ou poste</small></div>
+<div class="c"><div class="e">🔧</div><b>Petits services</b><small>Porter, monter, aider</small></div>
+</div>
+
+<h2>Comment ça marche</h2>
+<ol class="steps">
+<li><span class="n">1</span><div><b>Tu fais ta demande</b><br>Ce dont tu as besoin, ta ville, quand.</div></li>
+<li><span class="n">2</span><div><b>On te met en relation avec un voisin</b><br>Un voisin livreur de ton secteur accepte et te contacte.</div></li>
+<li><span class="n">3</span><div><b>Vous vous arrangez entre vous</b><br>Tu rembourses les achats sur ticket, et le petit service si vous en avez convenu.</div></li>
+</ol>
+
+<h2 id="demande">⚡ Faire une demande</h2>
+<div class="box"><form id="fDemande">
+<label for="d-v">Ta ville</label><input id="d-v" required placeholder="Ex. : Champagney, Belfort, Besançon…">
+<label for="d-b">J'ai besoin de</label><select id="d-b"><option>Courses</option><option>Une baguette / un dépannage</option><option>Un colis (point relais, poste)</option><option>Un petit service (porter, aider)</option><option>Autre</option></select>
+<label for="d-q">Quand ?</label><input id="d-q" required placeholder="Ex. : demain matin, samedi après-midi">
+<label for="d-d">Les détails</label><textarea id="d-d" required placeholder="Ta liste de courses, le magasin, l'adresse du point relais…"></textarea>
+<label for="d-c">Comment te joindre (téléphone ou e-mail)</label><input id="d-c" required>
+<label class="chk"><input type="checkbox" required> J'ai 18 ans ou plus et j'accepte les règles ci-dessous.</label>
+<p><button class="btn y" type="submit">Envoyer ma demande ⚡</button></p>
+<small>Ton application e-mail s'ouvre avec la demande prête. Rien n'est enregistré sur ce site.</small>
+</form></div>
+
+<h2 id="voisin">🦸 Devenir voisin livreur</h2>
+<div class="box"><form id="fVoisin">
+<label for="v-n">Ton prénom</label><input id="v-n" required>
+<label for="v-v">Ta ville et ton secteur</label><input id="v-v" required placeholder="Ex. : Champagney et alentours, 10 km">
+<label for="v-m">Ton moyen de transport</label><select id="v-m"><option>À pied</option><option>Vélo</option><option>Voiture</option><option>Utilitaire</option></select>
+<label for="v-q">Tes disponibilités</label><input id="v-q" required placeholder="Ex. : soirs de semaine, week-end">
+<label for="v-c">Comment te joindre</label><input id="v-c" required>
+<label class="chk"><input type="checkbox" required> J'ai 18 ans ou plus, je suis assuré pour mon véhicule et j'accepte les règles.</label>
+<p><button class="btn y" type="submit">Je deviens voisin livreur 🦸</button></p>
+</form></div>
+
+<h2>Les règles</h2>
+<div class="box"><ul class="rules">
+<li>✅ Entraide entre particuliers majeurs, dans ton secteur.</li>
+<li>✅ Les achats sont remboursés <b>sur présentation du ticket</b>. Un petit dédommagement est possible si vous vous mettez d'accord <b>avant</b>.</li>
+<li>⛔ Interdit : alcool, tabac, médicaments sur ordonnance, argent liquide à transporter, objets de valeur, animaux, colis dont on ne connaît pas le contenu.</li>
+<li>🛡️ Rencontre-toi en sécurité : premier contact par téléphone, livraison à la porte, pas d'entrée chez les gens.</li>
+<li>📵 Un souci ? Écris-nous : <a href="mailto:velocemercato.fr@gmail.com?subject=AlloLivre%20%3A%20signalement">velocemercato.fr@gmail.com</a>.</li>
+</ul>
+<div class="warn"><b>Phase test :</b> AlloLivre met des voisins en relation, il ne réalise pas lui-même les livraisons et ne prend aucune commission. Aucun paiement ne passe par ce site. Si un jour des livreurs sont rémunérés régulièrement, ils devront avoir un statut (micro-entreprise) et une assurance adaptée.</div></div>
+</main>
+<footer>⚡ AlloLivre · un projet du <a href="/groupe.html">Groupe VM</a> · phase test</footer>
+<script>
+function mail(sub,body){location.href='mailto:velocemercato.fr@gmail.com?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body)}
+function v(i){return document.getElementById(i).value.trim()}
+document.getElementById('fDemande').addEventListener('submit',function(e){e.preventDefault();
+ mail('AlloLivre – demande à '+v('d-v'),'Demande AlloLivre\n\nVille : '+v('d-v')+'\nBesoin : '+v('d-b')+'\nQuand : '+v('d-q')+'\nContact : '+v('d-c')+'\n\nDétails :\n'+v('d-d')+'\n\nJ’ai 18 ans ou plus et j’accepte les règles.')});
+document.getElementById('fVoisin').addEventListener('submit',function(e){e.preventDefault();
+ mail('AlloLivre – nouveau voisin livreur ('+v('v-v')+')','Je deviens voisin livreur AlloLivre\n\nPrénom : '+v('v-n')+'\nSecteur : '+v('v-v')+'\nTransport : '+v('v-m')+'\nDisponibilités : '+v('v-q')+'\nContact : '+v('v-c')+'\n\nJ’ai 18 ans ou plus, je suis assuré et j’accepte les règles.')});
+</script>
+</body>
+</html>

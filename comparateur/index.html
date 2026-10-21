@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VM Comparateur – neuf, occasion, auto, immo : compare le vrai prix</title>
+<meta name="description" content="VM Comparateur : cherche un produit, une voiture ou un logement sur les grands sites en un clic, puis compare le prix total (livraison comprise) pour trouver la meilleure affaire. Gratuit, sans pub.">
+<link rel="canonical" href="https://velocemercato.fr/comparateur/">
+<meta property="og:title" content="VM Comparateur – compare le vrai prix"><meta property="og:description" content="Neuf, occasion, auto, immo : cherche partout en un clic et compare le prix total."><meta property="og:url" content="https://velocemercato.fr/comparateur/"><meta property="og:image" content="https://velocemercato.fr/comparateur/comparateur-836.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e1243a'/%3E%3Ctext x='32' y='44' font-family='Impact,sans-serif' font-size='30' font-style='italic' text-anchor='middle' fill='%23ffd60a'%3EVM%3C/text%3E%3C/svg%3E">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#fff4dc;color:#1a0d00;font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:inherit}
+.banner img{display:block;width:100%;height:auto;max-height:500px;object-fit:cover;border-bottom:5px solid #000}
+.hero{background:repeating-conic-gradient(from 0deg at 50% 130%,#e1243a 0 8deg,#c81428 8deg 16deg);color:#fff;padding:22px 16px 26px;border-bottom:5px solid #000}
+.hero .in{max-width:980px;margin:0 auto}
+.hero h1{margin:0 0 6px;font:italic 900 clamp(2rem,8vw,3.4rem)/1 Impact,"Arial Black",sans-serif;text-shadow:4px 4px 0 #000}.hero h1 span{color:#ffd60a}
+.hero p{margin:0 0 12px;font-weight:600;text-shadow:1px 1px 0 #000;max-width:40rem}
+.search{display:flex;gap:8px;flex-wrap:wrap}
+.search input{flex:1;min-width:220px;font:inherit;font-size:1.05rem;padding:14px;border-radius:14px;border:3px solid #000}
+main{max-width:980px;margin:0 auto;padding:10px 16px 50px}
+h2{font:italic 900 1.7rem/1.05 Impact,"Arial Black",sans-serif;text-transform:uppercase;margin:30px 0 10px;color:#e1243a;text-shadow:2px 2px 0 #ffd60a}
+.tabs{display:flex;gap:8px;overflow-x:auto;max-width:100%;padding:4px 2px 10px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;font:900 .95rem/1 system-ui,sans-serif;padding:11px 15px;border-radius:999px;border:3px solid #000;background:#fff;cursor:pointer}
+.tabs button[aria-pressed=true]{background:#ffd60a}
+.sites{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}@media(min-width:760px){.sites{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.site{display:flex;flex-direction:column;gap:2px;background:#fff;border:3px solid #000;border-radius:14px;padding:12px;box-shadow:4px 4px 0 #e1243a;text-decoration:none}
+.site b{font-size:1.02rem}.site small{color:#5b4a3a}.site span{margin-top:auto;font-weight:900;color:#e1243a;font-size:.9rem}
+.site.off{opacity:.5;pointer-events:none}
+.box{background:#fff;border:3px solid #000;border-radius:18px;padding:16px;box-shadow:6px 6px 0 #ffd60a}
+.row{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:8px;align-items:end}
+@media(max-width:620px){.row{grid-template-columns:1fr 1fr}.row .wide{grid-column:1/-1}}
+label{display:block;font-weight:800;font-size:.85rem;margin:0 0 4px}
+input,select{width:100%;font:inherit;padding:10px 11px;border:2px solid #000;border-radius:10px;background:#fff}
+.add{font:900 1rem system-ui,sans-serif;padding:11px 16px;border-radius:12px;border:3px solid #000;background:#ffd60a;cursor:pointer;box-shadow:3px 3px 0 #000}
+#tableWrap{overflow-x:auto}@media(max-width:620px){th:nth-child(2),td:nth-child(2){display:none}th,td{padding:8px 5px}}table{width:100%;border-collapse:collapse;margin-top:14px;font-size:.88rem}
+th,td{padding:9px 8px;border-bottom:2px solid #f0e2c0;text-align:left}th{font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:#5b4a3a}
+tr.best td{background:#e8fbe9;font-weight:800}
+.tot{font:900 1.05rem system-ui,sans-serif}
+.del{background:none;border:0;font-size:1.1rem;cursor:pointer}
+.tip{background:#fff1b8;border:3px solid #000;border-radius:14px;padding:12px 14px;margin-top:12px;font-size:.92rem}
+.empty{color:#5b4a3a;margin:12px 0 0}
+.saving{margin-top:10px;font-weight:900;color:#0d7a2e}
+footer{text-align:center;color:#5b4a3a;font-size:.85rem;padding:20px 16px 34px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #1d3fb8;outline-offset:2px}
+</style>
+<style id="vmbar-css">
+.vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:relative;z-index:70}
+.vmbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:6px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
+.vmbar-in::-webkit-scrollbar{display:none}
+.vmbar a{flex:none;color:#cfd6ea;text-decoration:none;padding:7px 10px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.vmbar a:hover{background:rgba(255,255,255,.08);color:#fff}
+.vmbar a:focus-visible{outline:2px solid #f4cf55;outline-offset:2px}
+.vmbar .vmb-logo small{font:800 9px/1 system-ui,sans-serif;font-style:normal;letter-spacing:.06em;margin-left:4px;vertical-align:middle}
+.vmbar .vmb-logo{font:italic 900 18px/1 Impact,"Arial Black",sans-serif;color:#04060f;background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);padding:6px 9px;border-radius:8px;margin-right:4px;letter-spacing:.02em}
+.vmbar a.on{color:#04060f;background:#fff}
+.vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
+.vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
+.vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
+@media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
+</style></head>
+<body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/groupe.html" aria-label="Tous les sites VM">VM <small>TOUS LES SITES</small></a><a class="f" href="/">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
+<div class="banner"><img src="comparateur-836.webp" srcset="comparateur-836.webp 836w, comparateur.webp 1672w" sizes="100vw" width="1672" height="941" alt="VM Annonces et Comparateur : immobilier, auto, high-tech, maison et mode en cases de BD" fetchpriority="high"></div>
+<header class="hero"><div class="in">
+<h1>VM <span>COMPARATEUR</span></h1>
+<p>Tape ce que tu cherches, ouvre les grands sites en un clic, puis compare le <b>vrai prix</b> (livraison comprise). Neuf, occasion, auto, immo.</p>
+<div class="search"><input id="q" type="search" placeholder="🔎 Ex. : PS5 Pro, Clio 4, maison Belfort, maillot…" aria-label="Ce que tu cherches"></div>
+</div></header>
+<main>
+<h2>1 · Cherche partout en un clic</h2>
+<div class="tabs" id="tabs" role="group" aria-label="Type de recherche">
+<button type="button" data-t="neuf" aria-pressed="true">🆕 Neuf</button>
+<button type="button" data-t="occasion" aria-pressed="false">♻️ Occasion</button>
+<button type="button" data-t="auto" aria-pressed="false">🚗 Auto</button>
+<button type="button" data-t="immo" aria-pressed="false">🏠 Immobilier</button>
+</div>
+<div class="sites" id="sites"></div>
+<p class="empty" id="hint">Tape d'abord ce que tu cherches, en haut.</p>
+
+<h2>2 · Compare le prix total</h2>
+<div class="box">
+<p style="margin:0 0 10px">Note ici les offres que tu as trouvées. On calcule le prix total et on te montre la meilleure.</p>
+<form id="addForm" class="row">
+<div class="wide"><label for="o-s">Où (site ou vendeur)</label><input id="o-s" required placeholder="Ex. : Leboncoin, Fnac…"></div>
+<div><label for="o-p">Prix (€)</label><input id="o-p" type="number" min="0" step="0.01" required></div>
+<div><label for="o-l">Livraison (€)</label><input id="o-l" type="number" min="0" step="0.01" value="0"></div>
+<div><label for="o-e">État</label><select id="o-e"><option>Neuf</option><option>Occasion</option><option>Reconditionné</option></select></div>
+<div class="wide"><label for="o-u">Lien de l'offre (facultatif)</label><input id="o-u" type="url" placeholder="https://…"></div>
+<div><button class="add" type="submit">➕ Ajouter</button></div>
+</form>
+<div id="tableWrap"></div>
+<div class="tip">💡 <b>Les bons réflexes :</b> compare le prix <b>avec la livraison</b> ; en occasion, demande des photos récentes et une facture ; remise en main propre dans un lieu public ; ne paie jamais par coupon ou virement à un inconnu ; un prix trop bas cache souvent une arnaque. Pour l'auto, vérifie l'historique gratuit du véhicule sur <a href="https://histovec.interieur.gouv.fr/" target="_blank" rel="noopener">HistoVec</a> (site officiel).</div>
+</div>
+</main>
+<footer>VM Comparateur · un projet du <a href="/groupe.html">Groupe VM</a> · liens vers les sites sans partenariat ni commission · tes offres restent sur ton téléphone</footer>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},type='neuf',KEY='vm-comparateur-offres',offers=[];
+var S={
+ neuf:[['Idealo','Comparateur de prix neuf','https://www.idealo.fr/prechcat.html?q='],['Google Shopping','Tous les marchands','https://www.google.com/search?tbm=shop&q='],['Amazon','Grand choix','https://www.amazon.fr/s?k='],['Fnac','High-tech, culture','https://www.fnac.com/SearchResult/ResultList.aspx?Search='],['Cdiscount','Petits prix','https://www.cdiscount.com/search/10/'],['Boulanger','Électroménager, high-tech','https://www.boulanger.com/resultats?tr='],['Darty','Électroménager, high-tech','https://www.darty.com/nav/recherche?text='],['Decathlon','Sport','https://www.decathlon.fr/search?Ntt=']],
+ occasion:[['Leboncoin','Annonces entre particuliers','https://www.leboncoin.fr/recherche?text='],['Vinted','Mode, objets','https://www.vinted.fr/catalog?search_text='],['eBay','Enchères et occasion','https://www.ebay.fr/sch/i.html?_nkw='],['Back Market','Reconditionné garanti','https://www.backmarket.fr/fr-fr/search?q='],['Rakuten','Neuf et occasion','https://fr.shopping.rakuten.com/search/'],['Paru Vendu','Annonces locales','https://www.paruvendu.fr/communfo/defaultcommunfo/defaultcommunfo/default/?kw=']],
+ auto:[['La Centrale','Voitures d\'occasion','https://www.lacentrale.fr/listing?searchKeyword='],['Leboncoin Auto','Entre particuliers','https://www.leboncoin.fr/recherche?category=2&text='],['AutoScout24','France et Europe','https://www.autoscout24.fr/lst?search_id=&query='],['Aramis Auto','Occasion garantie','https://www.aramisauto.com/achat/recherche?search='],['HistoVec','Historique officiel du véhicule','https://histovec.interieur.gouv.fr/#']],
+ immo:[['SeLoger','Achat, location','https://www.seloger.com/list.htm?q='],['Leboncoin Immo','Entre particuliers','https://www.leboncoin.fr/recherche?category=9&text='],['PAP','De particulier à particulier','https://www.pap.fr/annonce/vente-immobiliere?q='],['Bien\'ici','Achat, location','https://www.bienici.com/recherche?q='],['DVF (prix réels)','Prix de vente officiels','https://app.dvf.etalab.gouv.fr/#']]};
+function esc(x){return String(x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function drawSites(){var q=$('q').value.trim();$('hint').hidden=!!q;
+ $('sites').innerHTML=S[type].map(function(s){var noq=s[2].slice(-1)==='#';var href=noq?s[2].slice(0,-1):s[2]+encodeURIComponent(q);
+  return '<a class="site'+(q||noq?'':' off')+'" href="'+esc(href)+'" target="_blank" rel="noopener nofollow"><b>'+esc(s[0])+'</b><small>'+esc(s[1])+'</small><span>'+(noq?'Ouvrir ↗':'Chercher « '+esc(q||'…')+' » ↗')+'</span></a>'}).join('')}
+document.querySelectorAll('#tabs button').forEach(function(b){b.onclick=function(){type=b.dataset.t;document.querySelectorAll('#tabs button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});drawSites()}});
+$('q').addEventListener('input',drawSites);drawSites();
+function eur(n){return n.toLocaleString('fr-FR',{style:'currency',currency:'EUR'})}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(offers))}catch(e){}}
+function drawTable(){if(!offers.length){$('tableWrap').innerHTML='<p class="empty">Aucune offre pour l\'instant.</p>';return}
+ var list=offers.map(function(o,i){return {o:o,i:i,t:(+o.p||0)+(+o.l||0)}}).sort(function(a,b){return a.t-b.t});
+ var html='<table><thead><tr><th>Où</th><th>État</th><th>Prix</th><th>Livr.</th><th>Total</th><th></th></tr></thead><tbody>'+list.map(function(x,k){var o=x.o,u=/^https:\/\//.test(o.u||'')?o.u:'';
+  return '<tr class="'+(k===0?'best':'')+'"><td>'+(k===0?'🏆 ':'')+(u?'<a href="'+esc(u)+'" target="_blank" rel="noopener nofollow">'+esc(o.s)+' ↗</a>':esc(o.s))+'</td><td>'+esc(o.e)+'</td><td>'+eur(+o.p||0)+'</td><td>'+eur(+o.l||0)+'</td><td class="tot">'+eur(x.t)+'</td><td><button class="del" type="button" data-i="'+x.i+'" aria-label="Supprimer">✕</button></td></tr>'}).join('')+'</tbody></table>';
+ if(list.length>1)html+='<p class="saving">💰 En prenant la meilleure offre, tu économises '+eur(list[list.length-1].t-list[0].t)+' par rapport à la plus chère.</p>';
+ html+='<p><button class="del" type="button" id="clear" style="font-size:.9rem;text-decoration:underline">Tout effacer</button></p>';
+ $('tableWrap').innerHTML=html;
+ $('tableWrap').querySelectorAll('[data-i]').forEach(function(b){b.onclick=function(){offers.splice(+b.dataset.i,1);save();drawTable()}});
+ $('clear').onclick=function(){offers=[];save();drawTable()}}
+try{offers=JSON.parse(localStorage.getItem(KEY)||'[]')||[]}catch(e){offers=[]}
+$('addForm').addEventListener('submit',function(e){e.preventDefault();offers.push({s:$('o-s').value.trim(),p:$('o-p').value,l:$('o-l').value||0,e:$('o-e').value,u:$('o-u').value.trim()});save();drawTable();$('o-s').value='';$('o-p').value='';$('o-l').value='0';$('o-u').value='';$('o-s').focus()});
+drawTable();
+})();
+</script>
+</body>
+</html>
