@@ -11,6 +11,8 @@ import datetime as dt
 import html
 import json
 import re
+import urllib.error
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -81,6 +83,24 @@ def feed(channel_id):
             yield vid, title, pub
 
 
+def embeddable(vid, cache):
+    """Vérifie que la vidéo existe encore et que la chaîne autorise sa lecture sur un autre site."""
+    key = 'ok:' + vid
+    if key in cache:
+        return cache[key]
+    url = 'https://www.youtube.com/oembed?format=json&url=' + urllib.parse.quote('https://www.youtube.com/watch?v=' + vid)
+    try:
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 VeloceMercato'})
+        with urllib.request.urlopen(req, timeout=10) as r:
+            ok = r.status == 200
+    except urllib.error.HTTPError as exc:
+        ok = exc.code not in (401, 403, 404)
+    except Exception:
+        return True  # en cas de panne réseau, on ne retire rien
+    cache[key] = ok
+    return ok
+
+
 def main():
     cache = json.loads(CACHE.read_text(encoding='utf-8')) if CACHE.exists() else {}
     old = json.loads(OUT.read_text(encoding='utf-8')) if OUT.exists() else []
@@ -115,6 +135,9 @@ def main():
                 continue
             if not (GOAL.search(title) or BEST.search(title) or GAG.search(title)):
                 continue
+            if not embeddable(vid, cache):
+                print(f'Vidéo non lisible hors YouTube, retirée : {title[:60]}', flush=True)
+                continue
             c = champ
             if FEMININ.search(title):
                 c = 'FEMININ'
@@ -134,13 +157,16 @@ def main():
     # On garde aussi les vidéos encore récentes du passage précédent (si une chaîne ne répond pas).
     ids = {v['id'] for v in found}
     for v in old:
-        if isinstance(v, dict) and v.get('id') not in ids:
+        if isinstance(v, dict) and v.get('id') not in ids and embeddable(v.get('id', ''), cache):
             try:
                 if NOW - dt.datetime.fromisoformat(v['publishedAt']) <= dt.timedelta(days=MAX_AGE_DAYS):
                     found.append(v)
             except (KeyError, ValueError):
                 pass
     found.sort(key=lambda v: v['publishedAt'], reverse=True)
+    keep = {'ok:' + v['id'] for v in found[:MAX_VIDEOS]}
+    cache = {k: v for k, v in cache.items() if not k.startswith('ok:') or k in keep or v is False}
+    CACHE.write_text(json.dumps(cache, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     OUT.write_text(json.dumps(found[:MAX_VIDEOS], ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(f'Vidéos publiées : {min(len(found), MAX_VIDEOS)}.', flush=True)
 

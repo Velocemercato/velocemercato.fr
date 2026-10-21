@@ -40,6 +40,7 @@ h2{font:400 1.6rem/1 Impact,Anton,sans-serif;text-transform:uppercase;margin:28p
 .rel a{display:block;background:var(--surface);border:2px solid #000;border-radius:12px;padding:10px 12px;color:var(--ink);text-decoration:none;box-shadow:3px 3px 0 var(--c);line-height:1.3;font-weight:600}
 .rel a small{display:block;color:var(--gold);font:700 .75rem/1.3 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
 .ai{font-size:.8rem;color:var(--muted);margin-top:10px}
+.react{margin:22px 0 4px;padding:14px 16px;border:2px solid #000;border-radius:14px;background:var(--surface);box-shadow:3px 3px 0 var(--c)}.react b{display:block;font-size:1.1rem}.react p{margin:4px 0 10px;color:var(--muted)}
 footer{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 34px}footer a{color:var(--gold)}
 </style>
 <style id="vmbar-css">
@@ -56,6 +57,19 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 3
 .vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
 .vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
 @media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
+</style><style id="vmshare-css">
+.vmfab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;display:flex;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#f4cf55;color:#0b1533;box-shadow:3px 3px 0 #000;cursor:pointer}
+.vmsh{position:fixed;inset:0;z-index:90;background:rgba(5,9,23,.78);display:flex;align-items:flex-end;justify-content:center;padding:12px}
+.vmsh[hidden]{display:none}
+.vmsh-box{width:100%;max-width:420px;background:#fff;color:#0b1533;border:3px solid #000;border-radius:20px;padding:16px 16px 18px;box-shadow:6px 6px 0 #1d3fb8;font:15px/1.4 system-ui,sans-serif;max-height:92vh;overflow:auto}
+.vmsh-box h3{margin:0 0 4px;font:900 1.25rem system-ui,sans-serif}
+.vmsh-t{margin:0 0 12px;color:#4e5b7d;font-size:.85rem;word-break:break-word}
+.vmsh-g{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.vmsh-g a,.vmsh-g button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 4px;border-radius:14px;border:2px solid #0b1533;background:#f3f5fb;color:#0b1533;font:700 .78rem system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.vmsh-g span{font-size:1.5rem}
+.vmsh-qr{display:flex;justify-content:center;margin:14px 0 4px}.vmsh-qr canvas,.vmsh-qr img{border:8px solid #fff;outline:2px solid #0b1533;border-radius:6px}
+.vmsh-c{display:block;width:100%;margin-top:12px;font:800 1rem system-ui,sans-serif;padding:12px;border-radius:999px;border:2px solid #0b1533;background:#fff;color:#0b1533;cursor:pointer}
+@media print{.vmfab{display:none}}
 </style></head>
 <body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/groupe.html" aria-label="Tous les sites VM">VM <small>TOUS LES SITES</small></a><a class="f on" href="/" aria-current="page">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
 <header><a class="logo" href="/">VÉLOCE <b>MERCATO</b></a><nav><a href="/">Brèves</a><a href="/#videos">Vidéos</a><a href="/archives.html">Rechercher</a><a class="don" href="/soutenir.html">💛 Soutenir</a></nav></header>
@@ -69,7 +83,8 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 3
 <p>Dans un message publié lundi, le club azuréen a apporté son soutien aux membres de la Fédération du commerce niçois et de l&#x27;artisanat, partenaire historique du Gym, en affirmant se tenir aux côtés des professionnels touchés.</p>
 <p class="src">Source : <a href="https://www.footmercato.net/a3501587397264962120-nice-le-message-solidaire-apres-le-pillage-de-commercants-nicois" rel="noopener nofollow" target="_blank">Foot Mercato</a></p>
 <p class="ai">Brève rédigée avec l'aide d'une IA à partir de la source citée, sans ajout de faits.</p>
-<div class="tools"><button class="btn" type="button" id="share">↗ Partager</button><a class="btn gold" href="/soutenir.html">💛 Soutenir le média</a></div>
+<div class="tools"><button class="btn" type="button" id="share">↗ Partager</button><a class="btn" id="wa" target="_blank" rel="noopener">💬 WhatsApp</a><a class="btn" id="fb" target="_blank" rel="noopener">📘 Facebook</a><a class="btn" id="xx" target="_blank" rel="noopener">✖️ X</a><a class="btn gold" href="/soutenir.html">💛 Soutenir le média</a></div>
+<div class="react"><b>💬 Et toi, t'en penses quoi ?</b><p>Viens en parler avec la communauté sur notre Discord.</p><a class="btn red" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener">Commenter sur Discord ↗</a></div>
 </div>
 </article>
 <h2>À lire aussi</h2><div class="rel"><a href="/a/rss-v2-0c9cab2f70e52514a01b7b.html"><small>Ligue 1</small>Acheampong, un défenseur de Chelsea qui s&#x27;impose et pose question au club</a><a href="/a/rss-v2-ed40c9ffd67035e2bdf63c.html"><small>Ligue 1</small>Wesley Saïd quitte Lens pour le Qatar, Thorgan Hazard recruté selon L&#x27;Équipe</a><a href="/a/rss-v2-eb4cf0085ac8eaa41f4351.html"><small>Ligue 1</small>Monaco demande 30 M€ pour Brunner, le PSG intéressé selon Foot01</a><a href="/a/rss-v2-0139ceacee75cb0f548da7.html"><small>Ligue 1</small>Ligue 1 : le calendrier des 13e à 18e journées dévoilé</a></div>
@@ -77,7 +92,39 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 3
 </main>
 <footer><a href="/mentions-legales.html">Mentions légales</a> · <a href="/archives.html">Archives</a></footer>
 <script>
+(function(){var u=encodeURIComponent(location.href.split('#')[0]),t=encodeURIComponent(document.title);document.getElementById('wa').href='https://wa.me/?text='+t+'%20'+u;document.getElementById('fb').href='https://www.facebook.com/sharer/sharer.php?u='+u;document.getElementById('xx').href='https://twitter.com/intent/tweet?text='+t+'&url='+u;})();
 document.getElementById('share').onclick=function(){var d={title:document.title,url:location.href};if(navigator.share){navigator.share(d).catch(function(){});}else if(navigator.clipboard){navigator.clipboard.writeText(location.href).then(function(){alert('Lien copié !');});}};
 </script>
-</body>
+<button type="button" class="vmfab" id="vmFab" aria-haspopup="dialog">📤 Partager</button>
+<div class="vmsh" id="vmSh" hidden role="dialog" aria-modal="true" aria-labelledby="vmShT"><div class="vmsh-box">
+<h3 id="vmShT">📤 Partager cette page</h3><p class="vmsh-t" id="vmShU"></p>
+<div class="vmsh-g">
+<a id="vmS-wa" target="_blank" rel="noopener"><span>💬</span>WhatsApp</a>
+<a id="vmS-fb" target="_blank" rel="noopener"><span>📘</span>Facebook</a>
+<a id="vmS-x" target="_blank" rel="noopener"><span>✖️</span>X</a>
+<a id="vmS-tg" target="_blank" rel="noopener"><span>✈️</span>Telegram</a>
+<a id="vmS-sms"><span>📱</span>SMS</a>
+<button type="button" id="vmS-cp"><span>🔗</span>Copier le lien</button>
+</div>
+<button type="button" class="vmsh-c" id="vmS-more" hidden>Plus d’options (Insta, Snap…)</button>
+<div class="vmsh-qr" id="vmShQ" aria-label="QR code de la page"></div>
+<p class="vmsh-t" style="text-align:center;margin:4px 0 0">📷 Fais scanner ce QR code avec l’appareil photo d’un ami</p>
+<button type="button" class="vmsh-c" id="vmShX">Fermer</button>
+</div></div>
+<script>
+(function(){var $=function(i){return document.getElementById(i)},f=$('vmFab'),m=$('vmSh'),qr=false;if(!f||!m)return;
+var C='https://countapi.mileshilliard.com/api/v1/hit/',d=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()).replace(/-/g,''),b=Math.floor(Date.now()/300000);
+try{if(!sessionStorage.getItem('vm-vu')){sessionStorage.setItem('vm-vu','1');['vm-stats-visites-total','vm-stats-visites-'+d].forEach(function(k){fetch(C+k,{cache:'no-store'}).catch(function(){})})}}catch(e){}
+['vm-stats-vues-total','vm-stats-vues-'+d,'vm-stats-live-'+b].forEach(function(k){fetch(C+k,{cache:'no-store'}).catch(function(){})});
+function url(){return location.href.split('#')[0]}
+function open(){var u=url(),t=document.title,e=encodeURIComponent;$('vmShU').textContent=t;
+ $('vmS-wa').href='https://wa.me/?text='+e(t+' '+u);$('vmS-fb').href='https://www.facebook.com/sharer/sharer.php?u='+e(u);$('vmS-x').href='https://twitter.com/intent/tweet?text='+e(t)+'&url='+e(u);$('vmS-tg').href='https://t.me/share/url?url='+e(u)+'&text='+e(t);$('vmS-sms').href='sms:?&body='+e(t+' '+u);
+ $('vmS-more').hidden=!navigator.share;
+ if(!qr){qr=true;var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';var fb=function(){if($('vmShQ').firstChild)return;var i=new Image();i.width=180;i.height=180;i.alt='QR code de la page';i.src='https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=0&data='+e(u);$('vmShQ').appendChild(i)};s.onload=function(){try{new QRCode($('vmShQ'),{text:u,width:180,height:180,correctLevel:QRCode.CorrectLevel.M})}catch(x){fb()}};s.onerror=fb;setTimeout(fb,4000);document.head.appendChild(s)}
+ m.hidden=false;$('vmShX').focus()}
+f.onclick=open;$('vmShX').onclick=function(){m.hidden=true;f.focus()};m.onclick=function(e){if(e.target===m)m.hidden=true};
+$('vmS-more').onclick=function(){navigator.share({title:document.title,url:url()}).catch(function(){})};
+$('vmS-cp').onclick=function(){var b=this;(navigator.clipboard?navigator.clipboard.writeText(url()):Promise.reject()).then(function(){b.lastChild.textContent='Copié ✓'}).catch(function(){prompt('Copie ce lien :',url())})};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=true});})();
+</script></body>
 </html>

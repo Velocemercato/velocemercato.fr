@@ -59,6 +59,7 @@ h2{{font:400 1.6rem/1 Impact,Anton,sans-serif;text-transform:uppercase;margin:28
 .rel a{{display:block;background:var(--surface);border:2px solid #000;border-radius:12px;padding:10px 12px;color:var(--ink);text-decoration:none;box-shadow:3px 3px 0 var(--c);line-height:1.3;font-weight:600}}
 .rel a small{{display:block;color:var(--gold);font:700 .75rem/1.3 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}}
 .ai{{font-size:.8rem;color:var(--muted);margin-top:10px}}
+.react{{margin:22px 0 4px;padding:14px 16px;border:2px solid #000;border-radius:14px;background:var(--surface);box-shadow:3px 3px 0 var(--c)}}.react b{{display:block;font-size:1.1rem}}.react p{{margin:4px 0 10px;color:var(--muted)}}
 footer{{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 34px}}footer a{{color:var(--gold)}}
 </style>
 </head>
@@ -73,7 +74,8 @@ footer{{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 
 {body}
 <p class="src">Source : {sources}</p>
 <p class="ai">Brève rédigée avec l'aide d'une IA à partir de la source citée, sans ajout de faits.</p>
-<div class="tools"><button class="btn" type="button" id="share">↗ Partager</button><a class="btn gold" href="/soutenir.html">💛 Soutenir le média</a></div>
+<div class="tools"><button class="btn" type="button" id="share">↗ Partager</button><a class="btn" id="wa" target="_blank" rel="noopener">💬 WhatsApp</a><a class="btn" id="fb" target="_blank" rel="noopener">📘 Facebook</a><a class="btn" id="xx" target="_blank" rel="noopener">✖️ X</a><a class="btn gold" href="/soutenir.html">💛 Soutenir le média</a></div>
+<div class="react"><b>💬 Et toi, t'en penses quoi ?</b><p>Viens en parler avec la communauté sur notre Discord.</p><a class="btn red" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener">Commenter sur Discord ↗</a></div>
 </div>
 </article>
 {related}
@@ -81,6 +83,7 @@ footer{{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 
 </main>
 <footer><a href="/mentions-legales.html">Mentions légales</a> · <a href="/archives.html">Archives</a></footer>
 <script>
+(function(){{var u=encodeURIComponent(location.href.split('#')[0]),t=encodeURIComponent(document.title);document.getElementById('wa').href='https://wa.me/?text='+t+'%20'+u;document.getElementById('fb').href='https://www.facebook.com/sharer/sharer.php?u='+u;document.getElementById('xx').href='https://twitter.com/intent/tweet?text='+t+'&url='+u;}})();
 document.getElementById('share').onclick=function(){{var d={{title:document.title,url:location.href}};if(navigator.share){{navigator.share(d).catch(function(){{}});}}else if(navigator.clipboard){{navigator.clipboard.writeText(location.href).then(function(){{alert('Lien copié !');}});}}}};
 </script>
 </body>
