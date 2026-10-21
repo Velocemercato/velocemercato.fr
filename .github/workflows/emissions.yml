@@ -20,8 +20,8 @@ on:
         default: 'soir'
   schedule:
     - cron: '0 5 * * *'      # journal du matin (7 h à Paris l'été, 6 h l'hiver)
-    - cron: '0 10 * * *'     # journal du midi
-    - cron: '0 16 * * *'     # journal du soir (foot, actus, gaming)
+    - cron: '40 10 * * *'    # JT de 12 h (heure d'hiver ; prêt vers midi)
+    - cron: '40 18 * * *'    # JT de 20 h (foot, actus, gaming)
     - cron: '15 17 * * 0,2,3,4,6'  # spéciale avant-match les jours de match
     - cron: '30 21 * * *'    # débat du soir / après-match
 
@@ -70,8 +70,8 @@ jobs:
           else
             case "$CRON" in
               "0 5 * * *")  ARGS="plan matin" ;;
-              "0 10 * * *") ARGS="plan midi" ;;
-              "0 16 * * *") ARGS="plan soir" ;;
+              "40 10 * * *") ARGS="plan midi" ;;
+              "40 18 * * *") ARGS="plan soir" ;;
               "30 21 * * *") ARGS="plan debat" ;;
               *) ARGS="plan speciale" ;;
             esac
