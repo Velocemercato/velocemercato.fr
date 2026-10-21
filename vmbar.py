@@ -17,7 +17,7 @@ CSS='''<style id="vmbar-css">
 @media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
 </style>'''
 
-APP_COL={'menu':'#05080f','pro':'#05080f','cv':'#05080f','emploi':'#05080f','univers':'#000000','foot': '#060b1d', 'gaming': '#0b0a1c', 'actus': '#0a1430', 'arena': '#140a14', 'tv': '#0a0814', 'allolivre': '#c4121b', 'annonces': '#c4121b', 'papiers': '#14100a'}
+APP_COL={'location':'#000000','menu':'#05080f','pro':'#05080f','cv':'#05080f','emploi':'#05080f','univers':'#000000','foot': '#060b1d', 'gaming': '#0b0a1c', 'actus': '#0a1430', 'arena': '#140a14', 'tv': '#0a0814', 'allolivre': '#c4121b', 'annonces': '#c4121b', 'papiers': '#14100a'}
 def app_head(app='foot'):
     app=app if app in APP_COL else 'foot'
     return f'<link rel="manifest" href="/app/{app}.webmanifest" id="vmapp-m"><meta name="theme-color" content="{APP_COL[app]}" id="vmapp-t"><link rel="apple-touch-icon" href="/app/{app}-apple.png" id="vmapp-i">'
@@ -73,7 +73,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=tru
 if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
 var ib=$('vmInst'),dp=null,standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone,ios=/iphone|ipad|ipod/i.test(navigator.userAgent),andr=/android/i.test(navigator.userAgent);
 var mf=(($('vmapp-m')||{}).getAttribute&&$('vmapp-m').getAttribute('href'))||'',app=(mf.match(/app[/]([a-z]+)[.]webmanifest/)||[,'foot'])[1];
-var NOMS={menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'l’appli VM',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'VM TV',annonces:'VM Annonces',allolivre:'AlloLivre'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
+var NOMS={location:'VM Location',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'l’appli VM',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'VM TV',annonces:'VM Annonces',allolivre:'AlloLivre'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
 ib.textContent='📲 Installer '+nom;
 function show(){if(!no)ib.classList.add('show')}
 if(!standalone){addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;show()});if(ios)show();}
@@ -121,6 +121,6 @@ def build_vm():
     open('vm/index.html','w',encoding='utf-8').write(s)
     open('groupe.html','w',encoding='utf-8').write(REDIRECT)
 if __name__=='__main__':
-    for p,a,*x in [('index.html','f'),('vm-gaming/index.html','g','gaming'),('actus/index.html','a','actus'),('archives.html','f'),('studio.html','s','tv'),('radio.html','r','tv'),('gaming.html','f','arena'),('soutenir.html',''),('_vm_source.html','','univers'),('shop/index.html','','annonces'),('allolivre/index.html','','allolivre'),('comparateur/index.html','','annonces'),('web-studio.html',''),('boutique/index.html',''),('cv/index.html','','cv'),('menu/index.html','','menu'),('pro/index.html','','pro'),('emploi/index.html','','emploi'),('belfort/index.html',''),('pub/index.html',''),('mentions-legales.html','')]:
+    for p,a,*x in [('index.html','f'),('vm-gaming/index.html','g','gaming'),('actus/index.html','a','actus'),('archives.html','f'),('studio.html','s','tv'),('radio.html','r','tv'),('gaming.html','f','arena'),('soutenir.html',''),('_vm_source.html','','univers'),('shop/index.html','','annonces'),('allolivre/index.html','','allolivre'),('comparateur/index.html','','annonces'),('web-studio.html',''),('boutique/index.html',''),('cv/index.html','','cv'),('menu/index.html','','menu'),('pro/index.html','','pro'),('emploi/index.html','','emploi'),('belfort/index.html',''),('vm-location/index.html','','location'),('pro-auto/index.html',''),('pub/index.html',''),('mentions-legales.html','')]:
         apply(p,a,*x); print('ok',p)
     build_vm(); print('ok vm/')
