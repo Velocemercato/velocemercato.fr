@@ -17,7 +17,7 @@ CSS='''<style id="vmbar-css">
 @media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
 </style>'''
 
-APP_COL={'foot':'#060b1d','gaming':'#0b0a1c','actus':'#14080e','arena':'#051e10','tv':'#0a0814'}
+APP_COL={'foot': '#060b1d', 'gaming': '#0b0a1c', 'actus': '#0a1430', 'arena': '#140a14', 'tv': '#0a0814', 'allolivre': '#c4121b', 'annonces': '#c4121b', 'papiers': '#14100a'}
 def app_head(app='foot'):
     app=app if app in APP_COL else 'foot'
     return f'<link rel="manifest" href="/app/{app}.webmanifest" id="vmapp-m"><meta name="theme-color" content="{APP_COL[app]}" id="vmapp-t"><link rel="apple-touch-icon" href="/app/{app}-apple.png" id="vmapp-i">'
@@ -96,5 +96,5 @@ def apply(path,active,app='foot'):
     s=inject(open(path,encoding='utf-8').read(),active,app)
     open(path,'w',encoding='utf-8').write(s)
 if __name__=='__main__':
-    for p,a,*x in [('index.html','f'),('vm-gaming/index.html','g','gaming'),('actus/index.html','a','actus'),('archives.html','f'),('studio.html','s','tv'),('radio.html','r','tv'),('gaming.html','f','arena'),('soutenir.html',''),('groupe.html',''),('shop/index.html',''),('allolivre/index.html',''),('comparateur/index.html',''),('web-studio.html',''),('mentions-legales.html','')]:
+    for p,a,*x in [('index.html','f'),('vm-gaming/index.html','g','gaming'),('actus/index.html','a','actus'),('archives.html','f'),('studio.html','s','tv'),('radio.html','r','tv'),('gaming.html','f','arena'),('soutenir.html',''),('groupe.html',''),('shop/index.html','','annonces'),('allolivre/index.html','','allolivre'),('comparateur/index.html','','annonces'),('web-studio.html',''),('mentions-legales.html','')]:
         apply(p,a,*x); print('ok',p)

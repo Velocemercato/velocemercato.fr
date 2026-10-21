@@ -1,0 +1,29 @@
+{
+ "id": "/app/annonces",
+ "name": "VM Annonces & Comparateur",
+ "short_name": "VM Annonces",
+ "start_url": "/shop/?app=1",
+ "scope": "/",
+ "display": "standalone",
+ "background_color": "#c4121b",
+ "theme_color": "#c4121b",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/annonces-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/annonces-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/annonces-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}
