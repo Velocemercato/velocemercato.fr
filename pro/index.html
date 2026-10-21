@@ -53,6 +53,7 @@ h2{color:#f4cf55;font:italic 800 1.4rem Poppins,sans-serif;margin:26px 0 10px}
 <main>
 <div class="srch"><input id="q" type="search" placeholder="Métier ou nom (plombier, coiffeur…)"><input id="v" type="search" placeholder="Ville"></div>
 <h2>Les pros</h2>
+<p style="font-weight:700;color:#d4a017;margin:4px 0 12px">📍 Secteur : Haute-Saône (70), Territoire de Belfort (90), Doubs (25) et Vosges (88) — déplacement possible selon la prestation.</p>
 <div class="grid" id="list"></div>
 <div class="empty" id="empty" hidden>🚀 <b>L'annuaire démarre.</b> Les premiers pros inscrits apparaîtront ici. Tu es artisan ou commerçant ? Inscris-toi gratuitement juste en dessous.</div>
 <h2 id="inscription">Tu es un pro ? Inscris-toi gratuitement</h2>
@@ -118,7 +119,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=tru
 if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
 var ib=$('vmInst'),dp=null,standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone,ios=/iphone|ipad|ipod/i.test(navigator.userAgent),andr=/android/i.test(navigator.userAgent);
 var mf=(($('vmapp-m')||{}).getAttribute&&$('vmapp-m').getAttribute('href'))||'',app=(mf.match(/app[/]([a-z]+)[.]webmanifest/)||[,'foot'])[1];
-var NOMS={location:'VM Location',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'l’appli VM',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'VM TV',annonces:'VM Annonces',allolivre:'AlloLivre'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
+var NOMS={location:'VM Détailing',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'l’appli VM',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'VM TV',annonces:'VM Annonces',allolivre:'AlloLivre'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
 ib.textContent='📲 Installer '+nom;
 function show(){if(!no)ib.classList.add('show')}
 if(!standalone){addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;show()});if(ios)show();}
