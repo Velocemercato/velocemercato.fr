@@ -28,16 +28,76 @@
  ],
  "shortcuts": [
   {
-   "name": "Pastille TV",
-   "url": "/studio.html#tv"
+   "name": "VM Gaming",
+   "short_name": "Gaming",
+   "url": "/vm-gaming/",
+   "icons": [
+    {
+     "src": "/app/gaming-192.png",
+     "sizes": "192x192",
+     "type": "image/png"
+    }
+   ]
   },
   {
-   "name": "VM Radio",
-   "url": "/radio.html"
+   "name": "VM Actus",
+   "short_name": "Actus",
+   "url": "/actus/",
+   "icons": [
+    {
+     "src": "/app/actus-192.png",
+     "sizes": "192x192",
+     "type": "image/png"
+    }
+   ]
   },
   {
-   "name": "Tous les sites VM",
-   "url": "/groupe.html"
+   "name": "La Pastille TV",
+   "short_name": "TV",
+   "url": "/studio.html#tv",
+   "icons": [
+    {
+     "src": "/app/tv-192.png",
+     "sizes": "192x192",
+     "type": "image/png"
+    }
+   ]
+  },
+  {
+   "name": "Véloce Arena",
+   "short_name": "Arena",
+   "url": "/gaming.html",
+   "icons": [
+    {
+     "src": "/app/arena-192.png",
+     "sizes": "192x192",
+     "type": "image/png"
+    }
+   ]
+  },
+  {
+   "name": "VM Annonces",
+   "short_name": "Annonces",
+   "url": "/shop/",
+   "icons": [
+    {
+     "src": "/app/annonces-192.png",
+     "sizes": "192x192",
+     "type": "image/png"
+    }
+   ]
+  },
+  {
+   "name": "L'univers VM",
+   "short_name": "Univers VM",
+   "url": "/groupe.html",
+   "icons": [
+    {
+     "src": "/app/foot-192.png",
+     "sizes": "192x192",
+     "type": "image/png"
+    }
+   ]
   }
  ]
 }
