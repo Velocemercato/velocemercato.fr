@@ -23,13 +23,36 @@ import update_gaming  # noqa: E402
 GAMING = list(robot.FEEDS)
 GAMING_HOSTS = set(robot.ALLOWED_HOSTS)
 
+# Titres seulement (pas de réécriture IA) : médias demandés par Romain, avec lien vers l'article d'origine.
+FOOT += [
+    ('FRANCE', 'FRANCE', "L'Équipe", 'https://dwh.lequipe.fr/api/edito/rss?path=/Football/'),
+    ('FRANCE', 'FRANCE', 'So Foot', 'https://www.sofoot.com/rss.xml'),
+    ('INTERNATIONAL', 'INTERNATIONAL', 'Goal', 'https://www.goal.com/feeds/fr/news'),
+    ('FRANCE', 'FRANCE', '20 Minutes', 'https://www.20minutes.fr/feeds/rss-football.xml'),
+    ('FRANCE', 'FRANCE', 'Le Parisien', 'https://feeds.leparisien.fr/leparisien/rss/sports/football'),
+]
+ACTUS += [
+    ('FRANCE', 'FRANCE', '20 Minutes', 'https://www.20minutes.fr/feeds/rss-une.xml'),
+    ('FRANCE', 'FRANCE', 'Le Monde', 'https://www.lemonde.fr/rss/une.xml'),
+    ('FRANCE', 'FRANCE', "L'Est Républicain", 'https://www.estrepublicain.fr/rss'),
+    ('FRANCE', 'FRANCE', 'Le Figaro', 'https://www.lefigaro.fr/rss/figaro_actualites.xml'),
+    ('FRANCE', 'FRANCE', 'BFMTV', 'https://www.bfmtv.com/rss/news-24-7/'),
+]
+GAMING += [
+    ('GAMING', 'GAMING', 'Journal du Geek', 'https://www.journaldugeek.com/feed/'),
+    ('GAMING', 'GAMING', 'IGN France', 'https://fr.ign.com/feed.xml'),
+    ('GAMING', 'GAMING', 'Numerama', 'https://www.numerama.com/feed/'),
+]
+EXTRA_HOSTS = {'lequipe.fr', 'sofoot.com', 'goal.com', '20minutes.fr', 'leparisien.fr', 'lemonde.fr', 'estrepublicain.fr',
+               'lefigaro.fr', 'bfmtv.com', 'journaldugeek.com', 'ign.com', 'numerama.com'}
+
 robot.rss_items = update_gaming._rss_items  # lecture brute des flux
-robot.ALLOWED_HOSTS = FOOT_HOSTS | ACTUS_HOSTS | GAMING_HOSTS
+robot.ALLOWED_HOSTS = FOOT_HOSTS | ACTUS_HOSTS | GAMING_HOSTS | EXTRA_HOSTS
 robot.MAX_AGE_HOURS = 36
 robot.BLOCK = re.compile(r'\b(horoscope|bon plan|promo(tion)?s?|soldes?|code promo|jeu concours|concours|'
                          r'giveaway|pronostics?|paris sportifs|cotes?|casino|sponsoris[eé]|publi-?rédactionnel)\b', re.I)
 OUT = Path('fil.json')
-KEEP = {'foot': 120, 'actus': 120, 'gaming': 60}
+KEEP = {'foot': 200, 'actus': 200, 'gaming': 120}
 
 
 def grab(job):
