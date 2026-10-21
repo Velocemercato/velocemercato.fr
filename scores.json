@@ -25,18 +25,6 @@
    ]
   },
   {
-   "id": 575363,
-   "date": "2026-10-20T19:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Liverpool",
-   "ext": "Villarreal",
-   "statut": "FINISHED",
-   "score": [
-    4,
-    3
-   ]
-  },
-  {
    "id": 575365,
    "date": "2026-10-20T19:00:00Z",
    "comp": "Ligue des champions",
@@ -70,6 +58,18 @@
    "score": [
     4,
     2
+   ]
+  },
+  {
+   "id": 575363,
+   "date": "2026-10-20T19:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Liverpool",
+   "ext": "Villarreal",
+   "statut": "FINISHED",
+   "score": [
+    4,
+    3
    ]
   },
   {
@@ -133,18 +133,6 @@
    ]
   },
   {
-   "id": 575373,
-   "date": "2026-10-21T19:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Club Brugge",
-   "ext": "RC Lens",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
    "id": 575375,
    "date": "2026-10-21T19:00:00Z",
    "comp": "Ligue des champions",
@@ -162,6 +150,18 @@
    "comp": "Ligue des champions",
    "dom": "Inter",
    "ext": "Shaktar",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 575373,
+   "date": "2026-10-21T19:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Club Brugge",
+   "ext": "RC Lens",
    "statut": "TIMED",
    "score": [
     null,
@@ -217,5 +217,5 @@
    ]
   }
  ],
- "maj": "2026-10-21T16:22:32Z"
+ "maj": "2026-10-21T16:24:26Z"
 }
