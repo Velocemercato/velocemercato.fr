@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VM Pro Local – les artisans et commerces près de chez toi</title>
+<meta name="description" content="VM Pro Local : l'annuaire simple des artisans, commerces et services de ta région. Inscription gratuite pour les pros pendant le lancement.">
+<link rel="canonical" href="https://velocemercato.fr/pro/">
+<meta property="og:title" content="VM Pro Local – les pros près de chez toi"><meta property="og:image" content="https://velocemercato.fr/img/logo-vm-officiel.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,700;0,800;1,800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#07080f;color:#f3f0e6;font:16px/1.5 Poppins,system-ui,sans-serif}
+.hero{text-align:center;padding:26px 16px 12px;background:radial-gradient(ellipse at 50% 20%,#3a2a06,#07080f 70%)}
+.hero img{width:110px;height:auto}.hero h1{margin:4px 0;font:italic 800 clamp(2rem,8vw,3rem)/1 Poppins,sans-serif;color:#f4cf55}.hero p{margin:0 auto;max-width:36rem;color:#d9cfae}
+main{max-width:1000px;margin:0 auto;padding:16px}
+.srch{display:flex;gap:8px;flex-wrap:wrap}.srch input,.srch select{flex:1;min-width:150px;padding:12px;border-radius:999px;border:2px solid #d4a017;background:#fff;color:#111;font:600 15px Poppins,system-ui,sans-serif}
+h2{color:#f4cf55;font:italic 800 1.4rem Poppins,sans-serif;margin:26px 0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.card{background:#10121c;border:1px solid #2a2410;border-radius:16px;padding:14px}.card b{font-size:1.05rem}.card .cat{font-size:.75rem;background:#d4a017;color:#120d03;border-radius:999px;padding:2px 9px;font-weight:800}.card p{margin:6px 0;color:#cfc6a8;font-size:.9rem}.card a{color:#f4cf55;font-weight:700}
+.empty{background:#10121c;border:2px dashed #d4a017;border-radius:16px;padding:20px;text-align:center;color:#d9cfae}
+.box{background:#10121c;border:1px solid #2a2410;border-radius:18px;padding:16px}label{display:block;font-size:.8rem;color:#bdb59a;margin-top:8px}.box input,.box textarea,.box select{width:100%;padding:10px;border-radius:10px;border:1px solid #3a3420;background:#07080f;color:#fff;font:15px Poppins,system-ui,sans-serif}
+.btn{display:inline-block;font:800 .95rem Poppins,sans-serif;padding:12px 16px;border-radius:999px;border:0;background:#d4a017;color:#120d03;cursor:pointer;text-decoration:none;margin-top:12px}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.plans div{background:#10121c;border:1px solid #2a2410;border-radius:16px;padding:14px}.plans b{color:#f4cf55}
+.note{font-size:.8rem;color:#8d8670;margin-top:10px}
+</style><link rel="manifest" href="/app/foot.webmanifest" id="vmapp-m"><meta name="theme-color" content="#060b1d" id="vmapp-t"><link rel="apple-touch-icon" href="/app/foot-apple.png" id="vmapp-i"><style id="vmbar-css">
+.vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:relative;z-index:70}
+.vmbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:6px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
+.vmbar-in::-webkit-scrollbar{display:none}
+.vmbar a{flex:none;color:#cfd6ea;text-decoration:none;padding:7px 10px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.vmbar a:hover{background:rgba(255,255,255,.08);color:#fff}
+.vmbar a:focus-visible{outline:2px solid #f4cf55;outline-offset:2px}
+.vmbar .vmb-logo small{font:800 9px/1 system-ui,sans-serif;font-style:normal;letter-spacing:.06em;margin-left:4px;vertical-align:middle}
+.vmbar .vmb-logo{font:italic 900 18px/1 Impact,"Arial Black",sans-serif;color:#04060f;background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);padding:6px 9px;border-radius:8px;margin-right:4px;letter-spacing:.02em}
+.vmbar a.on{color:#04060f;background:#fff}
+.vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
+.vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
+.vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
+@media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
+</style><style id="vmshare-css">
+.vminst{display:none;position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#1d3fb8;color:#fff;box-shadow:3px 3px 0 #000;cursor:pointer}
+.vminst.show{display:flex}
+.vmfab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;display:flex;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#f4cf55;color:#0b1533;box-shadow:3px 3px 0 #000;cursor:pointer}
+.vmsh{position:fixed;inset:0;z-index:90;background:rgba(5,9,23,.78);display:flex;align-items:flex-end;justify-content:center;padding:12px}
+.vmsh[hidden]{display:none}
+.vmsh-box{width:100%;max-width:420px;background:#fff;color:#0b1533;border:3px solid #000;border-radius:20px;padding:16px 16px 18px;box-shadow:6px 6px 0 #1d3fb8;font:15px/1.4 system-ui,sans-serif;max-height:92vh;overflow:auto}
+.vmsh-box h3{margin:0 0 4px;font:900 1.25rem system-ui,sans-serif}
+.vmsh-t{margin:0 0 12px;color:#4e5b7d;font-size:.85rem;word-break:break-word}
+.vmsh-g{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.vmsh-g a,.vmsh-g button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 4px;border-radius:14px;border:2px solid #0b1533;background:#f3f5fb;color:#0b1533;font:700 .78rem system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.vmsh-g span{font-size:1.5rem}
+.vmsh-qr{display:flex;justify-content:center;margin:14px 0 4px}.vmsh-qr canvas,.vmsh-qr img{border:8px solid #fff;outline:2px solid #0b1533;border-radius:6px}
+.vmsh-c{display:block;width:100%;margin-top:12px;font:800 1rem system-ui,sans-serif;padding:12px;border-radius:999px;border:2px solid #0b1533;background:#fff;color:#0b1533;cursor:pointer}
+@media print{.vmfab{display:none}}
+</style></head><body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/vm/" aria-label="Tous les sites VM">VM <small>TOUS LES SITES</small></a><a class="f" href="/">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
+<header class="hero"><img src="/img/logo-vm-officiel.png" alt="VM" width="110" height="110"><h1>VM PRO LOCAL</h1><p>Les artisans, commerces et services près de chez toi, au même endroit. Simple : un nom, un métier, une ville, un numéro.</p></header>
+<main>
+<div class="srch"><input id="q" type="search" placeholder="Métier ou nom (plombier, coiffeur…)"><input id="v" type="search" placeholder="Ville"></div>
+<h2>Les pros</h2>
+<div class="grid" id="list"></div>
+<div class="empty" id="empty" hidden>🚀 <b>L'annuaire démarre.</b> Les premiers pros inscrits apparaîtront ici. Tu es artisan ou commerçant ? Inscris-toi gratuitement juste en dessous.</div>
+<h2 id="inscription">Tu es un pro ? Inscris-toi gratuitement</h2>
+<div class="plans"><div><b>Fiche gratuite</b><br>Nom, métier, ville, téléphone, lien vers ton site ou ta page. Gratuit pendant le lancement.</div><div><b>Fiche mise en avant (bientôt)</b><br>En tête des résultats de ta ville, avec photo et horaires. Ouverture prochaine.</div><div><b>Pas de site ?</b><br>Véloce Web Studio te le fait, avec ta carte ou tes tarifs en QR code. <a href="/web-studio.html" style="color:#f4cf55">Voir</a></div></div>
+<form class="box" id="f" style="margin-top:14px">
+<label for="n">Nom de l'entreprise</label><input id="n" required>
+<label for="m">Métier</label><input id="m" required placeholder="Ex. : Plombier, Boulangerie, Garage…">
+<label for="vi">Ville</label><input id="vi" required>
+<label for="t">Téléphone pro</label><input id="t" type="tel">
+<label for="w">Site ou page Facebook / Instagram (facultatif)</label><input id="w" type="url" placeholder="https://">
+<label for="d">En une phrase</label><input id="d" maxlength="140" placeholder="Ce que tu proposes">
+<label style="display:flex;gap:8px;align-items:flex-start"><input type="checkbox" id="ok" required style="width:auto;margin-top:4px"> J'accepte que ces informations professionnelles soient affichées publiquement sur VM Pro Local. Je peux demander leur retrait à tout moment.</label>
+<button class="btn" type="submit">✉️ Préparer mon e-mail d'inscription</button>
+<p class="note">Chaque fiche est vérifiée à la main avant publication. Rien n'est enregistré sur ce site : ta demande part par e-mail.</p>
+</form>
+</main>
+<script>
+(function(){function $(i){return document.getElementById(i)}
+function esc(t){return (t||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function norm(t){return (t||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')}
+var pros=[];
+function draw(){var q=norm($('q').value),v=norm($('v').value);var L=pros.filter(function(p){return norm(p.nom+' '+p.metier).indexOf(q)>-1&&norm(p.ville).indexOf(v)>-1});
+ $('list').innerHTML=L.map(function(p){var w=/^https:\/\//.test(p.site||'')?p.site:'';return '<div class="card"><span class="cat">'+esc(p.metier)+'</span><br><b>'+esc(p.nom)+'</b><p>📍 '+esc(p.ville)+(p.desc?'<br>'+esc(p.desc):'')+'</p>'+(p.tel?'<a href="tel:'+esc(p.tel.replace(/\s/g,''))+'">📞 '+esc(p.tel)+'</a> ':'')+(w?' · <a href="'+esc(w)+'" target="_blank" rel="noopener nofollow">🌐 Site</a>':'')+'</div>'}).join('');
+ $('empty').hidden=pros.length>0;}
+fetch('pros.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){pros=Array.isArray(d)?d:[];draw()}).catch(function(){draw()});
+$('q').oninput=draw;$('v').oninput=draw;
+$('f').onsubmit=function(e){e.preventDefault();var b='Inscription VM Pro Local\n\nEntreprise : '+$('n').value+'\nMétier : '+$('m').value+'\nVille : '+$('vi').value+'\nTéléphone : '+$('t').value+'\nSite : '+$('w').value+'\nDescription : '+$('d').value+'\n\nJ\'accepte l\'affichage public de ces informations professionnelles.';
+ if(window.vmMail)vmMail('VM Pro Local – inscription : '+$('n').value,b);else location.href='mailto:velocemercato.fr@gmail.com?subject='+encodeURIComponent('VM Pro Local – inscription')+'&body='+encodeURIComponent(b)};
+})();
+</script>
+<button type="button" class="vmfab" id="vmFab" aria-haspopup="dialog">📤 Partager</button>
+<button type="button" class="vminst" id="vmInst">📲 Installer l'app</button>
+<div class="vmsh" id="vmSh" hidden role="dialog" aria-modal="true" aria-labelledby="vmShT"><div class="vmsh-box">
+<h3 id="vmShT">📤 Partager cette page</h3><p class="vmsh-t" id="vmShU"></p>
+<div class="vmsh-g">
+<a id="vmS-wa" target="_blank" rel="noopener"><span>💬</span>WhatsApp</a>
+<a id="vmS-fb" target="_blank" rel="noopener"><span>📘</span>Facebook</a>
+<a id="vmS-x" target="_blank" rel="noopener"><span>✖️</span>X</a>
+<a id="vmS-tg" target="_blank" rel="noopener"><span>✈️</span>Telegram</a>
+<a id="vmS-sms"><span>📱</span>SMS</a>
+<button type="button" id="vmS-cp"><span>🔗</span>Copier le lien</button>
+</div>
+<button type="button" class="vmsh-c" id="vmS-more" hidden>Plus d’options (Insta, Snap…)</button>
+<div class="vmsh-qr" id="vmShQ" aria-label="QR code de la page"></div>
+<p class="vmsh-t" style="text-align:center;margin:4px 0 0">📷 Fais scanner ce QR code avec l’appareil photo d’un ami</p>
+<button type="button" class="vmsh-c" id="vmShX">Fermer</button>
+</div></div>
+<script>
+(function(){var $=function(i){return document.getElementById(i)},f=$('vmFab'),m=$('vmSh'),qr=false;if(!f||!m)return;
+var C='https://countapi.mileshilliard.com/api/v1/hit/',d=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()).replace(/-/g,''),b=Math.floor(Date.now()/300000);
+try{if(!sessionStorage.getItem('vm-vu')){sessionStorage.setItem('vm-vu','1');['vm-stats-visites-total','vm-stats-visites-'+d].forEach(function(k){fetch(C+k,{cache:'no-store'}).catch(function(){})})}}catch(e){}
+['vm-stats-vues-total','vm-stats-vues-'+d,'vm-stats-live-'+b].forEach(function(k){fetch(C+k,{cache:'no-store'}).catch(function(){})});
+function url(){return location.href.split('#')[0]}
+function open(){var u=url(),t=document.title,e=encodeURIComponent;$('vmShU').textContent=t;
+ $('vmS-wa').href='https://wa.me/?text='+e(t+' '+u);$('vmS-fb').href='https://www.facebook.com/sharer/sharer.php?u='+e(u);$('vmS-x').href='https://twitter.com/intent/tweet?text='+e(t)+'&url='+e(u);$('vmS-tg').href='https://t.me/share/url?url='+e(u)+'&text='+e(t);$('vmS-sms').href='sms:?&body='+e(t+' '+u);
+ $('vmS-more').hidden=!navigator.share;
+ if(!qr){qr=true;var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';var fb=function(){if($('vmShQ').firstChild)return;var i=new Image();i.width=180;i.height=180;i.alt='QR code de la page';i.src='https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=0&data='+e(u);$('vmShQ').appendChild(i)};s.onload=function(){try{new QRCode($('vmShQ'),{text:u,width:180,height:180,correctLevel:QRCode.CorrectLevel.M})}catch(x){fb()}};s.onerror=fb;setTimeout(fb,4000);document.head.appendChild(s)}
+ m.hidden=false;$('vmShX').focus()}
+f.onclick=open;$('vmShX').onclick=function(){m.hidden=true;f.focus()};m.onclick=function(e){if(e.target===m)m.hidden=true};
+$('vmS-more').onclick=function(){navigator.share({title:document.title,url:url()}).catch(function(){})};
+$('vmS-cp').onclick=function(){var b=this;(navigator.clipboard?navigator.clipboard.writeText(url()):Promise.reject()).then(function(){b.lastChild.textContent='Copié ✓'}).catch(function(){prompt('Copie ce lien :',url())})};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=true});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
+var ib=$('vmInst'),dp=null,standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone,ios=/iphone|ipad|ipod/i.test(navigator.userAgent),andr=/android/i.test(navigator.userAgent);
+var mf=(($('vmapp-m')||{}).getAttribute&&$('vmapp-m').getAttribute('href'))||'',app=(mf.match(/app[/]([a-z]+)[.]webmanifest/)||[,'foot'])[1];
+var NOMS={univers:'l’appli VM',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'VM TV',annonces:'VM Annonces',allolivre:'AlloLivre'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
+ib.textContent='📲 Installer '+nom;
+function show(){if(!no)ib.classList.add('show')}
+if(!standalone){addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;show()});if(ios)show();}
+addEventListener('appinstalled',function(){ib.classList.remove('show')});
+ib.onclick=function(){
+ if(dp){dp.prompt();dp.userChoice.then(function(){ib.classList.remove('show')});dp=null;return}
+ if(ios){alert('Pour installer '+nom+' sur iPhone : — 1. Ouvre cette page dans Safari — 2. Bouton Partager ↑ en bas — 3. « Sur l’écran d’accueil » — 4. « Ajouter »')}
+
+ try{localStorage.setItem(key,'1')}catch(e){}ib.classList.remove('show')};
+window.vmMail=function(su,bo){var to='velocemercato.fr@gmail.com';location.href='mailto:'+to+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(bo);
+ var d=document.getElementById('vmMailBox');if(d)d.remove();d=document.createElement('div');d.id='vmMailBox';d.setAttribute('role','dialog');
+ d.style.cssText='position:fixed;left:12px;right:12px;bottom:12px;z-index:95;max-width:440px;margin:0 auto;background:#fff;color:#0b1533;border:3px solid #000;border-radius:16px;padding:14px;box-shadow:5px 5px 0 #1d3fb8;font:15px/1.4 system-ui,sans-serif';
+ d.innerHTML='<b>✉️ Ton appli e-mail s’ouvre avec le message prêt.</b><br>Appuie sur « Envoyer » dedans : tant que ce n’est pas fait, rien n’est envoyé.<br><small>Rien ne s’ouvre ? Copie la demande et envoie-la à '+to+'.</small><div style="display:flex;gap:8px;margin-top:10px"><button type="button" id="vmMailCp" style="flex:1;font:800 .95rem system-ui;padding:10px;border-radius:999px;border:2px solid #000;background:#f4cf55;cursor:pointer">📋 Copier la demande</button><button type="button" id="vmMailX" style="font:800 .95rem system-ui;padding:10px 14px;border-radius:999px;border:2px solid #000;background:#fff;cursor:pointer">OK</button></div>';
+ document.body.appendChild(d);document.getElementById('vmMailX').onclick=function(){d.remove()};
+ document.getElementById('vmMailCp').onclick=function(){var t='À : '+to+'\nObjet : '+su+'\n\n'+bo,b=this;function ok(){b.textContent='✅ Copié !'}if(navigator.clipboard)navigator.clipboard.writeText(t).then(ok,function(){prompt('Copie ce texte :',t)});else prompt('Copie ce texte :',t)}};
+})();
+</script></body></html>

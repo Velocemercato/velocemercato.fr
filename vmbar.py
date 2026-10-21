@@ -121,6 +121,6 @@ def build_vm():
     open('vm/index.html','w',encoding='utf-8').write(s)
     open('groupe.html','w',encoding='utf-8').write(REDIRECT)
 if __name__=='__main__':
-    for p,a,*x in [('index.html','f'),('vm-gaming/index.html','g','gaming'),('actus/index.html','a','actus'),('archives.html','f'),('studio.html','s','tv'),('radio.html','r','tv'),('gaming.html','f','arena'),('soutenir.html',''),('_vm_source.html','','univers'),('shop/index.html','','annonces'),('allolivre/index.html','','allolivre'),('comparateur/index.html','','annonces'),('web-studio.html',''),('boutique/index.html',''),('mentions-legales.html','')]:
+    for p,a,*x in [('index.html','f'),('vm-gaming/index.html','g','gaming'),('actus/index.html','a','actus'),('archives.html','f'),('studio.html','s','tv'),('radio.html','r','tv'),('gaming.html','f','arena'),('soutenir.html',''),('_vm_source.html','','univers'),('shop/index.html','','annonces'),('allolivre/index.html','','allolivre'),('comparateur/index.html','','annonces'),('web-studio.html',''),('boutique/index.html',''),('cv/index.html',''),('menu/index.html',''),('pro/index.html',''),('emploi/index.html',''),('mentions-legales.html','')]:
         apply(p,a,*x); print('ok',p)
     build_vm(); print('ok vm/')
