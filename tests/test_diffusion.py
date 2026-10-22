@@ -2,6 +2,7 @@ import base64
 import datetime as dt
 import io
 import json
+import os
 from pathlib import Path
 import socket
 import subprocess
@@ -137,6 +138,26 @@ class DiffusionTests(unittest.TestCase):
             D.YouTube(http,state,'token').make_public(receipt)
             self.assertEqual(receipt['status'],'published')
 
+    def test_youtube_stays_private_without_owner_consent(self):
+        with tempfile.TemporaryDirectory() as folder:
+            state=D.State(Path(folder)/'state.enc',KEY)
+            env={'VM_AUTO_YOUTUBE':'true','YOUTUBE_CLIENT_ID':'c','YOUTUBE_CLIENT_SECRET':'s','YOUTUBE_REFRESH_TOKEN':'r','YOUTUBE_CHANNEL_ID':'UC1','VM_YOUTUBE_PUBLIC':''}
+            class FakeYT:
+                calls=[]
+                def __init__(self,*a):pass
+                def verify_channel(self):pass
+                def upload(self,file,meta,receipt):receipt.update(video_id='aB1cdEF2ghi',status='private')
+                def make_public(self,receipt):FakeYT.calls.append('public');receipt['status']='published'
+            with patch.dict(os.environ,env),patch.object(D,'access_token',return_value='t'),patch.object(D,'YouTube',FakeYT),patch.object(D,'youtube_metadata',return_value={}):
+                receipts,errors=D.publish('f.mp4',{'id':'prog1'},state)
+                self.assertEqual(errors,[]);self.assertEqual(receipts['youtube']['status'],'private_ready');self.assertEqual(FakeYT.calls,[])
+                D.publish('f.mp4',{'id':'prog1'},state);self.assertEqual(FakeYT.calls,[])
+            path=Path(folder)/'d.json';D.public_index(path,MANIFEST,receipts);self.assertFalse(path.exists() and 'aB1cdEF2ghi' in path.read_text())
+            env['VM_YOUTUBE_PUBLIC']='true'
+            with patch.dict(os.environ,env),patch.object(D,'access_token',return_value='t'),patch.object(D,'YouTube',FakeYT),patch.object(D,'youtube_metadata',return_value={}):
+                receipts,_=D.publish('f.mp4',{'id':'prog1'},state)
+            self.assertEqual(FakeYT.calls,['public']);self.assertEqual(receipts['youtube']['status'],'published')
+
     def test_twitch_preserves_existing_live_and_checks_connected_identity(self):
         with tempfile.TemporaryDirectory() as folder,patch.dict('os.environ',{'TWITCH_BROADCASTER_ID':'123','TWITCH_CLIENT_ID':'client'}):
             state=D.State(Path(folder)/'state.enc',KEY);http=Mock()
@@ -190,11 +211,13 @@ class DiffusionTests(unittest.TestCase):
         def github(*args,input_value=None):
             calls.append((args,input_value))
             if args[:2]==('secret','list'):return '[{"name":"VM_DIFFUSION_STATE_KEY"}]'
+            if args[:2]==('variable','list'):return '[]'
             return ''
         with patch.object(C,'gh',side_effect=github):
             C.store('owner/repo','youtube',{'YOUTUBE_REFRESH_TOKEN':'test-refresh'})
         self.assertEqual(calls[-1][0],('variable','set','VM_AUTO_YOUTUBE','--repo','owner/repo','--body','true'))
         self.assertFalse(any(args[:3]==('secret','set','VM_DIFFUSION_STATE_KEY') for args,_ in calls))
+        self.assertIn((('variable','set','VM_YOUTUBE_PUBLIC','--repo','owner/repo','--body','false'),None),calls)
         self.assertTrue(any(value=='test-refresh' and 'test-refresh' not in args for args,value in calls))
         with patch.object(C,'gh') as github:
             with self.assertRaises(D.DeliveryError):C.store('owner/repo','twitch',{'TWITCH_REFRESH_TOKEN':None})

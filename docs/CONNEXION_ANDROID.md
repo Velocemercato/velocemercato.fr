@@ -11,6 +11,21 @@ Les retours OAuth ont été testés avec un serveur local et des réponses de co
 3. Dans Chrome, le menu **⋮ → Version pour ordinateur** peut rendre l’éditeur plus accessible. Ouvrir **Terminal → New Terminal** dans l’éditeur GitHub.
 4. L’espace préparé fournit Python et GitHub CLI. Si vous réutilisez un ancien Codespace, vérifier qu’il contient la version actuelle de la branche `main`, sans écraser votre travail local.
 
+## 1 bis. Donner à GitHub CLI le droit d’écrire les secrets
+
+Le jeton automatique d’un Codespace ne peut pas créer les secrets Actions. Dans le terminal :
+
+```sh
+unset GITHUB_TOKEN
+gh auth login
+```
+
+Choisir **GitHub.com → HTTPS → Login with a web browser**, ouvrir le lien et saisir le code affiché. L’outil de connexion vérifie ce droit **avant** d’ouvrir la page Google.
+
+## Accord avant publication
+
+Après connexion, les vidéos sont envoyées sur YouTube en **privé** uniquement (`VM_YOUTUBE_PUBLIC=false`). Vous les regardez dans YouTube Studio et les passez vous-même en public. Pour autoriser plus tard la mise en public automatique : GitHub → Settings → Secrets and variables → Actions → Variables → `VM_YOUTUBE_PUBLIC` = `true`.
+
 ## 2. Obtenir l’adresse de retour du téléphone
 
 Dans le terminal du Codespace, coller :

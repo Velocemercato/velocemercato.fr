@@ -103,6 +103,11 @@ def store(repo, provider, values):
         gh('secret', 'set', 'VM_DIFFUSION_STATE_KEY', '--repo', repo, input_value=key)
     for name, value in values.items():
         gh('secret', 'set', name, '--repo', repo, input_value=value)
+    if provider == 'youtube':
+        # Par défaut : envois en PRIVÉ uniquement. Le passage public demande l'accord du propriétaire.
+        variables = {row['name'] for row in json.loads(gh('variable', 'list', '--repo', repo, '--json', 'name'))}
+        if 'VM_YOUTUBE_PUBLIC' not in variables:
+            gh('variable', 'set', 'VM_YOUTUBE_PUBLIC', '--repo', repo, '--body', 'false')
     # Activer seulement après le succès de toutes les écritures de secrets.
     gh('variable', 'set', 'VM_AUTO_' + provider.upper(), '--repo', repo, '--body', 'true')
 
@@ -125,8 +130,13 @@ def main():
             raise DeliveryError('Utiliser --codespaces --adresse depuis votre espace GitHub.')
         print(redirect_uri)
         return
-    # Vérifier l'accès avant d'ouvrir une autorisation de compte inutile.
+    # Vérifier l'accès (y compris le droit d'écrire les secrets) avant d'ouvrir une autorisation de compte inutile.
     gh('repo', 'view', args.repo, '--json', 'nameWithOwner')
+    try:
+        gh('secret', 'list', '--repo', args.repo, '--json', 'name')
+    except DeliveryError:
+        raise DeliveryError('GitHub refuse la gestion des secrets. Dans le terminal, taper : unset GITHUB_TOKEN puis gh auth login '
+                            '(compte Velocemercato), puis relancer cette commande. Aucun secret affiché.') from None
     http = HTTP()
     if args.provider == 'youtube':
         if args.client_json:
@@ -175,6 +185,8 @@ def main():
     print('Compte autorisé : ' + safe_name)
     store(args.repo, args.provider, values)
     print('Connexion enregistrée dans les secrets GitHub. Le prochain programme complet pourra utiliser cette plateforme.')
+    if args.provider == 'youtube':
+        print('Les vidéos seront envoyées en PRIVÉ : rien n’est publié sans votre accord (variable VM_YOUTUBE_PUBLIC).')
     print('Les journaux et accusés confirmeront les envois ; cette connexion seule ne constitue pas une publication.')
 
 

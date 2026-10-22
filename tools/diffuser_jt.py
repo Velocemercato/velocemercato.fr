@@ -119,6 +119,11 @@ def git_save(path):
     git('push', '--quiet', 'origin', 'HEAD:broadcast-state')
 
 
+def public_allowed():
+    """Passage en public automatique seulement si le propriétaire l'a explicitement autorisé (VM_YOUTUBE_PUBLIC=true)."""
+    return os.getenv('VM_YOUTUBE_PUBLIC') == 'true'
+
+
 def enabled(provider):
     return os.getenv('VM_AUTO_' + provider.upper()) == 'true' and all(os.getenv(name, '').strip() for name in PROVIDERS[provider])
 
@@ -381,13 +386,20 @@ def publish(file, manifest, state, http=None):
         receipt = receipts.setdefault(provider, {})
         if receipt.get('status') in ('published', 'ended', 'skipped_live'):
             continue
+        if provider == 'youtube' and receipt.get('status') == 'private_ready' and not public_allowed():
+            continue
         try:
             token = access_token(provider, state, http)
             if provider == 'youtube':
                 client = YouTube(http, state, token)
                 client.verify_channel()
                 client.upload(file, youtube_metadata(manifest), receipt)
-                client.make_public(receipt)
+                if public_allowed():
+                    client.make_public(receipt)
+                else:
+                    # Accord du propriétaire requis : la vidéo reste PRIVÉE, visible seulement dans YouTube Studio.
+                    receipt['status'] = 'private_ready'
+                    state.save()
             else:
                 Twitch(http, state, token).stream(file, youtube_metadata(manifest)['snippet']['title'], receipt, manifest['duree_mesuree'])
         except DeliveryError as error:
