@@ -1,36 +1,36 @@
-Passage du 2026-10-21 23:53 UTC (schedule)
+Passage du 2026-10-22 00:24 UTC (schedule)
 
 [notice] A new release of pip is available: 26.2.1 -> 26.2.2
 [notice] To update, run: pip install --upgrade pip
-Nettoyage : 0 breves vides retirees, 296 gardees.
+Nettoyage : 0 breves vides retirees, 298 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 296 articles conservés et 45 flashs existants.
-RSS Foot National / LIGUE_2 : 4 actualités récentes.
-RSS Foot National / NATIONAL : 0 actualités récentes.
+Départ : 298 articles conservés et 45 flashs existants.
+RSS Foot National / LIGUE_2 : 3 actualités récentes.
+RSS Foot National / NATIONAL : 4 actualités récentes.
 RSS Foot National / LIGUE_1 : 12 actualités récentes.
+RSS Foot National / NATIONAL : 0 actualités récentes.
 RSS RMC Sport / FRANCE : 30 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 26 actualités récentes.
 RSS RMC Sport / LIGUE_1 : 8 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 29 actualités récentes.
 RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
-RSS Foot Amateur / NATIONAL : 3 actualités récentes.
-RSS Foot Amateur / NATIONAL : 10 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 39 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 38 actualités récentes.
+RSS BBC Sport / FEMININ : 1 actualités récentes.
+RSS Foot01 / FRANCE : 42 actualités récentes.
+RSS RMC Sport / BLEUS : 0 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 7 actualités récentes.
 RSS inaccessible RMC Sport : HTTPError - HTTP Error 404: Not Found
-RSS BBC Sport / FEMININ : 1 actualités récentes.
-RSS RMC Sport / BLEUS : 0 actualités récentes.
-RSS Foot01 / FRANCE : 42 actualités récentes.
+RSS Foot Amateur / NATIONAL : 10 actualités récentes.
+RSS Foot Amateur / NATIONAL : 3 actualités récentes.
 RSS franceinfo / FRANCE : 11 actualités récentes.
 RSS inaccessible Maxifoot : HTTPError - HTTP Error 404: Not Found
-RSS Foot National / NATIONAL : 4 actualités récentes.
-245 titres collectés, 53 nouveaux liens, quota 2.
-Brève prête : franceinfo - PSG en tête avec Aston Villa, Bayern et Arsenal dos à dos : les enseignements de la 3e jou
-Brève prête : RMC Sport - Lille-Galatasaray : Soriba Diaoune, doublé à 19 ans en Ligue des champions
-Bilan : brèves_rédigées=2, source_inaccessible_ou_trop_courte=16, sujet_deja_traite=7
-Publié : 2 brèves (total 298). Flash : 45.
-Pages : 298 brèves avec leur propre page, sitemap à jour.
-Agenda : 74 matchs enregistrés.
-Ligue 1 : 15 vidéos lues, 4 vidéos de buts gardées.
+240 titres collectés, 49 nouveaux liens, quota 2.
+Brève prête : BBC Sport - Kane impressionne contre Arsenal et pèse dans la course au Ballon d'Or
+Brève prête : Foot Mercato - Real Madrid - RB Leipzig : les compositions d'équipes de la Ligue des champions
+Bilan : brèves_rédigées=2, source_inaccessible_ou_trop_courte=11, sujet_deja_traite=9
+Publié : 2 brèves (total 300). Flash : 45.
+Pages : 300 brèves avec leur propre page, sitemap à jour.
+Agenda : 75 matchs enregistrés.
+Ligue 1 : flux illisible (HTTPError)
 Ligue 2 : flux illisible (HTTPError)
 FFF : flux illisible (HTTPError)
 Chaîne @equipedefrance : introuvable (HTTPError)
@@ -39,26 +39,26 @@ Chaîne @EquipedeFrance : introuvable (HTTPError)
 Chaîne @ChampionsLeague : introuvable (HTTPError)
 Chaîne @UEFAChampionsLeague : introuvable (HTTPError)
 Ligue des champions : aucune chaîne officielle trouvée, ignorée.
-UEFA : 15 vidéos lues, 4 vidéos de buts gardées.
-Premier League : 15 vidéos lues, 6 vidéos de buts gardées.
-LaLiga : 15 vidéos lues, 5 vidéos de buts gardées.
-Serie A : 15 vidéos lues, 7 vidéos de buts gardées.
+UEFA : flux illisible (HTTPError)
+Premier League : flux illisible (HTTPError)
+LaLiga : flux illisible (HTTPError)
+Serie A : flux illisible (HTTPError)
 Bundesliga : flux illisible (HTTPError)
-Vidéos publiées : 70.
+Aucune vidéo trouvée : videos.json inchangé.
 Flux muet RMC Sport : HTTPError
 Flux muet So Foot : HTTPError
-Flux muet Maxifoot : HTTPError
 Flux muet Goal : HTTPError
+Flux muet Maxifoot : HTTPError
 Flux muet Millenium : HTTPError
 Fil express : foot 200, actus 200, gaming 120
-Flux muet France 3 BFC (https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/rss) : ValueError
-Flux muet L'Est Républicain (https://www.estrepublicain.fr/edition-haute-saone/rss) : HTTPError
 Flux muet L'Est Républicain (https://www.estrepublicain.fr/edition-belfort/rss) : HTTPError
+Flux muet L'Est Républicain (https://www.estrepublicain.fr/edition-haute-saone/rss) : HTTPError
+Flux muet France 3 BFC (https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/rss) : ValueError
 Flux muet France 3 BFC (https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/territoire-de-belfort/rss) : ValueError
-L'Est Républicain territoire-de-belfort : 20 titres
 L'Est Républicain haute-saone : 17 titres
 L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
 Flux muet France 3 BFC (https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/haute-saone/rss) : ValueError
+L'Est Républicain territoire-de-belfort : 20 titres
 Flux muet ici Belfort-Montbéliard (https://www.francebleu.fr/rss/belfort-montbeliard/infos.xml) : HTTPError
 macommune.info  : 25 titres
 L'Est Républicain www.estrepublicain.fr : 2 titres
