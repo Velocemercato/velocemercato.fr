@@ -27,7 +27,7 @@ Le seul envoi implémenté est **Discord**, vers le salon du robot de scores exi
 
 L’intention d’envoi est enregistrée avant le contact Discord et l’identifiant du message est conservé après sa confirmation. L’état est sur la branche technique `social-state`, hors du site mais lisible comme le dépôt public. Il contient uniquement les identifiants des contenus/messages et des états techniques, sans webhook ni statistiques de visiteurs. En cas de timeout ou d’arrêt après envoi, l’état reste `uncertain` ou `sending` : vérifier le salon avant toute remise en file. Cela évite les doublons automatiques au prix d’une intervention pour les livraisons ambiguës. Les mentions de masse sont désactivées.
 
-Les exports `publications.txt`, `publications.json` et les résultats disponibles se trouvent dans l’artefact GitHub Actions **vm-communication**, conservé 14 jours. L’accès à cet artefact suit les permissions GitHub du dépôt ; il ne doit contenir aucun secret. Le résultat réel doit être lu dans l’artefact et dans le salon ; aucun envoi connecté n’a été exécuté depuis cette machine : les livraisons réelles relèvent du workflow et de ses accusés. Le premier passage de préparation a terminé avec succès ; le raccordement au salon existant est ajouté ensuite. Consulter les accusés pour son résultat effectif.
+Les exports `publications.txt`, `publications.json` et les résultats disponibles se trouvent dans l’artefact GitHub Actions **vm-communication**, conservé 14 jours. L’accès à cet artefact suit les permissions GitHub du dépôt ; il ne doit contenir aucun secret. Le résultat réel doit être lu dans l’artefact et dans le salon ; aucun envoi connecté n’a été exécuté depuis cette machine : les livraisons réelles relèvent du workflow et de ses accusés. Le premier passage a préparé les exports. Le raccordement au salon existant a ensuite réussi : deux messages confirmés le 22 octobre 2026 à 20 h 39 Paris, avec un accusé par marque (voir la preuve ci-dessous).
 
 ## Comptes encore à connecter
 
@@ -45,3 +45,13 @@ ChatGPT, Codex et Claude peuvent préparer des textes, du code et des correction
 4. Pour les tests en ligne et les PR bloqués ici, autoriser les domaines requis dans les réglages réseau de l’environnement : `api.github.com`, `vmunivers.fr`, `velocemercato.fr`, `huggingface.co`, puis les hôtes de redirection du modèle seulement s’ils sont effectivement nécessaires. Le push Git fonctionne déjà ; un nouveau jeton GitHub ne corrige pas un refus du proxy.
 
 Le message complet à transmettre à ChatGPT est dans `docs/MESSAGE_POUR_CHATGPT.md`. Aucun secret ne doit être collé dans ce message.
+
+## Résultats réels vérifiés le 22 octobre 2026
+
+- VM Univers : le déploiement GitHub Pages du commit `466375167d062989744d5a6582e82a3d66fff726` a terminé avec succès : https://github.com/Velocemercato/vmunivers/actions/runs/39830703574.
+- Véloce Mercato : le déploiement GitHub Pages des correctifs principaux, commit `92cfd3a2e00c52b1f812790e320e90fd3b91a157`, a terminé avec succès : https://github.com/Velocemercato/velocemercato.fr/actions/runs/39832589885. Les correctifs suivants du lanceur social sont sur `main` et `codex/publication-validee`.
+- Communication : le lancement autonome nécessitait d’ajouter la racine du dépôt au chemin d’import Python. L’échec a été corrigé, puis le workflow du commit `e4dc35319d62070ef8582fb48ee6dc5092eaff11` a terminé avec succès : https://github.com/Velocemercato/velocemercato.fr/actions/runs/39833246333.
+- Accusés récupérés directement depuis la branche `social-state`, commit `97a7babed793015428fa0ea9e54cc08612a748b3` : message Véloce Mercato `1562898161683529769`, confirmé à 18:39:16 UTC ; message VM Univers `1562898179844735079`, confirmé à 18:39:20 UTC. Ce sont deux messages Discord avec des liens vers les contenus existants, pas des uploads natifs de vidéos.
+- Les deux domaines publics retournent toujours un refus du proxy depuis cette machine. La réussite de GitHub Pages est vérifiée sur ses pages de déploiement ; une navigation directe sur les domaines après déploiement reste à vérifier hors de ce proxy.
+
+Le calendrier est installé ; ses prochains passages dépendront du service GitHub Actions et des contenus frais disponibles. Aucun journal HD long n’a été envoyé sur YouTube ni diffusé sur Twitch.

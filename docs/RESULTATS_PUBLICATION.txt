@@ -59,3 +59,6 @@ test_schedule_handles_both_clock_changes (__main__.SocialTests.test_schedule_han
 Ran 7 tests in 0.009s
 
 OK
+
+Validation connectée distincte des tests locaux
+Le workflow communication du commit e4dc353 a réussi le 22 octobre 2026. Les accusés de la branche social-state confirment deux messages Discord, identifiants 1562898161683529769 et 1562898179844735079. Les déploiements GitHub Pages des correctifs principaux ont réussi pour les deux sites. Les modèles Piper, les visites directes aux domaines publics et les intégrations YouTube/Twitch restent non vérifiés ici. Voir PUBLICATION_ET_RESEAUX.md pour les liens de preuve et limites.
