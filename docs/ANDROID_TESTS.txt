@@ -1,0 +1,27 @@
+Connexion Android — retour HTTPS Codespaces
+
+17 méthodes réussies. Les comptes Google/Twitch et un Codespace réel ne sont pas utilisés dans ces tests. Le retour HTTPS est représenté par son URL ; le serveur de retour et les contrôles de state sont exercés réellement sur un port local. Aucune autorisation de compte ni publication n’est déclarée effectuée.
+
+test_account_setup_enables_only_after_success_and_preserves_encryption_key (__main__.DiffusionTests.test_account_setup_enables_only_after_success_and_preserves_encryption_key) ... ok
+test_ambiguous_twitch_attempt_and_failed_state_persistence_prevent_retries (__main__.DiffusionTests.test_ambiguous_twitch_attempt_and_failed_state_persistence_prevent_retries) ... ok
+test_android_codespace_address_is_available_without_any_account_or_secret (__main__.DiffusionTests.test_android_codespace_address_is_available_without_any_account_or_secret) ... ok
+test_codespace_https_callback_works_without_a_browser_on_the_server (__main__.DiffusionTests.test_codespace_https_callback_works_without_a_browser_on_the_server) ... ok
+test_google_pkce_callback_runs_on_loopback_without_logging_code (__main__.DiffusionTests.test_google_pkce_callback_runs_on_loopback_without_logging_code) ... ok
+test_missing_accounts_and_infrastructure_google_credentials_do_not_activate (__main__.DiffusionTests.test_missing_accounts_and_infrastructure_google_credentials_do_not_activate) ... ok
+test_private_uploads_never_appear_in_public_site_index (__main__.DiffusionTests.test_private_uploads_never_appear_in_public_site_index) ... ok
+test_real_hd_masters_assemble_only_when_fresh_and_authorized (__main__.DiffusionTests.test_real_hd_masters_assemble_only_when_fresh_and_authorized) ... ok
+test_rotated_twitch_refresh_is_saved_and_reconnection_replaces_it (__main__.DiffusionTests.test_rotated_twitch_refresh_is_saved_and_reconnection_replaces_it) ... ok
+test_state_encrypts_tokens_sessions_and_private_ids_and_checks_authentication (__main__.DiffusionTests.test_state_encrypts_tokens_sessions_and_private_ids_and_checks_authentication) ... ok
+test_twitch_preserves_existing_live_and_checks_connected_identity (__main__.DiffusionTests.test_twitch_preserves_existing_live_and_checks_connected_identity) ... ok
+test_twitch_requires_live_confirmation_and_stream_completion_before_success (__main__.DiffusionTests.test_twitch_requires_live_confirmation_and_stream_completion_before_success) ... ok
+test_youtube_does_not_announce_public_before_hd_processing_or_confirmed_visibility (__main__.DiffusionTests.test_youtube_does_not_announce_public_before_hd_processing_or_confirmed_visibility) ... ok
+test_youtube_metadata_discloses_ai_and_uses_measured_chapters (__main__.DiffusionTests.test_youtube_metadata_discloses_ai_and_uses_measured_chapters) ... ok
+test_youtube_never_follows_external_session_or_uploads_wrong_channel (__main__.DiffusionTests.test_youtube_never_follows_external_session_or_uploads_wrong_channel) ... ok
+test_youtube_resumable_upload_handles_308_and_records_final_confirmation (__main__.DiffusionTests.test_youtube_resumable_upload_handles_308_and_records_final_confirmation) ... ok
+test_youtube_resume_recovers_after_lost_response_without_duplicate_bytes (__main__.DiffusionTests.test_youtube_resume_recovers_after_lost_response_without_duplicate_bytes) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 1.124s
+
+OK
+YouTube/Twitch : aucun compte autorisé configuré, aucune diffusion.

@@ -220,6 +220,40 @@ class DiffusionTests(unittest.TestCase):
         self.assertEqual(received['code_challenge'][0],base64.urlsafe_b64encode(hashlib.sha256(verifier.encode()).digest()).decode().rstrip('='))
         self.assertNotIn(code,output.getvalue())
 
+    def test_android_codespace_address_is_available_without_any_account_or_secret(self):
+        with patch.dict('os.environ',{'CODESPACE_NAME':'vm-android-test'}),patch.object(C,'gh') as github,patch.object(sys,'argv',['connecter_diffusion.py','youtube','--codespaces','--adresse']),patch('sys.stdout',new_callable=io.StringIO) as output:
+            C.main()
+            self.assertEqual(output.getvalue().strip(),'https://vm-android-test-8765.app.github.dev/callback')
+            github.assert_not_called()
+        with patch.dict('os.environ',{'CODESPACE_NAME':''}):
+            with self.assertRaises(D.DeliveryError):C.codespace_redirect()
+        with self.assertRaises(D.DeliveryError):
+            C.authorize('youtube','client-test',redirect_uri='https://example.org/callback')
+
+    def test_codespace_https_callback_works_without_a_browser_on_the_server(self):
+        with socket.socket() as sock:
+            sock.bind(('127.0.0.1',0));port=sock.getsockname()[1]
+        original_server=C.HTTPServer
+        def server(address,handler):
+            self.assertEqual(address,('0.0.0.0',port))
+            instance=original_server(address,handler)
+            def callback():
+                import urllib.error
+                try:
+                    urlopen(f'http://127.0.0.1:{port}/callback?state=incorrect&code=WRONG',timeout=5)
+                except urllib.error.HTTPError as error:
+                    self.assertEqual(error.code,400)
+                with urlopen(f'http://127.0.0.1:{port}/callback?state=state-test&code=PRIVATE_TEST_CODE',timeout=5) as response:
+                    self.assertEqual(response.status,200)
+            Thread(target=callback,daemon=True).start()
+            return instance
+        redirect=f'https://vm-android-test-{port}.app.github.dev/callback'
+        with patch.object(C,'HTTPServer',side_effect=server),patch.object(C.secrets,'token_urlsafe',side_effect=['state-test','verifier-test']),patch.object(C.webbrowser,'open') as browser,patch('sys.stdout',new_callable=io.StringIO) as output:
+            code,received,_=C.authorize('youtube','client-test',port=port,timeout=5,redirect_uri=redirect)
+        self.assertEqual((code,received),('PRIVATE_TEST_CODE',redirect))
+        browser.assert_not_called()
+        self.assertNotIn(code,output.getvalue())
+
     def test_real_hd_masters_assemble_only_when_fresh_and_authorized(self):
         with tempfile.TemporaryDirectory() as folder:
             root=Path(folder);masters=root/'masters';masters.mkdir()

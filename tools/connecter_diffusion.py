@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""À lancer sur votre ordinateur pour autoriser vos comptes, puis configurer GitHub.
+"""Autoriser vos comptes sur ordinateur ou depuis Chrome avec GitHub Codespaces.
 
 Aucun mot de passe, code OAuth ou jeton n'est affiché ni enregistré dans le dépôt.
 YouTube : client OAuth Google de type Application pour ordinateur.
-Twitch : application avec redirection http://localhost:8765/callback.
+Twitch : application avec redirection locale, ou HTTPS dans Codespaces.
 """
 import argparse
 import base64
@@ -29,11 +29,23 @@ YOUTUBE_SCOPES = ['https://www.googleapis.com/auth/youtube.upload', 'https://www
 TWITCH_SCOPES = ['channel:manage:broadcast', 'channel:read:stream_key']
 
 
-def authorize(provider, client_id, port=8765, timeout=600):
+def codespace_redirect(port=8765):
+    name = os.getenv('CODESPACE_NAME', '')
+    if not re.fullmatch(r'[a-z0-9-]{3,100}', name) or not 1 <= port <= 65535:
+        raise DeliveryError('Ouvrir ce dépôt dans votre GitHub Codespace avant d’utiliser le mode Android.')
+    return f'https://{name}-{port}.app.github.dev/callback'
+
+
+def authorize(provider, client_id, port=8765, timeout=600, redirect_uri=None):
     state = secrets.token_urlsafe(32)
     verifier = secrets.token_urlsafe(64)
     host = '127.0.0.1' if provider == 'youtube' else 'localhost'
-    redirect = f'http://{host}:{port}/callback'
+    redirect = redirect_uri or f'http://{host}:{port}/callback'
+    if redirect_uri:
+        target = urllib.parse.urlsplit(redirect_uri)
+        if (target.scheme != 'https' or not re.fullmatch(r'[a-z0-9-]+\.app\.github\.dev', target.netloc)
+                or target.path != '/callback' or target.query or target.fragment or target.username):
+            raise DeliveryError('Le retour distant doit être l’adresse HTTPS de votre Codespace.')
     result = {}
     class Callback(BaseHTTPRequestHandler):
         def log_message(self, *_args):
@@ -60,11 +72,12 @@ def authorize(provider, client_id, port=8765, timeout=600):
         endpoint = 'https://id.twitch.tv/oauth2/authorize'
         params.update(scope=' '.join(TWITCH_SCOPES), force_verify='true')
     url = endpoint + '?' + urllib.parse.urlencode(params)
-    with HTTPServer(('127.0.0.1', port), Callback) as server:
+    with HTTPServer(('0.0.0.0' if redirect_uri else '127.0.0.1', port), Callback) as server:
         server.timeout = 1
         print('Autorisez votre compte dans le navigateur. Cette étape est nécessaire une fois pour ce raccordement.')
-        print('Si le navigateur ne s’ouvre pas, utilisez ce lien sur le même ordinateur :\n' + url)
-        webbrowser.open(url)
+        print('Ouvrez ce lien dans Chrome :\n' + url)
+        if not redirect_uri:
+            webbrowser.open(url)
         deadline = dt.datetime.now(dt.timezone.utc) + dt.timedelta(seconds=timeout)
         while not result and dt.datetime.now(dt.timezone.utc) < deadline:
             server.handle_request()
@@ -98,22 +111,37 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('provider', choices=['youtube', 'twitch'])
     parser.add_argument('--client-json', type=Path, help='Fichier OAuth Google téléchargé, conservé hors du dépôt')
-    parser.add_argument('--client-id', help='Identifiant public de votre application Twitch')
+    parser.add_argument('--client-id', help='Identifiant public de votre application Google ou Twitch')
     parser.add_argument('--port', type=int, default=8765)
+    parser.add_argument('--codespaces', action='store_true', help='Connexion HTTPS depuis Chrome, y compris Android')
+    parser.add_argument('--adresse', action='store_true', help='Afficher uniquement l’adresse de retour à enregistrer')
     parser.add_argument('--repo', default='Velocemercato/velocemercato.fr')
     args = parser.parse_args()
     if not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', args.repo):
         raise DeliveryError('Nom du dépôt GitHub invalide.')
+    redirect_uri = codespace_redirect(args.port) if args.codespaces else None
+    if args.adresse:
+        if not redirect_uri:
+            raise DeliveryError('Utiliser --codespaces --adresse depuis votre espace GitHub.')
+        print(redirect_uri)
+        return
     # Vérifier l'accès avant d'ouvrir une autorisation de compte inutile.
     gh('repo', 'view', args.repo, '--json', 'nameWithOwner')
     http = HTTP()
     if args.provider == 'youtube':
-        if not args.client_json:
-            raise DeliveryError('Indiquer le fichier client Google avec --client-json ; ne pas le déposer dans GitHub.')
-        installed = json.loads(args.client_json.read_text()).get('installed', {})
-        client_id, client_secret = installed.get('client_id'), installed.get('client_secret')
+        if args.client_json:
+            document = json.loads(args.client_json.read_text())
+            client = document.get('web' if args.codespaces else 'installed', {})
+            client_id, client_secret = client.get('client_id'), client.get('client_secret')
+            if args.codespaces and redirect_uri not in client.get('redirect_uris', []):
+                raise DeliveryError('Enregistrer l’adresse de retour Codespaces dans le client Web Google et télécharger le JSON actualisé.')
+        elif args.codespaces and args.client_id:
+            client_id = args.client_id
+            client_secret = getpass.getpass('Secret du client Web Google (saisie masquée) : ')
+        else:
+            raise DeliveryError('Sur ordinateur : --client-json. Dans Codespaces/Android : --codespaces --client-id avec un client Web Google.')
         if not client_id or not client_secret:
-            raise DeliveryError('Un client OAuth Google de type Application pour ordinateur est nécessaire ; un compte de service ne convient pas.')
+            raise DeliveryError('Client OAuth Google incomplet ; un compte de service ne convient pas.')
     else:
         client_id = args.client_id
         if not client_id:
@@ -121,7 +149,7 @@ def main():
         client_secret = getpass.getpass('Secret de votre application Twitch (saisie masquée) : ')
         if not client_secret:
             raise DeliveryError('Secret Twitch absent.')
-    code, redirect, verifier = authorize(args.provider, client_id, args.port)
+    code, redirect, verifier = authorize(args.provider, client_id, args.port, redirect_uri=redirect_uri)
     form = {'client_id': client_id, 'client_secret': client_secret, 'code': code,
             'grant_type': 'authorization_code', 'redirect_uri': redirect}
     if args.provider == 'youtube':

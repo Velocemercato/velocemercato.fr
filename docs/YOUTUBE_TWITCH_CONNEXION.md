@@ -1,5 +1,7 @@
 # Programmes automatiques YouTube et Twitch
 
+**Sur Android/Z Flip : suivre `docs/CONNEXION_ANDROID.md`.** Ce parcours utilise Chrome et un retour HTTPS dans Codespaces ; le client Google doit être de type Application Web. Le parcours ordinateur ci-dessous reste disponible.
+
 La demande du propriétaire autorise la publication automatique des programmes prêts. Le raccordement technique est ajouté sur `codex/youtube-twitch-auto`. **Aucun compte YouTube ou Twitch n’est authentifié dans cet environnement ; aucun upload ni direct réel n’y est déclaré effectué.** Le script `python tools/diffuser_jt.py --check` indique les plateformes effectivement configurées, sans afficher de secret. La configuration Google présente dans l’environnement n’est pas un accès OAuth à une chaîne YouTube et n’est pas utilisée.
 
 ## Fonctionnement préparé
