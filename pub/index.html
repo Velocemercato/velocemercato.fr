@@ -15,14 +15,18 @@ main{max-width:1000px;margin:0 auto;padding:16px}h2{color:#f4cf55;font:italic 80
 .btn{display:inline-block;font:800 .95rem Poppins,sans-serif;padding:12px 16px;border-radius:999px;border:0;background:#d4a017;color:#120d03;cursor:pointer;text-decoration:none;margin-top:auto;text-align:center}
 .rules{background:#10121c;border-left:5px solid #d4a017;border-radius:12px;padding:14px;font-size:.9rem;color:#cfc6a8}
 </style><link rel="manifest" href="/app/foot.webmanifest" id="vmapp-m"><meta name="theme-color" content="#060b1d" id="vmapp-t"><link rel="apple-touch-icon" href="/app/foot-apple.png" id="vmapp-i"><style id="vmbar-css">
-.vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:relative;z-index:70}
+.vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:sticky;top:0;z-index:80}
+.vmbar+header{top:49px!important}
 .vmbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:6px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
 .vmbar-in::-webkit-scrollbar{display:none}
+.vmbar-in{min-height:48px}
 .vmbar a{flex:none;color:#cfd6ea;text-decoration:none;padding:7px 10px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
 .vmbar a:hover{background:rgba(255,255,255,.08);color:#fff}
 .vmbar a:focus-visible{outline:2px solid #f4cf55;outline-offset:2px}
 .vmbar .vmb-logo small{font:800 9px/1 system-ui,sans-serif;font-style:normal;letter-spacing:.06em;margin-left:4px;vertical-align:middle}
 .vmbar .vmb-logo{font:italic 900 18px/1 Impact,"Arial Black",sans-serif;color:#04060f;background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);padding:6px 9px;border-radius:8px;margin-right:4px;letter-spacing:.02em}
+.vmbar .vmb-logo{position:sticky;left:0;z-index:2;box-shadow:6px 0 0 #04060f;font-size:15px;min-height:36px;display:flex;flex-direction:column;justify-content:center;gap:3px;align-items:center}
+.vmbar .vmb-logo small{margin:0;font-size:8px}
 .vmbar a.on{color:#04060f;background:#fff}
 .vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
 .vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
@@ -43,7 +47,7 @@ main{max-width:1000px;margin:0 auto;padding:16px}h2{color:#f4cf55;font:italic 80
 .vmsh-qr{display:flex;justify-content:center;margin:14px 0 4px}.vmsh-qr canvas,.vmsh-qr img{border:8px solid #fff;outline:2px solid #0b1533;border-radius:6px}
 .vmsh-c{display:block;width:100%;margin-top:12px;font:800 1rem system-ui,sans-serif;padding:12px;border-radius:999px;border:2px solid #0b1533;background:#fff;color:#0b1533;cursor:pointer}
 @media print{.vmfab{display:none}}
-</style></head><body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="Tous les sites VM">VM <small>TOUS LES SITES</small></a><a class="f" href="/">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
+</style></head><body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="VM Univers, tous les projets">VM UNIVERS<small>TOUS LES PROJETS</small></a><a class="f" href="/">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
 <header class="hero"><img src="/img/logo-vm-officiel.png" alt="VM" width="100" height="100"><h1>VOTRE PUB SUR L'UNIVERS VM</h1><p>Faites connaître votre commerce près de chez vous. Des prix clairs, sans engagement, résiliable à tout moment.</p></header>
 <main>
 <h2>Les tarifs</h2>
@@ -62,9 +66,9 @@ main{max-width:1000px;margin:0 auto;padding:16px}h2{color:#f4cf55;font:italic 80
 <h2 id="contact">Réserver un encart</h2>
 <p>Écrivez-nous avec le nom de votre commerce et l'offre choisie : réponse sous 48 h.</p>
 <button class="btn" type="button" id="go">✉️ Préparer mon e-mail</button>
-<p style="font-size:.78rem;color:#8d8670;text-align:center;margin-top:24px">Romain Oriez – entrepreneur individuel – SIRET 528 102 916 00012 – TVA non applicable, art. 293 B du CGI · <a href="/mentions-legales.html" style="color:inherit">Mentions légales</a></p>
+<p style="font-size:.78rem;color:#8d8670;text-align:center;margin-top:24px">VM Univers · activité d’entrepreneur individuel · SIRET 528 102 916 00012 – TVA non applicable, art. 293 B du CGI · <a href="/mentions-legales.html" style="color:inherit">Mentions légales</a></p>
 </main>
-<script>document.getElementById('go').onclick=function(){var b='Bonjour,\n\nJe souhaite réserver un encart publicitaire.\n\nCommerce :\nVille :\nOffre choisie :\nTéléphone :\n';if(window.vmMail)vmMail('Publicité VM – réservation',b);else location.href='mailto:velocemercato.fr@gmail.com?subject=Publicit%C3%A9%20VM&body='+encodeURIComponent(b)};</script>
+<script>document.getElementById('go').onclick=function(){var b='Bonjour,\n\nJe souhaite réserver un encart publicitaire.\n\nCommerce :\nVille :\nOffre choisie :\nTéléphone :\n';if(window.vmMail)vmMail('Publicité VM – réservation',b);else location.href='mailto:vmunivers.fr@gmail.fr?subject=Publicit%C3%A9%20VM&body='+encodeURIComponent(b)};</script>
 <button type="button" class="vmfab" id="vmFab" aria-haspopup="dialog">📤 Partager</button>
 <button type="button" class="vminst" id="vmInst">📲 Installer l'app</button>
 <div class="vmsh" id="vmSh" hidden role="dialog" aria-modal="true" aria-labelledby="vmShT"><div class="vmsh-box">
@@ -107,7 +111,7 @@ ib.onclick=function(){
  if(ios){alert('Pour installer '+nom+' sur iPhone : — 1. Ouvre cette page dans Safari — 2. Bouton Partager ↑ en bas — 3. « Sur l’écran d’accueil » — 4. « Ajouter »')}
 
  try{localStorage.setItem(key,'1')}catch(e){}ib.classList.remove('show')};
-window.vmMail=function(su,bo){var to='velocemercato.fr@gmail.com';location.href='mailto:'+to+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(bo);
+window.vmMail=function(su,bo){var to='vmunivers.fr@gmail.fr';location.href='mailto:'+to+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(bo);
  var d=document.getElementById('vmMailBox');if(d)d.remove();d=document.createElement('div');d.id='vmMailBox';d.setAttribute('role','dialog');
  d.style.cssText='position:fixed;left:12px;right:12px;bottom:12px;z-index:95;max-width:440px;margin:0 auto;background:#fff;color:#0b1533;border:3px solid #000;border-radius:16px;padding:14px;box-shadow:5px 5px 0 #1d3fb8;font:15px/1.4 system-ui,sans-serif';
  d.innerHTML='<b>✉️ Ton appli e-mail s’ouvre avec le message prêt.</b><br>Appuie sur « Envoyer » dedans : tant que ce n’est pas fait, rien n’est envoyé.<br><small>Rien ne s’ouvre ? Copie la demande et envoie-la à '+to+'.</small><div style="display:flex;gap:8px;margin-top:10px"><button type="button" id="vmMailCp" style="flex:1;font:800 .95rem system-ui;padding:10px;border-radius:999px;border:2px solid #000;background:#f4cf55;cursor:pointer">📋 Copier la demande</button><button type="button" id="vmMailX" style="font:800 .95rem system-ui;padding:10px 14px;border-radius:999px;border:2px solid #000;background:#fff;cursor:pointer">OK</button></div>';

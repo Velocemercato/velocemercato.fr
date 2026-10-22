@@ -7,7 +7,7 @@
 4. ffmpeg monte la vidéo : décor, portrait de celui qui parle, sous-titres, musique.
 
 Tant que studio/debats/config.json contient "publication_auto": false, la vidéo part dans
-studio/brouillons/ (non listée) pour que Romain la valide avant toute publication.
+studio/brouillons/ (non listée) pour validation par le responsable VM avant toute publication.
 Fiction humoristique : aucun score, aucune citation ni aucun fait inventé.
 """
 
@@ -74,7 +74,7 @@ CLUBS = [  # (motif, nom affiché, couleurs)
 CURRENT_CLUB = [None]
 
 PERSOS = {
-    'PRESENTATEUR': {'nom': 'Le Présentateur', 'role': 'Il anime le débat', 'img': 'img/avatar-veloce.webp',
+    'PRESENTATEUR': {'nom': 'Heineguez', 'role': 'Présentateur VM', 'img': 'img/avatar-veloce.webp',
                      'voix': ('upmc', 'medium', 1), 'esp': 'fr+m3', 'couleur': (244, 207, 85)},
     'COMMANDANT': {'nom': 'Le Commandant', 'role': 'Le vieux briscard de la tactique', 'img': 'vm-gaming/img/escouade/commandant-900.webp',
                    'voix': ('gilles', 'low', None), 'esp': 'fr+m7', 'couleur': (225, 36, 58)},
@@ -121,7 +121,7 @@ def write_script(news, moment):
         'Aucune insulte, aucune moquerie sur le physique, l’origine ou la religion, aucun propos violent, aucun pari ni pronostic de paris sportifs. '
         'Humour bon enfant, rythme de plateau télé, phrases courtes faciles à lire à voix haute, en français parlé. '
         'Écris les nombres en chiffres simples. Pas d’emoji, pas de didascalies. '
-        'Le Présentateur ouvre (accueil + annonce que c’est une émission de fiction humoristique faite par IA), relance et conclut '
+        'Heineguez présente, relance et conclut. Il commence par le premier sujet, avec une introduction de 12 mots maximum ; la mention IA reste affichée à l’écran. Il conclut '
         '(invite à lire les brèves sur velocemercato.fr). Tous les autres personnages parlent au moins 3 fois. '
         'Entre 26 et 34 répliques, chacune de 12 à 45 mots. '
         'Réponds UNIQUEMENT en JSON : {"titre": "...", "accroche": "...", "repliques": [{"perso": "CLE", "texte": "..."}], '
@@ -299,10 +299,21 @@ def frame(bg, perso, sub, title, order, scene=0):
             scarf(im, (40, 70, 510, 124), CURRENT_CLUB[0])
         d.rectangle((40, 70, 40 + 470, 70 + 590), outline=p['couleur'], width=5)
     else:
-        port = cover(Image.open(ROOT / p['img']).convert('RGB'), 470, 590)
+        # Le panneau présente l'univers courant, même quand un chroniqueur
+        # possède un portrait issu de l'escouade Gaming.
+        port = cover(Image.open(ROOT / BG_IMG).convert('RGB'), 470, 590)
         im.paste((0, 0, 0), (36, 66, 36 + 470 + 8, 66 + 590 + 8))
         im.paste(port, (40, 70))
         d.rectangle((40, 70, 40 + 470, 70 + 590), outline=p['couleur'], width=5)
+        portrait = Image.open(ROOT / p['img']).convert('RGB')
+        portrait = portrait.crop((0, 0, portrait.width, int(portrait.height * .62)))
+        portrait = cover(portrait, 188, 188)
+        mask = Image.new('L', (188, 188), 0)
+        ImageDraw.Draw(mask).ellipse((0, 0, 187, 187), fill=255)
+        d.ellipse((54, 372, 254, 572), fill=p['couleur'])
+        im.paste(portrait, (60, 378), mask)
+        d.rounded_rectangle((56, 82, 494, 128), 10, fill=(8, 13, 28))
+        d.text((275, 105), SHOW, anchor='mm', font=font('Poppins-Bold.ttf', 22), fill=(244, 207, 85))
     d.rounded_rectangle((60, 590, 490, 650), 14, fill=(0, 0, 0))
     d.text((78, 596), p['nom'].upper(), font=font('Poppins-BoldItalic.ttf', 30), fill=p['couleur'])
     d.text((80, 630), p['role'], font=font('Poppins-Medium.ttf', 15), fill=(230, 235, 245))

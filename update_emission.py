@@ -36,7 +36,7 @@ REPO = os.getenv('GITHUB_REPOSITORY', 'Velocemercato/velocemercato.fr')
 
 P = D.PERSOS  # personnages déjà définis (foot)
 ACTUS_PERSOS = {
-    'PRESENTATEUR': {**P['PRESENTATEUR'], 'nom': 'Le Présentateur', 'role': 'Il présente VM Actus', 'img': 'img/presentateur-actus.webp'},
+    'PRESENTATEUR': {**P['PRESENTATEUR'], 'nom': 'Heineguez', 'role': 'Présentateur VM Actus', 'img': 'img/presentateur-actus.webp'},
     'COMMANDANT': {**P['COMMANDANT'], 'role': 'Il remet les choses en contexte'},
     'OPERATRICE': {**P['OPERATRICE'], 'role': 'Reporter, France et régions'},
     'NEX': {**P['NEX'], 'role': 'Les chiffres, rien que les chiffres'},
@@ -105,7 +105,7 @@ def write_script(univers, fmt, moment, news, fixtures=None):
         ' Humour bon enfant, rythme de plateau télé, phrases courtes faciles à lire à voix haute, en français parlé. Pas d’emoji. '
         'Commence immédiatement par la première actualité : introduction parlée de 12 mots maximum, sans long accueil. '
         'La mention IA reste affichée à l’écran et peut être rappelée à la conclusion. '
-        'Le Présentateur annonce chaque sujet, relance et conclut en invitant à lire les brèves complètes sur velocemercato.fr. '
+        'Heineguez est le présentateur : il annonce chaque sujet, relance et conclut en invitant à lire les brèves complètes sur velocemercato.fr. '
         f'Longueur : {F["mots"][0]} à {F["mots"][1]} mots au total, entre {F["repliques"][0]} et {F["repliques"][1]} répliques '
         'de 10 à 70 mots. Chaque personnage parle plusieurs fois. '
         'Réponds UNIQUEMENT en JSON : {"titre": "...", "accroche": "...", "repliques": [{"perso": "CLE", "texte": "..."}]} '

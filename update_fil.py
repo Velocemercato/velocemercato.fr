@@ -23,7 +23,7 @@ import update_gaming  # noqa: E402
 GAMING = list(robot.FEEDS)
 GAMING_HOSTS = set(robot.ALLOWED_HOSTS)
 
-# Titres seulement (pas de réécriture IA) : médias demandés par Romain, avec lien vers l'article d'origine.
+# Titres seulement (pas de réécriture IA) : médias demandés par le responsable VM, avec lien vers l'article d'origine.
 FOOT += [
     ('FRANCE', 'FRANCE', "L'Équipe", 'https://dwh.lequipe.fr/api/edito/rss?path=/Football/'),
     ('FRANCE', 'FRANCE', 'So Foot', 'https://www.sofoot.com/rss.xml'),

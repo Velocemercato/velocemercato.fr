@@ -138,7 +138,7 @@ details.faq{border-top:2px dashed rgba(29,63,184,.25);padding:10px 0}details.faq
 <p class="muted">N'écris pas d'informations sensibles (coordonnées bancaires, numéro de sécurité sociale).</p>
 <div class="copybox" id="qTxt" aria-live="polite"></div>
 <div class="actions"><button class="btn gold" type="button" id="qCopy">Copier ma demande</button><a class="btn" id="qMail" href="#">Envoyer par mail</a></div>
-<p class="muted">Adresse : <strong style="user-select:all">velocemercato.fr@gmail.com</strong></p>
+<p class="muted">Adresse : <strong style="user-select:all">vmunivers.fr@gmail.fr</strong></p>
 </form>
 </section>
 
@@ -151,12 +151,12 @@ details.faq{border-top:2px dashed rgba(29,63,184,.25);padding:10px 0}details.faq
 </section>
 
 </main>
-<footer>Véloce Web Studio · un projet de Romain, créateur de Véloce Mercato · <a href="/mentions-legales.html">Mentions légales</a></footer>
+<footer>Véloce Web Studio · un projet VM Univers · <a href="/mentions-legales.html">Mentions légales</a></footer>
 <div class="toast" id="toast" hidden></div>
 <script>
 (function(){
   var $=function(id){return document.getElementById(id);};
-  var MAIL='velocemercato.fr@gmail.com';
+  var MAIL='vmunivers.fr@gmail.fr';
   var toast=function(m){var t=$('toast');t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(function(){t.hidden=true;},2400);};
   var txt=function(){var v=function(id){return ($(id).value||'').trim()||'—';};
     return 'Demande – Véloce Web Studio\nActivité : '+v('qAct')+'\nVille : '+v('qVille')+'\nBesoin : '+$('qType').value+'\nNom de domaine : '+$('qDom').value+'\nTextes et photos : '+$('qCont').value+'\nDélai souhaité : '+v('qDelai')+'\n\nMon besoin :\n'+v('qBesoin');};
