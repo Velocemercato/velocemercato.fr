@@ -1,0 +1,79 @@
+YouTube/Twitch — résultats du 22 octobre 2026
+
+38 méthodes locales réussies : 15 diffusion, 11 médias, 7 lecteur navigateur, 5 site.
+CI GitHub : les 15 tests diffusion ont aussi réussi sur la branche de revue :
+https://github.com/Velocemercato/velocemercato.fr/actions/runs/39836429806
+
+Les réponses des API sont des réponses de contrôle ; aucun compte connecté n’est utilisé.
+Aucun upload YouTube, direct Twitch ou nouvel extrait Piper connecté n’est déclaré effectué.
+La boucle locale OAuth, le chiffrement et ffmpeg sont exercés réellement.
+
+Diffusion et autorisations
+test_account_setup_enables_only_after_success_and_preserves_encryption_key (__main__.DiffusionTests.test_account_setup_enables_only_after_success_and_preserves_encryption_key) ... ok
+test_ambiguous_twitch_attempt_and_failed_state_persistence_prevent_retries (__main__.DiffusionTests.test_ambiguous_twitch_attempt_and_failed_state_persistence_prevent_retries) ... ok
+test_google_pkce_callback_runs_on_loopback_without_logging_code (__main__.DiffusionTests.test_google_pkce_callback_runs_on_loopback_without_logging_code) ... ok
+test_missing_accounts_and_infrastructure_google_credentials_do_not_activate (__main__.DiffusionTests.test_missing_accounts_and_infrastructure_google_credentials_do_not_activate) ... ok
+test_private_uploads_never_appear_in_public_site_index (__main__.DiffusionTests.test_private_uploads_never_appear_in_public_site_index) ... ok
+test_real_hd_masters_assemble_only_when_fresh_and_authorized (__main__.DiffusionTests.test_real_hd_masters_assemble_only_when_fresh_and_authorized) ... ok
+test_rotated_twitch_refresh_is_saved_and_reconnection_replaces_it (__main__.DiffusionTests.test_rotated_twitch_refresh_is_saved_and_reconnection_replaces_it) ... ok
+test_state_encrypts_tokens_sessions_and_private_ids_and_checks_authentication (__main__.DiffusionTests.test_state_encrypts_tokens_sessions_and_private_ids_and_checks_authentication) ... ok
+test_twitch_preserves_existing_live_and_checks_connected_identity (__main__.DiffusionTests.test_twitch_preserves_existing_live_and_checks_connected_identity) ... ok
+test_twitch_requires_live_confirmation_and_stream_completion_before_success (__main__.DiffusionTests.test_twitch_requires_live_confirmation_and_stream_completion_before_success) ... ok
+test_youtube_does_not_announce_public_before_hd_processing_or_confirmed_visibility (__main__.DiffusionTests.test_youtube_does_not_announce_public_before_hd_processing_or_confirmed_visibility) ... ok
+test_youtube_metadata_discloses_ai_and_uses_measured_chapters (__main__.DiffusionTests.test_youtube_metadata_discloses_ai_and_uses_measured_chapters) ... ok
+test_youtube_never_follows_external_session_or_uploads_wrong_channel (__main__.DiffusionTests.test_youtube_never_follows_external_session_or_uploads_wrong_channel) ... ok
+test_youtube_resumable_upload_handles_308_and_records_final_confirmation (__main__.DiffusionTests.test_youtube_resumable_upload_handles_308_and_records_final_confirmation) ... ok
+test_youtube_resume_recovers_after_lost_response_without_duplicate_bytes (__main__.DiffusionTests.test_youtube_resume_recovers_after_lost_response_without_duplicate_bytes) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 3.260s
+
+OK
+YouTube/Twitch : aucun compte autorisé configuré, aucune diffusion.
+
+Rendu HD/CDN et assemblage
+test_long_programme_preserves_sources_and_real_chapter_times (__main__.PastilleTests.test_long_programme_preserves_sources_and_real_chapter_times) ... ok
+test_long_programme_refuses_missing_fresh_news (__main__.PastilleTests.test_long_programme_refuses_missing_fresh_news) ... ok
+test_matches_must_be_fresh_confirmed_and_on_the_right_day (__main__.PastilleTests.test_matches_must_be_fresh_confirmed_and_on_the_right_day) ... ok
+test_no_accidental_publication_or_oversized_cdn_upload (__main__.PastilleTests.test_no_accidental_publication_or_oversized_cdn_upload) ... ok
+test_optional_hd_master_reuses_audio_and_preserves_both_profiles (__main__.PastilleTests.test_optional_hd_master_reuses_audio_and_preserves_both_profiles) ... Voix : Piper
+ok
+test_paris_schedule_winter_summer_and_clock_change (__main__.PastilleTests.test_paris_schedule_winter_summer_and_clock_change) ... ok
+test_per_episode_links_survive_a_later_media_commit (__main__.PastilleTests.test_per_episode_links_survive_a_later_media_commit) ... ok
+test_piper_failure_does_not_become_an_espeak_publication (__main__.PastilleTests.test_piper_failure_does_not_become_an_espeak_publication) ... ok
+test_real_cdn_profile_remains_playable_and_fits_transport (__main__.PastilleTests.test_real_cdn_profile_remains_playable_and_fits_transport) ... ok
+test_real_render_codec_sync_faststart_audio_and_short_intro (__main__.PastilleTests.test_real_render_codec_sync_faststart_audio_and_short_intro) ... Voix : Piper
+ok
+test_social_metadata_exists_without_javascript_and_is_escaped (__main__.PastilleTests.test_social_metadata_exists_without_javascript_and_is_escaped) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 9.920s
+
+OK
+
+Lecture et liens publics navigateur
+test_gaming_article_link_opens_the_selected_actual_article (__main__.PlayerTests.test_gaming_article_link_opens_the_selected_actual_article) ... ok
+test_legacy_hash_and_lazy_home_video (__main__.PlayerTests.test_legacy_hash_and_lazy_home_video) ... ok
+test_loading_errors_are_visible (__main__.PlayerTests.test_loading_errors_are_visible) ... ok
+test_long_programme_card_shows_only_confirmed_public_links (__main__.PlayerTests.test_long_programme_card_shows_only_confirmed_public_links) ... ok
+test_news_sites_show_their_actual_published_journal (__main__.PlayerTests.test_news_sites_show_their_actual_published_journal) ... ok
+test_selected_episode_speed_share_and_no_reset (__main__.PlayerTests.test_selected_episode_speed_share_and_no_reset) ... ok
+test_static_share_page_without_javascript (__main__.PlayerTests.test_static_share_page_without_javascript) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 17.377s
+
+OK
+
+Site mobile/bureau et navigation
+test_01_domain_assets_and_navigation (__main__.SiteTests.test_01_domain_assets_and_navigation) ... ok
+test_02_mobile_desktop_layout_and_artwork (__main__.SiteTests.test_02_mobile_desktop_layout_and_artwork) ... ok
+test_03_interactions (__main__.SiteTests.test_03_interactions) ... ok
+test_04_service_worker_offline_and_migration (__main__.SiteTests.test_04_service_worker_offline_and_migration) ... ok
+test_05_generators_and_audience_removal (__main__.SiteTests.test_05_generators_and_audience_removal) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 26.595s
+
+OK
+
