@@ -1,34 +1,34 @@
-Passage du 2026-10-22 15:08 UTC (schedule)
+Passage du 2026-10-22 16:01 UTC (schedule)
 
 [notice] A new release of pip is available: 26.2.1 -> 26.2.2
 [notice] To update, run: pip install --upgrade pip
-Nettoyage : 0 breves vides retirees, 327 gardees.
+Nettoyage : 0 breves vides retirees, 329 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 327 articles conservés et 45 flashs existants.
-RSS Foot National / LIGUE_1 : 14 actualités récentes.
+Départ : 329 articles conservés et 45 flashs existants.
 RSS Foot National / LIGUE_2 : 5 actualités récentes.
+RSS Foot National / LIGUE_1 : 14 actualités récentes.
 RSS Foot National / NATIONAL : 6 actualités récentes.
 RSS Foot National / NATIONAL : 0 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 30 actualités récentes.
+RSS RMC Sport / FRANCE : 27 actualités récentes.
 RSS RMC Sport / LIGUE_1 : 9 actualités récentes.
 RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
-RSS RMC Sport / FRANCE : 27 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 30 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 39 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 7 actualités récentes.
-RSS BBC Sport / FEMININ : 1 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 8 actualités récentes.
+RSS Foot Amateur / NATIONAL : 5 actualités récentes.
 RSS RMC Sport / BLEUS : 0 actualités récentes.
 RSS inaccessible RMC Sport : HTTPError - HTTP Error 404: Not Found
+RSS Foot Amateur / NATIONAL : 10 actualités récentes.
+RSS BBC Sport / FEMININ : 1 actualités récentes.
+RSS inaccessible Maxifoot : HTTPError - HTTP Error 404: Not Found
 RSS franceinfo / FRANCE : 11 actualités récentes.
 RSS Foot01 / FRANCE : 42 actualités récentes.
-RSS Foot Amateur / NATIONAL : 10 actualités récentes.
-RSS Foot Amateur / NATIONAL : 5 actualités récentes.
-RSS inaccessible Maxifoot : HTTPError - HTTP Error 404: Not Found
-251 titres collectés, 36 nouveaux liens, quota 2.
-Brève prête : Foot Mercato - Benfica : Gianluca Prestianni rebondit après la polémique avec Vinicius Jr
-Brève prête : Foot Mercato - Ballon d’Or : Lamine Yamal aurait affrété un jet privé et prévu une fête à Paris
+252 titres collectés, 40 nouveaux liens, quota 2.
+Brève prête : RMC Sport - Bruges-Lens : l'UEFA ouvre une procédure après des fumigènes, les Red Tigers réclament des
+Brève prête : Foot Mercato - Laciné Megnan-Pavé, 16 ans, prolonge son contrat à Montpellier jusqu'en 2029
 Bilan : brèves_rédigées=2
-Publié : 2 brèves (total 329). Flash : 45.
-Pages : 329 brèves avec leur propre page, sitemap à jour.
+Publié : 2 brèves (total 331). Flash : 45.
+Pages : 331 brèves avec leur propre page, sitemap à jour.
 Agenda : 75 matchs enregistrés.
 Ligue 1 : 15 vidéos lues, 2 vidéos de buts gardées.
 Ligue 2 : 0 vidéos lues, 0 vidéos de buts gardées.
@@ -40,26 +40,27 @@ Chaîne @ChampionsLeague : introuvable (HTTPError)
 Chaîne @UEFAChampionsLeague : introuvable (HTTPError)
 Ligue des champions : aucune chaîne officielle trouvée, ignorée.
 UEFA : 15 vidéos lues, 5 vidéos de buts gardées.
-Premier League : 15 vidéos lues, 6 vidéos de buts gardées.
+Premier League : 15 vidéos lues, 5 vidéos de buts gardées.
 LaLiga : 15 vidéos lues, 4 vidéos de buts gardées.
 Serie A : 15 vidéos lues, 6 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 0 vidéos de buts gardées.
 Vidéos publiées : 78.
-Flux muet So Foot : HTTPError
 Flux muet RMC Sport : HTTPError
+Flux muet So Foot : HTTPError
 Flux muet Goal : HTTPError
 Flux muet Maxifoot : HTTPError
+Flux muet France 24 : HTTPError
 Flux muet Millenium : HTTPError
-Fil express : actus 200, gaming 120, foot 200
-Flux muet L'Est Républicain (https://www.estrepublicain.fr/edition-belfort/rss) : HTTPError
+Fil express : actus 200, foot 200, gaming 120
 Flux muet France 3 BFC (https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/rss) : ValueError
 Flux muet L'Est Républicain (https://www.estrepublicain.fr/edition-haute-saone/rss) : HTTPError
-L'Est Républicain territoire-de-belfort : 18 titres
-L'Est Républicain haute-saone : 16 titres
-Flux muet ici Belfort-Montbéliard (https://www.francebleu.fr/rss/belfort-montbeliard/infos.xml) : HTTPError
-L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
-Flux muet France 3 BFC (https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/territoire-de-belfort/rss) : ValueError
+Flux muet L'Est Républicain (https://www.estrepublicain.fr/edition-belfort/rss) : HTTPError
+L'Est Républicain haute-saone : 14 titres
 Flux muet France 3 BFC (https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/haute-saone/rss) : ValueError
+L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
+L'Est Républicain territoire-de-belfort : 18 titres
+Flux muet France 3 BFC (https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/territoire-de-belfort/rss) : ValueError
+Flux muet ici Belfort-Montbéliard (https://www.francebleu.fr/rss/belfort-montbeliard/infos.xml) : HTTPError
 macommune.info  : 25 titres
-L'Est Républicain www.estrepublicain.fr : 1 titres
-VM Belfort : 74 titres
+L'Est Républicain www.estrepublicain.fr : 2 titres
+VM Belfort : 72 titres
