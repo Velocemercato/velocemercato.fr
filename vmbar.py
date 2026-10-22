@@ -57,9 +57,6 @@ SHARE_HTML='''<button type="button" class="vmfab" id="vmFab" aria-haspopup="dial
 </div></div>
 <script>
 (function(){var $=function(i){return document.getElementById(i)},f=$('vmFab'),m=$('vmSh'),qr=false;if(!f||!m)return;
-var C='https://countapi.mileshilliard.com/api/v1/hit/',d=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()).replace(/-/g,''),b=Math.floor(Date.now()/300000);
-try{if(!sessionStorage.getItem('vm-vu')){sessionStorage.setItem('vm-vu','1');['vm-stats-visites-total','vm-stats-visites-'+d].forEach(function(k){fetch(C+k,{cache:'no-store'}).catch(function(){})})}}catch(e){}
-['vm-stats-vues-total','vm-stats-vues-'+d,'vm-stats-live-'+b].forEach(function(k){fetch(C+k,{cache:'no-store'}).catch(function(){})});
 function url(){return location.href.split('#')[0]}
 function open(){var u=url(),t=document.title,e=encodeURIComponent;$('vmShU').textContent=t;
  $('vmS-wa').href='https://wa.me/?text='+e(t+' '+u);$('vmS-fb').href='https://www.facebook.com/sharer/sharer.php?u='+e(u);$('vmS-x').href='https://twitter.com/intent/tweet?text='+e(t)+'&url='+e(u);$('vmS-tg').href='https://t.me/share/url?url='+e(u)+'&text='+e(t);$('vmS-sms').href='sms:?&body='+e(t+' '+u);
@@ -95,7 +92,7 @@ window.vmMail=function(su,bo){var to='velocemercato.fr@gmail.com';location.href=
 def bar(active):
     items=[('f','/','⚽ Foot'),('s','/studio.html#tv','📺 Pastille TV'),('g','/vm-gaming/','🎮 Gaming'),('a','/actus/','📰 Actus'),('r','/radio.html','📻 Radio'),('v','/#videos','🎬 Vidéos')]
     links=''.join(f'<a class="{k}{" on" if k==active else ""}" href="{h}"{" aria-current=\"page\"" if k==active else ""}>{t}</a>' for k,h,t in items)
-    return f'<nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/vm/" aria-label="Tous les sites VM">VM <small>TOUS LES SITES</small></a>{links}<a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>'
+    return f'<nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="Tous les sites VM">VM <small>TOUS LES SITES</small></a>{links}<a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>'
 def inject(s,active,app='foot'):
     s=re.sub(r'<style id="vmbar-css">.*?</style>','',s,flags=re.S)
     s=re.sub(r'<nav class="vmbar".*?</div></nav>','',s,flags=re.S)
@@ -111,16 +108,13 @@ def apply(path,active,app='foot'):
     s=inject(open(path,encoding='utf-8').read(),active,app)
     open(path,'w',encoding='utf-8').write(s)
 
-REDIRECT='<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>L\'univers VM</title><link rel="canonical" href="https://velocemercato.fr/vm/"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=/vm/"><script>location.replace("/vm/"+location.hash)</script></head><body><a href="/vm/">L\'univers VM</a></body></html>\n'
 def build_vm():
-    """velocemercato.fr/vm/ : le site VM à part (annuaire de toutes les applis, sans le menu foot)."""
-    s=open('_vm_source.html',encoding='utf-8').read()
-    s=re.sub(r'<nav class="vmbar".*?</div></nav>','',s,flags=re.S)
-    s=s.replace('https://velocemercato.fr/groupe.html','https://velocemercato.fr/vm/')
-    s=s.replace('<title>L\'univers VM – toutes les applis VM</title>','<title>VM – toutes les applis VM</title>')
-    open('vm/index.html','w',encoding='utf-8').write(s)
-    open('groupe.html','w',encoding='utf-8').write(REDIRECT)
+    """Preserve the explicit links to the independent portal; never regenerate a copy."""
+    from pathlib import Path
+    source = Path(__file__).resolve().parent / 'vm/index.html'
+    (source.parent.parent / 'groupe.html').write_text(source.read_text(encoding='utf-8'), encoding='utf-8')
+
 if __name__=='__main__':
-    for p,a,*x in [('index.html','f'),('vm-gaming/index.html','g','gaming'),('actus/index.html','a','actus'),('archives.html','f'),('studio.html','s','tv'),('radio.html','r','tv'),('gaming.html','f','arena'),('soutenir.html',''),('_vm_source.html','','univers'),('shop/index.html','','annonces'),('allolivre/index.html','','allolivre'),('comparateur/index.html','','annonces'),('web-studio.html',''),('boutique/index.html',''),('cv/index.html','','cv'),('menu/index.html','','menu'),('pro/index.html','','pro'),('emploi/index.html','','emploi'),('belfort/index.html',''),('vm-location/index.html','','location'),('pro-auto/index.html',''),('pub/index.html',''),('mentions-legales.html','')]:
+    for p,a,*x in [('index.html','f'),('vm-gaming/index.html','g','gaming'),('actus/index.html','a','actus'),('archives.html','f'),('studio.html','s','tv'),('radio.html','r','tv'),('gaming.html','f','arena'),('soutenir.html',''),('shop/index.html','','annonces'),('allolivre/index.html','','allolivre'),('comparateur/index.html','','annonces'),('web-studio.html',''),('boutique/index.html',''),('cv/index.html','','cv'),('menu/index.html','','menu'),('pro/index.html','','pro'),('emploi/index.html','','emploi'),('belfort/index.html',''),('vm-location/index.html','','location'),('pro-auto/index.html',''),('pub/index.html',''),('mentions-legales.html','')]:
         apply(p,a,*x); print('ok',p)
     build_vm(); print('ok vm/')

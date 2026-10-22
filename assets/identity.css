@@ -1,0 +1,7 @@
+/* Navigation commune à la famille VM, identité football propre à Véloce Mercato. */
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #f4cf55;outline-offset:4px}
+header .logo{min-width:0;transform:none;text-decoration:none;font-size:clamp(1.05rem,4vw,2.1rem);gap:10px}
+.brand-mark{width:44px;height:44px;flex:none;border-radius:12px;object-fit:contain}
+.brand-name{display:flex;flex-wrap:wrap;column-gap:.2em;min-width:0;line-height:1.15;transform:skew(-6deg)}
+footer .logo{font-size:clamp(1.25rem,5.5vw,1.875rem);max-width:100%;flex-wrap:wrap;transform:none;text-decoration:none}
+@media(max-width:359px){.brand-mark{width:36px;height:36px}header .logo{gap:6px}}

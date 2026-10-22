@@ -72,7 +72,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .vmsh-c{display:block;width:100%;margin-top:12px;font:800 1rem system-ui,sans-serif;padding:12px;border-radius:999px;border:2px solid #0b1533;background:#fff;color:#0b1533;cursor:pointer}
 @media print{.vmfab{display:none}}
 </style></head>
-<body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/vm/" aria-label="Tous les sites VM">VM <small>TOUS LES SITES</small></a><a class="f" href="/">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
+<body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="Tous les sites VM">VM <small>TOUS LES SITES</small></a><a class="f" href="/">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
 <header class="hero"><div class="in">
 <span class="pill">Véloce Web Studio · bientôt</span>
 <h1>Votre site <em style="font-style:normal">et votre appli</em>, <span>simples et rapides.</span></h1>
@@ -135,7 +135,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 </div>
 <p style="font-size:.78rem;color:#8d8670;text-align:center;margin-top:24px">Romain Oriez – entrepreneur individuel – SIRET 528 102 916 00012 – TVA non applicable, art. 293 B du CGI · <a href="/mentions-legales.html" style="color:inherit">Mentions légales</a></p>
 </main>
-<footer>Véloce Web Studio · un projet du <a href="/vm/">Groupe VM</a> · velocemercato.fr@gmail.com</footer>
+<footer>Véloce Web Studio · un projet du <a href="https://vmunivers.fr/">Groupe VM</a> · velocemercato.fr@gmail.com</footer>
 <script>
 document.getElementById('devisForm').addEventListener('submit',function(e){e.preventDefault();
 var n=document.getElementById('f-nom').value.trim(),t=document.getElementById('f-type').value,m=document.getElementById('f-msg').value.trim();
@@ -161,9 +161,6 @@ vmMail('Devis site internet – '+n,body);});
 </div></div>
 <script>
 (function(){var $=function(i){return document.getElementById(i)},f=$('vmFab'),m=$('vmSh'),qr=false;if(!f||!m)return;
-var C='https://countapi.mileshilliard.com/api/v1/hit/',d=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()).replace(/-/g,''),b=Math.floor(Date.now()/300000);
-try{if(!sessionStorage.getItem('vm-vu')){sessionStorage.setItem('vm-vu','1');['vm-stats-visites-total','vm-stats-visites-'+d].forEach(function(k){fetch(C+k,{cache:'no-store'}).catch(function(){})})}}catch(e){}
-['vm-stats-vues-total','vm-stats-vues-'+d,'vm-stats-live-'+b].forEach(function(k){fetch(C+k,{cache:'no-store'}).catch(function(){})});
 function url(){return location.href.split('#')[0]}
 function open(){var u=url(),t=document.title,e=encodeURIComponent;$('vmShU').textContent=t;
  $('vmS-wa').href='https://wa.me/?text='+e(t+' '+u);$('vmS-fb').href='https://www.facebook.com/sharer/sharer.php?u='+e(u);$('vmS-x').href='https://twitter.com/intent/tweet?text='+e(t)+'&url='+e(u);$('vmS-tg').href='https://t.me/share/url?url='+e(u)+'&text='+e(t);$('vmS-sms').href='sms:?&body='+e(t+' '+u);

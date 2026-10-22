@@ -50,7 +50,7 @@ h2{color:#f4cf55;font:italic 800 1.35rem Poppins,sans-serif;margin:24px 0 10px}
 .vmsh-qr{display:flex;justify-content:center;margin:14px 0 4px}.vmsh-qr canvas,.vmsh-qr img{border:8px solid #fff;outline:2px solid #0b1533;border-radius:6px}
 .vmsh-c{display:block;width:100%;margin-top:12px;font:800 1rem system-ui,sans-serif;padding:12px;border-radius:999px;border:2px solid #0b1533;background:#fff;color:#0b1533;cursor:pointer}
 @media print{.vmfab{display:none}}
-</style></head><body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/vm/" aria-label="Tous les sites VM">VM <small>TOUS LES SITES</small></a><a class="f" href="/">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
+</style></head><body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="Tous les sites VM">VM <small>TOUS LES SITES</small></a><a class="f" href="/">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
 <header class="hero"><img src="/img/logo-vm-officiel.png" alt="VM" width="96" height="96"><h1>VM AUTO PARTICULIER</h1><p>Mécanique, carrosserie, peinture, contrôle technique, detailing, jantes… Trouve un pro près de chez toi, ou dépose ta demande : les pros te répondent. Gratuit.<br><b>Haute-Saône (70), Territoire de Belfort (90), Doubs (25), Vosges (88).</b></p></header>
 <main>
 <div class="tabs" id="tabs"><button class="on" data-v="pros">🔧 Trouver un pro</button><button data-v="ann">📢 Demandes &amp; services</button></div>
@@ -73,7 +73,7 @@ h2{color:#f4cf55;font:italic 800 1.35rem Poppins,sans-serif;margin:24px 0 10px}
 <button class="btn" type="submit">✉️ Préparer mon e-mail</button>
 </form>
 <div class="rules"><b>Règles :</b> annonces acceptées uniquement en Haute-Saône (70), Territoire de Belfort (90), Doubs (25) et Vosges (88). chaque annonce est vérifiée à la main avant publication. Interdit : annonces sans rapport, prix trompeurs, et toute demande de suppression d'antipollution (FAP, EGR, AdBlue, catalyseur), de compteur trafiqué ou de démarrage sans clé. Une reprogrammation doit rester conforme (homologation, assurance). VM Auto Particulier met en relation : chaque pro reste responsable de ses prestations. Particuliers : demandez toujours un devis écrit.</div>
-<p style="font-size:.8rem;color:#8d8670;text-align:center;margin-top:20px">VM Auto Particulier · Romain Oriez, EI · SIRET 528 102 916 00012 · <a href="/mentions-legales.html" style="color:inherit">Mentions légales</a> · <a href="/vm/" style="color:inherit">L'univers VM</a></p>
+<p style="font-size:.8rem;color:#8d8670;text-align:center;margin-top:20px">VM Auto Particulier · Romain Oriez, EI · SIRET 528 102 916 00012 · <a href="/mentions-legales.html" style="color:inherit">Mentions légales</a> · <a href="https://vmunivers.fr/" style="color:inherit">L'univers VM</a></p>
 </main>
 <script>
 (function(){function $(i){return document.getElementById(i)}
@@ -118,9 +118,6 @@ $('f').onsubmit=function(e){e.preventDefault();var k=$('kind');var b='Annonce VM
 </div></div>
 <script>
 (function(){var $=function(i){return document.getElementById(i)},f=$('vmFab'),m=$('vmSh'),qr=false;if(!f||!m)return;
-var C='https://countapi.mileshilliard.com/api/v1/hit/',d=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()).replace(/-/g,''),b=Math.floor(Date.now()/300000);
-try{if(!sessionStorage.getItem('vm-vu')){sessionStorage.setItem('vm-vu','1');['vm-stats-visites-total','vm-stats-visites-'+d].forEach(function(k){fetch(C+k,{cache:'no-store'}).catch(function(){})})}}catch(e){}
-['vm-stats-vues-total','vm-stats-vues-'+d,'vm-stats-live-'+b].forEach(function(k){fetch(C+k,{cache:'no-store'}).catch(function(){})});
 function url(){return location.href.split('#')[0]}
 function open(){var u=url(),t=document.title,e=encodeURIComponent;$('vmShU').textContent=t;
  $('vmS-wa').href='https://wa.me/?text='+e(t+' '+u);$('vmS-fb').href='https://www.facebook.com/sharer/sharer.php?u='+e(u);$('vmS-x').href='https://twitter.com/intent/tweet?text='+e(t)+'&url='+e(u);$('vmS-tg').href='https://t.me/share/url?url='+e(u)+'&text='+e(t);$('vmS-sms').href='sms:?&body='+e(t+' '+u);
