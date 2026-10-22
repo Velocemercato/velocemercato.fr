@@ -24,18 +24,6 @@
   ]
  },
  {
-  "id": 575367,
-  "date": "2026-10-20T19:00:00Z",
-  "competition": "Ligue des champions",
-  "domicile": "PSG",
-  "exterieur": "Barça",
-  "statut": "FINISHED",
-  "score": [
-   4,
-   2
-  ]
- },
- {
   "id": 575363,
   "date": "2026-10-20T19:00:00Z",
   "competition": "Ligue des champions",
@@ -69,6 +57,18 @@
   "score": [
    5,
    1
+  ]
+ },
+ {
+  "id": 575367,
+  "date": "2026-10-20T19:00:00Z",
+  "competition": "Ligue des champions",
+  "domicile": "PSG",
+  "exterieur": "Barça",
+  "statut": "FINISHED",
+  "score": [
+   4,
+   2
   ]
  },
  {
@@ -180,18 +180,6 @@
   ]
  },
  {
-  "id": 575372,
-  "date": "2026-10-21T19:00:00Z",
-  "competition": "Ligue des champions",
-  "domicile": "Bayern",
-  "exterieur": "Arsenal",
-  "statut": "FINISHED",
-  "score": [
-   2,
-   2
-  ]
- },
- {
   "id": 575374,
   "date": "2026-10-21T19:00:00Z",
   "competition": "Ligue des champions",
@@ -228,6 +216,18 @@
   ]
  },
  {
+  "id": 575372,
+  "date": "2026-10-21T19:00:00Z",
+  "competition": "Ligue des champions",
+  "domicile": "Bayern",
+  "exterieur": "Arsenal",
+  "statut": "FINISHED",
+  "score": [
+   2,
+   2
+  ]
+ },
+ {
   "id": 565833,
   "date": "2026-10-23T18:30:00Z",
   "competition": "Bundesliga",
@@ -240,11 +240,11 @@
   ]
  },
  {
-  "id": 558567,
+  "id": 559654,
   "date": "2026-10-23T18:45:00Z",
-  "competition": "Serie A",
-  "domicile": "Torino",
-  "exterieur": "Monza",
+  "competition": "Ligue 1",
+  "domicile": "Brest",
+  "exterieur": "Nice",
   "statut": "TIMED",
   "score": [
    null,
@@ -252,11 +252,11 @@
   ]
  },
  {
-  "id": 559654,
+  "id": 558567,
   "date": "2026-10-23T18:45:00Z",
-  "competition": "Ligue 1",
-  "domicile": "Brest",
-  "exterieur": "Nice",
+  "competition": "Serie A",
+  "domicile": "Torino",
+  "exterieur": "Monza",
   "statut": "TIMED",
   "score": [
    null,
@@ -564,18 +564,6 @@
   ]
  },
  {
-  "id": 558562,
-  "date": "2026-10-25T14:00:00Z",
-  "competition": "Serie A",
-  "domicile": "Atalanta",
-  "exterieur": "Frosinone",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
   "id": 558568,
   "date": "2026-10-25T14:00:00Z",
   "competition": "Serie A",
@@ -617,6 +605,18 @@
   "competition": "Premier League",
   "domicile": "Man United",
   "exterieur": "Bournemouth",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
+  "id": 558562,
+  "date": "2026-10-25T14:00:00Z",
+  "competition": "Serie A",
+  "domicile": "Atalanta",
+  "exterieur": "Frosinone",
   "statut": "TIMED",
   "score": [
    null,
