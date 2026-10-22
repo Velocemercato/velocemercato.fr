@@ -162,6 +162,7 @@ def main():
              f'  <url><loc>{SITE}/soutenir.html</loc></url>',
              f'  <url><loc>{SITE}/archives.html</loc></url>',
              f'  <url><loc>{SITE}/studio.html</loc></url>',
+             f'  <url><loc>{SITE}/decouvrir.html</loc></url>',
              f'  <url><loc>{SITE}/radio.html</loc></url>',
              f'  <url><loc>{SITE}/shop/</loc></url>',
              f'  <url><loc>{SITE}/allolivre/</loc></url>',
