@@ -81,11 +81,9 @@ img.flyer{display:block;width:100%;max-width:900px;margin:12px auto;border-radiu
 <p class="lead" style="margin-top:16px">📍 Uniquement à Champagney (70) et alentours : Ronchamp, Lure, Héricourt, Belfort, Montbéliard.</p><div class="atouts"><div><b>🔒 Sécurisé</b>Accès sécurisé</div><div><b>🚐 Accessible</b>Véhicules utilitaires</div><div><b>✨ Propre</b>Locaux entretenus</div><div><b>📐 Flexible</b>Plusieurs tailles</div><div><b>📍 Champagney</b>Haute-Saône (70)</div></div>
 
 <h2>VM Détailing</h2>
-<p class="lead">Notre propre atelier : préparation esthétique, rénovation et jantes. Le soin du détail pour votre auto ou votre moto.</p>
-<div class="cards">
-<article class="card"><div class="pic" style="background-image:url(img/hero.webp);background-position:62% 60%"></div><div class="in"><span class="tag or">VM DÉTAILING</span><h3>Rénovation de jantes</h3><p>Réparation, polissage, peinture de jantes.</p><div class="price">Prix sur devis gratuit</div></div></article>
-<article class="card"><div class="pic" style="background-image:url(img/hero.webp);background-position:12% 60%"></div><div class="in"><span class="tag or">VM DÉTAILING</span><h3>Préparation &amp; detailing</h3><p>Nettoyage intérieur / extérieur en profondeur, rénovation esthétique, protection.</p><div class="price">Prix sur devis gratuit</div></div></article>
-</div>
+<p class="lead">Notre propre atelier : rénovation de jantes, préparation esthétique, protection. Le soin du détail pour votre auto ou votre moto.</p>
+<div class="cards" style="grid-template-columns:repeat(auto-fill,minmax(160px,1fr))"><article class="card"><div class="pic" style="background-image:url(img/svc-wheel.webp);aspect-ratio:1"></div><div class="in"><div class="price">Rénovation de jantes · prix sur devis</div></div></article><article class="card"><div class="pic" style="background-image:url(img/svc-polish.webp);aspect-ratio:1"></div><div class="in"><div class="price">Polissage carrosserie · prix sur devis</div></div></article><article class="card"><div class="pic" style="background-image:url(img/svc-interior.webp);aspect-ratio:1"></div><div class="in"><div class="price">Nettoyage intérieur · prix sur devis</div></div></article><article class="card"><div class="pic" style="background-image:url(img/svc-ceramic.webp);aspect-ratio:1"></div><div class="in"><div class="price">Protection céramique · prix sur devis</div></div></article><article class="card"><div class="pic" style="background-image:url(img/svc-moto.webp);aspect-ratio:1"></div><div class="in"><div class="price">Lavage moto · prix sur devis</div></div></article><article class="card"><div class="pic" style="background-image:url(img/svc-paint.webp);aspect-ratio:1"></div><div class="in"><div class="price">Jantes peintes · prix sur devis</div></div></article></div>
+<p class="note" style="margin-top:6px">Illustrations : les photos de nos vraies réalisations arrivent bientôt.</p>
 
 <h2>Locaux pour pros de l'auto</h2>
 <p class="lead">4 locaux équipés de grandes portes, pensés pour des professionnels de l'automobile. On recherche nos futurs partenaires : installez votre activité chez nous.</p>
@@ -103,7 +101,7 @@ img.flyer{display:block;width:100%;max-width:900px;margin:12px auto;border-radiu
 <article class="card"><div class="pic" style="background-image:url(img/facade-fermee.webp)"></div><div class="in"><span class="tag ok">6 CELLULES</span><h3>Cellule standard · 72 m²</h3><p>6 m × 12 m · grande porte · accès utilitaire.</p><div class="price">Loyer mensuel sur demande</div></div></article>
 <article class="card"><div class="pic" style="background-image:url(img/facade-ouverte.webp)"></div><div class="in"><span class="tag ok">2 CELLULES</span><h3>Grande cellule · 108 m²</h3><p>6 m × 18 m · idéale atelier ou gros volumes.</p><div class="price">Loyer mensuel sur demande</div></div></article>
 </div>
-<div class="plan" aria-label="Plan indicatif des cellules"><div><b>1</b>72 m²</div><div><b>2</b>72 m²</div><div><b>3</b>72 m²</div><div><b>4</b>72 m²</div><div class="big"><b>A</b>108 m²</div><div class="big"><b>B</b>108 m²</div><div><b>5</b>72 m²</div><div><b>6</b>72 m²</div></div>
+<img class="flyer" src="img/plan.webp" alt="Plan indicatif : 6 cellules de 72 m² (6 × 12 m) et 2 cellules de 108 m² (6 × 18 m)" loading="lazy" style="max-width:640px">
 <p class="note" style="margin-top:4px">Plan indicatif, non contractuel.</p>
 
 <h2 id="contact">Contact &amp; devis gratuit</h2>
@@ -138,7 +136,7 @@ img.flyer{display:block;width:100%;max-width:900px;margin:12px auto;border-radiu
 </div></div>
 <script>
 (function(){var $=function(i){return document.getElementById(i)},f=$('vmFab'),m=$('vmSh'),qr=false;if(!f||!m)return;
-function url(){return location.href.split('#')[0]}
+function url(){return window.vmShareURL?window.vmShareURL():(/^#a=/.test(location.hash)?location.href:location.href.split('#')[0])}
 function open(){var u=url(),t=document.title,e=encodeURIComponent;$('vmShU').textContent=t;
  $('vmS-wa').href='https://wa.me/?text='+e(t+' '+u);$('vmS-fb').href='https://www.facebook.com/sharer/sharer.php?u='+e(u);$('vmS-x').href='https://twitter.com/intent/tweet?text='+e(t)+'&url='+e(u);$('vmS-tg').href='https://t.me/share/url?url='+e(u)+'&text='+e(t);$('vmS-sms').href='sms:?&body='+e(t+' '+u);
  $('vmS-more').hidden=!navigator.share;
@@ -151,7 +149,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=tru
 if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
 var ib=$('vmInst'),dp=null,standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone,ios=/iphone|ipad|ipod/i.test(navigator.userAgent),andr=/android/i.test(navigator.userAgent);
 var mf=(($('vmapp-m')||{}).getAttribute&&$('vmapp-m').getAttribute('href'))||'',app=(mf.match(/app[/]([a-z]+)[.]webmanifest/)||[,'foot'])[1];
-var NOMS={location:'VM Détailing',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'l’appli VM',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'VM TV',annonces:'VM Annonces',allolivre:'AlloLivre'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
+var NOMS={autopart:'VM Auto Particulier',location:'VM Détailing',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'l’appli VM',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'VM TV',annonces:'VM Annonces',allolivre:'AlloLivre'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
 ib.textContent='📲 Installer '+nom;
 function show(){if(!no)ib.classList.add('show')}
 if(!standalone){addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;show()});if(ios)show();}
