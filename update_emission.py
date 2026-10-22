@@ -228,6 +228,10 @@ def make(univers, fmt, moment):
              'titre': script['titre'], 'accroche': script['accroche'], 'duree': round(total),
              'date': now.isoformat(timespec='minutes'), 'publie': auto, 'voix': engines, 'speech_rate': D.media.speech_rate()}
     entry['fichier'] = out.name
+    if os.getenv('VM_KEEP_HD_MASTER') == '1':
+        master = ROOT / 'studio/tmp/masters' / out.with_suffix('.json').name
+        master.parent.mkdir(parents=True, exist_ok=True)
+        master.write_text(json.dumps(entry, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
     if auto:
         entry['media_sha'] = publish(out, out.with_suffix('.jpg'), out.with_suffix('.m4a'))
         poster = ROOT / 'studio/episodes/posters' / out.with_suffix('.jpg').name

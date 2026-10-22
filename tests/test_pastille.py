@@ -115,6 +115,23 @@ class PastilleTests(unittest.TestCase):
             from PIL import Image
             with Image.open(output.with_suffix('.jpg')) as image:self.assertEqual(image.size,(1280,720))
 
+    def test_optional_hd_master_reuses_audio_and_preserves_both_profiles(self):
+        def tone(text,perso,out,use_piper):
+            with wave.open(str(out),'wb') as wav:
+                wav.setnchannels(1);wav.setsampwidth(2);wav.setframerate(48000);wav.writeframes(struct.pack('<h',300)*48000)
+            return 'test-audio'
+        script={'titre':'Contrôle des deux profils','repliques':[('PRESENTATEUR','Contrôle technique des originaux du programme.')]}
+        encode=media.encode_hd_master
+        with tempfile.TemporaryDirectory() as folder,patch.dict(os.environ,{'VM_VIDEO_PROFILE':'cdn','VM_KEEP_HD_MASTER':'1'}),patch.object(debate,'piper_ready',return_value=True),patch.object(debate,'speak',side_effect=tone) as speak:
+            master=Path(folder)/'hd.mp4'
+            with patch.object(media,'encode_hd_master',side_effect=lambda frames,output,total,music:encode(frames,master,total,music)):
+                light=Path(folder)/'cdn.mp4';debate.build_video(script,light)
+            self.assertEqual(speak.call_count,1)
+            frame_rate=lambda file:next(row for row in media.probe(file)['streams'] if row['codec_type']=='video')['avg_frame_rate']
+            self.assertEqual(frame_rate(light),'12/1')
+            self.assertEqual(frame_rate(master),'24/1')
+            subprocess.run(['ffmpeg','-v','error','-i',str(master),'-f','null','-'],check=True)
+
     def test_real_cdn_profile_remains_playable_and_fits_transport(self):
         from PIL import Image
         with tempfile.TemporaryDirectory() as folder,patch.dict(os.environ,{'VM_VIDEO_PROFILE':'cdn'}):

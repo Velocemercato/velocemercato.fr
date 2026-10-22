@@ -59,6 +59,28 @@ jobs:
         run: |
           PLAN=$(python pastille_schedule.py "$CRON")
           echo "plan=$PLAN" >> "$GITHUB_OUTPUT"
+      - name: Vérifier la connexion des plateformes longues
+        id: diffusion
+        if: github.event_name == 'workflow_dispatch' || steps.plan.outputs.plan != ''
+        env:
+          VM_AUTO_YOUTUBE: ${{ vars.VM_AUTO_YOUTUBE }}
+          VM_AUTO_TWITCH: ${{ vars.VM_AUTO_TWITCH }}
+          VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          YOUTUBE_CHANNEL_ID: ${{ secrets.YOUTUBE_CHANNEL_ID }}
+          TWITCH_CLIENT_ID: ${{ secrets.TWITCH_CLIENT_ID }}
+          TWITCH_CLIENT_SECRET: ${{ secrets.TWITCH_CLIENT_SECRET }}
+          TWITCH_REFRESH_TOKEN: ${{ secrets.TWITCH_REFRESH_TOKEN }}
+          TWITCH_BROADCASTER_ID: ${{ secrets.TWITCH_BROADCASTER_ID }}
+        run: |
+          python tools/diffuser_jt.py --check > "$RUNNER_TEMP/diffusion-check.json"
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, os
+          data = json.load(open(os.environ['RUNNER_TEMP'] + '/diffusion-check.json'))
+          print('ready=' + ('1' if data['ready'] else '0'))
+          PY
       - name: Installer les outils sans repli vocal silencieux
         if: github.event_name == 'workflow_dispatch' || steps.plan.outputs.plan != ''
         run: |
@@ -80,6 +102,7 @@ jobs:
           VM_PUBLISH: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.publish) && '1' || '0' }}
           VM_SPEECH_RATE: '1.12'
           VM_VIDEO_PROFILE: ${{ inputs.qualite || 'auto' }}
+          VM_KEEP_HD_MASTER: ${{ steps.diffusion.outputs.ready || '0' }}
           PLAN: ${{ steps.plan.outputs.plan }}
           UNIVERS: ${{ inputs.univers }}
           FORMAT: ${{ inputs.format }}
@@ -97,12 +120,40 @@ jobs:
           else
             python update_emission.py plan "$PLAN" 2>&1 | tee studio/emission-log.txt
           fi
+      - name: Autoriser uniquement les programmes complets de production
+        if: success() && steps.diffusion.outputs.ready == '1' && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.publish) && (steps.plan.outputs.plan == 'matin' || steps.plan.outputs.plan == 'midi' || steps.plan.outputs.plan == 'soir' || (inputs.univers == 'tous' && inputs.format == 'edition'))
+        env:
+          PLAN: ${{ steps.plan.outputs.plan || inputs.moment }}
+        run: |
+          python - <<'PY'
+          import datetime as dt, json, os
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+          now = dt.datetime.now(dt.timezone.utc)
+          folder = Path('studio/tmp/masters')
+          if len(list(folder.glob('*.mp4'))) != 3:
+              raise SystemExit('Trois originaux HD frais sont nécessaires ; aucun ancien JT réutilisé.')
+          (folder / '_autorisation.json').write_text(json.dumps({
+              'publish': True, 'created': now.isoformat(), 'date': now.astimezone(ZoneInfo('Europe/Paris')).date().isoformat(),
+              'moment': os.environ['PLAN'], 'run_id': os.environ['GITHUB_RUN_ID']}))
+          PY
+      - name: Transmettre les originaux HD à la diffusion autorisée
+        if: success() && hashFiles('studio/tmp/masters/_autorisation.json') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: pastille-masters
+          path: |
+            studio/tmp/masters/*.mp4
+            studio/tmp/masters/*.json
+          retention-days: 2
       - name: Conserver les aperçus sans publication
         if: always() && github.event_name == 'workflow_dispatch' && (!inputs.publish || github.ref != 'refs/heads/main')
         uses: actions/upload-artifact@v4
         with:
           name: pastille-apercus
-          path: studio/tmp/*
+          path: |
+            studio/tmp/*
+            !studio/tmp/masters/
           if-no-files-found: warn
       - name: Enregistrer les émissions validées
         if: always() && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.publish) && (github.event_name == 'workflow_dispatch' || steps.plan.outputs.plan != '')

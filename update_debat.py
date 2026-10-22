@@ -401,6 +401,8 @@ def build_video(script, out_mp4):
         f.write(f"file '{segs[-1][0]}'\n")
     total = sum(d_ for _, d_, _ in segs)
     media.encode_video(tmp, out_mp4, total, ASSETS / 'beat.m4a')
+    if os.getenv('VM_KEEP_HD_MASTER') == '1':
+        media.encode_hd_master(tmp, ROOT / 'studio/tmp/masters' / out_mp4.name, total, ASSETS / 'beat.m4a')
     first_perso, first_text = script['repliques'][0]
     poster = frame(bg, first_perso, chunks(first_text)[0], script['titre'], order)
     poster.save(out_mp4.with_suffix('.jpg'), quality=92, optimize=True, progressive=True)

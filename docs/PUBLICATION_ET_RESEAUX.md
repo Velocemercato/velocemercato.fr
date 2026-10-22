@@ -55,3 +55,6 @@ Le message complet à transmettre à ChatGPT est dans `docs/MESSAGE_POUR_CHATGPT
 - Les deux domaines publics retournent toujours un refus du proxy depuis cette machine. La réussite de GitHub Pages est vérifiée sur ses pages de déploiement ; une navigation directe sur les domaines après déploiement reste à vérifier hors de ce proxy.
 
 Le calendrier est installé ; ses prochains passages dépendront du service GitHub Actions et des contenus frais disponibles. Aucun journal HD long n’a été envoyé sur YouTube ni diffusé sur Twitch.
+
+
+Mise à jour du raccordement YouTube/Twitch : les outils OAuth, upload avec reprise, diffusion et workflows sont maintenant implémentés sur `codex/youtube-twitch-auto`. Ils restent inactifs tant que les comptes n’ont pas été autorisés. Le guide de connexion et les limites précises se trouvent dans `docs/YOUTUBE_TWITCH_CONNEXION.md`. Cette étape ne constitue pas encore une preuve d’upload ou de direct connecté.
