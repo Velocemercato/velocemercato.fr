@@ -24,18 +24,6 @@
   ]
  },
  {
-  "id": 575363,
-  "date": "2026-10-20T19:00:00Z",
-  "competition": "Ligue des champions",
-  "domicile": "Liverpool",
-  "exterieur": "Villarreal",
-  "statut": "FINISHED",
-  "score": [
-   4,
-   3
-  ]
- },
- {
   "id": 575365,
   "date": "2026-10-20T19:00:00Z",
   "competition": "Ligue des champions",
@@ -69,6 +57,18 @@
   "score": [
    4,
    2
+  ]
+ },
+ {
+  "id": 575363,
+  "date": "2026-10-20T19:00:00Z",
+  "competition": "Ligue des champions",
+  "domicile": "Liverpool",
+  "exterieur": "Villarreal",
+  "statut": "FINISHED",
+  "score": [
+   4,
+   3
   ]
  },
  {
@@ -144,18 +144,6 @@
   ]
  },
  {
-  "id": 575373,
-  "date": "2026-10-21T19:00:00Z",
-  "competition": "Ligue des champions",
-  "domicile": "Club Brugge",
-  "exterieur": "RC Lens",
-  "statut": "FINISHED",
-  "score": [
-   3,
-   0
-  ]
- },
- {
   "id": 575375,
   "date": "2026-10-21T19:00:00Z",
   "competition": "Ligue des champions",
@@ -176,6 +164,18 @@
   "statut": "FINISHED",
   "score": [
    1,
+   0
+  ]
+ },
+ {
+  "id": 575373,
+  "date": "2026-10-21T19:00:00Z",
+  "competition": "Ligue des champions",
+  "domicile": "Club Brugge",
+  "exterieur": "RC Lens",
+  "statut": "FINISHED",
+  "score": [
+   3,
    0
   ]
  },
@@ -396,11 +396,11 @@
   ]
  },
  {
-  "id": 560618,
+  "id": 560616,
   "date": "2026-10-24T14:00:00Z",
   "competition": "Premier League",
-  "domicile": "Coventry City",
-  "exterieur": "Fulham",
+  "domicile": "Arsenal",
+  "exterieur": "Everton",
   "statut": "TIMED",
   "score": [
    null,
@@ -408,11 +408,11 @@
   ]
  },
  {
-  "id": 560616,
+  "id": 560618,
   "date": "2026-10-24T14:00:00Z",
   "competition": "Premier League",
-  "domicile": "Arsenal",
-  "exterieur": "Everton",
+  "domicile": "Coventry City",
+  "exterieur": "Fulham",
   "statut": "TIMED",
   "score": [
    null,
@@ -564,30 +564,6 @@
   ]
  },
  {
-  "id": 558568,
-  "date": "2026-10-25T14:00:00Z",
-  "competition": "Serie A",
-  "domicile": "Genoa",
-  "exterieur": "Venezia FC",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
-  "id": 560613,
-  "date": "2026-10-25T14:00:00Z",
-  "competition": "Premier League",
-  "domicile": "Crystal Palace",
-  "exterieur": "Newcastle",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
   "id": 560619,
   "date": "2026-10-25T14:00:00Z",
   "competition": "Premier League",
@@ -617,6 +593,30 @@
   "competition": "Serie A",
   "domicile": "Atalanta",
   "exterieur": "Frosinone",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
+  "id": 558568,
+  "date": "2026-10-25T14:00:00Z",
+  "competition": "Serie A",
+  "domicile": "Genoa",
+  "exterieur": "Venezia FC",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
+  "id": 560613,
+  "date": "2026-10-25T14:00:00Z",
+  "competition": "Premier League",
+  "domicile": "Crystal Palace",
+  "exterieur": "Newcastle",
   "statut": "TIMED",
   "score": [
    null,
@@ -660,30 +660,6 @@
   ]
  },
  {
-  "id": 559653,
-  "date": "2026-10-25T16:15:00Z",
-  "competition": "Ligue 1",
-  "domicile": "Angers SCO",
-  "exterieur": "Lorient",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
-  "id": 559649,
-  "date": "2026-10-25T16:15:00Z",
-  "competition": "Ligue 1",
-  "domicile": "Marseille",
-  "exterieur": "Le Havre",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
   "id": 559655,
   "date": "2026-10-25T16:15:00Z",
   "competition": "Ligue 1",
@@ -701,6 +677,30 @@
   "competition": "Ligue 1",
   "domicile": "Stade Rennais",
   "exterieur": "Strasbourg",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
+  "id": 559653,
+  "date": "2026-10-25T16:15:00Z",
+  "competition": "Ligue 1",
+  "domicile": "Angers SCO",
+  "exterieur": "Lorient",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
+  "id": 559649,
+  "date": "2026-10-25T16:15:00Z",
+  "competition": "Ligue 1",
+  "domicile": "Marseille",
+  "exterieur": "Le Havre",
   "statut": "TIMED",
   "score": [
    null,
@@ -876,11 +876,11 @@
   ]
  },
  {
-  "id": 558554,
+  "id": 558552,
   "date": "2026-10-28T19:45:00Z",
   "competition": "Serie A",
-  "domicile": "Monza",
-  "exterieur": "Napoli",
+  "domicile": "Genoa",
+  "exterieur": "Juventus",
   "statut": "TIMED",
   "score": [
    null,
@@ -888,11 +888,11 @@
   ]
  },
  {
-  "id": 558552,
+  "id": 558554,
   "date": "2026-10-28T19:45:00Z",
   "competition": "Serie A",
-  "domicile": "Genoa",
-  "exterieur": "Juventus",
+  "domicile": "Monza",
+  "exterieur": "Napoli",
   "statut": "TIMED",
   "score": [
    null,

@@ -89,7 +89,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 3
 <div class="react"><b>💬 Et toi, t'en penses quoi ?</b><p>Viens en parler avec la communauté sur notre Discord.</p><a class="btn red" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener">Commenter sur Discord ↗</a></div>
 </div>
 </article>
-<h2>À lire aussi</h2><div class="rel"><a href="/a/rss-v2-107873bd0c80475304cb00.html"><small>Ligue 1</small>Ligue 1 : les arbitres désignés pour la 8e journée</a><a href="/a/rss-v2-ed68497ab85c9b3b59fc55.html"><small>Ligue 1</small>Rongier revient sur ses années à l&#x27;OM, entre blessure et doutes mentaux</a><a href="/a/rss-v2-c30a2c513212843c458ef7.html"><small>Ligue 1</small>Di Meco défend le centre de formation de l&#x27;OM, Genesio lance des jeunes</a><a href="/a/rss-v2-80232fa796044a7d747864.html"><small>Ligue 1</small>PSG-OL pourrait être décalé d&#x27;un jour à cause de la NFL et des manifestations</a></div>
+<h2>À lire aussi</h2><div class="rel"><a href="/a/rss-v2-931da864032844ccafe44d.html"><small>Ligue 1</small>PSG-OL : la LFP refuse pour l&#x27;instant de reporter le match</a><a href="/a/rss-v2-107873bd0c80475304cb00.html"><small>Ligue 1</small>Ligue 1 : les arbitres désignés pour la 8e journée</a><a href="/a/rss-v2-ed68497ab85c9b3b59fc55.html"><small>Ligue 1</small>Rongier revient sur ses années à l&#x27;OM, entre blessure et doutes mentaux</a><a href="/a/rss-v2-c30a2c513212843c458ef7.html"><small>Ligue 1</small>Di Meco défend le centre de formation de l&#x27;OM, Genesio lance des jeunes</a></div>
 <div class="tools"><a class="btn red" href="/#videos">🎬 Les vidéos de buts</a><a class="btn" href="/">← Toutes les brèves</a></div>
 </main>
 <footer><a href="/mentions-legales.html">Mentions légales</a> · <a href="/archives.html">Archives</a></footer>
@@ -116,7 +116,7 @@ document.getElementById('share').onclick=function(){var d={title:document.title,
 </div></div>
 <script>
 (function(){var $=function(i){return document.getElementById(i)},f=$('vmFab'),m=$('vmSh'),qr=false;if(!f||!m)return;
-function url(){return location.href.split('#')[0]}
+function url(){return window.vmShareURL?window.vmShareURL():(/^#a=/.test(location.hash)?location.href:location.href.split('#')[0])}
 function open(){var u=url(),t=document.title,e=encodeURIComponent;$('vmShU').textContent=t;
  $('vmS-wa').href='https://wa.me/?text='+e(t+' '+u);$('vmS-fb').href='https://www.facebook.com/sharer/sharer.php?u='+e(u);$('vmS-x').href='https://twitter.com/intent/tweet?text='+e(t)+'&url='+e(u);$('vmS-tg').href='https://t.me/share/url?url='+e(u)+'&text='+e(t);$('vmS-sms').href='sms:?&body='+e(t+' '+u);
  $('vmS-more').hidden=!navigator.share;

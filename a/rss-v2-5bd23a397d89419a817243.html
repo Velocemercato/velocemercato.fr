@@ -73,7 +73,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 3
 .vmsh-c{display:block;width:100%;margin-top:12px;font:800 1rem system-ui,sans-serif;padding:12px;border-radius:999px;border:2px solid #0b1533;background:#fff;color:#0b1533;cursor:pointer}
 @media print{.vmfab{display:none}}
 </style></head>
-<body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="/vm/" aria-label="Tous les sites VM">VM <small>TOUS LES SITES</small></a><a class="f on" href="/" aria-current="page">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
+<body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="Tous les sites VM">VM <small>TOUS LES SITES</small></a><a class="f on" href="/" aria-current="page">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
 <header><a class="logo" href="/">VÉLOCE <b>MERCATO</b></a><nav><a href="/">Brèves</a><a href="/#videos">Vidéos</a><a href="/archives.html">Rechercher</a><a class="don" href="/soutenir.html">💛 Soutenir</a></nav></header>
 <main>
 <article>
@@ -89,7 +89,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 3
 <div class="react"><b>💬 Et toi, t'en penses quoi ?</b><p>Viens en parler avec la communauté sur notre Discord.</p><a class="btn red" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener">Commenter sur Discord ↗</a></div>
 </div>
 </article>
-<h2>À lire aussi</h2><div class="rel"><a href="/a/rss-v2-cdb1b951afcaef033aa380.html"><small>Coupes d&#x27;Europe</small>Juventus-Rennes : les Bretons menés dès la 5e minute avant d&#x27;égaliser</a><a href="/a/rss-v2-f2050dd4b9195a8b41127b.html"><small>Coupes d&#x27;Europe</small>Bruges-Lens : l&#x27;UEFA ouvre une procédure après des fumigènes, les Red Tigers réclament des sanctions individuelles</a><a href="/a/rss-v2-9c76f7785ffdb9e8372d00.html"><small>Coupes d&#x27;Europe</small>Benfica : Gianluca Prestianni rebondit après la polémique avec Vinicius Jr</a><a href="/a/rss-v2-15a6470230110b9dd0d421.html"><small>Coupes d&#x27;Europe</small>Todibo pourrait quitter le RC Lens, la rumeur gagne du terrain</a></div>
+<h2>À lire aussi</h2><div class="rel"><a href="/a/rss-v2-37fc06ca92ae30117f5ee2.html"><small>Coupes d&#x27;Europe</small>Lille : Rothen critique sévèrement Olivier Létang après la défaite face à Galatasaray</a><a href="/a/rss-v2-cdb1b951afcaef033aa380.html"><small>Coupes d&#x27;Europe</small>Juventus-Rennes : les Bretons menés dès la 5e minute avant d&#x27;égaliser</a><a href="/a/rss-v2-f2050dd4b9195a8b41127b.html"><small>Coupes d&#x27;Europe</small>Bruges-Lens : l&#x27;UEFA ouvre une procédure après des fumigènes, les Red Tigers réclament des sanctions individuelles</a><a href="/a/rss-v2-9c76f7785ffdb9e8372d00.html"><small>Coupes d&#x27;Europe</small>Benfica : Gianluca Prestianni rebondit après la polémique avec Vinicius Jr</a></div>
 <div class="tools"><a class="btn red" href="/#videos">🎬 Les vidéos de buts</a><a class="btn" href="/">← Toutes les brèves</a></div>
 </main>
 <footer><a href="/mentions-legales.html">Mentions légales</a> · <a href="/archives.html">Archives</a></footer>
@@ -116,7 +116,7 @@ document.getElementById('share').onclick=function(){var d={title:document.title,
 </div></div>
 <script>
 (function(){var $=function(i){return document.getElementById(i)},f=$('vmFab'),m=$('vmSh'),qr=false;if(!f||!m)return;
-function url(){return location.href.split('#')[0]}
+function url(){return window.vmShareURL?window.vmShareURL():(/^#a=/.test(location.hash)?location.href:location.href.split('#')[0])}
 function open(){var u=url(),t=document.title,e=encodeURIComponent;$('vmShU').textContent=t;
  $('vmS-wa').href='https://wa.me/?text='+e(t+' '+u);$('vmS-fb').href='https://www.facebook.com/sharer/sharer.php?u='+e(u);$('vmS-x').href='https://twitter.com/intent/tweet?text='+e(t)+'&url='+e(u);$('vmS-tg').href='https://t.me/share/url?url='+e(u)+'&text='+e(t);$('vmS-sms').href='sms:?&body='+e(t+' '+u);
  $('vmS-more').hidden=!navigator.share;
