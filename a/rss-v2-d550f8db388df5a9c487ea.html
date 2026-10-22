@@ -93,7 +93,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 3
 <div class="react"><b>💬 Et toi, t'en penses quoi ?</b><p>Viens en parler avec la communauté sur notre Discord.</p><a class="btn red" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener">Commenter sur Discord ↗</a></div>
 </div>
 </article>
-<h2>À lire aussi</h2><div class="rel"><a href="/a/rss-v2-3a8724219aca09dcaeb35b.html"><small>Coupes d&#x27;Europe</small>Celtic battu par Celta Vigo en Ligue Europa, toujours à la 35e place</a><a href="/a/rss-v2-87bcc491020dab66b00adc.html"><small>Coupes d&#x27;Europe</small>Hoffenheim-OL : nouvelles rassurantes pour Kango après sa lourde chute</a><a href="/a/rss-v2-83d8a62b877516c90f76a6.html"><small>Coupes d&#x27;Europe</small>OL : Clinton Mata reconnaît des erreurs après la défaite à Hoffenheim</a><a href="/a/rss-v2-d5d185391e378b61a3ff28.html"><small>Coupes d&#x27;Europe</small>Lyon battu sans briller par Hoffenheim en Ligue Europa (0-3)</a></div>
+<h2>À lire aussi</h2><div class="rel"><a href="/a/rss-v2-3a8724219aca09dcaeb35b.html"><small>Coupes d&#x27;Europe</small>Celtic battu par Celta Vigo en Ligue Europa, toujours à la 35e place</a><a href="/a/rss-v2-87bcc491020dab66b00adc.html"><small>Coupes d&#x27;Europe</small>Hoffenheim-OL : nouvelles rassurantes pour Kango après sa lourde chute</a><a href="/a/rss-v2-eb803a7188e5444378c18d.html"><small>Coupes d&#x27;Europe</small>Hoffenheim-OL : Lyon battu 3-0, Fonseca assume ses choix avant le PSG</a><a href="/a/rss-v2-83d8a62b877516c90f76a6.html"><small>Coupes d&#x27;Europe</small>OL : Clinton Mata reconnaît des erreurs après la défaite à Hoffenheim</a></div>
 <div class="tools"><a class="btn red" href="/#videos">🎬 Les vidéos de buts</a><a class="btn" href="/">← Toutes les brèves</a></div>
 </main>
 <footer><a href="/mentions-legales.html">Mentions légales</a> · <a href="/archives.html">Archives</a></footer>
@@ -133,7 +133,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=tru
 if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
 var ib=$('vmInst'),dp=null,standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone,ios=/iphone|ipad|ipod/i.test(navigator.userAgent),andr=/android/i.test(navigator.userAgent);
 var mf=(($('vmapp-m')||{}).getAttribute&&$('vmapp-m').getAttribute('href'))||'',app=(mf.match(/app[/]([a-z]+)[.]webmanifest/)||[,'foot'])[1];
-var NOMS={location:'VM Détailing',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'l’appli VM',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'VM TV',annonces:'VM Annonces',allolivre:'AlloLivre'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
+var NOMS={autopart:'VM Auto Particulier',location:'VM Détailing',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'l’appli VM',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'VM TV',annonces:'VM Annonces',allolivre:'AlloLivre'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
 ib.textContent='📲 Installer '+nom;
 function show(){if(!no)ib.classList.add('show')}
 if(!standalone){addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;show()});if(ios)show();}
