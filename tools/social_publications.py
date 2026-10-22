@@ -25,6 +25,15 @@ WEBHOOK = re.compile(r'https://discord\.com/api/webhooks/[0-9]+/[A-Za-z0-9_.-]+'
 IDENT = re.compile(r'[a-z0-9][a-z0-9-]{1,99}')
 
 
+def discord_access():
+    configured = os.getenv('DISCORD_WEBHOOK', '').strip()
+    if configured:
+        return configured
+    # Réutiliser le salon déjà configuré dans le robot de scores, sans recopier son accès.
+    import update_scores
+    return update_scores.WEBHOOK.strip()
+
+
 def read(path, default):
     return json.loads(Path(path).read_text(encoding='utf-8')) if Path(path).is_file() else default
 
@@ -207,7 +216,7 @@ def main():
         return
     if os.getenv('GITHUB_ACTIONS') != 'true' or os.getenv('GITHUB_REF') != 'refs/heads/main' or not args.state:
         raise RuntimeError('Envoi disponible uniquement sur main, avec un état persistant.')
-    webhook = os.getenv('DISCORD_WEBHOOK', '').strip()
+    webhook = discord_access()
     if not webhook:
         print('DISCORD_WEBHOOK non disponible dans ce workflow : exports prêts, aucune publication sociale effectuée.')
         (args.output / 'resultats.json').write_text(json.dumps({'provider': 'discord', 'status': 'non_connecte', 'published': 0}) + '\n')

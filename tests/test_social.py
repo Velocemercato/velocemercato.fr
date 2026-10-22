@@ -6,6 +6,7 @@ import sys
 import tempfile
 import unittest
 from unittest.mock import patch
+from types import SimpleNamespace
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -14,6 +15,12 @@ import pastille_media as media
 
 
 class SocialTests(unittest.TestCase):
+    def test_existing_discord_configuration_is_reused_without_copying_credentials(self):
+        with patch.dict('os.environ', {'DISCORD_WEBHOOK': ''}),patch.dict(sys.modules, {'update_scores': SimpleNamespace(WEBHOOK='https://discord.com/api/webhooks/123/existing-test') }):
+            self.assertEqual(social.discord_access(), 'https://discord.com/api/webhooks/123/existing-test')
+            with patch.dict('os.environ', {'DISCORD_WEBHOOK': 'https://discord.com/api/webhooks/123/secret-test'}):
+                self.assertEqual(social.discord_access(), 'https://discord.com/api/webhooks/123/secret-test')
+
     def fixture(self, folder):
         root = Path(folder)
         for universe, route in [('foot', 'articles.json'), ('actus', 'actus/news.json'), ('gaming', 'vm-gaming/news.json')]:

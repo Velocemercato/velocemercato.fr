@@ -4,7 +4,7 @@ Le partage pouvait perdre l’émission sélectionnée et les médias historique
 
 La génération prévoit les trois rubriques matin/midi/soir en heure de Paris. Les spéciales exigent des matchs confirmés par les données disponibles. La production conserve le profil CDN existant ; les programmes HD longs restent des aperçus à assembler pour YouTube/Twitch, dont les intégrations ne sont pas encore réalisées. Les limites CDN et la stabilité des URL sont contrôlées.
 
-Le workflow de communication prépare deux sélections distinctes d’articles, quiz et JT existants et peut les envoyer sur le salon Discord si le secret déjà référencé est disponible. L’état est conservé sur une branche technique séparée ; un envoi incertain n’est pas réessayé aveuglément. Les autres réseaux reçoivent des exports à raccorder, sans publication simulée.
+Le workflow de communication prépare deux sélections distinctes d’articles, quiz et JT existants et peut les envoyer sur le salon Discord en réutilisant l’accès déjà configuré dans le robot de scores, avec priorité au secret GitHub. L’état est conservé sur une branche technique séparée ; un envoi incertain n’est pas réessayé aveuglément. Les autres réseaux reçoivent des exports à raccorder, sans publication simulée.
 
 Validation : tests du site sur 320/390/768/1440 px, lecteur H.264 réel, rendu/décodage ffmpeg, assemblage des trois rubriques, horloge été/hiver, fraîcheur et publication Discord contrôlée avec réponses locales. Aucun test connecté YouTube/Twitch ou nouveau rendu vocal Piper n’est déclaré réalisé. Voir `docs/RESULTATS_PUBLICATION.txt`.
 

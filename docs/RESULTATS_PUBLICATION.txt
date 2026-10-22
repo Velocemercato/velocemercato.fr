@@ -1,5 +1,5 @@
 Validation de la branche de publication — 22 octobre 2026
-27 méthodes de test, toutes réussies.
+28 méthodes de test, toutes réussies.
 
 Les médias de contrôle et réponses Discord sont locaux ; aucun envoi social connecté, upload YouTube ni direct Twitch n’est simulé comme réussi. Les modèles vocaux Piper et les domaines publics restent inaccessibles depuis ce proxy.
 
@@ -49,12 +49,13 @@ OK
 Communication et accusés contrôlés
 test_ambiguous_delivery_or_failed_persistence_never_blindly_retried (__main__.SocialTests.test_ambiguous_delivery_or_failed_persistence_never_blindly_retried) ... ok
 test_distinct_brands_fresh_sources_actual_links_no_invented_content (__main__.SocialTests.test_distinct_brands_fresh_sources_actual_links_no_invented_content) ... ok
+test_existing_discord_configuration_is_reused_without_copying_credentials (__main__.SocialTests.test_existing_discord_configuration_is_reused_without_copying_credentials) ... ok
 test_invalid_destination_is_never_contacted (__main__.SocialTests.test_invalid_destination_is_never_contacted) ... ok
 test_production_profile_and_cdn_retention_preserve_current_files (__main__.SocialTests.test_production_profile_and_cdn_retention_preserve_current_files) ... ok
 test_receipt_is_persisted_before_http_and_retries_do_not_duplicate (__main__.SocialTests.test_receipt_is_persisted_before_http_and_retries_do_not_duplicate) ... ok
 test_schedule_handles_both_clock_changes (__main__.SocialTests.test_schedule_handles_both_clock_changes) ... ok
 
 ----------------------------------------------------------------------
-Ran 6 tests in 0.008s
+Ran 7 tests in 0.009s
 
 OK
