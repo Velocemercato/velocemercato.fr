@@ -51,7 +51,7 @@ Le flux utilise l’ingestion Twitch officielle `rtmp://live.twitch.tv/app/` et 
 
 ## Après la connexion
 
-Le prochain lancement complet de **VM Studio - La Pastille TV** crée l’artefact `pastille-masters`, conservé deux jours. Le workflow **VM - YouTube et Twitch automatiques** récupère uniquement cet artefact depuis le lancement de production qui l’a déclenché. Les aperçus, branches de travail, spéciales et lots incomplets ne déclenchent pas ces programmes longs. Une rubrique déjà publiée plus tôt n’est pas artificiellement régénérée : après une activation tardive, attendre le prochain créneau complet.
+Le prochain lancement complet de **VM Studio - La Pastille TV** crée l’artefact `pastille-masters`, conservé deux jours. Le workflow **VM - YouTube et Twitch automatiques** récupère uniquement cet artefact depuis le lancement de production qui l’a déclenché. Les aperçus, branches de travail et lots incomplets ne déclenchent pas ces programmes longs. Les spéciales avant-match et débats validés sont diffusés séparément avec leur propre original HD ; les données structurées de matchs couvrent actuellement Ligue 1 et Ligue des champions. Les pages Actus/Gaming ne les présentent pas comme leurs journaux. Une rubrique déjà publiée plus tôt n’est pas artificiellement régénérée : après une activation tardive, attendre le prochain créneau complet.
 
 Les variables et secrets sont créés par l’outil. Pour vérification, leurs noms sont :
 
@@ -73,6 +73,6 @@ Un état Twitch `starting` ou `live` après une interruption exige une vérifica
 
 ## Validation disponible
 
-Les tests locaux couvrent le chiffrement, le retour OAuth réel sur boucle locale avec PKCE Google, le stockage sécurisé via `gh`, les reprises YouTube (réponses API de contrôle), la confirmation publique, les restrictions de compte, le renouvellement des jetons, les gardes Twitch et l’assemblage ffmpeg réel. Les tests navigateur vérifient les liens publics et l’absence de liens privés. **Ces tests ne valident pas des comptes connectés, un upload réel, une ingestion Twitch réelle, les droits Google de publication publique ou l’écoute d’un nouveau modèle vocal.** Ces contrôles nécessitent le raccordement décrit ci-dessus.
+Les 38 méthodes locales réussies couvrent notamment le chiffrement, le retour OAuth réel sur boucle locale avec PKCE Google, le stockage sécurisé via `gh`, les reprises YouTube (réponses API de contrôle), la confirmation publique, les restrictions de compte, le renouvellement des jetons, les gardes Twitch et l’assemblage ffmpeg réel. Les tests navigateur vérifient les liens publics et l’absence de liens privés. **Ces tests ne valident pas des comptes connectés, un upload réel, une ingestion Twitch réelle, les droits Google de publication publique ou l’écoute d’un nouveau modèle vocal.** Ces contrôles nécessitent le raccordement décrit ci-dessus.
 
 Sources techniques : https://developers.google.com/youtube/v3/guides/using_resumable_upload_protocol ; https://dev.twitch.tv/docs/authentication/refresh-tokens/ ; https://dev.twitch.tv/docs/api/reference/#get-stream-key ; configuration des ingestions utilisée par OBS : https://github.com/obsproject/obs-studio/blob/master/plugins/rtmp-services/data/services.json. Les pages Google/Twitch sont bloquées par le proxy de cet environnement ; la configuration OBS publique a été lue.

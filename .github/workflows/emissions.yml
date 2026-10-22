@@ -102,7 +102,7 @@ jobs:
           VM_PUBLISH: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.publish) && '1' || '0' }}
           VM_SPEECH_RATE: '1.12'
           VM_VIDEO_PROFILE: ${{ inputs.qualite || 'auto' }}
-          VM_KEEP_HD_MASTER: ${{ steps.diffusion.outputs.ready || '0' }}
+          VM_KEEP_HD_MASTER: ${{ steps.diffusion.outputs.ready == '1' && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.publish) && '1' || '0' }}
           PLAN: ${{ steps.plan.outputs.plan }}
           UNIVERS: ${{ inputs.univers }}
           FORMAT: ${{ inputs.format }}
@@ -121,9 +121,10 @@ jobs:
             python update_emission.py plan "$PLAN" 2>&1 | tee studio/emission-log.txt
           fi
       - name: Autoriser uniquement les programmes complets de production
-        if: success() && steps.diffusion.outputs.ready == '1' && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.publish) && (steps.plan.outputs.plan == 'matin' || steps.plan.outputs.plan == 'midi' || steps.plan.outputs.plan == 'soir' || (inputs.univers == 'tous' && inputs.format == 'edition'))
+        if: success() && steps.diffusion.outputs.ready == '1' && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.publish)
         env:
           PLAN: ${{ steps.plan.outputs.plan || inputs.moment }}
+          FORMAT: ${{ inputs.format }}
         run: |
           python - <<'PY'
           import datetime as dt, json, os
@@ -131,11 +132,18 @@ jobs:
           from zoneinfo import ZoneInfo
           now = dt.datetime.now(dt.timezone.utc)
           folder = Path('studio/tmp/masters')
-          if len(list(folder.glob('*.mp4'))) != 3:
-              raise SystemExit('Trois originaux HD frais sont nécessaires ; aucun ancien JT réutilisé.')
+          videos = list(folder.glob('*.mp4'))
+          if not videos:
+              print('Aucun nouvel original HD : aucune nouvelle diffusion.')
+              raise SystemExit(0)
+          kind = os.environ['PLAN'] if os.environ['PLAN'] in ('speciale','debat') else os.environ.get('FORMAT') or 'edition'
+          expected = 1 if kind in ('speciale','debat') else 3
+          if len(videos) != expected:
+              raise SystemExit('Lot HD incomplet : aucun ancien JT réutilisé.')
           (folder / '_autorisation.json').write_text(json.dumps({
               'publish': True, 'created': now.isoformat(), 'date': now.astimezone(ZoneInfo('Europe/Paris')).date().isoformat(),
-              'moment': os.environ['PLAN'], 'run_id': os.environ['GITHUB_RUN_ID']}))
+              'format':kind, 'unit':videos[0].stem if expected == 1 else None,
+              'moment': 'soir' if kind in ('speciale','debat') else os.environ['PLAN'], 'run_id': os.environ['GITHUB_RUN_ID']}))
           PY
       - name: Transmettre les originaux HD à la diffusion autorisée
         if: success() && hashFiles('studio/tmp/masters/_autorisation.json') != ''

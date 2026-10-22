@@ -31,7 +31,7 @@ Les exports `publications.txt`, `publications.json` et les résultats disponible
 
 ## Comptes encore à connecter
 
-**YouTube et Twitch** sont les destinations choisies pour les programmes longs. Le générateur et `tools/assembler_jt.py` préparent un MP4 long et ses chapitres, mais aucun upload YouTube ni direct Twitch n’est implémenté. Le direct Twitch devra être identifié comme une rediffusion enregistrée et générée par IA. Les conditions de la chaîne YouTube pour les vidéos longues et les droits sur les contenus doivent être vérifiés dans le compte réel.
+**YouTube et Twitch** sont les destinations choisies pour les programmes longs. Le générateur et `tools/assembler_jt.py` préparent un MP4 long et ses chapitres. Le raccordement des envois est désormais implémenté dans `tools/diffuser_jt.py` ; les comptes restent à autoriser une fois selon `docs/YOUTUBE_TWITCH_CONNEXION.md`. Aucun upload YouTube ni direct Twitch connecté n’a encore été effectué ici. Le direct Twitch devra être identifié comme une rediffusion enregistrée et générée par IA. Les conditions de la chaîne YouTube pour les vidéos longues et les droits sur les contenus doivent être vérifiés dans le compte réel.
 
 **Facebook, Instagram, TikTok et les autres réseaux** ne sont pas connectés. Les boutons de partage présents sur le site ouvrent un partage volontaire ; ils ne donnent pas au site une autorisation de publier sur ces comptes. Il reste à choisir le moyen de connexion officiel ou un outil de programmation compatible avec les comptes réellement détenus, puis à essayer et vérifier les publications. Aucun abonnement payant ni nouveau compte n’a été créé.
 

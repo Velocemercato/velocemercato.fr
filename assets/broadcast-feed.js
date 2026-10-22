@@ -8,10 +8,13 @@ document.querySelectorAll('[data-broadcast-feed]').forEach(async section => {
     const valid = row => row && row.plateformes && Object.entries(row.plateformes).some(([name,p]) =>
       (name === 'youtube' && p.status === 'published' && /^https:\/\/www\.youtube\.com\/watch\?v=[A-Za-z0-9_-]{11}$/.test(p.url)) ||
       (name === 'twitch' && p.status === 'ended' && /^https:\/\/www\.twitch\.tv\/[a-z0-9_]+$/.test(p.url)));
-    const latest = rows.filter(valid).sort((a,b)=>String(b.id).localeCompare(String(a.id)))[0];
+    const universe = section.dataset.broadcastUniverse;
+    const latest = rows.filter(valid).filter(row=>!universe || (row.universes || ['foot','actus','gaming']).includes(universe))
+      .sort((a,b)=>String(b.date_publication || b.date || '').localeCompare(String(a.date_publication || a.date || '')) || String(b.id).localeCompare(String(a.id)))[0];
     if (!latest) return;
     const title = document.createElement('h2');title.textContent=latest.titre;section.append(title);
-    const description = document.createElement('p');description.textContent='Le grand JT · Foot, Actus et Gaming · programme enregistré, généré par IA';section.append(description);
+    const names={foot:'Foot',actus:'Actus',gaming:'Gaming'};
+    const description = document.createElement('p');description.textContent=(latest.universes || ['foot','actus','gaming']).map(name=>names[name]).filter(Boolean).join(', ')+' · programme enregistré, généré par IA';section.append(description);
     Object.entries(latest.plateformes).forEach(([name,provider])=>{
       const wrapper = {plateformes:{[name]:provider}};
       if (!valid(wrapper)) return;

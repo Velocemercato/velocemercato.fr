@@ -104,7 +104,7 @@ jobs:
           new = json.load(open(sys.argv[1]))
           rows = {row['id']: row for row in old}
           for row in new: rows[row['id']] = row
-          path.write_text(json.dumps(sorted(rows.values(), key=lambda row: row['id'], reverse=True)[:90], ensure_ascii=False, indent=1) + '\n')
+          path.write_text(json.dumps(sorted(rows.values(), key=lambda row: (row.get('date_publication', row.get('date','')), row['id']), reverse=True)[:90], ensure_ascii=False, indent=1) + '\n')
           PY
             git add studio/diffusions.json
             if git diff --cached --quiet; then exit 0; fi

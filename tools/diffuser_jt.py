@@ -12,6 +12,7 @@ import json
 import os
 from pathlib import Path
 import re
+import shutil
 import subprocess
 import sys
 import time
@@ -144,7 +145,11 @@ def access_token(provider, state, http):
 def youtube_metadata(manifest):
     names = {'matin': 'du matin', 'midi': 'du midi', 'soir': 'du soir'}
     date = dt.date.fromisoformat(manifest['date']).strftime('%d/%m/%Y')
-    title = f'VM Univers — Le grand JT {names[manifest["moment"]]} — {date}'
+    if manifest.get('format') in ('speciale', 'debat'):
+        label = 'Spéciale avant-match' if manifest['format'] == 'speciale' else 'Le débat du soir'
+        title = f'Véloce Mercato — {label} — {date}'
+    else:
+        title = f'VM Univers — Le grand JT {names[manifest["moment"]]} — {date}'
     def clock(seconds):
         seconds = int(seconds)
         return f'{seconds//3600:02}:{seconds//60%60:02}:{seconds%60:02}' if seconds >= 3600 else f'{seconds//60:02}:{seconds%60:02}'
@@ -293,7 +298,10 @@ class Twitch:
                    '-g', '60', '-keyint_min', '60', '-sc_threshold', '0', '-c:a', 'aac', '-b:a', '128k',
                    '-ar', '48000', '-ac', '2', '-f', 'flv', '-flvflags', 'no_duration_filesize', destination]
         # Les erreurs ffmpeg peuvent contenir la destination et sa clé : ne jamais les journaliser.
-        process = subprocess.Popen(command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        try:
+            process = subprocess.Popen(command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        except OSError:
+            raise DeliveryError('Twitch : outil de diffusion indisponible, aucun démarrage confirmé.') from None
         try:
             confirmed = False
             for _ in range(12):
@@ -307,7 +315,11 @@ class Twitch:
                 raise DeliveryError('Twitch : démarrage du direct non confirmé.')
             receipt.update(status='live', url='https://www.twitch.tv/' + user['login'])
             self.state.save()
-            if process.wait(timeout=duration + 180) != 0:
+            try:
+                finished = process.wait(timeout=duration + 180)
+            except subprocess.TimeoutExpired:
+                raise DeliveryError('Twitch : délai de fin dépassé ; vérifier le canal avant toute reprise.') from None
+            if finished != 0:
                 raise DeliveryError('Twitch : flux interrompu avant sa fin.')
             receipt['status'] = 'ended'
             self.state.save()
@@ -333,12 +345,29 @@ def prepare(masters, output, now=None, expected_run=None):
     date, moment = authorization['date'], authorization['moment']
     if moment not in ('matin', 'midi', 'soir') or date != now.astimezone(ZoneInfo('Europe/Paris')).date().isoformat():
         raise DeliveryError('Créneau de diffusion invalide.')
-    result = assemble(ROOT, moment, date, output, masters)
+    kind = authorization.get('format', 'edition')
+    if kind in ('speciale', 'debat'):
+        ident = authorization.get('unit', '')
+        if not re.fullmatch(r'[a-z0-9-]+', ident):
+            raise DeliveryError('Identifiant de spéciale/débat invalide.')
+        row = json.loads((masters / (ident + '.json')).read_text())
+        if row.get('id') != ident or row.get('format') != kind or row.get('univers') != 'foot' or row.get('date', '')[:10] != date:
+            raise DeliveryError('Spéciale/débat non cohérent avec l’autorisation de production.')
+        source = masters / (ident + '.mp4')
+        output.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source, output)
+        result = {'date':date, 'moment':moment, 'format':kind, 'universes':['foot'], 'id':ident,
+                  'duree_mesuree':float(probe(output)['format']['duration']),
+                  'chapitres':[{'debut_secondes':0, 'univers':'foot', 'titre':row['titre'], 'id':ident}]}
+    elif kind == 'edition':
+        result = assemble(ROOT, moment, date, output, masters)
+        result.update(format='edition', universes=['foot','actus','gaming'], id='jt-' + date + '-' + moment)
+    else:
+        raise DeliveryError('Format de programme non autorisé.')
     info = probe(output)
     video = next(row for row in info['streams'] if row['codec_type'] == 'video')
     if video['codec_name'] != 'h264' or video['width'] < 1280 or video['height'] < 720 or video['avg_frame_rate'] not in ('24/1', '25/1', '30/1'):
         raise DeliveryError('Le programme long nécessite les vrais originaux HD ; aucun ancien fichier comprimé substitué.')
-    result['id'] = 'jt-' + date + '-' + moment
     return result
 
 
@@ -375,11 +404,12 @@ def public_index(path, manifest, receipts):
             public[provider] = {'url': receipt['url'], 'status': receipt['status']}
     if public:
         row = {'id': manifest['id'], 'date': manifest['date'], 'moment': manifest['moment'],
+               'universes':manifest.get('universes', ['foot','actus','gaming']),
                'date_publication': dt.datetime.now(UTC).isoformat(timespec='seconds'),
                'titre': youtube_metadata(manifest)['snippet']['title'], 'plateformes': public}
         rows = [r for r in rows if r['id'] != row['id']] + [row]
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps(sorted(rows, key=lambda r: r['id'], reverse=True)[:90], ensure_ascii=False, indent=1) + '\n')
+        path.write_text(json.dumps(sorted(rows, key=lambda r: (r.get('date_publication', r.get('date','')), r['id']), reverse=True)[:90], ensure_ascii=False, indent=1) + '\n')
 
 
 def main():

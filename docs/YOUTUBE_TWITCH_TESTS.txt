@@ -26,7 +26,7 @@ test_youtube_resumable_upload_handles_308_and_records_final_confirmation (__main
 test_youtube_resume_recovers_after_lost_response_without_duplicate_bytes (__main__.DiffusionTests.test_youtube_resume_recovers_after_lost_response_without_duplicate_bytes) ... ok
 
 ----------------------------------------------------------------------
-Ran 15 tests in 3.260s
+Ran 15 tests in 0.892s
 
 OK
 YouTube/Twitch : aucun compte autorisé configuré, aucune diffusion.
@@ -61,7 +61,7 @@ test_selected_episode_speed_share_and_no_reset (__main__.PlayerTests.test_select
 test_static_share_page_without_javascript (__main__.PlayerTests.test_static_share_page_without_javascript) ... ok
 
 ----------------------------------------------------------------------
-Ran 7 tests in 17.377s
+Ran 7 tests in 17.321s
 
 OK
 

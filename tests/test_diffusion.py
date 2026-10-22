@@ -239,6 +239,16 @@ class DiffusionTests(unittest.TestCase):
             self.assertEqual(result['id'],'jt-2026-10-22-matin')
             with self.assertRaises(D.DeliveryError):D.prepare(masters,root/'bad.mp4',now=now,expected_run='43')
             with self.assertRaises(D.DeliveryError):D.prepare(masters,root/'bad.mp4',now=now+dt.timedelta(hours=4),expected_run='42')
+            ident='foot-speciale-test'
+            (masters/(ident+'.mp4')).write_bytes(file.read_bytes())
+            (masters/(ident+'.json')).write_text(json.dumps({'id':ident,'univers':'foot','format':'speciale',
+                'date':'2026-10-22T07:00:00+02:00','titre':'Spéciale de contrôle'}))
+            authorization.update(format='speciale',unit=ident)
+            (masters/'_autorisation.json').write_text(json.dumps(authorization))
+            special=D.prepare(masters,root/'speciale.mp4',now=now,expected_run='42')
+            self.assertEqual(special['id'],ident)
+            self.assertEqual(special['universes'],['foot'])
+            self.assertIn('Spéciale avant-match',D.youtube_metadata(special)['snippet']['title'])
             authorization['publish']=False;(masters/'_autorisation.json').write_text(json.dumps(authorization))
             with self.assertRaises(D.DeliveryError):D.prepare(masters,root/'bad.mp4',now=now,expected_run='42')
 
