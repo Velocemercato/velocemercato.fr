@@ -30,6 +30,8 @@ def discord_access():
     if configured:
         return configured
     # Réutiliser le salon déjà configuré dans le robot de scores, sans recopier son accès.
+    if str(ROOT) not in sys.path:
+        sys.path.insert(0, str(ROOT))
     import update_scores
     return update_scores.WEBHOOK.strip()
 
