@@ -99,7 +99,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 3
 .vmsh-qr{display:flex;justify-content:center;margin:14px 0 4px}.vmsh-qr canvas,.vmsh-qr img{border:8px solid #fff;outline:2px solid #0b1533;border-radius:6px}
 .vmsh-c{display:block;width:100%;margin-top:12px;font:800 1rem system-ui,sans-serif;padding:12px;border-radius:999px;border:2px solid #0b1533;background:#fff;color:#0b1533;cursor:pointer}
 @media print{.vmfab{display:none}}
-</style></head>
+</style><link rel="stylesheet" href="/assets/pastille.css"><script src="/assets/pastille-player.js"></script></head>
 <body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="Tous les sites VM">VM <small>TOUS LES SITES</small></a><a class="f" href="/">⚽ Foot</a><a class="s on" href="/studio.html#tv" aria-current="page">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
 <header><a class="logo" href="/">VÉLOCE <b>MERCATO</b></a><nav><a href="/">Brèves</a><a href="/#videos">Vidéos</a><a href="/archives.html">Rechercher</a><a class="don" href="/soutenir.html">💛 Soutenir</a></nav></header>
 <main>
@@ -114,7 +114,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 3
 <section class="tv" id="tv" aria-labelledby="t-tv">
 <div class="tv-head"><h2 id="t-tv">📺 LA PASTILLE TV</h2><p>Journaux matin · midi · soir, spéciales avant-match et débats du soir. Émissions <b>générées par IA</b>, personnages inventés, faits tirés des brèves du site.</p></div>
 <div class="tv-tabs" role="group" aria-label="Univers"><button type="button" data-u="" aria-pressed="true">Tout</button><button type="button" data-u="foot" aria-pressed="false">⚽ Foot</button><button type="button" data-u="actus" aria-pressed="false">📰 Actus</button><button type="button" data-u="gaming" aria-pressed="false">🎮 Gaming</button></div>
-<div class="tv-player" id="tvPlayer" hidden><video id="tvVideo" controls playsinline preload="none"></video><div class="tv-info"><span class="tv-badge">ENREGISTRÉ · IA</span><h3 id="tvTitle"></h3><p id="tvMeta"></p><p class="tv-views" id="tvViews"></p></div></div>
+<div class="tv-player" id="tvPlayer" hidden><video id="tvVideo" controls playsinline preload="none"></video><div class="tv-info"><span class="tv-badge">ENREGISTRÉ · IA</span><h3 id="tvTitle"></h3><p id="tvMeta"></p></div></div>
 <p style="margin:10px 0 0"><a href="/radio.html" style="color:#f4cf55;font-weight:700">📻 Écouter toutes les émissions à la suite sur VM Radio →</a></p>
 <ol class="tv-list" id="tvList"><li class="tv-empty">Les premières émissions arrivent très bientôt.</li></ol>
 </section>
@@ -130,23 +130,24 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 3
 <footer><a href="/">← Retour aux brèves</a> · <a href="https://discord.gg/JEgfrUtJaX">Discord</a> · <a href="/mentions-legales.html">Mentions légales</a></footer>
 <script>
 (function(){
-var $=function(i){return document.getElementById(i)},all=[],u='',CNT='https://countapi.mileshilliard.com/api/v1/';
+var $=function(i){return document.getElementById(i)},all=[],u=new URLSearchParams(location.search).get('univers')||'';
 function esc(x){return String(x||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function ok(x){return typeof x==='string'&&/^https:\/\/cdn\.jsdelivr\.net\/gh\/Velocemercato\/velocemercato\.fr@[0-9a-f]{40}\//.test(x)}
 function mn(s){var m=Math.round(s/60);return m+' min'}
 function day(d){try{return new Date(d).toLocaleString('fr-FR',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}catch(e){return ''}}
 var U={foot:'⚽ Foot',actus:'📰 Actus',gaming:'🎮 Gaming'};
-function views(id,add){var k='vm-tv-'+id.replace(/[^a-z0-9-]/gi,'');fetch(CNT+(add?'hit/':'get/')+k,{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){var n=j&&(j.value!=null?j.value:j.count);if(typeof n==='number')$('tvViews').textContent='👁 '+n+(n>1?' vues':' vue');}).catch(function(){});}
-function play(e,start){$('tvPlayer').hidden=false;var v=$('tvVideo');v.src=e.video;v.poster=ok(e.image)?e.image:'';$('tvTitle').textContent=e.titre;$('tvMeta').textContent=(U[e.univers]||'')+' · '+e.label+' · '+day(e.date)+' · '+mn(e.duree);$('tvViews').textContent='';views(e.id,false);
- document.querySelectorAll('.tv-list button').forEach(function(b){b.classList.toggle('on',b.dataset.id===e.id)});
- v.onplay=function(){if(!v.dataset.counted||v.dataset.counted!==e.id){v.dataset.counted=e.id;views(e.id,true);}};if(start)v.play().catch(function(){});}
+function play(e,start){$('tvPlayer').hidden=false;Pastille.mount($('tvVideo'),e,start);$('tvTitle').textContent=e.titre;$('tvMeta').textContent=(U[e.univers]||'')+' · '+e.label+' · '+day(e.date)+' · '+mn(e.duree);
+ var url=new URL(location.href);url.searchParams.set('episode',e.id);url.hash='tv';history.replaceState(null,'',url);
+ window.vmShareURL=function(){return Pastille.page(e)};
+ document.querySelectorAll('.tv-list button').forEach(function(b){b.classList.toggle('on',b.dataset.id===e.id)});}
 function draw(){var list=all.filter(function(e){return !u||e.univers===u});
- if(!list.length){$('tvList').innerHTML='<li class="tv-empty">Pas encore d’émission ici : la prochaine arrive bientôt.</li>';$('tvPlayer').hidden=true;return;}
- $('tvList').innerHTML=list.slice(0,30).map(function(e){return '<li><button type="button" data-id="'+esc(e.id)+'">'+(ok(e.image)?'<img src="'+esc(e.image)+'" alt="" loading="lazy">':'')+'<span><b>'+esc(e.titre)+'</b><small>'+esc((U[e.univers]||'')+' · '+e.label+' · '+day(e.date)+' · '+mn(e.duree))+'</small></span></button></li>'}).join('');
+ if(!list.length){$('tvList').innerHTML='<li class="tv-empty">Pas encore d’émission ici : la prochaine arrive bientôt.</li>';$('tvVideo').pause();$('tvPlayer').hidden=true;delete window.vmShareURL;return;}
+ $('tvList').innerHTML=list.slice(0,30).map(function(e){return '<li><button type="button" data-id="'+esc(e.id)+'">'+(Pastille.poster(e)?'<img src="'+esc(Pastille.poster(e))+'" alt="" loading="lazy">':'')+'<span><b>'+esc(e.titre)+'</b><small>'+esc((U[e.univers]||'')+' · '+e.label+' · '+day(e.date)+' · '+mn(e.duree))+'</small></span></button></li>'}).join('');
  $('tvList').querySelectorAll('button').forEach(function(b){b.onclick=function(){var e=all.find(function(x){return x.id===b.dataset.id});if(e){play(e,true);$('tv').scrollIntoView({behavior:'smooth'});}}});
- var want=(location.hash.match(/^#tv=(.+)$/)||[])[1],first=list.find(function(e){return e.id===want})||list[0];play(first,false);}
+ var want=Pastille.selected(),first=list.find(function(e){return e.id===want})||list[0];play(first,false);}
 document.querySelectorAll('.tv-tabs button').forEach(function(b){b.onclick=function(){u=b.dataset.u;document.querySelectorAll('.tv-tabs button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});draw();}});
-fetch('/studio/emissions.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():[]}).then(function(rows){all=(Array.isArray(rows)?rows:[]).filter(function(e){return e&&e.publie===true&&ok(e.video)});draw();}).catch(function(){});
+document.querySelectorAll('.tv-tabs button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.u===u))});
+fetch('/studio/emissions.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():[]}).then(function(rows){all=(Array.isArray(rows)?rows:[]).filter(function(e){return e&&e.publie===true&&ok(e.video)});draw();}).catch(function(){$('tvList').innerHTML='<li class="tv-empty">Impossible de charger les émissions. Réessayez dans un instant.</li>';});
 })();
 </script><button type="button" class="vmfab" id="vmFab" aria-haspopup="dialog">📤 Partager</button>
 <button type="button" class="vminst" id="vmInst">📲 Installer l'app</button>
@@ -167,7 +168,7 @@ fetch('/studio/emissions.json?v='+Date.now(),{cache:'no-store'}).then(function(r
 </div></div>
 <script>
 (function(){var $=function(i){return document.getElementById(i)},f=$('vmFab'),m=$('vmSh'),qr=false;if(!f||!m)return;
-function url(){return location.href.split('#')[0]}
+function url(){return window.vmShareURL?window.vmShareURL():(/^#a=/.test(location.hash)?location.href:location.href.split('#')[0])}
 function open(){var u=url(),t=document.title,e=encodeURIComponent;$('vmShU').textContent=t;
  $('vmS-wa').href='https://wa.me/?text='+e(t+' '+u);$('vmS-fb').href='https://www.facebook.com/sharer/sharer.php?u='+e(u);$('vmS-x').href='https://twitter.com/intent/tweet?text='+e(t)+'&url='+e(u);$('vmS-tg').href='https://t.me/share/url?url='+e(u)+'&text='+e(t);$('vmS-sms').href='sms:?&body='+e(t+' '+u);
  $('vmS-more').hidden=!navigator.share;

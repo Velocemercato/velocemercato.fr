@@ -90,10 +90,10 @@ function esc(x){return String(x||'').replace(/[&<>"]/g,function(c){return{'&':'&
 function ok(x){return typeof x==='string'&&/^https:\/\/cdn\.jsdelivr\.net\/gh\/Velocemercato\/velocemercato\.fr@[0-9a-f]{40}\//.test(x)}
 function mn(s){return Math.max(1,Math.round(s/60))+' min'}
 function day(d){try{return new Date(d).toLocaleString('fr-FR',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}catch(e){return ''}}
-function load(i,go){if(!list.length)return;idx=(i+list.length)%list.length;var e=list[idx];a.src=e.video;$('nowTitle').textContent=e.titre;$('nowMeta').textContent=(U[e.univers]||'')+' · '+e.label+' · '+day(e.date)+' · '+mn(e.duree);
+function load(i,go){if(!list.length)return;idx=(i+list.length)%list.length;var e=list[idx];a.src=ok(e.audio)?e.audio:e.video;a.defaultPlaybackRate=a.playbackRate=e.speech_rate?1:1.15;$('nowTitle').textContent=e.titre;$('nowMeta').textContent=(U[e.univers]||'')+' · '+e.label+' · '+day(e.date)+' · '+mn(e.duree);
  $('nowImg').src=ok(e.image)?e.image:'/img/avatar-veloce.webp';
  document.querySelectorAll('#list button').forEach(function(b){b.classList.toggle('on',+b.dataset.i===idx)});
- if('mediaSession' in navigator){try{navigator.mediaSession.metadata=new MediaMetadata({title:e.titre,artist:'VM Radio',album:e.label,artwork:ok(e.image)?[{src:e.image,sizes:'640x360',type:'image/jpeg'}]:[]});navigator.mediaSession.setActionHandler('nexttrack',function(){load(idx+1,true)});}catch(x){}}
+ if('mediaSession' in navigator){try{navigator.mediaSession.metadata=new MediaMetadata({title:e.titre,artist:'VM Radio',album:e.label,artwork:ok(e.image)?[{src:e.image,type:'image/jpeg'}]:[]});navigator.mediaSession.setActionHandler('nexttrack',function(){load(idx+1,true)});}catch(x){}}
  if(go)a.play().catch(function(){});}
 function draw(){list=all.filter(function(e){return !u||e.univers===u});idx=-1;
  if(!list.length){$('list').innerHTML='<li class="empty">Pas encore d’émission ici : la prochaine arrive bientôt.</li>';return;}

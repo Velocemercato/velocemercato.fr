@@ -5,3 +5,6 @@ header .logo{min-width:0;transform:none;text-decoration:none;font-size:clamp(1.0
 .brand-name{display:flex;flex-wrap:wrap;column-gap:.2em;min-width:0;line-height:1.15;transform:skew(-6deg)}
 footer .logo{font-size:clamp(1.25rem,5.5vw,1.875rem);max-width:100%;flex-wrap:wrap;transform:none;text-decoration:none}
 @media(max-width:359px){.brand-mark{width:36px;height:36px}header .logo{gap:6px}}
+/* Les noms de médias et les titres longs ne doivent pas élargir le fil presse. */
+.fx li{min-width:0}.fx b{min-width:0;overflow-wrap:anywhere}
+@media(max-width:480px){.fx ol{grid-template-columns:minmax(0,1fr)}.fx li a{display:grid;grid-template-columns:3.2em minmax(0,1fr);gap:5px 10px}.fx em{grid-column:2;white-space:normal}}

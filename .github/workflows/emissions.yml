@@ -4,105 +4,128 @@ on:
   workflow_dispatch:
     inputs:
       univers:
-        description: 'Univers'
+        description: Univers
         type: choice
-        options: ['foot', 'actus', 'gaming']
-        default: 'foot'
+        options: ['tous', 'foot', 'actus', 'gaming']
+        default: tous
       format:
-        description: 'Format'
+        description: Format
         type: choice
         options: ['edition', 'speciale', 'debat']
-        default: 'edition'
+        default: edition
       moment:
-        description: 'Moment'
+        description: Moment
         type: choice
         options: ['matin', 'midi', 'soir']
-        default: 'soir'
+        default: soir
+      publish:
+        description: 'Publier après validation (uniquement sur main)'
+        type: boolean
+        default: false
+      qualite:
+        description: 'auto : CDN en production, HD en aperçu'
+        type: choice
+        options: ['auto', 'hd', 'cdn']
+        default: auto
   schedule:
-    - cron: '0 5 * * *'      # journal du matin (7 h à Paris l'été, 6 h l'hiver)
-    - cron: '40 10 * * *'    # JT de 12 h (heure d'hiver ; prêt vers midi)
-    - cron: '40 18 * * *'    # JT de 20 h (foot, actus, gaming)
-    - cron: '15 17 * * 0,2,3,4,6'  # spéciale avant-match les jours de match
-    - cron: '30 21 * * *'    # débat du soir / après-match
+    # Deux heures UTC couvrent été/hiver ; le script garde 7 h, 12 h et 20 h Paris.
+    - cron: '0 5,6,10,11,18,19 * * *'
+    - cron: '15,45 10-22 * * *'
+    - cron: '30 21,22 * * *'
 
 permissions:
   contents: write
 
 concurrency:
-  group: emissions
+  group: emissions-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
   emission:
     runs-on: ubuntu-latest
-    timeout-minutes: 75
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ github.ref }}
           fetch-depth: 0
-
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-
-      - name: Outils (ffmpeg, voix Piper gratuites)
+          python-version: '3.12'
+      - name: Planifier en heure de Paris
+        id: plan
+        env:
+          CRON: ${{ github.event.schedule }}
         run: |
-          sudo apt-get update -qq >/dev/null 2>&1 || true
-          sudo apt-get install -y -qq ffmpeg espeak-ng >/dev/null 2>&1
-          pip install --quiet "piper-tts==1.2.0" pillow 2>&1 | tail -2 || true
-
+          PLAN=$(python pastille_schedule.py "$CRON")
+          echo "plan=$PLAN" >> "$GITHUB_OUTPUT"
+      - name: Installer les outils sans repli vocal silencieux
+        if: github.event_name == 'workflow_dispatch' || steps.plan.outputs.plan != ''
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          python -m pip install "piper-tts==1.8.0" pillow
+          python -m piper --help > /dev/null
       - name: Cache des voix
+        if: github.event_name == 'workflow_dispatch' || steps.plan.outputs.plan != ''
         uses: actions/cache@v4
         with:
           path: ~/.cache/vm-voices
-          key: vm-voices-v1
-
-      - name: Écrire, faire parler et monter l'émission
+          key: vm-voices-piper-1-8-v2
+      - name: Produire les émissions ou un aperçu
+        if: github.event_name == 'workflow_dispatch' || steps.plan.outputs.plan != ''
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GH_TOKEN: ${{ github.token }}
-          CRON: ${{ github.event.schedule }}
+          VM_PUBLISH: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.publish) && '1' || '0' }}
+          VM_SPEECH_RATE: '1.12'
+          VM_VIDEO_PROFILE: ${{ inputs.qualite || 'auto' }}
+          PLAN: ${{ steps.plan.outputs.plan }}
+          UNIVERS: ${{ inputs.univers }}
+          FORMAT: ${{ inputs.format }}
+          MOMENT: ${{ inputs.moment }}
         run: |
           set -o pipefail
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            ARGS="${{ inputs.univers }} ${{ inputs.format }} ${{ inputs.moment }}"
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+            if [ "$UNIVERS" = "tous" ]; then
+              if [ "$FORMAT" != "edition" ]; then echo 'Le programme complet utilise le format edition.'; exit 1; fi
+              python update_emission.py plan "$MOMENT" 2>&1 | tee studio/emission-log.txt
+              if [ "$VM_PUBLISH" = "0" ]; then python tools/assembler_jt.py --moment "$MOMENT"; fi
+            else
+              python update_emission.py "$UNIVERS" "$FORMAT" "$MOMENT" 2>&1 | tee studio/emission-log.txt
+            fi
           else
-            case "$CRON" in
-              "0 5 * * *")  ARGS="plan matin" ;;
-              "40 10 * * *") ARGS="plan midi" ;;
-              "40 18 * * *") ARGS="plan soir" ;;
-              "30 21 * * *") ARGS="plan debat" ;;
-              *) ARGS="plan speciale" ;;
-            esac
+            python update_emission.py plan "$PLAN" 2>&1 | tee studio/emission-log.txt
           fi
-          python update_emission.py $ARGS 2>&1 | tee studio/emission-log.txt
-
-      - name: Enregistrer la liste des émissions
-        if: always()
+      - name: Conserver les aperçus sans publication
+        if: always() && github.event_name == 'workflow_dispatch' && (!inputs.publish || github.ref != 'refs/heads/main')
+        uses: actions/upload-artifact@v4
+        with:
+          name: pastille-apercus
+          path: studio/tmp/*
+          if-no-files-found: warn
+      - name: Enregistrer les émissions validées
+        if: always() && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.publish) && (github.event_name == 'workflow_dispatch' || steps.plan.outputs.plan != '')
         run: |
+          set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          # Sauvegarde des fichiers produits, puis republication sur une copie propre de main (évite « unstaged changes »)
-          rm -rf /tmp/sauve && mkdir -p /tmp/sauve
-          # uniquement les fichiers créés ou modifiés par CE passage
-          git status --porcelain -uall studio/tv studio/emission-log.txt | sed 's/^...//' > /tmp/sauve/liste.txt
-          echo "Fichiers produits :"; cat /tmp/sauve/liste.txt
-          while read -r f; do [ -f "$f" ] && mkdir -p "/tmp/sauve/f/$(dirname "$f")" && cp "$f" "/tmp/sauve/f/$f"; done < /tmp/sauve/liste.txt
+          SAVE_DIR=$(mktemp -d)
+          git status --porcelain -uall studio/tv studio/episodes studio/emission-log.txt | cut -c4- > "$SAVE_DIR/list.txt"
+          while IFS= read -r file; do
+            if [ -f "$file" ]; then mkdir -p "$SAVE_DIR/files/$(dirname "$file")"; cp "$file" "$SAVE_DIR/files/$file"; fi
+          done < "$SAVE_DIR/list.txt"
           ok=0
-          for i in 1 2 3 4 5 6; do
+          for attempt in 1 2 3 4 5 6; do
             git fetch -q origin main
             git reset -q --hard origin/main
-            git clean -qfd studio || true
-            [ -d /tmp/sauve/f ] && cp -r /tmp/sauve/f/. ./
+            git clean -qfd studio
+            if [ -d "$SAVE_DIR/files" ]; then cp -r "$SAVE_DIR/files/." ./; fi
             python update_emission.py liste
-            git add studio/tv studio/emission-log.txt studio/emissions.json
-            if git diff --cached --quiet; then echo 'Rien de nouveau.'; ok=1; break; fi
-            git commit -qm 'La Pastille TV : nouvelle émission et liste à jour'
-            if git push -q origin HEAD:main; then echo 'Publié.'; ok=1; break; fi
-            sleep $((i*5))
+            git add studio/tv studio/episodes studio/emission-log.txt studio/emissions.json
+            if git diff --cached --quiet; then ok=1; break; fi
+            git commit -qm 'La Pastille TV : émission, partage et liste à jour'
+            if git push -q origin HEAD:main; then ok=1; break; fi
+            sleep $((attempt*5))
           done
-          # Vérification finale : la liste publiée contient bien les émissions du jour
-          git fetch -q origin main
-          git show origin/main:studio/emissions.json | python -c "import json,sys,datetime; d=json.load(sys.stdin); L=d if isinstance(d,list) else d.get('emissions',[]); print('Émissions dans la liste publiée :',len(L))"
-          [ "$ok" = 1 ] || { echo '::error::Publication de la liste impossible après 6 essais'; exit 1; }
+          [ "$ok" = 1 ] || { echo 'Publication de la liste impossible'; exit 1; }

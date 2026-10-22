@@ -1,0 +1,70 @@
+name: VM - Communication matin midi soir
+
+on:
+  push:
+    branches: [main]
+    paths: ['tools/social_publications.py', '.github/workflows/communication.yml']
+  schedule:
+    # 7 h 15, 12 h 15, 20 h 15 Paris, été comme hiver. Les JT sont partagés dès qu'ils existent.
+    - cron: '15 5,6,10,11,18,19 * * *'
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Envoyer vers le salon Discord déjà configuré'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+concurrency:
+  group: vm-communication
+  cancel-in-progress: false
+
+jobs:
+  communication:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+      DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Ouvrir l'état technique hors du site
+        env:
+          STATE_DIR: ${{ runner.temp }}/vm-social-state
+        run: |
+          set -euo pipefail
+          repo_url="https://github.com/${GITHUB_REPOSITORY}.git"
+          if git -c credential.helper='!gh auth git-credential' ls-remote --exit-code "$repo_url" refs/heads/social-state > /dev/null; then
+            git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch social-state "$repo_url" "$STATE_DIR"
+          else
+            mkdir -p "$STATE_DIR"
+            git -C "$STATE_DIR" init --quiet -b social-state
+            git -C "$STATE_DIR" remote add origin "$repo_url"
+          fi
+      - name: Préparer et envoyer les contenus disponibles
+        env:
+          EVENT_KIND: ${{ github.event_name }}
+          SEND: ${{ github.event_name != 'workflow_dispatch' || inputs.publish }}
+          STATE_DIR: ${{ runner.temp }}/vm-social-state
+        run: |
+          set -euo pipefail
+          moment=auto
+          if [ "$EVENT_KIND" != schedule ]; then moment=maintenant; fi
+          args=()
+          if [ "$SEND" = true ]; then args+=(--publish --git-state); fi
+          python tools/social_publications.py --moment "$moment" --state "$STATE_DIR/receipts.json" "${args[@]}"
+      - name: Conserver les textes et les vrais résultats
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vm-communication
+          path: studio/tmp/social/
+          if-no-files-found: ignore
+          retention-days: 14

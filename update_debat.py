@@ -27,6 +27,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFilter, ImageEnhance, ImageFont
 
 import update_news as robot
+import pastille_media as media
 
 ROOT = Path(__file__).resolve().parent
 ASSETS = ROOT / 'studio' / 'assets'
@@ -159,7 +160,16 @@ def voice_model(name, quality):
     for ext in ('.onnx', '.onnx.json'):
         target = VOICES / f'fr_FR-{name}-{quality}{ext}'
         if not target.exists():
-            urllib.request.urlretrieve(base + ext, target)
+            part = target.with_name(target.name + '.part')
+            try:
+                urllib.request.urlretrieve(base + ext, part)
+                if part.stat().st_size == 0:
+                    raise RuntimeError('Modèle Piper vide')
+                if ext == '.onnx.json':
+                    json.loads(part.read_text(encoding='utf-8'))
+                part.replace(target)
+            finally:
+                part.unlink(missing_ok=True)
     return onnx
 
 
@@ -169,14 +179,18 @@ def speak(text, perso, out, use_piper):
         try:
             name, quality, speaker = p['voix']
             cmd = [sys.executable, '-m', 'piper', '--model', str(voice_model(name, quality)), '--output_file', str(out),
-                   '--length_scale', '0.84', '--sentence_silence', '0.15']
+                   '--length-scale', str(0.84 / media.speech_rate()), '--sentence-silence', '0.10']
             if speaker is not None:
                 cmd += ['--speaker', str(speaker)]
-            subprocess.run(cmd, input=text.encode('utf-8'), check=True, capture_output=True, timeout=180)
+            subprocess.run(cmd, input=media.spoken_text(text).encode('utf-8'), check=True, capture_output=True, timeout=180)
             return 'piper'
         except Exception as exc:
-            print(f'Piper indisponible pour {perso} ({type(exc).__name__}), eSpeak à la place.', flush=True)
-    subprocess.run(['espeak-ng', '-v', p['esp'], '-s', '180', '-w', str(out), text], check=True, capture_output=True)
+            if os.getenv('VM_ALLOW_ESPEAK_PREVIEW') != '1':
+                raise RuntimeError(f'Voix Piper indisponible pour {perso} : {type(exc).__name__}. Aucun repli robotique publié.') from exc
+            print(f'Piper indisponible pour {perso}, eSpeak réservé à cet aperçu local.', flush=True)
+    if os.getenv('VM_ALLOW_ESPEAK_PREVIEW') != '1':
+        raise RuntimeError('Piper requis ; eSpeak est désactivé hors aperçu explicite.')
+    subprocess.run(['espeak-ng', '-v', p['esp'], '-s', str(round(180 * media.speech_rate())), '-w', str(out), media.spoken_text(text)], check=True, capture_output=True)
     return 'espeak'
 
 
@@ -337,7 +351,9 @@ def card(bg, big, small, foot):
 # ---------- 5. Montage ----------
 def build_video(script, out_mp4):
     use_piper = piper_ready()
-    print('Voix :', 'Piper' if use_piper else 'eSpeak', flush=True)
+    if not use_piper and os.getenv('VM_ALLOW_ESPEAK_PREVIEW') != '1':
+        raise RuntimeError('Installer Piper pour produire une émission ; aucun repli vocal silencieux.')
+    print('Voix :', 'Piper' if use_piper else 'eSpeak (aperçu uniquement)', flush=True)
     order = []
     for p, _ in script['repliques']:
         if p not in order:
@@ -348,7 +364,7 @@ def build_video(script, out_mp4):
     intro = card(bg, script['titre'], script.get('sous_titre') or 'Le débat du ' + dt.datetime.now(PARIS).strftime('%d/%m'),
                  'Émission de fiction humoristique générée par IA · personnages inventés')
     intro.save(tmp / 'intro.png')
-    segs.append(('intro.png', 4.0, None))
+    segs.append(('intro.png', media.INTRO_SECONDS, None))
     scene = 0
     CURRENT_CLUB[0] = None
     for i, (perso, text) in enumerate(script['repliques']):
@@ -357,7 +373,7 @@ def build_video(script, out_mp4):
             CURRENT_CLUB[0] = None
         wav = tmp / f'l{i:03d}.wav'
         engines.add(speak(text, perso, wav, use_piper))
-        total = duration(wav) + 0.2
+        total = duration(wav) + media.GAP_SECONDS
         parts = chunks(text)
         weights = [len(c) for c in parts]
         for j, c in enumerate(parts):
@@ -367,16 +383,16 @@ def build_video(script, out_mp4):
     outro = card(bg, OUTRO_BIG, OUTRO_SMALL,
                  'Fiction humoristique générée par IA · aucune déclaration réelle de joueurs')
     outro.save(tmp / 'outro.png')
-    segs.append(('outro.png', 5.0, None))
+    segs.append(('outro.png', media.OUTRO_SECONDS, None))
     # Piste voix : silences + répliques, collées dans l'ordre
     with open(tmp / 'voix.txt', 'w') as f:
-        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'lavfi', '-i', 'anullsrc=r=22050:cl=mono', '-t', '4', str(tmp / 'sil4.wav')], check=True)
-        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'lavfi', '-i', 'anullsrc=r=22050:cl=mono', '-t', '0.2', str(tmp / 'gap.wav')], check=True)
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=mono', '-t', str(media.INTRO_SECONDS), str(tmp / 'sil4.wav')], check=True)
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=mono', '-t', str(media.GAP_SECONDS), str(tmp / 'gap.wav')], check=True)
         f.write("file 'sil4.wav'\n")
         for i in range(len(script['repliques'])):
             f.write(f"file 'r{i:03d}.wav'\nfile 'gap.wav'\n")
     for i in range(len(script['repliques'])):
-        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(tmp / f'l{i:03d}.wav'), '-ar', '22050', '-ac', '1', str(tmp / f'r{i:03d}.wav')], check=True)
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(tmp / f'l{i:03d}.wav'), '-af', 'loudnorm=I=-18:TP=-2:LRA=7', '-ar', '48000', '-ac', '1', str(tmp / f'r{i:03d}.wav')], check=True)
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', str(tmp / 'voix.txt'), str(tmp / 'voix.wav')], check=True)
     # Piste images : chaque image le temps de sa réplique
     with open(tmp / 'images.txt', 'w') as f:
@@ -384,13 +400,10 @@ def build_video(script, out_mp4):
             f.write(f"file '{name}'\nduration {dur:.3f}\n")
         f.write(f"file '{segs[-1][0]}'\n")
     total = sum(d_ for _, d_, _ in segs)
-    subprocess.run([
-        'ffmpeg', '-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', str(tmp / 'images.txt'),
-        '-i', str(tmp / 'voix.wav'), '-stream_loop', '-1', '-i', str(ASSETS / 'beat.m4a'),
-        '-filter_complex', '[1:a]apad,volume=1.6[v];[2:a]volume=0.10[m];[v][m]amix=inputs=2:duration=first:dropout_transition=0[a]',
-        '-map', '0:v', '-map', '[a]', '-t', f'{total:.2f}', '-r', '12', '-c:v', 'libx264', '-preset', 'veryfast', '-tune', 'stillimage', '-crf', '31', '-maxrate', '600k', '-bufsize', '1200k',
-        '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '56k', '-ac', '1', '-movflags', '+faststart', str(out_mp4)], check=True)
-    intro.resize((640, 360)).save(out_mp4.with_suffix('.jpg'), quality=80)
+    media.encode_video(tmp, out_mp4, total, ASSETS / 'beat.m4a')
+    first_perso, first_text = script['repliques'][0]
+    poster = frame(bg, first_perso, chunks(first_text)[0], script['titre'], order)
+    poster.save(out_mp4.with_suffix('.jpg'), quality=92, optimize=True, progressive=True)
     shutil.rmtree(tmp, ignore_errors=True)
     return total, sorted(engines)
 
@@ -406,7 +419,7 @@ def main():
         return
     script = write_script(news, moment)
     config = json.loads((PUBLISHED / 'config.json').read_text(encoding='utf-8'))
-    auto = config.get('publication_auto') is True
+    auto = media.publication_enabled() and engines == ['piper'] and config.get('publication_auto') is True
     folder = PUBLISHED if auto else DRAFTS
     folder.mkdir(parents=True, exist_ok=True)
     ident = now.strftime('%Y-%m-%d-%Hh%M')
