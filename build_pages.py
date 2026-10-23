@@ -168,6 +168,7 @@ def main():
              f'  <url><loc>{SITE}/allolivre/</loc></url>',
              f'  <url><loc>{SITE}/comparateur/</loc></url>',
              f'  <url><loc>{SITE}/web-studio.html</loc></url>',
+             f'  <url><loc>{SITE}/investisseurs.html</loc></url>',
              f'  <url><loc>{SITE}/boutique/</loc></url>',
              f'  <url><loc>{SITE}/vm/</loc></url>',
              f'  <url><loc>{SITE}/cv/</loc></url>',

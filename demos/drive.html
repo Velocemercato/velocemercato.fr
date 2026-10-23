@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VM Drive Market – démo Véloce Web Studio</title>
+<meta name="description" content="Démonstration d’un site de magasin avec drive et livraison : catalogue, panier, créneau de retrait ou de livraison, confirmation SMS et e-mail.">
+<meta name="robots" content="noindex"><meta name="theme-color" content="#06160d">
+<meta property="og:title" content="VM Drive Market – vos courses en ligne"><meta property="og:image" content="https://velocemercato.fr/demos/img/drive/hero.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d6ff6e'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle'%3E%F0%9F%9B%92%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/demos/kit/vm-demo.css">
+<style>:root{--a:#d6ff6e;--b:#0a8f4f;--ink:#06160d;--bg:#f4fbf3}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;counter-reset:h}
+.how div{counter-increment:h;background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:14px;font-weight:700}
+.how div:before{content:counter(h);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--a);border:2px solid var(--line);font:italic 900 1.2rem Impact,"Arial Black",sans-serif;margin-bottom:6px}</style>
+</head><body>
+<div class="vd-demo"><b>VM</b> Site de démonstration — magasin fictif créé par Véloce Web Studio. <a href="/web-studio.html?offre=drive#devis">Je veux le même pour mon magasin →</a></div>
+<header class="vd-top"><div class="vd-top-in"><a class="vd-logo" href="#"><span aria-hidden="true">🛒</span><em>VM Drive Market</em></a>
+<nav class="vd-nav" aria-label="Sections"><a href="#rayons">Rayons</a><a href="#comment">Comment ça marche</a><a href="#infos">Infos</a></nav>
+<a class="vd-cta-top" href="#rayons">🛒 Mes courses</a></div></header>
+
+<section class="vd-hero"><div class="vd-hero-in"><div>
+<span class="vd-kicker">Épicerie · Produits locaux · Drive · Livraison</span>
+<h1>Vos courses, <i>sans la file</i>.</h1>
+<p class="lead">Remplissez votre panier en ligne, choisissez un créneau de retrait au drive ou de livraison à domicile. SMS dès que votre commande est prête.</p>
+<ul class="vd-badges"><li>🚗 Drive gratuit</li><li>🚚 Livraison 4,90 € · offerte dès 50 €</li><li>🥕 Producteurs du coin</li><li>📱 Confirmation SMS & e-mail</li></ul>
+<div class="vd-btns"><a class="vd-btn" href="#rayons">🛒 Faire mes courses</a><a class="vd-btn alt" href="#comment">Comment ça marche</a></div>
+</div><div class="vd-hero-art"><span class="vd-sfx s1">ZOOM!</span><div class="vd-media" data-img="/demos/img/drive/hero.webp" data-e="🛒" data-l="Le magasin"></div><span class="vd-sfx s2">FRAIS!</span></div></div></section>
+
+<main>
+<section class="vd-sec" id="comment"><div class="vd-h"><h2>Comment ça marche</h2></div>
+<div class="how"><div>Remplissez votre panier depuis votre canapé.</div><div>Choisissez drive ou livraison, et votre créneau.</div><div>SMS de confirmation, puis SMS « c’est prêt ! ».</div><div>Récupérez sans descendre de voiture, ou recevez chez vous.</div></div></section>
+
+<div id="vd-order-done" class="vd-sec"></div>
+<section class="vd-sec" id="rayons"><div class="vd-h"><h2>Les rayons</h2><p>Prix au kilo et à l’unité affichés. Le panier est conservé sur votre téléphone.</p></div>
+<div id="vd-order"></div></section>
+
+<section class="vd-sec"><div class="vd-video"><div class="vd-media" data-video="/demos/img/drive/video.mp4" data-img="/demos/img/drive/video-poster.webp" data-e="🎬" data-l="Votre commande préparée"></div>
+<div><h3 style="font:italic 900 1.6rem/1 Impact,'Arial Black',sans-serif;text-transform:uppercase;margin:0 0 8px">Le drive en vidéo</h3><p style="margin:0 0 12px;color:var(--muted)">De la préparation au coffre de votre voiture en 2 minutes. Et nos producteurs présentés en vidéo courte.</p>
+<div class="vd-reels"><div class="vd-media" data-video="/demos/img/drive/reel-1.mp4" data-e="🥕" data-l="Le maraîcher"></div><div class="vd-media" data-video="/demos/img/drive/reel-2.mp4" data-e="🧀" data-l="La fromagerie"></div><div class="vd-media" data-video="/demos/img/drive/reel-3.mp4" data-e="🚗" data-l="Le drive"></div></div></div></div></section>
+
+<section class="vd-sec" id="infos"><div class="vd-h"><h2>Infos pratiques</h2></div>
+<div class="vd-grid g3"><div class="vd-panel"><h3 style="margin:0 0 8px">🕒 Horaires du magasin</h3><div data-vd-hours></div></div>
+<div class="vd-panel"><h3 style="margin:0 0 8px">📍 VM Drive Market</h3><p>Route de l’Exemple<br>00000 Ville-Démo</p><p>📞 00 00 00 00 00 <small>(fictif)</small></p><p>🚚 Livraison dans 10 communes · 💳 CB à la commande ou au retrait</p></div>
+<div class="vd-map">🗺️ Zone de livraison<br><small>carte intégrée sur le vrai site</small></div></div>
+<div class="vd-sec vd-faq"><details><summary>Puis-je modifier ma commande ?</summary><p>Oui, jusqu’à 2 h avant le créneau, en répondant au SMS de confirmation.</p></details><details><summary>Et si un produit manque ?</summary><p>Vous choisissez à la commande : remplacement par un produit équivalent ou remboursement.</p></details><details><summary>Paiement en ligne ?</summary><p>Possible sur la version client (paiement sécurisé). En démo, le paiement se fait au retrait.</p></details></div>
+</section>
+
+<section class="vd-sec"><div class="vd-pro" id="vd-pro"></div></section>
+
+<section class="vd-sell"><div><h2>Ce site pour <i>votre magasin</i></h2><p>Catalogue en ligne, panier, créneaux de drive et de livraison, SMS et e-mails automatiques, tableau de bord des commandes. Sans commission de plateforme.</p>
+<ul><li>Vendez même quand le magasin est fermé</li><li>Préparez les commandes au calme, par créneau</li><li>Catalogue, prix et promos mis à jour pour vous</li></ul></div>
+<div class="vd-btns"><a class="vd-btn" href="/web-studio.html?offre=drive#devis">Je veux ce site →</a><a class="vd-btn alt" href="/web-studio.html#tarifs">Voir les formules</a></div></section>
+</main>
+<footer class="vd-foot">Démonstration réalisée par <a href="/web-studio.html">Véloce Web Studio</a> · réseau <a href="https://vmunivers.fr/">VM Univers</a> · © <span data-year></span><br>Magasin, produits, prix et coordonnées fictifs.</footer>
+
+<script>
+var DRIVE_H={1:[['09:00','19:00']],2:[['09:00','19:00']],3:[['09:00','19:00']],4:[['09:00','19:00']],5:[['09:00','19:00']],6:[['09:00','18:00']],0:[]};
+window.DEMO={id:'drive',name:'VM Drive Market',tagline:'Vos courses en drive ou livrées',address:'Route de l’Exemple, 00000 Ville-Démo',rating:'4,8',
+hours:{1:[['08:30','19:30']],2:[['08:30','19:30']],3:[['08:30','19:30']],4:[['08:30','19:30']],5:[['08:30','20:00']],6:[['08:30','19:00']],0:[['09:00','12:30']]},
+order:{refPrefix:'DR',search:true,stepper:true,payNote:'Paiement au retrait ou à la livraison (CB). Paiement en ligne sécurisé disponible sur la version client.',payShort:'paiement au retrait',noteLabel:'Une consigne ? (produit de remplacement, étage, digicode…)',readyToast:'🔔 SMS envoyé : votre commande est prête au drive !',
+ modes:[{id:'drive',l:'Drive',e:'🚗',sub:'Gratuit · créneau d’1 h',hours:DRIVE_H,days:6,step:60,lead:120,rate:25,whenLabel:'Votre créneau de retrait'},
+        {id:'livraison',l:'Livraison',e:'🚚',sub:'4,90 € · offerte dès 50 €',fee:4.9,free:50,min:25,address:true,hours:{1:[['10:00','12:00'],['17:00','20:00']],2:[['10:00','12:00'],['17:00','20:00']],3:[['10:00','12:00'],['17:00','20:00']],4:[['10:00','12:00'],['17:00','20:00']],5:[['10:00','12:00'],['17:00','20:00']],6:[['10:00','12:00']],0:[]},days:6,step:120,lead:240,rate:30,whenLabel:'Votre créneau de livraison'}],
+ track:[['📥','Reçue'],['🧺','En préparation'],['📦','Prête'],['🚗','Retirée']],
+ items:[
+  {id:'pommes',cat:'Fruits & légumes',name:'Pommes Golden locales',desc:'Verger à 12 km.',price:2.9,unit:'kg',e:'🍎',img:'/demos/img/drive/pommes.webp',tag:'Local'},
+  {id:'carottes',cat:'Fruits & légumes',name:'Carottes bio',price:2.2,unit:'kg',e:'🥕',img:'/demos/img/drive/carottes.webp'},
+  {id:'bananes',cat:'Fruits & légumes',name:'Bananes',price:1.99,unit:'kg',e:'🍌',img:'/demos/img/drive/bananes.webp'},
+  {id:'salade',cat:'Fruits & légumes',name:'Salade batavia',price:1.2,unit:'pièce',e:'🥬',img:'/demos/img/drive/salade.webp'},
+  {id:'lait',cat:'Crèmerie',name:'Lait demi-écrémé 1 L',price:1.15,unit:'L',e:'🥛',img:'/demos/img/drive/lait.webp'},
+  {id:'oeufs',cat:'Crèmerie',name:'12 œufs plein air',price:4.2,unit:'boîte',e:'🥚',img:'/demos/img/drive/oeufs.webp',tag:'Local'},
+  {id:'comte',cat:'Crèmerie',name:'Comté 12 mois',price:21.9,unit:'kg',desc:'Vendu à la coupe (≈ 250 g).',e:'🧀',img:'/demos/img/drive/comte.webp'},
+  {id:'yaourts',cat:'Crèmerie',name:'Yaourts nature x8',price:2.6,unit:'pack',e:'🍶',img:'/demos/img/drive/yaourts.webp'},
+  {id:'pain',cat:'Boulangerie',name:'Baguette tradition',price:1.3,unit:'pièce',e:'🥖',img:'/demos/img/drive/baguette.webp'},
+  {id:'croissants',cat:'Boulangerie',name:'4 croissants pur beurre',price:4.4,unit:'sachet',e:'🥐',img:'/demos/img/drive/croissants.webp'},
+  {id:'poulet',cat:'Boucherie',name:'Filets de poulet',price:13.9,unit:'kg',e:'🍗',img:'/demos/img/drive/poulet.webp'},
+  {id:'steak',cat:'Boucherie',name:'4 steaks hachés 15 %',price:6.5,unit:'barquette',e:'🥩',img:'/demos/img/drive/steaks.webp'},
+  {id:'pates',cat:'Épicerie',name:'Pâtes 500 g',price:1.1,unit:'paquet',e:'🍝',img:'/demos/img/drive/pates.webp'},
+  {id:'riz',cat:'Épicerie',name:'Riz basmati 1 kg',price:2.8,unit:'paquet',e:'🍚',img:'/demos/img/drive/riz.webp'},
+  {id:'cafe',cat:'Épicerie',name:'Café moulu 250 g',price:3.9,unit:'paquet',e:'☕',img:'/demos/img/drive/cafe.webp'},
+  {id:'eau',cat:'Boissons',name:'Eau minérale 6×1,5 L',price:2.9,unit:'pack',e:'💧',img:'/demos/img/drive/eau.webp'},
+  {id:'jus',cat:'Boissons',name:'Jus de pomme local 1 L',price:2.5,unit:'bouteille',e:'🧃',img:'/demos/img/drive/jus.webp',tag:'Local'},
+  {id:'pq',cat:'Maison',name:'Papier toilette x12',price:5.9,unit:'paquet',e:'🧻',img:'/demos/img/drive/papier.webp'},
+  {id:'lessive',cat:'Maison',name:'Lessive 40 lavages',price:9.9,unit:'bidon',e:'🧴',img:'/demos/img/drive/lessive.webp'}
+ ]},
+proKpis:['Commandes','Chiffre prévu','SMS automatiques','Note Google'],
+proFake:[{ref:'DR-6T3M',when:'Auj. 17h-18h',what:'Drive · 23 articles',nom:'Famille Petit',total:86.4},{ref:'DR-2F8L',when:'Auj. 17h-19h',what:'Livraison · 31 articles',nom:'Mme Rossi',total:112.9},{ref:'DR-9W1C',when:'Demain 10h-11h',what:'Drive · 12 articles',nom:'Kevin D.',total:41.2}]};
+</script>
+<script src="/demos/kit/vm-demo.js"></script>
+</body></html>
