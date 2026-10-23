@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Turbo Snack – démo Véloce Web Studio</title>
+<meta name="description" content="Démonstration d’un site de snack (kebab, tacos, pizza, burgers) : commande en ligne à emporter ou en livraison, suivi en direct et confirmation SMS.">
+<meta name="robots" content="noindex"><meta name="theme-color" content="#120a05">
+<meta property="og:title" content="Turbo Snack – commande en ligne, prêt en 15 min"><meta property="og:image" content="https://velocemercato.fr/demos/img/snack/hero.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ffd400'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle'%3E%F0%9F%8C%AF%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/demos/kit/vm-demo.css">
+<style>:root{--a:#ffd400;--b:#ff3d00;--ink:#120a05;--bg:#fff9e8}
+.promo{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.promo .vd-panel{background:var(--b);color:#fff}
+.promo .vd-panel b{font:italic 900 1.5rem/1 Impact,"Arial Black",sans-serif;text-transform:uppercase;display:block;margin-bottom:6px;color:var(--a)}</style>
+</head><body>
+<div class="vd-demo"><b>VM</b> Site de démonstration — snack fictif créé par Véloce Web Studio. <a href="/web-studio.html?offre=commande#devis">Je veux le même pour mon snack →</a></div>
+<header class="vd-top"><div class="vd-top-in"><a class="vd-logo" href="#"><span aria-hidden="true">🌯</span><em>Turbo Snack</em></a>
+<nav class="vd-nav" aria-label="Sections"><a href="#carte">La carte</a><a href="#promos">Promos</a><a href="#galerie">Photos</a><a href="#infos">Infos</a></nav>
+<a class="vd-cta-top" href="#carte">🛒 Commander</a></div></header>
+
+<section class="vd-hero"><div class="vd-hero-in"><div>
+<span class="vd-kicker">Kebab · Tacos · Pizza · Burgers</span>
+<h1>Commande. <i>Turbo.</i> Mange.</h1>
+<p class="lead">Commandez en ligne, choisissez l’heure, on vous envoie un SMS quand c’est prêt. À emporter ou livré chez vous, sans attendre au comptoir.</p>
+<ul class="vd-badges"><li>⚡ Prêt en ~15 min</li><li>🛵 Livraison 2,50 € · offerte dès 25 €</li><li>📱 SMS « c’est prêt ! »</li><li>🥩 Viande halal</li></ul>
+<div class="vd-btns"><a class="vd-btn" href="#carte">🛒 Commander maintenant</a><a class="vd-btn alt" href="#promos">Les promos</a></div>
+</div><div class="vd-hero-art"><span class="vd-sfx s1">CRUNCH!</span><div class="vd-media" data-img="/demos/img/snack/hero.webp" data-e="🌯" data-l="Le tacos XXL"></div><span class="vd-sfx s2">TURBO!</span></div></div></section>
+
+<main>
+<div id="vd-order-done" class="vd-sec" style="padding-top:24px"></div>
+<section class="vd-sec" id="carte"><div class="vd-h"><h2>La carte</h2><p>Composez, ajoutez au panier, validez : la cuisine reçoit votre commande instantanément.</p></div>
+<div id="vd-order"></div></section>
+
+<section class="vd-sec" id="promos"><div class="vd-h"><h2>Les promos</h2><p>Mises à jour chaque semaine.</p></div>
+<div class="promo"><div class="vd-panel"><b>Mardi Tacos</b>Le tacos L au prix du M, toute la journée.</div><div class="vd-panel"><b>Menu étudiant</b>−15 % sur présentation de la carte, du lundi au jeudi.</div><div class="vd-panel"><b>Carte fidélité</b>10 commandes = 1 menu offert, suivie automatiquement par SMS.</div></div></section>
+
+<section class="vd-sec" id="galerie"><div class="vd-h"><h2>Ça donne faim</h2><p>Photos et vidéos de nos produits, faits minute.</p></div>
+<div class="vd-gal">
+<div class="vd-media" data-img="/demos/img/snack/galerie-1.webp" data-e="🌯" data-l="Tacos gratiné"></div>
+<div class="vd-media" data-img="/demos/img/snack/galerie-2.webp" data-e="🥙" data-l="Kebab galette"></div>
+<div class="vd-media" data-img="/demos/img/snack/galerie-3.webp" data-e="🍕" data-l="Pizza au four"></div>
+<div class="vd-media" data-img="/demos/img/snack/galerie-4.webp" data-e="🍔" data-l="Smash burger"></div>
+<div class="vd-media" data-img="/demos/img/snack/galerie-5.webp" data-e="🍟" data-l="Frites maison"></div>
+</div>
+<div class="vd-sec vd-video"><div class="vd-media" data-video="/demos/img/snack/video.mp4" data-img="/demos/img/snack/video-poster.webp" data-e="🎬" data-l="Le rush du vendredi soir"></div>
+<div><h3 style="font:italic 900 1.6rem/1 Impact,'Arial Black',sans-serif;text-transform:uppercase;margin:0 0 8px">En vidéo</h3><p style="margin:0 0 12px;color:var(--muted)">Fromage qui coule, broche qui tourne : les vidéos courtes qui font commander.</p>
+<div class="vd-reels"><div class="vd-media" data-video="/demos/img/snack/reel-1.mp4" data-e="🧀" data-l="Sauce fromagère"></div><div class="vd-media" data-video="/demos/img/snack/reel-2.mp4" data-e="🔥" data-l="La broche"></div><div class="vd-media" data-video="/demos/img/snack/reel-3.mp4" data-e="🍕" data-l="Sortie du four"></div></div></div></div>
+</section>
+
+<section class="vd-sec" id="infos"><div class="vd-h"><h2>Infos pratiques</h2></div>
+<div class="vd-grid g3"><div class="vd-panel"><h3 style="margin:0 0 8px">🕒 Horaires</h3><div data-vd-hours></div></div>
+<div class="vd-panel"><h3 style="margin:0 0 8px">📍 Turbo Snack</h3><p>45 rue de l’Exemple<br>00000 Ville-Démo</p><p>📞 00 00 00 00 00 <small>(fictif)</small></p><p>🛵 Livraison dans un rayon de 5 km · 💳 CB, espèces, titres-restaurant</p></div>
+<div class="vd-map">🗺️ Zone de livraison<br><small>carte intégrée sur le vrai site</small></div></div></section>
+
+<section class="vd-sec"><div class="vd-pro" id="vd-pro"></div></section>
+
+<section class="vd-sell"><div><h2>Ce site pour <i>votre snack</i></h2><p>Commande en ligne sans commission (les plateformes, elles, prélèvent un pourcentage sur chaque commande), SMS « commande prête » automatique, écran cuisine et photos qui donnent faim.</p>
+<ul><li>Vous gardez 100 % de la marge sur vos commandes en ligne</li><li>Plus de commandes perdues au téléphone pendant le rush</li><li>Promos et carte mises à jour pour vous</li></ul></div>
+<div class="vd-btns"><a class="vd-btn" href="/web-studio.html?offre=commande#devis">Je veux ce site →</a><a class="vd-btn alt" href="/web-studio.html#tarifs">Voir les formules</a></div></section>
+</main>
+<footer class="vd-foot">Démonstration réalisée par <a href="/web-studio.html">Véloce Web Studio</a> · réseau <a href="https://vmunivers.fr/">VM Univers</a> · © <span data-year></span><br>Snack, produits et coordonnées fictifs.</footer>
+
+<script>
+var SAUCES=['Blanche','Algérienne','Samouraï','Harissa','Biggy','Barbecue','Ketchup','Mayo'];
+window.DEMO={id:'snack',name:'Turbo Snack',tagline:'Kebab, tacos, pizza : commande en ligne',address:'45 rue de l’Exemple, 00000 Ville-Démo',rating:'4,7',
+hours:{1:[['11:00','14:30'],['18:00','23:30']],2:[['11:00','14:30'],['18:00','23:30']],3:[['11:00','14:30'],['18:00','23:30']],4:[['11:00','14:30'],['18:00','23:30']],5:[['11:00','15:00'],['18:00','01:00']],6:[['11:00','01:00']],0:[['18:00','23:30']]},
+order:{refPrefix:'TS',prep:15,payNote:'Paiement au retrait ou à la livraison (CB, espèces, titres-restaurant).',payShort:'paiement à la réception',noteLabel:'Une précision ? (sans oignon, code d’entrée…)',
+ modes:[{id:'emporter',l:'À emporter',e:'🥡',sub:'Prêt en ~15 min'},{id:'livraison',l:'Livraison',e:'🛵',sub:'2,50 € · offerte dès 25 €',fee:2.5,free:25,min:12,address:true,lead:35}],
+ track:[['📥','Reçue'],['👨‍🍳','En cuisine'],['🔥','Presque prête'],['✅','Prête !']],
+ items:[
+  {id:'tacos',cat:'Tacos',name:'Tacos',desc:'Frites, sauce fromagère maison, gratiné au four.',price:7.5,e:'🌯',img:'/demos/img/snack/tacos.webp',tag:'Best-seller',
+   opts:[{n:'Taille',c:[['M · 1 viande',0],['L · 2 viandes',2.5],['XL · 3 viandes',5]]},{n:'Viande(s)',max:3,c:['Poulet','Viande hachée','Cordon bleu','Merguez','Kebab','Tenders']},{n:'Sauces',max:2,c:SAUCES},{n:'Supplément',max:3,c:[['Cheddar',1],['Œuf',1],['Bacon de dinde',1.5]]}]},
+  {id:'kebab',cat:'Kebab',name:'Kebab',desc:'Viande grillée à la broche, crudités, frites.',price:7,e:'🥙',img:'/demos/img/snack/kebab.webp',
+   opts:[{n:'Pain',c:['Pain maison','Galette',['Assiette + frites',3]]},{n:'Crudités',max:3,c:['Salade','Tomate','Oignon','Chou']},{n:'Sauces',max:2,c:SAUCES}]},
+  {id:'smash',cat:'Burgers',name:'Smash burger',desc:'Double steak smashé, cheddar, oignons caramélisés.',price:9.5,e:'🍔',img:'/demos/img/snack/burger.webp',tag:'Nouveau',
+   opts:[{n:'Formule',c:['Seul',['Menu (frites + boisson)',3.5]]},{n:'Cuisson',c:['À point','Bien cuit']}]},
+  {id:'chicken',cat:'Burgers',name:'Crispy chicken',desc:'Poulet pané croustillant, sauce samouraï.',price:8.5,e:'🐔',img:'/demos/img/snack/chicken.webp',opts:[{n:'Formule',c:['Seul',['Menu (frites + boisson)',3.5]]}]},
+  {id:'marg',cat:'Pizzas',name:'Margherita',desc:'Tomate, mozzarella, origan.',price:9,e:'🍕',img:'/demos/img/snack/pizza-margherita.webp',opts:[{n:'Taille',c:[['Senior 31 cm',0],['Méga 40 cm',5]]}]},
+  {id:'orient',cat:'Pizzas',name:'L’Orientale',desc:'Tomate, mozzarella, merguez, poivrons, œuf.',price:12,e:'🌶️',img:'/demos/img/snack/pizza-orientale.webp',opts:[{n:'Taille',c:[['Senior 31 cm',0],['Méga 40 cm',5]]}]},
+  {id:'turbo',cat:'Pizzas',name:'La Turbo',desc:'Crème, poulet, kebab, oignons, cheddar.',price:13,e:'⚡',img:'/demos/img/snack/pizza-turbo.webp',tag:'Signature',opts:[{n:'Taille',c:[['Senior 31 cm',0],['Méga 40 cm',5]]}]},
+  {id:'frites',cat:'À côté',name:'Frites maison',price:3,e:'🍟',img:'/demos/img/snack/frites.webp'},
+  {id:'tenders',cat:'À côté',name:'6 tenders',price:5.5,e:'🍗',img:'/demos/img/snack/tenders.webp'},
+  {id:'soda',cat:'Boissons',name:'Canette 33 cl',price:2,e:'🥤',img:'/demos/img/snack/canette.webp',opts:[{n:'Boisson',c:['Cola','Cola zéro','Orange','Thé glacé','Eau']}]},
+  {id:'tiramisu',cat:'Desserts',name:'Tiramisu maison',price:3.5,e:'🍮',img:'/demos/img/snack/tiramisu.webp'}
+ ]},
+proKpis:['Commandes','Chiffre du jour','SMS automatiques','Note Google'],
+proFake:[{ref:'TS-7K2P',when:'19h05',what:'2× Tacos (L), 1× Canette',nom:'Bilal',total:21},{ref:'TS-4M8Q',when:'19h12',what:'1× La Turbo (Méga), 1× Frites',nom:'Jessica',total:21},{ref:'TS-9A1R',when:'19h20',what:'3× Smash burger (Menu)',nom:'Yassine',total:39},{ref:'TS-2C6T',when:'19h25',what:'1× Kebab (Galette)',nom:'Léo',total:7}]};
+</script>
+<script src="/demos/kit/vm-demo.js"></script>
+</body></html>

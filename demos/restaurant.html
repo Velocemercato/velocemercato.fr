@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>La Table du Mercato – démo Véloce Web Studio</title>
+<meta name="description" content="Démonstration d’un site de restaurant : menu du jour, carte, réservation de table en ligne, confirmation par SMS et e-mail, photos et vidéos.">
+<meta name="robots" content="noindex"><meta name="theme-color" content="#1b0f0a">
+<meta property="og:title" content="La Table du Mercato – réservez votre table"><meta property="og:image" content="https://velocemercato.fr/demos/img/restaurant/hero.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f4cf55'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle'%3E%F0%9F%8D%BD%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/demos/kit/vm-demo.css">
+<style>:root{--a:#f4cf55;--b:#9b1c1c;--ink:#1b0f0a;--bg:#fff8ec}
+.menu-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.menu-cols h3{margin:0 0 6px;font:italic 900 1.3rem/1 Impact,"Arial Black",sans-serif;text-transform:uppercase;color:var(--b)}
+.dish{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed #0b153340}
+.dish b{display:block}.dish small{color:var(--muted)}.dish span{font-weight:900;white-space:nowrap}
+.allerg{font-size:.7rem;font-weight:800;border:1px solid var(--line);border-radius:5px;padding:0 4px;margin-left:4px}</style>
+</head><body>
+<div class="vd-demo"><b>VM</b> Site de démonstration — restaurant fictif créé par Véloce Web Studio. <a href="/web-studio.html?offre=reservation#devis">Je veux le même pour mon restaurant →</a></div>
+<header class="vd-top"><div class="vd-top-in"><a class="vd-logo" href="#"><span aria-hidden="true">🍽️</span><em>La Table du Mercato</em></a>
+<nav class="vd-nav" aria-label="Sections"><a href="#jour">Menu du jour</a><a href="#carte">La carte</a><a href="#galerie">Galerie</a><a href="#groupes">Groupes</a><a href="#infos">Infos</a></nav>
+<a class="vd-cta-top" href="#resa">🍽️ Réserver</a></div></header>
+
+<section class="vd-hero"><div class="vd-hero-in"><div>
+<span class="vd-kicker">Bistrot · Fait maison · Produits locaux</span>
+<h1>Ici, on vient pour <i>se régaler</i>.</h1>
+<p class="lead">Une cuisine de marché qui change chaque jour, une carte de saison et une équipe aux petits soins. Réservez votre table en 3 clics.</p>
+<ul class="vd-badges"><li>🥩 Viandes françaises</li><li>👨‍🍳 Fait maison</li><li>📱 Confirmation SMS</li></ul>
+<div class="vd-btns"><a class="vd-btn" href="#resa">🍽️ Réserver une table</a><a class="vd-btn alt" href="#jour">Menu du jour</a></div>
+</div><div class="vd-hero-art"><span class="vd-sfx s1">MIAM!</span><div class="vd-media" data-img="/demos/img/restaurant/hero.webp" data-e="🍽️" data-l="La salle du restaurant"></div><span class="vd-sfx s2">SIZZLE!</span></div></div></section>
+
+<main>
+<section class="vd-sec" id="jour"><div class="vd-h"><h2>Menu du jour</h2><p>Mis à jour chaque matin selon le marché. Servi le midi en semaine.</p></div>
+<div class="vd-grid g3"><div class="vd-panel" data-vd-daymenu></div>
+<div class="vd-card"><div class="vd-media" data-img="/demos/img/restaurant/plat-du-jour.webp" data-e="🍲" data-l="Le plat du jour"></div><div class="vd-card-b"><span class="vd-tag">Photo du jour</span><h3>Le chef vous montre l’assiette</h3><p>Une photo publiée chaque matin, en même temps sur Instagram et Facebook.</p></div></div></div></section>
+
+<section class="vd-sec" id="resa"><div class="vd-h"><h2>Réserver</h2><p>Nombre de couverts, emplacement, date et heure : vous êtes confirmé tout de suite par SMS et e-mail.</p></div>
+<div class="vd-panel" id="vd-booking"></div></section>
+
+<section class="vd-sec" id="carte"><div class="vd-h"><h2>La carte</h2><p>Carte de saison. Allergènes indiqués : G gluten, L lactose, F fruits à coque, P poisson.</p></div>
+<div class="menu-cols">
+<div class="vd-panel"><h3>Entrées</h3>
+<div class="dish"><div><b>Œuf parfait, crème de champignons</b><small>Noisettes torréfiées<span class="allerg">L</span><span class="allerg">F</span></small></div><span>9 €</span></div>
+<div class="dish"><div><b>Tartare de saumon</b><small>Agrumes, avocat, sésame<span class="allerg">P</span></small></div><span>11 €</span></div>
+<div class="dish"><div><b>Velouté du moment</b><small>Croûtons maison<span class="allerg">G</span></small></div><span>7 €</span></div></div>
+<div class="vd-panel"><h3>Plats</h3>
+<div class="dish"><div><b>Pièce du boucher, frites maison</b><small>Sauce au poivre<span class="allerg">L</span></small></div><span>24 €</span></div>
+<div class="dish"><div><b>Dos de cabillaud</b><small>Beurre blanc, légumes de saison<span class="allerg">P</span><span class="allerg">L</span></small></div><span>21 €</span></div>
+<div class="dish"><div><b>Burger du Mercato</b><small>Bœuf local, comté, oignons confits<span class="allerg">G</span><span class="allerg">L</span></small></div><span>17 €</span></div>
+<div class="dish"><div><b>Risotto aux légumes</b><small>Végétarien, parmesan<span class="allerg">L</span></small></div><span>16 €</span></div></div>
+<div class="vd-panel"><h3>Desserts</h3>
+<div class="dish"><div><b>Moelleux chocolat</b><small>Cœur coulant, glace vanille<span class="allerg">G</span><span class="allerg">L</span></small></div><span>8 €</span></div>
+<div class="dish"><div><b>Tarte du jour</b><small>Fruits de saison<span class="allerg">G</span></small></div><span>7 €</span></div>
+<div class="dish"><div><b>Café gourmand</b><small>Trois mignardises</small></div><span>9 €</span></div></div>
+</div></section>
+
+<section class="vd-sec" id="galerie"><div class="vd-h"><h2>En images</h2><p>Nos assiettes, la salle et la terrasse.</p></div>
+<div class="vd-gal">
+<div class="vd-media" data-img="/demos/img/restaurant/galerie-1.webp" data-e="🥩" data-l="Pièce du boucher"></div>
+<div class="vd-media" data-img="/demos/img/restaurant/galerie-2.webp" data-e="🐟" data-l="Cabillaud"></div>
+<div class="vd-media" data-img="/demos/img/restaurant/galerie-3.webp" data-e="🍫" data-l="Moelleux chocolat"></div>
+<div class="vd-media" data-img="/demos/img/restaurant/galerie-4.webp" data-e="🌿" data-l="La terrasse"></div>
+<div class="vd-media" data-img="/demos/img/restaurant/galerie-5.webp" data-e="👨‍🍳" data-l="En cuisine"></div>
+</div>
+<div class="vd-sec vd-video"><div class="vd-media" data-video="/demos/img/restaurant/video.mp4" data-img="/demos/img/restaurant/video-poster.webp" data-e="🎬" data-l="Le service du midi"></div>
+<div><h3 style="font:italic 900 1.6rem/1 Impact,'Arial Black',sans-serif;text-transform:uppercase;margin:0 0 8px">En vidéo</h3><p style="margin:0 0 12px;color:var(--muted)">Le coup de feu en cuisine, le dressage des assiettes : de quoi donner faim avant même d’arriver.</p>
+<div class="vd-reels"><div class="vd-media" data-video="/demos/img/restaurant/reel-1.mp4" data-e="🔥" data-l="Coup de feu"></div><div class="vd-media" data-video="/demos/img/restaurant/reel-2.mp4" data-e="🍽️" data-l="Dressage"></div><div class="vd-media" data-video="/demos/img/restaurant/reel-3.mp4" data-e="🥂" data-l="Ambiance"></div></div></div></div>
+</section>
+
+<section class="vd-sec" id="groupes"><div class="vd-h"><h2>Groupes & événements</h2><p>Anniversaires, repas d’équipe, privatisation jusqu’à 45 personnes.</p></div>
+<div class="vd-grid g3">
+<div class="vd-panel"><h3 style="margin:0 0 6px">🎂 Anniversaire</h3><p style="margin:0;color:var(--muted)">Gâteau sur demande, décoration de table, menu dès 29 €.</p></div>
+<div class="vd-panel"><h3 style="margin:0 0 6px">💼 Repas d’entreprise</h3><p style="margin:0;color:var(--muted)">Menu unique, facture au nom de la société, service rapide.</p></div>
+<div class="vd-panel"><h3 style="margin:0 0 6px">🥂 Privatisation</h3><p style="margin:0;color:var(--muted)">Salle entière le soir, buffet ou service à table. <a href="mailto:contact@exemple.fr?subject=Privatisation">Demander un devis</a>.</p></div>
+</div></section>
+
+<section class="vd-sec" id="infos"><div class="vd-h"><h2>Infos pratiques</h2></div>
+<div class="vd-grid g3"><div class="vd-panel"><h3 style="margin:0 0 8px">🕒 Horaires</h3><div data-vd-hours></div></div>
+<div class="vd-panel"><h3 style="margin:0 0 8px">📍 Nous trouver</h3><p>3 place de l’Exemple<br>00000 Ville-Démo</p><p>📞 00 00 00 00 00 <small>(fictif)</small></p><p>🌿 Terrasse 30 places · 🐶 Chiens acceptés · 💳 CB, titres-restaurant</p></div>
+<div class="vd-map">🗺️ Plan Google Maps<br><small>intégré sur le vrai site</small></div></div></section>
+
+<section class="vd-sec"><div class="vd-pro" id="vd-pro"></div></section>
+
+<section class="vd-sell"><div><h2>Ce site pour <i>votre restaurant</i></h2><p>Menu du jour mis à jour en 1 minute, réservation de tables en ligne avec SMS automatiques, photos et vidéos qui donnent faim.</p>
+<ul><li>Moins d’appels pendant le service, moins de tables vides</li><li>Rappel SMS la veille = moins de « no-show »</li><li>Votre menu du jour publié pour vous, chaque jour si besoin</li></ul></div>
+<div class="vd-btns"><a class="vd-btn" href="/web-studio.html?offre=reservation#devis">Je veux ce site →</a><a class="vd-btn alt" href="/web-studio.html#gerance">Formules de gérance</a></div></section>
+</main>
+<footer class="vd-foot">Démonstration réalisée par <a href="/web-studio.html">Véloce Web Studio</a> · réseau <a href="https://vmunivers.fr/">VM Univers</a> · © <span data-year></span><br>Restaurant, plats, avis et coordonnées fictifs.</footer>
+
+<script>
+window.DEMO={id:'restaurant',name:'La Table du Mercato',tagline:'Bistrot fait maison, réservation en ligne',refPrefix:'TM',address:'3 place de l’Exemple, 00000 Ville-Démo',rating:'4,8',
+hours:{1:[],2:[['11:45','14:30'],['19:00','22:30']],3:[['11:45','14:30'],['19:00','22:30']],4:[['11:45','14:30'],['19:00','22:30']],5:[['11:45','14:30'],['19:00','23:00']],6:[['11:45','14:30'],['19:00','23:00']],0:[['11:45','15:00']]},
+dayMenuPrice:'Entrée + plat ou plat + dessert 16,50 € · formule complète 19,90 €',
+dayMenu:{2:[['Entrée','Salade de lentilles, œuf mollet'],['Plat','Blanquette de veau, riz pilaf'],['Dessert','Île flottante']],
+ 3:[['Entrée','Velouté de potimarron'],['Plat','Filet de lieu, purée maison'],['Dessert','Tarte aux pommes']],
+ 4:[['Entrée','Terrine de campagne'],['Plat','Bœuf bourguignon, tagliatelles'],['Dessert','Mousse au chocolat']],
+ 5:[['Entrée','Carottes râpées à l’orange'],['Plat','Pavé de saumon, riz aux légumes'],['Dessert','Panna cotta fruits rouges']],
+ 6:[['Entrée','Œuf mayonnaise du chef'],['Plat','Poulet rôti, frites maison'],['Dessert','Crème brûlée']],
+ def:[['Ce jour-là','Pas de menu du jour : découvrez notre carte de saison'],['Astuce','Le menu du jour est servi du mardi au samedi midi']]},
+booking:{kind:'table',step:15,lead:45,rate:28,zones:['Salle','Terrasse','Comptoir'],
+ hours:{1:[],2:[['12:00','13:45'],['19:00','21:30']],3:[['12:00','13:45'],['19:00','21:30']],4:[['12:00','13:45'],['19:00','21:30']],5:[['12:00','13:45'],['19:00','22:00']],6:[['12:00','13:45'],['19:00','22:00']],0:[['12:00','14:00']]}},
+proKpis:['Tables réservées','Couverts prévus','SMS automatiques','Note Google'],
+proFake:[{ref:'TM-5A2C',when:'Auj. 12h15',what:'Table pour 4 (Terrasse)',nom:'Famille Durand',covers:4},{ref:'TM-8D1F',when:'Auj. 12h30',what:'Table pour 2 (Salle)',nom:'M. Lopez',covers:2},{ref:'TM-3K9B',when:'Auj. 20h00',what:'Table pour 8 (Salle)',nom:'Anniv. Léa',covers:8},{ref:'TM-6P4R',when:'Demain 19h30',what:'Table pour 2 (Comptoir)',nom:'Hugo M.',covers:2}]};
+</script>
+<script src="/demos/kit/vm-demo.js"></script>
+</body></html>
