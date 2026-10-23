@@ -27,7 +27,7 @@ informations disponibles. Aucune rubrique manquante n’est remplacée par un an
 journal ou un sujet inventé. La publication suit la fin du montage et du
 traitement par les plateformes ; l’heure exacte n’est pas garantie.
 
-- **YouTube** : vérification de la chaîne autorisée, upload avec reprise par morceaux, d’abord privé, attente du traitement, passage en public, puis contrôle de la visibilité. Titre daté, description, liens vers les sources VM et chapitres sont produits depuis les métadonnées du programme. La génération par IA est déclarée dans la description et dans le champ YouTube prévu. Un upload privé ou refusé n’est jamais affiché comme public.
+- **YouTube** : vérification de la chaîne autorisée, upload avec reprise par morceaux et visibilité publique demandée dès l’envoi autorisé du JT, attente du traitement, puis contrôle de la visibilité. Titre daté, description, liens vers les sources VM et chapitres sont produits depuis les métadonnées du programme. La génération par IA est déclarée dans la description et dans le champ YouTube prévu. Un upload privé ou refusé n’est jamais affiché comme public.
 - **Twitch** : vérification du compte et d’un éventuel direct existant, titre indiquant « programme enregistré · IA », puis diffusion du MP4 au rythme réel avec ffmpeg. Un direct déjà en cours est préservé. Le démarrage doit être confirmé par Twitch et le flux doit se terminer correctement. Twitch reçoit une diffusion enregistrée, pas un upload de fichier comme YouTube.
 - **Sites** : les liens confirmés apparaissent sur l’accueil football, VM Studio, VM Actus et VM Gaming. VM Univers y renvoie depuis sa carte TV/Radio. Aucun lecteur tiers n’est chargé automatiquement. Le lien Twitch ouvre la chaîne ; il ne promet pas un replay permanent.
 
@@ -56,13 +56,16 @@ python tools/connecter_diffusion.py youtube --client-json /chemin/prive/client-g
 
 4. Dans la page Google qui s’ouvre, choisir **votre chaîne** et autoriser l’envoi des vidéos, la lecture de ses informations et la modification de visibilité. L’outil vérifie la chaîne sélectionnée, enregistre les secrets nécessaires dans GitHub et active seulement ensuite `VM_AUTO_YOUTUBE=true`.
 
-L’outil utilise `youtube.upload`, `youtube.readonly` et `youtube.force-ssl`.
-Le dernier droit est nécessaire à `videos.update`, utilisé pour rendre publique
-la vidéo après son traitement. Un ancien jeton limité aux deux premiers droits
-doit être reconnecté une fois ; ajouter le droit dans le code ne modifie pas les
-autorisations d’un jeton existant. Référence : https://developers.google.com/youtube/v3/docs/videos/update.
+L’outil utilise `youtube.upload` et `youtube.readonly`. Les nouveaux JT demandent
+la visibilité publique directement dans `videos.insert`, puis la confirment en
+lecture après traitement. Modifier automatiquement un ancien upload privé avec
+`videos.update` demande `youtube.force-ssl` ou une autorisation équivalente.
+La visibilité d’un ancien upload peut aussi être changée dans YouTube Studio.
+Référence : https://developers.google.com/youtube/v3/docs/videos/update.
 
-La chaîne doit accepter les vidéos longues. Les projets API YouTube non audités peuvent être limités aux vidéos privées par YouTube ; mettre l’application OAuth en production et obtenir l’autorisation API d’envois publics sont deux sujets distincts. Si YouTube refuse le passage public, la vidéo reste privée et le workflow signale l’échec ; ne pas annoncer un succès public ni réencoder une autre copie pour contourner le refus. Référence : https://developers.google.com/youtube/v3/docs/videos/insert.
+Le JT express vise 8 à 10 minutes et son rendu est refusé au-delà de 14 minutes.
+Un programme dépassant 15 minutes exige un droit aux vidéos longues confirmé sur
+la chaîne. Les projets API YouTube non audités peuvent être limités aux vidéos privées par YouTube ; mettre l’application OAuth en production et obtenir l’autorisation API d’envois publics sont deux sujets distincts. Si YouTube refuse le passage public, la vidéo reste privée et le workflow signale l’échec ; ne pas annoncer un succès public ni réencoder une autre copie pour contourner le refus. Référence : https://developers.google.com/youtube/v3/docs/videos/insert.
 
 ### Twitch
 

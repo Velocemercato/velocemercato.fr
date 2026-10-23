@@ -40,6 +40,8 @@ def assemble(root, moment, date, output, master_dir=None, *, require_hd=False):
         signature=(video['codec_name'],video['width'],video['height'],video['pix_fmt'],video['avg_frame_rate'],audio['codec_name'],audio['sample_rate'],audio['channels'])
         parts.append((row,file,float(info['format']['duration']),signature))
     if len({part[3] for part in parts})!=1:raise RuntimeError('Formats des JT incompatibles : ne pas dégrader les sources par une conversion implicite.')
+    revisions={part[0].get('editorial_revision','') for part in parts}
+    if len(revisions)!=1:raise RuntimeError('Éditions éditoriales incompatibles : aucun mélange de JT court et ancien.')
     if output.resolve() in [part[1].resolve() for part in parts]:raise ValueError('Le programme ne doit pas écraser un JT source.')
     output.parent.mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='pastille-programme-') as folder:
@@ -62,6 +64,10 @@ def assemble(root, moment, date, output, master_dir=None, *, require_hd=False):
         offset+=duration
     data={'date':date,'moment':moment,'duree_mesuree':float(probe(output)['format']['duration']),
           'chapitres':chapters,'youtube':'préparation seulement','twitch':'préparation seulement','publie':False}
+    revision=next(iter(revisions))
+    if revision:
+        if not re.fullmatch(r'[a-z0-9-]{1,32}',revision):raise ValueError('Révision éditoriale invalide')
+        data['editorial_revision']=revision
     output.with_suffix('.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
     def clock(seconds):
         seconds=int(seconds);return f'{seconds//3600:02}:{seconds//60%60:02}:{seconds%60:02}' if seconds>=3600 else f'{seconds//60:02}:{seconds%60:02}'

@@ -22,6 +22,10 @@ on:
         description: 'Publier après validation (uniquement sur main)'
         type: boolean
         default: false
+      refaire:
+        description: 'Refaire les trois éditions du créneau avec le nouveau format court'
+        type: boolean
+        default: false
       qualite:
         description: 'auto : CDN en production, HD en aperçu'
         type: choice
@@ -93,8 +97,10 @@ jobs:
       - name: Installer les outils sans repli vocal silencieux
         if: github.event_name == 'workflow_dispatch' || steps.plan.outputs.plan != ''
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq ffmpeg
+          if ! command -v ffmpeg > /dev/null || ! command -v ffprobe > /dev/null; then
+            timeout 180 sudo apt-get update -qq
+            timeout 180 sudo apt-get install -y -qq ffmpeg
+          fi
           python -m pip install "piper-tts==1.8.0" pillow
           python -m piper --help > /dev/null
       - name: Cache des voix
@@ -112,6 +118,7 @@ jobs:
           VM_SPEECH_RATE: '1.12'
           VM_VIDEO_PROFILE: ${{ inputs.qualite || 'auto' }}
           VM_KEEP_HD_MASTER: ${{ steps.diffusion.outputs.ready == '1' && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.publish) && '1' || '0' }}
+          VM_REFRESH_EDITION: ${{ github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.publish && inputs.refaire && '1' || '0' }}
           PLAN: ${{ steps.plan.outputs.plan }}
           UNIVERS: ${{ inputs.univers }}
           FORMAT: ${{ inputs.format }}

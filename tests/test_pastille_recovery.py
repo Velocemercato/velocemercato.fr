@@ -14,6 +14,16 @@ import pastille_media as media
 
 
 class RecoveryTests(unittest.TestCase):
+    def test_refresh_is_explicit_and_identifies_the_new_editorial_version(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);self.produce(root,100)
+            with patch.object(emission,'already_published',return_value=True),patch.dict(os.environ,{'VM_REFRESH_EDITION':'0'}):
+                self.assertIsNone(emission.make('actus','edition','midi'))
+            with patch.object(emission,'already_published',return_value=True),patch.dict(os.environ,{'VM_REFRESH_EDITION':'1'}),patch.object(emission,'publish',return_value='a'*40):
+                entry=emission.make('actus','edition','midi')
+            self.assertEqual(entry['editorial_revision'],'court-v1')
+            self.assertTrue(entry['publie'])
+
     def produce(self, root, size):
         (root / 'studio/debats').mkdir(parents=True)
         config = root / 'studio/debats/config.json'

@@ -1,0 +1,47 @@
+name: VM - Demande de JT express
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/demande-jt.json']
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: vm-demande-jt-express
+  cancel-in-progress: false
+
+jobs:
+  demande:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Valider la demande datée
+        run: |
+          python - <<'PY'
+          import datetime as dt, json, os
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+          data = json.loads(Path('.github/demande-jt.json').read_text())
+          now = dt.datetime.now(dt.timezone.utc)
+          created = dt.datetime.fromisoformat(data['requested_at'])
+          if (created.tzinfo is None or not dt.timedelta(0) <= now-created <= dt.timedelta(hours=1)
+                  or data.get('date') != now.astimezone(ZoneInfo('Europe/Paris')).date().isoformat()
+                  or data.get('moment') not in ('matin','midi','soir')
+                  or data.get('editorial_revision') != 'court-v1'):
+              raise SystemExit('Demande invalide ou périmée : aucune production.')
+          with open(os.environ['GITHUB_ENV'],'a') as output:
+              output.write('MOMENT=' + data['moment'] + '\n')
+          PY
+      - name: Lancer les trois rubriques courtes autorisées
+        run: |
+          gh workflow run emissions.yml --repo "$GITHUB_REPOSITORY" --ref main \
+            -f univers=tous -f format=edition -f moment="$MOMENT" \
+            -f publish=true -f qualite=auto -f refaire=true

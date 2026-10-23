@@ -47,10 +47,10 @@ Le statut contrôlé et les liens effectivement publics apparaissent aussi dans
 les annotations GitHub. Les diagnostics des vidéos de présentation ne montrent
 plus de fragment d’identifiant secret.
 
-Le raccordement OAuth demande désormais aussi `youtube.force-ssl`, droit accepté
-par `videos.update`. Les deux anciens droits (`youtube.upload` et `youtube.readonly`)
-permettent l’envoi privé mais pas cette modification de visibilité. Un jeton déjà
-créé ne gagne pas de droit sans une nouvelle autorisation Google du propriétaire.
+La modification d’un ancien upload privé avec `videos.update` demande
+`youtube.force-ssl` ou équivalent. Les nouveaux JT express demandent finalement
+le mode public dès l’envoi autorisé, puis le confirment en lecture : les droits
+`youtube.upload` et `youtube.readonly` suffisent pour ce nouveau parcours.
 
 ## Vérifications
 
@@ -82,3 +82,8 @@ L’attente de traitement est portée à 45 minutes, à l’intérieur du workfl
 vidéo, sans renvoyer le programme. Les changements de phase du traitement et la
 visibilité normalisée sont désormais visibles dans les annotations, sans lien
 ni identifiant privé. Un refus de droits ou de traitement reste un échec explicite.
+
+Après le message du propriétaire signalant une vidéo trop longue, la demande de
+nouvelle reprise du programme de 20 minutes est retirée. Une nouvelle production
+du JT express est préparée, avec trois rubriques courtes et un identifiant distinct.
+Voir `JT_EXPRESS_PUBLIC_QUOTIDIEN.md` pour le comportement final.

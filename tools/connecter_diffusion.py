@@ -25,10 +25,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.diffuser_jt import HTTP, DeliveryError
 
-# videos.insert accepte upload ; videos.update (passage du privé au public)
-# exige youtube.force-ssl. Les anciens jetons doivent être reconnectés une fois.
-YOUTUBE_SCOPES = ['https://www.googleapis.com/auth/youtube.upload', 'https://www.googleapis.com/auth/youtube.readonly',
-                  'https://www.googleapis.com/auth/youtube.force-ssl']
+# La visibilité publique est demandée dans videos.insert ; la lecture confirme
+# son résultat. Aucun droit de modification des anciennes vidéos n'est requis.
+YOUTUBE_SCOPES = ['https://www.googleapis.com/auth/youtube.upload', 'https://www.googleapis.com/auth/youtube.readonly']
 TWITCH_SCOPES = ['channel:manage:broadcast', 'channel:read:stream_key']
 
 

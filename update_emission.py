@@ -2,7 +2,7 @@
 """La Pastille TV — émissions vidéo écrites et jouées par l'IA, à partir des vraies brèves des sites VM.
 
 Formats :
-  edition  : le journal (matin / midi / soir), 8 à 12 minutes, résume un maximum de brèves récentes.
+  edition  : le JT express (matin / midi / soir), environ 3 minutes par rubrique.
   speciale : la spéciale avant-match (soirs de match), 15 à 20 minutes, débat long.
   debat    : le débat du soir / l'après-match, 5 à 8 minutes.
 Univers : foot (articles.json), actus (actus/news.json), gaming (vm-gaming/news.json).
@@ -59,8 +59,9 @@ UNIVERS = {
     'gaming': {'file': 'vm-gaming/news.json', 'persos': GAMING_PERSOS, 'bg': 'vm-gaming/img/vm-gaming.webp', 'nom': 'La Pastille Gaming',
                'sujet': 'les jeux vidéo (Warzone, Battlefield REDSEC, EA SPORTS FC, GTA VI, les autres jeux, consoles et esport)'},
 }
+EDITORIAL_REVISION = 'court-v1'
 FORMATS = {
-    'edition': {'mots': (1300, 1700), 'repliques': (34, 48), 'heures': 14, 'max_news': 26, 'tokens': 7000},
+    'edition': {'mots': (380, 480), 'max_words': 520, 'repliques': (12, 18), 'heures': 14, 'max_news': 8, 'tokens': 3000},
     'speciale': {'mots': (2400, 3000), 'repliques': (55, 75), 'heures': 40, 'max_news': 30, 'tokens': 12000},
     'debat': {'mots': (800, 1100), 'repliques': (24, 34), 'heures': 8, 'max_news': 14, 'tokens': 5000},
     'buts': {'mots': (1300, 1800), 'repliques': (34, 50), 'heures': 168, 'max_news': 40, 'tokens': 8000},
@@ -84,8 +85,8 @@ def write_script(univers, fmt, moment, news, fixtures=None):
     U, F = UNIVERS[univers], FORMATS[fmt]
     persos = U['persos']
     noms = ', '.join(f"{k} ({v['nom']} : {v['role']})" for k, v in persos.items())
-    kind = {'edition': f'le journal du {moment} : on passe en revue un MAXIMUM de brèves, une par une, clairement, '
-                       'avec une courte réaction des chroniqueurs entre les sujets',
+    kind = {'edition': f'le JT express du {moment} : sélectionne les 4 à 6 brèves les plus importantes, '
+                       'avec une seule réaction courte entre les sujets ; environ 3 minutes pour cette rubrique',
             'speciale': 'la grande spéciale avant-match des soirs de match : présentation des affiches du soir, contexte, '
                         'enjeux, joueurs à suivre, ambiance, histoire des confrontations, puis long débat entre chroniqueurs, '
                         'et un tour rapide des autres actus',
@@ -124,15 +125,21 @@ def write_script(univers, fmt, moment, news, fixtures=None):
                'rubrique': a.get('championnat', ''), 'media': (a.get('sources') or [{}])[0].get('nom', '')} for a in news]
     user = json.dumps({'moment': moment, 'date_paris': dt.datetime.now(D.PARIS).strftime('%A %d/%m %H:%M'), 'breves': briefs, 'matchs_confirmes': fixtures or []},
                       ensure_ascii=False)
-    reply = robot.call_claude(system, user, max_tokens=F['tokens'], timeout=300)
-    raw = ''.join(p.get('text', '') for p in reply.get('content', []) if p.get('type') == 'text').strip()
-    raw = re.sub(r'^```(?:json)?\s*|\s*```$', '', raw)
-    data = json.loads(raw[raw.find('{'):raw.rfind('}') + 1])
-    lines = [(str(r.get('perso', '')).upper(), re.sub(r'\s+', ' ', str(r.get('texte', ''))).strip()) for r in data.get('repliques', [])]
-    lines = [(p, t) for p, t in lines if p in persos and 3 <= len(t.split()) <= 90 and not re.search(r'https?://|<', t)]
-    if len(lines) < F['repliques'][0] * 0.6:
-        raise RuntimeError(f'Script trop court ({len(lines)} répliques) : pas de vidéo.')
-    return {'titre': str(data.get('titre', U['nom']))[:90], 'accroche': str(data.get('accroche', ''))[:180], 'repliques': lines}
+    for attempt in range(2):
+        reply = robot.call_claude(system, user, max_tokens=F['tokens'], timeout=300)
+        raw = ''.join(p.get('text', '') for p in reply.get('content', []) if p.get('type') == 'text').strip()
+        raw = re.sub(r'^```(?:json)?\s*|\s*```$', '', raw)
+        data = json.loads(raw[raw.find('{'):raw.rfind('}') + 1])
+        lines = [(str(r.get('perso', '')).upper(), re.sub(r'\s+', ' ', str(r.get('texte', ''))).strip()) for r in data.get('repliques', [])]
+        lines = [(p, t) for p, t in lines if p in persos and 3 <= len(t.split()) <= 90 and not re.search(r'https?://|<', t)]
+        if len(lines) < F['repliques'][0] * 0.6:
+            raise RuntimeError(f'Script trop court ({len(lines)} répliques) : pas de vidéo.')
+        words = sum(len(text.split()) for _, text in lines)
+        if words <= F.get('max_words', float('inf')):
+            return {'titre': str(data.get('titre', U['nom']))[:90], 'accroche': str(data.get('accroche', ''))[:180], 'repliques': lines}
+        if attempt == 0:
+            user += f'\nLa réponse précédente avait {words} mots. Recompose un journal complet de {F["mots"][0]} à {F["mots"][1]} mots, limite absolue {F["max_words"]}. Pas de phrase coupée ; conserve des sujets complets et les sources.'
+    raise RuntimeError('JT express encore trop long après réécriture : aucun rendu ni publication.')
 
 
 TV_KEEP = 24  # nombre de vidéos gardées en ligne
@@ -226,7 +233,8 @@ def make(univers, fmt, moment):
     F = FORMATS[fmt]
     D.media.video_profile()  # Refuser HD + publication avant tout appel de rédaction payant.
     now = dt.datetime.now(D.PARIS)
-    if D.media.publication_enabled() and already_published(ROOT, univers, fmt, moment, now):
+    refresh = fmt == 'edition' and os.getenv('VM_REFRESH_EDITION') == '1'
+    if D.media.publication_enabled() and not refresh and already_published(ROOT, univers, fmt, moment, now):
         print(f'{univers}/{fmt}/{moment} : déjà publié pour cette date.')
         return None
     fixtures = confirmed_matches(ROOT, now, finished=fmt == 'debat') if fmt in ('speciale','debat') else []
@@ -259,6 +267,8 @@ def make(univers, fmt, moment):
              'titre': script['titre'], 'accroche': script['accroche'], 'duree': round(total),
              'date': now.isoformat(timespec='minutes'), 'publie': False, 'voix': engines, 'speech_rate': D.media.speech_rate()}
     entry['fichier'] = out.name
+    if fmt == 'edition':
+        entry['editorial_revision'] = EDITORIAL_REVISION
     save_master_metadata(entry)
     if auto:
         try:

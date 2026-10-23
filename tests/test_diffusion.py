@@ -207,6 +207,35 @@ class DiffusionTests(unittest.TestCase):
                 receipts,_=D.publish('f.mp4',{'id':'prog1'},state)
             self.assertEqual(FakeYT.calls,['public']);self.assertEqual(receipts['youtube']['status'],'published')
 
+    def test_authorized_daily_upload_requests_public_and_confirms_it_without_visibility_write(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);file=root/'court.mp4';file.write_bytes(b'0123456789')
+            state=D.State(root/'state.enc',KEY);http=Mock();channel='UC'+'a'*22
+            http.json.side_effect=[{'items':[{'id':channel,'status':{'longUploadsStatus':'disallowed'}}]},
+                {'items':[{'id':'aB1cdEF2ghi','status':{'privacyStatus':'public'},
+                    'processingDetails':{'processingStatus':'succeeded'}}]}]
+            http.request.side_effect=[(200,{'Location':'https://www.googleapis.com/upload/session-test'},b''),
+                (308,{},b''),(200,{},b'{"id":"aB1cdEF2ghi"}')]
+            env={'VM_AUTO_YOUTUBE':'true','VM_YOUTUBE_PUBLIC':'true','YOUTUBE_CLIENT_ID':'client',
+                'YOUTUBE_CLIENT_SECRET':'secret-test','YOUTUBE_REFRESH_TOKEN':'refresh-test','YOUTUBE_CHANNEL_ID':channel}
+            with patch.dict(os.environ,env,clear=True),patch.object(D,'access_token',return_value='read-upload-test'):
+                receipts,errors=D.publish(file,MANIFEST,state,http)
+            self.assertEqual(errors,[]);self.assertEqual(receipts['youtube']['status'],'published')
+            submitted=json.loads(http.request.call_args_list[0].args[3])
+            self.assertEqual(submitted['status']['privacyStatus'],'public')
+            self.assertTrue(all(call.args[0]=='GET' for call in http.json.call_args_list))
+
+    def test_unverified_channel_does_not_receive_a_video_longer_than_fifteen_minutes(self):
+        with tempfile.TemporaryDirectory() as folder:
+            state=D.State(Path(folder)/'state.enc',KEY);client=Mock()
+            client.verify_channel.return_value={'status':{'longUploadsStatus':'disallowed'}}
+            env={'VM_AUTO_YOUTUBE':'true','VM_YOUTUBE_PUBLIC':'true','YOUTUBE_CLIENT_ID':'client',
+                'YOUTUBE_CLIENT_SECRET':'secret-test','YOUTUBE_REFRESH_TOKEN':'refresh-test','YOUTUBE_CHANNEL_ID':'UCtest'}
+            with patch.dict(os.environ,env,clear=True),patch.object(D,'access_token',return_value='token'),patch.object(D,'YouTube',return_value=client):
+                _,errors=D.publish('unused.mp4',{**MANIFEST,'duree_mesuree':901},state)
+            client.upload.assert_not_called()
+            self.assertIn('15 minutes',errors[0])
+
     def test_promos_upload_private_two_per_run_without_duplicates(self):
         from tools import promos_youtube as P
         with tempfile.TemporaryDirectory() as folder:
@@ -317,7 +346,8 @@ class DiffusionTests(unittest.TestCase):
         self.assertEqual(code,'TEST_OAUTH_CODE')
         self.assertTrue(redirect.startswith('http://127.0.0.1:'))
         self.assertEqual(received['code_challenge_method'],['S256'])
-        self.assertIn('https://www.googleapis.com/auth/youtube.force-ssl',received['scope'][0].split())
+        self.assertIn('https://www.googleapis.com/auth/youtube.upload',received['scope'][0].split())
+        self.assertNotIn('https://www.googleapis.com/auth/youtube.force-ssl',received['scope'][0].split())
         import hashlib
         self.assertEqual(received['code_challenge'][0],base64.urlsafe_b64encode(hashlib.sha256(verifier.encode()).digest()).decode().rstrip('='))
         self.assertNotIn(code,output.getvalue())
@@ -402,11 +432,13 @@ class DiffusionTests(unittest.TestCase):
                     '-c:v','libx264','-threads','2','-pix_fmt','yuv420p','-c:a','aac',str(file)],check=True)
                 (masters/(universe+'.json')).write_text(json.dumps({'id':universe+'-test','univers':universe,
                     'format':'edition','moment':'midi','date':'2026-10-23T12:30:00+02:00',
-                    'fichier':file.name,'titre':universe}))
+                    'fichier':file.name,'titre':universe,'editorial_revision':'court-v1'}))
                 original[file]=file.read_bytes()
                 durations.append(float(D.probe(file)['format']['duration']))
             output=root/'programme.mp4'
             manifest=D.prepare(masters,output,now=now,expected_run='42')
+            self.assertEqual(manifest['id'],'jt-2026-10-23-midi-court-v1')
+            self.assertIn('JT express',D.youtube_metadata(manifest)['snippet']['title'])
             video=next(row for row in D.probe(output)['streams'] if row['codec_type']=='video')
             self.assertEqual(video['avg_frame_rate'],'24/1')
             self.assertAlmostEqual(float(video['duration']),sum(durations),delta=1/24)

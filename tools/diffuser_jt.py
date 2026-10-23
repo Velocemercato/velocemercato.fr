@@ -206,7 +206,8 @@ def youtube_metadata(manifest):
         label = {'speciale': 'Spéciale avant-match', 'debat': 'Le débat du soir', 'buts': 'Les buts de la semaine'}[manifest['format']]
         title = f'Véloce Mercato — {label} — {date}'
     else:
-        title = f'VM Univers — Le grand JT {names[manifest["moment"]]} — {date}'
+        label = 'Le JT express' if manifest.get('editorial_revision') == 'court-v1' else 'Le grand JT'
+        title = f'VM Univers — {label} {names[manifest["moment"]]} — {date}'
     def clock(seconds):
         seconds = int(seconds)
         return f'{seconds//3600:02}:{seconds//60%60:02}:{seconds%60:02}' if seconds >= 3600 else f'{seconds//60:02}:{seconds%60:02}'
@@ -224,7 +225,7 @@ class YouTube:
         self.http, self.state, self.token = http, state, token
 
     def verify_channel(self):
-        result = self.http.json('GET', 'https://www.googleapis.com/youtube/v3/channels?part=id,snippet&mine=true', self.token)
+        result = self.http.json('GET', 'https://www.googleapis.com/youtube/v3/channels?part=id,snippet,status&mine=true', self.token)
         rows = result.get('items', [])
         found = re.search(r'UC[A-Za-z0-9_-]{22}', os.environ.get('YOUTUBE_CHANNEL_ID', ''))
         expected = found.group(0) if found else ''
@@ -232,6 +233,7 @@ class YouTube:
             names = ', '.join(re.sub(r'[\x00-\x1f]', '', r.get('snippet', {}).get('title', '?'))[:60] + ' (' + r['id'] + ')' for r in rows) or 'aucune chaîne'
             # Identifiants de chaînes publics : affichés pour corriger la configuration.
             raise DeliveryError(f'YouTube : la chaîne autorisée est {names}, mais YOUTUBE_CHANNEL_ID indique {expected or "un texte sans UC…"}.')
+        return next(row for row in rows if row['id'] == expected)
 
     def upload(self, file, metadata, receipt, chunk_size=8*1024*1024):
         file = Path(file)
@@ -439,7 +441,11 @@ def prepare(masters, output, now=None, expected_run=None):
                   'chapitres':[{'debut_secondes':0, 'univers':'foot', 'titre':row['titre'], 'id':ident}]}
     elif kind == 'edition':
         result = assemble(ROOT, moment, date, output, masters, require_hd=True)
-        result.update(format='edition', universes=['foot','actus','gaming'], id='jt-' + date + '-' + moment)
+        revision = result.get('editorial_revision','')
+        if revision == 'court-v1' and result['duree_mesuree'] > 14*60:
+            raise DeliveryError('JT express supérieur à 14 minutes : réécrire les rubriques avant diffusion, aucune vidéo coupée.')
+        result.update(format='edition', universes=['foot','actus','gaming'],
+                      id='jt-' + date + '-' + moment + ('-' + revision if revision else ''))
     else:
         raise DeliveryError('Format de programme non autorisé.')
     info = probe(output)
@@ -465,8 +471,18 @@ def publish(file, manifest, state, http=None):
             token = access_token(provider, state, http)
             if provider == 'youtube':
                 client = YouTube(http, state, token)
-                client.verify_channel()
-                client.upload(file, youtube_metadata(manifest), receipt)
+                channel = client.verify_channel() or {}
+                if (manifest.get('duree_mesuree',0) > 15*60
+                        and channel.get('status',{}).get('longUploadsStatus') != 'allowed'):
+                    raise DeliveryError('YouTube : programme de plus de 15 minutes, droit aux vidéos longues non confirmé. '
+                                        'Vérifier la chaîne sur https://www.youtube.com/verify ou utiliser le JT express.')
+                metadata = youtube_metadata(manifest)
+                if public_allowed() and not receipt.get('video_id') and not receipt.get('session'):
+                    # Demande publique autorisée dès l'envoi, compatible avec
+                    # youtube.upload. La lecture API après traitement confirme
+                    # ensuite la visibilité ; aucun nouvel envoi en cas de refus.
+                    metadata['status']['privacyStatus'] = 'public'
+                client.upload(file, metadata, receipt)
                 if public_allowed():
                     client.make_public(receipt)
                 else:

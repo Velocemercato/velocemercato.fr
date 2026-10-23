@@ -28,15 +28,15 @@ Choisir **GitHub.com → HTTPS → Login with a web browser**, ouvrir le lien et
 ## Visibilité des vidéos
 
 Le propriétaire a autorisé la publication automatique publique des **JT**.
-Leur workflow envoie d’abord la vidéo en privé, attend son traitement, puis
-demande le passage en public et le vérifie. `VM_AUTO_YOUTUBE=false` suspend
+Leur workflow demande le mode public dès le nouvel envoi autorisé, attend son
+traitement puis vérifie sa visibilité. `VM_AUTO_YOUTUBE=false` suspend
 les envois. Les vidéos de présentation ont un workflow distinct, encore piloté
 par la variable `VM_YOUTUBE_PUBLIC`.
 
-Un ancien jeton disposant seulement de `youtube.upload` et `youtube.readonly`
-ne suffit pas pour modifier la visibilité. La connexion de l’étape 3 demande
-aussi `youtube.force-ssl`. Google doit autoriser ce nouveau droit : une
-modification du code seule ne l’ajoute pas au jeton déjà enregistré.
+Les droits `youtube.upload` et `youtube.readonly` permettent de demander un
+nouvel envoi public et d’en vérifier le résultat. Modifier automatiquement un
+ancien upload privé demande un autre droit (`youtube.force-ssl` ou équivalent).
+Les anciens uploads peuvent aussi être réglés manuellement dans YouTube Studio.
 
 Pour rendre immédiatement public un JT déjà présent en privé : **YouTube Studio
 → Contenu → choisir le JT daté → Modifier → Visibilité → Publique → Enregistrer**.
@@ -66,7 +66,7 @@ python tools/connecter_diffusion.py youtube --codespaces --client-id VOTRE_CLIEN
 ```
 
 5. Le terminal demande le secret du client : le saisir seulement dans cette **saisie masquée**, jamais dans une conversation, un fichier du dépôt ou une commande visible.
-6. Ouvrir le lien Google affiché dans Chrome, choisir votre chaîne et autoriser les droits demandés : envoi (`youtube.upload`), lecture (`youtube.readonly`) et modification de visibilité (`youtube.force-ssl`). Le retour HTTPS rejoint le programme dans le Codespace.
+6. Ouvrir le lien Google affiché dans Chrome, choisir votre chaîne et autoriser les droits demandés : envoi (`youtube.upload`) et lecture (`youtube.readonly`). Le retour HTTPS rejoint le programme dans le Codespace.
 7. Revenir au terminal : le message doit confirmer le compte et l’enregistrement des accès dans GitHub. Une autorisation seule ne signifie pas qu’une vidéo a déjà été envoyée.
 
 Les restrictions Google restent applicables : autorisation des vidéos longues, durée des autorisations OAuth de test et éventuelle limitation des projets API non audités aux vidéos privées. Le script ne contourne pas ces restrictions et ne présente pas un upload privé comme une publication publique. Voir `YOUTUBE_TWITCH_CONNEXION.md`.
