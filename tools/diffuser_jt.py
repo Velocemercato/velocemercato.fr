@@ -621,6 +621,15 @@ if __name__ == '__main__':
     except Exception as error:
         # Les exceptions réseau/sous-processus peuvent inclure des secrets : message contrôlé seulement.
         message = str(error) if isinstance(error, DeliveryError) else 'Diffusion interrompue (' + type(error).__name__ + '). Aucun succès annoncé.'
+        if isinstance(error, subprocess.CalledProcessError):
+            # Seuls l'outil, la sous-commande et le code de sortie sont affichés ; la fin du message
+            # d'erreur est filtrée (aucun jeton, aucune adresse privée).
+            cmd = [str(part) for part in (error.cmd if isinstance(error.cmd, (list, tuple)) else [error.cmd])]
+            tool = Path(cmd[0]).name if cmd else '?'
+            sub = next((part for part in cmd[1:] if re.fullmatch(r'[a-z][a-z-]{1,20}', part)), '')
+            detail = error.stderr.decode('utf-8', 'replace') if isinstance(error.stderr, bytes) else str(error.stderr or '')
+            detail = re.sub(r'(gh[pousr]_[A-Za-z0-9]+|x-access-token:[^@\s]+|https?://\S+)', '…', detail.strip().splitlines()[-1] if detail.strip() else '')[:160]
+            message += f' Commande : {tool} {sub} (code {error.returncode}). {detail}'.rstrip()
         print(message, file=sys.stderr)
         print('::error::' + message.replace('\n', ' '))  # visible dans les annotations GitHub
         sys.exit(1)
