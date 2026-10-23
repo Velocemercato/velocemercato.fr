@@ -22,14 +22,8 @@ robot.BLOCK = re.compile(r'\b(horoscope|bon plan|promo(tion)?s?|soldes?|code pro
 # (lieu, média, url, filtrer_par_ville)
 FEEDS = [
     ('BELFORT', "L'Est Républicain", 'https://www.estrepublicain.fr/edition-belfort-hericourt-montbeliard/rss', False),
-    ('BELFORT', "L'Est Républicain", 'https://www.estrepublicain.fr/edition-belfort/rss', False),
-    ('HAUTE-SAONE', "L'Est Républicain", 'https://www.estrepublicain.fr/edition-haute-saone/rss', False),
     ('HAUTE-SAONE', "L'Est Républicain", 'https://www.estrepublicain.fr/haute-saone/rss', False),
     ('BELFORT', "L'Est Républicain", 'https://www.estrepublicain.fr/territoire-de-belfort/rss', False),
-    ('REGION', 'France 3 BFC', 'https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/rss', True),
-    ('BELFORT', 'France 3 BFC', 'https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/territoire-de-belfort/rss', False),
-    ('HAUTE-SAONE', 'France 3 BFC', 'https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/haute-saone/rss', False),
-    ('BELFORT', 'ici Belfort-Montbéliard', 'https://www.francebleu.fr/rss/belfort-montbeliard/infos.xml', False),
     ('BELFORT', 'macommune.info', 'https://www.macommune.info/feed/', False),
     ('REGION', "L'Est Républicain", 'https://www.estrepublicain.fr/rss', True),
 ]

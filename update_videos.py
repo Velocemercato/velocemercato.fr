@@ -28,8 +28,6 @@ CHANNELS = [
     ('LIGUE_1', 'Ligue 1', ['Ligue1McDonalds', 'Ligue1']),
     ('LIGUE_2', 'Ligue 2', ['Ligue2BKT', 'Ligue2']),
     ('NATIONAL', 'FFF', ['FFF', 'fff']),
-    ('BLEUS', 'Équipe de France', ['equipedefrance', 'EquipedeFrance']),
-    ('EUROPE', 'Ligue des champions', ['ChampionsLeague', 'UEFAChampionsLeague']),
     ('EUROPE', 'UEFA', ['UEFA']),
     ('ETRANGER', 'Premier League', ['premierleague', 'PremierLeague']),
     ('ETRANGER', 'LaLiga', ['LaLiga', 'laliga']),

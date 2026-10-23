@@ -26,8 +26,6 @@ GAMING_HOSTS = set(robot.ALLOWED_HOSTS)
 # Titres seulement (pas de réécriture IA) : médias demandés par le responsable VM, avec lien vers l'article d'origine.
 FOOT += [
     ('FRANCE', 'FRANCE', "L'Équipe", 'https://dwh.lequipe.fr/api/edito/rss?path=/Football/'),
-    ('FRANCE', 'FRANCE', 'So Foot', 'https://www.sofoot.com/rss.xml'),
-    ('INTERNATIONAL', 'INTERNATIONAL', 'Goal', 'https://www.goal.com/feeds/fr/news'),
     ('FRANCE', 'FRANCE', '20 Minutes', 'https://www.20minutes.fr/feeds/rss-football.xml'),
     ('FRANCE', 'FRANCE', 'Le Parisien', 'https://feeds.leparisien.fr/leparisien/rss/sports/football'),
 ]
@@ -43,7 +41,7 @@ GAMING += [
     ('GAMING', 'GAMING', 'IGN France', 'https://fr.ign.com/feed.xml'),
     ('GAMING', 'GAMING', 'Numerama', 'https://www.numerama.com/feed/'),
 ]
-EXTRA_HOSTS = {'lequipe.fr', 'sofoot.com', 'goal.com', '20minutes.fr', 'leparisien.fr', 'lemonde.fr', 'estrepublicain.fr',
+EXTRA_HOSTS = {'lequipe.fr', '20minutes.fr', 'leparisien.fr', 'lemonde.fr', 'estrepublicain.fr',
                'lefigaro.fr', 'bfmtv.com', 'journaldugeek.com', 'ign.com', 'numerama.com'}
 
 robot.rss_items = update_gaming._rss_items  # lecture brute des flux

@@ -22,7 +22,6 @@ robot.MAX_AGE_HOURS = 48
 robot.FEEDS = [
     ('GAMING', 'GAMING', 'Jeuxvideo.com', 'https://www.jeuxvideo.com/rss/rss.xml'),
     ('GAMING', 'GAMING', 'Gamekult', 'https://www.gamekult.com/feed.xml'),
-    ('GAMING', 'GAMING', 'Millenium', 'https://www.millenium.org/rss'),
     ('GAMING', 'GAMING', 'Dexerto', 'https://www.dexerto.fr/feed/'),
     ('GAMING', 'GAMING', 'JV France', 'https://www.jvfrance.com/feed/'),
     ('GAMING', 'GAMING', 'GamerGen', 'https://gamergen.com/rss'),
@@ -32,7 +31,7 @@ robot.FEEDS = [
     ('GAMING', 'GAMING', 'Les Numériques', 'https://www.lesnumeriques.com/rss.xml'),
 ]
 robot.ALLOWED_HOSTS = {
-    'jeuxvideo.com', 'gamekult.com', 'millenium.org', 'dexerto.fr', 'jvfrance.com', 'gamergen.com',
+    'jeuxvideo.com', 'gamekult.com', 'dexerto.fr', 'jvfrance.com', 'gamergen.com',
     'next.ink', 'tomshardware.fr', 'lesnumeriques.com',
 }
 # Seulement nos quatre jeux, et pas de promos, concours ou paris.
