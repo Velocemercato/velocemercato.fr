@@ -31,7 +31,9 @@ jobs:
       SOURCE_RUN_ID: ${{ github.event.workflow_run.id || inputs.source_run_id }}
       VM_AUTO_YOUTUBE: ${{ vars.VM_AUTO_YOUTUBE }}
       VM_AUTO_TWITCH: ${{ vars.VM_AUTO_TWITCH }}
-      VM_YOUTUBE_PUBLIC: ${{ vars.VM_YOUTUBE_PUBLIC }}
+      # Le propriétaire a demandé la publication automatique publique des JT.
+      # VM_AUTO_YOUTUBE reste l'interrupteur pour arrêter les envois.
+      VM_YOUTUBE_PUBLIC: 'true'
       VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
       YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
       YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}

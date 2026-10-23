@@ -498,7 +498,14 @@ def main():
     receipts, errors = publish(output, manifest, state)
     public_index(ROOT / 'studio/diffusions.json', manifest, receipts)
     for provider, receipt in receipts.items():
-        print(provider + ' : ' + receipt.get('status', 'non confirmé'))
+        status = receipt.get('status', 'non confirmé')
+        print(provider + ' : ' + status)
+        # Les journaux détaillés nécessitent une connexion GitHub. N'annoncer
+        # publiquement que le statut contrôlé, sans identifiant de vidéo privée.
+        message = provider + ' : ' + status
+        if status in ('published', 'ended') and receipt.get('url'):
+            message += ' · ' + receipt['url']
+        print('::notice::' + message)
     for error in errors:
         print(error, file=sys.stderr)
         print('::error::' + str(error).replace('\n', ' '))

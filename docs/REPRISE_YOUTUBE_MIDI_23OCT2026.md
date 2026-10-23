@@ -37,6 +37,16 @@ Les options d’activation YouTube/Twitch, la vérification de chaîne, la visib
 publique autorisée et la confirmation par la plateforme restent nécessaires.
 Une génération réussie ne prouve pas une publication YouTube.
 
+La première reprise du 23 octobre a terminé sans erreur, mais sans lien public
+dans l’index. Le workflow des JT active désormais explicitement
+`VM_YOUTUBE_PUBLIC=true`, conformément à la demande de publication automatique
+du propriétaire. `VM_AUTO_YOUTUBE` reste l’interrupteur général ; la vérification
+de chaîne et la confirmation du traitement et de la visibilité publique restent
+obligatoires. Un accusé privé déjà enregistré est réutilisé sans nouvel envoi.
+Le statut contrôlé et les liens effectivement publics apparaissent aussi dans
+les annotations GitHub. Les diagnostics des vidéos de présentation ne montrent
+plus de fragment d’identifiant secret.
+
 ## Vérifications
 
 - 23 tests de diffusion, dont l’assemblage réel de durées fractionnaires et le refus des sources CDN.

@@ -180,6 +180,19 @@ class DiffusionTests(unittest.TestCase):
             self.assertEqual(len(FakeYT.ups),4);self.assertEqual(len(set(FakeYT.ups)),4);self.assertEqual(FakeYT.pub,[])
             self.assertTrue(all(n.endswith('vertical.mp4') for n in FakeYT.ups))
 
+    def test_promos_diagnostics_do_not_print_credential_fragments(self):
+        from tools import promos_youtube as P
+        variables={'VM_AUTO_YOUTUBE':'false','YOUTUBE_CLIENT_ID':'143768939550-test.apps.googleusercontent.com',
+            'YOUTUBE_CLIENT_SECRET':'GOCSPX-local-test-only-DIAG',
+            'YOUTUBE_REFRESH_TOKEN':'1//local_test_refresh_token_not_real'}
+        output=io.StringIO()
+        with patch.dict(os.environ,variables),patch.object(sys,'argv',['promos_youtube.py','--state','unused.enc']),contextlib.redirect_stdout(output):
+            P.main()
+        self.assertIn('aucun envoi',output.getvalue())
+        self.assertNotIn('DIAG',output.getvalue())
+        for value in variables.values():
+            if len(value)>5:self.assertNotIn(value,output.getvalue())
+
     def test_twitch_preserves_existing_live_and_checks_connected_identity(self):
         with tempfile.TemporaryDirectory() as folder,patch.dict('os.environ',{'TWITCH_BROADCASTER_ID':'123','TWITCH_CLIENT_ID':'client'}):
             state=D.State(Path(folder)/'state.enc',KEY);http=Mock()
