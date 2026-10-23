@@ -26,7 +26,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 .views button.on{background:var(--gold);border-color:var(--gold);color:#10182b}
 main{max-width:1150px;margin:auto;padding:0 24px 90px}
 .feat{display:block;position:relative;min-height:250px;margin:10px 0 36px;border:1px solid #b8933f;border-radius:24px;overflow:hidden;text-decoration:none;background:#17140f}
-.feat .fimg{position:absolute;inset:0;background:url('/assets/projects/vm-location/img/hero.webp') center/cover}
+.feat .fimg{position:absolute;inset:0;background:url('/vm-location/img/hero.webp') center/cover}
 .feat:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#000e,#0004)}
 .feat .ftxt{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:9px;max-width:600px;padding:28px}
 .feature-logo{width:60px;height:60px;object-fit:contain;border-radius:12px;background:#080d18}

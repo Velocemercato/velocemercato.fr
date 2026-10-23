@@ -1,5 +1,5 @@
 // Véloce Mercato : cache limité aux ressources de ce domaine.
-const CACHE = 'vm-app-v6';
+const CACHE = 'vm-app-v7';
 const PREFIX = 'vm-app-v';
 const PRECACHE = ["/", "/manifest.webmanifest", "/app/foot-192.png", "/assets/identity.css", "/assets/home-utilities.css", "/assets/vendor/qrcode.min.js"];
 const OFFLINE = '<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Véloce Mercato — hors connexion</title><body style="background:#080d18;color:#fff;font:18px/1.6 system-ui;padding:32px"><h1>Véloce Mercato</h1><p>Cette page n’est pas disponible hors connexion. Reconnectez-vous et réessayez.</p></body></html>';

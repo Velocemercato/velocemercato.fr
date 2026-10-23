@@ -4,7 +4,7 @@
 <style>
 *{box-sizing:border-box}body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#111;background:#fafafa}
 .demo{background:#f4cf55;color:#0b1533;text-align:center;font-weight:800;font-size:.85rem;padding:8px 12px}.demo a{color:#0b1533}
-.hero{background:linear-gradient(135deg,#111827,#e1243a);color:#fff;padding:48px 18px 44px;text-align:center}
+.hero{background:linear-gradient(90deg,#111827dc,#11182799),url('/assets/illustrations/mecanique-960.webp') center/cover;color:#fff;padding:48px 18px 44px;text-align:center}
 .hero .em{font-size:64px}.hero h1{margin:8px 0;font:900 clamp(2rem,8vw,3.2rem)/1.05 system-ui,sans-serif;letter-spacing:-.01em}
 .hero p{margin:0 auto 18px;max-width:30rem;font-size:1.1rem;opacity:.95}
 .btn{display:inline-block;background:#fff;color:#111827;font-weight:800;text-decoration:none;padding:13px 20px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
@@ -17,10 +17,13 @@ table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;ove
 .contact{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .callbar{position:sticky;bottom:0;background:#111827;padding:10px;text-align:center}
 footer{text-align:center;color:#666;font-size:.85rem;padding:16px 16px 30px}
+
+.photo-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:24px 0}.photo-gallery figure{margin:0;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 4px 14px #0001}.photo-gallery img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}.photo-gallery figcaption{padding:10px 12px;font-weight:700}.photo-credit{font-size:.8rem;color:#555;margin:0 0 24px}
 </style></head><body>
 <div class="demo">⚠️ SITE DE DÉMONSTRATION — entreprise fictive, créé par <a href="/web-studio.html">Véloce Web Studio</a></div>
 <header class="hero"><div class="em">🔧</div><h1>Garage du Centre</h1><p>Entretien, réparation et pneus, au juste prix.</p><a class="btn" href="/web-studio.html#devis">📞 Prendre rendez-vous</a></header>
 <main>
+<section class="photo-gallery" aria-label="Galerie de démonstration"><figure><img src="/assets/illustrations/mecanique-480.webp" width="480" height="320" alt="Mains gantées intervenant dans un compartiment moteur" loading="lazy" decoding="async"><figcaption>Entretien et mécanique</figcaption></figure><figure><img src="/assets/illustrations/pneus-480.webp" width="480" height="320" alt="Roue et outils dans un atelier automobile" loading="lazy" decoding="async"><figcaption>Pneus et jantes</figcaption></figure></section><p class="photo-credit">Illustrations générées par IA pour cette entreprise fictive.</p>
 <h2>Nos services</h2><div class="g"><div class="c"><span class="e">🛢️</span><b>Vidange & révision</b><p>Toutes marques, carnet d’entretien respecté.</p><span class="pr">dès 89 €</span></div><div class="c"><span class="e">🛞</span><b>Pneus</b><p>Montage, équilibrage, géométrie.</p><span class="pr">dès 15 € / pneu</span></div><div class="c"><span class="e">🛑</span><b>Freinage</b><p>Plaquettes, disques, liquide.</p><span class="pr">sur devis</span></div><div class="c"><span class="e">❄️</span><b>Climatisation</b><p>Recharge et contrôle.</p><span class="pr">dès 69 €</span></div><div class="c"><span class="e">🔋</span><b>Batterie</b><p>Test gratuit, remplacement.</p><span class="pr">sur devis</span></div><div class="c"><span class="e">📋</span><b>Pré-contrôle technique</b><p>On vérifie avant le CT.</p><span class="pr">29 €</span></div></div>
 <h2>Horaires</h2><table><tr><td>Lundi – Vendredi</td><td>8 h – 12 h · 13 h 30 – 18 h 30</td></tr><tr><td>Samedi</td><td>8 h – 12 h</td></tr><tr><td>Dimanche</td><td>Fermé</td></tr></table>
 <h2>Nous trouver</h2><div class="contact"><div class="map">🗺️ Plan Google Maps ici</div><div class="c"><b>📍 Adresse</b><p>12 rue de l’Exemple, 00000 Ville-Démo</p><b>📞 Téléphone</b><p>00 00 00 00 00 (fictif)</p><b>✉️ E-mail</b><p>contact@exemple.fr (fictif)</p></div></div>
