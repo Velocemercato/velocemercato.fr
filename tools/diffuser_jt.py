@@ -186,8 +186,8 @@ def access_token(provider, state, http):
 def youtube_metadata(manifest):
     names = {'matin': 'du matin', 'midi': 'du midi', 'soir': 'du soir'}
     date = dt.date.fromisoformat(manifest['date']).strftime('%d/%m/%Y')
-    if manifest.get('format') in ('speciale', 'debat'):
-        label = 'Spéciale avant-match' if manifest['format'] == 'speciale' else 'Le débat du soir'
+    if manifest.get('format') in ('speciale', 'debat', 'buts'):
+        label = {'speciale': 'Spéciale avant-match', 'debat': 'Le débat du soir', 'buts': 'Les buts de la semaine'}[manifest['format']]
         title = f'Véloce Mercato — {label} — {date}'
     else:
         title = f'VM Univers — Le grand JT {names[manifest["moment"]]} — {date}'
@@ -392,7 +392,7 @@ def prepare(masters, output, now=None, expected_run=None):
     if moment not in ('matin', 'midi', 'soir') or date != now.astimezone(ZoneInfo('Europe/Paris')).date().isoformat():
         raise DeliveryError('Créneau de diffusion invalide.')
     kind = authorization.get('format', 'edition')
-    if kind in ('speciale', 'debat'):
+    if kind in ('speciale', 'debat', 'buts'):
         ident = authorization.get('unit', '')
         if not re.fullmatch(r'[a-z0-9-]+', ident):
             raise DeliveryError('Identifiant de spéciale/débat invalide.')

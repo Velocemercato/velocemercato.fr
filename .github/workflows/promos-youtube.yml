@@ -2,7 +2,7 @@ name: VM - Vidéos de présentation sur YouTube (privé)
 
 on:
   schedule:
-    - cron: '20 3 * * *'   # 5 h 20 Paris (été) : 2 vidéos par jour, sans gêner les JT
+    - cron: '20 4 * * 1-6'   # 1 vidéo par jour sauf dimanche : le quota YouTube (6/jour) reste aux JT
   workflow_dispatch:
 
 permissions:
@@ -48,4 +48,4 @@ jobs:
             git -C "$STATE_DIR" remote add origin "$repo_url"
           fi
       - name: Envoyer 2 vidéos de présentation (privé)
-        run: python tools/promos_youtube.py --state "$RUNNER_TEMP/vm-broadcast-state/state.enc" --limit 2
+        run: python tools/promos_youtube.py --state "$RUNNER_TEMP/vm-broadcast-state/state.enc" --limit 1

@@ -23,12 +23,19 @@ from tools.assembler_jt import assemble
 class PastilleTests(unittest.TestCase):
     def test_paris_schedule_winter_summer_and_clock_change(self):
         for date in ['2026-01-15','2026-07-15','2026-03-29','2026-10-25']:
-            for hour, plan in [(7,'matin'),(12,'midi'),(20,'soir')]:
+            for hour, plan in [(8,'matin'),(12,'midi'),(20,'soir')]:
                 now = dt.datetime.fromisoformat(f'{date}T{hour:02}:00').replace(tzinfo=schedule.PARIS)
                 self.assertEqual(schedule.slot(now.astimezone(dt.timezone.utc),schedule.JT_CRON),plan)
-        for hour in [6,8,11,13,19,21]:
+        for hour in [6,7,9,11,13,19,21]:
             now=dt.datetime(2026,7,15,hour,tzinfo=schedule.PARIS)
             self.assertEqual(schedule.slot(now,schedule.JT_CRON),'')
+        for date in ['2026-07-19','2026-11-01']:  # dimanches été / hiver
+            sunday=dt.datetime.fromisoformat(f'{date}T18:00').replace(tzinfo=schedule.PARIS)
+            self.assertEqual(schedule.slot(sunday.astimezone(dt.timezone.utc),schedule.BUTS_CRON),'buts')
+            self.assertEqual(schedule.slot((sunday-dt.timedelta(days=1)).astimezone(dt.timezone.utc),schedule.BUTS_CRON),'')
+            for hour in (22,23):
+                late=dt.datetime.fromisoformat(f'{date}T{hour}:45').replace(tzinfo=schedule.PARIS)
+                self.assertEqual(schedule.slot(late.astimezone(dt.timezone.utc),schedule.DEBATE_CRON),'debat')
         for moment in ['matin','midi','soir']:
             self.assertEqual({universe for universe,_,_ in emission.PLANS[moment]}, {'foot','actus','gaming'})
 

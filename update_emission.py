@@ -63,7 +63,9 @@ FORMATS = {
     'edition': {'mots': (1300, 1700), 'repliques': (34, 48), 'heures': 14, 'max_news': 26, 'tokens': 7000},
     'speciale': {'mots': (2400, 3000), 'repliques': (55, 75), 'heures': 40, 'max_news': 30, 'tokens': 12000},
     'debat': {'mots': (800, 1100), 'repliques': (24, 34), 'heures': 8, 'max_news': 14, 'tokens': 5000},
+    'buts': {'mots': (1300, 1800), 'repliques': (34, 50), 'heures': 168, 'max_news': 40, 'tokens': 8000},
 }
+LABELS = {'speciale': 'Spéciale avant-match', 'debat': 'Le débat du soir', 'buts': 'Les buts de la semaine'}
 
 
 def load_news(univers, hours, limit):
@@ -87,7 +89,11 @@ def write_script(univers, fmt, moment, news, fixtures=None):
             'speciale': 'la grande spéciale avant-match des soirs de match : présentation des affiches du soir, contexte, '
                         'enjeux, joueurs à suivre, ambiance, histoire des confrontations, puis long débat entre chroniqueurs, '
                         'et un tour rapide des autres actus',
-            'debat': 'le débat du soir : les 3 ou 4 sujets forts du jour, débattus avec énergie (après-match si un match a eu lieu)'}[fmt]
+            'debat': 'le débat du soir : les 3 ou 4 sujets forts du jour, débattus avec énergie (après-match si un match a eu lieu)',
+            'buts': 'les buts de la semaine : tour des matchs de la semaine, du plus récent au plus ancien, avec UNIQUEMENT les '
+                    'scores, buteurs et minutes écrits dans les brèves (sinon on dit simplement le résultat ou on passe), '
+                    'les plus beaux moments racontés par les chroniqueurs, puis le top 3 de la semaine selon eux ; on rappelle '
+                    'que les images officielles des buts sont chez les diffuseurs'}[fmt]
     neutral = (' En actualité générale, et surtout en politique, les personnages restent strictement NEUTRES : ils expliquent, '
                'ils ne prennent jamais parti, ils ne se moquent d’aucun camp, ni d’aucune victime. Ton sobre sur les sujets graves.'
                if univers == 'actus' else '')
@@ -106,6 +112,8 @@ def write_script(univers, fmt, moment, news, fixtures=None):
         'Commence immédiatement par la première actualité : introduction parlée de 12 mots maximum, sans long accueil. '
         'La mention IA reste affichée à l’écran et peut être rappelée à la conclusion. '
         'Heineguez est le présentateur : il annonce chaque sujet, relance et conclut en invitant à lire les brèves complètes sur velocemercato.fr. '
+        'Dans la conclusion, une phrase rappelle que La Pastille fait partie du groupe VM Univers (vmunivers.fr) : '
+        'Véloce Mercato pour le foot, VM Actus pour l’actu et VM Gaming pour les jeux. '
         f'Longueur : {F["mots"][0]} à {F["mots"][1]} mots au total, entre {F["repliques"][0]} et {F["repliques"][1]} répliques '
         'de 10 à 70 mots. Chaque personnage parle plusieurs fois. '
         'Réponds UNIQUEMENT en JSON : {"titre": "...", "accroche": "...", "repliques": [{"perso": "CLE", "texte": "..."}]} '
@@ -211,7 +219,7 @@ def make(univers, fmt, moment):
         print(f'{univers} / {fmt} : pas assez de brèves, émission sautée.')
         return None
     script = write_script(univers, fmt, moment, news, fixtures=fixtures)
-    label = {'edition': f'Édition du {moment}', 'speciale': 'Spéciale avant-match', 'debat': 'Le débat du soir'}[fmt]
+    label = LABELS.get(fmt, f'Édition du {moment}')
     script['sous_titre'] = label + ' · ' + dt.datetime.now(D.PARIS).strftime('%d/%m')
     D.PERSOS = U['persos']
     D.BG_IMG = U['bg']
@@ -254,6 +262,7 @@ PLANS = {
     'soir': [('foot', 'edition', 'soir'), ('actus', 'edition', 'soir'), ('gaming', 'edition', 'soir')],
     'speciale': [('foot', 'speciale', 'soir')],
     'debat': [('foot', 'debat', 'soir')],
+    'buts': [('foot', 'buts', 'soir')],
 }
 
 
