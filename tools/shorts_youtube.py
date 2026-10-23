@@ -20,8 +20,21 @@ from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from tools.diffuser_jt import (HTTP, DeliveryError, State, YouTube, access_token, enabled, git_save,  # noqa: E402
+from tools.diffuser_jt import (HTTP, DeliveryError, State, YouTube, access_token, enabled,  # noqa: E402
                                public_allowed)
+import subprocess  # noqa: E402
+
+BRANCH = 'shorts-state'  # registre séparé : jamais de conflit avec la diffusion des JT longs
+
+
+def git_save(path):
+    def git(*args):
+        subprocess.run(['git', '-c', 'credential.helper=!gh auth git-credential', *args],
+                       cwd=Path(path).parent, check=True, capture_output=True)
+    git('add', Path(path).name)
+    git('-c', 'user.name=github-actions[bot]', '-c', 'user.email=41898282+github-actions[bot]@users.noreply.github.com',
+        'commit', '--quiet', '-m', 'Accusés des Shorts chiffrés')
+    git('push', '--quiet', 'origin', 'HEAD:' + BRANCH)
 
 PARIS = ZoneInfo('Europe/Paris')
 LIST = ROOT / 'studio/reseaux.json'
@@ -92,8 +105,14 @@ def main():
     shorts = state.data.setdefault('shorts', {})
     sent_today = sum(1 for r in shorts.values() if r.get('jour') == today.isoformat() and r.get('video_id'))
     done_univers = {r.get('univers') for r in shorts.values() if r.get('jour') == today.isoformat() and r.get('video_id')}
+    # La liste publique fait aussi foi : un JT déjà publié en Short n'est jamais renvoyé, même si le registre est neuf.
+    public = json.loads(PUBLIC_LIST.read_text(encoding='utf-8')) if PUBLIC_LIST.is_file() else []
+    public_today = [r for r in public if dt.datetime.fromisoformat(r['date_publication']).astimezone(PARIS).date() == today]
+    already = {r['id'] for r in public}
+    done_univers |= {r.get('univers') for r in public_today}
+    sent_today = max(sent_today, len(public_today))
     todo = [r for r in candidates(today, moment)
-            if r.get('univers') not in done_univers and shorts.get(r['id'], {}).get('status') != 'published'][:max(0, limit - sent_today)]
+            if r['id'] not in already and r.get('univers') not in done_univers and shorts.get(r['id'], {}).get('status') != 'published'][:max(0, limit - sent_today)]
     if not todo:
         print(f'Aucun Short à envoyer ({sent_today}/{limit} aujourd’hui).')
         return
