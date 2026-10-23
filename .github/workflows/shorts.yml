@@ -25,7 +25,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       VM_AUTO_YOUTUBE: ${{ vars.VM_AUTO_YOUTUBE }}
       VM_YOUTUBE_PUBLIC: 'true'
-      VM_SHORTS_PAR_JOUR: ${{ vars.VM_SHORTS_PAR_JOUR || '3' }}
+      VM_SHORTS_PAR_JOUR: ${{ vars.VM_SHORTS_PAR_JOUR || '1' }}
       VM_SHORTS_MOMENT: ${{ vars.VM_SHORTS_MOMENT || 'midi' }}
       VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
       YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}

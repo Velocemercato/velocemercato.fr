@@ -1,8 +1,8 @@
 name: VM - Vidéos de présentation sur YouTube (privé)
 
 on:
-  schedule:
-    - cron: '20 4 * * 1-6'   # 1 vidéo par jour sauf dimanche : le quota YouTube (6/jour) reste aux JT
+  # Lancement manuel seulement : la limite d'envois quotidienne de la chaîne
+  # (environ 6 par jour) est réservée aux 5 JT et au Short du jour.
   workflow_dispatch:
 
 permissions:
