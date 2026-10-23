@@ -54,3 +54,8 @@ par le délai d’installation APT (code 124). La production, la diffusion et le
 tests utilisent désormais explicitement Ubuntu 24.04, au lieu de dépendre du
 changement en cours de l’image `ubuntu-latest`. La sauvegarde des émissions n’est
 pas lancée lorsque la production a été entièrement ignorée après un échec de préparation.
+
+L’installateur partagé essaie d’abord l’installation ciblée de FFmpeg à partir
+des index déjà présents. Si leur actualisation est nécessaire, il limite APT aux
+sources Ubuntu officielles et au miroir principal, avec des délais réseau bornés.
+La production et les deux suites de tests exécutent le même installateur.

@@ -97,10 +97,7 @@ jobs:
       - name: Installer les outils sans repli vocal silencieux
         if: github.event_name == 'workflow_dispatch' || steps.plan.outputs.plan != ''
         run: |
-          if ! command -v ffmpeg > /dev/null || ! command -v ffprobe > /dev/null; then
-            timeout 180 sudo apt-get update -qq
-            timeout 180 sudo apt-get install -y -qq ffmpeg
-          fi
+          bash tools/installer_ffmpeg.sh
           python -m pip install "piper-tts==1.8.0" pillow
           python -m piper --help > /dev/null
       - name: Cache des voix

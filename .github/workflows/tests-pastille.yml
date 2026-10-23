@@ -7,6 +7,7 @@ on:
       - 'update_debat.py'
       - 'pastille_*.py'
       - 'tools/assembler_jt.py'
+      - 'tools/installer_ffmpeg.sh'
       - 'tests/test_pastille.py'
       - 'tests/test_pastille_recovery.py'
       - 'tests/test_pastille_schedule.py'
@@ -16,6 +17,7 @@ on:
   pull_request:
     paths:
       - 'update_emission.py'
+      - 'tools/installer_ffmpeg.sh'
       - 'update_debat.py'
       - 'pastille_*.py'
       - 'tests/test_pastille*.py'
@@ -41,10 +43,7 @@ jobs:
           python-version: '3.12'
       - name: Installer les dépendances de test
         run: |
-          if ! command -v ffmpeg > /dev/null || ! command -v ffprobe > /dev/null; then
-            timeout 180 sudo apt-get update -qq
-            timeout 180 sudo apt-get install -y -qq ffmpeg
-          fi
+          bash tools/installer_ffmpeg.sh
           python -m pip install 'Pillow==12.3.0'
       - name: Vérifier les rendus et la reprise sans réseau de publication
         run: |

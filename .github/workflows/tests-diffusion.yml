@@ -8,7 +8,9 @@ on:
       - 'tools/promos_youtube.py'
       - 'tools/assembler_jt.py'
       - 'pastille_media.py'
+      - 'tools/installer_ffmpeg.sh'
       - 'tests/test_diffusion.py'
+      - 'tools/installer_ffmpeg.sh'
       - '.github/workflows/*diffusion.yml'
   pull_request:
     paths:
@@ -29,9 +31,6 @@ jobs:
         with:
           python-version: '3.12'
       - run: |
-          if ! command -v ffmpeg > /dev/null || ! command -v ffprobe > /dev/null; then
-            timeout 180 sudo apt-get update -qq
-            timeout 180 sudo apt-get install -y -qq ffmpeg
-          fi
+          bash tools/installer_ffmpeg.sh
           python -m pip install 'cryptography==50.0.0'
       - run: python tests/test_diffusion.py
