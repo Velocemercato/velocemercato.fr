@@ -24,7 +24,7 @@ concurrency:
 jobs:
   diffusion:
     if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.head_repository.full_name == github.repository)) && (vars.VM_AUTO_YOUTUBE == 'true' || vars.VM_AUTO_TWITCH == 'true')
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 120
     env:
       GH_TOKEN: ${{ github.token }}

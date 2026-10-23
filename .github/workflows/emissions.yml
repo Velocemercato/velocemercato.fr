@@ -52,7 +52,7 @@ concurrency:
 
 jobs:
   emission:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
@@ -110,6 +110,7 @@ jobs:
           path: ~/.cache/vm-voices
           key: vm-voices-piper-1-8-v2
       - name: Produire les émissions ou un aperçu
+        id: produce
         if: github.event_name == 'workflow_dispatch' || steps.plan.outputs.plan != ''
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -188,7 +189,7 @@ jobs:
           retention-days: 2
           if-no-files-found: error
       - name: Enregistrer les émissions validées
-        if: always() && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.publish) && (github.event_name == 'workflow_dispatch' || steps.plan.outputs.plan != '')
+        if: always() && steps.produce.outcome != 'skipped' && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.publish) && (github.event_name == 'workflow_dispatch' || steps.plan.outputs.plan != '')
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'

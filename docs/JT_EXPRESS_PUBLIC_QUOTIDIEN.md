@@ -46,3 +46,11 @@ rubriques au lieu de réutiliser les longues éditions existantes.
 
 Les lancements programmés gardent la protection contre les doublons.
 `VM_AUTO_YOUTUBE=false` reste l’interrupteur général des envois.
+
+## Environnement de lancement
+
+Le premier lancement express du 23 octobre a été interrompu avant toute rédaction
+par le délai d’installation APT (code 124). La production, la diffusion et leurs
+tests utilisent désormais explicitement Ubuntu 24.04, au lieu de dépendre du
+changement en cours de l’image `ubuntu-latest`. La sauvegarde des émissions n’est
+pas lancée lorsque la production a été entièrement ignorée après un échec de préparation.
