@@ -58,7 +58,8 @@ class DiffusionTests(unittest.TestCase):
             self.assertEqual(path.stat().st_mode & 0o777, 0o600)
             with self.assertRaises(D.DeliveryError):
                 D.State(path, base64.urlsafe_b64encode(b'x'*32).decode())
-            path.write_bytes(path.read_bytes()[:-1] + b'x')
+            tampered = bytearray(path.read_bytes()); tampered[-1] ^= 1
+            path.write_bytes(tampered)
             with self.assertRaises(D.DeliveryError):
                 D.State(path, KEY)
 
