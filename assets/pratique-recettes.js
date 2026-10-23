@@ -9,7 +9,7 @@
     (!$('fRegime').value || r.regime === $('fRegime').value) &&
     (!$('fObj').value || r.objectif === $('fObj').value) &&
     (!$('fOcc').value || r.occasion === $('fOcc').value));
-  const carte = r => `<article class="rec"><span class="moment">${esc(r.moment)}</span><h3>${esc(r.nom)}</h3><div class="tags"><span>${esc(r.regime)}</span><span>${esc(r.objectif)}</span><span>${esc(r.occasion)}</span></div><ul>${r.ingredients.map(i => `<li>${esc(i)}</li>`).join('')}</ul><p>${esc(r.etapes)}</p></article>`;
+  const carte = r => `<article class="rec"><img class="rec-photo" src="/assets/illustrations/${esc(r.image)}-480.webp" srcset="/assets/illustrations/${esc(r.image)}-480.webp 480w, /assets/illustrations/${esc(r.image)}-960.webp 960w" sizes="(max-width: 600px) 100vw, 320px" width="960" height="640" alt="${esc(r.nom)} — illustration" loading="lazy" decoding="async"><span class="moment">${esc(r.moment)}</span><h3>${esc(r.nom)}</h3><div class="tags"><span>${esc(r.regime)}</span><span>${esc(r.objectif)}</span><span>${esc(r.occasion)}</span></div><ul>${r.ingredients.map(i => `<li>${esc(i)}</li>`).join('')}</ul><p>${esc(r.etapes)}</p></article>`;
   function rendre() {
     const list = filtrees();
     const jour = MOMENTS.map(([m, label]) => {

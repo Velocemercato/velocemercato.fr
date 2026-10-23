@@ -45,3 +45,10 @@ textarea{min-height:90px}
 .pnote{font-size:.82rem;color:#8d8670;margin:14px 0}
 .reg h3{margin-top:0}
 .rdvc h3{margin:0 0 6px}.rdvc a{display:inline-block;margin:4px 8px 0 0}
+
+/* Illustrations éditoriales locales, dimensions réservées pour éviter les sauts. */
+.vm-editorial{margin:18px 0 24px;overflow:hidden;border:1px solid #3a3420;border-radius:18px;background:#10121c}
+.vm-editorial-image{display:block;width:100%;height:auto;aspect-ratio:16/7;object-fit:cover}
+.vm-editorial figcaption{padding:10px 14px;color:#d9cfae;font-size:.78rem;line-height:1.5}
+.rec-photo{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:10px;margin-bottom:12px;background:#191b24}
+@media(max-width:600px){.vm-editorial-image{aspect-ratio:3/2}}
