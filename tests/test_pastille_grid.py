@@ -23,7 +23,9 @@ class GridTests(unittest.TestCase):
         for day in ['2026-01-15', '2026-07-15', '2026-03-29', '2026-10-25']:
             with tempfile.TemporaryDirectory() as tmp:
                 root = Path(tmp); tv = root / 'studio/tv'; tv.mkdir(parents=True)
-                for universe, hours in S.EDITION_HOURS.items():
+                expected = {'actus': (7, 13, 19), 'foot': (8, 12, 20, 23), 'gaming': (0, 10, 18)}
+                self.assertEqual(S.EDITION_HOURS, expected)
+                for universe, hours in expected.items():
                     for hour in hours:
                         target = dt.datetime.fromisoformat(day).replace(hour=hour, tzinfo=S.PARIS)
                         now = target.astimezone(UTC) + dt.timedelta(minutes=7)
