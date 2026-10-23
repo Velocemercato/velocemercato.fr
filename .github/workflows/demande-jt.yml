@@ -16,7 +16,7 @@ concurrency:
 jobs:
   demande:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 100
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
@@ -40,8 +40,30 @@ jobs:
           with open(os.environ['GITHUB_ENV'],'a') as output:
               output.write('MOMENT=' + data['moment'] + '\n')
           PY
-      - name: Lancer les trois rubriques courtes autorisées
+      - name: Produire les rubriques puis transmettre le programme validé
         run: |
-          gh workflow run emissions.yml --repo "$GITHUB_REPOSITORY" --ref main \
-            -f univers=tous -f format=edition -f moment="$MOMENT" \
-            -f publish=true -f qualite=auto -f refaire=true
+          set -euo pipefail
+          find_source() {
+            gh run list --repo "$GITHUB_REPOSITORY" --workflow emissions.yml \
+              --event workflow_dispatch --branch main --limit 30 \
+              --json databaseId,displayTitle \
+              --jq ".[] | select(.displayTitle == \"JT express - demande $GITHUB_RUN_ID\") | .databaseId" | head -n 1
+          }
+          source_run=$(find_source)
+          if [ -z "$source_run" ]; then
+            gh workflow run emissions.yml --repo "$GITHUB_REPOSITORY" --ref main \
+              -f univers=tous -f format=edition -f moment="$MOMENT" \
+              -f publish=true -f qualite=auto -f refaire=true -f demande_id="$GITHUB_RUN_ID"
+          fi
+          for attempt in 1 2 3 4 5 6 7 8 9 10 11 12; do
+            source_run=$(find_source)
+            if [[ "$source_run" =~ ^[0-9]+$ ]]; then break; fi
+            sleep 5
+          done
+          if [[ ! "$source_run" =~ ^[0-9]+$ ]]; then
+            echo '::error::Lancement de production non retrouvé : aucune diffusion déclenchée.'
+            exit 1
+          fi
+          gh run watch "$source_run" --repo "$GITHUB_REPOSITORY" --interval 20 --exit-status
+          gh workflow run diffusion.yml --repo "$GITHUB_REPOSITORY" --ref main \
+            -f source_run_id="$source_run"

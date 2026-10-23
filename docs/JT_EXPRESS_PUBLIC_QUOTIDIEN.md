@@ -46,6 +46,9 @@ lorsque ce fichier change sur `main`. La demande doit dater de moins d’une heu
 viser le jour courant et l’un des créneaux connus. Il lance le workflow de
 production avec `refaire=true`, une fois, pour produire les trois nouvelles
 rubriques au lieu de réutiliser les longues éditions existantes.
+Il retrouve ce lancement grâce à une référence unique, attend sa réussite,
+puis déclenche explicitement la diffusion. Une reprise du même lancement de
+demande retrouve sa production existante et ne relance pas la rédaction.
 
 Les lancements programmés gardent la protection contre les doublons.
 `VM_AUTO_YOUTUBE=false` reste l’interrupteur général des envois.

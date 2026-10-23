@@ -1,4 +1,5 @@
 name: VM Studio - La Pastille TV
+run-name: ${{ inputs.demande_id && format('JT express - demande {0}', inputs.demande_id) || github.workflow }}
 
 on:
   workflow_dispatch:
@@ -26,6 +27,10 @@ on:
         description: 'Refaire les trois éditions du créneau avec le nouveau format court'
         type: boolean
         default: false
+      demande_id:
+        description: 'Référence de demande, remplie automatiquement lors d’une relance'
+        type: string
+        default: ''
       qualite:
         description: 'auto : CDN en production, HD en aperçu'
         type: choice
