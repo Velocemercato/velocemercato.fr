@@ -5,7 +5,7 @@
 <meta name="robots" content="noindex"><meta name="theme-color" content="#0b0b14">
 <meta property="og:title" content="Kaze Studio Coiffure – réservez en 30 secondes"><meta property="og:image" content="https://velocemercato.fr/demos/img/coiffeur/hero.webp">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ffcc00'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle'%3E%E2%9C%82%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="/demos/kit/vm-demo.css?v=20261023-images1">
+<link rel="stylesheet" href="/demos/kit/vm-demo.css?v=20261023-audit">
 <style>:root{--a:#ffcc00;--b:#e1243a;--ink:#0b0b14;--bg:#fffaf0}</style>
 <link rel="preload" as="image" href="/demos/img/coiffeur/hero.webp" fetchpriority="high">
 </head><body>
@@ -90,7 +90,7 @@ booking:{kind:'service',step:15,lead:45,rate:32,
 proKpis:['Rendez-vous','Chiffre prévu','SMS automatiques','Note Google'],
 proFake:[{ref:'KZ-8F2A',when:'Auj. 10h00',what:'Dégradé américain',staff:'Ryo',nom:'Karim B.',price:25},{ref:'KZ-3C9D',when:'Auj. 11h15',what:'Balayage',staff:'Lina',nom:'Sarah M.',price:89},{ref:'KZ-7Q1E',when:'Auj. 14h30',what:'Coupe + barbe',staff:'Ryo',nom:'Thomas L.',price:35},{ref:'KZ-2M6H',when:'Demain 9h30',what:'Coupe femme',staff:'Sam',nom:'Julie R.',price:42}]};
 </script>
-<script src="/demos/kit/vm-demo.js?v=20261023-images1"></script>
+<script src="/demos/kit/vm-demo.js?v=20261023-audit"></script>
 <script>
 // Cartes de tarifs générées depuis la même liste que la réservation.
 document.getElementById('cards').innerHTML=DEMO.booking.services.map(function(s,k){return '<article class="vd-card">'+VD.m(s.img,s.e,s.name)+'<div class="vd-card-b">'+(s.tag?'<span class="vd-tag">'+VD.esc(s.tag)+'</span>':'')+'<h3>'+VD.esc(s.name)+'</h3><p>'+VD.esc(s.desc)+'</p><div class="vd-meta"><span><span class="vd-price">'+VD.euro(s.price)+'</span> <span class="vd-dur">· '+s.dur+' min</span></span><button type="button" class="vd-add" onclick="vdBook('+k+')">Réserver</button></div></div></article>'}).join('');

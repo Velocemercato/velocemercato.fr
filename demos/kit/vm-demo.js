@@ -7,6 +7,8 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]; }); };
+  // Rappel affiché dans chaque parcours : les démos n'envoient rien de réel.
+  var SIM = '<p class="vd-sim">🧪 Simulation : aucun SMS ni e-mail réel n’est envoyé, rien n’est payé.</p>';
   var euro = function (n) { var r = Math.round(n * 100) / 100; return r.toLocaleString('fr-FR', {minimumFractionDigits: r % 1 ? 2 : 0, maximumFractionDigits: 2}).replace(/\u202f|\u00a0/g, ' ') + ' €'; };
   var pad = function (n) { return (n < 10 ? '0' : '') + n; };
   var JOURS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
@@ -204,7 +206,7 @@
     var B = D.booking, isTable = B.kind === 'table', state = {};
     var steps = isTable ? ['Couverts', 'Date & heure', 'Coordonnées'] : ['Prestation', B.staff ? 'Avec qui' : null, 'Date & heure', 'Coordonnées'].filter(Boolean);
     var mine = function () { return store.get('bookings', []); };
-    function head(i) { return '<ol class="vd-steps">' + steps.map(function (s, j) { return '<li class="' + (j === i ? 'on' : j < i ? 'done' : '') + '">' + esc(s) + '</li>'; }).join('') + '</ol>'; }
+    function head(i) { return SIM + '<ol class="vd-steps">' + steps.map(function (s, j) { return '<li class="' + (j === i ? 'on' : j < i ? 'done' : '') + '">' + esc(s) + '</li>'; }).join('') + '</ol>'; }
     function summary() {
       var s = [];
       if (state.svc) s.push('<b>' + esc(state.svc.name) + '</b> · ' + euro(state.svc.price) + ' · ' + state.svc.dur + ' min');
@@ -339,7 +341,7 @@
     }
     // Menu
     var cats = []; O.items.forEach(function (it) { if (cats.indexOf(it.cat) < 0) cats.push(it.cat); });
-    root.innerHTML = (O.search ? '<label class="vd-field"><span class="vd-sr">Rechercher un produit</span><input type="search" data-search placeholder="🔎 Rechercher un produit…"></label>' : '') +
+    root.innerHTML = SIM + (O.search ? '<label class="vd-field"><span class="vd-sr">Rechercher un produit</span><input type="search" data-search placeholder="🔎 Rechercher un produit…"></label>' : '') +
       '<div class="vd-strip" role="group" aria-label="Rayons">' + ['Tout'].concat(cats).map(function (c, j) { return '<button type="button" class="vd-chip" aria-pressed="' + (j === 0) + '">' + esc(c) + '</button>'; }).join('') + '</div><div class="vd-grid" data-items></div>';
     var grid = $('[data-items]', root), cat = 'Tout', q = '';
     function draw() {
@@ -393,7 +395,7 @@
     function checkout() {
       if (!cart.length) return;
       var x = modeObj();
-      box.innerHTML = '<button type="button" class="vd-x" aria-label="Fermer">✕</button><h3>🛒 Mon panier</h3>' +
+      box.innerHTML = '<button type="button" class="vd-x" aria-label="Fermer">✕</button><h3>🛒 Mon panier</h3>' + SIM +
         cart.map(function (l, i) { return '<div class="vd-line"><span>' + l.q + ' × ' + esc(l.name) + '</span><span>' + euro(itemPrice(l)) + ' <button type="button" class="vd-x" style="float:none;width:28px;height:28px" data-del="' + i + '" aria-label="Retirer ' + esc(l.name) + '">✕</button></span></div>'; }).join('') +
         '<p style="font-weight:900;margin:14px 0 6px">Comment souhaitez-vous la recevoir ?</p><div class="vd-pick" data-modes>' + O.modes.map(function (o) {
           return '<button type="button" class="vd-opt" aria-pressed="' + (o.id === mode) + '" data-mode="' + o.id + '"><span class="e" aria-hidden="true">' + o.e + '</span>' + esc(o.l) + '<small>' + esc(o.sub || '') + '</small></button>';
@@ -452,7 +454,7 @@
   function quote(root) {
     var Q = D.quote, st = {photos: []};
     var steps = ['Projet', 'Détails', 'Visite', 'Coordonnées'];
-    function head(i) { return '<ol class="vd-steps">' + steps.map(function (s, j) { return '<li class="' + (j === i ? 'on' : j < i ? 'done' : '') + '">' + s + '</li>'; }).join('') + '</ol>'; }
+    function head(i) { return SIM + '<ol class="vd-steps">' + steps.map(function (s, j) { return '<li class="' + (j === i ? 'on' : j < i ? 'done' : '') + '">' + s + '</li>'; }).join('') + '</ol>'; }
     function estimate() { if (!st.type || !st.qty) return null; var u = Q.urgency.filter(function (x) { return x[0] === st.urg; })[0] || [0, '', 1]; return [Math.round(st.type.low * st.qty * u[2] / 10) * 10, Math.round(st.type.high * st.qty * u[2] / 10) * 10]; }
     function step(i) {
       var html = head(i), e = estimate();
@@ -516,7 +518,7 @@
     var fake = (D.proFake || []).map(function (r) { r.fake = 1; return r; });
     var list = rows.concat(fake), money = list.reduce(function (s, r) { return s + (r.total || r.price || (r.est ? r.est[0] : 0) || 0); }, 0);
     var k = D.proKpis || ['Réservations', 'Chiffre prévu', 'SMS envoyés', 'Avis 5★'];
-    el.innerHTML = '<h3>📊 Espace pro · tableau de bord</h3><p>Ce que voit ' + esc(D.name) + ' sur son téléphone. Vos essais de la démo apparaissent en premier.</p>' +
+    el.innerHTML = '<h3>📊 Espace pro · tableau de bord</h3><p>Ce que voit ' + esc(D.name) + ' sur son téléphone. Vos essais de la démo apparaissent en premier.</p>' + SIM +
       '<div class="vd-kpis"><div class="vd-kpi"><b>' + list.length + '</b><small>' + esc(k[0]) + '</small></div><div class="vd-kpi"><b>' + (D.booking && D.booking.kind === 'table' ? list.reduce(function (s, r) { return s + (r.covers || 0); }, 0) : euro(money)) + '</b><small>' + esc(k[1]) + '</small></div><div class="vd-kpi"><b>' + list.length * 3 + '</b><small>' + esc(k[2]) + '</small></div><div class="vd-kpi"><b>' + (D.rating || '4,9') + '</b><small>' + esc(k[3]) + '</small></div></div>' +
       '<div class="vd-tw"><table class="vd-table"><thead><tr><th>Réf.</th><th>Quand</th><th>Quoi</th><th>Client</th><th>Statut</th></tr></thead><tbody>' +
       list.slice(0, 8).map(function (r) {
