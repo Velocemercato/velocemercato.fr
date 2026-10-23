@@ -27,3 +27,7 @@ Pour reprendre une diffusion, relancer le workflow de diffusion avec le numéro 
 `/ou-regarder.html` référence les sites officiels FIFA+, UEFA.tv, FFF TV, France.tv, CANAL+, beIN SPORTS et DAZN, ainsi que les vidéos d'éditeurs de jeux. Cette sélection n'attribue pas une chaîne à une affiche sans confirmation : les droits, le programme et le territoire doivent être vérifiés chez le diffuseur. Les liens de réseaux sociaux/Telegram ne prouvent aucune autorisation. Aucun annuaire IPTV pirate, téléchargement de match ou contournement géographique n'est ajouté.
 
 Les accès directs aux diffuseurs sont filtrés depuis l'environnement de travail ; leur disponibilité régionale et les offres de chaque match ne sont donc pas certifiées par notre audit local.
+
+## Installation vidéo
+
+Le premier lancement séparé `39954095941` a échoué avant rédaction sur les miroirs APT HTTP (délai 124). L’installation est limitée aux sources Ubuntu signées, en HTTPS pour les archives et les mises à jour de sécurité, sans dépôt tiers. Les outils déjà présents sont réutilisés.
