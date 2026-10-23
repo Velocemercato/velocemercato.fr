@@ -1,0 +1,85 @@
+name: VM - Shorts YouTube des JT
+# Publie les versions verticales du JT de midi en Shorts, après le kit réseaux.
+# Même accès et mêmes accusés chiffrés que la diffusion des JT longs, jamais en même temps.
+
+on:
+  workflow_run:
+    workflows: ['VM - Kit réseaux des JT']
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+
+jobs:
+  shorts:
+    if: (github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')) && vars.VM_AUTO_YOUTUBE == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_AUTO_YOUTUBE: ${{ vars.VM_AUTO_YOUTUBE }}
+      VM_YOUTUBE_PUBLIC: 'true'
+      VM_SHORTS_PAR_JOUR: ${{ vars.VM_SHORTS_PAR_JOUR || '3' }}
+      VM_SHORTS_MOMENT: ${{ vars.VM_SHORTS_MOMENT || 'midi' }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+      YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+      YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+      YOUTUBE_CHANNEL_ID: ${{ secrets.YOUTUBE_CHANNEL_ID }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Installer les outils
+        run: python -m pip install --quiet 'cryptography==50.0.0'
+      - name: Ouvrir les accusés chiffrés hors du site
+        env:
+          STATE_DIR: ${{ runner.temp }}/vm-broadcast-state
+        run: |
+          set -euo pipefail
+          repo_url="https://github.com/${GITHUB_REPOSITORY}.git"
+          if git -c credential.helper='!gh auth git-credential' ls-remote --exit-code "$repo_url" refs/heads/broadcast-state > /dev/null; then
+            git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "$repo_url" "$STATE_DIR"
+          else
+            mkdir -p "$STATE_DIR"
+            git -C "$STATE_DIR" init --quiet -b broadcast-state
+            git -C "$STATE_DIR" remote add origin "$repo_url"
+          fi
+      - name: Publier les Shorts du jour
+        run: python tools/shorts_youtube.py --state "$RUNNER_TEMP/vm-broadcast-state/state.enc" --git-state
+      - name: Enregistrer les liens publics des Shorts
+        if: always()
+        run: |
+          set -euo pipefail
+          [ -f studio/shorts.json ] || exit 0
+          save_file=$(mktemp)
+          cp studio/shorts.json "$save_file"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3 4 5; do
+            git fetch -q origin main
+            git reset --hard -q origin/main
+            python - "$save_file" <<'PY'
+          import json, sys
+          from pathlib import Path
+          path = Path('studio/shorts.json')
+          old = json.loads(path.read_text()) if path.exists() else []
+          rows = {r['id']: r for r in old}
+          for r in json.load(open(sys.argv[1])): rows[r['id']] = r
+          path.write_text(json.dumps(sorted(rows.values(), key=lambda r: r['date_publication'], reverse=True)[:60], ensure_ascii=False, indent=1) + '\n')
+          PY
+            git add studio/shorts.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -qm 'Liens des Shorts YouTube confirmés'
+            if git push -q origin HEAD:main; then exit 0; fi
+            sleep $((attempt*3))
+          done
+          exit 1
