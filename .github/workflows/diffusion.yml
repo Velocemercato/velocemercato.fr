@@ -75,13 +75,13 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
+          python -m pip install --quiet 'cryptography==50.0.0'
           if command -v ffmpeg > /dev/null && command -v ffprobe > /dev/null; then exit 0; fi
           for attempt in 1 2 3; do
             if timeout 240 sudo -E apt-get update -qq && timeout 300 sudo -E apt-get install -y -qq --no-install-recommends ffmpeg; then exit 0; fi
             sleep $((attempt*10))
           done
           exit 1
-          python -m pip install 'cryptography==50.0.0'
       - name: Ouvrir les accusés chiffrés hors du site
         if: steps.masters.outputs.ready == 'true'
         env:
