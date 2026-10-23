@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sport, marche, course et vélo – Véloce Mercato</title>
+<meta name="description" content="Programmes de musculation, plan de course à pied, marche, vélo et chemins proposés par les visiteurs dans chaque région.">
+<link rel="canonical" href="https://velocemercato.fr/sport/">
+<meta property="og:title" content="Sport, marche, course et vélo"><meta property="og:description" content="Programmes de musculation, plan de course à pied, marche, vélo et chemins proposés par les visiteurs dans chaque région."><meta property="og:url" content="https://velocemercato.fr/sport/">
+<link rel="stylesheet" href="/assets/pratique.css"></head>
+<body>
+<nav class="pnav" aria-label="Services"><a class="pbrand" href="/">VÉLOCE MERCATO</a><div class="plinks"><a href="/recettes/">🍽️ Recette du jour</a><a href="/produits-locaux/">🧀 Produits locaux</a><a href="/sport/" class="on">💪 Sport & randonnée</a><a href="/immo/">🏠 Immobilier & vacances</a><a href="/rdv/">📅 RDV du jour</a></div></nav>
+<main>
+<header class="phead"><h1>Sport, marche, course et vélo</h1></header>
+<section class="pcard"><h2>🏋️ Musculation : programmes hebdomadaires</h2>
+<div class="tabs" role="tablist"><button type="button" data-niv="debutant" aria-selected="true">Débutant</button><button type="button" data-niv="inter" aria-selected="false">Intermédiaire</button><button type="button" data-niv="avance" aria-selected="false">Avancé</button></div>
+<div id="muscu" class="prog"></div></section>
+<section class="pcard"><h2>🏃 Course à pied : 8 semaines vers 5 km</h2>
+<ol class="etapes"><li><b>Semaine 1-2 :</b> 3 sorties par semaine, alterne 1 min de course et 2 min de marche, 20 min au total.</li><li><b>Semaine 3-4 :</b> 2 min de course et 1 min de marche, 25 min.</li><li><b>Semaine 5-6 :</b> 5 min de course et 1 min de marche, 30 min.</li><li><b>Semaine 7 :</b> 20 min de course continue.</li><li><b>Semaine 8 :</b> 5 km à allure facile, sans chercher la vitesse.</li></ol></section>
+<section class="pcard"><h2>🥾 Marche et randonnée</h2><p>Commence par 5 km en terrain plat, puis augmente de 1 à 2 km par semaine et ajoute du dénivelé. Prends de l’eau, des chaussures fermées et un téléphone chargé.</p></section>
+<section class="pcard"><h2>🚴 Vélo</h2><p>Une sortie facile de 30 minutes, deux fois par semaine, suffit pour commencer. Une sortie plus longue le week-end augmente l’endurance. Vérifie les freins et la pression des pneus avant de partir.</p></section>
+<section class="pcard"><h2>🗺️ Chemins dans les régions</h2>
+<div class="filtres"><label>Région<select id="fCheReg"><option value="">Toutes</option><option>Auvergne-Rhône-Alpes</option><option>Bourgogne-Franche-Comté</option><option>Bretagne</option><option>Centre-Val de Loire</option><option>Corse</option><option>Grand Est</option><option>Hauts-de-France</option><option>Île-de-France</option><option>Normandie</option><option>Nouvelle-Aquitaine</option><option>Occitanie</option><option>Pays de la Loire</option><option>Provence-Alpes-Côte d’Azur</option><option>Outre-mer</option></select></label><label>Activité<select id="fCheType"><option value="">Toutes</option><option>Marche</option><option>Course</option><option>Vélo</option></select></label></div>
+<div id="chemins" class="grid" aria-live="polite"></div>
+<h3>Propose un chemin</h3>
+<form id="formChemin" class="pform">
+<label>Nom du chemin<input name="nom" required maxlength="100"></label>
+<label>Région<select name="region" required><option>Auvergne-Rhône-Alpes</option><option>Bourgogne-Franche-Comté</option><option>Bretagne</option><option>Centre-Val de Loire</option><option>Corse</option><option>Grand Est</option><option>Hauts-de-France</option><option>Île-de-France</option><option>Normandie</option><option>Nouvelle-Aquitaine</option><option>Occitanie</option><option>Pays de la Loire</option><option>Provence-Alpes-Côte d’Azur</option><option>Outre-mer</option></select></label>
+<label>Activité<select name="type" required><option>Marche</option><option>Course</option><option>Vélo</option></select></label>
+<label>Distance (km) et dénivelé (m)<input name="mesures" maxlength="60" placeholder="Ex. 8 km, 240 m"></label>
+<label>Description et accès<textarea name="desc" required maxlength="600" minlength="20"></textarea></label>
+<label>Ton prénom ou pseudo<input name="par" maxlength="40"></label>
+<label class="ok"><input type="checkbox" required> J’accepte la publication après validation. Joins le fichier GPX ou un lien vers ta trace dans l’e-mail.</label>
+<button class="btn" type="submit">✉️ Envoyer le chemin</button>
+</form></section>
+<p class="pnote">Informations à titre indicatif. Vérifie la météo et les conditions du terrain avant de partir ; reprends une activité après un avis médical si tu as un problème de santé.</p>
+<p class="pnote">Un projet de Véloce Mercato · <a href="https://velocemercato.fr/mentions-legales.html">Mentions légales</a> · <a href="https://vmunivers.fr/">Tous nos projets</a></p>
+</main>
+<script src="/assets/pratique.js" defer></script>
+<script src="/assets/pratique-sport.js" defer></script>
+</body></html>

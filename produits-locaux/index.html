@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Produits locaux et artisanaux – Véloce Mercato</title>
+<meta name="description" content="Producteurs artisanaux de France par région : viande, fromage, charcuterie, pain, gâteaux et bonbons. Proposez votre fiche.">
+<link rel="canonical" href="https://velocemercato.fr/produits-locaux/">
+<meta property="og:title" content="Produits locaux et artisanaux"><meta property="og:description" content="Producteurs artisanaux de France par région : viande, fromage, charcuterie, pain, gâteaux et bonbons. Proposez votre fiche."><meta property="og:url" content="https://velocemercato.fr/produits-locaux/">
+<link rel="stylesheet" href="/assets/pratique.css"></head>
+<body>
+<nav class="pnav" aria-label="Services"><a class="pbrand" href="/">VÉLOCE MERCATO</a><div class="plinks"><a href="/recettes/">🍽️ Recette du jour</a><a href="/produits-locaux/" class="on">🧀 Produits locaux</a><a href="/sport/">💪 Sport & randonnée</a><a href="/immo/">🏠 Immobilier & vacances</a><a href="/rdv/">📅 RDV du jour</a></div></nav>
+<main>
+<header class="phead"><h1>Produits locaux et artisanaux</h1></header>
+<section class="pcard"><p class="lead">Les producteurs artisanaux de chaque région. Chaque fiche est vérifiée avant publication.</p>
+<div class="filtres"><label>Région<select id="fReg"><option value="">Toutes</option><option>Auvergne-Rhône-Alpes</option><option>Bourgogne-Franche-Comté</option><option>Bretagne</option><option>Centre-Val de Loire</option><option>Corse</option><option>Grand Est</option><option>Hauts-de-France</option><option>Île-de-France</option><option>Normandie</option><option>Nouvelle-Aquitaine</option><option>Occitanie</option><option>Pays de la Loire</option><option>Provence-Alpes-Côte d’Azur</option><option>Outre-mer</option></select></label><label>Produit<select id="fCat"><option value="">Tous</option><option>Viande</option><option>Fromage</option><option>Charcuterie</option><option>Pain</option><option>Gâteaux</option><option>Bonbons</option><option>Autres</option></select></label></div></section>
+<section class="pcard"><div id="producteurs" class="grid" aria-live="polite"></div></section>
+<section class="pcard"><h2>Tu es producteur ?</h2><p>Ajoute ta fiche gratuitement : nom, ville, produits et photos. Elle est publiée après validation.</p>
+<form id="formProd" class="pform">
+<label>Nom de l’entreprise<input name="nom" required maxlength="80"></label>
+<label>Ville et département<input name="ville" required maxlength="80"></label>
+<label>Région<select name="region" required><option>Auvergne-Rhône-Alpes</option><option>Bourgogne-Franche-Comté</option><option>Bretagne</option><option>Centre-Val de Loire</option><option>Corse</option><option>Grand Est</option><option>Hauts-de-France</option><option>Île-de-France</option><option>Normandie</option><option>Nouvelle-Aquitaine</option><option>Occitanie</option><option>Pays de la Loire</option><option>Provence-Alpes-Côte d’Azur</option><option>Outre-mer</option></select></label>
+<label>Produit principal<select name="cat" required><option>Viande</option><option>Fromage</option><option>Charcuterie</option><option>Pain</option><option>Gâteaux</option><option>Bonbons</option><option>Autres</option></select></label>
+<label>Description<textarea name="desc" required maxlength="600" minlength="20"></textarea></label>
+<label>Site ou réseau (facultatif)<input name="web" type="url" maxlength="160"></label>
+<label class="ok"><input type="checkbox" required> J’accepte la publication de ces informations après validation.</label>
+<button class="btn" type="submit">✉️ Envoyer ma fiche</button>
+</form></section>
+<p class="pnote">Un projet de Véloce Mercato · <a href="https://velocemercato.fr/mentions-legales.html">Mentions légales</a> · <a href="https://vmunivers.fr/">Tous nos projets</a></p>
+</main>
+<script src="/assets/pratique.js" defer></script>
+<script src="/assets/pratique-produits.js" defer></script>
+</body></html>
