@@ -208,9 +208,14 @@ class YouTube:
         self.http, self.state, self.token = http, state, token
 
     def verify_channel(self):
-        result = self.http.json('GET', 'https://www.googleapis.com/youtube/v3/channels?part=id&mine=true', self.token)
-        if os.environ['YOUTUBE_CHANNEL_ID'].strip() not in [row['id'] for row in result.get('items', [])]:
-            raise DeliveryError('YouTube : le compte connecté ne correspond pas à la chaîne autorisée.')
+        result = self.http.json('GET', 'https://www.googleapis.com/youtube/v3/channels?part=id,snippet&mine=true', self.token)
+        rows = result.get('items', [])
+        found = re.search(r'UC[A-Za-z0-9_-]{22}', os.environ.get('YOUTUBE_CHANNEL_ID', ''))
+        expected = found.group(0) if found else ''
+        if expected not in [row['id'] for row in rows]:
+            names = ', '.join(re.sub(r'[\x00-\x1f]', '', r.get('snippet', {}).get('title', '?'))[:60] + ' (' + r['id'] + ')' for r in rows) or 'aucune chaîne'
+            # Identifiants de chaînes publics : affichés pour corriger la configuration.
+            raise DeliveryError(f'YouTube : la chaîne autorisée est {names}, mais YOUTUBE_CHANNEL_ID indique {expected or "un texte sans UC…"}.')
 
     def upload(self, file, metadata, receipt, chunk_size=8*1024*1024):
         file = Path(file)
