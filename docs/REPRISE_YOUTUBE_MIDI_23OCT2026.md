@@ -54,7 +54,7 @@ créé ne gagne pas de droit sans une nouvelle autorisation Google du propriéta
 
 ## Vérifications
 
-- 26 tests de diffusion, dont l’assemblage réel de durées fractionnaires, le refus des sources CDN,
+- 27 tests de diffusion, dont l’assemblage réel de durées fractionnaires, le refus des sources CDN,
   l’absence de fragments secrets dans les diagnostics et le droit de publication dans le lien OAuth.
 - 11 tests de production, dont la durée vidéo complète et les deux profils.
 - Reprise locale de trois fichiers créés par l’ancien encodeur : cadence constante et décodage complet.
@@ -67,3 +67,18 @@ inutile bloquait plusieurs contrôles suivants sur l’image Ubuntu actuelle.
 
 Une vidéo déjà rendue publique depuis YouTube Studio est confirmée en lecture
 après son traitement, sans demander une nouvelle modification de visibilité.
+
+## Résultat de la reprise publique à 13 h 11 Paris
+
+https://github.com/Velocemercato/velocemercato.fr/actions/runs/39942711196
+
+Les annotations confirment `youtube : private_ready` et
+« YouTube : traitement encore en cours ; la vidéo reste privée. »
+L’envoi a donc été enregistré, mais YouTube n’a pas confirmé la fin du traitement
+pendant les dix minutes accordées par le contrôle. Aucun lien public n’est annoncé.
+
+L’attente de traitement est portée à 45 minutes, à l’intérieur du workflow de
+120 minutes. Une nouvelle reprise réutilise le même accusé et le même identifiant
+vidéo, sans renvoyer le programme. Les changements de phase du traitement et la
+visibilité normalisée sont désormais visibles dans les annotations, sans lien
+ni identifiant privé. Un refus de droits ou de traitement reste un échec explicite.

@@ -170,6 +170,23 @@ class DiffusionTests(unittest.TestCase):
             self.assertEqual(http.json.call_count,1)
             self.assertEqual(http.json.call_args.args[0],'GET')
 
+    def test_processing_can_continue_beyond_ten_minutes_without_exposing_private_id(self):
+        with tempfile.TemporaryDirectory() as folder:
+            state=D.State(Path(folder)/'state.enc',KEY);http=Mock()
+            receipt={'video_id':'aB1cdEF2ghi','status':'private_ready'}
+            http.json.side_effect=[
+                {'items':[{'id':'aB1cdEF2ghi','status':{'privacyStatus':'private'},
+                    'processingDetails':{'processingStatus':'processing'}}]},
+                {'items':[{'id':'aB1cdEF2ghi','status':{'privacyStatus':'public'},
+                    'processingDetails':{'processingStatus':'succeeded'}}]}]
+            output=io.StringIO()
+            with patch.object(D.time,'monotonic',side_effect=[0,601]),patch.object(D.time,'sleep') as sleep,contextlib.redirect_stdout(output):
+                D.YouTube(http,state,'test-token').make_public(receipt)
+            self.assertEqual(receipt['status'],'published')
+            sleep.assert_called_once_with(15)
+            self.assertNotIn('aB1cdEF2ghi',output.getvalue())
+            self.assertIn('traitement processing',output.getvalue())
+
     def test_youtube_stays_private_without_owner_consent(self):
         with tempfile.TemporaryDirectory() as folder:
             state=D.State(Path(folder)/'state.enc',KEY)

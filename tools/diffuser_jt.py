@@ -297,14 +297,23 @@ class YouTube:
                         return ident
         raise DeliveryError('YouTube : fin de transfert non confirmée, conserver la session pour reprise.')
 
-    def make_public(self, receipt, timeout=600):
+    def make_public(self, receipt, timeout=2700):
         ident = receipt['video_id']
         deadline = time.monotonic() + timeout
+        reported = None
         while True:
             data = self.http.json('GET', 'https://www.googleapis.com/youtube/v3/videos?part=status,processingDetails&id=' + ident, self.token)
             row = next(iter(data.get('items', [])), {})
             status = row.get('status', {})
             processing = row.get('processingDetails', {}).get('processingStatus')
+            # Une seule annotation par changement, sans identifiant privé.
+            phase = processing if processing in ('processing','succeeded','failed','terminated') else 'non confirmé'
+            visibility = status.get('privacyStatus')
+            visibility = visibility if visibility in ('private','unlisted','public') else 'non confirmée'
+            progress = (phase,visibility)
+            if progress != reported:
+                print(f'::notice::YouTube : traitement {phase} · visibilité {visibility}',flush=True)
+                reported = progress
             if status.get('uploadStatus') in ('failed', 'rejected', 'deleted') or processing in ('failed', 'terminated'):
                 raise DeliveryError('YouTube : traitement refusé ; la vidéo ne sera pas annoncée publique.')
             if processing == 'succeeded':
