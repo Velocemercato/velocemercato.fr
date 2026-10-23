@@ -308,6 +308,13 @@ class YouTube:
             if status.get('uploadStatus') in ('failed', 'rejected', 'deleted') or processing in ('failed', 'terminated'):
                 raise DeliveryError('YouTube : traitement refusé ; la vidéo ne sera pas annoncée publique.')
             if processing == 'succeeded':
+                # Une publication faite depuis YouTube Studio est déjà valable.
+                # La confirmer en lecture évite d'exiger un droit d'écriture
+                # pour remettre en public une vidéo qui l'est déjà.
+                if row.get('id') == ident and status.get('privacyStatus') == 'public':
+                    receipt.update(status='published', url='https://www.youtube.com/watch?v=' + ident)
+                    self.state.save()
+                    return
                 break
             if time.monotonic() >= deadline:
                 raise DeliveryError('YouTube : traitement encore en cours ; la vidéo reste privée.')
