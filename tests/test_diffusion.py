@@ -138,6 +138,11 @@ class DiffusionTests(unittest.TestCase):
             D.YouTube(http,state,'token').make_public(receipt)
             self.assertEqual(receipt['status'],'published')
 
+    def test_state_key_accepts_long_passphrase(self):
+        self.assertEqual(len(D.state_key('une phrase secrete tres longue 2026 VM')),32)
+        with self.assertRaises(ValueError):D.state_key('court')
+        self.assertEqual(D.state_key(KEY),base64.urlsafe_b64decode(KEY))
+
     def test_youtube_stays_private_without_owner_consent(self):
         with tempfile.TemporaryDirectory() as folder:
             state=D.State(Path(folder)/'state.enc',KEY)

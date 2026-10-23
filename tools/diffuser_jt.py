@@ -78,14 +78,26 @@ class HTTP:
         return json.loads(raw) if raw else {}
 
 
+def state_key(raw):
+    """Clé de 32 octets : base64 de 32 octets, ou phrase secrète d'au moins 24 caractères (dérivée en SHA-256)."""
+    raw = (raw or '').strip()
+    try:
+        decoded = base64.urlsafe_b64decode(raw)
+        if len(decoded) == 32:
+            return decoded
+    except Exception:
+        pass
+    if len(raw) >= 24:
+        return hashlib.sha256(('VM-diffusion-key:' + raw).encode()).digest()
+    raise ValueError('clé trop courte')
+
+
 class State:
     """AES-GCM : le dépôt public ne reçoit jamais de jeton ni d'URL privée en clair."""
     def __init__(self, path, key, persist=None):
         from cryptography.hazmat.primitives.ciphers.aead import AESGCM
         try:
-            decoded = base64.urlsafe_b64decode(key)
-            if len(decoded) != 32:
-                raise ValueError()
+            decoded = state_key(key)
         except Exception:
             raise DeliveryError('Clé VM_DIFFUSION_STATE_KEY absente ou invalide.') from None
         self.path, self.cipher, self.persist = Path(path), AESGCM(decoded), persist
@@ -434,7 +446,7 @@ def main():
     active = [provider for provider in PROVIDERS if enabled(provider)]
     if args.check:
         try:
-            valid_key = len(base64.urlsafe_b64decode(os.getenv('VM_DIFFUSION_STATE_KEY', ''))) == 32
+            valid_key = len(state_key(os.getenv('VM_DIFFUSION_STATE_KEY', ''))) == 32
         except Exception:
             valid_key = False
         print(json.dumps({'ready': bool(active) and valid_key, 'providers': active}))
