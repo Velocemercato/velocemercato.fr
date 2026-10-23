@@ -2,19 +2,41 @@
 
 **Sur Android/Z Flip : suivre `docs/CONNEXION_ANDROID.md`.** Ce parcours utilise Chrome et un retour HTTPS dans Codespaces ; le client Google doit être de type Application Web. Le parcours ordinateur ci-dessous reste disponible.
 
-La demande du propriétaire autorise la publication automatique des programmes prêts. Le raccordement technique est ajouté sur `codex/youtube-twitch-auto`. **Aucun compte YouTube ou Twitch n’est authentifié dans cet environnement ; aucun upload ni direct réel n’y est déclaré effectué.** Le script `python tools/diffuser_jt.py --check` indique les plateformes effectivement configurées, sans afficher de secret. La configuration Google présente dans l’environnement n’est pas un accès OAuth à une chaîne YouTube et n’est pas utilisée.
+La demande du propriétaire autorise la publication automatique des programmes prêts.
+Les comptes sont raccordés dans GitHub Actions ; les jetons de diffusion ne sont
+pas disponibles dans le terminal Codex local. Le script
+`python tools/diffuser_jt.py --check` vérifie seulement la présence des réglages
+nécessaires, sans afficher de secret : il ne prouve pas que Google accepte encore
+le jeton ni que la vidéo est publique. Seul le résultat de diffusion le confirme.
 
 ## Fonctionnement préparé
 
-Les JT Foot, Actus et Gaming existants sont lancés à **7 h, 12 h et 20 h, Europe/Paris**, avec correction été/hiver. Lorsque les accès d’au moins une plateforme sont prêts, le montage conserve en plus un original **1280 × 720 à 24 images/s** par rubrique. Les textes et synthèses vocales sont réutilisés ; aucun second appel Claude n’est nécessaire pour le programme long. Les réglages existants des petites vidéos du site restent compatibles avec leur CDN.
+Les JT Foot, Actus et Gaming visent **8 h, 12 h et 20 h, Europe/Paris**, avec
+correction été/hiver. La préparation est programmée 75 minutes plus tôt, avec un
+rattrapage à l’heure cible ; les files GitHub peuvent retarder ces lancements.
+Lorsque les réglages d’au moins une plateforme sont présents, le montage conserve
+en plus un original **1280 × 720 à 24 images/s** par rubrique. Les textes et
+synthèses vocales sont réutilisés ; aucun second appel Claude n’est nécessaire
+pour le programme long. Les petites vidéos du site gardent leur profil CDN.
 
-Les trois originaux du même jour et du même créneau sont assemblés sans nouvelle compression, avec chapitres calculés d’après les durées réelles. La durée dépend des informations disponibles, de l’ordre de 24 à 36 minutes pour trois JT de 8 à 12 minutes. Aucune rubrique manquante n’est remplacée par un ancien journal ou un sujet inventé. Les heures sont des lancements de génération : la disponibilité et la diffusion suivent la fin du montage et les files d’attente GitHub, pas une diffusion garantie à la minute exacte.
+Les trois originaux du même jour et du même créneau sont vérifiés puis assemblés
+en HD avec une cadence régulière et des chapitres calculés d’après les durées
+réelles. L’assemblage réencode la vidéo pour corriger les écarts d’horodatage et
+conserve la piste audio ; les originaux ne sont pas modifiés. La durée dépend des
+informations disponibles. Aucune rubrique manquante n’est remplacée par un ancien
+journal ou un sujet inventé. La publication suit la fin du montage et du
+traitement par les plateformes ; l’heure exacte n’est pas garantie.
 
 - **YouTube** : vérification de la chaîne autorisée, upload avec reprise par morceaux, d’abord privé, attente du traitement, passage en public, puis contrôle de la visibilité. Titre daté, description, liens vers les sources VM et chapitres sont produits depuis les métadonnées du programme. La génération par IA est déclarée dans la description et dans le champ YouTube prévu. Un upload privé ou refusé n’est jamais affiché comme public.
 - **Twitch** : vérification du compte et d’un éventuel direct existant, titre indiquant « programme enregistré · IA », puis diffusion du MP4 au rythme réel avec ffmpeg. Un direct déjà en cours est préservé. Le démarrage doit être confirmé par Twitch et le flux doit se terminer correctement. Twitch reçoit une diffusion enregistrée, pas un upload de fichier comme YouTube.
 - **Sites** : les liens confirmés apparaissent sur l’accueil football, VM Studio, VM Actus et VM Gaming. VM Univers y renvoie depuis sa carte TV/Radio. Aucun lecteur tiers n’est chargé automatiquement. Le lien Twitch ouvre la chaîne ; il ne promet pas un replay permanent.
 
 Les jetons renouvelés, sessions d’upload et accusés sont chiffrés en AES-GCM sur la branche technique `broadcast-state`. La clé reste dans les secrets GitHub. Rien de lisible n’est ajouté au site public ; les liens vers des vidéos privées restent dans l’état chiffré. Ne jamais supprimer cette branche ou remplacer sa clé pour résoudre un échec : cela ferait perdre la reprise et la protection contre les doublons.
+
+La publication publique des **JT** est explicitement activée dans le workflow,
+à la demande du propriétaire. `VM_AUTO_YOUTUBE=false` suspend les envois.
+Les vidéos de présentation ont leur propre workflow et utilisent encore la
+variable `VM_YOUTUBE_PUBLIC` pour leur visibilité.
 
 ## Connexion initiale sur votre ordinateur
 
@@ -32,7 +54,7 @@ Si `gh` n’est pas déjà connecté sur cet ordinateur, utiliser son parcours o
 python tools/connecter_diffusion.py youtube --client-json /chemin/prive/client-google.json
 ```
 
-4. Dans la page Google qui s’ouvre, choisir **votre chaîne** et autoriser l’envoi des vidéos et la lecture de ses informations. L’outil vérifie la chaîne sélectionnée, enregistre les secrets nécessaires dans GitHub et active seulement ensuite `VM_AUTO_YOUTUBE=true`.
+4. Dans la page Google qui s’ouvre, choisir **votre chaîne** et autoriser l’envoi des vidéos, la lecture de ses informations et la modification de visibilité. L’outil vérifie la chaîne sélectionnée, enregistre les secrets nécessaires dans GitHub et active seulement ensuite `VM_AUTO_YOUTUBE=true`.
 
 L’outil utilise `youtube.upload`, `youtube.readonly` et `youtube.force-ssl`.
 Le dernier droit est nécessaire à `videos.update`, utilisé pour rendre publique
@@ -81,6 +103,6 @@ Un état Twitch `starting` ou `live` après une interruption exige une vérifica
 
 ## Validation disponible
 
-Les 38 méthodes locales réussies couvrent notamment le chiffrement, le retour OAuth réel sur boucle locale avec PKCE Google, le stockage sécurisé via `gh`, les reprises YouTube (réponses API de contrôle), la confirmation publique, les restrictions de compte, le renouvellement des jetons, les gardes Twitch et l’assemblage ffmpeg réel. Les tests navigateur vérifient les liens publics et l’absence de liens privés. **Ces tests ne valident pas des comptes connectés, un upload réel, une ingestion Twitch réelle, les droits Google de publication publique ou l’écoute d’un nouveau modèle vocal.** Ces contrôles nécessitent le raccordement décrit ci-dessus.
+Les tests locaux couvrent notamment le chiffrement, le retour OAuth réel sur boucle locale avec PKCE Google, le stockage sécurisé via `gh`, les reprises YouTube (réponses API de contrôle), la confirmation publique, les restrictions de compte, le renouvellement des jetons, les gardes Twitch et l’assemblage ffmpeg réel. Les tests navigateur vérifient les liens publics et l’absence de liens privés. **Ces tests ne valident pas des comptes connectés, un upload réel, une ingestion Twitch réelle, les droits Google de publication publique ou l’écoute d’un nouveau modèle vocal.** Ces contrôles nécessitent le raccordement décrit ci-dessus. Pour l’incident de midi du 23 octobre, consulter `docs/REPRISE_YOUTUBE_MIDI_23OCT2026.md`.
 
 Sources techniques : https://developers.google.com/youtube/v3/guides/using_resumable_upload_protocol ; https://dev.twitch.tv/docs/authentication/refresh-tokens/ ; https://dev.twitch.tv/docs/api/reference/#get-stream-key ; configuration des ingestions utilisée par OBS : https://github.com/obsproject/obs-studio/blob/master/plugins/rtmp-services/data/services.json. Les pages Google/Twitch sont bloquées par le proxy de cet environnement ; la configuration OBS publique a été lue.
