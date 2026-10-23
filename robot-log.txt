@@ -1,32 +1,31 @@
-Passage du 2026-10-23 05:00 UTC (schedule)
+Passage du 2026-10-23 05:59 UTC (schedule)
 
 [notice] A new release of pip is available: 26.2.1 -> 26.2.2
 [notice] To update, run: pip install --upgrade pip
-Nettoyage : 0 breves vides retirees, 355 gardees.
+Nettoyage : 0 breves vides retirees, 356 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 355 articles conservés et 45 flashs existants.
-RSS Foot Amateur / NATIONAL : 5 actualités récentes.
-RSS Foot National / LIGUE_2 : 11 actualités récentes.
+Départ : 356 articles conservés et 45 flashs existants.
 RSS Foot National / NATIONAL : 5 actualités récentes.
+RSS Foot National / LIGUE_2 : 10 actualités récentes.
 RSS Foot National / NATIONAL : 0 actualités récentes.
-RSS Foot National / LIGUE_1 : 12 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 24 actualités récentes.
 RSS RMC Sport / LIGUE_1 : 4 actualités récentes.
 RSS RMC Sport / FRANCE : 30 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 25 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 24 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 5 actualités récentes.
 RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
 RSS BBC Sport / FEMININ : 1 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 5 actualités récentes.
 RSS Foot01 / FRANCE : 41 actualités récentes.
 RSS RMC Sport / BLEUS : 1 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 24 actualités récentes.
 RSS inaccessible RMC Sport : HTTPError - HTTP Error 404: Not Found
-RSS Foot Amateur / NATIONAL : 8 actualités récentes.
-RSS inaccessible Maxifoot : HTTPError - HTTP Error 404: Not Found
+RSS Foot Amateur / NATIONAL : 7 actualités récentes.
 RSS franceinfo / FRANCE : 11 actualités récentes.
-227 titres collectés, 25 nouveaux liens, quota 2.
-Brève prête : RMC Sport - Mort de Maradona : le jugement du procès sera rendu le 22 décembre
-Bilan : brèves_rédigées=1, source_inaccessible_ou_trop_courte=13, sujet_deja_traite=11
-Publié : 1 brèves (total 356). Flash : 45.
+RSS Foot Amateur / NATIONAL : 4 actualités récentes.
+RSS inaccessible Maxifoot : HTTPError - HTTP Error 404: Not Found
+RSS Foot National / LIGUE_1 : 12 actualités récentes.
+225 titres collectés, 27 nouveaux liens, quota 2.
+Bilan : non_pertinent=1, source_inaccessible_ou_trop_courte=14, sujet_deja_traite=12
+Aucune brève de qualité suffisante ; fichiers JSON inchangés.
 Pages : 356 brèves avec leur propre page, sitemap à jour.
 Agenda : 68 matchs enregistrés.
 Ligue 1 : flux illisible (HTTPError)
@@ -42,24 +41,24 @@ UEFA : flux illisible (HTTPError)
 Premier League : flux illisible (HTTPError)
 LaLiga : flux illisible (HTTPError)
 Serie A : flux illisible (HTTPError)
-Bundesliga : flux illisible (HTTPError)
+Bundesliga : 15 vidéos lues, 0 vidéos de buts gardées.
 Aucune vidéo trouvée : videos.json inchangé.
 Flux muet RMC Sport : HTTPError
 Flux muet So Foot : HTTPError
+Flux muet Maxifoot : HTTPError
 Flux muet Goal : HTTPError
 Flux muet Jeuxvideo.com : HTTPError
 Flux muet Millenium : HTTPError
-Flux muet Maxifoot : HTTPError
-Fil express : actus 200, foot 200, gaming 113
-Flux muet France 3 BFC (https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/rss) : ValueError
+Fil express : actus 200, foot 200, gaming 110
 Flux muet L'Est Républicain (https://www.estrepublicain.fr/edition-belfort/rss) : HTTPError
 Flux muet L'Est Républicain (https://www.estrepublicain.fr/edition-haute-saone/rss) : HTTPError
-Flux muet France 3 BFC (https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/territoire-de-belfort/rss) : ValueError
+Flux muet France 3 BFC (https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/haute-saone/rss) : ValueError
+Flux muet France 3 BFC (https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/rss) : ValueError
 L'Est Républicain territoire-de-belfort : 18 titres
 L'Est Républicain haute-saone : 12 titres
-Flux muet France 3 BFC (https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/haute-saone/rss) : ValueError
 L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
 Flux muet ici Belfort-Montbéliard (https://www.francebleu.fr/rss/belfort-montbeliard/infos.xml) : HTTPError
+Flux muet France 3 BFC (https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/territoire-de-belfort/rss) : ValueError
 macommune.info  : 25 titres
 L'Est Républicain www.estrepublicain.fr : 3 titres
-VM Belfort : 67 titres
+VM Belfort : 68 titres
