@@ -159,6 +159,17 @@ class DiffusionTests(unittest.TestCase):
         with self.assertRaises(ValueError):D.state_key('court')
         self.assertEqual(D.state_key(KEY),base64.urlsafe_b64decode(KEY))
 
+    def test_already_public_processed_video_is_confirmed_without_a_write_request(self):
+        with tempfile.TemporaryDirectory() as folder:
+            state=D.State(Path(folder)/'state.enc',KEY);http=Mock()
+            receipt={'video_id':'aB1cdEF2ghi','status':'private_ready'}
+            http.json.return_value={'items':[{'id':'aB1cdEF2ghi','status':{'privacyStatus':'public'},
+                'processingDetails':{'processingStatus':'succeeded'}}]}
+            D.YouTube(http,state,'read-token-test').make_public(receipt)
+            self.assertEqual(receipt['status'],'published')
+            self.assertEqual(http.json.call_count,1)
+            self.assertEqual(http.json.call_args.args[0],'GET')
+
     def test_youtube_stays_private_without_owner_consent(self):
         with tempfile.TemporaryDirectory() as folder:
             state=D.State(Path(folder)/'state.enc',KEY)
