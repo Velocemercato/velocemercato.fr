@@ -253,3 +253,6 @@ main{max-width:1120px;margin:0 auto;padding:0 16px 60px}
 #vd-order .vd-card .vd-media img{object-fit:contain}
 .vd-lightbox img{object-fit:contain;width:auto;height:auto}
 @media(max-width:360px){.vd-grid.g3{grid-template-columns:minmax(0,1fr)}.vd-top-in{gap:8px;padding-inline:12px}.vd-logo{font-size:1.05rem}.vd-cta-top{padding:8px 9px;font-size:.78rem}.vd-hero-art{max-width:calc(100% - 14px)}}
+
+/* Mention de simulation dans les parcours et le tableau de bord */
+.vd-sim{margin:0 0 10px;padding:6px 10px;border-radius:10px;background:color-mix(in srgb,var(--a) 22%,transparent);font:600 .8rem/1.35 system-ui,sans-serif;color:inherit}

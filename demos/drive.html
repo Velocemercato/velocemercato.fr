@@ -5,7 +5,7 @@
 <meta name="robots" content="noindex"><meta name="theme-color" content="#06160d">
 <meta property="og:title" content="VM Drive Market – vos courses en ligne"><meta property="og:image" content="https://velocemercato.fr/demos/img/drive/hero.webp">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d6ff6e'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle'%3E%F0%9F%9B%92%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="/demos/kit/vm-demo.css?v=20261023-images1">
+<link rel="stylesheet" href="/demos/kit/vm-demo.css?v=20261023-audit">
 <style>:root{--a:#d6ff6e;--b:#0a8f4f;--ink:#06160d;--bg:#f4fbf3}
 .how{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;counter-reset:h}
 .how div{counter-increment:h;background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:14px;font-weight:700}
@@ -61,17 +61,17 @@ order:{refPrefix:'DR',search:true,stepper:true,payNote:'Paiement au retrait ou �
         {id:'livraison',l:'Livraison',e:'🚚',sub:'4,90 € · offerte dès 50 €',fee:4.9,free:50,min:25,address:true,hours:{1:[['10:00','12:00'],['17:00','20:00']],2:[['10:00','12:00'],['17:00','20:00']],3:[['10:00','12:00'],['17:00','20:00']],4:[['10:00','12:00'],['17:00','20:00']],5:[['10:00','12:00'],['17:00','20:00']],6:[['10:00','12:00']],0:[]},days:6,step:120,lead:240,rate:30,whenLabel:'Votre créneau de livraison'}],
  track:[['📥','Reçue'],['🧺','En préparation'],['📦','Prête'],['🚗','Retirée']],
  items:[
-  {id:'pommes',cat:'Fruits & légumes',name:'Pommes Golden locales',desc:'Verger à 12 km.',price:2.9,unit:'kg',e:'🍎',img:'/demos/img/drive/pommes.webp',tag:'Local'},
-  {id:'carottes',cat:'Fruits & légumes',name:'Carottes bio',price:2.2,unit:'kg',e:'🥕',img:'/demos/img/drive/carottes.webp'},
-  {id:'bananes',cat:'Fruits & légumes',name:'Bananes',price:1.99,unit:'kg',e:'🍌',img:'/demos/img/drive/bananes.webp'},
+  {id:'pommes',cat:'Fruits & légumes',name:'Pommes Golden locales',desc:'Verger à 12 km. Sachet de 1 kg.',price:2.9,unit:'kg',e:'🍎',img:'/demos/img/drive/pommes.webp',tag:'Local'},
+  {id:'carottes',cat:'Fruits & légumes',name:'Carottes bio',price:2.2,unit:'kg',desc:'Sachet de 1 kg.',e:'🥕',img:'/demos/img/drive/carottes.webp'},
+  {id:'bananes',cat:'Fruits & légumes',name:'Bananes',price:1.99,unit:'kg',desc:'Environ 1 kg (6 à 7 fruits).',e:'🍌',img:'/demos/img/drive/bananes.webp'},
   {id:'salade',cat:'Fruits & légumes',name:'Salade batavia',price:1.2,unit:'pièce',e:'🥬',img:'/demos/img/drive/salade.webp'},
   {id:'lait',cat:'Crèmerie',name:'Lait demi-écrémé 1 L',price:1.15,unit:'L',e:'🥛',img:'/demos/img/drive/lait.webp'},
   {id:'oeufs',cat:'Crèmerie',name:'12 œufs plein air',price:4.2,unit:'boîte',e:'🥚',img:'/demos/img/drive/oeufs.webp',tag:'Local'},
-  {id:'comte',cat:'Crèmerie',name:'Comté 12 mois',price:21.9,unit:'kg',desc:'Vendu à la coupe (≈ 250 g).',e:'🧀',img:'/demos/img/drive/comte.webp'},
+  {id:'comte',cat:'Crèmerie',name:'Comté 12 mois',price:5.48,unit:'portion de 250 g',desc:'Coupé à la commande, soit 21,90 €/kg.',e:'🧀',img:'/demos/img/drive/comte.webp'},
   {id:'yaourts',cat:'Crèmerie',name:'Yaourts nature x8',price:2.6,unit:'pack',e:'🍶',img:'/demos/img/drive/yaourts.webp'},
   {id:'pain',cat:'Boulangerie',name:'Baguette tradition',price:1.3,unit:'pièce',e:'🥖',img:'/demos/img/drive/baguette.webp'},
   {id:'croissants',cat:'Boulangerie',name:'4 croissants pur beurre',price:4.4,unit:'sachet',e:'🥐',img:'/demos/img/drive/croissants.webp'},
-  {id:'poulet',cat:'Boucherie',name:'Filets de poulet',price:13.9,unit:'kg',e:'🍗',img:'/demos/img/drive/poulet.webp'},
+  {id:'poulet',cat:'Boucherie',name:'Filets de poulet',price:13.9,unit:'kg',desc:'Barquette de 1 kg.',e:'🍗',img:'/demos/img/drive/poulet.webp'},
   {id:'steak',cat:'Boucherie',name:'4 steaks hachés 15 %',price:6.5,unit:'barquette',e:'🥩',img:'/demos/img/drive/steaks.webp'},
   {id:'pates',cat:'Épicerie',name:'Pâtes 500 g',price:1.1,unit:'paquet',e:'🍝',img:'/demos/img/drive/pates.webp'},
   {id:'riz',cat:'Épicerie',name:'Riz basmati 1 kg',price:2.8,unit:'paquet',e:'🍚',img:'/demos/img/drive/riz.webp'},
@@ -84,5 +84,5 @@ order:{refPrefix:'DR',search:true,stepper:true,payNote:'Paiement au retrait ou �
 proKpis:['Commandes','Chiffre prévu','SMS automatiques','Note Google'],
 proFake:[{ref:'DR-6T3M',when:'Auj. 17h-18h',what:'Drive · 23 articles',nom:'Famille Petit',total:86.4},{ref:'DR-2F8L',when:'Auj. 17h-19h',what:'Livraison · 31 articles',nom:'Mme Rossi',total:112.9},{ref:'DR-9W1C',when:'Demain 10h-11h',what:'Drive · 12 articles',nom:'Kevin D.',total:41.2}]};
 </script>
-<script src="/demos/kit/vm-demo.js?v=20261023-images1"></script>
+<script src="/demos/kit/vm-demo.js?v=20261023-audit"></script>
 </body></html>
