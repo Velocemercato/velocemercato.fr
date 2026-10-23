@@ -90,10 +90,8 @@ FEEDS = [
     ('INTERNATIONAL', 'INTERNATIONAL', 'BBC Sport', 'https://feeds.bbci.co.uk/sport/football/european/rss.xml'),
     ('INTERNATIONAL', 'FEMININ', 'BBC Sport', 'https://feeds.bbci.co.uk/sport/football/womens/rss.xml'),
     ('FRANCE', 'FRANCE', 'Foot01', 'https://www.foot01.com/news.rss'),
-    ('FRANCE', 'LIGUE_2', 'RMC Sport', 'https://rmcsport.bfmtv.com/rss/football/ligue-2/'),
     ('FRANCE', 'BLEUS', 'RMC Sport', 'https://rmcsport.bfmtv.com/rss/football/equipe-de-france/'),
     ('FRANCE', 'FRANCE', 'franceinfo', 'https://www.francetvinfo.fr/sports/foot.rss'),
-    ('FRANCE', 'FRANCE', 'Maxifoot', 'https://www.maxifoot.fr/rss/actu.xml'),
     # Foot étranger : MLS et Messi, Brésil et Neymar, Mexique (sources en anglais, brèves rédigées en français).
     ('INTERNATIONAL', 'ETRANGER', 'The Guardian', 'https://www.theguardian.com/football/mls/rss'),
     ('INTERNATIONAL', 'ETRANGER', 'The Guardian', 'https://www.theguardian.com/football/lionel-messi/rss'),
@@ -104,7 +102,7 @@ FEEDS = [
 
 ALLOWED_HOSTS = {
     'foot-national.com', 'footamateur.ouest-france.fr', 'rmcsport.bfmtv.com',
-    'footmercato.net', 'bbc.co.uk', 'bbci.co.uk', 'bbc.com', 'foot01.com', 'francetvinfo.fr', 'franceinfo.fr', 'maxifoot.fr',
+    'footmercato.net', 'bbc.co.uk', 'bbci.co.uk', 'bbc.com', 'foot01.com', 'francetvinfo.fr', 'franceinfo.fr',
     'theguardian.com',
 }
 BLOCK = re.compile(
