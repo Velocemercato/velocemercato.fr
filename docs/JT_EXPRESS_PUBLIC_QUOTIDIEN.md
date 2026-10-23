@@ -29,6 +29,9 @@ dès `videos.insert`. Les droits existants `youtube.upload` et `youtube.readonly
 suffisent à demander cette publication puis à vérifier son résultat. Le workflow
 attend le traitement et contrôle la visibilité publique avant d’ajouter le lien
 aux sites. Il peut attendre jusqu’à 45 minutes ; une erreur reste un échec explicite.
+Le statut technique `uploaded` confirme le transfert d’un nouvel envoi public,
+sans affirmer que son traitement est terminé. Seul `published`, accompagné d’un
+lien confirmé par l’API, autorise l’annonce sur les sites.
 
 Une vidéo envoyée auparavant en privé reste une vidéo différente. Sa modification
 automatique demande `youtube.force-ssl` ou une autorisation équivalente. Le propriétaire

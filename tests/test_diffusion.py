@@ -225,6 +225,19 @@ class DiffusionTests(unittest.TestCase):
             self.assertEqual(submitted['status']['privacyStatus'],'public')
             self.assertTrue(all(call.args[0]=='GET' for call in http.json.call_args_list))
 
+    def test_public_upload_is_neutral_until_processing_and_visibility_are_confirmed(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);file=root/'court.mp4';file.write_bytes(b'0123456789')
+            state=D.State(root/'state.enc',KEY);http=Mock();receipt={}
+            http.request.side_effect=[(200,{'Location':'https://www.googleapis.com/upload/session-test'},b''),
+                (308,{},b''),(200,{},b'{"id":"aB1cdEF2ghi"}')]
+            metadata=D.youtube_metadata(MANIFEST);metadata['status']['privacyStatus']='public'
+            D.YouTube(http,state,'test-token').upload(file,metadata,receipt)
+            self.assertEqual(receipt['status'],'uploaded')
+            self.assertNotIn('url',receipt)
+            index=root/'public.json';D.public_index(index,MANIFEST,{'youtube':receipt})
+            self.assertFalse(index.exists())
+
     def test_unverified_channel_does_not_receive_a_video_longer_than_fifteen_minutes(self):
         with tempfile.TemporaryDirectory() as folder:
             state=D.State(Path(folder)/'state.enc',KEY);client=Mock()

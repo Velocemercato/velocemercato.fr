@@ -244,6 +244,7 @@ class YouTube:
             if receipt.get('status') == 'uploading':
                 raise DeliveryError('Session YouTube non confirmée : vérifier avant de créer une autre vidéo.')
             receipt['status'] = 'uploading'
+            receipt['requested_visibility'] = metadata.get('status',{}).get('privacyStatus','private')
             self.state.save()
             _, headers, _ = self.http.request('POST', 'https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status',
                 {'Authorization': 'Bearer ' + self.token, 'Content-Type': 'application/json',
@@ -260,7 +261,7 @@ class YouTube:
                 ident = json.loads(body).get('id', '')
                 if not re.fullmatch(r'[A-Za-z0-9_-]{11}', ident):
                     raise DeliveryError('YouTube : identifiant vidéo absent de la confirmation.')
-                receipt.update(video_id=ident, status='private')
+                receipt.update(video_id=ident, status='uploaded' if receipt.get('requested_visibility') == 'public' else 'private')
                 receipt.pop('session', None)
                 self.state.save()
                 return total, ident
@@ -328,7 +329,7 @@ class YouTube:
                     return
                 break
             if time.monotonic() >= deadline:
-                raise DeliveryError('YouTube : traitement encore en cours ; la vidéo reste privée.')
+                raise DeliveryError('YouTube : fin du traitement non confirmée ; aucun lien public annoncé.')
             time.sleep(15)
         self.http.json('PUT', 'https://www.googleapis.com/youtube/v3/videos?part=status', self.token,
             body={'id': ident, 'status': {'privacyStatus': 'public', 'selfDeclaredMadeForKids': False, 'containsSyntheticMedia': True}})
