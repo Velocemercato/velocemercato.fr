@@ -5,14 +5,15 @@
 <meta name="robots" content="noindex"><meta name="theme-color" content="#06160d">
 <meta property="og:title" content="VM Drive Market – vos courses en ligne"><meta property="og:image" content="https://velocemercato.fr/demos/img/drive/hero.webp">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d6ff6e'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle'%3E%F0%9F%9B%92%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="/demos/kit/vm-demo.css">
+<link rel="stylesheet" href="/demos/kit/vm-demo.css?v=20261023-images1">
 <style>:root{--a:#d6ff6e;--b:#0a8f4f;--ink:#06160d;--bg:#f4fbf3}
 .how{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;counter-reset:h}
 .how div{counter-increment:h;background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:14px;font-weight:700}
 .how div:before{content:counter(h);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--a);border:2px solid var(--line);font:italic 900 1.2rem Impact,"Arial Black",sans-serif;margin-bottom:6px}</style>
+<link rel="preload" as="image" href="/demos/img/drive/hero.webp" fetchpriority="high">
 </head><body>
-<div class="vd-demo"><b>VM</b> Site de démonstration — magasin fictif créé par Véloce Web Studio. <a href="/web-studio.html?offre=drive#devis">Je veux le même pour mon magasin →</a></div>
-<header class="vd-top"><div class="vd-top-in"><a class="vd-logo" href="#"><span aria-hidden="true">🛒</span><em>VM Drive Market</em></a>
+<div class="vd-demo"><a class="vd-universe" href="https://vmunivers.fr/">VM Univers</a> <span>Démonstration · entreprise fictive</span> <a href="/web-studio.html?offre=drive#devis">Adapter ce modèle →</a></div>
+<header class="vd-top"><div class="vd-top-in"><a class="vd-logo" href="/demos/drive.html"><span aria-hidden="true">🛒</span><em>VM Drive Market</em></a>
 <nav class="vd-nav" aria-label="Sections"><a href="#rayons">Rayons</a><a href="#comment">Comment ça marche</a><a href="#infos">Infos</a></nav>
 <a class="vd-cta-top" href="#rayons">🛒 Mes courses</a></div></header>
 
@@ -32,9 +33,9 @@
 <section class="vd-sec" id="rayons"><div class="vd-h"><h2>Les rayons</h2><p>Prix au kilo et à l’unité affichés. Le panier est conservé sur votre téléphone.</p></div>
 <div id="vd-order"></div></section>
 
-<section class="vd-sec"><div class="vd-video"><div class="vd-media" data-video="/demos/img/drive/video.mp4" data-img="/demos/img/drive/video-poster.webp" data-e="🎬" data-l="Votre commande préparée"></div>
+<section class="vd-sec"><details class="vd-extra vd-extra-video"><summary>Le format vidéo pour votre site</summary><div class="vd-video"><div class="vd-media" data-video-pending="/demos/img/drive/video.mp4" data-e="🎬" data-l="Votre commande préparée"></div>
 <div><h3 style="font:italic 900 1.6rem/1 Impact,'Arial Black',sans-serif;text-transform:uppercase;margin:0 0 8px">Le drive en vidéo</h3><p style="margin:0 0 12px;color:var(--muted)">De la préparation au coffre de votre voiture en 2 minutes. Et nos producteurs présentés en vidéo courte.</p>
-<div class="vd-reels"><div class="vd-media" data-video="/demos/img/drive/reel-1.mp4" data-e="🥕" data-l="Le maraîcher"></div><div class="vd-media" data-video="/demos/img/drive/reel-2.mp4" data-e="🧀" data-l="La fromagerie"></div><div class="vd-media" data-video="/demos/img/drive/reel-3.mp4" data-e="🚗" data-l="Le drive"></div></div></div></div></section>
+<div class="vd-reels"><div class="vd-media" data-video-pending="/demos/img/drive/reel-1.mp4" data-e="🥕" data-l="Le maraîcher"></div><div class="vd-media" data-video-pending="/demos/img/drive/reel-2.mp4" data-e="🧀" data-l="La fromagerie"></div><div class="vd-media" data-video-pending="/demos/img/drive/reel-3.mp4" data-e="🚗" data-l="Le drive"></div></div></div></div></details></section>
 
 <section class="vd-sec" id="infos"><div class="vd-h"><h2>Infos pratiques</h2></div>
 <div class="vd-grid g3"><div class="vd-panel"><h3 style="margin:0 0 8px">🕒 Horaires du magasin</h3><div data-vd-hours></div></div>
@@ -49,7 +50,7 @@
 <ul><li>Vendez même quand le magasin est fermé</li><li>Préparez les commandes au calme, par créneau</li><li>Catalogue, prix et promos mis à jour pour vous</li></ul></div>
 <div class="vd-btns"><a class="vd-btn" href="/web-studio.html?offre=drive#devis">Je veux ce site →</a><a class="vd-btn alt" href="/web-studio.html#tarifs">Voir les formules</a></div></section>
 </main>
-<footer class="vd-foot">Démonstration réalisée par <a href="/web-studio.html">Véloce Web Studio</a> · réseau <a href="https://vmunivers.fr/">VM Univers</a> · © <span data-year></span><br>Magasin, produits, prix et coordonnées fictifs.</footer>
+<footer class="vd-foot">Démonstration réalisée par <a href="/web-studio.html">Véloce Web Studio</a> · réseau <a href="https://vmunivers.fr/">VM Univers</a> · © <span data-year></span><br>Magasin, produits, prix et coordonnées fictifs.<br>Visuels créés par IA pour ces démonstrations · VM Univers × Véloce Web Studio</footer>
 
 <script>
 var DRIVE_H={1:[['09:00','19:00']],2:[['09:00','19:00']],3:[['09:00','19:00']],4:[['09:00','19:00']],5:[['09:00','19:00']],6:[['09:00','18:00']],0:[]};
@@ -83,5 +84,5 @@ order:{refPrefix:'DR',search:true,stepper:true,payNote:'Paiement au retrait ou �
 proKpis:['Commandes','Chiffre prévu','SMS automatiques','Note Google'],
 proFake:[{ref:'DR-6T3M',when:'Auj. 17h-18h',what:'Drive · 23 articles',nom:'Famille Petit',total:86.4},{ref:'DR-2F8L',when:'Auj. 17h-19h',what:'Livraison · 31 articles',nom:'Mme Rossi',total:112.9},{ref:'DR-9W1C',when:'Demain 10h-11h',what:'Drive · 12 articles',nom:'Kevin D.',total:41.2}]};
 </script>
-<script src="/demos/kit/vm-demo.js"></script>
+<script src="/demos/kit/vm-demo.js?v=20261023-images1"></script>
 </body></html>

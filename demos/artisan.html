@@ -5,7 +5,7 @@
 <meta name="robots" content="noindex"><meta name="theme-color" content="#0a1420">
 <meta property="og:title" content="Titan Bâtiment – votre devis en 2 minutes"><meta property="og:image" content="https://velocemercato.fr/demos/img/artisan/hero.webp">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ffb703'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle'%3E%F0%9F%A7%B1%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="/demos/kit/vm-demo.css">
+<link rel="stylesheet" href="/demos/kit/vm-demo.css?v=20261023-images1">
 <style>:root{--a:#ffb703;--b:#0f4c81;--ink:#0a1420;--bg:#f3f6fa}
 .ba{display:grid;grid-template-columns:1fr 1fr;gap:0;border:3px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
 .ba .vd-media{aspect-ratio:4/3}
@@ -13,9 +13,10 @@
 .trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
 .trust div{background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:14px;text-align:center;font-weight:800}
 .trust b{display:block;font:italic 900 2rem/1 Impact,"Arial Black",sans-serif;color:var(--b)}</style>
+<link rel="preload" as="image" href="/demos/img/artisan/hero.webp" fetchpriority="high">
 </head><body>
-<div class="vd-demo"><b>VM</b> Site de démonstration — entreprise fictive créée par Véloce Web Studio. <a href="/web-studio.html?offre=devis#devis">Je veux le même pour mon entreprise →</a></div>
-<header class="vd-top"><div class="vd-top-in"><a class="vd-logo" href="#"><span aria-hidden="true">🧱</span><em>Titan Bâtiment</em></a>
+<div class="vd-demo"><a class="vd-universe" href="https://vmunivers.fr/">VM Univers</a> <span>Démonstration · entreprise fictive</span> <a href="/web-studio.html?offre=devis#devis">Adapter ce modèle →</a></div>
+<header class="vd-top"><div class="vd-top-in"><a class="vd-logo" href="/demos/artisan.html"><span aria-hidden="true">🧱</span><em>Titan Bâtiment</em></a>
 <nav class="vd-nav" aria-label="Sections"><a href="#metiers">Métiers</a><a href="#chantiers">Chantiers</a><a href="#avis">Avis</a><a href="#infos">Contact</a></nav>
 <a class="vd-cta-top" href="#devis">📐 Devis gratuit</a></div></header>
 
@@ -35,21 +36,21 @@
 
 <section class="vd-sec" id="metiers"><div class="vd-h"><h2>Nos métiers</h2><p>Une seule équipe, tous corps d’état, un interlocuteur unique.</p></div>
 <div class="vd-grid">
-<article class="vd-card"><div class="vd-media" data-img="/demos/img/artisan/metier-renovation.webp" data-e="🏠" data-l="Rénovation intérieure"></div><div class="vd-card-b"><h3>Rénovation intérieure</h3><p>Salle de bain, cuisine, cloisons, plâtrerie, peinture.</p></div></article>
-<article class="vd-card"><div class="vd-media" data-img="/demos/img/artisan/metier-maconnerie.webp" data-e="🧱" data-l="Maçonnerie"></div><div class="vd-card-b"><h3>Maçonnerie & extension</h3><p>Murs, dalles, ouvertures, extensions, terrasses.</p></div></article>
-<article class="vd-card"><div class="vd-media" data-img="/demos/img/artisan/metier-toiture.webp" data-e="🏚️" data-l="Toiture"></div><div class="vd-card-b"><h3>Toiture & isolation</h3><p>Réfection, zinguerie, isolation des combles, éligible aux aides.</p></div></article>
-<article class="vd-card"><div class="vd-media" data-img="/demos/img/artisan/metier-industrie.webp" data-e="🏭" data-l="Bâtiment industriel"></div><div class="vd-card-b"><span class="vd-tag">Entreprises</span><h3>Industrie & locaux pro</h3><p>Dalles industrielles, bardage, mise aux normes, interventions hors horaires de production.</p></div></article>
+<article class="vd-card"><div class="vd-media" data-icon-media data-e="🏠" data-l="Rénovation intérieure"></div><div class="vd-card-b"><h3>Rénovation intérieure</h3><p>Salle de bain, cuisine, cloisons, plâtrerie, peinture.</p></div></article>
+<article class="vd-card"><div class="vd-media" data-icon-media data-e="🧱" data-l="Maçonnerie"></div><div class="vd-card-b"><h3>Maçonnerie & extension</h3><p>Murs, dalles, ouvertures, extensions, terrasses.</p></div></article>
+<article class="vd-card"><div class="vd-media" data-icon-media data-e="🏚️" data-l="Toiture"></div><div class="vd-card-b"><h3>Toiture & isolation</h3><p>Réfection, zinguerie, isolation des combles, éligible aux aides.</p></div></article>
+<article class="vd-card"><div class="vd-media" data-icon-media data-e="🏭" data-l="Bâtiment industriel"></div><div class="vd-card-b"><span class="vd-tag">Entreprises</span><h3>Industrie & locaux pro</h3><p>Dalles industrielles, bardage, mise aux normes, interventions hors horaires de production.</p></div></article>
 </div></section>
 
 <section class="vd-sec" id="chantiers"><div class="vd-h"><h2>Avant / après</h2><p>Nos chantiers en images, publiés au fil des livraisons.</p></div>
-<div class="vd-grid g3">
-<div class="ba"><div class="vd-media" data-img="/demos/img/artisan/sdb-avant.webp" data-e="🚿" data-l="Salle de bain avant"><span class="lab">Avant</span></div><div class="vd-media" data-img="/demos/img/artisan/sdb-apres.webp" data-e="✨" data-l="Salle de bain après"><span class="lab">Après</span></div></div>
-<div class="ba"><div class="vd-media" data-img="/demos/img/artisan/facade-avant.webp" data-e="🏚️" data-l="Façade avant"><span class="lab">Avant</span></div><div class="vd-media" data-img="/demos/img/artisan/facade-apres.webp" data-e="🏡" data-l="Façade après"><span class="lab">Après</span></div></div>
-<div class="ba"><div class="vd-media" data-img="/demos/img/artisan/atelier-avant.webp" data-e="🏭" data-l="Atelier avant"><span class="lab">Avant</span></div><div class="vd-media" data-img="/demos/img/artisan/atelier-apres.webp" data-e="🏗️" data-l="Atelier après"><span class="lab">Après</span></div></div>
-</div>
-<div class="vd-sec vd-video"><div class="vd-media" data-video="/demos/img/artisan/video.mp4" data-img="/demos/img/artisan/video-poster.webp" data-e="🎬" data-l="Un chantier en accéléré"></div>
+<details class="vd-extra"><summary>Exemple de galerie avant / après</summary><p>Emplacements de démonstration à remplacer par les photos réelles de vos chantiers.</p><div class="vd-grid g3">
+<div class="ba"><div class="vd-media" data-icon-media data-e="🚿" data-l="Salle de bain avant"><span class="lab">Avant</span></div><div class="vd-media" data-icon-media data-e="✨" data-l="Salle de bain après"><span class="lab">Après</span></div></div>
+<div class="ba"><div class="vd-media" data-icon-media data-e="🏚️" data-l="Façade avant"><span class="lab">Avant</span></div><div class="vd-media" data-icon-media data-e="🏡" data-l="Façade après"><span class="lab">Après</span></div></div>
+<div class="ba"><div class="vd-media" data-icon-media data-e="🏭" data-l="Atelier avant"><span class="lab">Avant</span></div><div class="vd-media" data-icon-media data-e="🏗️" data-l="Atelier après"><span class="lab">Après</span></div></div>
+</div></details>
+<details class="vd-extra vd-extra-video"><summary>Le format vidéo pour votre site</summary><div class="vd-sec vd-video"><div class="vd-media" data-video-pending="/demos/img/artisan/video.mp4" data-e="🎬" data-l="Un chantier en accéléré"></div>
 <div><h3 style="font:italic 900 1.6rem/1 Impact,'Arial Black',sans-serif;text-transform:uppercase;margin:0 0 8px">Chantier en vidéo</h3><p style="margin:0 0 12px;color:var(--muted)">Timelapse, vues de drone et présentation de l’équipe : la preuve par l’image.</p>
-<div class="vd-reels"><div class="vd-media" data-video="/demos/img/artisan/reel-1.mp4" data-e="⏩" data-l="Timelapse"></div><div class="vd-media" data-video="/demos/img/artisan/reel-2.mp4" data-e="🚁" data-l="Vue drone"></div><div class="vd-media" data-video="/demos/img/artisan/reel-3.mp4" data-e="👷" data-l="L’équipe"></div></div></div></div>
+<div class="vd-reels"><div class="vd-media" data-video-pending="/demos/img/artisan/reel-1.mp4" data-e="⏩" data-l="Timelapse"></div><div class="vd-media" data-video-pending="/demos/img/artisan/reel-2.mp4" data-e="🚁" data-l="Vue drone"></div><div class="vd-media" data-video-pending="/demos/img/artisan/reel-3.mp4" data-e="👷" data-l="L’équipe"></div></div></div></div></details>
 </section>
 
 <section class="vd-sec" id="avis"><div class="vd-h"><h2>Ils nous ont fait confiance</h2><p>Exemples de démonstration.</p></div>
@@ -72,7 +73,7 @@
 <ul><li>Fini les appels pour « juste un prix » : l’estimation filtre</li><li>Vos visites s’organisent seules dans votre agenda</li><li>Vos chantiers publiés pour vous, en photo et vidéo</li></ul></div>
 <div class="vd-btns"><a class="vd-btn" href="/web-studio.html?offre=devis#devis">Je veux ce site →</a><a class="vd-btn alt" href="/web-studio.html#photo">Photo & vidéo de chantier</a></div></section>
 </main>
-<footer class="vd-foot">Démonstration réalisée par <a href="/web-studio.html">Véloce Web Studio</a> · réseau <a href="https://vmunivers.fr/">VM Univers</a> · © <span data-year></span><br>Entreprise, chiffres, avis et coordonnées fictifs.</footer>
+<footer class="vd-foot">Démonstration réalisée par <a href="/web-studio.html">Véloce Web Studio</a> · réseau <a href="https://vmunivers.fr/">VM Univers</a> · © <span data-year></span><br>Entreprise, chiffres, avis et coordonnées fictifs.<br>Visuels créés par IA pour ces démonstrations · VM Univers × Véloce Web Studio</footer>
 
 <script>
 window.DEMO={id:'artisan',name:'Titan Bâtiment',tagline:'Rénovation et bâtiment, devis en 2 minutes',address:'ZA de l’Exemple, 00000 Ville-Démo',rating:'4,9',
@@ -91,5 +92,5 @@ quote:{visitHours:{1:[['08:00','12:00'],['14:00','18:00']],2:[['08:00','12:00'],
 proKpis:['Demandes de devis','Potentiel estimé','SMS automatiques','Note Google'],
 proFake:[{ref:'DEV-3H7K',when:'Lun. 9h00',what:'Salle de bain · 6 m²',nom:'P. Martin',est:[5400,9600]},{ref:'DEV-8B2D',when:'Lun. 14h00',what:'Local pro · 450 m²',nom:'SAS Exemple',est:[36000,81000]},{ref:'DEV-1Q5N',when:'Mar. 10h00',what:'Toiture · 90 m²',nom:'S. Bernard',est:[10800,19800]}]};
 </script>
-<script src="/demos/kit/vm-demo.js"></script>
+<script src="/demos/kit/vm-demo.js?v=20261023-images1"></script>
 </body></html>

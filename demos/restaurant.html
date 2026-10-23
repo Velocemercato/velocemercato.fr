@@ -5,16 +5,17 @@
 <meta name="robots" content="noindex"><meta name="theme-color" content="#1b0f0a">
 <meta property="og:title" content="La Table du Mercato – réservez votre table"><meta property="og:image" content="https://velocemercato.fr/demos/img/restaurant/hero.webp">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f4cf55'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle'%3E%F0%9F%8D%BD%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="/demos/kit/vm-demo.css">
+<link rel="stylesheet" href="/demos/kit/vm-demo.css?v=20261023-images1">
 <style>:root{--a:#f4cf55;--b:#9b1c1c;--ink:#1b0f0a;--bg:#fff8ec}
 .menu-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
 .menu-cols h3{margin:0 0 6px;font:italic 900 1.3rem/1 Impact,"Arial Black",sans-serif;text-transform:uppercase;color:var(--b)}
 .dish{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed #0b153340}
 .dish b{display:block}.dish small{color:var(--muted)}.dish span{font-weight:900;white-space:nowrap}
 .allerg{font-size:.7rem;font-weight:800;border:1px solid var(--line);border-radius:5px;padding:0 4px;margin-left:4px}</style>
+<link rel="preload" as="image" href="/demos/img/restaurant/hero.webp" fetchpriority="high">
 </head><body>
-<div class="vd-demo"><b>VM</b> Site de démonstration — restaurant fictif créé par Véloce Web Studio. <a href="/web-studio.html?offre=reservation#devis">Je veux le même pour mon restaurant →</a></div>
-<header class="vd-top"><div class="vd-top-in"><a class="vd-logo" href="#"><span aria-hidden="true">🍽️</span><em>La Table du Mercato</em></a>
+<div class="vd-demo"><a class="vd-universe" href="https://vmunivers.fr/">VM Univers</a> <span>Démonstration · entreprise fictive</span> <a href="/web-studio.html?offre=reservation#devis">Adapter ce modèle →</a></div>
+<header class="vd-top"><div class="vd-top-in"><a class="vd-logo" href="/demos/restaurant.html"><span aria-hidden="true">🍽️</span><em>La Table du Mercato</em></a>
 <nav class="vd-nav" aria-label="Sections"><a href="#jour">Menu du jour</a><a href="#carte">La carte</a><a href="#galerie">Galerie</a><a href="#groupes">Groupes</a><a href="#infos">Infos</a></nav>
 <a class="vd-cta-top" href="#resa">🍽️ Réserver</a></div></header>
 
@@ -29,7 +30,7 @@
 <main>
 <section class="vd-sec" id="jour"><div class="vd-h"><h2>Menu du jour</h2><p>Mis à jour chaque matin selon le marché. Servi le midi en semaine.</p></div>
 <div class="vd-grid g3"><div class="vd-panel" data-vd-daymenu></div>
-<div class="vd-card"><div class="vd-media" data-img="/demos/img/restaurant/plat-du-jour.webp" data-e="🍲" data-l="Le plat du jour"></div><div class="vd-card-b"><span class="vd-tag">Photo du jour</span><h3>Le chef vous montre l’assiette</h3><p>Une photo publiée chaque matin, en même temps sur Instagram et Facebook.</p></div></div></div></section>
+<div class="vd-card"><div class="vd-media" data-img="/demos/img/restaurant/galerie-5.webp" data-e="🍲" data-l="Le dressage en cuisine"></div><div class="vd-card-b"><span class="vd-tag">Photo du jour</span><h3>La cuisine en images</h3><p>Une galerie qui met en valeur le savoir-faire de votre cuisine.</p></div></div></div></section>
 
 <section class="vd-sec" id="resa"><div class="vd-h"><h2>Réserver</h2><p>Nombre de couverts, emplacement, date et heure : vous êtes confirmé tout de suite par SMS et e-mail.</p></div>
 <div class="vd-panel" id="vd-booking"></div></section>
@@ -59,9 +60,9 @@
 <div class="vd-media" data-img="/demos/img/restaurant/galerie-4.webp" data-e="🌿" data-l="La terrasse"></div>
 <div class="vd-media" data-img="/demos/img/restaurant/galerie-5.webp" data-e="👨‍🍳" data-l="En cuisine"></div>
 </div>
-<div class="vd-sec vd-video"><div class="vd-media" data-video="/demos/img/restaurant/video.mp4" data-img="/demos/img/restaurant/video-poster.webp" data-e="🎬" data-l="Le service du midi"></div>
+<details class="vd-extra vd-extra-video"><summary>Le format vidéo pour votre site</summary><div class="vd-sec vd-video"><div class="vd-media" data-video-pending="/demos/img/restaurant/video.mp4" data-e="🎬" data-l="Le service du midi"></div>
 <div><h3 style="font:italic 900 1.6rem/1 Impact,'Arial Black',sans-serif;text-transform:uppercase;margin:0 0 8px">En vidéo</h3><p style="margin:0 0 12px;color:var(--muted)">Le coup de feu en cuisine, le dressage des assiettes : de quoi donner faim avant même d’arriver.</p>
-<div class="vd-reels"><div class="vd-media" data-video="/demos/img/restaurant/reel-1.mp4" data-e="🔥" data-l="Coup de feu"></div><div class="vd-media" data-video="/demos/img/restaurant/reel-2.mp4" data-e="🍽️" data-l="Dressage"></div><div class="vd-media" data-video="/demos/img/restaurant/reel-3.mp4" data-e="🥂" data-l="Ambiance"></div></div></div></div>
+<div class="vd-reels"><div class="vd-media" data-video-pending="/demos/img/restaurant/reel-1.mp4" data-e="🔥" data-l="Coup de feu"></div><div class="vd-media" data-video-pending="/demos/img/restaurant/reel-2.mp4" data-e="🍽️" data-l="Dressage"></div><div class="vd-media" data-video-pending="/demos/img/restaurant/reel-3.mp4" data-e="🥂" data-l="Ambiance"></div></div></div></div></details>
 </section>
 
 <section class="vd-sec" id="groupes"><div class="vd-h"><h2>Groupes & événements</h2><p>Anniversaires, repas d’équipe, privatisation jusqu’à 45 personnes.</p></div>
@@ -82,7 +83,7 @@
 <ul><li>Moins d’appels pendant le service, moins de tables vides</li><li>Rappel SMS la veille = moins de « no-show »</li><li>Votre menu du jour publié pour vous, chaque jour si besoin</li></ul></div>
 <div class="vd-btns"><a class="vd-btn" href="/web-studio.html?offre=reservation#devis">Je veux ce site →</a><a class="vd-btn alt" href="/web-studio.html#gerance">Formules de gérance</a></div></section>
 </main>
-<footer class="vd-foot">Démonstration réalisée par <a href="/web-studio.html">Véloce Web Studio</a> · réseau <a href="https://vmunivers.fr/">VM Univers</a> · © <span data-year></span><br>Restaurant, plats, avis et coordonnées fictifs.</footer>
+<footer class="vd-foot">Démonstration réalisée par <a href="/web-studio.html">Véloce Web Studio</a> · réseau <a href="https://vmunivers.fr/">VM Univers</a> · © <span data-year></span><br>Restaurant, plats, avis et coordonnées fictifs.<br>Visuels créés par IA pour ces démonstrations · VM Univers × Véloce Web Studio</footer>
 
 <script>
 window.DEMO={id:'restaurant',name:'La Table du Mercato',tagline:'Bistrot fait maison, réservation en ligne',refPrefix:'TM',address:'3 place de l’Exemple, 00000 Ville-Démo',rating:'4,8',
@@ -99,5 +100,5 @@ booking:{kind:'table',step:15,lead:45,rate:28,zones:['Salle','Terrasse','Comptoi
 proKpis:['Tables réservées','Couverts prévus','SMS automatiques','Note Google'],
 proFake:[{ref:'TM-5A2C',when:'Auj. 12h15',what:'Table pour 4 (Terrasse)',nom:'Famille Durand',covers:4},{ref:'TM-8D1F',when:'Auj. 12h30',what:'Table pour 2 (Salle)',nom:'M. Lopez',covers:2},{ref:'TM-3K9B',when:'Auj. 20h00',what:'Table pour 8 (Salle)',nom:'Anniv. Léa',covers:8},{ref:'TM-6P4R',when:'Demain 19h30',what:'Table pour 2 (Comptoir)',nom:'Hugo M.',covers:2}]};
 </script>
-<script src="/demos/kit/vm-demo.js"></script>
+<script src="/demos/kit/vm-demo.js?v=20261023-images1"></script>
 </body></html>

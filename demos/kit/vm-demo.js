@@ -49,11 +49,12 @@
     if (el.querySelector('.vd-ph')) return;
     var ph = document.createElement('div'); ph.className = 'vd-ph';
     ph.innerHTML = '<div><span class="e" aria-hidden="true">' + esc(el.dataset.e || '📸') + '</span><b>' + esc(el.dataset.l || '') + '</b>' +
-      (el.dataset.video ? '<small>Vidéo à venir</small>' : '<small>Photo à venir</small>') + '</div>';
+      (el.dataset.video || el.hasAttribute('data-video-pending') ? '<small>Vidéo à venir</small>' : el.hasAttribute('data-icon-media') || !el.dataset.img ? '' : '<small>Photo à venir</small>') + '</div>';
     el.appendChild(ph);
   }
   function media(root) {
     $$('.vd-media', root).forEach(function (el) {
+      if (el.closest('details:not([open])')) return;
       if (el.dataset.ready) return; el.dataset.ready = '1';
       if (el.dataset.video) {
         var v = document.createElement('video');
@@ -70,10 +71,18 @@
         // Sans poster ni vidéo publiée, on affiche tout de suite le repli.
         fetch(el.dataset.video, {method: 'HEAD'}).then(function (r) { if (!r.ok) fail(); }).catch(function () { /* Hors ligne : on laisse le lecteur. */ });
       } else if (el.dataset.img) {
-        var i = new Image(); i.alt = el.dataset.l || ''; i.loading = 'lazy'; i.decoding = 'async';
+        var i = new Image(); i.alt = el.dataset.l || ''; i.decoding = 'async';
+        var hero = !!el.closest('.vd-hero-art');
+        i.loading = hero ? 'eager' : 'lazy';
+        if (hero) { i.fetchPriority = 'high'; i.width = 1122; i.height = 1402; }
+        else if (el.closest('.vd-gal')) { i.width = 1254; i.height = 1254; }
         i.onerror = function () { i.remove(); placeholder(el); };
         i.src = el.dataset.img; el.appendChild(i);
-        if (el.dataset.l && el.closest('.vd-gal')) { var c = document.createElement('figcaption'); c.textContent = el.dataset.l; el.appendChild(c); }
+        if (el.closest('.vd-gal')) {
+          el.tabIndex = 0; el.setAttribute('role', 'button');
+          el.setAttribute('aria-label', 'Agrandir : ' + (el.dataset.l || 'photo'));
+          if (el.dataset.l) { var c = document.createElement('span'); c.className = 'vd-caption'; c.textContent = el.dataset.l; c.setAttribute('aria-hidden', 'true'); el.appendChild(c); }
+        }
       } else placeholder(el);
     });
   }
@@ -540,14 +549,24 @@
 
   /* ---------- Visionneuse de la galerie ---------- */
   function lightbox() {
-    var lb = document.createElement('div'); lb.className = 'vd-lightbox'; lb.hidden = true; lb.innerHTML = '<img alt=""><button type="button" class="vd-x" aria-label="Fermer">✕</button>';
+    var lb = document.createElement('div'); lb.className = 'vd-lightbox'; lb.hidden = true; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-label', 'Photo agrandie'); lb.innerHTML = '<img alt=""><button type="button" class="vd-x" aria-label="Fermer">✕</button>';
     document.body.appendChild(lb);
+    var returnFocus = null;
+    function show(item) {
+      var img = item && $('img', item); if (!img || !img.complete || !img.naturalWidth) return;
+      returnFocus = item; lb.firstChild.src = img.currentSrc || img.src; lb.firstChild.alt = img.alt; lb.hidden = false; lb.lastChild.focus();
+    }
+    function hide() { lb.hidden = true; if (returnFocus) returnFocus.focus(); }
     document.addEventListener('click', function (e) {
-      var img = e.target.closest('.vd-gal img'); if (!img) return;
-      lb.firstChild.src = img.src; lb.firstChild.alt = img.alt; lb.hidden = false; lb.lastChild.focus();
+      var item = e.target.closest('.vd-gal .vd-media'); if (item) show(item);
     });
-    lb.onclick = function () { lb.hidden = true; };
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.hidden = true; });
+    lb.onclick = function (e) { if (e.target === lb || e.target.closest('button')) hide(); };
+    document.addEventListener('keydown', function (e) {
+      if (!lb.hidden) {
+        if (e.key === 'Escape') { e.preventDefault(); hide(); }
+        else if (e.key === 'Tab') { e.preventDefault(); lb.lastChild.focus(); }
+      } else if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.vd-gal .vd-media')) { e.preventDefault(); show(e.target); }
+    });
   }
 
   // Menu du jour (restaurant) : choisi selon le jour de la semaine.
@@ -570,6 +589,7 @@
   window.VD = {m: m, media: media, euro: euro, esc: esc};
   document.addEventListener('DOMContentLoaded', function () {
     media(document);
+    document.addEventListener('toggle', function (event) { if (event.target.tagName === 'DETAILS' && event.target.open) media(event.target); }, true);
     $$('[data-vd-hours]').forEach(hoursTable);
     $$('[data-vd-daymenu]').forEach(dayMenu);
     if ($('#vd-booking') && D.booking) booking($('#vd-booking'));
