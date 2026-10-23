@@ -477,6 +477,7 @@ def main():
                 tag = cat
             additions.append({
                 'id': ident(post), 'publishedAt': post['date'].isoformat(timespec='seconds').replace('+00:00', 'Z'),
+                'createdAt': dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds').replace('+00:00', 'Z'),
                 'titre': title, 'resume': resume, 'texte': texte,
                 'zone': zone, 'championnat': championship,
                 'categorie': cat, 'tag': tag,

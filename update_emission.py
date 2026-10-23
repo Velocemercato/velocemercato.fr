@@ -75,11 +75,12 @@ def load_news(univers, hours, limit, *, start=None, end=None):
     out = []
     for a in rows:
         d = robot.parse_date(str(a.get('publishedAt', '')))
-        in_window = bool(d and (start < d <= end if start and end else
+        added = robot.parse_date(str(a.get('createdAt') or a.get('publishedAt', '')))
+        in_window = bool(d and (added and start < added <= end and d <= end if start and end else
                                dt.timedelta(0) <= now - d < dt.timedelta(hours=hours)))
         if in_window and a.get('titre') and a.get('resume'):
             out.append(a)
-    out.sort(key=lambda a: a.get('publishedAt', ''), reverse=True)
+    out.sort(key=lambda a: robot.parse_date(str(a.get('createdAt') or a.get('publishedAt', ''))), reverse=True)
     return out[:limit]
 
 
@@ -297,6 +298,7 @@ def make(univers, fmt, moment):
     if edition:
         entry.update(edition_at=edition['edition_at'], source_start=edition['source_start'], source_end=edition['source_end'],
                      sources=[{'id': a.get('id', ''), 'titre': a['titre'], 'publishedAt': a['publishedAt'],
+                               **({'createdAt': a['createdAt']} if a.get('createdAt') else {}),
                                'references': a.get('sources', [])} for a in news])
     save_master_metadata(entry)
     if auto:

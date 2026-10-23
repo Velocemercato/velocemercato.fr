@@ -72,6 +72,28 @@ class GridTests(unittest.TestCase):
                 selected = E.load_news('actus', 14, 8, start=start, end=end)
             self.assertEqual({r['id'] for r in selected}, {'2', '3'})
 
+    def test_late_ingested_article_enters_its_addition_window_without_changing_source_date(self):
+        start = dt.datetime(2026, 10, 23, 13, tzinfo=S.PARIS)
+        end = start.replace(hour=19)
+        row = {'id':'late', 'titre':'Information sourcée', 'resume':'Résumé',
+               'publishedAt':(start-dt.timedelta(minutes=1)).isoformat(),
+               'createdAt':(start+dt.timedelta(minutes=20)).isoformat()}
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); (root/'actus').mkdir()
+            (root/'actus/news.json').write_text(json.dumps([row]))
+            with patch.object(E,'ROOT',root):
+                selected = E.load_news('actus',14,8,start=start,end=end)
+            self.assertEqual(selected,[row])
+            self.assertLess(dt.datetime.fromisoformat(selected[0]['publishedAt']),start)
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp); now, metadata, file = self.fixture(root)
+            metadata['sources'][0]['createdAt']=metadata['sources'][0]['publishedAt']
+            metadata['sources'][0]['publishedAt']='2026-10-24T01:00:00+02:00'
+            file.write_text(json.dumps(metadata))
+            with patch.object(D,'probe',return_value=HD):
+                result=D.prepare(root,root/'out.mp4',now=now,expected_run='42')
+            self.assertEqual(result['sources'][0]['publishedAt'],'2026-10-24T01:00:00+02:00')
+
     def test_no_new_articles_never_calls_writer_or_recycles_old_news(self):
         now = dt.datetime.now(S.PARIS)
         target = now.replace(hour=13, minute=0, second=0, microsecond=0)

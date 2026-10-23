@@ -12,7 +12,7 @@ Le robot vérifie les créneaux à :07, :27 et :47. Il produit seulement les cr�
 
 ## Sources et durées
 
-Les articles sont sélectionnés selon leur date source `publishedAt`, strictement après le précédent créneau de la même rubrique et jusqu'au créneau courant inclus. Exemple : Foot 12 h utilise la période 8 h–12 h ; Gaming 0 h utilise 18 h la veille–0 h. La production enregistre les bornes et les références sélectionnées. Il n'y a plus de recours aux 24 dernières heures pour remplir un créneau séparé.
+Les nouvelles brèves enregistrent leur date de création `createdAt`, en conservant la date originale `publishedAt`. La sélection utilise cette date de création (ou, pour les anciens articles sans ce champ, la date source), strictement après le précédent créneau de la même rubrique et jusqu'au créneau courant inclus. Exemple : Foot 12 h utilise la période 8 h–12 h ; Gaming 0 h utilise 18 h la veille–0 h. La production enregistre les bornes et les références sélectionnées. Une brève découverte tardivement entre donc dans le créneau de son ajout, sans être oubliée à cause de l’ancienneté de sa source. La date originale reste fournie au rédacteur pour ne pas présenter un fait ancien comme nouveau. Il n'y a plus de recours aux 24 dernières heures pour remplir un créneau séparé.
 
 Jusqu'à huit articles sont proposés à la rédaction pour sélectionner les sujets importants. Objectif : environ trois minutes, moins si les nouvelles sont rares. Sans nouvelle exploitable, pas de bulletin artificiel. Une vidéo dépassant cinq minutes est refusée avant l'envoi, sans coupe de phrase. Aucun test de jeu n'est présenté comme notre essai personnel : le média auteur est cité. Les images de match et les vidéos tierces ne sont pas téléchargées ni réutilisées.
 

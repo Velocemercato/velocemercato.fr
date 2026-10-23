@@ -464,7 +464,8 @@ def prepare(masters, output, now=None, expected_run=None):
             raise DeliveryError('Original ou période des sources incohérente.')
         sources = row.get('sources', [])
         start = dt.datetime.fromisoformat(edition['source_start'])
-        if not sources or any(not start < dt.datetime.fromisoformat(s['publishedAt'].replace('Z', '+00:00')) <= target for s in sources):
+        if not sources or any(not start < dt.datetime.fromisoformat((s.get('createdAt') or s['publishedAt']).replace('Z', '+00:00')) <= target
+                              or dt.datetime.fromisoformat(s['publishedAt'].replace('Z', '+00:00')) > target for s in sources):
             raise DeliveryError('Sources absentes ou en dehors du créneau annoncé.')
         output.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(masters / (ident + '.mp4'), output)
