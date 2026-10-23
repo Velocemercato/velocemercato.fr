@@ -17,3 +17,4 @@
 
 /* La grille reste lisible en trois lignes sur téléphone. */
 .jt-hours{margin:16px 0;font:600 .95rem/1.6 system-ui,sans-serif}.jt-hours>div{display:flex;gap:12px;padding:6px 0;border-bottom:1px solid #ffffff26}.jt-hours dt{flex:0 0 70px;font-weight:800}.jt-hours dd{margin:0;color:inherit}
+.broadcast-play{display:block;width:100%;padding:0 0 12px;overflow:hidden;border:1px solid #ffffff40;border-radius:12px;background:#0b1533;color:#fff;font:700 1rem/1.6 system-ui;cursor:pointer}.broadcast-play img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;margin-bottom:12px}.broadcast-play:focus-visible{outline:3px solid #f4c864;outline-offset:4px}.broadcast-player{display:block;width:100%;aspect-ratio:16/9;height:auto;border:0;border-radius:12px}

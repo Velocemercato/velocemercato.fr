@@ -24,7 +24,7 @@ class RecoveryTests(unittest.TestCase):
             self.assertEqual(entry['editorial_revision'],'court-v1')
             self.assertTrue(entry['publie'])
 
-    def produce(self, root, size):
+    def produce(self, root, size, duration=600):
         (root / 'studio/debats').mkdir(parents=True)
         config = root / 'studio/debats/config.json'
         config.write_text('{"publication_auto": true}')
@@ -48,10 +48,29 @@ class RecoveryTests(unittest.TestCase):
             if os.getenv('VM_KEEP_HD_MASTER') == '1':
                 masters = root / 'studio/tmp/masters'; masters.mkdir(parents=True, exist_ok=True)
                 (masters / out.name).write_bytes(b'original-hd-test')
-            return 600, ['piper']
+            return duration, ['piper']
 
         self.enterContext(patch.object(emission.D, 'build_video', side_effect=build))
         return self.enterContext(patch.object(emission, 'rebuild_list'))
+
+    def test_separate_edition_keeps_hd_and_poster_without_uploading_another_git_video(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder); self.produce(root,100,duration=165)
+            target=dt.datetime(2026,10,23,13,tzinfo=emission.D.PARIS)
+            class Clock(dt.datetime):
+                @classmethod
+                def now(cls,tz=None):return target.replace(minute=20).astimezone(tz or dt.timezone.utc)
+            news=[{'id':'source-1','titre':'Sujet sourcé','publishedAt':target.isoformat(),'sources':[]}]
+            with patch.object(emission.dt,'datetime',Clock),patch.object(emission,'load_news',return_value=news), \
+                 patch.dict(os.environ,{'VM_EDITION_AT':target.isoformat(),'VM_SITE_YOUTUBE':'1'}),patch.object(emission,'publish') as upload:
+                entry=emission.make('actus','edition','midi')
+            upload.assert_not_called()
+            self.assertIs(entry['publie'],False)
+            self.assertEqual(entry['diffusion'],'youtube')
+            self.assertTrue((root/'studio/tmp/masters'/(entry['id']+'.mp4')).is_file())
+            self.assertTrue((root/'studio/episodes/posters'/(entry['id']+'.jpg')).is_file())
+            from pastille_schedule import edition_recorded,edition_window
+            self.assertTrue(edition_recorded(root,edition_window('actus',target)))
 
     def test_oversized_render_is_recoverable_and_hd_metadata_survives(self):
         with tempfile.TemporaryDirectory() as folder:

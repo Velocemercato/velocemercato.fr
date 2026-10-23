@@ -104,6 +104,7 @@ jobs:
           import json, os
           data = json.load(open(os.environ['RUNNER_TEMP'] + '/diffusion-check.json'))
           print('ready=' + ('1' if data['ready'] else '0'))
+          print('youtube=' + ('1' if data['ready'] and 'youtube' in data['providers'] else '0'))
           PY
       - name: Installer les outils sans repli vocal silencieux
         if: github.event_name == 'workflow_dispatch' || steps.plan.outputs.plan != ''
@@ -127,6 +128,7 @@ jobs:
           VM_SPEECH_RATE: '1.12'
           VM_VIDEO_PROFILE: ${{ inputs.qualite || 'auto' }}
           VM_KEEP_HD_MASTER: ${{ steps.diffusion.outputs.ready == '1' && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.publish) && '1' || '0' }}
+          VM_SITE_YOUTUBE: ${{ steps.diffusion.outputs.youtube || '0' }}
           VM_REFRESH_EDITION: ${{ github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.publish && inputs.refaire && '1' || '0' }}
           PLAN: ${{ steps.plan.outputs.plan }}
           PLANNED_UNIVERS: ${{ steps.plan.outputs.univers }}

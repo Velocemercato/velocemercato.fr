@@ -6,7 +6,7 @@
 | Véloce Mercato Foot | 08 h, 12 h, 20 h, 23 h |
 | VM Gaming | 00 h, 10 h, 18 h |
 
-Chaque édition est une vidéo indépendante : original HD pour YouTube, version légère dans la rubrique correspondante de velocemercato.fr. Les identifiants contiennent la rubrique, la date et l'heure du créneau ; les accusés chiffrés empêchent un deuxième envoi de la même édition. L'ancien JT groupé reste consultable.
+Chaque édition est une vidéo indépendante : original HD pour YouTube et lecture de ce même programme dans la rubrique correspondante de velocemercato.fr, au clic seulement. Quand YouTube est configuré, seuls les originaux temporaires et une miniature sont conservés : aucun nouveau MP4 de ces éditions séparées ne grossit l’historique Git. Le lien et le lecteur apparaissent après confirmation publique de YouTube ; les anciens extraits servent de repli en attendant. Sans connexion YouTube, la voie CDN existante reste disponible. Les identifiants contiennent la rubrique, la date et l'heure du créneau ; les accusés chiffrés empêchent un deuxième envoi de la même édition. L'ancien JT groupé reste consultable.
 
 Le robot vérifie les créneaux à :07, :27 et :47. Il produit seulement les créneaux échus depuis moins de 90 minutes qui n'ont pas encore leur rendu. GitHub Actions, la rédaction, le rendu et le traitement YouTube peuvent retarder la disponibilité : la grille indique l'heure de coupure des nouvelles, pas une garantie de diffusion à la minute. Europe/Paris gère automatiquement l'heure d'été et d'hiver, y compris le JT Gaming de minuit. Les anciens programmes longs restent disponibles en lancement manuel ; ils ne s'ajoutent plus automatiquement aux dix créneaux.
 

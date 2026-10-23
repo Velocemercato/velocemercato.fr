@@ -40,7 +40,7 @@ def edition_recorded(root, edition):
         row = json.loads(path.read_text())
         if (row.get('univers') == edition['univers'] and row.get('format') == 'edition'
                 and row.get('edition_at') == edition['edition_at']
-                and (row.get('publie') is True or row.get('hebergement') == 'en_attente')):
+                and (row.get('publie') is True or row.get('hebergement') == 'en_attente' or row.get('diffusion') == 'youtube')):
             return True
     return False
 

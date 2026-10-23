@@ -302,6 +302,20 @@ def make(univers, fmt, moment):
                                'references': a.get('sources', [])} for a in news])
     save_master_metadata(entry)
     if auto:
+        if edition and os.getenv('VM_SITE_YOUTUBE') == '1' and os.getenv('VM_KEEP_HD_MASTER') == '1':
+            # Le site attend le lien YouTube public confirmé. Aucun nouveau MP4
+            # n'alourdit la branche tv ; seule notre miniature rejoint Pages.
+            entry['diffusion'] = 'youtube'
+            poster = ROOT / 'studio/episodes/posters' / out.with_suffix('.jpg').name
+            poster.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(out.with_suffix('.jpg'), poster)
+            metadata = ROOT / 'studio/tv' / (ident + '.json')
+            metadata.parent.mkdir(parents=True, exist_ok=True)
+            metadata.write_text(json.dumps(entry, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+            save_master_metadata(entry)
+            rebuild_list()
+            print(f'{univers} · {label} : original HD et miniature prêts ; affichage après confirmation YouTube.', flush=True)
+            return entry
         try:
             entry['media_sha'] = publish(out, out.with_suffix('.jpg'), out.with_suffix('.m4a'))
         except D.media.CDNCapacityError:
@@ -347,7 +361,8 @@ def main():
     for univers, fmt, moment in jobs:
         try:
             entry = make(univers, fmt, moment)
-            state = ('publiée sur le site' if entry.get('publie') else
+            state = ('original HD prêt, confirmation YouTube attendue' if entry.get('diffusion') == 'youtube' else
+                     'publiée sur le site' if entry.get('publie') else
                      'conservée, hébergement requis' if entry.get('hebergement') == 'en_attente' else
                      'aperçu préparé, non publié') if entry else 'aucune nouvelle émission'
             outcomes.append(f'| {univers} | {fmt} / {moment} | {state} |')

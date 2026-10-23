@@ -15,6 +15,27 @@ document.querySelectorAll('[data-broadcast-feed]').forEach(async section => {
     const title = document.createElement('h2');title.textContent=latest.titre;section.append(title);
     const names={foot:'Foot',actus:'Actus',gaming:'Gaming'};
     const description = document.createElement('p');description.textContent=(latest.universes || ['foot','actus','gaming']).map(name=>names[name]).filter(Boolean).join(', ')+' · programme enregistré, généré par IA';section.append(description);
+    const youtube = latest.plateformes.youtube;
+    if (latest.edition_at && youtube && valid({plateformes:{youtube}})) {
+      const play=document.createElement('button');play.type='button';play.className='broadcast-play';
+      play.textContent='▶ Lire ce JT en HD ici';
+      if (/^(foot|actus|gaming)-edition-[0-9]{8}-[0-9]{4}$/.test(latest.id)) {
+        const poster=document.createElement('img');poster.src='/studio/episodes/posters/'+latest.id+'.jpg';
+        poster.alt='';poster.loading='lazy';play.prepend(poster);
+      }
+      play.addEventListener('click',()=>{
+        const frame=document.createElement('iframe');frame.className='broadcast-player';
+        frame.src='https://www.youtube-nocookie.com/embed/'+new URL(youtube.url).searchParams.get('v')+'?autoplay=1&rel=0';
+        frame.title=latest.titre;frame.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';
+        frame.allowFullscreen=true;frame.referrerPolicy='strict-origin-when-cross-origin';play.replaceWith(frame);
+      },{once:true});
+      section.append(play);
+      // Le lecteur actuel remplace l'ancien extrait de la même rubrique.
+      if (universe) {
+        document.querySelectorAll('[data-pastille-universe]').forEach(old=>{if(old.dataset.pastilleUniverse===universe)old.hidden=true;});
+        if (universe==='foot') ['ptvMain','ptvMore'].forEach(id=>{const old=document.getElementById(id);if(old)old.hidden=true;});
+      }
+    }
     Object.entries(latest.plateformes).forEach(([name,provider])=>{
       const wrapper = {plateformes:{[name]:provider}};
       if (!valid(wrapper)) return;

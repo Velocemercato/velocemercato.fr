@@ -19,7 +19,7 @@ class BulletinsBrowserTests(unittest.TestCase):
 
     def test_each_site_shows_its_own_confirmed_youtube_journal(self):
         rows = [{'id':name+'-edition-20261023-'+hour, 'date_publication':'2026-10-23T'+clock+':15:00Z',
-                 'universes':[name], 'titre':title,
+                 'universes':[name], 'titre':title, 'edition_at':'2026-10-23T'+hour[:2]+':00:00+02:00',
                  'plateformes':{'youtube':{'status':'published','url':'https://www.youtube.com/watch?v=aB1cdEF2ghi'}}}
                 for name,hour,clock,title in [('foot','1200','10','Foot, JT de 12 h'),('actus','1300','11','Actus, JT de 13 h'),('gaming','1800','16','Gaming, JT de 18 h')]]
         for width in (390,1440):
@@ -33,6 +33,13 @@ class BulletinsBrowserTests(unittest.TestCase):
                 self.assertEqual(section.locator('h2').text_content(),title)
                 self.assertEqual(section.locator('iframe').count(),0)
                 self.assertEqual(section.locator('a').get_attribute('href'),'https://www.youtube.com/watch?v=aB1cdEF2ghi')
+                old=page.locator('[data-pastille-universe]') if path!='/' else page.locator('#ptvMain')
+                self.assertFalse(old.is_visible())
+                section.get_by_role('button',name='▶ Lire ce JT en HD ici').click()
+                frame=section.locator('iframe')
+                self.assertEqual(frame.get_attribute('src'),'https://www.youtube-nocookie.com/embed/aB1cdEF2ghi?autoplay=1&rel=0')
+                self.assertEqual(frame.get_attribute('title'),title)
+                self.assertFalse(page.evaluate('document.documentElement.scrollWidth>innerWidth'))
             context.close()
 
     def test_official_broadcasters_page_navigation_no_overflow_and_no_embeds(self):
