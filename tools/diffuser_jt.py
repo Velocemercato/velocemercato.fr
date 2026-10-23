@@ -149,10 +149,25 @@ def enabled(provider):
     return os.getenv('VM_AUTO_' + provider.upper()) == 'true' and all(os.getenv(name, '').strip() for name in PROVIDERS[provider])
 
 
+YOUTUBE_PUBLIC_CLIENT_ID = '143768939550-tfgsm898rp33c6rbs49t75hv7a9i1his.apps.googleusercontent.com'
+
+
+def clean_credential(provider, kind, value):
+    """Tolère un copier-coller imparfait depuis un téléphone (texte autour, JSON complet du Terrain de jeu OAuth)."""
+    value = (value or '').strip()
+    if provider == 'youtube' and kind == 'REFRESH_TOKEN':
+        match = re.search(r'1//[A-Za-z0-9_\-]{20,}', value)
+        return match.group(0) if match else value
+    if provider == 'youtube' and kind == 'CLIENT_ID':
+        match = re.search(r'\d{6,}-[a-z0-9]+\.apps\.googleusercontent\.com', value)
+        return match.group(0) if match else YOUTUBE_PUBLIC_CLIENT_ID  # l'ID client est public
+    return value
+
+
 def access_token(provider, state, http):
     prefix = provider.upper()
-    initial = os.environ[prefix + '_REFRESH_TOKEN'].strip()
-    client = os.environ[prefix + '_CLIENT_ID'].strip()
+    initial = clean_credential(provider, 'REFRESH_TOKEN', os.environ[prefix + '_REFRESH_TOKEN'])
+    client = clean_credential(provider, 'CLIENT_ID', os.environ[prefix + '_CLIENT_ID'])
     fingerprint = hashlib.sha256((client + initial).encode()).hexdigest()
     stored = state.data['tokens'].get(provider, {})
     refresh = stored.get('refresh') if stored.get('fingerprint') == fingerprint else initial

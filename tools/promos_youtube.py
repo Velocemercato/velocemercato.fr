@@ -13,7 +13,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from tools.diffuser_jt import HTTP, State, YouTube, DeliveryError, access_token, enabled, git_save, public_allowed
+from tools.diffuser_jt import clean_credential, HTTP, State, YouTube, DeliveryError, access_token, enabled, git_save, public_allowed
 
 PROMOS = [
     ('veloce-foot', 'Véloce Mercato — le média foot', 'https://velocemercato.fr/'),
@@ -73,9 +73,9 @@ def main():
     parser.add_argument('--state', type=Path, required=True)
     parser.add_argument('--limit', type=int, default=2)
     args = parser.parse_args()
-    cid = os.getenv('YOUTUBE_CLIENT_ID', '').strip()
+    cid = clean_credential('youtube', 'CLIENT_ID', os.getenv('YOUTUBE_CLIENT_ID', ''))
     sec = os.getenv('YOUTUBE_CLIENT_SECRET', '').strip()
-    ref = os.getenv('YOUTUBE_REFRESH_TOKEN', '').strip()
+    ref = clean_credential('youtube', 'REFRESH_TOKEN', os.getenv('YOUTUBE_REFRESH_TOKEN', ''))
     # Contrôle sans divulgation : l'ID client est public ; du secret on ne montre que les 4 derniers caractères,
     # comme la console Google (****xxxx), pour comparer.
     print(f'::notice::Contrôle : ID client longueur {len(cid)}, commence par 143768939550- : {cid.startswith("143768939550-")}, finit par .apps.googleusercontent.com : {cid.endswith(".apps.googleusercontent.com")} · secret commence par GOCSPX- : {sec.startswith("GOCSPX-")} · '
