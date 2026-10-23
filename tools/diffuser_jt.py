@@ -39,6 +39,13 @@ class DeliveryError(RuntimeError):
     pass
 
 
+def source_run_allowed(run, workflow_id, repository):
+    """Le titre personnalisable d'un lancement n'est pas son identité de workflow."""
+    return (str(run.get('workflow_id')) == str(workflow_id) and bool(workflow_id)
+            and run.get('head_branch') == 'main' and run.get('conclusion') == 'success'
+            and (run.get('head_repository') or {}).get('full_name') == repository)
+
+
 class NoRedirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, *_args, **_kwargs):
         return None
