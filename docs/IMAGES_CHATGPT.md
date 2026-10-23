@@ -8,7 +8,7 @@ Tant qu'une image manque, le site affiche à sa place un encadré coloré avec u
 2. Télécharge l'image.
 3. Envoie-moi les images avec leur nom (par exemple « coiffeur hero »). Je les convertis au bon format (`.webp`), je les range au bon endroit et je les mets en ligne.
 
-Commence par la **priorité 1** : 7 images, une par page, et les démos ont déjà l'air de vrais sites.
+Commence par la **priorité 1** : 8 images, une par page, et les démos ont déjà l'air de vrais sites.
 
 ## Style commun (à coller avant chaque description)
 
@@ -30,6 +30,7 @@ Formats :
 | `demos/img/snack/hero.webp` | Tacos XXL gratiné coupé en deux, fromage qui coule, frites, sur un comptoir de snack avec néons orange. |
 | `demos/img/artisan/hero.webp` | Équipe du bâtiment en tenue de sécurité sur un chantier de rénovation de maison, échafaudage, lumière de fin de journée. |
 | `demos/img/drive/hero.webp` | Employée souriante qui charge des sacs de courses dans le coffre d'une voiture au point de retrait d'une épicerie, cagettes de fruits. |
+| `demos/img/cbd/hero.webp` | Boutique CBD moderne et lumineuse, étagères en bois clair avec flacons ambrés et bocaux, plantes vertes, ambiance calme et sérieuse (aucune fumée, aucune personne qui consomme). |
 | `demos/img/investir/hero.webp` | Illustration style manga dynamique : un jeune entrepreneur devant un mur d'écrans de téléphone montrant des sites de commerces, éclairs jaunes et bleus, ambiance énergique. |
 
 ## Priorité 2 : galeries (5 images par site, carrées)
@@ -62,6 +63,10 @@ Les fichiers vont dans `demos/img/<site>/galerie-N.webp`.
 **Artisan** (`demos/img/artisan/`)
 - Métiers : `metier-renovation` salle de bain en travaux · `metier-maconnerie` mur de parpaings en construction · `metier-toiture` couvreur sur un toit · `metier-industrie` dalle béton dans un entrepôt.
 - Avant / après (même angle de vue sur les deux images) : `sdb-avant` / `sdb-apres` salle de bain vieillotte puis moderne · `facade-avant` / `facade-apres` façade grise abîmée puis ravalée · `atelier-avant` / `atelier-apres` atelier industriel vide et sale puis rénové.
+
+**Boutique CBD** (`demos/img/cbd/`), produit seul sur fond clair, sans marque, sans fumée, sans feuille de cannabis stylisée :
+- `huile-5`, `huile-10`, `huile-20` (flacons pipette ambrés de tailles différentes), `infusion` (sachet kraft et tasse), `fleur-lemon` et `fleur-berry` (fleurs séchées dans un bocal en verre), `baume`, `creme`, `sels`, `coffret`, `boite`.
+- Galerie `galerie-1` à `-5` : espace boutique, rayon des huiles, rayon des infusions, analyse de laboratoire sur une tablette, conseiller qui renseigne un client.
 
 **Drive** (`demos/img/drive/`), produit seul sur fond blanc, sans marque visible :
 - `pommes`, `carottes`, `bananes`, `salade`, `lait`, `oeufs`, `comte`, `yaourts`, `baguette`, `croissants`, `poulet`, `steaks`, `pates`, `riz`, `cafe`, `eau`, `jus`, `papier`, `lessive`.

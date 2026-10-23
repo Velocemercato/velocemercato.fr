@@ -401,8 +401,9 @@
       }
       totals();
       // Créneaux : dès que possible aujourd'hui (snack) ou sur plusieurs jours (drive).
-      slotPicker($('[data-slots]', box), {hours: x.hours || D.hours, days: x.days || 1, step: x.step || 10, dur: x.step || 10, lead: x.lead || O.prep || 20, rate: x.rate == null ? 15 : x.rate, salt: x.id, onPick: function (w) { when = w; }});
-      if (!$('.vd-slot', box)) $('[data-slots]', box).innerHTML = '<p class="vd-empty">Nous sommes fermés pour le moment : en démo, vous pouvez quand même valider pour voir la suite.</p>';
+      if (x.whenText) $('[data-slots]', box).innerHTML = '<p class="vd-empty">' + esc(x.whenText) + '</p>';
+      else slotPicker($('[data-slots]', box), {hours: x.hours || D.hours, days: x.days || 1, step: x.step || 10, dur: x.step || 10, lead: x.lead || O.prep || 20, rate: x.rate == null ? 15 : x.rate, salt: x.id, onPick: function (w) { when = w; }});
+      if (!x.whenText && !$('.vd-slot', box)) $('[data-slots]', box).innerHTML = '<p class="vd-empty">Nous sommes fermés pour le moment : en démo, vous pouvez quand même valider pour voir la suite.</p>';
       $$('[data-mode]', box).forEach(function (b) { b.onclick = function () { mode = b.dataset.mode; checkout(); }; });
       $$('[data-del]', box).forEach(function (b) { b.onclick = function () { cart.splice(+b.dataset.del, 1); save(); if (cart.length) checkout(); else close(); }; });
       $('.vd-x', box).onclick = close;
@@ -416,7 +417,7 @@
     }
     function done(c, x, w) {
       var code = ref(O.refPrefix || 'CMD'), total = sub() + fee(), lines = cart.map(function (l) { return l.q + '× ' + l.name; }), items = lines.join(', ');
-      var when = w ? (dayKey(w.day) === dayKey(new Date()) ? 'aujourd’hui' : 'le ' + dateFr(w.day)) + ' à ' + hmFr(w.t) : 'dès que possible';
+      var when = w ? (dayKey(w.day) === dayKey(new Date()) ? 'aujourd’hui' : 'le ' + dateFr(w.day)) + ' à ' + hmFr(w.t) : x.whenText ? x.whenText.toLowerCase() : 'dès que possible';
       var rec = {ref: code, what: items, total: total, mode: x.l, when: when, nom: c.nom, tel: c.tel, at: Date.now()};
       var all = store.get('orders', []); all.push(rec); store.set('orders', all.slice(-60));
       cart = []; save(); close();
@@ -555,6 +556,17 @@
     el.innerHTML = '<div class="vd-sum" style="margin:0 0 10px"><b>' + JOURS[d].charAt(0).toUpperCase() + JOURS[d].slice(1) + '</b> · ' + esc(D.dayMenuPrice) + '</div>' + mm.map(function (x) { return '<div class="vd-line"><span><b>' + esc(x[0]) + '</b> · ' + esc(x[1]) + '</span></div>'; }).join('');
   }
 
+  /* ---------- Vérification d'âge (produits réservés aux majeurs) ---------- */
+  function ageGate() {
+    if (!D.ageGate || store.get('majeur', false)) return;
+    var g = document.createElement('div'); g.className = 'vd-sheet vd-age'; g.setAttribute('role', 'dialog'); g.setAttribute('aria-modal', 'true'); g.setAttribute('aria-labelledby', 'vd-age-t');
+    g.innerHTML = '<div class="vd-sheet-box" style="text-align:center"><div style="font-size:3rem" aria-hidden="true">🔞</div><h3 id="vd-age-t">Avez-vous 18 ans ou plus ?</h3>' +
+      '<p style="color:var(--muted)">' + esc(D.ageGate) + '</p><div class="vd-btns" style="justify-content:center"><button type="button" class="vd-btn b" data-y>Oui, j’ai 18 ans ou plus</button><a class="vd-btn alt" href="https://vmunivers.fr/">Non, quitter</a></div></div>';
+    document.body.appendChild(g); document.documentElement.style.overflow = 'hidden';
+    $('[data-y]', g).onclick = function () { store.set('majeur', true); g.remove(); document.documentElement.style.overflow = ''; };
+    $('[data-y]', g).focus();
+  }
+
   window.VD = {m: m, media: media, euro: euro, esc: esc};
   document.addEventListener('DOMContentLoaded', function () {
     media(document);
@@ -563,7 +575,7 @@
     if ($('#vd-booking') && D.booking) booking($('#vd-booking'));
     if ($('#vd-order') && D.order) order($('#vd-order'));
     if ($('#vd-quote') && D.quote) quote($('#vd-quote'));
-    pro(); share(); lightbox();
+    pro(); share(); lightbox(); ageGate();
     var y = $('[data-year]'); if (y) y.textContent = new Date().getFullYear();
   });
 })();
