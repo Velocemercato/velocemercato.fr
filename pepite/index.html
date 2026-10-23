@@ -78,7 +78,7 @@ footer a{color:#f4cf55}
 <label>Liens vidéo (un par ligne)<textarea name="videos" required maxlength="800" placeholder="https://youtu.be/…"></textarea></label>
 <label>Niveau scolaire (facultatif)<input name="scolaire" maxlength="120" placeholder="Ex. 3e, Seconde en sport-études"></label>
 <label>Présentation (facultatif)<textarea name="texte" maxlength="600" placeholder="Ton parcours, tes points forts, tes objectifs."></textarea></label>
-<label class="ok"><input type="checkbox" name="mineur"> J’ai moins de 18 ans, et mon représentant légal est d’accord pour l’envoi de ma fiche (il ou elle doit l’envoyer avec moi).</label>
+<label class="ok"><input type="checkbox" name="mineur"> J’ai moins de 18 ans, et mon représentant légal est d’accord pour l’envoi de ma fiche (il ou elle doit l’envoyer avec moi). Cet accord est nécessaire pour les catégories U11 à U17.</label>
 <label class="ok"><input type="checkbox" name="accord" required> J’accepte que ma fiche soit lue par l’équipe Pépite FC. Elle n’est publiée qu’après validation, sans mes coordonnées.</label>
 <button class="btn" type="submit">✉️ Envoyer ma fiche</button>
 <p class="note">Ton application e-mail s’ouvre avec le message prêt : rien n’est envoyé tant que tu ne l’as pas envoyé toi-même.</p>
@@ -107,7 +107,7 @@ footer a{color:#f4cf55}
 <div id="dossiers" class="grid" aria-live="polite"></div>
 <p class="note">Seules les fiches vérifiées par l’équipe apparaissent ici : prénom, poste, catégorie, ville et liens vidéo. Nom de famille et contact ne sont jamais publiés.</p>
 
-<p class="rgpd"><b>Données personnelles.</b> Les informations envoyées servent uniquement à étudier ta candidature. Pour corriger ou supprimer une fiche, écris à velocemercato.fr@gmail.com. Les fiches de joueurs mineurs ne sont jamais publiées sans l’accord écrit du représentant légal.</p>
+<p class="rgpd"><b>Données personnelles.</b> Les informations envoyées servent uniquement à étudier ta candidature. Pour corriger ou supprimer une fiche, écris à <a href="mailto:velocemercato.fr@gmail.com">velocemercato.fr@gmail.com</a>. Les fiches de joueurs mineurs ne sont jamais publiées sans l’accord écrit du représentant légal.</p>
 </main>
 <footer>Pépite FC · un projet de <a href="https://velocemercato.fr/">Véloce Mercato</a> · <a href="https://velocemercato.fr/mentions-legales.html">Mentions légales</a></footer>
 <script>
@@ -115,19 +115,35 @@ footer a{color:#f4cf55}
   const esc = t => String(t ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
   // Seuls ces hébergeurs de vidéo sont affichés, en https.
   const safe = url => { try { const u = new URL(url); return u.protocol === 'https:' && /(^|\.)(youtube\.com|youtu\.be|vimeo\.com|drive\.google\.com)$/.test(u.hostname) ? u.href : ''; } catch (_) { return ''; } };
-  fetch('dossiers.json', {cache: 'no-store'}).then(r => r.ok ? r.json() : []).catch(() => []).then(list => {
+  async function chargerDossiers() {
+    const box = document.getElementById('dossiers');
+    box.textContent = 'Chargement des profils…';
+    try {
+      const response = await fetch('dossiers.json', {cache: 'no-store'});
+      if (!response.ok) throw new Error('Profils indisponibles');
+      const list = await response.json();
+      if (!Array.isArray(list)) throw new Error('Profils indisponibles');
+
     const dossiers = (Array.isArray(list) ? list : []).filter(d => d && d.prenom && d.poste);
     document.getElementById('dossiers').innerHTML = dossiers.length ? dossiers.map(d => {
       const liens = String(d.videos || '').split(/\s+/).map(safe).filter(Boolean);
       return `<article class="joueur"><b>${esc(d.prenom)}</b><div class="tags"><span>${esc(d.categorie)}</span><span>${esc(d.poste)}</span></div><p>📍 ${esc(d.ville)}${d.club ? ' · ' + esc(d.club) : ''}</p>${d.scolaire ? `<p>🎓 ${esc(d.scolaire)}</p>` : ''}${liens.map((l, i) => `<p><a href="${esc(l)}" target="_blank" rel="noopener nofollow">🎥 Vidéo ${i + 1}</a></p>`).join('')}</article>`;
     }).join('') : '<p class="vide">Les premiers dossiers validés apparaîtront ici. Envoie le tien !</p>';
-  });
+    } catch (_) {
+      box.innerHTML = '<div class="vide" role="status"><p>Impossible de charger les profils pour le moment.</p><button type="button" class="btn" id="rechargerProfils">Réessayer</button></div>';
+      document.getElementById('rechargerProfils').onclick = chargerDossiers;
+    }
+  }
+  chargerDossiers();
   // Les messages partent par e-mail : rien n’est envoyé sans ton clic dans ton application.
   const mail = (subject, body) => {
     if (window.vmMail) return window.vmMail(subject, body);
     location.href = 'mailto:velocemercato.fr@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
   };
   const val = (form, name) => (form.elements[name]?.value || '').trim();
+  const categorie = document.querySelector('#formJoueur [name=categorie]');
+  const accordParent = document.querySelector('#formJoueur [name=mineur]');
+  categorie.addEventListener('change', () => { accordParent.required = /^(U11|U13|U15|U17)$/.test(categorie.value); });
   document.getElementById('formJoueur').onsubmit = event => {
     event.preventDefault();
     const f = event.target;

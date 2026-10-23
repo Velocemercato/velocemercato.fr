@@ -55,7 +55,7 @@ h2{color:#f4cf55;font:italic 800 1.4rem Poppins,sans-serif;margin:26px 0 10px}
 </style></head><body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="VM Univers, tous les projets">VM UNIVERS<small>TOUS LES PROJETS</small></a><a class="f" href="/">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
 <header class="hero"><img src="/img/logo-vm-officiel.png" alt="VM" width="110" height="110"><h1>VM PRO LOCAL</h1><p>Les artisans, commerces et services près de chez toi, au même endroit. Simple : un nom, un métier, une ville, un numéro.</p></header>
 <main>
-<div class="srch"><input id="q" type="search" placeholder="Métier ou nom (plombier, coiffeur…)"><input id="v" type="search" placeholder="Ville"></div>
+<div class="srch"><input id="q" aria-label="Métier ou nom du professionnel" type="search" placeholder="Métier ou nom (plombier, coiffeur…)"><input id="v" aria-label="Ville du professionnel" type="search" placeholder="Ville"></div>
 <h2>Les pros</h2>
 <p style="font-weight:700;color:#d4a017;margin:4px 0 12px">📍 Secteur : Haute-Saône (70), Territoire de Belfort (90), Doubs (25) et Vosges (88) — déplacement possible selon la prestation.</p>
 <div class="grid" id="list"></div>
@@ -111,7 +111,7 @@ function url(){return location.href.split('#')[0]}
 function open(){var u=url(),t=document.title,e=encodeURIComponent;$('vmShU').textContent=t;
  $('vmS-wa').href='https://wa.me/?text='+e(t+' '+u);$('vmS-fb').href='https://www.facebook.com/sharer/sharer.php?u='+e(u);$('vmS-x').href='https://twitter.com/intent/tweet?text='+e(t)+'&url='+e(u);$('vmS-tg').href='https://t.me/share/url?url='+e(u)+'&text='+e(t);$('vmS-sms').href='sms:?&body='+e(t+' '+u);
  $('vmS-more').hidden=!navigator.share;
- if(!qr){qr=true;var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';var fb=function(){if($('vmShQ').firstChild)return;var i=new Image();i.width=180;i.height=180;i.alt='QR code de la page';i.src='https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=0&data='+e(u);$('vmShQ').appendChild(i)};s.onload=function(){try{new QRCode($('vmShQ'),{text:u,width:180,height:180,correctLevel:QRCode.CorrectLevel.M})}catch(x){fb()}};s.onerror=fb;setTimeout(fb,4000);document.head.appendChild(s)}
+ if(!qr){qr=true;var s=document.createElement('script');s.src='/assets/vendor/qrcode.min.js';var fb=function(){var q=$('vmShQ');if(q.firstChild)return;var p=document.createElement('p');p.textContent='QR code indisponible. Vous pouvez copier le lien ci-dessus.';q.appendChild(p)};s.onload=function(){try{new QRCode($('vmShQ'),{text:u,width:180,height:180,correctLevel:QRCode.CorrectLevel.M})}catch(x){fb()}};s.onerror=fb;setTimeout(fb,4000);document.head.appendChild(s)}
  m.hidden=false;$('vmShX').focus()}
 f.onclick=open;$('vmShX').onclick=function(){m.hidden=true;f.focus()};m.onclick=function(e){if(e.target===m)m.hidden=true};
 $('vmS-more').onclick=function(){navigator.share({title:document.title,url:url()}).catch(function(){})};

@@ -24,6 +24,8 @@ label{display:block;font-size:.8rem;color:#bdb59a;margin-top:8px}input,textarea{
 .viewer .hero,.viewer .edit,.viewer .vmbar,.viewer .vmfab,.viewer .vminst,.viewer .noprint{display:none!important}body.viewer{background:#2a2116}.viewer .wrap{display:block;padding:14px}
 .offer{max-width:1100px;margin:0 auto 30px;padding:0 16px}.offer div{background:linear-gradient(135deg,#2a1f05,#10121c);border:1px solid #d4a017;border-radius:18px;padding:16px}
 @media print{body{background:#fff}.hero,.edit,.offer,.vmbar,.vmfab,.vminst,.noprint{display:none!important}.menu{box-shadow:none}}
+
+.menu h1,.menu .sub,.menu .l span{overflow-wrap:anywhere;min-width:0}.menu .l span:first-child{flex:1 1 70%}.menu .p{max-width:35%}.btn:disabled{opacity:.5;cursor:not-allowed}.box{min-width:0}
 </style><link rel="manifest" href="/app/menu.webmanifest" id="vmapp-m"><meta name="theme-color" content="#05080f" id="vmapp-t"><link rel="apple-touch-icon" href="/app/menu-apple.png" id="vmapp-i"><style id="vmbar-css">
 .vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:sticky;top:0;z-index:80}
 .vmbar+header{top:49px!important}
@@ -81,7 +83,7 @@ Coca 33 cl | 2,50 €"></textarea>
 <div><article class="menu" id="menu"></article><p class="tip noprint" style="text-align:center"><button class="btn w" type="button" onclick="print()">🖨️ Imprimer la carte</button></p></div>
 </div>
 <section class="offer edit"><div><b style="color:#f4cf55">⭐ Commerce en Haute-Saône (70), Territoire de Belfort (90), Doubs (25) ou Vosges (88) ? Envie d'une vraie carte pro, avec photos, ton logo et un QR code qui ne change jamais ?</b><br>Véloce Web Studio s'en occupe pour toi, avec les mises à jour sur simple message. <a class="btn" href="/web-studio.html#devis">Demander un devis gratuit</a></div></section>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="/assets/vendor/qrcode.min.js"></script>
 <script>
 (function(){
 function $(i){return document.getElementById(i)}
@@ -91,21 +93,31 @@ function dec(s){s=s.replace(/-/g,'+').replace(/_/g,'/');return JSON.parse(decode
 function render(d){var h='<h1 style="--c:'+esc(d.c)+'">'+esc(d.n||'Ma carte')+'</h1>'+(d.i?'<p class="sub">'+esc(d.i)+'</p>':'');
  (d.t||'').split('\n').forEach(function(l){l=l.trim();if(!l)return;if(l[0]==='#'){h+='<h3>'+esc(l.slice(1).trim())+'</h3>';return}var p=l.split('|');h+='<div class="l"><span>'+esc(p[0].trim())+'</span><span class="dots"></span><span class="p">'+esc((p[1]||'').trim())+'</span></div>'});
  var m=$('menu');m.style.setProperty('--c',d.c||'#7a1e2c');m.innerHTML=h+'<p class="foot">Carte créée avec VM Menu QR · velocemercato.fr/menu</p>'}
-var hash=location.hash.slice(1);
-if(hash.indexOf('m=')===0){try{var d=dec(hash.slice(2));document.body.classList.add('viewer');document.title=(d.n||'Carte')+' – la carte';render(d);return}catch(e){}}
+var editorTitle=document.title;
+function showShared(){
+ var hash=location.hash.slice(1);
+ if(hash.indexOf('m=')===0){try{
+  var d=dec(hash.slice(2));
+  if(!d||typeof d!=='object'||Array.isArray(d)||['n','i','t','c'].some(function(k){return d[k]!=null&&typeof d[k]!=='string'}))throw new Error('Carte invalide');
+  d.c=/^#[0-9a-f]{6}$/i.test(d.c||'')?d.c:'#7a1e2c';
+  document.body.classList.add('viewer');document.title=(d.n||'Carte')+' – la carte';render(d);return true;
+ }catch(e){}}
+ document.body.classList.remove('viewer');document.title=editorTitle;return false;
+}
 var qrObj=null;
 function update(){var d={n:$('nom').value,i:$('infos').value,t:$('txt').value,c:$('col').value};render(d);
+ try{localStorage.setItem('vm-menu',JSON.stringify(d))}catch(e){}
  var url=location.origin+location.pathname+'#m='+enc(d);$('lien').textContent=url;$('cp').dataset.u=url;
- var q=$('qr');q.innerHTML='';
+ var q=$('qr');q.innerHTML='';$('dl').disabled=true;
  if(url.length>1800){q.innerHTML='<p style="color:#7a1e2c;margin:0;text-align:center"><b>Carte trop longue pour un QR code lisible.</b><br>Raccourcis-la, ou passe à la version pro (QR code fixe, sans limite).</p>';return}
- if(window.QRCode){try{qrObj=new QRCode(q,{text:url,width:220,height:220,correctLevel:QRCode.CorrectLevel.L});return}catch(e){}}
- var im=new Image();im.alt='QR code';im.src='https://api.qrserver.com/v1/create-qr-code/?size=440x440&margin=0&data='+encodeURIComponent(url);q.appendChild(im);
- try{localStorage.setItem('vm-menu',JSON.stringify(d))}catch(e){}}
+ if(window.QRCode){try{qrObj=new QRCode(q,{text:url,width:880,height:880,correctLevel:QRCode.CorrectLevel.L});$('dl').disabled=false;return}catch(e){}}
+ q.textContent='Le QR code ne peut pas être créé pour le moment. Vous pouvez copier le lien de votre carte.';}
 try{var s=JSON.parse(localStorage.getItem('vm-menu')||'null');if(s){$('nom').value=s.n||'';$('infos').value=s.i||'';$('txt').value=s.t||'';$('col').value=s.c||'#7a1e2c'}}catch(e){}
 var tm;['nom','infos','txt','col'].forEach(function(k){$(k).addEventListener('input',function(){clearTimeout(tm);tm=setTimeout(update,300)})});
-$('cp').onclick=function(){var b=this,u=b.dataset.u;if(navigator.clipboard)navigator.clipboard.writeText(u).then(function(){b.textContent='✅ Lien copié'});else prompt('Copie ce lien :',u)};
-$('dl').onclick=function(){var c=$('qr').querySelector('canvas'),i=$('qr').querySelector('img'),a=document.createElement('a');a.download='qr-ma-carte.png';a.href=c?c.toDataURL('image/png'):(i?i.src:'');if(a.href){a.target='_blank';a.click()}};
-update();})();
+$('cp').onclick=function(){var b=this,u=b.dataset.u;function fallback(){prompt('Copie ce lien :',u)}if(navigator.clipboard)navigator.clipboard.writeText(u).then(function(){b.textContent='✅ Lien copié'},fallback);else fallback()};
+$('dl').onclick=function(){var c=$('qr').querySelector('canvas'),i=$('qr').querySelector('img'),src=c?c.toDataURL('image/png'):(i?i.src:'');if(!src)return;var a=document.createElement('a');a.download='qr-ma-carte.png';a.href=src;a.click()};
+addEventListener('hashchange',function(){if(!showShared())update()});
+if(!showShared())update();})();
 </script>
 <button type="button" class="vmfab" id="vmFab" aria-haspopup="dialog">📤 Partager</button>
 <button type="button" class="vminst" id="vmInst">📲 Installer l'app</button>
@@ -130,7 +142,7 @@ function url(){return location.href.split('#')[0]}
 function open(){var u=url(),t=document.title,e=encodeURIComponent;$('vmShU').textContent=t;
  $('vmS-wa').href='https://wa.me/?text='+e(t+' '+u);$('vmS-fb').href='https://www.facebook.com/sharer/sharer.php?u='+e(u);$('vmS-x').href='https://twitter.com/intent/tweet?text='+e(t)+'&url='+e(u);$('vmS-tg').href='https://t.me/share/url?url='+e(u)+'&text='+e(t);$('vmS-sms').href='sms:?&body='+e(t+' '+u);
  $('vmS-more').hidden=!navigator.share;
- if(!qr){qr=true;var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';var fb=function(){if($('vmShQ').firstChild)return;var i=new Image();i.width=180;i.height=180;i.alt='QR code de la page';i.src='https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=0&data='+e(u);$('vmShQ').appendChild(i)};s.onload=function(){try{new QRCode($('vmShQ'),{text:u,width:180,height:180,correctLevel:QRCode.CorrectLevel.M})}catch(x){fb()}};s.onerror=fb;setTimeout(fb,4000);document.head.appendChild(s)}
+ if(!qr){qr=true;var s=document.createElement('script');s.src='/assets/vendor/qrcode.min.js';var fb=function(){var q=$('vmShQ');if(q.firstChild)return;var p=document.createElement('p');p.textContent='QR code indisponible. Vous pouvez copier le lien ci-dessus.';q.appendChild(p)};s.onload=function(){try{new QRCode($('vmShQ'),{text:u,width:180,height:180,correctLevel:QRCode.CorrectLevel.M})}catch(x){fb()}};s.onerror=fb;setTimeout(fb,4000);document.head.appendChild(s)}
  m.hidden=false;$('vmShX').focus()}
 f.onclick=open;$('vmShX').onclick=function(){m.hidden=true;f.focus()};m.onclick=function(e){if(e.target===m)m.hidden=true};
 $('vmS-more').onclick=function(){navigator.share({title:document.title,url:url()}).catch(function(){})};

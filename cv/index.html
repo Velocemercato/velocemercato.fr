@@ -71,18 +71,18 @@ label{display:block;font-size:.8rem;color:#bdb59a;margin-top:8px}input,textarea,
 <label for="ville">Ville</label><input id="ville" placeholder="Ex. : Belfort">
 <label for="permis">Permis / véhicule</label><input id="permis" placeholder="Ex. : Permis B, véhiculé">
 <h2>🎯 En quelques mots</h2>
-<textarea id="profil" placeholder="2-3 phrases : ce que tu sais faire, ce que tu cherches."></textarea>
+<textarea id="profil" aria-label="Profil professionnel" placeholder="2-3 phrases : ce que tu sais faire, ce que tu cherches."></textarea>
 <h2>💼 Expériences</h2>
-<textarea id="exp" placeholder="Une expérience par ligne, comme ça :
+<textarea id="exp" aria-label="Expériences professionnelles" placeholder="Une expérience par ligne, comme ça :
 2022-2025 | Cariste | Entreprise X, Belfort | Chargement, inventaires
 2020-2022 | Vendeur | Magasin Y | Conseil client, caisse"></textarea>
 <p class="tip">Sépare avec | : dates | poste | entreprise | missions.</p>
 <h2>🎓 Formations</h2>
-<textarea id="form" placeholder="2019 | CAP Vente | Lycée Z, Vesoul"></textarea>
+<textarea id="form" aria-label="Formation" placeholder="2019 | CAP Vente | Lycée Z, Vesoul"></textarea>
 <h2>🛠️ Compétences et langues</h2>
-<textarea id="comp" placeholder="Une par ligne : CACES 3, Pack Office, Anglais (bases)…"></textarea>
+<textarea id="comp" aria-label="Compétences" placeholder="Une par ligne : CACES 3, Pack Office, Anglais (bases)…"></textarea>
 <h2>⚽ Centres d'intérêt</h2>
-<input id="loisirs" placeholder="Ex. : Football en club, jeux vidéo, randonnée">
+<input id="loisirs" aria-label="Loisirs" placeholder="Ex. : Football en club, jeux vidéo, randonnée">
 <h2>🎨 Couleur</h2>
 <div class="colors" id="cols"><button type="button" style="background:#1d2a44" data-c="#1d2a44" aria-label="Bleu nuit"></button><button type="button" style="background:#0f5b4a" data-c="#0f5b4a" aria-label="Vert"></button><button type="button" style="background:#7a1e2c" data-c="#7a1e2c" aria-label="Bordeaux"></button><button type="button" style="background:#333" data-c="#333333" aria-label="Gris"></button><button type="button" style="background:#9c6b05" data-c="#9c6b05" aria-label="Or"></button></div>
 <div class="btns"><button class="btn" type="button" id="print">🖨️ Imprimer / PDF</button><button class="btn w" type="button" id="reset">Effacer</button></div>
@@ -139,7 +139,7 @@ function url(){return location.href.split('#')[0]}
 function open(){var u=url(),t=document.title,e=encodeURIComponent;$('vmShU').textContent=t;
  $('vmS-wa').href='https://wa.me/?text='+e(t+' '+u);$('vmS-fb').href='https://www.facebook.com/sharer/sharer.php?u='+e(u);$('vmS-x').href='https://twitter.com/intent/tweet?text='+e(t)+'&url='+e(u);$('vmS-tg').href='https://t.me/share/url?url='+e(u)+'&text='+e(t);$('vmS-sms').href='sms:?&body='+e(t+' '+u);
  $('vmS-more').hidden=!navigator.share;
- if(!qr){qr=true;var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';var fb=function(){if($('vmShQ').firstChild)return;var i=new Image();i.width=180;i.height=180;i.alt='QR code de la page';i.src='https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=0&data='+e(u);$('vmShQ').appendChild(i)};s.onload=function(){try{new QRCode($('vmShQ'),{text:u,width:180,height:180,correctLevel:QRCode.CorrectLevel.M})}catch(x){fb()}};s.onerror=fb;setTimeout(fb,4000);document.head.appendChild(s)}
+ if(!qr){qr=true;var s=document.createElement('script');s.src='/assets/vendor/qrcode.min.js';var fb=function(){var q=$('vmShQ');if(q.firstChild)return;var p=document.createElement('p');p.textContent='QR code indisponible. Vous pouvez copier le lien ci-dessus.';q.appendChild(p)};s.onload=function(){try{new QRCode($('vmShQ'),{text:u,width:180,height:180,correctLevel:QRCode.CorrectLevel.M})}catch(x){fb()}};s.onerror=fb;setTimeout(fb,4000);document.head.appendChild(s)}
  m.hidden=false;$('vmShX').focus()}
 f.onclick=open;$('vmShX').onclick=function(){m.hidden=true;f.focus()};m.onclick=function(e){if(e.target===m)m.hidden=true};
 $('vmS-more').onclick=function(){navigator.share({title:document.title,url:url()}).catch(function(){})};

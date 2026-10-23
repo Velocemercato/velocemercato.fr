@@ -108,6 +108,18 @@ class ServicesTests(unittest.TestCase):
         self.assertIn('15', page.locator('.urg').inner_text())
         context.close()
 
+    def test_data_failure_is_distinct_from_empty_list_and_retry_works(self):
+        for path,url,target in [('produits-locaux','producteurs.json','producteurs'),('sport','chemins.json','chemins')]:
+            with self.subTest(path=path):
+                context=self.context();failed=[True]
+                context.route(self.base+'/'+path+'/'+url,lambda r:r.fulfill(status=503,json={}) if failed[0] else r.fulfill(json=[]))
+                page=context.new_page();page.goto(self.base+'/'+path+'/',wait_until='networkidle')
+                self.assertIn('Impossible de charger',page.locator('#'+target).inner_text())
+                self.assertNotIn('Pas encore',page.locator('#'+target).inner_text())
+                failed[0]=False;page.get_by_role('button',name='Réessayer',exact=True).click()
+                page.wait_for_function('(id)=>document.getElementById(id).textContent.includes("Pas encore")',arg=target)
+                context.close()
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

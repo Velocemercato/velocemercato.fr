@@ -52,3 +52,7 @@ button.btn{border:0;cursor:pointer;font:inherit;font-weight:800}
 .avis{list-style:none;padding:0;margin:0;display:grid;gap:10px}
 .avis li{padding:10px;border-radius:12px;background:#ffffff0c}.avis p{margin:4px 0}.avis img{width:100%;border-radius:10px;max-height:260px;object-fit:cover}
 .stars{color:var(--gold)}.merci{padding:14px;border-radius:12px;background:#1f5b2a;color:#fff}
+
+#meteo,#decouvrir,.detail{scroll-margin-top:145px}.retry{padding:12px 16px;border:1px solid #ffffff30;border-radius:12px;background:var(--panel);color:var(--ink);font:inherit;cursor:pointer}.days li{grid-template-columns:minmax(0,5em) 1.5em minmax(0,1fr) auto;gap:6px}.days li span{min-width:0}
+
+.villes>.msg,.villes>.retry{grid-column:1/-1}.retry{justify-self:start}

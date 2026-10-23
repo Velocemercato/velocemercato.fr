@@ -56,6 +56,7 @@ class PepiteTests(unittest.TestCase):
         page.locator('#formJoueur [name=poste]').select_option('Milieu')
         page.locator('#formJoueur [name=ville]').fill('Belfort')
         page.locator('#formJoueur [name=videos]').fill('https://youtu.be/abc123')
+        page.locator('#formJoueur [name=mineur]').check()
         page.locator('#formJoueur [name=accord]').check()
         page.locator('#formJoueur [type=submit]').click()
         sent = page.evaluate('window.sent')
@@ -70,6 +71,32 @@ class PepiteTests(unittest.TestCase):
         self.assertIn('Claire Dupont', page.evaluate('window.sent.s'))
         self.assertEqual(errors, [])
         self.assertEqual(page.evaluate('document.documentElement.scrollWidth'), 390)
+        context.close()
+
+    def test_minor_category_requires_parental_agreement(self):
+        context=self.context([]);page=context.new_page();page.goto(self.base+'/pepite/',wait_until='networkidle')
+        page.locator('#formJoueur [name=prenom]').fill('Joueur')
+        page.locator('#formJoueur [name=nom]').fill('Test')
+        page.locator('#formJoueur [name=categorie]').select_option('U15')
+        page.locator('#formJoueur [name=poste]').select_option('Milieu')
+        page.locator('#formJoueur [name=ville]').fill('Belfort')
+        page.locator('#formJoueur [name=videos]').fill('https://youtu.be/abc123')
+        page.locator('#formJoueur [name=accord]').check()
+        page.locator('#formJoueur [type=submit]').click()
+        self.assertIsNone(page.evaluate('window.sent'))
+        page.locator('#formJoueur [name=mineur]').check()
+        page.locator('#formJoueur [type=submit]').click()
+        self.assertIn('Mineur : Oui',page.evaluate('window.sent.b'))
+        context.close()
+
+    def test_failed_profiles_are_not_presented_as_empty(self):
+        context=self.context();failed=[True]
+        context.route(self.base+'/pepite/dossiers.json',lambda r:r.fulfill(status=503,json={}) if failed[0] else r.fulfill(json=[]))
+        page=context.new_page();page.goto(self.base+'/pepite/',wait_until='networkidle')
+        self.assertIn('Impossible de charger',page.locator('#dossiers').inner_text())
+        self.assertNotIn('Les premiers dossiers',page.locator('#dossiers').inner_text())
+        failed[0]=False;page.get_by_role('button',name='Réessayer',exact=True).click()
+        page.wait_for_function("document.querySelector('#dossiers').textContent.includes('Les premiers dossiers')")
         context.close()
 
     def test_02_validated_players_and_safe_links(self):

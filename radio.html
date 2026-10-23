@@ -73,7 +73,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #f4cf55;outline-offset:2p
 .vmsh-qr{display:flex;justify-content:center;margin:14px 0 4px}.vmsh-qr canvas,.vmsh-qr img{border:8px solid #fff;outline:2px solid #0b1533;border-radius:6px}
 .vmsh-c{display:block;width:100%;margin-top:12px;font:800 1rem system-ui,sans-serif;padding:12px;border-radius:999px;border:2px solid #0b1533;background:#fff;color:#0b1533;cursor:pointer}
 @media print{.vmfab{display:none}}
-</style></head>
+</style><script src="/assets/pastille-player.js"></script></head>
 <body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="VM Univers, tous les projets">VM UNIVERS<small>TOUS LES PROJETS</small></a><a class="f" href="/">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r on" href="/radio.html" aria-current="page">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
 <header class="hero"><div class="in"><span class="badge">📻 EN CONTINU</span><h1>VM RADIO</h1><p>Les journaux foot, actu et gaming et les débats du soir de La Pastille TV, à écouter à la suite, comme une radio. Écran éteint possible.</p></div></header>
 <main>
@@ -92,23 +92,38 @@ var $=function(i){return document.getElementById(i)},all=[],list=[],idx=-1,u='',
 var U={foot:'⚽ Foot',actus:'📰 Actus',gaming:'🎮 Gaming'};
 function esc(x){return String(x||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function ok(x){return typeof x==='string'&&/^https:\/\/cdn\.jsdelivr\.net\/gh\/Velocemercato\/velocemercato\.fr@[0-9a-f]{40}\//.test(x)}
+function picture(e){var p=Pastille.poster(e);return p&&p.charAt(0)==='/'?p:'/img/avatar-veloce.webp'}
 function mn(s){return Math.max(1,Math.round(s/60))+' min'}
 function day(d){try{return new Date(d).toLocaleString('fr-FR',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}catch(e){return ''}}
 function load(i,go){if(!list.length)return;idx=(i+list.length)%list.length;var e=list[idx];a.src=ok(e.audio)?e.audio:e.video;a.defaultPlaybackRate=a.playbackRate=e.speech_rate?1:1.15;$('nowTitle').textContent=e.titre;$('nowMeta').textContent=(U[e.univers]||'')+' · '+e.label+' · '+day(e.date)+' · '+mn(e.duree);
- $('nowImg').src=ok(e.image)?e.image:'/img/avatar-veloce.webp';
+ $('nowImg').src=picture(e);
  document.querySelectorAll('#list button').forEach(function(b){b.classList.toggle('on',+b.dataset.i===idx)});
- if('mediaSession' in navigator){try{navigator.mediaSession.metadata=new MediaMetadata({title:e.titre,artist:'VM Radio',album:e.label,artwork:ok(e.image)?[{src:e.image,type:'image/jpeg'}]:[]});navigator.mediaSession.setActionHandler('nexttrack',function(){load(idx+1,true)});}catch(x){}}
+ if('mediaSession' in navigator){try{navigator.mediaSession.metadata=new MediaMetadata({title:e.titre,artist:'VM Radio',album:e.label,artwork:[{src:new URL(picture(e),location.href).href,type:'image/jpeg'}]});navigator.mediaSession.setActionHandler('nexttrack',function(){load(idx+1,true)});}catch(x){}}
  if(go)a.play().catch(function(){});}
-function draw(){list=all.filter(function(e){return !u||e.univers===u});idx=-1;
+a.addEventListener('error',function(){$('nowMeta').textContent='L’audio ne se charge pas. Choisis une autre émission ou réessaie plus tard.'});
+function draw(){list=all.filter(function(e){return !u||e.univers===u});idx=-1;$('playBtn').disabled=$('nextBtn').disabled=!list.length;
  if(!list.length){$('list').innerHTML='<li class="empty">Pas encore d’émission ici : la prochaine arrive bientôt.</li>';return;}
- $('list').innerHTML=list.map(function(e,i){return '<li><button type="button" data-i="'+i+'">'+(ok(e.image)?'<img src="'+esc(e.image)+'" alt="" loading="lazy">':'')+'<span><b>'+esc(e.titre)+'</b><small>'+esc((U[e.univers]||'')+' · '+e.label+' · '+day(e.date)+' · '+mn(e.duree))+'</small></span></button></li>'}).join('');
+ $('list').innerHTML=list.map(function(e,i){return '<li><button type="button" data-i="'+i+'">'+'<img src="'+esc(picture(e))+'" alt="" loading="lazy">'+'<span><b>'+esc(e.titre)+'</b><small>'+esc((U[e.univers]||'')+' · '+e.label+' · '+day(e.date)+' · '+mn(e.duree))+'</small></span></button></li>'}).join('');
  document.querySelectorAll('#list button').forEach(function(b){b.onclick=function(){load(+b.dataset.i,true)}});}
 a.addEventListener('ended',function(){load(idx+1,true)});
 a.addEventListener('play',function(){$('playBtn').textContent='⏸ Pause'});a.addEventListener('pause',function(){$('playBtn').textContent='▶ Écouter'});
-$('playBtn').onclick=function(){if(idx<0)load(0,true);else if(a.paused)a.play().catch(function(){});else a.pause();};
+$('playBtn').onclick=function(){if(idx<0)load(0,true);else if(a.error)load(idx,true);else if(a.paused)a.play().catch(function(){});else a.pause();};
 $('nextBtn').onclick=function(){load(idx+1,true)};
 document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){u=b.dataset.u;document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});a.pause();draw();}});
-fetch('/studio/emissions.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():[]}).then(function(rows){all=(Array.isArray(rows)?rows:[]).filter(function(e){return e&&e.publie===true&&ok(e.video)});draw();}).catch(function(){$('list').innerHTML='<li class="empty">Impossible de charger les émissions pour le moment.</li>'});
+async function charger(){
+ $('playBtn').disabled=$('nextBtn').disabled=true;$('list').innerHTML='<li class="empty" role="status">Chargement des émissions…</li>';
+ var controller=new AbortController(),timer=setTimeout(function(){controller.abort()},10000);
+ try{
+  var response=await fetch('/studio/emissions.json?v='+Date.now(),{cache:'no-store',signal:controller.signal});
+  if(!response.ok)throw new Error('Liste indisponible');
+  var rows=await response.json();if(!Array.isArray(rows))throw new Error('Liste indisponible');
+  all=rows.filter(function(e){return e&&e.publie===true&&ok(e.video)});draw();
+ }catch(error){
+  $('list').innerHTML='<li class="empty" role="status">Impossible de charger les émissions pour le moment. <button type="button" id="radioRetry">Réessayer</button></li>';
+  $('radioRetry').onclick=charger;
+ }finally{clearTimeout(timer)}
+}
+charger();
 })();
 </script>
 <button type="button" class="vmfab" id="vmFab" aria-haspopup="dialog">📤 Partager</button>
@@ -134,7 +149,7 @@ function url(){return location.href.split('#')[0]}
 function open(){var u=url(),t=document.title,e=encodeURIComponent;$('vmShU').textContent=t;
  $('vmS-wa').href='https://wa.me/?text='+e(t+' '+u);$('vmS-fb').href='https://www.facebook.com/sharer/sharer.php?u='+e(u);$('vmS-x').href='https://twitter.com/intent/tweet?text='+e(t)+'&url='+e(u);$('vmS-tg').href='https://t.me/share/url?url='+e(u)+'&text='+e(t);$('vmS-sms').href='sms:?&body='+e(t+' '+u);
  $('vmS-more').hidden=!navigator.share;
- if(!qr){qr=true;var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';var fb=function(){if($('vmShQ').firstChild)return;var i=new Image();i.width=180;i.height=180;i.alt='QR code de la page';i.src='https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=0&data='+e(u);$('vmShQ').appendChild(i)};s.onload=function(){try{new QRCode($('vmShQ'),{text:u,width:180,height:180,correctLevel:QRCode.CorrectLevel.M})}catch(x){fb()}};s.onerror=fb;setTimeout(fb,4000);document.head.appendChild(s)}
+ if(!qr){qr=true;var s=document.createElement('script');s.src='/assets/vendor/qrcode.min.js';var fb=function(){var q=$('vmShQ');if(q.firstChild)return;var p=document.createElement('p');p.textContent='QR code indisponible. Vous pouvez copier le lien ci-dessus.';q.appendChild(p)};s.onload=function(){try{new QRCode($('vmShQ'),{text:u,width:180,height:180,correctLevel:QRCode.CorrectLevel.M})}catch(x){fb()}};s.onerror=fb;setTimeout(fb,4000);document.head.appendChild(s)}
  m.hidden=false;$('vmShX').focus()}
 f.onclick=open;$('vmShX').onclick=function(){m.hidden=true;f.focus()};m.onclick=function(e){if(e.target===m)m.hidden=true};
 $('vmS-more').onclick=function(){navigator.share({title:document.title,url:url()}).catch(function(){})};

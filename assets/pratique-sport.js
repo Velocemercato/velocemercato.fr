@@ -31,14 +31,27 @@
   });
   muscu('debutant');
   let chemins = [];
+  let etat = 'loading';
   function rendre() {
+    if (etat !== 'ready') {
+      $('chemins').innerHTML = etat === 'loading' ? '<p class="vide" role="status">Chargement des chemins…</p>' : '<div class="vide" role="status"><p>Impossible de charger les chemins pour le moment.</p><button type="button" class="btn" data-retry>Réessayer</button></div>';
+      const retry = $('chemins').querySelector('[data-retry]');
+      if (retry) retry.onclick = charger;
+      return;
+    }
     const reg = $('fCheReg').value, type = $('fCheType').value;
     const list = chemins.filter(c => (!reg || c.region === reg) && (!type || c.type === type));
     $('chemins').innerHTML = list.length ? list.map(c => `<article class="pcard"><h3>${esc(c.nom)}</h3><p>📍 ${esc(c.region)} · ${esc(c.type)}${c.mesures ? ' · ' + esc(c.mesures) : ''}</p><p>${esc(c.desc)}</p>${c.par ? `<p class="pnote">Proposé par ${esc(c.par)}</p>` : ''}${c.lien && /^https:/.test(c.lien) ? `<p><a href="${esc(c.lien)}" target="_blank" rel="noopener nofollow">Voir la trace</a></p>` : ''}</article>`).join('')
       : '<p class="vide">Pas encore de chemin pour ce filtre. Propose le tien ci-dessous.</p>';
   }
   $('fCheReg').onchange = rendre; $('fCheType').onchange = rendre;
-  json('/sport/chemins.json').then(list => { chemins = list.filter(c => c && c.nom && c.region); rendre(); });
+  async function charger() {
+    etat = 'loading'; rendre();
+    try { chemins = (await json('/sport/chemins.json')).filter(c => c && c.nom && c.region); etat = 'ready'; }
+    catch (_) { etat = 'error'; }
+    rendre();
+  }
+  charger();
   $('formChemin').onsubmit = event => {
     event.preventDefault();
     const f = event.target;
