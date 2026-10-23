@@ -15,7 +15,7 @@ sys.path.insert(0, str(ROOT))
 from pastille_media import probe
 
 
-def assemble(root, moment, date, output, master_dir=None):
+def assemble(root, moment, date, output, master_dir=None, *, require_hd=False):
     root,output=Path(root),Path(output)
     metadata_dir = Path(master_dir) if master_dir else root/'studio/tv'
     media_dir = Path(master_dir) if master_dir else root/'studio/tmp'
@@ -34,6 +34,9 @@ def assemble(root, moment, date, output, master_dir=None):
         if not file.is_file():raise RuntimeError(f'Rendu local manquant : {file.name}. Générer les trois JT en aperçu avant assemblage.')
         info=probe(file);video=next(stream for stream in info['streams'] if stream['codec_type']=='video')
         audio=next(stream for stream in info['streams'] if stream['codec_type']=='audio')
+        if require_hd and (video['codec_name'] != 'h264' or video['width'] < 1280
+                or video['height'] < 720 or video['avg_frame_rate'] not in ('24/1','25/1','30/1')):
+            raise RuntimeError('Original HD requis avant assemblage : aucun rendu CDN converti artificiellement en HD.')
         signature=(video['codec_name'],video['width'],video['height'],video['pix_fmt'],video['avg_frame_rate'],audio['codec_name'],audio['sample_rate'],audio['channels'])
         parts.append((row,file,float(info['format']['duration']),signature))
     if len({part[3] for part in parts})!=1:raise RuntimeError('Formats des JT incompatibles : ne pas dégrader les sources par une conversion implicite.')
@@ -42,8 +45,17 @@ def assemble(root, moment, date, output, master_dir=None):
     with tempfile.TemporaryDirectory(prefix='pastille-programme-') as folder:
         listing=Path(folder)/'concat.txt'
         listing.write_text(''.join("file '"+str(file.resolve()).replace("'","'\\''")+"'\n" for _,file,_,_ in parts))
+        codecs=['-c','copy']
+        if require_hd:
+            # La copie directe additionne les durées audio/vidéo arrondies et
+            # laisse des trous entre les images aux jonctions. Les originaux
+            # sont déjà HD : fixer leur chronologie ne recrée pas de détail.
+            # Conserver la dernière image jusqu'à la fin réelle de la piste son.
+            codecs=['-vf',f'fps={parts[0][3][4]},tpad=stop_mode=clone:stop_duration={parts[-1][2]:.6f}',
+                    '-c:v','libx264','-threads','2','-preset','fast','-crf','18','-pix_fmt','yuv420p',
+                    '-c:a','copy','-t',f'{sum(part[2] for part in parts):.6f}']
         subprocess.run(['ffmpeg','-v','error','-y','-f','concat','-safe','0','-i',str(listing),
-                        '-c','copy','-movflags','+faststart',str(output)],check=True)
+                        *codecs,'-movflags','+faststart',str(output)],check=True)
     offset=0;chapters=[]
     for row,_,duration,_ in parts:
         chapters.append({'debut_secondes':round(offset,3),'univers':row['univers'],'titre':row['titre'],'id':row['id']})

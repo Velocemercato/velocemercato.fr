@@ -114,6 +114,7 @@ class PastilleTests(unittest.TestCase):
             self.assertEqual(engines,['test-audio'])
             self.assertAlmostEqual(total,0.8+1+0.12+5,places=2)
             self.assertAlmostEqual(float(info['format']['duration']),total,delta=0.15)
+            self.assertAlmostEqual(float(video['duration']),total,delta=1/24)
             self.assertEqual((video['codec_name'],video['width'],video['height'],video['avg_frame_rate'],video['pix_fmt']),('h264',1280,720,'24/1','yuv420p'))
             self.assertEqual((audio['codec_name'],audio['sample_rate']),('aac','48000'))
             self.assertTrue(output.with_suffix('.m4a').is_file())
@@ -137,6 +138,10 @@ class PastilleTests(unittest.TestCase):
             frame_rate=lambda file:next(row for row in media.probe(file)['streams'] if row['codec_type']=='video')['avg_frame_rate']
             self.assertEqual(frame_rate(light),'12/1')
             self.assertEqual(frame_rate(master),'24/1')
+            for file, fps in [(light,12),(master,24)]:
+                info=media.probe(file)
+                video=next(row for row in info['streams'] if row['codec_type']=='video')
+                self.assertAlmostEqual(float(video['duration']),float(info['format']['duration']),delta=1/fps)
             subprocess.run(['ffmpeg','-v','error','-i',str(master),'-f','null','-'],check=True)
 
     def test_real_cdn_profile_remains_playable_and_fits_transport(self):

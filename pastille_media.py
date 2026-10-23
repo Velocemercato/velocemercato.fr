@@ -68,6 +68,10 @@ def _encode(folder, output, total, music, hd):
         '[1:a]highpass=f=65,apad[v];[2:a]volume=0.035[m];'
         '[v][m]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-16:TP=-1.5:LRA=9[a]',
         '-map', '0:v', '-map', '[a]', '-t', f'{total:.3f}',
+        # Les images du concat ont des horodatages espacés. Le filtre remplit
+        # réellement les plans fixes, y compris la conclusion ; -r seul ne le
+        # garantit pas avec les versions récentes de FFmpeg.
+        '-vf', 'fps=24' if hd else 'fps=12',
         '-r', '24' if hd else '12', '-c:v', 'libx264', '-threads', '2', '-preset', 'medium' if hd else 'veryfast',
         '-tune', 'stillimage', '-crf', '22' if hd else '31', '-maxrate', '1800k' if hd else '600k', '-bufsize', '3600k' if hd else '1200k',
         # Les plans fixes n'ont pas besoin d'une image complète toutes les deux

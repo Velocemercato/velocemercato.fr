@@ -331,6 +331,47 @@ class DiffusionTests(unittest.TestCase):
             authorization['publish']=False;(masters/'_autorisation.json').write_text(json.dumps(authorization))
             with self.assertRaises(D.DeliveryError):D.prepare(masters,root/'bad.mp4',now=now,expected_run='42')
 
+    def test_fractional_hd_durations_keep_a_true_constant_rate_after_assembly(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);masters=root/'masters';masters.mkdir()
+            now=dt.datetime(2026,10,23,10,35,tzinfo=dt.timezone.utc)
+            (masters/'_autorisation.json').write_text(json.dumps({'publish':True,'created':now.isoformat(),
+                'date':'2026-10-23','moment':'midi','run_id':'42'}))
+            original={};durations=[]
+            for universe,duration in zip(['foot','actus','gaming'],[2.317,3.131,1.929]):
+                file=masters/(universe+'-test.mp4')
+                subprocess.run(['ffmpeg','-v','error','-y','-f','lavfi','-i','color=c=blue:s=1280x720:r=24',
+                    '-f','lavfi','-i','sine=frequency=440:sample_rate=48000','-t',str(duration),
+                    '-c:v','libx264','-threads','2','-pix_fmt','yuv420p','-c:a','aac',str(file)],check=True)
+                (masters/(universe+'.json')).write_text(json.dumps({'id':universe+'-test','univers':universe,
+                    'format':'edition','moment':'midi','date':'2026-10-23T12:30:00+02:00',
+                    'fichier':file.name,'titre':universe}))
+                original[file]=file.read_bytes()
+                durations.append(float(D.probe(file)['format']['duration']))
+            output=root/'programme.mp4'
+            manifest=D.prepare(masters,output,now=now,expected_run='42')
+            video=next(row for row in D.probe(output)['streams'] if row['codec_type']=='video')
+            self.assertEqual(video['avg_frame_rate'],'24/1')
+            self.assertAlmostEqual(float(video['duration']),sum(durations),delta=1/24)
+            self.assertEqual([row['debut_secondes'] for row in manifest['chapitres']],
+                [0,round(durations[0],3),round(sum(durations[:2]),3)])
+            for file,data in original.items():self.assertEqual(file.read_bytes(),data)
+            subprocess.run(['ffmpeg','-v','error','-i',str(output),'-f','null','-'],check=True)
+
+    def test_cdn_sources_are_rejected_before_hd_assembly(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);masters=root/'masters';masters.mkdir()
+            file=masters/'foot-test.mp4'
+            subprocess.run(['ffmpeg','-v','error','-y','-f','lavfi','-i','color=c=blue:s=1280x720:r=12',
+                '-f','lavfi','-i','sine=frequency=440:sample_rate=48000','-t','1',
+                '-c:v','libx264','-threads','2','-pix_fmt','yuv420p','-c:a','aac',str(file)],check=True)
+            (masters/'foot.json').write_text(json.dumps({'id':'foot-test','univers':'foot','format':'edition',
+                'moment':'midi','date':'2026-10-23T12:30:00+02:00','fichier':file.name,'titre':'foot'}))
+            output=root/'programme.mp4'
+            with self.assertRaisesRegex(RuntimeError,'Original HD requis'):
+                D.assemble(root,'midi','2026-10-23',output,masters,require_hd=True)
+            self.assertFalse(output.exists())
+
 
 class TwitchCodeTests(unittest.TestCase):
     def test_code_flow_stores_token_encrypted_and_refresh_uses_it(self):

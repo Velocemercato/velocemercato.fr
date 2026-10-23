@@ -1,6 +1,9 @@
 name: VM - YouTube et Twitch automatiques
 
 on:
+  push:
+    branches: [main]
+    paths: ['.github/reprise-diffusion.json']
   workflow_run:
     workflows: ['VM Studio - La Pastille TV']
     types: [completed]
@@ -20,7 +23,7 @@ concurrency:
 
 jobs:
   diffusion:
-    if: (github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.head_repository.full_name == github.repository)) && (vars.VM_AUTO_YOUTUBE == 'true' || vars.VM_AUTO_TWITCH == 'true')
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.head_repository.full_name == github.repository)) && (vars.VM_AUTO_YOUTUBE == 'true' || vars.VM_AUTO_TWITCH == 'true')
     runs-on: ubuntu-latest
     timeout-minutes: 120
     env:
@@ -45,6 +48,22 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Lire la demande explicite de reprise
+        if: github.event_name == 'push'
+        run: |
+          python - <<'PY'
+          import datetime as dt, json, os, re
+          from pathlib import Path
+          request = json.loads(Path('.github/reprise-diffusion.json').read_text())
+          ident = str(request['source_run_id'])
+          requested = dt.datetime.fromisoformat(request['requested_at'])
+          now = dt.datetime.now(dt.timezone.utc)
+          if (not re.fullmatch(r'[1-9][0-9]{1,19}', ident) or requested.tzinfo is None
+                  or not dt.timedelta(0) <= now-requested <= dt.timedelta(hours=1)):
+              raise SystemExit('Demande de reprise invalide ou périmée : aucune diffusion.')
+          with open(os.environ['GITHUB_ENV'], 'a') as output:
+              output.write('SOURCE_RUN_ID=' + ident + '\n')
+          PY
       - name: Vérifier les accès sans afficher les secrets
         id: access
         run: |

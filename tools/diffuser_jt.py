@@ -412,7 +412,7 @@ def prepare(masters, output, now=None, expected_run=None):
                   'duree_mesuree':float(probe(output)['format']['duration']),
                   'chapitres':[{'debut_secondes':0, 'univers':'foot', 'titre':row['titre'], 'id':ident}]}
     elif kind == 'edition':
-        result = assemble(ROOT, moment, date, output, masters)
+        result = assemble(ROOT, moment, date, output, masters, require_hd=True)
         result.update(format='edition', universes=['foot','actus','gaming'], id='jt-' + date + '-' + moment)
     else:
         raise DeliveryError('Format de programme non autorisé.')
