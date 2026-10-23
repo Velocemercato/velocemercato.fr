@@ -1,0 +1,46 @@
+name: VM - Connecter Twitch (code à taper)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+
+jobs:
+  connecter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+      TWITCH_CLIENT_ID: ${{ secrets.TWITCH_CLIENT_ID }}
+      TWITCH_CLIENT_SECRET: ${{ secrets.TWITCH_CLIENT_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet 'cryptography==50.0.0'
+      - name: Ouvrir les accusés chiffrés
+        env:
+          STATE_DIR: ${{ runner.temp }}/vm-broadcast-state
+        run: |
+          set -euo pipefail
+          repo_url="https://github.com/${GITHUB_REPOSITORY}.git"
+          if git -c credential.helper='!gh auth git-credential' ls-remote --exit-code "$repo_url" refs/heads/broadcast-state > /dev/null; then
+            git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "$repo_url" "$STATE_DIR"
+          else
+            mkdir -p "$STATE_DIR"
+            git -C "$STATE_DIR" init --quiet -b broadcast-state
+            git -C "$STATE_DIR" remote add origin "$repo_url"
+          fi
+      - name: Obtenir le code à taper sur twitch.tv/activate
+        run: python tools/connecter_twitch_code.py code --device "$RUNNER_TEMP/twitch-device.json"
+      - name: Attendre la saisie du code (15 min maximum)
+        run: python tools/connecter_twitch_code.py attendre --device "$RUNNER_TEMP/twitch-device.json" --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"

@@ -30,7 +30,8 @@ UTC = dt.timezone.utc
 HOSTS = {'oauth2.googleapis.com', 'www.googleapis.com', 'youtube.googleapis.com', 'id.twitch.tv', 'api.twitch.tv'}
 PROVIDERS = {
     'youtube': ['YOUTUBE_CLIENT_ID', 'YOUTUBE_CLIENT_SECRET', 'YOUTUBE_REFRESH_TOKEN', 'YOUTUBE_CHANNEL_ID'],
-    'twitch': ['TWITCH_CLIENT_ID', 'TWITCH_CLIENT_SECRET', 'TWITCH_REFRESH_TOKEN', 'TWITCH_BROADCASTER_ID'],
+    # Le jeton Twitch et l'identifiant de chaîne peuvent venir de la connexion par code (état chiffré).
+    'twitch': ['TWITCH_CLIENT_ID', 'TWITCH_CLIENT_SECRET'],
 }
 
 
@@ -166,11 +167,16 @@ def clean_credential(provider, kind, value):
 
 def access_token(provider, state, http):
     prefix = provider.upper()
-    initial = clean_credential(provider, 'REFRESH_TOKEN', os.environ[prefix + '_REFRESH_TOKEN'])
+    initial = clean_credential(provider, 'REFRESH_TOKEN', os.getenv(prefix + '_REFRESH_TOKEN', ''))
     client = clean_credential(provider, 'CLIENT_ID', os.environ[prefix + '_CLIENT_ID'])
-    fingerprint = hashlib.sha256((client + initial).encode()).hexdigest()
     stored = state.data['tokens'].get(provider, {})
-    refresh = stored.get('refresh') if stored.get('fingerprint') == fingerprint else initial
+    if initial:
+        fingerprint = hashlib.sha256((client + initial).encode()).hexdigest()
+        refresh = stored.get('refresh') if stored.get('fingerprint') == fingerprint else initial
+    elif stored.get('refresh') and stored.get('fingerprint') == 'device:' + client:
+        fingerprint, refresh = stored['fingerprint'], stored['refresh']  # connexion par code (twitch.tv/activate)
+    else:
+        raise DeliveryError(f'{provider} : compte non connecté.')
     form = {'client_id': client, 'client_secret': os.environ[prefix + '_CLIENT_SECRET'].strip(),
             'grant_type': 'refresh_token', 'refresh_token': refresh}
     endpoint = 'https://oauth2.googleapis.com/token' if provider == 'youtube' else 'https://id.twitch.tv/oauth2/token'
@@ -178,7 +184,7 @@ def access_token(provider, state, http):
     token = result.get('access_token')
     if not token:
         raise DeliveryError(f'{provider} : renouvellement OAuth non confirmé.')
-    state.data['tokens'][provider] = {'refresh': result.get('refresh_token', refresh), 'fingerprint': fingerprint}
+    state.data['tokens'][provider] = {**stored, 'refresh': result.get('refresh_token', refresh), 'fingerprint': fingerprint}
     state.save()  # Conserver immédiatement un éventuel refresh token renouvelé.
     return token
 
@@ -308,7 +314,7 @@ class YouTube:
 class Twitch:
     def __init__(self, http, state, token):
         self.http, self.state, self.token = http, state, token
-        self.user = os.environ['TWITCH_BROADCASTER_ID']
+        self.user = os.getenv('TWITCH_BROADCASTER_ID', '').strip() or str(state.data['tokens'].get('twitch', {}).get('user', ''))
         if not self.user.isdigit():
             raise DeliveryError('Identifiant Twitch invalide.')
 

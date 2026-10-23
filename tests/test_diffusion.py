@@ -1,3 +1,4 @@
+import contextlib
 import base64
 import datetime as dt
 import io
@@ -329,6 +330,44 @@ class DiffusionTests(unittest.TestCase):
             self.assertIn('Spéciale avant-match',D.youtube_metadata(special)['snippet']['title'])
             authorization['publish']=False;(masters/'_autorisation.json').write_text(json.dumps(authorization))
             with self.assertRaises(D.DeliveryError):D.prepare(masters,root/'bad.mp4',now=now,expected_run='42')
+
+
+class TwitchCodeTests(unittest.TestCase):
+    def test_code_flow_stores_token_encrypted_and_refresh_uses_it(self):
+        import tools.connecter_twitch_code as T
+        with tempfile.TemporaryDirectory() as folder:
+            state=D.State(Path(folder)/'s.enc', base64.b64encode(os.urandom(32)).decode())
+            calls=[]
+            def fake_post(url, form):
+                calls.append((url, dict(form)))
+                if url.endswith('/device'):
+                    return 200, {'device_code':'dev','user_code':'ABCD1234','expires_in':1800,'interval':5}
+                if len([c for c in calls if c[0].endswith('/token')]) == 1:
+                    return 400, {'message':'authorization_pending'}
+                return 200, {'access_token':'a','refresh_token':'r1','scope':['channel:manage:broadcast','channel:read:stream_key']}
+            out=io.StringIO()
+            with contextlib.redirect_stdout(out):
+                device=T.start('cid', post=fake_post)
+                user=T.wait(state,'cid','sec',device,post=fake_post,get_user=lambda c,t:{'id':'123','login':'vm'},sleep=lambda s:None)
+            self.assertIn('ABCD1234', out.getvalue())
+            self.assertNotIn('r1', out.getvalue())
+            self.assertEqual(user['id'],'123')
+            self.assertEqual(state.data['tokens']['twitch']['user'],'123')
+            self.assertNotIn(b'r1', (Path(folder)/'s.enc').read_bytes())
+            class Http:
+                def json(self, method, url, token=None, body=None, form=None, headers=None):
+                    self.form=form; return {'access_token':'a2','refresh_token':'r2'}
+            http=Http()
+            with patch.dict(os.environ,{'TWITCH_CLIENT_ID':'cid','TWITCH_CLIENT_SECRET':'sec'},clear=False):
+                os.environ.pop('TWITCH_REFRESH_TOKEN',None)
+                self.assertEqual(D.access_token('twitch',state,http),'a2')
+                self.assertEqual(http.form['refresh_token'],'r1')
+                self.assertEqual(state.data['tokens']['twitch']['refresh'],'r2')
+                self.assertEqual(state.data['tokens']['twitch']['user'],'123')
+                self.assertEqual(D.Twitch(http,state,'a2').user,'123')
+            empty=D.State(Path(folder)/'e.enc', base64.b64encode(os.urandom(32)).decode())
+            with patch.dict(os.environ,{'TWITCH_CLIENT_ID':'cid','TWITCH_CLIENT_SECRET':'sec'}):
+                with self.assertRaises(D.DeliveryError):D.access_token('twitch',empty,http)
 
 
 if __name__=='__main__':
