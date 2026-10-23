@@ -31,3 +31,13 @@ Les accès directs aux diffuseurs sont filtrés depuis l'environnement de travai
 ## Installation vidéo
 
 Le premier lancement séparé `39954095941` a échoué avant rédaction sur les téléchargements APT (délai 124). Le passage en HTTPS a confirmé un autre délai lors de l'installation des paquets (`39955018618`). Les outils déjà présents sont réutilisés ; sinon, deux exécutables Linux autonomes de la branche stable FFmpeg 8.1 (distribution GPL avec l’encodeur H.264 libx264) sont récupérés chez BtbN/FFmpeg-Builds, contrôlés avec l'empreinte SHA-256 publiée par ce distributeur et mis en cache. Aucune installation APT n'est requise. L'archive et son manifeste viennent de la même publication HTTPS ; le contrôle protège l'intégrité du téléchargement, sans constituer un audit indépendant du distributeur.
+
+## Première édition séparée confirmée le 23 octobre 2026
+
+- Original Actus : `actus-edition-20261023-1300`, 158 secondes, huit références sélectionnées entre 07 h et 13 h Paris.
+- Production réussie : https://github.com/Velocemercato/velocemercato.fr/actions/runs/39956422681 ; outil vidéo installé en 18 secondes, aucun nouveau MP4 ajouté à la branche tv.
+- Publication publique confirmée : https://www.youtube.com/watch?v=WgB7ozKFhS4 ; reçu `published` du 23/10 à 13:00:43 UTC, soit 15:00:43 Paris. Cette première édition a été publiée tardivement pendant la mise en place.
+- Diffusion réussie : https://github.com/Velocemercato/velocemercato.fr/actions/runs/39957584783.
+- Le contrôle de provenance utilise maintenant l'identifiant du workflow, son dépôt, sa branche et sa conclusion, au lieu du titre personnalisable du lancement. Les reprises explicites sans original échouent clairement.
+
+Pour une édition marquée `diffusion: youtube`, le champ historique `publie` du fichier `studio/tv/*.json` concerne l'extrait MP4/CDN ; le statut public YouTube et le lecteur du site proviennent de `studio/diffusions.json`. Ne pas déduire une panne YouTube de ce seul champ historique. Le lecteur YouTube est chargé au clic et remplace l'ancien extrait de la même rubrique. Les tests de navigation couvrent le téléphone et l'ordinateur ; les tests vidéo utilisent aussi les outils autonomes réellement déployés.

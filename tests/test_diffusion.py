@@ -63,6 +63,15 @@ class DiffusionTests(unittest.TestCase):
             with self.assertRaises(D.DeliveryError):
                 D.State(path, KEY)
 
+    def test_custom_run_title_does_not_reject_trusted_production_or_accept_a_different_workflow(self):
+        run={'name':'JT express - demande 123','workflow_id':77,'head_branch':'main','conclusion':'success',
+             'head_repository':{'full_name':'owner/site'}}
+        self.assertTrue(D.source_run_allowed(run,'77','owner/site'))
+        self.assertFalse(D.source_run_allowed({**run,'workflow_id':78},'77','owner/site'))
+        self.assertFalse(D.source_run_allowed({**run,'head_branch':'preview'},'77','owner/site'))
+        self.assertFalse(D.source_run_allowed({**run,'conclusion':None},'77','owner/site'))
+        self.assertFalse(D.source_run_allowed({**run,'head_repository':{'full_name':'fork/site'}},'77','owner/site'))
+
     def test_missing_accounts_and_infrastructure_google_credentials_do_not_activate(self):
         with patch.dict('os.environ', {'GOOGLE_APPLICATION_CREDENTIALS': '/tmp/infrastructure.json'}, clear=True):
             self.assertFalse(D.enabled('youtube'))
