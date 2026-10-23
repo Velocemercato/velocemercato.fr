@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pépite FC – repérer les jeunes talents du foot</title>
+<meta name="description" content="Pépite FC : envoie ton profil et tes vidéos pour être repéré par des recruteurs, conseillers sportifs et agents. Les mineurs sont accompagnés de leur représentant légal.">
+<link rel="canonical" href="https://velocemercato.fr/pepite/">
+<meta property="og:title" content="Pépite FC – repérer les jeunes talents"><meta property="og:description" content="Profil, vidéos et niveau scolaire : la vitrine des jeunes talents du foot."><meta property="og:url" content="https://velocemercato.fr/pepite/">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0a1a33;color:#f3f0e6;font:16px/1.55 Poppins,system-ui,sans-serif}
+a{color:#f4cf55}
+main{max-width:1000px;margin:0 auto;padding:0 16px 56px}
+.hero{text-align:center;padding:40px 16px 28px;background:radial-gradient(ellipse at 50% 0%,#1d4c8a,#0a1a33 70%);border-bottom:3px solid #f4cf55}
+.badge{display:inline-block;font:800 .8rem Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#0a1a33;background:#f4cf55;border-radius:999px;padding:6px 14px}
+.hero h1{font:italic 800 clamp(2.2rem,8vw,3.6rem)/1.05 Poppins,sans-serif;margin:14px 0 8px;color:#fff}
+.hero h1 span{color:#f4cf55}
+.hero p{max-width:620px;margin:0 auto;color:#d6dcea}
+.btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;font:800 .95rem Poppins,sans-serif;padding:12px 18px;border-radius:999px;border:2px solid #f4cf55;background:#f4cf55;color:#0a1a33;cursor:pointer;text-decoration:none}
+.btn.ghost{background:transparent;color:#f4cf55}
+h2{font:italic 800 1.5rem Poppins,sans-serif;color:#f4cf55;margin:34px 0 12px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;list-style:none;padding:0;margin:0}
+.steps li{background:#10284d;border:1px solid #24497a;border-radius:16px;padding:16px}
+.steps b{display:block;font-size:1.6rem;color:#f4cf55}
+.card{background:#10284d;border:1px solid #24497a;border-radius:16px;padding:16px}
+.note{font-size:.88rem;color:#b9c4d9}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.joueur{background:#10284d;border:1px solid #24497a;border-radius:16px;padding:14px}
+.joueur b{font-size:1.1rem}.joueur .tags{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.joueur .tags span{font-size:.75rem;font-weight:700;background:#f4cf55;color:#0a1a33;border-radius:999px;padding:2px 9px}
+.joueur p{margin:4px 0;color:#d6dcea;font-size:.92rem}
+.vide{border:2px dashed #f4cf55;border-radius:16px;padding:20px;text-align:center;color:#d6dcea}
+form{display:grid;gap:10px}
+form label{display:grid;gap:4px;font-weight:700;font-size:.88rem;color:#e7ebf5}
+form input,form select,form textarea{padding:11px 12px;border-radius:10px;border:1px solid #3a5f92;background:#06122a;color:#fff;font:inherit;font-weight:400}
+form textarea{min-height:90px}
+form .ok{display:flex;gap:8px;align-items:flex-start;font-weight:400;color:#b9c4d9;font-size:.88rem}
+form .ok input{margin-top:4px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.duo{grid-template-columns:1fr}}
+.rgpd{font-size:.82rem;color:#9fb0cc;margin-top:18px}
+.bloc{background:#0e2445;border-radius:20px;padding:20px;border:1px solid #24497a}
+footer{color:#8fa0bf;font-size:.82rem;text-align:center;padding:24px 16px 40px}
+footer a{color:#f4cf55}
+</style></head>
+<body>
+<header class="hero">
+<span class="badge">Recrutement jeunes talents</span>
+<h1>Pépite <span>FC</span></h1>
+<p>Tu joues au foot et tu veux être repéré ? Envoie ton profil, tes vidéos et, si tu veux, ton niveau scolaire. Les recruteurs, conseillers sportifs et agents qui nous rejoignent peuvent te découvrir.</p>
+<div class="btns"><a class="btn" href="#joueur">⚽ Je suis joueur</a><a class="btn ghost" href="#pro">💼 Je suis recruteur ou agent</a></div>
+</header>
+<main>
+<h2>Comment ça marche</h2>
+<ol class="steps">
+<li><b>1</b>Remplis ta fiche : poste, catégorie, club actuel, ville.</li>
+<li><b>2</b>Ajoute 1 à 3 vidéos de matchs ou de séances (lien YouTube non répertorié, Vimeo ou Google Drive, sans fichier à envoyer).</li>
+<li><b>3</b>Nous vérifions ta fiche et te répondons par e-mail. Aucun délai de réponse n’est garanti.</li>
+</ol>
+
+<h2 id="joueur">⚽ Fiche joueur</h2>
+<div class="card">
+<form id="formJoueur">
+<div class="duo">
+<label>Prénom<input name="prenom" required maxlength="40" autocomplete="given-name"></label>
+<label>Nom<input name="nom" required maxlength="40" autocomplete="family-name"></label>
+</div>
+<div class="duo">
+<label>Catégorie<select name="categorie" required><option value="">Choisir</option><option>U11</option><option>U13</option><option>U15</option><option>U17</option><option>U19</option><option>Senior</option></select></label>
+<label>Poste<select name="poste" required><option value="">Choisir</option><option>Gardien</option><option>Défenseur</option><option>Milieu</option><option>Attaquant</option></select></label>
+</div>
+<div class="duo">
+<label>Club actuel<input name="club" maxlength="80" placeholder="Ex. US Belfort"></label>
+<label>Ville<input name="ville" required maxlength="60" placeholder="Ex. Belfort"></label>
+</div>
+<label>Liens vidéo (un par ligne)<textarea name="videos" required maxlength="800" placeholder="https://youtu.be/…"></textarea></label>
+<label>Niveau scolaire (facultatif)<input name="scolaire" maxlength="120" placeholder="Ex. 3e, Seconde en sport-études"></label>
+<label>Présentation (facultatif)<textarea name="texte" maxlength="600" placeholder="Ton parcours, tes points forts, tes objectifs."></textarea></label>
+<label class="ok"><input type="checkbox" name="mineur"> J’ai moins de 18 ans, et mon représentant légal est d’accord pour l’envoi de ma fiche (il ou elle doit l’envoyer avec moi).</label>
+<label class="ok"><input type="checkbox" name="accord" required> J’accepte que ma fiche soit lue par l’équipe Pépite FC. Elle n’est publiée qu’après validation, sans mes coordonnées.</label>
+<button class="btn" type="submit">✉️ Envoyer ma fiche</button>
+<p class="note">Ton application e-mail s’ouvre avec le message prêt : rien n’est envoyé tant que tu ne l’as pas envoyé toi-même.</p>
+</form>
+</div>
+
+<h2 id="pro">💼 Recruteurs, conseillers sportifs et agents</h2>
+<div class="card">
+<p class="note">Tu veux voir les profils validés et être mis en relation ? Indique ton statut. Nous vérifions ta situation avant toute mise en relation, et les joueurs ne paient jamais pour être présentés.</p>
+<form id="formPro">
+<div class="duo">
+<label>Nom et prénom<input name="nom" required maxlength="80"></label>
+<label>Statut<select name="statut" required><option value="">Choisir</option><option>Agent sportif (accréditation)</option><option>Conseiller sportif</option><option>Recruteur de club</option><option>Autre</option></select></label>
+</div>
+<div class="duo">
+<label>Numéro d’accréditation ou de licence<input name="numero" maxlength="60" placeholder="Si tu en as un"></label>
+<label>E-mail de contact<input name="email" type="email" required maxlength="120"></label>
+</div>
+<label>Ton message<textarea name="texte" required maxlength="600" placeholder="Ce que tu recherches, catégorie, région."></textarea></label>
+<label class="ok"><input type="checkbox" required> Je m’engage à respecter les règles de contact des joueurs mineurs et à ne demander aucune somme aux familles pour une présentation.</label>
+<button class="btn" type="submit">✉️ Envoyer ma demande</button>
+</form>
+</div>
+
+<h2>⭐ Joueurs validés</h2>
+<div id="dossiers" class="grid" aria-live="polite"></div>
+<p class="note">Seules les fiches vérifiées par l’équipe apparaissent ici : prénom, poste, catégorie, ville et liens vidéo. Nom de famille et contact ne sont jamais publiés.</p>
+
+<p class="rgpd"><b>Données personnelles.</b> Les informations envoyées servent uniquement à étudier ta candidature. Pour corriger ou supprimer une fiche, écris à velocemercato.fr@gmail.com. Les fiches de joueurs mineurs ne sont jamais publiées sans l’accord écrit du représentant légal.</p>
+</main>
+<footer>Pépite FC · un projet de <a href="https://velocemercato.fr/">Véloce Mercato</a> · <a href="https://velocemercato.fr/mentions-legales.html">Mentions légales</a></footer>
+<script>
+(() => {
+  const esc = t => String(t ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+  // Seuls ces hébergeurs de vidéo sont affichés, en https.
+  const safe = url => { try { const u = new URL(url); return u.protocol === 'https:' && /(^|\.)(youtube\.com|youtu\.be|vimeo\.com|drive\.google\.com)$/.test(u.hostname) ? u.href : ''; } catch (_) { return ''; } };
+  fetch('dossiers.json', {cache: 'no-store'}).then(r => r.ok ? r.json() : []).catch(() => []).then(list => {
+    const dossiers = (Array.isArray(list) ? list : []).filter(d => d && d.prenom && d.poste);
+    document.getElementById('dossiers').innerHTML = dossiers.length ? dossiers.map(d => {
+      const liens = String(d.videos || '').split(/\s+/).map(safe).filter(Boolean);
+      return `<article class="joueur"><b>${esc(d.prenom)}</b><div class="tags"><span>${esc(d.categorie)}</span><span>${esc(d.poste)}</span></div><p>📍 ${esc(d.ville)}${d.club ? ' · ' + esc(d.club) : ''}</p>${d.scolaire ? `<p>🎓 ${esc(d.scolaire)}</p>` : ''}${liens.map((l, i) => `<p><a href="${esc(l)}" target="_blank" rel="noopener nofollow">🎥 Vidéo ${i + 1}</a></p>`).join('')}</article>`;
+    }).join('') : '<p class="vide">Les premiers dossiers validés apparaîtront ici. Envoie le tien !</p>';
+  });
+  // Les messages partent par e-mail : rien n’est envoyé sans ton clic dans ton application.
+  const mail = (subject, body) => {
+    if (window.vmMail) return window.vmMail(subject, body);
+    location.href = 'mailto:velocemercato.fr@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  };
+  const val = (form, name) => (form.elements[name]?.value || '').trim();
+  document.getElementById('formJoueur').onsubmit = event => {
+    event.preventDefault();
+    const f = event.target;
+    const mineur = f.elements.mineur.checked ? 'Oui (accord du représentant légal confirmé)' : 'Non';
+    mail(`Pépite FC – fiche joueur : ${val(f, 'prenom')} ${val(f, 'nom')}`,
+      `Prénom : ${val(f, 'prenom')}\nNom : ${val(f, 'nom')}\nCatégorie : ${val(f, 'categorie')}\nPoste : ${val(f, 'poste')}\nClub : ${val(f, 'club')}\nVille : ${val(f, 'ville')}\nNiveau scolaire : ${val(f, 'scolaire')}\nMineur : ${mineur}\n\nVidéos :\n${val(f, 'videos')}\n\nPrésentation :\n${val(f, 'texte')}\n\n(Joins à cet e-mail ton éventuelle photo ou tes documents scolaires, sans obligation.)`);
+  };
+  document.getElementById('formPro').onsubmit = event => {
+    event.preventDefault();
+    const f = event.target;
+    mail(`Pépite FC – demande pro : ${val(f, 'nom')}`,
+      `Nom : ${val(f, 'nom')}\nStatut : ${val(f, 'statut')}\nAccréditation / licence : ${val(f, 'numero')}\nE-mail : ${val(f, 'email')}\n\nMessage :\n${val(f, 'texte')}`);
+  };
+})();
+</script>
+</body></html>
