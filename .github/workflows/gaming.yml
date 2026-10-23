@@ -36,8 +36,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          echo "Passage gaming du $(date -u '+%Y-%m-%d %H:%M UTC') (${{ github.event_name }}, ${{ github.ref_name }})" > vm-gaming/robot-log.txt vm-gaming/ignores.json
-          pip install --quiet trafilatura 2>&1 | tail -3 | tee -a vm-gaming/robot-log.txt vm-gaming/ignores.json
+          echo "Passage gaming du $(date -u '+%Y-%m-%d %H:%M UTC') (${{ github.event_name }}, ${{ github.ref_name }})" > vm-gaming/robot-log.txt
+          pip install --quiet trafilatura 2>&1 | tail -3 | tee -a vm-gaming/robot-log.txt
 
       - name: Update gaming news
         env:
@@ -46,7 +46,7 @@ jobs:
           VM_RATTRAPAGE: ${{ github.event_name == 'workflow_dispatch' && inputs.rattrapage && '1' || '' }}
         run: |
           set -o pipefail
-          python update_gaming.py 2>&1 | tee -a vm-gaming/robot-log.txt vm-gaming/ignores.json
+          python update_gaming.py 2>&1 | tee -a vm-gaming/robot-log.txt
 
       - name: Validate JSON
         id: validate
@@ -54,6 +54,7 @@ jobs:
         run: |
           python -m json.tool vm-gaming/news.json > /dev/null
           python -m json.tool vm-gaming/flash.json > /dev/null
+          python -m json.tool vm-gaming/ignores.json > /dev/null
 
       - name: Save
         if: always() && steps.validate.outcome == 'success'
