@@ -272,7 +272,8 @@ def make(univers, fmt, moment):
     spoken_slot = f"{moment}, {dt.datetime.fromisoformat(edition['edition_at']):%H} heures" if edition else moment
     script = write_script(univers, fmt, spoken_slot, news, fixtures=fixtures)
     label = edition['label'] if edition else LABELS.get(fmt, f'Édition du {moment}')
-    script['sous_titre'] = label + ' · ' + dt.datetime.now(D.PARIS).strftime('%d/%m')
+    edition_date = dt.datetime.fromisoformat(edition['edition_at']) if edition else dt.datetime.now(D.PARIS)
+    script['sous_titre'] = label + ' · ' + edition_date.strftime('%d/%m')
     D.PERSOS = U['persos']
     D.BG_IMG = U['bg']
     D.FOOT_MODE = univers == 'foot'
