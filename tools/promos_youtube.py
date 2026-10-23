@@ -73,6 +73,15 @@ def main():
     parser.add_argument('--state', type=Path, required=True)
     parser.add_argument('--limit', type=int, default=2)
     args = parser.parse_args()
+    cid = os.getenv('YOUTUBE_CLIENT_ID', '').strip()
+    sec = os.getenv('YOUTUBE_CLIENT_SECRET', '').strip()
+    ref = os.getenv('YOUTUBE_REFRESH_TOKEN', '').strip()
+    # Contrôle sans divulgation : l'ID client est public ; du secret on ne montre que les 4 derniers caractères,
+    # comme la console Google (****xxxx), pour comparer.
+    print(f'::notice::Contrôle : ID client = {cid} · secret commence par GOCSPX- : {sec.startswith("GOCSPX-")} · '
+          f'longueur secret {len(sec)} · fin du secret ****{sec[-4:] if len(sec) > 8 else "?"} · '
+          f'jeton commence par 1// : {ref.startswith("1//")} (longueur {len(ref)}) · chaîne commence par UC : '
+          f'{os.getenv("YOUTUBE_CHANNEL_ID", "").strip().startswith("UC")}')
     if not enabled('youtube'):
         print('YouTube non connecté : aucun envoi.')
         return
