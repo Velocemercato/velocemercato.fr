@@ -100,13 +100,12 @@ FEEDS = [
     ('INTERNATIONAL', 'ETRANGER', 'The Guardian', 'https://www.theguardian.com/football/brazil/rss'),
     ('INTERNATIONAL', 'ETRANGER', 'The Guardian', 'https://www.theguardian.com/football/neymar/rss'),
     ('INTERNATIONAL', 'ETRANGER', 'The Guardian', 'https://www.theguardian.com/football/mexico/rss'),
-    ('INTERNATIONAL', 'ETRANGER', 'ESPN', 'https://www.espn.com/espn/rss/soccer/news'),
 ]
 
 ALLOWED_HOSTS = {
     'foot-national.com', 'footamateur.ouest-france.fr', 'rmcsport.bfmtv.com',
     'footmercato.net', 'bbc.co.uk', 'bbci.co.uk', 'bbc.com', 'foot01.com', 'francetvinfo.fr', 'franceinfo.fr', 'maxifoot.fr',
-    'theguardian.com', 'espn.com',
+    'theguardian.com',
 }
 BLOCK = re.compile(
     r'\b(pronostic|paris sportifs|casino|cotes de paris|billetterie|streaming ill[eé]gal|'
