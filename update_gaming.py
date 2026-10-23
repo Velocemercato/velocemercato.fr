@@ -26,9 +26,14 @@ robot.FEEDS = [
     ('GAMING', 'GAMING', 'Dexerto', 'https://www.dexerto.fr/feed/'),
     ('GAMING', 'GAMING', 'JV France', 'https://www.jvfrance.com/feed/'),
     ('GAMING', 'GAMING', 'GamerGen', 'https://gamergen.com/rss'),
+    # Tech et matériel : seulement les articles jeux, consoles et cartes graphiques (filtre TECH ci-dessous).
+    ('GAMING', 'GAMING', 'Next', 'https://next.ink/feed/'),
+    ('GAMING', 'GAMING', 'Tom’s Hardware', 'https://www.tomshardware.fr/feed/'),
+    ('GAMING', 'GAMING', 'Les Numériques', 'https://www.lesnumeriques.com/rss.xml'),
 ]
 robot.ALLOWED_HOSTS = {
     'jeuxvideo.com', 'gamekult.com', 'millenium.org', 'dexerto.fr', 'jvfrance.com', 'gamergen.com',
+    'next.ink', 'tomshardware.fr', 'lesnumeriques.com',
 }
 # Seulement nos quatre jeux, et pas de promos, concours ou paris.
 GAMES = re.compile(r'\b(warzone|call of duty|black ops|modern warfare|battlefield|redsec|'
@@ -38,8 +43,16 @@ robot.BLOCK = re.compile(r'\b(bon plan|promo(tion)?s?|soldes?|prix cass[eé]|r[e
 _rss_items = robot.rss_items
 
 
+TECH_SOURCES = {'Next', 'Tom’s Hardware', 'Les Numériques'}
+TECH = re.compile(r'\b(jeux? vid[eé]o|gaming|gamer|console|playstation|ps5|xbox|nintendo|switch|steam|epic games|'
+                  r'carte graphique|gpu|geforce|rtx|radeon|nvidia|amd|intel arc|dlss|fsr|ray tracing|esport)\b', re.I)
+
+
 def rss_items_games(feed):
     name, posts = _rss_items(feed)
+    if feed[2] in TECH_SOURCES:
+        # Sites tech généralistes : on n'envoie à Claude que le jeu vidéo et le matériel gaming (chaque envoi coûte).
+        posts = [p for p in posts if TECH.search(p['title'] + ' ' + p.get('feed_text', '')[:400])]
     return name, posts  # toute l'actu jeux vidéo (nos 4 jeux sont reconnus par Claude)
 
 

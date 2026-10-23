@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cave Kanpai – démo Véloce Web Studio</title>
+<meta name="description" content="Démonstration d’un site de caviste : vérification d’âge, vins, bières et spiritueux, retrait en boutique ou livraison, confirmation SMS et e-mail.">
+<meta name="robots" content="noindex"><meta name="theme-color" content="#1a0a10">
+<meta property="og:title" content="Cave Kanpai – votre caviste, retrait en 1 h"><meta property="og:image" content="https://velocemercato.fr/demos/img/caviste/hero.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c9a227'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle'%3E%F0%9F%8D%B7%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/demos/kit/vm-demo.css">
+<style>:root{--a:#e3b341;--b:#7a1f3d;--ink:#1a0a10;--bg:#fbf6ef}
+.evin{background:#1a0a10;color:#fff;text-align:center;font-weight:800;font-size:.85rem;padding:9px 14px}
+.legal{border-left:6px solid var(--b)}
+.legal ul{margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:.92rem}
+.regions{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.regions div{background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:14px;font-weight:700}
+.regions b{display:block;font:italic 900 1.4rem/1.1 Impact,"Arial Black",sans-serif;color:var(--b)}</style>
+</head><body>
+<div class="vd-demo"><b>VM</b> Site de démonstration — cave fictive créée par Véloce Web Studio. <a href="/web-studio.html?offre=commande#devis">Je veux le même pour ma cave →</a></div>
+<header class="vd-top"><div class="vd-top-in"><a class="vd-logo" href="#"><span aria-hidden="true">🍷</span><em>Cave Kanpai</em></a>
+<nav class="vd-nav" aria-label="Sections"><a href="#cave">La cave</a><a href="#conseil">Conseils</a><a href="#galerie">La boutique</a><a href="#infos">Infos</a></nav>
+<a class="vd-cta-top" href="#cave">🛒 Commander</a></div></header>
+
+<section class="vd-hero"><div class="vd-hero-in"><div>
+<span class="vd-kicker">Caviste · Vins · Bières · Spiritueux</span>
+<h1>Le bon flacon, <i>bien conseillé</i>.</h1>
+<p class="lead">Vins de vignerons, bières artisanales, spiritueux et sans-alcool. Réservez en ligne, retirez en boutique en 1 h ou faites-vous livrer.</p>
+<ul class="vd-badges"><li>🍇 Vins de vignerons</li><li>🏪 Retrait en 1 h</li><li>🚚 Livraison locale</li><li>🔞 Réservé aux majeurs</li></ul>
+<div class="vd-btns"><a class="vd-btn" href="#cave">🛒 Voir la cave</a><a class="vd-btn alt" href="#conseil">Demander un conseil</a></div>
+</div><div class="vd-hero-art"><span class="vd-sfx s1">KANPAI!</span><div class="vd-media" data-img="/demos/img/caviste/hero.webp" data-e="🍷" data-l="La cave"></div></div></div></section>
+<p class="evin">L’abus d’alcool est dangereux pour la santé, à consommer avec modération.</p>
+
+<main>
+<div id="vd-order-done" class="vd-sec" style="padding-top:24px"></div>
+<section class="vd-sec" id="cave"><div class="vd-h"><h2>La cave</h2><p>Prix TTC. Degré d’alcool et origine indiqués sur chaque produit. Paiement au retrait ou à la livraison.</p></div>
+<div id="vd-order"></div></section>
+
+<section class="vd-sec" id="conseil"><div class="vd-h"><h2>Nos conseils</h2><p>Un accord mets-vin, un cadeau, un apéro entre amis : dites-nous ce que vous cherchez.</p></div>
+<div class="regions"><div><b>🍽️ Accords</b>Le vin adapté à votre plat, en boutique ou par message.</div><div><b>🎁 Coffrets</b>Composés sur mesure, avec emballage cadeau.</div><div><b>🥂 Événements</b>Mariages, anniversaires, comités d’entreprise : devis sur demande.</div><div><b>🧃 Sans alcool</b>Une vraie sélection de vins, bières et apéritifs sans alcool.</div></div>
+<div class="vd-sec"><div class="vd-panel legal"><h3 style="margin:0 0 4px">Vente d’alcool : nos règles</h3><ul>
+<li>La vente d’alcool aux mineurs est interdite. Une pièce d’identité est demandée au retrait et à la livraison.</li>
+<li>Livraison remise uniquement à une personne majeure, dans les horaires autorisés par la commune.</li>
+<li>Nous ne vendons pas à une personne manifestement ivre.</li>
+<li>Pour les femmes enceintes : zéro alcool pendant la grossesse.</li>
+</ul><p style="font-size:.78rem;color:var(--muted);margin:10px 0 0">Mentions données à titre d’exemple : le vrai site reprend la licence du commerçant et la réglementation à jour.</p></div></div></section>
+
+<section class="vd-sec" id="galerie"><div class="vd-h"><h2>La boutique</h2><p>Une cave de quartier, des conseils sans prise de tête.</p></div>
+<div class="vd-gal">
+<div class="vd-media" data-img="/demos/img/caviste/galerie-1.webp" data-e="🍷" data-l="Les rayons de vins"></div>
+<div class="vd-media" data-img="/demos/img/caviste/galerie-2.webp" data-e="🍺" data-l="Bières artisanales"></div>
+<div class="vd-media" data-img="/demos/img/caviste/galerie-3.webp" data-e="🥃" data-l="Spiritueux"></div>
+<div class="vd-media" data-img="/demos/img/caviste/galerie-4.webp" data-e="🎁" data-l="Coffrets cadeaux"></div>
+<div class="vd-media" data-img="/demos/img/caviste/galerie-5.webp" data-e="💬" data-l="Le conseil"></div>
+</div>
+<div class="vd-sec vd-video"><div class="vd-media" data-video="/demos/img/caviste/video.mp4" data-img="/demos/img/caviste/video-poster.webp" data-e="🎬" data-l="Bienvenue à la cave"></div>
+<div><h3 style="font:italic 900 1.6rem/1 Impact,'Arial Black',sans-serif;text-transform:uppercase;margin:0 0 8px">En vidéo</h3><p style="margin:0 0 12px;color:var(--muted)">Présentation des vignerons, de leurs terroirs et de leurs méthodes : de l’information, sans incitation.</p>
+<div class="vd-reels"><div class="vd-media" data-video="/demos/img/caviste/reel-1.mp4" data-e="🍇" data-l="Le vigneron"></div><div class="vd-media" data-video="/demos/img/caviste/reel-2.mp4" data-e="🍺" data-l="La brasserie"></div><div class="vd-media" data-video="/demos/img/caviste/reel-3.mp4" data-e="🎁" data-l="Les coffrets"></div></div></div></div>
+</section>
+
+<section class="vd-sec" id="infos"><div class="vd-h"><h2>Infos pratiques</h2></div>
+<div class="vd-grid g3"><div class="vd-panel"><h3 style="margin:0 0 8px">🕒 Horaires</h3><div data-vd-hours></div></div>
+<div class="vd-panel"><h3 style="margin:0 0 8px">📍 Cave Kanpai</h3><p>9 rue de l’Exemple<br>00000 Ville-Démo</p><p>📞 00 00 00 00 00 <small>(fictif)</small></p><p>🚚 Livraison dans 10 communes · 💳 CB, espèces</p><p><small>Licence de vente à emporter n° 00-000 (fictive)</small></p></div>
+<div class="vd-map">🗺️ Plan Google Maps<br><small>intégré sur le vrai site</small></div></div></section>
+
+<section class="vd-sec"><div class="vd-pro" id="vd-pro"></div></section>
+
+<section class="vd-sell"><div><h2>Ce site pour <i>votre cave</i></h2><p>Catalogue avec vérification d’âge, retrait en boutique et livraison, SMS automatiques, mentions obligatoires en place et photos professionnelles.</p>
+<ul><li>Vendez aussi quand la boutique est fermée</li><li>Un site conforme : âge, mentions sanitaires, licence affichée</li><li>Catalogue, prix et arrivages mis à jour pour vous</li></ul></div>
+<div class="vd-btns"><a class="vd-btn" href="/web-studio.html?offre=commande#devis">Je veux ce site →</a><a class="vd-btn alt" href="/web-studio.html#gerance">Formules de gérance</a></div></section>
+</main>
+<footer class="vd-foot">Démonstration réalisée par <a href="/web-studio.html">Véloce Web Studio</a> · réseau <a href="https://vmunivers.fr/">VM Univers</a> · © <span data-year></span><br>Cave, produits, prix et coordonnées fictifs. L’abus d’alcool est dangereux pour la santé, à consommer avec modération. Vente interdite aux mineurs.</footer>
+
+<script>
+window.DEMO={id:'caviste',name:'Cave Kanpai',tagline:'Caviste : retrait en 1 h ou livraison',address:'9 rue de l’Exemple, 00000 Ville-Démo',rating:'4,9',
+ageGate:'Ce site présente des boissons alcoolisées, dont la vente est interdite aux mineurs. L’abus d’alcool est dangereux pour la santé, à consommer avec modération.',
+hours:{1:[['15:00','19:30']],2:[['10:00','12:30'],['15:00','19:30']],3:[['10:00','12:30'],['15:00','19:30']],4:[['10:00','12:30'],['15:00','19:30']],5:[['10:00','19:30']],6:[['09:30','19:30']],0:[['10:00','12:30']]},
+order:{refPrefix:'KP',search:true,stepper:true,payNote:'Paiement au retrait ou à la livraison (CB, espèces). Pièce d’identité demandée. Paiement en ligne possible sur la version client.',payShort:'paiement à la réception, pièce d’identité demandée',noteLabel:'Un plat à accorder, un message pour un cadeau ?',readyToast:'🔔 SMS envoyé : votre commande vous attend à la cave !',
+ modes:[{id:'retrait',l:'Retrait en boutique',e:'🏪',sub:'Gratuit · prêt en 1 h',days:4,step:30,lead:60,rate:20,whenLabel:'Votre heure de retrait'},
+        {id:'livraison',l:'Livraison',e:'🚚',sub:'5,90 € · offerte dès 60 €',fee:5.9,free:60,min:30,address:true,hours:{1:[['17:00','19:00']],2:[['17:00','19:00']],3:[['17:00','19:00']],4:[['17:00','19:00']],5:[['17:00','19:00']],6:[['10:00','12:00'],['15:00','18:00']],0:[]},days:5,step:120,lead:240,rate:25,whenLabel:'Votre créneau de livraison'}],
+ track:[['📥','Reçue'],['🧺','Préparée'],['✅','Prête'],['🙌','Retirée']],
+ items:[
+  {id:'rouge1',cat:'Vins rouges',name:'Côtes-du-Rhône · Domaine Exemple',desc:'Rouge 2022, grenache et syrah. 14 % vol.',price:11.9,unit:'75 cl',e:'🍷',img:'/demos/img/caviste/rouge-cdr.webp',tag:'Coup de cœur'},
+  {id:'rouge2',cat:'Vins rouges',name:'Bourgogne Pinot noir',desc:'Rouge 2021, fruits rouges. 13 % vol.',price:19.5,unit:'75 cl',e:'🍷',img:'/demos/img/caviste/rouge-bourgogne.webp'},
+  {id:'blanc1',cat:'Vins blancs',name:'Alsace Riesling',desc:'Blanc sec 2022, minéral. 12,5 % vol.',price:13.9,unit:'75 cl',e:'🥂',img:'/demos/img/caviste/blanc-riesling.webp'},
+  {id:'blanc2',cat:'Vins blancs',name:'Côtes du Jura Chardonnay',desc:'Blanc 2021, notes de noisette. 13 % vol.',price:16.5,unit:'75 cl',e:'🥂',img:'/demos/img/caviste/blanc-jura.webp',tag:'Local'},
+  {id:'rose',cat:'Rosés',name:'Côtes de Provence rosé',desc:'Rosé 2023, pâle et fruité. 12,5 % vol.',price:12.5,unit:'75 cl',e:'🌸',img:'/demos/img/caviste/rose-provence.webp'},
+  {id:'bulles',cat:'Bulles',name:'Crémant d’Alsace brut',desc:'Méthode traditionnelle. 12 % vol.',price:14.9,unit:'75 cl',e:'🍾',img:'/demos/img/caviste/cremant.webp'},
+  {id:'biere1',cat:'Bières',name:'Bière blonde artisanale',desc:'Brasserie locale. 5,5 % vol.',price:3.6,unit:'33 cl',e:'🍺',img:'/demos/img/caviste/biere-blonde.webp',tag:'Local'},
+  {id:'biere2',cat:'Bières',name:'IPA artisanale',desc:'Houblons aromatiques. 6,5 % vol.',price:4.2,unit:'33 cl',e:'🍺',img:'/demos/img/caviste/biere-ipa.webp'},
+  {id:'whisky',cat:'Spiritueux',name:'Whisky single malt 10 ans',desc:'Écosse, tourbé léger. 40 % vol.',price:42,unit:'70 cl',e:'🥃',img:'/demos/img/caviste/whisky.webp'},
+  {id:'rhum',cat:'Spiritueux',name:'Rhum agricole blanc',desc:'Martinique. 50 % vol.',price:29.9,unit:'70 cl',e:'🥃',img:'/demos/img/caviste/rhum.webp'},
+  {id:'sans1',cat:'Sans alcool',name:'Vin rouge sans alcool',desc:'Désalcoolisé, 0,0 % vol.',price:8.9,unit:'75 cl',e:'🧃',img:'/demos/img/caviste/sans-alcool-rouge.webp'},
+  {id:'sans2',cat:'Sans alcool',name:'Bière sans alcool',desc:'Blonde, 0,4 % vol.',price:2.9,unit:'33 cl',e:'🧃',img:'/demos/img/caviste/sans-alcool-biere.webp'},
+  {id:'coffret',cat:'Coffrets',name:'Coffret découverte 3 vins',desc:'Rouge, blanc et bulles, emballage cadeau.',price:39,unit:'coffret',e:'🎁',img:'/demos/img/caviste/coffret.webp',tag:'Cadeau'}
+ ]},
+proKpis:['Commandes','Chiffre prévu','SMS automatiques','Note Google'],
+proFake:[{ref:'KP-4B7C',when:'Auj. 17h30',what:'Retrait · 6 bouteilles',nom:'Julien M.',total:84.6},{ref:'KP-9E2A',when:'Sam. 10h-12h',what:'Livraison · Coffret découverte',nom:'Claire B.',total:39},{ref:'KP-1D5F',when:'Auj. 18h00',what:'Retrait · 12 bières',nom:'Maxime R.',total:46.8}]};
+</script>
+<script src="/demos/kit/vm-demo.js"></script>
+</body></html>
