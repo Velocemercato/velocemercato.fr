@@ -10,10 +10,10 @@ on:
       - 'pastille_media.py'
       - 'tools/installer_ffmpeg.sh'
       - 'tests/test_diffusion.py'
-      - 'tools/installer_ffmpeg.sh'
       - '.github/workflows/*diffusion.yml'
   pull_request:
     paths:
+      - 'tools/installer_ffmpeg.sh'
       - 'tools/*diffusion*.py'
       - 'tools/diffuser_jt.py'
       - 'tests/test_diffusion.py'
