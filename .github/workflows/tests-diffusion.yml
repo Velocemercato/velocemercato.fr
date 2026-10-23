@@ -30,6 +30,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Cache des outils vidéo autonomes
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/vm-ffmpeg-8.1-gpl
+          key: ffmpeg-linux-x64-8-1-gpl-v1
       - run: |
           bash tools/installer_ffmpeg.sh
           python -m pip install 'cryptography==50.0.0'

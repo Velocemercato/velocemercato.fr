@@ -106,6 +106,12 @@ jobs:
           print('ready=' + ('1' if data['ready'] else '0'))
           print('youtube=' + ('1' if data['ready'] and 'youtube' in data['providers'] else '0'))
           PY
+      - name: Cache des outils vidéo autonomes
+        if: github.event_name == 'workflow_dispatch' || steps.plan.outputs.plan != ''
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/vm-ffmpeg-8.1-gpl
+          key: ffmpeg-linux-x64-8-1-gpl-v1
       - name: Installer les outils sans repli vocal silencieux
         if: github.event_name == 'workflow_dispatch' || steps.plan.outputs.plan != ''
         run: |

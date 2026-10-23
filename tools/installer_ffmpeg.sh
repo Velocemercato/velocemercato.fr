@@ -1,38 +1,39 @@
 #!/usr/bin/env bash
-# Installation ciblée : ne pas bloquer la vidéo sur un dépôt APT tiers.
+# Outils autonomes : ne pas dépendre des centaines de paquets des miroirs APT.
 set -euo pipefail
-export DEBIAN_FRONTEND=noninteractive
 
-if command -v ffmpeg >/dev/null && command -v ffprobe >/dev/null; then
+if [[ ${1:-} != --standalone ]] && command -v ffmpeg >/dev/null && command -v ffprobe >/dev/null \
+    && ffmpeg -hide_banner -encoders 2>/dev/null | awk '$2 == "libx264" {found=1} END {exit !found}'; then
   echo '::notice::FFmpeg et FFprobe déjà disponibles.'
   exit 0
 fi
-
-vm_apt_flags=(-o Acquire::ForceIPv4=true -o Acquire::Retries=1
-  -o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20
-  -o DPkg::Lock::Timeout=30)
-
-if [[ -s /etc/apt/sources.list.d/ubuntu.sources ]]; then
-  vm_source_input=/etc/apt/sources.list.d/ubuntu.sources
-  vm_source_suffix=.sources
-elif [[ -s /etc/apt/sources.list ]]; then
-  vm_source_input=/etc/apt/sources.list
-  vm_source_suffix=.list
-else
-  echo '::error::Sources Ubuntu absentes : installation FFmpeg interrompue.'
-  exit 1
+[[ $(uname -s) == Linux && $(uname -m) == x86_64 ]] || {
+  echo '::error::Cette distribution FFmpeg nécessite Linux x86_64.'; exit 1;
+}
+vm_ffmpeg_dir=${VM_FFMPEG_DIR:-${RUNNER_TEMP:-${TMPDIR:-/tmp}}/vm-ffmpeg-8.1-gpl}
+vm_bin_dir="$vm_ffmpeg_dir/bin"
+mkdir -p "$vm_bin_dir"
+if [[ ! -x "$vm_bin_dir/ffmpeg" || ! -x "$vm_bin_dir/ffprobe" ]]; then
+  vm_download_dir=$(mktemp -d)
+  trap 'rm -rf "$vm_download_dir"' EXIT
+  vm_archive=ffmpeg-n8.1-latest-linux64-gpl-8.1.tar.xz
+  vm_release=https://github.com/BtbN/FFmpeg-Builds/releases/download/latest
+  echo '::notice::Téléchargement des outils FFmpeg 8.1 autonomes et de leurs empreintes publiées.'
+  curl --fail --location --silent --show-error --retry 2 --connect-timeout 15 --max-time 60 \
+    "$vm_release/checksums.sha256" -o "$vm_download_dir/checksums.sha256"
+  vm_expected=$(awk -v name="$vm_archive" '$2 == name {print $1}' "$vm_download_dir/checksums.sha256")
+  [[ $vm_expected =~ ^[a-f0-9]{64}$ ]] || { echo '::error::Empreinte FFmpeg absente ou invalide.'; exit 1; }
+  curl --fail --location --silent --show-error --retry 2 --connect-timeout 15 --max-time 180 \
+    "$vm_release/$vm_archive" -o "$vm_download_dir/$vm_archive"
+  printf '%s  %s\n' "$vm_expected" "$vm_download_dir/$vm_archive" | sha256sum --check --status
+  vm_archive_root=${vm_archive%.tar.xz}
+  # Extraire seulement les deux outils attendus, aucun autre chemin de l'archive.
+  tar -xJf "$vm_download_dir/$vm_archive" -C "$vm_bin_dir" --strip-components=2 \
+    "$vm_archive_root/bin/ffmpeg" "$vm_archive_root/bin/ffprobe"
+  chmod +x "$vm_bin_dir/ffmpeg" "$vm_bin_dir/ffprobe"
 fi
-
-vm_apt_source=$(mktemp --suffix="$vm_source_suffix")
-trap 'rm -f "$vm_apt_source"' EXIT
-# Les index de l'image pointent parfois vers un miroir HTTP inaccessible.
-# Conserver suites et clés Ubuntu, passer les archives ET la sécurité en HTTPS,
-# et ignorer les dépôts tiers sans rapport avec la vidéo.
-sed -E 's@https?://[^ /]*archive\.ubuntu\.com/ubuntu/?@https://archive.ubuntu.com/ubuntu/@g; s@http://security\.ubuntu\.com/@https://security.ubuntu.com/@g' \
-  "$vm_source_input" > "$vm_apt_source"
-vm_apt_flags+=(-o "Dir::Etc::sourcelist=$vm_apt_source" -o Dir::Etc::sourceparts=-)
-echo '::notice::Installation depuis les seules sources Ubuntu signées en HTTPS.'
-timeout 90 sudo -E apt-get "${vm_apt_flags[@]}" -o APT::Update::Error-Mode=any update -qq
-timeout 180 sudo -E apt-get "${vm_apt_flags[@]}" install -y -qq --no-install-recommends ffmpeg
-command -v ffmpeg >/dev/null && command -v ffprobe >/dev/null
-echo '::notice::FFmpeg et FFprobe installés.'
+"$vm_bin_dir/ffmpeg" -version >/dev/null
+"$vm_bin_dir/ffprobe" -version >/dev/null
+"$vm_bin_dir/ffmpeg" -hide_banner -encoders 2>/dev/null | awk '$2 == "libx264" {found=1} END {exit !found}'
+if [[ -n ${GITHUB_PATH:-} ]]; then printf '%s\n' "$vm_bin_dir" >> "$GITHUB_PATH"; fi
+echo '::notice::FFmpeg et FFprobe 8.1 vérifiés, prêts sans installation APT.'

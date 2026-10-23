@@ -30,4 +30,4 @@ Les accès directs aux diffuseurs sont filtrés depuis l'environnement de travai
 
 ## Installation vidéo
 
-Le premier lancement séparé `39954095941` a échoué avant rédaction sur les miroirs APT HTTP (délai 124). L’installation est limitée aux sources Ubuntu signées, en HTTPS pour les archives et les mises à jour de sécurité, sans dépôt tiers. Les outils déjà présents sont réutilisés.
+Le premier lancement séparé `39954095941` a échoué avant rédaction sur les téléchargements APT (délai 124). Le passage en HTTPS a confirmé un autre délai lors de l'installation des paquets (`39955018618`). Les outils déjà présents sont réutilisés ; sinon, deux exécutables Linux autonomes de la branche stable FFmpeg 8.1 (distribution GPL avec l’encodeur H.264 libx264) sont récupérés chez BtbN/FFmpeg-Builds, contrôlés avec l'empreinte SHA-256 publiée par ce distributeur et mis en cache. Aucune installation APT n'est requise. L'archive et son manifeste viennent de la même publication HTTPS ; le contrôle protège l'intégrité du téléchargement, sans constituer un audit indépendant du distributeur.
