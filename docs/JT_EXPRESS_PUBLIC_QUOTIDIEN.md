@@ -65,3 +65,19 @@ L’installateur partagé essaie d’abord l’installation ciblée de FFmpeg à
 des index déjà présents. Si leur actualisation est nécessaire, il limite APT aux
 sources Ubuntu officielles et au miroir principal, avec des délais réseau bornés.
 La production et les deux suites de tests exécutent le même installateur.
+
+## Première publication confirmée
+
+Le JT express du midi du 23 octobre 2026 est public :
+https://www.youtube.com/watch?v=TZ2XLleOpVI
+
+- Production réussie : https://github.com/Velocemercato/velocemercato.fr/actions/runs/39949189751
+- Diffusion réussie : https://github.com/Velocemercato/velocemercato.fr/actions/runs/39950661431
+- Rubriques mesurées : Foot 149 s, Actus 171 s, Gaming 151 s, soit environ 8 minutes.
+- L’API confirme `traitement succeeded`, `visibilité public`, puis `youtube : published`.
+- L’index public conserve l’identifiant `jt-2026-10-23-midi-court-v1` et son lien confirmé.
+
+Les deux suites GitHub ont validé les contrôles de production et de diffusion.
+Le raccordement des demandes de relance a aussi été vérifié avec des réponses de
+contrôle : nouveau lancement, réutilisation d’un lancement existant, et absence
+de diffusion après un échec de production.
