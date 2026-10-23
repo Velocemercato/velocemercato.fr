@@ -1,0 +1,79 @@
+name: VM - Kit réseaux des JT
+# Après chaque JT publié : version verticale (TikTok, Reels, Shorts) + texte prêt à coller,
+# rangés sur la page studio/reseaux.html.
+
+on:
+  workflow_run:
+    workflows: ['VM Studio - La Pastille TV']
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['tools/reseaux_jt.py', '.github/workflows/reseaux.yml']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reseaux
+  cancel-in-progress: false
+
+jobs:
+  kit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Chercher les JT pas encore préparés
+        id: check
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, pathlib
+          em = json.loads(pathlib.Path('studio/emissions.json').read_text(encoding='utf-8'))
+          p = pathlib.Path('studio/reseaux.json')
+          known = {e['id'] for e in json.loads(p.read_text(encoding='utf-8'))} if p.is_file() else set()
+          new = [e for e in em if e.get('publie') in (True, 'True') and e.get('fichier') and e['id'] not in known]
+          print(f"nouveaux={len(new)}")
+          PY
+
+      - name: Setup Python
+        if: steps.check.outputs.nouveaux != '0'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Installer FFmpeg et Pillow
+        if: steps.check.outputs.nouveaux != '0'
+        run: |
+          bash tools/installer_ffmpeg.sh
+          python -m pip install --quiet pillow
+
+      - name: Préparer les vidéos verticales et les textes
+        if: steps.check.outputs.nouveaux != '0'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python tools/reseaux_jt.py --limit 6
+
+      - name: Enregistrer la liste
+        if: steps.check.outputs.nouveaux != '0'
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          python -m json.tool studio/reseaux.json > /dev/null
+          cp studio/reseaux.json "$RUNNER_TEMP/reseaux.json"
+          for attempt in 1 2 3 4 5; do
+            git fetch -q origin main
+            git reset -q --hard origin/main
+            cp "$RUNNER_TEMP/reseaux.json" studio/reseaux.json
+            git add studio/reseaux.json
+            if git diff --cached --quiet; then echo 'Rien de nouveau.'; exit 0; fi
+            git commit -qm 'Kit réseaux : vidéos verticales et textes des JT'
+            if git push -q origin HEAD:main; then exit 0; fi
+            sleep $((attempt*5))
+          done
+          echo 'Publication de la liste impossible'; exit 1
