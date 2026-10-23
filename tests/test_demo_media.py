@@ -9,7 +9,7 @@ class DemoMediaTests(unittest.TestCase):
     setUpClass = classmethod(site.SiteTests.setUpClass.__func__)
     tearDownClass = classmethod(site.SiteTests.tearDownClass.__func__)
     context = site.SiteTests.context
-    demos = ['coiffeur', 'beaute', 'restaurant', 'snack', 'artisan', 'drive', 'cbd']
+    demos = ['coiffeur', 'beaute', 'restaurant', 'snack', 'artisan', 'drive', 'cbd', 'caviste']
 
     def dismiss_age(self, page):
         gate = page.locator('.vd-age')
@@ -37,6 +37,9 @@ class DemoMediaTests(unittest.TestCase):
                     self.assertEqual(page.locator('.vd-hero-art .vd-ph').count(), 0)
                     self.assertEqual(page.locator('.vd-play').count(), 0)
                     self.assertTrue(page.locator('a[href="https://vmunivers.fr/"]').count())
+                    if width == 390:
+                        site.ARTIFACTS.mkdir(parents=True, exist_ok=True)
+                        page.screenshot(path=str(site.ARTIFACTS / f'demo-{name}-mobile.png'))
                     context.close()
 
     def test_gallery_keyboard_and_missing_video_do_not_break_the_page(self):

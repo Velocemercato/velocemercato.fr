@@ -1,14 +1,8 @@
-# Images à créer avec ChatGPT pour les démos VM
+# Visuels intégrés des démonstrations VM
 
-Tant qu'une image manque, le site affiche à sa place un encadré coloré avec un emoji et le nom de la photo. Les démos fonctionnent donc déjà sans images. Chaque image ajoutée remplace son encadré automatiquement.
+Les visuels sont créés et intégrés directement dans les modèles : les 74 demandés, puis les 19 compléments de la nouvelle démo caviste. Aucun téléchargement manuel n’est nécessaire pour les afficher. Le registre `demos/img/catalogue.json` fait correspondre les noms demandés aux chemins utilisés dans les sites.
 
-## Comment faire (le plus simple)
-
-1. Copie le **style commun** ci-dessous dans ChatGPT, puis la description de l'image.
-2. Télécharge l'image.
-3. Envoie-moi les images avec leur nom (par exemple « coiffeur hero »). Je les convertis au bon format (`.webp`), je les range au bon endroit et je les mets en ligne.
-
-Commence par la **priorité 1** : 9 images, une par page, et les démos ont déjà l'air de vrais sites.
+Voir [la note de reprise pour Claude](CLAUDE_REPRISE_DEMOS_IMAGES.md) pour les fichiers, le rangement et les vérifications. Les descriptions ci-dessous restent le brief de référence pour les prochains visuels. Les emplacements de vidéos, portraits d’équipe et avant/après non fournis restent identifiés comme exemples à compléter avec les contenus du futur client.
 
 ## Style commun (à coller avant chaque description)
 

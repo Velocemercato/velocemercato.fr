@@ -4,16 +4,16 @@ Demande : intégrer les images directement dans les démonstrations existantes, 
 
 ## Périmètre
 
-- Sept démonstrations : `demos/coiffeur.html`, `beaute.html`, `restaurant.html`, `snack.html`, `artisan.html`, `drive.html`, `cbd.html`.
+- Huit démonstrations : `demos/coiffeur.html`, `beaute.html`, `restaurant.html`, `snack.html`, `artisan.html`, `drive.html`, `cbd.html`, `caviste.html`.
 - Illustration manga du projet VM sur `investisseurs.html`.
-- Aperçus photographiques des sept modèles sur `web-studio.html#modeles`.
+- Aperçus photographiques des huit modèles sur `web-studio.html#modeles`.
 - Kit partagé : `demos/kit/vm-demo.js` et `demos/kit/vm-demo.css`.
 
 Les noms fictifs, palettes, offres, prix et parcours de réservation / commande / devis proviennent des modèles existants. Les pages d’accueil VM Univers et Véloce Mercato gardent leur rangement par annuaire et par média.
 
 ## Visuels et chemins
 
-La commande contient **74 images distinctes** : huit images principales en portrait 4:5, vingt-cinq images de galerie carrées, quarante et une photos de produits en paysage 16:10. Création une par une dans l’ordre fourni, sans texte ni marque dans les images. Le visuel « investir » est une illustration manga ; les autres sont photoréalistes.
+La commande contient **74 images distinctes** : huit images principales en portrait 4:5, vingt-cinq images de galerie carrées, quarante et une photos de produits en paysage 16:10. Création une par une dans l’ordre fourni, sans texte ni marque dans les images. Le visuel « investir » est une illustration manga ; les autres sont photoréalistes. La démo caviste ajoutée par Claude pendant le travail reçoit aussi dix-neuf visuels complémentaires : un portrait principal, cinq images de galerie et treize produits. Le total intégré est donc de 93 images.
 
 Les fichiers utilisés par les sites sont des WebP optimisés, sous `demos/img/<métier>/`. Les chemins prévus par les modèles sont conservés : par exemple `coiffeur-hero` correspond à `demos/img/coiffeur/hero.webp`, et `snack-pizza-orientale` à `demos/img/snack/pizza-orientale.webp`. Le registre `demos/img/catalogue.json` répertorie les noms demandés, les chemins, les dimensions réelles et les poids mesurés.
 
@@ -41,6 +41,6 @@ node --check demos/kit/vm-demo.js
 git diff --check
 ```
 
-Les tests des médias contrôlent les chemins d’images, huit pages à 320 / 390 / 1440 pixels, l’agrandissement au clavier, les vidéos à venir et le panier après recherche d’un produit. Les tests professionnels contrôlent les formulaires et les offres.
+Les tests des médias contrôlent les chemins d’images, neuf pages à 320 / 390 / 1440 pixels, l’agrandissement au clavier, les vidéos à venir et le panier après recherche d’un produit. Les tests professionnels contrôlent les formulaires et les offres.
 
 Avant une nouvelle modification, récupérer la dernière version de `main` et lire son diff : plusieurs outils et les robots d’actualités peuvent écrire sur le dépôt. Préserver les images de cette livraison et les fonctionnalités des modèles en réconciliant les changements fichier par fichier.
