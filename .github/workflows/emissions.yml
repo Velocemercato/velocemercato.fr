@@ -28,7 +28,10 @@ on:
         options: ['auto', 'hd', 'cdn']
         default: auto
   schedule:
-    # Deux heures UTC couvrent été/hiver ; le script garde 8 h, 12 h et 20 h Paris.
+    # Préparer les JT 75 minutes avant 8 h, 12 h et 20 h Paris.
+    # Deux heures UTC couvrent été/hiver ; les doublons complets sont ignorés.
+    - cron: '45 4,5,8,9,16,17 * * *'
+    # Rattrapage à l'heure cible ; les retards GitHub ne sont plus rejetés à :30.
     - cron: '0 6,7,10,11,18,19 * * *'
     - cron: '15,45 10-22 * * *'
     # Après-match 22 h 45 (ou 23 h 45 si le match finit tard).

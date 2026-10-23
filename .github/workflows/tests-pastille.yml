@@ -9,6 +9,7 @@ on:
       - 'tools/assembler_jt.py'
       - 'tests/test_pastille.py'
       - 'tests/test_pastille_recovery.py'
+      - 'tests/test_pastille_schedule.py'
       - '.github/workflows/emissions.yml'
       - '.github/workflows/tests-pastille.yml'
   pull_request:
@@ -45,3 +46,4 @@ jobs:
         run: |
           python -m unittest discover -s tests -p 'test_pastille.py' -v
           python -m unittest discover -s tests -p 'test_pastille_recovery.py' -v
+          python -m unittest discover -s tests -p 'test_pastille_schedule.py' -v

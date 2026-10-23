@@ -7,6 +7,7 @@ from zoneinfo import ZoneInfo
 
 PARIS = ZoneInfo('Europe/Paris')
 JT_CRON = '0 6,7,10,11,18,19 * * *'
+JT_PREP_CRON = '45 4,5,8,9,16,17 * * *'
 MATCH_CRON = '15,45 10-22 * * *'
 DEBATE_CRON = '45 20,21,22 * * *'
 BUTS_CRON = '0 16,17 * * 0'
@@ -14,7 +15,14 @@ BUTS_CRON = '0 16,17 * * 0'
 
 def slot(now, cron):
     local = now.astimezone(PARIS)
-    if cron == JT_CRON and local.minute < 30:
+    if cron == JT_PREP_CRON:
+        minute = local.hour * 60 + local.minute
+        for hour, moment in [(8, 'matin'), (12, 'midi'), (20, 'soir')]:
+            # Préparation 75 minutes avant ; accepter un déclenchement tardif
+            # jusqu'à la fin de l'heure cible, sans inventer une ponctualité.
+            if hour * 60 - 75 <= minute < hour * 60 + 60:
+                return moment
+    if cron == JT_CRON:
         return {8:'matin',12:'midi',20:'soir'}.get(local.hour, '')
     if cron == MATCH_CRON:
         return 'speciale'
@@ -64,10 +72,18 @@ def already_published(root, univers, fmt, moment, now):
     return False
 
 
+def plan(root, now, cron):
+    """Un rattrapage ne déclenche aucun travail si les trois JT existent déjà."""
+    result = slot(now, cron)
+    if result in ('matin', 'midi', 'soir'):
+        if all(already_published(root, universe, 'edition', result, now)
+               for universe in ('foot', 'actus', 'gaming')):
+            return ''
+    if result in ('speciale', 'debat') and not confirmed_matches(root, now, finished=result == 'debat'):
+        return ''
+    return result
+
+
 if __name__ == '__main__':
     now = dt.datetime.now(dt.timezone.utc)
-    plan = slot(now, sys.argv[1] if len(sys.argv)>1 else '')
-    if plan in ('speciale','debat') and not confirmed_matches(Path(__file__).parent, now, finished=plan == 'debat'):
-        print('Pas de match confirmé par les données disponibles : spéciale/débat non déclenché.', file=sys.stderr)
-        plan = ''
-    print(plan)
+    print(plan(Path(__file__).parent, now, sys.argv[1] if len(sys.argv)>1 else ''))
