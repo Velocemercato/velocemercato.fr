@@ -34,7 +34,13 @@ python tools/connecter_diffusion.py youtube --client-json /chemin/prive/client-g
 
 4. Dans la page Google qui s’ouvre, choisir **votre chaîne** et autoriser l’envoi des vidéos et la lecture de ses informations. L’outil vérifie la chaîne sélectionnée, enregistre les secrets nécessaires dans GitHub et active seulement ensuite `VM_AUTO_YOUTUBE=true`.
 
-L’outil utilise `youtube.upload` et `youtube.readonly`. La chaîne doit accepter les vidéos longues. Les projets API YouTube non audités peuvent être limités aux vidéos privées par YouTube ; mettre l’application OAuth en production et obtenir l’autorisation API d’envois publics sont deux sujets distincts. Si YouTube refuse le passage public, la vidéo reste privée et le workflow signale l’échec ; ne pas annoncer un succès public ni réencoder une autre copie pour contourner le refus. Référence : https://developers.google.com/youtube/v3/docs/videos/insert.
+L’outil utilise `youtube.upload`, `youtube.readonly` et `youtube.force-ssl`.
+Le dernier droit est nécessaire à `videos.update`, utilisé pour rendre publique
+la vidéo après son traitement. Un ancien jeton limité aux deux premiers droits
+doit être reconnecté une fois ; ajouter le droit dans le code ne modifie pas les
+autorisations d’un jeton existant. Référence : https://developers.google.com/youtube/v3/docs/videos/update.
+
+La chaîne doit accepter les vidéos longues. Les projets API YouTube non audités peuvent être limités aux vidéos privées par YouTube ; mettre l’application OAuth en production et obtenir l’autorisation API d’envois publics sont deux sujets distincts. Si YouTube refuse le passage public, la vidéo reste privée et le workflow signale l’échec ; ne pas annoncer un succès public ni réencoder une autre copie pour contourner le refus. Référence : https://developers.google.com/youtube/v3/docs/videos/insert.
 
 ### Twitch
 

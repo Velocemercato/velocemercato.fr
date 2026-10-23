@@ -274,6 +274,7 @@ class DiffusionTests(unittest.TestCase):
         self.assertEqual(code,'TEST_OAUTH_CODE')
         self.assertTrue(redirect.startswith('http://127.0.0.1:'))
         self.assertEqual(received['code_challenge_method'],['S256'])
+        self.assertIn('https://www.googleapis.com/auth/youtube.force-ssl',received['scope'][0].split())
         import hashlib
         self.assertEqual(received['code_challenge'][0],base64.urlsafe_b64encode(hashlib.sha256(verifier.encode()).digest()).decode().rstrip('='))
         self.assertNotIn(code,output.getvalue())

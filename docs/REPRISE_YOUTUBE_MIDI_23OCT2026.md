@@ -47,9 +47,15 @@ Le statut contrôlé et les liens effectivement publics apparaissent aussi dans
 les annotations GitHub. Les diagnostics des vidéos de présentation ne montrent
 plus de fragment d’identifiant secret.
 
+Le raccordement OAuth demande désormais aussi `youtube.force-ssl`, droit accepté
+par `videos.update`. Les deux anciens droits (`youtube.upload` et `youtube.readonly`)
+permettent l’envoi privé mais pas cette modification de visibilité. Un jeton déjà
+créé ne gagne pas de droit sans une nouvelle autorisation Google du propriétaire.
+
 ## Vérifications
 
-- 23 tests de diffusion, dont l’assemblage réel de durées fractionnaires et le refus des sources CDN.
+- 24 tests de diffusion, dont l’assemblage réel de durées fractionnaires, le refus des sources CDN,
+  l’absence de fragments secrets dans les diagnostics et le droit de publication dans le lien OAuth.
 - 11 tests de production, dont la durée vidéo complète et les deux profils.
 - Reprise locale de trois fichiers créés par l’ancien encodeur : cadence constante et décodage complet.
 - Aucun test local ne contacte les comptes ni ne publie une vidéo.
