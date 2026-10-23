@@ -19,9 +19,9 @@ class ProfessionalTests(unittest.TestCase):
             self.assertEqual(page.locator('.ap:not([hidden])').get_attribute('href'), '/professionnels/')
             self.assertEqual(page.locator('.grp .gapps .gapps').count(), 0)
         else:
-            self.assertTrue(page.locator('.vmbar a[href="/web-studio.html"]').is_visible())
+            self.assertTrue(page.locator('.home-studio-link[href="/web-studio.html"]').is_visible())
             self.assertIn('football', page.title().lower())
-            self.assertIn('cartes de visite', page.locator('.promo-entry').inner_text())
+            self.assertIn('cartes de visite', page.locator('.home-professional').inner_text())
         context.close()
 
     def test_offer_shortcuts_and_prefilled_url(self):

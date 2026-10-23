@@ -48,7 +48,8 @@ class BulletinsBrowserTests(unittest.TestCase):
             context=self.context(width);page=context.new_page();errors=[]
             page.on('pageerror',lambda error:errors.append(str(error)))
             page.goto(self.base,wait_until='networkidle')
-            page.get_by_role('link',name='📺 Où regarder les matchs légalement ? Diffuseurs officiels →').click()
+            page.locator('#plus-de-foot > summary').click()
+            page.get_by_role('link',name='Où regarder les matchs légalement ? →',exact=True).click()
             self.assertTrue(page.url.endswith('/ou-regarder.html'))
             self.assertEqual(page.locator('h1').inner_text(),'Où regarder les matchs ?')
             self.assertFalse(page.evaluate('document.documentElement.scrollWidth>innerWidth'))

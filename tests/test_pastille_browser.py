@@ -123,12 +123,13 @@ class PlayerTests(unittest.TestCase):
         page.wait_for_function("!!document.querySelector('#homePastilleVideo').src")
         context.close()
 
-    def test_news_sites_show_their_actual_published_journal(self):
+    def test_news_sites_show_their_published_cdn_journal_when_no_public_youtube(self):
         for width in [390,1440]:
             for path,universe in [('actus','actus'),('vm-gaming','gaming'),('belfort','actus')]:
                 with self.subTest(width=width,path=path):
                     context=self.playback_context(width);page=context.new_page();errors=[]
                     page.on('pageerror',lambda error:errors.append(str(error)))
+                    context.route('**/studio/diffusions.json',lambda route:route.fulfill(json=[]))
                     page.goto(self.base+'/'+path+'/',wait_until='networkidle')
                     section=page.locator('[data-pastille-universe]')
                     actual=next(row for row in self.rows if row['univers']==universe and row['publie'])
