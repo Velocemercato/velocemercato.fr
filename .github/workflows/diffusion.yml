@@ -4,6 +4,11 @@ on:
   workflow_run:
     workflows: ['VM Studio - La Pastille TV']
     types: [completed]
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: 'Relancer la diffusion d’une émission déjà validée (numéro du lancement La Pastille TV)'
+        required: true
 
 permissions:
   actions: read
@@ -15,12 +20,12 @@ concurrency:
 
 jobs:
   diffusion:
-    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.head_repository.full_name == github.repository && (vars.VM_AUTO_YOUTUBE == 'true' || vars.VM_AUTO_TWITCH == 'true')
+    if: (github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.head_repository.full_name == github.repository)) && (vars.VM_AUTO_YOUTUBE == 'true' || vars.VM_AUTO_TWITCH == 'true')
     runs-on: ubuntu-latest
     timeout-minutes: 120
     env:
       GH_TOKEN: ${{ github.token }}
-      SOURCE_RUN_ID: ${{ github.event.workflow_run.id }}
+      SOURCE_RUN_ID: ${{ github.event.workflow_run.id || inputs.source_run_id }}
       VM_AUTO_YOUTUBE: ${{ vars.VM_AUTO_YOUTUBE }}
       VM_AUTO_TWITCH: ${{ vars.VM_AUTO_TWITCH }}
       VM_YOUTUBE_PUBLIC: ${{ vars.VM_YOUTUBE_PUBLIC }}
@@ -57,6 +62,9 @@ jobs:
         run: |
           set -euo pipefail
           # Aucun artefact pour les spéciales, les aperçus ou les éditions incomplètes.
+          # Relance manuelle : uniquement un lancement réussi de La Pastille TV sur main.
+          ok=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$SOURCE_RUN_ID" --jq '(.name == "VM Studio - La Pastille TV" and .head_branch == "main" and .conclusion == "success")')
+          if [ "$ok" != true ]; then echo 'Lancement source refusé.'; echo 'ready=false' >> "$GITHUB_OUTPUT"; exit 0; fi
           count=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$SOURCE_RUN_ID/artifacts" --jq '[.artifacts[] | select(.name == "pastille-masters" and .expired == false)] | length')
           if [ "$count" = 0 ]; then echo 'ready=false' >> "$GITHUB_OUTPUT"; exit 0; fi
           gh run download "$SOURCE_RUN_ID" --repo "$GITHUB_REPOSITORY" --name pastille-masters --dir "$MASTERS"
