@@ -78,7 +78,7 @@ def main():
     ref = os.getenv('YOUTUBE_REFRESH_TOKEN', '').strip()
     # Contrôle sans divulgation : l'ID client est public ; du secret on ne montre que les 4 derniers caractères,
     # comme la console Google (****xxxx), pour comparer.
-    print(f'::notice::Contrôle : ID client = {cid} · secret commence par GOCSPX- : {sec.startswith("GOCSPX-")} · '
+    print(f'::notice::Contrôle : ID client longueur {len(cid)}, commence par 143768939550- : {cid.startswith("143768939550-")}, finit par .apps.googleusercontent.com : {cid.endswith(".apps.googleusercontent.com")} · secret commence par GOCSPX- : {sec.startswith("GOCSPX-")} · '
           f'longueur secret {len(sec)} · fin du secret ****{sec[-4:] if len(sec) > 8 else "?"} · '
           f'jeton commence par 1// : {ref.startswith("1//")} (longueur {len(ref)}) · chaîne commence par UC : '
           f'{os.getenv("YOUTUBE_CHANNEL_ID", "").strip().startswith("UC")}')
