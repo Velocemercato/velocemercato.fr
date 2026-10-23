@@ -1,5 +1,125 @@
 [
  {
+  "id": "foot-edition-20261023-2000",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 20 h",
+  "titre": "La Pastille Foot - JT du 23 octobre, 20 heures",
+  "accroche": "Bonsoir, voici les infos foot du soir.",
+  "duree": 145,
+  "date": "2026-10-23T20:36+02:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261023-2000.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-10-23T20:00:00+02:00",
+  "source_start": "2026-10-23T12:00:00+02:00",
+  "source_end": "2026-10-23T20:00:00+02:00",
+  "sources": [
+   {
+    "id": "rss-v2-82b8296446c0d196916a33",
+    "titre": "Getafe : Bordalas dénonce une trahison de sa direction après la défaite face à Lugano",
+    "publishedAt": "2026-10-23T17:22:10Z",
+    "createdAt": "2026-10-23T17:56:41Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/europa-conference-league/crise-a-getafe-je-me-sens-trahi-la-fureur-de-bordalas-furieux-contre-sa-direction-apres-la-gifle-recue-en-ligue-conference_AV-202610230773.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-ead378e82bf821c8caad12",
+    "titre": "Ligue 1 : Strasbourg refuse de déplacer son match contre Rennes",
+    "publishedAt": "2026-10-23T17:45:00Z",
+    "createdAt": "2026-10-23T17:56:37Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a179900864299235630-ligue-1-strasbourg-a-refuse-de-deplacer-son-match-contre-rennes"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-346f2a8735c5c4a2090998",
+    "titre": "National 1 : Châteauroux se sépare de Xavier Dudoit, Fabrice Fontaine intérimaire",
+    "publishedAt": "2026-10-23T16:58:00Z",
+    "createdAt": "2026-10-23T17:03:37Z",
+    "references": [
+     {
+      "nom": "Foot National",
+      "url": "https://www.foot-national.com/mercato/national-1-accord-trouve-a-chateauroux-xavier-dudoit-ecarte-de-son-poste-dentraineur-de-la-berrichonne-960186"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-04e4935e71fb25f924fac6",
+    "titre": "Nabil Ghilas, ex-Porto, brille avec Berre en National 2",
+    "publishedAt": "2026-10-23T17:00:00Z",
+    "createdAt": "2026-10-23T17:03:33Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a2297066252222252354-de-la-ligue-des-champions-au-regional-2-le-parcours-hors-du-commun-de-nabil-ghilas"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-f7ce8a0f7fb3712b13e075",
+    "titre": "Wimbledon : l'adjoint Terry Skiverton atteint d'un cancer de la gorge",
+    "publishedAt": "2026-10-23T15:45:07Z",
+    "createdAt": "2026-10-23T16:06:36Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cve8r6z631lyo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-e0afccbf9a7fb95c11fb26",
+    "titre": "Espaly s'incline à domicile pour la première fois depuis septembre 2024",
+    "publishedAt": "2026-10-23T15:57:00Z",
+    "createdAt": "2026-10-23T16:06:29Z",
+    "references": [
+     {
+      "nom": "Foot National",
+      "url": "https://www.foot-national.com/actus/plus-de-deux-ans-apres-sa-derniere-defaite-un-club-de-national-2-tombe-a-domicile-960139"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-de12eef22db4b988c6da6e",
+    "titre": "OM : Daniel Riolo s'interroge sur le niveau d'Angel Gomes",
+    "publishedAt": "2026-10-23T15:30:00Z",
+    "createdAt": "2026-10-23T15:37:28Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/marseille/om-dr-riolo-demande-une-visite-medicale-pour-angel-gomes"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-b2c2ce1a3163b585d6ae25",
+    "titre": "Bayern Munich : Alphonso Davies retrouve son explosivité et son efficacité",
+    "publishedAt": "2026-10-23T14:01:27Z",
+    "createdAt": "2026-10-23T15:06:57Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a370400477148564338-bayern-munich-limpressionnant-retour-au-premier-plan-dalphonso-davies"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "actus-edition-20261023-1900",
   "univers": "actus",
   "format": "edition",
