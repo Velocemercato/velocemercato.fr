@@ -62,6 +62,9 @@ jobs:
         run: |
           PLAN=$(python pastille_schedule.py "$CRON")
           echo "plan=$PLAN" >> "$GITHUB_OUTPUT"
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ -z "$PLAN" ]; then
+            echo 'Aucune nouvelle émission à cette heure de Paris : les étapes de production sont volontairement ignorées.' >> "$GITHUB_STEP_SUMMARY"
+          fi
       - name: Vérifier la connexion des plateformes longues
         id: diffusion
         if: github.event_name == 'workflow_dispatch' || steps.plan.outputs.plan != ''
@@ -166,6 +169,14 @@ jobs:
             studio/tmp/*
             !studio/tmp/masters/
           if-no-files-found: warn
+      - name: Conserver les rendus qui attendent un hébergement adapté
+        if: always() && hashFiles('studio/tmp/a-heberger/*.json') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: pastille-a-heberger
+          path: studio/tmp/a-heberger/
+          retention-days: 2
+          if-no-files-found: error
       - name: Enregistrer les émissions validées
         if: always() && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.publish) && (github.event_name == 'workflow_dispatch' || steps.plan.outputs.plan != '')
         run: |

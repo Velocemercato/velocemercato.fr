@@ -198,6 +198,29 @@ def publish(path_mp4, path_jpg, path_audio):
         return sha
 
 
+def save_master_metadata(entry):
+    if os.getenv('VM_KEEP_HD_MASTER') == '1':
+        master = ROOT / 'studio/tmp/masters' / (entry['id'] + '.json')
+        master.parent.mkdir(parents=True, exist_ok=True)
+        master.write_text(json.dumps(entry, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+
+
+def preserve_for_hosting(entry, script, output):
+    """Conserver le rendu terminé ; les listes publiques restent inchangées."""
+    entry.update(publie=False, hebergement='en_attente', motif='limite_cdn')
+    pending = ROOT / 'studio/tmp/a-heberger'
+    pending.mkdir(parents=True, exist_ok=True)
+    for suffix in ('.mp4', '.jpg', '.m4a'):
+        source = output.with_suffix(suffix)
+        shutil.move(str(source), pending / source.name)
+    (pending / (entry['id'] + '.json')).write_text(
+        json.dumps({'emission': entry, 'script': script}, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+    save_master_metadata(entry)
+    print(f"::warning title=Vidéo conservée, hébergement requis::{entry['univers']} : rendu terminé, "
+          'limite CDN dépassée. Copie conservée dans l’artefact pastille-a-heberger ; '
+          'aucune vidéo tronquée ou fausse publication. Les originaux HD suivent la diffusion autorisée si elle est configurée.', flush=True)
+
+
 def make(univers, fmt, moment):
     U = UNIVERS[univers]
     F = FORMATS[fmt]
@@ -234,14 +257,17 @@ def make(univers, fmt, moment):
     auto = D.media.publication_enabled() and engines == ['piper'] and json.loads(CONFIG.read_text(encoding='utf-8')).get('publication_auto') is True
     entry = {'id': ident, 'univers': univers, 'format': fmt, 'moment': moment, 'label': label,
              'titre': script['titre'], 'accroche': script['accroche'], 'duree': round(total),
-             'date': now.isoformat(timespec='minutes'), 'publie': auto, 'voix': engines, 'speech_rate': D.media.speech_rate()}
+             'date': now.isoformat(timespec='minutes'), 'publie': False, 'voix': engines, 'speech_rate': D.media.speech_rate()}
     entry['fichier'] = out.name
-    if os.getenv('VM_KEEP_HD_MASTER') == '1':
-        master = ROOT / 'studio/tmp/masters' / out.with_suffix('.json').name
-        master.parent.mkdir(parents=True, exist_ok=True)
-        master.write_text(json.dumps(entry, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+    save_master_metadata(entry)
     if auto:
-        entry['media_sha'] = publish(out, out.with_suffix('.jpg'), out.with_suffix('.m4a'))
+        try:
+            entry['media_sha'] = publish(out, out.with_suffix('.jpg'), out.with_suffix('.m4a'))
+        except D.media.CDNCapacityError:
+            preserve_for_hosting(entry, script, out)
+            return entry
+        entry['publie'] = True
+        save_master_metadata(entry)
         poster = ROOT / 'studio/episodes/posters' / out.with_suffix('.jpg').name
         poster.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(out.with_suffix('.jpg'), poster)
@@ -276,12 +302,24 @@ def main():
     if not jobs:
         print('Aucune émission prévue à cette heure.')
     errors = 0
+    outcomes = []
     for univers, fmt, moment in jobs:
         try:
-            make(univers, fmt, moment)
+            entry = make(univers, fmt, moment)
+            state = ('publiée sur le site' if entry.get('publie') else
+                     'conservée, hébergement requis' if entry.get('hebergement') == 'en_attente' else
+                     'aperçu préparé, non publié') if entry else 'aucune nouvelle émission'
+            outcomes.append(f'| {univers} | {fmt} / {moment} | {state} |')
         except Exception as exc:
             errors += 1
+            outcomes.append(f'| {univers} | {fmt} / {moment} | échec : {type(exc).__name__} |')
             print(f'Émission {univers}/{fmt} ratée : {type(exc).__name__} - {str(exc)[:200]}', flush=True)
+    summary = os.getenv('GITHUB_STEP_SUMMARY')
+    if summary:
+        with open(summary, 'a', encoding='utf-8') as stream:
+            stream.write('## La Pastille — résultat de production\n\n| Univers | Format / moment | Résultat |\n|---|---|---|\n' +
+                         '\n'.join(outcomes) + '\n\nUne vidéo conservée attend son hébergement ; elle n’est pas annoncée comme publiée. '
+                         'Les fichiers de reprise sont disponibles deux jours dans l’artefact `pastille-a-heberger`.\n')
     if errors:
         sys.exit(1)
 

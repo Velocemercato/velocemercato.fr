@@ -1,0 +1,47 @@
+name: VM - Tests Pastille sans publication
+
+on:
+  push:
+    paths:
+      - 'update_emission.py'
+      - 'update_debat.py'
+      - 'pastille_*.py'
+      - 'tools/assembler_jt.py'
+      - 'tests/test_pastille.py'
+      - 'tests/test_pastille_recovery.py'
+      - '.github/workflows/emissions.yml'
+      - '.github/workflows/tests-pastille.yml'
+  pull_request:
+    paths:
+      - 'update_emission.py'
+      - 'update_debat.py'
+      - 'pastille_*.py'
+      - 'tests/test_pastille*.py'
+      - '.github/workflows/emissions.yml'
+      - '.github/workflows/tests-pastille.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-pastille-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Installer les dépendances de test
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          python -m pip install 'Pillow==12.3.0'
+      - name: Vérifier les rendus et la reprise sans réseau de publication
+        run: |
+          python -m unittest discover -s tests -p 'test_pastille.py' -v
+          python -m unittest discover -s tests -p 'test_pastille_recovery.py' -v

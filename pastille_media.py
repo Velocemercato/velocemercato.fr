@@ -12,6 +12,10 @@ CDN_MAX_BYTES = 20_000_000
 CDN_PACKAGE_BYTES = 150_000_000
 
 
+class CDNCapacityError(RuntimeError):
+    """Rendu valide dont le transport CDN ne peut pas accepter la taille."""
+
+
 def speech_rate():
     value = float(os.getenv('VM_SPEECH_RATE', '1.12'))
     if not 1.0 <= value <= 1.35:
@@ -66,7 +70,10 @@ def _encode(folder, output, total, music, hd):
         '-map', '0:v', '-map', '[a]', '-t', f'{total:.3f}',
         '-r', '24' if hd else '12', '-c:v', 'libx264', '-threads', '2', '-preset', 'medium' if hd else 'veryfast',
         '-tune', 'stillimage', '-crf', '22' if hd else '31', '-maxrate', '1800k' if hd else '600k', '-bufsize', '3600k' if hd else '1200k',
-        '-profile:v', 'high', '-level', '3.1', '-g', '48' if hd else '24', '-pix_fmt', 'yuv420p',
+        # Les plans fixes n'ont pas besoin d'une image complète toutes les deux
+        # secondes. Dix secondes entre images clés évitent cette duplication,
+        # sans réduire définition, fréquence, qualité CRF ou qualité audio.
+        '-profile:v', 'high', '-level', '3.1', '-g', '48' if hd else '120', '-pix_fmt', 'yuv420p',
         '-c:a', 'aac', '-b:a', '96k' if hd else '56k', '-ar', '48000', '-ac', '1',
         '-movflags', '+faststart', str(output)
     ], check=True)
@@ -87,7 +94,7 @@ def validate_cdn_files(files):
         if not path.is_file() or path.stat().st_size == 0:
             raise RuntimeError(f'Média absent ou vide : {path.name}')
         if path.stat().st_size >= CDN_MAX_BYTES:
-            raise RuntimeError(f'{path.name} dépasse la limite jsDelivr de 20 Mo. '
+            raise CDNCapacityError(f'{path.name} dépasse la limite jsDelivr de 20 Mo. '
                                'Utiliser un hébergeur vidéo adapté ; ne pas dégrader silencieusement la qualité.')
 
 
@@ -95,7 +102,7 @@ def validate_cdn_package(folder):
     total = sum(path.stat().st_size for path in Path(folder).rglob('*')
                 if path.is_file() and '.git' not in path.relative_to(folder).parts)
     if total >= CDN_PACKAGE_BYTES:
-        raise RuntimeError('Le lot de médias dépasse la limite GitHub/jsDelivr de 150 Mo. Utiliser un hébergeur vidéo adapté.')
+        raise CDNCapacityError('Le lot de médias dépasse la limite GitHub/jsDelivr de 150 Mo. Utiliser un hébergeur vidéo adapté.')
 
 
 def prune_cdn_package(folder, protected, keep=24):
