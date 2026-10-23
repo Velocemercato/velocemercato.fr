@@ -99,3 +99,10 @@ html[data-theme] body.home-simple{background-image:none;background-color:var(--b
 .home-story-tag{font-family:system-ui,sans-serif;font-weight:700;font-style:normal;transform:none;border-radius:5px}
 .home-simple #vmFab{position:static;display:inline-flex;align-items:center;margin-top:16px;min-height:40px;padding:9px 14px;font:700 .8rem/1.4 system-ui,sans-serif;box-shadow:none;border-width:1px}
 @media(max-width:359px){.home-simple #cats .chip{font-size:.69rem;padding-inline:8px}}
+
+/* Filtres principaux : une ligne qui défile sur téléphone, « Filtres » à droite */
+.home-filters .cats-row{display:flex;flex-wrap:wrap;gap:7px;flex:1 1 0;min-width:0;align-items:center}
+.home-filter-more{flex:none}
+@media(max-width:639px){.home-filters #cats{flex-wrap:wrap}.home-filters .cats-row{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:2px 2px 4px;-webkit-overflow-scrolling:touch}.home-filters .cats-row::-webkit-scrollbar{display:none}.home-filters .cats-row .chip{flex:none}}
+/* Téléphone : la phrase d’accroche laisse la place aux actus dès le premier écran */
+@media(max-width:480px){.v2-lead{display:none}}
