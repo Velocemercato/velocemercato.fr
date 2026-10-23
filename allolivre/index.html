@@ -124,7 +124,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 <li>✅ Les achats sont remboursés <b>sur présentation du ticket</b>. Un petit dédommagement est possible si vous vous mettez d'accord <b>avant</b>.</li>
 <li>⛔ Interdit : alcool, tabac, médicaments sur ordonnance, argent liquide à transporter, objets de valeur, animaux, colis dont on ne connaît pas le contenu.</li>
 <li>🛡️ Rencontre-toi en sécurité : premier contact par téléphone, livraison à la porte, pas d'entrée chez les gens.</li>
-<li>📵 Un souci ? Écris-nous : <a href="mailto:vmunivers.fr@gmail.fr?subject=AlloLivre%20%3A%20signalement">vmunivers.fr@gmail.fr</a>.</li>
+<li>📵 Un souci ? Écris-nous : <a href="mailto:vminvest.fr@gmail.com?subject=AlloLivre%20%3A%20signalement">vminvest.fr@gmail.com</a>.</li>
 </ul>
 <div class="warn"><b>Phase test :</b> AlloLivre met des voisins en relation, il ne réalise pas lui-même les livraisons et ne prend aucune commission. Aucun paiement ne passe par ce site. Si un jour des livreurs sont rémunérés régulièrement, ils devront avoir un statut (micro-entreprise) et une assurance adaptée.</div></div>
 </main>
@@ -179,7 +179,7 @@ ib.onclick=function(){
  if(ios){alert('Pour installer '+nom+' sur iPhone : — 1. Ouvre cette page dans Safari — 2. Bouton Partager ↑ en bas — 3. « Sur l’écran d’accueil » — 4. « Ajouter »')}
 
  try{localStorage.setItem(key,'1')}catch(e){}ib.classList.remove('show')};
-window.vmMail=function(su,bo){var to='vmunivers.fr@gmail.fr';location.href='mailto:'+to+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(bo);
+window.vmMail=function(su,bo){var to='vminvest.fr@gmail.com';location.href='mailto:'+to+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(bo);
  var d=document.getElementById('vmMailBox');if(d)d.remove();d=document.createElement('div');d.id='vmMailBox';d.setAttribute('role','dialog');
  d.style.cssText='position:fixed;left:12px;right:12px;bottom:12px;z-index:95;max-width:440px;margin:0 auto;background:#fff;color:#0b1533;border:3px solid #000;border-radius:16px;padding:14px;box-shadow:5px 5px 0 #1d3fb8;font:15px/1.4 system-ui,sans-serif';
  d.innerHTML='<b>✉️ Ton appli e-mail s’ouvre avec le message prêt.</b><br>Appuie sur « Envoyer » dedans : tant que ce n’est pas fait, rien n’est envoyé.<br><small>Rien ne s’ouvre ? Copie la demande et envoie-la à '+to+'.</small><div style="display:flex;gap:8px;margin-top:10px"><button type="button" id="vmMailCp" style="flex:1;font:800 .95rem system-ui;padding:10px;border-radius:999px;border:2px solid #000;background:#f4cf55;cursor:pointer">📋 Copier la demande</button><button type="button" id="vmMailX" style="font:800 .95rem system-ui;padding:10px 14px;border-radius:999px;border:2px solid #000;background:#fff;cursor:pointer">OK</button></div>';

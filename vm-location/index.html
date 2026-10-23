@@ -105,7 +105,7 @@ img.flyer{display:block;width:100%;max-width:900px;margin:12px auto;border-radiu
 <p class="note" style="margin-top:4px">Plan indicatif, non contractuel.</p>
 
 <h2 id="contact">Contact &amp; devis gratuit</h2>
-<p class="contact">✉️ <a href="mailto:vmunivers.fr@gmail.fr">vmunivers.fr@gmail.fr</a> · 📍 Champagney 70290</p>
+<p class="contact">✉️ <a href="mailto:vminvest.fr@gmail.com">vminvest.fr@gmail.com</a> · 📍 Champagney 70290</p>
 <form class="form" id="f">
 <label for="q">Je suis intéressé par</label><select id="q"><option>VM Détailing (rénovation / jantes)</option><option>Un local pro (lavage, vitrage, covering, carrosserie)</option><option>Une cellule de 72 m²</option><option>Une grande cellule de 108 m²</option><option>Autre demande</option></select>
 <label for="n">Nom</label><input id="n" required>
@@ -116,7 +116,7 @@ img.flyer{display:block;width:100%;max-width:900px;margin:12px auto;border-radiu
 <img class="flyer" src="img/flyer.webp" alt="Flyer Bâtiment VM Location" loading="lazy">
 <p class="note">VM Détailing · Bâtiment VM Location · VM Univers · activité d’entrepreneur individuel · SIRET 528 102 916 00012 · Champagney 70290 · Visuels d'illustration · <a href="/mentions-legales.html">Mentions légales</a> · <a href="https://vmunivers.fr/">L'univers VM</a></p>
 </main>
-<script>document.getElementById('f').onsubmit=function(e){e.preventDefault();var g=function(i){return document.getElementById(i).value};var b='Demande : '+g('q')+'\nNom : '+g('n')+'\nTéléphone : '+g('t')+'\n\n'+g('m');location.href='mailto:vmunivers.fr@gmail.fr?subject='+encodeURIComponent('Bâtiment VM Location – '+g('q'))+'&body='+encodeURIComponent(b)};</script>
+<script>document.getElementById('f').onsubmit=function(e){e.preventDefault();var g=function(i){return document.getElementById(i).value};var b='Demande : '+g('q')+'\nNom : '+g('n')+'\nTéléphone : '+g('t')+'\n\n'+g('m');location.href='mailto:vminvest.fr@gmail.com?subject='+encodeURIComponent('Bâtiment VM Location – '+g('q'))+'&body='+encodeURIComponent(b)};</script>
 <button type="button" class="vmfab" id="vmFab" aria-haspopup="dialog">📤 Partager</button>
 <button type="button" class="vminst" id="vmInst">📲 Installer l'app</button>
 <div class="vmsh" id="vmSh" hidden role="dialog" aria-modal="true" aria-labelledby="vmShT"><div class="vmsh-box">
@@ -159,7 +159,7 @@ ib.onclick=function(){
  if(ios){alert('Pour installer '+nom+' sur iPhone : — 1. Ouvre cette page dans Safari — 2. Bouton Partager ↑ en bas — 3. « Sur l’écran d’accueil » — 4. « Ajouter »')}
 
  try{localStorage.setItem(key,'1')}catch(e){}ib.classList.remove('show')};
-window.vmMail=function(su,bo){var to='vmunivers.fr@gmail.fr';location.href='mailto:'+to+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(bo);
+window.vmMail=function(su,bo){var to='vminvest.fr@gmail.com';location.href='mailto:'+to+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(bo);
  var d=document.getElementById('vmMailBox');if(d)d.remove();d=document.createElement('div');d.id='vmMailBox';d.setAttribute('role','dialog');
  d.style.cssText='position:fixed;left:12px;right:12px;bottom:12px;z-index:95;max-width:440px;margin:0 auto;background:#fff;color:#0b1533;border:3px solid #000;border-radius:16px;padding:14px;box-shadow:5px 5px 0 #1d3fb8;font:15px/1.4 system-ui,sans-serif';
  d.innerHTML='<b>✉️ Ton appli e-mail s’ouvre avec le message prêt.</b><br>Appuie sur « Envoyer » dedans : tant que ce n’est pas fait, rien n’est envoyé.<br><small>Rien ne s’ouvre ? Copie la demande et envoie-la à '+to+'.</small><div style="display:flex;gap:8px;margin-top:10px"><button type="button" id="vmMailCp" style="flex:1;font:800 .95rem system-ui;padding:10px;border-radius:999px;border:2px solid #000;background:#f4cf55;cursor:pointer">📋 Copier la demande</button><button type="button" id="vmMailX" style="font:800 .95rem system-ui;padding:10px 14px;border-radius:999px;border:2px solid #000;background:#fff;cursor:pointer">OK</button></div>';

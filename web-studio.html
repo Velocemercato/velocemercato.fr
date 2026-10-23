@@ -139,7 +139,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 </div>
 <p style="font-size:.78rem;color:#8d8670;text-align:center;margin-top:24px">VM Univers · activité d’entrepreneur individuel · SIRET 528 102 916 00012 – TVA non applicable, art. 293 B du CGI · <a href="/mentions-legales.html" style="color:inherit">Mentions légales</a></p>
 </main>
-<footer>Véloce Web Studio · un projet du <a href="https://vmunivers.fr/">Groupe VM</a> · vmunivers.fr@gmail.fr</footer>
+<footer>Véloce Web Studio · un projet du <a href="https://vmunivers.fr/">Groupe VM</a> · vminvest.fr@gmail.com</footer>
 <script>
 document.getElementById('devisForm').addEventListener('submit',function(e){e.preventDefault();
 var n=document.getElementById('f-nom').value.trim(),t=document.getElementById('f-type').value,m=document.getElementById('f-msg').value.trim();
@@ -188,7 +188,7 @@ ib.onclick=function(){
  if(ios){alert('Pour installer '+nom+' sur iPhone : — 1. Ouvre cette page dans Safari — 2. Bouton Partager ↑ en bas — 3. « Sur l’écran d’accueil » — 4. « Ajouter »')}
 
  try{localStorage.setItem(key,'1')}catch(e){}ib.classList.remove('show')};
-window.vmMail=function(su,bo){var to='vmunivers.fr@gmail.fr';location.href='mailto:'+to+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(bo);
+window.vmMail=function(su,bo){var to='vminvest.fr@gmail.com';location.href='mailto:'+to+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(bo);
  var d=document.getElementById('vmMailBox');if(d)d.remove();d=document.createElement('div');d.id='vmMailBox';d.setAttribute('role','dialog');
  d.style.cssText='position:fixed;left:12px;right:12px;bottom:12px;z-index:95;max-width:440px;margin:0 auto;background:#fff;color:#0b1533;border:3px solid #000;border-radius:16px;padding:14px;box-shadow:5px 5px 0 #1d3fb8;font:15px/1.4 system-ui,sans-serif';
  d.innerHTML='<b>✉️ Ton appli e-mail s’ouvre avec le message prêt.</b><br>Appuie sur « Envoyer » dedans : tant que ce n’est pas fait, rien n’est envoyé.<br><small>Rien ne s’ouvre ? Copie la demande et envoie-la à '+to+'.</small><div style="display:flex;gap:8px;margin-top:10px"><button type="button" id="vmMailCp" style="flex:1;font:800 .95rem system-ui;padding:10px;border-radius:999px;border:2px solid #000;background:#f4cf55;cursor:pointer">📋 Copier la demande</button><button type="button" id="vmMailX" style="font:800 .95rem system-ui;padding:10px 14px;border-radius:999px;border:2px solid #000;background:#fff;cursor:pointer">OK</button></div>';

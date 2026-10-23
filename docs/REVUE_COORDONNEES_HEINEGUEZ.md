@@ -1,7 +1,7 @@
 # Coordonnées, navigation VM et présentateur
 
 - Foot, Actus, Gaming : contact unique `velocemercato.fr@gmail.com`.
-- Portail VM Univers et services : `vmunivers.fr@gmail.fr`, selon l’adresse fournie. La réception de cette boîte n’a pas été vérifiée.
+- Portail VM Univers et services : `vminvest.fr@gmail.com`, selon l’adresse fournie. La réception de cette boîte n’a pas été vérifiée.
 - Nom personnel et numéro retirés des pages actuelles, de leurs textes alternatifs et des liens de contact. Le flyer Détailing est également corrigé.
 - Heineguez est le nom du présentateur virtuel dans les pages et les modèles des futures émissions. Les mentions IA restent affichées.
 - VM Univers reste accessible en un clic dans la navigation commune, y compris pendant le défilement et sur les pages d’articles générées.

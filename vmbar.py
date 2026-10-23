@@ -111,7 +111,7 @@ def inject(s,active,app='foot',contact='velocemercato.fr@gmail.com'):
 BUSINESS_PAGES = {'vm/index.html', 'allolivre/index.html', 'services-web.html', 'groupe.html', 'pub/index.html', 'boutique/index.html', 'vm-location/index.html', 'pro/index.html', 'emploi/index.html', 'comparateur/index.html', 'shop/index.html', 'menu/index.html', 'pro-auto/index.html', 'web-studio.html', 'cv/index.html'}
 
 def apply(path,active,app='foot'):
-    contact='vmunivers.fr@gmail.fr' if path in BUSINESS_PAGES else 'velocemercato.fr@gmail.com'
+    contact='vminvest.fr@gmail.com' if path in BUSINESS_PAGES else 'velocemercato.fr@gmail.com'
     s=inject(open(path,encoding='utf-8').read(),active,app,contact)
     open(path,'w',encoding='utf-8').write(s)
 

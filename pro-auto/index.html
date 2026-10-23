@@ -100,7 +100,7 @@ $('q').oninput=draw;
 C.onclick=function(e){var b=e.target.closest('button');if(!b)return;cat=b.dataset.c;[].forEach.call(C.children,function(x){x.classList.toggle('on',x===b)});draw()};
 $('tabs').onclick=function(e){var b=e.target.closest('button');if(!b)return;vue=b.dataset.v;[].forEach.call(this.children,function(x){x.classList.toggle('on',x===b)});$('v-pros').hidden=vue!=='pros';$('v-ann').hidden=vue!=='ann';draw()};
 $('f').onsubmit=function(e){e.preventDefault();var k=$('kind');var b='Annonce VM Auto Particulier\n\nType : '+k.options[k.selectedIndex].text+'\nCatégorie : '+nomCat($('cat').value)+'\nTitre : '+$('ti').value+'\nVille : '+$('vi').value+' ('+$('dep').value+')'+'\nDétails : '+$('de').value+'\nContact : '+$('ct').value+'\n\nJ\'accepte la publication après vérification.';
- if(window.vmMail)vmMail('VM Auto Particulier – '+$('ti').value,b);else location.href='mailto:vmunivers.fr@gmail.fr?subject='+encodeURIComponent('VM Auto Particulier – '+$('ti').value)+'&body='+encodeURIComponent(b)};
+ if(window.vmMail)vmMail('VM Auto Particulier – '+$('ti').value,b);else location.href='mailto:vminvest.fr@gmail.com?subject='+encodeURIComponent('VM Auto Particulier – '+$('ti').value)+'&body='+encodeURIComponent(b)};
 })();
 </script>
 <button type="button" class="vmfab" id="vmFab" aria-haspopup="dialog">📤 Partager</button>
@@ -145,7 +145,7 @@ ib.onclick=function(){
  if(ios){alert('Pour installer '+nom+' sur iPhone : — 1. Ouvre cette page dans Safari — 2. Bouton Partager ↑ en bas — 3. « Sur l’écran d’accueil » — 4. « Ajouter »')}
 
  try{localStorage.setItem(key,'1')}catch(e){}ib.classList.remove('show')};
-window.vmMail=function(su,bo){var to='vmunivers.fr@gmail.fr';location.href='mailto:'+to+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(bo);
+window.vmMail=function(su,bo){var to='vminvest.fr@gmail.com';location.href='mailto:'+to+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(bo);
  var d=document.getElementById('vmMailBox');if(d)d.remove();d=document.createElement('div');d.id='vmMailBox';d.setAttribute('role','dialog');
  d.style.cssText='position:fixed;left:12px;right:12px;bottom:12px;z-index:95;max-width:440px;margin:0 auto;background:#fff;color:#0b1533;border:3px solid #000;border-radius:16px;padding:14px;box-shadow:5px 5px 0 #1d3fb8;font:15px/1.4 system-ui,sans-serif';
  d.innerHTML='<b>✉️ Ton appli e-mail s’ouvre avec le message prêt.</b><br>Appuie sur « Envoyer » dedans : tant que ce n’est pas fait, rien n’est envoyé.<br><small>Rien ne s’ouvre ? Copie la demande et envoie-la à '+to+'.</small><div style="display:flex;gap:8px;margin-top:10px"><button type="button" id="vmMailCp" style="flex:1;font:800 .95rem system-ui;padding:10px;border-radius:999px;border:2px solid #000;background:#f4cf55;cursor:pointer">📋 Copier la demande</button><button type="button" id="vmMailX" style="font:800 .95rem system-ui;padding:10px 14px;border-radius:999px;border:2px solid #000;background:#fff;cursor:pointer">OK</button></div>';
