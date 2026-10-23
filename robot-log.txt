@@ -1,37 +1,36 @@
-Passage du 2026-10-22 23:54 UTC (schedule)
+Passage du 2026-10-23 00:26 UTC (schedule)
 
 [notice] A new release of pip is available: 26.2.1 -> 26.2.2
 [notice] To update, run: pip install --upgrade pip
-Nettoyage : 0 breves vides retirees, 350 gardees.
+Nettoyage : 0 breves vides retirees, 352 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 350 articles conservés et 41 flashs existants.
-RSS Foot National / NATIONAL : 0 actualités récentes.
+Départ : 352 articles conservés et 43 flashs existants.
 RSS Foot National / LIGUE_2 : 6 actualités récentes.
+RSS Foot National / LIGUE_1 : 13 actualités récentes.
 RSS Foot National / NATIONAL : 6 actualités récentes.
-RSS Foot National / LIGUE_1 : 14 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 29 actualités récentes.
-RSS RMC Sport / LIGUE_1 : 6 actualités récentes.
 RSS RMC Sport / FRANCE : 30 actualités récentes.
+RSS RMC Sport / LIGUE_1 : 4 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 26 actualités récentes.
 RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 26 actualités récentes.
-RSS BBC Sport / FEMININ : 2 actualités récentes.
-RSS Foot01 / FRANCE : 41 actualités récentes.
-RSS Foot Amateur / NATIONAL : 5 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 7 actualités récentes.
+RSS BBC Sport / FEMININ : 2 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 26 actualités récentes.
+RSS Foot01 / FRANCE : 41 actualités récentes.
 RSS RMC Sport / BLEUS : 1 actualités récentes.
-RSS inaccessible RMC Sport : HTTPError - HTTP Error 404: Not Found
+RSS Foot Amateur / NATIONAL : 5 actualités récentes.
 RSS Foot Amateur / NATIONAL : 7 actualités récentes.
-RSS franceinfo / FRANCE : 11 actualités récentes.
+RSS inaccessible RMC Sport : HTTPError - HTTP Error 404: Not Found
 RSS inaccessible Maxifoot : HTTPError - HTTP Error 404: Not Found
-236 titres collectés, 31 nouveaux liens, quota 2.
-Brève prête : Foot01 - L'OL regrette de ne pas avoir recruté Lassine Sinayoko, décisif avec le Paris FC
-Brève prête : BBC Sport - Bromley : Andy Woodman quitte le club d'un commun accord
-Bilan : brèves_rédigées=2, non_pertinent=1, source_inaccessible_ou_trop_courte=8, sujet_deja_traite=8
-Publié : 2 brèves (total 352). Flash : 43.
+RSS franceinfo / FRANCE : 11 actualités récentes.
+RSS Foot National / NATIONAL : 0 actualités récentes.
+230 titres collectés, 22 nouveaux liens, quota 2.
+Brève ignorée (RMC Sport) : ValueError - Résumé IA incomplet ou trop long : non publié
+Bilan : non_pertinent=1, rejet_lecture_ou_ia=1, source_inaccessible_ou_trop_courte=11, sujet_deja_traite=9
+Aucune brève de qualité suffisante ; fichiers JSON inchangés.
 Pages : 352 brèves avec leur propre page, sitemap à jour.
-Agenda : 75 matchs enregistrés.
+Agenda : 68 matchs enregistrés.
 Ligue 1 : flux illisible (HTTPError)
-Ligue 2 : flux illisible (HTTPError)
+Ligue 2 : 0 vidéos lues, 0 vidéos de buts gardées.
 FFF : flux illisible (HTTPError)
 Chaîne @equipedefrance : introuvable (HTTPError)
 Chaîne @EquipedeFrance : introuvable (HTTPError)
@@ -43,24 +42,24 @@ UEFA : flux illisible (HTTPError)
 Premier League : flux illisible (HTTPError)
 LaLiga : flux illisible (HTTPError)
 Serie A : flux illisible (HTTPError)
-Bundesliga : flux illisible (HTTPError)
+Bundesliga : 15 vidéos lues, 0 vidéos de buts gardées.
 Aucune vidéo trouvée : videos.json inchangé.
 Flux muet RMC Sport : HTTPError
 Flux muet So Foot : HTTPError
-Flux muet Maxifoot : HTTPError
 Flux muet Goal : HTTPError
+Flux muet Maxifoot : HTTPError
 Flux muet Jeuxvideo.com : HTTPError
 Flux muet Millenium : HTTPError
 Fil express : foot 200, actus 200, gaming 120
 Flux muet France 3 BFC (https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/rss) : ValueError
-Flux muet L'Est Républicain (https://www.estrepublicain.fr/edition-haute-saone/rss) : HTTPError
 Flux muet L'Est Républicain (https://www.estrepublicain.fr/edition-belfort/rss) : HTTPError
+Flux muet L'Est Républicain (https://www.estrepublicain.fr/edition-haute-saone/rss) : HTTPError
 Flux muet France 3 BFC (https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/territoire-de-belfort/rss) : ValueError
-Flux muet France 3 BFC (https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/haute-saone/rss) : ValueError
-L'Est Républicain haute-saone : 13 titres
 L'Est Républicain territoire-de-belfort : 17 titres
+L'Est Républicain haute-saone : 13 titres
+Flux muet France 3 BFC (https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/haute-saone/rss) : ValueError
 L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
-macommune.info  : 25 titres
 Flux muet ici Belfort-Montbéliard (https://www.francebleu.fr/rss/belfort-montbeliard/infos.xml) : HTTPError
+macommune.info  : 25 titres
 L'Est Républicain www.estrepublicain.fr : 2 titres
 VM Belfort : 70 titres
