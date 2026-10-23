@@ -61,10 +61,10 @@ def run(state, http, limit=2):
         else:
             receipt['status'] = 'private_ready'
             state.save()
-        print(f'{ident} : {receipt["status"]}')
+        print(f'::notice::{ident} : {receipt["status"]}')
         sent += 1
     left = sum(1 for ident, *_ in queue() if done.get(ident, {}).get('status') not in ('private_ready', 'published'))
-    print(f'Envoyées ce passage : {sent} · restantes : {left}')
+    print(f'::notice::Envoyées ce passage : {sent} · restantes : {left}')
     return sent
 
 
@@ -83,6 +83,7 @@ def main():
 if __name__ == '__main__':
     try:
         main()
-    except DeliveryError as error:
-        print(str(error), file=sys.stderr)
+    except Exception as error:  # message visible dans les annotations GitHub, sans secret
+        msg = str(error) if isinstance(error, DeliveryError) else type(error).__name__ + ' : ' + str(error)[:200]
+        print('::error::' + msg.replace('\n', ' '))
         sys.exit(1)
