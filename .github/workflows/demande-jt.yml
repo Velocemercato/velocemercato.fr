@@ -29,6 +29,7 @@ jobs:
           import datetime as dt, json, os
           from pathlib import Path
           from zoneinfo import ZoneInfo
+          from pastille_schedule import edition_window
           data = json.loads(Path('.github/demande-jt.json').read_text())
           now = dt.datetime.now(dt.timezone.utc)
           created = dt.datetime.fromisoformat(data['requested_at'])
@@ -39,6 +40,18 @@ jobs:
               raise SystemExit('Demande invalide ou périmée : aucune production.')
           with open(os.environ['GITHUB_ENV'],'a') as output:
               output.write('MOMENT=' + data['moment'] + '\n')
+              universe = data.get('univers', 'tous')
+              target = data.get('edition_at', '')
+              if universe != 'tous':
+                  edition = edition_window(universe, dt.datetime.fromisoformat(target))
+                  age = now - dt.datetime.fromisoformat(edition['edition_at'])
+                  if not dt.timedelta(0) <= age <= dt.timedelta(hours=3) or edition['moment'] != data['moment']:
+                      raise SystemExit('Créneau séparé invalide.')
+                  target = edition['edition_at']
+              elif target:
+                  raise SystemExit('Un JT séparé nécessite un univers précis.')
+              output.write('UNIVERS=' + universe + '\n')
+              output.write('EDITION_AT=' + target + '\n')
           PY
       - name: Produire les rubriques puis transmettre le programme validé
         run: |
@@ -52,7 +65,7 @@ jobs:
           source_run=$(find_source)
           if [ -z "$source_run" ]; then
             gh workflow run emissions.yml --repo "$GITHUB_REPOSITORY" --ref main \
-              -f univers=tous -f format=edition -f moment="$MOMENT" \
+              -f univers="$UNIVERS" -f format=edition -f moment="$MOMENT" -f edition_at="$EDITION_AT" \
               -f publish=true -f qualite=auto -f refaire=true -f demande_id="$GITHUB_RUN_ID"
           fi
           for attempt in 1 2 3 4 5 6 7 8 9 10 11 12; do

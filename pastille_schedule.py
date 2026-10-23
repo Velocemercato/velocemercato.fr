@@ -11,6 +11,57 @@ JT_PREP_CRON = '45 4,5,8,9,16,17 * * *'
 MATCH_CRON = '15,45 10-22 * * *'
 DEBATE_CRON = '45 20,21,22 * * *'
 BUTS_CRON = '0 16,17 * * 0'
+# Un déclenchement après l'heure couvre les articles jusqu'à l'heure annoncée.
+# Les passages suivants rattrapent un retard sans produire deux fois le JT.
+SEPARATE_CRON = '7,27,47 * * * *'
+EDITION_HOURS = {'actus': (7, 13, 19), 'foot': (8, 12, 20, 23), 'gaming': (0, 10, 18)}
+
+
+def edition_window(universe, target):
+    """Bornes (précédente édition, édition courante], en heure de Paris."""
+    if universe not in EDITION_HOURS or target.tzinfo is None:
+        raise ValueError('Univers ou date de JT invalide.')
+    target = target.astimezone(PARIS)
+    hours = EDITION_HOURS[universe]
+    if target.hour not in hours or target.minute or target.second or target.microsecond:
+        raise ValueError('Heure hors de la grille des JT.')
+    previous = [target.replace(hour=h) for h in hours if h < target.hour]
+    start = max(previous) if previous else (target - dt.timedelta(days=1)).replace(hour=hours[-1])
+    moment = 'matin' if 5 <= target.hour < 12 else 'midi' if 12 <= target.hour < 16 else 'soir'
+    return {'univers': universe, 'edition_at': target.isoformat(), 'source_start': start.isoformat(),
+            'source_end': target.isoformat(), 'moment': moment, 'label': f'JT {target:%H} h'}
+
+
+def edition_recorded(root, edition):
+    """Un original déjà transmis reste à reprendre en diffusion, sans le recréer."""
+    for path in (Path(root) / 'studio/tv').glob('*.json'):
+        if path.name.startswith('_'):
+            continue
+        row = json.loads(path.read_text())
+        if (row.get('univers') == edition['univers'] and row.get('format') == 'edition'
+                and row.get('edition_at') == edition['edition_at']
+                and (row.get('publie') is True or row.get('hebergement') == 'en_attente')):
+            return True
+    return False
+
+
+def due_edition(root, now, universe=None):
+    """Dernier créneau échu depuis moins de 90 min ; jamais une édition future."""
+    local = now.astimezone(PARIS)
+    candidates = []
+    for name, hours in EDITION_HOURS.items():
+        if universe and name != universe:
+            continue
+        for day in (local.date(), local.date() - dt.timedelta(days=1)):
+            for hour in hours:
+                target = dt.datetime.combine(day, dt.time(hour), PARIS)
+                age = now.astimezone(dt.timezone.utc) - target.astimezone(dt.timezone.utc)
+                if dt.timedelta(0) <= age < dt.timedelta(minutes=90):
+                    candidates.append(edition_window(name, target))
+    for edition in sorted(candidates, key=lambda e: e['edition_at'], reverse=True):
+        if not edition_recorded(root, edition):
+            return edition
+    return None
 
 
 def slot(now, cron):

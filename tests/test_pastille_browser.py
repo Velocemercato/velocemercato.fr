@@ -52,7 +52,8 @@ class PlayerTests(unittest.TestCase):
         page.goto(self.base+'/studio.html?episode='+episode['id']+'#tv',wait_until='networkidle')
         page.wait_for_function("document.querySelector('#tvVideo').readyState>=2")
         self.assertEqual(page.locator('#tvVideo').get_attribute('data-episode'),episode['id'])
-        self.assertAlmostEqual(page.locator('#tvVideo').evaluate('video=>video.playbackRate'),1.15)
+        # Une voix déjà accélérée à la production se lit à 1× ; les anciennes à 1,15×.
+        self.assertAlmostEqual(page.locator('#tvVideo').evaluate('video=>video.playbackRate'),1 if episode.get('speech_rate') else 1.15)
         page.get_by_role('button',name='Partager cette émission').click()
         self.assertEqual(page.evaluate('sharedEpisode.url'),episode['page'])
         page.locator('#tvVideo').evaluate('video=>{video.currentTime=1;return video.play()}')

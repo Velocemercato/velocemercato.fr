@@ -14,3 +14,6 @@
 .pastille-concept-title{cursor:pointer;font:800 16px/1.5 system-ui,sans-serif;padding:18px}
 .episode-page nav{position:sticky;top:0;background:#080d1c;z-index:10;padding-top:12px}
 @media(max-width:480px){.vm-channels{gap:8px}.vm-channel{flex:1;padding:10px 12px}.pastille-feed{padding:16px}.vm-social-more .soc-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* La grille reste lisible en trois lignes sur téléphone. */
+.jt-hours{margin:16px 0;font:600 .95rem/1.6 system-ui,sans-serif}.jt-hours>div{display:flex;gap:12px;padding:6px 0;border-bottom:1px solid #ffffff26}.jt-hours dt{flex:0 0 70px;font-weight:800}.jt-hours dd{margin:0;color:inherit}

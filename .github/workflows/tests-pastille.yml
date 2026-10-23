@@ -11,6 +11,7 @@ on:
       - 'tests/test_pastille.py'
       - 'tests/test_pastille_recovery.py'
       - 'tests/test_pastille_schedule.py'
+      - 'tests/test_pastille_grid.py'
       - 'tests/test_jt_express.py'
       - '.github/workflows/emissions.yml'
       - '.github/workflows/tests-pastille.yml'
@@ -51,3 +52,4 @@ jobs:
           python -m unittest discover -s tests -p 'test_pastille_recovery.py' -v
           python -m unittest discover -s tests -p 'test_pastille_schedule.py' -v
           python -m unittest discover -s tests -p 'test_jt_express.py' -v
+          python -m unittest discover -s tests -p 'test_pastille_grid.py' -v

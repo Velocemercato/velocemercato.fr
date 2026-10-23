@@ -202,7 +202,12 @@ def access_token(provider, state, http):
 def youtube_metadata(manifest):
     names = {'matin': 'du matin', 'midi': 'du midi', 'soir': 'du soir'}
     date = dt.date.fromisoformat(manifest['date']).strftime('%d/%m/%Y')
-    if manifest.get('format') in ('speciale', 'debat', 'buts'):
+    universe = manifest.get('universes', [])
+    if manifest.get('edition_at') and len(universe) == 1:
+        name = {'foot': 'Véloce Mercato', 'actus': 'VM Actus', 'gaming': 'VM Gaming'}[universe[0]]
+        hour = dt.datetime.fromisoformat(manifest['edition_at']).astimezone(ZoneInfo('Europe/Paris')).strftime('%H h')
+        title = f'{name} — JT {hour} — {date}'
+    elif manifest.get('format') in ('speciale', 'debat', 'buts'):
         label = {'speciale': 'Spéciale avant-match', 'debat': 'Le débat du soir', 'buts': 'Les buts de la semaine'}[manifest['format']]
         title = f'Véloce Mercato — {label} — {date}'
     else:
@@ -216,7 +221,19 @@ def youtube_metadata(manifest):
                    '\n'.join(clock(row['debut_secondes']) + ' ' + row['titre'] for row in manifest['chapitres']) +
                    '\n\nSources et articles :\nhttps://velocemercato.fr/\nhttps://velocemercato.fr/actus/\n'
                    'https://velocemercato.fr/vm-gaming/\nTous nos projets : https://vmunivers.fr/\n')
-    return {'snippet': {'title': title[:100], 'description': description[:4900], 'categoryId': '25', 'defaultLanguage': 'fr'},
+    if manifest.get('source_start'):
+        start = dt.datetime.fromisoformat(manifest['source_start']).strftime('%d/%m à %H h')
+        end = dt.datetime.fromisoformat(manifest['source_end']).strftime('%d/%m à %H h')
+        description += f'\nPériode des articles : du {start} au {end} (heure de Paris).\n'
+        for item in manifest.get('sources', []):
+            for source in item.get('references', []):
+                url = str(source.get('url', ''))
+                if re.fullmatch(r'https://[^\s<>]+', url):
+                    description += str(source.get('nom', 'Source'))[:80] + ' : ' + url + '\n'
+    if universe == ['foot']:
+        description += '\nOù regarder légalement les matchs : https://velocemercato.fr/ou-regarder.html\n'
+    category = '20' if universe == ['gaming'] else '17' if universe == ['foot'] else '25'
+    return {'snippet': {'title': title[:100], 'description': description[:4900], 'categoryId': category, 'defaultLanguage': 'fr'},
             'status': {'privacyStatus': 'private', 'selfDeclaredMadeForKids': False, 'containsSyntheticMedia': True}}
 
 
@@ -424,10 +441,41 @@ def prepare(masters, output, now=None, expected_run=None):
             or (expected_run and str(authorization.get('run_id')) != str(expected_run))):
         raise DeliveryError('Programme non autorisé, trop ancien ou provenant d’un autre lancement.')
     date, moment = authorization['date'], authorization['moment']
-    if moment not in ('matin', 'midi', 'soir') or date != now.astimezone(ZoneInfo('Europe/Paris')).date().isoformat():
+    if moment not in ('matin', 'midi', 'soir') or (not authorization.get('edition_at') and date != now.astimezone(ZoneInfo('Europe/Paris')).date().isoformat()):
         raise DeliveryError('Créneau de diffusion invalide.')
     kind = authorization.get('format', 'edition')
-    if kind in ('speciale', 'debat', 'buts'):
+    if kind == 'edition' and authorization.get('edition_at'):
+        from pastille_schedule import edition_window
+        try:
+            edition = edition_window(authorization.get('univers'), dt.datetime.fromisoformat(authorization['edition_at']))
+        except (ValueError, TypeError):
+            raise DeliveryError('Créneau de JT séparé invalide.') from None
+        target = dt.datetime.fromisoformat(edition['edition_at'])
+        age = now.astimezone(UTC) - target.astimezone(UTC)
+        if not dt.timedelta(0) <= age <= dt.timedelta(hours=3) or date != target.date().isoformat() or moment != edition['moment']:
+            raise DeliveryError('Créneau de JT séparé futur, trop ancien ou incohérent.')
+        ident = authorization.get('unit', '')
+        expected = f"{edition['univers']}-edition-{target:%Y%m%d-%H%M}"
+        if ident != expected:
+            raise DeliveryError('Original différent du créneau autorisé.')
+        row = json.loads((masters / (ident + '.json')).read_text())
+        if (row.get('id') != ident or row.get('univers') != edition['univers'] or row.get('format') != 'edition'
+                or any(row.get(key) != edition[key] for key in ('edition_at', 'source_start', 'source_end'))):
+            raise DeliveryError('Original ou période des sources incohérente.')
+        sources = row.get('sources', [])
+        start = dt.datetime.fromisoformat(edition['source_start'])
+        if not sources or any(not start < dt.datetime.fromisoformat(s['publishedAt'].replace('Z', '+00:00')) <= target for s in sources):
+            raise DeliveryError('Sources absentes ou en dehors du créneau annoncé.')
+        output.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(masters / (ident + '.mp4'), output)
+        duration = float(probe(output)['format']['duration'])
+        if duration > 5 * 60:
+            raise DeliveryError('JT séparé supérieur à cinq minutes : réécriture requise, aucune coupe.')
+        result = {'id': ident, 'date': date, 'moment': moment, 'format': 'edition', 'universes': [edition['univers']],
+                  'edition_at': edition['edition_at'], 'source_start': edition['source_start'], 'source_end': edition['source_end'],
+                  'editorial_revision': row.get('editorial_revision', ''), 'sources': sources, 'duree_mesuree': duration,
+                  'chapitres': [{'debut_secondes': 0, 'univers': edition['univers'], 'titre': row['titre'], 'id': ident}]}
+    elif kind in ('speciale', 'debat', 'buts'):
         ident = authorization.get('unit', '')
         if not re.fullmatch(r'[a-z0-9-]+', ident):
             raise DeliveryError('Identifiant de spéciale/débat invalide.')
@@ -509,6 +557,9 @@ def public_index(path, manifest, receipts):
                'universes':manifest.get('universes', ['foot','actus','gaming']),
                'date_publication': dt.datetime.now(UTC).isoformat(timespec='seconds'),
                'titre': youtube_metadata(manifest)['snippet']['title'], 'plateformes': public}
+        for key in ('edition_at', 'source_start', 'source_end'):
+            if key in manifest:
+                row[key] = manifest[key]
         rows = [r for r in rows if r['id'] != row['id']] + [row]
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(sorted(rows, key=lambda r: (r.get('date_publication', r.get('date','')), r['id']), reverse=True)[:90], ensure_ascii=False, indent=1) + '\n')

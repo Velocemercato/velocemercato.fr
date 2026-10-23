@@ -27,7 +27,7 @@ from pathlib import Path
 import update_debat as D
 import update_news as robot
 from pastille_pages import build_episode_pages, CDN
-from pastille_schedule import confirmed_matches, already_published
+from pastille_schedule import confirmed_matches, already_published, edition_window, edition_recorded
 
 ROOT = D.ROOT
 LIST = ROOT / 'studio' / 'emissions.json'
@@ -69,24 +69,29 @@ FORMATS = {
 LABELS = {'speciale': 'Spéciale avant-match', 'debat': 'Le débat du soir', 'buts': 'Les buts de la semaine'}
 
 
-def load_news(univers, hours, limit):
+def load_news(univers, hours, limit, *, start=None, end=None):
     rows = json.loads((ROOT / UNIVERS[univers]['file']).read_text(encoding='utf-8'))
     now = dt.datetime.now(dt.timezone.utc)
     out = []
     for a in rows:
         d = robot.parse_date(str(a.get('publishedAt', '')))
-        if d and dt.timedelta(0) <= now - d < dt.timedelta(hours=hours) and a.get('titre') and a.get('resume'):
+        in_window = bool(d and (start < d <= end if start and end else
+                               dt.timedelta(0) <= now - d < dt.timedelta(hours=hours)))
+        if in_window and a.get('titre') and a.get('resume'):
             out.append(a)
     out.sort(key=lambda a: a.get('publishedAt', ''), reverse=True)
     return out[:limit]
 
 
 def write_script(univers, fmt, moment, news, fixtures=None):
-    U, F = UNIVERS[univers], FORMATS[fmt]
+    U, F = UNIVERS[univers], dict(FORMATS[fmt])
+    if fmt == 'edition' and 0 < len(news) < 4:
+        # Un seul sujet réel donne un bulletin bref, jamais du remplissage.
+        F.update(mots=(90 * len(news), 120 * len(news)), repliques=(3 * len(news), 5 * len(news)))
     persos = U['persos']
     noms = ', '.join(f"{k} ({v['nom']} : {v['role']})" for k, v in persos.items())
-    kind = {'edition': f'le JT express du {moment} : sélectionne les 4 à 6 brèves les plus importantes, '
-                       'avec une seule réaction courte entre les sujets ; environ 3 minutes pour cette rubrique',
+    kind = {'edition': f'le JT express du {moment} : sélectionne au plus {min(6, len(news))} brèves importantes parmi les seules sources fournies, '
+                       'avec une seule réaction courte entre les sujets ; environ 3 minutes maximum pour cette rubrique',
             'speciale': 'la grande spéciale avant-match des soirs de match : présentation des affiches du soir, contexte, '
                         'enjeux, joueurs à suivre, ambiance, histoire des confrontations, puis long débat entre chroniqueurs, '
                         'et un tour rapide des autres actus',
@@ -106,6 +111,8 @@ def write_script(univers, fmt, moment, news, fixtures=None):
         'en cas de doute, ne donne pas de chiffre. '
         'Règles absolues : ne jamais inventer de score, de résultat, de blessure, de transfert, de compo d’équipe, de chiffre ou de citation. '
         'Ne jamais faire dire une phrase entre guillemets à une vraie personne ; on rapporte ce que dit la brève en citant le média. '
+        'Pour les jeux vidéo, un test ou un essai est celui du média source, jamais un essai personnel que nous aurions effectué. '
+        'Pour les buts, raconte seulement les faits sourcés ; aucune image de match ou vidéo tierce ne sera copiée. '
         'Un match pas encore joué = avant-match et opinions des personnages, jamais de résultat. Aucun pari ni pronostic de paris. '
         'Aucune insulte, aucune moquerie sur le physique, l’origine, la religion ou la vie privée ; aucun nom de mineur ni de victime.'
         + neutral +
@@ -222,6 +229,10 @@ def preserve_for_hosting(entry, script, output):
         shutil.move(str(source), pending / source.name)
     (pending / (entry['id'] + '.json')).write_text(
         json.dumps({'emission': entry, 'script': script}, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+    if entry.get('edition_at'):
+        metadata = ROOT / 'studio/tv' / (entry['id'] + '.json')
+        metadata.parent.mkdir(parents=True, exist_ok=True)
+        metadata.write_text(json.dumps(entry, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
     save_master_metadata(entry)
     print(f"::warning title=Vidéo conservée, hébergement requis::{entry['univers']} : rendu terminé, "
           'limite CDN dépassée. Copie conservée dans l’artefact pastille-a-heberger ; '
@@ -233,8 +244,16 @@ def make(univers, fmt, moment):
     F = FORMATS[fmt]
     D.media.video_profile()  # Refuser HD + publication avant tout appel de rédaction payant.
     now = dt.datetime.now(D.PARIS)
+    edition = None
+    if fmt == 'edition' and os.getenv('VM_EDITION_AT'):
+        edition = edition_window(univers, dt.datetime.fromisoformat(os.environ['VM_EDITION_AT']))
+        age = now.astimezone(dt.timezone.utc) - dt.datetime.fromisoformat(edition['edition_at']).astimezone(dt.timezone.utc)
+        if not dt.timedelta(0) <= age <= dt.timedelta(hours=3):
+            raise RuntimeError('Créneau futur ou trop ancien : aucun JT produit.')
+        moment = edition['moment']
     refresh = fmt == 'edition' and os.getenv('VM_REFRESH_EDITION') == '1'
-    if D.media.publication_enabled() and not refresh and already_published(ROOT, univers, fmt, moment, now):
+    recorded = edition_recorded(ROOT, edition) if edition else already_published(ROOT, univers, fmt, moment, now)
+    if D.media.publication_enabled() and not refresh and recorded:
         print(f'{univers}/{fmt}/{moment} : déjà publié pour cette date.')
         return None
     fixtures = confirmed_matches(ROOT, now, finished=fmt == 'debat') if fmt in ('speciale','debat') else []
@@ -243,14 +262,16 @@ def make(univers, fmt, moment):
         return None
     if not D.piper_ready() and os.getenv('VM_ALLOW_ESPEAK_PREVIEW') != '1':
         raise RuntimeError('Piper requis avant la rédaction du JT.')
-    news = load_news(univers, F['heures'], F['max_news'])
-    if len(news) < 4:
+    bounds = {key: dt.datetime.fromisoformat(edition['source_' + key]) for key in ('start', 'end')} if edition else {}
+    news = load_news(univers, F['heures'], F['max_news'], **bounds)
+    if len(news) < 4 and not edition:
         news = load_news(univers, 24, F['max_news'])
-    if len(news) < 4:
+    if not news or (len(news) < 4 and not edition):
         print(f'{univers} / {fmt} : pas assez de brèves, émission sautée.')
         return None
-    script = write_script(univers, fmt, moment, news, fixtures=fixtures)
-    label = LABELS.get(fmt, f'Édition du {moment}')
+    spoken_slot = f"{moment}, {dt.datetime.fromisoformat(edition['edition_at']):%H} heures" if edition else moment
+    script = write_script(univers, fmt, spoken_slot, news, fixtures=fixtures)
+    label = edition['label'] if edition else LABELS.get(fmt, f'Édition du {moment}')
     script['sous_titre'] = label + ' · ' + dt.datetime.now(D.PARIS).strftime('%d/%m')
     D.PERSOS = U['persos']
     D.BG_IMG = U['bg']
@@ -258,10 +279,13 @@ def make(univers, fmt, moment):
     D.SHOW = U['nom'].upper()
     D.OUTRO_SMALL = f'Merci d’avoir suivi {U["nom"]} !'
     now = dt.datetime.now(D.PARIS)
-    ident = f'{univers}-{fmt}-{now:%Y%m%d-%H%M}'
+    target = dt.datetime.fromisoformat(edition['edition_at']) if edition else now
+    ident = f'{univers}-{fmt}-{target:%Y%m%d-%H%M}'
     out = ROOT / 'studio' / 'tmp' / f'{ident}.mp4'
     out.parent.mkdir(parents=True, exist_ok=True)
     total, engines = D.build_video(script, out)
+    if edition and total > 5 * 60:
+        raise RuntimeError('JT séparé supérieur à cinq minutes : aucun envoi, réécriture nécessaire.')
     auto = D.media.publication_enabled() and engines == ['piper'] and json.loads(CONFIG.read_text(encoding='utf-8')).get('publication_auto') is True
     entry = {'id': ident, 'univers': univers, 'format': fmt, 'moment': moment, 'label': label,
              'titre': script['titre'], 'accroche': script['accroche'], 'duree': round(total),
@@ -269,6 +293,10 @@ def make(univers, fmt, moment):
     entry['fichier'] = out.name
     if fmt == 'edition':
         entry['editorial_revision'] = EDITORIAL_REVISION
+    if edition:
+        entry.update(edition_at=edition['edition_at'], source_start=edition['source_start'], source_end=edition['source_end'],
+                     sources=[{'id': a.get('id', ''), 'titre': a['titre'], 'publishedAt': a['publishedAt'],
+                               'references': a.get('sources', [])} for a in news])
     save_master_metadata(entry)
     if auto:
         try:
