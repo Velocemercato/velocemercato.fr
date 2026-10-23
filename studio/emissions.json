@@ -1,5 +1,124 @@
 [
  {
+  "id": "actus-edition-20261023-1900",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 19 h",
+  "titre": "La Pastille Actus : édition du vendredi 23 octobre",
+  "accroche": "Le JT express de La Pastille Actus, c'est parti pour les infos du soir.",
+  "duree": 175,
+  "date": "2026-10-23T19:16+02:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261023-1900.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-10-23T19:00:00+02:00",
+  "source_start": "2026-10-23T13:00:00+02:00",
+  "source_end": "2026-10-23T19:00:00+02:00",
+  "sources": [
+   {
+    "id": "rss-v2-391ae28e66a293e7bcc5fc",
+    "titre": "Vu du Royaume-Uni, The Guardian rapporte des gaz lacrymogènes contre un orchestre à Paris",
+    "publishedAt": "2026-10-23T16:12:37Z",
+    "createdAt": "2026-10-23T16:14:44Z",
+    "references": [
+     {
+      "nom": "The Guardian",
+      "url": "https://www.theguardian.com/world/video/2026/oct/23/french-police-encircle-and-teargas-orchestra-playing-at-paris-protest-video"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-1930c48d317eadb36394e2",
+    "titre": "Deux soldats israéliens tués en Cisjordanie, Nétanyahou annonce un bouclage du territoire",
+    "publishedAt": "2026-10-23T15:26:09Z",
+    "createdAt": "2026-10-23T15:38:27Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/israel/ce-que-l-on-sait-de-l-attaque-qui-a-tue-deux-soldats-israeliens-en-cisjordanie-occupee-et-des-operations-militaires-lancees-en-reponse-dans-ce-territoire-palestinien_8250628.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-1a6006aaccd46c34b8a237",
+    "titre": "Ukraine-Russie : l'UE veut élargir son rôle dans les pourparlers de paix",
+    "publishedAt": "2026-10-23T15:28:46Z",
+    "createdAt": "2026-10-23T15:38:24Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/10/23/ukraine-russie-lue-veut-elargir-son-role-dans-les-pourparlers-de-paix-pour-peser-sur-washi"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-2d10cfec1ecd060964daf9",
+    "titre": "Fusillade dans une église en Jordanie : au moins sept morts selon les autorités",
+    "publishedAt": "2026-10-23T14:20:48Z",
+    "createdAt": "2026-10-23T14:24:59Z",
+    "references": [
+     {
+      "nom": "France 24",
+      "url": "https://www.france24.com/fr/moyen-orient/20261023-fusillade-%C3%A9glise-jordanie-fait-au-moins-sept-morts"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-18df2e060ea41f7dbc62d3",
+    "titre": "Paris : les commerçants se protègent à la veille d'une nouvelle mobilisation",
+    "publishedAt": "2026-10-23T13:17:44Z",
+    "createdAt": "2026-10-23T13:42:40Z",
+    "references": [
+     {
+      "nom": "France 24",
+      "url": "https://www.france24.com/fr/france/20261023-se-calfeutrer-cacher-stocks-veille-acte-ii-commerces-parisiens-se-pr%C3%A9parent-24-octobre"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-3b5f44b0ffc2feb94579fb",
+    "titre": "Lupin saison 4 s'inspire du roman 813 de Maurice Leblanc",
+    "publishedAt": "2026-10-23T13:24:47Z",
+    "createdAt": "2026-10-23T13:42:35Z",
+    "references": [
+     {
+      "nom": "20 Minutes",
+      "url": "https://www.20minutes.fr/arts-stars/serie/4256937-20261023-roman-emblematique-maurice-leblanc-inspiree-saison-4-lupin?at_medium=display&at_campaign=149"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-55710a4b881d02745236fe",
+    "titre": "Le choc PSG-Lyon reporté à lundi en raison de manifestations à Paris",
+    "publishedAt": "2026-10-23T12:19:58Z",
+    "createdAt": "2026-10-23T12:41:33Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/foot/ligue-1/le-choc-de-ligue-1-entre-le-psg-et-l-ol-reporte-a-lundi-en-meme-temps-que-le-ballon-d-or_8247817.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-932e34eeef9af1259eb741",
+    "titre": "Le syndicat des commissaires de police juge les effectifs \"à bout\" avant les manifestations",
+    "publishedAt": "2026-10-23T11:33:00Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/manifestations/les-effectifs-de-police-sont-a-bout-selon-le-syndicat-des-commissaires-de-la-police-nationale_8250724.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "gaming-edition-20261023-1800",
   "univers": "gaming",
   "format": "edition",
