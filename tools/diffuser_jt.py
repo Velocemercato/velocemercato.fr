@@ -58,8 +58,17 @@ class HTTP:
         except urllib.error.HTTPError as error:
             if error.code == 308:
                 return 308, dict(error.headers.items()), error.read()
-            # Le corps OAuth et les URL de session ne doivent pas apparaître dans les logs.
-            raise DeliveryError(f'API {target.hostname} : HTTP {error.code}.') from None
+            # Le corps OAuth et les URL de session ne doivent pas apparaître dans les logs :
+            # seul le code d'erreur normalisé (ex. invalid_client) est affiché.
+            code = ''
+            try:
+                err = json.loads(error.read() or b'{}').get('error')
+                err = err.get('status') if isinstance(err, dict) else err
+                if isinstance(err, str) and re.fullmatch(r'[A-Za-z_]{3,40}', err):
+                    code = ' (' + err + ')'
+            except Exception:
+                pass
+            raise DeliveryError(f'API {target.hostname} : HTTP {error.code}{code}.') from None
         except (urllib.error.URLError, TimeoutError, ConnectionError):
             raise DeliveryError(f'API {target.hostname} : connexion interrompue.') from None
 
@@ -142,12 +151,12 @@ def enabled(provider):
 
 def access_token(provider, state, http):
     prefix = provider.upper()
-    initial = os.environ[prefix + '_REFRESH_TOKEN']
-    client = os.environ[prefix + '_CLIENT_ID']
+    initial = os.environ[prefix + '_REFRESH_TOKEN'].strip()
+    client = os.environ[prefix + '_CLIENT_ID'].strip()
     fingerprint = hashlib.sha256((client + initial).encode()).hexdigest()
     stored = state.data['tokens'].get(provider, {})
     refresh = stored.get('refresh') if stored.get('fingerprint') == fingerprint else initial
-    form = {'client_id': client, 'client_secret': os.environ[prefix + '_CLIENT_SECRET'],
+    form = {'client_id': client, 'client_secret': os.environ[prefix + '_CLIENT_SECRET'].strip(),
             'grant_type': 'refresh_token', 'refresh_token': refresh}
     endpoint = 'https://oauth2.googleapis.com/token' if provider == 'youtube' else 'https://id.twitch.tv/oauth2/token'
     result = http.json('POST', endpoint, form=form)
@@ -185,7 +194,7 @@ class YouTube:
 
     def verify_channel(self):
         result = self.http.json('GET', 'https://www.googleapis.com/youtube/v3/channels?part=id&mine=true', self.token)
-        if os.environ['YOUTUBE_CHANNEL_ID'] not in [row['id'] for row in result.get('items', [])]:
+        if os.environ['YOUTUBE_CHANNEL_ID'].strip() not in [row['id'] for row in result.get('items', [])]:
             raise DeliveryError('YouTube : le compte connecté ne correspond pas à la chaîne autorisée.')
 
     def upload(self, file, metadata, receipt, chunk_size=8*1024*1024):
