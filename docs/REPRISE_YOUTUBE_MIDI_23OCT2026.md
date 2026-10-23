@@ -54,8 +54,13 @@ créé ne gagne pas de droit sans une nouvelle autorisation Google du propriéta
 
 ## Vérifications
 
-- 24 tests de diffusion, dont l’assemblage réel de durées fractionnaires, le refus des sources CDN,
+- 25 tests de diffusion, dont l’assemblage réel de durées fractionnaires, le refus des sources CDN,
   l’absence de fragments secrets dans les diagnostics et le droit de publication dans le lien OAuth.
 - 11 tests de production, dont la durée vidéo complète et les deux profils.
 - Reprise locale de trois fichiers créés par l’ancien encodeur : cadence constante et décodage complet.
 - Aucun test local ne contacte les comptes ni ne publie une vidéo.
+
+Les erreurs API distinguent désormais les raisons normalisées connues (droits
+insuffisants ou quota) sans journaliser de corps de réponse libre. Les contrôles
+GitHub réutilisent FFmpeg lorsqu’il est déjà installé ; une installation APT
+inutile bloquait plusieurs contrôles suivants sur l’image Ubuntu actuelle.

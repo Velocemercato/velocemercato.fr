@@ -64,9 +64,19 @@ class HTTP:
             code = ''
             try:
                 err = json.loads(error.read() or b'{}').get('error')
-                err = err.get('status') if isinstance(err, dict) else err
+                labels = []
+                if isinstance(err, dict):
+                    # Raisons API connues seulement : aucun message libre ni
+                    # détail susceptible de contenir un jeton dans les logs.
+                    known = {'insufficientPermissions','ACCESS_TOKEN_SCOPE_INSUFFICIENT',
+                             'quotaExceeded','dailyLimitExceeded','uploadLimitExceeded','forbidden'}
+                    labels = [row['reason'] for row in err.get('errors', []) + err.get('details', [])
+                              if isinstance(row, dict) and row.get('reason') in known]
+                    err = err.get('status')
                 if isinstance(err, str) and re.fullmatch(r'[A-Za-z_]{3,40}', err):
-                    code = ' (' + err + ')'
+                    labels.insert(0,err)
+                if labels:
+                    code = ' (' + ', '.join(dict.fromkeys(labels)) + ')'
             except Exception:
                 pass
             raise DeliveryError(f'API {target.hostname} : HTTP {error.code}{code}.') from None

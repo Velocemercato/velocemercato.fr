@@ -11,6 +11,7 @@ import sys
 import tempfile
 from threading import Thread
 import unittest
+import urllib.error
 from unittest.mock import Mock, patch
 from urllib.parse import parse_qs, urlsplit
 from urllib.request import urlopen
@@ -29,6 +30,20 @@ MANIFEST = {'id': 'jt-2026-10-22-matin', 'date': '2026-10-22', 'moment': 'matin'
 
 
 class DiffusionTests(unittest.TestCase):
+    def test_api_errors_distinguish_missing_scope_from_quota_without_printing_response_secrets(self):
+        for reason in ['insufficientPermissions','quotaExceeded']:
+            client=D.HTTP()
+            body={'error':{'status':'PERMISSION_DENIED','message':'PRIVATE_RESPONSE_TEST_SECRET',
+                           'errors':[{'reason':reason}]}}
+            error=urllib.error.HTTPError('https://www.googleapis.com/private-session-test',403,'Forbidden',{},
+                io.BytesIO(json.dumps(body).encode()))
+            client.opener=Mock();client.opener.open.side_effect=error
+            with self.assertRaises(D.DeliveryError) as caught:
+                client.request('GET','https://www.googleapis.com/youtube/v3/videos')
+            self.assertIn(reason,str(caught.exception))
+            self.assertNotIn('PRIVATE_RESPONSE_TEST_SECRET',str(caught.exception))
+            self.assertNotIn('private-session-test',str(caught.exception))
+
     def test_state_encrypts_tokens_sessions_and_private_ids_and_checks_authentication(self):
         with tempfile.TemporaryDirectory() as folder:
             path = Path(folder) / 'state.enc'
