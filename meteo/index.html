@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VM Météo &amp; Découverte — météo France, Europe, monde et lieux à visiter</title>
+<meta name="description" content="La météo du jour en France, en Europe et dans le monde, prévisions sur 7 jours et les plus beaux lieux à visiter région par région, avec itinéraire.">
+<link rel="canonical" href="https://velocemercato.fr/meteo/">
+<meta property="og:title" content="VM Météo & Découverte"><meta property="og:description" content="Météo France, Europe, monde et lieux à visiter par région."><meta property="og:url" content="https://velocemercato.fr/meteo/"><meta property="og:image" content="https://velocemercato.fr/img/logo-vm-officiel.png">
+<link rel="icon" href="/app/univers-192.png" type="image/png"><meta name="theme-color" content="#000000">
+<link rel="stylesheet" href="/meteo/portal.css"><link rel="stylesheet" href="/meteo/meteo.css">
+</head>
+<body>
+<a class="skip" href="#meteo">Aller à la météo</a>
+<nav class="portal-nav" aria-label="Navigation principale">
+<a class="portal-brand" href="https://vmunivers.fr/" aria-label="VM Univers, accueil"><img src="/app/univers-192.png" alt="" width="36" height="36">VM UNIVERS</a>
+<div class="portal-links"><a href="#meteo">Météo</a><a href="#decouvrir">Lieux à visiter</a><a href="https://vmunivers.fr/">Tous les projets</a></div>
+</nav>
+<header class="mhero">
+<p class="eyebrow">VM Météo &amp; Découverte</p>
+<h1>Le temps qu’il fait.<br><span>Les lieux à voir.</span></h1>
+<p>Météo en direct en France, en Europe et dans le monde, prévisions sur 7 jours, et les plus beaux endroits à visiter, région par région. <span class="sub">Aujourd’hui : <span id="date"></span></span></p>
+</header>
+<main>
+<section id="meteo" aria-labelledby="t-meteo">
+<h2 id="t-meteo">🌦️ La météo</h2>
+<form id="cherche" class="cherche" role="search"><label for="ville" class="sr-only">Ville</label><input id="ville" type="search" placeholder="Ta ville : Belfort, Lyon, Rome…" autocomplete="off" required><button type="submit">Chercher</button><button type="button" id="position">📍 Ma position</button></form>
+<ul id="choix" class="choix" aria-live="polite"></ul>
+<section id="detail" class="detail" aria-live="polite" hidden></section>
+<div class="tabs" role="tablist" aria-label="Zone"><button type="button" role="tab" data-zone="france" aria-selected="true">🇫🇷 France</button><button type="button" role="tab" data-zone="europe" aria-selected="false">🇪🇺 Europe</button><button type="button" role="tab" data-zone="monde" aria-selected="false">🌍 Monde</button></div>
+<div id="villes" class="villes" aria-live="polite"></div>
+<p class="note">Touchez une ville pour ses prévisions heure par heure et sur 7 jours.</p>
+</section>
+<section id="decouvrir" aria-labelledby="t-lieux">
+<h2 id="t-lieux">🧭 Lieux à visiter</h2>
+<div class="filtres"><label for="region">Région</label><select id="region"></select></div>
+<div id="cats" class="cats" aria-label="Type de lieu"></div>
+<div id="lieux" class="lieux"></div>
+<div class="cta"><div><b>Tu connais un endroit à ne pas manquer ?</b><p>Crée sa fiche avec tes photos : elle est publiée après validation par VM.</p></div><button type="button" class="btn" id="ficheBtn">➕ Créer la fiche d’un lieu</button></div>
+</section>
+<p class="note">Données météo : <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo.com</a> (CC BY 4.0), mises à jour en continu. Itinéraires ouverts dans Mappy, Google Maps ou OpenStreetMap. Un projet <a href="https://vmunivers.fr/">VM Univers</a> · <a href="https://velocemercato.fr/mentions-legales.html">Mentions légales</a></p>
+</main>
+<dialog id="avisBox" class="box" aria-labelledby="avisTitre"><button type="button" class="x" data-close aria-label="Fermer">✕</button><h2 id="avisTitre">Avis & photos</h2>
+<ul id="avisListe" class="avis"></ul>
+<form id="avisForm"><h3>Laisser mon avis</h3>
+<label>Prénom ou pseudo<input name="nom" required maxlength="40" autocomplete="given-name"></label>
+<label>Note<select name="note"><option value="5">★★★★★ Génial</option><option value="4">★★★★ Très bien</option><option value="3">★★★ Bien</option><option value="2">★★ Moyen</option><option value="1">★ Décevant</option></select></label>
+<label>Ton avis<textarea name="texte" required minlength="10" maxlength="800" rows="4" placeholder="Accès, parking, meilleur moment, conseils…"></textarea></label>
+<label class="ok"><input type="checkbox" required> J’accepte que mon prénom, mon avis et ma photo soient publiés après validation.</label>
+<button type="submit" class="btn">📷 Envoyer avec ma photo</button><p class="note">Ton application e-mail s’ouvre : joins ta photo avant d’envoyer.</p></form>
+<p id="avisMerci" class="merci" hidden>✅ Merci ! Ajoute ta photo dans l’e-mail puis envoie-le. Ton avis sera publié après validation.</p></dialog>
+<dialog id="ficheBox" class="box" aria-labelledby="ficheTitre"><button type="button" class="x" data-close aria-label="Fermer">✕</button><h2 id="ficheTitre">Créer la fiche d’un lieu</h2>
+<form id="ficheForm">
+<label>Nom du lieu<input name="lieu" required maxlength="80" placeholder="Ex. Cascade du Rummel"></label>
+<label>Commune et département<input name="ville" required maxlength="80" placeholder="Ex. Seebach (68)"></label>
+<label>Région<select name="region" id="ficheRegion"></select></label>
+<label>Type<select name="type"><option>Nature</option><option>Patrimoine</option><option>Ville</option><option>Montagne</option><option>Plage</option><option>Histoire</option><option>Culture</option><option>Loisirs</option></select></label>
+<label>Pourquoi y aller ?<textarea name="desc" required minlength="20" maxlength="800" rows="4" placeholder="Ce qu’on y voit, accès, durée, conseils…"></textarea></label>
+<label>Ton prénom ou pseudo<input name="nom" required maxlength="40" autocomplete="given-name"></label>
+<label class="ok"><input type="checkbox" required> J’accepte que mon prénom, ma fiche et mes photos soient publiés après validation.</label>
+<button type="submit" class="btn">📷 Envoyer la fiche et mes photos</button><p class="note">Ton application e-mail s’ouvre : joins tes photos avant d’envoyer.</p></form>
+<p id="ficheMerci" class="merci" hidden>✅ Merci ! Ajoute tes photos dans l’e-mail puis envoie-le. La fiche sera publiée après validation.</p></dialog>
+<script src="/meteo/lieux.js" defer></script><script src="/meteo/meteo.js" defer></script>
+</body>
+</html>
