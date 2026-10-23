@@ -8,7 +8,7 @@ Tant qu'une image manque, le site affiche à sa place un encadré coloré avec u
 2. Télécharge l'image.
 3. Envoie-moi les images avec leur nom (par exemple « coiffeur hero »). Je les convertis au bon format (`.webp`), je les range au bon endroit et je les mets en ligne.
 
-Commence par la **priorité 1** : 8 images, une par page, et les démos ont déjà l'air de vrais sites.
+Commence par la **priorité 1** : 9 images, une par page, et les démos ont déjà l'air de vrais sites.
 
 ## Style commun (à coller avant chaque description)
 
@@ -31,6 +31,7 @@ Formats :
 | `demos/img/artisan/hero.webp` | Équipe du bâtiment en tenue de sécurité sur un chantier de rénovation de maison, échafaudage, lumière de fin de journée. |
 | `demos/img/drive/hero.webp` | Employée souriante qui charge des sacs de courses dans le coffre d'une voiture au point de retrait d'une épicerie, cagettes de fruits. |
 | `demos/img/cbd/hero.webp` | Boutique CBD moderne et lumineuse, étagères en bois clair avec flacons ambrés et bocaux, plantes vertes, ambiance calme et sérieuse (aucune fumée, aucune personne qui consomme). |
+| `demos/img/caviste/hero.webp` | Cave à vin de quartier chaleureuse, murs de bouteilles en bois, comptoir de dégustation, lumière dorée, aucune personne en train de boire. |
 | `demos/img/investir/hero.webp` | Illustration style manga dynamique : un jeune entrepreneur devant un mur d'écrans de téléphone montrant des sites de commerces, éclairs jaunes et bleus, ambiance énergique. |
 
 ## Priorité 2 : galeries (5 images par site, carrées)
@@ -67,6 +68,11 @@ Les fichiers vont dans `demos/img/<site>/galerie-N.webp`.
 **Boutique CBD** (`demos/img/cbd/`), produit seul sur fond clair, sans marque, sans fumée, sans feuille de cannabis stylisée :
 - `huile-5`, `huile-10`, `huile-20` (flacons pipette ambrés de tailles différentes), `infusion` (sachet kraft et tasse), `fleur-lemon` et `fleur-berry` (fleurs séchées dans un bocal en verre), `baume`, `creme`, `sels`, `coffret`, `boite`.
 - Galerie `galerie-1` à `-5` : espace boutique, rayon des huiles, rayon des infusions, analyse de laboratoire sur une tablette, conseiller qui renseigne un client.
+
+**Caviste** (`demos/img/caviste/`), bouteille seule sur fond clair, étiquette vierge, sans marque :
+- `rouge-cdr`, `rouge-bourgogne`, `blanc-riesling`, `blanc-jura`, `rose-provence`, `cremant`, `biere-blonde`, `biere-ipa`, `whisky`, `rhum`, `sans-alcool-rouge`, `sans-alcool-biere`, `coffret`.
+- Galerie `galerie-1` à `-5` : rayons de vins, bières artisanales, spiritueux, coffrets cadeaux, caviste qui conseille.
+- Règle : pas de personne en train de boire, pas de scène festive (loi Évin).
 
 **Drive** (`demos/img/drive/`), produit seul sur fond blanc, sans marque visible :
 - `pommes`, `carottes`, `bananes`, `salade`, `lait`, `oeufs`, `comte`, `yaourts`, `baguette`, `croissants`, `poulet`, `steaks`, `pates`, `riz`, `cafe`, `eau`, `jus`, `papier`, `lessive`.
