@@ -163,6 +163,22 @@ class DiffusionTests(unittest.TestCase):
                 receipts,_=D.publish('f.mp4',{'id':'prog1'},state)
             self.assertEqual(FakeYT.calls,['public']);self.assertEqual(receipts['youtube']['status'],'published')
 
+    def test_promos_upload_private_two_per_run_without_duplicates(self):
+        from tools import promos_youtube as P
+        with tempfile.TemporaryDirectory() as folder:
+            state=D.State(Path(folder)/'state.enc',KEY)
+            class FakeYT:
+                ups=[];pub=[]
+                def __init__(self,*a):pass
+                def verify_channel(self):pass
+                def upload(self,path,meta,receipt):
+                    assert meta['status']['privacyStatus']=='private';FakeYT.ups.append(path.name);receipt.update(video_id='aB1cdEF2ghi',status='private')
+                def make_public(self,receipt):FakeYT.pub.append(1)
+            with patch.dict(os.environ,{'VM_YOUTUBE_PUBLIC':''}),patch.object(P,'access_token',return_value='t'),patch.object(P,'YouTube',FakeYT):
+                self.assertEqual(P.run(state,None,2),2);self.assertEqual(P.run(state,None,2),2)
+            self.assertEqual(len(FakeYT.ups),4);self.assertEqual(len(set(FakeYT.ups)),4);self.assertEqual(FakeYT.pub,[])
+            self.assertTrue(all(n.endswith('vertical.mp4') for n in FakeYT.ups))
+
     def test_twitch_preserves_existing_live_and_checks_connected_identity(self):
         with tempfile.TemporaryDirectory() as folder,patch.dict('os.environ',{'TWITCH_BROADCASTER_ID':'123','TWITCH_CLIENT_ID':'client'}):
             state=D.State(Path(folder)/'state.enc',KEY);http=Mock()

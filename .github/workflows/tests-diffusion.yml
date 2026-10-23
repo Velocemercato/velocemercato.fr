@@ -5,6 +5,7 @@ on:
     paths:
       - 'tools/diffuser_jt.py'
       - 'tools/connecter_diffusion.py'
+      - 'tools/promos_youtube.py'
       - 'tools/assembler_jt.py'
       - 'pastille_media.py'
       - 'tests/test_diffusion.py'
