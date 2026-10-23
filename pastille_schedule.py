@@ -6,19 +6,22 @@ import sys
 from zoneinfo import ZoneInfo
 
 PARIS = ZoneInfo('Europe/Paris')
-JT_CRON = '0 5,6,10,11,18,19 * * *'
+JT_CRON = '0 6,7,10,11,18,19 * * *'
 MATCH_CRON = '15,45 10-22 * * *'
-DEBATE_CRON = '30 21,22 * * *'
+DEBATE_CRON = '45 20,21,22 * * *'
+BUTS_CRON = '0 16,17 * * 0'
 
 
 def slot(now, cron):
     local = now.astimezone(PARIS)
     if cron == JT_CRON and local.minute < 30:
-        return {7:'matin',12:'midi',20:'soir'}.get(local.hour, '')
+        return {8:'matin',12:'midi',20:'soir'}.get(local.hour, '')
     if cron == MATCH_CRON:
         return 'speciale'
-    if cron == DEBATE_CRON and local.hour == 23 and local.minute >= 30:
-        return 'debat'
+    if cron == DEBATE_CRON and local.hour in (22, 23) and local.minute >= 30:
+        return 'debat'  # 22 h 45 si le match est terminé, sinon rattrapage à 23 h 45 (une seule fois par jour)
+    if cron == BUTS_CRON and local.hour == 18 and local.weekday() == 6:
+        return 'buts'   # dimanche 18 h : les buts de la semaine
     return ''
 
 

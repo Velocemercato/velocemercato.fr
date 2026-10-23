@@ -15,7 +15,7 @@ from pathlib import Path
 
 OUT = Path('matchs.json')
 def _cle_gratuite():
-    # Clé GRATUITE football-data.org (compte de Romain). Le secret GitHub FOOTBALL_DATA_KEY, s'il existe, passe avant.
+    # Clé GRATUITE football-data.org (compte VM). Le secret GitHub FOOTBALL_DATA_KEY, s'il existe, passe avant.
     import base64 as _b
     return _b.b64decode('NTU2ODhkZDVhMGY5MzQ1ODMyMTQwNzg3MzM2NGM4ZTc=').decode()[::-1]
 

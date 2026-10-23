@@ -1,0 +1,15 @@
+{
+  "name": "VM — Connexion YouTube et Twitch",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "forwardPorts": [8765],
+  "portsAttributes": {
+    "8765": {
+      "label": "Autoriser YouTube et Twitch",
+      "onAutoForward": "notify",
+      "protocol": "http"
+    }
+  }
+}

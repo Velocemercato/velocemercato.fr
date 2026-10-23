@@ -179,7 +179,7 @@ class SiteTests(unittest.TestCase):
         keys = page.evaluate('caches.keys()')
         self.assertNotIn(old, keys)
         self.assertIn('other-app-cache', keys)
-        new = 'vmu-v3' if PORTAL else 'vm-app-v4'
+        new = 'vmu-v4' if PORTAL else 'vm-app-v5'
         self.assertIn(new, keys)
         if not PORTAL:
             page.evaluate("fetch('/articles.json').then(response => response.json())")

@@ -44,7 +44,8 @@ def build_episode_pages(rows, root):
 <link rel="stylesheet" href="/assets/pastille.css"><script src="/assets/pastille-player.js" defer></script>
 </head><body class="episode-page"><main>
 <nav aria-label="Navigation"><a href="/">Véloce Mercato</a><a href="/studio.html#tv">Toutes les émissions</a><a href="https://vmunivers.fr/">VM Univers</a></nav>
-<p class="episode-label">La Pastille · émission générée par IA · personnages inventés</p>
+<p class="episode-label">La Pastille · Heineguez, présentateur virtuel · émission générée par IA · personnages inventés</p>
+<div class="vm-channels" role="group" aria-label="Nos chaînes vidéo"><a class="vm-channel vm-channel--youtube" href="https://www.youtube.com/@VeloceMercato" target="_blank" rel="noopener">▶ YouTube</a><a class="vm-channel vm-channel--twitch" href="https://www.twitch.tv/velocemercato" target="_blank" rel="noopener">Twitch ↗</a></div>
 <h1>{esc(row['titre'])}</h1><p>{esc(row.get('accroche', ''))}</p>
 <div id="episodePlayer"><video id="episodeVideo" controls playsinline preload="metadata" poster="{esc(poster)}"><source src="{esc(row['video'])}" type="video/mp4"></video></div>
 <p><a href="{esc(row['video'])}" rel="noopener">Ouvrir le fichier MP4</a> · <a href="/radio.html">Écouter VM Radio</a></p>

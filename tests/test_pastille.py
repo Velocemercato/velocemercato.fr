@@ -23,12 +23,19 @@ from tools.assembler_jt import assemble
 class PastilleTests(unittest.TestCase):
     def test_paris_schedule_winter_summer_and_clock_change(self):
         for date in ['2026-01-15','2026-07-15','2026-03-29','2026-10-25']:
-            for hour, plan in [(7,'matin'),(12,'midi'),(20,'soir')]:
+            for hour, plan in [(8,'matin'),(12,'midi'),(20,'soir')]:
                 now = dt.datetime.fromisoformat(f'{date}T{hour:02}:00').replace(tzinfo=schedule.PARIS)
                 self.assertEqual(schedule.slot(now.astimezone(dt.timezone.utc),schedule.JT_CRON),plan)
-        for hour in [6,8,11,13,19,21]:
+        for hour in [6,7,9,11,13,19,21]:
             now=dt.datetime(2026,7,15,hour,tzinfo=schedule.PARIS)
             self.assertEqual(schedule.slot(now,schedule.JT_CRON),'')
+        for date in ['2026-07-19','2026-11-01']:  # dimanches été / hiver
+            sunday=dt.datetime.fromisoformat(f'{date}T18:00').replace(tzinfo=schedule.PARIS)
+            self.assertEqual(schedule.slot(sunday.astimezone(dt.timezone.utc),schedule.BUTS_CRON),'buts')
+            self.assertEqual(schedule.slot((sunday-dt.timedelta(days=1)).astimezone(dt.timezone.utc),schedule.BUTS_CRON),'')
+            for hour in (22,23):
+                late=dt.datetime.fromisoformat(f'{date}T{hour}:45').replace(tzinfo=schedule.PARIS)
+                self.assertEqual(schedule.slot(late.astimezone(dt.timezone.utc),schedule.DEBATE_CRON),'debat')
         for moment in ['matin','midi','soir']:
             self.assertEqual({universe for universe,_,_ in emission.PLANS[moment]}, {'foot','actus','gaming'})
 
@@ -114,6 +121,23 @@ class PastilleTests(unittest.TestCase):
             subprocess.run(['ffmpeg','-v','error','-i',str(output),'-f','null','-'],check=True)
             from PIL import Image
             with Image.open(output.with_suffix('.jpg')) as image:self.assertEqual(image.size,(1280,720))
+
+    def test_optional_hd_master_reuses_audio_and_preserves_both_profiles(self):
+        def tone(text,perso,out,use_piper):
+            with wave.open(str(out),'wb') as wav:
+                wav.setnchannels(1);wav.setsampwidth(2);wav.setframerate(48000);wav.writeframes(struct.pack('<h',300)*48000)
+            return 'test-audio'
+        script={'titre':'Contrôle des deux profils','repliques':[('PRESENTATEUR','Contrôle technique des originaux du programme.')]}
+        encode=media.encode_hd_master
+        with tempfile.TemporaryDirectory() as folder,patch.dict(os.environ,{'VM_VIDEO_PROFILE':'cdn','VM_KEEP_HD_MASTER':'1'}),patch.object(debate,'piper_ready',return_value=True),patch.object(debate,'speak',side_effect=tone) as speak:
+            master=Path(folder)/'hd.mp4'
+            with patch.object(media,'encode_hd_master',side_effect=lambda frames,output,total,music:encode(frames,master,total,music)):
+                light=Path(folder)/'cdn.mp4';debate.build_video(script,light)
+            self.assertEqual(speak.call_count,1)
+            frame_rate=lambda file:next(row for row in media.probe(file)['streams'] if row['codec_type']=='video')['avg_frame_rate']
+            self.assertEqual(frame_rate(light),'12/1')
+            self.assertEqual(frame_rate(master),'24/1')
+            subprocess.run(['ffmpeg','-v','error','-i',str(master),'-f','null','-'],check=True)
 
     def test_real_cdn_profile_remains_playable_and_fits_transport(self):
         from PIL import Image

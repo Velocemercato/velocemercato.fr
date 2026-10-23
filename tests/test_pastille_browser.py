@@ -77,6 +77,22 @@ class PlayerTests(unittest.TestCase):
         self.assertIn('#a='+article['id'],page.locator('#vmS-fb').get_attribute('href').replace('%23','#').replace('%3D','='))
         context.close()
 
+    def test_long_programme_card_shows_only_confirmed_public_links(self):
+        context=self.context();page=context.new_page()
+        rows=[{'id':'foot-speciale-20261022-2100','date_publication':'2026-10-22T21:00:00Z','universes':['foot'],'titre':'Spéciale Foot seule','plateformes':{'youtube':{'status':'published','url':'https://www.youtube.com/watch?v=aB1cdEF2ghi'}}},
+              {'id':'jt-2026-10-23-soir','titre':'Vidéo privée invisible','plateformes':{'youtube':{'status':'private','url':'https://www.youtube.com/watch?v=aB1cdEF2ghi'}}},
+              {'id':'jt-2026-10-22-soir','titre':'Le grand JT <script>test</script>','plateformes':{'youtube':{'status':'published','url':'https://www.youtube.com/watch?v=aB1cdEF2ghi'}}}]
+        context.route('**/studio/diffusions.json',lambda route:route.fulfill(json=rows))
+        page.goto(self.base+'/actus/',wait_until='networkidle')
+        section=page.locator('[data-broadcast-feed]')
+        self.assertTrue(section.is_visible())
+        self.assertEqual(section.locator('h2').text_content(),'Le grand JT <script>test</script>')
+        self.assertEqual(section.locator('a').get_attribute('href'),'https://www.youtube.com/watch?v=aB1cdEF2ghi')
+        self.assertEqual(section.locator('script,iframe').count(),0)
+        page.goto(self.base,wait_until='networkidle')
+        self.assertEqual(page.locator('[data-broadcast-feed] h2').text_content(),'Spéciale Foot seule')
+        context.close()
+
     def test_static_share_page_without_javascript(self):
         context=self.browser.new_context(java_script_enabled=False,viewport={'width':390,'height':844})
         context.route('**/*',lambda route:route.continue_() if route.request.url.startswith(self.base+'/') else route.abort())

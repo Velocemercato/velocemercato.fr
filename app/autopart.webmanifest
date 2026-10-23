@@ -1,0 +1,29 @@
+{
+ "id": "/app/autopart",
+ "name": "VM Auto Particulier",
+ "short_name": "VM Auto",
+ "start_url": "/pro-auto/?app=1",
+ "scope": "/pro-auto/",
+ "display": "standalone",
+ "background_color": "#05080f",
+ "theme_color": "#05080f",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/autopart-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/autopart-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/autopart-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

@@ -15,12 +15,14 @@ sys.path.insert(0, str(ROOT))
 from pastille_media import probe
 
 
-def assemble(root, moment, date, output):
+def assemble(root, moment, date, output, master_dir=None):
     root,output=Path(root),Path(output)
+    metadata_dir = Path(master_dir) if master_dir else root/'studio/tv'
+    media_dir = Path(master_dir) if master_dir else root/'studio/tmp'
     parts=[]
     for universe in ['foot','actus','gaming']:
         choices=[]
-        for metadata in (root/'studio/tv').glob('*.json'):
+        for metadata in metadata_dir.glob('*.json'):
             if metadata.name.startswith('_'):continue
             row=json.loads(metadata.read_text())
             if (row.get('univers')==universe and row.get('format')=='edition'
@@ -28,7 +30,7 @@ def assemble(root, moment, date, output):
         if not choices:raise RuntimeError(f'JT {universe} du {date} ({moment}) absent : aucun programme complet inventé.')
         row=max(choices,key=lambda item:item['date'])
         if not re.fullmatch(r'[a-z0-9-]+\.mp4',row.get('fichier','')):raise ValueError('Fichier de JT invalide')
-        file=root/'studio/tmp'/row['fichier']
+        file=media_dir/row['fichier']
         if not file.is_file():raise RuntimeError(f'Rendu local manquant : {file.name}. Générer les trois JT en aperçu avant assemblage.')
         info=probe(file);video=next(stream for stream in info['streams'] if stream['codec_type']=='video')
         audio=next(stream for stream in info['streams'] if stream['codec_type']=='audio')
@@ -61,7 +63,8 @@ if __name__=='__main__':
     parser.add_argument('--moment',choices=['matin','midi','soir'],required=True)
     parser.add_argument('--date',default=dt.datetime.now(ZoneInfo('Europe/Paris')).date().isoformat())
     parser.add_argument('--output',type=Path)
+    parser.add_argument('--masters',type=Path,help='Répertoire des originaux HD et de leurs métadonnées')
     args=parser.parse_args()
     output=args.output or ROOT/'studio/tmp'/f'programme-{args.date}-{args.moment}.mp4'
-    result=assemble(ROOT,args.moment,args.date,output)
+    result=assemble(ROOT,args.moment,args.date,output,args.masters)
     print(f"Programme prêt en local : {output.name} · {round(result['duree_mesuree'])} s · aucune diffusion")

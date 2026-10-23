@@ -31,7 +31,7 @@ Les exports `publications.txt`, `publications.json` et les résultats disponible
 
 ## Comptes encore à connecter
 
-**YouTube et Twitch** sont les destinations choisies pour les programmes longs. Le générateur et `tools/assembler_jt.py` préparent un MP4 long et ses chapitres, mais aucun upload YouTube ni direct Twitch n’est implémenté. Le direct Twitch devra être identifié comme une rediffusion enregistrée et générée par IA. Les conditions de la chaîne YouTube pour les vidéos longues et les droits sur les contenus doivent être vérifiés dans le compte réel.
+**YouTube et Twitch** sont les destinations choisies pour les programmes longs. Le générateur et `tools/assembler_jt.py` préparent un MP4 long et ses chapitres. Le raccordement des envois est désormais implémenté dans `tools/diffuser_jt.py` ; les comptes restent à autoriser une fois selon `docs/YOUTUBE_TWITCH_CONNEXION.md`. Aucun upload YouTube ni direct Twitch connecté n’a encore été effectué ici. Le direct Twitch devra être identifié comme une rediffusion enregistrée et générée par IA. Les conditions de la chaîne YouTube pour les vidéos longues et les droits sur les contenus doivent être vérifiés dans le compte réel.
 
 **Facebook, Instagram, TikTok et les autres réseaux** ne sont pas connectés. Les boutons de partage présents sur le site ouvrent un partage volontaire ; ils ne donnent pas au site une autorisation de publier sur ces comptes. Il reste à choisir le moyen de connexion officiel ou un outil de programmation compatible avec les comptes réellement détenus, puis à essayer et vérifier les publications. Aucun abonnement payant ni nouveau compte n’a été créé.
 
@@ -55,3 +55,6 @@ Le message complet à transmettre à ChatGPT est dans `docs/MESSAGE_POUR_CHATGPT
 - Les deux domaines publics retournent toujours un refus du proxy depuis cette machine. La réussite de GitHub Pages est vérifiée sur ses pages de déploiement ; une navigation directe sur les domaines après déploiement reste à vérifier hors de ce proxy.
 
 Le calendrier est installé ; ses prochains passages dépendront du service GitHub Actions et des contenus frais disponibles. Aucun journal HD long n’a été envoyé sur YouTube ni diffusé sur Twitch.
+
+
+Mise à jour du raccordement YouTube/Twitch : les outils OAuth, upload avec reprise, diffusion et workflows sont maintenant implémentés sur `codex/youtube-twitch-auto`. Ils restent inactifs tant que les comptes n’ont pas été autorisés. Le guide de connexion et les limites précises se trouvent dans `docs/YOUTUBE_TWITCH_CONNEXION.md`. Cette étape ne constitue pas encore une preuve d’upload ou de direct connecté.

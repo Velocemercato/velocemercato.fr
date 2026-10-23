@@ -45,8 +45,17 @@ def video_profile():
 
 def encode_video(folder, output, total, music):
     """Conserve le profil CDN en production ; HD explicite pour les aperçus longs."""
+    return _encode(folder, output, total, music, video_profile() == 'hd')
+
+
+def encode_hd_master(folder, output, total, music):
+    """Rendu local conservé pour YouTube/Twitch ; aucun envoi au transport CDN."""
+    return _encode(folder, output, total, music, True)
+
+
+def _encode(folder, output, total, music, hd):
     output = Path(output)
-    hd = video_profile() == 'hd'
+    output.parent.mkdir(parents=True, exist_ok=True)
     subprocess.run([
         'ffmpeg', '-v', 'error', '-y', '-filter_complex_threads', '1',
         '-f', 'concat', '-safe', '0', '-i', str(folder / 'images.txt'),

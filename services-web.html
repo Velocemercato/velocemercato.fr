@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Véloce Web Studio – Sites, outils pour professionnels et aide administrative</title>
+<title>Outils professionnels & aide administrative — VM Univers</title>
 <meta name="description" content="Des sites internet simples, clairs sur téléphone et faciles à faire évoluer, pour les artisans, commerçants, indépendants et associations. Devis clair, le client reste propriétaire.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2470'/%3E%3Ctext x='32' y='44' font-family='Impact,sans-serif' font-size='30' font-style='italic' text-anchor='middle' fill='%23f4cf55'%3EVW%3C/text%3E%3C/svg%3E">
@@ -26,44 +26,52 @@ form.q textarea{min-height:80px;resize:vertical}
 .copybox{border:2px solid var(--line);border-radius:10px;padding:12px;background:var(--bg);white-space:pre-wrap;font:500 .95rem/1.45 Barlow,system-ui,sans-serif}
 details.faq{border-top:2px dashed rgba(29,63,184,.25);padding:10px 0}details.faq summary{cursor:pointer;font-weight:700}
 .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateX(-50%);background:var(--gold-hi);color:#0b1533;border:3px solid #000;border-radius:999px;padding:9px 16px;font:700 .9rem/1 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;z-index:50}
+
+.hero h1{font-size:clamp(1.65rem,6vw,2.2rem);overflow-wrap:anywhere}.card{min-width:0}.btn{max-width:100%;line-height:1.3}header .logo{flex:none}
 </style>
-</head>
-<body>
-<header><a class="logo" href="/services-web.html">VÉLOCE <b>WEB STUDIO</b></a><nav><a href="#offres">Sites</a><a href="#outils-pro">Outils pro</a><a href="#aide-admin">Aide admin</a><a href="#devis">Devis</a></nav></header>
+<link rel="manifest" href="/app/foot.webmanifest" id="vmapp-m"><meta name="theme-color" content="#060b1d" id="vmapp-t"><link rel="apple-touch-icon" href="/app/foot-apple.png" id="vmapp-i"><style id="vmbar-css">
+.vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:sticky;top:0;z-index:80}
+.vmbar+header{top:49px!important}
+.vmbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:6px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
+.vmbar-in::-webkit-scrollbar{display:none}
+.vmbar-in{min-height:48px}
+.vmbar a{flex:none;color:#cfd6ea;text-decoration:none;padding:7px 10px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.vmbar a:hover{background:rgba(255,255,255,.08);color:#fff}
+.vmbar a:focus-visible{outline:2px solid #f4cf55;outline-offset:2px}
+.vmbar .vmb-logo small{font:800 9px/1 system-ui,sans-serif;font-style:normal;letter-spacing:.06em;margin-left:4px;vertical-align:middle}
+.vmbar .vmb-logo{font:italic 900 18px/1 Impact,"Arial Black",sans-serif;color:#04060f;background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);padding:6px 9px;border-radius:8px;margin-right:4px;letter-spacing:.02em}
+.vmbar .vmb-logo{position:sticky;left:0;z-index:2;box-shadow:6px 0 0 #04060f;font-size:15px;min-height:36px;display:flex;flex-direction:column;justify-content:center;gap:3px;align-items:center}
+.vmbar .vmb-logo small{margin:0;font-size:8px}
+.vmbar a.on{color:#04060f;background:#fff}
+.vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
+.vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
+.vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
+@media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
+</style><style id="vmshare-css">
+.vminst{display:none;position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#1d3fb8;color:#fff;box-shadow:3px 3px 0 #000;cursor:pointer}
+.vminst.show{display:flex}
+.vmfab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;display:flex;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#f4cf55;color:#0b1533;box-shadow:3px 3px 0 #000;cursor:pointer}
+.vmsh{position:fixed;inset:0;z-index:90;background:rgba(5,9,23,.78);display:flex;align-items:flex-end;justify-content:center;padding:12px}
+.vmsh[hidden]{display:none}
+.vmsh-box{width:100%;max-width:420px;background:#fff;color:#0b1533;border:3px solid #000;border-radius:20px;padding:16px 16px 18px;box-shadow:6px 6px 0 #1d3fb8;font:15px/1.4 system-ui,sans-serif;max-height:92vh;overflow:auto}
+.vmsh-box h3{margin:0 0 4px;font:900 1.25rem system-ui,sans-serif}
+.vmsh-t{margin:0 0 12px;color:#4e5b7d;font-size:.85rem;word-break:break-word}
+.vmsh-g{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.vmsh-g a,.vmsh-g button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 4px;border-radius:14px;border:2px solid #0b1533;background:#f3f5fb;color:#0b1533;font:700 .78rem system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.vmsh-g span{font-size:1.5rem}
+.vmsh-qr{display:flex;justify-content:center;margin:14px 0 4px}.vmsh-qr canvas,.vmsh-qr img{border:8px solid #fff;outline:2px solid #0b1533;border-radius:6px}
+.vmsh-c{display:block;width:100%;margin-top:12px;font:800 1rem system-ui,sans-serif;padding:12px;border-radius:999px;border:2px solid #0b1533;background:#fff;color:#0b1533;cursor:pointer}
+@media print{.vmfab{display:none}}
+</style></head>
+<body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="VM Univers, tous les projets">VM UNIVERS<small>TOUS LES PROJETS</small></a><a class="f" href="/">⚽ Foot</a><a class="p on" href="/web-studio.html" aria-current="page">Pro · sites & visuels</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
+<header><a class="logo" href="https://vmunivers.fr/">VM <b>UNIVERS</b></a><nav><a href="/web-studio.html">Le Web Studio</a><a href="#outils-pro">Outils pro</a><a href="#aide-admin">Aide admin</a><a href="#devis">Devis</a></nav></header>
 <main>
 
-<p class="notice" role="note"><span>🛠️</span><span>Ouverture prochaine. Les devis seront proposés dès la création officielle de l'activité. Tu peux déjà décrire ton besoin : on en discute sans engagement.</span></p>
+<p class="notice" role="note"><span>🛠️</span><span>Le studio prépare son ouverture. Vous pouvez présenter votre besoin dès maintenant ; les conditions et la disponibilité seront confirmées avant toute prestation.</span></p>
 
-<section class="card hero">
-<span class="tag">Professionnels · associations · particuliers</span>
-<h1>Ton activité mérite <em>un vrai site</em></h1>
-<p>Un site clair sur téléphone, rapide à consulter et simple à faire évoluer. Les gens te trouvent, voient ce que tu proposes et t'appellent en un toucher. Création assistée par l'intelligence artificielle, conception et vérification humaines.</p>
-<div class="actions"><a class="btn gold" href="#devis">Décrire mon projet</a><a class="btn" href="#realisations">Voir des réalisations</a></div>
-</section>
+<section class="card hero"><span class="tag">Professionnels · associations · particuliers</span><h1>Des outils utiles, <em>un accompagnement clair.</em></h1><p>Retrouvez ici les outils professionnels et l’aide administrative VM. Pour un site internet, un logo, des cartes de visite, des flyers ou une publicité, découvrez notre vitrine dédiée.</p><div class="actions"><a class="btn gold" href="https://vmunivers.fr/professionnels/">Sites & communication VM →</a><a class="btn" href="#outils-pro">Les outils professionnels</a></div></section>
 
-<section id="offres" aria-labelledby="t-off">
-<h2 id="t-off" style="margin-bottom:14px">Sites internet : trois formules</h2>
-<div class="grid three">
-<article class="tile offer">
-<h3>Essentiel</h3>
-<p>Une page complète pour exister en ligne.</p>
-<ul><li>Présentation, services, horaires</li><li>Bouton d'appel et itinéraire</li><li>Lisible sur téléphone</li><li>Mentions légales à compléter avec toi</li></ul>
-<span class="price">Prix sur devis</span>
-</article>
-<article class="tile offer">
-<h3>Évolutif</h3>
-<p>Trois à cinq pages pour présenter ton activité en détail.</p>
-<ul><li>Pages services, galerie photo, FAQ</li><li>Formulaire de contact simple</li><li>Bases du référencement Google</li><li>Deux séries de corrections comprises</li></ul>
-<span class="price">Prix sur devis</span>
-</article>
-<article class="tile offer">
-<h3>Suivi</h3>
-<p>Ton site reste à jour sans que tu t'en occupes.</p>
-<ul><li>Changements de textes, horaires, photos</li><li>Vérification que le site fonctionne</li><li>Sans engagement de durée</li></ul>
-<span class="price">Formule mensuelle sur devis</span>
-</article>
-</div>
-</section>
+<section id="offres" class="card"><h2>Sites, identité & communication</h2><p>Les offres web, les exemples et les supports graphiques sont regroupés dans la vitrine professionnelle VM.</p><a class="btn gold" href="/web-studio.html">Découvrir le Web Studio</a> <a class="btn" href="/pub/">Les espaces publicitaires</a></section>
 
 <section class="card" id="outils-pro" style="margin-top:26px" aria-labelledby="t-pro">
 <h2 id="t-pro">Outils sur mesure pour les professionnels</h2>
@@ -138,7 +146,7 @@ details.faq{border-top:2px dashed rgba(29,63,184,.25);padding:10px 0}details.faq
 <p class="muted">N'écris pas d'informations sensibles (coordonnées bancaires, numéro de sécurité sociale).</p>
 <div class="copybox" id="qTxt" aria-live="polite"></div>
 <div class="actions"><button class="btn gold" type="button" id="qCopy">Copier ma demande</button><a class="btn" id="qMail" href="#">Envoyer par mail</a></div>
-<p class="muted">Adresse : <strong style="user-select:all">velocemercato.fr@gmail.com</strong></p>
+<p class="muted">Adresse : <strong style="user-select:all">vminvest.fr@gmail.com</strong></p>
 </form>
 </section>
 
@@ -151,12 +159,12 @@ details.faq{border-top:2px dashed rgba(29,63,184,.25);padding:10px 0}details.faq
 </section>
 
 </main>
-<footer>Véloce Web Studio · un projet de Romain, créateur de Véloce Mercato · <a href="/mentions-legales.html">Mentions légales</a></footer>
+<footer>Véloce Web Studio · un projet VM Univers · <a href="/mentions-legales.html">Mentions légales</a></footer>
 <div class="toast" id="toast" hidden></div>
 <script>
 (function(){
   var $=function(id){return document.getElementById(id);};
-  var MAIL='velocemercato.fr@gmail.com';
+  var MAIL='vminvest.fr@gmail.com';
   var toast=function(m){var t=$('toast');t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(function(){t.hidden=true;},2400);};
   var txt=function(){var v=function(id){return ($(id).value||'').trim()||'—';};
     return 'Demande – Véloce Web Studio\nActivité : '+v('qAct')+'\nVille : '+v('qVille')+'\nBesoin : '+$('qType').value+'\nNom de domaine : '+$('qDom').value+'\nTextes et photos : '+$('qCont').value+'\nDélai souhaité : '+v('qDelai')+'\n\nMon besoin :\n'+v('qBesoin');};
@@ -167,5 +175,54 @@ details.faq{border-top:2px dashed rgba(29,63,184,.25);padding:10px 0}details.faq
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){toast('Demande copiée');},fb);}else fb();};
 })();
 </script>
-</body>
+<button type="button" class="vmfab" id="vmFab" aria-haspopup="dialog">📤 Partager</button>
+<button type="button" class="vminst" id="vmInst">📲 Installer l'app</button>
+<div class="vmsh" id="vmSh" hidden role="dialog" aria-modal="true" aria-labelledby="vmShT"><div class="vmsh-box">
+<h3 id="vmShT">📤 Partager cette page</h3><p class="vmsh-t" id="vmShU"></p>
+<div class="vmsh-g">
+<a id="vmS-wa" target="_blank" rel="noopener"><span>💬</span>WhatsApp</a>
+<a id="vmS-fb" target="_blank" rel="noopener"><span>📘</span>Facebook</a>
+<a id="vmS-x" target="_blank" rel="noopener"><span>✖️</span>X</a>
+<a id="vmS-tg" target="_blank" rel="noopener"><span>✈️</span>Telegram</a>
+<a id="vmS-sms"><span>📱</span>SMS</a>
+<button type="button" id="vmS-cp"><span>🔗</span>Copier le lien</button>
+</div>
+<button type="button" class="vmsh-c" id="vmS-more" hidden>Plus d’options (Insta, Snap…)</button>
+<div class="vmsh-qr" id="vmShQ" aria-label="QR code de la page"></div>
+<p class="vmsh-t" style="text-align:center;margin:4px 0 0">📷 Fais scanner ce QR code avec l’appareil photo d’un ami</p>
+<button type="button" class="vmsh-c" id="vmShX">Fermer</button>
+</div></div>
+<script>
+(function(){var $=function(i){return document.getElementById(i)},f=$('vmFab'),m=$('vmSh'),qr=false;if(!f||!m)return;
+function url(){return window.vmShareURL?window.vmShareURL():(/^#a=/.test(location.hash)?location.href:location.href.split('#')[0])}
+function open(){var u=url(),t=document.title,e=encodeURIComponent;$('vmShU').textContent=t;
+ $('vmS-wa').href='https://wa.me/?text='+e(t+' '+u);$('vmS-fb').href='https://www.facebook.com/sharer/sharer.php?u='+e(u);$('vmS-x').href='https://twitter.com/intent/tweet?text='+e(t)+'&url='+e(u);$('vmS-tg').href='https://t.me/share/url?url='+e(u)+'&text='+e(t);$('vmS-sms').href='sms:?&body='+e(t+' '+u);
+ $('vmS-more').hidden=!navigator.share;
+ if(!qr){qr=true;var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';var fb=function(){if($('vmShQ').firstChild)return;var i=new Image();i.width=180;i.height=180;i.alt='QR code de la page';i.src='https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=0&data='+e(u);$('vmShQ').appendChild(i)};s.onload=function(){try{new QRCode($('vmShQ'),{text:u,width:180,height:180,correctLevel:QRCode.CorrectLevel.M})}catch(x){fb()}};s.onerror=fb;setTimeout(fb,4000);document.head.appendChild(s)}
+ m.hidden=false;$('vmShX').focus()}
+f.onclick=open;$('vmShX').onclick=function(){m.hidden=true;f.focus()};m.onclick=function(e){if(e.target===m)m.hidden=true};
+$('vmS-more').onclick=function(){navigator.share({title:document.title,url:url()}).catch(function(){})};
+$('vmS-cp').onclick=function(){var b=this;(navigator.clipboard?navigator.clipboard.writeText(url()):Promise.reject()).then(function(){b.lastChild.textContent='Copié ✓'}).catch(function(){prompt('Copie ce lien :',url())})};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=true});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
+var ib=$('vmInst'),dp=null,standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone,ios=/iphone|ipad|ipod/i.test(navigator.userAgent),andr=/android/i.test(navigator.userAgent);
+var mf=(($('vmapp-m')||{}).getAttribute&&$('vmapp-m').getAttribute('href'))||'',app=(mf.match(/app[/]([a-z]+)[.]webmanifest/)||[,'foot'])[1];
+var NOMS={autopart:'VM Auto Particulier',location:'VM Détailing',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'l’appli VM',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'VM TV',annonces:'VM Annonces',allolivre:'AlloLivre'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
+ib.textContent='📲 Installer '+nom;
+function show(){if(!no)ib.classList.add('show')}
+if(!standalone){addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;show()});if(ios)show();}
+addEventListener('appinstalled',function(){ib.classList.remove('show')});
+ib.onclick=function(){
+ if(dp){dp.prompt();dp.userChoice.then(function(){ib.classList.remove('show')});dp=null;return}
+ if(ios){alert('Pour installer '+nom+' sur iPhone : — 1. Ouvre cette page dans Safari — 2. Bouton Partager ↑ en bas — 3. « Sur l’écran d’accueil » — 4. « Ajouter »')}
+
+ try{localStorage.setItem(key,'1')}catch(e){}ib.classList.remove('show')};
+window.vmMail=function(su,bo){var to='vminvest.fr@gmail.com';location.href='mailto:'+to+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(bo);
+ var d=document.getElementById('vmMailBox');if(d)d.remove();d=document.createElement('div');d.id='vmMailBox';d.setAttribute('role','dialog');
+ d.style.cssText='position:fixed;left:12px;right:12px;bottom:12px;z-index:95;max-width:440px;margin:0 auto;background:#fff;color:#0b1533;border:3px solid #000;border-radius:16px;padding:14px;box-shadow:5px 5px 0 #1d3fb8;font:15px/1.4 system-ui,sans-serif';
+ d.innerHTML='<b>✉️ Ton appli e-mail s’ouvre avec le message prêt.</b><br>Appuie sur « Envoyer » dedans : tant que ce n’est pas fait, rien n’est envoyé.<br><small>Rien ne s’ouvre ? Copie la demande et envoie-la à '+to+'.</small><div style="display:flex;gap:8px;margin-top:10px"><button type="button" id="vmMailCp" style="flex:1;font:800 .95rem system-ui;padding:10px;border-radius:999px;border:2px solid #000;background:#f4cf55;cursor:pointer">📋 Copier la demande</button><button type="button" id="vmMailX" style="font:800 .95rem system-ui;padding:10px 14px;border-radius:999px;border:2px solid #000;background:#fff;cursor:pointer">OK</button></div>';
+ document.body.appendChild(d);document.getElementById('vmMailX').onclick=function(){d.remove()};
+ document.getElementById('vmMailCp').onclick=function(){var t='À : '+to+'\nObjet : '+su+'\n\n'+bo,b=this;function ok(){b.textContent='✅ Copié !'}if(navigator.clipboard)navigator.clipboard.writeText(t).then(ok,function(){prompt('Copie ce texte :',t)});else prompt('Copie ce texte :',t)}};
+})();
+</script></body>
 </html>
