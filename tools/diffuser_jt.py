@@ -259,6 +259,20 @@ class YouTube:
             raise DeliveryError(f'YouTube : la chaîne autorisée est {names}, mais YOUTUBE_CHANNEL_ID indique {expected or "un texte sans UC…"}.')
         return next(row for row in rows if row['id'] == expected)
 
+    def find_upload(self, title):
+        """Identifiant d'une vidéo récente de la chaîne portant exactement ce titre, sinon ''."""
+        rows = self.http.json('GET', 'https://www.googleapis.com/youtube/v3/channels?part=contentDetails&mine=true', self.token).get('items', [])
+        uploads = (rows[0].get('contentDetails', {}).get('relatedPlaylists', {}).get('uploads', '') if rows else '')
+        if not re.fullmatch(r'[A-Za-z0-9_-]{10,40}', uploads):
+            raise DeliveryError('Session YouTube non confirmée : liste des envois de la chaîne illisible.')
+        items = self.http.json('GET', 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=25&playlistId=' + uploads, self.token).get('items', [])
+        for item in items:
+            snippet = item.get('snippet', {})
+            ident = snippet.get('resourceId', {}).get('videoId', '')
+            if snippet.get('title') == title[:100] and re.fullmatch(r'[A-Za-z0-9_-]{11}', ident):
+                return ident
+        return ''
+
     def upload(self, file, metadata, receipt, chunk_size=8*1024*1024):
         file = Path(file)
         total = file.stat().st_size
@@ -266,13 +280,27 @@ class YouTube:
             return receipt['video_id']
         if not receipt.get('session'):
             if receipt.get('status') == 'uploading':
-                raise DeliveryError('Session YouTube non confirmée : vérifier avant de créer une autre vidéo.')
+                # Envoi précédent interrompu sans session : on vérifie la chaîne
+                # avant tout nouvel envoi, pour ne jamais créer de doublon.
+                ident = self.find_upload(metadata['snippet']['title'])
+                if ident:
+                    receipt.update(video_id=ident, status='uploaded' if receipt.get('requested_visibility') == 'public' else 'private')
+                    self.state.save()
+                    return ident
             receipt['status'] = 'uploading'
             receipt['requested_visibility'] = metadata.get('status',{}).get('privacyStatus','private')
             self.state.save()
-            _, headers, _ = self.http.request('POST', 'https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status',
-                {'Authorization': 'Bearer ' + self.token, 'Content-Type': 'application/json',
-                 'X-Upload-Content-Type': 'video/mp4', 'X-Upload-Content-Length': str(total)}, json.dumps(metadata).encode())
+            try:
+                _, headers, _ = self.http.request('POST', 'https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status',
+                    {'Authorization': 'Bearer ' + self.token, 'Content-Type': 'application/json',
+                     'X-Upload-Content-Type': 'video/mp4', 'X-Upload-Content-Length': str(total)}, json.dumps(metadata).encode())
+            except DeliveryError as error:
+                # Refus explicite (HTTP 4xx, ex. limite d'envois du jour) : aucune
+                # vidéo créée, l'accusé est libéré pour un nouvel essai plus tard.
+                if re.search(r'HTTP 4\d\d', str(error)):
+                    receipt['status'] = 'refused'
+                    self.state.save()
+                raise
             session = next((v for k, v in headers.items() if k.lower() == 'location'), '')
             target = urllib.parse.urlsplit(session)
             if target.scheme != 'https' or target.hostname != 'www.googleapis.com' or target.username or target.password:

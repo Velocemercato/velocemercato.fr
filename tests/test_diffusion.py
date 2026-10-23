@@ -138,6 +138,20 @@ class DiffusionTests(unittest.TestCase):
             self.assertEqual(http.request.call_args_list[1].args[3],b'4567')
             self.assertEqual(http.request.call_args_list[3].args[3],b'89')
 
+    def test_youtube_refusal_frees_receipt_and_stuck_receipt_checks_channel_first(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);file=root/'master.mp4';file.write_bytes(b'video')
+            state=D.State(root/'state.enc',KEY);meta=D.youtube_metadata(MANIFEST);receipt={}
+            http=Mock();http.request.side_effect=D.DeliveryError('API www.googleapis.com : HTTP 400 (uploadLimitExceeded).')
+            with self.assertRaises(D.DeliveryError):D.YouTube(http,state,'token').upload(file,meta,receipt)
+            self.assertEqual(receipt['status'],'refused')
+            # Ancien accusé bloqué sans session : la vidéo déjà sur la chaîne est reprise, aucun nouvel envoi.
+            stuck={'status':'uploading','requested_visibility':'public'};http=Mock()
+            http.json.side_effect=[{'items':[{'contentDetails':{'relatedPlaylists':{'uploads':'UUabcdefghijklmnopqrstuv'}}}]},
+                {'items':[{'snippet':{'title':meta['snippet']['title'],'resourceId':{'videoId':'aB1cdEF2ghi'}}}]}]
+            self.assertEqual(D.YouTube(http,state,'token').upload(file,meta,stuck),'aB1cdEF2ghi')
+            self.assertEqual(stuck['status'],'uploaded');http.request.assert_not_called()
+
     def test_youtube_never_follows_external_session_or_uploads_wrong_channel(self):
         with tempfile.TemporaryDirectory() as folder, patch.dict('os.environ',{'YOUTUBE_CHANNEL_ID':'expected'}):
             state=D.State(Path(folder)/'state.enc',KEY);http=Mock()

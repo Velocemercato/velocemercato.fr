@@ -4,7 +4,7 @@
 Réutilise la connexion et les accusés chiffrés de tools/diffuser_jt.py :
 aucun jeton dans le dépôt, aucun envoi en double (un accusé par Short).
 Quota YouTube : chaque envoi coûte environ 1 600 points sur 10 000 par jour,
-partagés avec les JT longs. D'où une limite quotidienne (VM_SHORTS_PAR_JOUR, 3 par défaut)
+partagés avec les JT longs. D'où une limite quotidienne (VM_SHORTS_PAR_JOUR, 1 par défaut)
 et un seul moment par jour (VM_SHORTS_MOMENT, « midi » par défaut).
 """
 import argparse
@@ -98,7 +98,7 @@ def main():
     if not enabled('youtube'):
         print('YouTube non configuré ou désactivé (VM_AUTO_YOUTUBE) : aucun Short envoyé.')
         return
-    limit = max(0, int(os.getenv('VM_SHORTS_PAR_JOUR', '3') or 3))
+    limit = max(0, int(os.getenv('VM_SHORTS_PAR_JOUR', '1') or 1))
     moment = os.getenv('VM_SHORTS_MOMENT', 'midi').strip()
     today = dt.datetime.now(PARIS).date()
     state = State(a.state, os.getenv('VM_DIFFUSION_STATE_KEY', ''), (lambda: git_save(a.state)) if a.git_state else None)
