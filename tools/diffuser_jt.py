@@ -495,6 +495,7 @@ def main():
         print(provider + ' : ' + receipt.get('status', 'non confirmé'))
     for error in errors:
         print(error, file=sys.stderr)
+        print('::error::' + str(error).replace('\n', ' '))
     if errors:
         raise DeliveryError('Au moins une diffusion reste non confirmée ; les accusés sont conservés.')
 
@@ -504,5 +505,7 @@ if __name__ == '__main__':
         main()
     except Exception as error:
         # Les exceptions réseau/sous-processus peuvent inclure des secrets : message contrôlé seulement.
-        print(str(error) if isinstance(error, DeliveryError) else 'Diffusion interrompue (' + type(error).__name__ + '). Aucun succès annoncé.', file=sys.stderr)
+        message = str(error) if isinstance(error, DeliveryError) else 'Diffusion interrompue (' + type(error).__name__ + '). Aucun succès annoncé.'
+        print(message, file=sys.stderr)
+        print('::error::' + message.replace('\n', ' '))  # visible dans les annotations GitHub
         sys.exit(1)
