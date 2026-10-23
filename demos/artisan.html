@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Titan Bâtiment – démo Véloce Web Studio</title>
+<meta name="description" content="Démonstration d’un site d’artisan ou d’entreprise du bâtiment : devis en ligne avec estimation, prise de rendez-vous pour visite, chantiers en photo et vidéo, confirmation SMS.">
+<meta name="robots" content="noindex"><meta name="theme-color" content="#0a1420">
+<meta property="og:title" content="Titan Bâtiment – votre devis en 2 minutes"><meta property="og:image" content="https://velocemercato.fr/demos/img/artisan/hero.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ffb703'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle'%3E%F0%9F%A7%B1%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/demos/kit/vm-demo.css">
+<style>:root{--a:#ffb703;--b:#0f4c81;--ink:#0a1420;--bg:#f3f6fa}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:0;border:3px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.ba .vd-media{aspect-ratio:4/3}
+.ba .lab{position:absolute;top:10px;left:10px;z-index:2;font-weight:900;font-size:.75rem;background:#000c;color:#fff;padding:4px 9px;border-radius:999px}
+.trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.trust div{background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:14px;text-align:center;font-weight:800}
+.trust b{display:block;font:italic 900 2rem/1 Impact,"Arial Black",sans-serif;color:var(--b)}</style>
+</head><body>
+<div class="vd-demo"><b>VM</b> Site de démonstration — entreprise fictive créée par Véloce Web Studio. <a href="/web-studio.html?offre=devis#devis">Je veux le même pour mon entreprise →</a></div>
+<header class="vd-top"><div class="vd-top-in"><a class="vd-logo" href="#"><span aria-hidden="true">🧱</span><em>Titan Bâtiment</em></a>
+<nav class="vd-nav" aria-label="Sections"><a href="#metiers">Métiers</a><a href="#chantiers">Chantiers</a><a href="#avis">Avis</a><a href="#infos">Contact</a></nav>
+<a class="vd-cta-top" href="#devis">📐 Devis gratuit</a></div></header>
+
+<section class="vd-hero"><div class="vd-hero-in"><div>
+<span class="vd-kicker">Rénovation · Maçonnerie · Toiture · Industrie</span>
+<h1>Du solide, <i>livré à l’heure</i>.</h1>
+<p class="lead">Particuliers, commerces et sites industriels : décrivez votre projet, obtenez une estimation immédiate et réservez la visite gratuite en ligne.</p>
+<ul class="vd-badges"><li>🛡️ Garantie décennale</li><li>📐 Estimation en 2 min</li><li>📅 Visite sous 72 h</li><li>🏭 Pros & particuliers</li></ul>
+<div class="vd-btns"><a class="vd-btn" href="#devis">📐 Estimer mon projet</a><a class="vd-btn alt" href="#chantiers">Voir nos chantiers</a></div>
+</div><div class="vd-hero-art"><span class="vd-sfx s1">BAM!</span><div class="vd-media" data-img="/demos/img/artisan/hero.webp" data-e="🏗️" data-l="Chantier Titan Bâtiment"></div><span class="vd-sfx s2">SOLID!</span></div></div></section>
+
+<main>
+<section class="vd-sec"><div class="trust"><div><b>18 ans</b>d’expérience</div><div><b>640+</b>chantiers livrés</div><div><b>72 h</b>délai de visite</div><div><b>4,9★</b>avis clients</div></div><p style="font-size:.78rem;color:var(--muted);margin:8px 0 0">Chiffres fictifs de démonstration.</p></section>
+
+<section class="vd-sec" id="devis"><div class="vd-h"><h2>Devis en ligne</h2><p>4 étapes : votre projet, quelques détails, la visite, vos coordonnées. Estimation affichée tout de suite, devis définitif après la visite.</p></div>
+<div class="vd-panel" id="vd-quote"></div></section>
+
+<section class="vd-sec" id="metiers"><div class="vd-h"><h2>Nos métiers</h2><p>Une seule équipe, tous corps d’état, un interlocuteur unique.</p></div>
+<div class="vd-grid">
+<article class="vd-card"><div class="vd-media" data-img="/demos/img/artisan/metier-renovation.webp" data-e="🏠" data-l="Rénovation intérieure"></div><div class="vd-card-b"><h3>Rénovation intérieure</h3><p>Salle de bain, cuisine, cloisons, plâtrerie, peinture.</p></div></article>
+<article class="vd-card"><div class="vd-media" data-img="/demos/img/artisan/metier-maconnerie.webp" data-e="🧱" data-l="Maçonnerie"></div><div class="vd-card-b"><h3>Maçonnerie & extension</h3><p>Murs, dalles, ouvertures, extensions, terrasses.</p></div></article>
+<article class="vd-card"><div class="vd-media" data-img="/demos/img/artisan/metier-toiture.webp" data-e="🏚️" data-l="Toiture"></div><div class="vd-card-b"><h3>Toiture & isolation</h3><p>Réfection, zinguerie, isolation des combles, éligible aux aides.</p></div></article>
+<article class="vd-card"><div class="vd-media" data-img="/demos/img/artisan/metier-industrie.webp" data-e="🏭" data-l="Bâtiment industriel"></div><div class="vd-card-b"><span class="vd-tag">Entreprises</span><h3>Industrie & locaux pro</h3><p>Dalles industrielles, bardage, mise aux normes, interventions hors horaires de production.</p></div></article>
+</div></section>
+
+<section class="vd-sec" id="chantiers"><div class="vd-h"><h2>Avant / après</h2><p>Nos chantiers en images, publiés au fil des livraisons.</p></div>
+<div class="vd-grid g3">
+<div class="ba"><div class="vd-media" data-img="/demos/img/artisan/sdb-avant.webp" data-e="🚿" data-l="Salle de bain avant"><span class="lab">Avant</span></div><div class="vd-media" data-img="/demos/img/artisan/sdb-apres.webp" data-e="✨" data-l="Salle de bain après"><span class="lab">Après</span></div></div>
+<div class="ba"><div class="vd-media" data-img="/demos/img/artisan/facade-avant.webp" data-e="🏚️" data-l="Façade avant"><span class="lab">Avant</span></div><div class="vd-media" data-img="/demos/img/artisan/facade-apres.webp" data-e="🏡" data-l="Façade après"><span class="lab">Après</span></div></div>
+<div class="ba"><div class="vd-media" data-img="/demos/img/artisan/atelier-avant.webp" data-e="🏭" data-l="Atelier avant"><span class="lab">Avant</span></div><div class="vd-media" data-img="/demos/img/artisan/atelier-apres.webp" data-e="🏗️" data-l="Atelier après"><span class="lab">Après</span></div></div>
+</div>
+<div class="vd-sec vd-video"><div class="vd-media" data-video="/demos/img/artisan/video.mp4" data-img="/demos/img/artisan/video-poster.webp" data-e="🎬" data-l="Un chantier en accéléré"></div>
+<div><h3 style="font:italic 900 1.6rem/1 Impact,'Arial Black',sans-serif;text-transform:uppercase;margin:0 0 8px">Chantier en vidéo</h3><p style="margin:0 0 12px;color:var(--muted)">Timelapse, vues de drone et présentation de l’équipe : la preuve par l’image.</p>
+<div class="vd-reels"><div class="vd-media" data-video="/demos/img/artisan/reel-1.mp4" data-e="⏩" data-l="Timelapse"></div><div class="vd-media" data-video="/demos/img/artisan/reel-2.mp4" data-e="🚁" data-l="Vue drone"></div><div class="vd-media" data-video="/demos/img/artisan/reel-3.mp4" data-e="👷" data-l="L’équipe"></div></div></div></div>
+</section>
+
+<section class="vd-sec" id="avis"><div class="vd-h"><h2>Ils nous ont fait confiance</h2><p>Exemples de démonstration.</p></div>
+<div class="vd-grid g3">
+<div class="vd-review"><span class="vd-stars">★★★★★</span><p>Estimation en ligne très proche du devis final. Chantier propre et terminé avec 2 jours d’avance.</p><b>Patrick, salle de bain</b></div>
+<div class="vd-review"><span class="vd-stars">★★★★★</span><p>Intervention le week-end pour ne pas arrêter notre production. Équipe sérieuse.</p><b>Responsable maintenance, PME industrielle</b></div>
+<div class="vd-review"><span class="vd-stars">★★★★★</span><p>Le suivi par SMS à chaque étape est vraiment rassurant.</p><b>Sandrine, extension</b></div>
+</div></section>
+
+<section class="vd-sec" id="infos"><div class="vd-h"><h2>Contact</h2></div>
+<div class="vd-grid g3"><div class="vd-panel"><h3 style="margin:0 0 8px">🕒 Bureau & visites</h3><div data-vd-hours></div></div>
+<div class="vd-panel"><h3 style="margin:0 0 8px">🏢 Titan Bâtiment</h3><p>ZA de l’Exemple<br>00000 Ville-Démo</p><p>📞 00 00 00 00 00 <small>(fictif)</small><br>✉️ devis@exemple.fr <small>(fictif)</small></p><p>🛡️ Décennale · RGE · SIRET 000 000 000 00000 <small>(fictifs)</small></p></div>
+<div class="vd-map">🗺️ Zone d’intervention : 50 km<br><small>carte intégrée sur le vrai site</small></div></div>
+<div class="vd-sec vd-faq"><details><summary>L’estimation en ligne est-elle un devis ?</summary><p>Non, c’est une fourchette indicative. Le devis détaillé et gratuit est remis après la visite.</p></details><details><summary>Intervenez-vous pour les entreprises ?</summary><p>Oui : commerces, bureaux, entrepôts et sites industriels, y compris hors horaires.</p></details><details><summary>Aidez-vous pour les aides à la rénovation ?</summary><p>Oui, nous vous indiquons les aides possibles et préparons les documents nécessaires.</p></details></div>
+</section>
+
+<section class="vd-sec"><div class="vd-pro" id="vd-pro"></div></section>
+
+<section class="vd-sell"><div><h2>Ce site pour <i>votre entreprise</i></h2><p>Demandes de devis qualifiées (type de travaux, surface, photos, adresse), visites réservées en ligne, chantiers en photo et vidéo, SMS automatiques.</p>
+<ul><li>Fini les appels pour « juste un prix » : l’estimation filtre</li><li>Vos visites s’organisent seules dans votre agenda</li><li>Vos chantiers publiés pour vous, en photo et vidéo</li></ul></div>
+<div class="vd-btns"><a class="vd-btn" href="/web-studio.html?offre=devis#devis">Je veux ce site →</a><a class="vd-btn alt" href="/web-studio.html#photo">Photo & vidéo de chantier</a></div></section>
+</main>
+<footer class="vd-foot">Démonstration réalisée par <a href="/web-studio.html">Véloce Web Studio</a> · réseau <a href="https://vmunivers.fr/">VM Univers</a> · © <span data-year></span><br>Entreprise, chiffres, avis et coordonnées fictifs.</footer>
+
+<script>
+window.DEMO={id:'artisan',name:'Titan Bâtiment',tagline:'Rénovation et bâtiment, devis en 2 minutes',address:'ZA de l’Exemple, 00000 Ville-Démo',rating:'4,9',
+hours:{1:[['08:00','12:00'],['13:30','18:00']],2:[['08:00','12:00'],['13:30','18:00']],3:[['08:00','12:00'],['13:30','18:00']],4:[['08:00','12:00'],['13:30','18:00']],5:[['08:00','12:00'],['13:30','17:00']],6:[['09:00','12:00']],0:[]},
+quote:{visitHours:{1:[['08:00','12:00'],['14:00','18:00']],2:[['08:00','12:00'],['14:00','18:00']],3:[['08:00','12:00'],['14:00','18:00']],4:[['08:00','12:00'],['14:00','18:00']],5:[['08:00','12:00'],['14:00','17:00']],6:[['09:00','12:00']],0:[]},
+ urgency:[['urgent','Urgent (< 2 sem.)',1.15],['normal','Dans 1 à 3 mois',1],['souple','Pas pressé',0.95]],
+ types:[
+  {e:'🚿',l:'Salle de bain',hint:'Rénovation complète',unit:'m²',low:900,high:1600,ph:'Ex. 6',descPh:'Douche à l’italienne, baignoire à retirer, carrelage…'},
+  {e:'🍳',l:'Cuisine',hint:'Pose et aménagement',unit:'m²',low:700,high:1300,ph:'Ex. 10'},
+  {e:'🎨',l:'Peinture / plâtrerie',hint:'Murs et plafonds',unit:'m²',low:25,high:45,ph:'Ex. 80 (surface de murs)'},
+  {e:'🧱',l:'Extension / maçonnerie',hint:'Agrandir, ouvrir un mur',unit:'m²',low:1500,high:2400,ph:'Ex. 20'},
+  {e:'🏚️',l:'Toiture',hint:'Réfection, isolation',unit:'m²',low:120,high:220,ph:'Ex. 100'},
+  {e:'🏡',l:'Façade / ravalement',hint:'Nettoyage, enduit',unit:'m²',low:40,high:90,ph:'Ex. 150'},
+  {e:'🏭',l:'Local pro / industriel',hint:'Dalle, bardage, normes',unit:'m²',low:80,high:180,ph:'Ex. 500',descPh:'Type de bâtiment, activité, contraintes de production…'}
+ ]},
+proKpis:['Demandes de devis','Potentiel estimé','SMS automatiques','Note Google'],
+proFake:[{ref:'DEV-3H7K',when:'Lun. 9h00',what:'Salle de bain · 6 m²',nom:'P. Martin',est:[5400,9600]},{ref:'DEV-8B2D',when:'Lun. 14h00',what:'Local pro · 450 m²',nom:'SAS Exemple',est:[36000,81000]},{ref:'DEV-1Q5N',when:'Mar. 10h00',what:'Toiture · 90 m²',nom:'S. Bernard',est:[10800,19800]}]};
+</script>
+<script src="/demos/kit/vm-demo.js"></script>
+</body></html>
