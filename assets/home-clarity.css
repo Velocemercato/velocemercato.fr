@@ -126,4 +126,4 @@ html[data-theme] body.home-simple{background-image:none;background-color:var(--b
 @media(max-width:480px){.vm-volets{margin-top:10px}.vm-volets .vv{min-height:50px}.vm-duo{margin-top:8px}.home-simple .home-tickers{margin-bottom:8px}.home-simple #cats{padding-bottom:2px}}
 @media(max-width:480px){.vm-volets .vv{padding:5px 8px}}
 /* Vitesse de défilement : flash en haut un peu plus posé, scores plus rapides */
-.home-flash .run{animation-duration:34s}.home-scores .srun{animation-duration:14s}
+.home-flash .run{animation-duration:55s}.home-scores .srun{animation-duration:9s}
