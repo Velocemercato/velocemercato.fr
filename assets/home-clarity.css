@@ -125,3 +125,6 @@ html[data-theme] body.home-simple{background-image:none;background-color:var(--b
 .home-tickers .home-scores{flex:1 1 100%}
 @media(max-width:480px){.vm-volets{margin-top:10px}.vm-volets .vv{min-height:50px}.vm-duo{margin-top:8px}.home-simple .home-tickers{margin-bottom:8px}.home-simple #cats{padding-bottom:2px}}
 @media(max-width:480px){.vm-volets .vv{padding:5px 8px}}
+/* Défilement plus rapide ; flash en vert */
+.home-flash .run{animation-duration:28s}.home-scores .srun{animation-duration:22s}
+.home-flash{background:#0f7a43;color:#fff}.home-flash .run span::before{content:"⚡ "}
