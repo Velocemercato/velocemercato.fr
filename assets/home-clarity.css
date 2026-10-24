@@ -130,3 +130,5 @@ html[data-theme] body.home-simple{background-image:none;background-color:var(--b
 /* Téléphone : Tout le foot, International et Ligue 1 visibles en entier à côté de « Filtres » */
 @media(max-width:480px){.home-filters .cats-row{gap:5px}.home-simple #cats .cats-row .chip{padding-inline:7px;font-size:.72rem;letter-spacing:0}.home-filter-more>summary{padding:9px 2px 9px 4px;font-size:.72rem}}
 @media(max-width:480px){.home-filters .cats-row{gap:4px}.home-simple #cats .cats-row .chip{padding-inline:6px}.home-filter-more>summary{padding-inline:2px 0}}
+/* Lien Vidéos dans le menu Filtres (ouvre le bloc vidéos, pas un filtre d'articles) */
+.home-filter-link{display:inline-flex;align-items:center;min-height:36px;padding:8px 10px;border:1px solid var(--line);border-radius:9px;font:700 .76rem/1.4 system-ui,sans-serif;text-decoration:none;color:var(--ink);background:var(--surface)}.home-filter-link:hover{border-color:var(--gold-hi)}
