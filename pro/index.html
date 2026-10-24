@@ -17,7 +17,8 @@ h2{color:#f4cf55;font:italic 800 1.4rem Poppins,sans-serif;margin:26px 0 10px}
 .empty{background:#10121c;border:2px dashed #d4a017;border-radius:16px;padding:20px;text-align:center;color:#d9cfae}
 .box{background:#10121c;border:1px solid #2a2410;border-radius:18px;padding:16px}label{display:block;font-size:.8rem;color:#bdb59a;margin-top:8px}.box input,.box textarea,.box select{width:100%;padding:10px;border-radius:10px;border:1px solid #3a3420;background:#07080f;color:#fff;font:15px Poppins,system-ui,sans-serif}
 .btn{display:inline-block;font:800 .95rem Poppins,sans-serif;padding:12px 16px;border-radius:999px;border:0;background:#d4a017;color:#120d03;cursor:pointer;text-decoration:none;margin-top:12px}
-.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.plans div{background:#10121c;border:1px solid #2a2410;border-radius:16px;padding:14px}.plans b{color:#f4cf55}
+.dirs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.dir{display:flex;flex-direction:column;gap:4px;background:#10121c;border:1px solid #2a2410;border-radius:16px;padding:16px;color:#f3f0e6;text-decoration:none}.dir:hover,.dir:focus-visible{border-color:#d4a017}.dir-e{font-size:1.6rem;line-height:1}.dir b{font-size:1.05rem;color:#f4cf55}.dir span:not(.dir-e){color:#cfc6a8;font-size:.9rem}.dir em{margin-top:auto;padding-top:6px;font-style:normal;font-weight:800;color:#f4cf55;font-size:.9rem}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.plans div{background:#10121c;border:1px solid #2a2410;border-radius:16px;padding:14px}.plans b{color:#f4cf55}.plans .plan-free{border-color:#d4a017}
 .note{font-size:.8rem;color:#8d8670;margin-top:10px}
 </style><link rel="manifest" href="/app/pro.webmanifest" id="vmapp-m"><meta name="theme-color" content="#05080f" id="vmapp-t"><link rel="apple-touch-icon" href="/app/pro-apple.png" id="vmapp-i"><meta name="apple-mobile-web-app-title" content="Pro Local" id="vmapp-n"><style id="vmbar-css">
 .vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:sticky;top:0;z-index:80}
@@ -53,12 +54,16 @@ h2{color:#f4cf55;font:italic 800 1.4rem Poppins,sans-serif;margin:26px 0 10px}
 .vmsh-c{display:block;width:100%;margin-top:12px;font:800 1rem system-ui,sans-serif;padding:12px;border-radius:999px;border:2px solid #0b1533;background:#fff;color:#0b1533;cursor:pointer}
 @media print{.vmfab{display:none}}
 </style></head><body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="VM Univers, tous les projets">VM UNIVERS<small>TOUS LES PROJETS</small></a><a class="f" href="/">⚽ Foot</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
-<header class="hero"><img src="/img/logo-vm-officiel.png" alt="VM" width="110" height="110"><h1>VM PRO LOCAL</h1><p>Les artisans, commerces et services près de chez toi, au même endroit. Simple : un nom, un métier, une ville, un numéro.</p></header>
+<header class="hero"><img src="/img/logo-vm-officiel.png" alt="VM" width="110" height="110"><h1>VM PRO LOCAL</h1><p>Les artisans, commerces et pros de l’auto près de chez toi, au même endroit. Simple : un nom, un métier, une ville, un numéro.</p><p style="margin-top:10px"><span style="display:inline-block;background:#d4a017;color:#120d03;font-weight:800;font-size:.85rem;padding:5px 12px;border-radius:999px">Nouveau · inscription gratuite pour les pros</span></p></header>
 <main>
-<section class="box" aria-labelledby="local-services-title" style="margin-bottom:20px">
-<h2 id="local-services-title" style="margin-top:0">Les services près de chez toi</h2>
-<p>Cherche un commerce ou organise ton prochain trajet.</p>
-<div class="grid"><a class="btn" href="/services/?categorie=cbd">✳ Boutiques CBD</a><a class="btn" href="/services/?categorie=caviste">◈ Cavistes & commerces</a><a class="btn" href="/services/?categorie=taxi">➜ Taxi & VTC</a></div>
+<section aria-labelledby="dirs-title" style="margin-bottom:20px">
+<h2 id="dirs-title" style="margin-top:6px">Trois annuaires, un seul réflexe</h2>
+<div class="dirs">
+<a class="dir" href="#list"><span class="dir-e" aria-hidden="true">🧰</span><b>Artisans &amp; commerces</b><span>Plombier, coiffeur, boulangerie… les fiches de cet annuaire, juste en dessous.</span><em>Chercher ici ↓</em></a>
+<a class="dir" href="/pro-auto/"><span class="dir-e" aria-hidden="true">🚗</span><b>Pros de l’auto</b><span>Mécanique, carrosserie, pneus, detailing… et les demandes des particuliers.</span><em>VM Auto Particulier →</em></a>
+<a class="dir" href="/services/"><span class="dir-e" aria-hidden="true">📍</span><b>CBD, cavistes &amp; taxis</b><span>Une recherche Google Maps prête à l’emploi dans ta ville.</span><em>VM Services →</em></a>
+</div>
+<p class="note" style="margin-top:8px">Accès direct : <a href="/services/?categorie=cbd" style="color:#f4cf55">boutiques CBD</a> · <a href="/services/?categorie=caviste" style="color:#f4cf55">cavistes &amp; commerces</a> · <a href="/services/?categorie=taxi" style="color:#f4cf55">taxi &amp; VTC</a></p>
 </section>
 <div class="srch"><input id="q" aria-label="Métier ou nom du professionnel" type="search" placeholder="Métier ou nom (plombier, coiffeur…)"><input id="v" aria-label="Ville du professionnel" type="search" placeholder="Ville"></div>
 <h2>Les pros</h2>
@@ -78,7 +83,7 @@ h2{color:#f4cf55;font:italic 800 1.4rem Poppins,sans-serif;margin:26px 0 10px}
 <p class="note">Conseils généraux, à jour à la date de publication. Pour un cas précis, renseigne-toi auprès d’une association de consommateurs ou d’une Maison France Services.</p>
 </section>
 <h2 id="inscription">Tu es un pro ? Inscris-toi gratuitement</h2>
-<div class="plans"><div><b>Fiche gratuite</b><br>Nom, métier, ville, téléphone, lien vers ton site ou ta page. Gratuit pendant le lancement.</div><div><b>Fiche en tête · 9,90 €/mois</b><br>En tête des résultats de ta ville, avec photo, horaires et bouton d'appel. <a href="/pub/" style="color:#f4cf55">Voir</a></div><div><b>Pas de site ?</b><br>Véloce Web Studio te le fait, avec ta carte ou tes tarifs en QR code. <a href="/web-studio.html" style="color:#f4cf55">Voir</a></div></div>
+<div class="plans"><div class="plan-free"><b>Inscription gratuite pendant le lancement</b><br>Ta fiche : nom, métier, ville, téléphone et lien vers ton site ou ta page. Aucun paiement demandé.</div><div><b>Pas de site ?</b><br>Véloce Web Studio te le fait, avec ta carte ou tes tarifs en QR code. <a href="/web-studio.html" style="color:#f4cf55">Voir</a></div></div>
 <form class="box" id="f" style="margin-top:14px">
 <label for="n">Nom de l'entreprise</label><input id="n" required>
 <label for="m">Métier</label><input id="m" required placeholder="Ex. : Plombier, Boulangerie, Garage…">
