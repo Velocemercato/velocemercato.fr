@@ -214,6 +214,7 @@
     }
     recettes.forEach(r => { r._index = norm([r.titre, r.categorie, r.region || '', ...r.tags, ...r.ingredients.map(i => i.n)].join(' ')); });
     $('nb').textContent = recettes.length;
+    try { const q = new URLSearchParams(location.search).get('q'); if (q) { etat.q = q.slice(0, 60); $('q').value = etat.q; } } catch (e) { /* paramètre ignoré */ }
     rendreJour(); rendreChips(); rendreListe(); route();
   }
 
