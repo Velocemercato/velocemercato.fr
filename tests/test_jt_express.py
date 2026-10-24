@@ -28,11 +28,21 @@ class ExpressTests(unittest.TestCase):
         self.assertIn('Recompose un journal complet',writer.call_args.args[1])
         self.assertEqual(len(script['repliques']),14)
 
-    def test_still_oversized_script_is_refused_after_one_rewrite(self):
+    def test_still_oversized_script_is_refused_after_two_rewrites(self):
         with patch.object(E.robot,'call_claude',return_value=response(45)) as writer:
             with self.assertRaisesRegex(RuntimeError,'encore trop long'):
                 E.write_script('actus','edition','matin',[])
-        self.assertEqual(writer.call_count,2)
+        self.assertEqual(writer.call_count,3)
+
+    def test_last_rewrite_keeps_only_four_briefs(self):
+        news=[{'titre':f'Brève {i}','publishedAt':'2026-10-24T08:00:00Z','resume':'Résumé','championnat':'L1','sources':[{'nom':'Média'}]} for i in range(8)]
+        with patch.object(E.robot,'call_claude',side_effect=[response(45),response(45),response(30)]) as writer:
+            script=E.write_script('foot','edition','midi',news)
+        self.assertEqual(writer.call_count,3)
+        last=json.loads(writer.call_args.args[1].split('\n',1)[0])
+        self.assertEqual(len(last['breves']),4)
+        self.assertIn('3 ou 4 sujets complets',writer.call_args.args[1])
+        self.assertEqual(sum(len(text.split()) for _,text in script['repliques']),420)
 
     def test_short_format_does_not_silently_cut_a_long_render(self):
         with tempfile.TemporaryDirectory() as folder:

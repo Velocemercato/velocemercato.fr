@@ -133,7 +133,7 @@ def write_script(univers, fmt, moment, news, fixtures=None):
                'rubrique': a.get('championnat', ''), 'media': (a.get('sources') or [{}])[0].get('nom', '')} for a in news]
     user = json.dumps({'moment': moment, 'date_paris': dt.datetime.now(D.PARIS).strftime('%A %d/%m %H:%M'), 'breves': briefs, 'matchs_confirmes': fixtures or []},
                       ensure_ascii=False)
-    for attempt in range(2):
+    for attempt in range(3):
         reply = robot.call_claude(system, user, max_tokens=F['tokens'], timeout=300)
         raw = ''.join(p.get('text', '') for p in reply.get('content', []) if p.get('type') == 'text').strip()
         raw = re.sub(r'^```(?:json)?\s*|\s*```$', '', raw)
@@ -147,6 +147,13 @@ def write_script(univers, fmt, moment, news, fixtures=None):
             return {'titre': str(data.get('titre', U['nom']))[:90], 'accroche': str(data.get('accroche', ''))[:180], 'repliques': lines}
         if attempt == 0:
             user += f'\nLa réponse précédente avait {words} mots. Recompose un journal complet de {F["mots"][0]} à {F["mots"][1]} mots, limite absolue {F["max_words"]}. Pas de phrase coupée ; conserve des sujets complets et les sources.'
+        elif attempt == 1:
+            # Dernier essai : moins de brèves fournies, donc moins de sujets et un journal naturellement plus court.
+            fewer = json.loads(user.split('\n', 1)[0])
+            fewer['breves'] = fewer['breves'][:4]
+            user = json.dumps(fewer, ensure_ascii=False) + (
+                f'\nLes deux réponses précédentes étaient trop longues (encore {words} mots). Ne garde que 3 ou 4 sujets complets, '
+                f'vise {F["mots"][0]} mots, limite absolue {F["max_words"]}. Pas de phrase coupée.')
     raise RuntimeError('JT express encore trop long après réécriture : aucun rendu ni publication.')
 
 
