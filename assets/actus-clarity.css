@@ -1,0 +1,142 @@
+/* VM Actus du jour : même organisation que l'accueil (flash, raccourcis, volets, filtres, fil). */
+
+/* Flash Actu tout en haut, sur toute la largeur */
+.actus-simple .ticker{display:flex;align-items:center;gap:10px;overflow:hidden;min-height:32px;background:#e1243a;color:#fff;text-decoration:none;border-bottom:2px solid #0b1533;padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+.actus-simple .ticker .lbl{flex:none;align-self:stretch;display:flex;align-items:center;background:#0b1533;color:#f4cf55;font:400 1rem/1 Bangers,Impact,sans-serif;letter-spacing:.08em;padding:6px 10px 4px;white-space:nowrap}
+.actus-simple .ticker .tk-vp{flex:1;min-width:0;overflow:hidden}
+.actus-simple .ticker .run{display:inline-block;white-space:nowrap;padding-left:100%;animation:ax-tick 70s linear infinite;font:700 .95rem/1.2 'Barlow Condensed',system-ui,sans-serif}
+.actus-simple .ticker .run span{margin-right:2.5em}.actus-simple .ticker .run span::before{content:'⚡ '}
+.actus-simple .ticker:hover .run{animation-play-state:paused}
+.actus-simple .ticker:focus-visible{outline:3px solid #f4cf55;outline-offset:-3px}
+@keyframes ax-tick{to{transform:translateX(-100%)}}
+@media(prefers-reduced-motion:reduce){.actus-simple .ticker .run{animation:none;padding-left:0}}
+
+/* Barre VM fixe comme sur l'accueil : seul l'en-tête reste collé en haut */
+.actus-simple .vmbar{position:static}
+.actus-simple .vmbar+header,.actus-simple header{top:0!important}
+.actus-simple header .top{padding:10px 16px 6px}
+.actus-simple .ed{font-size:.72rem;padding:5px 9px}
+
+/* Raccourcis : une ligne qui défile sur téléphone */
+.ax-nav{display:flex;gap:20px;max-width:1100px;margin:0 auto;padding:2px 16px 9px;overflow-x:auto;scrollbar-width:none;font:700 .8rem/1.4 system-ui,sans-serif}
+.ax-nav::-webkit-scrollbar{display:none}
+.ax-nav a{flex:none;white-space:nowrap;padding:4px 0;text-decoration:none;color:#eef2ff}
+.ax-nav a:hover{color:#f4cf55}
+.ax-nav a:focus-visible{outline:2px solid #f4cf55;outline-offset:2px}
+@media(min-width:900px){.ax-nav{justify-content:center;gap:26px}}
+
+/* Héros : dessin + titre + les trois volets VM */
+.ax-hero{background:#060b1d;color:#f3f6ff;border-bottom:3px solid #000}
+.ax-hero-in{max-width:1100px;margin:0 auto}
+.ax-hero img.ax-bg{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:50% 38%}
+.ax-txt{padding:14px 16px 12px;display:flex;flex-direction:column;gap:9px;min-width:0}
+.ax-eye{font:700 .7rem/1.3 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.12em;color:#ffdc72;display:none;align-items:center;gap:8px}
+.ax-eye::before{content:"";width:8px;height:8px;border-radius:50%;background:#ff4d61;box-shadow:0 0 10px #ff4d61}
+#ax-title{margin:0;font:400 1.75rem/1.02 Anton,Impact,sans-serif;text-transform:uppercase;letter-spacing:.01em;text-shadow:0 4px 18px rgba(0,0,0,.6)}
+#ax-title em{font-style:italic;background:linear-gradient(180deg,#fff2b8,#f4cf55 45%,#c9971a);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block;transform:skew(-6deg)}
+.ax-lead{margin:0;max-width:34rem;font-size:.95rem;line-height:1.45;color:#c9d3f5}
+@media(max-width:480px){.ax-lead{display:none}}
+@media(min-width:700px){
+ .ax-hero-in{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:center}
+ .ax-hero img.ax-bg{aspect-ratio:4/3;object-fit:cover}
+ .ax-txt{padding:24px 28px;gap:12px}
+ .ax-eye{display:flex}
+ #ax-title{font-size:clamp(2rem,3.2vw,2.9rem)}
+}
+
+/* Volets VM Foot / Actu / Gaming (mêmes tuiles que l'accueil) */
+.actus-simple .vm-volets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:4px;max-width:560px}
+.actus-simple .vv{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;min-height:60px;padding:8px 9px;border:2px solid #000;border-radius:14px;color:#fff;text-decoration:none;box-shadow:3px 3px 0 #000;background:#0b1533 var(--img) center/cover;transition:transform .15s}
+.actus-simple .vv:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,9,23,.15),rgba(5,9,23,.88))}
+.actus-simple .vv>*{position:relative}
+.actus-simple .vv span{position:absolute;top:7px;right:8px;font-size:1.15rem;line-height:1}
+.actus-simple .vv b{font:700 1.05rem/1.1 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.04em;margin-top:4px}
+.actus-simple .vv small{font-weight:700;font-size:.75rem;line-height:1.2;opacity:.9}
+.actus-simple .vv:hover{transform:translate(-2px,-2px)}
+.actus-simple .vv:focus-visible{outline:3px solid #f4cf55;outline-offset:3px}
+.actus-simple .vv-foot{border-color:#f4cf55}.actus-simple .vv-actus{border-color:#ff5a6e}.actus-simple .vv-gaming{border-color:#d6ff6e}
+.actus-simple .vv-foot b{color:#f4cf55}.actus-simple .vv-actus b{color:#ff8a99}.actus-simple .vv-gaming b{color:#d6ff6e}
+.actus-simple .vv[aria-current=page]{border-width:3px;box-shadow:0 0 0 2px #ff5a6e,0 0 14px #ff5a6e99}
+.actus-simple .vv[aria-current=page]:before{background:linear-gradient(180deg,rgba(225,36,58,.25),rgba(5,9,23,.9))}
+
+/* Deux tuiles fortes, comme Pépite FC / Véloce Arena sur l'accueil */
+.actus-simple .vm-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:2px;max-width:560px}
+.actus-simple .vm-recrute{display:flex;flex-wrap:nowrap;align-items:center;gap:10px;padding:8px 12px;border-radius:14px;border:2px solid #ff5a6a;background:linear-gradient(135deg,#b3132b,#5a0a18);color:#fff;text-decoration:none;box-shadow:3px 3px 0 #000;min-width:0}
+.actus-simple .vm-recrute:hover{filter:brightness(1.1)}
+.actus-simple .vm-recrute:focus-visible{outline:3px solid #f4cf55;outline-offset:3px}
+.actus-simple .vr-region{border-color:#f4cf55;background:linear-gradient(135deg,#1d3fb8,#0b1533)}
+.actus-simple .vr-region .vr-txt small{color:#f4cf55}
+.actus-simple .vr-star{font-size:1.4rem;line-height:1;flex:none}
+.actus-simple .vr-txt{min-width:0;flex:1;line-height:1.15}
+.actus-simple .vr-txt small{display:block;font:800 .68rem/1.2 system-ui,sans-serif;letter-spacing:.08em;color:#ffd5da}
+.actus-simple .vr-txt b{display:block;font:700 .98rem/1.2 system-ui,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:480px){.actus-simple .vv{min-height:50px;padding:5px 8px}.actus-simple .vm-recrute{padding-block:6px}}
+@media(max-width:400px){.actus-simple .vr-txt b{font-size:.86rem}.actus-simple .vr-star{font-size:1.15rem}.actus-simple .vm-recrute{padding:6px 9px;gap:7px}}
+@media(max-width:359px){.actus-simple .vr-txt small{font-size:.6rem;letter-spacing:.04em}.actus-simple .vr-txt b{font-size:.78rem}.actus-simple .vv b{font-size:.92rem}}
+
+/* Filtres : une ligne qui défile, « Filtres » à droite (comme l'accueil) */
+.actus-simple main{padding-top:14px}
+.ax-filters{margin:0 0 14px;position:relative;scroll-margin-top:110px}
+.ax-filters #cats{display:flex;flex-wrap:wrap;gap:7px;width:100%;align-items:center;max-width:none;margin:0;padding:0;overflow:visible}
+.ax-filters .cats-row{display:flex;flex-wrap:wrap;gap:7px;flex:1 1 0;min-width:0;align-items:center}
+.actus-simple .ax-filters .chip{flex:none;font:700 .76rem/1.4 system-ui,sans-serif;text-transform:none;letter-spacing:0;padding:8px 10px;border:1px solid #31406f;border-radius:9px;box-shadow:none;min-height:36px;background:#0f1a3d;color:#eef2ff}
+.actus-simple .ax-filters .chip:hover{border-color:#4f74ff}
+.actus-simple .ax-filters .chip[aria-pressed=true]{background:#f4cf55;border-color:#f4cf55;color:#0b1533}
+.ax-filters .home-filter-more{flex:none;position:relative;font:600 .76rem/1.4 system-ui,sans-serif}
+.ax-filters .home-filter-more>summary{padding:9px 8px;cursor:pointer;color:#eef2ff;white-space:nowrap}
+.ax-filters .home-filter-more[open]{flex-basis:100%}
+.ax-filters .home-filter-options{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px;padding:12px;background:#0f1a3d;border:1px solid #31406f;border-radius:12px;box-shadow:0 8px 25px #0003}
+.ax-fl{flex-basis:100%;margin:6px 0 -2px;font:800 .66rem/1.3 system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#a9b4d6}
+.actus-simple .ax-eds{flex-basis:100%;padding:0;gap:7px;overflow-x:auto}
+.actus-simple .ax-eds .edb{font:700 .76rem/1.4 system-ui,sans-serif;text-transform:none;letter-spacing:0;padding:8px 10px;border:1px solid #31406f;border-radius:9px;box-shadow:none;min-height:36px}
+.actus-simple .ax-eds .edb[aria-pressed=true]{background:#e1243a;border-color:#e1243a;color:#fff}
+.ax-filters .search{flex-basis:100%;margin:0}
+.ax-filters .search input{border-width:2px;padding:9px 12px;font-size:.95rem}
+@media(max-width:639px){
+ .ax-filters .cats-row{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:2px 2px 4px;-webkit-overflow-scrolling:touch}
+ .ax-filters .cats-row::-webkit-scrollbar{display:none}
+}
+@media(max-width:480px){.ax-filters .cats-row{gap:5px}.actus-simple .ax-filters .cats-row .chip{padding-inline:7px;font-size:.72rem}.ax-filters .home-filter-more>summary{padding:9px 2px 9px 4px;font-size:.72rem}}
+
+/* Fil : la une reste en tête, un peu plus compacte sur téléphone */
+.actus-simple .une{margin-bottom:18px}
+.actus-simple .une .band{font-size:1rem;padding:8px 14px}
+.actus-simple .une .in{padding:12px 16px 16px}
+.actus-simple .une .une-t{text-wrap:balance}
+@media(max-width:480px){.actus-simple .une .une-t{font-size:1.55rem}}
+
+/* JT, presse et réseaux plus bas dans la page */
+.ax-jt{margin-top:30px}
+.ax-jt>.pastille-feed{margin:0 0 14px}
+.actus-simple .socials{margin-top:30px}
+.actus-simple #fil,.actus-simple #jt,.actus-simple #presse,.actus-simple #reseaux,.actus-simple #q{scroll-margin-top:110px}
+.actus-simple #fil{scroll-margin-top:100px}
+
+/* Téléphone : en-tête sur une ligne, dessin moins haut, la première actu dans le premier écran */
+@media(max-width:480px){
+ .actus-simple header .top{flex-wrap:nowrap;padding:8px 16px 4px}
+ .actus-simple .logo{font-size:1.3rem;white-space:nowrap}.actus-simple .logo span{font-size:.85rem;margin-left:4px}
+ .actus-simple .ed{font-size:.62rem;padding:4px 7px;white-space:nowrap;letter-spacing:.04em}
+ .ax-nav{gap:16px;font-size:.76rem;padding-bottom:7px}
+ .ax-hero img.ax-bg{aspect-ratio:2/1}
+ #ax-title{font-size:1.6rem}
+ .actus-simple .ticker .lbl{font-size:.9rem;padding:4px 9px 2px}.actus-simple .ticker .run{font-size:.88rem}.actus-simple .ticker{min-height:30px}
+ .actus-simple .vv b{font-size:.9rem;letter-spacing:.01em;white-space:nowrap}
+ .actus-simple main{padding-top:12px}
+ .ax-filters{margin-bottom:12px}
+}
+@media(max-width:359px){.actus-simple .logo{font-size:1.1rem}.actus-simple .logo span{display:none}.actus-simple .vv b{font-size:.78rem}}
+
+/* Repli expliqué en une ligne quand une édition ou une rubrique est vide */
+.ax-note{margin:-6px 0 12px;font:600 .85rem/1.45 system-ui,sans-serif;color:#ffdc72}
+/* Petits écrans et tablettes : tuiles lisibles sans texte coupé */
+@media(max-width:359px){.actus-simple .vv span{display:none}.actus-simple .vr-txt b{white-space:normal}}
+@media(min-width:700px) and (max-width:899px){
+ .ax-hero-in{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .ax-txt{padding:18px}
+ .actus-simple .vv b{font-size:.9rem;white-space:nowrap}
+ .actus-simple .vm-recrute{padding:7px 9px;gap:7px}
+ .actus-simple .vr-star{font-size:1.15rem}
+ .actus-simple .vr-txt b{font-size:.86rem;white-space:normal}
+}
+@media(min-width:700px) and (max-width:899px){.actus-simple .vv span{display:none}}

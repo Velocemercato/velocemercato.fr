@@ -1,0 +1,132 @@
+/* VM Gaming : même plan que l'accueil (flash, raccourcis, affiche + volets, filtres, actus) avec les couleurs VM Gaming. */
+
+/* Flash gaming tout en haut, sur toute la largeur */
+.ticker{display:flex;align-items:center;gap:10px;overflow:hidden;text-decoration:none}
+.ticker[hidden]{display:none!important}
+.ticker .trk{flex:1;min-width:0;overflow:hidden}
+.ticker .lbl{flex:none;font-family:Bangers,Impact,sans-serif;letter-spacing:.08em;padding:7px 10px 5px;font-size:1rem}
+.ticker .run{display:inline-block;white-space:nowrap;padding-left:100%;animation:tick 70s linear infinite;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem}
+.ticker .run span{margin-right:2.5em}
+.ticker .run span::before{content:'⚡ '}
+.ticker:hover .run{animation-play-state:paused}
+@keyframes tick{to{transform:translateX(-100%)}}
+@media(prefers-reduced-motion:reduce){.ticker .run{animation:none;padding-left:0}}
+.home-flash{background:#e1243a;color:#fff}
+.home-flash .lbl{background:#0b1533;color:#f4cf55;align-self:stretch;display:flex;align-items:center}
+.home-flash-top{position:relative;z-index:30;min-height:32px;margin:0;border-bottom:2px solid #0b1533;padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+.ticker:focus-visible{outline:3px solid #f4cf55;outline-offset:-3px}
+
+/* Barre VM : défile avec la page, l'en-tête VM Gaming reste collé en haut */
+.gaming-simple .vmbar{position:static}
+.gaming-simple .vmbar+header{top:0!important}
+.gaming-simple .bar{top:0}
+.gaming-simple .bar .wrap{max-width:1152px;padding-top:8px;padding-bottom:8px}
+.gaming-simple .logo img{height:42px}
+
+/* Raccourcis : une ligne qui défile sur téléphone */
+.g-nav{display:flex;gap:22px;max-width:1152px;margin:0 auto;padding:0 16px 10px;overflow-x:auto;scrollbar-width:none;font:700 .85rem/1.4 'DM Sans',system-ui,sans-serif}
+.g-nav::-webkit-scrollbar{display:none}
+.g-nav a{flex:none;white-space:nowrap;padding:4px 0;text-decoration:none;color:var(--text)}
+.g-nav a[hidden]{display:none}
+.g-nav a:hover{color:var(--lime)}
+@media(min-width:900px){.g-nav{justify-content:center}}
+
+/* Affiche + titre + volets, comme l'accueil */
+.g-hero{background:linear-gradient(180deg,rgba(11,10,28,.6),rgba(11,10,28,.92));border-bottom:3px solid #000}
+.g-hero-in{max-width:1152px;margin:0 auto}
+.g-hero .banner{border-bottom:3px solid #000}
+.g-hero .banner img{width:100%;height:auto;aspect-ratio:1916/821;object-fit:cover}
+.g-txt{display:flex;flex-direction:column;gap:10px;padding:18px 16px 20px}
+.g-eye{font:700 .68rem/1.4 'DM Sans',system-ui,sans-serif;letter-spacing:.12em;color:var(--lime)}
+.gaming-simple h1.big{font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.05;margin:0;text-align:left;letter-spacing:.03em;text-shadow:3px 3px 0 #000,5px 5px 0 #ff4f9a}
+.gaming-simple h1.big span{display:inline}
+.g-txt .lead{margin:0;max-width:460px;font-size:.96rem;line-height:1.5;color:#e9edf7}
+@media(min-width:900px){
+ .g-hero-in{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:center;gap:8px;padding:18px 16px}
+ .g-hero .banner{border:3px solid #000;border-radius:14px;overflow:hidden;box-shadow:6px 6px 0 #000}
+ .g-txt{padding:12px 0 12px 22px;gap:12px}
+}
+
+/* Les trois volets VM (mêmes tuiles que l'accueil) */
+.vm-volets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:4px;max-width:560px}
+.vv{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;min-height:60px;padding:8px 9px;border:2px solid #000;border-radius:14px;color:#fff;text-decoration:none;box-shadow:3px 3px 0 #000;background:#0b1533 var(--img) center/cover;transition:transform .15s}
+.vv:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,9,23,.15),rgba(5,9,23,.88))}
+.vv>*{position:relative}
+.vv span{position:absolute;top:7px;right:8px;font-size:1.15rem;line-height:1}
+.vv b{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.04em;font-size:1.05rem;line-height:1.1;margin-top:4px}
+.vv small{font-weight:700;font-size:.75rem;opacity:.9}
+.vv:hover{transform:translate(-2px,-2px)}
+.vv:focus-visible{outline:3px solid #f4cf55;outline-offset:3px}
+.vv-foot{border-color:#f4cf55}.vv-actus{border-color:#ff5a6e}.vv-gaming{border-color:#d6ff6e}
+.vv-foot b{color:#f4cf55}.vv-actus b{color:#ff8a99}.vv-gaming b{color:#d6ff6e}
+.vv[aria-current="page"]{border-width:3px;box-shadow:3px 3px 0 #000,0 0 0 2px #ff4f9a}
+@media(prefers-reduced-motion:reduce){.vv{transition:none}.vv:hover{transform:none}}
+
+/* Deux tuiles en avant : Véloce Arena et Discord */
+.vm-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:2px;max-width:560px}
+.vm-recrute{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:14px;border:2px solid #f4cf55;background:linear-gradient(135deg,#1d3fb8,#0b1533);color:#fff;text-decoration:none;box-shadow:3px 3px 0 #000;min-width:0}
+.vm-recrute:hover{filter:brightness(1.1)}
+.vm-recrute:focus-visible{outline:3px solid #f4cf55;outline-offset:3px}
+.vr-star{font-size:1.4rem;line-height:1;flex:none}
+.vr-txt{min-width:0;flex:1;line-height:1.15}
+.vr-txt small{display:block;font:800 .68rem/1.2 system-ui,sans-serif;letter-spacing:.08em;color:#f4cf55}
+.vr-txt b{display:block;font-size:.98rem}
+.vr-discord{border-color:#d6ff6e;background:linear-gradient(135deg,#5865f2,#1f1b4d)}
+.vr-discord .vr-txt small{color:#d6ff6e}
+@media(max-width:400px){.vm-duo .vr-txt b{font-size:.84rem}.vm-duo .vr-star{font-size:1.15rem}.vm-duo .vm-recrute{padding:7px 9px;gap:7px}}
+
+/* Cadre principal : directement sous l'affiche */
+.gaming-simple main.wrap{max-width:1100px;margin-top:18px}
+.gaming-simple h2.big,.gaming-simple section[id],.gaming-simple #jt{scroll-margin-top:110px}
+
+/* Filtres : « Tout » d'abord, les principaux jeux, le reste dans « Filtres » */
+.g-filters{display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;gap:7px;margin:0 0 12px}
+.g-filters .cats-row{display:flex;flex-wrap:wrap;gap:7px;flex:1 1 0;min-width:0;align-items:center;padding:2px 4px 6px 2px}
+.gaming-simple .g-filters .chip{transform:none;font-size:.95rem;letter-spacing:.05em;padding:8px 12px 6px;border-radius:10px;box-shadow:2px 2px 0 #000;min-height:36px}
+.home-filter-more{position:relative;flex:none;font:700 .8rem/1.4 'DM Sans',system-ui,sans-serif}
+.home-filter-more>summary{padding:9px 6px;cursor:pointer;color:var(--text);white-space:nowrap}
+.home-filter-more[open]{flex-basis:100%}
+.home-filter-options{display:flex;flex-wrap:wrap;gap:7px;padding:12px;background:var(--card);border:2px solid #000;border-radius:12px;box-shadow:3px 3px 0 #000;margin-top:4px}
+.gaming-simple .gq{padding:10px 14px}
+
+/* Actus : grandes cartes lisibles, deux colonnes sur grand écran */
+.g-news h2.big{text-align:left;margin-top:18px}
+.g-news h2.big small{display:inline-block;margin:0 0 0 10px;font-size:.8rem;vertical-align:middle}
+@media(min-width:960px){.g-news .news{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}}
+.gaming-simple .item h3{font-size:1.1rem;line-height:1.28}
+
+/* « Comment ça marche » garde le gros bouton Discord */
+.g-how .cta{margin-top:18px}
+.g-how .free{text-align:center}
+
+/* Téléphone : l'accroche s'efface pour laisser les actus dans le premier écran */
+@media(max-width:899px){.gaming-simple main.wrap{margin-top:14px}}
+@media(max-width:600px){.gaming-simple main.wrap{margin:12px 8px 0}}
+@media(max-width:480px){
+ .home-flash-top{min-height:30px}.home-flash .lbl{padding:4px 9px 2px;font-size:.9rem}.ticker .run{font-size:.88rem}
+ .gaming-simple .logo img{height:34px}
+ .gaming-simple .mini-cta{font-size:.82rem;padding:6px 10px}
+ .g-nav{gap:18px;font-size:.8rem;padding-bottom:8px}
+ .g-txt{padding:12px 12px 14px;gap:8px}
+ .g-eye,.g-txt .lead{display:none}
+ .gaming-simple h1.big{font-size:1.75rem}
+ .vm-volets{margin-top:2px}.vv{min-height:50px;padding:5px 8px}
+ .vm-duo .vm-recrute{padding-block:6px}
+ .g-news h2.big{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0}
+ .gaming-simple main.wrap{padding-top:10px}
+ .g-filters{flex-wrap:wrap;margin-bottom:8px;gap:4px}
+ .g-filters .cats-row{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;gap:6px}
+ .g-filters .cats-row::-webkit-scrollbar{display:none}
+ .g-filters .cats-row .chip{flex:none}
+ .gaming-simple .g-filters .chip{font-size:.88rem;padding:7px 9px 5px}
+ .home-filter-more>summary{padding:9px 2px 9px 4px;font-size:.76rem}
+ .gaming-simple .gq{margin-bottom:10px;padding:9px 12px}
+}
+@media(max-width:359px){.g-nav{gap:13px;font-size:.74rem}.gaming-simple h1.big{font-size:1.55rem}}
+
+/* Aucun bloc vide : le JT n'apparaît qu'avec une vraie vidéo publiée */
+.gaming-simple #jt:not(:has(video)){display:none}
+.gaming-simple #jt-hd[hidden],.gaming-simple #jt[hidden],.gaming-simple .g-news[hidden],.gaming-simple .presse[hidden]{display:none!important}
+/* Téléphone : Tout, Warzone, REDSEC, EA FC et GTA VI visibles en entier à côté de « Filtres » */
+@media(max-width:480px){.g-filters .cats-row{gap:5px;padding-right:2px}.gaming-simple .g-filters .chip{font-size:.8rem;letter-spacing:.03em;padding:6px 8px 4px;min-height:34px}}
+@media(max-width:359px){.gaming-simple .g-filters .chip{font-size:.74rem;padding-inline:6px}}
