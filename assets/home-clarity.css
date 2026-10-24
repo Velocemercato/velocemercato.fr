@@ -111,3 +111,12 @@ html[data-theme] body.home-simple{background-image:none;background-color:var(--b
 @media(max-width:480px){.v2-txt{padding-bottom:8px}main#top.home-main{padding-top:10px}.home-flash{margin-bottom:10px}.home-news>div.mb-5{margin-bottom:12px}}
 @media(max-width:480px){.home-flash{min-height:30px}.home-flash .lbl{padding:4px 9px 2px;font-size:.9rem}.home-flash .run{font-size:.88rem}.vm-duo .vm-recrute{padding-block:6px}.home-news h2#feed-title{font-size:2rem}}
 @media(max-width:480px){.home-news>div.mb-5{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0}}
+/* Flash en rouge, scores en direct juste en dessous */
+.home-flash{background:#e1243a;color:#fff;border-color:#0b1533}.home-flash .lbl{background:#0b1533;color:#f4cf55}
+.home-scores{border:2px solid #0b1533;border-radius:12px;margin:0;box-shadow:3px 3px 0 #0b1533;min-height:30px}.home-scores .slbl{border-radius:10px 0 0 10px;align-self:stretch;display:flex;align-items:center}
+/* Menu du haut : raccourcis vers scores, agenda, quiz et vidéos ; défile sur téléphone */
+.home-simple .home-nav{overflow-x:auto;scrollbar-width:none;justify-content:flex-start}.home-simple .home-nav::-webkit-scrollbar{display:none}.home-simple .home-nav a{flex:none;white-space:nowrap}
+@media(min-width:900px){.home-simple .home-nav{justify-content:center}}
+.home-tickers{display:flex;gap:8px;margin:0 0 14px;min-width:0}.home-tickers>a{flex:1 1 0;min-width:0;margin:0}
+@media(max-width:480px){.home-tickers{margin-bottom:10px;gap:6px}.home-tickers .lbl,.home-tickers .slbl{font-size:.8rem;padding:4px 7px 2px}}
+.home-simple #quiz,.home-simple #sondages,.home-simple #plus-de-foot{scroll-margin-top:135px}
