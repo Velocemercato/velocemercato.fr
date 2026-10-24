@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261024-1900",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 19 h",
+  "titre": "La Pastille Actus : l'essentiel du samedi 24 octobre",
+  "accroche": "Les grandes brèves du soir, avec VM Actus, sur des sujets sourcés.",
+  "duree": 142,
+  "date": "2026-10-24T19:27+02:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261024-1900.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-10-24T19:00:00+02:00",
+  "source_start": "2026-10-24T13:00:00+02:00",
+  "source_end": "2026-10-24T19:00:00+02:00",
+  "sources": [
+   {
+    "id": "rss-v2-fc79bd61445d18b1022a03",
+    "titre": "Sonia Devillers publie « Le Fabuleux piano », récit d'une famille juive pendant la Shoah",
+    "publishedAt": "2026-10-24T16:06:09Z",
+    "createdAt": "2026-10-24T16:31:46Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/replay-radio/l-invite-culture/sonia-devillers-dans-le-journal-intime-de-jacques-enoch-j-ai-lu-l-histoire-en-train-de-se-faire_8230945.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-db8620595d7f844046e531",
+    "titre": "Jordanie : neuf morts dans une fusillade contre une église dans le sud du pays",
+    "publishedAt": "2026-10-24T15:34:56Z",
+    "createdAt": "2026-10-24T16:01:37Z",
+    "references": [
+     {
+      "nom": "RFI",
+      "url": "https://www.rfi.fr/fr/moyen-orient/20261024-jordanie-attaque-meurtri%C3%A8re-contre-une-%C3%A9glise-dans-le-sud-du-pays"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-258c63bd888bdac6325929",
+    "titre": "Ballon d’or 2026 : French Montana et Jorja Smith se produiront à la 70e cérémonie à Londres",
+    "publishedAt": "2026-10-24T14:48:20Z",
+    "createdAt": "2026-10-24T15:00:57Z",
+    "references": [
+     {
+      "nom": "20 Minutes",
+      "url": "https://www.20minutes.fr/sport/football/4257208-20261024-ballon-or-2026-rappeur-french-montana-chanteuse-jorja-smith-produiront-70e-ceremonie?at_medium=display&at_campaign=149"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-473c5d022f70d77ae6bb29",
+    "titre": "York, ville anglaise qui se dit la plus hantée d'Europe, attire les touristes à Halloween",
+    "publishedAt": "2026-10-24T14:25:41Z",
+    "createdAt": "2026-10-24T14:30:45Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/replay-jt/france-2/13-heures/les-gens-veulent-voir-des-fantomes-york-la-ville-anglaise-autoproclamee-la-plus-hantee-d-europe_8252266.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-6d4ee9dbf04ed7999932ff",
+    "titre": "Lyon : la police disperse un rassemblement au gaz lacrymogène près de l'université Jean-Moulin",
+    "publishedAt": "2026-10-24T13:47:33Z",
+    "createdAt": "2026-10-24T14:01:05Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/video/2026/10/24/lyon-la-police-disperse-des-manifestants-au-gaz-lacrymogene-devant-luniversite-jean-moulin"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-321dd217895e752a301892",
+    "titre": "Le documentaire « Papa où t'es ? » sur l'Aide sociale à l'enfance projeté à Paris",
+    "publishedAt": "2026-10-24T13:09:08Z",
+    "createdAt": "2026-10-24T13:13:38Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/culture/cinema/l-identification-c-est-ca-la-force-du-film-recit-d-une-projection-speciale-de-papa-ou-t-es-le-documentaire-sur-l-aide-sociale-a-l-enfance-du-streamer-nicolas-trouve_8247466.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-7faa4d86f3d335a9c72219",
+    "titre": "Manifestations du 24 octobre : 135 interpellations annoncées à 13 heures, selon franceinfo",
+    "publishedAt": "2026-10-24T12:16:28Z",
+    "createdAt": "2026-10-24T12:37:43Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/manifestations/manifestations-du-24-octobre-suivez-en-direct-cette-nouvelle-journee-de-mobilisation-sous-tres-haute-securite_8251987.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-e9aaf0302be582a4a00fff",
+    "titre": "Trappes : une attaque par arme automatique fait un mort et cinq blessés",
+    "publishedAt": "2026-10-24T11:27:26Z",
+    "createdAt": "2026-10-24T11:31:25Z",
+    "references": [
+     {
+      "nom": "France 24",
+      "url": "https://www.france24.com/fr/vid%C3%A9o/20261024-trappes-un-mort-et-cinq-bless%C3%A9s-dans-une-attaque-macron-d%C3%A9nonce-un-acte-terroriste-et-raciste"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "gaming-edition-20261024-1800",
   "univers": "gaming",
   "format": "edition",
