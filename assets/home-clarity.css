@@ -132,3 +132,8 @@ html[data-theme] body.home-simple{background-image:none;background-color:var(--b
 @media(max-width:480px){.home-filters .cats-row{gap:4px}.home-simple #cats .cats-row .chip{padding-inline:6px}.home-filter-more>summary{padding-inline:2px 0}}
 /* Lien Vidéos dans le menu Filtres (ouvre le bloc vidéos, pas un filtre d'articles) */
 .home-filter-link{display:inline-flex;align-items:center;min-height:36px;padding:8px 10px;border:1px solid var(--line);border-radius:9px;font:700 .76rem/1.4 system-ui,sans-serif;text-decoration:none;color:var(--ink);background:var(--surface)}.home-filter-link:hover{border-color:var(--gold-hi)}
+/* Ballon d'Or : badge temporaire posé sur la grande image (jusqu'au mardi 27 octobre) */
+.bo-badge{position:absolute;left:10px;top:10px;z-index:3;display:flex;align-items:center;gap:9px;max-width:calc(100% - 20px);padding:7px 10px;border:2px solid #f4cf55;border-radius:14px;background:linear-gradient(135deg,#0b1533ee,#1d3fb8ee);color:#fff;text-decoration:none;box-shadow:3px 3px 0 #000}
+.bo-badge>span:first-child{font-size:1.5rem;line-height:1}.bo-badge small{display:block;font:800 .64rem/1.2 system-ui,sans-serif;letter-spacing:.08em;color:#f4cf55}.bo-badge b{display:block;font:800 .9rem/1.2 system-ui,sans-serif}
+.bo-badge strong{flex:none;background:#f4cf55;color:#0b1533;border-radius:999px;padding:5px 9px;font:800 .8rem/1 system-ui,sans-serif}.bo-badge:focus-visible{outline:3px solid #fff;outline-offset:2px}
+@media(prefers-reduced-motion:no-preference){.bo-badge strong{animation:bo-pulse 2.4s ease-in-out infinite}}@keyframes bo-pulse{50%{transform:scale(1.08)}}
