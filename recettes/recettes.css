@@ -1,0 +1,75 @@
+/* Recettes : complète /assets/pratique.css (mêmes couleurs or et nuit). */
+.rc-sous{max-width:640px;margin:10px auto 0;font-size:.95rem}
+.rc-jour{margin:16px 0}
+.rc-jour-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:18px;align-items:center;background:#10121c;border:1px solid #3a3420;border-radius:18px;padding:14px;text-decoration:none;color:inherit}
+.rc-jour-in:hover{border-color:#f4cf55}
+.rc-jour-in h2{font-size:clamp(1.3rem,4vw,1.8rem);margin:6px 0 8px}
+.rc-jour-in .btn{display:inline-block;margin-top:12px}
+.rc-jour .rc-img{border-radius:12px;margin:0}
+.rc-jour .rc-emoji{font-size:5rem}
+.rc-outils{position:relative}
+.rc-search{margin-bottom:12px}
+.rc-search input{width:100%;font-size:1rem}
+.rc-chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.rc-chips button{font:700 .85rem Poppins,system-ui,sans-serif;padding:8px 12px;border-radius:999px;border:1px solid #3a3420;background:#07080f;color:#f3f0e6;cursor:pointer;min-height:38px}
+.rc-chips button[aria-pressed=true]{background:#f4cf55;color:#120d03;border-color:#f4cf55}
+.rc-filtres button[aria-pressed=true]{background:#2a2410;color:#f4cf55;border-color:#f4cf55}
+.rc-compte{margin:8px 0 0;font-size:.85rem;color:#bdb59a}
+.rc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:14px 0}
+.rc-carte{position:relative;background:#10121c;border:1px solid #2a2410;border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.rc-carte:hover{border-color:#6b5a1e}
+.rc-lien,.rc-jour-in{text-decoration:none}.rc-lien{display:block}
+.rc-img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;background:#191b24}
+.rc-emoji{display:flex;align-items:center;justify-content:center;font-size:3.6rem;background:radial-gradient(circle at 30% 30%,#2b2614,#10121c)}
+.rc-emoji[data-c="Desserts"],.rc-emoji[data-c="Petit-déj & goûter"]{background:radial-gradient(circle at 30% 30%,#3a2219,#10121c)}
+.rc-emoji[data-c="Entrées"],.rc-emoji[data-c="Sauces & bases"]{background:radial-gradient(circle at 30% 30%,#1d2c1c,#10121c)}
+.rc-emoji[data-c="Apéro"]{background:radial-gradient(circle at 30% 30%,#33281a,#10121c)}
+.rc-corps{padding:10px 14px 14px}
+.rc-corps h3{margin:2px 0 6px;font-size:1.05rem;line-height:1.3}
+.rc-corps h3 a{color:#f4cf55;text-decoration:none}
+.rc-corps h3 a:hover{text-decoration:underline}
+.rc-cat{font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#d4a017}
+.rc-meta{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.82rem;color:#d9cfae}
+.rc-tags{margin-top:6px}
+.rc-tags span{display:inline-block;font-size:.72rem;font-weight:700;background:#2a2410;color:#f4cf55;border-radius:999px;padding:2px 8px;margin:2px 4px 2px 0}
+.rc-fav{position:absolute;top:8px;right:8px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(4,5,10,.75);color:#f4cf55;font-size:1.3rem;cursor:pointer}
+.rc-fav[aria-pressed=true]{background:#f4cf55;color:#120d03}
+.rc-vide{grid-column:1/-1}.rc-vide p{margin:0 0 12px}.rc-vide .btn{display:inline-block}
+.rc-charge{grid-column:1/-1;text-align:center;color:#bdb59a}
+/* Fiche */
+.rc-fiche{width:min(860px,100%);max-width:100%;max-height:100%;margin:auto;padding:0;border:1px solid #3a3420;border-radius:18px;background:#10121c;color:#f3f0e6;overflow:auto}
+.rc-fiche::backdrop{background:rgba(0,0,0,.75)}
+.rc-fiche-tete{position:relative}
+.rc-fiche-tete .rc-img{aspect-ratio:21/9}
+.rc-fiche-tete .rc-emoji{aspect-ratio:auto;height:150px;font-size:4.5rem}
+.rc-fermer{position:absolute;top:10px;right:10px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(4,5,10,.8);color:#fff;font-size:1.2rem;cursor:pointer}
+.rc-fiche-corps{padding:16px 18px 22px}
+.rc-fiche-corps h2{font-size:clamp(1.4rem,5vw,2rem);margin:4px 0 8px}
+.rc-actions{margin:12px 0 4px}
+.rc-fav-l{font:700 .9rem Poppins,system-ui,sans-serif;padding:8px 14px;border-radius:999px;border:1px solid #f4cf55;background:transparent;color:#f4cf55;cursor:pointer}
+.rc-fav-l[aria-pressed=true]{background:#f4cf55;color:#120d03}
+.rc-deux{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:22px;margin-top:8px}
+.rc-portions{display:flex;align-items:center;gap:10px;margin:4px 0 10px}
+.rc-portions button{width:40px;height:40px;border-radius:50%;border:1px solid #f4cf55;background:#07080f;color:#f4cf55;font:800 1.2rem Poppins,sans-serif;cursor:pointer}
+.rc-portions button:disabled{opacity:.4;cursor:default}
+.rc-portions output{min-width:5.5em;text-align:center;font-weight:800}
+.rc-ingr{list-style:none;padding:0;margin:0 0 14px}
+.rc-ingr li{display:grid;grid-template-columns:6.8em minmax(0,1fr);gap:8px;padding:6px 0;border-bottom:1px solid #22201a;font-size:.93rem}
+.rc-ingr b{color:#f4cf55;text-align:right;font-weight:700;white-space:nowrap}
+.rc-etapes li{margin:8px 0;padding-left:2px}
+.rc-astuce{background:#07080f;border-left:3px solid #f4cf55;border-radius:8px;padding:10px 12px;font-size:.9rem;color:#d9cfae}
+@media(max-width:700px){
+ .rc-jour-in{grid-template-columns:1fr;gap:10px}
+ .rc-jour .rc-emoji{aspect-ratio:16/7;font-size:3.6rem}
+ #cats{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:-16px;padding-right:16px}
+ #cats button{flex:none}
+ .rc-deux{grid-template-columns:1fr}
+ .rc-fiche{border-radius:0;height:100%;border:0}
+ .rc-fiche-tete .rc-img{aspect-ratio:16/9}
+ .rc-fiche-tete .rc-emoji{aspect-ratio:auto;height:120px}
+ .rc-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+ .rc-corps{padding:8px 10px 12px}
+ .rc-corps h3{font-size:.95rem}
+ .rc-meta{font-size:.76rem;gap:2px 8px}
+ .rc-tags span:nth-child(n+3){display:none}
+}

@@ -138,3 +138,4 @@ html[data-theme] body.home-simple{background-image:none;background-color:var(--b
 @media(max-width:400px){.bo-hdr{padding:7px 9px;font-size:.76rem}}
 @media(max-width:420px){.bo-hdr{padding:6px 8px;font-size:.72rem;gap:4px}.home-simple header .brand-name{white-space:nowrap}.home-simple header a.logo{min-width:0}}
 @media(max-width:420px){.home-simple header .brand-name{flex-wrap:nowrap}.home-simple header a.logo{font-size:1.05rem!important;gap:6px}}
+.home-nav a.nav-studio{color:#0b1533;background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);border-radius:999px;padding:5px 11px}

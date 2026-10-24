@@ -1,0 +1,29 @@
+{
+ "id": "/app/pub",
+ "name": "Publicité VM",
+ "short_name": "Pub VM",
+ "start_url": "/pub/?app=1",
+ "scope": "/pub/",
+ "display": "standalone",
+ "background_color": "#05080f",
+ "theme_color": "#05080f",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/pub-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/pub-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/pub-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

@@ -21,7 +21,7 @@ h2{color:#f4cf55;font:italic 800 1.35rem Poppins,sans-serif;margin:24px 0 10px}
 .btn{display:inline-block;font:800 .95rem Poppins,sans-serif;padding:12px 16px;border-radius:999px;border:0;background:#d4a017;color:#120d03;cursor:pointer;text-decoration:none;margin-top:12px}
 .rules{font-size:.85rem;color:#bdb59a;background:#10121c;border-left:4px solid #d4a017;border-radius:10px;padding:12px;margin-top:16px}
 .spot{display:flex;gap:12px;align-items:center;background:#0d0b06;border:1px solid #6b5314;border-radius:16px;padding:12px;margin-top:16px;text-decoration:none;color:#fff}.spot img{width:72px;height:72px;border-radius:12px;object-fit:cover}
-</style><link rel="manifest" href="/app/autopart.webmanifest" id="vmapp-m"><meta name="theme-color" content="#05080f" id="vmapp-t"><link rel="apple-touch-icon" href="/app/autopart-apple.png" id="vmapp-i"><style id="vmbar-css">
+</style><link rel="manifest" href="/app/autopart.webmanifest" id="vmapp-m"><meta name="theme-color" content="#05080f" id="vmapp-t"><link rel="apple-touch-icon" href="/app/autopart-apple.png" id="vmapp-i"><meta name="apple-mobile-web-app-title" content="VM Auto" id="vmapp-n"><style id="vmbar-css">
 .vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:sticky;top:0;z-index:80}
 .vmbar+header{top:49px!important}
 .vmbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:6px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
@@ -37,7 +37,7 @@ h2{color:#f4cf55;font:italic 800 1.35rem Poppins,sans-serif;margin:24px 0 10px}
 .vmbar a.on{color:#04060f;background:#fff}
 .vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
 .vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
-.vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
+.vmbar a.p{background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);color:#0b1533;font-weight:900}.vmbar a.p.on{background:#fff;color:#0b1533;box-shadow:inset 0 0 0 2px #f4cf55}.vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
 @media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
 </style><style id="vmshare-css">
 .vminst{display:none;position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#1d3fb8;color:#fff;box-shadow:3px 3px 0 #000;cursor:pointer}
@@ -73,6 +73,15 @@ h2{color:#f4cf55;font:italic 800 1.35rem Poppins,sans-serif;margin:24px 0 10px}
 
 <section id="v-ann" hidden><h2>Demandes &amp; services</h2><div class="grid" id="ann"></div></section>
 
+<section class="box" id="reperes-auto" style="margin:20px 0">
+<h2 style="margin-top:0">📋 Repères utiles pour ta voiture</h2>
+<div style="display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+<div><b>🔍 Contrôle technique</b><ul style="padding-left:18px;margin:6px 0"><li>Premier contrôle avant les 4 ans de la voiture, puis tous les 2 ans.</li><li>Contre-visite à faire dans les 2 mois en cas de défaillance majeure.</li><li>Pour vendre : contrôle de moins de 6 mois obligatoire.</li></ul></div>
+<div><b>🛞 Pneus et hiver</b><ul style="padding-left:18px;margin:6px 0"><li>Profondeur minimale légale : 1,6 mm (témoins d’usure dans les rainures).</li><li>Loi Montagne : du 1<sup>er</sup> novembre au 31 mars, pneus hiver ou chaînes/chaussettes obligatoires dans les communes désignées par la préfecture, dont une partie des Vosges, du Doubs, de la Haute-Saône et du Territoire de Belfort.</li></ul></div>
+<div><b>🧾 Chez le garagiste</b><ul style="padding-left:18px;margin:6px 0"><li>Le taux horaire doit être affiché à l’accueil.</li><li>Demande un devis écrit avant les travaux et garde la facture détaillée.</li><li>Le garage doit te proposer des pièces de réemploi (occasion), souvent moins chères.</li></ul></div>
+<div><b>🚗 Acheter d’occasion</b><ul style="padding-left:18px;margin:6px 0"><li>Demande au vendeur le lien HistoVec (site officiel, gratuit) : propriétaires, sinistres, kilométrage relevé aux contrôles.</li><li>Vérifie le carnet d’entretien et la date de la courroie de distribution.</li><li>Paiement sécurisé : chèque de banque vérifié auprès de la banque émettrice, ou virement instantané.</li></ul></div>
+</div>
+</section>
 <h2 id="deposer">Déposer gratuitement</h2>
 <form class="box" id="f">
 <label for="kind">Je suis</label><select id="kind"><option value="part">Particulier : je cherche un service</option><option value="pro">Pro : je propose mes services / j'inscris mon garage</option><option value="propro">Pro : je cherche un pro (sous-traitance, entraide)</option></select>
@@ -143,7 +152,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=tru
 if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
 var ib=$('vmInst'),dp=null,standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone,ios=/iphone|ipad|ipod/i.test(navigator.userAgent),andr=/android/i.test(navigator.userAgent);
 var mf=(($('vmapp-m')||{}).getAttribute&&$('vmapp-m').getAttribute('href'))||'',app=(mf.match(/app[/]([a-z]+)[.]webmanifest/)||[,'foot'])[1];
-var NOMS={autopart:'VM Auto Particulier',location:'VM Detailing',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'l’appli VM',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'VM TV',annonces:'VM Annonces',allolivre:'AlloLivre'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
+var NOMS={autopart:'VM Auto Particulier',location:'VM Detailing',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'VM Univers',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'La Pastille TV',annonces:'VM Annonces',allolivre:'AlloLivre',recettes:'VM Recettes',produits:'VM Produits locaux',sport:'VM Sport',immo:'VM Immo',rdv:'VM RDV du jour',meteo:'VM Météo',comparateur:'VM Comparateur',boutique:'VM Boutique',belfort:'VM Belfort',pub:'Publicité VM',services:'VM Services',pepite:'Pépite FC',radio:'VM Radio',studio:'VM Studio'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
 ib.textContent='📲 Installer '+nom;
 function show(){if(!no)ib.classList.add('show')}
 if(!standalone){addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;show()});if(ios)show();}

@@ -19,7 +19,7 @@ h2{color:#f4cf55;font:italic 800 1.4rem Poppins,sans-serif;margin:26px 0 10px}
 .btn{display:inline-block;font:800 .95rem Poppins,sans-serif;padding:12px 16px;border-radius:999px;border:0;background:#d4a017;color:#120d03;cursor:pointer;text-decoration:none;margin-top:12px}
 .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.plans div{background:#10121c;border:1px solid #2a2410;border-radius:16px;padding:14px}.plans b{color:#f4cf55}
 .note{font-size:.8rem;color:#8d8670;margin-top:10px}
-</style><link rel="manifest" href="/app/pro.webmanifest" id="vmapp-m"><meta name="theme-color" content="#05080f" id="vmapp-t"><link rel="apple-touch-icon" href="/app/pro-apple.png" id="vmapp-i"><style id="vmbar-css">
+</style><link rel="manifest" href="/app/pro.webmanifest" id="vmapp-m"><meta name="theme-color" content="#05080f" id="vmapp-t"><link rel="apple-touch-icon" href="/app/pro-apple.png" id="vmapp-i"><meta name="apple-mobile-web-app-title" content="Pro Local" id="vmapp-n"><style id="vmbar-css">
 .vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:sticky;top:0;z-index:80}
 .vmbar+header{top:49px!important}
 .vmbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:6px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
@@ -35,7 +35,7 @@ h2{color:#f4cf55;font:italic 800 1.4rem Poppins,sans-serif;margin:26px 0 10px}
 .vmbar a.on{color:#04060f;background:#fff}
 .vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
 .vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
-.vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
+.vmbar a.p{background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);color:#0b1533;font-weight:900}.vmbar a.p.on{background:#fff;color:#0b1533;box-shadow:inset 0 0 0 2px #f4cf55}.vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
 @media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
 </style><style id="vmshare-css">
 .vminst{display:none;position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#1d3fb8;color:#fff;box-shadow:3px 3px 0 #000;cursor:pointer}
@@ -65,6 +65,18 @@ h2{color:#f4cf55;font:italic 800 1.4rem Poppins,sans-serif;margin:26px 0 10px}
 <p style="font-weight:700;color:#d4a017;margin:4px 0 12px">📍 Secteur : Haute-Saône (70), Territoire de Belfort (90), Doubs (25) et Vosges (88) — déplacement possible selon la prestation.</p>
 <div class="grid" id="list"></div>
 <div class="empty" id="empty" hidden>🚀 <b>L'annuaire démarre.</b> Les premiers pros inscrits apparaîtront ici. Tu es artisan ou commerçant ? Inscris-toi gratuitement juste en dessous.</div>
+<section class="box" id="guide-artisan" style="margin:20px 0">
+<h2 style="margin-top:0">🧰 Bien choisir un artisan : 6 réflexes</h2>
+<ol style="padding-left:20px;margin:0;display:grid;gap:8px">
+<li><b>Vérifie l’entreprise.</b> Le numéro SIRET doit figurer sur le devis. Vérifie-le gratuitement sur annuaire-entreprises.data.gouv.fr (site officiel de l’État).</li>
+<li><b>Demande un devis écrit et compares-en deux ou trois.</b> Pour les travaux de dépannage, de réparation ou d’entretien dans le logement, le devis est obligatoire au-delà de 150 € TTC.</li>
+<li><b>Gros travaux : demande l’attestation d’assurance décennale</b>, qui doit être jointe au devis.</li>
+<li><b>Rénovation énergétique : exige le label RGE.</b> Sans lui, pas d’aide MaPrimeRénov’. L’annuaire officiel est sur france-renov.gouv.fr.</li>
+<li><b>Démarchage à domicile : tu as 14 jours pour changer d’avis</b>, et aucun paiement ne peut être exigé pendant les 7 premiers jours. Ne signe rien le jour même.</li>
+<li><b>Un litige ?</b> Tout professionnel doit indiquer un médiateur de la consommation, gratuit pour toi. Tu peux aussi signaler un problème sur signal.conso.gouv.fr.</li>
+</ol>
+<p class="note">Conseils généraux, à jour à la date de publication. Pour un cas précis, renseigne-toi auprès d’une association de consommateurs ou d’une Maison France Services.</p>
+</section>
 <h2 id="inscription">Tu es un pro ? Inscris-toi gratuitement</h2>
 <div class="plans"><div><b>Fiche gratuite</b><br>Nom, métier, ville, téléphone, lien vers ton site ou ta page. Gratuit pendant le lancement.</div><div><b>Fiche en tête · 9,90 €/mois</b><br>En tête des résultats de ta ville, avec photo, horaires et bouton d'appel. <a href="/pub/" style="color:#f4cf55">Voir</a></div><div><b>Pas de site ?</b><br>Véloce Web Studio te le fait, avec ta carte ou tes tarifs en QR code. <a href="/web-studio.html" style="color:#f4cf55">Voir</a></div></div>
 <form class="box" id="f" style="margin-top:14px">
@@ -125,7 +137,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=tru
 if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
 var ib=$('vmInst'),dp=null,standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone,ios=/iphone|ipad|ipod/i.test(navigator.userAgent),andr=/android/i.test(navigator.userAgent);
 var mf=(($('vmapp-m')||{}).getAttribute&&$('vmapp-m').getAttribute('href'))||'',app=(mf.match(/app[/]([a-z]+)[.]webmanifest/)||[,'foot'])[1];
-var NOMS={location:'VM Detailing',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'l’appli VM',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'VM TV',annonces:'VM Annonces',allolivre:'AlloLivre'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
+var NOMS={autopart:'VM Auto Particulier',location:'VM Detailing',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'VM Univers',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'La Pastille TV',annonces:'VM Annonces',allolivre:'AlloLivre',recettes:'VM Recettes',produits:'VM Produits locaux',sport:'VM Sport',immo:'VM Immo',rdv:'VM RDV du jour',meteo:'VM Météo',comparateur:'VM Comparateur',boutique:'VM Boutique',belfort:'VM Belfort',pub:'Publicité VM',services:'VM Services',pepite:'Pépite FC',radio:'VM Radio',studio:'VM Studio'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
 ib.textContent='📲 Installer '+nom;
 function show(){if(!no)ib.classList.add('show')}
 if(!standalone){addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;show()});if(ios)show();}

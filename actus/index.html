@@ -83,7 +83,7 @@ footer a{color:var(--gold)}
 .sb{display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 6px;border-radius:12px;border:2px solid #000;color:#fff;text-decoration:none;font:800 .92rem/1 system-ui,sans-serif;box-shadow:3px 3px 0 #000;transition:transform .15s}
 .sb:hover{transform:translateY(-2px)}.sb svg{width:20px;height:20px;flex:none}
 .s-tt{background:#000}.s-ig{background:linear-gradient(45deg,#f9a825,#e1306c 45%,#833ab4)}.s-fb{background:#1877f2}.s-yt{background:#e62117}.s-tw{background:#9146ff}.s-dc{background:#5865f2}
-</style><link rel="manifest" href="/app/actus.webmanifest" id="vmapp-m"><meta name="theme-color" content="#0a1430" id="vmapp-t"><link rel="apple-touch-icon" href="/app/actus-apple.png" id="vmapp-i"><style id="vmbar-css">
+</style><link rel="manifest" href="/app/actus.webmanifest" id="vmapp-m"><meta name="theme-color" content="#0a1430" id="vmapp-t"><link rel="apple-touch-icon" href="/app/actus-apple.png" id="vmapp-i"><meta name="apple-mobile-web-app-title" content="VM Actus" id="vmapp-n"><style id="vmbar-css">
 .vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:sticky;top:0;z-index:80}
 .vmbar+header{top:49px!important}
 .vmbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:6px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
@@ -99,7 +99,7 @@ footer a{color:var(--gold)}
 .vmbar a.on{color:#04060f;background:#fff}
 .vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
 .vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
-.vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
+.vmbar a.p{background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);color:#0b1533;font-weight:900}.vmbar a.p.on{background:#fff;color:#0b1533;box-shadow:inset 0 0 0 2px #f4cf55}.vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
 @media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
 </style><style id="vmshare-css">
 .vminst{display:none;position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#1d3fb8;color:#fff;box-shadow:3px 3px 0 #000;cursor:pointer}
@@ -117,7 +117,7 @@ footer a{color:var(--gold)}
 .vmsh-c{display:block;width:100%;margin-top:12px;font:800 1rem system-ui,sans-serif;padding:12px;border-radius:999px;border:2px solid #0b1533;background:#fff;color:#0b1533;cursor:pointer}
 @media print{.vmfab{display:none}}
 </style><link rel="stylesheet" href="/assets/pastille.css"><script src="/assets/pastille-player.js"></script><script src="/assets/pastille-feed.js" defer></script><script src="/assets/broadcast-feed.js" defer></script><link rel="stylesheet" href="/assets/actus-clarity.css?v=20261024-actus"><script src="/assets/home-navigation.js" defer></script></head>
-<body class="actus-simple"><a id="ticker" class="ticker ax-flash" href="#presse" hidden aria-label="Flash Actu : voir les titres de la presse en continu"><span class="lbl">⚡ FLASH ACTU</span><span class="tk-vp"><span id="tickerRun" class="run"></span></span></a><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="VM Univers, tous les projets">VM UNIVERS<small>TOUS LES PROJETS</small></a><a class="f" href="/">⚽ Foot</a><a class="p" href="/web-studio.html">Pro · sites & visuels</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a on" href="/actus/" aria-current="page">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
+<body class="actus-simple"><a id="ticker" class="ticker ax-flash" href="#presse" hidden aria-label="Flash Actu : voir les titres de la presse en continu"><span class="lbl">⚡ FLASH ACTU</span><span class="tk-vp"><span id="tickerRun" class="run"></span></span></a><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="VM Univers, tous les projets">VM UNIVERS<small>TOUS LES PROJETS</small></a><a class="f" href="/">⚽ Foot</a><a class="p" href="/web-studio.html">💼 VM Studio</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a on" href="/actus/" aria-current="page">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
 <header>
 <div class="top"><a class="logo" href="./">VM <b>ACTUS</b><span>du jour</span></a><span class="ed" id="ed">Édition du jour</span></div>
 <nav class="ax-nav" aria-label="Raccourcis de la page"><a href="#fil">📰 À la une</a><a href="#filtres">🗂️ Rubriques</a><a href="#jt">📺 JT</a><a href="#presse">🗞️ En continu</a><a href="#q">🔎 Rechercher</a><a href="#reseaux">📲 Réseaux</a><a href="/belfort/">📍 Belfort</a></nav>
@@ -310,7 +310,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=tru
 if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
 var ib=$('vmInst'),dp=null,standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone,ios=/iphone|ipad|ipod/i.test(navigator.userAgent),andr=/android/i.test(navigator.userAgent);
 var mf=(($('vmapp-m')||{}).getAttribute&&$('vmapp-m').getAttribute('href'))||'',app=(mf.match(/app[/]([a-z]+)[.]webmanifest/)||[,'foot'])[1];
-var NOMS={location:'VM Detailing',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'l’appli VM',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'VM TV',annonces:'VM Annonces',allolivre:'AlloLivre'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
+var NOMS={autopart:'VM Auto Particulier',location:'VM Detailing',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'VM Univers',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'La Pastille TV',annonces:'VM Annonces',allolivre:'AlloLivre',recettes:'VM Recettes',produits:'VM Produits locaux',sport:'VM Sport',immo:'VM Immo',rdv:'VM RDV du jour',meteo:'VM Météo',comparateur:'VM Comparateur',boutique:'VM Boutique',belfort:'VM Belfort',pub:'Publicité VM',services:'VM Services',pepite:'Pépite FC',radio:'VM Radio',studio:'VM Studio'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
 ib.textContent='📲 Installer '+nom;
 function show(){if(!no)ib.classList.add('show')}
 if(!standalone){addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;show()});if(ios)show();}
