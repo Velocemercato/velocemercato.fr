@@ -123,3 +123,5 @@ html[data-theme] body.home-simple{background-image:none;background-color:var(--b
 /* Flash Véloce tout en haut de la page, sur toute la largeur */
 .home-flash-top{border:0;border-radius:0;box-shadow:none;margin:0;min-height:32px;padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px);border-bottom:2px solid #0b1533}.home-flash-top .lbl{border-radius:0}
 .home-tickers .home-scores{flex:1 1 100%}
+@media(max-width:480px){.vm-volets{margin-top:10px}.vm-volets .vv{min-height:50px}.vm-duo{margin-top:8px}.home-simple .home-tickers{margin-bottom:8px}.home-simple #cats{padding-bottom:2px}}
+@media(max-width:480px){.vm-volets .vv{padding:5px 8px}}
