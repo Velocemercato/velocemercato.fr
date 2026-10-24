@@ -30,7 +30,7 @@ main{max-width:1100px;margin:0 auto;padding:18px 16px 50px}
 .une{display:block;width:100%;text-align:left;cursor:pointer;background:var(--surface);color:var(--ink);border:3px solid #000;border-radius:16px;box-shadow:6px 6px 0 var(--red);padding:0;overflow:hidden;margin-bottom:22px;font:inherit}
 .une .band{background:var(--red);color:#fff;font:400 1.1rem/1 Impact,Anton,sans-serif;text-transform:uppercase;letter-spacing:.04em;padding:9px 14px;border-bottom:3px solid #000}
 .une .in{padding:14px 16px 18px}
-.une h1{font:400 clamp(1.6rem,5vw,2.4rem)/1.08 Impact,Anton,sans-serif;text-transform:uppercase;margin:6px 0 8px;text-wrap:balance}
+.une h1,.une .une-t{font:400 clamp(1.6rem,5vw,2.4rem)/1.08 Impact,Anton,sans-serif;text-transform:uppercase;margin:6px 0 8px;text-wrap:balance}
 .une p{margin:0;color:var(--muted)}
 .meta{font:700 .8rem/1.3 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--gold)}
 h2.sec{font:400 1.5rem/1 Impact,Anton,sans-serif;text-transform:uppercase;margin:6px 0 12px}
@@ -116,16 +116,32 @@ footer a{color:var(--gold)}
 .vmsh-qr{display:flex;justify-content:center;margin:14px 0 4px}.vmsh-qr canvas,.vmsh-qr img{border:8px solid #fff;outline:2px solid #0b1533;border-radius:6px}
 .vmsh-c{display:block;width:100%;margin-top:12px;font:800 1rem system-ui,sans-serif;padding:12px;border-radius:999px;border:2px solid #0b1533;background:#fff;color:#0b1533;cursor:pointer}
 @media print{.vmfab{display:none}}
-</style><link rel="stylesheet" href="/assets/pastille.css"><script src="/assets/pastille-player.js"></script><script src="/assets/pastille-feed.js" defer></script><script src="/assets/broadcast-feed.js" defer></script></head>
-<body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="VM Univers, tous les projets">VM UNIVERS<small>TOUS LES PROJETS</small></a><a class="f" href="/">⚽ Foot</a><a class="p" href="/web-studio.html">Pro · sites & visuels</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a on" href="/actus/" aria-current="page">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
-<header><h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">VM Actus – l'actualité France et monde en brèves sourcées</h1>
+</style><link rel="stylesheet" href="/assets/pastille.css"><script src="/assets/pastille-player.js"></script><script src="/assets/pastille-feed.js" defer></script><script src="/assets/broadcast-feed.js" defer></script><link rel="stylesheet" href="/assets/actus-clarity.css?v=20261024-actus"><script src="/assets/home-navigation.js" defer></script></head>
+<body class="actus-simple"><a id="ticker" class="ticker ax-flash" href="#presse" hidden aria-label="Flash Actu : voir les titres de la presse en continu"><span class="lbl">⚡ FLASH ACTU</span><span class="tk-vp"><span id="tickerRun" class="run"></span></span></a><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="VM Univers, tous les projets">VM UNIVERS<small>TOUS LES PROJETS</small></a><a class="f" href="/">⚽ Foot</a><a class="p" href="/web-studio.html">Pro · sites & visuels</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a on" href="/actus/" aria-current="page">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
+<header>
 <div class="top"><a class="logo" href="./">VM <b>ACTUS</b><span>du jour</span></a><span class="ed" id="ed">Édition du jour</span></div>
-<nav class="cats" id="cats" aria-label="Rubriques">
-<button class="chip" type="button" data-c="" aria-pressed="true">Tout</button>
+<nav class="ax-nav" aria-label="Raccourcis de la page"><a href="#fil">📰 À la une</a><a href="#filtres">🗂️ Rubriques</a><a href="#jt">📺 JT</a><a href="#presse">🗞️ En continu</a><a href="#q">🔎 Rechercher</a><a href="#reseaux">📲 Réseaux</a><a href="/belfort/">📍 Belfort</a></nav>
+</header>
+<section class="ax-hero" aria-labelledby="ax-title">
+<div class="ax-hero-in">
+<img class="ax-bg" src="/img/v2-actus-640.webp" srcset="/img/v2-actus-640.webp 640w, /img/v2-actus.webp 1050w" sizes="(min-width:900px) 600px, 100vw" width="1050" height="810" alt="Dessin BD : le présentateur de VM Actus sur un plateau télé, avec les rubriques France, International et Régions" fetchpriority="high">
+<div class="ax-txt">
+<span class="ax-eye">L’ACTU GÉNÉRALE DE VM UNIVERS</span>
+<h1 id="ax-title">L’actu du jour.<br><em>Courte et sourcée.</em></h1>
+<p class="ax-lead">France, monde, politique, économie… des brèves neutres avec le lien vers la source, matin, midi et soir.</p>
+<nav class="vm-volets" aria-label="Les trois rubriques VM"><a class="vv vv-foot" href="/" style="--img:url(/img/v2-mercato-800.webp)"><span aria-hidden="true">⚽</span><b>VM Foot</b><small>Véloce</small></a><a class="vv vv-actus" href="/actus/" aria-current="page" style="--img:url(/img/v2-actus-640.webp)"><span aria-hidden="true">📰</span><b>VM Actu</b><small>du jour</small></a><a class="vv vv-gaming" href="/vm-gaming/" style="--img:url(/vm-gaming/img/vm-gaming-univers-960.webp)"><span aria-hidden="true">🎮</span><b>VM Gaming</b><small>&amp; Arena</small></a></nav>
+<div class="vm-duo"><a class="vm-recrute vr-jt" href="#jt"><span class="vr-star" aria-hidden="true">📺</span><span class="vr-txt"><small>JT VM ACTUS</small><b>7 h · 13 h · 19 h →</b></span></a><a class="vm-recrute vr-region" href="/belfort/"><span class="vr-star" aria-hidden="true">📍</span><span class="vr-txt"><small>ACTU RÉGIONALE</small><b>VM Belfort →</b></span></a></div>
+</div>
+</div>
+</section>
+<main>
+<nav class="ax-filters" id="filtres" aria-label="Rubriques et éditions"><div id="cats"><div class="cats-row">
+<button class="chip" type="button" data-c="" aria-pressed="true">Toute l’actu</button>
 <button class="chip" type="button" data-c="FRANCE" aria-pressed="false">France</button>
 <button class="chip" type="button" data-c="INTERNATIONAL" aria-pressed="false">Monde</button>
 <button class="chip" type="button" data-c="POLITIQUE" aria-pressed="false">Politique</button>
 <button class="chip" type="button" data-c="ECONOMIE" aria-pressed="false">Économie</button>
+</div><details class="home-filter-more"><summary>Filtres</summary><div class="home-filter-options">
 <button class="chip" type="button" data-c="SOCIETE" aria-pressed="false">Société</button>
 <button class="chip" type="button" data-c="SANTE" aria-pressed="false">Santé</button>
 <button class="chip" type="button" data-c="CULTURE" aria-pressed="false">Culture</button>
@@ -133,24 +149,26 @@ footer a{color:var(--gold)}
 <button class="chip" type="button" data-c="SPORT" aria-pressed="false">Sport</button>
 <button class="chip" type="button" data-c="REGIONS" aria-pressed="false">Régions</button>
 <button class="chip" type="button" data-c="INSOLITE" aria-pressed="false">Insolite</button>
-</nav>
-</header>
-<div class="ahero"><img src="/img/v2-actus-640.webp" srcset="/img/v2-actus-640.webp 640w, /img/v2-actus.webp 1050w" sizes="(min-width:1100px) 1100px, 100vw" width="1050" height="810" alt="Dessin BD : le présentateur de VM Actus sur un plateau télé, avec les rubriques France, International et Régions" fetchpriority="high"><p>L'actu du jour, courte et sourcée · matin · midi · soir</p></div>
-<main>
-<details class="socials vm-social-more"><summary>Autres réseaux et communauté</summary><div class="soc-row">
+<p class="ax-fl">Édition</p>
+<div class="eds ax-eds" id="eds" role="group" aria-label="Éditions du jour"><button type="button" class="edb" data-e="" aria-pressed="true">Tout le jour</button><button type="button" class="edb" data-e="matin" aria-pressed="false">☀️ Matin</button><button type="button" class="edb" data-e="midi" aria-pressed="false">🕛 Midi</button><button type="button" class="edb" data-e="soir" aria-pressed="false">🌙 Soir</button></div>
+<p class="ax-fl">Recherche</p>
+<div class="search"><input id="q" type="search" placeholder="Rechercher une actu…" aria-label="Rechercher une actu"></div>
+</div></details></div></nav>
+<div id="fil" class="ax-fil"><div id="uneWrap"></div>
+<h2 class="sec" id="secTitle">Le fil de l'actu</h2><p class="ax-note" id="axNote" hidden></p>
+<div class="grid" id="list"><p class="empty">Chargement de l'actu…</p></div>
+<button class="more" id="more" type="button" hidden>Voir plus</button>
+</div>
+<div id="jt" class="ax-jt"><section class="pastille-feed" data-pastille-universe="actus"><p>JT Actus : 7 h · 13 h · 19 h, heure de Paris. Vidéos courtes préparées à partir des nouveaux articles, puis mises en ligne après préparation.</p><h2>Le JT VM Actus</h2><p class="pastille-host">Avec <b>Heineguez</b> · présentateur virtuel · émission générée par IA</p><p role="status">Chargement de la dernière émission publiée…</p><a href="/studio.html?univers=actus#tv">Voir les émissions</a><div class="vm-channels" role="group" aria-label="Nos chaînes vidéo"><a class="vm-channel vm-channel--youtube" href="https://www.youtube.com/@VeloceMercato" target="_blank" rel="noopener">▶ YouTube</a><a class="vm-channel vm-channel--twitch" href="https://www.twitch.tv/velocemercato" target="_blank" rel="noopener">Twitch ↗</a></div></section>
+<section class="pastille-feed" data-broadcast-feed data-broadcast-universe="actus" hidden aria-label="Le grand JT sur YouTube et Twitch"></section>
+</div>
+<section class="presse" id="presse" aria-labelledby="t-presse"><h2 class="sec" id="t-presse">En continu : les titres de la presse</h2><p class="sub">Les derniers titres des médias, avec le lien vers l'article d'origine.</p><ol id="fxList"></ol><button class="more" id="fxMore" type="button" hidden>Voir plus de titres</button></section>
+<details class="socials vm-social-more" id="reseaux"><summary>Autres réseaux et communauté</summary><div class="soc-row">
 <a class="sb s-tt" href="https://www.tiktok.com/@velocemercato" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.6 3c.4 2.2 1.8 3.7 4 3.9v3.2c-1.5.1-2.8-.4-4-1.2v6.2c0 3.6-2.9 5.9-6 5.9-3.4 0-6-2.6-6-5.9 0-3.6 3.2-6.3 6.9-5.8v3.3c-1.7-.4-3.6.8-3.6 2.6 0 1.5 1.2 2.6 2.7 2.6 1.6 0 2.7-1.1 2.7-3V3h3.3z"/></svg>TikTok</a>
 <a class="sb s-ig" href="https://www.instagram.com/veloce.mercato" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM12 3.6c2.7 0 3 0 4.1.1 2.7.1 4 1.4 4.1 4.1.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c-.1 2.7-1.4 4-4.1 4.1-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-2.7-.1-4-1.4-4.1-4.1C3.7 15 3.6 14.7 3.6 12s0-3 .1-4.1C3.8 5.2 5.1 3.9 7.8 3.8 9 3.6 9.3 3.6 12 3.6zM12 2C9.3 2 8.9 2 7.8 2.1 4.1 2.2 2.2 4.1 2.1 7.8 2 8.9 2 9.3 2 12s0 3.1.1 4.2c.1 3.6 2 5.6 5.7 5.7 1.1.1 1.5.1 4.2.1s3.1 0 4.2-.1c3.6-.1 5.6-2 5.7-5.7.1-1.1.1-1.5.1-4.2s0-3.1-.1-4.2c-.1-3.6-2-5.6-5.7-5.7C15.1 2 14.7 2 12 2z"/></svg>Instagram</a>
 <a class="sb s-fb" href="https://www.facebook.com/share/1cekdv2RrD/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.2h2.8V22h3.4z"/></svg>Facebook</a>
 <a class="sb s-dc" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.3 5.3A16.5 16.5 0 0 0 15.2 4l-.5 1a15 15 0 0 0-5.4 0l-.5-1a16.5 16.5 0 0 0-4.1 1.3C2.1 9.2 1.4 13 1.8 16.7a16.6 16.6 0 0 0 5 2.5l1.1-1.7a10.7 10.7 0 0 1-1.7-.8l.4-.3a11.8 11.8 0 0 0 10.8 0l.4.3-1.7.8 1.1 1.7a16.5 16.5 0 0 0 5-2.5c.5-4.3-.7-8.1-2.9-11.4zM8.5 14.4c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm7 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/></svg>Discord</a>
-</div></details><section class="pastille-feed" data-pastille-universe="actus"><p>JT Actus : 7 h · 13 h · 19 h, heure de Paris. Vidéos courtes préparées à partir des nouveaux articles, puis mises en ligne après préparation.</p><h2>Le JT VM Actus</h2><p class="pastille-host">Avec <b>Heineguez</b> · présentateur virtuel · émission générée par IA</p><p role="status">Chargement de la dernière émission publiée…</p><a href="/studio.html?univers=actus#tv">Voir les émissions</a><div class="vm-channels" role="group" aria-label="Nos chaînes vidéo"><a class="vm-channel vm-channel--youtube" href="https://www.youtube.com/@VeloceMercato" target="_blank" rel="noopener">▶ YouTube</a><a class="vm-channel vm-channel--twitch" href="https://www.twitch.tv/velocemercato" target="_blank" rel="noopener">Twitch ↗</a></div></section>
-<div class="eds" id="eds" role="group" aria-label="Éditions du jour"><button type="button" class="edb" data-e="" aria-pressed="true">Tout le jour</button><button type="button" class="edb" data-e="matin" aria-pressed="false">☀️ Matin</button><button type="button" class="edb" data-e="midi" aria-pressed="false">🕛 Midi</button><button type="button" class="edb" data-e="soir" aria-pressed="false">🌙 Soir</button></div>
-<div class="search"><input id="q" type="search" placeholder="Rechercher une actu…" aria-label="Rechercher une actu"></div>
-<div id="uneWrap"></div>
-<h2 class="sec" id="secTitle">Le fil de l'actu</h2>
-<div class="grid" id="list"><p class="empty">Chargement de l'actu…</p></div>
-<button class="more" id="more" type="button" hidden>Voir plus</button>
-<section class="pastille-feed" data-broadcast-feed data-broadcast-universe="actus" hidden aria-label="Le grand JT sur YouTube et Twitch"></section>
-<section class="presse" id="presse" aria-labelledby="t-presse"><h2 class="sec" id="t-presse">En continu : les titres de la presse</h2><p class="sub">Les derniers titres des médias, avec le lien vers l'article d'origine.</p><ol id="fxList"></ol><button class="more" id="fxMore" type="button" hidden>Voir plus de titres</button></section>
+</div></details>
 </main>
 <footer>
 VM Actus du jour : des brèves courtes, neutres et sourcées, rédigées avec l'aide d'une IA à partir des médias cités. Le lien vers l'article d'origine est toujours donné.<br>
@@ -166,17 +184,30 @@ VM Actus du jour : des brèves courtes, neutres et sourcées, rédigées avec l'
 <script>
 (function(){
   var R={FRANCE:['France','#4f74ff'],INTERNATIONAL:['Monde','#14a35a'],POLITIQUE:['Politique','#e1243a'],ECONOMIE:['Économie','#e07b12'],SOCIETE:['Société','#9b5de5'],SANTE:['Santé','#16b3a6'],CULTURE:['Culture','#ff4f9a'],TECH:['Tech','#68dcef'],SPORT:['Sport','#7bc043'],REGIONS:['Régions','#f4cf55'],INSOLITE:['Insolite','#ff945b']};
-  var all=[],cat='',ed='',shown=18,$=function(i){return document.getElementById(i);};
+  var all=[],loaded=false,cat='',ed='',shown=18,$=function(i){return document.getElementById(i);};
   var norm=function(s){return String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();};
   function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e;}
   function when(d){var t=new Date(d),m=Math.round((Date.now()-t)/60000);if(m>=0&&m<60)return 'il y a '+Math.max(1,m)+' min';if(m>=60&&m<1440)return 'il y a '+Math.round(m/60)+' h';return t.toLocaleDateString('fr-FR',{day:'numeric',month:'short',timeZone:'Europe/Paris'})+' · '+t.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Paris'});}
   var HF=new Intl.DateTimeFormat('en-GB',{hour:'2-digit',hourCycle:'h23',timeZone:'Europe/Paris'});
-  function edOf(a){var t=new Date(a.publishedAt);if(!(Date.now()-t<26*3600000))return '';var x=parseInt(HF.format(t),10);return x>=5&&x<11?'matin':x>=11&&x<17?'midi':'soir';}
+  // Édition (matin 5-11 h, midi 11-17 h, soir 17-5 h) et jour de cette édition, heure de Paris
+  var DF=new Intl.DateTimeFormat('en-CA',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:'Europe/Paris'});
+  var EDN={matin:'Édition du matin',midi:'Édition du midi',soir:'Édition du soir'};
+  function edOf(a){var x=parseInt(HF.format(new Date(a.publishedAt)),10);return x>=5&&x<11?'matin':x>=11&&x<17?'midi':'soir';}
+  function dayOf(a){var t=new Date(a.publishedAt);if(parseInt(HF.format(t),10)<5)t=new Date(t.getTime()-6*3600000);return DF.format(t);}
+  function dayLbl(d){var n=new Date(),today=DF.format(n);if(parseInt(HF.format(n),10)<5)today=DF.format(new Date(n.getTime()-6*3600000));
+    if(d===today)return '';var y=new Date(Date.parse(today+'T12:00:00Z')-864e5).toISOString().slice(0,10);if(d===y)return ' d’hier';
+    return ' du '+new Date(d+'T12:00:00Z').toLocaleDateString('fr-FR',{day:'numeric',month:'long',timeZone:'UTC'});}
+  // Les rubriques et éditions sans aucune actu ne sont pas proposées
+  function prune(){if(!all.length)return;
+    $('cats').querySelectorAll('.chip').forEach(function(b){var c=b.getAttribute('data-c');if(!c)return;b.hidden=!all.some(function(a){return a.championnat===c;});if(b.hidden&&cat===c)cat='';});
+    document.querySelectorAll('#eds .edb').forEach(function(b){var e=b.getAttribute('data-e');if(!e)return;b.hidden=!all.some(function(a){return edOf(a)===e;});if(b.hidden&&ed===e)ed='';});
+    $('cats').querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed',String(x.getAttribute('data-c')===cat));});
+    document.querySelectorAll('#eds .edb').forEach(function(x){x.setAttribute('aria-pressed',String(x.getAttribute('data-e')===ed));});}
   document.querySelectorAll('#eds .edb').forEach(function(b){b.onclick=function(){ed=b.getAttribute('data-e');shown=18;document.querySelectorAll('#eds .edb').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});draw();};});
   function rub(a){return R[a.championnat]||['Actu','#4f74ff'];}
   // Édition selon l'heure de Paris
   var h=parseInt(new Intl.DateTimeFormat('en-GB',{hour:'2-digit',hourCycle:'h23',timeZone:'Europe/Paris'}).format(new Date()),10);
-  $('ed').textContent=h<11?'☀️ Édition du matin':h<17?'🕛 Édition du midi':'🌙 Édition du soir';
+  $('ed').textContent=h>=5&&h<11?'☀️ Édition du matin':h>=11&&h<17?'🕛 Édition du midi':'🌙 Édition du soir';
   function open(id){var a=all.find(function(x){return String(x.id)===id;});if(!a)return;
     $('mMeta').textContent=rub(a)[0]+' · '+when(a.publishedAt);$('mT').textContent=a.titre;
     var b=$('mBody');b.textContent='';String(a.texte||'').split(/\n\s*\n/).forEach(function(p){if(p.trim())b.appendChild(el('p',null,p.trim()));});
@@ -186,21 +217,34 @@ VM Actus du jour : des brèves courtes, neutres et sourcées, rédigées avec l'
   $('mClose').onclick=close;$('modal').onclick=function(e){if(e.target.id==='modal')close();};document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
   $('mShare').onclick=function(){var d={title:$('mT').textContent+' – VM Actus du jour',url:location.href};if(navigator.share)navigator.share(d).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(location.href).then(function(){alert('Lien copié !');});};
   function card(a,big){var r=rub(a);
-    if(big){var u=el('button','une');u.type='button';u.appendChild(el('div','band','À la une · '+r[0]));var i=el('div','in');i.appendChild(el('p','meta',when(a.publishedAt)+' · selon '+((a.sources&&a.sources[0]&&a.sources[0].nom)||'')));i.appendChild(el('h1',null,a.titre));i.appendChild(el('p',null,a.resume||''));u.appendChild(i);u.onclick=function(){open(String(a.id));};return u;}
+    if(big){var u=el('button','une');u.type='button';u.appendChild(el('div','band','À la une · '+r[0]));var i=el('div','in');i.appendChild(el('p','meta',when(a.publishedAt)+' · selon '+((a.sources&&a.sources[0]&&a.sources[0].nom)||'')));i.appendChild(el('h2','une-t',a.titre));i.appendChild(el('p',null,a.resume||''));u.appendChild(i);u.onclick=function(){open(String(a.id));};return u;}
     var c=el('button','card');c.type='button';c.style.setProperty('--c',r[1]);c.appendChild(el('span','meta',r[0]+' · '+when(a.publishedAt)));c.appendChild(el('b',null,a.titre));c.appendChild(el('span','r',a.resume||''));c.onclick=function(){open(String(a.id));};return c;}
-  function draw(){var q=norm($('q').value.trim());
-    var list=all.filter(function(a){return (!cat||a.championnat===cat)&&(!ed||edOf(a)===ed)&&(!q||norm(a.titre+' '+a.resume+' '+a.texte).indexOf(q)>=0);});
+  function draw(){var q=norm($('q').value.trim()),note='',title=cat?R[cat][0]:"Le fil de l'actu";
     var une=$('uneWrap');une.textContent='';var root=$('list');root.textContent='';
-    $('secTitle').textContent=q?list.length+' résultat'+(list.length>1?'s':''):(ed?({matin:'Édition du matin',midi:'Édition du midi',soir:'Édition du soir'})[ed]:(cat?R[cat][0]:"Le fil de l'actu"));
-    if(!list.length){root.appendChild(el('p','empty',all.length?(ed?'Cette édition n’a pas encore commencé : reviens un peu plus tard.':'Aucune actu ici pour le moment.'):'Les premières actus arrivent très bientôt.'));$('more').hidden=true;return;}
+    // Rien n'est encore chargé : le fil et les filtres restent cachés (la presse en continu prend le relais)
+    $('fil').hidden=$('filtres').hidden=loaded&&!all.length;
+    if(!all.length){if(!loaded)root.appendChild(el('p','empty','Chargement de l’actu…'));$('axNote').hidden=true;$('more').hidden=true;return;}
+    var base=all.filter(function(a){return (!cat||a.championnat===cat)&&(!q||norm(a.titre+' '+a.resume+' '+a.texte).indexOf(q)>=0);});
+    if(!base.length&&cat&&!q){note='Pas d’actu '+R[cat][0]+' en ce moment : voici toute l’actu.';title="Le fil de l'actu";base=all;}
+    var list=base;
+    if(ed&&base.length){var e=base.filter(function(a){return edOf(a)===ed;});
+      if(e.length){var d=dayOf(e[0]);list=e.filter(function(a){return dayOf(a)===d;});title=EDN[ed]+dayLbl(d)+(cat&&cat===list[0].championnat?' · '+R[cat][0]:'');if(dayLbl(d)){var hh=parseInt(HF.format(new Date()),10),started=hh<5||hh>={matin:5,midi:11,soir:17}[ed];
+        note=note||(cat?'Pas d’actu '+R[cat][0]+' dans l’édition du jour : voici la plus récente.':started?'Pas encore d’actu dans l’édition du jour : voici la plus récente.':'L’édition du jour n’a pas encore commencé : voici la plus récente.');}}
+      else note=note||'Pas d’'+EDN[ed].toLowerCase()+(cat?' en '+R[cat][0]+' : voici toute l’actu '+R[cat][0]+'.':' : voici toute l’actu.');}
+    if(q)title=list.length+' résultat'+(list.length>1?'s':'');
+    $('secTitle').textContent=title;
+    if(q&&!list.length)note='Aucune actu ne correspond à « '+$('q').value.trim()+' ». Essaie un autre mot.';
+    $('axNote').textContent=note;$('axNote').hidden=!note;
+    if(!list.length){$('more').hidden=true;return;}
     var rest=list;if(!q){une.appendChild(card(list[0],true));rest=list.slice(1);}
     rest.slice(0,shown).forEach(function(a){root.appendChild(card(a,false));});
     $('more').hidden=rest.length<=shown;}
-  $('cats').querySelectorAll('.chip').forEach(function(b){b.onclick=function(){cat=b.getAttribute('data-c');shown=18;$('cats').querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});draw();window.scrollTo(0,0);};});
+  $('cats').querySelectorAll('.chip').forEach(function(b){b.onclick=function(){cat=b.getAttribute('data-c');shown=18;$('cats').querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});draw();var f=$('filtres');if(f&&f.getBoundingClientRect().top<0)f.scrollIntoView({block:'start'});};});
   $('q').addEventListener('input',function(){shown=18;draw();});
   $('more').onclick=function(){shown+=18;draw();};
   function load(){return fetch('news.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():[];}).then(function(rows){
-    all=(Array.isArray(rows)?rows:[]).filter(function(a){return a&&a.id&&a.titre&&a.publishedAt;}).sort(function(a,b){return String(b.publishedAt).localeCompare(String(a.publishedAt));});draw();}).catch(function(){all=[];draw();});}
+    var ok=(Array.isArray(rows)?rows:[]).filter(function(a){return a&&a.id&&a.titre&&a.publishedAt&&!isNaN(Date.parse(a.publishedAt));}).sort(function(a,b){return String(b.publishedAt).localeCompare(String(a.publishedAt));});
+    if(ok.length||!all.length)all=ok;loaded=true;prune();draw();}).catch(function(){loaded=true;draw();});}
   load().then(function(){var m=location.hash.match(/^#a=(.+)$/);if(m)open(decodeURIComponent(m[1]));});
   setInterval(load,5*60*1000);
 })();
@@ -212,13 +256,27 @@ function esc(x){return String(x).replace(/[&<>"]/g,function(c){return{'&':'&amp;
 function safe(u){try{var x=new URL(u);return /^https?:$/.test(x.protocol)?x.href:''}catch(e){return ''}}
 function hm(d){try{return new Intl.DateTimeFormat('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Paris'}).format(new Date(d))}catch(e){return ''}}
 var all=[],shown=0;
+function flash(rows){var tk=$('ticker'),run=$('tickerRun');if(!tk||!run)return;
+ var items=rows.slice().sort(function(a,b){return String(b.d||'').localeCompare(String(a.d||''))}).slice(0,8);
+ run.textContent='';items.forEach(function(t){var x=document.createElement('span');x.textContent=String(t.t||'');run.appendChild(x)});
+ if(items.length){if(document.body.firstElementChild!==tk)document.body.insertBefore(tk,document.body.firstChild);tk.hidden=false}}
 function draw(){var n=Math.min(all.length,shown);$('fxList').innerHTML=all.slice(0,n).map(function(t){return '<li><a href="'+esc(safe(t.u))+'" target="_blank" rel="noopener nofollow"><time>'+hm(t.d)+'</time><span>'+esc(t.t)+'</span><em>'+esc(t.s)+' ↗</em></a></li>'}).join('');$('fxMore').hidden=n>=all.length;}
 fetch('/fil.json?v='+Math.floor(Date.now()/300000),{cache:'no-store'}).then(function(r){return r.ok?r.json():{}}).then(function(j){
  all=((j&&j.titres)||[]).filter(function(t){return t.k==='actus'&&safe(t.u)});
- if(!all.length){$('presse').hidden=true;return}shown=16;draw();
+ if(!all.length){$('presse').hidden=true;return}shown=16;draw();flash(all);
 }).catch(function(){$('presse').hidden=true});
 $('fxMore').onclick=function(){shown+=20;draw()};
 })();
+</script>
+<script>
+(function(){var jt=document.getElementById('jt');if(!jt||!window.MutationObserver)return;
+ var old=jt.querySelector('[data-pastille-universe]'),bf=jt.querySelector('[data-broadcast-feed]'),studio='/studio.html?univers=actus#tv';
+ var links=document.querySelectorAll('a[href="#jt"]'),hrefs=[].map.call(links,function(a){return a.getAttribute('href');});
+ function check(){var st=old&&old.querySelector('[role=status]');
+  if(old&&!old.hidden&&st&&/prochain JT|indisponible/.test(st.textContent))old.hidden=true;
+  var empty=(!old||old.hidden)&&(!bf||bf.hidden);if(jt.hidden!==empty)jt.hidden=empty;
+  [].forEach.call(links,function(a,i){a.setAttribute('href',empty?studio:hrefs[i]);});}
+ new MutationObserver(check).observe(jt,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['hidden']});check();})();
 </script>
 <button type="button" class="vmfab" id="vmFab" aria-haspopup="dialog">📤 Partager</button>
 <button type="button" class="vminst" id="vmInst">📲 Installer l'app</button>
