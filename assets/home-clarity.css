@@ -106,3 +106,8 @@ html[data-theme] body.home-simple{background-image:none;background-color:var(--b
 @media(max-width:639px){.home-filters #cats{flex-wrap:wrap}.home-filters .cats-row{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:2px 2px 4px;-webkit-overflow-scrolling:touch}.home-filters .cats-row::-webkit-scrollbar{display:none}.home-filters .cats-row .chip{flex:none}}
 /* Téléphone : la phrase d’accroche laisse la place aux actus dès le premier écran */
 @media(max-width:480px){.v2-lead{display:none}}
+/* Flash Véloce mis en avant au-dessus des actus */
+.home-flash{border:2px solid #0b1533;border-radius:12px;margin:0 0 14px;box-shadow:3px 3px 0 #0b1533;min-height:34px}.home-flash .lbl{border-radius:10px 0 0 10px;align-self:stretch;display:flex;align-items:center}
+@media(max-width:480px){.v2-txt{padding-bottom:8px}main#top.home-main{padding-top:10px}.home-flash{margin-bottom:10px}.home-news>div.mb-5{margin-bottom:12px}}
+@media(max-width:480px){.home-flash{min-height:30px}.home-flash .lbl{padding:4px 9px 2px;font-size:.9rem}.home-flash .run{font-size:.88rem}.vm-duo .vm-recrute{padding-block:6px}.home-news h2#feed-title{font-size:2rem}}
+@media(max-width:480px){.home-news>div.mb-5{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0}}
