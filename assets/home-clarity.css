@@ -127,3 +127,6 @@ html[data-theme] body.home-simple{background-image:none;background-color:var(--b
 @media(max-width:480px){.vm-volets .vv{padding:5px 8px}}
 /* Vitesse de défilement : flash en haut un peu plus posé, scores plus rapides */
 .home-flash .run{animation-duration:70s}.home-scores .srun{animation-duration:9s}
+/* Téléphone : Tout le foot, International et Ligue 1 visibles en entier à côté de « Filtres » */
+@media(max-width:480px){.home-filters .cats-row{gap:5px}.home-simple #cats .cats-row .chip{padding-inline:7px;font-size:.72rem;letter-spacing:0}.home-filter-more>summary{padding:9px 2px 9px 4px;font-size:.72rem}}
+@media(max-width:480px){.home-filters .cats-row{gap:4px}.home-simple #cats .cats-row .chip{padding-inline:6px}.home-filter-more>summary{padding-inline:2px 0}}
