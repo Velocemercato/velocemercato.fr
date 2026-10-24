@@ -9,7 +9,7 @@
 .vms img{max-width:100%}
 .vms button,.vms input,.vms select,.vms textarea{font:inherit}
 .vms :is(a,button,input,select,textarea,summary):focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-.vms .vmfab,.vms .vminst{display:none!important}
+.vms .vmfab{display:none!important}
 html:has(.vms){scroll-behavior:smooth;scroll-padding-top:60px}
 @media(prefers-reduced-motion:reduce){html:has(.vms){scroll-behavior:auto}}
 .vms-gold{background:linear-gradient(180deg,var(--gold-hi),var(--gold) 55%,var(--gold-lo));-webkit-background-clip:text;background-clip:text;color:transparent}

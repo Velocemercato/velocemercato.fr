@@ -17,7 +17,7 @@ CSS='''<style id="vmbar-css">
 .vmbar a.on{color:#04060f;background:#fff}
 .vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
 .vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
-.vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
+.vmbar a.p{background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);color:#0b1533;font-weight:900}.vmbar a.p.on{background:#fff;color:#0b1533;box-shadow:inset 0 0 0 2px #f4cf55}.vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
 @media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
 </style>'''
 
@@ -98,7 +98,7 @@ window.vmMail=function(su,bo){var to='velocemercato.fr@gmail.com';location.href=
 </script>'''
 
 def bar(active):
-    items=[('f','/','⚽ Foot'),('p','/web-studio.html','Pro · sites & visuels'),('s','/studio.html#tv','📺 Pastille TV'),('g','/vm-gaming/','🎮 Gaming'),('a','/actus/','📰 Actus'),('r','/radio.html','📻 Radio'),('v','/#videos','🎬 Vidéos')]
+    items=[('f','/','⚽ Foot'),('p','/web-studio.html','💼 VM Studio'),('s','/studio.html#tv','📺 Pastille TV'),('g','/vm-gaming/','🎮 Gaming'),('a','/actus/','📰 Actus'),('r','/radio.html','📻 Radio'),('v','/#videos','🎬 Vidéos')]
     links=''.join(f'<a class="{k}{" on" if k==active else ""}" href="{h}"{" aria-current=\"page\"" if k==active else ""}>{t}</a>' for k,h,t in items)
     return f'<nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="VM Univers, tous les projets">VM UNIVERS<small>TOUS LES PROJETS</small></a>{links}<a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>'
 def inject(s,active,app='foot',contact='velocemercato.fr@gmail.com'):
