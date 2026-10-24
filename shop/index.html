@@ -35,6 +35,10 @@ main{max-width:1080px;margin:0 auto;padding:16px 16px 50px}
 .ad .pr{font:900 1.25rem system-ui,sans-serif;color:#1d3fb8}
 .ad b{line-height:1.25}.ad small{color:#4e5b7d}
 .empty{background:#fff;border:2px dashed #0b1533;border-radius:16px;padding:22px;text-align:center}
+.first{grid-column:1/-1;background:#fff;border:3px solid #000;border-radius:18px;box-shadow:5px 5px 0 #f4cf55;padding:26px 18px;text-align:center}
+.first .em{font-size:2.6rem;line-height:1}.first h2{margin:10px 0 6px;font:italic 900 clamp(1.25rem,5vw,1.7rem)/1.15 Impact,"Arial Black",sans-serif;color:#0f2470;text-transform:uppercase}
+.first p{margin:0 auto 14px;max-width:32rem;color:#4e5b7d}.first .post{font-size:1rem}
+.more[hidden]{display:none}
 .more{display:block;margin:18px auto 0;font:800 1rem system-ui,sans-serif;padding:12px 20px;border-radius:999px;border:2px solid #0b1533;background:#fff;cursor:pointer}
 .rules{margin-top:30px;background:#fff;border:2px solid #0b1533;border-radius:16px;padding:16px 18px}
 .rules h2{margin:0 0 8px;font:italic 900 1.4rem Impact,"Arial Black",sans-serif;text-transform:uppercase;color:#0f2470}
@@ -154,9 +158,15 @@ function card(a){var b=el('button','ad');b.type='button';var ph=el('div','ph'),i
 function list(){var q=norm($('q').value.trim()),s=$('sort').value;
  var r=all.filter(function(a){return (!cat||a.categorie===cat)&&(!q||norm(a.titre+' '+a.description+' '+a.ville).indexOf(q)>=0)});
  r.sort(function(a,b){if(a.vendu!==b.vendu)return a.vendu?1:-1;if(s==='low')return (+a.prix||0)-(+b.prix||0);if(s==='high')return (+b.prix||0)-(+a.prix||0);return String(b.date).localeCompare(String(a.date))});return r}
+function first(){var d=el('div','first');d.appendChild(el('div','em','🛍️'));d.firstChild.setAttribute('aria-hidden','true');
+ d.appendChild(el('h2',null,'Aucune annonce pour le moment — dépose la première, c\'est gratuit'));
+ d.appendChild(el('p',null,'Remplis le petit formulaire : ton annonce part par e-mail, on la relit puis on la publie ici.'));
+ var b=el('button','post','➕ Déposer une annonce');b.type='button';b.onclick=function(){$('postDlg').showModal()};d.appendChild(b);return d}
 function draw(){var r=list(),g=$('grid');g.textContent='';
  $('count').textContent=r.length+(r.length>1?' annonces':' annonce');
- if(!r.length){var e=el('p','empty');e.textContent=all.length?'Aucune annonce ici pour le moment.':'Pas encore d’annonce : sois le premier à en déposer une !';g.appendChild(e);$('more').hidden=true;return}
+ $('count').hidden=!all.length;
+ if(!all.length){g.appendChild(first());$('more').hidden=true;return}
+ if(!r.length){g.appendChild(el('p','empty','Aucune annonce ici pour le moment.'));$('more').hidden=true;return}
  r.slice(0,shown).forEach(function(a){g.appendChild(card(a))});$('more').hidden=r.length<=shown}
 function open(a){var d=$('adDlg'),ph=$('adPh'),img=safeImg(a.photo);ph.style.backgroundImage=img?'url("'+img+'")':'';ph.textContent=img?'':(EM[a.categorie]||'📦');
  $('adT').textContent=a.titre+(a.exemple?' (annonce d’exemple)':'');$('adPr').textContent=a.vendu?'Vendu':price(a);
