@@ -21,10 +21,14 @@ CSS='''<style id="vmbar-css">
 @media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
 </style>'''
 
-APP_COL={'autopart':'#05080f','location':'#000000','menu':'#05080f','pro':'#05080f','cv':'#05080f','emploi':'#05080f','univers':'#000000','foot': '#060b1d', 'gaming': '#0b0a1c', 'actus': '#0a1430', 'arena': '#140a14', 'tv': '#0a0814', 'allolivre': '#c4121b', 'annonces': '#c4121b', 'papiers': '#14100a'}
+APP_COL={'autopart':'#05080f','location':'#000000','menu':'#05080f','pro':'#05080f','cv':'#05080f','emploi':'#05080f','univers':'#000000','foot': '#060b1d', 'gaming': '#0b0a1c', 'actus': '#0a1430', 'arena': '#140a14', 'tv': '#0a0814', 'allolivre': '#c4121b', 'annonces': '#c4121b', 'papiers': '#14100a',
+ 'recettes':'#07080f','produits':'#07080f','sport':'#07080f','immo':'#07080f','rdv':'#07080f','meteo':'#000000','comparateur':'#c4121b','boutique':'#07080f','belfort':'#07080f','pub':'#05080f','services':'#080c12','pepite':'#0a1a33','radio':'#060b1d','studio':'#05080f'}
+# Nom affiché sous l'icône sur l'écran d'accueil (iPhone) : identique au short_name du manifeste.
+APP_NOM={'autopart':'VM Auto','location':'VM Detailing','menu':'Menu QR','pro':'Pro Local','cv':'VM CV','emploi':'VM Emploi','univers':'VM Univers','foot':'VM Foot','gaming':'VM Gaming','actus':'VM Actus','arena':'VM Arena','tv':'Pastille TV','allolivre':'AlloLivre','annonces':'VM Annonces','papiers':'Papiers',
+ 'recettes':'Recettes','produits':'Produits','sport':'Sport','immo':'Immo','rdv':'RDV du jour','meteo':'Météo','comparateur':'Comparateur','boutique':'Boutique','belfort':'VM Belfort','pub':'Pub VM','services':'VM Services','pepite':'Pépite FC','radio':'VM Radio','studio':'VM Studio'}
 def app_head(app='foot'):
     app=app if app in APP_COL else 'foot'
-    return f'<link rel="manifest" href="/app/{app}.webmanifest" id="vmapp-m"><meta name="theme-color" content="{APP_COL[app]}" id="vmapp-t"><link rel="apple-touch-icon" href="/app/{app}-apple.png" id="vmapp-i">'
+    return f'<link rel="manifest" href="/app/{app}.webmanifest" id="vmapp-m"><meta name="theme-color" content="{APP_COL[app]}" id="vmapp-t"><link rel="apple-touch-icon" href="/app/{app}-apple.png" id="vmapp-i"><meta name="apple-mobile-web-app-title" content="{APP_NOM[app]}" id="vmapp-n">'
 APP_HEAD=app_head()
 SHARE_CSS='''<style id="vmshare-css">
 .vminst{display:none;position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#1d3fb8;color:#fff;box-shadow:3px 3px 0 #000;cursor:pointer}
@@ -74,7 +78,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=tru
 if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
 var ib=$('vmInst'),dp=null,standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone,ios=/iphone|ipad|ipod/i.test(navigator.userAgent),andr=/android/i.test(navigator.userAgent);
 var mf=(($('vmapp-m')||{}).getAttribute&&$('vmapp-m').getAttribute('href'))||'',app=(mf.match(/app[/]([a-z]+)[.]webmanifest/)||[,'foot'])[1];
-var NOMS={autopart:'VM Auto Particulier',location:'VM Detailing',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'l’appli VM',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'VM TV',annonces:'VM Annonces',allolivre:'AlloLivre'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
+var NOMS={autopart:'VM Auto Particulier',location:'VM Detailing',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'VM Univers',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'La Pastille TV',annonces:'VM Annonces',allolivre:'AlloLivre',recettes:'VM Recettes',produits:'VM Produits locaux',sport:'VM Sport',immo:'VM Immo',rdv:'VM RDV du jour',meteo:'VM Météo',comparateur:'VM Comparateur',boutique:'VM Boutique',belfort:'VM Belfort',pub:'Publicité VM',services:'VM Services',pepite:'Pépite FC',radio:'VM Radio',studio:'VM Studio'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
 ib.textContent='📲 Installer '+nom;
 function show(){if(!no)ib.classList.add('show')}
 if(!standalone){addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;show()});if(ios)show();}
@@ -102,7 +106,7 @@ def inject(s,active,app='foot',contact='velocemercato.fr@gmail.com'):
     s=re.sub(r'<nav class="vmbar".*?</div></nav>','',s,flags=re.S)
     s=re.sub(r'<style id="vmshare-css">.*?</style>','',s,flags=re.S)
     s=re.sub(r'<button type="button" class="vmfab".*?</script>','',s,flags=re.S)
-    s=re.sub(r'<link rel="manifest"[^>]*id="vmapp-m"><meta[^>]*id="vmapp-t"><link[^>]*id="vmapp-i">','',s)
+    s=re.sub(r'<link rel="manifest"[^>]*id="vmapp-m"><meta[^>]*id="vmapp-t"><link[^>]*id="vmapp-i">(<meta[^>]*id="vmapp-n">)?','',s)
     s=s.replace('</head>',app_head(app)+CSS+SHARE_CSS+'</head>',1)
     s=re.sub(r'(<body[^>]*>)',lambda m:m.group(1)+bar(active),s,count=1)
     i=s.rfind('</body>')
@@ -122,6 +126,6 @@ def build_vm():
     (source.parent.parent / 'groupe.html').write_text(source.read_text(encoding='utf-8'), encoding='utf-8')
 
 if __name__=='__main__':
-    for p,a,*x in [('index.html','f'),('vm-gaming/index.html','g','gaming'),('actus/index.html','a','actus'),('archives.html','f'),('studio.html','s','tv'),('radio.html','r','tv'),('gaming.html','f','arena'),('soutenir.html',''),('shop/index.html','','annonces'),('allolivre/index.html','','allolivre'),('comparateur/index.html','','annonces'),('web-studio.html',''),('boutique/index.html',''),('cv/index.html','','cv'),('menu/index.html','','menu'),('pro/index.html','','pro'),('emploi/index.html','','emploi'),('belfort/index.html',''),('vm-location/index.html','','location'),('pro-auto/index.html','','autopart'),('pub/index.html',''),('mentions-legales.html','')]:
+    for p,a,*x in [('index.html','f'),('vm-gaming/index.html','g','gaming'),('actus/index.html','a','actus'),('archives.html','f'),('studio.html','s','tv'),('radio.html','r','radio'),('gaming.html','f','arena'),('soutenir.html',''),('shop/index.html','','annonces'),('allolivre/index.html','','allolivre'),('comparateur/index.html','','comparateur'),('web-studio.html','','studio'),('boutique/index.html','','boutique'),('cv/index.html','','cv'),('menu/index.html','','menu'),('pro/index.html','','pro'),('emploi/index.html','','emploi'),('belfort/index.html','','belfort'),('vm-location/index.html','','location'),('pro-auto/index.html','','autopart'),('pub/index.html','','pub'),('mentions-legales.html','')]:
         apply(p,a,*x); print('ok',p)
     build_vm(); print('ok vm/')

@@ -26,7 +26,7 @@ html:has(.pro-page){scroll-behavior:smooth;scroll-padding-top:115px}
 .pro-work>img{height:auto}
 .pro-page button.pro-button{font:800 .88rem/1.5 system-ui,sans-serif}
 /* Sur les pages commerciales, garder le parcours de contact dégagé. */
-.pro-page .vmfab,.pro-page .vminst{display:none!important}
+.pro-page .vmfab{display:none!important}
 html:has(.pro-page){scroll-padding-top:135px}.pro-section{scroll-margin-top:12px}
 html:has(.pro-page .vmbar){scroll-padding-top:185px}
 @media(max-width:700px){.pro-nav a{min-height:44px}}

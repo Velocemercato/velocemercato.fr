@@ -1,0 +1,29 @@
+{
+ "id": "/app/immo",
+ "name": "VM Immobilier & vacances",
+ "short_name": "Immo",
+ "start_url": "/immo/?app=1",
+ "scope": "/immo/",
+ "display": "standalone",
+ "background_color": "#07080f",
+ "theme_color": "#07080f",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/immo-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/immo-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/immo-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

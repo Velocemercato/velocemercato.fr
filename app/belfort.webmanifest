@@ -1,0 +1,29 @@
+{
+ "id": "/app/belfort",
+ "name": "VM Belfort",
+ "short_name": "VM Belfort",
+ "start_url": "/belfort/?app=1",
+ "scope": "/belfort/",
+ "display": "standalone",
+ "background_color": "#07080f",
+ "theme_color": "#07080f",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/belfort-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/belfort-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/belfort-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

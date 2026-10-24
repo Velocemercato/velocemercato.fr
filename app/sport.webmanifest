@@ -1,0 +1,29 @@
+{
+ "id": "/app/sport",
+ "name": "VM Sport & randonnée",
+ "short_name": "Sport",
+ "start_url": "/sport/?app=1",
+ "scope": "/sport/",
+ "display": "standalone",
+ "background_color": "#07080f",
+ "theme_color": "#07080f",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/sport-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/sport-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/sport-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

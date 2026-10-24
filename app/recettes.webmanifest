@@ -1,0 +1,29 @@
+{
+ "id": "/app/recettes",
+ "name": "VM Recettes – la recette du jour",
+ "short_name": "Recettes",
+ "start_url": "/recettes/?app=1",
+ "scope": "/recettes/",
+ "display": "standalone",
+ "background_color": "#07080f",
+ "theme_color": "#07080f",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/recettes-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/recettes-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/recettes-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

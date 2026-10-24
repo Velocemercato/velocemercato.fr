@@ -1,0 +1,29 @@
+{
+ "id": "/app/rdv",
+ "name": "VM RDV du jour",
+ "short_name": "RDV du jour",
+ "start_url": "/rdv/?app=1",
+ "scope": "/rdv/",
+ "display": "standalone",
+ "background_color": "#07080f",
+ "theme_color": "#07080f",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/rdv-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/rdv-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/rdv-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

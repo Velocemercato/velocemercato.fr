@@ -1,0 +1,29 @@
+{
+ "id": "/app/radio",
+ "name": "VM Radio",
+ "short_name": "VM Radio",
+ "start_url": "/radio.html?app=1",
+ "scope": "/radio.html",
+ "display": "standalone",
+ "background_color": "#060b1d",
+ "theme_color": "#060b1d",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/radio-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/radio-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/radio-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

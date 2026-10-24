@@ -53,7 +53,7 @@ dialog::backdrop{background:rgba(5,9,23,.75)}
 .warn{background:#fff8dd;border:2px solid #f4cf55;border-radius:12px;padding:10px 12px;font-size:.88rem;margin-top:10px}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #f4cf55;outline-offset:2px}
 </style>
-<link rel="manifest" href="/app/annonces.webmanifest" id="vmapp-m"><meta name="theme-color" content="#c4121b" id="vmapp-t"><link rel="apple-touch-icon" href="/app/annonces-apple.png" id="vmapp-i"><style id="vmbar-css">
+<link rel="manifest" href="/app/annonces.webmanifest" id="vmapp-m"><meta name="theme-color" content="#c4121b" id="vmapp-t"><link rel="apple-touch-icon" href="/app/annonces-apple.png" id="vmapp-i"><meta name="apple-mobile-web-app-title" content="VM Annonces" id="vmapp-n"><style id="vmbar-css">
 .vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:sticky;top:0;z-index:80}
 .vmbar+header{top:49px!important}
 .vmbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:6px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
@@ -211,7 +211,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=tru
 if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
 var ib=$('vmInst'),dp=null,standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone,ios=/iphone|ipad|ipod/i.test(navigator.userAgent),andr=/android/i.test(navigator.userAgent);
 var mf=(($('vmapp-m')||{}).getAttribute&&$('vmapp-m').getAttribute('href'))||'',app=(mf.match(/app[/]([a-z]+)[.]webmanifest/)||[,'foot'])[1];
-var NOMS={location:'VM Detailing',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'l’appli VM',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'VM TV',annonces:'VM Annonces',allolivre:'AlloLivre'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
+var NOMS={autopart:'VM Auto Particulier',location:'VM Detailing',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'VM Univers',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'La Pastille TV',annonces:'VM Annonces',allolivre:'AlloLivre',recettes:'VM Recettes',produits:'VM Produits locaux',sport:'VM Sport',immo:'VM Immo',rdv:'VM RDV du jour',meteo:'VM Météo',comparateur:'VM Comparateur',boutique:'VM Boutique',belfort:'VM Belfort',pub:'Publicité VM',services:'VM Services',pepite:'Pépite FC',radio:'VM Radio',studio:'VM Studio'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
 ib.textContent='📲 Installer '+nom;
 function show(){if(!no)ib.classList.add('show')}
 if(!standalone){addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;show()});if(ios)show();}
