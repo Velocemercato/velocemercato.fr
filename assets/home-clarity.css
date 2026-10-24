@@ -120,3 +120,6 @@ html[data-theme] body.home-simple{background-image:none;background-color:var(--b
 .home-tickers{display:flex;gap:8px;margin:0 0 14px;min-width:0}.home-tickers>a{flex:1 1 0;min-width:0;margin:0}
 @media(max-width:480px){.home-tickers{margin-bottom:10px;gap:6px}.home-tickers .lbl,.home-tickers .slbl{font-size:.8rem;padding:4px 7px 2px}}
 .home-simple #quiz,.home-simple #sondages,.home-simple #plus-de-foot{scroll-margin-top:135px}
+/* Flash Véloce tout en haut de la page, sur toute la largeur */
+.home-flash-top{border:0;border-radius:0;box-shadow:none;margin:0;min-height:32px;padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px);border-bottom:2px solid #0b1533}.home-flash-top .lbl{border-radius:0}
+.home-tickers .home-scores{flex:1 1 100%}
