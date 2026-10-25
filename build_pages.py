@@ -26,9 +26,9 @@ PAGE = """<!doctype html>
 <link rel="canonical" href="{url}">
 <meta property="og:type" content="article"><meta property="og:site_name" content="Véloce Mercato">
 <meta property="og:title" content="{title}"><meta property="og:description" content="{desc}"><meta property="og:url" content="{url}">
-<meta property="og:image" content="{site}/img/partage-velocemercato.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="{ogimg}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="fr_FR">
 <meta property="article:published_time" content="{iso}">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{site}/img/partage-velocemercato.jpg">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{ogimg}">
 <meta name="theme-color" content="#070c1f">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2470'/%3E%3Ctext x='32' y='44' font-family='Impact,sans-serif' font-size='30' font-style='italic' text-anchor='middle' fill='%23f4cf55'%3EVM%3C/text%3E%3C/svg%3E">
 <script type="application/ld+json">{ld}</script>
@@ -60,6 +60,7 @@ h2{{font:400 1.6rem/1 Impact,Anton,sans-serif;text-transform:uppercase;margin:28
 .rel a small{{display:block;color:var(--gold);font:700 .75rem/1.3 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}}
 .ai{{font-size:.8rem;color:var(--muted);margin-top:10px}}
 .react{{margin:22px 0 4px;padding:14px 16px;border:2px solid #000;border-radius:14px;background:var(--surface);box-shadow:3px 3px 0 var(--c)}}.react b{{display:block;font-size:1.1rem}}.react p{{margin:4px 0 10px;color:var(--muted)}}
+figure{{margin:0 0 16px}}figure img{{display:block;width:100%;height:auto;border:2px solid #000;border-radius:12px}}figcaption,.credit{{font-size:.8rem;color:var(--muted);margin-top:6px}}.vid{{position:relative;aspect-ratio:16/9;margin:16px 0 6px;border:2px solid #000;border-radius:12px;overflow:hidden;background:#000}}.vid iframe{{position:absolute;inset:0;width:100%;height:100%;border:0}}
 footer{{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 34px}}footer a{{color:var(--gold)}}
 </style>
 </head>
@@ -71,8 +72,8 @@ footer{{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 
 <div class="in">
 <p class="meta">{label} · <time datetime="{iso}">{date}</time></p>
 <h1>{title}</h1>
-{body}
-<p class="src">Source : {sources}</p>
+{media}{body}
+{video}<p class="src">Source : {sources}</p>
 <p class="ai">Brève rédigée avec l'aide d'une IA à partir de la source citée, sans ajout de faits.</p>
 <div class="tools"><button class="btn" type="button" id="share">↗ Partager</button><a class="btn" id="wa" target="_blank" rel="noopener">💬 WhatsApp</a><a class="btn" id="fb" target="_blank" rel="noopener">📘 Facebook</a><a class="btn" id="xx" target="_blank" rel="noopener">✖️ X</a><a class="btn gold" href="/soutenir.html">💛 Soutenir le média</a></div>
 <div class="react"><b>💬 Et toi, t'en penses quoi ?</b><p>Viens en parler avec la communauté sur notre Discord.</p><a class="btn red" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener">Commenter sur Discord ↗</a></div>
@@ -126,12 +127,20 @@ def main():
         sources = ', '.join(
             (f'<a href="{e(u)}" rel="noopener nofollow" target="_blank">{e(s.get("nom") or u)}</a>' if (u := safe_url(s.get('url'))) else e(s.get('nom')))
             for s in a.get('sources', []) if isinstance(s, dict)) or 'Véloce Mercato'
+        img = a.get('image') if isinstance(a.get('image'), dict) else {}
+        src = str(img.get('src') or '')
+        src = src if re.fullmatch(r'/img/[\w/.-]+', src) else ''
+        og = re.sub(r'\.webp$', '.jpg', src) if src and Path(re.sub(r'\.webp$', '.jpg', src).lstrip('/')).exists() else src
+        ogimg = SITE + (og or '/img/partage-velocemercato.jpg')
+        vid = a.get('video') if isinstance(a.get('video'), dict) else {}
+        yt = str(vid.get('youtube') or '')
         ld = json.dumps({'@context': 'https://schema.org', '@type': 'NewsArticle', 'headline': a['titre'][:110],
                          'datePublished': a.get('publishedAt'), 'dateModified': a.get('publishedAt'), 'url': url, 'description': a.get('resume', ''),
-                         'image': [SITE + '/img/partage-velocemercato.jpg'], 'author': {'@type': 'Organization', 'name': 'Véloce Mercato'},
+                         'image': [ogimg], 'author': {'@type': 'Organization', 'name': 'Véloce Mercato'},
                          'publisher': {'@type': 'NewsMediaOrganization', 'name': 'Véloce Mercato', 'url': SITE + '/'}},
                         ensure_ascii=False).replace('</', '<\\/')
         champ = str(a.get('championnat', '')).upper()
+        media = video = ''
         tag = str(a.get('tag', '')).upper()
         badge = f'<span class="badge {e(tag)}">{e(tag)}</span>' if tag in ('OFFICIEL', 'RUMEUR', 'EUROPE', 'MERCATO') else ''
         rel = [r for r in ARTICLES if r is not a and r.get('id') and r.get('titre') and r.get('texte')
@@ -141,10 +150,21 @@ def main():
         related = ('<h2>À lire aussi</h2><div class="rel">' + ''.join(
             f'<a href="/a/{safe_id(r["id"])}.html"><small>{e(LABELS.get(str(r.get("championnat", "")).upper(), "Football"))}</small>{e(r["titre"])}</a>'
             for r in rel) + '</div>') if rel else ''
+        if src:
+            cap = f'<figcaption>{e(img.get("credit"))}</figcaption>' if img.get('credit') else ''
+            media = f'<figure><img src="{e(src)}" alt="{e(img.get("alt") or a["titre"])}" width="1200" height="630">{cap}</figure>\n'
+        dm = str(vid.get('dailymotion') or '')
+        leg = f'<p class="credit">🎬 {e(vid.get("legende"))}</p>\n' if vid.get('legende') else ''
+        if re.fullmatch(r'x[a-zA-Z0-9]{4,12}', dm):
+            video = f'<div class="vid"><iframe src="https://www.dailymotion.com/embed/video/{dm}" title="{e(vid.get("titre") or "Vidéo")}" loading="lazy" allow="fullscreen; picture-in-picture; web-share" allowfullscreen></iframe></div>\n' + leg
+        elif re.fullmatch(r'[\w-]{11}', yt):
+            video = f'<div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/{yt}" title="{e(vid.get("titre") or "Vidéo")}" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>\n'
+        elif (vl := safe_url(vid.get('lien'))):
+            video = f'<div class="tools"><a class="btn red" href="{e(vl)}" target="_blank" rel="noopener">▶ {e(vid.get("titre") or "Voir la vidéo")}</a></div>\n'
         page = PAGE.format(title=e(a['titre']), desc=e(a.get('resume') or a['titre']), url=url, ld=ld,
                            label=e(label), iso=e(a.get('publishedAt')), date=e(date), body=body,
                            sources=sources, site=SITE, color=COLORS.get(champ, '#1d3fb8'),
-                           badge=badge, related=related)
+                           badge=badge, related=related, media=media, video=video, ogimg=ogimg)
         page = vmbar.inject(page, 'f')
         path = OUT / name
         if not path.exists() or path.read_text(encoding='utf-8') != page:
