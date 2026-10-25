@@ -207,9 +207,11 @@ def main():
     args = parser.parse_args()
     state = State(args.state, os.getenv('VM_DIFFUSION_STATE_KEY', ''), lambda: git_save(args.state))
     if args.action == 'connecter':
-        values = [os.getenv(name, '').strip() for name in ('META_APP_ID', 'META_APP_SECRET', 'META_USER_TOKEN')]
-        if not all(values):
-            raise DeliveryError('Ajouter META_APP_ID, META_APP_SECRET et META_USER_TOKEN dans les secrets GitHub.')
+        names = ('META_APP_ID', 'META_APP_SECRET', 'META_USER_TOKEN')
+        values = [os.getenv(name, '').strip() for name in names]
+        missing = [name for name, value in zip(names, values) if not value]
+        if missing:
+            raise DeliveryError('Secret(s) GitHub absent(s) ou vide(s) : ' + ', '.join(missing) + ' (vérifier le nom exact).')
         connect(state, Graph(), *values)
         return
     if os.getenv('VM_AUTO_META') != 'true':
