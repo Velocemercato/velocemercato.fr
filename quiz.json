@@ -1,80 +1,65 @@
 {
- "id": "2026-10-24-09",
- "date": "2026-10-24T09:11:10+02:00",
+ "id": "2026-10-25-08",
+ "date": "2026-10-25T08:12:26+01:00",
  "questions": [
   {
-   "q": "Combien de buts Antonio Raimondo a-t-il inscrits en sept journées de Serie A avec Frosinone ?",
+   "q": "Combien de buts Nashville SC a-t-il marqués face à CF Montréal pour remporter le Supporters' Shield ?",
    "choix": [
-    "Sept buts",
-    "Cinq buts",
-    "Neuf buts",
-    "Quatre buts"
+    "1",
+    "2",
+    "3",
+    "4"
    ],
-   "bonne": 0,
-   "explication": "Selon Foot Mercato, Raimondo est auteur de sept buts en sept journées de Serie A.",
+   "bonne": 1,
+   "explication": "Nashville SC s'est imposé 2-0 sur le terrain de CF Montréal, avec des buts de Sam Surridge et Hany Mukhtar.",
    "source": {
-    "titre": "Frosinone : Antonio Raimondo, meilleur buteur de Serie A, attire la Juventus",
-    "id": "rss-v2-f1cf182a086910514ca678"
+    "titre": "Nashville SC décroche le Supporters' Shield après sa victoire 2-0 à Montréal",
+    "id": "rss-v2-b439647212e6e2fc9f36e4"
    }
   },
   {
-   "q": "Quel est le score de la victoire de Nice sur la pelouse de Brest ?",
+   "q": "Quel joueur a inscrit le but du Paris FC contre Lens en fin de première période ?",
    "choix": [
-    "2-1",
+    "Thauvin",
+    "Koleosho",
+    "Todibo",
+    "Samsy Keita"
+   ],
+   "bonne": 1,
+   "explication": "Le Paris FC a ouvert le score dans le temps additionnel de la première période sur une contre-attaque conclue par Koleosho.",
+   "source": {
+    "titre": "Lens-Paris FC : Thauvin égalise, le PFC mène 1-0 à la pause avant le retour lensois",
+    "id": "rss-v2-63453b2c7be0f7c95995e1"
+   }
+  },
+  {
+   "q": "Quel a été le score final de la rencontre entre Cardiff City et Birmingham ?",
+   "choix": [
+    "0-0",
     "1-0",
-    "3-1",
-    "2-0"
+    "2-0",
+    "2-1"
    ],
-   "bonne": 0,
-   "explication": "Foot Mercato rapporte que Nice s'est imposé 2-1 sur la pelouse de Brest.",
+   "bonne": 1,
+   "explication": "Cardiff City a remporté la rencontre 1-0 face à Birmingham, selon la brève de BBC Sport.",
    "source": {
-    "titre": "OGC Nice : Yehvann Diouf héros malgré son erreur, un penalty arrêté face à Brest",
-    "id": "rss-v2-84f7c5ff1d5f95d81649c7"
+    "titre": "Cardiff City : Barry-Murphy évoque l'émotion d'Aberfan avant la victoire contre Birmingham",
+    "id": "rss-v2-67beaaa19dd9b87c36f0ff"
    }
   },
   {
-   "q": "Quel montant de l'amende inflige la FA à Southampton après le scandale Spygate ?",
+   "q": "Combien de défaites Burnley a-t-il enregistrées lors de la saison au moment du limogeage de Nicky Hayen ?",
    "choix": [
-    "28 000 livres",
-    "280 000 livres",
-    "2 800 livres",
-    "42 000 livres"
+    "Quatre",
+    "Cinq",
+    "Six",
+    "Sept"
    ],
-   "bonne": 0,
-   "explication": "La FA a annoncé une amende de 28 000 livres et une suspension de six semaines reportée.",
+   "bonne": 2,
+   "explication": "Le dernier match de Nicky Hayen, une défaite 4-1 à Lincoln City, a été le sixième revers de la saison pour Burnley.",
    "source": {
-    "titre": "Southampton : Spors évoque la « position difficile » créée par le scandale Spygate",
-    "id": "rss-v2-5109cc51caa4b7c7c044c2"
-   }
-  },
-  {
-   "q": "Combien de points Alejandro Garnacho... non : quel total Ismaïla Sarr obtient-il au trophée Jules François Bocandé 2026 ?",
-   "choix": [
-    "164 points",
-    "108 points",
-    "103 points",
-    "21 points"
-   ],
-   "bonne": 0,
-   "explication": "Ismaïla Sarr remporte le trophée avec 164 points, devant Mendy (108) et Mané (103).",
-   "source": {
-    "titre": "Ballon d’Or africain : le Sénégal milite pour Ismaïla Sarr",
-    "id": "rss-v2-1991816822d7172ac16bff"
-   }
-  },
-  {
-   "q": "Combien de buts Ismaïla Sarr a-t-il marqué en Ligue Conférence cette saison ?",
-   "choix": [
-    "Neuf buts",
-    "Cinq buts",
-    "Vingt et un buts",
-    "Six buts"
-   ],
-   "bonne": 0,
-   "explication": "Foot Mercato souligne ses neuf buts en Ligue Conférence, compétition remportée par Crystal Palace.",
-   "source": {
-    "titre": "Ballon d’Or africain : le Sénégal milite pour Ismaïla Sarr",
-    "id": "rss-v2-1991816822d7172ac16bff"
+    "titre": "Burnley limoge Nicky Hayen après 14 matchs seulement",
+    "id": "rss-v2-02d61b85cb1e4405b31507"
    }
   }
  ]
