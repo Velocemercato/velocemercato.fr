@@ -537,5 +537,42 @@ class TwitchCodeTests(unittest.TestCase):
                 with self.assertRaises(D.DeliveryError):D.access_token('twitch',empty,http)
 
 
+class MetaTests(unittest.TestCase):
+    def test_connect_hides_token_and_publish_never_duplicates(self):
+        import tools.publier_meta as M
+        class G:
+            def __init__(self): self.calls=[]
+            def call(self,m,p,params):
+                self.calls.append(p)
+                if p=='oauth/access_token': return {'access_token':'LONG'}
+                if p=='me/accounts': return {'data':[{'id':'1','name':'Véloce Mercato','access_token':'PAGETOKEN','instagram_business_account':{'id':'9','username':'vm'}}]}
+                if p.endswith('/media'): return {'id':'c1'}
+                if p=='c1': return {'status_code':'FINISHED'}
+                return {'id':'post'}
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder)
+            now=dt.datetime(2026,10,23,10,20,tzinfo=dt.timezone.utc)
+            url='https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@'+'a'*40+'/x-vertical.mp4'
+            (root/'studio').mkdir(); (root/'a').mkdir()
+            (root/'studio/reseaux.json').write_text(json.dumps([{'id':f'foot-edition-{i}','date':'2026-10-23T11:00+02:00','verticale':url,'texte_vertical':'t'} for i in range(3)]))
+            (root/'articles.json').write_text(json.dumps([{'id':'art-1','publishedAt':'2026-10-23T09:00:00Z','titre':'T','resume':'R','sources':[{'nom':'L Equipe','url':'https://x.fr'}]}]))
+            (root/'a/art-1.html').write_text('x')
+            state=D.State(root/'s.enc', base64.b64encode(os.urandom(32)).decode())
+            g=G()
+            with contextlib.redirect_stdout(io.StringIO()) as out:
+                M.connect(state,g,'app','sec','short')
+                self.assertEqual(M.publish(state,g,root=root,now=now,sleep=lambda s:None),[])
+            self.assertNotIn('PAGETOKEN',out.getvalue())
+            self.assertNotIn(b'PAGETOKEN',(root/'s.enc').read_bytes())
+            self.assertEqual(g.calls.count('1/videos'),2)
+            self.assertEqual(g.calls.count('1/feed'),1)
+            with contextlib.redirect_stdout(io.StringIO()):
+                M.publish(state,g,root=root,now=now,sleep=lambda s:None)
+                M.publish(state,g,root=root,now=now,sleep=lambda s:None)
+            self.assertEqual(g.calls.count('1/videos'),3)
+            self.assertEqual(g.calls.count('9/media_publish'),3)
+            self.assertEqual(g.calls.count('1/feed'),1)
+
+
 if __name__=='__main__':
     unittest.main(verbosity=2)
