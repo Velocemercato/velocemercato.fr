@@ -1,5 +1,53 @@
 [
  {
+  "id": "gaming-edition-20261025-1000",
+  "univers": "gaming",
+  "format": "edition",
+  "moment": "matin",
+  "label": "JT 10 h",
+  "titre": "La Pastille Gaming - 25 octobre, 10 heures",
+  "accroche": "Bonjour à tous, on commence avec un mod qui fait parler le PC.",
+  "duree": 84,
+  "date": "2026-10-25T10:09+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "gaming-edition-20261025-1000.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-10-25T10:00:00+01:00",
+  "source_start": "2026-10-25T00:00:00+02:00",
+  "source_end": "2026-10-25T10:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-123e219c8f05c726d0e66b",
+    "titre": "Oblivion Remastered : un mod créé avec l'aide de l'IA améliore les performances sur PC",
+    "publishedAt": "2026-10-25T08:15:00Z",
+    "createdAt": "2026-10-25T08:44:05Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/oblivion-remastered-optimise-par-mod-entierement-fait-par-ia-3050872545.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-118db8656d4448793bf0e4",
+    "titre": "Wonder Boy in Monster World : le successeur de The Dragon's Trap joue la carte de la sécurité",
+    "publishedAt": "2026-10-25T05:00:00Z",
+    "createdAt": "2026-10-25T05:12:43Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/successeur-de-the-dragon-s-trap-wonder-boy-in-monster-world-a-joue-la-securite-et-l-histoire-l-a-un-peu-oublie-3050872548.html"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261025-0800",
   "univers": "foot",
   "format": "edition",
