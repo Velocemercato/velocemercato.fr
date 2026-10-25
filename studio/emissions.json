@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261025-0700",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "matin",
+  "label": "JT 07 h",
+  "titre": "La Pastille Actus - Journal du matin, dimanche 25 octobre 2026",
+  "accroche": "Bonjour à tous, voici les six brèves à retenir ce matin.",
+  "duree": 157,
+  "date": "2026-10-25T07:36+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261025-0700.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-10-25T07:00:00+01:00",
+  "source_start": "2026-10-24T19:00:00+02:00",
+  "source_end": "2026-10-25T07:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-9d3f7b0e582fd75e284317",
+    "titre": "« Moulin » de Laszlo Nemes : Gilles Lellouche face à Lars Eidinger dans un drame sur Jean Moulin",
+    "publishedAt": "2026-10-25T05:00:05Z",
+    "createdAt": "2026-10-25T05:35:01Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/culture/cinema/sorties-de-films/moulin-de-lazlo-nemes-la-confrontation-entre-le-heros-de-la-resistance-et-le-tortionnaire-klaus-barbie-dans-un-film-eprouvant-a-la-beaute-crepusculaire_8245621.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-47e8a3a918892c64076083",
+    "titre": "France : près de 1 000 interpellations lors de nouvelles manifestations",
+    "publishedAt": "2026-10-25T04:16:52Z",
+    "createdAt": "2026-10-25T04:36:41Z",
+    "references": [
+     {
+      "nom": "BBC News",
+      "url": "https://www.bbc.co.uk/news/articles/c95ynd587ynzo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-66a80bde55f3e232091c84",
+    "titre": "Présidentielle 2027 : un sondage Ipsos-BVA annonce encore un duel Le Pen-Mélenchon",
+    "publishedAt": "2026-10-25T03:50:14Z",
+    "createdAt": "2026-10-25T04:09:22Z",
+    "references": [
+     {
+      "nom": "20 Minutes",
+      "url": "https://www.20minutes.fr/politique/4257273-20261025-presidentielle-2027-duel-pen-melenchon-encore-annonce-sondage?at_medium=display&at_campaign=149"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-a8f74dcea02d6e97fd895a",
+    "titre": "En Grèce, les jeunes diplômés rentrent désormais plus nombreux qu'ils ne partent",
+    "publishedAt": "2026-10-24T22:01:49Z",
+    "createdAt": "2026-10-25T03:34:00Z",
+    "references": [
+     {
+      "nom": "RFI",
+      "url": "https://www.rfi.fr/fr/podcasts/reportage-international/20261024-en-gr%C3%A8ce-des-jeunes-dipl%C3%B4m%C3%A9s-d%C3%A9sormais-plus-nombreux-%C3%A0-rentrer-au-pays-qu-%C3%A0-s-expatrier"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-b2bd0fede0f4a3a0f83296",
+    "titre": "Alix Tramba-Rivat, mosaïste : le végétal, l'eau et la matière au cœur de son travail",
+    "publishedAt": "2026-10-24T22:04:50Z",
+    "createdAt": "2026-10-25T02:33:30Z",
+    "references": [
+     {
+      "nom": "RFI",
+      "url": "https://www.rfi.fr/fr/podcasts/100-cr%C3%A9ation/20261024-alix-tramba-rivat-quand-la-mosa%C3%AFque-explore-le-v%C3%A9g%C3%A9tal-l-eau-et-la-mati%C3%A8re"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-54ad4aa9cec3798d8debd4",
+    "titre": "L'armée de l'air française lance le projet HypAIRion pour intégrer l'IA dans les avions de chasse",
+    "publishedAt": "2026-10-24T22:08:49Z",
+    "createdAt": "2026-10-25T02:05:26Z",
+    "references": [
+     {
+      "nom": "RFI",
+      "url": "https://www.rfi.fr/fr/podcasts/lignes-de-d%C3%A9fense/20261024-avec-hypairion-la-chasse-fran%C3%A7aise-pr%C3%A9pare-l-arriv%C3%A9e-de-l-ia-dans-les-cockpits"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-dada940140c3b9c6132b35",
+    "titre": "Meryem Aboulouafa, poète et chanteuse franco-marocaine, se confie à RFI",
+    "publishedAt": "2026-10-24T22:09:49Z",
+    "createdAt": "2026-10-25T00:40:11Z",
+    "references": [
+     {
+      "nom": "RFI",
+      "url": "https://www.rfi.fr/fr/podcasts/les-p%C3%A9pites-musicales-de-rfi/20261024-meryem-aboulouafa-une-lueur-d-espoir-une-voix-dans-un-monde-fracass%C3%A9"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-417c581d4f2e8c279f2d89",
+    "titre": "Hébron : environ 2 000 Palestiniens évacués par l'armée israélienne après une attaque",
+    "publishedAt": "2026-10-24T23:10:47Z",
+    "createdAt": "2026-10-24T23:55:08Z",
+    "references": [
+     {
+      "nom": "RFI",
+      "url": "https://www.rfi.fr/fr/moyen-orient/20261024-cisjordanie-occup%C3%A9e-2-000-palestiniens-chass%C3%A9s-de-chez-eux-par-l-arm%C3%A9e-isra%C3%A9lienne-apr%C3%A8s-une-attaque-%C3%A0-h%C3%A9bron"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261024-2300",
   "univers": "foot",
   "format": "edition",
