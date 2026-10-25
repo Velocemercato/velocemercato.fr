@@ -212,7 +212,14 @@ def main():
         missing = [name for name, value in zip(names, values) if not value]
         if missing:
             raise DeliveryError('Secret(s) GitHub absent(s) ou vide(s) : ' + ', '.join(missing) + ' (vérifier le nom exact).')
-        connect(state, Graph(), *values)
+        # Copier-coller depuis un téléphone : ne garder que l'ID (chiffres) et la clé (32 caractères hexadécimaux).
+        app_id = re.search(r'\d{10,20}', values[0])
+        secret = re.search(r'\b[0-9a-f]{32}\b', values[1])
+        token = re.search(r'EA[A-Za-z0-9]{40,}', values[2])
+        print(f'::notice::Contrôle : ID app trouvé {bool(app_id)} ({len(app_id.group(0)) if app_id else 0} chiffres) · '
+              f'clé secrète au bon format {bool(secret)} · jeton commence par EA {bool(token)}', flush=True)
+        connect(state, Graph(), app_id.group(0) if app_id else values[0], secret.group(0) if secret else values[1],
+                token.group(0) if token else values[2])
         return
     if os.getenv('VM_AUTO_META') != 'true':
         print('Facebook/Instagram : publication automatique non activée (VM_AUTO_META). Rien n’est publié.')
