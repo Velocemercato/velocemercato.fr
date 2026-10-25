@@ -25,39 +25,15 @@
    ]
   },
   {
-   "id": 559653,
-   "date": "2026-10-25T16:15:00Z",
-   "comp": "Ligue 1",
-   "dom": "Angers SCO",
-   "ext": "Lorient",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 559649,
-   "date": "2026-10-25T16:15:00Z",
-   "comp": "Ligue 1",
-   "dom": "Marseille",
-   "ext": "Le Havre",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
    "id": 559656,
    "date": "2026-10-25T16:15:00Z",
    "comp": "Ligue 1",
    "dom": "Auxerre",
    "ext": "Le Mans",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -66,10 +42,34 @@
    "comp": "Ligue 1",
    "dom": "Stade Rennais",
    "ext": "Strasbourg",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
+   ]
+  },
+  {
+   "id": 559653,
+   "date": "2026-10-25T16:15:00Z",
+   "comp": "Ligue 1",
+   "dom": "Angers SCO",
+   "ext": "Lorient",
+   "statut": "IN_PLAY",
+   "score": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": 559649,
+   "date": "2026-10-25T16:15:00Z",
+   "comp": "Ligue 1",
+   "dom": "Marseille",
+   "ext": "Le Havre",
+   "statut": "IN_PLAY",
+   "score": [
+    0,
+    0
    ]
   },
   {
@@ -78,12 +78,12 @@
    "comp": "Ligue 1",
    "dom": "Toulouse",
    "ext": "Troyes",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   }
  ],
- "maj": "2026-10-25T16:20:12Z"
+ "maj": "2026-10-25T16:22:11Z"
 }
