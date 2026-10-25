@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261025-1300",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "midi",
+  "label": "JT 13 h",
+  "titre": "La Pastille Actus - Journal de midi, dimanche 25 octobre 2026",
+  "accroche": "Bonjour à tous, voici les actus du midi, générées par IA.",
+  "duree": 148,
+  "date": "2026-10-25T13:34+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261025-1300.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-10-25T13:00:00+01:00",
+  "source_start": "2026-10-25T07:00:00+01:00",
+  "source_end": "2026-10-25T13:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-f0304dba20ecb922a38e1a",
+    "titre": "Au Pérou, des fossiles marins aident à comprendre le changement climatique",
+    "publishedAt": "2026-10-25T11:10:06Z",
+    "createdAt": "2026-10-25T11:31:30Z",
+    "references": [
+     {
+      "nom": "RFI",
+      "url": "https://www.rfi.fr/fr/am%C3%A9riques/20261025-les-fossiles-du-p%C3%A9rou-pour-comprendre-le-changement-climatique"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-0c846a7e742aadf840489d",
+    "titre": "L'Arabie saoudite dit avoir intercepté dix missiles houthis tirés vers le sud du pays",
+    "publishedAt": "2026-10-25T10:24:28Z",
+    "createdAt": "2026-10-25T10:31:26Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/proche-orient/tensions-entre-l-arabie-saoudite-et-l-iran/l-arabie-saoudite-dit-avoir-intercepte-dix-missiles-lances-par-les-houthis-vers-le-sud-du-pays_8252926.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-2f848dbc234c19da60fd8d",
+    "titre": "Dijon : une jeune femme tuée, le suspect, son frère, est recherché",
+    "publishedAt": "2026-10-25T09:36:57Z",
+    "createdAt": "2026-10-25T10:02:53Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/il-tue-sa-s-ur-et-tente-de-s-en-prendre-a-sa-mere-meurtre-dans-ce-quartier-de-dijon-le-suspect-en-fuite-3438837.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-ba79e417f54295479a5166",
+    "titre": "Trappes : la garde à vue du suspect suspendue pour une observation psychiatrique",
+    "publishedAt": "2026-10-25T09:21:14Z",
+    "createdAt": "2026-10-25T09:32:46Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/faits-divers/terrorisme/attentat-raciste-a-trappes/la-garde-a-vue-du-suspect-de-l-attentat-raciste-a-trappes-suspendue-le-temps-d-une-periode-d-observation-psychiatrique-susceptible-de-durer-48-heures-annonce-le-parquet-antiterroriste_8252896.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-2ad038698b52063b46b998",
+    "titre": "Manifestations du 24 octobre : mobilisation en baisse, affrontements en fin de journée",
+    "publishedAt": "2026-10-25T08:09:23Z",
+    "createdAt": "2026-10-25T08:32:42Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/manifestations/mobilisation-en-baisse-pres-de-1-000-interpellations-deux-blesses-graves-ce-qu-il-faut-retenir-de-cette-nouvelle-journee-de-manifestation-contre-la-vie-chere-partout-en-france_8252476.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-f99d2ad7dcbb3000cec113",
+    "titre": "Oreilles en « chou-fleur » : une mode dans le MMA aux risques médicaux",
+    "publishedAt": "2026-10-25T08:00:03Z",
+    "createdAt": "2026-10-25T08:04:30Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/replay-radio/c-est-ma-sante/la-mode-dangereuse-des-oreilles-en-chou-fleur_8211626.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-fa8b8f77b491fbfd275c2b",
+    "titre": "Amsterdam interdit la publicité pour la viande et les énergies fossiles",
+    "publishedAt": "2026-10-25T07:02:08Z",
+    "createdAt": "2026-10-25T07:19:27Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/10/25/leurope-doit-elle-interdire-la-pub-pour-la-viande-une-psychologue-du-climat-repond"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-7cbb3787ff5dd70f37ad31",
+    "titre": "Israël : un documentaire de France 5 donne la parole aux Israéliens critiques de Nétanyahou avant les législatives",
+    "publishedAt": "2026-10-25T06:02:17Z",
+    "createdAt": "2026-10-25T06:38:37Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/israel/videos-ni-pardon-ni-excuses-avant-des-elections-cruciales-pour-benyamin-netanyahou-un-documentaire-donne-la-parole-aux-israeliens-qui-le-tiennent-en-partie-responsable-du-7-octobre_8219710.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261025-1200",
   "univers": "foot",
   "format": "edition",
