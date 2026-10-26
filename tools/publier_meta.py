@@ -355,10 +355,16 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
         sent += attempted
 
     local = now.astimezone(PARIS)
-    if not force and slots.get(local.hour) == 'projet':
-        key = f'projet/{local:%Y-%m-%d}/{local:%H}'
+    # GitHub saute parfois un passage : on rattrape le créneau le plus récent manqué (moins de 3 h).
+    def cle(h):
+        return (f'projet/{local:%Y-%m-%d}/{h:02d}' if slots.get(h) == 'projet' else f'creneau/{local:%Y-%m-%d}/{h:02d}')
+    manques = [h for h in sorted(slots, reverse=True) if 0 <= local.hour - h < 3 and cle(h) not in done]
+    heure = manques[0] if manques else local.hour
+    cible = local.replace(hour=heure, minute=10)
+    if not force and slots.get(heure) == 'projet':
+        key = cle(heure)
         if key not in done:
-            item = contenu_univers(local)
+            item = contenu_univers(cible)
             name, text = item['name'], texte_univers(item)
             mark(key, 'envoi', projet=name, type=item['type'])
             try:
@@ -380,10 +386,10 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
             except (DeliveryError, OSError, subprocess.CalledProcessError) as error:
                 mark(key, 'echec', projet=name)
                 errors.append(f'VM Univers {name} : {str(error)[:150]}')
-    univers = force or slots.get(local.hour)
+    univers = force or slots.get(heure)
     if univers == 'projet':
         univers = None
-    slot_key = f'creneau/{local:%Y-%m-%d}/{local:%H}' if not force else f'manuel/{local:%Y-%m-%d-%H%M}/{force}'
+    slot_key = cle(heure) if not force else f'manuel/{local:%Y-%m-%d-%H%M}/{force}'
     if univers and slot_key not in done:
         row, source = article(root, now, done, univers)
         if row:
