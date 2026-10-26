@@ -68,8 +68,16 @@ def connect(state, graph, app_id, app_secret, user_token):
     token = long.get('access_token')
     if not token:
         raise DeliveryError('Meta : échange du jeton non confirmé (jeton expiré ? le refaire dans l’explorateur).')
-    pages = graph.call('GET', 'me/accounts', {'fields': 'id,name,access_token,instagram_business_account{id,username}',
-                                              'access_token': token}).get('data', [])
+    try:
+        pages = graph.call('GET', 'me/accounts', {'fields': 'id,name,access_token,instagram_business_account{id,username}',
+                                                  'access_token': token}).get('data', [])
+    except DeliveryError as error:
+        if 'accounts' not in str(error):
+            raise
+        # Le jeton collé est déjà celui de la Page (choix « Page » dans l'explorateur).
+        print('::notice::Le jeton collé est un jeton de Page (pas un jeton utilisateur).', flush=True)
+        page = graph.call('GET', 'me', {'fields': 'id,name,instagram_business_account{id,username}', 'access_token': token})
+        pages = [{**page, 'access_token': token}]
     pages = [p for p in pages if p.get('access_token')]
     if not pages:
         raise DeliveryError('Meta : aucune Page autorisée. Cocher la Page Véloce Mercato lors de « Generate Access Token ».')
