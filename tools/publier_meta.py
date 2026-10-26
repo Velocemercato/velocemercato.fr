@@ -58,8 +58,13 @@ class Graph:
 
 
 def connect(state, graph, app_id, app_secret, user_token):
-    long = graph.call('GET', 'oauth/access_token', {'grant_type': 'fb_exchange_token', 'client_id': app_id,
-                                                    'client_secret': app_secret, 'fb_exchange_token': user_token})
+    try:
+        long = graph.call('GET', 'oauth/access_token', {'grant_type': 'fb_exchange_token', 'client_id': app_id,
+                                                        'client_secret': app_secret, 'fb_exchange_token': user_token})
+    except DeliveryError as error:
+        # Jeton déjà prolongé via l'outil Meta « Extend Access Token » : utilisable tel quel, sans clé secrète.
+        print(f'::notice::Échange avec la clé secrète impossible ({str(error)[:90]}) : jeton utilisé tel quel.', flush=True)
+        long = {'access_token': user_token}
     token = long.get('access_token')
     if not token:
         raise DeliveryError('Meta : échange du jeton non confirmé (jeton expiré ? le refaire dans l’explorateur).')
@@ -70,6 +75,14 @@ def connect(state, graph, app_id, app_secret, user_token):
         raise DeliveryError('Meta : aucune Page autorisée. Cocher la Page Véloce Mercato lors de « Generate Access Token ».')
     page = next((p for p in pages if 'veloce' in p.get('name', '').lower().replace('é', 'e')), pages[0])
     insta = page.get('instagram_business_account') or {}
+    try:
+        info = graph.call('GET', 'debug_token', {'input_token': page['access_token'], 'access_token': token}).get('data', {})
+        expires = int(info.get('expires_at') or 0)
+        print('::notice::Accès de la Page : ' + ('PERMANENT ✅' if expires == 0 else
+              'temporaire, expire le ' + dt.datetime.fromtimestamp(expires, UTC).astimezone(PARIS).strftime('%d/%m %H:%M')
+              + ' (prolonger le jeton dans l’outil Meta puis relancer)'), flush=True)
+    except DeliveryError:
+        pass
     state.data.setdefault('tokens', {})['meta'] = {'page_id': str(page['id']), 'page_name': page.get('name', ''),
                                                    'page_token': page['access_token'], 'ig_id': str(insta.get('id', '')),
                                                    'ig_username': insta.get('username', '')}
