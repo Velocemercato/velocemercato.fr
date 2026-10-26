@@ -214,13 +214,19 @@ def main():
             raise DeliveryError('Secret(s) GitHub absent(s) ou vide(s) : ' + ', '.join(missing) + ' (vérifier le nom exact).')
         # Copier-coller depuis un téléphone : ne garder que l'ID (chiffres) et la clé (32 caractères hexadécimaux).
         app_id = re.search(r'\d{10,20}', values[0])
-        secret = re.search(r'\b[0-9a-f]{32}\b', values[1])
+        secret = re.search(r'\b[0-9a-fA-F]{32}\b', values[1])
         token = re.search(r'EA[A-Za-z0-9]{40,}', values[2])
         print(f'::notice::Contrôle : ID app trouvé {bool(app_id)} ({len(app_id.group(0)) if app_id else 0} chiffres) · '
               f'clé secrète au bon format {bool(secret)} (longueur {len(values[1])}, points masqués {"•" in values[1] or "*" in values[1]}, '
               f'espaces {" " in values[1]}, identique à l’ID {values[1] == values[0]}) · jeton commence par EA {bool(token)}', flush=True)
-        connect(state, Graph(), app_id.group(0) if app_id else values[0], secret.group(0) if secret else values[1],
-                token.group(0) if token else values[2])
+        graph = Graph()
+        user_token = token.group(0) if token else values[2]
+        if not app_id:  # l'ID de l'app se lit depuis le jeton lui-même (information publique)
+            found = str(graph.call('GET', 'app', {'fields': 'id', 'access_token': user_token}).get('id', ''))
+            print(f'::notice::ID de l’app retrouvé depuis le jeton : {bool(found)}', flush=True)
+            app_id = re.search(r'\d{10,20}', found)
+        connect(state, graph, app_id.group(0) if app_id else values[0], secret.group(0) if secret else values[1].strip(),
+                user_token)
         return
     if os.getenv('VM_AUTO_META') != 'true':
         print('Facebook/Instagram : publication automatique non activée (VM_AUTO_META). Rien n’est publié.')
