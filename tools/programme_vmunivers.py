@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Génère studio/programme-vminvest.html : le programme VM Invest du jour (et des 2 jours suivants),
+"""Génère studio/programme-vmunivers.html : le programme VM Univers du jour (et des 2 jours suivants),
 prêt à copier-coller sur TikTok, Snapchat ou ailleurs. Mêmes contenus et mêmes textes que la publication
 automatique Facebook/Instagram (tools/publier_meta.py), calculés dans le navigateur.
 
-Usage : python tools/programme_vminvest.py  (à relancer seulement si la liste des projets change)
+Usage : python tools/programme_vmunivers.py  (à relancer seulement si la liste des projets change)
 """
 import json
 from pathlib import Path
@@ -23,8 +23,8 @@ DATA = {
 
 PAGE = """<!doctype html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Programme VM Invest</title>
-<meta name="description" content="Les publications VM Invest du jour, prêtes à copier-coller sur TikTok, Snapchat ou ailleurs.">
+<title>Programme VM Univers</title>
+<meta name="description" content="Les publications VM Univers du jour, prêtes à copier-coller sur TikTok, Snapchat ou ailleurs.">
 <meta name="robots" content="noindex"><meta name="theme-color" content="#04060f">
 <link rel="icon" href="/app/univers-192.png">
 <style>
@@ -47,7 +47,7 @@ a.b.alt{background:#fff}
 .tip{background:#121d44;border-radius:14px;padding:12px 14px;color:var(--muted);font-size:.92rem}
 @media(max-width:480px){.post{grid-template-columns:92px 1fr}.media{width:92px}}
 </style></head><body>
-<header><h1>📅 Programme VM Invest</h1><p>Facebook et Instagram : publiés automatiquement. Ici : copie-colle sur TikTok, Snapchat…</p></header>
+<header><h1>📅 Programme VM Univers</h1><p>Facebook et Instagram : publiés automatiquement. Ici : copie-colle sur TikTok, Snapchat…</p></header>
 <main>
 <div class="tip">1) <b>📋 Copier le texte</b> · 2) <b>⬇️ Enregistrer</b> la vidéo ou l'image · 3) Publie sur TikTok/Snap et colle le texte. Ajoute cette page à ton écran d'accueil.</div>
 <div id="liste"></div>
@@ -83,7 +83,7 @@ L.addEventListener('click',function(e){var b=e.target.closest('button[data-t]');
 
 
 def main():
-    out = ROOT / 'studio/programme-vminvest.html'
+    out = ROOT / 'studio/programme-vmunivers.html'
     out.write_text(PAGE.replace('__DATA__', json.dumps(DATA, ensure_ascii=False)), encoding='utf-8')
     print('Écrit :', out.relative_to(ROOT))
 

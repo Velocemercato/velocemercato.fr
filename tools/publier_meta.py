@@ -44,7 +44,7 @@ UNIVERS = {
                'tags': '#gaming #jeuxvideo #gamer #vmgaming'},
 }
 
-# Page VM Invest / VM Univers : UNIQUEMENT les projets du groupe, sans Véloce Mercato, matin, midi et soir (demande de Romain).
+# Page VM Univers : UNIQUEMENT les projets du groupe, sans Véloce Mercato, matin, midi et soir (demande de Romain).
 DEBUT_UNIVERS = dt.date(2026, 10, 26)
 HEURES_UNIVERS = {DEBUT_UNIVERS: (16, 19, 21, 23)}   # lancement ; ensuite tous les jours :
 HEURES_UNIVERS_DEFAUT = (8, 12, 16, 20)
@@ -63,7 +63,7 @@ def heures_univers(day):
 
 
 def contenu_univers(local):
-    """Même calcul que la page studio/programme-vminvest.html : 1 publication sur 2 = teaser vidéo."""
+    """Même calcul que la page studio/programme-vmunivers.html : 1 publication sur 2 = teaser vidéo."""
     heures = heures_univers(local.date())
     rang = heures.index(local.hour) if local.hour in heures else 0
     n = (local.date() - DEBUT_UNIVERS).days * 4 + rang
@@ -379,7 +379,7 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
                 mark(key, 'publie', projet=name, type=item['type'])
             except (DeliveryError, OSError, subprocess.CalledProcessError) as error:
                 mark(key, 'echec', projet=name)
-                errors.append(f'VM Invest {name} : {str(error)[:150]}')
+                errors.append(f'VM Univers {name} : {str(error)[:150]}')
     univers = force or slots.get(local.hour)
     if univers == 'projet':
         univers = None
@@ -432,10 +432,10 @@ LANCEMENT = [
 
 
 def lancement(state, graph, sleep=time.sleep):
-    """Premières publications Instagram/Facebook de VM Invest (une seule fois chacune)."""
+    """Premières publications Instagram/Facebook de VM Univers (une seule fois chacune)."""
     meta = state.data.get('tokens', {}).get('meta_univers') or {}
     if not meta.get('ig_id'):
-        raise DeliveryError('Instagram VM Invest non relié.')
+        raise DeliveryError('Instagram VM Univers non relié.')
     done = state.data.setdefault('meta_univers_accuses', {})
     errors = []
     for item in LANCEMENT:
@@ -452,7 +452,7 @@ def lancement(state, graph, sleep=time.sleep):
             else:
                 instagram_image(graph, meta, instagram_projet_card(item['name'], item['icon'], item['pitch']), insta_text, sleep=sleep)
             done[key] = {'status': 'publie'}
-            print(f'::notice::instagram VM Invest : {item["name"]} publié')
+            print(f'::notice::instagram VM Univers : {item["name"]} publié')
         except (DeliveryError, OSError, subprocess.CalledProcessError) as error:
             done[key] = {'status': 'echec'}
             errors.append(f'lancement {item["name"]} : {str(error)[:150]}')

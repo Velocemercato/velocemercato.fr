@@ -3,14 +3,14 @@ name: VM - Facebook et Instagram automatiques
 on:
   schedule:
     # Toutes les heures de 7 h à 23 h Paris (été et hiver) : articles selon le programme, pastilles dès qu'elles sont prêtes,
-    # et les 4 publications VM Invest.
+    # et les 4 publications VM Univers.
     - cron: '5 5-22 * * *'
   workflow_dispatch:
     inputs:
       article:
         description: 'Publier un article tout de suite'
         type: choice
-        options: ['', 'foot', 'actus', 'gaming', 'lancement-vminvest']
+        options: ['', 'foot', 'actus', 'gaming', 'lancement-vmunivers']
         default: ''
 
 permissions:
@@ -53,5 +53,5 @@ jobs:
           fi
       - name: Publier les pastilles et un article (si VM_AUTO_META=true)
         run: |
-          if [ "${ARTICLE:-}" = lancement-vminvest ]; then python tools/publier_meta.py lancement --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+          if [ "${ARTICLE:-}" = lancement-vmunivers ]; then python tools/publier_meta.py lancement --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
           else python tools/publier_meta.py publier --state "$RUNNER_TEMP/vm-broadcast-state/state.enc" --article "${ARTICLE:-}"; fi
