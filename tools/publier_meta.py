@@ -217,7 +217,8 @@ def main():
         secret = re.search(r'\b[0-9a-f]{32}\b', values[1])
         token = re.search(r'EA[A-Za-z0-9]{40,}', values[2])
         print(f'::notice::Contrôle : ID app trouvé {bool(app_id)} ({len(app_id.group(0)) if app_id else 0} chiffres) · '
-              f'clé secrète au bon format {bool(secret)} · jeton commence par EA {bool(token)}', flush=True)
+              f'clé secrète au bon format {bool(secret)} (longueur {len(values[1])}, points masqués {"•" in values[1] or "*" in values[1]}, '
+              f'espaces {" " in values[1]}, identique à l’ID {values[1] == values[0]}) · jeton commence par EA {bool(token)}', flush=True)
         connect(state, Graph(), app_id.group(0) if app_id else values[0], secret.group(0) if secret else values[1],
                 token.group(0) if token else values[2])
         return
