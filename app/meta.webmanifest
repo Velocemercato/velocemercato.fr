@@ -1,0 +1,29 @@
+{
+ "id": "/app/meta",
+ "name": "VM Meta Gaming – les métas",
+ "short_name": "VM Meta",
+ "start_url": "/vm-gaming/meta/?app=1",
+ "scope": "/vm-gaming/meta/",
+ "display": "standalone",
+ "background_color": "#0c0e0d",
+ "theme_color": "#0c0e0d",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/meta-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/meta-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/meta-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}
