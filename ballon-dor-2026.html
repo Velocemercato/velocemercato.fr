@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ballon d'Or 2026 en direct — tous les lauréats | Véloce Mercato</title>
+<meta name="description" content="Ballon d'Or 2026 : le vainqueur, le podium et tous les trophées de la soirée, mis à jour en direct et sourcés.">
+<meta property="og:title" content="Ballon d'Or 2026 : le vainqueur et tous les lauréats"><meta property="og:image" content="https://velocemercato.fr/img/partage-velocemercato.jpg">
+<link rel="canonical" href="https://velocemercato.fr/ballon-dor-2026.html"><link rel="icon" href="/app/foot-192.png"><meta name="theme-color" content="#0b1533">
+<style>
+:root{--bg:#0b1533;--card:#121d44;--gold:#f4cf55;--ink:#fff;--muted:#c9d0ea}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{background:linear-gradient(135deg,#1d3fb8,#0b1533 55%,#5a0a18);border-bottom:4px solid var(--gold);padding:18px 16px}
+header a{color:var(--gold);font-weight:800;text-decoration:none}
+h1{margin:10px 0 4px;font:900 clamp(2rem,8vw,3.2rem)/1 Impact,'Arial Narrow',sans-serif;letter-spacing:.02em}h1 b{color:var(--gold)}
+.live{display:inline-block;background:#e1243a;color:#fff;font-weight:900;font-size:.8rem;border-radius:999px;padding:3px 10px;letter-spacing:.06em}
+main{max-width:760px;margin:0 auto;padding:16px}
+.win{background:radial-gradient(circle at 50% 0,#f4cf5540,transparent 70%),var(--card);border:2px solid var(--gold);border-radius:20px;padding:22px;text-align:center;margin:10px 0 18px}
+.win small{color:var(--gold);font-weight:900;letter-spacing:.12em}.win h2{margin:6px 0;font:900 2.4rem/1.05 Impact,sans-serif}.win p{color:var(--muted);margin:0}
+.pod{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 20px}.pod div{background:var(--card);border-radius:14px;padding:12px;text-align:center}.pod b{display:block;font-size:1.6rem}
+ul{list-style:none;padding:0;margin:0}li{display:flex;justify-content:space-between;gap:10px;background:var(--card);border-radius:12px;padding:11px 14px;margin:6px 0}
+li span{color:var(--muted)}li b{text-align:right}li b.attente{color:#7f8bb5;font-weight:600}
+.info{color:var(--muted);font-size:.9rem;margin:16px 0}.info a{color:var(--gold)}
+</style></head><body>
+<header><a href="/">← Véloce Mercato</a><br><span class="live" id="etat">EN DIRECT</span><h1>BALLON D'OR <b>2026</b></h1><div id="lieu"></div></header>
+<main>
+<section class="win" id="win"><small>LE VAINQUEUR</small><h2 id="vainqueur">Annonce en cours…</h2><p id="winsub">Résultat mis à jour dès l'annonce officielle.</p></section>
+<div class="pod" id="podium" hidden></div>
+<h2>Tous les trophées de la soirée</h2>
+<ul id="cats"></ul>
+<p class="info" id="sources"></p>
+<p class="info">Page mise à jour en direct par Véloce Mercato pendant la cérémonie. Chaque résultat est vérifié auprès d'une source avant publication.</p>
+</main>
+<script>
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function charger(){fetch('/ballon-dor-2026.json?t='+Date.now()).then(function(r){return r.json()}).then(function(d){
+ document.getElementById('lieu').textContent=d.lieu+' · '+d.heure+' · '+d.tv;
+ document.getElementById('etat').textContent=d.statut==='fini'?'RÉSULTATS':d.statut==='avant'?'CE SOIR 21 H':'EN DIRECT';
+ if(d.vainqueur){document.getElementById('vainqueur').textContent='🏆 '+d.vainqueur.nom;document.getElementById('winsub').textContent=d.vainqueur.detail||''}
+ var p=document.getElementById('podium');if(d.podium&&d.podium.length){p.hidden=false;p.innerHTML=d.podium.map(function(x,i){return '<div><b>'+['🥇','🥈','🥉'][i]+'</b>'+esc(x)+'</div>'}).join('')}
+ document.getElementById('cats').innerHTML=d.categories.map(function(c){return '<li><span>'+esc(c.nom)+'</span>'+(c.laureat?'<b>'+esc(c.laureat)+'</b>':'<b class="attente">à venir</b>')+'</li>'}).join('');
+ document.getElementById('sources').innerHTML=d.sources.length?'Sources : '+d.sources.map(function(s){return '<a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.nom)+'</a>'}).join(' · '):'';
+}).catch(function(){})}
+charger();setInterval(charger,60000);
+</script></body></html>
