@@ -422,9 +422,49 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
     return errors
 
 
+LANCEMENT = [
+    {'type': 'video', 'name': 'VM Univers', 'url': 'https://vmunivers.fr/', 'pitch': 'Tous les projets du groupe VM, réunis au même endroit.',
+     'video': 'https://velocemercato.fr/media/promos/vm-univers-vertical.mp4'},
+    {'type': 'carte', 'name': 'VM Studio', 'icon': 'studio', 'url': 'https://velocemercato.fr/web-studio.html',
+     'pitch': 'Sites internet et visuels pour les pros, avec des prix clairs.'},
+    {'type': 'carte', 'name': 'VM CV', 'icon': 'cv', 'url': 'https://velocemercato.fr/cv/', 'pitch': 'Fais ton CV pro gratuitement, en quelques minutes.'},
+]
+
+
+def lancement(state, graph, sleep=time.sleep):
+    """Premières publications Instagram/Facebook de VM Invest (une seule fois chacune)."""
+    meta = state.data.get('tokens', {}).get('meta_univers') or {}
+    if not meta.get('ig_id'):
+        raise DeliveryError('Instagram VM Invest non relié.')
+    done = state.data.setdefault('meta_univers_accuses', {})
+    errors = []
+    for item in LANCEMENT:
+        key = 'lancement/' + item['name']
+        if key in done:
+            continue
+        done[key] = {'status': 'envoi'}
+        state.save()
+        text = texte_univers(item)
+        try:
+            insta_text = text.replace('👉 ' + item['url'], '👉 Lien en bio')
+            if item['type'] == 'video':
+                instagram_reel(graph, meta, {'verticale': item['video'], 'texte_vertical': insta_text}, sleep=sleep)
+            else:
+                instagram_image(graph, meta, instagram_projet_card(item['name'], item['icon'], item['pitch']), insta_text, sleep=sleep)
+            done[key] = {'status': 'publie'}
+            print(f'::notice::instagram VM Invest : {item["name"]} publié')
+        except (DeliveryError, OSError, subprocess.CalledProcessError) as error:
+            done[key] = {'status': 'echec'}
+            errors.append(f'lancement {item["name"]} : {str(error)[:150]}')
+        state.save()
+    for line in errors:
+        print('::error::' + line)
+    return errors
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['connecter', 'publier'])
+    parser.add_argument('action', choices=['connecter', 'publier', 'lancement'])
     parser.add_argument('--state', type=Path, required=True)
     parser.add_argument('--article', choices=['', 'foot', 'actus', 'gaming'], default='', help='Publier un article tout de suite')
     args = parser.parse_args()
@@ -451,6 +491,10 @@ def main():
             app_id = re.search(r'\d{10,20}', str(owner.get('id', '')))
         connect(state, graph, app_id.group(0) if app_id else values[0], secret.group(0) if secret else values[1].strip(),
                 user_token)
+        return
+    if args.action == 'lancement':
+        if lancement(state, Graph()):
+            sys.exit(1)
         return
     if os.getenv('VM_AUTO_META') != 'true':
         print('Facebook/Instagram : publication automatique non activée (VM_AUTO_META). Rien n’est publié.')

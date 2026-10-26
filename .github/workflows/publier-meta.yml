@@ -10,7 +10,7 @@ on:
       article:
         description: 'Publier un article tout de suite'
         type: choice
-        options: ['', 'foot', 'actus', 'gaming']
+        options: ['', 'foot', 'actus', 'gaming', 'lancement-vminvest']
         default: ''
 
 permissions:
@@ -52,4 +52,6 @@ jobs:
             git -C "$STATE_DIR" remote add origin "$repo_url"
           fi
       - name: Publier les pastilles et un article (si VM_AUTO_META=true)
-        run: python tools/publier_meta.py publier --state "$RUNNER_TEMP/vm-broadcast-state/state.enc" --article "${ARTICLE:-}"
+        run: |
+          if [ "${ARTICLE:-}" = lancement-vminvest ]; then python tools/publier_meta.py lancement --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+          else python tools/publier_meta.py publier --state "$RUNNER_TEMP/vm-broadcast-state/state.enc" --article "${ARTICLE:-}"; fi
