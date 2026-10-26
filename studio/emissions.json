@@ -1,5 +1,101 @@
 [
  {
+  "id": "foot-edition-20261026-1200",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "midi",
+  "label": "JT 12 h",
+  "titre": "La Pastille Foot - 12h, lundi 26 octobre",
+  "accroche": "La Pastille Foot, le JT du midi de VM Studio. Les six infos à retenir.",
+  "duree": 107,
+  "date": "2026-10-26T12:02+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261026-1200.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-10-26T12:00:00+01:00",
+  "source_start": "2026-10-26T08:00:00+01:00",
+  "source_end": "2026-10-26T12:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-e6380469cf8bc7b19d4922",
+    "titre": "Ballon d'Or féminin : Putellas grande favorite, Shaw et Russo dans la course",
+    "publishedAt": "2026-10-26T09:21:17Z",
+    "createdAt": "2026-10-26T10:13:20Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cq5ynp680jm1o?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-b478e3b73342b752990ce1",
+    "titre": "Ballon d'or 2026 : qui vote et comment fonctionne le barème",
+    "publishedAt": "2026-10-26T09:54:16Z",
+    "createdAt": "2026-10-26T10:13:13Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/ballon-d-or/ballon-d-or-2026-qui-compose-le-jury-et-comment-fonctionnent-les-votes_AV-202610260350.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-a0669f897ffa632dab714e",
+    "titre": "L'ASSE risque une sanction après le spectacle pyrotechnique du kop nord",
+    "publishedAt": "2026-10-26T08:20:00Z",
+    "createdAt": "2026-10-26T09:13:34Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/st-etienne/lasse-craint-une-grosse-sanction"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-2fe74ab2c3c20d2d193fd3",
+    "titre": "Jermaine Pennant éprouvé après une attaque de chien : plus de 50 points de suture",
+    "publishedAt": "2026-10-26T07:36:20Z",
+    "createdAt": "2026-10-26T08:16:50Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cqdr8e81xjy7o?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-e533e0d6b5b4d7d2801691",
+    "titre": "OM : selon La Provence, Genesio écarte Keyliane Abdallah du groupe pro",
+    "publishedAt": "2026-10-26T07:00:00Z",
+    "createdAt": "2026-10-26T07:25:23Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/marseille/om-genesio-vire-keyliane-abdallah"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-220161e882eb3132960185",
+    "titre": "Barça-Real : l'After Foot doute du vrai niveau de Barcelone après deux revers",
+    "publishedAt": "2026-10-26T07:00:10Z",
+    "createdAt": "2026-10-26T07:25:21Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/liga/barca-real-l-impression-de-m-etre-fait-arnaquer-les-doutes-de-l-after-sur-le-veritabale-niveau-de-barcelone_AV-202610260171.html"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "gaming-edition-20261026-1000",
   "univers": "gaming",
   "format": "edition",
