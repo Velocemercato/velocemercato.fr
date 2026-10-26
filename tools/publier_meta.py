@@ -221,10 +221,11 @@ def main():
               f'espaces {" " in values[1]}, identique à l’ID {values[1] == values[0]}) · jeton commence par EA {bool(token)}', flush=True)
         graph = Graph()
         user_token = token.group(0) if token else values[2]
+        owner = graph.call('GET', 'app', {'fields': 'id,name', 'access_token': user_token})
+        print(f'::notice::Le jeton a été créé avec l’app « {str(owner.get("name", "?"))[:60]} »'
+              f'{" (= META_APP_ID)" if app_id and app_id.group(0) == str(owner.get("id")) else ""}', flush=True)
         if not app_id:  # l'ID de l'app se lit depuis le jeton lui-même (information publique)
-            found = str(graph.call('GET', 'app', {'fields': 'id', 'access_token': user_token}).get('id', ''))
-            print(f'::notice::ID de l’app retrouvé depuis le jeton : {bool(found)}', flush=True)
-            app_id = re.search(r'\d{10,20}', found)
+            app_id = re.search(r'\d{10,20}', str(owner.get('id', '')))
         connect(state, graph, app_id.group(0) if app_id else values[0], secret.group(0) if secret else values[1].strip(),
                 user_token)
         return
