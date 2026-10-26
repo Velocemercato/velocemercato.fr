@@ -468,9 +468,50 @@ def lancement(state, graph, sleep=time.sleep):
     return errors
 
 
+ANNONCE_META = ('🎯 NOUVEAU : VM META GAMING\n\nHEINEGUEZ & PABLO, PRÉPAREZ VOS ARMES.\n\n'
+    'Les meilleures classes et tactiques du moment, sourcées et datées : Warzone (BR, Résurgence), Call of Duty BO7 & MW4, '
+    'Battlefield 6, REDSEC et EA SPORTS FC 27. Favoris, codes à copier, fiches à partager. Gratuit.\n\n'
+    '👉 {lien}\n\n#Warzone #CallofDuty #MW4 #BO7 #Battlefield6 #REDSEC #FC27 #meta #VMGaming')
+
+
+def annonce(state, graph, sleep=time.sleep, image=None):
+    """Annonce unique de VM Meta Gaming sur Véloce Mercato et VM Univers (Facebook + Instagram)."""
+    url = 'https://velocemercato.fr/vm-gaming/meta/'
+    errors = []
+    for account in ('meta', 'meta_univers'):
+        meta = state.data.get('tokens', {}).get(account) or {}
+        if not meta.get('page_token'):
+            continue
+        done = state.data.setdefault('meta' if account == 'meta' else account + '_accuses', {})
+        for net in ('facebook', 'instagram'):
+            key = 'annonce/vm-meta-gaming/' + net
+            if key in done or (net == 'instagram' and not meta.get('ig_id')):
+                continue
+            done[key] = {'status': 'envoi'}
+            state.save()
+            try:
+                if net == 'facebook':
+                    graph.call('POST', meta['page_id'] + '/feed', {'message': ANNONCE_META.format(lien=url), 'link': url,
+                                                                    'access_token': meta['page_token']})
+                else:
+                    if not image:
+                        from tools.cartes_insta import push_card
+                        image = push_card(ROOT / 'vm-gaming/meta/assets/partage-meta.jpg')
+                    instagram_image(graph, meta, image, ANNONCE_META.format(lien='lien en bio · velocemercato.fr/vm-gaming/meta'), sleep=sleep)
+                done[key] = {'status': 'publie'}
+                print(f'::notice::{account} {net} : annonce VM Meta Gaming publiée')
+            except (DeliveryError, OSError, subprocess.CalledProcessError) as error:
+                done[key] = {'status': 'echec'}
+                errors.append(f'annonce {account} {net} : {str(error)[:150]}')
+            state.save()
+    for line in errors:
+        print('::error::' + line)
+    return errors
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['connecter', 'publier', 'lancement'])
+    parser.add_argument('action', choices=['connecter', 'publier', 'lancement', 'annonce'])
     parser.add_argument('--state', type=Path, required=True)
     parser.add_argument('--article', choices=['', 'foot', 'actus', 'gaming'], default='', help='Publier un article tout de suite')
     args = parser.parse_args()
@@ -497,6 +538,10 @@ def main():
             app_id = re.search(r'\d{10,20}', str(owner.get('id', '')))
         connect(state, graph, app_id.group(0) if app_id else values[0], secret.group(0) if secret else values[1].strip(),
                 user_token)
+        return
+    if args.action == 'annonce':
+        if annonce(state, Graph()):
+            sys.exit(1)
         return
     if args.action == 'lancement':
         if lancement(state, Graph()):
