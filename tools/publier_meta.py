@@ -44,8 +44,8 @@ UNIVERS = {
                'tags': '#gaming #jeuxvideo #gamer #vmgaming'},
 }
 
-# Page VM Univers : le groupe d'abord (un projet VM par jour), puis actu et gaming ; le foot reste sur Véloce Mercato.
-SLOTS_UNIVERS = {10: 'projet', 15: 'actus', 19: 'gaming'}
+# Page VM Univers : UNIQUEMENT la présentation des projets du groupe, matin, midi et soir (demande de Romain).
+SLOTS_UNIVERS = {9: 'projet', 12: 'projet', 19: 'projet'}
 PROJETS = [
     ('VM Emploi', 'emploi', '/emploi/', 'Les offres d’emploi près de chez toi, simples à lire.'),
     ('AlloLivre', 'allolivre', '/allolivre/', 'Livraison et entraide entre voisins.'),
@@ -69,7 +69,9 @@ PROJETS = [
 
 
 def projet_du_jour(now):
-    return PROJETS[now.astimezone(PARIS).timetuple().tm_yday % len(PROJETS)]
+    local = now.astimezone(PARIS)
+    rang = sorted(SLOTS_UNIVERS).index(local.hour) if local.hour in SLOTS_UNIVERS else 0
+    return PROJETS[(local.timetuple().tm_yday * len(SLOTS_UNIVERS) + rang) % len(PROJETS)]
 
 
 def article_url(univers, ident):
@@ -274,8 +276,8 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
         done[key] = {'status': status, 'at': now.isoformat(timespec='seconds'), **extra}
         state.save()
 
-    skip_foot = account == 'meta_univers'  # le foot reste sur la Page Véloce Mercato
-    for row in [r for r in youtube_jt(root, now) if not (skip_foot and r['id'].startswith('foot-'))][:2]:
+    projets_seulement = account == 'meta_univers'  # VM Univers : pas de JT ni d'articles, seulement les projets
+    for row in ([] if projets_seulement else youtube_jt(root, now)[:2]):
         key = 'jt/facebook/' + row['id']
         if key in done:
             continue
@@ -294,7 +296,7 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
             mark(key, 'echec')
             errors.append(f'facebook / JT {row["id"]} : {error}')
 
-    for row in [r for r in reels(root, now) if not (skip_foot and r['id'].startswith('foot-'))]:
+    for row in ([] if projets_seulement else reels(root, now)):
         if sent >= limit:
             break
         attempted = False
@@ -320,12 +322,12 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
 
     local = now.astimezone(PARIS)
     if not force and slots.get(local.hour) == 'projet':
-        key = f'projet/{local:%Y-%m-%d}'
+        key = f'projet/{local:%Y-%m-%d}/{local:%H}'
         if key not in done:
             name, icon, path, pitch = projet_du_jour(now)
             url = 'https://velocemercato.fr' + path
             mark(key, 'envoi', projet=name)
-            text = (f'✨ Le projet VM du jour : {name}\n\n{pitch}\n\n👉 {url}\n'
+            text = (f'✨ Un projet du groupe VM : {name}\n\n{pitch}\n\n👉 {url}\n'
                     f'Tous les projets du groupe : vmunivers.fr\n\n#VMUnivers #VM #{re.sub(r"[^A-Za-z]", "", name)}')
             try:
                 graph.call('POST', meta['page_id'] + '/feed', {'message': text, 'link': url, 'access_token': meta['page_token']})

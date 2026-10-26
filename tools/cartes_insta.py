@@ -110,7 +110,7 @@ def make_projet_card(name, icon, pitch, output, root=ROOT):
         card = Image.blend(card, glow, 0.55)
         card.paste(art.resize((620, 620), Image.LANCZOS), ((W - 620) // 2, 150))
     d = ImageDraw.Draw(card)
-    d.text((60, 60), 'LE PROJET VM DU JOUR', font=font(FONT, 46), fill=(244, 207, 85))
+    d.text((60, 60), 'UN PROJET DU GROUPE VM', font=font(FONT, 46), fill=(244, 207, 85))
     title = font(FONT, 78 if len(name) < 18 else 60)
     d.text(((W - title.getbbox(name)[2]) // 2, 820), name, font=title, fill=(255, 255, 255), stroke_width=3, stroke_fill=(0, 0, 0))
     y = 940
