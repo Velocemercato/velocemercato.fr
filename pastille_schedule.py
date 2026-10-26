@@ -46,7 +46,7 @@ def edition_recorded(root, edition):
 
 
 def due_edition(root, now, universe=None):
-    """Dernier créneau échu depuis moins de 90 min ; jamais une édition future."""
+    """Dernier créneau échu depuis moins de 3 h (GitHub saute parfois des déclenchements) ; jamais une édition future."""
     local = now.astimezone(PARIS)
     candidates = []
     for name, hours in EDITION_HOURS.items():
@@ -56,7 +56,7 @@ def due_edition(root, now, universe=None):
             for hour in hours:
                 target = dt.datetime.combine(day, dt.time(hour), PARIS)
                 age = now.astimezone(dt.timezone.utc) - target.astimezone(dt.timezone.utc)
-                if dt.timedelta(0) <= age < dt.timedelta(minutes=90):
+                if dt.timedelta(0) <= age < dt.timedelta(hours=3):
                     candidates.append(edition_window(name, target))
     for edition in sorted(candidates, key=lambda e: e['edition_at'], reverse=True):
         if not edition_recorded(root, edition):
