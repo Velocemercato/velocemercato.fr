@@ -44,7 +44,7 @@ UNIVERS = {
                'tags': '#gaming #jeuxvideo #gamer #vmgaming'},
 }
 
-# Page VM Univers : UNIQUEMENT la présentation des projets du groupe, matin, midi et soir (demande de Romain).
+# Page VM Invest / VM Univers : UNIQUEMENT les projets du groupe, sans Véloce Mercato, matin, midi et soir (demande de Romain).
 SLOTS_UNIVERS = {9: 'projet', 12: 'projet', 19: 'projet'}
 PROJETS = [
     ('VM Emploi', 'emploi', '/emploi/', 'Les offres d’emploi près de chez toi, simples à lire.'),
@@ -61,10 +61,8 @@ PROJETS = [
     ('VM Pro Local', 'pro', '/pro/', 'Les pros et artisans de chez nous.'),
     ('VM Produits locaux', 'produits', '/produits-locaux/', 'Acheter local, près de chez toi.'),
     ('VM Belfort', 'belfort', '/belfort/', 'L’info et les bons plans du coin.'),
-    ('Véloce Arena', 'arena', '/gaming.html', 'Les tournois EA FC gratuits de la communauté.'),
     ('Pépite FC', 'pepite', '/pepite/', 'Repère et fais connaître les jeunes talents du foot.'),
     ('VM Radio', 'radio', '/radio.html', 'La radio de l’univers VM.'),
-    ('Véloce Mercato', 'foot', '/', 'L’actu foot et le mercato, sourcés.'),
 ]
 
 
