@@ -561,16 +561,16 @@ class MetaTests(unittest.TestCase):
             g=G()
             with contextlib.redirect_stdout(io.StringIO()) as out:
                 M.connect(state,g,'app','sec','short')
-                self.assertEqual(M.publish(state,g,root=root,now=now,sleep=lambda s:None),[])
+                self.assertEqual(M.publish(state,g,root=root,now=now,sleep=lambda s:None,card=lambda u,r,s:'https://raw.githubusercontent.com/x.jpg'),[])
             self.assertNotIn('PAGETOKEN',out.getvalue())
             self.assertNotIn(b'PAGETOKEN',(root/'s.enc').read_bytes())
             self.assertEqual(g.calls.count('1/videos'),2)
             self.assertEqual(g.calls.count('1/feed'),1)
             with contextlib.redirect_stdout(io.StringIO()):
-                M.publish(state,g,root=root,now=now,sleep=lambda s:None)
-                M.publish(state,g,root=root,now=now,sleep=lambda s:None)
+                M.publish(state,g,root=root,now=now,sleep=lambda s:None,card=lambda u,r,s:'https://raw.githubusercontent.com/x.jpg')
+                M.publish(state,g,root=root,now=now,sleep=lambda s:None,card=lambda u,r,s:'https://raw.githubusercontent.com/x.jpg')
             self.assertEqual(g.calls.count('1/videos'),3)
-            self.assertEqual(g.calls.count('9/media_publish'),3)
+            self.assertEqual(g.calls.count('9/media_publish'),4)  # 3 Reels + 1 carte article
             self.assertEqual(g.calls.count('1/feed'),1)
 
 

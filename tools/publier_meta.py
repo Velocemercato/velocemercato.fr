@@ -15,7 +15,9 @@ import json
 import os
 from pathlib import Path
 import re
+import subprocess
 import sys
+import tempfile
 import time
 import urllib.error
 import urllib.parse
@@ -158,6 +160,30 @@ def article(root, now, done, univers='foot', hours=12):
     return None, None
 
 
+def instagram_card(univers, row, source):
+    from tools.cartes_insta import make_card, push_card
+    with tempfile.TemporaryDirectory(prefix='carte-') as folder:
+        path = make_card(univers, clean(row['titre'], 200), clean(source['nom'], 70), Path(folder) / f'{univers}-{row["id"]}.jpg')
+        return push_card(path)
+
+
+def instagram_image(graph, meta, image_url, caption, sleep=time.sleep):
+    created = graph.call('POST', meta['ig_id'] + '/media', {'image_url': image_url, 'caption': caption[:2100],
+                                                           'access_token': meta['page_token']})
+    container = created.get('id')
+    if not container:
+        raise DeliveryError('Instagram : préparation de l’image non confirmée.')
+    for _ in range(20):
+        status = graph.call('GET', container, {'fields': 'status_code', 'access_token': meta['page_token']}).get('status_code')
+        if status in (None, 'FINISHED'):
+            break
+        if status in ('ERROR', 'EXPIRED'):
+            raise DeliveryError('Instagram : image refusée au traitement.')
+        sleep(5)
+    return graph.call('POST', meta['ig_id'] + '/media_publish', {'creation_id': container,
+                                                                 'access_token': meta['page_token']}).get('id')
+
+
 def instagram_reel(graph, meta, row, wait=480, sleep=time.sleep):
     created = graph.call('POST', meta['ig_id'] + '/media', {'media_type': 'REELS', 'video_url': row['verticale'],
                                                            'caption': clean(row.get('texte_vertical') or row.get('titre'), 2100),
@@ -176,7 +202,7 @@ def instagram_reel(graph, meta, row, wait=480, sleep=time.sleep):
     raise DeliveryError('Instagram : traitement trop long, Reel non publié (sera ignoré pour éviter un doublon).')
 
 
-def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=None):
+def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=None, card=None):
     now = now or dt.datetime.now(UTC)
     meta = state.data.get('tokens', {}).get('meta')
     if not meta or not meta.get('page_token'):
@@ -233,6 +259,19 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
             except DeliveryError as error:
                 mark(key, 'echec')
                 errors.append(f'facebook / article {univers} {row["id"]} : {error}')
+            insta = f'insta/{univers}/{row["id"]}'
+            if meta.get('ig_id') and insta not in done:
+                mark(insta, 'envoi')
+                try:
+                    image = (card or instagram_card)(univers, row, source)
+                    caption = (f'{conf["emoji"]} {clean(row["titre"], 200)}\n\n{clean(row["resume"], 600)}\n\n'
+                               f'Selon {clean(source["nom"], 70)}\n👉 L’article complet sur {conf["site"]} (lien en bio)\n\n{conf["tags"]}')
+                    result = instagram_image(graph, meta, image, caption, sleep=sleep)
+                    mark(insta, 'publie', post=str(result or ''))
+                    print(f'::notice::instagram : article {univers} publié')
+                except (DeliveryError, OSError, subprocess.CalledProcessError) as error:
+                    mark(insta, 'echec')
+                    errors.append(f'instagram / article {univers} {row["id"]} : {str(error)[:150]}')
         else:
             print(f'::notice::Pas d’article {univers} récent et sourcé à publier pour ce créneau.')
     for line in errors:
