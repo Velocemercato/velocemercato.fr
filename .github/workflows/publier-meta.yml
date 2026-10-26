@@ -2,9 +2,15 @@ name: VM - Facebook et Instagram automatiques
 
 on:
   schedule:
-    # 8 h 15, 12 h 15 et 20 h 15 Paris (été et hiver) ; les pastilles partent dès qu'elles sont prêtes.
-    - cron: '15 6,7,10,11,18,19 * * *'
+    # Toutes les heures de 7 h à 20 h Paris (été et hiver) : articles selon le programme, pastilles dès qu'elles sont prêtes.
+    - cron: '5 5-19 * * *'
   workflow_dispatch:
+    inputs:
+      article:
+        description: 'Publier un article tout de suite'
+        type: choice
+        options: ['', 'foot', 'actus', 'gaming']
+        default: ''
 
 permissions:
   contents: write
@@ -22,6 +28,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
       VM_AUTO_META: ${{ vars.VM_AUTO_META }}
+      ARTICLE: ${{ inputs.article }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -44,4 +51,4 @@ jobs:
             git -C "$STATE_DIR" remote add origin "$repo_url"
           fi
       - name: Publier les pastilles et un article (si VM_AUTO_META=true)
-        run: python tools/publier_meta.py publier --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+        run: python tools/publier_meta.py publier --state "$RUNNER_TEMP/vm-broadcast-state/state.enc" --article "${ARTICLE:-}"
