@@ -15,6 +15,8 @@ const SOURCES={
  mwh:{name:'CODMunity · Han 86',url:'https://codmunity.gg/weapon/mw4/han-86',date:'22.10.2026',scope:'Configuration Han 86'},
  mwv:{name:'CODMunity · VEL 46',url:'https://codmunity.gg/weapon/mw4/vel-46',date:'22.10.2026',scope:'Configuration VEL 46'},
  rk:{name:'Activision · BO7 classé',url:'https://support.activision.com/black-ops-7/articles/black-ops-7-ranked-play',date:'17.09.2026',scope:'Règles officielles du classé'},
+ dxr:{name:'Dexerto · REDSEC',url:'https://www.dexerto.com/wikis/battlefield-redsec/redsec-weapon-tier-list',date:'21.11.2025 (pas de mise à jour datée)',scope:'Tier list REDSEC de comparaison, ancienne'},
+ dxf:{name:'Dexerto · FC 27',url:'https://www.dexerto.com/wikis/ea-fc-27/best-formations-and-custom-tactics/',date:'non daté (méta de lancement)',scope:'Formations FC 27 de comparaison'},
  players:{name:'FUT Mind',url:'https://futmind.com/players/best',date:'26.10.2026',scope:'Classement des cartes par score méta propriétaire'}
 };
 const GAMES=[
@@ -79,15 +81,15 @@ const MODE_NOTES={
  'cod.hardcore':'Sélection Hardcore de Warzone Loadout (08.10), sans statistiques publiées, plus le guide VM. À vérifier en jeu : ce n’est pas une méta mesurée.',
  'cod.mw4':'Modern Warfare 4 (sorti le 23.10) · méta de lancement CODMunity du 25.10. Les sources divergent (voir chaque fiche). Accessoires vérifiés pour Han 86 et VEL 46 ; les autres sont à vérifier.',
  'cod.dmz':'Conseil VM uniquement : DMZ existe bien dans MW4, mais aucune tier list DMZ fiable n’a pu être consultée au 26.10. À vérifier.',
- 'battlefield.multi':'Classement multijoueur du 16 octobre. L’ordre d’affichage suit les choix mis en avant par la source ; le tier et la popularité sont deux mesures différentes.',
+ 'battlefield.multi':'À VÉRIFIER · classement Battlefinity du 16.10 non revérifiable par VM le 26.10 (page inaccessible). Aucune contradiction récente trouvée. L’ordre suit la source ; tier et popularité sont deux mesures différentes.',
  'battlefield.conquest':'Adaptation VM : garder une couverture pour les rotations entre objectifs. Même tier list multijoueur, sans classement Conquête spécifique.',
  'battlefield.breakthrough':'Adaptation VM : coordonner pression et soutien sur le secteur. Même base multijoueur ; les rôles de l’escouade priment.',
  'battlefield.rush':'Adaptation VM : préparer les approches et protéger les interactions sur l’objectif. Classement multijoueur général.',
  'battlefield.tdm':'Adaptation VM : réduire les angles exposés et ajuster la portée à la carte. Aucun classement Match à mort distinct.',
  'battlefield.portal':'Portal dépend des règles du serveur. Ces tiers viennent du multijoueur standard et peuvent ne pas être pertinents pour les règles personnalisées.',
- 'redsec.br':'Classement REDSEC du 26 octobre : sélection distincte de celle du multijoueur Battlefield. Choisis des rôles complémentaires pour ton escouade.',
+ 'redsec.br':'À VÉRIFIER · classement Battlefinity du 26.10 non revérifiable par VM (page inaccessible). Une autre source (Dexerto, nov. 2025, ancienne) place notamment Kord 6P67, DRS-IAR, USG-90, RPKM et SGX en S : les écarts sont possibles.',
  'redsec.gauntlet':'Adaptation VM : priorité aux objectifs et à la polyvalence. Les tiers ci-dessous proviennent du BR REDSEC, sans validation Gauntlet dédiée.',
- 'fc27.ut':'Cinq tactiques Liquid FC du 21 octobre, avec codes d’import et rôles. Aucune hiérarchie chiffrée entre ces variantes ; ajuste selon tes joueurs.',
+ 'fc27.ut':'À VÉRIFIER EN JEU · 5 tactiques Liquid FC (ex-Team Gullit) du 21.10, codes non revérifiables par VM le 26.10. Dexerto cite le 4-2-1-3 comme formation méta de lancement. Importe le code puis contrôle rôles et consignes.',
  'fc27.players':'Deux exemples vérifiés dans le classement FUT Mind, plus un guide VM. Ni catalogue exhaustif, ni prix en direct : ouvre la source pour les cartes actualisées.',
  'fc27.clubs':'Archétypes observés dans les 100 premiers clubs par PRO11 au 8 octobre. Données de haut niveau, pas un classement garanti pour toutes les divisions.',
  'fc27.rush':'Guides éditoriaux VM pour le petit format. Aucun build chiffré ni tier list Rush indépendante vérifiée.',
