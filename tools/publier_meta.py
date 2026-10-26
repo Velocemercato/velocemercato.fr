@@ -160,6 +160,21 @@ def article(root, now, done, univers='foot', hours=12):
     return None, None
 
 
+YOUTUBE = re.compile(r'https://www\.youtube\.com/watch\?v=[A-Za-z0-9_-]{11}')
+
+
+def youtube_jt(root, now, hours=6):
+    """Les JT déjà publics sur YouTube (studio/diffusions.json), les plus récents d'abord."""
+    out = []
+    for row in read(Path(root) / 'studio/diffusions.json', []):
+        video = (row.get('plateformes') or {}).get('youtube') or {}
+        date = when(row.get('date_publication'))
+        if (video.get('status') == 'published' and YOUTUBE.fullmatch(str(video.get('url', ''))) and IDENT.fullmatch(str(row.get('id', '')))
+                and date and dt.timedelta(0) <= now - date <= dt.timedelta(hours=hours)):
+            out.append({**row, 'youtube': video['url']})
+    return sorted(out, key=lambda r: r['date_publication'], reverse=True)
+
+
 def instagram_card(univers, row, source):
     from tools.cartes_insta import make_card, push_card
     with tempfile.TemporaryDirectory(prefix='carte-') as folder:
@@ -213,6 +228,25 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
     def mark(key, status, **extra):
         done[key] = {'status': status, 'at': now.isoformat(timespec='seconds'), **extra}
         state.save()
+
+    for row in youtube_jt(root, now)[:2]:
+        key = 'jt/facebook/' + row['id']
+        if key in done:
+            continue
+        mark(key, 'envoi')
+        univers = row['id'].split('-', 1)[0]
+        conf = UNIVERS.get(univers, UNIVERS['foot'])
+        message = (f'🎬 {clean(row.get("titre", "Le JT de La Pastille"), 150)}\n\n'
+                   f'Le JT en vidéo : l’essentiel de l’actu en quelques minutes. Émission générée par IA, infos sourcées.\n'
+                   f'👉 Toutes les brèves sur {conf["site"]}\n\n{conf["tags"]} #lapastille')
+        try:
+            result = graph.call('POST', meta['page_id'] + '/feed', {'message': message, 'link': row['youtube'],
+                                                                    'access_token': meta['page_token']}).get('id')
+            mark(key, 'publie', post=str(result or ''))
+            print(f'::notice::facebook : JT YouTube partagé ({row["id"]})')
+        except DeliveryError as error:
+            mark(key, 'echec')
+            errors.append(f'facebook / JT {row["id"]} : {error}')
 
     for row in reels(root, now):
         if sent >= limit:
