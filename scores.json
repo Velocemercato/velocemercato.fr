@@ -37,18 +37,6 @@
    ]
   },
   {
-   "id": 560612,
-   "date": "2026-10-25T14:00:00Z",
-   "comp": "Premier League",
-   "dom": "Liverpool",
-   "ext": "Brighton Hove",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
-   ]
-  },
-  {
    "id": 560615,
    "date": "2026-10-25T14:00:00Z",
    "comp": "Premier League",
@@ -58,6 +46,18 @@
    "score": [
     0,
     3
+   ]
+  },
+  {
+   "id": 560612,
+   "date": "2026-10-25T14:00:00Z",
+   "comp": "Premier League",
+   "dom": "Liverpool",
+   "ext": "Brighton Hove",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    0
    ]
   },
   {
@@ -133,18 +133,6 @@
    ]
   },
   {
-   "id": 559649,
-   "date": "2026-10-25T16:15:00Z",
-   "comp": "Ligue 1",
-   "dom": "Marseille",
-   "ext": "Le Havre",
-   "statut": "FINISHED",
-   "score": [
-    4,
-    3
-   ]
-  },
-  {
    "id": 559651,
    "date": "2026-10-25T16:15:00Z",
    "comp": "Ligue 1",
@@ -169,15 +157,15 @@
    ]
   },
   {
-   "id": 559656,
+   "id": 559649,
    "date": "2026-10-25T16:15:00Z",
    "comp": "Ligue 1",
-   "dom": "Auxerre",
-   "ext": "Le Mans",
+   "dom": "Marseille",
+   "ext": "Le Havre",
    "statut": "FINISHED",
    "score": [
-    1,
-    1
+    4,
+    3
    ]
   },
   {
@@ -190,6 +178,18 @@
    "score": [
     0,
     0
+   ]
+  },
+  {
+   "id": 559656,
+   "date": "2026-10-25T16:15:00Z",
+   "comp": "Ligue 1",
+   "dom": "Auxerre",
+   "ext": "Le Mans",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    1
    ]
   },
   {
@@ -289,5 +289,5 @@
    ]
   }
  ],
- "maj": "2026-10-26T20:49:05Z"
+ "maj": "2026-10-26T20:50:59Z"
 }
