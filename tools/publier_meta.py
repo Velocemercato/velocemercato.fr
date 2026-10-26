@@ -45,7 +45,43 @@ UNIVERS = {
 }
 
 # Page VM Invest / VM Univers : UNIQUEMENT les projets du groupe, sans Véloce Mercato, matin, midi et soir (demande de Romain).
-SLOTS_UNIVERS = {9: 'projet', 12: 'projet', 19: 'projet'}
+DEBUT_UNIVERS = dt.date(2026, 10, 26)
+HEURES_UNIVERS = {DEBUT_UNIVERS: (16, 19, 21, 23)}   # lancement ; ensuite tous les jours :
+HEURES_UNIVERS_DEFAUT = (8, 12, 16, 20)
+# Teasers vidéo (media/promos), servis par le site en MP4.
+TEASERS = [
+    ('VM Univers', 'vm-univers', 'https://vmunivers.fr/', 'Tous les projets du groupe VM, réunis au même endroit.'),
+    ('VM Studio', 'vm-studio', 'https://velocemercato.fr/web-studio.html', 'Sites internet et visuels pour les pros, avec des prix clairs.'),
+    ('VM Actus', 'vm-actus', 'https://velocemercato.fr/actus/', 'L’actu en brèves sourcées, toute la journée.'),
+    ('VM Gaming', 'vm-gaming', 'https://velocemercato.fr/vm-gaming/', 'Jeux vidéo, actu gaming et communauté de joueurs.'),
+    ('VM Studio — votre site internet', 'vm-bureaux', 'https://velocemercato.fr/web-studio.html', 'Ton site pro clé en main, simple et à prix clair.'),
+]
+
+
+def heures_univers(day):
+    return HEURES_UNIVERS.get(day, HEURES_UNIVERS_DEFAUT)
+
+
+def contenu_univers(local):
+    """Même calcul que la page studio/programme-vminvest.html : 1 publication sur 2 = teaser vidéo."""
+    heures = heures_univers(local.date())
+    rang = heures.index(local.hour) if local.hour in heures else 0
+    n = (local.date() - DEBUT_UNIVERS).days * 4 + rang
+    if n % 2 == 1:
+        name, ident, url, pitch = TEASERS[(n // 2 + 3) % len(TEASERS)]
+        return {'type': 'video', 'name': name, 'url': url, 'pitch': pitch,
+                'video': f'https://velocemercato.fr/media/promos/{ident}-vertical.mp4'}
+    name, icon, path, pitch = PROJETS[(n // 2) % len(PROJETS)]
+    return {'type': 'carte', 'name': name, 'icon': icon, 'url': 'https://velocemercato.fr' + path, 'pitch': pitch}
+
+
+def texte_univers(item):
+    tag = re.sub(r'[^A-Za-z]', '', item['name'].split('—')[0])
+    if item['type'] == 'video':
+        return (f'🎬 {item["name"]}\n\n{item["pitch"]}\n\n👉 {item["url"]}\nTous les projets du groupe : vmunivers.fr\n'
+                f'Vidéo réalisée avec l’aide de l’IA.\n\n#VMUnivers #VM #{tag}')
+    return (f'✨ Un projet du groupe VM : {item["name"]}\n\n{item["pitch"]}\n\n👉 {item["url"]}\n'
+            f'Tous les projets du groupe : vmunivers.fr\n\n#VMUnivers #VM #{tag}')
 PROJETS = [
     ('VM Emploi', 'emploi', '/emploi/', 'Les offres d’emploi près de chez toi, simples à lire.'),
     ('AlloLivre', 'allolivre', '/allolivre/', 'Livraison et entraide entre voisins.'),
@@ -67,9 +103,8 @@ PROJETS = [
 
 
 def projet_du_jour(now):
-    local = now.astimezone(PARIS)
-    rang = sorted(SLOTS_UNIVERS).index(local.hour) if local.hour in SLOTS_UNIVERS else 0
-    return PROJETS[(local.timetuple().tm_yday * len(SLOTS_UNIVERS) + rang) % len(PROJETS)]
+    item = contenu_univers(now.astimezone(PARIS))
+    return item['name'], item.get('icon', ''), item['url'], item['pitch']
 
 
 def article_url(univers, ident):
@@ -266,7 +301,8 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
     meta = state.data.get('tokens', {}).get(account)
     if not meta or not meta.get('page_token'):
         raise DeliveryError('Meta non connecté : lancer « Connecter Facebook et Instagram ».')
-    slots = SLOTS_UNIVERS if account == 'meta_univers' else SLOTS
+    local_now = now.astimezone(PARIS)
+    slots = {h: 'projet' for h in heures_univers(local_now.date())} if account == 'meta_univers' else SLOTS
     done = state.data.setdefault('meta' if account == 'meta' else account + '_accuses', {})
     errors, sent = [], 0
 
@@ -322,22 +358,28 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
     if not force and slots.get(local.hour) == 'projet':
         key = f'projet/{local:%Y-%m-%d}/{local:%H}'
         if key not in done:
-            name, icon, path, pitch = projet_du_jour(now)
-            url = 'https://velocemercato.fr' + path
-            mark(key, 'envoi', projet=name)
-            text = (f'✨ Un projet du groupe VM : {name}\n\n{pitch}\n\n👉 {url}\n'
-                    f'Tous les projets du groupe : vmunivers.fr\n\n#VMUnivers #VM #{re.sub(r"[^A-Za-z]", "", name)}')
+            item = contenu_univers(local)
+            name, text = item['name'], texte_univers(item)
+            mark(key, 'envoi', projet=name, type=item['type'])
             try:
-                graph.call('POST', meta['page_id'] + '/feed', {'message': text, 'link': url, 'access_token': meta['page_token']})
-                print(f'::notice::facebook : projet du jour {name}')
+                if item['type'] == 'video':
+                    graph.call('POST', meta['page_id'] + '/videos', {'file_url': item['video'], 'description': text,
+                                                                     'access_token': meta['page_token']})
+                else:
+                    graph.call('POST', meta['page_id'] + '/feed', {'message': text, 'link': item['url'], 'access_token': meta['page_token']})
+                print(f'::notice::facebook : {item["type"]} {name}')
                 if meta.get('ig_id'):
-                    image = (card or instagram_projet_card)(name, icon, pitch)
-                    instagram_image(graph, meta, image, text.replace('👉 ' + url, '👉 Lien en bio'), sleep=sleep)
-                    print(f'::notice::instagram : projet du jour {name}')
-                mark(key, 'publie', projet=name)
+                    insta_text = text.replace('👉 ' + item['url'], '👉 Lien en bio')
+                    if item['type'] == 'video':
+                        instagram_reel(graph, meta, {'verticale': item['video'], 'texte_vertical': insta_text}, sleep=sleep)
+                    else:
+                        instagram_image(graph, meta, (card or instagram_projet_card)(name, item['icon'], item['pitch']),
+                                        insta_text, sleep=sleep)
+                    print(f'::notice::instagram : {item["type"]} {name}')
+                mark(key, 'publie', projet=name, type=item['type'])
             except (DeliveryError, OSError, subprocess.CalledProcessError) as error:
                 mark(key, 'echec', projet=name)
-                errors.append(f'projet du jour {name} : {str(error)[:150]}')
+                errors.append(f'VM Invest {name} : {str(error)[:150]}')
     univers = force or slots.get(local.hour)
     if univers == 'projet':
         univers = None
