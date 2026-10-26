@@ -10,7 +10,7 @@ on:
       article:
         description: 'Publier un article tout de suite'
         type: choice
-        options: ['', 'foot', 'actus', 'gaming', 'lancement-vmunivers', 'annonce-vm-meta-gaming']
+        options: ['', 'foot', 'actus', 'gaming', 'lancement-vmunivers', 'annonce-vm-meta-gaming', 'ballon-dor-2026']
         default: ''
 
 permissions:
@@ -53,6 +53,7 @@ jobs:
           fi
       - name: Publier les pastilles et un article (si VM_AUTO_META=true)
         run: |
-          if [ "${ARTICLE:-}" = annonce-vm-meta-gaming ]; then python tools/publier_meta.py annonce --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+          if [ "${ARTICLE:-}" = ballon-dor-2026 ]; then python tools/publier_meta.py ballon-dor --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+          elif [ "${ARTICLE:-}" = annonce-vm-meta-gaming ]; then python tools/publier_meta.py annonce --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
           elif [ "${ARTICLE:-}" = lancement-vmunivers ]; then python tools/publier_meta.py lancement --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
           else python tools/publier_meta.py publier --state "$RUNNER_TEMP/vm-broadcast-state/state.enc" --article "${ARTICLE:-}"; fi

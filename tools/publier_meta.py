@@ -509,9 +509,111 @@ def annonce(state, graph, sleep=time.sleep, image=None):
     return errors
 
 
+def carte_ballon_dor(data, output):
+    """Carte Instagram du Ballon d'Or : texte seul sur fond or et bleu, aucune photo ni silhouette de joueur."""
+    from PIL import Image, ImageDraw, ImageFont
+    W, H = 1080, 1350
+    im = Image.new('RGB', (W, H), (11, 21, 51))
+    d = ImageDraw.Draw(im)
+    for y in range(H):
+        t = y / H
+        d.line((0, y, W, y), fill=(int(11 + 40 * t), int(21 + 10 * t), int(51 - 20 * t)))
+    bold = str(ROOT / 'studio/assets/Poppins-Bold.ttf')
+    med = str(ROOT / 'studio/assets/Poppins-Medium.ttf')
+    f = lambda path, n: ImageFont.truetype(path, n)
+    gold = (244, 207, 85)
+    d.rectangle((0, 0, W, 14), fill=gold)
+    d.text((70, 80), 'VÉLOCE MERCATO', font=f(bold, 40), fill=gold)
+    d.text((70, 150), "BALLON D'OR 2026", font=f(bold, 92), fill=(255, 255, 255))
+    d.text((70, 290), 'LE VAINQUEUR', font=f(bold, 40), fill=gold)
+    name = data['vainqueur']['nom']
+    size = 120
+    while d.textlength(name, font=f(bold, size)) > W - 140 and size > 60:
+        size -= 6
+    d.text((70, 345), name, font=f(bold, size), fill=gold, stroke_width=3, stroke_fill=(0, 0, 0))
+    y = 345 + int(size * 1.3)
+    detail = data['vainqueur'].get('detail') or ''
+    if detail:
+        d.text((70, y), detail[:60], font=f(med, 40), fill=(230, 232, 240))
+        y += 70
+    podium = data.get('podium') or []
+    if len(podium) >= 3:
+        y = max(y + 30, 700)
+        d.text((70, y), 'LE PODIUM', font=f(bold, 40), fill=gold)
+        y += 70
+        for medal, who in zip(('1er', '2e', '3e'), podium[:3]):
+            d.text((70, y), medal, font=f(bold, 52), fill=gold)
+            d.text((200, y), who[:28], font=f(bold, 52), fill=(255, 255, 255))
+            y += 90
+    d.line((70, H - 190, W - 70, H - 190), fill=gold, width=4)
+    d.text((70, H - 165), 'Tous les trophées de la soirée :', font=f(med, 36), fill=(225, 230, 245))
+    d.text((70, H - 110), 'velocemercato.fr', font=f(bold, 52), fill=gold)
+    im.save(output, 'JPEG', quality=90)
+    return output
+
+
+def ballon_dor(state, graph, root=ROOT, sleep=time.sleep):
+    """Publie le vainqueur et le podium du Ballon d'Or 2026 (Facebook + Instagram Véloce, Discord), une seule fois.
+    Rien ne part tant que ballon-dor-2026.json ne contient pas un vainqueur vérifié."""
+    data = read(Path(root) / 'ballon-dor-2026.json', {})
+    win = (data.get('vainqueur') or {}).get('nom')
+    if not win or not data.get('sources'):
+        print('::notice::Ballon d’Or : vainqueur pas encore confirmé, rien n’est publié.')
+        return []
+    url = 'https://velocemercato.fr/ballon-dor-2026.html'
+    podium = data.get('podium') or []
+    lines = ["🏆 BALLON D'OR 2026 : " + win.upper() + ' !']
+    if len(podium) >= 3:
+        lines.append('\n🥇 ' + podium[0] + '\n🥈 ' + podium[1] + '\n🥉 ' + podium[2])
+    autres = [c for c in data.get('categories', []) if c.get('laureat') and c.get('nom') != "Ballon d'Or"]
+    if autres:
+        lines.append('\nLes autres trophées :\n' + '\n'.join('• ' + c['nom'] + ' : ' + c['laureat'] for c in autres[:12]))
+    texte = '\n'.join(lines)
+    errors = []
+    meta = state.data.get('tokens', {}).get('meta') or {}
+    done = state.data.setdefault('meta', {})
+    slug = re.sub(r'[^a-z0-9]+', '-', win.lower())[:40]
+    targets = ['discord']
+    if meta.get('page_token'):
+        targets += ['facebook'] + (['instagram'] if meta.get('ig_id') else [])
+    for net in targets:
+        key = f'ballon-dor-2026/{slug}/{net}'
+        if key in done:
+            continue
+        done[key] = {'status': 'envoi'}
+        state.save()
+        try:
+            if net == 'facebook':
+                graph.call('POST', meta['page_id'] + '/feed', {'message': texte + '\n\nTous les lauréats 👉 ' + url
+                                                                + '\n\n#BallonDor #BallonDor2026 #VeloceMercato',
+                                                                'link': url, 'access_token': meta['page_token']})
+            elif net == 'instagram':
+                from tools.cartes_insta import push_card
+                with tempfile.TemporaryDirectory(prefix='bdo-') as folder:
+                    image = push_card(carte_ballon_dor(data, Path(folder) / f'ballon-dor-2026-{slug}.jpg'))
+                instagram_image(graph, meta, image, texte + '\n\nTous les lauréats : lien en bio · velocemercato.fr'
+                                + '\n\n#BallonDor #BallonDor2026 #football #VeloceMercato', sleep=sleep)
+            else:
+                from update_scores import WEBHOOK
+                if not WEBHOOK.startswith('https://discord.com/api/webhooks/'):
+                    raise DeliveryError('Discord : salon non configuré.')
+                body = json.dumps({'content': texte[:1800] + '\n<' + url + '>', 'username': 'Véloce Mercato · Flash'}).encode()
+                urllib.request.urlopen(urllib.request.Request(WEBHOOK, data=body, method='POST', headers={
+                    'Content-Type': 'application/json', 'User-Agent': 'VeloceMercato/1.0'}), timeout=20).read()
+            done[key] = {'status': 'publie'}
+            print(f'::notice::Ballon d’Or : {net} publié')
+        except (DeliveryError, OSError, subprocess.CalledProcessError) as error:
+            done[key] = {'status': 'echec'}
+            errors.append(f'ballon d’or {net} : {str(error)[:150]}')
+        state.save()
+    for line in errors:
+        print('::error::' + line)
+    return errors
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['connecter', 'publier', 'lancement', 'annonce'])
+    parser.add_argument('action', choices=['connecter', 'publier', 'lancement', 'annonce', 'ballon-dor'])
     parser.add_argument('--state', type=Path, required=True)
     parser.add_argument('--article', choices=['', 'foot', 'actus', 'gaming'], default='', help='Publier un article tout de suite')
     args = parser.parse_args()
@@ -541,6 +643,10 @@ def main():
         return
     if args.action == 'annonce':
         if annonce(state, Graph()):
+            sys.exit(1)
+        return
+    if args.action == 'ballon-dor':
+        if ballon_dor(state, Graph()):
             sys.exit(1)
         return
     if args.action == 'lancement':
