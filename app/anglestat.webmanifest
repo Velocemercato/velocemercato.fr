@@ -1,0 +1,29 @@
+{
+ "id": "/app/anglestat",
+ "name": "Angle Stat – laboratoire foot",
+ "short_name": "Angle Stat",
+ "start_url": "/angle-stat/?app=1",
+ "scope": "/angle-stat/",
+ "display": "standalone",
+ "background_color": "#151a24",
+ "theme_color": "#151a24",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/anglestat-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/anglestat-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/anglestat-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

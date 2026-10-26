@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Résultats en direct : Ligue 1 et Ligue des champions (hier, aujourd'hui, demain).
+"""Résultats en direct : Ligue 1, Ligue des champions et 4 grands championnats (hier, aujourd'hui, demain).
 
 Source officielle de données : football-data.org (offre gratuite, secret GitHub FOOTBALL_DATA_KEY).
 Sans clé, rien n'est publié : aucun score n'est jamais deviné ni écrit par l'IA.
@@ -27,7 +27,9 @@ def _salon_discord():
 
 
 WEBHOOK = os.getenv('DISCORD_WEBHOOK', '').strip() or _salon_discord()
-COMPETITIONS = {'FL1': 'Ligue 1', 'CL': 'Ligue des champions'}
+COMPETITIONS = {'FL1': 'Ligue 1', 'CL': 'Ligue des champions', 'PL': 'Premier League', 'PD': 'Liga',
+                'SA': 'Serie A', 'BL1': 'Bundesliga'}
+DISCORD_COMPS = {'Ligue 1', 'Ligue des champions'}  # le salon Discord reste centré sur la L1 et la C1
 PARIS = ZoneInfo('Europe/Paris')
 
 
@@ -39,7 +41,7 @@ def notify(old_rows, rows):
     msgs = []
     for m in rows:
         o = before.get(m['id'])
-        if not o:
+        if not o or m['comp'] not in DISCORD_COMPS:
             continue
         sc, so = m['score'], o['score']
         tag = f"**{m['dom']} {sc[0] if sc[0] is not None else 0}-{sc[1] if sc[1] is not None else 0} {m['ext']}** · {m['comp']}"

@@ -1,0 +1,29 @@
+{
+ "id": "/app/scores",
+ "name": "VM Scores – foot en direct",
+ "short_name": "VM Scores",
+ "start_url": "/scores/?app=1",
+ "scope": "/scores/",
+ "display": "standalone",
+ "background_color": "#111923",
+ "theme_color": "#111923",
+ "lang": "fr",
+ "icons": [
+  {
+   "src": "/app/scores-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/scores-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/scores-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

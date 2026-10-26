@@ -615,7 +615,7 @@ var $=function(i){return document.getElementById(i)};
 function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 var HM=new Intl.DateTimeFormat('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Paris'}),DAY=new Intl.DateTimeFormat('fr-FR',{weekday:'short',timeZone:'Europe/Paris'});
 function load(){fetch('/scores.json?v='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){
- var ms=(j&&j.matchs)||[];if(!ms.length)return;
+ var ms=((j&&j.matchs)||[]).filter(function(m){return m.comp==='Ligue 1'||m.comp==='Ligue des champions'});if(!ms.length)return;
  var live=ms.filter(function(m){return m.statut==='IN_PLAY'||m.statut==='PAUSED'});
  var order=live.concat(ms.filter(function(m){return live.indexOf(m)<0}).sort(function(a,b){var fa=a.statut==='FINISHED',fb=b.statut==='FINISHED';if(fa!==fb)return fa?1:-1;return String(a.date).localeCompare(String(b.date))}));
  $('liveRow').innerHTML=order.map(function(m){var on=m.statut==='IN_PLAY'||m.statut==='PAUSED',fin=m.statut==='FINISHED',d=new Date(m.date),sc=m.score||[];
