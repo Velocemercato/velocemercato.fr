@@ -1,15 +1,18 @@
 {
- "maj": "2026-10-27T00:10:00+01:00",
- "statut": "direct",
+ "maj": "2026-10-27T00:25:00+01:00",
+ "statut": "fini",
  "lieu": "London Palladium, Londres",
  "heure": "21 h 30 (début retardé de 30 min)",
  "tv": "L'Équipe (canal 21) et l'appli L'Équipe",
- "vainqueur": null,
+ "vainqueur": {
+  "nom": "Harry Kane",
+  "detail": "Bayern Munich · Angleterre"
+ },
  "podium": [],
  "categories": [
   {
    "nom": "Ballon d'Or",
-   "laureat": null
+   "laureat": "Harry Kane (Bayern Munich)"
   },
   {
    "nom": "Ballon d'Or féminin",
@@ -96,6 +99,19 @@
   {
    "nom": "Sports Illustrated (Putellas)",
    "url": "https://www.si.com/soccer/alexia-putellas-comeback-2026-ballon-dor-feminin"
+  },
+  {
+   "nom": "Goal (officiel)",
+   "url": "https://www.goal.com/en/news/officially-harry-kane-crowned-with-the-2026-ballon-d-or/blt6dc3bc787b32f269"
+  },
+  {
+   "nom": "Bundesliga.com",
+   "url": "https://www.bundesliga.com/en/bundesliga/news/harry-kane-wins-2026-ballon-dor-bayern-munich-england-world-cup-39730"
+  },
+  {
+   "nom": "Yahoo Sports",
+   "url": "https://sports.yahoo.com/articles/harry-kane-wins-2026-ballon-225428155.html"
   }
- ]
+ ],
+ "note": "Kane devance Lamine Yamal et Kylian Mbappé (ordre exact du podium pas encore communiqué)."
 }

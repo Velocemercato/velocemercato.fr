@@ -563,6 +563,8 @@ def ballon_dor(state, graph, root=ROOT, sleep=time.sleep):
     url = 'https://velocemercato.fr/ballon-dor-2026.html'
     podium = data.get('podium') or []
     lines = ["🏆 BALLON D'OR 2026 : " + win.upper() + ' !']
+    if data.get('note'):
+        lines.append(data['note'])
     if len(podium) >= 3:
         lines.append('\n🥇 ' + podium[0] + '\n🥈 ' + podium[1] + '\n🥉 ' + podium[2])
     autres = [c for c in data.get('categories', []) if c.get('laureat') and c.get('nom') != "Ballon d'Or"]
