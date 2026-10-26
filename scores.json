@@ -37,27 +37,15 @@
    ]
   },
   {
-   "id": 560619,
+   "id": 560615,
    "date": "2026-10-25T14:00:00Z",
    "comp": "Premier League",
-   "dom": "Hull City",
-   "ext": "Brentford",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    1
-   ]
-  },
-  {
-   "id": 560613,
-   "date": "2026-10-25T14:00:00Z",
-   "comp": "Premier League",
-   "dom": "Crystal Palace",
-   "ext": "Newcastle",
+   "dom": "Man United",
+   "ext": "Bournemouth",
    "statut": "FINISHED",
    "score": [
     0,
-    2
+    3
    ]
   },
   {
@@ -73,27 +61,27 @@
    ]
   },
   {
-   "id": 560615,
+   "id": 560613,
    "date": "2026-10-25T14:00:00Z",
    "comp": "Premier League",
-   "dom": "Man United",
-   "ext": "Bournemouth",
+   "dom": "Crystal Palace",
+   "ext": "Newcastle",
    "statut": "FINISHED",
    "score": [
     0,
-    3
+    2
    ]
   },
   {
-   "id": 558568,
+   "id": 560619,
    "date": "2026-10-25T14:00:00Z",
-   "comp": "Serie A",
-   "dom": "Genoa",
-   "ext": "Venezia FC",
+   "comp": "Premier League",
+   "dom": "Hull City",
+   "ext": "Brentford",
    "statut": "FINISHED",
    "score": [
     1,
-    0
+    1
    ]
   },
   {
@@ -106,6 +94,18 @@
    "score": [
     4,
     4
+   ]
+  },
+  {
+   "id": 558568,
+   "date": "2026-10-25T14:00:00Z",
+   "comp": "Serie A",
+   "dom": "Genoa",
+   "ext": "Venezia FC",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    0
    ]
   },
   {
@@ -133,23 +133,11 @@
    ]
   },
   {
-   "id": 559656,
+   "id": 559655,
    "date": "2026-10-25T16:15:00Z",
    "comp": "Ligue 1",
-   "dom": "Auxerre",
-   "ext": "Le Mans",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    1
-   ]
-  },
-  {
-   "id": 559653,
-   "date": "2026-10-25T16:15:00Z",
-   "comp": "Ligue 1",
-   "dom": "Angers SCO",
-   "ext": "Lorient",
+   "dom": "Toulouse",
+   "ext": "Troyes",
    "statut": "FINISHED",
    "score": [
     0,
@@ -181,15 +169,27 @@
    ]
   },
   {
-   "id": 559655,
+   "id": 559653,
    "date": "2026-10-25T16:15:00Z",
    "comp": "Ligue 1",
-   "dom": "Toulouse",
-   "ext": "Troyes",
+   "dom": "Angers SCO",
+   "ext": "Lorient",
    "statut": "FINISHED",
    "score": [
     0,
     0
+   ]
+  },
+  {
+   "id": 559656,
+   "date": "2026-10-25T16:15:00Z",
+   "comp": "Ligue 1",
+   "dom": "Auxerre",
+   "ext": "Le Mans",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    1
    ]
   },
   {
@@ -289,5 +289,5 @@
    ]
   }
  ],
- "maj": "2026-10-26T21:12:08Z"
+ "maj": "2026-10-26T21:14:04Z"
 }
