@@ -181,7 +181,9 @@ def main():
     emissions = json.loads(EMISSIONS.read_text(encoding='utf-8'))
     done = json.loads(LIST.read_text(encoding='utf-8')) if LIST.is_file() else []
     known = {e['id'] for e in done}
-    todo = [e for e in emissions if e.get('publie') in (True, 'True') and e.get('fichier') and e['id'] not in known][:a.limit]
+    # JT publiés sur le site, ou diffusés seulement sur YouTube (originaux fournis par --local depuis l'artefact du JT).
+    todo = [e for e in emissions if (e.get('publie') in (True, 'True') or (a.local and e.get('diffusion') == 'youtube'
+            and (Path(a.local) / str(e.get('fichier', ''))).is_file())) and e.get('fichier') and e['id'] not in known][:a.limit]
     if not todo:
         print('Aucun nouveau JT à préparer pour les réseaux.')
         return

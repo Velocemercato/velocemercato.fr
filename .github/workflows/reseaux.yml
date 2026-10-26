@@ -8,12 +8,18 @@ on:
     types: [completed]
     branches: [main]
   workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: 'Numéro du lancement La Pastille TV dont il faut reprendre les originaux (facultatif)'
+        required: false
+        default: ''
   push:
     branches: [main]
     paths: ['tools/reseaux_jt.py', '.github/workflows/reseaux.yml']
 
 permissions:
   contents: write
+  actions: read
 
 concurrency:
   group: reseaux
@@ -40,26 +46,39 @@ jobs:
           print(f"nouveaux={len(new)}")
           PY
 
+      - name: Récupérer les originaux du JT (diffusés seulement sur YouTube)
+        id: masters
+        if: github.event_name == 'workflow_run' || inputs.source_run_id != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_RUN_ID: ${{ github.event.workflow_run.id || inputs.source_run_id }}
+        run: |
+          count=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$SOURCE_RUN_ID/artifacts" --jq '[.artifacts[] | select(.name == "pastille-masters" and .expired == false)] | length')
+          if [ "$count" = 0 ]; then echo 'ready=0' >> "$GITHUB_OUTPUT"; exit 0; fi
+          gh run download "$SOURCE_RUN_ID" --repo "$GITHUB_REPOSITORY" --name pastille-masters --dir "$RUNNER_TEMP/masters"
+          ls "$RUNNER_TEMP/masters"/*.mp4 > /dev/null 2>&1 && echo 'ready=1' >> "$GITHUB_OUTPUT" || echo 'ready=0' >> "$GITHUB_OUTPUT"
+
       - name: Setup Python
-        if: steps.check.outputs.nouveaux != '0'
+        if: steps.check.outputs.nouveaux != '0' || steps.masters.outputs.ready == '1'
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
       - name: Installer FFmpeg et Pillow
-        if: steps.check.outputs.nouveaux != '0'
+        if: steps.check.outputs.nouveaux != '0' || steps.masters.outputs.ready == '1'
         run: |
           bash tools/installer_ffmpeg.sh
           python -m pip install --quiet pillow
 
       - name: Préparer les vidéos verticales et les textes
-        if: steps.check.outputs.nouveaux != '0'
+        if: steps.check.outputs.nouveaux != '0' || steps.masters.outputs.ready == '1'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python tools/reseaux_jt.py --limit 6
+        run: |
+          if [ "${{ steps.masters.outputs.ready }}" = 1 ]; then python tools/reseaux_jt.py --limit 6 --local "$RUNNER_TEMP/masters"; else python tools/reseaux_jt.py --limit 6; fi
 
       - name: Enregistrer la liste
-        if: steps.check.outputs.nouveaux != '0'
+        if: steps.check.outputs.nouveaux != '0' || steps.masters.outputs.ready == '1'
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
