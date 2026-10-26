@@ -468,7 +468,7 @@ def lancement(state, graph, sleep=time.sleep):
     return errors
 
 
-ANNONCE_META = ('🎯 NOUVEAU : VM META GAMING\n\nHEINEGUEZ & PABLO, PRÉPAREZ VOS ARMES.\n\n'
+ANNONCE_META = ('🎯 NOUVEAU : VM META GAMING\n\nHEINEGUEZ & PABLO, LES MERCENAIRES : L’ARMURERIE EST OUVERTE.\n\n'
     'Les meilleures classes et tactiques du moment, sourcées et datées : Warzone (BR, Résurgence), Call of Duty BO7 & MW4, '
     'Battlefield 6, REDSEC et EA SPORTS FC 27. Favoris, codes à copier, fiches à partager. Gratuit.\n\n'
     '👉 {lien}\n\n#Warzone #CallofDuty #MW4 #BO7 #Battlefield6 #REDSEC #FC27 #meta #VMGaming')
