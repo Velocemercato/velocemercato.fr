@@ -131,7 +131,7 @@ def connect(state, graph, app_id, app_secret, user_token):
     def norm(name):
         return str(name).lower().replace('é', 'e').replace(' ', '')
     targets = {'meta': next((p for p in pages if 'veloce' in norm(p.get('name'))), None),
-               'meta_univers': next((p for p in pages if 'vmunivers' in norm(p.get('name')) or 'univers' in norm(p.get('name'))), None)}
+               'meta_univers': next((p for p in pages if any(k in norm(p.get('name')) for k in ('vminvest', 'univers'))), None)}
     if not any(targets.values()):
         targets['meta'] = pages[0]
     page = targets['meta'] or targets['meta_univers']
