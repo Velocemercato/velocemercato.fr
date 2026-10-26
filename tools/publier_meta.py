@@ -44,6 +44,33 @@ UNIVERS = {
                'tags': '#gaming #jeuxvideo #gamer #vmgaming'},
 }
 
+# Page VM Univers : le groupe d'abord (un projet VM par jour), puis actu et gaming ; le foot reste sur Véloce Mercato.
+SLOTS_UNIVERS = {10: 'projet', 15: 'actus', 19: 'gaming'}
+PROJETS = [
+    ('VM Emploi', 'emploi', '/emploi/', 'Les offres d’emploi près de chez toi, simples à lire.'),
+    ('AlloLivre', 'allolivre', '/allolivre/', 'Livraison et entraide entre voisins.'),
+    ('VM Studio', 'studio', '/web-studio.html', 'Sites internet et visuels pour les pros, avec des prix clairs.'),
+    ('VM Actus', 'actus', '/actus/', 'L’actu générale en brèves sourcées, toute la journée.'),
+    ('VM Gaming', 'gaming', '/vm-gaming/', 'Jeux vidéo, actu gaming et communauté de joueurs.'),
+    ('La Pastille TV', 'tv', '/studio.html#tv', 'Les JT foot, actu et gaming en vidéo, générés par IA.'),
+    ('VM CV', 'cv', '/cv/', 'Fais ton CV pro gratuitement, en quelques minutes.'),
+    ('VM Shop', 'annonces', '/shop/', 'Les petites annonces de la communauté VM.'),
+    ('VM Recettes', 'recettes', '/recettes/', 'Une idée de recette chaque jour.'),
+    ('VM Météo & Découverte', 'meteo', '/meteo/', 'La météo et des idées de sorties.'),
+    ('VM Sport & randonnée', 'sport', '/sport/', 'Sport, balades et randonnées à faire.'),
+    ('VM Pro Local', 'pro', '/pro/', 'Les pros et artisans de chez nous.'),
+    ('VM Produits locaux', 'produits', '/produits-locaux/', 'Acheter local, près de chez toi.'),
+    ('VM Belfort', 'belfort', '/belfort/', 'L’info et les bons plans du coin.'),
+    ('Véloce Arena', 'arena', '/gaming.html', 'Les tournois EA FC gratuits de la communauté.'),
+    ('Pépite FC', 'pepite', '/pepite/', 'Repère et fais connaître les jeunes talents du foot.'),
+    ('VM Radio', 'radio', '/radio.html', 'La radio de l’univers VM.'),
+    ('Véloce Mercato', 'foot', '/', 'L’actu foot et le mercato, sourcés.'),
+]
+
+
+def projet_du_jour(now):
+    return PROJETS[now.astimezone(PARIS).timetuple().tm_yday % len(PROJETS)]
+
 
 def article_url(univers, ident):
     if univers == 'foot':
@@ -99,24 +126,33 @@ def connect(state, graph, app_id, app_secret, user_token):
     pages = [p for p in pages if p.get('access_token')]
     if not pages:
         raise DeliveryError('Meta : aucune Page autorisée. Cocher la Page Véloce Mercato lors de « Generate Access Token ».')
-    page = next((p for p in pages if 'veloce' in p.get('name', '').lower().replace('é', 'e')), pages[0])
-    insta = page.get('instagram_business_account') or {}
-    try:
-        info = graph.call('GET', 'debug_token', {'input_token': page['access_token'], 'access_token': token}).get('data', {})
-        expires = int(info.get('expires_at') or 0)
-        print('::notice::Accès de la Page : ' + ('PERMANENT ✅' if expires == 0 else
-              'temporaire, expire le ' + dt.datetime.fromtimestamp(expires, UTC).astimezone(PARIS).strftime('%d/%m %H:%M')
-              + ' (prolonger le jeton dans l’outil Meta puis relancer)'), flush=True)
-    except DeliveryError:
-        pass
-    state.data.setdefault('tokens', {})['meta'] = {'page_id': str(page['id']), 'page_name': page.get('name', ''),
-                                                   'page_token': page['access_token'], 'ig_id': str(insta.get('id', '')),
-                                                   'ig_username': insta.get('username', '')}
-    state.save()
-    print(f'::notice::Meta connecté : Page « {page.get("name", "?")} »'
-          + (f' + Instagram @{insta["username"]}' if insta.get('username') else ' (aucun Instagram pro relié à cette Page)')
-          + '. Rien n’est publié tant que VM_AUTO_META n’est pas à true.', flush=True)
-    print(f'::notice::Adresse publique de la Page : {page.get("link") or "https://www.facebook.com/" + str(page.get("username") or page["id"])}', flush=True)
+    def norm(name):
+        return str(name).lower().replace('é', 'e').replace(' ', '')
+    targets = {'meta': next((p for p in pages if 'veloce' in norm(p.get('name'))), None),
+               'meta_univers': next((p for p in pages if 'vmunivers' in norm(p.get('name')) or 'univers' in norm(p.get('name'))), None)}
+    if not any(targets.values()):
+        targets['meta'] = pages[0]
+    page = targets['meta'] or targets['meta_univers']
+    for account, item in targets.items():
+        if not item:
+            continue
+        insta = item.get('instagram_business_account') or {}
+        try:
+            info = graph.call('GET', 'debug_token', {'input_token': item['access_token'], 'access_token': token}).get('data', {})
+            expires = int(info.get('expires_at') or 0)
+            print(f'::notice::Accès de la Page « {item.get("name", "?")} » : ' + ('PERMANENT ✅' if expires == 0 else
+                  'temporaire, expire le ' + dt.datetime.fromtimestamp(expires, UTC).astimezone(PARIS).strftime('%d/%m %H:%M')
+                  + ' (prolonger le jeton dans l’outil Meta puis relancer)'), flush=True)
+        except DeliveryError:
+            pass
+        state.data.setdefault('tokens', {})[account] = {'page_id': str(item['id']), 'page_name': item.get('name', ''),
+                                                        'page_token': item['access_token'], 'ig_id': str(insta.get('id', '')),
+                                                        'ig_username': insta.get('username', '')}
+        state.save()
+        print(f'::notice::Meta connecté : Page « {item.get("name", "?")} »'
+              + (f' + Instagram @{insta["username"]}' if insta.get('username') else ' (aucun Instagram pro relié à cette Page)')
+              + '. Rien n’est publié tant que VM_AUTO_META n’est pas à true.', flush=True)
+        print(f'::notice::Adresse publique : {item.get("link") or "https://www.facebook.com/" + str(item.get("username") or item["id"])}', flush=True)
     return page
 
 
@@ -183,6 +219,13 @@ def instagram_card(univers, row, source):
         return push_card(path)
 
 
+def instagram_projet_card(name, icon, pitch):
+    from tools.cartes_insta import make_projet_card, push_card
+    with tempfile.TemporaryDirectory(prefix='carte-') as folder:
+        path = make_projet_card(name, icon, pitch, Path(folder) / f'projet-{icon}-{dt.date.today():%Y%m%d}.jpg')
+        return push_card(path)
+
+
 def instagram_image(graph, meta, image_url, caption, sleep=time.sleep):
     created = graph.call('POST', meta['ig_id'] + '/media', {'image_url': image_url, 'caption': caption[:2100],
                                                            'access_token': meta['page_token']})
@@ -218,19 +261,21 @@ def instagram_reel(graph, meta, row, wait=480, sleep=time.sleep):
     raise DeliveryError('Instagram : traitement trop long, Reel non publié (sera ignoré pour éviter un doublon).')
 
 
-def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=None, card=None):
+def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=None, card=None, account='meta'):
     now = now or dt.datetime.now(UTC)
-    meta = state.data.get('tokens', {}).get('meta')
+    meta = state.data.get('tokens', {}).get(account)
     if not meta or not meta.get('page_token'):
         raise DeliveryError('Meta non connecté : lancer « Connecter Facebook et Instagram ».')
-    done = state.data.setdefault('meta', {})
+    slots = SLOTS_UNIVERS if account == 'meta_univers' else SLOTS
+    done = state.data.setdefault('meta' if account == 'meta' else account + '_accuses', {})
     errors, sent = [], 0
 
     def mark(key, status, **extra):
         done[key] = {'status': status, 'at': now.isoformat(timespec='seconds'), **extra}
         state.save()
 
-    for row in youtube_jt(root, now)[:2]:
+    skip_foot = account == 'meta_univers'  # le foot reste sur la Page Véloce Mercato
+    for row in [r for r in youtube_jt(root, now) if not (skip_foot and r['id'].startswith('foot-'))][:2]:
         key = 'jt/facebook/' + row['id']
         if key in done:
             continue
@@ -249,7 +294,7 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
             mark(key, 'echec')
             errors.append(f'facebook / JT {row["id"]} : {error}')
 
-    for row in reels(root, now):
+    for row in [r for r in reels(root, now) if not (skip_foot and r['id'].startswith('foot-'))]:
         if sent >= limit:
             break
         attempted = False
@@ -274,7 +319,28 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
         sent += attempted
 
     local = now.astimezone(PARIS)
-    univers = force or SLOTS.get(local.hour)
+    if not force and slots.get(local.hour) == 'projet':
+        key = f'projet/{local:%Y-%m-%d}'
+        if key not in done:
+            name, icon, path, pitch = projet_du_jour(now)
+            url = 'https://velocemercato.fr' + path
+            mark(key, 'envoi', projet=name)
+            text = (f'✨ Le projet VM du jour : {name}\n\n{pitch}\n\n👉 {url}\n'
+                    f'Tous les projets du groupe : vmunivers.fr\n\n#VMUnivers #VM #{re.sub(r"[^A-Za-z]", "", name)}')
+            try:
+                graph.call('POST', meta['page_id'] + '/feed', {'message': text, 'link': url, 'access_token': meta['page_token']})
+                print(f'::notice::facebook : projet du jour {name}')
+                if meta.get('ig_id'):
+                    image = (card or instagram_projet_card)(name, icon, pitch)
+                    instagram_image(graph, meta, image, text.replace('👉 ' + url, '👉 Lien en bio'), sleep=sleep)
+                    print(f'::notice::instagram : projet du jour {name}')
+                mark(key, 'publie', projet=name)
+            except (DeliveryError, OSError, subprocess.CalledProcessError) as error:
+                mark(key, 'echec', projet=name)
+                errors.append(f'projet du jour {name} : {str(error)[:150]}')
+    univers = force or slots.get(local.hour)
+    if univers == 'projet':
+        univers = None
     slot_key = f'creneau/{local:%Y-%m-%d}/{local:%H}' if not force else f'manuel/{local:%Y-%m-%d-%H%M}/{force}'
     if univers and slot_key not in done:
         row, source = article(root, now, done, univers)
@@ -347,7 +413,11 @@ def main():
     if os.getenv('VM_AUTO_META') != 'true':
         print('Facebook/Instagram : publication automatique non activée (VM_AUTO_META). Rien n’est publié.')
         return
-    if publish(state, Graph(), force=args.article or None):
+    failed = False
+    for account in ('meta', 'meta_univers'):
+        if state.data.get('tokens', {}).get(account):
+            failed |= bool(publish(state, Graph(), force=args.article or None if account == 'meta' else None, account=account))
+    if failed:
         sys.exit(1)
 
 

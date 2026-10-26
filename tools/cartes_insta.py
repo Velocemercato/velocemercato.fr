@@ -98,3 +98,30 @@ def push_card(path):
         git('push', '--quiet', 'origin', f'HEAD:{BRANCH}', cwd=work)
         sha = git('rev-parse', 'HEAD', cwd=work)
     return f'https://raw.githubusercontent.com/{REPO}/{sha}/{Path(path).name}'
+
+
+def make_projet_card(name, icon, pitch, output, root=ROOT):
+    """Carte « projet VM du jour » : l'icône de l'appli VM en grand, le nom et une phrase."""
+    card = Image.new('RGB', (W, H), (8, 12, 40))
+    path = Path(root) / 'app' / f'{icon}-512.png'
+    if path.is_file():
+        art = Image.open(path).convert('RGB')
+        glow = art.resize((W, H), Image.LANCZOS).filter(ImageFilter.GaussianBlur(60))
+        card = Image.blend(card, glow, 0.55)
+        card.paste(art.resize((620, 620), Image.LANCZOS), ((W - 620) // 2, 150))
+    d = ImageDraw.Draw(card)
+    d.text((60, 60), 'LE PROJET VM DU JOUR', font=font(FONT, 46), fill=(244, 207, 85))
+    title = font(FONT, 78 if len(name) < 18 else 60)
+    d.text(((W - title.getbbox(name)[2]) // 2, 820), name, font=title, fill=(255, 255, 255), stroke_width=3, stroke_fill=(0, 0, 0))
+    y = 940
+    for line in textwrap.wrap(pitch, 30)[:3]:
+        f = font(FONT_MED, 46)
+        d.text(((W - f.getbbox(line)[2]) // 2, y), line, font=f, fill=(225, 230, 245))
+        y += 62
+    d.line((60, H - 150, W - 60, H - 150), fill=(255, 40, 60), width=4)
+    f = font(FONT, 52)
+    d.text(((W - f.getbbox('vmunivers.fr')[2]) // 2, H - 125), 'vmunivers.fr', font=f, fill=(244, 207, 85))
+    output = Path(output)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    card.save(output, 'JPEG', quality=88, optimize=True)
+    return output
