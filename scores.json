@@ -37,6 +37,30 @@
    ]
   },
   {
+   "id": 560619,
+   "date": "2026-10-25T14:00:00Z",
+   "comp": "Premier League",
+   "dom": "Hull City",
+   "ext": "Brentford",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    1
+   ]
+  },
+  {
+   "id": 560613,
+   "date": "2026-10-25T14:00:00Z",
+   "comp": "Premier League",
+   "dom": "Crystal Palace",
+   "ext": "Newcastle",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    2
+   ]
+  },
+  {
    "id": 560612,
    "date": "2026-10-25T14:00:00Z",
    "comp": "Premier League",
@@ -61,27 +85,15 @@
    ]
   },
   {
-   "id": 560613,
+   "id": 558568,
    "date": "2026-10-25T14:00:00Z",
-   "comp": "Premier League",
-   "dom": "Crystal Palace",
-   "ext": "Newcastle",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    2
-   ]
-  },
-  {
-   "id": 560619,
-   "date": "2026-10-25T14:00:00Z",
-   "comp": "Premier League",
-   "dom": "Hull City",
-   "ext": "Brentford",
+   "comp": "Serie A",
+   "dom": "Genoa",
+   "ext": "Venezia FC",
    "statut": "FINISHED",
    "score": [
     1,
-    1
+    0
    ]
   },
   {
@@ -94,18 +106,6 @@
    "score": [
     4,
     4
-   ]
-  },
-  {
-   "id": 558568,
-   "date": "2026-10-25T14:00:00Z",
-   "comp": "Serie A",
-   "dom": "Genoa",
-   "ext": "Venezia FC",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    0
    ]
   },
   {
@@ -133,42 +133,6 @@
    ]
   },
   {
-   "id": 559649,
-   "date": "2026-10-25T16:15:00Z",
-   "comp": "Ligue 1",
-   "dom": "Marseille",
-   "ext": "Le Havre",
-   "statut": "FINISHED",
-   "score": [
-    4,
-    3
-   ]
-  },
-  {
-   "id": 559651,
-   "date": "2026-10-25T16:15:00Z",
-   "comp": "Ligue 1",
-   "dom": "Stade Rennais",
-   "ext": "Strasbourg",
-   "statut": "FINISHED",
-   "score": [
-    3,
-    0
-   ]
-  },
-  {
-   "id": 559655,
-   "date": "2026-10-25T16:15:00Z",
-   "comp": "Ligue 1",
-   "dom": "Toulouse",
-   "ext": "Troyes",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    0
-   ]
-  },
-  {
    "id": 559656,
    "date": "2026-10-25T16:15:00Z",
    "comp": "Ligue 1",
@@ -189,6 +153,42 @@
    "statut": "FINISHED",
    "score": [
     0,
+    0
+   ]
+  },
+  {
+   "id": 559655,
+   "date": "2026-10-25T16:15:00Z",
+   "comp": "Ligue 1",
+   "dom": "Toulouse",
+   "ext": "Troyes",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": 559649,
+   "date": "2026-10-25T16:15:00Z",
+   "comp": "Ligue 1",
+   "dom": "Marseille",
+   "ext": "Le Havre",
+   "statut": "FINISHED",
+   "score": [
+    4,
+    3
+   ]
+  },
+  {
+   "id": 559651,
+   "date": "2026-10-25T16:15:00Z",
+   "comp": "Ligue 1",
+   "dom": "Stade Rennais",
+   "ext": "Strasbourg",
+   "statut": "FINISHED",
+   "score": [
+    3,
     0
    ]
   },
@@ -289,5 +289,5 @@
    ]
   }
  ],
- "maj": "2026-10-26T20:45:17Z"
+ "maj": "2026-10-26T20:47:10Z"
 }
