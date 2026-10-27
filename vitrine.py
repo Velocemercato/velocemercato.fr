@@ -44,6 +44,13 @@ CSS = '''<style id="vmvitrine-css">
 .vmv-free::before{background:linear-gradient(180deg,rgba(4,6,15,.35) 0%,rgba(4,6,15,.75) 40%,rgba(4,6,15,.97) 100%)}
 @media(max-width:680px){.vmv-duo{grid-template-columns:1fr}.vmv-big{min-height:520px}.vmv-in{padding:16px}}
 @media(prefers-reduced-motion:reduce){.vmv-btn{transform:none!important}}
+.vmv-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vmv-pill{display:flex;align-items:center;gap:12px;padding:16px 18px;border-radius:18px;border:3px solid #000;box-shadow:5px 5px 0 #000;color:#0b1533!important;font:900 17px/1.2 system-ui,sans-serif}
+.vmv-pill small{display:block;font:600 13px/1.3 system-ui,sans-serif;opacity:.85;margin-top:3px}
+.vmv-pill span.e{font-size:30px}
+.vmv-pub{background:linear-gradient(135deg,#f4cf55,#ffb703)}.vmv-don{background:linear-gradient(135deg,#ffe3ec,#ffc2d4)}
+.vmv-pill:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 #000}
+@media(max-width:680px){.vmv-two{grid-template-columns:1fr}}
 </style>'''
 
 
@@ -74,6 +81,9 @@ def block(img):
 <h3 id="vmv-t3">Les outils <b>gratuits</b> VM</h3>
 <p>Emploi, CV, papiers, recettes, météo : utiles tous les jours, sans inscription.</p>
 <span class="vmv-btn">Les découvrir</span></span></a>
+<div class="vmv-two">
+<a class="vmv-pill vmv-pub" href="{SITE}/pub/"><span class="e">📣</span><span>Votre pub chez VM<small>Commerces et artisans · encart discret · dès 9,90 €/mois</small></span></a>
+<a class="vmv-pill vmv-don" href="{SITE}/soutenir.html"><span class="e">💛</span><span>Soutenir VM<small>Un petit don aide à garder tout gratuit</small></span></a>
 </div>
 </section><!--/vmvitrine-->'''
 
