@@ -6,6 +6,20 @@ import re
 import sys
 from pathlib import Path
 
+
+IMG_LINE = re.compile(r'^!\[([^\]]*)\]\((/img/[\w/.-]+\.(?:webp|jpg|png))\)$')
+
+
+def para_html(p, i, e):
+    """Paragraphe d'article : intertitre (## ), photo (![légende](/img/...)) ou texte."""
+    m = IMG_LINE.match(p)
+    if m:
+        return (f'<figure><img src="{e(m.group(2))}" alt="{e(m.group(1))}" loading="lazy">'
+                f'<figcaption>{e(m.group(1))}</figcaption></figure>')
+    if p.startswith('## '):
+        return f'<h2>{e(p[3:])}</h2>'
+    return f'<p class="chapo">{e(p)}</p>' if i == 0 else f'<p>{e(p)}</p>'
+
 ROOT = Path(__file__).resolve().parents[2]
 SITE = 'https://velocemercato.fr'
 
@@ -14,7 +28,7 @@ def main(ident, out):
     a = next(r for r in json.loads((ROOT / 'articles.json').read_text(encoding='utf-8')) if r.get('id') == ident)
     e = lambda s: html.escape(str(s or ''), quote=True)  # noqa: E731
     paras = [p.strip() for p in re.split(r'\n\s*\n', a['texte']) if p.strip()]
-    body = '\n'.join(f'<h2>{e(p[3:])}</h2>' if p.startswith('## ') else f'<p class="chapo">{e(p)}</p>' if i == 0 else f'<p>{e(p)}</p>'
+    body = '\n'.join(para_html(p, i, e)
                      for i, p in enumerate(paras))
     ess = ''.join(f'<li>{e(x)}</li>' for x in a.get('essentiel', []))
     src = ''.join(f'<li><a href="{e(s["url"])}" target="_blank" rel="noopener nofollow">{e(s["nom"])}</a></li>' for s in a.get('sources', []))
@@ -37,7 +51,7 @@ def main(ident, out):
 .top a{{color:var(--gold);text-decoration:none}}
 .eye{{display:inline-block;margin-top:22px;background:var(--gold);color:#111;font:900 12px/1 system-ui;letter-spacing:.08em;padding:7px 11px;border-radius:999px;text-transform:uppercase}}
 h1{{font:italic 900 clamp(32px,7vw,52px)/1.02 Impact,"Arial Black",sans-serif;text-transform:uppercase;margin:12px 0 10px;text-wrap:balance}}
-.vid{{max-width:420px;margin:18px auto}}video{{width:100%;aspect-ratio:9/16;border-radius:16px;background:#000;display:block}}
+.vid{{max-width:420px;margin:18px auto}}figure{{margin:18px 0}}figure img{{display:block;width:100%;height:auto;border-radius:14px;border:2px solid #000}}figcaption{{font-size:.8rem;opacity:.75;margin-top:6px}}.hero-ph{{margin:12px 0 4px}}video{{width:100%;aspect-ratio:9/16;border-radius:16px;background:#000;display:block}}
 .vid small{{display:block;text-align:center;color:var(--muted);font-size:13px;margin-top:6px}}
 .ess{{border:2px solid var(--gold);border-radius:16px;padding:14px 18px;background:var(--card)}}.ess b{{color:var(--gold)}}.ess ul{{margin:8px 0 0;padding-left:20px}}
 h2{{font:italic 900 26px/1.1 Impact,"Arial Black",sans-serif;text-transform:uppercase;color:var(--gold);margin:30px 0 6px}}
@@ -52,12 +66,13 @@ button:focus-visible,a:focus-visible{{outline:3px solid #fff;outline-offset:2px}
 <div class="top"><a href="{SITE}/">Véloce Mercato</a><span>Grand reportage</span></div>
 <span class="eye">Baby-foot · portrait</span>
 <h1>{e(a['titre'])}</h1>
+{f'<figure class="hero-ph"><img src="{e(a["image"]["src"])}" alt="{e(a["image"].get("alt",""))}"><figcaption>{e(a["image"].get("credit",""))}</figcaption></figure>' if str((a.get('image') or {}).get('src','')).startswith('/img/reportages/') else ''}
 <div class="vid"><video src="{e(vm.get('src'))}" poster="{e(vm.get('poster'))}" controls playsinline preload="metadata"></video><small>🎬 Le reportage en vidéo · voix de synthèse · reconstitution illustrée</small></div>
 <div class="ess"><b>L’essentiel en 30 secondes</b><ul>{ess}</ul></div>
 {body}
 {f'<div class="nm"><p class="src">🎬 Le reportage de Nice-Matin, diffusé sur sa chaîne Dailymotion :</p><iframe src="https://www.dailymotion.com/embed/video/{e(dm)}" title="Reportage Nice-Matin" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>' if re.fullmatch(r'x[a-zA-Z0-9]{4,12}', dm) else ''}
 <p class="src"><b>Sources :</b></p><ul class="src">{src}</ul>
-<p class="src">Article rédigé avec l’aide d’une IA à partir des sources citées, sans entretien. Aucune photo d’Alexia n’est utilisée sans son accord.</p>
+<p class="src">Article rédigé avec l’aide d’une IA à partir des sources citées, sans entretien. Photos ITSF Gold WT Finals 2026 transmises par les proches d’Alexia Depagne ; elles seront retirées sur simple demande.</p>
 <div class="fin">Un reportage <a href="{SITE}/">Véloce Mercato</a>. Vous aussi, faites connaître votre club ou votre activité : <a href="{SITE}/web-studio.html">VM Studio</a> crée votre site à prix fixe, à distance.</div>
 </div>
 <button class="share" type="button" id="share">📤 Partager</button>

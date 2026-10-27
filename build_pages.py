@@ -13,6 +13,20 @@ from pathlib import Path
 
 import vmbar
 
+
+IMG_LINE = re.compile(r'^!\[([^\]]*)\]\((/img/[\w/.-]+\.(?:webp|jpg|png))\)$')
+
+
+def para_html(p, i, e):
+    """Paragraphe d'article : intertitre (## ), photo (![légende](/img/...)) ou texte."""
+    m = IMG_LINE.match(p)
+    if m:
+        return (f'<figure><img src="{e(m.group(2))}" alt="{e(m.group(1))}" loading="lazy">'
+                f'<figcaption>{e(m.group(1))}</figcaption></figure>')
+    if p.startswith('## '):
+        return f'<h2>{e(p[3:])}</h2>'
+    return f'<p class="chapo">{e(p)}</p>' if i == 0 else f'<p>{e(p)}</p>'
+
 SITE = 'https://velocemercato.fr'
 OUT = Path('a')
 ARTICLES = json.loads(Path('articles.json').read_text(encoding='utf-8'))
@@ -124,7 +138,7 @@ def main():
         label = LABELS.get(str(a.get('championnat', '')).upper()) or ('Mercato' if a.get('categorie') == 'MERCATO' else 'Football')
         paras = [p.strip() for p in re.split(r'\n\s*\n', str(a['texte'])) if p.strip()]
         # « ## Titre » = intertitre (grands formats) ; le reste reste du texte simple échappé.
-        body = '\n'.join((f'<h2>{e(p[3:])}</h2>' if p.startswith('## ') else f'<p class="chapo">{e(p)}</p>' if i == 0 else f'<p>{e(p)}</p>')
+        body = '\n'.join((para_html(p, i, e))
                           for i, p in enumerate(paras))
         essentiel = [str(x) for x in (a.get('essentiel') or []) if str(x).strip()][:6]
         if essentiel:
