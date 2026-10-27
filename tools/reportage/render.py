@@ -90,7 +90,7 @@ def main():
                 page.evaluate(f'renderAt({f / FPS})')
                 enc.stdin.write(page.locator('canvas').screenshot(type='jpeg', quality=88))
                 if f == int(4.5 * FPS):
-                    page.locator('canvas').screenshot(path=str(out) + '-vertical.jpg', type='jpeg', quality=86)
+                    page.locator('canvas').screenshot(path=str(out) + '.jpg', type='jpeg', quality=86)
                 if f % (FPS * 20) == 0:
                     print(f'{f / FPS:.0f}/{total:.0f} s', flush=True)
             enc.stdin.close()
@@ -113,9 +113,9 @@ def main():
                    f'atrim=0:{total:.2f},highpass=f=70,loudnorm=I=-16:TP=-1.5:LRA=9,aformat=channel_layouts=stereo[a]']
         cmd = ['ffmpeg', '-v', 'error', '-y', '-i', str(tmp / 'video.mp4'), *audio, *fil,
                '-map', '0:v', '-map', '[a]' if fil else '1:a', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '128k',
-               '-shortest', '-movflags', '+faststart', str(out) + '-vertical.mp4']
+               '-shortest', '-movflags', '+faststart', str(out) + '.mp4']
         subprocess.run(cmd, check=True)
-        print('ok', str(out) + '-vertical.mp4', flush=True)
+        print('ok', str(out) + '.mp4', flush=True)
 
 
 if __name__ == '__main__':
