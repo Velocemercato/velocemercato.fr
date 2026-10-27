@@ -294,6 +294,8 @@ def main():
         liens = re.findall(r'https://[^\s<>"()]+', pick(fields, 'lien'))
         photos = list(dict.fromkeys(jointes + X.find_photos(liens + [s['url'] for s in record['sources']])))[:12]
         fin = X.apply_photos(OUT / f'{slug}.html', photos, record['nom'], hours=None) if photos else None
+    if re.search(r'fémin|feminin', ' '.join(fields.values()), re.I):
+        X.feminize(OUT / f'{slug}.html')
     qr = None
     try:
         X.qr_card(record['url'], record['nom'], record['modele'], OUT / f'{slug}-qr.png', bool(photos))

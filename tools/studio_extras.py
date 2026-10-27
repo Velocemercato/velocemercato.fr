@@ -140,3 +140,23 @@ def qr_card(url, nom, base, out, photos_ok):
     d.text((70, 1745), 'Photos du commerce · prix à titre d’exemple.' if photos_ok else 'Illustrations · prix à titre d’exemple.', font=f(med, 30), fill=(200, 205, 220))
     bg.save(out, 'PNG', optimize=True)
     return out
+
+
+FEMININ_CSS = '<style id="vm-feminin">\n/* Style féminin : tons poudrés, titres élégants, sans effets BD */\n.vd-hero{background:linear-gradient(160deg,#fff6f8 0%,#fbe3ea 55%,#f5d0dc 100%)!important;color:var(--ink)!important}\n.vd-hero:before{background:radial-gradient(circle at 80% 20%,color-mix(in srgb,var(--a) 18%,transparent) 0 35%,transparent 36%)!important;opacity:1}\n.vd-hero:after{background:radial-gradient(color-mix(in srgb,var(--a) 14%,transparent) 1px,transparent 1.6px) 0 0/14px 14px!important}\n.vd-hero h1{font:italic 600 clamp(2.2rem,7vw,3.8rem)/1.05 Georgia,"Playfair Display","Times New Roman",serif!important;text-transform:none!important;text-shadow:none!important;color:var(--ink)!important;letter-spacing:0!important}\n.vd-hero p.lead{color:#4a3540!important}\n.vd-hero .vd-chip{background:#fff!important;color:var(--ink)!important;border-color:color-mix(in srgb,var(--a) 35%,#fff)!important}\n.vd-hero-art .vd-media{box-shadow:0 18px 40px color-mix(in srgb,var(--a) 30%,transparent)!important;border:3px solid #fff!important;transform:none!important}\n.vd-sfx{display:none!important}\n.vd-h h2,section h2{font-family:Georgia,"Playfair Display",serif!important;font-style:italic;text-transform:none!important;font-weight:600!important}\n.vd-btn{border-radius:999px!important}\n</style>'
+
+
+def feminize(page_path):
+    """Style féminin (tons poudrés, titres élégants, sans effets BD) et prestations Femme en premier."""
+    s = Path(page_path).read_text(encoding='utf-8')
+    s = re.sub(r'<style id="vm-feminin">.*?</style>', '', s, flags=re.S).replace('</head>', FEMININ_CSS + '</head>', 1)
+    m = re.search(r'window\.DEMO=(\{.*?\});\s*</script>', s, re.S)
+    try:
+        d = json.loads(m.group(1).replace('<\\/', '</')) if m else None
+    except json.JSONDecodeError:
+        d = None
+    if d and isinstance(d.get('booking'), dict):
+        order = {'Femme': 0, 'Coiffure': 0, 'Couleur': 1, 'Soins': 2, 'Homme': 5, 'Enfant': 6}
+        d['booking'].get('services', []).sort(key=lambda x: order.get(x.get('cat'), 3))
+        d['booking'].get('staff', []).sort(key=lambda x: 0 if 'oiffeuse' in x.get('role', '') + x.get('name', '') else 1)
+        s = s[:m.start(1)] + json.dumps(d, ensure_ascii=False).replace('</', '<\\/') + s[m.end(1):]
+    Path(page_path).write_text(s, encoding='utf-8')

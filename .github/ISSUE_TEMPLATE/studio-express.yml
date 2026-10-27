@@ -42,7 +42,7 @@ body:
     id: infos
     attributes:
       label: Infos que tu connais (facultatif)
-      description: "Colle ici sa bio Facebook/Instagram, ses prix, ses horaires… Tu peux aussi glisser ses photos ici (📎) : elles passent en premier."
+      description: "Colle ici sa bio Facebook/Instagram, ses prix, ses horaires… Tu peux aussi glisser ses photos ici (📎) : elles passent en premier. Écris « féminin » pour un style doux et élégant."
   - type: dropdown
     id: photos
     attributes:
