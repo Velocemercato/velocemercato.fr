@@ -73,25 +73,31 @@ def apply_photos(page_path, photos, nom, hours=48):
                     item['img'] = photos[(n + 3) % len(photos)]
                     n += 1
         s = s[:m.start(1)] + json.dumps(d, ensure_ascii=False).replace('</', '<\\/') + s[m.end(1):]
-    fin = (dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=hours)).replace(microsecond=0)
     nom_e = html.escape(nom)
+    if hours:  # exemple limité dans le temps : retour aux illustrations après le délai
+        fin = (dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=hours)).replace(microsecond=0)
+        duree = f'valable {hours} h. Les photos viennent de votre page publique et disparaissent ensuite automatiquement.'
+        script = ('<script>\n// Après le délai : retour automatique aux illustrations.\n'
+                  f"(function(){{var fin=Date.parse('{fin.isoformat().replace('+00:00', 'Z')}');if(Date.now()<fin)return;"
+                  "document.getElementById('vm-exemple').textContent='Exemple de site préparé par VM Studio (illustrations).';"
+                  "document.querySelectorAll('[data-orig]').forEach(function(e){e.setAttribute('data-img',e.getAttribute('data-orig'))});"
+                  "if(window.DEMO){[DEMO.booking&&DEMO.booking.services,DEMO.order&&DEMO.order.items,DEMO.order&&DEMO.order.products]"
+                  ".forEach(function(l){(l||[]).forEach(function(v){if(v.img_orig)v.img=v.img_orig})})}})();\n</script>\n")
+    else:  # sans date de fin (choix de Romain) : rien ne s'efface tout seul
+        fin, script = None, ''
+        duree = 'Les photos viennent de votre page publique ; elles ne sont pas réutilisées sans votre accord.'
     banner = (f'<div id="vm-exemple" style="position:sticky;top:0;z-index:99;background:#e1243a;color:#fff;'
               f'font:700 14px/1.35 system-ui,sans-serif;padding:10px 14px;text-align:center">Exemple privé préparé pour '
-              f'{nom_e}, valable {hours} h. Les photos viennent de votre page publique et disparaissent ensuite automatiquement.</div>')
-    script = ('<script>\n// Après le délai : retour automatique aux illustrations.\n'
-              f"(function(){{var fin=Date.parse('{fin.isoformat().replace('+00:00', 'Z')}');if(Date.now()<fin)return;"
-              "document.getElementById('vm-exemple').textContent='Exemple de site préparé par VM Studio (illustrations).';"
-              "document.querySelectorAll('[data-orig]').forEach(function(e){e.setAttribute('data-img',e.getAttribute('data-orig'))});"
-              "if(window.DEMO){[DEMO.booking&&DEMO.booking.services,DEMO.order&&DEMO.order.items,DEMO.order&&DEMO.order.products]"
-              ".forEach(function(l){(l||[]).forEach(function(v){if(v.img_orig)v.img=v.img_orig})})}})();\n</script>\n")
+              f'{nom_e}. {duree}</div>')
     s = s.replace('<body>', '<body>\n' + banner, 1)
-    i = s.find('<script src="/demos/kit/vm-demo.js')
-    s = s[:i] + script + s[i:] if i >= 0 else s.replace('</body>', script + '</body>', 1)
+    if script:
+        i = s.find('<script src="/demos/kit/vm-demo.js')
+        s = s[:i] + script + s[i:] if i >= 0 else s.replace('</body>', script + '</body>', 1)
     s = s.replace('Images d’illustration : vos vraies photos les remplaceront.',
-                  f'Photos issues de la page publique du commerce, affichées {hours} h pour cet exemple privé.', 1)
+                  'Photos issues de la page publique du commerce, pour cet exemple privé.', 1)
     s = s.replace('<meta name="robots" content="noindex,nofollow">', '<meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer">', 1)
     Path(page_path).write_text(s, encoding='utf-8')
-    return fin.isoformat()
+    return fin.isoformat() if fin else None
 
 
 def qr_card(url, nom, base, out, photos_ok):
@@ -131,6 +137,6 @@ def qr_card(url, nom, base, out, photos_ok):
     d.text((70, 1505), 'Sans engagement · prix fixe · tout à distance', font=f(med, 40), fill=(255, 255, 255))
     d.text((70, 1600), 'Romain · vminvest.fr@gmail.com', font=f(med, 44), fill=(255, 255, 255))
     d.text((70, 1700), 'Démonstration non officielle : réservations et paiements simulés.', font=f(med, 30), fill=(200, 205, 220))
-    d.text((70, 1745), 'Photos du commerce affichées 48 h.' if photos_ok else 'Photos d’illustration.', font=f(med, 30), fill=(200, 205, 220))
+    d.text((70, 1745), 'Photos du commerce · prix à titre d’exemple.' if photos_ok else 'Illustrations · prix à titre d’exemple.', font=f(med, 30), fill=(200, 205, 220))
     bg.save(out, 'PNG', optimize=True)
     return out

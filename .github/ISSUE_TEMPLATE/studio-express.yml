@@ -49,7 +49,7 @@ body:
       label: Photos du commerce
       description: "Ses photos publiques (Planity ou son site) dans la maquette, en exemple privé de 48 h, puis retour automatique aux illustrations."
       options:
-        - Oui, ses photos pendant 48 h
+        - Oui, ses photos
         - Non, des illustrations
     validations:
       required: true

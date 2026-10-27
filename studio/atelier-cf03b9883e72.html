@@ -90,7 +90,7 @@ pre{white-space:pre-wrap;word-break:break-word;margin:0;font:14px/1.45 system-ui
     if(!rows||!rows.length)return;
     L.innerHTML=rows.map(function(r,i){return '<article class="demo"><h3>'+esc(r.nom)+'</h3><small>'+esc(r.ville)+' · modèle '+esc(r.modele)+' · '+esc((r.cree_le||'').slice(0,10))+'</small>'+
       '<div>Formule conseillée : <span class="price">'+esc(r.prix)+' €</span></div>'+
-      (r.photos?'<small>📸 '+esc(r.photos)+' photos du commerce jusqu’au '+esc(new Date(r.expire).toLocaleString('fr-FR',{weekday:'long',hour:'2-digit',minute:'2-digit'}))+', puis illustrations</small>':'')+
+      (r.photos?'<small>📸 '+esc(r.photos)+' photos du commerce'+(r.expire?' jusqu’au '+esc(new Date(r.expire).toLocaleString('fr-FR',{weekday:'long',hour:'2-digit',minute:'2-digit'}))+', puis illustrations':' · sans date de fin')+'</small>':'')+
       (r.qr?'<a href="'+esc(r.qr)+'" target="_blank" rel="noopener"><img src="'+esc(r.qr)+'" alt="Carte QR à montrer au commerçant" width="1080" height="1920" loading="lazy" style="width:100%;max-width:260px;height:auto;border-radius:12px;border:2px solid #000"></a>':'')+
       '<pre id="m'+i+'">'+esc(r.message)+'</pre>'+
       '<div class="row"><a class="btn" href="'+esc(r.url)+'" target="_blank" rel="noopener">👀 Voir la maquette</a>'+(r.qr?'<a class="btn alt" href="'+esc(r.qr)+'" download>📲 Enregistrer la carte QR</a>':'')+'<button type="button" class="btn alt" data-m="m'+i+'">📋 Copier le message</button></div></article>'}).join('');

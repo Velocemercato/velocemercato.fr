@@ -207,7 +207,7 @@ def build(fields, data, slug, numero=''):
     page = sub1(r'<meta property="og:title" content="[^"]*">', f'<meta property="og:title" content="{name} – votre futur site">', page)
     page = sub1(r'<div class="vd-demo">.*?</div>',
                 f'<div class="vd-demo"><a class="vd-universe" href="{SITE}/web-studio.html">VM Studio</a> '
-                f'<span>Maquette préparée pour {name} · non officielle</span> '
+                f'<span>Maquette préparée pour {name} · non officielle · prix et prestations à titre d’exemple</span> '
                 f'<a href="{SITE}/web-studio.html?offre={offre_id}#devis">{e(offre_nom)} · {prix} € →</a></div>', page)
     page = re.sub(r'(<a class="vd-logo"[^>]*>.*?<em>).*?(</em>)', lambda mm: mm.group(1) + name + mm.group(2), page, count=1, flags=re.S)
     page = re.sub(r'(<a class="vd-logo") href="[^"]*"', r'\1 href="#top"', page, count=1)
@@ -293,10 +293,10 @@ def main():
     if 'oui' in pick(fields, 'photo').lower() or jointes:
         liens = re.findall(r'https://[^\s<>"()]+', pick(fields, 'lien'))
         photos = list(dict.fromkeys(jointes + X.find_photos(liens + [s['url'] for s in record['sources']])))[:12]
-        fin = X.apply_photos(OUT / f'{slug}.html', photos, record['nom']) if photos else None
+        fin = X.apply_photos(OUT / f'{slug}.html', photos, record['nom'], hours=None) if photos else None
     qr = None
     try:
-        X.qr_card(record['url'], record['nom'], record['modele'], OUT / f'{slug}-qr.png', bool(fin))
+        X.qr_card(record['url'], record['nom'], record['modele'], OUT / f'{slug}-qr.png', bool(photos))
         qr = f'https://velocemercato.fr/demos/clients/{slug}-qr.png'
     except Exception as exc:
         print(f'Carte QR non créée : {type(exc).__name__}', flush=True)
@@ -304,12 +304,14 @@ def main():
     rows = json.loads(index.read_text())
     for r in rows:
         if r.get('slug') == slug:
-            r.update(qr=qr, photos=len(photos) if fin else 0, expire=fin)
+            r.update(qr=qr, photos=len(photos), expire=fin)
     index.write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding='utf-8')
-    record.update(qr=qr, photos=len(photos) if fin else 0, expire=fin)
+    record.update(qr=qr, photos=len(photos), expire=fin)
     sources = '\n'.join(f'- [{s.get("nom") or s["url"]}]({s["url"]})' for s in record['sources']) or '- (aucune source trouvée : maquette faite avec tes infos)'
     faibles = '\n'.join(f'- {x}' for x in record['points_faibles'])
-    if record['photos']:
+    if record['photos'] and not record.get('expire'):
+        photo_txt = f"📸 **{record['photos']} photos du commerce** dans l'exemple privé, sans date de fin."
+    elif record['photos']:
         from zoneinfo import ZoneInfo
         fin_fr = dt.datetime.fromisoformat(record['expire']).astimezone(ZoneInfo('Europe/Paris'))
         photo_txt = (f"📸 **{record['photos']} photos du commerce** affichées en exemple privé jusqu'au "
