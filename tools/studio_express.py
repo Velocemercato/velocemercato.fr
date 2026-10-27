@@ -277,7 +277,9 @@ def main():
     nom = pick(fields, 'nom')
     if not nom:
         raise Fail('Le nom du commerce est vide.')
-    slug = slugify(nom + '-' + pick(fields, 'ville'))
+    # Lien privé : un code au hasard dans l'adresse, impossible à deviner (la page n'est liée nulle part).
+    import secrets
+    slug = slugify(nom)[:30].strip('-') + '-' + secrets.token_hex(5)
     bases_cfg = '\n'.join(f'--- modèle « {b} » ({desc}) ---\n{demo_block(b)[1].group(1)}' for b, desc in BASES.items())
     response = call_claude(SYSTEM, prompt(fields, bases_cfg))
     record = build(fields, final_json(response), slug, args.numero)

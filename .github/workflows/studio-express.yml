@@ -60,5 +60,11 @@ jobs:
           file="$RUNNER_TEMP/resultat.md"
           [ -f "$file" ] || file=studio-express-resultat.md
           [ -f "$file" ] || echo "## ❌ Un problème est survenu. Réessaie dans quelques minutes." > "$file"
-          gh issue comment "$NUMERO" --body-file "$file"
+          # Le dépôt est public : on ne laisse ni le lien privé ni le nom du commerce dans la demande.
+          if grep -q '✅' "$file"; then
+            gh issue comment "$NUMERO" --body "✅ C'est prêt. Ouvre ton appli Studio Express : lien, carte QR et message y sont."
+          else
+            gh issue comment "$NUMERO" --body-file "$file"
+          fi
+          gh issue edit "$NUMERO" --title "Studio Express #$NUMERO (traitée)" --body "Demande traitée, détails retirés." || true
           gh issue close "$NUMERO" --reason completed || true
