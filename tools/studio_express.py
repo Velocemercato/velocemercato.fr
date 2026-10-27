@@ -164,7 +164,7 @@ Réponds avec ce JSON :
            "couleurs": {{"a": "#hex principale", "b": "#hex secondaire", "ink": "#hex texte foncé", "bg": "#hex fond clair"}}}},
   "offre": "mini | starter | business | max (le pack VM Studio le plus adapté)",
   "points_faibles": ["ce qui manque aujourd'hui au commerce en ligne, 2-3 points"],
-  "message": "message privé (Facebook/Instagram) de Romain au commerçant : bonjour, compliment sincère et précis, j'ai préparé une maquette de votre futur site, [LIEN], la formule à [PRIX], sans engagement. Ton humain, 6 lignes max, tutoiement interdit.",
+  "message": "message privé (Facebook/Instagram) signé VM Studio (jamais de prénom, parler au nom de VM Studio) au commerçant : bonjour, compliment sincère et précis, j'ai préparé une maquette de votre futur site, [LIEN], la formule à [PRIX], sans engagement. Ton humain, 6 lignes max, tutoiement interdit.",
   "sources": [{{"nom": "…", "url": "https://…"}}]}}
 ```
 Si le commerce est introuvable, "trouve": false, et fais quand même la maquette à partir des infos de Romain.'''
