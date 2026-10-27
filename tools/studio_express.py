@@ -95,7 +95,11 @@ def call_claude(system, user, max_tokens=12000):
                                               'content-type': 'application/json'}, method='POST')
         try:
             with urllib.request.urlopen(req, timeout=300) as resp:
-                return json.load(resp)
+                out = json.load(resp)
+            u = out.get('usage') or {}
+            print(f"Consommation : modèle {out.get('model')}, {u.get('input_tokens')} jetons lus, {u.get('output_tokens')} écrits, "
+                  f"{(u.get('server_tool_use') or {}).get('web_search_requests', 0)} recherches web.", flush=True)
+            return out
         except urllib.error.HTTPError as exc:
             detail = exc.read(500).decode('utf-8', 'replace').replace(API_KEY, '***')
             if web and exc.code in (400, 403) and 'web_search' in detail:
