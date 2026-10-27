@@ -259,7 +259,7 @@ def build(fields, data, slug, numero=''):
               'points_faibles': [str(x) for x in (data.get('points_faibles') or [])][:3],
               'sources': [s for s in (data.get('sources') or []) if isinstance(s, dict) and str(s.get('url', '')).startswith('https://')][:8],
               'cree_le': dt.datetime.now(dt.timezone.utc).isoformat(timespec='minutes'), 'demande': numero}
-    index = OUT / 'index.json'
+    index = OUT / 'liste-cf03b9883e72.json'
     rows = json.loads(index.read_text()) if index.exists() else []
     rows = [r for r in rows if r.get('slug') != slug]
     rows.insert(0, record)
@@ -298,7 +298,7 @@ def main():
         qr = f'https://velocemercato.fr/demos/clients/{slug}-qr.png'
     except Exception as exc:
         print(f'Carte QR non créée : {type(exc).__name__}', flush=True)
-    index = OUT / 'index.json'
+    index = OUT / 'liste-cf03b9883e72.json'
     rows = json.loads(index.read_text())
     for r in rows:
         if r.get('slug') == slug:

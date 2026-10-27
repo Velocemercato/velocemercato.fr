@@ -86,7 +86,7 @@ pre{white-space:pre-wrap;word-break:break-word;margin:0;font:14px/1.45 system-ui
 (function(){
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
   var L=document.getElementById('liste');
-  fetch('/demos/clients/index.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():[]}).then(function(rows){
+  fetch('/demos/clients/liste-cf03b9883e72.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():[]}).then(function(rows){
     if(!rows||!rows.length)return;
     L.innerHTML=rows.map(function(r,i){return '<article class="demo"><h3>'+esc(r.nom)+'</h3><small>'+esc(r.ville)+' · modèle '+esc(r.modele)+' · '+esc((r.cree_le||'').slice(0,10))+'</small>'+
       '<div>Formule conseillée : <span class="price">'+esc(r.prix)+' €</span></div>'+
