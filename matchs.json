@@ -72,18 +72,6 @@
   ]
  },
  {
-  "id": 560612,
-  "date": "2026-10-25T14:00:00Z",
-  "competition": "Premier League",
-  "domicile": "Liverpool",
-  "exterieur": "Brighton Hove",
-  "statut": "FINISHED",
-  "score": [
-   2,
-   0
-  ]
- },
- {
   "id": 560615,
   "date": "2026-10-25T14:00:00Z",
   "competition": "Premier League",
@@ -105,6 +93,18 @@
   "score": [
    4,
    4
+  ]
+ },
+ {
+  "id": 560612,
+  "date": "2026-10-25T14:00:00Z",
+  "competition": "Premier League",
+  "domicile": "Liverpool",
+  "exterieur": "Brighton Hove",
+  "statut": "FINISHED",
+  "score": [
+   2,
+   0
   ]
  },
  {
@@ -132,6 +132,18 @@
   ]
  },
  {
+  "id": 559656,
+  "date": "2026-10-25T16:15:00Z",
+  "competition": "Ligue 1",
+  "domicile": "Auxerre",
+  "exterieur": "Le Mans",
+  "statut": "FINISHED",
+  "score": [
+   1,
+   1
+  ]
+ },
+ {
   "id": 559653,
   "date": "2026-10-25T16:15:00Z",
   "competition": "Ligue 1",
@@ -144,15 +156,15 @@
   ]
  },
  {
-  "id": 559656,
+  "id": 559649,
   "date": "2026-10-25T16:15:00Z",
   "competition": "Ligue 1",
-  "domicile": "Auxerre",
-  "exterieur": "Le Mans",
+  "domicile": "Marseille",
+  "exterieur": "Le Havre",
   "statut": "FINISHED",
   "score": [
-   1,
-   1
+   4,
+   3
   ]
  },
  {
@@ -177,18 +189,6 @@
   "score": [
    0,
    0
-  ]
- },
- {
-  "id": 559649,
-  "date": "2026-10-25T16:15:00Z",
-  "competition": "Ligue 1",
-  "domicile": "Marseille",
-  "exterieur": "Le Havre",
-  "statut": "FINISHED",
-  "score": [
-   4,
-   3
   ]
  },
  {
@@ -300,18 +300,6 @@
   ]
  },
  {
-  "id": 558557,
-  "date": "2026-10-27T19:45:00Z",
-  "competition": "Serie A",
-  "domicile": "Torino",
-  "exterieur": "Como 1907",
-  "statut": "IN_PLAY",
-  "score": [
-   0,
-   0
-  ]
- },
- {
   "id": 558555,
   "date": "2026-10-27T19:45:00Z",
   "competition": "Serie A",
@@ -319,8 +307,20 @@
   "exterieur": "Cagliari",
   "statut": "IN_PLAY",
   "score": [
-   0,
+   2,
    1
+  ]
+ },
+ {
+  "id": 558557,
+  "date": "2026-10-27T19:45:00Z",
+  "competition": "Serie A",
+  "domicile": "Torino",
+  "exterieur": "Como 1907",
+  "statut": "IN_PLAY",
+  "score": [
+   1,
+   0
   ]
  },
  {
@@ -408,11 +408,11 @@
   ]
  },
  {
-  "id": 559646,
+  "id": 559644,
   "date": "2026-10-30T18:00:00Z",
   "competition": "Ligue 1",
-  "domicile": "Nice",
-  "exterieur": "Stade Rennais",
+  "domicile": "Le Havre",
+  "exterieur": "PSG",
   "statut": "TIMED",
   "score": [
    null,
@@ -420,11 +420,11 @@
   ]
  },
  {
-  "id": 559644,
+  "id": 559646,
   "date": "2026-10-30T18:00:00Z",
   "competition": "Ligue 1",
-  "domicile": "Le Havre",
-  "exterieur": "PSG",
+  "domicile": "Nice",
+  "exterieur": "Stade Rennais",
   "statut": "TIMED",
   "score": [
    null,
@@ -564,6 +564,18 @@
   ]
  },
  {
+  "id": 560624,
+  "date": "2026-10-31T15:00:00Z",
+  "competition": "Premier League",
+  "domicile": "Bournemouth",
+  "exterieur": "Leeds United",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
   "id": 560630,
   "date": "2026-10-31T15:00:00Z",
   "competition": "Premier League",
@@ -576,11 +588,11 @@
   ]
  },
  {
-  "id": 560624,
+  "id": 560629,
   "date": "2026-10-31T15:00:00Z",
   "competition": "Premier League",
-  "domicile": "Bournemouth",
-  "exterieur": "Leeds United",
+  "domicile": "Hull City",
+  "exterieur": "Ipswich Town",
   "statut": "TIMED",
   "score": [
    null,
@@ -605,18 +617,6 @@
   "competition": "Premier League",
   "domicile": "Man City",
   "exterieur": "Brighton Hove",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
-  "id": 560629,
-  "date": "2026-10-31T15:00:00Z",
-  "competition": "Premier League",
-  "domicile": "Hull City",
-  "exterieur": "Ipswich Town",
   "statut": "TIMED",
   "score": [
    null,
