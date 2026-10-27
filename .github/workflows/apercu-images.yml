@@ -1,0 +1,44 @@
+name: VM - Aperçu d'images (contrôle ponctuel)
+# Télécharge une liste d'images publiques et en fait une planche numérotée, rangée sur la branche
+# « apercus » (jamais publiée sur le site). Sert à vérifier des images avant de les afficher.
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: 'Adresses séparées par des espaces'
+        required: true
+permissions:
+  contents: write
+jobs:
+  planche:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Planche
+        env:
+          URLS: ${{ inputs.urls }}
+        run: |
+          python -m pip install --quiet pillow
+          python - <<'PY'
+          import os, io, urllib.request
+          from PIL import Image, ImageDraw
+          urls = os.environ['URLS'].split()
+          ims = []
+          for u in urls:
+              try:
+                  data = urllib.request.urlopen(urllib.request.Request(u, headers={'User-Agent': 'Mozilla/5.0'}), timeout=30).read()
+                  im = Image.open(io.BytesIO(data)).convert('RGB'); im.thumbnail((360, 360)); ims.append(im)
+              except Exception as e:
+                  ims.append(Image.new('RGB', (360, 240), (80, 0, 0)))
+          cols = 5; rows = (len(ims) + cols - 1) // cols
+          sheet = Image.new('RGB', (cols * 370, rows * 380), 'white'); d = ImageDraw.Draw(sheet)
+          for k, im in enumerate(ims):
+              x, y = (k % cols) * 370, (k // cols) * 380
+              sheet.paste(im, (x, y + 20)); d.text((x + 4, y + 2), str(k + 1), fill=(0, 0, 0))
+          sheet.save('planche.jpg', quality=80)
+          PY
+          git init -q -b apercus && git config user.name 'github-actions[bot]' && git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add planche.jpg && git commit -q -m planche && git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" apercus
