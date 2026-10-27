@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261027-1300",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "midi",
+  "label": "JT 13 h",
+  "titre": "La Pastille Actus - Midi du 27 octobre",
+  "accroche": "Ce matin, le moral des ménages baisse et le gaz remonte.",
+  "duree": 132,
+  "date": "2026-10-27T13:18+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261027-1300.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-10-27T13:00:00+01:00",
+  "source_start": "2026-10-26T19:00:00+01:00",
+  "source_end": "2026-10-27T13:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-ecc8aa92f04050edb73373",
+    "titre": "Confiance des ménages au plus bas depuis juin 2013 en octobre, selon l'Insee",
+    "publishedAt": "2026-10-27T11:12:39Z",
+    "createdAt": "2026-10-27T11:17:10Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/menages/situation-financiere-inquietante-hausse-des-prix-inquietudes-liees-au-chomage-et-a-l-inflation-la-confiance-des-menages-en-octobre-au-plus-bas-depuis-juin-2013-selon-l-insee_8255350.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-6caa592c08b874bed42195",
+    "titre": "Jay-Z sera la tête d'affiche du spectacle de la mi-temps du Super Bowl 2027",
+    "publishedAt": "2026-10-27T10:28:30Z",
+    "createdAt": "2026-10-27T10:40:10Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/10/27/de-reasonable-doubt-au-super-bowl-jay-z-en-tete-daffiche-en-2027"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-717c63ac7f585b4b4c9c5d",
+    "titre": "Un rapport démocrate recense des accusations contre Trump et réclame une enquête",
+    "publishedAt": "2026-10-27T10:36:33Z",
+    "createdAt": "2026-10-27T10:40:06Z",
+    "references": [
+     {
+      "nom": "Ouest-France",
+      "url": "https://www.ouest-france.fr/monde/etats-unis/donald-trump/onze-temoignages-cinq-accusations-de-viol-ce-rapport-des-democrates-qui-reclament-une-enquete-sur-trump-355f579a-d1e1-11f1-af78-2d36ec019942?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-5c8db57500610e077fecf9",
+    "titre": "Gaz : Poutine réunit les grands pays exportateurs à Moscou sur fond de flambée des prix",
+    "publishedAt": "2026-10-27T09:34:33Z",
+    "createdAt": "2026-10-27T09:41:42Z",
+    "references": [
+     {
+      "nom": "France 24",
+      "url": "https://www.france24.com/fr/%C3%A9missions/info-%C3%A9co/20261027-gaz-poutine-r%C3%A9unit-les-grands-producteurs-%C3%A0-moscou-sur-fond-de-flamb%C3%A9e-des-prix"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-2d4303892f4c1e9d337a20",
+    "titre": "La Jordanie frappe le sud de la Syrie après une attaque contre une église",
+    "publishedAt": "2026-10-27T08:34:09Z",
+    "createdAt": "2026-10-27T08:44:10Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/revolte-en-syrie/la-jordanie-frappe-la-syrie-apres-l-attaque-contre-une-eglise-provoquant-la-mort-de-huit-personnes-dont-trois-enfants_8255299.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-e7b32fafc6e23d1a80ca4a",
+    "titre": "Parcoursup : Jean-Michel Blanquer défend son bilan face aux critiques",
+    "publishedAt": "2026-10-27T08:38:02Z",
+    "createdAt": "2026-10-27T08:44:00Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/education/blocage-des-lycees/parcoursup-a-ete-un-progres-enorme-sous-le-feu-des-critiques-l-ancien-ministre-de-l-education-nationale-jean-michel-blanquer-defend-son-bilan_8255266.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-6ab6d60564c68f9252ee7b",
+    "titre": "Deux firmes chinoises rompent avec Kylian Mbappé après une vidéo sur Mao Zedong",
+    "publishedAt": "2026-10-27T07:43:48Z",
+    "createdAt": "2026-10-27T07:49:12Z",
+    "references": [
+     {
+      "nom": "France 24",
+      "url": "https://www.france24.com/fr/asie-pacifique/20261027-mbapp%C3%A9-perd-deux-contrats-chine-apr%C3%A8s-avoir-heurt%C3%A9-sentiments-nationaux"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-0339235f1fed20a05a9bf9",
+    "titre": "Le ténia du renard et le système d'alerte précoce de l'OMS",
+    "publishedAt": "2026-10-27T06:42:35Z",
+    "createdAt": "2026-10-27T06:47:11Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/10/27/parasite-dangereux-comment-le-tenia-du-renard-alerte-sur-la-pandemie-x"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261027-1200",
   "univers": "foot",
   "format": "edition",
