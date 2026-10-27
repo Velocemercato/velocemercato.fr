@@ -42,14 +42,14 @@ body:
     id: infos
     attributes:
       label: Infos que tu connais (facultatif)
-      description: "Prix, horaires, spécialités, ce que le patron veut… Tout ce que tu écris ici passe avant Internet."
+      description: "Colle ici sa bio Facebook/Instagram, ses prix, ses horaires… Tu peux aussi glisser ses photos ici (📎) : elles passent en premier."
   - type: dropdown
     id: photos
     attributes:
       label: Photos du commerce
-      description: "Ses photos publiques (Planity ou son site) dans la maquette, en exemple privé de 24 h, puis retour automatique aux illustrations."
+      description: "Ses photos publiques (Planity ou son site) dans la maquette, en exemple privé de 48 h, puis retour automatique aux illustrations."
       options:
-        - Oui, ses photos pendant 24 h
+        - Oui, ses photos pendant 48 h
         - Non, des illustrations
     validations:
       required: true

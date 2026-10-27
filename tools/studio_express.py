@@ -284,9 +284,11 @@ def main():
     # Photos du commerce (exemple privé 24 h) et carte QR à montrer.
     import studio_extras as X
     photos, fin = [], None
-    if 'oui' in pick(fields, 'photo').lower():
-        liens = re.findall(r'https://[^\s<>"]+', pick(fields, 'lien'))
-        photos = X.find_photos(liens + [s['url'] for s in record['sources']])
+    # Photos jointes par Romain dans le formulaire (données par le commerçant) : prioritaires.
+    jointes = re.findall(r'https://github\.com/user-attachments/assets/[0-9a-f-]{36}', ' '.join(fields.values()))
+    if 'oui' in pick(fields, 'photo').lower() or jointes:
+        liens = re.findall(r'https://[^\s<>"()]+', pick(fields, 'lien'))
+        photos = list(dict.fromkeys(jointes + X.find_photos(liens + [s['url'] for s in record['sources']])))[:12]
         fin = X.apply_photos(OUT / f'{slug}.html', photos, record['nom']) if photos else None
     qr = None
     try:
@@ -309,7 +311,7 @@ def main():
         photo_txt = (f"📸 **{record['photos']} photos du commerce** affichées en exemple privé jusqu'au "
                      f"{fin_fr:%d/%m à %H h %M}, puis retour automatique aux illustrations.")
     elif 'oui' in pick(fields, 'photo').lower():
-        photo_txt = "📸 Aucune photo publique trouvée (page Planity ou site du commerce) : la maquette garde les illustrations."
+        photo_txt = "📸 Aucune photo trouvée (Planity, son site ou photos jointes) : la maquette garde les illustrations."
     else:
         photo_txt = "_Photos d'illustration : demande ses vraies photos au commerçant pour le site final._"
     qr_txt = (f"### 📲 Carte QR à montrer\n![Carte QR]({record['qr']})\n\nTélécharger : {record['qr']}" if record['qr'] else '')

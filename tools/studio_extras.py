@@ -46,7 +46,7 @@ def find_photos(urls, maxi=12):
     return list(dict.fromkeys(found))[:maxi]
 
 
-def apply_photos(page_path, photos, nom, hours=24):
+def apply_photos(page_path, photos, nom, hours=48):
     """Remplace les illustrations par les photos du commerce pour un exemple privé limité dans le temps."""
     s = Path(page_path).read_text(encoding='utf-8')
     if not photos:
@@ -131,6 +131,6 @@ def qr_card(url, nom, base, out, photos_ok):
     d.text((70, 1505), 'Sans engagement · prix fixe · tout à distance', font=f(med, 40), fill=(255, 255, 255))
     d.text((70, 1600), 'Romain · vminvest.fr@gmail.com', font=f(med, 44), fill=(255, 255, 255))
     d.text((70, 1700), 'Démonstration non officielle : réservations et paiements simulés.', font=f(med, 30), fill=(200, 205, 220))
-    d.text((70, 1745), 'Photos du commerce affichées 24 h.' if photos_ok else 'Photos d’illustration.', font=f(med, 30), fill=(200, 205, 220))
+    d.text((70, 1745), 'Photos du commerce affichées 48 h.' if photos_ok else 'Photos d’illustration.', font=f(med, 30), fill=(200, 205, 220))
     bg.save(out, 'PNG', optimize=True)
     return out
