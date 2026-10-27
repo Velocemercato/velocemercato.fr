@@ -18,8 +18,7 @@ DATA = {
     'debut': M.DEBUT_UNIVERS.isoformat(),
     'heures': {day.isoformat(): list(hours) for day, hours in M.HEURES_UNIVERS.items()},
     'defaut': list(M.HEURES_UNIVERS_DEFAUT),
-    'projets': [list(p) for p in M.PROJETS],
-    'teasers': [list(t) for t in M.TEASERS],
+    'rotations': M.ROTATIONS,
 }
 
 PAGE = """<!doctype html>
@@ -59,13 +58,11 @@ function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'
 function heures(d){return D.heures[iso(d)]||D.defaut}
 function jours(a,b){return Math.round((Date.UTC(b.getFullYear(),b.getMonth(),b.getDate())-Date.UTC(a.getFullYear(),a.getMonth(),a.getDate()))/864e5)}
 var debut=new Date(D.debut+'T12:00:00');
-function contenu(d,h){var hs=heures(d),r=hs.indexOf(h),n=jours(debut,d)*4+(r<0?0:r);
- if(n%2===1){var t=D.teasers[(Math.floor(n/2)+3)%D.teasers.length];return{type:'video',name:t[0],url:t[2],pitch:t[3],video:'/media/promos/'+t[1]+'-vertical.mp4'}}
- var p=D.projets[Math.floor(n/2)%D.projets.length];return{type:'carte',name:p[0],icon:p[1],url:'https://velocemercato.fr'+p[2],pitch:p[3]}}
-function tag(n){return n.split('—')[0].replace(/[^A-Za-z]/g,'')}
-function texte(it){var u='👉 Lien en bio';
- if(it.type==='video')return '🎬 '+it.name+'\\n\\n'+it.pitch+'\\n\\n'+u+'\\nTous les projets du groupe : vmunivers.fr\\nVidéo réalisée avec l’aide de l’IA.\\n\\n#VMUnivers #VM #'+tag(it.name);
- return '✨ Un projet du groupe VM : '+it.name+'\\n\\n'+it.pitch+'\\n\\n'+u+'\\nTous les projets du groupe : vmunivers.fr\\n\\n#VMUnivers #VM #'+tag(it.name)}
+function contenu(d,h){var hs=heures(d),r=hs.indexOf(h);r=r<0?0:r;
+ var l=D.rotations[r%D.rotations.length],it=Object.assign({},l[jours(debut,d)%l.length]);
+ if(it.type==='video')it.video='/media/promos/'+it.video_id+'-vertical.mp4';return it}
+function texte(it){var fin=it.type==='video'?'\\nVidéo réalisée avec l’aide de l’IA.':'';
+ return it.titre+'\\n\\n'+it.pitch+'\\n\\n👉 Lien en bio\\nTous nos projets : vmunivers.fr'+fin+'\\n\\n'+it.tags}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 var L=document.getElementById('liste'),now=new Date(),html='';
 for(var k=0;k<3;k++){var d=new Date(now);d.setDate(d.getDate()+k);
@@ -73,7 +70,7 @@ for(var k=0;k<3;k++){var d=new Date(now);d.setDate(d.getDate()+k);
  heures(d).forEach(function(h){var it=contenu(d,h),tx=texte(it),cur=k===0&&now.getHours()===h;
   var m=it.type==='video'?'<video class="media" src="'+it.video+'" poster="'+it.video.replace('.mp4','.jpg')+'" preload="none" controls playsinline></video>':'<img class="media img" src="/app/'+it.icon+'-512.png" alt="">';
   var dl=it.type==='video'?it.video:'/app/'+it.icon+'-512.png';
-  html+='<div class="post'+(cur?' now':'')+'">'+m+'<div><div class="h">'+h+' h · <span class="t '+it.type+'">'+(it.type==='video'?'🎬 VIDÉO':'✨ PROJET')+'</span>'+esc(it.name)+'</div>'+
+  html+='<div class="post'+(cur?' now':'')+'">'+m+'<div><div class="h">'+h+' h · <span class="t '+it.type+'">'+(it.type==='video'?'🎬 VIDÉO':'✨ CARTE')+'</span>'+esc(it.name)+'</div>'+
    '<pre>'+esc(tx)+'</pre><div class="btns"><button type="button" data-t="'+esc(tx)+'">📋 Copier le texte</button><a class="b alt" href="'+dl+'" download>⬇️ Enregistrer</a></div></div></div>'})}
 L.innerHTML=html;
 L.addEventListener('click',function(e){var b=e.target.closest('button[data-t]');if(!b)return;

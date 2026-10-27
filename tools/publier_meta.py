@@ -44,17 +44,57 @@ UNIVERS = {
                'tags': '#gaming #jeuxvideo #gamer #vmgaming'},
 }
 
-# Page VM Univers : UNIQUEMENT les projets du groupe, sans Véloce Mercato, matin, midi et soir (demande de Romain).
+# Page VM Univers : campagne pub, 3 publications par jour (choix de Romain, 27/10/2026).
+# 9 h : VM Studio (sites pour artisans et pros, son activité principale)
+# 13 h : un outil gratuit VM · 19 h : la vitrine (chaîne YouTube, vmunivers.fr, velocemercato.fr)
+# Environ 1 pub pour 4 publications normales : au-delà, Facebook et Instagram montrent moins la page.
 DEBUT_UNIVERS = dt.date(2026, 10, 26)
 HEURES_UNIVERS = {DEBUT_UNIVERS: (16, 19, 21, 23)}   # lancement ; ensuite tous les jours :
-HEURES_UNIVERS_DEFAUT = (8, 12, 16, 20)
-# Teasers vidéo (media/promos), servis par le site en MP4.
-TEASERS = [
-    ('VM Univers', 'vm-univers', 'https://vmunivers.fr/', 'Tous les projets du groupe VM, réunis au même endroit.'),
-    ('VM Studio', 'vm-studio', 'https://velocemercato.fr/web-studio.html', 'Sites internet et visuels pour les pros, avec des prix clairs.'),
-    ('VM Actus', 'vm-actus', 'https://velocemercato.fr/actus/', 'L’actu en brèves sourcées, toute la journée.'),
-    ('VM Gaming', 'vm-gaming', 'https://velocemercato.fr/vm-gaming/', 'Jeux vidéo, actu gaming et communauté de joueurs.'),
-    ('VM Studio — votre site internet', 'vm-bureaux', 'https://velocemercato.fr/web-studio.html', 'Ton site pro clé en main, simple et à prix clair.'),
+HEURES_UNIVERS_DEFAUT = (9, 13, 19)
+YOUTUBE_CHAINE = 'https://www.youtube.com/@VeloceMercato'
+STUDIO_URL = 'https://velocemercato.fr/web-studio.html'
+STUDIO_PITCH = ('Un site clair sur téléphone, prêt à recevoir vos clients.\n'
+                '✅ Page unique 290 € · Site vitrine 590 € · Réservation ou commande 990 €\n'
+                '✅ Devis gratuit, prix confirmé par écrit')
+STUDIO_TAGS = '#VMStudio #siteinternet #artisan #commerce #restaurant #VM'
+GRATUIT_TAGS = '#gratuit #VMUnivers #VM'
+# Une liste par créneau (9 h, 13 h, 19 h) ; chaque jour on avance d'un cran dans chaque liste.
+ROTATIONS = [
+    [
+        {'type': 'video', 'name': 'VM Studio', 'video_id': 'vm-studio', 'url': STUDIO_URL,
+         'titre': '💼 Artisans, commerçants : votre site pro dès 290 €', 'pitch': STUDIO_PITCH, 'tags': STUDIO_TAGS},
+        {'type': 'carte', 'name': 'VM Studio', 'icon': 'studio', 'url': STUDIO_URL,
+         'carte': 'Votre site pro dès 290 €. Devis gratuit.',
+         'titre': '🛠️ Votre site internet, sans vous ruiner', 'pitch': STUDIO_PITCH, 'tags': STUDIO_TAGS},
+        {'type': 'video', 'name': 'VM Studio', 'video_id': 'vm-bureaux', 'url': STUDIO_URL,
+         'titre': '📲 Coiffeur, snack, artisan : vos clients vous cherchent sur leur téléphone',
+         'pitch': 'On crée votre site clé en main, avec réservation ou commande en ligne si besoin.\n'
+                  '✅ Dès 290 € · Devis gratuit, prix confirmé par écrit', 'tags': STUDIO_TAGS},
+    ],
+    [
+        {'type': 'carte', 'name': 'VM Emploi', 'icon': 'emploi', 'url': 'https://velocemercato.fr/emploi/',
+         'titre': '🎁 Gratuit : VM Emploi', 'pitch': 'Cherche un emploi sur tous les grands sites en un seul clic.', 'tags': GRATUIT_TAGS + ' #emploi'},
+        {'type': 'carte', 'name': 'VM CV', 'icon': 'cv', 'url': 'https://velocemercato.fr/cv/',
+         'titre': '🎁 Gratuit : VM CV', 'pitch': 'Fais ton CV pro en quelques minutes, sans inscription.', 'tags': GRATUIT_TAGS + ' #cv'},
+        {'type': 'carte', 'name': 'VM Recettes', 'icon': 'recettes', 'url': 'https://velocemercato.fr/recettes/',
+         'titre': '🎁 Gratuit : VM Recettes', 'pitch': 'Une idée de recette simple chaque jour.', 'tags': GRATUIT_TAGS + ' #recette'},
+        {'type': 'carte', 'name': 'VM Météo', 'icon': 'meteo', 'url': 'https://velocemercato.fr/meteo/',
+         'titre': '🎁 Gratuit : VM Météo & Découverte', 'pitch': 'La météo et des idées de sorties près de chez toi.', 'tags': GRATUIT_TAGS + ' #meteo'},
+        {'type': 'carte', 'name': 'VM Sport', 'icon': 'sport', 'url': 'https://velocemercato.fr/sport/',
+         'titre': '🎁 Gratuit : VM Sport & randonnée', 'pitch': 'Des idées de sport et de balades à faire près de chez toi.', 'tags': GRATUIT_TAGS + ' #sport'},
+    ],
+    [
+        {'type': 'carte', 'name': 'YouTube Véloce Mercato', 'icon': 'tv', 'url': YOUTUBE_CHAINE,
+         'carte': 'Les JT foot chaque jour. Abonne-toi !',
+         'titre': '▶️ Abonne-toi à la chaîne Véloce Mercato',
+         'pitch': 'Les JT foot, actus et gaming chaque jour, et le mag du dimanche à 11 h.', 'tags': '#VeloceMercato #foot #YouTube #VM'},
+        {'type': 'video', 'name': 'VM Univers', 'video_id': 'vm-univers', 'url': 'https://vmunivers.fr/',
+         'titre': '👑 VM Univers : tous nos projets au même endroit',
+         'pitch': 'Sites pour les pros, outils gratuits, foot et gaming : un seul lien.', 'tags': '#VMUnivers #VM'},
+        {'type': 'video', 'name': 'Véloce Mercato', 'video_id': 'veloce-foot', 'url': 'https://velocemercato.fr/',
+         'titre': '⚽ Véloce Mercato : l’essentiel du foot',
+         'pitch': 'Actus sourcées, scores, JT en vidéo et tournois EA FC.', 'tags': '#VeloceMercato #foot #mercato #VM'},
+    ],
 ]
 
 
@@ -63,25 +103,23 @@ def heures_univers(day):
 
 
 def contenu_univers(local):
-    """Même calcul que la page studio/programme-vmunivers.html : 1 publication sur 2 = teaser vidéo."""
+    """Même calcul que la page studio/programme-vmunivers.html : créneau du jour -> sa liste, un cran par jour."""
     heures = heures_univers(local.date())
     rang = heures.index(local.hour) if local.hour in heures else 0
-    n = (local.date() - DEBUT_UNIVERS).days * 4 + rang
-    if n % 2 == 1:
-        name, ident, url, pitch = TEASERS[(n // 2 + 3) % len(TEASERS)]
-        return {'type': 'video', 'name': name, 'url': url, 'pitch': pitch,
-                'video': f'https://velocemercato.fr/media/promos/{ident}-vertical.mp4'}
-    name, icon, path, pitch = PROJETS[(n // 2) % len(PROJETS)]
-    return {'type': 'carte', 'name': name, 'icon': icon, 'url': 'https://velocemercato.fr' + path, 'pitch': pitch}
+    jour = (local.date() - DEBUT_UNIVERS).days
+    liste = ROTATIONS[rang % len(ROTATIONS)]
+    item = dict(liste[jour % len(liste)])
+    if item['type'] == 'video':
+        item['video'] = f'https://velocemercato.fr/media/promos/{item["video_id"]}-vertical.mp4'
+    return item
 
 
 def texte_univers(item):
-    tag = re.sub(r'[^A-Za-z]', '', item['name'].split('—')[0])
-    if item['type'] == 'video':
-        return (f'🎬 {item["name"]}\n\n{item["pitch"]}\n\n👉 {item["url"]}\nTous les projets du groupe : vmunivers.fr\n'
-                f'Vidéo réalisée avec l’aide de l’IA.\n\n#VMUnivers #VM #{tag}')
-    return (f'✨ Un projet du groupe VM : {item["name"]}\n\n{item["pitch"]}\n\n👉 {item["url"]}\n'
-            f'Tous les projets du groupe : vmunivers.fr\n\n#VMUnivers #VM #{tag}')
+    fin = '\nVidéo réalisée avec l’aide de l’IA.' if item['type'] == 'video' else ''
+    return (f'{item["titre"]}\n\n{item["pitch"]}\n\n👉 {item["url"]}\n'
+            f'Tous nos projets : vmunivers.fr{fin}\n\n{item["tags"]}')
+
+
 PROJETS = [
     ('VM Emploi', 'emploi', '/emploi/', 'Les offres d’emploi près de chez toi, simples à lire.'),
     ('AlloLivre', 'allolivre', '/allolivre/', 'Livraison et entraide entre voisins.'),
@@ -379,7 +417,7 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
                     if item['type'] == 'video':
                         instagram_reel(graph, meta, {'verticale': item['video'], 'texte_vertical': insta_text}, sleep=sleep)
                     else:
-                        instagram_image(graph, meta, (card or instagram_projet_card)(name, item['icon'], item['pitch']),
+                        instagram_image(graph, meta, (card or instagram_projet_card)(name, item['icon'], item.get('carte', item['pitch'])),
                                         insta_text, sleep=sleep)
                     print(f'::notice::instagram : {item["type"]} {name}')
                 mark(key, 'publie', projet=name, type=item['type'])

@@ -66,7 +66,7 @@ def caption(entry):
     question = pick(u['questions'], entry['id'])
     long = (f"{intro} {u['emoji']}⚡\n{entry.get('accroche', '').strip()}\n\n"
             f"En {minutes} minute{'s' if minutes > 1 else ''}, t’es à jour 💪\n{question}\n\n"
-            f"Toute l’actu sur {u['lien']}\n\n{u['tags']}")
+            f"Toute l’actu sur {u['lien']}\n▶️ Tous les JT sur YouTube : youtube.com/@VeloceMercato\n\n{u['tags']}")
     court = (f"{intro} {u['emoji']}⚡\n{entry.get('accroche', '').strip()}\n\n"
              f"Le JT complet ({minutes} min) est sur {u['lien']} 🔗 lien en bio\n{question}\n\n{u['tags']}")
     return long, court
