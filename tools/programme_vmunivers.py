@@ -12,6 +12,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools import publier_meta as M  # noqa: E402
+import vmstats  # noqa: E402
 
 DATA = {
     'debut': M.DEBUT_UNIVERS.isoformat(),
@@ -84,7 +85,7 @@ L.addEventListener('click',function(e){var b=e.target.closest('button[data-t]');
 
 def main():
     out = ROOT / 'studio/programme-vmunivers.html'
-    out.write_text(PAGE.replace('__DATA__', json.dumps(DATA, ensure_ascii=False)), encoding='utf-8')
+    out.write_text(vmstats.add(PAGE.replace('__DATA__', json.dumps(DATA, ensure_ascii=False))), encoding='utf-8')
     print('Écrit :', out.relative_to(ROOT))
 
 

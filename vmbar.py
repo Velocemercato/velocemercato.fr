@@ -1,6 +1,7 @@
 """Barre de navigation commune des univers VM (Foot, Gaming, Actus, Vidéos, Studio, Soutenir).
 Usage : python vmbar.py  (met à jour les pages)  ;  build_pages.py l'utilise pour les articles."""
 import re,sys
+import vmstats
 CSS='''<style id="vmbar-css">
 .vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:sticky;top:0;z-index:80}
 .vmbar+header{top:49px!important}
@@ -111,7 +112,7 @@ def inject(s,active,app='foot',contact='velocemercato.fr@gmail.com'):
     s=re.sub(r'(<body[^>]*>)',lambda m:m.group(1)+bar(active),s,count=1)
     i=s.rfind('</body>')
     s=s[:i]+SHARE_HTML.replace("var to='velocemercato.fr@gmail.com'", "var to='"+contact+"'")+s[i:]
-    return s
+    return vmstats.add(s)
 BUSINESS_PAGES = {'recettes/index.html', 'produits-locaux/index.html', 'sport/index.html', 'immo/index.html', 'rdv/index.html', 'meteo/index.html', 'vm/index.html', 'allolivre/index.html', 'services-web.html', 'groupe.html', 'pub/index.html', 'boutique/index.html', 'vm-location/index.html', 'pro/index.html', 'emploi/index.html', 'comparateur/index.html', 'shop/index.html', 'menu/index.html', 'pro-auto/index.html', 'web-studio.html', 'cv/index.html'}
 
 def apply(path,active,app='foot'):

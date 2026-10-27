@@ -1,4 +1,5 @@
 """Pages de partage statiques, lisibles par les robots sociaux sans JavaScript."""
+import vmstats
 import html
 import json
 from pathlib import Path
@@ -51,4 +52,4 @@ def build_episode_pages(rows, root):
 <p><a href="{esc(row['video'])}" rel="noopener">Ouvrir le fichier MP4</a> · <a href="/radio.html">Écouter VM Radio</a></p>
 </main><script id="episodeData" type="application/json">{data}</script></body></html>
 '''
-        (folder / f"{row['id']}.html").write_text(markup, encoding='utf-8')
+        (folder / f"{row['id']}.html").write_text(vmstats.add(markup), encoding='utf-8')
