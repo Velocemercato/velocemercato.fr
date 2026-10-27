@@ -1,0 +1,137 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Est-ce rentable ? · VM Studio</title><meta name="description" content="Calculez ce que votre propre site vous fait économiser face aux commissions Uber Eats ou à l’abonnement Planity, et en combien de mois il est remboursé."><link rel="canonical" href="https://velocemercato.fr/rentabilite.html"><meta property="og:title" content="Est-ce rentable ? · VM Studio"><meta property="og:description" content="Calculez ce que votre propre site vous fait économiser face aux commissions Uber Eats ou à l’abonnement Planity, et en combien de mois il est remboursé."><meta property="og:url" content="https://velocemercato.fr/rentabilite.html"><meta property="og:image" content="https://velocemercato.fr/img/apps/webstudio.webp"><meta property="og:type" content="website"><link rel="icon" href="/app/foot-192.png"><link rel="preload" href="/assets/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/assets/studio-vm.css"><script src="/assets/pro-contact.js" defer></script><link rel="manifest" href="/app/studio.webmanifest" id="vmapp-m"><script src="/assets/vm-solo.js?v=2"></script><meta name="theme-color" content="#05080f" id="vmapp-t"><link rel="apple-touch-icon" href="/app/studio-apple.png" id="vmapp-i"><meta name="apple-mobile-web-app-title" content="VM Studio" id="vmapp-n"><style id="vmbar-css">
+.vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:sticky;top:0;z-index:80}
+.vmbar+header{top:49px!important}
+.vmbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:6px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
+.vmbar-in::-webkit-scrollbar{display:none}
+.vmbar-in{min-height:48px}
+.vmbar a{flex:none;color:#cfd6ea;text-decoration:none;padding:7px 10px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.vmbar a:hover{background:rgba(255,255,255,.08);color:#fff}
+.vmbar a:focus-visible{outline:2px solid #f4cf55;outline-offset:2px}
+.vmbar .vmb-logo small{font:800 9px/1 system-ui,sans-serif;font-style:normal;letter-spacing:.06em;margin-left:4px;vertical-align:middle}
+.vmbar .vmb-logo{font:italic 900 18px/1 Impact,"Arial Black",sans-serif;color:#04060f;background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);padding:6px 9px;border-radius:8px;margin-right:4px;letter-spacing:.02em}
+.vmbar .vmb-logo{position:sticky;left:0;z-index:2;box-shadow:6px 0 0 #04060f;font-size:15px;min-height:36px;display:flex;flex-direction:column;justify-content:center;gap:3px;align-items:center}
+.vmbar .vmb-logo small{margin:0;font-size:8px}
+.vmbar a.on{color:#04060f;background:#fff}
+.vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
+.vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
+.vmbar a.p{background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);color:#0b1533;font-weight:900}.vmbar a.p.on{background:#fff;color:#0b1533;box-shadow:inset 0 0 0 2px #f4cf55}.vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
+@media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
+</style><style id="vmshare-css">
+.vminst{display:none;position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#1d3fb8;color:#fff;box-shadow:3px 3px 0 #000;cursor:pointer}
+.vminst.show{display:flex}
+.vmfab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;display:flex;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#f4cf55;color:#0b1533;box-shadow:3px 3px 0 #000;cursor:pointer}
+.vmsh{position:fixed;inset:0;z-index:90;background:rgba(5,9,23,.78);display:flex;align-items:flex-end;justify-content:center;padding:12px}
+.vmsh[hidden]{display:none}
+.vmsh-box{width:100%;max-width:420px;background:#fff;color:#0b1533;border:3px solid #000;border-radius:20px;padding:16px 16px 18px;box-shadow:6px 6px 0 #1d3fb8;font:15px/1.4 system-ui,sans-serif;max-height:92vh;overflow:auto}
+.vmsh-box h3{margin:0 0 4px;font:900 1.25rem system-ui,sans-serif}
+.vmsh-t{margin:0 0 12px;color:#4e5b7d;font-size:.85rem;word-break:break-word}
+.vmsh-g{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.vmsh-g a,.vmsh-g button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 4px;border-radius:14px;border:2px solid #0b1533;background:#f3f5fb;color:#0b1533;font:700 .78rem system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.vmsh-g span{font-size:1.5rem}
+.vmsh-qr{display:flex;justify-content:center;margin:14px 0 4px}.vmsh-qr canvas,.vmsh-qr img{border:8px solid #fff;outline:2px solid #0b1533;border-radius:6px}
+.vmsh-c{display:block;width:100%;margin-top:12px;font:800 1rem system-ui,sans-serif;padding:12px;border-radius:999px;border:2px solid #0b1533;background:#fff;color:#0b1533;cursor:pointer}
+@media print{.vmfab{display:none}}
+</style><script src="/assets/vm-guide.js" defer></script>
+<!-- Cloudflare Web Analytics --><script id="vm-cfwa">(function(h){if(h==='velocemercato.fr'||h==='www.velocemercato.fr'){var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "35ce3d9fb9144124a0bb97db4e89dbb2"}');document.head.appendChild(s)}})(location.hostname)</script><style id="vms-manga-css">.vms-manga{display:flex;flex-direction:column;align-items:center;gap:6px}.vms-manga img{width:100%;max-width:420px;height:auto;border-radius:22px;border:3px solid #000;box-shadow:6px 6px 0 #000}.vms-manga small{opacity:.75;font-size:12px}</style></head><body class="vms"><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="VM Univers, tous les projets">VM UNIVERS<small>TOUS LES PROJETS</small></a><a class="f" href="/">⚽ Foot</a><a class="p on" href="/web-studio.html" aria-current="page">💼 VM Studio</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav><a class="vms-skip" href="#calcul">Aller au calcul</a>
+<header class="vms-head"><div class="vms-head-in"><a class="vms-brand" href="#top" aria-label="VM Studio, haut de page"><img src="/img/studio/logo-vm-studio-96.webp" alt="" width="48" height="48"><span><b class="vms-gold">VM STUDIO</b><small>SITES · QR · VISUELS · À DISTANCE</small></span></a><nav class="vms-nav" aria-label="Sur cette page"><a href="#modeles">Démos</a><a href="#tarifs">Tarifs</a><a href="#gerance">Maintenance</a><a class="vms-nav-cta" href="#devis">Commander</a></nav></div></header>
+<main id="top">
+<style>
+.rt-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}.rt-tabs button{font:800 15px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#fff;color:#0b1533;cursor:pointer}
+.rt-tabs button[aria-selected="true"]{background:#f4cf55}
+.rt-f{display:grid;gap:12px}.rt-f label{display:grid;gap:6px;font:700 15px/1.3 system-ui,sans-serif}
+.rt-f input,.rt-f select{font:700 18px/1 system-ui,sans-serif;padding:12px;border-radius:12px;border:2px solid #000;background:#fff;color:#0b1533;width:100%;box-sizing:border-box}
+.rt-f small{font-weight:500;opacity:.8}
+.rt-res{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:16px}
+.rt-k{border:3px solid #000;border-radius:16px;padding:14px;background:#fff;color:#0b1533;box-shadow:4px 4px 0 #000}
+.rt-k b{display:block;font:900 28px/1.1 system-ui,sans-serif}.rt-k span{font:600 13px/1.3 system-ui,sans-serif}
+.rt-k.gold{background:#f4cf55}.rt-msg{margin-top:14px;font:700 17px/1.45 system-ui,sans-serif}
+.rt-pane[hidden]{display:none}
+</style>
+<section class="vms-hero" aria-labelledby="r-titre"><div class="vms-hero-txt"><p class="vms-kicker">VM Studio · calcul en 30 secondes</p><h1 id="r-titre">Votre site, <span class="vms-gold">est-ce rentable ?</span></h1><p>Entrez ce que vous payez aujourd’hui à Uber Eats ou à Planity. Le calcul vous montre ce que votre propre site vous fait garder, et en combien de mois il est remboursé.</p><p><a class="vms-btn" href="#calcul">Faire le calcul</a></p></div><div class="vms-manga"><img src="/img/studio/manga-vm-studio-600.webp" alt="Scène manga VM Studio" width="600" height="1066"><small>Illustration IA, personnages inventés</small></div></section>
+<section class="vms-section" id="calcul" aria-labelledby="t-calc"><div class="vms-head-sec"><p class="vms-kicker">Le calcul</p><h2 id="t-calc">Votre <span class="vms-gold">situation</span></h2></div>
+<div class="rt-tabs" role="tablist"><button type="button" role="tab" aria-selected="true" data-t="cmd">🍕 Je paie Uber Eats / Deliveroo</button><button type="button" role="tab" aria-selected="false" data-t="rdv">✂️ Je paie Planity / un agenda</button></div>
+<div class="rt-pane" id="p-cmd"><form class="rt-f" onsubmit="return false">
+<label>Ventes par mois passées par la plateforme (€)<input id="c-ca" type="number" inputmode="numeric" value="2000" min="0"></label>
+<label>Commission de la plateforme (%)<input id="c-com" type="number" inputmode="decimal" value="28" min="0" max="60"><small>Uber Eats standard : environ 25 à 28 % hors taxes ; la TVA s’ajoute sur la commission.</small></label>
+<label>Part de vos clients habitués qui commanderaient sur votre site (%)<input id="c-part" type="number" inputmode="numeric" value="30" min="0" max="100"><small>Surtout les commandes à emporter de vos fidèles. Restez prudent.</small></label>
+<label>Panier moyen (€)<input id="c-pan" type="number" inputmode="decimal" value="20" min="1"></label>
+<label>Votre pack VM Studio<select id="c-pack"><option value="990">Business · 990 €</option><option value="1490" selected>Max · 1 490 €</option></select></label>
+<label>Maintenance par mois<select id="c-mt"><option value="29">Entretien · 29 €</option><option value="59" selected>Entretien + · 59 €</option><option value="99">Mises à jour régulières · 99 €</option></select></label>
+</form><div class="rt-res" id="r-cmd"></div><p class="rt-msg" id="m-cmd"></p></div>
+<div class="rt-pane" id="p-rdv" hidden><form class="rt-f" onsubmit="return false">
+<label>Ce que vous payez par mois pour votre agenda en ligne (€ TTC)<input id="r-abo" type="number" inputmode="numeric" value="89" min="0"><small>Relevés publics pour Planity : environ 74 à 114 € HT par mois selon la formule. Le plus simple : regardez votre facture.</small></label>
+<label>Votre pack VM Studio<select id="r-pack"><option value="990" selected>Business · 990 € (site + rendez-vous)</option><option value="1490">Max · 1 490 €</option></select></label>
+<label>Maintenance par mois<select id="r-mt"><option value="29">Entretien · 29 €</option><option value="59" selected>Entretien + · 59 €</option><option value="99">Mises à jour régulières · 99 €</option></select></label>
+</form><div class="rt-res" id="r-rdv"></div><p class="rt-msg" id="m-rdv"></p></div>
+<p class="vms-note"><strong>Soyons honnêtes :</strong> votre site ne remplace pas tout. Uber Eats vous apporte de nouveaux clients et des livreurs ; Planity offre aussi caisse, rappels SMS et visibilité sur son appli. Votre site sert d’abord à vos clients fidèles et à votre image, sans commission. Ce calcul est une estimation : les chiffres réels dépendent de votre activité. Paiement en ligne sur votre propre compte (ex. Stripe : environ 1,5 % + 0,25 € par paiement par carte européenne, déjà compté ci-dessus pour les commandes).</p>
+<p style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><a class="vms-btn" href="/web-studio.html?offre=essai#essai">Essayer 7 jours · 49 €</a><a class="vms-btn vms-btn-ghost" href="/web-studio.html#tarifs">Voir les packs</a></p>
+<p class="vms-fine" style="font-size:12px;opacity:.75">Sources des repères : commissions Uber Eats France 2026 (Fooderise) ; tarifs Planity relevés en 2026 (La Caisse Idéale, RDV360) ; frais Stripe (Indy). Planity ne publie pas ses tarifs : demandez votre devis pour comparer.</p>
+</section>
+<script>
+(function(){
+var e=function(n){return n.toLocaleString('fr-FR',{maximumFractionDigits:0})};
+function v(id){var x=parseFloat(document.getElementById(id).value);return isNaN(x)?0:x}
+function card(big,small,gold){return '<div class="rt-k'+(gold?' gold':'')+'"><b>'+big+'</b><span>'+small+'</span></div>'}
+function cmd(){var ca=v('c-ca'),com=v('c-com')/100*1.2,part=v('c-part')/100,pan=Math.max(1,v('c-pan')),pack=v('c-pack'),mt=v('c-mt');
+ var site=ca*part,eco=site*com,stripe=site*0.015+site/pan*0.25,net=eco-stripe-mt,mois=net>0?Math.ceil(pack/net):null;
+ document.getElementById('r-cmd').innerHTML=card(e(ca*com)+' €','commission payée par mois aujourd’hui (TVA comprise)')+card(e(eco)+' €','gardés chaque mois grâce à votre site')+card(e(net)+' €','gain net par mois, après maintenance et frais de paiement',true)+card(mois?mois+' mois':'—','pour rembourser le site',true);
+ document.getElementById('m-cmd').textContent=net>0?('Sur 3 ans, votre site vous fait garder environ '+e(net*36-pack)+' € de plus, une fois payé. Sur un panier de '+e(pan)+' €, chaque commande passée chez vous plutôt que sur la plateforme vous rapporte environ '+(pan*com).toFixed(2).replace('.',',')+' € de plus.'):'Avec ces chiffres, le site ne se rembourse pas par les commissions seules : il reste utile pour votre image et vos clients fidèles. Essayez avec une part plus réaliste de vos ventes.';}
+function rdv(){var abo=v('r-abo'),pack=v('r-pack'),mt=v('r-mt'),net=abo-mt,mois=net>0?Math.ceil(pack/net):null;
+ document.getElementById('r-rdv').innerHTML=card(e(abo*12)+' €','payés par an aujourd’hui pour l’agenda')+card(e(mt*12)+' €','par an avec votre site VM')+card(e(net)+' €','économisés par mois',true)+card(mois?mois+' mois':'—','pour rembourser le site',true);
+ document.getElementById('m-rdv').textContent=net>0?('Sur 3 ans : environ '+e(net*36-pack)+' € de plus pour vous, avec un site à votre nom et à votre image.'):'Avec ces chiffres, l’intérêt est surtout votre image et votre indépendance, pas l’économie.';}
+document.querySelectorAll('.rt-f input,.rt-f select').forEach(function(x){x.addEventListener('input',function(){cmd();rdv()})});
+document.querySelectorAll('.rt-tabs button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.rt-tabs button').forEach(function(o){o.setAttribute('aria-selected',o===b)});document.getElementById('p-cmd').hidden=b.dataset.t!=='cmd';document.getElementById('p-rdv').hidden=b.dataset.t!=='rdv'})});
+cmd();rdv();
+})();
+</script>
+</main>
+<footer class="vms-foot"><div class="vms-foot-in"><p class="vms-foot-brand"><img src="/img/studio/logo-vm-studio-96.webp" alt="" width="40" height="40" loading="lazy"><span><b class="vms-gold">VM STUDIO</b><small>VM Studio est un projet du réseau VM Univers.</small></span></p><p>SIRET 528 102 916 00012 · Prix TTC en euros · TVA non applicable, art. 293 B du CGI.</p><nav aria-label="Pied de page"><a href="mailto:vminvest.fr@gmail.com">vminvest.fr@gmail.com</a><a href="https://vmunivers.fr/">VM Univers</a><a href="/mentions-legales.html">Mentions légales</a></nav></div></footer><button type="button" class="vmfab" id="vmFab" aria-haspopup="dialog">📤 Partager</button>
+<button type="button" class="vminst" id="vmInst">📲 Installer l'app</button>
+<div class="vmsh" id="vmSh" hidden role="dialog" aria-modal="true" aria-labelledby="vmShT"><div class="vmsh-box">
+<h3 id="vmShT">📤 Partager cette page</h3><p class="vmsh-t" id="vmShU"></p>
+<div class="vmsh-g">
+<a id="vmS-wa" target="_blank" rel="noopener"><span>💬</span>WhatsApp</a>
+<a id="vmS-fb" target="_blank" rel="noopener"><span>📘</span>Facebook</a>
+<a id="vmS-x" target="_blank" rel="noopener"><span>✖️</span>X</a>
+<a id="vmS-tg" target="_blank" rel="noopener"><span>✈️</span>Telegram</a>
+<a id="vmS-sms"><span>📱</span>SMS</a>
+<button type="button" id="vmS-cp"><span>🔗</span>Copier le lien</button>
+</div>
+<button type="button" class="vmsh-c" id="vmS-more" hidden>Plus d’options (Insta, Snap…)</button>
+<div class="vmsh-qr" id="vmShQ" aria-label="QR code de la page"></div>
+<p class="vmsh-t" style="text-align:center;margin:4px 0 0">📷 Fais scanner ce QR code avec l’appareil photo d’un ami</p>
+<button type="button" class="vmsh-c" id="vmShX">Fermer</button>
+</div></div>
+<script>
+(function(){var $=function(i){return document.getElementById(i)},f=$('vmFab'),m=$('vmSh'),qr=false;if(!f||!m)return;
+function url(){return window.vmShareURL?window.vmShareURL():(/^#a=/.test(location.hash)?location.href:location.href.split('#')[0])}
+function open(){var u=url(),t=document.title,e=encodeURIComponent;$('vmShU').textContent=t;
+ $('vmS-wa').href='https://wa.me/?text='+e(t+' '+u);$('vmS-fb').href='https://www.facebook.com/sharer/sharer.php?u='+e(u);$('vmS-x').href='https://twitter.com/intent/tweet?text='+e(t)+'&url='+e(u);$('vmS-tg').href='https://t.me/share/url?url='+e(u)+'&text='+e(t);$('vmS-sms').href='sms:?&body='+e(t+' '+u);
+ $('vmS-more').hidden=!navigator.share;
+ if(!qr){qr=true;var s=document.createElement('script');s.src='/assets/vendor/qrcode.min.js';var fb=function(){var q=$('vmShQ');if(q.firstChild)return;var p=document.createElement('p');p.textContent='QR code indisponible. Vous pouvez copier le lien ci-dessus.';q.appendChild(p)};s.onload=function(){try{new QRCode($('vmShQ'),{text:u,width:180,height:180,correctLevel:QRCode.CorrectLevel.M})}catch(x){fb()}};s.onerror=fb;setTimeout(fb,4000);document.head.appendChild(s)}
+ m.hidden=false;$('vmShX').focus()}
+f.onclick=open;$('vmShX').onclick=function(){m.hidden=true;f.focus()};m.onclick=function(e){if(e.target===m)m.hidden=true};
+$('vmS-more').onclick=function(){navigator.share({title:document.title,url:url()}).catch(function(){})};
+$('vmS-cp').onclick=function(){var b=this;(navigator.clipboard?navigator.clipboard.writeText(url()):Promise.reject()).then(function(){b.lastChild.textContent='Copié ✓'}).catch(function(){prompt('Copie ce lien :',url())})};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=true});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
+var ib=$('vmInst'),dp=null,standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone,ios=/iphone|ipad|ipod/i.test(navigator.userAgent),andr=/android/i.test(navigator.userAgent);
+var mf=(($('vmapp-m')||{}).getAttribute&&$('vmapp-m').getAttribute('href'))||'',app=(mf.match(/app[/]([a-z]+)[.]webmanifest/)||[,'foot'])[1];
+var NOMS={autopart:'VM Auto Particulier',location:'VM Detailing',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'VM Univers',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'La Pastille TV',annonces:'VM Shop',allolivre:'AlloLivre',recettes:'VM Recettes',produits:'VM Produits locaux',sport:'VM Sport',immo:'VM Immo',rdv:'VM RDV du jour',meteo:'VM Météo',comparateur:'VM Comparateur',boutique:'VM Boutique',belfort:'VM Belfort',pub:'Publicité VM',services:'VM Services',pepite:'Pépite FC',radio:'VM Radio',studio:'VM Studio'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
+ib.textContent='📲 Installer '+nom;
+function show(){if(!no)ib.classList.add('show')}
+if(!standalone){addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;show()});if(ios)show();}
+addEventListener('appinstalled',function(){ib.classList.remove('show')});
+ib.onclick=function(){
+ if(dp){dp.prompt();dp.userChoice.then(function(){ib.classList.remove('show')});dp=null;return}
+ if(ios){alert('Pour installer '+nom+' sur iPhone : — 1. Ouvre cette page dans Safari — 2. Bouton Partager ↑ en bas — 3. « Sur l’écran d’accueil » — 4. « Ajouter »')}
+
+ try{localStorage.setItem(key,'1')}catch(e){}ib.classList.remove('show')};
+window.vmMail=function(su,bo){var to='vminvest.fr@gmail.com';location.href='mailto:'+to+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(bo);
+ var d=document.getElementById('vmMailBox');if(d)d.remove();d=document.createElement('div');d.id='vmMailBox';d.setAttribute('role','dialog');
+ d.style.cssText='position:fixed;left:12px;right:12px;bottom:12px;z-index:95;max-width:440px;margin:0 auto;background:#fff;color:#0b1533;border:3px solid #000;border-radius:16px;padding:14px;box-shadow:5px 5px 0 #1d3fb8;font:15px/1.4 system-ui,sans-serif';
+ d.innerHTML='<b>✉️ Ton appli e-mail s’ouvre avec le message prêt.</b><br>Appuie sur « Envoyer » dedans : tant que ce n’est pas fait, rien n’est envoyé.<br><small>Rien ne s’ouvre ? Copie la demande et envoie-la à '+to+'.</small><div style="display:flex;gap:8px;margin-top:10px"><button type="button" id="vmMailCp" style="flex:1;font:800 .95rem system-ui;padding:10px;border-radius:999px;border:2px solid #000;background:#f4cf55;cursor:pointer">📋 Copier la demande</button><button type="button" id="vmMailX" style="font:800 .95rem system-ui;padding:10px 14px;border-radius:999px;border:2px solid #000;background:#fff;cursor:pointer">OK</button></div>';
+ document.body.appendChild(d);document.getElementById('vmMailX').onclick=function(){d.remove()};
+ document.getElementById('vmMailCp').onclick=function(){var t='À : '+to+'\nObjet : '+su+'\n\n'+bo,b=this;function ok(){b.textContent='✅ Copié !'}if(navigator.clipboard)navigator.clipboard.writeText(t).then(ok,function(){prompt('Copie ce texte :',t)});else prompt('Copie ce texte :',t)}};
+})();
+</script></body></html>
