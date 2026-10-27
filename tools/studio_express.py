@@ -164,7 +164,7 @@ Réponds avec ce JSON :
            "couleurs": {{"a": "#hex principale", "b": "#hex secondaire", "ink": "#hex texte foncé", "bg": "#hex fond clair"}}}},
   "offre": "page | vitrine | reservation (la formule VM Studio la plus adaptée)",
   "points_faibles": ["ce qui manque aujourd'hui au commerce en ligne, 2-3 points"],
-  "message": "message privé (Facebook/Instagram) de Romain au commerçant : bonjour, compliment sincère et précis, j'ai préparé une maquette de votre futur site, [LIEN], prix de la formule, sans engagement. Ton humain, 6 lignes max, tutoiement interdit.",
+  "message": "message privé (Facebook/Instagram) de Romain au commerçant : bonjour, compliment sincère et précis, j'ai préparé une maquette de votre futur site, [LIEN], la formule à [PRIX], sans engagement. Ton humain, 6 lignes max, tutoiement interdit.",
   "sources": [{{"nom": "…", "url": "https://…"}}]}}
 ```
 Si le commerce est introuvable, "trouve": false, et fais quand même la maquette à partir des infos de Romain.'''
@@ -188,7 +188,8 @@ def build(fields, data, slug, numero=''):
     demo.update(id='client-' + slug, name=demo.get('name') or nom)
     demo['rating'] = demo.get('rating') or '—'
     demo['address'] = p.get('adresse') or demo.get('address') or pick(fields, 'ville')
-    offre_id = data.get('offre') if data.get('offre') in OFFRES else 'vitrine'
+    # La formule suit ce que montre la maquette : réservation ou commande en ligne = 990 €, devis = vitrine.
+    offre_id = 'reservation' if ('booking' in demo or 'order' in demo) else 'vitrine'
     choix = pick(fields, 'formule')
     for k in OFFRES:
         if k in choix.lower():
@@ -250,7 +251,7 @@ def build(fields, data, slug, numero=''):
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / f'{slug}.html').write_text(page, encoding='utf-8')
     url = f'{SITE}/demos/clients/{slug}.html'
-    message = str(data.get('message') or '').replace('[LIEN]', url)
+    message = str(data.get('message') or '').replace('[LIEN]', url).replace('[PRIX]', f'{prix} €')
     if url not in message:
         message += '\n' + url
     record = {'slug': slug, 'nom': demo['name'], 'ville': pick(fields, 'ville'), 'modele': base, 'offre': offre_id,
