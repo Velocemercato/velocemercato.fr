@@ -74,13 +74,13 @@ pre{white-space:pre-wrap;word-break:break-word;margin:0;font:14px/1.45 system-ui
 
 <ol class="steps">
 <li><b class="n">1</b><span>Remplis le formulaire : <b>nom</b>, <b>ville</b>, et colle ses liens (Google, Facebook, Instagram) si tu les as.</span></li>
-<li><b class="n">2</b><span>Attends <b>2 à 4 minutes</b> : tu reçois une notification avec le lien de la maquette.</span></li>
-<li><b class="n">3</b><span>Copie le <b>message tout prêt</b> et envoie-le au commerçant en privé. Il voit son futur site avant de payer.</span></li>
+<li><b class="n">2</b><span>Attends <b>2 à 4 minutes</b> : tu reçois une notification avec le lien de la maquette et <b>sa carte QR</b>. Choisis « Oui, ses photos pendant 24 h » pour montrer son vrai commerce.</span></li>
+<li><b class="n">3</b><span>Montre la <b>carte QR</b> sur ton téléphone, ou copie le <b>message tout prêt</b>. Il regarde son futur site chez lui, à tête reposée.</span></li>
 </ol>
 
 <h2>Tes maquettes</h2>
 <div id="liste"><p class="empty">Aucune maquette pour l’instant. Appuie sur « Créer un site démo » pour la première.</p></div>
-<p class="tip">Les maquettes ne sont pas visibles sur Google. Les photos sont des illustrations : demande ses vraies photos au commerçant quand il dit oui.</p>
+<p class="tip">Les maquettes ne sont pas visibles sur Google. Les photos du commerce ne restent que 24 h (exemple privé) : pour le vrai site, demande-lui ses photos et son accord.</p>
 </div>
 <script>
 (function(){
@@ -89,8 +89,11 @@ pre{white-space:pre-wrap;word-break:break-word;margin:0;font:14px/1.45 system-ui
   fetch('/demos/clients/index.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():[]}).then(function(rows){
     if(!rows||!rows.length)return;
     L.innerHTML=rows.map(function(r,i){return '<article class="demo"><h3>'+esc(r.nom)+'</h3><small>'+esc(r.ville)+' · modèle '+esc(r.modele)+' · '+esc((r.cree_le||'').slice(0,10))+'</small>'+
-      '<div>Formule conseillée : <span class="price">'+esc(r.prix)+' €</span></div><pre id="m'+i+'">'+esc(r.message)+'</pre>'+
-      '<div class="row"><a class="btn" href="'+esc(r.url)+'" target="_blank" rel="noopener">👀 Voir la maquette</a><button type="button" class="btn alt" data-m="m'+i+'">📋 Copier le message</button></div></article>'}).join('');
+      '<div>Formule conseillée : <span class="price">'+esc(r.prix)+' €</span></div>'+
+      (r.photos?'<small>📸 '+esc(r.photos)+' photos du commerce jusqu’au '+esc(new Date(r.expire).toLocaleString('fr-FR',{weekday:'long',hour:'2-digit',minute:'2-digit'}))+', puis illustrations</small>':'')+
+      (r.qr?'<a href="'+esc(r.qr)+'" target="_blank" rel="noopener"><img src="'+esc(r.qr)+'" alt="Carte QR à montrer au commerçant" width="1080" height="1920" loading="lazy" style="width:100%;max-width:260px;height:auto;border-radius:12px;border:2px solid #000"></a>':'')+
+      '<pre id="m'+i+'">'+esc(r.message)+'</pre>'+
+      '<div class="row"><a class="btn" href="'+esc(r.url)+'" target="_blank" rel="noopener">👀 Voir la maquette</a>'+(r.qr?'<a class="btn alt" href="'+esc(r.qr)+'" download>📲 Enregistrer la carte QR</a>':'')+'<button type="button" class="btn alt" data-m="m'+i+'">📋 Copier le message</button></div></article>'}).join('');
   }).catch(function(){});
   L.addEventListener('click',function(e){var b=e.target.closest('button[data-m]');if(!b)return;var t=document.getElementById(b.getAttribute('data-m')).textContent;
     function ok(){b.textContent='✅ Copié !';setTimeout(function(){b.textContent='📋 Copier le message'},1800)}

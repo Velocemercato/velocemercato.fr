@@ -281,8 +281,36 @@ def main():
     bases_cfg = '\n'.join(f'--- modèle « {b} » ({desc}) ---\n{demo_block(b)[1].group(1)}' for b, desc in BASES.items())
     response = call_claude(SYSTEM, prompt(fields, bases_cfg))
     record = build(fields, final_json(response), slug, args.numero)
+    # Photos du commerce (exemple privé 24 h) et carte QR à montrer.
+    import studio_extras as X
+    photos, fin = [], None
+    if 'oui' in pick(fields, 'photo').lower():
+        liens = re.findall(r'https://[^\s<>"]+', pick(fields, 'lien'))
+        photos = X.find_photos(liens + [s['url'] for s in record['sources']])
+        fin = X.apply_photos(OUT / f'{slug}.html', photos, record['nom']) if photos else None
+    qr = None
+    try:
+        X.qr_card(record['url'], record['nom'], record['modele'], OUT / f'{slug}-qr.png', bool(fin))
+        qr = f'https://velocemercato.fr/demos/clients/{slug}-qr.png'
+    except Exception as exc:
+        print(f'Carte QR non créée : {type(exc).__name__}', flush=True)
+    index = OUT / 'index.json'
+    rows = json.loads(index.read_text())
+    for r in rows:
+        if r.get('slug') == slug:
+            r.update(qr=qr, photos=len(photos) if fin else 0, expire=fin)
+    index.write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding='utf-8')
+    record.update(qr=qr, photos=len(photos) if fin else 0, expire=fin)
     sources = '\n'.join(f'- [{s.get("nom") or s["url"]}]({s["url"]})' for s in record['sources']) or '- (aucune source trouvée : maquette faite avec tes infos)'
     faibles = '\n'.join(f'- {x}' for x in record['points_faibles'])
+    if record['photos']:
+        photo_txt = (f"📸 **{record['photos']} photos du commerce** affichées en exemple privé jusqu'au "
+                     f"{record['expire'][:16].replace('T', ' à ')} (heure UTC), puis retour automatique aux illustrations.")
+    elif 'oui' in pick(fields, 'photo').lower():
+        photo_txt = "📸 Aucune photo publique trouvée (page Planity ou site du commerce) : la maquette garde les illustrations."
+    else:
+        photo_txt = "_Photos d'illustration : demande ses vraies photos au commerçant pour le site final._"
+    qr_txt = (f"### 📲 Carte QR à montrer\n![Carte QR]({record['qr']})\n\nTélécharger : {record['qr']}" if record['qr'] else '')
     Path(args.resultat).write_text(f'''## ✅ La maquette de **{record["nom"]}** est prête
 
 👉 **{record["url"]}**
@@ -301,7 +329,9 @@ def main():
 ### 🔎 Infos trouvées sur
 {sources}
 
-_Les photos du site démo sont des illustrations : demande ses vraies photos au commerçant pour le site final._
+{photo_txt}
+
+{qr_txt}
 ''', encoding='utf-8')
     print(json.dumps({'url': record['url'], 'modele': record['modele']}, ensure_ascii=False))
 

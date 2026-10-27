@@ -31,6 +31,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Outils (carte QR)
+        run: python -m pip install --quiet qrcode==7.4.2 pillow
       - name: Prévenir que c'est en cours
         run: |
           gh issue comment "$NUMERO" --body "⏳ C'est parti : je cherche le commerce sur Internet et je fabrique la maquette (2 à 4 minutes)."
