@@ -49,8 +49,9 @@ body:
       label: Formule à proposer
       options:
         - Auto (le robot choisit)
-        - page (Page unique 290 €)
-        - vitrine (Site vitrine 590 €)
-        - reservation (Réservation ou commande 990 €)
+        - mini (Mini 290 €)
+        - starter (Starter 590 €)
+        - business (Business 990 €)
+        - max (Max 1 490 €)
     validations:
       required: true
