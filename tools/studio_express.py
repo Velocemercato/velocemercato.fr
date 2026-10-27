@@ -304,8 +304,10 @@ def main():
     sources = '\n'.join(f'- [{s.get("nom") or s["url"]}]({s["url"]})' for s in record['sources']) or '- (aucune source trouvée : maquette faite avec tes infos)'
     faibles = '\n'.join(f'- {x}' for x in record['points_faibles'])
     if record['photos']:
+        from zoneinfo import ZoneInfo
+        fin_fr = dt.datetime.fromisoformat(record['expire']).astimezone(ZoneInfo('Europe/Paris'))
         photo_txt = (f"📸 **{record['photos']} photos du commerce** affichées en exemple privé jusqu'au "
-                     f"{record['expire'][:16].replace('T', ' à ')} (heure UTC), puis retour automatique aux illustrations.")
+                     f"{fin_fr:%d/%m à %H h %M}, puis retour automatique aux illustrations.")
     elif 'oui' in pick(fields, 'photo').lower():
         photo_txt = "📸 Aucune photo publique trouvée (page Planity ou site du commerce) : la maquette garde les illustrations."
     else:
