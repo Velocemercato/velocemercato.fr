@@ -66,6 +66,9 @@ ROTATIONS = [
         {'type': 'carte', 'name': 'VM Studio', 'icon': 'studio', 'url': STUDIO_URL,
          'carte': 'Votre site pro dès 290 €. Devis gratuit.',
          'titre': '🛠️ Votre site internet, sans vous ruiner', 'pitch': STUDIO_PITCH, 'tags': STUDIO_TAGS},
+        {'type': 'image', 'name': 'VM Studio', 'image': 'https://velocemercato.fr/img/pub/vm-studio-talent.jpg', 'url': STUDIO_URL,
+         'titre': '✨ Votre commerce a du talent. Montrez-le en ligne.',
+         'pitch': 'Site internet · Photos · Visuels · QR code\nVM Studio prépare une proposition à votre image, puis vous l’ajustez ensemble.\n✅ Dès 290 € · Devis gratuit', 'tags': STUDIO_TAGS},
         {'type': 'video', 'name': 'VM Studio', 'video_id': 'vm-bureaux', 'url': STUDIO_URL,
          'titre': '📲 Coiffeur, snack, artisan : vos clients vous cherchent sur leur téléphone',
          'pitch': 'On crée votre site clé en main, avec réservation ou commande en ligne si besoin.\n'
@@ -409,6 +412,9 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
                 if item['type'] == 'video':
                     graph.call('POST', meta['page_id'] + '/videos', {'file_url': item['video'], 'description': text,
                                                                      'access_token': meta['page_token']})
+                elif item['type'] == 'image':
+                    graph.call('POST', meta['page_id'] + '/photos', {'url': item['image'], 'caption': text,
+                                                                     'access_token': meta['page_token']})
                 else:
                     graph.call('POST', meta['page_id'] + '/feed', {'message': text, 'link': item['url'], 'access_token': meta['page_token']})
                 print(f'::notice::facebook : {item["type"]} {name}')
@@ -416,6 +422,8 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
                     insta_text = text.replace('👉 ' + item['url'], '👉 Lien en bio')
                     if item['type'] == 'video':
                         instagram_reel(graph, meta, {'verticale': item['video'], 'texte_vertical': insta_text}, sleep=sleep)
+                    elif item['type'] == 'image':
+                        instagram_image(graph, meta, item['image'], insta_text, sleep=sleep)
                     else:
                         instagram_image(graph, meta, (card or instagram_projet_card)(name, item['icon'], item.get('carte', item['pitch'])),
                                         insta_text, sleep=sleep)

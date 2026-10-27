@@ -3,7 +3,6 @@ vidéo verticale muette sous-titrée, à partir de sources publiques citées sur
 Usage : python tools/reportage_alexia.py"""
 import math
 import random
-import shutil
 import subprocess
 import tempfile
 from pathlib import Path
@@ -103,77 +102,117 @@ def wrap(d, text, f, maxw):
     return lines
 
 
-SLIDES = [
-    ('GRAND REPORTAGE', 'ALEXIA DEPAGNE', 'La Niçoise qui fait briller le baby-foot féminin', 1, (18, 120, 60)),
-    ('L’ENFANCE', 'LA FÊTE FORAINE', 'Tout commence en défiant son père. Puis une petite table Smoby à la maison.', 2, (24, 110, 70)),
-    ('À 7 ANS', 'DÉJÀ STRATÈGE', 'À l’école, elle invente des tactiques pendant la pause de midi.', 3, (20, 100, 90)),
-    ('À 17 ANS', 'LE CLUB DE NICE', 'Au lycée, elle découvre un club niçois… et n’en repart jamais.', 4, (30, 90, 120)),
-    ('2017', 'CHAMPIONNE DU MONDE', 'Avec l’équipe de France, titre mondial par équipe à la Coupe du monde multi-tables.', 5, (120, 90, 20)),
-    ('AU CLUB', 'DIRIGEANTE', 'Secrétaire, trésorière, puis présidente de son club.', 6, (60, 60, 130)),
-    ('2026', 'SUR LE PODIUM', 'Vice-championne de France en double mixte. 2e par équipe et 2e en simple aux World Series.', 7, (130, 40, 60)),
-    ('SON COMBAT', 'PLACE AUX FEMMES', 'Moins de 100 licenciées pour plus de 2 000 pratiquants. Elle crée une association pour les aider.', 8, (90, 30, 110)),
-    ('OBJECTIF 2028', 'LA COUPE DU MONDE', '« J’espère voir toujours plus de femmes autour des tables de baby-foot. »', 9, (18, 120, 60)),
+# Chapitres du reportage long : uniquement des faits publics sourcés (liste des sources sur l'article).
+CHAPITRES = [
+    ('table', 'GRAND REPORTAGE', 'ALEXIA DEPAGNE', ['La Niçoise qui fait briller le baby-foot féminin.', 'Son parcours, étape par étape.']),
+    ('table', 'CHAPITRE 1 · L’ENFANCE', 'LA FÊTE FORAINE', ['Tout commence avec ses parents, dans les fêtes foraines.', 'Son premier adversaire : son père.', 'Puis une petite table Smoby à la maison.']),
+    ('nombre', 'CHAPITRE 2', '7 ANS', ['À l’école primaire, une table l’attend à la pause de midi.', 'Elle invente déjà ses propres stratégies.']),
+    ('nombre', 'CHAPITRE 3 · LE DÉCLIC', '17 ANS', ['Dans son lycée niçois, il y a plusieurs tables.', 'Elle découvre un club à Nice et s’y inscrit.', 'Elle n’en est jamais repartie.']),
+    ('table', 'CHAPITRE 4', 'LE PLAISIR D’ABORD', ['Jusqu’à 25 ans, elle joue surtout pour s’amuser,', 'avec quelques compétitions de club', 'pour retrouver ses amis.']),
+    ('nombre', 'CHAPITRE 5 · PREMIER PODIUM OFFICIEL', '2015', ['3e du tournoi DYP du samedi au WCS Bonzini,', 'avec Daniel Kelovic.', 'Source : Fédération française de baby-foot.']),
+    ('nombre', 'CHAPITRE 6 · LE SOMMET', '2017', ['Sélectionnée en équipe de France', 'pour la Coupe du monde multi-tables.', 'La France remporte le titre mondial par équipe.']),
+    ('table', 'CHAPITRE 7 · SES ARMES', 'LA TÊTE ET LES NERFS', ['Le basket et le volley lui ont appris à analyser,', 'à décider vite et à jouer en équipe.', 'Gérer ses émotions : la clé, selon elle.']),
+    ('table', 'CHAPITRE 8 · AU SERVICE DU CLUB', 'DIRIGEANTE', ['Secrétaire, puis trésorière,', 'puis présidente de son club.']),
+    ('nombre', 'CHAPITRE 9 · MARS 2026', '1re', ['Victoire en double féminin à l’Open national', 'd’Avesnes-les-Aubert, avec Marie Chatillon.', 'Et 2e du simple féminin.']),
+    ('nombre', 'CHAPITRE 10 · MAI 2026', '2e', ['Vice-championne de France en double mixte,', 'avec Tom Droit.', 'Source : Fédération française de baby-foot.']),
+    ('table', 'CHAPITRE 11 · WORLD SERIES 2026', 'DEUX FOIS 2e', ['2e par équipe avec la France, 2e en simple dames,', 'après seulement deux entraînements :', 'elle avait pris du recul pour d’autres projets.']),
+    ('stat', 'CHAPITRE 12 · LE CONSTAT', '- de 100', ['licenciées en France,', 'pour plus de 2 000 pratiquants.', 'Elle se bat pour que ça change.']),
+    ('citation', 'CE QU’ELLE PROPOSE', '« Les clubs devraient désigner des personnes référentes pour accompagner les nouvelles joueuses. »', ['Alexia Depagne, Women Sports, juillet 2026']),
+    ('table', 'CHAPITRE 13 · SON ASSOCIATION', 'PLACE AUX FEMMES', ['Aider les joueuses à aller en compétition,', 'organiser des initiations,', 'et trouver partenaires et sponsors.']),
+    ('citation', 'SA DEVISE', '« Nous sommes des sportifs avec une préparation, une alimentation adaptée et une vraie concentration. »', ['Alexia Depagne, Women Sports, juillet 2026']),
+    ('nombre', 'OBJECTIF', '2028', ['La Coupe du monde avec l’équipe de France.', '« J’espère voir toujours plus de femmes', 'autour des tables de baby-foot. »']),
+    ('fin', 'VÉLOCE MERCATO', 'MERCI ALEXIA', ['Le reportage complet et les sources', 'sur velocemercato.fr']),
 ]
 
 
-def text_layer(w, h, eye, title, body, last=False):
+def fond(kind, i, w, h):
+    if kind == 'table':
+        return shade(table(int(w * 1.15), int(h * 1.15), i + 1, [(18, 120, 60), (24, 110, 70), (30, 90, 120), (90, 30, 110), (130, 40, 60)][i % 5]), .25, .85)
+    img = Image.new('RGB', (int(w * 1.15), int(h * 1.15)), NIGHT)
+    d = ImageDraw.Draw(img)
+    W2, H2 = img.size
+    for y in range(H2):
+        t = y / H2
+        d.line((0, y, W2, y), fill=(int(6 + 70 * t), int(10 + 8 * t), int(28 + 40 * (1 - t))))
+    for k in range(14):
+        a = k / 14 * math.tau
+        d.polygon([(W2 / 2, H2 * .38), (W2 / 2 + math.cos(a) * W2 * 1.5, H2 * .38 + math.sin(a) * W2 * 1.5),
+                   (W2 / 2 + math.cos(a + .1) * W2 * 1.5, H2 * .38 + math.sin(a + .1) * W2 * 1.5)], fill=(30, 26, 40))
+    return img
+
+
+def calque(kind, w, h, eye, title, lines, n_visibles, last=False):
     layer = Image.new('RGBA', (w, h), (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
     x, maxw = 80, w - 160
-    fe, ft, fb = font(BOLD, 44), font(BOLD, 112), font(MED, 56)
-    tl = wrap(d, title, ft, maxw)
-    bl = wrap(d, body, fb, maxw)
-    y = h - 260 - len(bl) * 74 - len(tl) * 118 - 90
-    ew = d.textlength(eye, font=fe)
-    d.rounded_rectangle((x, y, x + ew + 48, y + 72), 36, fill=GOLD)
-    d.text((x + 24, y + 10), eye, font=fe, fill=(11, 21, 51))
-    y += 100
-    for line in tl:
-        d.text((x, y), line, font=ft, fill=WHITE, stroke_width=5, stroke_fill=(0, 0, 0))
-        y += 118
-    y += 14
-    for line in bl:
-        d.text((x, y), line, font=fb, fill=(235, 238, 248))
-        y += 74
-    foot = 'Le reportage complet sur velocemercato.fr' if last else 'VÉLOCE MERCATO · GRAND REPORTAGE'
-    ff = font(BOLD, 40)
-    d.text((x, h - 150), foot, font=ff, fill=GOLD)
+    fe, fb = font(BOLD, 44), font(MED, 54)
+    body = []
+    for line in lines:
+        body += wrap(d, line, fb, maxw)
+    centre = kind in ('nombre', 'stat')
+    if centre:
+        big = font(BOLD, 330 if len(title) <= 4 else 230)
+        tw = d.textlength(title, font=big)
+        ew = d.textlength(eye, font=fe)
+        d.rounded_rectangle(((w - ew) / 2 - 24, h * .2 - 110, (w + ew) / 2 + 24, h * .2 - 38), 36, fill=GOLD)
+        d.text(((w - ew) / 2, h * .2 - 100), eye, font=fe, fill=(11, 21, 51))
+        d.text(((w - tw) / 2, h * .2), title, font=big, fill=GOLD, stroke_width=8, stroke_fill=(0, 0, 0))
+        y = h * .2 + 440
+    else:
+        ft = font(BOLD, 78 if kind == 'citation' else 112)
+        step = 96 if kind == 'citation' else 118
+        tl = wrap(d, title, ft, maxw)
+        y = h * .22 if kind == 'citation' else h - 260 - len(body) * 72 - len(tl) * step - 110
+        ew = d.textlength(eye, font=fe)
+        d.rounded_rectangle((x, y, x + ew + 48, y + 72), 36, fill=GOLD)
+        d.text((x + 24, y + 10), eye, font=fe, fill=(11, 21, 51))
+        y += 100
+        for line in tl:
+            d.text((x, y), line, font=ft, fill=WHITE, stroke_width=5, stroke_fill=(0, 0, 0))
+            y += step
+        y += 24
+    for k, line in enumerate(body[:n_visibles]):
+        col = GOLD if kind == 'citation' else (235, 238, 248)
+        lx = (w - d.textlength(line, font=fb)) / 2 if centre else x
+        d.text((lx, y), line, font=fb, fill=col, stroke_width=2, stroke_fill=(0, 0, 0))
+        y += 72
     d.line((x, h - 175, w - x, h - 175), fill=(255, 40, 60), width=5)
-    return layer
+    d.text((x, h - 150), 'velocemercato.fr' if last else 'VÉLOCE MERCATO · GRAND REPORTAGE', font=font(BOLD, 40), fill=GOLD)
+    return layer, len(body)
 
 
 def video(path_mp4, poster):
-    W, H, FPS, SEC = 1080, 1920, 24, 6.0
+    """Reportage long, muet et sous-titré : les lignes apparaissent au rythme de lecture."""
+    W, H, FPS, PER = 1080, 1920, 24, 2.8
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
         n = 0
-        for i, (eye, title, body, seed, tint) in enumerate(SLIDES):
-            bg = shade(table(1240, 2200, seed, tint), .25, .85)
-            txt = text_layer(W, H, eye, title, body, last=i == len(SLIDES) - 1)
-            frames = int(SEC * FPS)
+        for i, (kind, eye, title, lines) in enumerate(CHAPITRES):
+            bg = fond(kind, i, W, H)
+            _, total = calque(kind, W, H, eye, title, lines, 99)
+            layers = [calque(kind, W, H, eye, title, lines, k, last=i == len(CHAPITRES) - 1)[0] for k in range(total + 1)]
+            frames = int((3.0 + PER * total + (3 if kind == 'citation' else 1.5)) * FPS)
+            BW, BH = bg.size
             for f in range(frames):
                 t = f / (frames - 1)
-                z = 1 + .1 * t
-                cw, ch = int(1240 / z), int(2200 / z)
-                ox = int((1240 - cw) * (.5 + .3 * math.sin(i + t)))
-                oy = int((2200 - ch) * (.4 + .2 * t))
+                z = 1 + .12 * t
+                cw, ch = int(BW / z), int(BH / z)
+                ox = int((BW - cw) * (.5 + .35 * math.sin(i * 1.7 + t)))
+                oy = int((BH - ch) * (.35 + .3 * t))
                 fr = bg.crop((ox, oy, ox + cw, oy + ch)).resize((W, H), Image.BILINEAR).convert('RGBA')
-                a = min(1, t * 4) if i else 1
-                if a < 1:
-                    tl = txt.copy()
-                    tl.putalpha(tl.getchannel('A').point(lambda v: int(v * a)))
-                    fr.alpha_composite(tl)
-                else:
-                    fr.alpha_composite(txt)
-                fr.convert('RGB').save(tmp / f'f{n:05d}.jpg', quality=88)
-                if i == 0 and f == frames // 2:
+                secs = f / FPS
+                fr.alpha_composite(layers[min(total, int((secs - 1.5) / PER) + 1) if secs > 1.5 else 0])
+                if f < 8:
+                    fr = Image.blend(Image.new('RGBA', (W, H), (0, 0, 0, 255)), fr, f / 8)
+                fr.convert('RGB').save(tmp / f'f{n:05d}.jpg', quality=85)
+                if i == 0 and f == frames - 10:
                     fr.convert('RGB').save(poster, quality=86)
                 n += 1
-        # Vidéo muette (choix de Romain : pas de musique fabriquée), piste audio silencieuse pour Instagram.
+        # Vidéo muette (choix de Romain : pas de musique fabriquée), piste silencieuse pour Instagram.
         subprocess.run(['ffmpeg', '-v', 'error', '-y', '-framerate', str(FPS), '-i', str(tmp / 'f%05d.jpg'),
                         '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-shortest',
-                        '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '24', '-pix_fmt', 'yuv420p',
-                        '-c:a', 'aac', '-b:a', '64k', '-movflags', '+faststart', str(path_mp4)], check=True)
+                        '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '26', '-tune', 'stillimage', '-pix_fmt', 'yuv420p',
+                        '-c:a', 'aac', '-b:a', '48k', '-movflags', '+faststart', str(path_mp4)], check=True)
 
 
 def hero():

@@ -68,9 +68,9 @@ var L=document.getElementById('liste'),now=new Date(),html='';
 for(var k=0;k<3;k++){var d=new Date(now);d.setDate(d.getDate()+k);
  html+='<div class="day">'+(k===0?'Aujourd’hui':k===1?'Demain':'Après-demain')+' · '+d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'})+'</div>';
  heures(d).forEach(function(h){var it=contenu(d,h),tx=texte(it),cur=k===0&&now.getHours()===h;
-  var m=it.type==='video'?'<video class="media" src="'+it.video+'" poster="'+it.video.replace('.mp4','.jpg')+'" preload="none" controls playsinline></video>':'<img class="media img" src="/app/'+it.icon+'-512.png" alt="">';
-  var dl=it.type==='video'?it.video:'/app/'+it.icon+'-512.png';
-  html+='<div class="post'+(cur?' now':'')+'">'+m+'<div><div class="h">'+h+' h · <span class="t '+it.type+'">'+(it.type==='video'?'🎬 VIDÉO':'✨ CARTE')+'</span>'+esc(it.name)+'</div>'+
+  var m=it.type==='video'?'<video class="media" src="'+it.video+'" poster="'+it.video.replace('.mp4','.jpg')+'" preload="none" controls playsinline></video>':it.type==='image'?'<img class="media img" src="'+it.image+'" alt="">':'<img class="media img" src="/app/'+it.icon+'-512.png" alt="">';
+  var dl=it.type==='video'?it.video:it.type==='image'?it.image:'/app/'+it.icon+'-512.png';
+  html+='<div class="post'+(cur?' now':'')+'">'+m+'<div><div class="h">'+h+' h · <span class="t '+it.type+'">'+(it.type==='video'?'🎬 VIDÉO':it.type==='image'?'🖼️ AFFICHE':'✨ CARTE')+'</span>'+esc(it.name)+'</div>'+
    '<pre>'+esc(tx)+'</pre><div class="btns"><button type="button" data-t="'+esc(tx)+'">📋 Copier le texte</button><a class="b alt" href="'+dl+'" download>⬇️ Enregistrer</a></div></div></div>'})}
 L.innerHTML=html;
 L.addEventListener('click',function(e){var b=e.target.closest('button[data-t]');if(!b)return;

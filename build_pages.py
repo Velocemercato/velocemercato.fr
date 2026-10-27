@@ -91,9 +91,9 @@ document.getElementById('share').onclick=function(){{var d={{title:document.titl
 </html>
 """
 
-LABELS = {'LIGUE_1': 'Ligue 1', 'LIGUE_2': 'Ligue 2', 'NATIONAL': 'National', 'FEMININ': 'Football féminin',
+LABELS = {'BABYFOOT': 'Baby-foot · portrait', 'LIGUE_1': 'Ligue 1', 'LIGUE_2': 'Ligue 2', 'NATIONAL': 'National', 'FEMININ': 'Football féminin',
           'BLEUS': 'Équipe de France', 'EUROPE': "Coupes d'Europe", 'ETRANGER': 'International'}
-COLORS = {'LIGUE_1': '#1d3fb8', 'LIGUE_2': '#0e8f8f', 'NATIONAL': '#14a35a', 'FEMININ': '#b33fd1',
+COLORS = {'BABYFOOT': '#b33fd1', 'LIGUE_1': '#1d3fb8', 'LIGUE_2': '#0e8f8f', 'NATIONAL': '#14a35a', 'FEMININ': '#b33fd1',
           'BLEUS': '#2b5cff', 'EUROPE': '#e1243a', 'ETRANGER': '#e07b12'}
 MONTHS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août',
           'septembre', 'octobre', 'novembre', 'décembre']
@@ -123,7 +123,14 @@ def main():
         date = f'{when.day} {MONTHS[when.month - 1]} {when.year}' if when else ''
         label = LABELS.get(str(a.get('championnat', '')).upper()) or ('Mercato' if a.get('categorie') == 'MERCATO' else 'Football')
         paras = [p.strip() for p in re.split(r'\n\s*\n', str(a['texte'])) if p.strip()]
-        body = '\n'.join((f'<p class="chapo">{e(p)}</p>' if i == 0 else f'<p>{e(p)}</p>') for i, p in enumerate(paras))
+        # « ## Titre » = intertitre (grands formats) ; le reste reste du texte simple échappé.
+        body = '\n'.join((f'<h2>{e(p[3:])}</h2>' if p.startswith('## ') else f'<p class="chapo">{e(p)}</p>' if i == 0 else f'<p>{e(p)}</p>')
+                          for i, p in enumerate(paras))
+        essentiel = [str(x) for x in (a.get('essentiel') or []) if str(x).strip()][:6]
+        if essentiel:
+            body = ('<div class="essentiel" style="border:2px solid currentColor;border-radius:14px;padding:12px 16px;margin:0 0 18px">'
+                    '<b>L’essentiel en 30 secondes</b><ul style="margin:8px 0 0;padding-left:20px">'
+                    + ''.join(f'<li>{e(x)}</li>' for x in essentiel) + '</ul></div>\n' + body)
         sources = ', '.join(
             (f'<a href="{e(u)}" rel="noopener nofollow" target="_blank">{e(s.get("nom") or u)}</a>' if (u := safe_url(s.get('url'))) else e(s.get('nom')))
             for s in a.get('sources', []) if isinstance(s, dict)) or 'Véloce Mercato'
@@ -153,6 +160,13 @@ def main():
         if src:
             cap = f'<figcaption>{e(img.get("credit"))}</figcaption>' if img.get('credit') else ''
             media = f'<figure><img src="{e(src)}" alt="{e(img.get("alt") or a["titre"])}" width="1200" height="630">{cap}</figure>\n'
+        vm = a.get('video_vm') if isinstance(a.get('video_vm'), dict) else {}
+        if re.fullmatch(r'/img/[\w/.-]+\.mp4', str(vm.get('src', ''))):
+            poster = str(vm.get('poster', ''))
+            poster = f' poster="{e(poster)}"' if re.fullmatch(r'/img/[\w/.-]+\.(jpg|webp)', poster) else ''
+            media += (f'<figure style="max-width:420px;margin:18px auto"><video src="{e(vm["src"])}"{poster} controls playsinline preload="none" '
+                      f'style="width:100%;aspect-ratio:9/16;border-radius:14px;background:#000"></video>'
+                      f'<figcaption>🎬 {e(vm.get("legende") or "La vidéo Véloce Mercato")}</figcaption></figure>\n')
         dm = str(vid.get('dailymotion') or '')
         leg = f'<p class="credit">🎬 {e(vid.get("legende"))}</p>\n' if vid.get('legende') else ''
         if re.fullmatch(r'x[a-zA-Z0-9]{4,12}', dm):
