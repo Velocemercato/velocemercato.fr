@@ -249,6 +249,8 @@ def build(fields, data, slug, numero=''):
         page = sub1(r'<style>:root\{[^}]*\}</style>', f'<style>:root{{--a:{colors["a"]};--b:{colors["b"]};--ink:{colors["ink"]};--bg:{colors["bg"]}}}</style>', page)
     page = page.replace('<html lang="fr"><head>', '<html lang="fr"><head><meta name="robots" content="noindex,nofollow">', 1)
     OUT.mkdir(parents=True, exist_ok=True)
+    # Le site remplace les plateformes : pas de lien vers Planity, Uber Eats, etc. (RDV et commandes se font sur le site).
+    page = re.sub(r'<p><a href="https?://(?:www\.)?(?:planity|treatwell|ubereats|deliveroo|just-eat|justeat|pagesjaunes|thefork|lafourchette)\.[^"]*"[^>]*>[^<]*</a></p>', '', page)
     (OUT / f'{slug}.html').write_text(page, encoding='utf-8')
     url = f'{SITE}/demos/clients/{slug}.html'
     message = str(data.get('message') or '').replace('[LIEN]', url).replace('[PRIX]', f'{prix} €')
