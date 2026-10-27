@@ -269,6 +269,17 @@ def build(fields, data, slug, numero=''):
               'points_faibles': [str(x) for x in (data.get('points_faibles') or [])][:3],
               'sources': [s for s in (data.get('sources') or []) if isinstance(s, dict) and str(s.get('url', '')).startswith('https://')][:8],
               'cree_le': dt.datetime.now(dt.timezone.utc).isoformat(timespec='minutes'), 'demande': numero}
+    # Message toujours signé VM Studio, clair et honnête (prix d'exemple, essai 7 jours).
+    feats = {'coiffeur': 'vos prestations, vos horaires et la prise de rendez-vous en ligne',
+             'beaute': 'vos soins, vos horaires et la prise de rendez-vous en ligne',
+             'snack': 'votre carte et la commande en ligne avec heure de retrait',
+             'restaurant': 'votre carte et la réservation en ligne', 'drive': 'vos produits et la commande en ligne à retirer'}
+    noms = {'mini': 'Mini', 'starter': 'Starter', 'business': 'Business', 'max': 'Max'}
+    prix_txt = f'{prix:,}'.replace(',', ' ')
+    record['message'] = (f"Bonjour, ici VM Studio, créateur de sites en Franche-Comté. Nous avons préparé un exemple privé du site de {record['nom']}, "
+                         f"avec {feats.get(base, 'vos infos, vos horaires et vos contacts')} : {url} . Les prix affichés sont des exemples : "
+                         f"on l'adapte avec vos vraies infos et vos photos. Formule conseillée : {noms.get(offre_id, offre_id)} à {prix_txt} €, "
+                         "sans engagement. Vous pouvez aussi l'essayer 7 jours pour 49 € (déduits si vous commandez). Belle journée !")
     index = OUT / 'liste-cf03b9883e72.json'
     rows = json.loads(index.read_text()) if index.exists() else []
     rows = [r for r in rows if r.get('slug') != slug]
