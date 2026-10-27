@@ -1,0 +1,59 @@
+name: VM - Reportage vidéo animé
+# Monte un reportage animé avec voix off (Piper, mêmes voix que les JT) et l'enregistre sur le site.
+
+on:
+  workflow_dispatch:
+    inputs:
+      config:
+        description: 'Fichier du reportage (tools/reportage/…json)'
+        default: 'tools/reportage/alexia.json'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reportage
+  cancel-in-progress: false
+
+jobs:
+  rendu:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Cache des outils vidéo autonomes
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/vm-ffmpeg-8.1-gpl
+          key: ffmpeg-linux-x64-8-1-gpl-v1
+      - name: Cache des voix
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/vm-voices
+          key: vm-voices-piper-1-8-v2
+      - name: Installer les outils
+        run: |
+          bash tools/installer_ffmpeg.sh
+          python -m pip install --quiet "piper-tts==1.8.0" playwright==1.48.0
+          python -m playwright install --with-deps chromium
+      - name: Monter la vidéo (voix + animation)
+        env:
+          CONFIG: ${{ inputs.config }}
+        run: python tools/reportage/render.py "$CONFIG"
+      - name: Enregistrer sur le site
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add img/reportages
+          git commit -q -m "Reportage vidéo animé avec voix off" || exit 0
+          for attempt in 1 2 3 4 5; do
+            git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0
+            sleep $((attempt * 5))
+          done
+          exit 1

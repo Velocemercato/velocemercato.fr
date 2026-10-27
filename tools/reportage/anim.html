@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Animation reportage</title>
+<style>
+@font-face{font-family:P;src:url(../../studio/assets/Poppins-Bold.ttf);font-weight:700}
+@font-face{font-family:PM;src:url(../../studio/assets/Poppins-Medium.ttf);font-weight:500}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script>
+/* Reportage animé Véloce Mercato : scènes BD dessinées (aucune image de la vraie personne).
+   window.TIMELINE = [{id, dur, sub:[[début, fin, texte], …]}] est fourni par le rendu (durées de la voix). */
+const W=1080,H=1920,cv=document.getElementById('c'),c=cv.getContext('2d');
+const GOLD='#ffd23f',INK='#0b0d17',BLUE='#2a5bd7',RED='#e1243a';
+const cl=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),lerp=(a,b,t)=>a+(b-a)*t,ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2,eout=t=>1-Math.pow(1-t,3);
+function rng(s){return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
+const R=rng(7),pal=['#e74c3c','#f4c430','#ecf0f1','#3498db','#9b59b6','#1abc9c','#e67e22'];
+const stars=Array.from({length:160},()=>({x:R()*W,y:R()*900,r:R()*2+.5,p:R()*6}));
+const bulbs=Array.from({length:60},(_,i)=>({i,p:R()*6,c:pal[i%pal.length]}));
+const conf=Array.from({length:180},()=>({x:R()*W,y:-R()*900,v:200+R()*260,c:pal[Math.floor(R()*pal.length)],p:R()*6}));
+const dots=Array.from({length:2000},(_,i)=>({x:(i%40)*24+66,y:Math.floor(i/40)*22+520}));
+const fem=new Set();while(fem.size<96)fem.add(Math.floor(R()*2000));
+
+function g(y0,y1,st){const q=c.createLinearGradient(0,y0,0,y1);st.forEach(([p,col])=>q.addColorStop(p,col));return q}
+function rect(x,y,w,h,f){c.fillStyle=f;c.fillRect(x,y,w,h)}
+function circ(x,y,r,f){c.fillStyle=f;c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fill()}
+function glow(x,y,r,col,a=1){c.save();c.globalCompositeOperation='lighter';c.globalAlpha=a;const q=c.createRadialGradient(x,y,0,x,y,r);q.addColorStop(0,col);q.addColorStop(1,'rgba(0,0,0,0)');c.fillStyle=q;c.fillRect(x-r,y-r,2*r,2*r);c.restore()}
+function txt(s,x,y,size,col,{font='P',align='center',stroke=0,alpha=1,base='alphabetic'}={}){c.save();c.globalAlpha=alpha;c.font=`${font==='P'?700:500} ${size}px ${font}, sans-serif`;c.textAlign=align;c.textBaseline=base;if(stroke){c.lineWidth=stroke;c.strokeStyle='#000';c.lineJoin='round';c.strokeText(s,x,y)}c.fillStyle=col;c.fillText(s,x,y);c.restore()}
+function pill(s,x,y,size,bg,fg,alpha=1){c.save();c.globalAlpha=alpha;c.font=`700 ${size}px P, sans-serif`;const w=c.measureText(s).width+size*1.2,h=size*1.7;c.fillStyle=bg;c.beginPath();c.roundRect(x-w/2,y-h/2,w,h,h/2);c.fill();c.fillStyle=fg;c.textAlign='center';c.textBaseline='middle';c.fillText(s,x,y+2);c.restore()}
+
+/* silhouette (même moteur que les dessins animés VM) */
+function person(x,y,s,o={}){
+  c.save();c.translate(x,y);if(o.flip)c.scale(-1,1);
+  const col=o.col||'#0a0d18',L=.25*s,hipY=-.5*s,lean=o.lean||0,ph=o.ph||0,sw=o.sw||0;
+  const shX=Math.sin(lean)*.34*s,shY=hipY-Math.cos(lean)*.34*s;
+  c.lineCap='round';c.lineJoin='round';c.strokeStyle=col;c.fillStyle=col;
+  if(o.glow){c.shadowColor=o.glow;c.shadowBlur=s*.12}
+  const limb=(ox,oy,a,k,len,w)=>{const kx=ox+Math.sin(a)*len,ky=oy+Math.cos(a)*len,fx=kx+Math.sin(a-k)*len,fy=ky+Math.cos(a-k)*len;c.lineWidth=w;c.beginPath();c.moveTo(ox,oy);c.lineTo(kx,ky);c.lineTo(fx,fy);c.stroke()};
+  const l1=o.l1??Math.sin(ph)*sw,l2=o.l2??-Math.sin(ph)*sw;
+  const k1=o.k1??sw*1.1*Math.max(0,Math.sin(ph+1.8)),k2=o.k2??sw*1.1*Math.max(0,Math.sin(ph+1.8+Math.PI));
+  const a1=o.a1??-l1*.9,a2=o.a2??-l2*.9,ka=o.ka??(sw?-1.3:-.3);
+  limb(0,hipY,l2,k2,L,.085*s);limb(shX,shY,a2,ka,L*.82,.065*s);
+  c.strokeStyle=o.shirt||col;c.lineWidth=.17*s;c.beginPath();c.moveTo(0,hipY-.04*s);c.lineTo(shX*.95,shY+.03*s);c.stroke();c.strokeStyle=col;
+  limb(0,hipY,l1,k1,L,.085*s);limb(shX,shY,a1,ka,L*.82,.065*s);
+  const hd=o.head||0,hx=shX+Math.sin(lean+hd)*.13*s,hy=shY-Math.cos(lean+hd)*.13*s;
+  c.beginPath();c.arc(hx,hy,.088*s,0,Math.PI*2);c.fill();
+  if(o.hair){c.beginPath();c.ellipse(hx-.05*s,hy+.03*s,.06*s,.11*s,.3,0,Math.PI*2);c.fill()} // queue-de-cheval
+  c.restore();
+}
+/* baby-foot vu de côté, joueurs aux poignées */
+function tableSide(x,y,w,t,o={}){
+  const h=w*.28;c.save();c.translate(x,y);
+  rect(-w/2+w*.06,0,w*.05,h*1.1,'#2a1608');rect(w/2-w*.11,0,w*.05,h*1.1,'#2a1608');
+  c.fillStyle=o.wood||'#6b3a17';c.beginPath();c.roundRect(-w/2,-h*.55,w,h*.6,10);c.fill();
+  rect(-w/2+12,-h*.5,w-24,h*.12,'#1d8a4a');
+  for(let i=0;i<8;i++){const rx=-w/2+w*(i+.5)/8,off=Math.sin(t*6+i*1.3)*w*.03*(o.play?1:0);
+    rect(rx-3+off*.2,-h*.62,6,h*.2,'#c9ced8');circ(rx,-h*.42,w*.012,i%2?RED:BLUE)}
+  for(let i=0;i<4;i++){const ry=-h*.47+i*h*.035;rect(-w/2-w*.12,ry,w*1.24,5,'#cfd5e0');circ(-w/2-w*.12,ry+2,9,'#111');circ(w/2+w*.12,ry+2,9,'#111')}
+  if(o.ball){const bx=Math.sin(t*3.1)*w*.35;circ(bx,-h*.47,w*.012,'#fff')}
+  c.restore();
+}
+/* baby-foot vu de dessus */
+function tableTop(cx,cy,w,h,t,seed=1,tint='#178a48'){
+  c.save();c.translate(cx,cy);
+  rect(-w/2-30,-h/2-30,w+60,h+60,'#4a2610');rect(-w/2-14,-h/2-14,w+28,h+28,'#7a4420');rect(-w/2,-h/2,w,h,tint);
+  c.globalAlpha=.08;for(let i=0;i<8;i+=2)rect(-w/2,-h/2+h*i/8,w,h/8,'#fff');c.globalAlpha=1;
+  c.strokeStyle='#fff';c.lineWidth=4;c.strokeRect(-w/2+12,-h/2+12,w-24,h-24);c.beginPath();c.moveTo(-w/2+12,0);c.lineTo(w/2-12,0);c.stroke();c.beginPath();c.arc(0,0,w*.14,0,7);c.stroke();
+  const n=[1,2,3,5,5,3,2,1];
+  n.forEach((k,i)=>{const y=-h/2+h*(i+.5)/8,col=[0,1,3,5].includes(i)?BLUE:RED,off=Math.sin(t*(2+i*.37)+i+seed)*w*.06;
+    rect(-w/2-70,y-7,w+140,14,'#c3c9d6');rect(-w/2-70,y-3,w+140,3,'#fff');
+    for(let j=0;j<k;j++){const x=-w/2+w*(j+1)/(k+1)+off;c.fillStyle=col;c.beginPath();c.roundRect(x-w*.024,y-h*.026,w*.048,h*.052,8);c.fill();c.strokeStyle='#08080c';c.lineWidth=2;c.stroke();circ(x,y,w*.015,'#f5d2a8')}});
+  const bx=Math.sin(t*2.3+seed)*w*.32,by=Math.cos(t*1.7+seed)*h*.34;circ(bx,by,w*.022,'#fff');
+  c.restore();
+}
+function vignette(a=.55){const q=c.createRadialGradient(W/2,H*.45,H*.25,W/2,H*.45,H*.85);q.addColorStop(0,'rgba(0,0,0,0)');q.addColorStop(1,`rgba(0,0,0,${a})`);c.fillStyle=q;c.fillRect(0,0,W,H)}
+function bigYear(s,t,y=560,col=GOLD){const k=eout(cl(t/.9));txt(s,W/2,y,lerp(120,300,k),col,{stroke:14,alpha:k})}
+function card(lines,y,t,{w=880}={}){const a=eout(cl(t/.6));c.save();c.globalAlpha=a;c.translate(0,(1-a)*60);c.fillStyle='rgba(8,10,24,.86)';c.strokeStyle=GOLD;c.lineWidth=4;c.beginPath();c.roundRect((W-w)/2,y,w,lines.length*78+60,26);c.fill();c.stroke();
+  lines.forEach((l,i)=>txt(l[0],W/2,y+80+i*78,l[1]||50,l[2]||'#fff',{font:l[3]||'PM'}));c.restore()}
+
+const SC={
+intro(t,d){rect(0,0,W,H,g(0,H,[[0,'#04060f'],[1,'#141b3a']]));
+  for(let i=0;i<5;i++){c.save();c.globalCompositeOperation='lighter';c.globalAlpha=.10;c.fillStyle='#fff6d0';c.beginPath();const x=120+i*210,sw=Math.sin(t*.6+i)*80;c.moveTo(x,0);c.lineTo(x+40,0);c.lineTo(W/2+sw+180,1500);c.lineTo(W/2+sw-180,1500);c.fill();c.restore()}
+  const z=1+t*.02;c.save();c.translate(W/2,1180);c.scale(z,z);c.rotate(-.06);tableTop(0,0,620,980,t,1);c.restore();
+  vignette(.7);const a=cl((t-1.2)/1);pill('GRAND REPORTAGE',W/2,330,40,GOLD,INK,a);
+  txt('ALEXIA',W/2,470,150,'#fff',{stroke:12,alpha:a});txt('DEPAGNE',W/2,620,150,GOLD,{stroke:12,alpha:cl((t-1.6)/1)});
+  txt('De la fête foraine à l’équipe de France',W/2,710,44,'#e8ecf6',{font:'PM',alpha:cl((t-2.2)/1)})},
+foraine(t,d){rect(0,0,W,H,g(0,1300,[[0,'#0a0626'],[1,'#3a1450']]));stars.forEach(s=>{c.globalAlpha=.3+.6*Math.abs(Math.sin(t+s.p));rect(s.x,s.y,s.r,s.r,'#fff')});c.globalAlpha=1;
+  const cx=780,cy=620,r=330;c.save();c.translate(cx,cy);c.rotate(t*.15);c.strokeStyle='#ffcc66';c.lineWidth=6;c.beginPath();c.arc(0,0,r,0,7);c.stroke();
+  for(let i=0;i<12;i++){const a=i/12*Math.PI*2;c.beginPath();c.moveTo(0,0);c.lineTo(Math.cos(a)*r,Math.sin(a)*r);c.stroke();circ(Math.cos(a)*r,Math.sin(a)*r,14,pal[i%7]);glow(Math.cos(a)*r,Math.sin(a)*r,40,'rgba(255,200,120,.6)')}c.restore();
+  c.strokeStyle='#ffcc66';c.lineWidth=10;c.beginPath();c.moveTo(cx,cy);c.lineTo(cx-160,1300);c.moveTo(cx,cy);c.lineTo(cx+160,1300);c.stroke();
+  bulbs.forEach(b=>{const x=b.i*19,y=1000+Math.sin(b.i*.35)*40;circ(x,y,7,b.c);glow(x,y,26,'rgba(255,220,140,.5)',.4+.6*Math.abs(Math.sin(t*3+b.p)))});
+  rect(0,1300,W,620,g(1300,H,[[0,'#2a1438'],[1,'#0a0510']]));glow(W/2,1400,520,'rgba(255,170,90,.35)');
+  tableSide(W/2,1460,560,t,{play:true,ball:true});
+  person(W/2-420,1640,330,{col:'#0b0710',a1:1.5,a2:1.5,ka:-.2,lean:.18});
+  person(W/2+380,1640,220,{col:'#0b0710',flip:true,a1:1.5,a2:1.5,ka:-.2,lean:.2,hair:1});
+  vignette();pill('L’ENFANCE',W/2,250,42,GOLD,INK,cl(t/.6))},
+ecole(t,d){rect(0,0,W,H,g(0,1100,[[0,'#7cc6f2'],[1,'#d9f1ff']]));circ(880,260,90,'#fff3b0');
+  rect(0,700,W,520,'#e8c79a');for(let i=0;i<5;i++){rect(80+i*200,780,130,170,'#7fb7e6');rect(80+i*200,780,130,8,'#fff')}rect(0,690,W,30,'#b5835a');
+  rect(0,1220,W,700,'#9aa3ad');c.globalAlpha=.25;for(let i=0;i<8;i++)rect(0,1240+i*80,W,4,'#fff');c.globalAlpha=1;
+  tableSide(W/2,1480,600,t,{play:true,ball:true,wood:'#8a5a2b'});
+  person(W/2-410,1660,250,{col:'#1d2240',a1:1.5,a2:1.5,ka:-.2,lean:.15,hair:1});
+  const k=cl((t-1)/2);c.save();c.strokeStyle='#fff';c.lineWidth=8;c.setLineDash([24,16]);c.lineDashOffset=-t*40;c.globalAlpha=k;
+  c.beginPath();c.moveTo(260,1080);c.quadraticCurveTo(540,880,820,1080);c.stroke();c.beginPath();c.moveTo(820,1080);c.lineTo(790,1040);c.moveTo(820,1080);c.lineTo(775,1090);c.stroke();c.setLineDash([]);
+  txt('X',260,1110,70,'#fff',{alpha:k});txt('O',820,1060,60,'#fff',{alpha:k});c.restore();
+  bigYear('7 ANS',t,560,INK)},
+nice(t,d){const p=t/d;rect(0,0,W,H,g(0,1100,[[0,'#ff9a5a'],[.6,'#ffcf86'],[1,'#ffe8b0']]));circ(W*.5,900-p*120,150,'#fff1c4');glow(W*.5,900-p*120,420,'rgba(255,200,120,.6)');
+  rect(0,980,W,300,g(980,1280,[[0,'#2f7fb8'],[1,'#1a4f7a']]));for(let i=0;i<14;i++){c.globalAlpha=.4;rect(((i*170+t*60)%(W+200))-100,1010+i*18,120,4,'#fff');c.globalAlpha=1}
+  rect(0,1270,W,650,'#d8c3a0');rect(0,1270,W,24,'#f2f2f2');
+  [150,420,700,960].forEach((x,i)=>{c.strokeStyle='#3b2a1a';c.lineWidth=18;c.beginPath();c.moveTo(x,1290);c.quadraticCurveTo(x+20,1100,x+10,980);c.stroke();
+    for(let k=0;k<7;k++){const a=k/7*Math.PI*2+Math.sin(t+i)*.08;c.fillStyle='#1f5a2a';c.beginPath();c.ellipse(x+10+Math.cos(a)*70,980+Math.sin(a)*30,90,22,a,0,7);c.fill()}});
+  // porte du club
+  const dx=W/2,dy=1640;rect(dx-170,dy-420,340,420,'#3a2a50');rect(dx-150,dy-400,300,400,'#0e0a18');glow(dx,dy-200,300,'rgba(255,220,140,.7)',cl((t-1.5)/2));
+  pill('CLUB DE BABY-FOOT',dx,dy-460,34,GOLD,INK);
+  const w=eout(cl((t-.5)/(d*.6)));person(lerp(-60,dx-10,w),1700,300,{col:'#120c18',ph:t*8,sw:w<1?.5:0,hair:1,lean:.08});
+  bigYear('17 ANS',t,520,'#fff')},
+plaisir(t,d){rect(0,0,W,H,g(0,H,[[0,'#2a160c'],[1,'#120805']]));glow(W/2,700,700,'rgba(255,170,90,.45)');
+  for(let i=0;i<3;i++){c.strokeStyle='#120a05';c.lineWidth=3;c.beginPath();c.moveTo(200+i*340,0);c.lineTo(200+i*340,420);c.stroke();c.fillStyle='#120a05';c.beginPath();c.moveTo(130+i*340,470);c.lineTo(270+i*340,470);c.lineTo(230+i*340,420);c.lineTo(170+i*340,420);c.fill();glow(200+i*340,520,200,'rgba(255,210,140,.6)')}
+  tableSide(330,1250,420,t,{play:true,ball:true});tableSide(780,1500,420,t+1,{play:true,ball:true});
+  [[90,1430,240,0],[560,1430,240,1],[540,1680,250,0],[1010,1680,250,1]].forEach(([x,y,s,f],i)=>person(x,y,s,{col:'#0a0503',flip:f,a1:1.5,a2:1.5,ka:-.2,lean:.15+Math.sin(t*3+i)*.04,hair:i%2}));
+  for(let i=0;i<4;i++)person(140+i*260,1910,300,{col:'#050302',a1:-.3+Math.sin(t*4+i)*.3,a2:.3,head:Math.sin(t*2+i)*.1});
+  vignette();pill('LE PLAISIR D’ABORD',W/2,250,42,GOLD,INK,cl(t/.6))},
+archive(t,d){rect(0,0,W,H,'#efe6d2');c.globalAlpha=.06;for(let i=0;i<60;i++)rect(0,i*34,W,1,'#000');c.globalAlpha=1;
+  bigYear('2015',t,520,'#1d3fb8');
+  const a=eout(cl((t-1)/.8));c.save();c.translate(W/2,1050);c.rotate(-.03);c.globalAlpha=a;rect(-430,-260,860,520,'#fffdf6');c.strokeStyle='#1d3fb8';c.lineWidth=4;c.strokeRect(-430,-260,860,520);
+  txt('FÉDÉRATION FRANÇAISE DE BABY-FOOT',0,-180,34,'#1d3fb8');txt('WCS Bonzini · 10 mai 2015',0,-110,40,'#222',{font:'PM'});txt('DYP du samedi',0,-30,46,'#222');
+  txt('3e',0,90,120,'#c0392b');txt('Alexia Depagne & Daniel Kelovic',0,190,38,'#222',{font:'PM'});c.restore();
+  const s=cl((t-2)/.5);if(s>0){c.save();c.translate(800,1330);c.rotate(-.2);c.globalAlpha=s;c.scale(1.6-.6*s,1.6-.6*s);c.strokeStyle='#c0392b';c.lineWidth=8;c.beginPath();c.arc(0,0,110,0,7);c.stroke();txt('PODIUM',0,14,40,'#c0392b');c.restore()}},
+monde(t,d){rect(0,0,W,H,g(0,H,[[0,'#061032'],[1,'#0c1c5a']]));
+  for(let i=0;i<7;i++)glow(80+i*150,120,260,'rgba(180,200,255,.35)',.6+.4*Math.sin(t*2+i));
+  ['#1f3ea8','#ffffff','#d6283b'].forEach((col,i)=>{c.fillStyle=col;c.beginPath();const x=i*W/3;c.moveTo(x,900);for(let k=0;k<=10;k++)c.lineTo(x+k*W/30,900+Math.sin(t*3+k*.6)*20);c.lineTo(x+W/3,1300);c.lineTo(x,1300);c.fill()});
+  c.globalAlpha=.85;rect(0,1180,W,740,'#050816');c.globalAlpha=1;
+  const up=eout(cl((t-1)/1.5));c.save();c.translate(W/2,1250-up*80);c.fillStyle=GOLD;c.beginPath();c.moveTo(-130,-300);c.quadraticCurveTo(0,-80,130,-300);c.lineTo(110,-300);c.quadraticCurveTo(0,-140,-110,-300);c.fill();
+  c.beginPath();c.moveTo(-140,-320);c.lineTo(140,-320);c.quadraticCurveTo(130,-130,0,-110);c.quadraticCurveTo(-130,-130,-140,-320);c.fill();rect(-25,-110,50,90,GOLD);rect(-90,-25,180,40,'#b8860b');c.restore();
+  glow(W/2,1000,400,'rgba(255,210,63,.5)',up);
+  for(let i=0;i<5;i++)person(170+i*185,1800,300,{col:'#03050e',shirt:'#1f3ea8',a1:2.6+Math.sin(t*6+i)*.2,a2:-2.6,ka:0,hair:i===2?1:0,glow:i===2?'rgba(255,210,63,.8)':''});
+  if(t>2.2)conf.forEach(q=>{const y=q.y+q.v*(t-2.2);if(y>H)return;c.save();c.translate(q.x+Math.sin(t*3+q.p)*30,y);c.rotate(t*4+q.p);rect(-8,-5,16,10,q.c);c.restore()});
+  bigYear('2017',t,420);pill('CHAMPIONNE DU MONDE PAR ÉQUIPE',W/2,560,36,GOLD,INK,cl((t-1.5)/.6))},
+mental(t,d){rect(0,0,W,H,g(0,H,[[0,'#0b0820'],[1,'#22103a']]));
+  const ph=(t%6)/6;const k=cl((t-.3)/1.2);
+  c.save();c.translate(300,700);c.rotate(t);circ(0,0,110,'#e8752a');c.strokeStyle='#3a1a08';c.lineWidth=6;c.beginPath();c.arc(0,0,110,0,7);c.moveTo(-110,0);c.lineTo(110,0);c.moveTo(0,-110);c.lineTo(0,110);c.stroke();c.restore();
+  c.save();c.translate(780,700);c.rotate(-t*.8);circ(0,0,110,'#f2f2f2');c.strokeStyle='#2a5bd7';c.lineWidth=10;c.beginPath();c.arc(0,0,80,0,2.2);c.stroke();c.strokeStyle='#ffd23f';c.beginPath();c.arc(0,0,80,2.6,4.6);c.stroke();c.restore();
+  txt('+',540,730,120,'#fff');const a=eout(cl((t-1)/1));circ(W/2,1060,30+a*30,'#fff');c.strokeStyle='#222';c.lineWidth=4;c.beginPath();c.arc(W/2,1060,30+a*30,0,7);c.stroke();glow(W/2,1060,160,'rgba(255,255,255,.5)',a);txt('=',540,940,90,'#fff',{alpha:a});
+  c.strokeStyle='#ff4d6d';c.lineWidth=8;c.beginPath();for(let x=0;x<=W;x+=6){const u=(x/W+t*.4)%1;const y=1200+(Math.abs(u-.5)<.04?-200*Math.sin((u-.46)/.08*Math.PI):0);x?c.lineTo(x,y):c.moveTo(x,y)}c.stroke();glow(W/2,1200,300,'rgba(255,77,109,.3)');
+  ['ANALYSER','DÉCIDER','JOUER EN ÉQUIPE'].forEach((s,i)=>pill(s,W/2,1340+i*95,40,['#2a5bd7',GOLD,'#e1243a'][i],i===1?INK:'#fff',cl((t-1.5-i*.6)/.5)));
+  pill('LE MENTAL',W/2,250,42,GOLD,INK,cl(t/.6))},
+dirigeante(t,d){rect(0,0,W,H,g(0,H,[[0,'#13213f'],[1,'#0a1124']]));glow(W/2,500,600,'rgba(120,160,255,.3)');
+  person(W/2,1720,520,{col:'#05070f',a1:1.2,a2:1.4,ka:-1.6,hair:1,lean:-.02});
+  rect(140,1380,800,40,'#5a3a1e');rect(140,1420,800,260,'#2e1d0f');
+  ['SECRÉTAIRE','TRÉSORIÈRE','PRÉSIDENTE'].forEach((s,i)=>{const a=eout(cl((t-.6-i*1.1)/.6));c.save();c.globalAlpha=a;c.translate(W/2,480+i*170+(1-a)*-60);c.fillStyle=i===2?GOLD:'#1d3fb8';c.beginPath();c.roundRect(-330,-70,660,140,70);c.fill();txt((i+1)+'. '+s,0,20,60,i===2?INK:'#fff');c.restore()});
+  pill('AU SERVICE DE SON CLUB',W/2,250,40,GOLD,INK,cl(t/.6))},
+podiums(t,d){rect(0,0,W,H,g(0,H,[[0,'#2a0a1a'],[1,'#0d0614']]));for(let i=0;i<4;i++)glow(150+i*260,200,280,'rgba(255,120,160,.25)');
+  const stage=Math.min(2,Math.floor(t/(d/3))),lt=t-stage*d/3;
+  const D=[['MARS 2026','Open national d’Avesnes-les-Aubert','1re',['Double féminin','avec Marie Chatillon']],['MAI 2026','Championnats de France','2e',['Double mixte','avec Tom Droit']],['WORLD SERIES 2026','Selon Women Sports','2e × 2',['Par équipe avec la France','et en simple dames']]][stage];
+  const a=eout(cl(lt/.7));pill(D[0],W/2,300,46,GOLD,INK,a);txt(D[1],W/2,410,42,'#fff',{font:'PM',alpha:a});
+  const ph=[300,420,240];[[-300,1],[0,0],[300,2]].forEach(([dx,k])=>{const h=ph[k]*eout(cl((lt-.3)/.8));rect(W/2+dx-140,1500-h,280,h,k===0?GOLD:'#c0c6d4');txt(String(k+1),W/2+dx,1500-h+90,90,INK,{alpha:cl(h/100)})});
+  rect(0,1500,W,420,'#0a050c');
+  const hx=W/2+(stage===0?0:-300)*(D[2].startsWith('1')?0:1),hh=(stage===0?420:300)*eout(cl((lt-.3)/.8));
+  person(stage===0?W/2:W/2-300,1500-hh,220,{col:'#05030a',a1:2.7,a2:-2.7,ka:0,hair:1,glow:'rgba(255,210,63,.9)'});
+  txt(D[2],W/2,640,170,GOLD,{stroke:12,alpha:a});D[3].forEach((s,i)=>txt(s,W/2,730+i*62,48,'#fff',{font:'PM',alpha:a}))},
+constat(t,d){rect(0,0,W,H,'#070a18');pill('LE CONSTAT',W/2,250,42,GOLD,INK);
+  const k=eout(cl(t/2)),n=Math.floor(2000*k);for(let i=0;i<n;i++){const q=dots[i];circ(q.x,q.y,7,fem.has(i)&&t>2.6?'#ff4d9a':'#3a4466')}
+  const f=cl((t-2.6)/.8);fem.forEach(i=>{if(i<n)glow(dots[i].x,dots[i].y,30,'rgba(255,77,154,.8)',f)});
+  txt(Math.floor(2000*k).toLocaleString('fr-FR')+' pratiquants',W/2,430,64,'#fff');
+  if(t>2.6){txt('– de 100 femmes licenciées',W/2,1700,62,'#ff4d9a',{alpha:f,stroke:6})}},
+asso(t,d){rect(0,0,W,H,g(0,H,[[0,'#1a0b2e'],[1,'#3a1240']]));glow(W/2,700,700,'rgba(255,120,200,.35)');
+  tableSide(W/2,1150,520,t,{play:true,ball:true});
+  const n=Math.min(9,1+Math.floor(t*1.6));for(let i=0;i<n;i++){const x=110+i*108,y=1720+(i%2)*60;person(x,y,240+(i%3)*30,{col:'#0a0410',a1:i%3===0?2.5:.4,a2:-.4,ka:-.3,hair:1,lean:Math.sin(t*2+i)*.05})}
+  ['INITIATIONS','ÉVÉNEMENTS','COMPÉTITIONS','PARTENAIRES'].forEach((s,i)=>pill(s,i%2?760:320,560+Math.floor(i/2)*120,40,i%2?'#ff4d9a':GOLD,i%2?'#fff':INK,cl((t-.5-i*.5)/.5)));
+  pill('SON ASSOCIATION',W/2,250,42,GOLD,INK,cl(t/.6))},
+horizon(t,d){const p=t/d;rect(0,0,W,H,g(0,1200,[[0,'#120a3a'],[.55,'#d2466a'],[.85,'#ff9a4a'],[1,'#ffd27a']]));
+  circ(W/2,1200-p*200,190,'#ffe2a6');glow(W/2,1200-p*200,600,'rgba(255,190,110,.6)');
+  rect(0,1200,W,720,'#1a0a1e');c.fillStyle='#2a1430';c.beginPath();c.moveTo(W/2-40,1200);c.lineTo(W/2+40,1200);c.lineTo(W/2+520,H);c.lineTo(W/2-520,H);c.fill();
+  for(let i=0;i<8;i++){const u=((i/8)+t*.15)%1,y=1200+Math.pow(u,2)*720;rect(W/2-6-u*30,y,12+u*60,10+u*30,GOLD)}
+  person(W/2,1820,360,{col:'#0a040c',ph:t*6,sw:.4,hair:1,lean:.05});
+  bigYear('2028',t,560,'#fff');pill('LA COUPE DU MONDE',W/2,690,40,GOLD,INK,cl((t-1)/.6))},
+fin(t,d){rect(0,0,W,H,'#05060c');glow(W/2,800,600,'rgba(255,210,63,.15)');
+  txt('MERCI ALEXIA',W/2,700,110,GOLD,{stroke:10,alpha:cl(t/.8)});
+  txt('Le reportage complet et les sources',W/2,840,46,'#fff',{font:'PM',alpha:cl((t-.6)/.8)});txt('velocemercato.fr',W/2,930,64,GOLD,{alpha:cl((t-.9)/.8)});
+  ['Reconstitution illustrée · aucune image d’Alexia','Voix de synthèse · faits publics sourcés','Women Sports · Nice-Matin · Fédération française de baby-foot'].forEach((s,i)=>txt(s,W/2,1500+i*60,34,'#a3a7bb',{font:'PM',alpha:cl((t-1.5)/.8)}));
+  txt('UNE PRODUCTION VÉLOCE MERCATO',W/2,1760,40,'#fff',{alpha:cl((t-1.8)/.8)})}
+};
+
+function wrapLines(s,max,size){c.font=`600 ${size}px PM, sans-serif`;const out=[];let cur='';s.split(' ').forEach(w=>{const tt=cur?cur+' '+w:w;if(c.measureText(tt).width>max&&cur){out.push(cur);cur=w}else cur=tt});if(cur)out.push(cur);return out}
+function subtitle(s){if(!s)return;const L=wrapLines(s,900,46),h=L.length*60+36,y=H-140-h;c.save();c.fillStyle='rgba(0,0,0,.72)';c.beginPath();c.roundRect(60,y,W-120,h,22);c.fill();
+  L.forEach((l,i)=>txt(l,W/2,y+58+i*60,46,'#fff',{font:'PM'}));c.restore()}
+window.TIMELINE=window.TIMELINE||[];
+window.renderAt=function(T){let acc=0;for(let k=0;k<TIMELINE.length;k++){const s=TIMELINE[k];if(T<acc+s.dur||k===TIMELINE.length-1){const t=Math.min(T-acc,s.dur);
+  c.save();c.clearRect(0,0,W,H);SC[s.id](t,s.dur);c.restore();
+  const f=Math.max(k?1-cl(t/.4):0,k<TIMELINE.length-1?1-cl((s.dur-t)/.4):0);if(f>0){c.globalAlpha=f;rect(0,0,W,H,'#000');c.globalAlpha=1}
+  const sub=(s.sub||[]).find(q=>t>=q[0]&&t<=q[1]);subtitle(sub&&sub[2]);
+  c.save();c.globalAlpha=.85;txt('VÉLOCE MERCATO',W-50,90,30,GOLD,{align:'right'});c.restore();return}acc+=s.dur}};
+window.ready=document.fonts.ready.then(()=>true);
+</script></body></html>
