@@ -64,7 +64,7 @@ FORMATS = {
     'edition': {'mots': (380, 480), 'max_words': 520, 'repliques': (12, 18), 'heures': 14, 'max_news': 8, 'tokens': 3000},
     'speciale': {'mots': (2400, 3000), 'repliques': (55, 75), 'heures': 40, 'max_news': 30, 'tokens': 12000},
     'debat': {'mots': (800, 1100), 'repliques': (24, 34), 'heures': 8, 'max_news': 14, 'tokens': 5000},
-    'buts': {'mots': (1300, 1800), 'repliques': (34, 50), 'heures': 168, 'max_news': 40, 'tokens': 8000},
+    'buts': {'mots': (2200, 2800), 'repliques': (50, 70), 'heures': 168, 'max_news': 45, 'tokens': 11000},
 }
 LABELS = {'speciale': 'Spéciale avant-match', 'debat': 'Le débat du soir', 'buts': 'Les buts de la semaine'}
 

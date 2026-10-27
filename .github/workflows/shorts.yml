@@ -54,6 +54,9 @@ jobs:
             git -C "$STATE_DIR" init --quiet -b shorts-state
             git -C "$STATE_DIR" remote add origin "$repo_url"
           fi
+      - name: Pas de Short le dimanche (place pour le mag du dimanche)
+        run: |
+          if [ "$(TZ=Europe/Paris date +%u)" = 7 ]; then echo 'VM_SHORTS_PAR_JOUR=0' >> "$GITHUB_ENV"; fi
       - name: Publier les Shorts du jour
         run: python tools/shorts_youtube.py --state "$RUNNER_TEMP/vm-shorts-state/state.enc" --git-state
       - name: Enregistrer les liens publics des Shorts

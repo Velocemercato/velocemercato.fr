@@ -84,6 +84,17 @@ def due_edition(root, now, universe=None):
     return None
 
 
+SUNDAY_SHOW_HOUR = 11  # Le mag du dimanche (format 'buts'), comme Téléfoot
+
+
+def sunday_show_due(root, now):
+    """Dimanche entre 11 h et 13 h 59 (rattrapages compris), une seule fois par dimanche."""
+    local = now.astimezone(PARIS)
+    if local.weekday() != 6 or not SUNDAY_SHOW_HOUR <= local.hour < SUNDAY_SHOW_HOUR + 3:
+        return False
+    return not already_published(root, 'foot', 'buts', 'soir', now)
+
+
 def slot(now, cron):
     local = now.astimezone(PARIS)
     if cron == JT_PREP_CRON:

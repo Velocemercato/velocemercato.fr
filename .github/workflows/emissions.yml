@@ -75,14 +75,21 @@ jobs:
           python - <<'PYCODE'
           import datetime as dt, os
           from pathlib import Path
-          from pastille_schedule import SEPARATE_CRON, due_edition
-          edition = due_edition(Path('.'), dt.datetime.now(dt.timezone.utc)) if os.environ['CRON'] == SEPARATE_CRON else None
+          from pastille_schedule import SEPARATE_CRON, due_edition, sunday_show_due
+          now = dt.datetime.now(dt.timezone.utc)
+          scheduled = os.environ['CRON'] == SEPARATE_CRON
+          edition = due_edition(Path('.'), now) if scheduled else None
+          sunday = scheduled and not edition and sunday_show_due(Path('.'), now)
           with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
-              output.write('plan=' + ('separe' if edition else '') + '\n')
+              if sunday:
+                  # Le mag du dimanche 11 h : les infos et résultats de la semaine (format 'buts').
+                  output.write('plan=buts\nunivers=foot\nmoment=soir\n')
+              else:
+                  output.write('plan=' + ('separe' if edition else '') + '\n')
               if edition:
                   for key in ('univers', 'edition_at', 'moment'):
                       output.write(key + '=' + edition[key] + '\n')
-          if os.environ['GITHUB_EVENT_NAME'] == 'schedule' and not edition:
+          if os.environ['GITHUB_EVENT_NAME'] == 'schedule' and not edition and not sunday:
               with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
                   summary.write('Aucun nouveau JT à produire pour ce créneau de Paris.\n')
           PYCODE
@@ -156,6 +163,8 @@ jobs:
             else
               python update_emission.py "$UNIVERS" "$FORMAT" "$MOMENT" 2>&1 | tee studio/emission-log.txt
             fi
+          elif [ "$PLAN" = "buts" ]; then
+            python update_emission.py foot buts soir 2>&1 | tee studio/emission-log.txt
           else
             python update_emission.py "$PLANNED_UNIVERS" edition "$PLANNED_MOMENT" 2>&1 | tee studio/emission-log.txt
           fi
