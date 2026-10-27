@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 UA = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36',
       'Accept-Language': 'fr-FR,fr;q=0.9'}
 ANNUAIRES = ('pagesjaunes', 'mappy', 'google', 'facebook', 'instagram', 'tripadvisor', 'yelp', 'fnc.fr', 'icoiffeur',
-             'lorealprofessionnel', 'societe.com', 'pappers', 'treatwell', 'justacote', 'cylex', 'hoodspot', 'waze')
+             'lorealprofessionnel', 'societe.com', 'pappers', 'treatwell', 'justacote', 'cylex', 'hoodspot', 'waze', 'restaurants-de-france', 'restaurantguru', 'ubereats', 'deliveroo', 'just-eat', 'thefork')
 PLANITY = re.compile(r'https://res\.cloudinary\.com/planity/image/upload/[^"\'\s)>]*?/([a-z0-9]{16,40})(?=["\'\s)>?]|$)')
 
 
