@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261027-1900",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 19 h",
+  "titre": "La Pastille Actus - Édition du 27 octobre 2026",
+  "accroche": "Trêve à Oleshky, procès à Rennes, Mercedes revoit ses prévisions : c'est La Pastille Actus.",
+  "duree": 157,
+  "date": "2026-10-27T19:22+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261027-1900.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-10-27T19:00:00+01:00",
+  "source_start": "2026-10-27T13:00:00+01:00",
+  "source_end": "2026-10-27T19:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-46543552e58136666d9815",
+    "titre": "Trêve à Olechky pour faciliter l'aide humanitaire, selon France 24",
+    "publishedAt": "2026-10-27T16:57:44Z",
+    "createdAt": "2026-10-27T17:22:37Z",
+    "references": [
+     {
+      "nom": "France 24",
+      "url": "https://www.france24.com/fr/vid%C3%A9o/20261027-cessez-le-feu-%C3%A0-olechky-pour-faciliter-l-acheminement-d-aide-humanitaire"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-60231072776fc97dbf52d2",
+    "titre": "Trois hommes condamnés pour injure raciale contre un journaliste d'Ouest-France",
+    "publishedAt": "2026-10-27T17:06:32Z",
+    "createdAt": "2026-10-27T17:22:27Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/medias/trois-hommes-condamnes-pour-injure-raciste-contre-un-journaliste-du-quotidien-ouest-france_8256178.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-affac358898e0566628e6d",
+    "titre": "Parcoursup a-t-il réduit l'échec en première année de licence ?",
+    "publishedAt": "2026-10-27T16:19:49Z",
+    "createdAt": "2026-10-27T16:23:23Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/education/parcoursup/parcoursup/la-plateforme-parcoursup-a-t-elle-vraiment-permis-de-reduire-le-taux-d-echec-a-l-universite_8255989.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-4e43fe007903ba78d56c77",
+    "titre": "Une trêve débute à Oleshky, ville ukrainienne occupée où des habitants ont mangé des herbes",
+    "publishedAt": "2026-10-27T15:13:24Z",
+    "createdAt": "2026-10-27T15:23:55Z",
+    "references": [
+     {
+      "nom": "BBC News",
+      "url": "https://www.bbc.co.uk/news/articles/ck20wjnv3w0jo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-cef446f4aa34c145bb5b66",
+    "titre": "Des médias norvégiens poursuivent Meta sur l'usage de leurs contenus pour l'IA",
+    "publishedAt": "2026-10-27T15:14:33Z",
+    "createdAt": "2026-10-27T15:23:51Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/10/27/des-medias-norvegiens-poursuivent-meta-pour-lusage-de-leurs-contenus-dans-lia"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-930c31749d462ee0126838",
+    "titre": "Les houthis affirment avoir visé le ministère saoudien de la Défense à Riyad",
+    "publishedAt": "2026-10-27T14:21:31Z",
+    "createdAt": "2026-10-27T14:24:35Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/proche-orient/tensions-entre-l-arabie-saoudite-et-l-iran/les-houthis-du-yemen-affirment-avoir-cible-le-ministere-de-la-defense-saoudien-a-riyad_8255953.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-2edc197b02b85d502c4a72",
+    "titre": "Mercedes-Benz revoit à la baisse ses prévisions de bénéfice pour 2026",
+    "publishedAt": "2026-10-27T13:08:22Z",
+    "createdAt": "2026-10-27T13:29:18Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/10/27/mercedes-benz-reduit-ses-previsions-de-benefice-2026-face-aux-difficultes-en-chine"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-7a5a445a59c350b82ca0bd",
+    "titre": "Le président finlandais et le Premier ministre norvégien s'entretiennent avec Poutine",
+    "publishedAt": "2026-10-27T13:12:24Z",
+    "createdAt": "2026-10-27T13:29:15Z",
+    "references": [
+     {
+      "nom": "BBC News",
+      "url": "https://www.bbc.co.uk/news/articles/c6vgj813mlelo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "gaming-edition-20261027-1800",
   "univers": "gaming",
   "format": "edition",
