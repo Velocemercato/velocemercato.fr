@@ -58,15 +58,19 @@ def encode_hd_master(folder, output, total, music):
 
 
 def _encode(folder, output, total, music, hd):
+    # Musique de fond générée retirée (jugée désagréable) : voix seule,
+    # sauf si une vraie musique est fournie et VM_JT_MUSIQUE=1.
+    with_music = bool(music) and os.environ.get('VM_JT_MUSIQUE') == '1'
     output = Path(output)
     output.parent.mkdir(parents=True, exist_ok=True)
     subprocess.run([
         'ffmpeg', '-v', 'error', '-y', '-filter_complex_threads', '1',
         '-f', 'concat', '-safe', '0', '-i', str(folder / 'images.txt'),
-        '-i', str(folder / 'voix.wav'), '-stream_loop', '-1', '-i', str(music),
+        '-i', str(folder / 'voix.wav'), *(['-stream_loop', '-1', '-i', str(music)] if with_music else []),
         '-filter_complex',
-        '[1:a]highpass=f=65,apad[v];[2:a]volume=0.035[m];'
-        '[v][m]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-16:TP=-1.5:LRA=9[a]',
+        ('[1:a]highpass=f=65,apad[v];[2:a]volume=0.035[m];'
+         '[v][m]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-16:TP=-1.5:LRA=9[a]') if with_music else
+        '[1:a]highpass=f=65,apad,loudnorm=I=-16:TP=-1.5:LRA=9[a]',
         '-map', '0:v', '-map', '[a]', '-t', f'{total:.3f}',
         # Les images du concat ont des horodatages espacés. Le filtre remplit
         # réellement les plans fixes, y compris la conclusion ; -r seul ne le
