@@ -1,0 +1,56 @@
+name: "⚡ VM Studio Express : créer un site démo"
+description: Un commerce, et en 2 à 4 minutes une maquette de son futur site + le message à lui envoyer.
+title: "Site démo : "
+labels: ["studio-express"]
+body:
+  - type: input
+    id: nom
+    attributes:
+      label: Nom du commerce
+      placeholder: "Ex. : Le Snack du Coin"
+    validations:
+      required: true
+  - type: input
+    id: ville
+    attributes:
+      label: Ville
+      placeholder: "Ex. : Belfort"
+    validations:
+      required: true
+  - type: dropdown
+    id: activite
+    attributes:
+      label: Activité
+      options:
+        - Je ne sais pas (le robot trouve)
+        - Coiffeur / barbier
+        - Beauté / ongles / spa
+        - Restaurant
+        - Snack / kebab / pizza / burger
+        - Artisan / BTP / garage / services
+        - Cave / bar à vins
+        - Boutique CBD
+        - Épicerie / magasin / producteur
+    validations:
+      required: true
+  - type: textarea
+    id: liens
+    attributes:
+      label: Liens (facultatif)
+      description: "Colle ce que tu as : fiche Google Maps, Facebook, Instagram, ancien site…"
+  - type: textarea
+    id: infos
+    attributes:
+      label: Infos que tu connais (facultatif)
+      description: "Prix, horaires, spécialités, ce que le patron veut… Tout ce que tu écris ici passe avant Internet."
+  - type: dropdown
+    id: formule
+    attributes:
+      label: Formule à proposer
+      options:
+        - Auto (le robot choisit)
+        - page (Page unique 290 €)
+        - vitrine (Site vitrine 590 €)
+        - reservation (Réservation ou commande 990 €)
+    validations:
+      required: true

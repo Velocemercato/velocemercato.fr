@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>VM Studio Express</title>
+<meta name="description" content="Un commerce, un site démo en quelques minutes : l'outil de vente de VM Studio.">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#05080f">
+<link rel="icon" href="/app/studio-192.png">
+<style>
+:root{--bg:#05080f;--card:#0f1530;--line:#26305e;--ink:#fff;--muted:#c3cae4;--gold:#f4cf55;--red:#e1243a;--green:#3ddc84}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding-block:18px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:16px}
+.hero{border:3px solid #000;box-shadow:5px 5px 0 #000;border-radius:22px;padding:22px;background:linear-gradient(140deg,#1d3fb8 0%,#0b1533 55%,#5a0a18 100%)}
+.eye{display:inline-block;background:var(--gold);color:#0b1533;font:900 12px/1 system-ui;letter-spacing:.08em;padding:7px 11px;border-radius:999px;text-transform:uppercase}
+h1{font:italic 900 clamp(34px,8vw,54px)/.98 Impact,"Arial Black",sans-serif;text-transform:uppercase;margin:12px 0 8px;text-shadow:0 3px 0 #000;text-wrap:balance}
+h1 b{color:var(--gold)}
+.hero p{color:#e8ecf8;margin:0 0 16px;max-width:56ch}
+.go{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;font:900 19px/1 system-ui;padding:18px;border-radius:999px;background:var(--gold);color:#0b1533;text-decoration:none;border:3px solid #000;box-shadow:4px 4px 0 #000}
+.go:focus-visible,button:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.steps li{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+.steps b.n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--gold);color:#0b1533;display:grid;place-items:center;font-weight:900}
+h2{font:italic 900 26px/1 Impact,"Arial Black",sans-serif;text-transform:uppercase;margin:8px 0 0}
+.demo{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;gap:8px;min-width:0}
+.demo h3{margin:0;font-size:18px}
+.demo small{color:var(--muted)}
+.price{color:var(--gold);font-weight:900;font-variant-numeric:tabular-nums}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+.btn{font:800 15px system-ui;border:0;border-radius:999px;padding:11px 15px;background:var(--gold);color:#0b1533;text-decoration:none;cursor:pointer}
+.btn.alt{background:#fff}
+pre{white-space:pre-wrap;word-break:break-word;margin:0;font:14px/1.45 system-ui,sans-serif;background:#070b1d;border:1px dashed #4a5a98;border-radius:10px;padding:10px;color:#e8ecf8}
+.empty{color:var(--muted);background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:16px}
+.tip{color:var(--muted);font-size:14px}
+</style><link rel="manifest" href="/app/studio.webmanifest" id="vmapp-m"><meta name="theme-color" content="#05080f" id="vmapp-t"><link rel="apple-touch-icon" href="/app/studio-apple.png" id="vmapp-i"><meta name="apple-mobile-web-app-title" content="VM Studio" id="vmapp-n"><style id="vmbar-css">
+.vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:sticky;top:0;z-index:80}
+.vmbar+header{top:49px!important}
+.vmbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:6px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
+.vmbar-in::-webkit-scrollbar{display:none}
+.vmbar-in{min-height:48px}
+.vmbar a{flex:none;color:#cfd6ea;text-decoration:none;padding:7px 10px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.vmbar a:hover{background:rgba(255,255,255,.08);color:#fff}
+.vmbar a:focus-visible{outline:2px solid #f4cf55;outline-offset:2px}
+.vmbar .vmb-logo small{font:800 9px/1 system-ui,sans-serif;font-style:normal;letter-spacing:.06em;margin-left:4px;vertical-align:middle}
+.vmbar .vmb-logo{font:italic 900 18px/1 Impact,"Arial Black",sans-serif;color:#04060f;background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);padding:6px 9px;border-radius:8px;margin-right:4px;letter-spacing:.02em}
+.vmbar .vmb-logo{position:sticky;left:0;z-index:2;box-shadow:6px 0 0 #04060f;font-size:15px;min-height:36px;display:flex;flex-direction:column;justify-content:center;gap:3px;align-items:center}
+.vmbar .vmb-logo small{margin:0;font-size:8px}
+.vmbar a.on{color:#04060f;background:#fff}
+.vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
+.vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
+.vmbar a.p{background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);color:#0b1533;font-weight:900}.vmbar a.p.on{background:#fff;color:#0b1533;box-shadow:inset 0 0 0 2px #f4cf55}.vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
+@media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
+</style><style id="vmshare-css">
+.vminst{display:none;position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#1d3fb8;color:#fff;box-shadow:3px 3px 0 #000;cursor:pointer}
+.vminst.show{display:flex}
+.vmfab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;display:flex;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#f4cf55;color:#0b1533;box-shadow:3px 3px 0 #000;cursor:pointer}
+.vmsh{position:fixed;inset:0;z-index:90;background:rgba(5,9,23,.78);display:flex;align-items:flex-end;justify-content:center;padding:12px}
+.vmsh[hidden]{display:none}
+.vmsh-box{width:100%;max-width:420px;background:#fff;color:#0b1533;border:3px solid #000;border-radius:20px;padding:16px 16px 18px;box-shadow:6px 6px 0 #1d3fb8;font:15px/1.4 system-ui,sans-serif;max-height:92vh;overflow:auto}
+.vmsh-box h3{margin:0 0 4px;font:900 1.25rem system-ui,sans-serif}
+.vmsh-t{margin:0 0 12px;color:#4e5b7d;font-size:.85rem;word-break:break-word}
+.vmsh-g{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.vmsh-g a,.vmsh-g button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 4px;border-radius:14px;border:2px solid #0b1533;background:#f3f5fb;color:#0b1533;font:700 .78rem system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.vmsh-g span{font-size:1.5rem}
+.vmsh-qr{display:flex;justify-content:center;margin:14px 0 4px}.vmsh-qr canvas,.vmsh-qr img{border:8px solid #fff;outline:2px solid #0b1533;border-radius:6px}
+.vmsh-c{display:block;width:100%;margin-top:12px;font:800 1rem system-ui,sans-serif;padding:12px;border-radius:999px;border:2px solid #0b1533;background:#fff;color:#0b1533;cursor:pointer}
+@media print{.vmfab{display:none}}
+</style><!-- Cloudflare Web Analytics --><script id="vm-cfwa">(function(h){if(h==='velocemercato.fr'||h==='www.velocemercato.fr'){var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "35ce3d9fb9144124a0bb97db4e89dbb2"}');document.head.appendChild(s)}})(location.hostname)</script></head><body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="VM Univers, tous les projets">VM UNIVERS<small>TOUS LES PROJETS</small></a><a class="f" href="/">⚽ Foot</a><a class="p" href="/web-studio.html">💼 VM Studio</a><a class="s" href="/studio.html#tv">📺 Pastille TV</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="a" href="/actus/">📰 Actus</a><a class="r" href="/radio.html">📻 Radio</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
+<div class="wrap">
+<section class="hero">
+<span class="eye">⚡ Ton outil de vente</span>
+<h1>VM Studio <b>Express</b></h1>
+<p>Donne le nom d’un commerce et sa ville. Le robot cherche tout sur Internet et te fabrique la maquette de son futur site, avec rendez-vous, commande et prix. Tu reçois le lien et le message à lui envoyer.</p>
+<a class="go" href="https://github.com/Velocemercato/velocemercato.fr/issues/new?template=studio-express.yml" target="_blank" rel="noopener">⚡ Créer un site démo</a>
+</section>
+
+<ol class="steps">
+<li><b class="n">1</b><span>Remplis le formulaire : <b>nom</b>, <b>ville</b>, et colle ses liens (Google, Facebook, Instagram) si tu les as.</span></li>
+<li><b class="n">2</b><span>Attends <b>2 à 4 minutes</b> : tu reçois une notification avec le lien de la maquette.</span></li>
+<li><b class="n">3</b><span>Copie le <b>message tout prêt</b> et envoie-le au commerçant en privé. Il voit son futur site avant de payer.</span></li>
+</ol>
+
+<h2>Tes maquettes</h2>
+<div id="liste"><p class="empty">Aucune maquette pour l’instant. Appuie sur « Créer un site démo » pour la première.</p></div>
+<p class="tip">Les maquettes ne sont pas visibles sur Google. Les photos sont des illustrations : demande ses vraies photos au commerçant quand il dit oui.</p>
+</div>
+<script>
+(function(){
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  var L=document.getElementById('liste');
+  fetch('/demos/clients/index.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():[]}).then(function(rows){
+    if(!rows||!rows.length)return;
+    L.innerHTML=rows.map(function(r,i){return '<article class="demo"><h3>'+esc(r.nom)+'</h3><small>'+esc(r.ville)+' · modèle '+esc(r.modele)+' · '+esc((r.cree_le||'').slice(0,10))+'</small>'+
+      '<div>Formule conseillée : <span class="price">'+esc(r.prix)+' €</span></div><pre id="m'+i+'">'+esc(r.message)+'</pre>'+
+      '<div class="row"><a class="btn" href="'+esc(r.url)+'" target="_blank" rel="noopener">👀 Voir la maquette</a><button type="button" class="btn alt" data-m="m'+i+'">📋 Copier le message</button></div></article>'}).join('');
+  }).catch(function(){});
+  L.addEventListener('click',function(e){var b=e.target.closest('button[data-m]');if(!b)return;var t=document.getElementById(b.getAttribute('data-m')).textContent;
+    function ok(){b.textContent='✅ Copié !';setTimeout(function(){b.textContent='📋 Copier le message'},1800)}
+    function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById(b.getAttribute('data-m')));var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Texte sélectionné : copie-le'}
+    try{navigator.clipboard.writeText(t).then(ok,sel)}catch(x){sel()}});
+})();
+</script>
+<button type="button" class="vmfab" id="vmFab" aria-haspopup="dialog">📤 Partager</button>
+<button type="button" class="vminst" id="vmInst">📲 Installer l'app</button>
+<div class="vmsh" id="vmSh" hidden role="dialog" aria-modal="true" aria-labelledby="vmShT"><div class="vmsh-box">
+<h3 id="vmShT">📤 Partager cette page</h3><p class="vmsh-t" id="vmShU"></p>
+<div class="vmsh-g">
+<a id="vmS-wa" target="_blank" rel="noopener"><span>💬</span>WhatsApp</a>
+<a id="vmS-fb" target="_blank" rel="noopener"><span>📘</span>Facebook</a>
+<a id="vmS-x" target="_blank" rel="noopener"><span>✖️</span>X</a>
+<a id="vmS-tg" target="_blank" rel="noopener"><span>✈️</span>Telegram</a>
+<a id="vmS-sms"><span>📱</span>SMS</a>
+<button type="button" id="vmS-cp"><span>🔗</span>Copier le lien</button>
+</div>
+<button type="button" class="vmsh-c" id="vmS-more" hidden>Plus d’options (Insta, Snap…)</button>
+<div class="vmsh-qr" id="vmShQ" aria-label="QR code de la page"></div>
+<p class="vmsh-t" style="text-align:center;margin:4px 0 0">📷 Fais scanner ce QR code avec l’appareil photo d’un ami</p>
+<button type="button" class="vmsh-c" id="vmShX">Fermer</button>
+</div></div>
+<script>
+(function(){var $=function(i){return document.getElementById(i)},f=$('vmFab'),m=$('vmSh'),qr=false;if(!f||!m)return;
+function url(){return window.vmShareURL?window.vmShareURL():(/^#a=/.test(location.hash)?location.href:location.href.split('#')[0])}
+function open(){var u=url(),t=document.title,e=encodeURIComponent;$('vmShU').textContent=t;
+ $('vmS-wa').href='https://wa.me/?text='+e(t+' '+u);$('vmS-fb').href='https://www.facebook.com/sharer/sharer.php?u='+e(u);$('vmS-x').href='https://twitter.com/intent/tweet?text='+e(t)+'&url='+e(u);$('vmS-tg').href='https://t.me/share/url?url='+e(u)+'&text='+e(t);$('vmS-sms').href='sms:?&body='+e(t+' '+u);
+ $('vmS-more').hidden=!navigator.share;
+ if(!qr){qr=true;var s=document.createElement('script');s.src='/assets/vendor/qrcode.min.js';var fb=function(){var q=$('vmShQ');if(q.firstChild)return;var p=document.createElement('p');p.textContent='QR code indisponible. Vous pouvez copier le lien ci-dessus.';q.appendChild(p)};s.onload=function(){try{new QRCode($('vmShQ'),{text:u,width:180,height:180,correctLevel:QRCode.CorrectLevel.M})}catch(x){fb()}};s.onerror=fb;setTimeout(fb,4000);document.head.appendChild(s)}
+ m.hidden=false;$('vmShX').focus()}
+f.onclick=open;$('vmShX').onclick=function(){m.hidden=true;f.focus()};m.onclick=function(e){if(e.target===m)m.hidden=true};
+$('vmS-more').onclick=function(){navigator.share({title:document.title,url:url()}).catch(function(){})};
+$('vmS-cp').onclick=function(){var b=this;(navigator.clipboard?navigator.clipboard.writeText(url()):Promise.reject()).then(function(){b.lastChild.textContent='Copié ✓'}).catch(function(){prompt('Copie ce lien :',url())})};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=true});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
+var ib=$('vmInst'),dp=null,standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone,ios=/iphone|ipad|ipod/i.test(navigator.userAgent),andr=/android/i.test(navigator.userAgent);
+var mf=(($('vmapp-m')||{}).getAttribute&&$('vmapp-m').getAttribute('href'))||'',app=(mf.match(/app[/]([a-z]+)[.]webmanifest/)||[,'foot'])[1];
+var NOMS={autopart:'VM Auto Particulier',location:'VM Detailing',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'VM Univers',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'La Pastille TV',annonces:'VM Shop',allolivre:'AlloLivre',recettes:'VM Recettes',produits:'VM Produits locaux',sport:'VM Sport',immo:'VM Immo',rdv:'VM RDV du jour',meteo:'VM Météo',comparateur:'VM Comparateur',boutique:'VM Boutique',belfort:'VM Belfort',pub:'Publicité VM',services:'VM Services',pepite:'Pépite FC',radio:'VM Radio',studio:'VM Studio'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
+ib.textContent='📲 Installer '+nom;
+function show(){if(!no)ib.classList.add('show')}
+if(!standalone){addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;show()});if(ios)show();}
+addEventListener('appinstalled',function(){ib.classList.remove('show')});
+ib.onclick=function(){
+ if(dp){dp.prompt();dp.userChoice.then(function(){ib.classList.remove('show')});dp=null;return}
+ if(ios){alert('Pour installer '+nom+' sur iPhone : — 1. Ouvre cette page dans Safari — 2. Bouton Partager ↑ en bas — 3. « Sur l’écran d’accueil » — 4. « Ajouter »')}
+
+ try{localStorage.setItem(key,'1')}catch(e){}ib.classList.remove('show')};
+window.vmMail=function(su,bo){var to='velocemercato.fr@gmail.com';location.href='mailto:'+to+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(bo);
+ var d=document.getElementById('vmMailBox');if(d)d.remove();d=document.createElement('div');d.id='vmMailBox';d.setAttribute('role','dialog');
+ d.style.cssText='position:fixed;left:12px;right:12px;bottom:12px;z-index:95;max-width:440px;margin:0 auto;background:#fff;color:#0b1533;border:3px solid #000;border-radius:16px;padding:14px;box-shadow:5px 5px 0 #1d3fb8;font:15px/1.4 system-ui,sans-serif';
+ d.innerHTML='<b>✉️ Ton appli e-mail s’ouvre avec le message prêt.</b><br>Appuie sur « Envoyer » dedans : tant que ce n’est pas fait, rien n’est envoyé.<br><small>Rien ne s’ouvre ? Copie la demande et envoie-la à '+to+'.</small><div style="display:flex;gap:8px;margin-top:10px"><button type="button" id="vmMailCp" style="flex:1;font:800 .95rem system-ui;padding:10px;border-radius:999px;border:2px solid #000;background:#f4cf55;cursor:pointer">📋 Copier la demande</button><button type="button" id="vmMailX" style="font:800 .95rem system-ui;padding:10px 14px;border-radius:999px;border:2px solid #000;background:#fff;cursor:pointer">OK</button></div>';
+ document.body.appendChild(d);document.getElementById('vmMailX').onclick=function(){d.remove()};
+ document.getElementById('vmMailCp').onclick=function(){var t='À : '+to+'\nObjet : '+su+'\n\n'+bo,b=this;function ok(){b.textContent='✅ Copié !'}if(navigator.clipboard)navigator.clipboard.writeText(t).then(ok,function(){prompt('Copie ce texte :',t)});else prompt('Copie ce texte :',t)}};
+})();
+</script></body></html>

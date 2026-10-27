@@ -1,0 +1,62 @@
+name: VM Studio Express - site démo
+# Romain remplit le formulaire « VM Studio Express » : Claude cherche le commerce sur le web
+# et fabrique la maquette dans demos/clients/, puis répond avec le lien et le message à envoyer.
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: studio-express
+  cancel-in-progress: false
+
+jobs:
+  maquette:
+    # Seul le propriétaire du site peut lancer le robot (coût API).
+    if: contains(github.event.issue.labels.*.name, 'studio-express') && github.event.issue.user.login == github.repository_owner
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      NUMERO: ${{ github.event.issue.number }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prévenir que c'est en cours
+        run: |
+          gh issue comment "$NUMERO" --body "⏳ C'est parti : je cherche le commerce sur Internet et je fabrique la maquette (2 à 4 minutes)."
+      - name: Chercher le commerce et créer la maquette
+        env:
+          BODY: ${{ github.event.issue.body }}
+        run: |
+          printf '%s' "$BODY" > "$RUNNER_TEMP/demande.md"
+          python tools/studio_express.py --body "$RUNNER_TEMP/demande.md" --numero "$NUMERO" --resultat "$RUNNER_TEMP/resultat.md"
+      - name: Publier la maquette sur le site
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add demos/clients
+          git commit -q -m "Studio Express : maquette demande #$NUMERO"
+          for attempt in 1 2 3 4 5; do
+            git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0
+            sleep $((attempt * 5))
+          done
+          exit 1
+      - name: Répondre avec le lien
+        if: always()
+        run: |
+          file="$RUNNER_TEMP/resultat.md"
+          [ -f "$file" ] || file=studio-express-resultat.md
+          [ -f "$file" ] || echo "## ❌ Un problème est survenu. Réessaie dans quelques minutes." > "$file"
+          gh issue comment "$NUMERO" --body-file "$file"
+          gh issue close "$NUMERO" --reason completed || true
