@@ -1,5 +1,125 @@
 [
  {
+  "id": "foot-edition-20261027-0800",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "matin",
+  "label": "JT 08 h",
+  "titre": "La Pastille Foot - JT du matin, 27 octobre 2026",
+  "accroche": "Bonjour à tous, voici votre JT foot du matin, avec les brèves les plus importantes.",
+  "duree": 117,
+  "date": "2026-10-27T09:23+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261027-0800.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-10-27T08:00:00+01:00",
+  "source_start": "2026-10-26T20:00:00+01:00",
+  "source_end": "2026-10-27T08:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-ee93a2ad8174e0ba5e0cce",
+    "titre": "National 2 : le programme de la sixième journée de la saison 2026-2027",
+    "publishedAt": "2026-10-27T05:00:00Z",
+    "createdAt": "2026-10-27T06:01:50Z",
+    "references": [
+     {
+      "nom": "Foot National",
+      "url": "https://www.foot-national.com/actus/national-2-le-programme-de-la-sixieme-journee-960785"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-b5438f578ef339d76af9bf",
+    "titre": "Auxerre dénonce un dysfonctionnement de la Goal-line technology après le but de Buades",
+    "publishedAt": "2026-10-26T09:44:11Z",
+    "createdAt": "2026-10-27T05:03:56Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/ligue-1/on-a-eu-un-probleme-informatique-c-est-inedit-l-affaire-du-but-fantome-et-du-dysfonctionnement-de-la-goal-line-technology-qui-fait-enrager-auxerre_AV-202610260338.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-46679459c3d5b199db155c",
+    "titre": "L'OM suivrait Mohamed Ali Zoma, avant-centre de Nuremberg, pour le mercato d'hiver",
+    "publishedAt": "2026-10-26T11:30:00Z",
+    "createdAt": "2026-10-27T03:05:02Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/marseille/lom-pret-a-bondir-sur-un-international-italien"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-65485cf450d12482dedb8f",
+    "titre": "Ballon d'Or 2026 : Matias Palacios estime que Messi aurait dû finir top 3",
+    "publishedAt": "2026-10-27T00:00:06Z",
+    "createdAt": "2026-10-27T03:04:30Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a4174013574252471641-messi-aurait-du-etre-top-3-la-declaration-lunaire-dun-journaliste-argentin"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-ed70e55b88384904647b78",
+    "titre": "Coupe de France : l'AS Violaines, seul club de District au septième tour",
+    "publishedAt": "2026-10-26T11:52:38Z",
+    "createdAt": "2026-10-27T02:06:47Z",
+    "references": [
+     {
+      "nom": "Foot Amateur",
+      "url": "https://footamateur.ouest-france.fr/coupe-de-france-a-l-as-violaines-le-septieme-tour-c-est-incroyable/"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-0a2447eb397d39c2879886",
+    "titre": "National 2 : l'US Torcy sanctionnée par la FFF pour l'absence de son entraîneur",
+    "publishedAt": "2026-10-26T21:05:00Z",
+    "createdAt": "2026-10-27T02:06:19Z",
+    "references": [
+     {
+      "nom": "Foot National",
+      "url": "https://www.foot-national.com/actus/national-2-son-entraineur-absent-pendant-deux-matchs-un-club-sanctionne-par-la-fff-960741"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-abb0e0698e058a7f745d61",
+    "titre": "Auxerre-Le Mans : Cissé dénonce un but controversé validé après une vérification de la goal-line",
+    "publishedAt": "2026-10-26T13:00:00Z",
+    "createdAt": "2026-10-27T01:20:20Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/auxerre/djibril-cisse-crie-au-complot-anti-auxerre"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-e1651a5e5574b26a8fc4db",
+    "titre": "Ballon d’Or 2026 : Luis de la Fuente élu meilleur entraîneur",
+    "publishedAt": "2026-10-26T21:21:01Z",
+    "createdAt": "2026-10-27T01:19:56Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a7719465033787615115-ballon-dor-luis-de-la-fuente-elu-meilleur-entraineur"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "gaming-edition-20261027-0000",
   "univers": "gaming",
   "format": "edition",
