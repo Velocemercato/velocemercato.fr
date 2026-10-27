@@ -415,6 +415,14 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 .vmv-free::before{background:linear-gradient(180deg,rgba(4,6,15,.35) 0%,rgba(4,6,15,.75) 40%,rgba(4,6,15,.97) 100%)}
 @media(max-width:680px){.vmv-duo{grid-template-columns:1fr}.vmv-big{min-height:520px}.vmv-in{padding:16px}}
 @media(prefers-reduced-motion:reduce){.vmv-btn{transform:none!important}}
+.vmv-try{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vmv-t{display:block;padding:16px 18px;border-radius:18px;border:3px solid #000;box-shadow:5px 5px 0 #000;background:#fff;color:#0b1533!important}
+.vmv-t.gold{background:linear-gradient(135deg,#f4cf55,#ffb703)}
+.vmv-t .k{display:inline-block;font:900 11px/1 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;background:#0b1533;color:#fff;padding:6px 9px;border-radius:99px}
+.vmv-t b.p{display:block;font:900 26px/1.1 system-ui,sans-serif;margin:8px 0 4px}
+.vmv-t span.d{display:block;font:600 14px/1.35 system-ui,sans-serif}
+.vmv-t span.go{display:inline-block;margin-top:10px;font:900 14px/1 system-ui,sans-serif;text-decoration:underline;color:#0b1533!important}
+@media(max-width:680px){.vmv-try{grid-template-columns:1fr}}
 .vmv-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .vmv-pill{display:flex;align-items:center;gap:12px;padding:16px 18px;border-radius:18px;border:3px solid #000;box-shadow:5px 5px 0 #000;color:#0b1533!important;font:900 17px/1.2 system-ui,sans-serif}
 .vmv-pill small{display:block;font:600 13px/1.3 system-ui,sans-serif;opacity:.85;margin-top:3px}
@@ -434,6 +442,10 @@ body::after{background:linear-gradient(rgba(238,242,251,.86),rgba(238,242,251,.9
 <span class="vmv-cta"><span class="vmv-btn">Voir les 4 packs et les démos →</span></span>
 <small class="vmv-credit">Prix de création TTC · illustration IA, personnages inventés</small>
 </span></a>
+<div class="vmv-try" aria-label="Essayer avant d’acheter">
+<a class="vmv-t" href="https://velocemercato.fr/web-studio.html?offre=essai#essai"><span class="k">Sans engagement</span><b class="p">Essai 7 jours · 49 €</b><span class="d">Votre vrai site en ligne une semaine, avec vos infos, vos photos et 2 posts Facebook &amp; Instagram.</span><span class="go">Je teste →</span></a>
+<a class="vmv-t gold" href="https://velocemercato.fr/web-studio.html?offre=lancement#essai"><span class="k">Nouveau</span><b class="p">Lancement 1 mois · 149 €</b><span class="d">Votre site 1 mois + 100 cartes de visite avec QR à glisser dans vos commandes. Déduits du pack si vous continuez.</span><span class="go">Je lance →</span></a>
+</div>
 <div class="vmv-duo">
 <a class="vmv-card vmv-yt" href="https://www.youtube.com/@VeloceMercato" target="_blank" rel="noopener" aria-labelledby="vmv-t2">
 <img src="/img/studio/plateau-veloce-600.webp" alt="" width="600" height="1066" loading="lazy">
