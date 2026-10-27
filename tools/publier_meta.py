@@ -53,26 +53,29 @@ HEURES_UNIVERS = {DEBUT_UNIVERS: (16, 19, 21, 23)}   # lancement ; ensuite tous 
 HEURES_UNIVERS_DEFAUT = (9, 13, 19)
 YOUTUBE_CHAINE = 'https://www.youtube.com/@VeloceMercato'
 STUDIO_URL = 'https://velocemercato.fr/web-studio.html'
-STUDIO_PITCH = ('Un site clair sur téléphone, prêt à recevoir vos clients.\n'
-                '✅ Page unique 290 € · Site vitrine 590 € · Réservation ou commande 990 €\n'
-                '✅ Devis gratuit, prix confirmé par écrit')
+STUDIO_PITCH = ('Un site clair sur téléphone, à prix fixe. Tout se fait à distance.\n'
+                '✅ Mini 290 € · Starter 590 € · Business 990 € · Max 1 490 € (TTC)\n'
+                '✅ Vous validez la maquette avant la mise en ligne')
 STUDIO_TAGS = '#VMStudio #siteinternet #artisan #commerce #restaurant #VM'
 GRATUIT_TAGS = '#gratuit #VMUnivers #VM'
 # Une liste par créneau (9 h, 13 h, 19 h) ; chaque jour on avance d'un cran dans chaque liste.
 ROTATIONS = [
     [
+        {'type': 'video', 'name': 'VM Studio', 'video_id': 'vm-studio-manga', 'url': STUDIO_URL,
+         'titre': '💼 Votre commerce. Votre site. Votre style.', 'pitch': STUDIO_PITCH, 'tags': STUDIO_TAGS},
+        {'type': 'image', 'name': 'VM Studio', 'image': 'https://velocemercato.fr/img/pub/vm-studio-post.jpg', 'url': STUDIO_URL,
+         'titre': '💶 Des prix clairs, un projet à votre image', 'pitch': STUDIO_PITCH, 'tags': STUDIO_TAGS},
         {'type': 'video', 'name': 'VM Studio', 'video_id': 'vm-studio', 'url': STUDIO_URL,
-         'titre': '💼 Artisans, commerçants : votre site pro dès 290 €', 'pitch': STUDIO_PITCH, 'tags': STUDIO_TAGS},
+         'titre': '💼 Votre commerce. Votre site. Votre style.', 'pitch': STUDIO_PITCH, 'tags': STUDIO_TAGS},
         {'type': 'carte', 'name': 'VM Studio', 'icon': 'studio', 'url': STUDIO_URL,
-         'carte': 'Votre site pro dès 290 €. Devis gratuit.',
+         'carte': '4 packs à prix fixe, de 290 € à 1 490 €.',
          'titre': '🛠️ Votre site internet, sans vous ruiner', 'pitch': STUDIO_PITCH, 'tags': STUDIO_TAGS},
         {'type': 'image', 'name': 'VM Studio', 'image': 'https://velocemercato.fr/img/pub/vm-studio-talent.jpg', 'url': STUDIO_URL,
          'titre': '✨ Votre commerce a du talent. Montrez-le en ligne.',
-         'pitch': 'Site internet · Photos · Visuels · QR code\nVM Studio prépare une proposition à votre image, puis vous l’ajustez ensemble.\n✅ Dès 290 € · Devis gratuit', 'tags': STUDIO_TAGS},
+         'pitch': STUDIO_PITCH, 'tags': STUDIO_TAGS},
         {'type': 'video', 'name': 'VM Studio', 'video_id': 'vm-bureaux', 'url': STUDIO_URL,
          'titre': '📲 Coiffeur, snack, artisan : vos clients vous cherchent sur leur téléphone',
-         'pitch': 'On crée votre site clé en main, avec réservation ou commande en ligne si besoin.\n'
-                  '✅ Dès 290 € · Devis gratuit, prix confirmé par écrit', 'tags': STUDIO_TAGS},
+         'pitch': STUDIO_PITCH, 'tags': STUDIO_TAGS},
     ],
     [
         {'type': 'carte', 'name': 'VM Emploi', 'icon': 'emploi', 'url': 'https://velocemercato.fr/emploi/',

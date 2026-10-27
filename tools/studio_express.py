@@ -40,7 +40,7 @@ BASES = {
     'cbd': 'boutique CBD (18+)',
     'drive': 'épicerie, magasin, producteur : drive et livraison',
 }
-OFFRES = {'page': ('Page unique', 290), 'vitrine': ('Site vitrine', 590), 'reservation': ('Site qui réserve ou vend', 990)}
+OFFRES = {'mini': ('Mini', 290), 'starter': ('Starter', 590), 'business': ('Business', 990), 'max': ('Max', 1490)}
 
 
 class Fail(Exception):
@@ -162,7 +162,7 @@ Réponds avec ce JSON :
            "email": "e-mail public ou vide", "reseaux": ["liens publics trouvés"],
            "faq": [{{"q": "question client", "r": "réponse"}}],
            "couleurs": {{"a": "#hex principale", "b": "#hex secondaire", "ink": "#hex texte foncé", "bg": "#hex fond clair"}}}},
-  "offre": "page | vitrine | reservation (la formule VM Studio la plus adaptée)",
+  "offre": "mini | starter | business | max (le pack VM Studio le plus adapté)",
   "points_faibles": ["ce qui manque aujourd'hui au commerce en ligne, 2-3 points"],
   "message": "message privé (Facebook/Instagram) de Romain au commerçant : bonjour, compliment sincère et précis, j'ai préparé une maquette de votre futur site, [LIEN], la formule à [PRIX], sans engagement. Ton humain, 6 lignes max, tutoiement interdit.",
   "sources": [{{"nom": "…", "url": "https://…"}}]}}
@@ -188,8 +188,8 @@ def build(fields, data, slug, numero=''):
     demo.update(id='client-' + slug, name=demo.get('name') or nom)
     demo['rating'] = demo.get('rating') or '—'
     demo['address'] = p.get('adresse') or demo.get('address') or pick(fields, 'ville')
-    # La formule suit ce que montre la maquette : réservation ou commande en ligne = 990 €, devis = vitrine.
-    offre_id = 'reservation' if ('booking' in demo or 'order' in demo) else 'vitrine'
+    # Le pack suit ce que montre la maquette : boutique/commande = Max, agenda = Business, sinon Starter.
+    offre_id = 'max' if 'order' in demo else 'business' if 'booking' in demo else 'starter'
     choix = pick(fields, 'formule')
     for k in OFFRES:
         if k in choix.lower():
