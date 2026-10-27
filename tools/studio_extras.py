@@ -135,9 +135,10 @@ def qr_card(url, nom, base, out, photos_ok):
     bg.paste(qi, (x + 30, y + 30))
     d.text((70, 1440), 'Maquette préparée par VM Studio', font=f(bold, 46), fill=(244, 207, 85))
     d.text((70, 1505), 'Sans engagement · prix fixe · tout à distance', font=f(med, 40), fill=(255, 255, 255))
-    d.text((70, 1600), 'Romain · vminvest.fr@gmail.com', font=f(med, 44), fill=(255, 255, 255))
-    d.text((70, 1700), 'Démonstration non officielle : réservations et paiements simulés.', font=f(med, 30), fill=(200, 205, 220))
-    d.text((70, 1745), 'Photos du commerce · prix à titre d’exemple.' if photos_ok else 'Illustrations · prix à titre d’exemple.', font=f(med, 30), fill=(200, 205, 220))
+    d.text((70, 1570), 'Vos posts Facebook & Instagram publiés pour vous', font=f(bold, 34), fill=(244, 207, 85))
+    d.text((70, 1630), 'Romain · vminvest.fr@gmail.com', font=f(med, 44), fill=(255, 255, 255))
+    d.text((70, 1710), 'Démonstration non officielle : réservations et paiements simulés.', font=f(med, 30), fill=(200, 205, 220))
+    d.text((70, 1755), 'Photos du commerce · prix à titre d’exemple.' if photos_ok else 'Illustrations · prix à titre d’exemple.', font=f(med, 30), fill=(200, 205, 220))
     bg.save(out, 'PNG', optimize=True)
     return out
 

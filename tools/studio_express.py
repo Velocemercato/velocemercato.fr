@@ -255,6 +255,10 @@ def build(fields, data, slug, numero=''):
     page = re.sub(r'\s*·\s*' + plat, '', page)
     page = re.sub(plat + r'\s*·\s*', '', page)
     page = page.replace('🛒 Mes courses</a>', '🛒 Commander</a>').replace('🛒 Faire mes courses</a>', '🛒 Commander en ligne</a>')
+    # Encart vendeur Kit Réseaux (posts Facebook & Instagram publiés pour le commerçant)
+    bloc = (ROOT / 'tools/vm_reseaux_block.html').read_text(encoding='utf-8')
+    i = page.rfind('</main>')
+    page = page[:i] + bloc + page[i:] if i >= 0 else page
     (OUT / f'{slug}.html').write_text(page, encoding='utf-8')
     url = f'{SITE}/demos/clients/{slug}.html'
     message = str(data.get('message') or '').replace('[LIEN]', url).replace('[PRIX]', f'{prix} €')
