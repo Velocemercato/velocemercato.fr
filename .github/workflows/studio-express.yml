@@ -42,15 +42,33 @@ jobs:
           printf '%s' "$BODY" > "$RUNNER_TEMP/demande.md"
           python tools/studio_express.py --body "$RUNNER_TEMP/demande.md" --numero "$NUMERO" --resultat "$RUNNER_TEMP/resultat.md"
       - name: Publier la maquette sur le site
+        id: publier
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add demos/clients
-          git commit -q -m "Studio Express : maquette demande #$NUMERO"
-          for attempt in 1 2 3 4 5; do
-            git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0
-            sleep $((attempt * 5))
+          # Plusieurs demandes peuvent tourner en même temps : on met de côté nos fichiers,
+          # on repart de la dernière version du site et on ajoute seulement notre fiche à la liste.
+          LISTE=$(ls demos/clients/liste-*.json)
+          NEW="$RUNNER_TEMP/nouveaux"; mkdir -p "$NEW"
+          git ls-files --others --modified demos/clients | grep -v '\.json$' | xargs -r -I{} cp {} "$NEW/"
+          cp "$LISTE" "$NEW/liste.json"
+          for attempt in 1 2 3 4 5 6; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            cp "$NEW"/*.html "$NEW"/*.png demos/clients/ 2>/dev/null || true
+            python3 - "$NEW/liste.json" "$LISTE" "$NEW" <<'PY'
+          import json, os, sys
+          mine, target, new = sys.argv[1:4]
+          slugs = {f[:-5] for f in os.listdir(new) if f.endswith('.html')}
+          rows = json.load(open(target)) if os.path.exists(target) else []
+          add = [r for r in json.load(open(mine)) if r.get('slug') in slugs]
+          rows = [r for r in rows if r.get('slug') not in slugs] + add
+          json.dump(rows, open(target, 'w'), ensure_ascii=False, indent=1)
+          PY
+            git add demos/clients
+            git commit -q -m "Studio Express : maquette demande #$NUMERO" || exit 0
+            git push -q origin HEAD:main && exit 0
+            sleep $((attempt * 7))
           done
           exit 1
       - name: Répondre avec le lien
@@ -60,7 +78,9 @@ jobs:
           [ -f "$file" ] || file=studio-express-resultat.md
           [ -f "$file" ] || echo "## ❌ Un problème est survenu. Réessaie dans quelques minutes." > "$file"
           # Le dépôt est public : on ne laisse ni le lien privé ni le nom du commerce dans la demande.
-          if grep -q '✅' "$file"; then
+          if [ "${{ steps.publier.outcome }}" != "success" ]; then
+            gh issue comment "$NUMERO" --body "❌ La maquette est faite mais n'a pas pu être mise en ligne. Relance la demande."
+          elif grep -q '✅' "$file"; then
             gh issue comment "$NUMERO" --body "✅ C'est prêt. Ouvre ton appli Studio Express : lien, carte QR et message y sont."
           else
             gh issue comment "$NUMERO" --body-file "$file"
