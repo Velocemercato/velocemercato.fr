@@ -1,6 +1,7 @@
 """Horaires locaux et matchs confirmés ; aucune requête réseau ni publication."""
 import datetime as dt
 import json
+import os
 from pathlib import Path
 import sys
 from zoneinfo import ZoneInfo
@@ -15,6 +16,24 @@ BUTS_CRON = '0 16,17 * * 0'
 # Les passages suivants rattrapent un retard sans produire deux fois le JT.
 SEPARATE_CRON = '7,27,47 * * * *'
 EDITION_HOURS = {'actus': (7, 13, 19), 'foot': (8, 12, 20, 23), 'gaming': (0, 10, 18)}
+# Créneaux mis en pause sans toucher à la grille (limite d'envois YouTube par jour).
+# Variable VM_JT_PAUSE, ex. "actus:7,foot:23" ; vide = toute la grille.
+
+
+def paused_slots():
+    out = set()
+    for part in os.environ.get('VM_JT_PAUSE', '').replace(' ', '').split(','):
+        name, _, hour = part.partition(':')
+        if name in EDITION_HOURS and hour.isdigit():
+            out.add((name, int(hour)))
+    return out
+
+
+def active_hours(universe):
+    """Heures réellement produites ; la pause ne vide jamais complètement un univers."""
+    paused = paused_slots()
+    hours = tuple(h for h in EDITION_HOURS[universe] if (universe, h) not in paused)
+    return hours or EDITION_HOURS[universe]
 
 
 def edition_window(universe, target):
@@ -22,8 +41,8 @@ def edition_window(universe, target):
     if universe not in EDITION_HOURS or target.tzinfo is None:
         raise ValueError('Univers ou date de JT invalide.')
     target = target.astimezone(PARIS)
-    hours = EDITION_HOURS[universe]
-    if target.hour not in hours or target.minute or target.second or target.microsecond:
+    hours = active_hours(universe)
+    if target.hour not in EDITION_HOURS[universe] or target.minute or target.second or target.microsecond:
         raise ValueError('Heure hors de la grille des JT.')
     previous = [target.replace(hour=h) for h in hours if h < target.hour]
     start = max(previous) if previous else (target - dt.timedelta(days=1)).replace(hour=hours[-1])
@@ -49,9 +68,10 @@ def due_edition(root, now, universe=None):
     """Dernier créneau échu depuis moins de 3 h (GitHub saute parfois des déclenchements) ; jamais une édition future."""
     local = now.astimezone(PARIS)
     candidates = []
-    for name, hours in EDITION_HOURS.items():
+    for name in EDITION_HOURS:
         if universe and name != universe:
             continue
+        hours = active_hours(name)
         for day in (local.date(), local.date() - dt.timedelta(days=1)):
             for hour in hours:
                 target = dt.datetime.combine(day, dt.time(hour), PARIS)

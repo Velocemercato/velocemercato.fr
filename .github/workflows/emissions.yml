@@ -41,7 +41,7 @@ on:
         options: ['auto', 'hd', 'cdn']
         default: auto
   schedule:
-    # Dix JT courts séparés, heure de Paris et changement d'heure automatique.
+    # JT courts séparés (créneaux en pause : VM_JT_PAUSE), heure de Paris et changement d'heure automatique.
     # À :07 puis rattrapages :27/:47 ; publication après rendu et traitement YouTube.
     - cron: '7,27,47 * * * *'
 
@@ -56,6 +56,9 @@ jobs:
   emission:
     runs-on: ubuntu-24.04
     timeout-minutes: 90
+    env:
+      # 6 JT par jour (limite YouTube) : 8 h, 12 h, 13 h, 18 h, 19 h, 20 h.
+      VM_JT_PAUSE: ${{ vars.VM_JT_PAUSE || 'actus:7,foot:23,gaming:0,gaming:10' }}
     steps:
       - uses: actions/checkout@v4
         with:

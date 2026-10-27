@@ -27,6 +27,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 120
     env:
+      VM_JT_PAUSE: ${{ vars.VM_JT_PAUSE || 'actus:7,foot:23,gaming:0,gaming:10' }}
       GH_TOKEN: ${{ github.token }}
       SOURCE_RUN_ID: ${{ github.event.workflow_run.id || inputs.source_run_id }}
       VM_AUTO_YOUTUBE: ${{ vars.VM_AUTO_YOUTUBE }}
