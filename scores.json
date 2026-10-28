@@ -37,11 +37,11 @@
    ]
   },
   {
-   "id": 558553,
+   "id": 558550,
    "date": "2026-10-28T17:30:00Z",
    "comp": "Serie A",
-   "dom": "Parma",
-   "ext": "Udinese",
+   "dom": "Venezia FC",
+   "ext": "Inter",
    "statut": "IN_PLAY",
    "score": [
     0,
@@ -49,11 +49,11 @@
    ]
   },
   {
-   "id": 558550,
+   "id": 558553,
    "date": "2026-10-28T17:30:00Z",
    "comp": "Serie A",
-   "dom": "Venezia FC",
-   "ext": "Inter",
+   "dom": "Parma",
+   "ext": "Udinese",
    "statut": "IN_PLAY",
    "score": [
     0,
@@ -68,20 +68,8 @@
    "ext": "Bologna",
    "statut": "IN_PLAY",
    "score": [
-    1,
+    2,
     1
-   ]
-  },
-  {
-   "id": 558554,
-   "date": "2026-10-28T19:45:00Z",
-   "comp": "Serie A",
-   "dom": "Monza",
-   "ext": "Napoli",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
    ]
   },
   {
@@ -95,7 +83,19 @@
     null,
     null
    ]
+  },
+  {
+   "id": 558554,
+   "date": "2026-10-28T19:45:00Z",
+   "comp": "Serie A",
+   "dom": "Monza",
+   "ext": "Napoli",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
   }
  ],
- "maj": "2026-10-28T18:01:49Z"
+ "maj": "2026-10-28T18:03:44Z"
 }
