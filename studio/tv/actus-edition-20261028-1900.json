@@ -1,0 +1,120 @@
+{
+ "id": "actus-edition-20261028-1900",
+ "univers": "actus",
+ "format": "edition",
+ "moment": "soir",
+ "label": "JT 19 h",
+ "titre": "La Pastille Actus - 28 octobre, 19 heures",
+ "accroche": "Piratage, gaz, trains, Ebola : le JT express du soir.",
+ "duree": 153,
+ "date": "2026-10-28T19:23+01:00",
+ "publie": false,
+ "voix": [
+  "piper"
+ ],
+ "speech_rate": 1.12,
+ "fichier": "actus-edition-20261028-1900.mp4",
+ "editorial_revision": "court-v1",
+ "edition_at": "2026-10-28T19:00:00+01:00",
+ "source_start": "2026-10-28T13:00:00+01:00",
+ "source_end": "2026-10-28T19:00:00+01:00",
+ "sources": [
+  {
+   "id": "rss-v2-c32d71b54eac8496c3d5fe",
+   "titre": "La CTS de Strasbourg victime d'un piratage, 230 000 comptes clients concernés",
+   "publishedAt": "2026-10-28T17:21:17Z",
+   "createdAt": "2026-10-28T17:47:47Z",
+   "references": [
+    {
+     "nom": "franceinfo",
+     "url": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/la-compagnie-des-transports-strasbourgeois-victime-d-un-piratage-230-000-comptes-clients-concernes-par-une-fuite-de-donnees_8257766.html#xtor=RSS-3-%5Bgeneral%5D"
+    }
+   ]
+  },
+  {
+   "id": "rss-v2-497aabc32f392ddc19a431",
+   "titre": "Hôpitaux : 2 000 lits d'hospitalisation complète perdus en 2025, selon la Drees",
+   "publishedAt": "2026-10-28T16:43:53Z",
+   "createdAt": "2026-10-28T16:53:33Z",
+   "references": [
+    {
+     "nom": "franceinfo",
+     "url": "https://www.franceinfo.fr/sante/hopital/crise/encore-2-000-lits-d-hospitalisation-perdus-dans-les-hopitaux-et-les-cliniques-en-2025-malgre-un-rebond-dans-le-public_8257694.html#xtor=RSS-3-[lestitres]"
+    }
+   ]
+  },
+  {
+   "id": "rss-v2-1347d8a460099e1b3e8328",
+   "titre": "Le gaz européen dépasse 100 € le mégawattheure, un niveau inédit depuis décembre 2022",
+   "publishedAt": "2026-10-28T15:34:27Z",
+   "createdAt": "2026-10-28T15:53:44Z",
+   "references": [
+    {
+     "nom": "Euronews",
+     "url": "https://fr.euronews.com/2026/10/28/le-gaz-europeen-depasse-100-pour-la-premiere-fois-depuis-2022-lue-alerte-sur-une-crise"
+    }
+   ]
+  },
+  {
+   "id": "rss-v2-700dd9baff2441f0f6a86f",
+   "titre": "Accident ferroviaire près de Tolède : franceinfo authentifie des images de la collision",
+   "publishedAt": "2026-10-28T15:46:52Z",
+   "createdAt": "2026-10-28T15:53:31Z",
+   "references": [
+    {
+     "nom": "franceinfo",
+     "url": "https://www.franceinfo.fr/monde/espagne/les-images-deja-virales-de-la-grave-collision-de-deux-trains-a-grande-vitesse-en-espagne_8257357.html#xtor=RSS-3-[lestitres]"
+    }
+   ]
+  },
+  {
+   "id": "rss-v2-011cb139433f6abbd3e502",
+   "titre": "Manu Larcenet présente « L'insensé », une bande dessinée sur un dessinateur qui renoue avec ses enfants",
+   "publishedAt": "2026-10-28T14:31:53Z",
+   "createdAt": "2026-10-28T14:56:18Z",
+   "references": [
+    {
+     "nom": "franceinfo",
+     "url": "https://www.franceinfo.fr/culture/bd/j-ai-eu-du-mal-a-parler-du-livre-parce-que-je-l-aime-beaucoup-celui-la-manu-larcenet-presente-l-insense-sa-nouvelle-bande-dessinee_8256985.html#xtor=RSS-3-%5Bgeneral%5D"
+    }
+   ]
+  },
+  {
+   "id": "rss-v2-7058b0bcb7ffde61910cdc",
+   "titre": "Des étudiants de 15 pays testent des CanSats, satellites miniatures, en Ouzbékistan",
+   "publishedAt": "2026-10-28T14:34:09Z",
+   "createdAt": "2026-10-28T14:56:14Z",
+   "references": [
+    {
+     "nom": "Euronews",
+     "url": "https://fr.euronews.com/2026/10/28/satellites-en-canettes-de-jeunes-ingenieurs-defient-lespace-en-ouzbekistan"
+    }
+   ]
+  },
+  {
+   "id": "rss-v2-601a8524aa39c56e572692",
+   "titre": "Ebola : réunion urgente des ministres africains de la Santé, plus de 10 000 cas confirmés",
+   "publishedAt": "2026-10-28T13:29:37Z",
+   "createdAt": "2026-10-28T13:59:57Z",
+   "references": [
+    {
+     "nom": "RFI",
+     "url": "https://www.rfi.fr/fr/afrique/20261028-ebola-r%C3%A9union-urgente-des-ministres-africains-de-la-sant%C3%A9-plus-de-10-000-cas-confirm%C3%A9s"
+    }
+   ]
+  },
+  {
+   "id": "rss-v2-d52c1e505d83f78ffa4cfe",
+   "titre": "Espagne : une collision entre deux trains fait au moins 64 morts selon les autorités",
+   "publishedAt": "2026-10-28T13:54:40Z",
+   "createdAt": "2026-10-28T13:59:49Z",
+   "references": [
+    {
+     "nom": "franceinfo",
+     "url": "https://www.franceinfo.fr/monde/espagne/ce-que-l-on-sait-de-la-collision-de-trains-meurtriere-survenue-pres-de-la-ville-espagnole-de-tolede_8257072.html#xtor=RSS-3-[lestitres]"
+    }
+   ]
+  }
+ ],
+ "diffusion": "youtube"
+}
