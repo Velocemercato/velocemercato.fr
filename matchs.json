@@ -36,18 +36,6 @@
   ]
  },
  {
-  "id": 558557,
-  "date": "2026-10-27T19:45:00Z",
-  "competition": "Serie A",
-  "domicile": "Torino",
-  "exterieur": "Como 1907",
-  "statut": "FINISHED",
-  "score": [
-   1,
-   3
-  ]
- },
- {
   "id": 558555,
   "date": "2026-10-27T19:45:00Z",
   "competition": "Serie A",
@@ -57,6 +45,18 @@
   "score": [
    4,
    2
+  ]
+ },
+ {
+  "id": 558557,
+  "date": "2026-10-27T19:45:00Z",
+  "competition": "Serie A",
+  "domicile": "Torino",
+  "exterieur": "Como 1907",
+  "statut": "FINISHED",
+  "score": [
+   1,
+   3
   ]
  },
  {
@@ -96,11 +96,11 @@
   ]
  },
  {
-  "id": 558552,
+  "id": 558554,
   "date": "2026-10-28T19:45:00Z",
   "competition": "Serie A",
-  "domicile": "Genoa",
-  "exterieur": "Juventus",
+  "domicile": "Monza",
+  "exterieur": "Napoli",
   "statut": "TIMED",
   "score": [
    null,
@@ -108,11 +108,11 @@
   ]
  },
  {
-  "id": 558554,
+  "id": 558552,
   "date": "2026-10-28T19:45:00Z",
   "competition": "Serie A",
-  "domicile": "Monza",
-  "exterieur": "Napoli",
+  "domicile": "Genoa",
+  "exterieur": "Juventus",
   "statut": "TIMED",
   "score": [
    null,
@@ -240,18 +240,6 @@
   ]
  },
  {
-  "id": 565842,
-  "date": "2026-10-31T14:30:00Z",
-  "competition": "Bundesliga",
-  "domicile": "Augsburg",
-  "exterieur": "Freiburg",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
   "id": 565840,
   "date": "2026-10-31T14:30:00Z",
   "competition": "Bundesliga",
@@ -264,11 +252,11 @@
   ]
  },
  {
-  "id": 565847,
+  "id": 565842,
   "date": "2026-10-31T14:30:00Z",
   "competition": "Bundesliga",
-  "domicile": "Leverkusen",
-  "exterieur": "Stuttgart",
+  "domicile": "Augsburg",
+  "exterieur": "Freiburg",
   "statut": "TIMED",
   "score": [
    null,
@@ -293,6 +281,18 @@
   "competition": "Bundesliga",
   "domicile": "M'gladbach",
   "exterieur": "SC Paderborn",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
+  "id": 565847,
+  "date": "2026-10-31T14:30:00Z",
+  "competition": "Bundesliga",
+  "domicile": "Leverkusen",
+  "exterieur": "Stuttgart",
   "statut": "TIMED",
   "score": [
    null,
@@ -624,11 +624,11 @@
   ]
  },
  {
-  "id": 558547,
+  "id": 559645,
   "date": "2026-11-01T19:45:00Z",
-  "competition": "Serie A",
-  "domicile": "Juventus",
-  "exterieur": "Napoli",
+  "competition": "Ligue 1",
+  "domicile": "Marseille",
+  "exterieur": "Toulouse",
   "statut": "TIMED",
   "score": [
    null,
@@ -636,11 +636,11 @@
   ]
  },
  {
-  "id": 559645,
+  "id": 558547,
   "date": "2026-11-01T19:45:00Z",
-  "competition": "Ligue 1",
-  "domicile": "Marseille",
-  "exterieur": "Toulouse",
+  "competition": "Serie A",
+  "domicile": "Juventus",
+  "exterieur": "Napoli",
   "statut": "TIMED",
   "score": [
    null,
@@ -792,18 +792,6 @@
   ]
  },
  {
-  "id": 575384,
-  "date": "2026-11-03T20:00:00Z",
-  "competition": "Ligue des champions",
-  "domicile": "Bodø/Glimt",
-  "exterieur": "Lille",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
   "id": 575380,
   "date": "2026-11-03T20:00:00Z",
   "competition": "Ligue des champions",
@@ -821,6 +809,18 @@
   "competition": "Ligue des champions",
   "domicile": "Villarreal",
   "exterieur": "PSG",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
+  "id": 575384,
+  "date": "2026-11-03T20:00:00Z",
+  "competition": "Ligue des champions",
+  "domicile": "Bodø/Glimt",
+  "exterieur": "Lille",
   "statut": "TIMED",
   "score": [
    null,
