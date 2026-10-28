@@ -13,18 +13,6 @@
    ]
   },
   {
-   "id": 558557,
-   "date": "2026-10-27T19:45:00Z",
-   "comp": "Serie A",
-   "dom": "Torino",
-   "ext": "Como 1907",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    3
-   ]
-  },
-  {
    "id": 558555,
    "date": "2026-10-27T19:45:00Z",
    "comp": "Serie A",
@@ -37,15 +25,27 @@
    ]
   },
   {
+   "id": 558557,
+   "date": "2026-10-27T19:45:00Z",
+   "comp": "Serie A",
+   "dom": "Torino",
+   "ext": "Como 1907",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    3
+   ]
+  },
+  {
    "id": 558549,
    "date": "2026-10-28T17:30:00Z",
    "comp": "Serie A",
    "dom": "Milan",
    "ext": "Bologna",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -54,10 +54,10 @@
    "comp": "Serie A",
    "dom": "Parma",
    "ext": "Udinese",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -66,6 +66,18 @@
    "comp": "Serie A",
    "dom": "Venezia FC",
    "ext": "Inter",
+   "statut": "IN_PLAY",
+   "score": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": 558554,
+   "date": "2026-10-28T19:45:00Z",
+   "comp": "Serie A",
+   "dom": "Monza",
+   "ext": "Napoli",
    "statut": "TIMED",
    "score": [
     null,
@@ -83,19 +95,7 @@
     null,
     null
    ]
-  },
-  {
-   "id": 558554,
-   "date": "2026-10-28T19:45:00Z",
-   "comp": "Serie A",
-   "dom": "Monza",
-   "ext": "Napoli",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
   }
  ],
- "maj": "2026-10-28T17:34:33Z"
+ "maj": "2026-10-28T17:36:26Z"
 }
