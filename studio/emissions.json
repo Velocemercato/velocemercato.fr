@@ -1,5 +1,125 @@
 [
  {
+  "id": "foot-edition-20261028-0800",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "matin",
+  "label": "JT 08 h",
+  "titre": "La Pastille Foot - JT du matin, 08 heures",
+  "accroche": "Bonjour à tous, c'est parti pour le JT express de La Pastille Foot !",
+  "duree": 150,
+  "date": "2026-10-28T08:28+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261028-0800.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-10-28T08:00:00+01:00",
+  "source_start": "2026-10-27T20:00:00+01:00",
+  "source_end": "2026-10-28T08:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-6a5987ba70d3280eaf2ade",
+    "titre": "Le patron de la FAW réclame de nouveau le départ d'Infantino",
+    "publishedAt": "2026-10-27T15:20:51Z",
+    "createdAt": "2026-10-28T06:35:51Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cw054vdz9g7mo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-0194ffde302adac6ecc304",
+    "titre": "Ballon d'or 2026 : Kévin Diaz pense que Mbappé peut tirer profit de sa deuxième place",
+    "publishedAt": "2026-10-28T05:35:33Z",
+    "createdAt": "2026-10-28T06:35:41Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/kylian-mbappe/ballon-d-or-2026-il-a-deux-ou-trois-ans-devant-lui-kevin-diaz-pense-que-mbappe-va-tirer-profit-de-cet-echec_AV-202610280107.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-e1e95cd7a836601b1604a2",
+    "titre": "Motherwell enchaîne six défaites, une crise ou une reconstruction ?",
+    "publishedAt": "2026-10-27T15:12:57Z",
+    "createdAt": "2026-10-28T05:33:18Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/c6lylnkzp772o?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-868340ef701274b0eaac88",
+    "titre": "Bayonne accueille un Match des légendes caritatif au profit de l'association Un sourire, un espoir pour la vie",
+    "publishedAt": "2026-10-27T15:28:52Z",
+    "createdAt": "2026-10-28T04:35:47Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/redonner-un-sourire-aux-enfants-bayonne-accueille-les-stars-du-sport-francais-pour-un-match-caritatif_AN-202610270594.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-b926e1b3b753493435c3c8",
+    "titre": "Igor Miladinovic, prêté par l'ASSE au Partizan, souhaite rester à Belgrade",
+    "publishedAt": "2026-10-27T15:30:00Z",
+    "createdAt": "2026-10-28T04:35:43Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/st-etienne/lasse-le-prete-il-prie-pour-ne-jamais-revenir"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-0b2e820daa00022ad6ddfd",
+    "titre": "McInnes avoue un sentiment de culpabilité après son départ de Hearts pour Rangers",
+    "publishedAt": "2026-10-27T15:31:48Z",
+    "createdAt": "2026-10-28T03:35:14Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cjr4y51g6zvvo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-fa62374f309d7cd3c11763",
+    "titre": "Reynald Pédros plaide pour le bien-être des jeunes avant le résultat",
+    "publishedAt": "2026-10-28T03:00:00Z",
+    "createdAt": "2026-10-28T03:35:06Z",
+    "references": [
+     {
+      "nom": "Foot Amateur",
+      "url": "https://footamateur.ouest-france.fr/reynald-pedros-le-bien-etre-de-lenfant-doit-passer-avant-le-resultat/"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-5e8fc1459ee2424434eb1e",
+    "titre": "Dembélé complimente Ibrahim Maza après la cérémonie du Ballon d'or 2026",
+    "publishedAt": "2026-10-27T15:32:13Z",
+    "createdAt": "2026-10-28T02:37:24Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/ballon-d-or/next-ballon-d-or-insh-allah-le-compliment-remarque-d-ousmane-dembele-a-ibrahim-maza_AV-202610270600.html"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261027-2000",
   "univers": "foot",
   "format": "edition",
