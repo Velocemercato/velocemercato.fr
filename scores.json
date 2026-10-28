@@ -37,30 +37,6 @@
    ]
   },
   {
-   "id": 558553,
-   "date": "2026-10-28T17:30:00Z",
-   "comp": "Serie A",
-   "dom": "Parma",
-   "ext": "Udinese",
-   "statut": "IN_PLAY",
-   "score": [
-    0,
-    0
-   ]
-  },
-  {
-   "id": 558550,
-   "date": "2026-10-28T17:30:00Z",
-   "comp": "Serie A",
-   "dom": "Venezia FC",
-   "ext": "Inter",
-   "statut": "IN_PLAY",
-   "score": [
-    0,
-    2
-   ]
-  },
-  {
    "id": 558549,
    "date": "2026-10-28T17:30:00Z",
    "comp": "Serie A",
@@ -70,6 +46,30 @@
    "score": [
     2,
     4
+   ]
+  },
+  {
+   "id": 558550,
+   "date": "2026-10-28T17:30:00Z",
+   "comp": "Serie A",
+   "dom": "Venezia FC",
+   "ext": "Inter",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": 558553,
+   "date": "2026-10-28T17:30:00Z",
+   "comp": "Serie A",
+   "dom": "Parma",
+   "ext": "Udinese",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    0
    ]
   },
   {
@@ -97,5 +97,5 @@
    ]
   }
  ],
- "maj": "2026-10-28T19:26:07Z"
+ "maj": "2026-10-28T19:28:00Z"
 }
