@@ -1,65 +1,80 @@
 {
- "id": "2026-10-27-08",
- "date": "2026-10-27T08:19:50+01:00",
+ "id": "2026-10-28-08",
+ "date": "2026-10-28T08:32:05+01:00",
  "questions": [
   {
-   "q": "Qui a remporté le Ballon d'Or 2026 chez les hommes ?",
+   "q": "Combien de matchs Torino a-t-il joués à la date de l'article sur Rafik Belghali ?",
    "choix": [
-    "Harry Kane",
-    "Kylian Mbappé",
-    "Lamine Yamal",
-    "Lionel Messi"
+    "Six journées",
+    "Quatre journées",
+    "Huit journées",
+    "Dix journées"
    ],
    "bonne": 0,
-   "explication": "La brève 2 indique que Harry Kane, attaquant du Bayern Munich, est le Ballon d'Or 2026, devant Mbappé et Yamal.",
+   "explication": "L'article indique qu'après six journées, Belghali compte déjà un but et trois passes décisives.",
    "source": {
-    "titre": "Ballon d'Or 2026 : Harry Kane sacré, Alexia Putellas chez les femmes",
-    "id": "2026-10-27-harry-kane-ballon-dor-2026"
+    "titre": "Torino : Rafik Belghali s'impose comme une révélation de Serie A",
+    "id": "rss-v2-f0c31c04a7d4ed0bf4ce8c"
    }
   },
   {
-   "q": "Quel trophée Luis de la Fuente a-t-il remporté lors de la cérémonie ?",
+   "q": "Quel est le score final de Lazio-Sassuolo en Serie A ?",
    "choix": [
-    "Le trophée Cruyff",
-    "Le trophée Kopa",
-    "Le trophée Yachine",
-    "Le prix Sócrates"
+    "6-2",
+    "4-2",
+    "5-1",
+    "3-3"
    ],
    "bonne": 0,
-   "explication": "La brève 8 indique que Luis de la Fuente a remporté le trophée Cruyff, récompensant le meilleur entraîneur de l'année.",
+   "explication": "La brève indique que la Lazio Rome a largement dominé Sassuolo (6-2) lors de la 9e journée.",
    "source": {
-    "titre": "Ballon d’Or 2026 : Luis de la Fuente élu meilleur entraîneur",
-    "id": "rss-v2-e1651a5e5574b26a8fc4db"
+    "titre": "Serie A : la Lazio s'impose 6-2 à Sassuolo et reprend la tête, Floriani Mussolini marque",
+    "id": "rss-v2-44f7225a4a9b36242e0305"
    }
   },
   {
-   "q": "Quel club a conservé Mika Godts après son but face à Lyon ?",
+   "q": "Quelle est la durée de l'interruption du match Fleetwood-Arsenal à cause d'un drone ?",
    "choix": [
-    "Le Paris Saint-Germain",
-    "L'Olympique de Marseille",
-    "Le LOSC Lille",
-    "Le Stade Rennais"
+    "Plus de huit minutes",
+    "Environ cinq minutes",
+    "Plus de quinze minutes",
+    "Environ deux minutes"
    ],
    "bonne": 0,
-   "explication": "La brève 4 indique que Mika Godts a marqué le second but du PSG face à l'Olympique Lyonnais (2-0).",
+   "explication": "La brève précise que la rencontre a été interrompue pendant plus de huit minutes.",
    "source": {
-    "titre": "PSG : Mika Godts marque son premier but face à Lyon (2-0)",
-    "id": "rss-v2-e8a1585e45436d5b7743f5"
+    "titre": "Fleetwood-Arsenal interrompu plus de huit minutes à cause d'un drone",
+    "id": "rss-v2-b11a3385fb3991c6adff06"
    }
   },
   {
-   "q": "Quelle est la suspension infligée à Ali Mselam après son expulsion ?",
+   "q": "Combien de temps Ansu Fati doit-il rester absent selon Nice-Matin ?",
    "choix": [
-    "Trois matchs",
-    "Deux matchs",
-    "Quatre matchs",
-    "Un match"
+    "Six semaines",
+    "Trois semaines",
+    "Deux mois",
+    "Quatre semaines"
    ],
    "bonne": 0,
-   "explication": "La brève 11 indique que le latéral de Chauvigny a écopé d'une suspension de trois matchs après son expulsion à Fontenay.",
+   "explication": "Selon l'article, l'absence d'Ansu Fati est estimée à six semaines, en raison d'une lésion aux ischio-jambiers.",
    "source": {
-    "titre": "National 2 : Ali Mselam suspendu trois matchs après son expulsion avec Chauvigny",
-    "id": "rss-v2-4af3576d9227509766de47"
+    "titre": "Monaco : Ansu Fati absent six semaines avec une lésion aux ischio-jambiers",
+    "id": "rss-v2-73f2f18a13b837c91be644"
+   }
+  },
+  {
+   "q": "Quel est le montant de l'amende infligée au FC Barcelone dans l'affaire Alvarez ?",
+   "choix": [
+    "602 euros",
+    "6 020 euros",
+    "15 000 euros",
+    "150 000 euros"
+   ],
+   "bonne": 0,
+   "explication": "La brève indique que le FC Barcelone a été sanctionné d'une amende de 602 euros, soit 503 livres.",
+   "source": {
+    "titre": "Barcelone sanctionné d'une amende de 602 euros pour son approche d'Alvarez",
+    "id": "rss-v2-568fc6ee851b660ac0f87a"
    }
   }
  ]
