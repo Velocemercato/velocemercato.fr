@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261029-1900",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 19 h",
+  "titre": "La Pastille Actus - Jeudi 29 octobre, 19 heures",
+  "accroche": "Bonsoir, voici les actus du soir.",
+  "duree": 96,
+  "date": "2026-10-29T19:25+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261029-1900.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-10-29T19:00:00+01:00",
+  "source_start": "2026-10-29T13:00:00+01:00",
+  "source_end": "2026-10-29T19:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-d399f56a33c589dfa9c115",
+    "titre": "Midterms américaines : Barack Obama multiplie les meetings de soutien aux démocrates",
+    "publishedAt": "2026-10-29T17:27:44Z",
+    "createdAt": "2026-10-29T17:51:28Z",
+    "references": [
+     {
+      "nom": "France 24",
+      "url": "https://www.france24.com/fr/am%C3%A9riques/20261029-midterms-barack-obama-joker-des-d%C3%A9mocrates-derni%C3%A8re-heure-campagne"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-db34c20ac55357110fed58",
+    "titre": "Rénovation énergétique : le gouvernement met fin à plusieurs programmes d'accompagnement",
+    "publishedAt": "2026-10-29T16:31:58Z",
+    "createdAt": "2026-10-29T16:55:14Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/environnement/actions-ecologiques/transition-ecologique-du-batiment/c-est-abandonner-les-menages-les-plus-precaires-le-gouvernement-supprime-plusieurs-programmes-de-renovation-energetique-et-declenche-la-colere-des-acteurs-de-la-filiere_8258663.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-6085fc70ee3759493e954c",
+    "titre": "Vatican : une exposition retrace un siècle de papamobiles Mercedes-Benz",
+    "publishedAt": "2026-10-29T15:41:02Z",
+    "createdAt": "2026-10-29T15:56:24Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/video/2026/10/29/vatican-un-siecle-de-papamobiles-mercedes-benz-expose"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-fe0597d6226c5b65611019",
+    "titre": "Espagne : les familles et les rescapés réclament des comptes après la collision ferroviaire",
+    "publishedAt": "2026-10-29T15:42:33Z",
+    "createdAt": "2026-10-29T15:56:21Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/espagne/accident-de-trains-pres-de-tolede/reportage-les-responsables-doivent-etre-punis-au-lendemain-de-la-catastrophe-ferroviaire-les-espagnols-reclament-des-comptes_8258996.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-cd63ce5c50bb91e3ea9b50",
+    "titre": "Mistral publie en open source son modèle Large 4 pour la cyberdéfense et le codage",
+    "publishedAt": "2026-10-29T14:46:58Z",
+    "createdAt": "2026-10-29T14:58:03Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/10/29/mistral-publie-un-modele-dia-telechargeable-pour-renforcer-la-cybersecurite-des-entreprise"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-b74201bdfa9d9824f592f3",
+    "titre": "Didier Marouani, fondateur de Space, revient sur le succès du groupe dans les années 70",
+    "publishedAt": "2026-10-29T13:39:16Z",
+    "createdAt": "2026-10-29T14:03:19Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/culture/musique/electro/space-le-groupe-qui-a-inspire-la-french-touch-20-ans-avant-daft-punk_8258831.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-c4aed966c4b94fcca4f0a6",
+    "titre": "La BCE maintient son taux directeur inchangé à 2,5% après deux hausses cette année",
+    "publishedAt": "2026-10-29T13:56:00Z",
+    "createdAt": "2026-10-29T14:03:11Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/la-banque-centrale-europeenne-maintient-son-principal-taux-directeur-inchange-a-2-5_8258876.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-41f02574addfd10dfc058b",
+    "titre": "Espagne : les échanges radio évoquent une erreur humaine dans la collision ferroviaire",
+    "publishedAt": "2026-10-29T12:34:30Z",
+    "createdAt": "2026-10-29T12:55:39Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/espagne/accident-de-trains-pres-de-tolede/accident-ferroviaire-en-espagne-les-echanges-radio-accreditent-l-erreur-humaine_8258828.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "gaming-edition-20261029-1800",
   "univers": "gaming",
   "format": "edition",
