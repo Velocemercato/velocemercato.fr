@@ -1,18 +1,6 @@
 {
  "matchs": [
   {
-   "id": 558550,
-   "date": "2026-10-28T17:30:00Z",
-   "comp": "Serie A",
-   "dom": "Venezia FC",
-   "ext": "Inter",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    2
-   ]
-  },
-  {
    "id": 558553,
    "date": "2026-10-28T17:30:00Z",
    "comp": "Serie A",
@@ -37,15 +25,15 @@
    ]
   },
   {
-   "id": 558552,
-   "date": "2026-10-28T19:45:00Z",
+   "id": 558550,
+   "date": "2026-10-28T17:30:00Z",
    "comp": "Serie A",
-   "dom": "Genoa",
-   "ext": "Juventus",
+   "dom": "Venezia FC",
+   "ext": "Inter",
    "statut": "FINISHED",
    "score": [
-    2,
-    0
+    0,
+    2
    ]
   },
   {
@@ -58,6 +46,18 @@
    "score": [
     1,
     4
+   ]
+  },
+  {
+   "id": 558552,
+   "date": "2026-10-28T19:45:00Z",
+   "comp": "Serie A",
+   "dom": "Genoa",
+   "ext": "Juventus",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    0
    ]
   },
   {
@@ -85,5 +85,5 @@
    ]
   }
  ],
- "maj": "2026-10-29T00:17:48Z"
+ "maj": "2026-10-29T00:27:28Z"
 }
