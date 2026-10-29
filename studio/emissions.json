@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261029-1300",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "midi",
+  "label": "JT 13 h",
+  "titre": "La Pastille Actus - Midi du jeudi 29 octobre",
+  "accroche": "Le JT de 13 heures, six brèves importantes, c'est parti.",
+  "duree": 160,
+  "date": "2026-10-29T13:08+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261029-1300.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-10-29T13:00:00+01:00",
+  "source_start": "2026-10-28T19:00:00+01:00",
+  "source_end": "2026-10-29T13:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-917e4af20de8b55aa63bfc",
+    "titre": "Espagne : le système LZB, en panne lors de la collision ferroviaire meurtrière sur la ligne Madrid-Séville",
+    "publishedAt": "2026-10-29T11:34:57Z",
+    "createdAt": "2026-10-29T11:44:28Z",
+    "references": [
+     {
+      "nom": "20 Minutes",
+      "url": "https://www.20minutes.fr/monde/4258513-20261029-collision-trains-espagne-quoi-systeme-lzb-panne-moment-crash?at_medium=display&at_campaign=149"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-da91a0df84ced5998c855e",
+    "titre": "Christine Lagarde quittera la BCE le 7 février 2027, avant la fin de son mandat",
+    "publishedAt": "2026-10-29T10:43:56Z",
+    "createdAt": "2026-10-29T10:49:34Z",
+    "references": [
+     {
+      "nom": "RFI",
+      "url": "https://www.rfi.fr/fr/europe/20261029-bce-christine-lagarde-quittera-la-pr%C3%A9sidence-le-7-f%C3%A9vrier-2027-avant-la-fin-de-son-mandat"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-2856ea9a121655ee89d9b0",
+    "titre": "« Le Mystère Lucy Lost » : un film d'animation sur la résilience",
+    "publishedAt": "2026-10-29T10:45:24Z",
+    "createdAt": "2026-10-29T10:49:30Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/culture/cinema/sorties-de-films/le-mystere-lucy-lost-un-film-d-animation-poetique-sur-les-mecanismes-de-la-resilience_8257580.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-d34d12d58aa180928c845e",
+    "titre": "441 morts par noyade en France entre mai et août, selon Santé publique France",
+    "publishedAt": "2026-10-29T09:37:38Z",
+    "createdAt": "2026-10-29T09:52:49Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/faits-divers/noyades/entre-le-1er-mai-et-le-31-aout-441-morts-par-noyade-principalement-pendant-les-canicules-denombre-sante-publique-france_8258543.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-44b5e32b6965a92db9500e",
+    "titre": "Bénéfices record de TotalEnergies et accusations de Greenpeace sur les prix de l'essence",
+    "publishedAt": "2026-10-29T09:43:30Z",
+    "createdAt": "2026-10-29T09:52:44Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/transports/prix-des-carburants/l-industrie-petroliere-gonfle-t-elle-les-prix-de-l-essence_8258597.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-9e860e4b4e06653997fdfd",
+    "titre": "TotalEnergies annonce un bénéfice net record au 3e trimestre, plus que doublé sur un an",
+    "publishedAt": "2026-10-29T08:33:58Z",
+    "createdAt": "2026-10-29T08:55:31Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/environnement/energie/energies-fossiles/totalenergies/totalenergies-engrange-un-benefice-net-record-au-3e-trimestre-plus-que-double-sur-un-an-en-raison-de-l-envolee-des-prix-des-hydrocarbures_8258201.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-b5b9a07fb93ee66cde2b0c",
+    "titre": "Carburants : une baisse de 12 à 18 centimes par litre de gazole prévue dès le 1er novembre",
+    "publishedAt": "2026-10-29T08:37:12Z",
+    "createdAt": "2026-10-29T08:55:23Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/transports/prix-des-carburants/ca-commence-a-etre-complique-pour-beaucoup-de-francais-la-baisse-du-prix-des-carburants-tres-attendue-par-les-automobilistes_8258501.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-3ec2d25e97c5bc5b157af9",
+    "titre": "Bahamas : Charles III danse lors du défilé du Junkanoo à Nassau",
+    "publishedAt": "2026-10-29T07:56:51Z",
+    "createdAt": "2026-10-29T08:01:23Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/video/2026/10/29/bahamas-charles-iii-danse-avec-des-habitants-lors-de-sa-visite"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261029-1200",
   "univers": "foot",
   "format": "edition",
