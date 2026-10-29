@@ -1,5 +1,125 @@
 [
  {
+  "id": "foot-edition-20261029-0800",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "matin",
+  "label": "JT 08 h",
+  "titre": "La Pastille Foot : le JT du matin",
+  "accroche": "Bonjour à tous, on démarre La Pastille Foot du jeudi 29 octobre 2026, avec six brèves.",
+  "duree": 154,
+  "date": "2026-10-29T09:00+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261029-0800.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-10-29T08:00:00+01:00",
+  "source_start": "2026-10-28T20:00:00+01:00",
+  "source_end": "2026-10-29T08:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-6b8439626d2826da76d497",
+    "titre": "Coupe de France : Paris 13 Atletico reçoit le Red Star, un derby L3-L2 au 7e tour",
+    "publishedAt": "2026-10-28T13:05:00Z",
+    "createdAt": "2026-10-29T06:10:32Z",
+    "references": [
+     {
+      "nom": "Foot National",
+      "url": "https://www.foot-national.com/coupe-de-france/coupe-de-france-paris-13-atletico-red-star-ou-le-derby-ultime-de-ce-7e-tour-961041"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-6bf9a6ae15f55781a3a3f8",
+    "titre": "Un enfant de 3 ans « trop fort » au foot : la police de Floride appelée après une dispute entre parents",
+    "publishedAt": "2026-10-29T05:28:07Z",
+    "createdAt": "2026-10-29T06:09:59Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/foot/la-police-americaine-a-t-elle-vraiment-ete-appelee-parce-qu-un-petit-garcon-jouait-trop-bien-au-foot_8257712.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-bbbea600511930169f6023",
+    "titre": "Ballon d’or 2026 : le top 10 controversé du journaliste colombien Pache Andrade",
+    "publishedAt": "2026-10-28T13:10:22Z",
+    "createdAt": "2026-10-29T05:13:36Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/ballon-d-or/ballon-d-or-2026-le-vote-etonnant-du-journaliste-colombien-pour-son-top-10_AV-202610280535.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-f9e531f9cb64c28d82d182",
+    "titre": "Peterborough : MacAnthony promet de vendre ses parts si le club ne finit pas top 10",
+    "publishedAt": "2026-10-28T13:14:22Z",
+    "createdAt": "2026-10-29T05:13:33Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/c539830n0wj3o?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-779f86c9b8bf35a94128a0",
+    "titre": "MU : Kai Rooney, fils de Wayne, inscrit un quadruplé avec les U18",
+    "publishedAt": "2026-10-28T18:01:00Z",
+    "createdAt": "2026-10-29T04:15:10Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a3436388507296650127-mu-le-fils-de-wayne-rooney-affole-langleterre-avec-un-quadruple"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-e20e9331f29ff6a94ad6d8",
+    "titre": "Kompany sorti de l'hôpital après son malaise, le retour fixé à « quelques semaines »",
+    "publishedAt": "2026-10-28T21:37:08Z",
+    "createdAt": "2026-10-29T04:14:59Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/c678prmye8xvo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-e698dd998ad2491f16ed39",
+    "titre": "Rulli sauve City aux tirs au but contre Brighton, Donnarumma reste titulaire",
+    "publishedAt": "2026-10-28T23:10:06Z",
+    "createdAt": "2026-10-29T03:13:50Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/articles/cqrky1jnpy1no?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-c8273c55504d8d50dedf94",
+    "titre": "Ligue 3 : le programme et les enjeux de la 11e journée",
+    "publishedAt": "2026-10-29T03:00:00Z",
+    "createdAt": "2026-10-29T03:13:40Z",
+    "references": [
+     {
+      "nom": "Foot Amateur",
+      "url": "https://footamateur.ouest-france.fr/ligue-3-le-programme-et-les-enjeux-de-la-onzieme-journee/"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261028-2000",
   "univers": "foot",
   "format": "edition",
