@@ -17,11 +17,9 @@ from tools.diffuser_jt import HTTP, State, YouTube, DeliveryError, access_token,
 
 PROMOS = [
     ('veloce-foot', 'Véloce Mercato — le média foot', 'https://velocemercato.fr/'),
-    ('vm-univers', 'VM Univers — tous les projets VM', 'https://vmunivers.fr/'),
     ('vm-studio', 'La Pastille TV — les JT foot, actu et gaming', 'https://velocemercato.fr/studio.html'),
     ('vm-actus', "VM Actus — l'actu en brèves sourcées", 'https://velocemercato.fr/actus/'),
     ('vm-gaming', 'VM Gaming — jeux vidéo et communauté', 'https://velocemercato.fr/vm-gaming/'),
-    ('vm-bureaux', 'Véloce Web Studio — votre site internet', 'https://velocemercato.fr/web-studio.html'),
 ]
 FORMATS = [('vertical', ' #Shorts'), ('paysage', '')]
 

@@ -73,9 +73,6 @@ ROTATIONS = [
         {'type': 'image', 'name': 'VM Studio', 'image': 'https://velocemercato.fr/img/pub/vm-studio-talent.jpg', 'url': STUDIO_URL,
          'titre': '✨ Votre commerce a du talent. Montrez-le en ligne.',
          'pitch': STUDIO_PITCH, 'tags': STUDIO_TAGS},
-        {'type': 'video', 'name': 'VM Studio', 'video_id': 'vm-bureaux', 'url': STUDIO_URL,
-         'titre': '📲 Coiffeur, snack, artisan : vos clients vous cherchent sur leur téléphone',
-         'pitch': STUDIO_PITCH, 'tags': STUDIO_TAGS},
     ],
     [
         {'type': 'carte', 'name': 'VM Emploi', 'icon': 'emploi', 'url': 'https://velocemercato.fr/emploi/',
@@ -94,7 +91,7 @@ ROTATIONS = [
          'carte': 'Les JT foot chaque jour. Abonne-toi !',
          'titre': '▶️ Abonne-toi à la chaîne Véloce Mercato',
          'pitch': 'Les JT foot, actus et gaming chaque jour, et le mag du dimanche à 11 h.', 'tags': '#VeloceMercato #foot #YouTube #VM'},
-        {'type': 'video', 'name': 'VM Univers', 'video_id': 'vm-univers', 'url': 'https://vmunivers.fr/',
+        {'type': 'carte', 'name': 'VM Univers', 'icon': 'univers', 'url': 'https://vmunivers.fr/',
          'titre': '👑 VM Univers : tous nos projets au même endroit',
          'pitch': 'Sites pour les pros, outils gratuits, foot et gaming : un seul lien.', 'tags': '#VMUnivers #VM'},
         {'type': 'video', 'name': 'Véloce Mercato', 'video_id': 'veloce-foot', 'url': 'https://velocemercato.fr/',
@@ -478,8 +475,8 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
 
 
 LANCEMENT = [
-    {'type': 'video', 'name': 'VM Univers', 'url': 'https://vmunivers.fr/', 'pitch': 'Tous les projets du groupe VM, réunis au même endroit.',
-     'video': 'https://velocemercato.fr/media/promos/vm-univers-vertical.mp4'},
+    {'type': 'carte', 'name': 'VM Univers', 'url': 'https://vmunivers.fr/', 'pitch': 'Tous les projets du groupe VM, réunis au même endroit.',
+     'icon': 'univers'},
     {'type': 'carte', 'name': 'VM Studio', 'icon': 'studio', 'url': 'https://velocemercato.fr/web-studio.html',
      'pitch': 'Sites internet et visuels pour les pros, avec des prix clairs.'},
     {'type': 'carte', 'name': 'VM CV', 'icon': 'cv', 'url': 'https://velocemercato.fr/cv/', 'pitch': 'Fais ton CV pro gratuitement, en quelques minutes.'},
