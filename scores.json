@@ -25,18 +25,6 @@
    ]
   },
   {
-   "id": 559646,
-   "date": "2026-10-30T18:00:00Z",
-   "comp": "Ligue 1",
-   "dom": "Nice",
-   "ext": "Stade Rennais",
-   "statut": "FINISHED",
-   "score": [
-    5,
-    2
-   ]
-  },
-  {
    "id": 559644,
    "date": "2026-10-30T18:00:00Z",
    "comp": "Ligue 1",
@@ -49,12 +37,24 @@
    ]
   },
   {
+   "id": 559646,
+   "date": "2026-10-30T18:00:00Z",
+   "comp": "Ligue 1",
+   "dom": "Nice",
+   "ext": "Stade Rennais",
+   "statut": "FINISHED",
+   "score": [
+    5,
+    2
+   ]
+  },
+  {
    "id": 565846,
    "date": "2026-10-30T19:30:00Z",
    "comp": "Bundesliga",
    "dom": "Elversberg",
    "ext": "Mainz",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
     3,
     0
@@ -85,5 +85,5 @@
    ]
   }
  ],
- "maj": "2026-10-30T20:26:17Z"
+ "maj": "2026-10-30T20:28:11Z"
 }
