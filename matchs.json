@@ -12,18 +12,6 @@
   ]
  },
  {
-  "id": 558549,
-  "date": "2026-10-28T17:30:00Z",
-  "competition": "Serie A",
-  "domicile": "Milan",
-  "exterieur": "Bologna",
-  "statut": "FINISHED",
-  "score": [
-   2,
-   4
-  ]
- },
- {
   "id": 558553,
   "date": "2026-10-28T17:30:00Z",
   "competition": "Serie A",
@@ -33,6 +21,18 @@
   "score": [
    0,
    0
+  ]
+ },
+ {
+  "id": 558549,
+  "date": "2026-10-28T17:30:00Z",
+  "competition": "Serie A",
+  "domicile": "Milan",
+  "exterieur": "Bologna",
+  "statut": "FINISHED",
+  "score": [
+   2,
+   4
   ]
  },
  {
@@ -360,11 +360,11 @@
   ]
  },
  {
-  "id": 559643,
+  "id": 558548,
   "date": "2026-10-31T19:45:00Z",
-  "competition": "Ligue 1",
-  "domicile": "Troyes",
-  "exterieur": "Le Mans",
+  "competition": "Serie A",
+  "domicile": "Milan",
+  "exterieur": "Inter",
   "statut": "TIMED",
   "score": [
    null,
@@ -372,11 +372,11 @@
   ]
  },
  {
-  "id": 558548,
+  "id": 559643,
   "date": "2026-10-31T19:45:00Z",
-  "competition": "Serie A",
-  "domicile": "Milan",
-  "exterieur": "Inter",
+  "competition": "Ligue 1",
+  "domicile": "Troyes",
+  "exterieur": "Le Mans",
   "statut": "TIMED",
   "score": [
    null,
@@ -840,6 +840,18 @@
   ]
  },
  {
+  "id": 575391,
+  "date": "2026-11-04T20:00:00Z",
+  "competition": "Ligue des champions",
+  "domicile": "Dortmund",
+  "exterieur": "Real Betis",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
   "id": 575393,
   "date": "2026-11-04T20:00:00Z",
   "competition": "Ligue des champions",
@@ -857,18 +869,6 @@
   "competition": "Ligue des champions",
   "domicile": "Slavia Praha",
   "exterieur": "Arsenal",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
-  "id": 575391,
-  "date": "2026-11-04T20:00:00Z",
-  "competition": "Ligue des champions",
-  "domicile": "Dortmund",
-  "exterieur": "Real Betis",
   "statut": "TIMED",
   "score": [
    null,
