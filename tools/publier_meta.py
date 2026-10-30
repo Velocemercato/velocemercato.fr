@@ -487,31 +487,50 @@ LANCEMENT = [
 
 
 def lancement(state, graph, sleep=time.sleep):
-    """Premières publications Instagram/Facebook de VM Univers (une seule fois chacune)."""
+    """Premières publications VM Univers, avec accusés distincts par réseau."""
     meta = state.data.get('tokens', {}).get('meta_univers') or {}
-    if not meta.get('ig_id'):
-        raise DeliveryError('Instagram VM Univers non relié.')
+    if not meta.get('page_token') or not meta.get('page_id'):
+        raise DeliveryError('Page Facebook VM Univers non reliée.')
     done = state.data.setdefault('meta_univers_accuses', {})
     errors = []
     for item in LANCEMENT:
-        key = 'lancement/' + item['name']
-        if key in done:
-            continue
-        done[key] = {'status': 'envoi'}
-        state.save()
-        text = texte_univers(item)
-        try:
-            insta_text = text.replace('👉 ' + item['url'], '👉 Lien en bio')
-            if item['type'] == 'video':
-                instagram_reel(graph, meta, {'verticale': item['video'], 'texte_vertical': insta_text}, sleep=sleep)
-            else:
-                instagram_image(graph, meta, instagram_projet_card(item['name'], item['icon'], item['pitch']), insta_text, sleep=sleep)
-            done[key] = {'status': 'publie'}
-            print(f'::notice::instagram VM Univers : {item["name"]} publié')
-        except (DeliveryError, OSError, subprocess.CalledProcessError) as error:
-            done[key] = {'status': 'echec'}
-            errors.append(f'lancement {item["name"]} : {str(error)[:150]}')
-        state.save()
+        legacy_key = 'lancement/' + item['name']
+        for network in ('facebook', 'instagram'):
+            key = 'lancement/' + network + '/' + item['name']
+            # Les anciennes clés correspondent uniquement à des tentatives Instagram.
+            # Préserver aussi les envois/échecs ambigus : pas de nouvel envoi automatique.
+            if key in done or (network == 'instagram' and (legacy_key in done or not meta.get('ig_id'))):
+                continue
+            done[key] = {'status': 'envoi'}
+            state.save()
+            text = texte_univers(item)
+            try:
+                if network == 'facebook':
+                    if item['type'] == 'video':
+                        result = graph.call('POST', meta['page_id'] + '/videos', {
+                            'file_url': item['video'], 'description': text,
+                            'access_token': meta['page_token']}).get('id')
+                    else:
+                        result = graph.call('POST', meta['page_id'] + '/feed', {
+                            'message': text, 'link': item['url'],
+                            'access_token': meta['page_token']}).get('id')
+                else:
+                    insta_text = text.replace('👉 ' + item['url'], '👉 Lien en bio')
+                    if item['type'] == 'video':
+                        result = instagram_reel(graph, meta, {
+                            'verticale': item['video'], 'texte_vertical': insta_text}, sleep=sleep)
+                    else:
+                        result = instagram_image(graph, meta,
+                            instagram_projet_card(item['name'], item['icon'], item['pitch']),
+                            insta_text, sleep=sleep)
+                if not result:
+                    raise DeliveryError(network + ' : publication non confirmée (identifiant absent).')
+                done[key] = {'status': 'publie', 'post_id': str(result)}
+                print(f'::notice::{network} VM Univers : {item["name"]} publié')
+            except (DeliveryError, OSError, subprocess.CalledProcessError) as error:
+                done[key] = {'status': 'echec'}
+                errors.append(f'lancement {network} {item["name"]} : {str(error)[:150]}')
+            state.save()
     for line in errors:
         print('::error::' + line)
     return errors
