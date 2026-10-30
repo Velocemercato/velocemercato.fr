@@ -1,12 +1,656 @@
 {
- "maj": "2026-10-30T10:40:01Z",
+ "maj": "2026-10-30T11:30:27Z",
  "titres": [
   {
    "k": "actus",
-   "t": "Des détenus de la prison de Grenoble-Varces refusent de réintégrer leur cellule, l’Eris déployée",
-   "u": "https://www.ouest-france.fr/societe/prison/des-detenus-de-la-prison-de-grenoble-varces-refusent-de-reintegrer-leur-cellule-leris-deployee-db4801dc-d445-11f1-84f3-5611f158a658?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
+   "t": "Roland Lescure reconnaît une phrase «malheureuse» au sujet des taxes sur le carburant",
+   "u": "https://www.lefigaro.fr/conjoncture/roland-lescure-reconnait-une-phrase-malheureuse-au-sujet-des-taxes-sur-le-carburant-20261030",
+   "s": "Le Figaro",
+   "d": "2026-10-30T11:27:42Z"
+  },
+  {
+   "k": "actus",
+   "t": "Pedro Sánchez says people of 27 nationalities may be among those killed or injured in Spanish train crash – Europe live",
+   "u": "https://www.theguardian.com/world/live/2026/oct/30/spain-investigates-toledo-crash-pedro-sanchez-france-italy-protests-latest-news-updates",
+   "s": "The Guardian",
+   "d": "2026-10-30T11:26:59Z"
+  },
+  {
+   "k": "foot",
+   "t": "OM : Amine Gouiri absent, Faris Moumbagna de retour",
+   "u": "https://www.footmercato.net/a7607666686720173689-om-amine-gouiri-absent-faris-moumbagna-de-retour",
+   "s": "Foot Mercato",
+   "d": "2026-10-30T11:26:01Z"
+  },
+  {
+   "k": "gaming",
+   "t": "Actualité : Cette “pierre de Rosette martienne” pourrait enfin révéler si la vie a existé sur la planète rouge",
+   "u": "https://www.lesnumeriques.com/astronomie-conquete-spatiale/decouverte-de-la-pierre-de-rosette-martienne-unique-la-nasa-s-enflamme-pour-la-meteorite-qui-peut-reveler-si-mars-a-eu-de-la-vie-n263977.html",
+   "s": "Les Numériques",
+   "d": "2026-10-30T11:25:36Z"
+  },
+  {
+   "k": "foot",
+   "t": "Items stolen from Man Utd Munich air disaster memorial",
+   "u": "https://www.bbc.co.uk/news/articles/cxly4pqndz57o?at_medium=RSS&at_campaign=rss",
+   "s": "BBC Sport",
+   "d": "2026-10-30T11:23:55Z"
+  },
+  {
+   "k": "actus",
+   "t": "Les métiers du transport public ont besoin de 100.000 recrues d'ici à 2030 mais le secteur est tout en bas des envies de carrière des jeunes",
+   "u": "https://www.bfmtv.com/economie/emploi/les-metiers-du-transport-public-ont-besoin-de-100-000-recrues-d-ici-a-2030-mais-le-secteur-est-tout-en-bas-des-envies-de-carriere-des-jeunes_AV-202610300456.html",
+   "s": "BFMTV",
+   "d": "2026-10-30T11:23:22Z"
+  },
+  {
+   "k": "actus",
+   "t": "Manifestations à Paris: un couvre-feu instauré ce week-end à République et à Châtelet",
+   "u": "https://www.bfmtv.com/paris/manifestations-a-paris-un-couvre-feu-instaure-ce-week-end-a-republique-et-a-chatelet_AD-202610300455.html",
+   "s": "BFMTV",
+   "d": "2026-10-30T11:22:06Z"
+  },
+  {
+   "k": "gaming",
+   "t": "Des hackers ont distribué une version piégée de Claude Code à des milliers de développeurs, mais se sont pris les pieds dans leur propre code",
+   "u": "https://www.numerama.com/cyberguerre/2364283-des-hackers-ont-distribue-une-version-piegee-de-claude-code-a-des-milliers-de-developpeurs-mais-se-sont-pris-les-pieds-dans-leur-propre-code.html",
+   "s": "Numerama",
+   "d": "2026-10-30T11:21:49Z"
+  },
+  {
+   "k": "foot",
+   "t": "DIRECT. OM: suivez en live la conférence de presse de Genesio avant le match contre Toulouse",
+   "u": "https://rmcsport.bfmtv.com/football/clubs/olympique-marseille/direct-om-suivez-en-live-la-conference-de-presse-de-genesio-avant-le-match-contre-toulouse_LN-202610300386.html",
+   "s": "RMC Sport",
+   "d": "2026-10-30T11:21:02Z"
+  },
+  {
+   "k": "actus",
+   "t": "\"Ils nous ont tués\" : bastion historique de la presse indépendante russe, le journal \"Novaïa Gazeta\" contraint de fermer sous la pression des autorités",
+   "u": "https://www.franceinfo.fr/monde/russie/ils-nous-ont-tues-le-bastion-historique-de-la-presse-independante-russe-oblige-de-fermer-sous-la-pression-des-autorites_8260061.html#xtor=RSS-3-[lestitres]",
+   "s": "franceinfo",
+   "d": "2026-10-30T11:20:56Z"
+  },
+  {
+   "k": "foot",
+   "t": "Le PSG rêve d'un ancien Marseillais à 80 ME",
+   "u": "https://www.foot01.com/paris/le-psg-reve-dun-ancien-marseillais-a-80-me",
+   "s": "Foot01",
+   "d": "2026-10-30T11:20:00Z"
+  },
+  {
+   "k": "actus",
+   "t": "Vente de préservatifs non conformes : 15 références retirées et rappelées sur le marché européen après une enquête de la DGCCRF",
+   "u": "https://www.franceinfo.fr/sante/vente-de-preservatifs-non-conformes-15-references-retirees-et-rappelees-sur-le-marche-europeen-apres-une-enquete-de-la-dgccrf_8260220.html#xtor=RSS-3-[lestitres]",
+   "s": "franceinfo",
+   "d": "2026-10-30T11:19:01Z"
+  },
+  {
+   "k": "gaming",
+   "t": "Actualité : Fini l’abonnement obligatoire sur les balances Withings, un développeur crée une parade gratuite et open source pour récupérer les données",
+   "u": "https://www.lesnumeriques.com/balance/fini-l-abonnement-obligatoire-sur-les-balances-withings-un-developpeur-cree-une-parade-gratuite-et-open-source-pour-recuperer-les-donnees-n264004.html",
+   "s": "Les Numériques",
+   "d": "2026-10-30T11:19:00Z"
+  },
+  {
+   "k": "actus",
+   "t": "EN DIRECT - Manifestations du 31 octobre à Paris : les parcours de la CGT et des gilets jaunes interdits par la préfecture de police, couvre-feu dans deux secteurs",
+   "u": "https://www.lefigaro.fr/actualite-france/en-direct-manifestations-31-octobre-policiers-gendarmes-laurent-nunez-violences-urbaines-halloween-20261030",
+   "s": "Le Figaro",
+   "d": "2026-10-30T11:18:03Z"
+  },
+  {
+   "k": "actus",
+   "t": "Dijon. Une boutique Hermès attaquée à la voiture-bélier, trois hommes interpellés",
+   "u": "https://www.estrepublicain.fr/faits-divers-justice/2026/10/30/une-boutique-hermes-attaquee-a-la-voiture-belier-trois-hommes-interpelles",
+   "s": "L'Est Républicain",
+   "d": "2026-10-30T11:18:00Z"
+  },
+  {
+   "k": "actus",
+   "t": "Vos commerces seront-ils ouverts tous les dimanches jusqu'à la fin de l'année? Voici ce que peuvent faire les commerçants",
+   "u": "https://rmc.bfmtv.com/conso/habillement/vos-commerces-seront-ils-ouverts-tous-les-dimanches-jusqu-a-la-fin-de-l-annee-voici-ce-que-peuvent-faire-les-commercants_AN-202610300453.html",
+   "s": "BFMTV",
+   "d": "2026-10-30T11:16:20Z"
+  },
+  {
+   "k": "actus",
+   "t": "«Nuit des ténèbres», «sit-in devant l’Assemblée», imbroglio autour du cortège parisien… À quoi faut-il s’attendre pour l’«acte III» des mobilisations ?",
+   "u": "https://www.lefigaro.fr/actualite-france/nuit-des-tenebres-sit-in-devant-l-assemblee-imbroglio-autour-du-cortege-parisien-a-quoi-faut-il-s-attendre-pour-l-acte-iii-des-mobilisations-20261030",
+   "s": "Le Figaro",
+   "d": "2026-10-30T11:16:02Z"
+  },
+  {
+   "k": "actus",
+   "t": "Maltraitance animale : une vidéo choc de L214 tournée clandestinement en Maine-et-Loire au cœur d’un débat juridique",
+   "u": "https://www.ouest-france.fr/societe/l214/maltraitance-animale-une-video-choc-de-l214-tournee-clandestinement-en-maine-et-loire-au-cur-dun-debat-juridique-7d1fec70-d448-11f1-84f3-5611f158a658?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
    "s": "Ouest-France",
-   "d": "2026-10-30T10:39:33Z"
+   "d": "2026-10-30T11:15:18Z"
+  },
+  {
+   "k": "gaming",
+   "t": "En regardant des images satellites, un archéologue découvre une forteresse géante qui pourrait être une capitale oubliée",
+   "u": "https://www.journaldugeek.com/2026/10/30/en-regardant-des-images-satellites-un-archeologue-decouvre-une-forteresse-geante-qui-pourrait-etre-une-capitale-oubliee/",
+   "s": "Journal du Geek",
+   "d": "2026-10-30T11:14:47Z"
+  },
+  {
+   "k": "actus",
+   "t": "11 pays de l'UE promettent la mise sur le marché de 20,5 millions de barils de diesel",
+   "u": "https://fr.euronews.com/2026/10/30/onze-pays-de-lue-promettent-la-mise-sur-le-marche-de-205-millions-de-barils-de-diesel",
+   "s": "Euronews",
+   "d": "2026-10-30T11:13:40Z"
+  },
+  {
+   "k": "actus",
+   "t": "ENQUÊTE. Bastons clandestines et suprémacisme : un « fight club » d’extrême droite s’affiche à Brest",
+   "u": "https://www.ouest-france.fr/societe/faits-divers/enquete-bastons-clandestines-et-supremacisme-un-fight-club-dextreme-droite-saffiche-a-brest-9c0164be-d37d-11f1-81f2-0d14b9f9c452?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
+   "s": "Ouest-France",
+   "d": "2026-10-30T11:12:06Z"
+  },
+  {
+   "k": "gaming",
+   "t": "Actualité : Black Friday 2026 – L'enceinte Bluetooth portable Sony ULT Field 5 à 179,99 € (-21%)",
+   "u": "https://www.lesnumeriques.com/enceintes-portables/black-friday-2026-l-enceinte-bluetooth-portable-sony-ult-field-5-a-179-99-21-n264016.html",
+   "s": "Les Numériques",
+   "d": "2026-10-30T11:12:00Z"
+  },
+  {
+   "k": "actus",
+   "t": "\"Primaire des démocrates\" voulue par Gabriel Attal: Emmanuel Macron favorable à \"l'unité des modérés\"",
+   "u": "https://www.bfmtv.com/politique/elections/presidentielle/primaire-des-democrates-voulue-par-gabriel-attal-emmanuel-macron-favorable-a-l-unite-des-moderes_AV-202610300450.html",
+   "s": "BFMTV",
+   "d": "2026-10-30T11:11:38Z"
+  },
+  {
+   "k": "actus",
+   "t": "Le bénéfice de BP quadruple avec la guerre en Iran, marges de raffinage en flèche, dette en baisse",
+   "u": "https://fr.euronews.com/2026/10/30/le-benefice-de-bp-quadruple-avec-la-guerre-en-iran-marges-de-raffinage-en-fleche-dette-en",
+   "s": "Euronews",
+   "d": "2026-10-30T11:09:31Z"
+  },
+  {
+   "k": "foot",
+   "t": "Une épidémie de lésions musculaires qui s'explique ?",
+   "u": "https://www.lequipe.fr/Football/Article/Nuno-mendes-marquinhos-ousmane-dembele-une-epidemie-de-lesions-musculaires-au-psg-qui-s-explique/1739597#at_medium=RSS_feeds",
+   "s": "L'Équipe",
+   "d": "2026-10-30T11:09:00Z"
+  },
+  {
+   "k": "actus",
+   "t": "Prise en charge des victimes de violences, statut de fonctionnaire pour les assistants scolaires… LFI fait adopter trois textes à l'Assemblée malgré l'obstruction de l'extrême droi",
+   "u": "https://www.franceinfo.fr/politique/prise-en-charge-des-victimes-de-violences-assistants-scolaires-fonctionnaires-trois-succes-pour-lfi-a-l-assemblee-nationale-malgre-l-obstruction-de-l-extreme-droite_8259917.html#xtor=RSS-3-[lestitres]",
+   "s": "franceinfo",
+   "d": "2026-10-30T11:08:39Z"
+  },
+  {
+   "k": "actus",
+   "t": "Taux à 4% : 230 000 emprunteurs menacés d'exclusion",
+   "u": "https://www.bfmtv.com/economie/replay-emissions/les-experts-de-l-immo/video-taux-a-4-230-000-emprunteurs-menaces-d-exclusion_VN-202610300446.html",
+   "s": "BFMTV",
+   "d": "2026-10-30T11:07:10Z"
+  },
+  {
+   "k": "foot",
+   "t": "Families v loyal fans - women's football's attendance dilemma",
+   "u": "https://www.bbc.co.uk/sport/football/articles/cq23d1ldgn1yo?at_medium=RSS&at_campaign=rss",
+   "s": "BBC Sport",
+   "d": "2026-10-30T11:07:04Z"
+  },
+  {
+   "k": "actus",
+   "t": "« On est un peu dégoûtés » : des dizaines de poissons à nouveau retrouvés morts dans un étang de la Somme",
+   "u": "https://www.ouest-france.fr/societe/animaux/on-est-un-peu-degoutes-des-dizaines-de-poissons-a-nouveau-retrouves-morts-dans-un-etang-de-la-somme-96dc92a0-d450-11f1-bce4-49c6ba196371?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
+   "s": "Ouest-France",
+   "d": "2026-10-30T11:06:57Z"
+  },
+  {
+   "k": "actus",
+   "t": "Est-il interdit de dissumuler son visage dans l'espace public?",
+   "u": "https://www.bfmtv.com/societe/manifestations/video-est-il-interdit-de-dissumuler-son-visage-dans-l-espace-public_VN-202610300448.html",
+   "s": "BFMTV",
+   "d": "2026-10-30T11:06:55Z"
+  },
+  {
+   "k": "actus",
+   "t": "Collision meurtrière entre deux trains en Espagne : le gouvernement travaille \"sans relâche\" à l'identification des 69 victimes, assure Pedro Sanchez",
+   "u": "https://www.franceinfo.fr/monde/espagne/accident-de-trains-pres-de-tolede/direct-collision-meurtriere-entre-deux-trains-en-espagne-des-familles-toujours-sans-nouvelles-de-leurs-proches_8260187.html#xtor=RSS-3-[lestitres]",
+   "s": "franceinfo",
+   "d": "2026-10-30T11:05:34Z"
+  },
+  {
+   "k": "actus",
+   "t": "DIRECT. Collision meurtrière entre deux trains en Espagne : le gouvernement travaille \"sans relâche\" à l'identification des 69 victimes, assure Pedro Sanchez",
+   "u": "https://www.franceinfo.fr/monde/espagne/accident-de-trains-pres-de-tolede/direct-collision-meurtriere-entre-deux-trains-en-espagne-des-familles-toujours-sans-nouvelles-de-leurs-proches_8260187.html#xtor=RSS-3-%5Bgeneral%5D",
+   "s": "franceinfo",
+   "d": "2026-10-30T11:05:34Z"
+  },
+  {
+   "k": "actus",
+   "t": "Racisme dans les médias : Yannick Jadot veut durcir les sanctions",
+   "u": "https://www.franceinfo.fr/politique/racisme-dans-les-medias-yannick-jadot-veut-durcir-les-sanctions_8260331.html#xtor=RSS-3-%5Bgeneral%5D",
+   "s": "franceinfo",
+   "d": "2026-10-30T11:05:30Z"
+  },
+  {
+   "k": "actus",
+   "t": "Il avait poignardé sa mère, qui voulait quitter leur logement : 20 ans de réclusion criminelle, dans les Alpes-Maritimes",
+   "u": "https://www.ouest-france.fr/societe/justice/il-avait-poignarde-sa-mere-qui-voulait-quitter-leur-logement-20-ans-de-reclusion-criminelle-dans-les-alpes-maritimes-2e9c2328-d44f-11f1-bce4-49c6ba196371?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
+   "s": "Ouest-France",
+   "d": "2026-10-30T11:05:20Z"
+  },
+  {
+   "k": "foot",
+   "t": "Côme : gros coup dur pour Moise Kean",
+   "u": "https://www.footmercato.net/a3022107470914060967-come-gros-coup-dur-pour-moise-kean",
+   "s": "Foot Mercato",
+   "d": "2026-10-30T11:04:11Z"
+  },
+  {
+   "k": "actus",
+   "t": "Ancienne ministre, membre de la Guardia civil, athlète… Qui sont les premières victimes identifiées de l’accident de train en Espagne ?",
+   "u": "https://www.lefigaro.fr/international/ancienne-ministre-membre-de-la-guardia-civil-athlete-qui-sont-les-premieres-victimes-identifiees-de-l-accident-de-train-en-espagne-20261030",
+   "s": "Le Figaro",
+   "d": "2026-10-30T11:03:38Z"
+  },
+  {
+   "k": "actus",
+   "t": "Mylène Farmer sort «Égrégore», un album entre nostalgie et dystopie",
+   "u": "https://www.rfi.fr/fr/musique/20261030-myl%C3%A8ne-farmer-sort-%C3%A9gr%C3%A9gore-un-album-entre-nostalgie-et-dystopie",
+   "s": "RFI",
+   "d": "2026-10-30T11:02:52Z"
+  },
+  {
+   "k": "gaming",
+   "t": "Chez Proton, le rouleau compresseur de l’IA écrase tout",
+   "u": "https://next.ink/264941/chez-proton-le-rouleau-compresseur-de-lia-ecrase-tout/",
+   "s": "Next",
+   "d": "2026-10-30T11:02:22Z"
+  },
+  {
+   "k": "actus",
+   "t": "Une vapoteuse en surchauffe oblige un avion portugais à atterrir en urgence à Nantes",
+   "u": "https://www.lefigaro.fr/nantes/une-vapoteuse-en-surchauffe-oblige-un-avion-portugais-a-atterrir-en-urgence-a-nantes-20261030",
+   "s": "Le Figaro",
+   "d": "2026-10-30T11:01:43Z"
+  },
+  {
+   "k": "actus",
+   "t": "Côte-d'Or : un quadragénaire tué de plusieurs balles par quatre membres d’une même fratrie",
+   "u": "https://www.lefigaro.fr/faits-divers/cote-d-or-un-quadragenaire-tue-de-plusieurs-balles-par-quatre-membres-d-une-meme-fratrie-20261030",
+   "s": "Le Figaro",
+   "d": "2026-10-30T11:01:41Z"
+  },
+  {
+   "k": "actus",
+   "t": "Hockey sur glace. Le Tribunal arbitral du sport ordonne à la Fédération internationale de réintégrer la Russie",
+   "u": "https://www.ouest-france.fr/sport/hockey-sur-glace/hockey-sur-glace-le-tribunal-arbitral-du-sport-ordonne-a-la-federation-internationale-de-reintegrer-la-russie-95c71274-d44f-11f1-84f3-5611f158a658?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
+   "s": "Ouest-France",
+   "d": "2026-10-30T11:01:33Z"
+  },
+  {
+   "k": "gaming",
+   "t": "Actualité : Black Friday 2026 – L'aspirateur robot Dreame L40s Pro Ultra \"5 étoiles\" à 459,00 € (-16%)",
+   "u": "https://www.lesnumeriques.com/aspirateur-robot/black-friday-2026-l-aspirateur-robot-dreame-l40s-pro-ultra-5-etoiles-a-459-00-16-n264015.html",
+   "s": "Les Numériques",
+   "d": "2026-10-30T11:01:03Z"
+  },
+  {
+   "k": "gaming",
+   "t": "Actualité : Le lot de deux chaufferettes rechargeables CIRYASR est à 14,99 € (-40 %)",
+   "u": "https://www.lesnumeriques.com/sante-sport/le-lot-de-deux-chaufferettes-rechargeables-ciryasr-est-a-14-99-40-n264012.html",
+   "s": "Les Numériques",
+   "d": "2026-10-30T11:01:00Z"
+  },
+  {
+   "k": "actus",
+   "t": "L’info du jour | 30 octobre 2026 - Mi-journée",
+   "u": "https://fr.euronews.com/video/2026/10/30/linfo-du-jour-30-octobre-2026-mi-journee",
+   "s": "Euronews",
+   "d": "2026-10-30T11:00:53Z"
+  },
+  {
+   "k": "gaming",
+   "t": "Le film Elden Ring affiche son ambition, au risque de faire exploser son studio",
+   "u": "https://www.journaldugeek.com/2026/10/30/le-film-elden-ring-affiche-son-ambition-au-risque-de-faire-exploser-son-studio/",
+   "s": "Journal du Geek",
+   "d": "2026-10-30T11:00:48Z"
+  },
+  {
+   "k": "foot",
+   "t": "Rien ne va plus pour Jack Grealish !",
+   "u": "https://www.footmercato.net/a5861423152905800124-rien-ne-va-plus-pour-jack-grealish",
+   "s": "Foot Mercato",
+   "d": "2026-10-30T11:00:05Z"
+  },
+  {
+   "k": "foot",
+   "t": "L'OM négocie un traitement de faveur avec la DNCG",
+   "u": "https://www.foot01.com/marseille/lom-negocie-un-traitement-de-faveur-avec-la-dncg",
+   "s": "Foot01",
+   "d": "2026-10-30T11:00:00Z"
+  },
+  {
+   "k": "actus",
+   "t": "Meuse. Avec ses deux boucs, cette retraitée traverse la France de village en village",
+   "u": "https://www.estrepublicain.fr/insolite/2026/10/30/avec-ses-deux-boucs-cette-retraitee-traverse-la-france-de-village-en-village",
+   "s": "L'Est Républicain",
+   "d": "2026-10-30T11:00:00Z"
+  },
+  {
+   "k": "actus",
+   "t": "Infographies. Carburants en Franche-Comté : trois infographies pour comprendre l’évolution des prix, le poids des taxes et les pénuries",
+   "u": "https://www.estrepublicain.fr/economie/2026/10/30/carburants-en-franche-comte-trois-infographies-pour-comprendre-l-evolution-des-prix-le-poids-des-taxes-et-les-penuries",
+   "s": "L'Est Républicain",
+   "d": "2026-10-30T11:00:00Z"
+  },
+  {
+   "k": "actus",
+   "t": "Infographies. Carburants en Lorraine : trois infographies pour comprendre l’évolution des prix, le poids des taxes et les pénuries",
+   "u": "https://www.estrepublicain.fr/economie/2026/10/30/carburants-en-lorraine-trois-infographies-pour-comprendre-l-evolution-des-prix-le-poids-des-taxes-et-les-penuries",
+   "s": "L'Est Républicain",
+   "d": "2026-10-30T11:00:00Z"
+  },
+  {
+   "k": "gaming",
+   "t": "Test Logitech G Pro X Rapid : le clavier magnétique premium qui ne perd pas le fil",
+   "u": "https://www.lesnumeriques.com/clavier/logitech-g-pro-x2-rapid-p78918/test.html",
+   "s": "Les Numériques",
+   "d": "2026-10-30T11:00:00Z"
+  },
+  {
+   "k": "actus",
+   "t": "Une femme poignardée à Paris en présence de sa fille de 6 ans, le suspect recherché",
+   "u": "https://www.ouest-france.fr/faits-divers/agression/une-femme-poignardee-a-paris-en-presence-de-sa-fille-de-6-ans-le-suspect-recherche-cd751d44-d44d-11f1-84f3-5611f158a658?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
+   "s": "Ouest-France",
+   "d": "2026-10-30T10:59:58Z"
+  },
+  {
+   "k": "actus",
+   "t": "La préfecture demande aux organisateurs du banquet du Canon français à Biarritz de payer 45 000 euros pour assurer la sécurité de l'événement",
+   "u": "https://www.franceinfo.fr/societe/racisme/la-prefecture-demande-aux-organisateurs-du-banquet-du-canon-francais-a-biarritz-de-payer-45-000-euros-pour-assurer-la-securite-de-l-evenement_8260313.html#xtor=RSS-3-[lestitres]",
+   "s": "franceinfo",
+   "d": "2026-10-30T10:59:38Z"
+  },
+  {
+   "k": "foot",
+   "t": "National 1 : dans un contexte tendu avec la FFF, l’UF Touraine se déplace à Andrézieux",
+   "u": "https://www.foot-national.com/actus/national-1-dans-un-contexte-tendu-avec-la-fff-luf-touraine-se-deplace-a-andrezieux-961367",
+   "s": "Foot National",
+   "d": "2026-10-30T10:59:00Z"
+  },
+  {
+   "k": "gaming",
+   "t": "Game and watch - De Star Trek à The Elder Scrolls : hommage à Patrick Stewart, décédé à l'âge de 86 ans",
+   "u": "https://www.gamekult.com/actualite/de-star-trek-a-the-elder-scrolls-hommage-a-patrick-stewart-decede-a-l-age-de-86-ans-3050872664.html",
+   "s": "Gamekult",
+   "d": "2026-10-30T10:59:00Z"
+  },
+  {
+   "k": "foot",
+   "t": "Jack Grealish écarté du groupe d'Everton pour « manquement à la discipline du club »",
+   "u": "https://www.lequipe.fr/Football/Actualites/Jack-grealish-ecarte-du-groupe-d-everton-pour-manquement-a-la-discipline-du-club/1739691#at_medium=RSS_feeds",
+   "s": "L'Équipe",
+   "d": "2026-10-30T10:58:57Z"
+  },
+  {
+   "k": "actus",
+   "t": "\"On ne veut pas de la propagande\": comment un projet d'incinérateur est devenu le symbole des tensions entre Paris et sa banlieue",
+   "u": "https://www.bfmtv.com/paris/val-de-marne/on-ne-veut-pas-de-la-propagande-comment-un-projet-d-incinerateur-est-devenu-le-symbole-des-tensions-entre-paris-et-sa-banlieue_AN-202610300439.html",
+   "s": "BFMTV",
+   "d": "2026-10-30T10:57:25Z"
+  },
+  {
+   "k": "actus",
+   "t": "Vidéo. $content.TitleNoTags",
+   "u": "https://www.estrepublicain.fr/videos/mort-de-patrick-stewart-qu-est-ce-que-la-maladie-a-corps-de-lewy-dont-souffrait-l-acteur-3zqkfr5",
+   "s": "L'Est Républicain",
+   "d": "2026-10-30T10:57:00Z"
+  },
+  {
+   "k": "actus",
+   "t": "Violences du 17 octobre : Agnès Firmin Le Bodo, co-rapporteur Horizons de la commission d’enquête, démissionne",
+   "u": "https://www.lefigaro.fr/politique/violences-du-17-octobre-agnes-firmin-le-bodo-co-rapporteur-horizons-de-la-commission-d-enquete-demissionne-20261030",
+   "s": "Le Figaro",
+   "d": "2026-10-30T10:57:00Z"
+  },
+  {
+   "k": "actus",
+   "t": "Aube: le Brunch des Halles de Troyes revient ce dimanche, avec une offre très variée",
+   "u": "https://www.bfmtv.com/societe/aube-le-brunch-des-halles-de-troyes-revient-ce-dimanche-avec-une-offre-tres-variee_AN-202610300437.html",
+   "s": "BFMTV",
+   "d": "2026-10-30T10:56:25Z"
+  },
+  {
+   "k": "actus",
+   "t": "Collision de trains en Espagne: le président de la région Castille-La Manche n'exclut pas que le bilan de 69 morts s'alourdisse \"davantage\", 70 personnes toujours portées disparues",
+   "u": "https://www.bfmtv.com/international/europe/espagne/collision-de-trains-en-espagne-le-president-de-castille-la-manche-n-exclut-pas-que-le-bilan-de-69-morts-s-alourdisse-davantage-70-personnes-toujours-portees-disparues_AV-202610300436.html",
+   "s": "BFMTV",
+   "d": "2026-10-30T10:55:41Z"
+  },
+  {
+   "k": "actus",
+   "t": "Collision tragique en Espagne : tristesse et indignation dans tout le pays",
+   "u": "https://www.france24.com/fr/vid%C3%A9o/20261030-collision-tragique-en-espagne-tristesse-et-indignation-dans-tout-le-pays",
+   "s": "France 24",
+   "d": "2026-10-30T10:55:15Z"
+  },
+  {
+   "k": "actus",
+   "t": "Aube: pour Halloween, ce couple de Romilly-sur-Seine, a décoré sa maison de manière spectaculaire",
+   "u": "https://www.bfmtv.com/societe/aube-pour-halloween-ce-couple-de-romilly-sur-seine-a-decore-sa-maison-de-maniere-spectaculaire_AN-202610300435.html",
+   "s": "BFMTV",
+   "d": "2026-10-30T10:55:05Z"
+  },
+  {
+   "k": "foot",
+   "t": "Santini : «Ma tête voulait, pas mon corps»",
+   "u": "https://www.lequipe.fr/Football/Article/-ma-tete-voulait-pas-mon-corps-didier-santini-l-entraineur-de-rodez-raconte-l-invalidite-qui-l-a-frappe-et-l-a-oblige-a-se-faire-operer/1739480#at_medium=RSS_feeds",
+   "s": "L'Équipe",
+   "d": "2026-10-30T10:55:00Z"
+  },
+  {
+   "k": "actus",
+   "t": "Casse à la voiture-bélier d’une boutique Hermès à Dijon : trois personnes interpellées et placées en garde à vue",
+   "u": "https://www.ouest-france.fr/faits-divers/cambriolage/casse-a-la-voiture-belier-dune-boutique-hermes-a-dijon-trois-personnes-interpellees-et-placees-en-garde-a-vue-0574a9d8-d44b-11f1-84f3-5611f158a658?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
+   "s": "Ouest-France",
+   "d": "2026-10-30T10:54:26Z"
+  },
+  {
+   "k": "actus",
+   "t": "Prix des carburants : TotalEnergies s’engage à baisser le tarif du gazole dans certaines de ses stations dès ce samedi",
+   "u": "https://www.ouest-france.fr/economie/transports/carburants-essence-diesel/prix-des-carburants-totalenergies-sengage-a-baisser-le-tarif-du-gazole-dans-certaines-de-ses-stations-des-ce-samedi-02539052-d446-11f1-84f3-5611f158a658?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
+   "s": "Ouest-France",
+   "d": "2026-10-30T10:54:20Z"
+  },
+  {
+   "k": "foot",
+   "t": "Mika Godts bien présent dans le groupe du PSG au Havre en Ligue 1",
+   "u": "https://www.lequipe.fr/Football/Actualites/Mika-godts-bien-present-dans-le-groupe-du-psg-au-havre-en-ligue-1/1739689#at_medium=RSS_feeds",
+   "s": "L'Équipe",
+   "d": "2026-10-30T10:53:54Z"
+  },
+  {
+   "k": "actus",
+   "t": "Apple Pay et Google Pay arrivent en Ouzbékistan dans le cadre de réformes fintech",
+   "u": "https://fr.euronews.com/2026/10/30/apple-pay-et-google-pay-arrivent-en-ouzbekistan-dans-le-cadre-de-reformes-fintech",
+   "s": "Euronews",
+   "d": "2026-10-30T10:53:13Z"
+  },
+  {
+   "k": "actus",
+   "t": "Turquie : l'effondrement d'une colonne rocheuse classée à l'UNESCO fait 3 morts",
+   "u": "https://www.france24.com/fr/vid%C3%A9o/20261030-turquie-l-effondrement-d-une-colonne-rocheuse-class%C3%A9e-%C3%A0-l-unesco-fait-3-morts",
+   "s": "France 24",
+   "d": "2026-10-30T10:51:55Z"
+  },
+  {
+   "k": "actus",
+   "t": "La France \"au début d'une récession\"? La contraction de l'économie au troisième trimestre fragilise les objectifs de croissance et de déficit du gouvernement pour 2026",
+   "u": "https://www.bfmtv.com/economie/economie-social/france/la-france-au-debut-d-une-recession-la-contraction-de-l-economie-au-troisieme-trimestre-fragilise-les-objectifs-de-croissance-et-de-deficit-du-gouvernement-pour-2026_AV-202610300432.html",
+   "s": "BFMTV",
+   "d": "2026-10-30T10:51:16Z"
+  },
+  {
+   "k": "actus",
+   "t": "Nancy. Manifestation du 31 octobre : après un premier revers judiciaire, la préfecture interdit à nouveau le rassemblement et liste les équipements prohibés",
+   "u": "https://www.estrepublicain.fr/social/2026/10/30/manifestation-du-31-octobre-apres-un-premier-revers-judiciaire-la-prefecture-interdit-a-nouveau-le-rassemblement-et-liste-les-equipements-prohibes",
+   "s": "L'Est Républicain",
+   "d": "2026-10-30T10:51:00Z"
+  },
+  {
+   "k": "actus",
+   "t": "La consommation des ménages recule de 0,5% en septembre",
+   "u": "https://www.bfmtv.com/economie/replay-emissions/les-experts/video-la-consommation-des-menages-recule-de-0-5-en-septembre_VN-202610300434.html",
+   "s": "BFMTV",
+   "d": "2026-10-30T10:50:50Z"
+  },
+  {
+   "k": "foot",
+   "t": "How to follow the Premier League on the BBC this weekend",
+   "u": "https://www.bbc.co.uk/sport/football/articles/cp30ggvqj0do?at_medium=RSS&at_campaign=rss",
+   "s": "BBC Sport",
+   "d": "2026-10-30T10:50:44Z"
+  },
+  {
+   "k": "actus",
+   "t": "Cortèges autorisés, dispositif de sécurité... A quoi faut-il s'attendre pour les manifestations du samedi 31 octobre ?",
+   "u": "https://www.franceinfo.fr/societe/manifestations/corteges-autorises-dispositif-de-securite-a-quoi-faut-il-s-attendre-pour-les-manifestations-du-samedi-31-octobre_8258933.html#xtor=RSS-3-[lestitres]",
+   "s": "franceinfo",
+   "d": "2026-10-30T10:50:39Z"
+  },
+  {
+   "k": "actus",
+   "t": "Martyre de l’A10 : « On l’a adoptée collectivement »… Le village de Suèvres, « la famille post-mortem » d’Inass Touloub",
+   "u": "https://www.20minutes.fr/faits_divers/4256253-20261030-martyre-a10-adoptee-collectivement-village-suevres-famille-post-mortem-inass-touloub?at_medium=display&at_campaign=149",
+   "s": "20 Minutes",
+   "d": "2026-10-30T10:50:10Z"
+  },
+  {
+   "k": "actus",
+   "t": "Collision de trains en Espagne : Quand le patron d’Iryo alertait sur les pannes du système LZB",
+   "u": "https://www.20minutes.fr/monde/espagne/4258889-20261030-collision-trains-espagne-quand-patron-iryo-alertait-pannes-systeme-lzb?at_medium=display&at_campaign=149",
+   "s": "20 Minutes",
+   "d": "2026-10-30T10:49:41Z"
+  },
+  {
+   "k": "actus",
+   "t": "Côte-d'Or. Un quadragénaire tué par balles dans son garage, quatre frères interpellés",
+   "u": "https://www.estrepublicain.fr/faits-divers-justice/2026/10/30/un-quadragenaire-tue-par-balles-dans-son-garage-quatre-freres-interpelles",
+   "s": "L'Est Républicain",
+   "d": "2026-10-30T10:49:00Z"
+  },
+  {
+   "k": "actus",
+   "t": "Jeux Olympiques de la Jeunesse : la célébrité d'internet Khaby Lame, ambassadeur de l'évènement",
+   "u": "https://www.france24.com/fr/vid%C3%A9o/20261030-jeux-olympiques-de-la-jeunesse-la-c%C3%A9l%C3%A9brit%C3%A9-d-internet-khaby-lame-ambassadeur-de-l-%C3%A9v%C3%A8nement",
+   "s": "France 24",
+   "d": "2026-10-30T10:48:27Z"
+  },
+  {
+   "k": "actus",
+   "t": "« Pas d’argent pour l’école, mais pour les armes oui » : en Italie, le réarmement au cœur des contestations",
+   "u": "https://www.ouest-france.fr/europe/italie/pas-dargent-pour-lecole-mais-pour-les-armes-oui-en-italie-le-rearmement-au-cur-des-contestations-a88a8902-d3bb-11f1-af78-2d36ec019942?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
+   "s": "Ouest-France",
+   "d": "2026-10-30T10:48:25Z"
+  },
+  {
+   "k": "actus",
+   "t": "Cyclisme. Cofidis fait un pari osé et enrôle la vice-championne du monde d’e-cycling, Gabriela Guerra, pour deux saisons",
+   "u": "https://www.ouest-france.fr/sport/cyclisme/cyclisme-cofidis-fait-un-pari-ose-et-enrole-la-vice-championne-du-monde-de-cycling-gabriela-guerra-pour-deux-saisons-545919ae-d44a-11f1-84f3-5611f158a658?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
+   "s": "Ouest-France",
+   "d": "2026-10-30T10:48:02Z"
+  },
+  {
+   "k": "foot",
+   "t": "Luis de la Fuente : «C'est le temps qui te donne raison ou tort»",
+   "u": "https://www.lequipe.fr/explore/video/foot-ballon-d-or-luis-de-la-fuente-entraineur-de-la-saison-d-une-equipe-masculine-avec-l-espagne-je-me-sens-comme-un-gladiateur/20244317#at_medium=RSS_feeds",
+   "s": "L'Équipe",
+   "d": "2026-10-30T10:47:00Z"
+  },
+  {
+   "k": "gaming",
+   "t": "Actualité : John Wick, Spider-Man, O'Brother : cette femme se cache derrière les couleurs de vos films préférés",
+   "u": "https://www.lesnumeriques.com/tv-televiseur/john-wick-spider-man-o-brother-cette-femme-se-cache-derriere-les-couleurs-de-vos-films-preferes-n264008.html",
+   "s": "Les Numériques",
+   "d": "2026-10-30T10:46:00Z"
+  },
+  {
+   "k": "actus",
+   "t": "Halloween : Pourquoi la peur peut être bénéfique pour vos enfants",
+   "u": "https://www.20minutes.fr/sante/4257942-20261030-halloween-pourquoi-peur-peut-etre-benefique-enfants?at_medium=display&at_campaign=149",
+   "s": "20 Minutes",
+   "d": "2026-10-30T10:44:55Z"
+  },
+  {
+   "k": "actus",
+   "t": "Depuis le début du mouvement lycéen, 83 enquêtes ont été confiées à l'IGPN et l'IGGN",
+   "u": "https://www.franceinfo.fr/societe/education/blocage-des-lycees/mouvement-lyceen-83-enquetes-confiees-a-l-igpn-et-l-iggn-depuis-le-debut-de-la-mobilisation_8260124.html#xtor=RSS-3-[lestitres]",
+   "s": "franceinfo",
+   "d": "2026-10-30T10:44:37Z"
+  },
+  {
+   "k": "actus",
+   "t": "Appel à Témoignages. « Feux de l’amour » : que pensez-vous de l’arrêt de la série sur TF1 ?",
+   "u": "https://www.estrepublicain.fr/societe/2026/10/30/feux-de-l-amour-que-pensez-vous-de-l-arret-de-la-serie-sur-tf1",
+   "s": "L'Est Républicain",
+   "d": "2026-10-30T10:44:00Z"
+  },
+  {
+   "k": "actus",
+   "t": "La police a-t-elle coopéré avec des militants d'ultradroite à Montpellier lors de la manifestation du samedi 24 octobre ?",
+   "u": "https://www.franceinfo.fr/societe/manifestations/enquete-franceinfo-la-police-a-t-elle-coopere-avec-des-militants-d-ultradroite-a-montpellier-lors-de-la-manifestation-du-samedi-24-octobre_8257252.html#xtor=RSS-3-[lestitres]",
+   "s": "franceinfo",
+   "d": "2026-10-30T10:43:48Z"
+  },
+  {
+   "k": "gaming",
+   "t": "Eiji Aonuma, le producteur historique de Zelda, affirme que certains des plus jeunes membres de l'équipe travaillant sur le remake d'Ocarina of Time n'avaient jamais joué au jeu or",
+   "u": "https://fr.ign.com/the-legend-of-zelda-ocarina-of-time-1/93582/eiji-aonuma-le-producteur-historique-de-zelda-affirme-que-certains-des-plus-jeunes-membres-de-lequip",
+   "s": "IGN France",
+   "d": "2026-10-30T10:43:27Z"
+  },
+  {
+   "k": "actus",
+   "t": "Russie: le journal d'opposition «Novaïa Gazeta» annonce sa fin sous la pression des autorités",
+   "u": "https://www.rfi.fr/fr/europe/20261030-russie-le-journal-d-opposition-nova%C3%AFa-gazeta-annonce-sa-fin-sous-la-pression-des-autorit%C3%A9s",
+   "s": "RFI",
+   "d": "2026-10-30T10:43:23Z"
+  },
+  {
+   "k": "actus",
+   "t": "Stephan Eicher et l'écriture: \"Je ne fais pas de la littérature, je fais plutôt des longues listes de courses émotionnelles\"",
+   "u": "https://www.franceinfo.fr/replay-radio/le-monde-d-elodie/stephan-eicher-et-l-ecriture-je-ne-fais-pas-de-la-litterature-je-fais-plutot-des-longues-listes-de-courses-emotionnelles_8239516.html#xtor=RSS-3-%5Bgeneral%5D",
+   "s": "franceinfo",
+   "d": "2026-10-30T10:42:35Z"
+  },
+  {
+   "k": "actus",
+   "t": "Israël, le complotisme à l’heure des élections",
+   "u": "https://www.franceinfo.fr/monde/israel/israel-le-complotisme-a-l-heure-des-elections_8260292.html#xtor=RSS-3-%5Bgeneral%5D",
+   "s": "franceinfo",
+   "d": "2026-10-30T10:42:14Z"
+  },
+  {
+   "k": "foot",
+   "t": "PSG : le groupe convoqué par Luis Enrique pour affronter Le Havre",
+   "u": "https://www.footmercato.net/a4369888969707823923-psg-le-groupe-convoque-par-luis-enrique-pour-affronter-le-havre",
+   "s": "Foot Mercato",
+   "d": "2026-10-30T10:40:23Z"
+  },
+  {
+   "k": "actus",
+   "t": "Législatives en Israël : de nombreux scénarios possibles pour la création du nouveau gouvernement",
+   "u": "https://www.france24.com/fr/vid%C3%A9o/20261030-l%C3%A9gislatives-en-isra%C3%ABl-de-nombreux-sc%C3%A9narios-possibles-pour-la-cr%C3%A9ation-du-nouveau-gouvernement",
+   "s": "France 24",
+   "d": "2026-10-30T10:37:38Z"
+  },
+  {
+   "k": "actus",
+   "t": "La croissance amériaine bondit à 3,4% au T3",
+   "u": "https://www.bfmtv.com/economie/replay-emissions/good-morning-market/video-la-croissance-ameriaine-bondit-a-3-4-au-t3_VN-202610300425.html",
+   "s": "BFMTV",
+   "d": "2026-10-30T10:37:35Z"
   },
   {
    "k": "actus",
@@ -17,10 +661,17 @@
   },
   {
    "k": "actus",
-   "t": "Les dockers et agents portuaires du port de commerce de Lorient en grève",
-   "u": "https://www.ouest-france.fr/economie/transports/transport-maritime/les-dockers-et-agents-portuaires-du-port-de-commerce-de-lorient-en-greve-37695470-d446-11f1-84f3-5611f158a658?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
-   "s": "Ouest-France",
-   "d": "2026-10-30T10:36:03Z"
+   "t": "Budget 2027 : les députés votent 48 milliards d’euros de dépenses supplémentaires",
+   "u": "https://www.lefigaro.fr/conjoncture/budget-2027-les-deputes-votent-28-milliards-d-euros-de-depenses-supplementaires-20261029",
+   "s": "Le Figaro",
+   "d": "2026-10-30T10:36:12Z"
+  },
+  {
+   "k": "foot",
+   "t": "Le père de Jude et Jobe Bellingham convoqué avec l'équipe d'Angleterre des plus de 50 ans",
+   "u": "https://www.lequipe.fr/Football/Actualites/Le-pere-de-jude-et-jobe-bellingham-convoque-avec-l-equipe-d-angleterre-des-plus-de-50-ans/1739684#at_medium=RSS_feeds",
+   "s": "L'Équipe",
+   "d": "2026-10-30T10:34:51Z"
   },
   {
    "k": "actus",
@@ -45,10 +696,10 @@
   },
   {
    "k": "actus",
-   "t": "« C’était magique, l’ambiance était extraordinaire » : ce jeune champion breton a surfé près du cercle polaire",
-   "u": "https://www.ouest-france.fr/sport/surf/faire-de-la-wing-dans-des-paysages-de-fou-ce-jeune-champion-breton-a-surfe-pres-du-cercle-polaire-fba7ed6c-d2f0-11f1-af78-2d36ec019942?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
-   "s": "Ouest-France",
-   "d": "2026-10-30T10:32:25Z"
+   "t": "Cinq sportifs exclus définitivement de l'Insep après des faits de bizutage",
+   "u": "https://www.franceinfo.fr/sports/basket/cinq-sportifs-exclus-definitivement-de-l-insep-apres-des-faits-de-bizutage_8260238.html#xtor=RSS-3-[lestitres]",
+   "s": "franceinfo",
+   "d": "2026-10-30T10:32:26Z"
   },
   {
    "k": "actus",
@@ -73,13 +724,6 @@
   },
   {
    "k": "actus",
-   "t": "DIRECT. Collision meurtrière entre deux trains en Espagne : des familles toujours sans nouvelles de leurs proches",
-   "u": "https://www.franceinfo.fr/monde/espagne/accident-de-trains-pres-de-tolede/direct-collision-meurtriere-entre-deux-trains-en-espagne-des-familles-toujours-sans-nouvelles-de-leurs-proches_8260187.html#xtor=RSS-3-%5Bgeneral%5D",
-   "s": "franceinfo",
-   "d": "2026-10-30T10:30:24Z"
-  },
-  {
-   "k": "actus",
    "t": "Derrière l’attentat terroriste de Trappes, un racisme d’atmosphère",
    "u": "https://www.lemonde.fr/idees/article/2026/10/30/derriere-l-attentat-terroriste-de-trappes-un-racisme-d-atmosphere_6803072_3232.html",
    "s": "Le Monde",
@@ -87,10 +731,24 @@
   },
   {
    "k": "actus",
-   "t": "« Les disparus des Argonnes » : pourquoi la série de France Télé avec Alix Poisson est-elle aussi forte que « Sambre » ?",
-   "u": "https://programmetv.ouest-france.fr/serie/les-disparus-des-argonnes-pourquoi-la-serie-de-france-tele-avec-alix-poisson-est-elle-aussi-forte-que-sambre-f1a36bae-d2f8-11f1-af78-2d36ec019942?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
-   "s": "Ouest-France",
-   "d": "2026-10-30T10:30:10Z"
+   "t": "A Kisvarda, en Hongrie, l’espoir renaît après la chute d’un ancien ministre corrompu de Viktor Orban qui régnait en maître sur la ville",
+   "u": "https://www.lemonde.fr/international/article/2026/10/30/a-kisvarda-en-hongrie-l-espoir-renait-apres-la-chute-d-un-ancien-ministre-de-viktor-orban-qui-avait-fait-de-sa-petite-ville-l-epicentre-de-son-systeme-de-corruption_6803071_3210.html",
+   "s": "Le Monde",
+   "d": "2026-10-30T10:30:14Z"
+  },
+  {
+   "k": "actus",
+   "t": "Jul : « Si l’humour est un baume pour l’âme, la cuisine est un baume pour le cœur. Pour moi c’est très complémentaire »",
+   "u": "https://www.lemonde.fr/m-styles/article/2026/10/30/jul-si-l-humour-est-un-baume-pour-l-ame-la-cuisine-est-un-baume-pour-le-c-ur-pour-moi-c-est-tres-complementaire_6803069_4497319.html",
+   "s": "Le Monde",
+   "d": "2026-10-30T10:30:06Z"
+  },
+  {
+   "k": "actus",
+   "t": "Concentration dans la livraison alimentaire : « Si tout roule comme le souhaite le propriétaire de Deliveroo, le livreur ne sonnera plus qu’une seule fois »",
+   "u": "https://www.lemonde.fr/economie/article/2026/10/30/concentration-dans-la-livraison-alimentaire-si-tout-roule-comme-le-souhaite-le-proprietaire-de-deliveroo-le-livreur-ne-sonnera-plus-qu-une-seule-fois_6803068_3234.html",
+   "s": "Le Monde",
+   "d": "2026-10-30T10:30:04Z"
   },
   {
    "k": "foot",
@@ -101,24 +759,10 @@
   },
   {
    "k": "actus",
-   "t": "« On a échappé au pire »: sous l’effet de meute, ses chiens ont attaqué un père et sa fille, le propriétaire s’en sépare",
-   "u": "https://www.ouest-france.fr/societe/faits-divers/on-a-echappe-au-pire-sous-leffet-de-meute-ses-chiens-ont-attaque-un-pere-et-sa-fille-le-proprietaire-sen-separe-b49388e6-d3c2-11f1-af78-2d36ec019942?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
-   "s": "Ouest-France",
-   "d": "2026-10-30T10:29:57Z"
-  },
-  {
-   "k": "actus",
    "t": "Avec une croissance plus forte qu'attendu au troisième trimestre, l'économie allemande se dirige vers sa \"meilleure année depuis 2022\"",
    "u": "https://www.bfmtv.com/economie/avec-une-croissance-plus-forte-qu-attendu-au-troisieme-trimestre-l-economie-allemande-se-dirige-vers-sa-meilleure-annee-depuis-2022_AD-202610300415.html",
    "s": "BFMTV",
    "d": "2026-10-30T10:29:55Z"
-  },
-  {
-   "k": "actus",
-   "t": "Pedro Sánchez says people of 27 nationalities may be among those killed or injured in Spanish train crash – Europe live",
-   "u": "https://www.theguardian.com/world/live/2026/oct/30/spain-investigates-toledo-crash-pedro-sanchez-france-italy-protests-latest-news-updates",
-   "s": "The Guardian",
-   "d": "2026-10-30T10:29:38Z"
   },
   {
    "k": "foot",
@@ -150,15 +794,8 @@
   },
   {
    "k": "actus",
-   "t": "« En décembre, les Français entreront de plein fouet dans la présidentielle » : David Lisnard prévoit un grand meeting à Lyon",
-   "u": "https://www.lefigaro.fr/elections/presidentielles/en-decembre-les-francais-entreront-de-plein-fouet-dans-la-presidentielle-david-lisnard-prevoit-un-grand-meeting-a-lyon-20261030",
-   "s": "Le Figaro",
-   "d": "2026-10-30T10:28:25Z"
-  },
-  {
-   "k": "actus",
    "t": "Musée du Louvre : les syndicats ont signé un accord de sortie de crise avec la direction",
-   "u": "https://www.franceinfo.fr/culture/arts-expos/louvre/musee-du-louvre-les-syndicats-ont-signe-un-accord-de-sortie-de-crise-avec-la-direction_8260181.html#xtor=RSS-3-%5Bgeneral%5D",
+   "u": "https://www.franceinfo.fr/culture/arts-expos/louvre/musee-du-louvre-les-syndicats-ont-signe-un-accord-de-sortie-de-crise-avec-la-direction_8260181.html#xtor=RSS-3-[lestitres]",
    "s": "franceinfo",
    "d": "2026-10-30T10:26:55Z"
   },
@@ -178,10 +815,10 @@
   },
   {
    "k": "actus",
-   "t": "Cortèges autorisés, dispositif de sécurité... A quoi faut-il s'attendre pour les manifestations du samedi 31 octobre ?",
-   "u": "https://www.franceinfo.fr/societe/manifestations/corteges-autorises-dispositif-de-securite-a-quoi-faut-il-s-attendre-pour-les-manifestations-du-samedi-31-octobre_8258933.html#xtor=RSS-3-[lestitres]",
+   "t": "La Russie réintégrée aux championnats du monde de hockey sur glace, sur décision du Tribunal arbitral du sport",
+   "u": "https://www.franceinfo.fr/sports/hockey-sur-glace/la-russie-reintegree-aux-championnats-du-monde-de-hockey-sur-glace-sur-decision-du-tribunal-arbitral-du-sport_8260241.html#xtor=RSS-3-[lestitres]",
    "s": "franceinfo",
-   "d": "2026-10-30T10:25:53Z"
+   "d": "2026-10-30T10:26:20Z"
   },
   {
    "k": "actus",
@@ -212,6 +849,13 @@
    "d": "2026-10-30T10:24:00Z"
   },
   {
+   "k": "actus",
+   "t": "60 % des Français favorables à l’interdiction de la vente de tabac aux personnes nées après 2014",
+   "u": "https://www.20minutes.fr/sante/4258828-20261030-60-francais-favorables-interdiction-vente-tabac-personnes-nees-apres-2014?at_medium=display&at_campaign=149",
+   "s": "20 Minutes",
+   "d": "2026-10-30T10:23:56Z"
+  },
+  {
    "k": "gaming",
    "t": "Vous pouvez maintenant jouer à Elden Ring dans Roblox",
    "u": "https://www.numerama.com/pop-culture/2364039-vous-pouvez-maintenant-jouer-a-elden-ring-dans-roblox.html",
@@ -227,17 +871,17 @@
   },
   {
    "k": "actus",
-   "t": "ENTRETIEN. Attaque raciste à La Verrière : le maire dénonce « la barbarie de l’assaillant » et appelle « à l’unité »",
-   "u": "https://www.ouest-france.fr/terrorisme/entretien-attaque-raciste-a-la-verriere-le-maire-denonce-la-barbarie-de-lassaillant-et-appelle-a-lunite-5eaf5324-d435-11f1-84f3-5611f158a658?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
-   "s": "Ouest-France",
-   "d": "2026-10-30T10:23:30Z"
-  },
-  {
-   "k": "actus",
    "t": "États-Unis : hommage à Patrick Stewart sur le Walk of Fame de Los Angeles",
    "u": "https://fr.euronews.com/video/2026/10/30/etats-unis-des-fleurs-sont-deposees-sur-letoile-hollywoodienne-de-patrick-stewart-apres-sa",
    "s": "Euronews",
    "d": "2026-10-30T10:23:02Z"
+  },
+  {
+   "k": "actus",
+   "t": "Quatre personnes en garde à vue après le meurtre d'un quadragénaire à Corgoloin, en Côte-d'Or",
+   "u": "https://www.franceinfo.fr/faits-divers/quatre-personnes-en-garde-a-vue-apres-le-meurtre-d-un-quadragenaire-a-corgoloin-en-cote-d-or_8260244.html#xtor=RSS-3-[lestitres]",
+   "s": "franceinfo",
+   "d": "2026-10-30T10:22:59Z"
   },
   {
    "k": "gaming",
@@ -262,7 +906,7 @@
   },
   {
    "k": "actus",
-   "t": "Paris. Manifestations du 31 octobre : les parcours de la CGT et des gilets jaunes interdits",
+   "t": "Paris. Manifestations du 31 octobre : les parcours de la CGT et des gilets jaunes interdits, retour du couvre-feu",
    "u": "https://www.estrepublicain.fr/social/2026/10/30/manifestations-du-31-octobre-les-parcours-de-la-cgt-et-des-gilets-jaunes-interdits",
    "s": "L'Est Républicain",
    "d": "2026-10-30T10:22:00Z"
@@ -289,25 +933,11 @@
    "d": "2026-10-30T10:20:35Z"
   },
   {
-   "k": "actus",
-   "t": "BBH. Surprise avec un retour majeur, la capitaine de nouveau absente : le groupe à Nice",
-   "u": "https://www.ouest-france.fr/sport/handball/brest-bh/bbh-surprise-avec-un-retour-majeur-la-capitaine-de-nouveau-absente-le-groupe-a-nice-d3940068-d449-11f1-84f3-5611f158a658?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
-   "s": "Ouest-France",
-   "d": "2026-10-30T10:19:49Z"
-  },
-  {
-   "k": "actus",
-   "t": "Guerre en Ukraine : les évacuations humanitaires ont commencé à Olechky, annoncent Kiev et Moscou",
-   "u": "https://www.lefigaro.fr/international/guerre-en-ukraine-les-evacuations-humanitaires-ont-commence-a-olechky-annoncent-kiev-et-moscou-20261030",
-   "s": "Le Figaro",
-   "d": "2026-10-30T10:19:48Z"
-  },
-  {
-   "k": "actus",
-   "t": "INFOGRAPHIES. Chômage, moral, croissance… Ces chiffres qui montrent que l’économie française est en grande difficulté",
-   "u": "https://www.ouest-france.fr/economie/infographies-chomage-moral-croissance-ces-chiffres-qui-montrent-que-leconomie-francaise-est-en-grande-difficulte-bcd1db24-d2f1-11f1-af78-2d36ec019942?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
-   "s": "Ouest-France",
-   "d": "2026-10-30T10:19:42Z"
+   "k": "gaming",
+   "t": "Homme au masque d'or Phantom Blade Zero : Comment battre le boss de l'épreuve du pilier de Long ?",
+   "u": "https://www.jeuxvideo.com/news/2110840/homme-au-masque-d-or-phantom-blade-zero-comment-battre-le-boss-de-l-epreuve-du-pilier-de-long.htm",
+   "s": "Jeuxvideo.com",
+   "d": "2026-10-30T10:20:09Z"
   },
   {
    "k": "actus",
@@ -366,25 +996,11 @@
    "d": "2026-10-30T10:17:21Z"
   },
   {
-   "k": "actus",
-   "t": "Vente de préservatifs non conformes : 15 références retirées et rappelées sur le marché européen après une enquête de la DGCCRF",
-   "u": "https://www.franceinfo.fr/sante/vente-de-preservatifs-non-conformes-15-references-retirees-et-rappelees-sur-le-marche-europeen-apres-une-enquete-de-la-dgccrf_8260220.html#xtor=RSS-3-[lestitres]",
-   "s": "franceinfo",
-   "d": "2026-10-30T10:17:18Z"
-  },
-  {
    "k": "foot",
    "t": "Le père de Jude Bellingham sélectionné en équipe d’Angleterre… des plus de 50 ans",
    "u": "https://www.footmercato.net/a8748710900106696489-le-pere-de-jude-bellingham-selectionne-en-equipe-dangleterre-des-plus-de-50-ans",
    "s": "Foot Mercato",
    "d": "2026-10-30T10:17:17Z"
-  },
-  {
-   "k": "actus",
-   "t": "Mutinerie à la prison de Grenoble-Varces : les images de l’intervention d’une unité d’élite pour rétablir l’ordre",
-   "u": "https://www.lefigaro.fr/actualite-france/mutinerie-a-la-prison-de-grenoble-varces-les-images-de-l-intervention-d-une-unite-d-elite-pour-retablir-l-ordre-20261030",
-   "s": "Le Figaro",
-   "d": "2026-10-30T10:16:28Z"
   },
   {
    "k": "gaming",
@@ -401,11 +1017,11 @@
    "d": "2026-10-30T10:15:32Z"
   },
   {
-   "k": "actus",
-   "t": "Cyclisme. Thomas Peyroton-Dartet, champion paralympique 2024, suspendu pour une violation des règles antidopage",
-   "u": "https://www.ouest-france.fr/sport/cyclisme/cyclisme-thomas-peyroton-dartet-champion-paralympique-2024-suspendu-pour-une-violation-des-regles-antidopage-9c12f5d0-d445-11f1-84f3-5611f158a658?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
-   "s": "Ouest-France",
-   "d": "2026-10-30T10:13:58Z"
+   "k": "foot",
+   "t": "Putellas : «J'ai retrouvé le niveau que j'avais en tête»",
+   "u": "https://www.lequipe.fr/France-Football/Article/Grand-recit-alexia-putellas-ballon-d-or-2026-j-ai-retrouve-le-niveau-que-j-avais-en-tete/1739679#at_medium=RSS_feeds",
+   "s": "L'Équipe",
+   "d": "2026-10-30T10:13:35Z"
   },
   {
    "k": "actus",
@@ -416,17 +1032,10 @@
   },
   {
    "k": "gaming",
-   "t": "Actualité : Piratage de Binance : retraits de cryptomonnaies suspendus, fonds des clients, ce qu'il faut savoir",
+   "t": "Actualité : Cyber hold-up de Binance : retraits de cryptomonnaies suspendus, fonds des clients, ce qu'il faut savoir",
    "u": "https://www.lesnumeriques.com/cryptomonnaie/piratage-de-binance-retraits-de-cryptomonnaies-suspendus-fonds-des-clients-ce-qu-il-faut-savoir-n264001.html",
    "s": "Les Numériques",
    "d": "2026-10-30T10:13:00Z"
-  },
-  {
-   "k": "actus",
-   "t": "MotoGP. Affaibli par son poignet, Jorge Martin inquiète lors des essais qualificatifs du Grand Prix de Malaisie",
-   "u": "https://www.ouest-france.fr/sport/moto/motogp/motogp-affaibli-par-son-poignet-jorge-martin-inquiete-lors-des-essais-qualificatifs-du-grand-prix-de-malaisie-dcc95e4e-d444-11f1-84f3-5611f158a658?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
-   "s": "Ouest-France",
-   "d": "2026-10-30T10:11:59Z"
   },
   {
    "k": "gaming",
@@ -471,13 +1080,6 @@
    "d": "2026-10-30T10:06:39Z"
   },
   {
-   "k": "foot",
-   "t": "Items stolen from Man Utd Munich air disaster memorial",
-   "u": "https://www.bbc.co.uk/news/articles/cxly4pqndz57o?at_medium=RSS&at_campaign=rss",
-   "s": "BBC Sport",
-   "d": "2026-10-30T10:05:39Z"
-  },
-  {
    "k": "actus",
    "t": "Aéroport de Naples fermé tout novembre pour rénovation à 30 M€",
    "u": "https://fr.euronews.com/2026/10/30/aeroport-de-naples-ferme-tout-novembre-pour-renovation-a-30-m",
@@ -493,7 +1095,7 @@
   },
   {
    "k": "actus",
-   "t": "\"La préfecture nous balade\": l'intersyndicale fustige la décision d'interdire le parcours parisien entre Bastille et Nation pour la manifestation du 31 octobre",
+   "t": "Manifestation du 31 octobre: des couvre-feux ordonnés dans deux secteurs du centre de Paris ce week-end",
    "u": "https://www.bfmtv.com/societe/manifestations/la-prefecture-nous-balade-l-intersyndicale-fustige-la-decision-d-interdire-le-parcours-parisien-entre-bastille-et-nation-pour-la-manifestation-du-31-octobre_AV-202610300395.html",
    "s": "BFMTV",
    "d": "2026-10-30T10:03:55Z"
@@ -504,13 +1106,6 @@
    "u": "https://www.franceinfo.fr/economie/greve/peut-on-manifester-en-etant-deguise-pour-halloween_8260208.html#xtor=RSS-3-%5Bgeneral%5D",
    "s": "franceinfo",
    "d": "2026-10-30T10:03:47Z"
-  },
-  {
-   "k": "actus",
-   "t": "En images : les fossiles du Quercy, témoins d’un bouleversement climatique",
-   "u": "https://www.lemonde.fr/sciences/video/2026/10/30/en-images-les-fossiles-du-quercy-temoins-d-un-bouleversement-climatique_6803064_1650684.html",
-   "s": "Le Monde",
-   "d": "2026-10-30T10:02:07Z"
   },
   {
    "k": "actus",
@@ -556,6 +1151,13 @@
   },
   {
    "k": "gaming",
+   "t": "Du trône d'Elder Scrolls au repos éternel : à 86 ans, l'empereur d'Oblivion s'est éteint suite à une longue maladie",
+   "u": "https://www.jeuxvideo.com/news/2111469/du-trone-d-elder-scrolls-au-repos-eternel-a-86-ans-l-empereur-d-oblivion-s-est-eteint-suite-a-une-longue-maladie.htm",
+   "s": "Jeuxvideo.com",
+   "d": "2026-10-30T10:00:09Z"
+  },
+  {
+   "k": "gaming",
    "t": "Margot Robbie pourrait-elle faire son retour en Harley Quinn dans le nouveau DCU ?",
    "u": "https://www.journaldugeek.com/2026/10/30/margot-robbie-pourrait-elle-faire-son-retour-en-harley-quinn-dans-le-nouveau-dcu/",
    "s": "Journal du Geek",
@@ -567,20 +1169,6 @@
    "u": "https://www.foot01.com/paris/psg-ferran-torres-ne-marque-plus-luis-enrique-le-felicite",
    "s": "Foot01",
    "d": "2026-10-30T10:00:00Z"
-  },
-  {
-   "k": "actus",
-   "t": "Nouveauté auto. Aston Martin Valhalla Spider : la supercar ultime pour rouler cheveux au vent",
-   "u": "https://www.estrepublicain.fr/magazine-automobile/2026/10/30/aston-martin-valhalla-spider-la-supercar-ultime-pour-rouler-cheveux-au-vent",
-   "s": "L'Est Républicain",
-   "d": "2026-10-30T10:00:00Z"
-  },
-  {
-   "k": "actus",
-   "t": "Le bitcoin dévisse après des rumeurs de cyberattaque massive sur la plateforme de cryptomonnaies Binance",
-   "u": "https://www.lefigaro.fr/secteur/high-tech/le-bitcoin-devisse-apres-des-rumeurs-de-cyberattaque-massive-sur-la-plateforme-de-cryptomonnaies-binance-20261029",
-   "s": "Le Figaro",
-   "d": "2026-10-30T09:59:46Z"
   },
   {
    "k": "foot",
@@ -632,25 +1220,11 @@
    "d": "2026-10-30T09:55:06Z"
   },
   {
-   "k": "actus",
-   "t": "EN DIRECT - Manifestations du 31 octobre : les parcours à Paris de la CGT et des gilets jaunes interdits par la préfecture de police",
-   "u": "https://www.lefigaro.fr/actualite-france/en-direct-manifestations-31-octobre-policiers-gendarmes-laurent-nunez-violences-urbaines-halloween-20261030",
-   "s": "Le Figaro",
-   "d": "2026-10-30T09:54:18Z"
-  },
-  {
    "k": "gaming",
    "t": "Polymarket piratée : les comptes de certains utilisateurs ont pu être vidés",
    "u": "https://next.ink/264905/polymarket-piratee-les-comptes-de-certains-utilisateurs-ont-pu-etre-vides/",
    "s": "Next",
    "d": "2026-10-30T09:53:06Z"
-  },
-  {
-   "k": "actus",
-   "t": "DIRECT. OM: suivez en live la conférence de presse de Genesio avant le match contre Toulouse",
-   "u": "https://rmcsport.bfmtv.com/football/clubs/olympique-marseille/direct-om-suivez-en-live-la-conference-de-presse-de-genesio-avant-le-match-contre-toulouse_LN-202610300386.html",
-   "s": "BFMTV",
-   "d": "2026-10-30T09:53:05Z"
   },
   {
    "k": "foot",
@@ -683,7 +1257,7 @@
   {
    "k": "actus",
    "t": "Visé par une cyberattaque massive, le géant des cryptomonnaies Binance gèle ses opérations et craint un préjudice de 6,3 milliards de dollars",
-   "u": "https://www.franceinfo.fr/economie/bitcoin/vise-par-une-cyberattaque-massive-le-geant-des-cryptomonnaies-binance-gele-ses-operations-et-redoute-un-prejudice-de-6-3-milliards-de-dollars_8259938.html#xtor=RSS-3-[lestitres]",
+   "u": "https://www.franceinfo.fr/economie/bitcoin/vise-par-une-cyberattaque-massive-le-geant-des-cryptomonnaies-binance-gele-ses-operations-et-redoute-un-prejudice-de-6-3-milliards-de-dollars_8259938.html#xtor=RSS-3-%5Bgeneral%5D",
    "s": "franceinfo",
    "d": "2026-10-30T09:50:26Z"
   },
@@ -702,25 +1276,11 @@
    "d": "2026-10-30T09:49:29Z"
   },
   {
-   "k": "actus",
-   "t": "Colère sociale: la CGT dénonce \"des tentatives de faire pourir le mouvement lycéen\"",
-   "u": "https://www.bfmtv.com/societe/manifestations/video-colere-sociale-la-cgt-denonce-des-tentatives-de-faire-pourir-le-mouvement-lyceen_VN-202610300383.html",
-   "s": "BFMTV",
-   "d": "2026-10-30T09:49:21Z"
-  },
-  {
    "k": "foot",
    "t": "Révolution en Liga: les arbitres s'exprimeront publiquement en après-match pour débriefer leurs décisions",
    "u": "https://rmcsport.bfmtv.com/football/liga/revolution-en-liga-les-arbitres-s-exprimeront-publiquement-en-apres-match-pour-debriefer-leurs-decisions_AV-202610300382.html",
    "s": "RMC Sport",
    "d": "2026-10-30T09:48:53Z"
-  },
-  {
-   "k": "actus",
-   "t": "\"Ils nous ont tués\" : bastion historique de la presse indépendante russe, le quotidien \"Novaïa Gazeta\" contraint de fermer sous la pression des autorités",
-   "u": "https://www.franceinfo.fr/monde/russie/ils-nous-ont-tues-le-bastion-historique-de-la-presse-independante-russe-oblige-de-fermer-sous-la-pression-des-autorites_8260061.html#xtor=RSS-3-[lestitres]",
-   "s": "franceinfo",
-   "d": "2026-10-30T09:48:27Z"
   },
   {
    "k": "foot",
@@ -752,31 +1312,10 @@
   },
   {
    "k": "actus",
-   "t": "\"On bloque l'extrême droite\" : trois questions à un sociologue de la participation en ligne sur cette initiative de plus en plus populaire sur les réseaux sociaux",
-   "u": "https://www.franceinfo.fr/elections/presidentielle/on-bloque-l-extreme-droite-trois-questions-a-un-sociologue-de-la-participation-en-ligne-sur-cette-initiative-de-plus-en-plus-populaire-sur-les-reseaux-sociaux_8257525.html#xtor=RSS-3-[lestitres]",
-   "s": "franceinfo",
-   "d": "2026-10-30T09:46:05Z"
-  },
-  {
-   "k": "actus",
    "t": "ENTRETIEN. \"On bloque l'extrême droite\" : trois questions à un sociologue de la participation en ligne sur cette initiative de plus en plus populaire sur les réseaux sociaux",
    "u": "https://www.franceinfo.fr/elections/presidentielle/on-bloque-l-extreme-droite-trois-questions-a-un-sociologue-de-la-participation-en-ligne-sur-cette-initiative-de-plus-en-plus-populaire-sur-les-reseaux-sociaux_8257525.html#xtor=RSS-3-%5Bgeneral%5D",
    "s": "franceinfo",
    "d": "2026-10-30T09:46:05Z"
-  },
-  {
-   "k": "actus",
-   "t": "Loire-Atlantique: une nouvelle piste cyclable va ouvrir à Nantes avant la fin de l'année 2026",
-   "u": "https://www.bfmtv.com/economie/entreprises/transports/loire-atlantique-une-nouvelle-piste-cyclable-va-ouvrir-a-nantes-avant-la-fin-de-l-annee-2026_AN-202610300379.html",
-   "s": "BFMTV",
-   "d": "2026-10-30T09:45:46Z"
-  },
-  {
-   "k": "actus",
-   "t": "Manifestation du 31 octobre: l'Union étudiante dénonce \"des manœuvre de la part du gouvernement\" après l'interdiction du tracé de la CGT par la préfecture de police de Paris",
-   "u": "https://www.bfmtv.com/societe/manifestations/video-manifestation-du-31-octobre-l-union-etudiante-denonce-des-man-uvre-de-la-part-du-gouvernement-apres-l-interdiction-du-trace-de-la-cgt-par-la-prefecture-de-police-de-paris_VN-202610300381.html",
-   "s": "BFMTV",
-   "d": "2026-10-30T09:45:41Z"
   },
   {
    "k": "gaming",
@@ -784,13 +1323,6 @@
    "u": "https://www.numerama.com/pop-culture/2364053-les-fans-du-mmo-star-trek-online-se-reunissent-en-hommage-a-sir-patrick-stewart.html",
    "s": "Numerama",
    "d": "2026-10-30T09:44:41Z"
-  },
-  {
-   "k": "actus",
-   "t": "La croissance amériaine bondit à 3,4% au T3",
-   "u": "https://www.bfmtv.com/economie/replay-emissions/good-morning-market/video-la-croissance-ameriaine-bondit-a-3-4-au-t3_VN-202610300380.html",
-   "s": "BFMTV",
-   "d": "2026-10-30T09:44:19Z"
   },
   {
    "k": "actus",
@@ -805,13 +1337,6 @@
    "u": "https://fr.ign.com/gears-of-war-e-day/93576/gears-of-war-e-day-aurait-vendu-plus-de-400-000-exemplaires-sur-consoles-et-pc-un-mois-apres-sa-sort",
    "s": "IGN France",
    "d": "2026-10-30T09:42:26Z"
-  },
-  {
-   "k": "actus",
-   "t": "\"On reste déterminés à marcher sur le parcours que nous avons déposé, celui de Bastille-Nation\", souligne l'Unef",
-   "u": "https://www.bfmtv.com/societe/manifestations/video-on-reste-determines-a-marcher-sur-le-parcours-que-nous-avons-depose-celui-de-bastille-nation-souligne-l-unef_VN-202610300378.html",
-   "s": "BFMTV",
-   "d": "2026-10-30T09:41:50Z"
   },
   {
    "k": "foot",
@@ -836,13 +1361,6 @@
   },
   {
    "k": "actus",
-   "t": "Manifestation du 31 octobre: \"La préfecture nous balade\", dénonce Clara Privé, trésorière de l'Unef, après l'interdiction du tracé de la CGT par la préfecture de police de Paris",
-   "u": "https://www.bfmtv.com/societe/manifestations/video-manifestation-du-31-octobre-la-prefecture-nous-balade-denonce-clara-prive-tresoriere-de-l-unef-apres-l-interdiction-du-trace-de-la-cgt-par-la-prefecture-de-police-de-paris_VN-202610300375.html",
-   "s": "BFMTV",
-   "d": "2026-10-30T09:38:35Z"
-  },
-  {
-   "k": "actus",
    "t": "Attentat raciste dans les Yvelines : un grand rassemblement organisé par la municipalité de Trappes prévu à 18 heures, \"plusieurs milliers\" de personnes attendues",
    "u": "https://www.franceinfo.fr/faits-divers/terrorisme/attentat-raciste-a-trappes/direct-attentat-raciste-dans-les-yvelines-un-grand-rassemblement-organise-par-la-municipalite-de-trappes-prevu-a-18-heures-plusieurs-milliers-de-personnes-attendues_8259788.html#xtor=RSS-3-[lestitres]",
    "s": "franceinfo",
@@ -856,13 +1374,6 @@
    "d": "2026-10-30T09:35:10Z"
   },
   {
-   "k": "actus",
-   "t": "Primaire proposée par Gabriel Attal: Bruno Le Maire se dit favorable à tout ce qui peut \"rassembler\"",
-   "u": "https://www.bfmtv.com/politique/elections/presidentielle/primaire-proposee-par-gabriel-attal-bruno-le-maire-se-dit-favorable-a-tout-ce-qui-peut-rassembler_AD-202610300371.html",
-   "s": "BFMTV",
-   "d": "2026-10-30T09:34:35Z"
-  },
-  {
    "k": "foot",
    "t": "Le nouveau rôle de Bellingham au Real Madrid, les révélations d’Enzo Fernandez sur la Coupe du Monde",
    "u": "https://www.footmercato.net/a6516435597681013526-le-nouveau-role-de-bellingham-au-real-madrid-les-revelations-denzo-fernandez-sur-la-coupe-du-monde",
@@ -871,17 +1382,10 @@
   },
   {
    "k": "actus",
-   "t": "Manifestation du 31 octobre: la préfecture de police de Paris interdit le tracé de la CGT",
-   "u": "https://www.bfmtv.com/societe/manifestations/video-manifestation-du-31-octobre-la-prefecture-de-police-de-paris-interdit-le-trace-de-la-cgt_VN-202610300372.html",
-   "s": "BFMTV",
-   "d": "2026-10-30T09:33:43Z"
-  },
-  {
-   "k": "actus",
-   "t": "Immobilier : près de 500 professionnels déjà inscrits sur Matchstone avant son ouverture",
-   "u": "https://www.bfmtv.com/economie/video-immobilier-pres-de-500-professionnels-deja-inscrits-sur-matchstone-avant-son-ouverture_VN-202610300370.html",
-   "s": "BFMTV",
-   "d": "2026-10-30T09:33:35Z"
+   "t": "Craignez-vous que la France entre en récession ?",
+   "u": "https://www.lefigaro.fr/conjoncture/craignez-vous-que-la-france-entre-en-recession-20261030",
+   "s": "Le Figaro",
+   "d": "2026-10-30T09:31:34Z"
   },
   {
    "k": "gaming",
@@ -889,6 +1393,20 @@
    "u": "https://www.numerama.com/sciences/2364061-rendre-la-vue-aux-aveugles-elon-musk-affirme-que-son-implant-cerebral-est-pret.html",
    "s": "Numerama",
    "d": "2026-10-30T09:31:24Z"
+  },
+  {
+   "k": "gaming",
+   "t": "Envoi de GTA 6 par La Poste : beaucoup de joueurs déjà débités pour l'achat du jeu",
+   "u": "https://www.jeuxvideo.com/news/2111375/envoi-de-gta-6-par-la-poste-beaucoup-de-joueurs-deja-debites-pour-l-achat-du-jeu.htm",
+   "s": "Jeuxvideo.com",
+   "d": "2026-10-30T09:30:09Z"
+  },
+  {
+   "k": "actus",
+   "t": "Budget 2027 : dans les Bouches-du-Rhône, les maires en colère menacent le gouvernement de ne pas organiser l’élection présidentielle",
+   "u": "https://www.lemonde.fr/politique/article/2026/10/30/budget-2027-dans-les-bouches-du-rhone-les-maires-en-colere-menacent-le-gouvernement-de-ne-pas-organiser-l-election-presidentielle_6802990_823448.html",
+   "s": "Le Monde",
+   "d": "2026-10-30T09:30:03Z"
   },
   {
    "k": "foot",
@@ -912,32 +1430,11 @@
    "d": "2026-10-30T09:28:03Z"
   },
   {
-   "k": "actus",
-   "t": "Rome: des étudiants italiens manifestent contre le gouvernement",
-   "u": "https://www.bfmtv.com/international/europe/italie/video-rome-des-etudiants-italiens-manifestent-contre-le-gouvernement_VN-202610300369.html",
-   "s": "BFMTV",
-   "d": "2026-10-30T09:27:51Z"
-  },
-  {
    "k": "gaming",
    "t": "Pulse et Pulse Edge : Les nouveaux casques PlayStation 5 qui subliment vos jeux",
    "u": "https://fr.ign.com/sony-pulse/93577/pulse-et-pulse-edge-les-nouveaux-casques-playstation-5-qui-subliment-vos-jeux",
    "s": "IGN France",
    "d": "2026-10-30T09:25:00Z"
-  },
-  {
-   "k": "actus",
-   "t": "Économie. TotalEnergies va baisser le prix du diesel à 2,15 euros dans certaines stations dès samedi",
-   "u": "https://www.estrepublicain.fr/economie/2026/10/30/totalenergies-va-baisser-le-prix-du-diesel-a-2-15-euros-dans-certaines-stations-des-samedi",
-   "s": "L'Est Républicain",
-   "d": "2026-10-30T09:24:00Z"
-  },
-  {
-   "k": "actus",
-   "t": "\"Les contrats en alternance contribuent fortement à la baisse\": l'emploi salarié du secteur privé recule légèrement au troisième trimestre",
-   "u": "https://www.bfmtv.com/economie/entreprises/les-contrats-en-alternance-contribuent-fortement-a-la-baisse-l-emploi-salarie-du-secteur-prive-recule-legerement-au-troisieme-trimestre_AD-202610300367.html",
-   "s": "BFMTV",
-   "d": "2026-10-30T09:23:53Z"
   },
   {
    "k": "actus",
@@ -975,20 +1472,6 @@
    "d": "2026-10-30T09:21:00Z"
   },
   {
-   "k": "actus",
-   "t": "Manifestations du 31 octobre: seuls les rassemblements «déclarés» autorisés dans les Bouches-du-Rhône",
-   "u": "https://www.lefigaro.fr/marseille/manifestations-du-31-octobre-seuls-les-rassemblements-declares-autorises-dans-les-bouches-du-rhone-20261030",
-   "s": "Le Figaro",
-   "d": "2026-10-30T09:19:17Z"
-  },
-  {
-   "k": "actus",
-   "t": "Depuis le début du mouvement lycéen, 83 enquêtes ont été confiées à l'IGPN et l'IGGN",
-   "u": "https://www.franceinfo.fr/societe/education/blocage-des-lycees/mouvement-lyceen-83-enquetes-confiees-a-l-igpn-et-l-iggn-depuis-le-debut-de-la-mobilisation_8260124.html#xtor=RSS-3-[lestitres]",
-   "s": "franceinfo",
-   "d": "2026-10-30T09:18:45Z"
-  },
-  {
    "k": "gaming",
    "t": "Stellantis se résout enfin à généraliser les batteries LFP",
    "u": "https://www.numerama.com/vroom/2364093-stellantis-se-resout-enfin-a-generaliser-les-batteries-lfp.html",
@@ -1001,13 +1484,6 @@
    "u": "https://footamateur.ouest-france.fr/coupe-de-france-le-coup-de-gueule-de-lentraineur-du-montlucon-football/",
    "s": "Foot Amateur",
    "d": "2026-10-30T09:18:11Z"
-  },
-  {
-   "k": "actus",
-   "t": "Forcé de quitter le désert saoudien, le Dakar 2027 officialise son parcours du Portugal au Maroc",
-   "u": "https://www.franceinfo.fr/dakar/force-de-quitter-le-desert-saoudien-le-dakar-2027-officialise-son-parcours-du-portugal-au-maroc_8260148.html#xtor=RSS-3-[lestitres]",
-   "s": "franceinfo",
-   "d": "2026-10-30T09:17:51Z"
   },
   {
    "k": "gaming",
@@ -1039,17 +1515,17 @@
   },
   {
    "k": "actus",
-   "t": "Mort de Patrick Stewart: qu'est-ce que la maladie à corps de Lewy dont souffrait l'acteur?",
-   "u": "https://www.bfmtv.com/culture/cinema-series/mort-de-patrick-stewart-qu-est-ce-que-la-maladie-a-corps-de-lewy-dont-souffrait-l-acteur_AN-202610300361.html",
-   "s": "BFMTV",
-   "d": "2026-10-30T09:13:35Z"
-  },
-  {
-   "k": "actus",
    "t": "\"Novaïa Gazeta cesse d'exister\": le journal russe contraint de fermer sous la pression des autorités",
    "u": "https://www.france24.com/fr/europe/20261030-nova%C3%AFa-gazeta-cesse-d-exister-le-journal-russe-contraint-de-fermer-sous-la-pression-des-autorit%C3%A9s",
    "s": "France 24",
    "d": "2026-10-30T09:12:38Z"
+  },
+  {
+   "k": "actus",
+   "t": "«L’économie française est à l’arrêt» et ira «dans le mur» sans budget, alerte Roland Lescure",
+   "u": "https://www.lefigaro.fr/conjoncture/l-economie-francaise-est-a-l-arret-et-ira-dans-le-mur-sans-budget-alerte-roland-lescure-20261030",
+   "s": "Le Figaro",
+   "d": "2026-10-30T09:12:29Z"
   },
   {
    "k": "gaming",
@@ -1109,7 +1585,7 @@
   },
   {
    "k": "actus",
-   "t": "Prix Nobel scientifiques 2026: qui sont les lauréats et y a-t-il un problème de parité ? | Password",
+   "t": "Prix Nobel scientifiques 2026 : qui sont les lauréats et y a-t-il un problème de parité ? | Password",
    "u": "https://fr.euronews.com/2026/10/30/prix-nobel-scientifiques-2026-qui-sont-les-laureats-et-y-a-t-il-un-probleme-de-parite-pass",
    "s": "Euronews",
    "d": "2026-10-30T09:00:40Z"
@@ -1130,6 +1606,13 @@
   },
   {
    "k": "actus",
+   "t": "Le juriste sénégalais Adama Dieng : « La haine peut emprunter le langage de la défense de la nation ou de la tradition »",
+   "u": "https://www.lemonde.fr/afrique/article/2026/10/30/le-juriste-senegalais-adama-dieng-la-haine-peut-emprunter-le-langage-de-la-defense-de-la-nation-ou-de-la-tradition_6802921_3212.html",
+   "s": "Le Monde",
+   "d": "2026-10-30T09:00:14Z"
+  },
+  {
+   "k": "actus",
    "t": "Vaccins anticancers : un foisonnement de résultats prometteurs et de nouvelles pistes de recherche",
    "u": "https://www.lemonde.fr/sante/article/2026/10/30/vaccins-anticancers-un-foisonnement-de-resultats-prometteurs-et-de-nouvelles-pistes-de-recherche_6802920_1651302.html",
    "s": "Le Monde",
@@ -1140,13 +1623,6 @@
    "t": "OM : Angel Gomes demande pardon",
    "u": "https://www.foot01.com/marseille/om-angel-gomes-demande-pardon",
    "s": "Foot01",
-   "d": "2026-10-30T09:00:00Z"
-  },
-  {
-   "k": "actus",
-   "t": "Tourisme. Les meilleurs endroits pour fêter Halloween en France et à l'étranger",
-   "u": "https://www.estrepublicain.fr/magazine-tourisme-et-patrimoine/2026/10/30/les-meilleurs-endroits-pour-feter-halloween-en-france-et-a-l-etranger",
-   "s": "L'Est Républicain",
    "d": "2026-10-30T09:00:00Z"
   },
   {
@@ -1347,31 +1823,10 @@
   },
   {
    "k": "gaming",
-   "t": "Actualité : Découverte unique de la “pierre de Rosette martienne” : la Nasa s'enflamme pour la météorite qui peut révéler si Mars a eu de la vie",
-   "u": "https://www.lesnumeriques.com/astronomie-conquete-spatiale/decouverte-de-la-pierre-de-rosette-martienne-unique-la-nasa-s-enflamme-pour-la-meteorite-qui-peut-reveler-si-mars-a-eu-de-la-vie-n263977.html",
-   "s": "Les Numériques",
-   "d": "2026-10-30T08:35:30Z"
-  },
-  {
-   "k": "gaming",
    "t": "Kevin Feige, Marvel Studios et Hugh Jackman rendent hommage à Sir Patrick Stewart après le décès de l’acteur à l’âge de 86 ans",
    "u": "https://fr.ign.com/avengers-doomsday/93564/kevin-feige-marvel-studios-et-hugh-jackman-rendent-hommage-a-sir-patrick-stewart-apres-le-deces-de-l",
    "s": "IGN France",
    "d": "2026-10-30T08:35:11Z"
-  },
-  {
-   "k": "actus",
-   "t": "Le président de France Universités n'est \"pas certain\" que les étudiants soient devant leurs professeurs lundi",
-   "u": "https://www.franceinfo.fr/societe/education/le-president-de-france-universites-n-est-pas-certain-que-les-etudiants-soient-devant-leurs-professeurs-lundi_8260094.html#xtor=RSS-3-[lestitres]",
-   "s": "franceinfo",
-   "d": "2026-10-30T08:34:54Z"
-  },
-  {
-   "k": "actus",
-   "t": "Brésil. Fuite de Flavio Bolsonaro : l'avion a été payé depuis les États-Unis",
-   "u": "https://www.estrepublicain.fr/politique/2026/10/30/fuite-de-flavio-bolsonaro-l-avion-a-ete-paye-depuis-les-etats-unis",
-   "s": "L'Est Républicain",
-   "d": "2026-10-30T08:34:00Z"
   },
   {
    "k": "actus",
@@ -1536,13 +1991,6 @@
   },
   {
    "k": "actus",
-   "t": "Social. Pourquoi les ports français et européens seront perturbés ce vendredi ?",
-   "u": "https://www.estrepublicain.fr/social/2026/10/30/pourquoi-les-ports-francais-et-europeens-seront-perturbes-ce-vendredi",
-   "s": "L'Est Républicain",
-   "d": "2026-10-30T08:16:00Z"
-  },
-  {
-   "k": "actus",
    "t": "Mobilisation du 31 octobre : le parcours à Paris contesté devant la justice par les syndicats",
    "u": "https://www.france24.com/fr/france/20261030-mobilisation-du-31-octobre-le-parcours-%C3%A0-paris-contest%C3%A9-devant-la-justice",
    "s": "France 24",
@@ -1592,15 +2040,15 @@
   },
   {
    "k": "gaming",
-   "t": "Actualité : Black Friday 2026 – L'aspirateur robot Dyson Spot+Scrub Ai \"5 étoiles\" à 799,00 € (-14%)",
-   "u": "https://www.lesnumeriques.com/aspirateur-robot/black-friday-2026-l-aspirateur-robot-dyson-spot-scrub-ai-5-etoiles-a-799-00-14-n263993.html",
+   "t": "Actualité : Black Friday 2026 – L'aspirateur traîneau Dyson Cinetic Big Ball Absolute 2 à 329,00 € (-11%)",
+   "u": "https://www.lesnumeriques.com/aspirateur-sans-sac/black-friday-2026-l-aspirateur-traineau-dyson-cinetic-big-ball-absolute-2-a-329-00-11-n263994.html",
    "s": "Les Numériques",
    "d": "2026-10-30T08:11:00Z"
   },
   {
    "k": "gaming",
-   "t": "Actualité : Black Friday 2026 – L'aspirateur traîneau Dyson Cinetic Big Ball Absolute 2 à 329,00 € (-11%)",
-   "u": "https://www.lesnumeriques.com/aspirateur-sans-sac/black-friday-2026-l-aspirateur-traineau-dyson-cinetic-big-ball-absolute-2-a-329-00-11-n263994.html",
+   "t": "Actualité : Black Friday 2026 – L'aspirateur robot Dyson Spot+Scrub Ai \"5 étoiles\" à 799,00 € (-14%)",
+   "u": "https://www.lesnumeriques.com/aspirateur-robot/black-friday-2026-l-aspirateur-robot-dyson-spot-scrub-ai-5-etoiles-a-799-00-14-n263993.html",
    "s": "Les Numériques",
    "d": "2026-10-30T08:11:00Z"
   },
@@ -1675,13 +2123,6 @@
    "d": "2026-10-30T08:00:00Z"
   },
   {
-   "k": "actus",
-   "t": "Insolite. « Patate », « chaussettes roulées »... un hérisson chauve fait fondre les internautes",
-   "u": "https://www.estrepublicain.fr/insolite/2026/10/30/patate-chausettes-roulees-un-herisson-chauve-fait-fondre-les-internautes",
-   "s": "L'Est Républicain",
-   "d": "2026-10-30T08:00:00Z"
-  },
-  {
    "k": "gaming",
    "t": "Mémoire cash - Comment Ridge Racer a ébloui les salles d'arcade avant devenir l'ambassadeur de la PlayStation",
    "u": "https://www.gamekult.com/actualite/comment-ridge-racer-a-ebloui-les-salles-d-arcade-avant-devenir-l-ambassadeur-de-la-playstation-101-3050866470.html",
@@ -1697,8 +2138,15 @@
   },
   {
    "k": "gaming",
-   "t": "Actualité : Black Friday 2026 – La bouilloire Riviera-et-Bar Ella BBT 710 à 49,99 € (-36%)",
-   "u": "https://www.lesnumeriques.com/bouilloire/black-friday-2026-la-bouilloire-riviera-et-bar-ella-bbt-710-a-49-99-36-n263986.html",
+   "t": "Actualité : Black Friday 2026 – Le casque Bluetooth Bose QuietComfort Ultra (QC Ultra Headphones) Noir \"5 étoiles\" à 299,99 € (-23%)",
+   "u": "https://www.lesnumeriques.com/casque-bluetooth/black-friday-2026-le-casque-bluetooth-bose-quietcomfort-ultra-qc-ultra-headphones-noir-5-etoiles-a-299-99-23-n263983.html",
+   "s": "Les Numériques",
+   "d": "2026-10-30T08:00:00Z"
+  },
+  {
+   "k": "gaming",
+   "t": "Actualité : Black Friday 2026 – La caméra de surveillance EZVIZ EB3 \"5 étoiles\" à 44,99 € (-19%)",
+   "u": "https://www.lesnumeriques.com/camera-surveillance/black-friday-2026-la-camera-de-surveillance-ezviz-eb3-5-etoiles-a-44-99-19-n263984.html",
    "s": "Les Numériques",
    "d": "2026-10-30T08:00:00Z"
   },
@@ -1718,15 +2166,8 @@
   },
   {
    "k": "gaming",
-   "t": "Actualité : Black Friday 2026 – La caméra de surveillance EZVIZ EB3 \"5 étoiles\" à 44,99 € (-19%)",
-   "u": "https://www.lesnumeriques.com/camera-surveillance/black-friday-2026-la-camera-de-surveillance-ezviz-eb3-5-etoiles-a-44-99-19-n263984.html",
-   "s": "Les Numériques",
-   "d": "2026-10-30T08:00:00Z"
-  },
-  {
-   "k": "gaming",
-   "t": "Actualité : Black Friday 2026 – Le casque Bluetooth Bose QuietComfort Ultra (QC Ultra Headphones) Noir \"5 étoiles\" à 299,99 € (-23%)",
-   "u": "https://www.lesnumeriques.com/casque-bluetooth/black-friday-2026-le-casque-bluetooth-bose-quietcomfort-ultra-qc-ultra-headphones-noir-5-etoiles-a-299-99-23-n263983.html",
+   "t": "Actualité : Black Friday 2026 – La bouilloire Riviera-et-Bar Ella BBT 710 à 49,99 € (-36%)",
+   "u": "https://www.lesnumeriques.com/bouilloire/black-friday-2026-la-bouilloire-riviera-et-bar-ella-bbt-710-a-49-99-36-n263986.html",
    "s": "Les Numériques",
    "d": "2026-10-30T08:00:00Z"
   },
@@ -1794,6 +2235,13 @@
    "d": "2026-10-30T07:51:08Z"
   },
   {
+   "k": "actus",
+   "t": "Collision de trains en Espagne : un tel accident pourrait-il se produire en France ?",
+   "u": "https://www.lefigaro.fr/conjoncture/collision-de-trains-en-espagne-un-tel-accident-pourrait-il-se-produire-en-france-20261029",
+   "s": "Le Figaro",
+   "d": "2026-10-30T07:51:07Z"
+  },
+  {
    "k": "foot",
    "t": "Le Brésil sans Marquinhos, mais avec cinq nouveaux pour la trêve de novembre",
    "u": "https://www.lequipe.fr/Football/Actualites/Le-bresil-sans-marquinhos-mais-avec-cinq-nouveaux-pour-la-treve-de-novembre/1739659#at_medium=RSS_feeds",
@@ -1823,13 +2271,6 @@
   },
   {
    "k": "actus",
-   "t": "Russie. Le média indépendant Novaïa Gazeta ferme sous la pression des autorités",
-   "u": "https://www.estrepublicain.fr/defense-guerre-conflit/2026/10/30/le-media-independant-novaia-gazeta-ferme-sous-la-pression-des-autorites",
-   "s": "L'Est Républicain",
-   "d": "2026-10-30T07:45:00Z"
-  },
-  {
-   "k": "actus",
    "t": "L'État veut augmenter le plafond du Livret A pour financer la rénovation des lycées",
    "u": "https://www.franceinfo.fr/replay-radio/le-brief-eco/l-etat-veut-augmenter-le-plafond-du-livret-a-pour-financer-la-renovation-des-lycees_8239492.html#xtor=RSS-3-%5Bgeneral%5D",
    "s": "franceinfo",
@@ -1845,7 +2286,7 @@
   {
    "k": "actus",
    "t": "Budget 2027 : \"Il faut savoir prendre des risques\", estime Michel Barnier qui plaide pour un 49.3 du Premier ministre Sébastien Lecornu",
-   "u": "https://www.franceinfo.fr/politique/budget-2027-il-faut-savoir-prendre-des-risques-estime-michel-barnier-qui-plaide-pour-un-49-3-du-premier-ministre-sebastien-lecornu_8260058.html#xtor=RSS-3-[lestitres]",
+   "u": "https://www.franceinfo.fr/politique/budget-2027-il-faut-savoir-prendre-des-risques-estime-michel-barnier-qui-plaide-pour-un-49-3-du-premier-ministre-sebastien-lecornu_8260058.html#xtor=RSS-3-%5Bgeneral%5D",
    "s": "franceinfo",
    "d": "2026-10-30T07:43:33Z"
   },
@@ -2068,7 +2509,7 @@
   },
   {
    "k": "actus",
-   "t": "EN DIRECT Manifestations du 31 octobre : Les parcours parisiens de la CGT et des gilets jaunes interdits par la préfecture...",
+   "t": "EN DIRECT Manifestations du 31 octobre : Les parcours parisiens de la CGT et des « gilets jaunes » interdits par la préfecture...",
    "u": "https://www.20minutes.fr/societe/4258815-20261030-direct-manifestations-31-octobre-70-000-policiers-gendarmes-mobilises-acte-iii-halloween?at_medium=display&at_campaign=149",
    "s": "20 Minutes",
    "d": "2026-10-30T07:10:14Z"
@@ -2152,7 +2593,7 @@
   },
   {
    "k": "actus",
-   "t": "« J’ai vite compris qu’il fallait s’armer intellectuellement pour ne pas être décrédibilisé » : le mouvement lycéen, vecteur de politisation accélérée",
+   "t": "Le mouvement lycéen, vecteur de politisation accélérée : « J’ai vite compris qu’il fallait s’armer intellectuellement pour ne pas être décrédibilisé »",
    "u": "https://www.lemonde.fr/campus/article/2026/10/30/j-ai-vite-compris-qu-il-fallait-s-armer-intellectuellement-pour-ne-pas-etre-decredibilise-le-mouvement-lyceen-vecteur-de-politisation-acceleree_6802908_4401467.html",
    "s": "Le Monde",
    "d": "2026-10-30T07:00:06Z"
@@ -2270,13 +2711,6 @@
    "d": "2026-10-30T06:35:44Z"
   },
   {
-   "k": "gaming",
-   "t": "Nettement meilleur en code, Mistral Large 4 débarque enfin sur Hugging Face",
-   "u": "https://www.numerama.com/tech/2363685-nettement-meilleur-en-code-mistral-large-4-debarque-enfin-sur-hugging-face.html",
-   "s": "Numerama",
-   "d": "2026-10-30T06:35:00Z"
-  },
-  {
    "k": "foot",
    "t": "Ligue 1 2026/27 : Les affiches de la 9e journée à ne pas manquer ce week-end",
    "u": "https://www.20minutes.fr/sport/football/4258771-20261030-ligue-1-2026-27-affiches-9e-journee-manquer-week-end?at_medium=display&at_campaign=149",
@@ -2319,13 +2753,6 @@
    "d": "2026-10-30T06:26:00Z"
   },
   {
-   "k": "actus",
-   "t": "Fonds gelés, 6,3 milliards de dollars de préjudice : la cyberattaque massive de la plateforme Binance plonge le secteur des cryptos dans la panique",
-   "u": "https://www.lefigaro.fr/secteur/high-tech/fonds-geles-pres-de-6-milliards-de-dollars-voles-cyberattaque-massive-le-piratage-de-la-plateforme-binance-plonge-le-secteur-des-cryptos-dans-la-panique-20261030",
-   "s": "Le Figaro",
-   "d": "2026-10-30T06:25:20Z"
-  },
-  {
    "k": "foot",
    "t": "Le Havre-PSG : Sur quelle chaîne TV et à quelle heure voir le match de la 9e journée de Ligue 1 ?",
    "u": "https://www.20minutes.fr/sport/football/4258789-20261030-havre-psg-chaine-tv-heure-voir-match-9e-journee-ligue-1?at_medium=display&at_campaign=149",
@@ -2347,13 +2774,6 @@
    "d": "2026-10-30T06:21:02Z"
   },
   {
-   "k": "actus",
-   "t": "EN DIRECT Guerre en Ukraine : Début des évacuations humanitaires à Olechky en cours…",
-   "u": "https://www.20minutes.fr/monde/ukraine/4258787-20261030-direct-guerre-ukraine-chef-diplomatie-russe-serguei-lavrov-attendu-etats-unis?at_medium=display&at_campaign=149",
-   "s": "20 Minutes",
-   "d": "2026-10-30T06:20:17Z"
-  },
-  {
    "k": "foot",
    "t": "La rivalité au second plan avant le 125e derby du Nord",
    "u": "https://www.lequipe.fr/Football/Article/Entraineurs-novices-infirmeries-pleines-absence-des-supporters-lensois-la-rivalite-au-second-plan-avant-le-125e-derby-du-nord/1739606#at_medium=RSS_feeds",
@@ -2368,27 +2788,6 @@
    "d": "2026-10-30T06:19:00Z"
   },
   {
-   "k": "actus",
-   "t": "Le nouveau maître du temps : Wei Koh raconte sa première année à la présidence du jury du GPHG",
-   "u": "https://fr.euronews.com/2026/10/30/le-nouveau-maitre-du-temps-wei-koh-raconte-sa-premiere-annee-a-la-presidence-du-jury-du-gp",
-   "s": "Euronews",
-   "d": "2026-10-30T06:16:13Z"
-  },
-  {
-   "k": "gaming",
-   "t": "Actualité : Top produit – Le smartphone Samsung Galaxy S26 Ultra à 1 038,00 €",
-   "u": "https://www.lesnumeriques.com/telephone-portable/top-produit-le-smartphone-samsung-galaxy-s26-ultra-a-1-038-00-n263974.html",
-   "s": "Les Numériques",
-   "d": "2026-10-30T06:15:03Z"
-  },
-  {
-   "k": "actus",
-   "t": "Le candidat à la présidentielle Édouard Philippe placé sous le statut de témoin assisté",
-   "u": "https://fr.euronews.com/2026/10/30/le-candidat-a-la-presidentielle-edouard-philippe-place-sous-le-statut-de-temoin-assiste",
-   "s": "Euronews",
-   "d": "2026-10-30T06:14:59Z"
-  },
-  {
    "k": "foot",
    "t": "How talking about Man Utd's cycle of doom became an industry",
    "u": "https://www.bbc.co.uk/sport/football/articles/cjn5v3pl0159o?at_medium=RSS&at_campaign=rss",
@@ -2396,46 +2795,11 @@
    "d": "2026-10-30T06:14:19Z"
   },
   {
-   "k": "actus",
-   "t": "Toute l’info en 2 minutes : Halloween sous haute surveillance, Philippe témoin assisté et le camp de Netanyahou en tête",
-   "u": "https://www.20minutes.fr/societe/4258798-20261030-toute-info-2-minutes-halloween-sous-haute-surveillance-philippe-temoin-assiste-camp-netanyahou-tete?at_medium=display&at_campaign=149",
-   "s": "20 Minutes",
-   "d": "2026-10-30T06:13:54Z"
-  },
-  {
-   "k": "actus",
-   "t": "Un «besoin de se rassembler» : des milliers de personnes attendues à Trappes ce vendredi contre le racisme et l'islamophobie, selon le maire",
-   "u": "https://www.lefigaro.fr/actualite-france/un-besoin-de-se-rassembler-des-milliers-de-personnes-attendues-a-trappes-ce-vendredi-contre-le-racisme-et-l-islamophobie-selon-le-maire-20261030",
-   "s": "Le Figaro",
-   "d": "2026-10-30T06:12:43Z"
-  },
-  {
    "k": "gaming",
    "t": "Vous cherchez un émulateur PS5 ? Ces faux logiciels peuvent voler vos données",
    "u": "https://www.tomshardware.fr/vous-cherchez-un-emulateur-ps5-ces-faux-logiciels-peuvent-voler-vos-donnees/",
    "s": "Tom’s Hardware",
    "d": "2026-10-30T06:11:00Z"
-  },
-  {
-   "k": "actus",
-   "t": "'I made the wrong decision,' Hyrox athlete who soiled herself in race tells BBC",
-   "u": "https://www.bbc.co.uk/news/articles/c6gr8l15k744o?at_medium=RSS&at_campaign=rss",
-   "s": "BBC News",
-   "d": "2026-10-30T06:10:50Z"
-  },
-  {
-   "k": "actus",
-   "t": "Post Office suspends sending goods to the EU",
-   "u": "https://www.bbc.co.uk/news/articles/cvze4xkknyj4o?at_medium=RSS&at_campaign=rss",
-   "s": "BBC News",
-   "d": "2026-10-30T06:07:39Z"
-  },
-  {
-   "k": "gaming",
-   "t": "Actualité : Voici le meilleur défroisseur vapeur à prix abordable de notre comparatif",
-   "u": "https://www.lesnumeriques.com/defroisseur-vapeur/voici-le-meilleur-defroisseur-vapeur-a-prix-abordable-de-notre-comparatif-n263971.html",
-   "s": "Les Numériques",
-   "d": "2026-10-30T06:07:31Z"
   },
   {
    "k": "foot",
@@ -2459,53 +2823,11 @@
    "d": "2026-10-30T06:02:37Z"
   },
   {
-   "k": "actus",
-   "t": "\"Pourquoi partir ?\" : des Fidjiens renforcent leur île face au climat pour éviter l'exil",
-   "u": "https://fr.euronews.com/2026/10/30/pourquoi-partir-des-fidjiens-renforcent-leur-ile-face-au-climat-pour-eviter-lexil",
-   "s": "Euronews",
-   "d": "2026-10-30T06:02:33Z"
-  },
-  {
-   "k": "actus",
-   "t": "A suivre avec Loïc de la Mornais : le quart d'heure américain du jeudi 29 octobre",
-   "u": "https://www.franceinfo.fr/replay-magazine/franceinfo/a-suivre-avec-loic-de-la-mornais/a-suivre-avec-loic-de-la-mornais-le-quart-d-heure-americain-du-jeudi-29-octobre_8259950.html#xtor=RSS-3-%5Bgeneral%5D",
-   "s": "franceinfo",
-   "d": "2026-10-30T06:02:05Z"
-  },
-  {
-   "k": "gaming",
-   "t": "Actualité : Black Friday 2026 – Le barbecue et plancha Riviera-et-Bar QPL650 à 199,99 € (-12%)",
-   "u": "https://www.lesnumeriques.com/barbecue-plancha/black-friday-2026-le-barbecue-et-plancha-riviera-et-bar-qpl650-a-199-99-12-n263972.html",
-   "s": "Les Numériques",
-   "d": "2026-10-30T06:01:03Z"
-  },
-  {
    "k": "gaming",
    "t": "Fourth Wing : c’est quoi cette série entre Game of Thrones et Twilight ?",
    "u": "https://www.journaldugeek.com/dossier/fourth-wing-cest-quoi-cette-serie-entre-game-of-thrones-et-twilight/",
    "s": "Journal du Geek",
    "d": "2026-10-30T06:00:59Z"
-  },
-  {
-   "k": "actus",
-   "t": "Midterms 2026: au Texas, les démocrates se prennent à rêver d'une victoire historique",
-   "u": "https://www.rfi.fr/fr/am%C3%A9riques/20261030-midterms-2026-au-texas-les-d%C3%A9mocrates-se-prennent-%C3%A0-r%C3%AAver-d-une-victoire-historique",
-   "s": "RFI",
-   "d": "2026-10-30T06:00:24Z"
-  },
-  {
-   "k": "actus",
-   "t": "L’info du jour | 30 octobre 2026 - Matin",
-   "u": "https://fr.euronews.com/video/2026/10/30/linfo-du-jour-30-octobre-2026-matin",
-   "s": "Euronews",
-   "d": "2026-10-30T06:00:16Z"
-  },
-  {
-   "k": "actus",
-   "t": "Voici les 20 musées les plus visités au monde, dont cinq en Europe",
-   "u": "https://fr.euronews.com/2026/10/30/voici-les-20-musees-les-plus-visites-au-monde-dont-cinq-en-europe",
-   "s": "Euronews",
-   "d": "2026-10-30T06:00:11Z"
   },
   {
    "k": "foot",
@@ -2522,53 +2844,11 @@
    "d": "2026-10-30T06:00:00Z"
   },
   {
-   "k": "actus",
-   "t": "Meurthe-et-Moselle. Rencontre : Sophie Marceau à Nancy pour présenter son ouvrage autobiographique, Warszawa",
-   "u": "https://www.estrepublicain.fr/culture-loisirs/2026/10/30/rencontre-sophie-marceau-a-nancy-pour-presenter-son-ouvrage-autobiographique-warszawa",
-   "s": "L'Est Républicain",
-   "d": "2026-10-30T06:00:00Z"
-  },
-  {
-   "k": "actus",
-   "t": "Haute-Saône. Des mesures prises pour tuer plus de sangliers dans le département et limiter les dégâts agricoles",
-   "u": "https://www.estrepublicain.fr/culture-loisirs/2026/10/30/des-mesures-prises-pour-tuer-plus-de-sangliers-dans-le-departement-et-limiter-les-degats-agricoles",
-   "s": "L'Est Républicain",
-   "d": "2026-10-30T06:00:00Z"
-  },
-  {
-   "k": "gaming",
-   "t": "Actualité : “Ne vous embêtez pas à mettre de l’argent de côté pour la retraite” dit Elon Musk, dont la fortune a dépassé les 1 000 milliards de dollars",
-   "u": "https://www.lesnumeriques.com/intelligence-artificielle/ne-vous-embetez-pas-a-mettre-de-l-argent-de-cote-pour-la-retraite-dit-elon-musk-dont-la-fortune-a-depasse-les-1-000-milliards-de-dollars-n263973.html",
-   "s": "Les Numériques",
-   "d": "2026-10-30T06:00:00Z"
-  },
-  {
-   "k": "gaming",
-   "t": "Test Delonghi Rivelia Start : l'un des meilleurs compromis pour s'offrir une excellente machine à café automatique",
-   "u": "https://www.lesnumeriques.com/machine-a-cafe-automatique/delonghi-rivelia-start-p78898/test.html",
-   "s": "Les Numériques",
-   "d": "2026-10-30T06:00:00Z"
-  },
-  {
    "k": "gaming",
    "t": "Mais pourquoi faire un remake de Dragon Ball Super ? DBS Beerus existe pour une bonne raison qui vous a échappé",
    "u": "https://www.jeuxvideo.com/news/2111359/mais-pourquoi-faire-un-remake-de-dragon-ball-super-dbs-beerus-existe-pour-une-bonne-raison-qui-vous-a-echappe.htm",
    "s": "Jeuxvideo.com",
    "d": "2026-10-30T05:55:08Z"
-  },
-  {
-   "k": "actus",
-   "t": "DIRECT. Manifestation du 31 octobre: les parcours de la CGT et des gilets jaunes officiellement interdits, colère de l'intersyndicale",
-   "u": "https://www.bfmtv.com/politique/direct-colere-sociale-une-cellule-interministerielle-de-crise-s-est-tenue-hier-avant-de-nouvelles-manifestations-jugees-a-risque-tres-eleve-ce-samedi_LN-202610300140.html",
-   "s": "BFMTV",
-   "d": "2026-10-30T05:55:00Z"
-  },
-  {
-   "k": "foot",
-   "t": "Une épidémie de lésions musculaires qui s'explique ?",
-   "u": "https://www.lequipe.fr/Football/Article/Nuno-mendes-marquinhos-ousmane-dembele-une-epidemie-de-lesions-musculaires-au-psg-qui-s-explique/1739597#at_medium=RSS_feeds",
-   "s": "L'Équipe",
-   "d": "2026-10-30T05:53:00Z"
   },
   {
    "k": "foot",
@@ -2578,102 +2858,11 @@
    "d": "2026-10-30T05:50:00Z"
   },
   {
-   "k": "actus",
-   "t": "La Banque du Japon affirme que l'inflation atteint l'objectif de 2 % après 13 ans",
-   "u": "https://fr.euronews.com/2026/10/30/la-banque-du-japon-affirme-que-linflation-atteint-lobjectif-de-2-apres-13-ans",
-   "s": "Euronews",
-   "d": "2026-10-30T05:48:25Z"
-  },
-  {
-   "k": "actus",
-   "t": "Chine: Xi Jinping poursuit les purges au sommet de l'État en vue d'un quatrième mandat",
-   "u": "https://www.rfi.fr/fr/asie-pacifique/20261030-chine-xi-jinping-poursuit-les-purges-au-sommet-de-l-%C3%A9tat-en-vue-d-un-quatri%C3%A8me-mandat",
-   "s": "RFI",
-   "d": "2026-10-30T05:46:13Z"
-  },
-  {
-   "k": "actus",
-   "t": "A suivre Loïc de la Mornais : Le grand témoin : Agnès Pannier-Runacher",
-   "u": "https://www.franceinfo.fr/replay-magazine/franceinfo/a-suivre-avec-loic-de-la-mornais/a-suivre-loic-de-la-mornais-le-grand-temoin-agnes-pannier-runacher_8259923.html#xtor=RSS-3-%5Bgeneral%5D",
-   "s": "franceinfo",
-   "d": "2026-10-30T05:40:30Z"
-  },
-  {
-   "k": "gaming",
-   "t": "Actualité : Black Friday 2026 – Le défroisseur vapeur SteamOne SteamCube \"5 étoiles\" à 399,99 € (-20%)",
-   "u": "https://www.lesnumeriques.com/defroisseur-vapeur/black-friday-2026-le-defroisseur-vapeur-steamone-steamcube-5-etoiles-a-399-99-20-n263970.html",
-   "s": "Les Numériques",
-   "d": "2026-10-30T05:40:02Z"
-  },
-  {
-   "k": "actus",
-   "t": "Guerre en Ukraine : Qu’est-ce que les drones à réaction russes ont de plus que les autres ?",
-   "u": "https://www.20minutes.fr/monde/ukraine/4258663-20261030-guerre-ukraine-drones-reaction-russes-plus-autres?at_medium=display&at_campaign=149",
-   "s": "20 Minutes",
-   "d": "2026-10-30T05:32:36Z"
-  },
-  {
    "k": "foot",
    "t": "Nantes–Clermont : à quelle heure et sur quelle chaîne suivre ce duel de la peur comptant pour la 11ème journée de Ligue 2 ?",
    "u": "https://www.foot-national.com/actus/nantes-clermont-a-quelle-heure-et-sur-quelle-chaine-suivre-ce-duel-de-la-peur-comptant-pour-la-11eme-journee-de-ligue-2-960723",
    "s": "Foot National",
    "d": "2026-10-30T05:30:00Z"
-  },
-  {
-   "k": "actus",
-   "t": "Meuse. Arnaque aux poubelles : la gendarmerie appelle à la vigilance",
-   "u": "https://www.estrepublicain.fr/faits-divers-justice/2026/10/30/arnaque-aux-poubelles-la-gendarmerie-appelle-a-la-vigilance",
-   "s": "L'Est Républicain",
-   "d": "2026-10-30T05:30:00Z"
-  },
-  {
-   "k": "actus",
-   "t": "Grand Besançon. Galerie commerciale de Chalezeule : quand les travaux vont-ils reprendre ?",
-   "u": "https://www.estrepublicain.fr/economie/2026/10/30/galerie-commerciale-de-chalezeule-quand-les-travaux-vont-ils-reprendre",
-   "s": "L'Est Républicain",
-   "d": "2026-10-30T05:30:00Z"
-  },
-  {
-   "k": "actus",
-   "t": "Meurthe-et-Moselle. Travaux en gare : pas de train Nancy-Paris ce week-end",
-   "u": "https://www.estrepublicain.fr/transport/2026/10/30/travaux-en-gare-pas-de-train-nancy-paris-ce-week-end",
-   "s": "L'Est Républicain",
-   "d": "2026-10-30T05:30:00Z"
-  },
-  {
-   "k": "actus",
-   "t": "Villers-le-Lac. Au Saut du Doubs, le retour de l’eau n’efface pas le naufrage de la saison",
-   "u": "https://www.estrepublicain.fr/culture-loisirs/2026/10/30/au-saut-du-doubs-le-retour-de-l-eau-n-efface-pas-le-naufrage-de-la-saison",
-   "s": "L'Est Républicain",
-   "d": "2026-10-30T05:30:00Z"
-  },
-  {
-   "k": "actus",
-   "t": "Franche-Comté. Après le rachat de « Forvia intérieurs » par le géant américain Apollo, quel avenir pour les 159 salariés d’Étupes ?",
-   "u": "https://www.estrepublicain.fr/economie/2026/10/30/apres-le-rachat-de-forvia-interieurs-par-apollo-quel-avenir-pour-les-150-salaries-d-etupes",
-   "s": "L'Est Républicain",
-   "d": "2026-10-30T05:30:00Z"
-  },
-  {
-   "k": "actus",
-   "t": "\"Des douleurs que je n'avais jamais vécues\" : des manifestantes racontent leurs troubles menstruels après leur exposition aux gaz lacrymogènes",
-   "u": "https://www.franceinfo.fr/sante/temoignages-des-douleurs-que-je-n-avais-jamais-vecues-des-manifestantes-racontent-leurs-troubles-menstruels-apres-leur-exposition-aux-gaz-lacrymogenes_8259041.html#xtor=RSS-3-[lestitres]",
-   "s": "franceinfo",
-   "d": "2026-10-30T05:29:56Z"
-  },
-  {
-   "k": "actus",
-   "t": "TEMOIGNAGES. \"Des douleurs que je n'avais jamais vécues\" : des manifestantes racontent leurs troubles menstruels après leur exposition aux gaz lacrymogènes",
-   "u": "https://www.franceinfo.fr/sante/temoignages-des-douleurs-que-je-n-avais-jamais-vecues-des-manifestantes-racontent-leurs-troubles-menstruels-apres-leur-exposition-aux-gaz-lacrymogenes_8259041.html#xtor=RSS-3-%5Bgeneral%5D",
-   "s": "franceinfo",
-   "d": "2026-10-30T05:29:56Z"
-  },
-  {
-   "k": "actus",
-   "t": "Protéines végétales et testostérone: ce que révèle une étude finlandaise",
-   "u": "https://fr.euronews.com/2026/10/30/proteines-vegetales-et-testosterone-ce-que-revele-une-etude-finlandaise",
-   "s": "Euronews",
-   "d": "2026-10-30T05:27:07Z"
   },
   {
    "k": "foot",
@@ -2683,25 +2872,11 @@
    "d": "2026-10-30T05:20:00Z"
   },
   {
-   "k": "actus",
-   "t": "\"L'intime est politique\" : le créateur de contenus Sam Zirah se prépare à couvrir la campagne présidentielle sous l'œil attentif de l'Arcom",
-   "u": "https://www.franceinfo.fr/elections/presidentielle/l-intime-est-politique-le-createur-de-contenus-sam-zirah-se-prepare-a-couvrir-la-campagne-presidentielle-sous-l-il-attentif-de-l-arcom_8244112.html#xtor=RSS-3-%5Bgeneral%5D",
-   "s": "franceinfo",
-   "d": "2026-10-30T05:16:19Z"
-  },
-  {
    "k": "foot",
    "t": "Metz–Pau : à quelle heure et sur quelle chaîne suivre cette affiche comptant pour la 11ème journée de Ligue 2 ?",
    "u": "https://www.foot-national.com/actus/metz-pau-a-quelle-heure-et-sur-quelle-chaine-suivre-cette-affiche-comptant-pour-la-11eme-journee-de-ligue-2-960715",
    "s": "Foot National",
    "d": "2026-10-30T05:10:00Z"
-  },
-  {
-   "k": "actus",
-   "t": "Braquage bancaire historique: le piratage de Binance secoue la crypto",
-   "u": "https://fr.euronews.com/2026/10/30/braquage-bancaire-historique-le-piratage-de-binance-secoue-la-crypto",
-   "s": "Euronews",
-   "d": "2026-10-30T05:07:54Z"
   },
   {
    "k": "gaming",
@@ -2716,13 +2891,6 @@
    "u": "https://rmcsport.bfmtv.com/football/ligue-1/lille-lens-sur-quelle-chaine-et-a-quelle-heure-regarder-le-match-de-ligue-1-en-direct_AN-202610300011.html",
    "s": "RMC Sport",
    "d": "2026-10-30T05:05:00Z"
-  },
-  {
-   "k": "actus",
-   "t": "Manifestations du 31 octobre : « On ne pourra pas tenir trois mois »… L’épuisement guette les policiers mobilisés",
-   "u": "https://www.20minutes.fr/faits_divers/4258699-20261030-manifestations-31-octobre-pourra-tenir-trois-mois-epuisement-guette-policiers-mobilises?at_medium=display&at_campaign=149",
-   "s": "20 Minutes",
-   "d": "2026-10-30T05:02:37Z"
   },
   {
    "k": "foot",
@@ -2758,13 +2926,6 @@
    "u": "https://www.bbc.co.uk/sport/football/articles/cky931w9p0x0o?at_medium=RSS&at_campaign=rss",
    "s": "BBC Sport",
    "d": "2026-10-30T04:12:07Z"
-  },
-  {
-   "k": "gaming",
-   "t": "Actualité : Black Friday 2026 – L'appareil photo numérique Nikon Z6 III \"5 étoiles\" à 2 399,90 €",
-   "u": "https://www.lesnumeriques.com/appareil-photo-numerique/black-friday-2026-l-appareil-photo-numerique-nikon-z6-iii-5-etoiles-a-2-399-90-n263969.html",
-   "s": "Les Numériques",
-   "d": "2026-10-30T02:10:03Z"
   },
   {
    "k": "gaming",
@@ -2887,13 +3048,6 @@
   },
   {
    "k": "foot",
-   "t": "Santini : «Ma tête voulait, pas mon corps»",
-   "u": "https://www.lequipe.fr/Football/Article/-ma-tete-voulait-pas-mon-corps-didier-santini-l-entraineur-de-rodez-raconte-l-invalidite-qui-l-a-frappe-et-l-a-oblige-a-se-faire-operer/1739480#at_medium=RSS_feeds",
-   "s": "L'Équipe",
-   "d": "2026-10-29T22:05:00Z"
-  },
-  {
-   "k": "foot",
    "t": "Ligue des champions féminine : Le PSG arrache un point à Manchester City",
    "u": "https://www.lequipe.fr/Football/Actualites/Ligue-des-champions-feminine-le-psg-arrache-un-point-a-manchester-city/1739634#at_medium=RSS_feeds",
    "s": "L'Équipe",
@@ -2989,13 +3143,6 @@
    "u": "https://www.footmercato.net/a6194443928046295454-deux-titis-du-psg-en-discussion-pour-prolonger",
    "s": "Foot Mercato",
    "d": "2026-10-29T21:39:41Z"
-  },
-  {
-   "k": "foot",
-   "t": "Luis de la Fuente : «C'est le temps qui te donne raison ou tort»",
-   "u": "https://www.lequipe.fr/explore/video/foot-ballon-d-or-luis-de-la-fuente-entraineur-de-la-saison-d-une-equipe-masculine-avec-l-espagne-je-me-sens-comme-un-gladiateur/20244317#at_medium=RSS_feeds",
-   "s": "L'Équipe",
-   "d": "2026-10-29T21:35:00Z"
   },
   {
    "k": "foot",
@@ -3397,20 +3544,6 @@
    "d": "2026-10-29T18:15:09Z"
   },
   {
-   "k": "gaming",
-   "t": "Agenda - GeForce NOW : le phénomène Phantom Blade Zero en tête d'affiche des sorties de la semaine",
-   "u": "https://www.gamekult.com/actualite/geforce-now-le-phenomene-phantom-blade-zero-en-tete-d-affiche-des-sorties-de-la-semaine-3050872655.html",
-   "s": "Gamekult",
-   "d": "2026-10-29T18:05:00Z"
-  },
-  {
-   "k": "gaming",
-   "t": "Astro Bot est de retour sur PS5… Mais pas comme vous l’attendez",
-   "u": "https://www.journaldugeek.com/2026/10/29/astro-bot-est-de-retour-sur-ps5-mais-pas-comme-vous-lattendez/",
-   "s": "Journal du Geek",
-   "d": "2026-10-29T18:02:31Z"
-  },
-  {
    "k": "foot",
    "t": "MLS announces ‘sprint season’ schedule, with accommodations for cold-weather locales",
    "u": "https://www.theguardian.com/football/2026/oct/29/mls-sprint-season-schedule",
@@ -3432,53 +3565,11 @@
    "d": "2026-10-29T17:50:00Z"
   },
   {
-   "k": "gaming",
-   "t": "Ubisoft dévoile une mise à jour énigmatique concernant Assassin’s Creed : Hexe",
-   "u": "https://fr.ign.com/assassins-creed-codename-hexe/93557/ubisoft-devoile-une-mise-a-jour-enigmatique-concernant-assassins-creed-hexe",
-   "s": "IGN France",
-   "d": "2026-10-29T17:44:32Z"
-  },
-  {
    "k": "foot",
    "t": "Scottish football could pave way for 3pm TV blackout to end",
    "u": "https://www.bbc.co.uk/sport/football/articles/cmgr8l87edyjo?at_medium=RSS&at_campaign=rss",
    "s": "BBC Sport",
    "d": "2026-10-29T17:43:53Z"
-  },
-  {
-   "k": "gaming",
-   "t": "L'artiste original de GTA se dit « flatté » de voir son influence se perpétuer dans l'illustration de la jaquette de GTA 6",
-   "u": "https://fr.ign.com/grand-theft-auto-6/93556/lartiste-original-de-gta-se-dit-flatte-de-voir-son-influence-se-perpetuer-dans-lillustration-de-la-j",
-   "s": "IGN France",
-   "d": "2026-10-29T17:42:41Z"
-  },
-  {
-   "k": "foot",
-   "t": "Rennes : l’avis de Franck Haise sur les manifestations et les matchs décalés",
-   "u": "https://www.footmercato.net/a599818827071895012-rennes-lavis-de-franck-haise-sur-les-manifestations-et-les-matchs-decales",
-   "s": "Foot Mercato",
-   "d": "2026-10-29T17:40:55Z"
-  },
-  {
-   "k": "gaming",
-   "t": "Après avoir conquis 100 000 joueurs PC, le délirant Raccoin, mélange de jeux de fêtes foraines et roguelike arrive sur consoles",
-   "u": "https://www.gamekult.com/actualite/apres-avoir-conquis-100-000-joueurs-pc-le-delirant-raccoin-melange-de-jeux-de-fetes-foraines-et-roguelike-arrive-sur-consoles-3050872651.html",
-   "s": "Gamekult",
-   "d": "2026-10-29T17:36:00Z"
-  },
-  {
-   "k": "gaming",
-   "t": "The Elder Scrolls 6 aurait pour sous-titre \"Sentinel\", et de nouveaux détails sur l'histoire viennent d'être révélés",
-   "u": "https://fr.ign.com/the-elder-scrolls-vi/93555/the-elder-scrolls-6-aurait-pour-sous-titre-sentinel-et-de-nouveaux-details-sur-lhistoire-viennent-de",
-   "s": "IGN France",
-   "d": "2026-10-29T17:33:08Z"
-  },
-  {
-   "k": "gaming",
-   "t": "Une nouvelle tempête sur le marché des PC : après la RAM, un autre composant ferait flamber les prix",
-   "u": "https://www.journaldugeek.com/2026/10/29/une-nouvelle-tempete-sur-le-marche-des-pc-apres-la-ram-un-autre-composant-ferait-flamber-les-prix/",
-   "s": "Journal du Geek",
-   "d": "2026-10-29T17:31:03Z"
   },
   {
    "k": "foot",
@@ -3517,13 +3608,6 @@
   },
   {
    "k": "foot",
-   "t": "Arthur Desmas contraint de prendre sa retraite à seulement 32 ans après plusieurs commotions cérébrales",
-   "u": "https://www.footmercato.net/a2746612888970544507-arthur-desmas-contraint-de-prendre-sa-retraite-a-seulement-32-ans-apres-plusieurs-commotions-cerebrales",
-   "s": "Foot Mercato",
-   "d": "2026-10-29T17:17:44Z"
-  },
-  {
-   "k": "foot",
    "t": "L'international anglais Ivan Toney sera jugé pendant l'Euro 2028 pour l'agression présumée d'un homme",
    "u": "https://www.lequipe.fr/Football/Actualites/L-international-anglais-ivan-toney-sera-juge-pendant-l-euro-2028-pour-l-agression-presumee-d-un-homme/1739559#at_medium=RSS_feeds",
    "s": "L'Équipe",
@@ -3545,13 +3629,6 @@
   },
   {
    "k": "foot",
-   "t": "Liverpool veut rapatrier Trent Alexander-Arnold !",
-   "u": "https://www.footmercato.net/a1415852919503649088-liverpool-veut-rapatrier-trent-alexander-arnold",
-   "s": "Foot Mercato",
-   "d": "2026-10-29T17:00:10Z"
-  },
-  {
-   "k": "foot",
    "t": "Lille : Pistonné par papa, Davide Ancelotti se fâche",
    "u": "https://www.foot01.com/lille/lille-pistonne-par-papa-davide-ancelotti-se-fache",
    "s": "Foot01",
@@ -3563,83 +3640,6 @@
    "u": "https://www.bbc.co.uk/sounds/play/m003434t?at_medium=RSS&at_campaign=rss",
    "s": "BBC Sport",
    "d": "2026-10-29T16:54:00Z"
-  },
-  {
-   "k": "foot",
-   "t": "\"Il y a plus grave\", Haise comprend les reports de match",
-   "u": "https://rmcsport.bfmtv.com/football/ligue-1/video-il-y-a-plus-grave-haise-comprend-les-reports-de-match_VN-202610290706.html",
-   "s": "RMC Sport",
-   "d": "2026-10-29T16:52:43Z"
-  },
-  {
-   "k": "foot",
-   "t": "PSG : Luis Enrique estime avoir contrôlé les blessures",
-   "u": "https://www.footmercato.net/a2621284053126130891-psg-luis-enrique-estime-avoir-controle-les-blessures",
-   "s": "Foot Mercato",
-   "d": "2026-10-29T16:49:00Z"
-  },
-  {
-   "k": "foot",
-   "t": "Rennes: \"Il y a des choses beaucoup plus graves\", Haise relativise les changements de calendriers provoqués par les manifestations",
-   "u": "https://rmcsport.bfmtv.com/football/ligue-1/rennes-il-y-a-des-choses-beaucoup-plus-graves-haise-relativise-les-changements-de-calendriers-provoques-par-les-manifestations_AV-202610290690.html",
-   "s": "RMC Sport",
-   "d": "2026-10-29T16:40:40Z"
-  },
-  {
-   "k": "foot",
-   "t": "Pour les Titis, c'est trop miné",
-   "u": "https://www.lequipe.fr/Football/Article/-nos-jeunes-sont-beaucoup-trop-loin-pour-les-joueurs-formes-au-psg-l-exil-s-impose-souvent/1739358#at_medium=RSS_feeds",
-   "s": "L'Équipe",
-   "d": "2026-10-29T16:38:00Z"
-  },
-  {
-   "k": "foot",
-   "t": "Aux côtés de Mbappé, la France défie la Chine",
-   "u": "https://www.foot01.com/transfert-mbappe-mercato/aux-cotes-de-mbappe-la-france-defie-la-chine",
-   "s": "Foot01",
-   "d": "2026-10-29T16:30:00Z"
-  },
-  {
-   "k": "foot",
-   "t": "Ligue 1 : l’OL prolonge son partenariat avec un club de National 1",
-   "u": "https://www.foot-national.com/actus/ligue-1-lol-prolonge-son-partenariat-avec-un-club-de-national-1-961213",
-   "s": "Foot National",
-   "d": "2026-10-29T16:29:00Z"
-  },
-  {
-   "k": "foot",
-   "t": "Euro Leagues",
-   "u": "https://www.bbc.co.uk/sounds/play/p0pkb7f8?at_medium=RSS&at_campaign=rss",
-   "s": "BBC Sport",
-   "d": "2026-10-29T16:21:00Z"
-  },
-  {
-   "k": "foot",
-   "t": "Enfin un peu de chance pour l’OM en Coupe d’Europe",
-   "u": "https://www.foot01.com/marseille/enfin-un-peu-de-chance-pour-lom-en-coupe-deurope",
-   "s": "Foot01",
-   "d": "2026-10-29T16:00:00Z"
-  },
-  {
-   "k": "foot",
-   "t": "Neuilly-APM Metz pour la tête, des duels directs en bas de tableau : en National 2, la 6e journée du groupe E s'annonce explosive",
-   "u": "https://www.foot-national.com/actus/national-2-neuilly-apm-metz-pour-la-tete-des-duels-directs-en-bas-de-tableau-961210",
-   "s": "Foot National",
-   "d": "2026-10-29T15:56:00Z"
-  },
-  {
-   "k": "foot",
-   "t": "McInnes defends Fernandez before League Cup semi",
-   "u": "https://www.bbc.co.uk/sport/football/articles/c6e3x50p3v1eo?at_medium=RSS&at_campaign=rss",
-   "s": "BBC Sport",
-   "d": "2026-10-29T15:36:21Z"
-  },
-  {
-   "k": "foot",
-   "t": "City dévoile le prix de Cherki, l’OL sort le champagne",
-   "u": "https://www.foot01.com/ol/city-devoile-le-prix-de-cherki-lol-sort-le-champagne",
-   "s": "Foot01",
-   "d": "2026-10-29T15:30:00Z"
   }
  ]
 }
