@@ -1,50 +1,80 @@
 {
- "id": "2026-10-29-08",
- "date": "2026-10-29T08:33:57+01:00",
+ "id": "2026-10-30-08",
+ "date": "2026-10-30T08:33:03+01:00",
  "questions": [
   {
-   "q": "Quel joueur a inscrit un quadruplé avec les U18 de Manchester United face à Burnley ?",
+   "q": "Combien de matchs compte la « sprint season » 2027 de la MLS pour chaque équipe ?",
    "choix": [
-    "Kai Rooney",
-    "Benjamin Sesko",
-    "Wayne Rooney",
-    "Ben Davies"
+    "10",
+    "14",
+    "18",
+    "34"
    ],
-   "bonne": 0,
-   "explication": "Selon Foot Mercato, Kai Rooney, 16 ans, a inscrit un quadruplé lors de la victoire 6-0 face à Burnley.",
+   "bonne": 1,
+   "explication": "Selon The Guardian, chaque équipe disputera 14 matchs, uniquement contre des adversaires de sa conférence.",
    "source": {
-    "titre": "MU : Kai Rooney, fils de Wayne, inscrit un quadruplé avec les U18",
-    "id": "rss-v2-779f86c9b8bf35a94128a0"
+    "titre": "MLS : une « sprint season » de 14 matchs dès le 19 février 2027",
+    "id": "rss-v2-9ebb68fb8db5852ef0cc48"
    }
   },
   {
-   "q": "Quel gardien a stoppé deux tirs au but lors de la qualification de Manchester City face à Brighton ?",
+   "q": "Combien de buts Cristiano Ronaldo a-t-il inscrits en carrière après son triplé avec Al-Nassr ?",
    "choix": [
-    "Geronimo Rulli",
-    "Gianluigi Donnarumma",
-    "Vitor Reis",
-    "Rayan Cherki"
+    "967",
+    "985",
+    "1000",
+    "1067"
    ],
-   "bonne": 0,
-   "explication": "Selon BBC Sport, Geronimo Rulli a stoppé les tentatives d'Yasin Ayari et de Lewis Dunk.",
+   "bonne": 1,
+   "explication": "Avec 985 buts en carrière, Ronaldo n'est plus qu'à 15 réalisations de la barre des 1000, selon Foot Mercato.",
    "source": {
-    "titre": "Rulli sauve City aux tirs au but contre Brighton, Donnarumma reste titulaire",
-    "id": "rss-v2-e698dd998ad2491f16ed39"
+    "titre": "SPL : Cristiano Ronaldo signe un triplé et Al-Nassr s'impose 5-3 face à Al Kholood",
+    "id": "rss-v2-25773acb89cf367310f27b"
    }
   },
   {
-   "q": "Combien de buts Abdellah Ouazane a-t-il inscrits avec l'Ajax cette saison selon Foot Mercato ?",
+   "q": "Quel est le score de la victoire d'Al-Nassr face à Al Kholood ?",
    "choix": [
-    "3 buts",
-    "1 but",
-    "5 buts",
-    "0 but"
+    "3-1",
+    "4-2",
+    "5-3",
+    "6-2"
    ],
-   "bonne": 0,
-   "explication": "Le média évoque 3 buts et 3 passes décisives en 17 rencontres toutes compétitions confondues.",
+   "bonne": 2,
+   "explication": "Al-Nassr s'est imposé 5-3 à domicile face à Al Kholood en Saudi Pro League.",
    "source": {
-    "titre": "Ajax : Abdellah Ouazane, 17 ans, s'impose en Eredivisie après l'échec de son transfert au Real Madrid",
-    "id": "rss-v2-09e0b16ec782cec4ace719"
+    "titre": "SPL : Cristiano Ronaldo signe un triplé et Al-Nassr s'impose 5-3 face à Al Kholood",
+    "id": "rss-v2-25773acb89cf367310f27b"
+   }
+  },
+  {
+   "q": "Quel club a éliminé Arsenal de la Coupe de la Ligue ?",
+   "choix": [
+    "Liverpool",
+    "Fleetwood Town",
+    "Everton",
+    "Chelsea"
+   ],
+   "bonne": 1,
+   "explication": "Selon BBC Sport, Arsenal a été éliminé mardi par Fleetwood Town, équipe de League Two.",
+   "source": {
+    "titre": "Sutton prédit Arsenal-Liverpool, avec l'acteur John Hannah en invité",
+    "id": "rss-v2-ac24425e3718c8d20963a4"
+   }
+  },
+  {
+   "q": "Quel est le nouveau poste de Landry Chauvin au Pau FC ?",
+   "choix": [
+    "Entraîneur principal",
+    "Directeur sportif",
+    "Directeur technique",
+    "Responsable du centre de formation"
+   ],
+   "bonne": 2,
+   "explication": "Selon Foot Mercato, Landry Chauvin a été nommé directeur technique du Pau FC.",
+   "source": {
+    "titre": "Landry Chauvin nommé directeur technique du Pau FC",
+    "id": "rss-v2-cd58b5c29a5cdf3e49f3ff"
    }
   }
  ]
