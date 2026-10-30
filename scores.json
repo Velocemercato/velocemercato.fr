@@ -25,18 +25,6 @@
    ]
   },
   {
-   "id": 559644,
-   "date": "2026-10-30T18:00:00Z",
-   "comp": "Ligue 1",
-   "dom": "Le Havre",
-   "ext": "PSG",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    5
-   ]
-  },
-  {
    "id": 559646,
    "date": "2026-10-30T18:00:00Z",
    "comp": "Ligue 1",
@@ -46,6 +34,18 @@
    "score": [
     5,
     2
+   ]
+  },
+  {
+   "id": 559644,
+   "date": "2026-10-30T18:00:00Z",
+   "comp": "Ligue 1",
+   "dom": "Le Havre",
+   "ext": "PSG",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    5
    ]
   },
   {
@@ -78,12 +78,12 @@
    "comp": "Ligue 1",
    "dom": "Lille",
    "ext": "RC Lens",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   }
  ],
- "maj": "2026-10-30T20:10:56Z"
+ "maj": "2026-10-30T20:12:50Z"
 }
