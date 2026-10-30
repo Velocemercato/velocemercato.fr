@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261030-1900",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 19 h",
+  "titre": "La Pastille Actus : édition du vendredi 30 octobre",
+  "accroche": "Dans la Pastille Actus, les urnes américaines, les ports européens et une collision de trains en Espagne.",
+  "duree": 149,
+  "date": "2026-10-30T19:07+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261030-1900.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-10-30T19:00:00+01:00",
+  "source_start": "2026-10-30T13:00:00+01:00",
+  "source_end": "2026-10-30T19:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-59bd0eebd4d32c1308b0fe",
+    "titre": "Élections de mi-mandat américaines : à Détroit, la mobilisation des abstentionnistes, enjeu clé",
+    "publishedAt": "2026-10-30T17:12:17Z",
+    "createdAt": "2026-10-30T17:21:13Z",
+    "references": [
+     {
+      "nom": "France 24",
+      "url": "https://www.france24.com/fr/vid%C3%A9o/20261030-%C3%A0-d%C3%A9troit-les-votes-des-abstentionnistes-seront-d%C3%A9terminants"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-4eea2341e5a218ca4a77ad",
+    "titre": "Grève des dockers dans plusieurs ports européens contre le transit de matériel militaire",
+    "publishedAt": "2026-10-30T17:12:26Z",
+    "createdAt": "2026-10-30T17:21:09Z",
+    "references": [
+     {
+      "nom": "RFI",
+      "url": "https://www.rfi.fr/fr/%C3%A9conomie/20261030-les-ports-europ%C3%A9ens-perturb%C3%A9s-par-une-gr%C3%A8ve-des-dockers-mobilis%C3%A9s-contre-le-transit-d-armements"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-dae9a9a6f67dc47586357e",
+    "titre": "Le \"Véli\", véhicule léger intermédiaire entre voiture et vélo, gagne du terrain",
+    "publishedAt": "2026-10-30T16:17:29Z",
+    "createdAt": "2026-10-30T16:24:34Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/transports/pratique-moins-polluant-connaissez-vous-le-veli-le-vehicule-leger-intermediaire-entre-voiture-et-velo_8260634.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-a3c0dd67cd3c5d1b670ea4",
+    "titre": "Islamabad : un zoo ouvre une attraction café avec des alpagas",
+    "publishedAt": "2026-10-30T15:17:52Z",
+    "createdAt": "2026-10-30T15:26:05Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/video/2026/10/30/islamabad-le-zoo-lance-lattraction-cafe-coffee-with-alpaca"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-03b9e07d3853fc60cf6b0c",
+    "titre": "Inflation en octobre : l'Italie en tête des quatre grandes économies de la zone euro",
+    "publishedAt": "2026-10-30T14:21:22Z",
+    "createdAt": "2026-10-30T14:32:08Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/10/30/allemagne-france-italie-espagne-ou-linflation-a-t-elle-ete-la-plus-forte-en-octobre"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-a89600c68a2a4214a245f3",
+    "titre": "Trappes : un rassemblement contre le racisme organisé une semaine après la fusillade",
+    "publishedAt": "2026-10-30T14:25:46Z",
+    "createdAt": "2026-10-30T14:32:04Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/10/30/trappes-un-rassemblement-contre-le-racisme-et-lislamophobie-une-semaine-apres-lattentat"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-ecf153221ce06253234c2a",
+    "titre": "Italie : des milliers de manifestants à Rome contre la vie chère et le budget militaire",
+    "publishedAt": "2026-10-30T13:28:22Z",
+    "createdAt": "2026-10-30T13:38:04Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/video/2026/10/30/italie-des-milliers-protestent-contre-la-vie-chere-et-le-budget-militaire-en-greve-general"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-d2de6b3f9647677e85bed4",
+    "titre": "Collision de trains en Espagne : 69 morts, Pedro Sanchez assure que l'identification des victimes se poursuit",
+    "publishedAt": "2026-10-30T13:31:06Z",
+    "createdAt": "2026-10-30T13:38:01Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/espagne/accident-de-trains-pres-de-tolede/direct-collision-meurtriere-entre-deux-trains-en-espagne-des-familles-toujours-sans-nouvelles-de-leurs-proches_8260187.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "gaming-edition-20261030-1800",
   "univers": "gaming",
   "format": "edition",
