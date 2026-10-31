@@ -1,5 +1,77 @@
 [
  {
+  "id": "foot-edition-20261031-1200",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "midi",
+  "label": "JT 12 h",
+  "titre": "La Pastille Foot - Samedi 31 octobre, 12h",
+  "accroche": "Le foot dans votre JT de midi, en version express.",
+  "duree": 106,
+  "date": "2026-10-31T12:36+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261031-1200.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-10-31T12:00:00+01:00",
+  "source_start": "2026-10-31T08:00:00+01:00",
+  "source_end": "2026-10-31T12:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-5b51355bf24e591d1fa1f1",
+    "titre": "OM : les joueurs sollicités refusent une nouvelle baisse de salaire",
+    "publishedAt": "2026-10-31T08:50:01Z",
+    "createdAt": "2026-10-31T10:11:59Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a5180218696367553992-om-le-vestiaire-a-refuse-un-nouveau-sacrifice-financier"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-0213d7d70b82734205514f",
+    "titre": "Ronaldo et Platini absents des votes pour le Trophée Kopa",
+    "publishedAt": "2026-10-31T09:32:32Z",
+    "createdAt": "2026-10-31T10:11:56Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a1346792173435913080-cristiano-ronaldo-et-michel-platini-absents-des-votes-pour-le-trophee-kopa"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-88c0d89ae6d7aa290dc7ca",
+    "titre": "Girondins : Hervé Bugnet imagine un retour au haut niveau « d’ici 10 à 15 ans »",
+    "publishedAt": "2026-10-31T08:57:42Z",
+    "createdAt": "2026-10-31T09:30:18Z",
+    "references": [
+     {
+      "nom": "Foot Amateur",
+      "url": "https://footamateur.ouest-france.fr/girondins-herve-bugnet-imagine-un-retour-au-haut-niveau-dici-10-a-15-ans/"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-a2bcbf1a13a28233dd737e",
+    "titre": "Trophée Kopa 2026 : Benzema place Lamine Yamal devant Cubarsí et Bouaddi",
+    "publishedAt": "2026-10-31T09:16:34Z",
+    "createdAt": "2026-10-31T09:30:14Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a4380786831681115762-trophee-kopa-le-top-3-de-karim-benzema-avec-ayyoub-bouaddi-et-lamine-yamal"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261031-0800",
   "univers": "foot",
   "format": "edition",
