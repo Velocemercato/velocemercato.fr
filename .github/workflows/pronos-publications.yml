@@ -1,0 +1,55 @@
+name: VM - RQ Pronos publications (apres test confirme)
+
+on:
+  schedule:
+    # UTC : le script applique les horaires Europe/Paris.
+    - cron: '25 6-21 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+
+jobs:
+  publications:
+    # Ne s'active que sur demande du proprietaire, APRES le test verifie.
+    if: vars.VM_AUTO_PRONOS == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+      VM_FACEBOOK_PRONOS_PAGE_ID: ${{ vars.VM_FACEBOOK_PRONOS_PAGE_ID }}
+      VM_AUTO_PRONOS: ${{ vars.VM_AUTO_PRONOS }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet 'cryptography==50.0.0'
+      - name: Verifier ID Facebook RQ Pronos
+        run: |
+          test "$VM_FACEBOOK_PRONOS_PAGE_ID" = '112294796981981' || {
+            echo "::error::RQ Pronos : mauvais identifiant de Page"; exit 1;
+          }
+      - name: Verifier code sans publier
+        run: |
+          python -m py_compile tools/pronos_programme.py
+          python -m unittest discover -s tests -p 'test_pronos_programme.py' -v
+      - name: Recuperer etat chiffre existant
+        run: |
+          set -euo pipefail
+          repo_url="https://github.com/$GITHUB_REPOSITORY.git"
+          state_dir="$RUNNER_TEMP/vm-broadcast-state"
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "$repo_url" "$state_dir"
+          test -f "$state_dir/state.enc" || {
+            echo "::error::Etat chiffre absent : aucune publication autorisee."; exit 1;
+          }
+      - name: Publier au plus une information verifiee
+        run: |
+          python tools/pronos_programme.py --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
