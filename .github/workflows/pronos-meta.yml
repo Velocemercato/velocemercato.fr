@@ -28,7 +28,6 @@ jobs:
       VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
       VM_FACEBOOK_PRONOS_PAGE_ID: ${{ vars.VM_FACEBOOK_PRONOS_PAGE_ID }}
       VM_PRONOS_TEST_APPROVED: ${{ vars.VM_PRONOS_TEST_APPROVED }}
-      STATE_DIR: ${{ runner.temp }}/vm-broadcast-state
     steps:
       - name: Récupérer le dépôt
         uses: actions/checkout@v4
@@ -50,6 +49,7 @@ jobs:
       - name: Ouvrir l'état chiffré (aucun jeton dans les logs)
         run: |
           set -euo pipefail
+          STATE_DIR="$RUNNER_TEMP/vm-broadcast-state"
           repo_url="https://github.com/$GITHUB_REPOSITORY.git"
           if git -c credential.helper='!gh auth git-credential' ls-remote --exit-code "$repo_url" refs/heads/broadcast-state >/dev/null; then
             git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "$repo_url" "$STATE_DIR"
@@ -66,4 +66,4 @@ jobs:
               echo "::error::Le test public n'a pas été activé." ; exit 1;
             }
           fi
-          python tools/pronos_facebook.py "$MODE" --state "$STATE_DIR/state.enc"
+          python tools/pronos_facebook.py "$MODE" --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
