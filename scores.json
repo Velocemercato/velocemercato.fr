@@ -97,18 +97,6 @@
    ]
   },
   {
-   "id": 565843,
-   "date": "2026-10-31T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "Bremen",
-   "ext": "Hoffenheim",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
    "id": 565840,
    "date": "2026-10-31T14:30:00Z",
    "comp": "Bundesliga",
@@ -121,11 +109,11 @@
    ]
   },
   {
-   "id": 565842,
+   "id": 565843,
    "date": "2026-10-31T14:30:00Z",
    "comp": "Bundesliga",
-   "dom": "Augsburg",
-   "ext": "Freiburg",
+   "dom": "Bremen",
+   "ext": "Hoffenheim",
    "statut": "TIMED",
    "score": [
     null,
@@ -157,11 +145,11 @@
    ]
   },
   {
-   "id": 560625,
-   "date": "2026-10-31T15:00:00Z",
-   "comp": "Premier League",
-   "dom": "Coventry City",
-   "ext": "Sunderland",
+   "id": 565842,
+   "date": "2026-10-31T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "Augsburg",
+   "ext": "Freiburg",
    "statut": "TIMED",
    "score": [
     null,
@@ -193,11 +181,11 @@
    ]
   },
   {
-   "id": 560630,
+   "id": 560625,
    "date": "2026-10-31T15:00:00Z",
    "comp": "Premier League",
-   "dom": "Brentford",
-   "ext": "Nottingham",
+   "dom": "Coventry City",
+   "ext": "Sunderland",
    "statut": "TIMED",
    "score": [
     null,
@@ -210,6 +198,18 @@
    "comp": "Premier League",
    "dom": "Bournemouth",
    "ext": "Leeds United",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 560630,
+   "date": "2026-10-31T15:00:00Z",
+   "comp": "Premier League",
+   "dom": "Brentford",
+   "ext": "Nottingham",
    "statut": "TIMED",
    "score": [
     null,
@@ -325,5 +325,5 @@
    ]
   }
  ],
- "maj": "2026-10-31T14:07:08Z"
+ "maj": "2026-10-31T14:09:05Z"
 }
