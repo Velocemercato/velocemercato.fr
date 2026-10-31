@@ -66,7 +66,7 @@
    "comp": "Premier League",
    "dom": "Chelsea",
    "ext": "Man United",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     3,
     0
@@ -102,10 +102,10 @@
    "comp": "Bundesliga",
    "dom": "M'gladbach",
    "ext": "SC Paderborn",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -114,10 +114,10 @@
    "comp": "Bundesliga",
    "dom": "Leverkusen",
    "ext": "Stuttgart",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -126,22 +126,10 @@
    "comp": "Bundesliga",
    "dom": "Augsburg",
    "ext": "Freiburg",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 565843,
-   "date": "2026-10-31T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "Bremen",
-   "ext": "Hoffenheim",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -154,6 +142,18 @@
    "score": [
     null,
     null
+   ]
+  },
+  {
+   "id": 565843,
+   "date": "2026-10-31T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "Bremen",
+   "ext": "Hoffenheim",
+   "statut": "IN_PLAY",
+   "score": [
+    0,
+    0
    ]
   },
   {
@@ -325,5 +325,5 @@
    ]
   }
  ],
- "maj": "2026-10-31T14:34:11Z"
+ "maj": "2026-10-31T14:36:10Z"
 }
