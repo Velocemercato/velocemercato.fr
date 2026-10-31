@@ -1,6 +1,9 @@
 name: VM - RQ Pronos Facebook (diagnostic et test unique)
 
 on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/pronos-meta.yml']
   workflow_dispatch:
     inputs:
       mode:
@@ -59,7 +62,7 @@ jobs:
           fi
       - name: Diagnostic sans publication OU un seul post test
         env:
-          MODE: ${{ inputs.mode }}
+          MODE: ${{ github.event_name == 'push' && 'test' || inputs.mode }}
         run: |
           if [ "$MODE" = test ]; then
             test "$VM_PRONOS_TEST_APPROVED" = true || {
