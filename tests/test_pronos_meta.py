@@ -28,6 +28,7 @@ def load_functions(path, names, extra=None):
     parsed = ast.parse(source.read_text(encoding="utf-8"))
     nodes = [n for n in parsed.body if isinstance(n, ast.FunctionDef) and n.name in names]
     env = {"os": os, "re": re, "dt": dt, "DeliveryError": DeliveryError,
+           "PAGE_VAR": "VM_FACEBOOK_PRONOS_PAGE_ID",
            "VALID_POST": re.compile(r"^[0-9]+_[0-9]+$"),
            "VALID_URL": re.compile(r"^https://(?:www\.|m\.)?facebook\.com/[^\s]+$")}
     env.update(extra or {})
