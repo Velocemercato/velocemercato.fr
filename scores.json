@@ -97,6 +97,18 @@
    ]
   },
   {
+   "id": 565843,
+   "date": "2026-10-31T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "Bremen",
+   "ext": "Hoffenheim",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    0
+   ]
+  },
+  {
    "id": 565840,
    "date": "2026-10-31T14:30:00Z",
    "comp": "Bundesliga",
@@ -109,14 +121,14 @@
    ]
   },
   {
-   "id": 565843,
+   "id": 565839,
    "date": "2026-10-31T14:30:00Z",
    "comp": "Bundesliga",
-   "dom": "Bremen",
-   "ext": "Hoffenheim",
-   "statut": "FINISHED",
+   "dom": "M'gladbach",
+   "ext": "SC Paderborn",
+   "statut": "IN_PLAY",
    "score": [
-    2,
+    1,
     0
    ]
   },
@@ -145,15 +157,15 @@
    ]
   },
   {
-   "id": 565839,
-   "date": "2026-10-31T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "M'gladbach",
-   "ext": "SC Paderborn",
+   "id": 560623,
+   "date": "2026-10-31T15:00:00Z",
+   "comp": "Premier League",
+   "dom": "Man City",
+   "ext": "Brighton Hove",
    "statut": "IN_PLAY",
    "score": [
-    1,
-    0
+    0,
+    1
    ]
   },
   {
@@ -177,18 +189,6 @@
    "statut": "IN_PLAY",
    "score": [
     3,
-    1
-   ]
-  },
-  {
-   "id": 560623,
-   "date": "2026-10-31T15:00:00Z",
-   "comp": "Premier League",
-   "dom": "Man City",
-   "ext": "Brighton Hove",
-   "statut": "IN_PLAY",
-   "score": [
-    0,
     1
    ]
   },
@@ -325,5 +325,5 @@
    ]
   }
  ],
- "maj": "2026-10-31T16:57:58Z"
+ "maj": "2026-10-31T16:59:52Z"
 }
