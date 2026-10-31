@@ -168,11 +168,15 @@ def publish_slot(state, graph, now=None):
     if not str(test.get("id", "")).startswith(page_id + "_") or not str(test.get("url", "")).startswith("https://"):
         raise DeliveryError("Confirmation du test incohérente avec l'ID Facebook demandé.")
     local = now.astimezone(PARIS)
-    kind = SLOTS.get(local.hour)
+    # Rattraper au plus le dernier créneau manqué (moins de deux heures).
+    eligible_hours = [hour for hour in SLOTS if 0 <= local.hour - hour < 2
+                      and f"creneau/{local:%Y-%m-%d}/{hour:02d}" not in receipts]
+    slot_hour = max(eligible_hours) if eligible_hours else local.hour
+    kind = SLOTS.get(slot_hour)
     if not kind:
         print("::notice::Aucun créneau éditorial à cette heure.")
         return False
-    slot = f"creneau/{local:%Y-%m-%d}/{local.hour:02d}"
+    slot = f"creneau/{local:%Y-%m-%d}/{slot_hour:02d}"
     if slot in receipts:
         print("::notice::Créneau déjà traité : aucun doublon.")
         return False
