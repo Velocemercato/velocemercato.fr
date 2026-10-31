@@ -192,7 +192,7 @@ def execute(state, graph, action, now=None):
     item = texts[0]
     recorded["test/unique"] = {"status": "envoi", "key": item["key"], "at": now.isoformat()}
     state.save()  # avant le contact Meta
-    message = "[TEST UNIQUE — VM ACTUS & PRONOS]\n\n" + item["text"]
+    message = "⚽ VM ACTUS & PRONOS\n\n" + item["text"]
     response = graph.call("POST", page + "/feed",
                           {"message": message, "link": item["link"], "access_token": meta["page_token"]})
     post_id = str(response.get("id") or "")
