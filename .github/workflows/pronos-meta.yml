@@ -1,0 +1,69 @@
+name: VM - RQ Pronos Facebook (diagnostic et test unique)
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Commencer par diagnostic ; test seulement après validation"
+        required: true
+        type: choice
+        options:
+          - diagnostic
+          - test
+        default: diagnostic
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+
+jobs:
+  rq-pronos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+      VM_FACEBOOK_PRONOS_PAGE_ID: ${{ vars.VM_FACEBOOK_PRONOS_PAGE_ID }}
+      VM_PRONOS_TEST_APPROVED: ${{ vars.VM_PRONOS_TEST_APPROVED }}
+      STATE_DIR: ${{ runner.temp }}/vm-broadcast-state
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Préparer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Installer cryptographie
+        run: python -m pip install --quiet 'cryptography==50.0.0'
+      - name: Vérifier que la Page demandée est bien RQ Pronos
+        run: |
+          test "$VM_FACEBOOK_PRONOS_PAGE_ID" = '112294796981981' || {
+            echo "::error::RQ Pronos : identifiant Facebook inattendu." ; exit 1;
+          }
+      - name: Tests locaux sans publication
+        run: python -m unittest discover -s tests -p 'test_pronos_meta.py' -v
+      - name: Ouvrir l'état chiffré (aucun jeton dans les logs)
+        run: |
+          set -euo pipefail
+          repo_url="https://github.com/$GITHUB_REPOSITORY.git"
+          if git -c credential.helper='!gh auth git-credential' ls-remote --exit-code "$repo_url" refs/heads/broadcast-state >/dev/null; then
+            git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "$repo_url" "$STATE_DIR"
+          else
+            echo "::error::Aucun état Meta existant. Exécuter la connexion RQ Pronos sans publier."
+            exit 1
+          fi
+      - name: Diagnostic sans publication OU un seul post test
+        env:
+          MODE: ${{ inputs.mode }}
+        run: |
+          if [ "$MODE" = test ]; then
+            test "$VM_PRONOS_TEST_APPROVED" = true || {
+              echo "::error::Le test public n'a pas été activé." ; exit 1;
+            }
+          fi
+          python tools/pronos_facebook.py "$MODE" --state "$STATE_DIR/state.enc"
