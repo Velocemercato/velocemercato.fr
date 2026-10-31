@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """AUDIT sans suppression des publications Facebook des Pages VM autorisées.
 
-Cibles à examiner : uniquement les publications datées de 2024 ou 2025
+Cibles à examiner : toutes les publications datées avant le 1er janvier 2026
 (en heure de Paris). Toutes les publications de 2026 sont intouchables,
-y compris janvier-octobre. Les dates antérieures à 2024 sont conservées.
+y compris janvier-octobre. Toutes les dates antérieures à 2026 sont à examiner.
 Ne change aucune destination et n'effectue AUCUNE suppression.
 """
 import datetime as dt
@@ -18,7 +18,7 @@ from tools.diffuser_jt import State, DeliveryError
 from tools.publier_meta import Graph
 
 PARIS = ZoneInfo("Europe/Paris")
-TARGET_YEARS = {2024, 2025}
+CUTOFF_YEAR = 2026
 PAGES = ("meta_pronos", "meta", "meta_univers")
 RQ_ID = "112294796981981"
 MAX_PAGES = 25
@@ -78,9 +78,9 @@ def classify(entries, page_id):
             uncertain.append(ident)
             continue
         entry = (ident, local.isoformat())
-        if local.year in TARGET_YEARS:
+        if local.year < CUTOFF_YEAR:
             candidates.append(entry)
-        elif local.year == 2026:
+        elif local.year >= CUTOFF_YEAR:
             safe_2026.append(entry)
         else:
             safe_other.append(entry)
@@ -104,13 +104,13 @@ def main():
         entries = fetch_posts(graph, page_id, token)
         candidates, keep_2026, keep_other, uncertain = classify(entries, page_id)
         print("::notice::" + account +
-              " : ANCIENNES_2024_2025=" + str(len(candidates)) +
-              " ; CONSERVER_2026=" + str(len(keep_2026)) +
+              " : ANCIENNES_AVANT_2026=" + str(len(candidates)) +
+              " ; CONSERVER_2026_ET_APRES=" + str(len(keep_2026)) +
               " ; AUTRES_CONSERVEES=" + str(len(keep_other)) +
               " ; INCERTAINES_CONSERVEES=" + str(len(uncertain)))
         for ident, stamp in candidates[:12]:
-            print("::notice::A_EXAMINER_2024_2025 " + account + " " + stamp + " " + ident)
-    print("::notice::FIN AUDIT : ZERO SUPPRESSION. Toutes les publications de 2026 conservées.")
+            print("::notice::A_EXAMINER_AVANT_2026 " + account + " " + stamp + " " + ident)
+    print("::notice::FIN AUDIT : ZERO SUPPRESSION. Toutes les publications depuis 2026 conservées.")
 
 
 if __name__ == "__main__":
