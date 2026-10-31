@@ -15,15 +15,14 @@ concurrency:
 
 jobs:
   publications:
-    # Ne s'active que sur demande du proprietaire, APRES le test verifie.
-    if: vars.VM_AUTO_PRONOS == 'true'
+    # Active avec autorisation utilisateur : le script refuse si le test Facebook n'est pas confirme.
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     env:
       GH_TOKEN: ${{ github.token }}
       VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
       VM_FACEBOOK_PRONOS_PAGE_ID: ${{ vars.VM_FACEBOOK_PRONOS_PAGE_ID }}
-      VM_AUTO_PRONOS: ${{ vars.VM_AUTO_PRONOS }}
+      VM_AUTO_PRONOS: 'true'
     steps:
       - uses: actions/checkout@v4
         with:
