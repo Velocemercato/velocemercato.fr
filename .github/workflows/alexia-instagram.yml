@@ -52,7 +52,19 @@ jobs:
             echo '::notice::Video Instagram déjà enregistrée.'
           else
             git commit -m 'Add Alexia Depagne Instagram studio report MP4 [skip ci]'
-            git -c credential.helper='!gh auth git-credential' push origin HEAD:main
+            for attempt in 1 2 3 4 5; do
+              git -c credential.helper='!gh auth git-credential' fetch --quiet origin main
+              git rebase origin/main
+              if git -c credential.helper='!gh auth git-credential' push origin HEAD:main; then
+                echo '::notice::MP4 Alexia enregistré dans le dépôt.'
+                break
+              fi
+              if [ "$attempt" -eq 5 ]; then
+                echo '::error::Conflit Git persistant : aucun envoi Instagram.'
+                exit 1
+              fi
+              sleep 3
+            done
           fi
       - name: Vérifier que le fichier est disponible sur le site
         run: |
