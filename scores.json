@@ -97,18 +97,6 @@
    ]
   },
   {
-   "id": 565847,
-   "date": "2026-10-31T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "Leverkusen",
-   "ext": "Stuttgart",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    4
-   ]
-  },
-  {
    "id": 565842,
    "date": "2026-10-31T14:30:00Z",
    "comp": "Bundesliga",
@@ -133,6 +121,30 @@
    ]
   },
   {
+   "id": 565847,
+   "date": "2026-10-31T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "Leverkusen",
+   "ext": "Stuttgart",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    4
+   ]
+  },
+  {
+   "id": 565843,
+   "date": "2026-10-31T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "Bremen",
+   "ext": "Hoffenheim",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    0
+   ]
+  },
+  {
    "id": 565840,
    "date": "2026-10-31T14:30:00Z",
    "comp": "Bundesliga",
@@ -145,11 +157,11 @@
    ]
   },
   {
-   "id": 565843,
-   "date": "2026-10-31T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "Bremen",
-   "ext": "Hoffenheim",
+   "id": 560630,
+   "date": "2026-10-31T15:00:00Z",
+   "comp": "Premier League",
+   "dom": "Brentford",
+   "ext": "Nottingham",
    "statut": "FINISHED",
    "score": [
     2,
@@ -166,30 +178,6 @@
    "score": [
     2,
     0
-   ]
-  },
-  {
-   "id": 560630,
-   "date": "2026-10-31T15:00:00Z",
-   "comp": "Premier League",
-   "dom": "Brentford",
-   "ext": "Nottingham",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
-   ]
-  },
-  {
-   "id": 560629,
-   "date": "2026-10-31T15:00:00Z",
-   "comp": "Premier League",
-   "dom": "Hull City",
-   "ext": "Ipswich Town",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    2
    ]
   },
   {
@@ -214,6 +202,18 @@
    "score": [
     0,
     1
+   ]
+  },
+  {
+   "id": 560629,
+   "date": "2026-10-31T15:00:00Z",
+   "comp": "Premier League",
+   "dom": "Hull City",
+   "ext": "Ipswich Town",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    2
    ]
   },
   {
@@ -325,5 +325,5 @@
    ]
   }
  ],
- "maj": "2026-10-31T19:48:06Z"
+ "maj": "2026-10-31T19:50:00Z"
 }
