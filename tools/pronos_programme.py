@@ -177,8 +177,8 @@ def publish_slot(state, graph, now=None):
         print("::notice::Créneau déjà traité : aucun doublon.")
         return False
     choice = next((p for p in candidates(now, kind)
-                   if isinstance(p, dict) and p.get("key") and "post/" + p["key"] not in receipts
-                   and safe_url(p.get("link"))), None)
+                   if isinstance(p, dict) and p.get("key") and p["key"] != test.get("key")
+                   and "post/" + p["key"] not in receipts and safe_url(p.get("link"))), None)
     if not choice:
         print("::notice::Aucune information récente et sourcée pour " + kind + ". Rien n'est publié.")
         return False
