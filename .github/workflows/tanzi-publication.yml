@@ -1,0 +1,44 @@
+name: VM - Publication reportage Loic Tanzi (unique)
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/tanzi-publication.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+
+jobs:
+  tanzi:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet 'cryptography==50.0.0'
+      - name: Verifier que le MP4 et le reportage sont bien presents
+        run: |
+          test -s media/reportages/Reportage_Loic_Tanzi_mobile.mp4
+          test -s reportages/loic-tanzi.html
+          python -m py_compile tools/publier_tanzi_meta.py
+      - name: Recuperer l'etat chiffre existant
+        run: |
+          set -euo pipefail
+          repo_url="https://github.com/$GITHUB_REPOSITORY.git"
+          state_dir="$RUNNER_TEMP/vm-broadcast-state"
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "$repo_url" "$state_dir"
+          test -f "$state_dir/state.enc"
+      - name: Publier et verifier sur Facebook et Instagram sans doublon
+        run: python tools/publier_tanzi_meta.py
