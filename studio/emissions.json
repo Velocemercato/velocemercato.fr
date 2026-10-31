@@ -1,5 +1,101 @@
 [
  {
+  "id": "gaming-edition-20261031-1800",
+  "univers": "gaming",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 18 h",
+  "titre": "La Pastille Gaming : GTA 6, Resident Evil 7 et Baldur's Gate 3",
+  "accroche": "Miami, Resident Evil, Baldur's Gate et South Park : on fait le tour de l'actu gaming.",
+  "duree": 152,
+  "date": "2026-10-31T18:14+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "gaming-edition-20261031-1800.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-10-31T18:00:00+01:00",
+  "source_start": "2026-10-30T18:00:00+01:00",
+  "source_end": "2026-10-31T18:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-c066427f9fd659b65c28e8",
+    "titre": "Miami-Dade s'associe à GTA 6 malgré l'opposition de la police locale",
+    "publishedAt": "2026-10-31T12:09:00Z",
+    "createdAt": "2026-10-31T12:19:54Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/une-version-fictive-de-miami-definie-par-le-crime-et-la-violence-quand-la-police-s-oppose-a-collaborer-avec-rockstar-sur-gta-6-3050872637.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-b50d8b04031343d5ef3f47",
+    "titre": "Une fin cachée de Resident Evil 7 révèle les Connections, l'organisation derrière Umbrella",
+    "publishedAt": "2026-10-31T10:19:00Z",
+    "createdAt": "2026-10-31T11:45:22Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/une-fin-cachee-de-resident-evil-7-revelait-deja-les-connections-l-organisation-qui-controlait-umbrella-3050872603.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-a09d18d2ddb932660b62a8",
+    "titre": "Baldur's Gate 3 : une série de comics annoncée chez Dark Horse Comics",
+    "publishedAt": "2026-10-31T08:03:00Z",
+    "createdAt": "2026-10-31T08:53:03Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/baldur-s-gate-3-en-comics-c-est-pour-tres-bientot-tout-ce-que-l-on-sait-3050872585.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-bfc2892c1d61f09e4a44fb",
+    "titre": "I Have No Mouth, and I Must Scream : le jeu culte de Cyberdreams à redécouvrir",
+    "publishedAt": "2026-10-31T05:01:00Z",
+    "createdAt": "2026-10-31T05:50:45Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/survivre-a-une-ia-psychopathe-pourquoi-il-faut-re-jouer-a-i-have-no-mouth-and-i-must-scream-3050872621.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-fb00eaf9f8305ceb7e51c3",
+    "titre": "Mouthwashing aura droit à une adaptation au cinéma signée Karyn Kusama",
+    "publishedAt": "2026-10-30T19:13:00Z",
+    "createdAt": "2026-10-30T19:54:47Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/mouthwashing-bientot-l-adaptation-au-cinema-par-karyn-kusama-jennifer-s-body-3050872672.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-b5fee537146096384003d0",
+    "titre": "South Park montre des images inédites de GTA 6 avec une mécanique de lancer de crottes",
+    "publishedAt": "2026-10-30T17:17:00Z",
+    "createdAt": "2026-10-30T17:51:57Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/south-park-diffuse-des-images-inedites-de-gta-6-avec-option-caca-de-chien-3050872673.html"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "actus-edition-20261031-1300",
   "univers": "actus",
   "format": "edition",
