@@ -1,0 +1,78 @@
+name: VM - Alexia Depagne studio Reel Instagram seul
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/alexia-instagram.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+
+jobs:
+  alexia-instagram:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+      VM_FACEBOOK_PRONOS_PAGE_ID: ${{ vars.VM_FACEBOOK_PRONOS_PAGE_ID }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Installer les dependances du montage
+        run: |
+          python -m pip install --quiet 'pillow==11.3.0' 'cryptography==50.0.0'
+          command -v ffmpeg
+      - name: Composer le Reel Alexia en studio
+        run: |
+          set -euo pipefail
+          python tools/creer_reel_alexia.py
+          ffprobe -v error -show_entries stream=codec_name,width,height -of json media/reportages/Reportage_Alexia_Depagne_instagram.mp4
+      - name: Enregistrer la vidéo publique dans le dépôt
+        run: |
+          set -euo pipefail
+          f='media/reportages/Reportage_Alexia_Depagne_instagram.mp4'
+          test -s "$f"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$f"
+          if git diff --cached --quiet; then
+            echo '::notice::Video Instagram déjà enregistrée.'
+          else
+            git commit -m 'Add Alexia Depagne Instagram studio report MP4 [skip ci]'
+            git -c credential.helper='!gh auth git-credential' push origin HEAD:main
+          fi
+      - name: Vérifier que le fichier est disponible sur le site
+        run: |
+          set -euo pipefail
+          url='https://velocemercato.fr/media/reportages/Reportage_Alexia_Depagne_instagram.mp4'
+          for attempt in $(seq 1 24); do
+            status="$(curl -sSL --max-time 15 -o /dev/null -w '%{http_code}' -I "$url" || true)"
+            type="$(curl -sSL --max-time 15 -o /dev/null -w '%{content_type}' -I "$url" || true)"
+            if [ "$status" = 200 ] && [[ "$type" == video/* ]]; then
+              echo '::notice::Reportage video Alexia accessible publiquement.'
+              exit 0
+            fi
+            echo "Vidéo pas encore servie par le site (HTTP $status)."
+            sleep 12
+          done
+          echo '::error::Vidéo indisponible : aucun envoi Instagram.'
+          exit 1
+      - name: Lire l'état chiffré des réseaux
+        run: |
+          set -euo pipefail
+          url="https://github.com/$GITHUB_REPOSITORY.git"
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "$url" "$RUNNER_TEMP/vm-broadcast-state"
+          test -s "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+      - name: Publier EXCLUSIVEMENT sur Instagram Veloce Mercato
+        run: python tools/publier_alexia_instagram.py
