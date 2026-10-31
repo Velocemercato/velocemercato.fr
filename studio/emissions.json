@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261031-1300",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "midi",
+  "label": "JT 13 h",
+  "titre": "La Pastille Actus - Midi du samedi 31 octobre",
+  "accroche": "Le JT express de midi, c'est parti.",
+  "duree": 150,
+  "date": "2026-10-31T13:16+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261031-1300.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-10-31T13:00:00+01:00",
+  "source_start": "2026-10-30T19:00:00+01:00",
+  "source_end": "2026-10-31T13:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-668829d212d30e6b215018",
+    "titre": "Une lettre raciste contenant une poudre blanche adressée au maire de Trappes",
+    "publishedAt": "2026-10-31T11:20:54Z",
+    "createdAt": "2026-10-31T11:41:12Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/faits-divers/terrorisme/attentat-raciste-a-trappes/une-lettre-au-contenu-raciste-contenant-une-poudre-blanche-a-ete-adressee-au-maire-de-trappes-ali-rabeh_8261744.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-7d28c95643154bb37737d2",
+    "titre": "Rugby à XV féminin : les Bleues battues 36-7 par les Black Ferns à Christchurch",
+    "publishedAt": "2026-10-31T11:21:34Z",
+    "createdAt": "2026-10-31T11:41:08Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/rugby/xv-de-france/video-un-seul-essai-une-troisieme-defaite-d-affilee-pour-les-bleues-le-resume-de-nouvelle-zelande-france-en-women-xv-global-series_8261756.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-34f1f6c8db783a960d3af3",
+    "titre": "Les cendres d'un vétéran français de la guerre de Corée inhumées à Busan",
+    "publishedAt": "2026-10-31T10:54:48Z",
+    "createdAt": "2026-10-31T11:10:28Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/coree-du-sud/une-ceremonie-d-inhumation-des-cendres-d-un-veteran-francais-de-la-guerre-de-coree-s-est-tenue-a-busan-au-pays_8261660.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-92d5482cd673995b9b8470",
+    "titre": "Route du Rhum 2026 : les Imoca quittent les bassins de Saint-Malo",
+    "publishedAt": "2026-10-31T10:57:54Z",
+    "createdAt": "2026-10-31T11:10:24Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://france3-regions.franceinfo.fr/bretagne/ille-et-vilaine/saint-malo/direct-video-route-du-rhum-2026-les-imoca-bateaux-stars-du-vendee-globe-quittent-les-bassins-de-saint-malo-suivez-le-passage-de-l-ecluse-des-11h15-3436920.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-d76f219b5321583e06bc15",
+    "titre": "Manifestations du 31 octobre : la CGT demande de suivre le seul parcours parisien autorisé",
+    "publishedAt": "2026-10-31T10:00:30Z",
+    "createdAt": "2026-10-31T10:15:54Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/greve/direct-mobilisation-du-31-octobre-suivez-cette-troisieme-journee-de-manifestations-pour-laquelle-le-gouvernement-prevoit-un-dispositif-de-securite-exceptionnel_8260562.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-0899e674179e7abc3b7181",
+    "titre": "Le CNC fête ses 80 ans : retour sur son rôle dans le financement du cinéma",
+    "publishedAt": "2026-10-31T10:09:39Z",
+    "createdAt": "2026-10-31T10:15:42Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/culture/cinema/le-cnc-a-80-ans-dix-choses-a-savoir-sur-l-artisan-du-financement-du-cinema-et-de-l-image-animee_8254531.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-abc0b1bb5ae483f239e0da",
+    "titre": "Haïti : le déploiement de soldats salvadoriens suscite des interrogations",
+    "publishedAt": "2026-10-31T09:30:28Z",
+    "createdAt": "2026-10-31T09:41:07Z",
+    "references": [
+     {
+      "nom": "RFI",
+      "url": "https://www.rfi.fr/fr/am%C3%A9riques/20261031-ha%C3%AFti-le-d%C3%A9ploiement-de-nouveaux-soldats-salvadoriens-soul%C3%A8ve-des-questions"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-b41d885d0670e371e641fb",
+    "titre": "Pologne : le président Nawrocki convoque les partis après une intervention policière au Tribunal constitutionnel",
+    "publishedAt": "2026-10-31T09:37:34Z",
+    "createdAt": "2026-10-31T09:41:02Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/europe/le-president-de-la-pologne-convoque-les-partis-pour-trouver-une-issue-a-la-crise-politique-apres-l-intervention-de-la-police-au-tribunal-constitutionnel_8261594.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261031-1200",
   "univers": "foot",
   "format": "edition",
