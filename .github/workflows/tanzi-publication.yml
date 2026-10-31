@@ -1,9 +1,6 @@
 name: VM - Publication reportage Loic Tanzi (unique)
 
 on:
-  push:
-    branches: [main]
-    paths: ['.github/workflows/tanzi-publication.yml']
   workflow_dispatch:
 
 permissions:
