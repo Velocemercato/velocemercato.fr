@@ -178,58 +178,75 @@ class Graph:
             raise DeliveryError(f'Meta a refusé ({error.code}, code {info.get("code", "?")}) : {message}') from None
 
 
-def connect(state, graph, app_id, app_secret, user_token):
+def connect(state, graph, app_id, app_secret, user_token, scope='all', dry_run=False):
+    """Connexion par identifiant Facebook exact, jamais par le nom ou pages[0].
+
+    scope='pronos' ne touche pas aux jetons meta et meta_univers.
+    Un ID explicitement demandé doit figurer dans /me/accounts, sinon aucun
+    changement n'est sauvegardé. Aucun Instagram n'est associé à RQ Pronos.
+    """
+    requested = {}
+    stored = state.data.get('tokens', {})
+    specs = (
+        ('meta', 'VM_FACEBOOK_VELOCE_PAGE_ID'),
+        ('meta_univers', 'VM_FACEBOOK_UNIVERS_PAGE_ID'),
+        ('meta_pronos', 'VM_FACEBOOK_PRONOS_PAGE_ID'),
+    )
+    for key, variable in specs:
+        if scope == 'pronos' and key != 'meta_pronos':
+            continue
+        explicit_id = os.getenv(variable, '').strip()
+        saved_id = str((stored.get(key) or {}).get('page_id') or '').strip()
+        if key != 'meta_pronos' and explicit_id and saved_id and explicit_id != saved_id:
+            raise DeliveryError(f'{variable} ne correspond pas à la Page déjà connectée : refus de changer la destination.')
+        desired_id = explicit_id or saved_id
+        if desired_id:
+            if not re.fullmatch(r'[0-9]{5,25}', desired_id):
+                raise DeliveryError(f'{variable} : identifiant Facebook invalide.')
+            requested[key] = desired_id
+    if scope == 'pronos' and 'meta_pronos' not in requested:
+        raise DeliveryError('Variable VM_FACEBOOK_PRONOS_PAGE_ID absente.')
+    if not requested:
+        raise DeliveryError('Aucun identifiant Facebook connu : renseigner les variables PAGE_ID ou conserver les IDs déjà enregistrés.')
     try:
         long = graph.call('GET', 'oauth/access_token', {'grant_type': 'fb_exchange_token', 'client_id': app_id,
                                                         'client_secret': app_secret, 'fb_exchange_token': user_token})
     except DeliveryError as error:
-        # Jeton déjà prolongé via l'outil Meta « Extend Access Token » : utilisable tel quel, sans clé secrète.
-        print(f'::notice::Échange avec la clé secrète impossible ({str(error)[:90]}) : jeton utilisé tel quel.', flush=True)
+        print(f'::notice::Échange de jeton impossible ({str(error)[:80]}) : vérification du jeton existant.', flush=True)
         long = {'access_token': user_token}
     token = long.get('access_token')
     if not token:
-        raise DeliveryError('Meta : échange du jeton non confirmé (jeton expiré ? le refaire dans l’explorateur).')
-    try:
-        pages = graph.call('GET', 'me/accounts', {'fields': 'id,name,link,username,access_token,instagram_business_account{id,username}',
-                                                  'access_token': token}).get('data', [])
-    except DeliveryError as error:
-        if 'accounts' not in str(error):
-            raise
-        # Le jeton collé est déjà celui de la Page (choix « Page » dans l'explorateur).
-        print('::notice::Le jeton collé est un jeton de Page (pas un jeton utilisateur).', flush=True)
-        page = graph.call('GET', 'me', {'fields': 'id,name,link,username,instagram_business_account{id,username}', 'access_token': token})
-        pages = [{**page, 'access_token': token}]
-    pages = [p for p in pages if p.get('access_token')]
-    if not pages:
-        raise DeliveryError('Meta : aucune Page autorisée. Cocher la Page Véloce Mercato lors de « Generate Access Token ».')
-    def norm(name):
-        return str(name).lower().replace('é', 'e').replace(' ', '')
-    targets = {'meta': next((p for p in pages if 'veloce' in norm(p.get('name'))), None),
-               'meta_univers': next((p for p in pages if any(k in norm(p.get('name')) for k in ('vminvest', 'univers'))), None)}
-    if not any(targets.values()):
-        targets['meta'] = pages[0]
-    page = targets['meta'] or targets['meta_univers']
-    for account, item in targets.items():
-        if not item:
+        raise DeliveryError('Impossible de valider le jeton Meta.')
+    # Ne pas utiliser GET /me comme repli : /me/accounts doit autoriser exactement la Page demandée.
+    pages = graph.call('GET', 'me/accounts', {'fields': 'id,name,link,username,access_token,instagram_business_account{id,username}',
+                                              'limit': 200, 'access_token': token}).get('data', [])
+    available = {str(p.get('id')): p for p in pages if p.get('access_token') and p.get('id')}
+    missing = [key for key, wanted_id in requested.items() if wanted_id not in available]
+    if missing:
+        raise DeliveryError('Page(s) demandée(s) absente(s) de /me/accounts : '
+                            + ', '.join(missing) + '. Relier les Pages dans les autorisations Meta, sans changer les autres destinations.')
+    # Toutes les correspondances sont vérifiées AVANT de modifier l'état.
+    for key, wanted_id in requested.items():
+        item = available[wanted_id]
+        insta = {} if key == 'meta_pronos' else (item.get('instagram_business_account') or {})
+        current = stored.get(key) or {}
+        # Si l'API n'a pas retourné Instagram cette fois, conserver l'association connue.
+        if key != 'meta_pronos' and not insta and current.get('page_id') == wanted_id:
+            insta = {'id': current.get('ig_id', ''), 'username': current.get('ig_username', '')}
+        if dry_run:
+            print(f'::notice::Simulation sans écriture : {key} = {wanted_id} ({item.get("name", "?")})'
+                  + (' ; Facebook seulement.' if key == 'meta_pronos' else ''), flush=True)
             continue
-        insta = item.get('instagram_business_account') or {}
-        try:
-            info = graph.call('GET', 'debug_token', {'input_token': item['access_token'], 'access_token': token}).get('data', {})
-            expires = int(info.get('expires_at') or 0)
-            print(f'::notice::Accès de la Page « {item.get("name", "?")} » : ' + ('PERMANENT ✅' if expires == 0 else
-                  'temporaire, expire le ' + dt.datetime.fromtimestamp(expires, UTC).astimezone(PARIS).strftime('%d/%m %H:%M')
-                  + ' (prolonger le jeton dans l’outil Meta puis relancer)'), flush=True)
-        except DeliveryError:
-            pass
-        state.data.setdefault('tokens', {})[account] = {'page_id': str(item['id']), 'page_name': item.get('name', ''),
-                                                        'page_token': item['access_token'], 'ig_id': str(insta.get('id', '')),
-                                                        'ig_username': insta.get('username', '')}
+        state.data.setdefault('tokens', {})[key] = {
+            'page_id': wanted_id, 'page_name': str(item.get('name') or ''),
+            'page_token': item['access_token'],
+            'ig_id': '' if key == 'meta_pronos' else str(insta.get('id') or ''),
+            'ig_username': '' if key == 'meta_pronos' else str(insta.get('username') or ''),
+        }
         state.save()
-        print(f'::notice::Meta connecté : Page « {item.get("name", "?")} »'
-              + (f' + Instagram @{insta["username"]}' if insta.get('username') else ' (aucun Instagram pro relié à cette Page)')
-              + '. Rien n’est publié tant que VM_AUTO_META n’est pas à true.', flush=True)
-        print(f'::notice::Adresse publique : {item.get("link") or "https://www.facebook.com/" + str(item.get("username") or item["id"])}', flush=True)
-    return page
+        print(f'::notice::Connexion confirmée : {key}, Page ID {wanted_id}'
+              + (' (Facebook uniquement)' if key == 'meta_pronos' else ''), flush=True)
+    return available[next(iter(requested.values()))]
 
 
 def read(path, default):
@@ -683,6 +700,8 @@ def main():
     parser.add_argument('action', choices=['connecter', 'publier', 'lancement', 'annonce', 'ballon-dor'])
     parser.add_argument('--state', type=Path, required=True)
     parser.add_argument('--article', choices=['', 'foot', 'actus', 'gaming'], default='', help='Publier un article tout de suite')
+    parser.add_argument('--cible', choices=['all', 'pronos'], default='all', help='Connexion isolée de RQ Pronos')
+    parser.add_argument('--dry-run', action='store_true', help='Vérification sans enregistrer de jeton ni publier')
     args = parser.parse_args()
     state = State(args.state, os.getenv('VM_DIFFUSION_STATE_KEY', ''), lambda: git_save(args.state))
     if args.action == 'connecter':
@@ -706,7 +725,7 @@ def main():
         if not app_id:  # l'ID de l'app se lit depuis le jeton lui-même (information publique)
             app_id = re.search(r'\d{10,20}', str(owner.get('id', '')))
         connect(state, graph, app_id.group(0) if app_id else values[0], secret.group(0) if secret else values[1].strip(),
-                user_token)
+                user_token, scope=args.cible, dry_run=args.dry_run)
         return
     if args.action == 'annonce':
         if annonce(state, Graph()):
