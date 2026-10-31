@@ -1,9 +1,9 @@
-name: VM - Inventaire Facebook 2024-2025 SANS suppression
+name: VM - Inventaire Facebook AVANT 2026 SANS suppression
 
 on:
   push:
     branches: [main]
-    paths: ['.github/workflows/audit-anciens-posts-meta.yml']
+    paths: ['.github/workflows/audit-anciens-posts-meta.yml', 'tools/audit_rq_pronos_posts.py']
   workflow_dispatch:
 
 permissions:
@@ -43,5 +43,5 @@ jobs:
           url="https://github.com/$GITHUB_REPOSITORY.git"
           git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "$url" "$RUNNER_TEMP/vm-broadcast-state"
           test -s "$RUNNER_TEMP/vm-broadcast-state/state.enc"
-      - name: Compter les posts de 2024 et 2025 sans suppression
+      - name: Compter les posts avant 2026 sans suppression
         run: python tools/audit_rq_pronos_posts.py
