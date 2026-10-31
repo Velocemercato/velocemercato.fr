@@ -2,6 +2,16 @@ name: VM - Connecter Facebook et Instagram
 
 on:
   workflow_dispatch:
+    inputs:
+      cible:
+        description: 'Destination à connecter (par défaut RQ Pronos seulement)'
+        type: choice
+        options: ['pronos', 'all']
+        default: 'pronos'
+      dry_run:
+        description: 'Simulation sans sauvegarder les jetons'
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -20,6 +30,9 @@ jobs:
       META_APP_ID: ${{ secrets.META_APP_ID }}
       META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
       META_USER_TOKEN: ${{ secrets.META_USER_TOKEN }}
+      VM_FACEBOOK_PRONOS_PAGE_ID: ${{ vars.VM_FACEBOOK_PRONOS_PAGE_ID }}
+      VM_FACEBOOK_VELOCE_PAGE_ID: ${{ vars.VM_FACEBOOK_VELOCE_PAGE_ID }}
+      VM_FACEBOOK_UNIVERS_PAGE_ID: ${{ vars.VM_FACEBOOK_UNIVERS_PAGE_ID }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -42,4 +55,11 @@ jobs:
             git -C "$STATE_DIR" remote add origin "$repo_url"
           fi
       - name: Échanger le jeton contre l’accès permanent de la Page (rien n’est publié)
-        run: python tools/publier_meta.py connecter --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+        env:
+          CIBLE: ${{ inputs.cible }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          args=(--cible "${CIBLE:-pronos}")
+          if [ "${DRY_RUN:-true}" = true ]; then args+=(--dry-run); fi
+          python tools/publier_meta.py connecter --state "$RUNNER_TEMP/vm-broadcast-state/state.enc" "${args[@]}"
