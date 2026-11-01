@@ -37,18 +37,6 @@
    ]
   },
   {
-   "id": 565839,
-   "date": "2026-10-31T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "M'gladbach",
-   "ext": "SC Paderborn",
-   "statut": "IN_PLAY",
-   "score": [
-    1,
-    0
-   ]
-  },
-  {
    "id": 565843,
    "date": "2026-10-31T14:30:00Z",
    "comp": "Bundesliga",
@@ -57,6 +45,18 @@
    "statut": "FINISHED",
    "score": [
     2,
+    0
+   ]
+  },
+  {
+   "id": 565839,
+   "date": "2026-10-31T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "M'gladbach",
+   "ext": "SC Paderborn",
+   "statut": "IN_PLAY",
+   "score": [
+    1,
     0
    ]
   },
@@ -97,6 +97,18 @@
    ]
   },
   {
+   "id": 560630,
+   "date": "2026-10-31T15:00:00Z",
+   "comp": "Premier League",
+   "dom": "Brentford",
+   "ext": "Nottingham",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    0
+   ]
+  },
+  {
    "id": 560624,
    "date": "2026-10-31T15:00:00Z",
    "comp": "Premier League",
@@ -109,15 +121,15 @@
    ]
   },
   {
-   "id": 560630,
+   "id": 560625,
    "date": "2026-10-31T15:00:00Z",
    "comp": "Premier League",
-   "dom": "Brentford",
-   "ext": "Nottingham",
+   "dom": "Coventry City",
+   "ext": "Sunderland",
    "statut": "FINISHED",
    "score": [
-    2,
-    0
+    3,
+    1
    ]
   },
   {
@@ -142,18 +154,6 @@
    "score": [
     2,
     2
-   ]
-  },
-  {
-   "id": 560625,
-   "date": "2026-10-31T15:00:00Z",
-   "comp": "Premier League",
-   "dom": "Coventry City",
-   "ext": "Sunderland",
-   "statut": "FINISHED",
-   "score": [
-    3,
-    1
    ]
   },
   {
@@ -284,7 +284,7 @@
    "ext": "Sevilla FC",
    "statut": "IN_PLAY",
    "score": [
-    1,
+    2,
     1
    ]
   },
@@ -296,7 +296,7 @@
    "ext": "Auxerre",
    "statut": "IN_PLAY",
    "score": [
-    0,
+    1,
     0
    ]
   },
@@ -332,7 +332,7 @@
    "ext": "1. FC Köln",
    "statut": "IN_PLAY",
    "score": [
-    0,
+    1,
     0
    ]
   },
@@ -457,5 +457,5 @@
    ]
   }
  ],
- "maj": "2026-11-01T14:46:07Z"
+ "maj": "2026-11-01T14:48:03Z"
 }
