@@ -1,8 +1,12 @@
 name: VM - Releve des liens Meta dimanche (LECTURE SEULE)
 on:
   push:
-    branches: [correctif-securite-meta-agenda-2026-11-01]
+    branches: [main]
     paths: ['.github/workflows/rapport-meta-du-jour.yml']
+  schedule:
+    # Points de contrôle : 07h50, 11h50, 18h50 et 22h50 Paris (hiver).
+    # Uniquement des GET Facebook/Instagram, aucune publication.
+    - cron: '50 6,10,17,21 * * *'
   workflow_dispatch:
 permissions:
   contents: read
