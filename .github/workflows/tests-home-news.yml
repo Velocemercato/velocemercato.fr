@@ -1,0 +1,31 @@
+name: VM - Tests des actualites visibles (sans publication)
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'build_pages.py'
+      - 'tools/home_news_static.py'
+      - 'tests/test_home_news_static.py'
+      - '.github/workflows/tests-home-news.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'build_pages.py'
+      - 'tools/home_news_static.py'
+      - 'tests/test_home_news_static.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Vérifier les actualités HTML sourcées sans publication
+        run: |
+          python -m py_compile tools/home_news_static.py build_pages.py
+          python -m unittest discover -s tests -p 'test_home_news_static.py' -v
