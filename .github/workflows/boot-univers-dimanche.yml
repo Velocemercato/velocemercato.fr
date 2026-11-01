@@ -1,0 +1,40 @@
+name: VM - Publication dimanche VM Univers (FB + Instagram, unique)
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/boot-univers-dimanche.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+jobs:
+  vm-univers:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet 'cryptography==50.0.0' 'pillow==11.3.0'
+      - name: Vérifier que le script ne cible que VM Univers
+        run: |
+          set -euo pipefail
+          [ "$(TZ=Europe/Paris date +%F)" = '2026-11-01' ] || exit 1
+          python -m py_compile tools/publier_univers_dimanche.py
+          python -m unittest discover -s tests -p 'test_meta_guardrails.py' -v
+          test -s tools/publier_univers_dimanche.py
+      - name: Lire l'état chiffré sans réinitialiser
+        run: |
+          set -euo pipefail
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "https://github.com/$GITHUB_REPOSITORY.git" "$RUNNER_TEMP/vm-broadcast-state"
+          test -s "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+      - name: Un seul post par réseau avec confirmation réelle
+        run: python tools/publier_univers_dimanche.py
