@@ -1,80 +1,65 @@
 {
- "id": "2026-10-31-08",
- "date": "2026-10-31T08:26:38+01:00",
+ "id": "2026-11-01-08",
+ "date": "2026-11-01T08:30:29+01:00",
  "questions": [
   {
-   "q": "Combien de buts Alan Shearer a-t-il inscrits en Premier League ?",
+   "q": "Combien de matchs de suspension Francisco Conceição a-t-il écopés de la part de l'UEFA ?",
    "choix": [
-    "206",
-    "260",
-    "120",
-    "405"
-   ],
-   "bonne": 1,
-   "explication": "Selon BBC Sport, Alan Shearer a inscrit 260 buts en Premier League ; 206 est son total avec Newcastle toutes compétitions confondues.",
-   "source": {
-    "titre": "Shearer évoque son record de buts en Premier League et son lien avec Newcastle",
-    "id": "rss-v2-74cd047d1e7ebb65609083"
-   }
-  },
-  {
-   "q": "Quel était le montant du transfert de Facundo Medina au Bayer Leverkusen ?",
-   "choix": [
-    "15 millions d'euros",
-    "25 millions d'euros",
-    "35 millions d'euros",
-    "5 millions d'euros"
-   ],
-   "bonne": 1,
-   "explication": "Foot Mercato indique que Medina a été transféré au Bayer Leverkusen pour 25 millions d'euros.",
-   "source": {
-    "titre": "Facundo Medina dresse un bilan très sévère de son passage à l'OM",
-    "id": "rss-v2-da07f168e82798f83f43b2"
-   }
-  },
-  {
-   "q": "Quel joueur a inscrit l'unique but du derby Lille-Lens ?",
-   "choix": [
-    "Florian Thauvin",
-    "Nabil Bentaleb",
-    "Olivier Giroud",
-    "Jessy Pi"
+    "Un match",
+    "Deux matchs",
+    "Trois matchs",
+    "Cinq matchs"
    ],
    "bonne": 2,
-   "explication": "Selon RMC Sport, Olivier Giroud a inscrit l'unique but du LOSC face au RC Lens.",
+   "explication": "Selon Foot Mercato, le Comité de l'UEFA a sanctionné Conceição de trois matchs de suspension.",
    "source": {
-    "titre": "Lille-Lens : Giroud délivre le LOSC, les Dogues prennent la deuxième place provisoire",
-    "id": "rss-v2-f6b6b729aa9344ca6f91d7"
+    "titre": "Portugal : Francisco Conceição suspendu trois matchs par l'UEFA",
+    "id": "rss-v2-e8769808ccfc414c239967"
    }
   },
   {
-   "q": "Quel est le score final de Lille-Lens ?",
+   "q": "Quel score Montpellier a-t-il obtenu lors de son déplacement à Annecy ?",
    "choix": [
-    "1-1",
     "2-0",
-    "1-0",
-    "0-1"
+    "3-0",
+    "3-1",
+    "1-0"
    ],
-   "bonne": 2,
-   "explication": "Le LOSC s'est imposé 1-0 face au RC Lens selon RMC Sport.",
+   "bonne": 1,
+   "explication": "Montpellier s'est imposé 3-0 à Annecy, selon la brève de Foot Mercato sur la 11e journée de Ligue 2.",
    "source": {
-    "titre": "Lille-Lens : Giroud délivre le LOSC, les Dogues prennent la deuxième place provisoire",
-    "id": "rss-v2-f6b6b729aa9344ca6f91d7"
+    "titre": "Ligue 2 : Montpellier s'impose 3-0 à Annecy et revient à un point de Saint-Étienne",
+    "id": "rss-v2-7dd09f4278358ffba62cf6"
    }
   },
   {
-   "q": "Combien de buts Achraf Hakimi a-t-il inscrits lors du Havre-PSG ?",
+   "q": "Quel joueur a inscrit le deuxième but de l'Atlético de Madrid à Levante ?",
    "choix": [
-    "Un",
-    "Deux",
-    "Trois",
-    "Aucun"
+    "Alejandro Grimaldo",
+    "Giuliano Simeone",
+    "Diego Simeone",
+    "Antoine Griezmann"
    ],
    "bonne": 1,
-   "explication": "Selon RMC Sport, Achraf Hakimi a réalisé un doublé lors du match Le Havre-PSG.",
+   "explication": "Grimaldo a ouvert le score et Giuliano Simeone a doublé la mise au retour des vestiaires, selon Foot Mercato.",
    "source": {
-    "titre": "Le Havre-PSG : Hakimi réalise un doublé et fait le break",
-    "id": "rss-v2-f47d21d8742d4bdb25359b"
+    "titre": "Liga : l'Atlético de Madrid s'impose 2-0 à Levante et prend la tête",
+    "id": "rss-v2-6bd845605a11fb466aa1da"
+   }
+  },
+  {
+   "q": "Combien de buts Will Lankshear a-t-il inscrits en 13 matchs de Championship ?",
+   "choix": [
+    "9",
+    "11",
+    "13",
+    "15"
+   ],
+   "bonne": 2,
+   "explication": "BBC Sport indique que Lankshear compte 13 réalisations en 13 matchs de championnat cette saison.",
+   "source": {
+    "titre": "Lankshear feu d'artifice avec Middlesbrough, West Ham en difficulté à domicile",
+    "id": "rss-v2-5900cbc614898f2c2a7997"
    }
   }
  ]
