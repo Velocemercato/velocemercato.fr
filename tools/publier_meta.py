@@ -715,6 +715,29 @@ def ballon_dor(state, graph, root=ROOT, sleep=time.sleep):
     return errors
 
 
+def ensure_meta_targets(state):
+    """Contrôle non destructif : la diffusion doit respecter les Pages exactes."""
+    expected_ids = {
+        'meta': '1384363904759072',
+        'meta_univers': '1349998758205153',
+        'meta_pronos': '112294796981981',
+    }
+    tokens = state.data.get('tokens', {})
+    used = set()
+    for account, expected in expected_ids.items():
+        current = tokens.get(account) or {}
+        if not current:
+            continue
+        identifier = str(current.get('page_id') or '')
+        if identifier != expected:
+            raise DeliveryError(f'{account} : ID Facebook inattendu ; aucun envoi.')
+        if identifier in used:
+            raise DeliveryError('Plusieurs marques ciblent une même Page Facebook.')
+        used.add(identifier)
+        if account == 'meta_pronos' and (current.get('ig_id') or current.get('ig_username')):
+            raise DeliveryError('RQ Pronos : association Instagram interdite.')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action', choices=['connecter', 'publier', 'lancement', 'annonce', 'ballon-dor'])
@@ -747,6 +770,9 @@ def main():
         connect(state, graph, app_id.group(0) if app_id else values[0], secret.group(0) if secret else values[1].strip(),
                 user_token, scope=args.cible, dry_run=args.dry_run)
         return
+    # Toutes les actions de publication (articles, JT, annonces, lancement)
+    # partagent ce contrôle, et la connexion reste un parcours sans publication.
+    ensure_meta_targets(state)
     if args.action == 'annonce':
         if annonce(state, Graph()):
             sys.exit(1)
