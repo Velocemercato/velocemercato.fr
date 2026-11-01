@@ -37,18 +37,6 @@
    ]
   },
   {
-   "id": 565842,
-   "date": "2026-10-31T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "Augsburg",
-   "ext": "Freiburg",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    2
-   ]
-  },
-  {
    "id": 565840,
    "date": "2026-10-31T14:30:00Z",
    "comp": "Bundesliga",
@@ -70,6 +58,18 @@
    "score": [
     2,
     4
+   ]
+  },
+  {
+   "id": 565842,
+   "date": "2026-10-31T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "Augsburg",
+   "ext": "Freiburg",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    2
    ]
   },
   {
@@ -97,6 +97,18 @@
    ]
   },
   {
+   "id": 560623,
+   "date": "2026-10-31T15:00:00Z",
+   "comp": "Premier League",
+   "dom": "Man City",
+   "ext": "Brighton Hove",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    1
+   ]
+  },
+  {
    "id": 560629,
    "date": "2026-10-31T15:00:00Z",
    "comp": "Premier League",
@@ -121,15 +133,15 @@
    ]
   },
   {
-   "id": 560623,
+   "id": 560624,
    "date": "2026-10-31T15:00:00Z",
    "comp": "Premier League",
-   "dom": "Man City",
-   "ext": "Brighton Hove",
+   "dom": "Bournemouth",
+   "ext": "Leeds United",
    "statut": "FINISHED",
    "score": [
-    0,
-    1
+    2,
+    0
    ]
   },
   {
@@ -138,18 +150,6 @@
    "comp": "Premier League",
    "dom": "Brentford",
    "ext": "Nottingham",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
-   ]
-  },
-  {
-   "id": 560624,
-   "date": "2026-10-31T15:00:00Z",
-   "comp": "Premier League",
-   "dom": "Bournemouth",
-   "ext": "Leeds United",
    "statut": "FINISHED",
    "score": [
     2,
@@ -457,5 +457,5 @@
    ]
   }
  ],
- "maj": "2026-11-01T22:10:10Z"
+ "maj": "2026-11-01T22:12:04Z"
 }
