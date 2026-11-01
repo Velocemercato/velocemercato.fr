@@ -1,8 +1,5 @@
 name: VM - Publication dimanche VM Univers (FB + Instagram, unique)
 on:
-  push:
-    branches: [main]
-    paths: ['.github/workflows/boot-univers-dimanche.yml']
   workflow_dispatch:
 permissions:
   contents: write
