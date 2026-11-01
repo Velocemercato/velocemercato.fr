@@ -166,6 +166,11 @@ def push_branch(files):
         for old in videos[KEEP_VIDEOS:]:
             old.unlink()
         git('add', '-A', cwd=work)
+        # Un JT déjà présent génère parfois un fichier identique. Dans ce cas,
+        # ne PAS échouer : on conserve le SHA du lot disponible sur la branche.
+        if not git('status', '--porcelain', cwd=work):
+            print('Kit réseaux : originaux identiques, aucune nouvelle vidéo à pousser.')
+            return git('rev-parse', 'HEAD', cwd=work)
         git('-c', 'user.name=github-actions[bot]', '-c', 'user.email=41898282+github-actions[bot]@users.noreply.github.com',
             'commit', '--quiet', '-m', 'Réseaux : vidéos verticales des JT', cwd=work)
         git('push', '--quiet', 'origin', f'HEAD:{BRANCH}', cwd=work)
