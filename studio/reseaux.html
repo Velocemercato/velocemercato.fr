@@ -25,6 +25,7 @@
 <section class="vd-sec"><div class="vd-h"><h2>Prêt à publier</h2><p>Les JT réellement produits et préparés pour les réseaux apparaissent ici avec leur vidéo verticale et leurs textes. Une case planifiée ne prouve jamais une publication.</p></div>
 <div class="vd-panel"><ol class="steps"><li><b>📲 Partager</b> : le texte est copié, puis choisis TikTok, Instagram ou Facebook et colle le texte en légende.</li><li><b>⬇️ Enregistrer</b> : la vidéo va dans ton téléphone, à publier quand tu veux.</li><li>Ajoute cette page à ton écran d’accueil pour l’ouvrir en un geste.</li></ol></div></section>
 <section class="vd-sec"><div class="vd-panel"><details><summary>📅 Voir la grille quotidienne (13 créneaux, heure de Paris)</summary><div id="grille-jour"><p>Chargement du programme…</p></div></details><p id="statut-kit" class="meta" aria-live="polite">Vérification des dernières vidéos préparées…</p></div></section>
+<section class="vd-sec"><div class="vd-h"><h2>JT publics confirmés sur YouTube</h2><p>Ces liens proviennent uniquement des diffusions portant le statut « published ». Une vidéo YouTube ne signifie pas qu'un Reel est prêt.</p></div><div id="yt-publies" class="vd-list" aria-live="polite"><p>Recherche des derniers JT publics…</p></div></section>
 <section class="vd-sec"><div class="vd-list" id="liste" aria-live="polite"><p class="vd-empty">Chargement des derniers JT…</p></div></section>
 </main>
 <footer class="vd-foot">VM Studio · <a href="/">Véloce Mercato</a> · page technique non référencée</footer>
@@ -32,6 +33,26 @@
 <script src="/demos/kit/vm-demo.js"></script>
 <script>
 (function(){
+var Y=document.getElementById('yt-publies');
+fetch('/studio/diffusions.json',{cache:'no-store'}).then(function(resp){
+ if(!resp.ok)throw Error(resp.status);return resp.json();
+}).then(function(data){
+ var rows=(Array.isArray(data)?data:[]).filter(function(item){
+  var v=(item.plateformes||{}).youtube||{};
+  return v.status==='published' && /^https:\/\/www\.youtube\.com\/watch\?v=[A-Za-z0-9_-]{11}$/.test(v.url||'');
+ }).sort(function(a,b){return String(b.date_publication||'').localeCompare(String(a.date_publication||''))}).slice(0,8);
+ if(!rows.length){Y.textContent='Aucun JT public confirmé dans le registre.';return;}
+ Y.innerHTML=rows.map(function(item){
+  var u=item.plateformes.youtube.url;
+  var d=new Date(item.date_publication||item.date);
+  var date=isNaN(d)?'':d.toLocaleString('fr-FR',{timeZone:'Europe/Paris',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
+  return '<article class="vd-panel"><h3>'+VD.esc(item.titre||item.id)+'</h3><p class="meta">'+VD.esc(date)+' · Vidéo YouTube confirmée</p><a class="vd-btn sm b" href="'+VD.esc(u)+'" target="_blank" rel="noopener">▶ Regarder le JT public</a> <button class="vd-btn sm alt" type="button" data-url="'+VD.esc(u)+'">📋 Copier le lien</button></article>';
+ }).join('');
+ Y.addEventListener('click',function(e){
+  var btn=e.target.closest('button[data-url]');
+  if(btn&&navigator.clipboard){navigator.clipboard.writeText(btn.getAttribute('data-url')).then(function(){btn.textContent='✅ Lien copié';}).catch(function(){});}
+ });
+}).catch(function(){Y.textContent='Registre des JT temporairement indisponible.';});
 var L=document.getElementById('liste'),esc=VD.esc;
 var G=document.getElementById('grille-jour'),K=document.getElementById('statut-kit');
 var frToday=new Intl.DateTimeFormat('fr-FR',{timeZone:'Europe/Paris',weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(new Date());
