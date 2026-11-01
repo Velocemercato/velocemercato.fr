@@ -97,18 +97,6 @@
    ]
   },
   {
-   "id": 560624,
-   "date": "2026-10-31T15:00:00Z",
-   "comp": "Premier League",
-   "dom": "Bournemouth",
-   "ext": "Leeds United",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
-   ]
-  },
-  {
    "id": 560630,
    "date": "2026-10-31T15:00:00Z",
    "comp": "Premier League",
@@ -121,15 +109,15 @@
    ]
   },
   {
-   "id": 560629,
+   "id": 560624,
    "date": "2026-10-31T15:00:00Z",
    "comp": "Premier League",
-   "dom": "Hull City",
-   "ext": "Ipswich Town",
+   "dom": "Bournemouth",
+   "ext": "Leeds United",
    "statut": "FINISHED",
    "score": [
     2,
-    2
+    0
    ]
   },
   {
@@ -154,6 +142,18 @@
    "score": [
     0,
     1
+   ]
+  },
+  {
+   "id": 560629,
+   "date": "2026-10-31T15:00:00Z",
+   "comp": "Premier League",
+   "dom": "Hull City",
+   "ext": "Ipswich Town",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    2
    ]
   },
   {
@@ -285,7 +285,7 @@
    "statut": "IN_PLAY",
    "score": [
     0,
-    0
+    1
    ]
   },
   {
@@ -457,5 +457,5 @@
    ]
   }
  ],
- "maj": "2026-11-01T13:27:47Z"
+ "maj": "2026-11-01T13:29:41Z"
 }
