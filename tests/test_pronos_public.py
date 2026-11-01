@@ -1,0 +1,73 @@
+"""Tests hors ligne : page publique d'actualités RQ Pronos, aucun envoi Meta."""
+import datetime as dt
+import json
+import tempfile
+import unittest
+from pathlib import Path
+
+from tools.pronos_public import build, recent_articles, render, section_agenda, safe_url, PARIS
+
+
+class PronosPublicTests(unittest.TestCase):
+    NOW = dt.datetime(2026, 11, 1, 10, 0, tzinfo=dt.timezone.utc)
+
+    def fixture(self, root, published="2026-11-01T09:00:00Z", title="Info sourcée"):
+        (root / "actus").mkdir(exist_ok=True)
+        (root / "actus/news.json").write_text(json.dumps([{
+            "id": "news-test-001", "publishedAt": published,
+            "titre": title, "resume": "Brève vérifiable",
+            "sources": [{"nom": "Source test", "url": "https://example.org/report"}],
+        }]), encoding="utf-8")
+
+    def test_news_visible_in_static_html(self):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            self.fixture(root)
+            text = render(root, self.NOW)
+            self.assertIn("Info sourcée", text)
+            self.assertIn("Brève vérifiable", text)
+            self.assertIn("Source test", text)
+            self.assertIn('href="https://www.facebook.com/112294796981981"', text)
+            self.assertIn("18+", text)
+
+    def test_html_escaped_and_false_stories_excluded(self):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            self.fixture(root, title="<script>danger</script>")
+            text = render(root, self.NOW)
+            self.assertIn("&lt;script&gt;", text)
+            self.assertNotIn("<script>", text)
+            self.fixture(root, published="2026-10-20T00:00:00Z")
+            self.assertNotIn("news-test-001", render(root, self.NOW))
+            self.fixture(root, published="2026-11-02T10:00:00Z")
+            self.assertEqual(recent_articles(root, "actus/news.json", self.NOW), [])
+
+    def test_unverified_match_not_in_agenda(self):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            (root / "programmes").mkdir()
+            f = root / "programmes/avant_match_2026-11-01.json"
+            f.write_text(json.dumps({"date_matchs": "2026-11-01", "matches": [{
+                "affiche": "Faux match", "heure_paris": "15:00",
+                "official_verified": False,
+                "sources": [{"url": "https://ligue1.com/fr/articles/example"}],
+            }]}))
+            self.assertNotIn("Faux match", section_agenda(root, self.NOW))
+
+    def test_build_idempotent(self):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            self.fixture(root)
+            self.assertTrue(build(root, self.NOW))
+            self.assertTrue((root / "pronos/index.html").is_file())
+            self.assertFalse(build(root, self.NOW))
+
+    def test_urls_and_timezones(self):
+        self.assertTrue(safe_url("https://example.com/story"))
+        self.assertFalse(safe_url("https://user:pass@example.com/story"))
+        self.assertFalse(safe_url("javascript:alert(1)"))
+        self.assertEqual(self.NOW.astimezone(PARIS).hour, 11)
+
+
+if __name__ == "__main__":
+    unittest.main()

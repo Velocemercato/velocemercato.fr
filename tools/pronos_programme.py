@@ -34,8 +34,8 @@ SLOTS = {7: "actus", 8: "foot", 10: "belfort",
          21: "projet"}
 NEWS = {
     "foot": ("articles.json", "⚽", "https://velocemercato.fr/"),
-    "actus": ("actus/news.json", "📰", "https://velocemercato.fr/actus/"),
-    "gaming": ("vm-gaming/news.json", "🎮", "https://velocemercato.fr/vm-gaming/"),
+    "actus": ("actus/news.json", "📰", "https://velocemercato.fr/pronos/"),
+    "gaming": ("vm-gaming/news.json", "🎮", "https://velocemercato.fr/pronos/"),
 }
 PROJETS = (
     ("VM Univers", "https://vmunivers.fr/", "Découvre tous nos projets, sites et outils"),
@@ -190,7 +190,7 @@ def preview_sourcee(now):
     return {
         "key": "agenda/" + target.isoformat(),
         "text": "\n".join(lines),
-        "link": "https://velocemercato.fr/",
+        "link": "https://velocemercato.fr/pronos/",
     }
 
 

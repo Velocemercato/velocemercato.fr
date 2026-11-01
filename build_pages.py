@@ -199,6 +199,11 @@ def main():
             path.write_text(page, encoding='utf-8')
         written.add(name)
         urls.append((url, a.get('publishedAt', '')))
+    # Actualiser le site public des informations RQ Pronos avec ces mêmes brèves.
+    # Il n'envoie aucun post sur Facebook.
+    from tools.pronos_public import build as build_pronos
+    build_pronos(Path('.'))
+
     # Les pages des brèves retirées du fil sont supprimées (pas de page orpheline).
     for old in OUT.glob('*.html'):
         if old.name not in written:
@@ -227,7 +232,8 @@ def main():
              f'  <url><loc>{SITE}/belfort/</loc></url>',
              f'  <url><loc>{SITE}/pub/</loc></url>',
              f'  <url><loc>{SITE}/pro-auto/</loc></url>',
-             f'  <url><loc>{SITE}/actus/</loc><changefreq>hourly</changefreq></url>']
+             f'  <url><loc>{SITE}/actus/</loc><changefreq>hourly</changefreq></url>',
+             f'  <url><loc>{SITE}/pronos/</loc><changefreq>hourly</changefreq></url>']
     lines += [f'  <url><loc>{html.escape(u)}</loc>' + (f'<lastmod>{html.escape(d[:10])}</lastmod>' if d else '') + '</url>'
               for u, d in urls]
     lines.append('</urlset>')
