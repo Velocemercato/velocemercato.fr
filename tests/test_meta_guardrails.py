@@ -102,8 +102,11 @@ class Safety(unittest.TestCase):
         tree = ast.parse(src.read_text(encoding="utf-8"))
         fn = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == "publish")
         import datetime as dt
+        import time
         from zoneinfo import ZoneInfo
-        ns = {"DeliveryError": DeliveryError, "dt": dt, "UTC": dt.timezone.utc, "PARIS": ZoneInfo("Europe/Paris"), "os": os}
+        ns = {"DeliveryError": DeliveryError, "dt": dt, "time": time,
+              "ROOT": src.parents[1],
+              "UTC": dt.timezone.utc, "PARIS": ZoneInfo("Europe/Paris"), "os": os}
         exec(compile(ast.Module(body=[fn], type_ignores=[]), str(src), "exec"), ns)
         state = State({"tokens": self.tokens()})
         state.data["tokens"]["meta"]["page_id"] = IDS["meta_univers"]
