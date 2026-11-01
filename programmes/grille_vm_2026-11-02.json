@@ -1,0 +1,174 @@
+{
+  "schema": "vm-programme-v1",
+  "timezone": "Europe/Paris",
+  "date": "2026-11-02",
+  "status": "plan éditorial, pas une preuve d'envoi",
+  "instagram": [
+    "meta",
+    "meta_univers"
+  ],
+  "instagram_rq_pronos": false,
+  "sources": [
+    "articles.json",
+    "actus/news.json",
+    "vm-gaming/news.json",
+    "belfort/actus.json",
+    "studio/diffusions.json",
+    "studio/reseaux.json",
+    "programmes/avant_match_2026-11-02.json"
+  ],
+  "slots": [
+    {
+      "heure": "07:00",
+      "rubrique": "actus",
+      "sujet": "actualité générale",
+      "condition": "texte sourcé",
+      "pages_facebook": [
+        "meta_pronos",
+        "meta"
+      ],
+      "statut": "à vérifier avant publication"
+    },
+    {
+      "heure": "08:00",
+      "rubrique": "foot_gaming",
+      "sujet": "foot + gaming",
+      "condition": "brèves distinctes",
+      "pages_facebook": [
+        "meta",
+        "meta_pronos"
+      ],
+      "statut": "à vérifier avant publication"
+    },
+    {
+      "heure": "10:00",
+      "rubrique": "belfort",
+      "sujet": "actualité locale",
+      "condition": "texte sourcé; pas de vidéo inventée",
+      "pages_facebook": [
+        "meta_pronos",
+        "meta_univers"
+      ],
+      "statut": "à vérifier avant publication"
+    },
+    {
+      "heure": "10:40",
+      "rubrique": "prono",
+      "sujet": "agenda demain et simulation",
+      "condition": "source et avertissement 18+",
+      "pages_facebook": [
+        "meta_pronos"
+      ],
+      "statut": "à vérifier avant publication"
+    },
+    {
+      "heure": "11:00",
+      "rubrique": "jt_foot",
+      "sujet": "JT foot",
+      "condition": "vidéo déjà vérifiée uniquement",
+      "pages_facebook": [
+        "meta",
+        "meta_pronos"
+      ],
+      "statut": "à vérifier avant publication"
+    },
+    {
+      "heure": "12:00",
+      "rubrique": "jt_actus",
+      "sujet": "JT actu",
+      "condition": "vidéo déjà vérifiée uniquement",
+      "pages_facebook": [
+        "meta",
+        "meta_pronos"
+      ],
+      "statut": "à vérifier avant publication"
+    },
+    {
+      "heure": "13:00",
+      "rubrique": "gaming",
+      "sujet": "actualité gaming",
+      "condition": "brève sourcée",
+      "pages_facebook": [
+        "meta",
+        "meta_pronos"
+      ],
+      "statut": "à vérifier avant publication"
+    },
+    {
+      "heure": "15:00",
+      "rubrique": "belfort",
+      "sujet": "point local",
+      "condition": "vidéo locale dédiée à produire avant diffusion",
+      "pages_facebook": [
+        "meta_pronos",
+        "meta_univers"
+      ],
+      "statut": "à vérifier avant publication"
+    },
+    {
+      "heure": "18:00",
+      "rubrique": "foot",
+      "sujet": "actualité foot",
+      "condition": "brève sourcée",
+      "pages_facebook": [
+        "meta",
+        "meta_pronos"
+      ],
+      "statut": "à vérifier avant publication"
+    },
+    {
+      "heure": "19:00",
+      "rubrique": "actus",
+      "sujet": "actualité générale",
+      "condition": "brève sourcée",
+      "pages_facebook": [
+        "meta",
+        "meta_pronos"
+      ],
+      "statut": "à vérifier avant publication"
+    },
+    {
+      "heure": "20:00",
+      "rubrique": "gaming",
+      "sujet": "actualité gaming",
+      "condition": "brève sourcée",
+      "pages_facebook": [
+        "meta",
+        "meta_pronos"
+      ],
+      "statut": "à vérifier avant publication"
+    },
+    {
+      "heure": "21:00",
+      "rubrique": "projet",
+      "sujet": "projet VM Univers",
+      "condition": "lien et texte original",
+      "pages_facebook": [
+        "meta_univers",
+        "meta_pronos"
+      ],
+      "statut": "à vérifier avant publication"
+    },
+    {
+      "heure": "22:30",
+      "rubrique": "bilan",
+      "sujet": "objectif : 60 minutes",
+      "condition": "ne prétendre 60 min que si montage réel de 60 min vérifié",
+      "pages_facebook": [
+        "meta",
+        "meta_pronos"
+      ],
+      "statut": "à vérifier avant publication"
+    }
+  ],
+  "rules": {
+    "anti_doublons": true,
+    "lien_meta_confirme_obligatoire": true,
+    "suppression_posts_2026_interdite": true,
+    "bankroll_fictive_points": 100,
+    "montante_reelle": false,
+    "pourcentages_sans_modele": false,
+    "video_1h_non_confirmee": true,
+    "alerte": "Jouer comporte des risques, 18+, Joueurs Info Service 09 74 75 13 13"
+  }
+}
