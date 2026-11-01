@@ -169,8 +169,14 @@ def preview_sourcee(now):
     ]
     for row in matches[:5]:
         sources = row.get("sources") or []
-        if not (row.get("affiche") and row.get("heure_paris") and row.get("facts")
-                and sources and all(safe_url(s.get("url")) for s in sources)):
+        # Un horaire sans preuve officielle bloque l'ensemble du programme.
+        official_hosts = {"ligue1.com", "www.ligue1.com", "lfp.fr", "www.lfp.fr",
+                          "liverpoolfc.com", "www.liverpoolfc.com", "lfcbeta.liverpoolfc.com",
+                          "premierleague.com", "www.premierleague.com", "fplchallenge.premierleague.com"}
+        if not (row.get("official_verified") is True and row.get("affiche")
+                and row.get("heure_paris") and row.get("facts") and sources
+                and all(safe_url(s.get("url")) and urlparse(s["url"]).hostname in official_hosts
+                        for s in sources)):
             return None
         lines.extend(["", f"🏟️ {normal(row['affiche'])} — {normal(row['heure_paris'])} (Paris)"])
         for f in row["facts"][:2]:
