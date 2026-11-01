@@ -3,7 +3,8 @@ name: VM - RQ Pronos publications (apres test confirme)
 on:
   schedule:
     # UTC : le script applique les horaires Europe/Paris.
-    - cron: '25 6-21 * * *'
+    - cron: '25 5-21 * * *'  # actus dès 7h Paris hiver/été
+    - cron: '40 8-21 * * *'  # prono fictif 10h40 et bilan du soir 22h40 Paris
   workflow_dispatch:
 
 permissions:
