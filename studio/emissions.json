@@ -1,5 +1,101 @@
 [
  {
+  "id": "foot-edition-20261101-1200",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "midi",
+  "label": "JT 12 h",
+  "titre": "La Pastille Foot - JT de midi",
+  "accroche": "Le foot du dimanche 1er novembre, en six brèves.",
+  "duree": 134,
+  "date": "2026-11-01T12:35+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261101-1200.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-01T12:00:00+01:00",
+  "source_start": "2026-11-01T08:00:00+01:00",
+  "source_end": "2026-11-01T12:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-0220e75c97f9d6b56f57a4",
+    "titre": "Keelan Williams, frère de Neco, met un terme à sa carrière à 22 ans pour raisons cardiaques",
+    "publishedAt": "2026-11-01T05:01:19Z",
+    "createdAt": "2026-11-01T10:30:35Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/ckn8wxdp83g9o?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-65b47f5ef722930b84ba91",
+    "titre": "Nîmes accroche Limonest 2-2 grâce à un but acrobatique de Sory Doumbouya",
+    "publishedAt": "2026-11-01T09:31:00Z",
+    "createdAt": "2026-11-01T10:30:23Z",
+    "references": [
+     {
+      "nom": "Foot National",
+      "url": "https://www.foot-national.com/actus/nimes-le-but-acrobatique-de-sory-doumbouya-contre-limonest-961683"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-0a3051a88e409d1a968880",
+    "titre": "OL : le possible retour de Pierre Sage à Lyon divise les supporters",
+    "publishedAt": "2026-11-01T09:00:00Z",
+    "createdAt": "2026-11-01T09:36:11Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/ol/ol-pierre-sage-de-retour-a-lyon-ca-fait-debat"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-6a86a5f7623574b6332e2f",
+    "titre": "Ballon d'or 2026 : un journaliste marocain affirme avoir subi des tentatives d'influence",
+    "publishedAt": "2026-11-01T09:27:54Z",
+    "createdAt": "2026-11-01T09:36:07Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/ballon-d-or/ballon-d-or-on-a-tente-de-me-convaincre-de-voter-contre-hakimi-les-inquietantes-revelations-d-un-journaliste-marocain_AV-202611010194.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-43ad434a8b440f063593dc",
+    "titre": "Fishlock veut prolonger sa carrière en play-offs NWSL avec Seattle",
+    "publishedAt": "2026-11-01T05:15:00Z",
+    "createdAt": "2026-11-01T08:40:28Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cmewe7ee1djzo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-bb335c02437dc92598ca41",
+    "titre": "Saint-Maximin buteur puis exclu après un geste obscène en MLS",
+    "publishedAt": "2026-11-01T08:36:42Z",
+    "createdAt": "2026-11-01T08:40:14Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/major-league-soccer/but-genial-penalty-manque-et-geste-obscene-l-improbable-soiree-de-saint-maximin-en-mls_AN-202611010179.html"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-buts-20261101-1108",
   "univers": "foot",
   "format": "buts",
