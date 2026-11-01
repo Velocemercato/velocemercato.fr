@@ -1,8 +1,5 @@
 name: VM - Coup d'envoi dimanche RQ Pronos (unique)
 on:
-  push:
-    branches: [main]
-    paths: ['.github/workflows/boot-rq-dimanche.yml']
   workflow_dispatch:
 permissions:
   contents: write
