@@ -20,7 +20,6 @@ jobs:
       VM_AUTO_PRONOS: 'true'
       # Réutilise le créneau normal même si GitHub a lancé en retard.
       # Le script lit la date/heure REELLES pour son accusé Facebook.
-      VM_TRIGGER_CRON: '25 5-21 * * *'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -52,4 +51,6 @@ jobs:
           git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "https://github.com/$GITHUB_REPOSITORY.git" "$RUNNER_TEMP/vm-broadcast-state"
           test -s "$RUNNER_TEMP/vm-broadcast-state/state.enc"
       - name: Un seul post Facebook confirmé ou rien si déjà envoyé
+        env:
+          VM_TRIGGER_CRON: '25 5-21 * * *'
         run: python tools/pronos_programme.py --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
