@@ -18,7 +18,7 @@ from tools.diffuser_jt import State, DeliveryError
 from tools.publier_meta import Graph, ensure_meta_targets
 
 PARIS = ZoneInfo("Europe/Paris")
-DAY = dt.date(2026, 11, 1)
+DAY = dt.datetime.now(PARIS).date()
 PAGE_IDS = {
     "meta": "1384363904759072",
     "meta_univers": "1349998758205153",
@@ -122,7 +122,7 @@ def main():
     ensure_meta_targets(state)  # Même contrôle de sécurité que le correctif.
     graph = Graph()
     count = 0
-    print("::notice::AUDIT PUBLICATIONS REELLES 2026-11-01, LECTURE SEULE")
+    print("::notice::AUDIT PUBLICATIONS REELLES " + DAY.isoformat() + ", LECTURE SEULE")
     for account in ("meta", "meta_univers", "meta_pronos"):
         data = (state.data.get("tokens") or {}).get(account) or {}
         if not data:
