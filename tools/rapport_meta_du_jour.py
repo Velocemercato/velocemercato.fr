@@ -116,6 +116,45 @@ def graph_instagram(graph, account, data):
     return rows
 
 
+def diagnostic_page(graph, account, data):
+    """Identité de la Page et visibilite declarée par Graph, sans envoi."""
+    page_id = PAGE_IDS[account]
+    try:
+        page = graph.call("GET", page_id, {
+            "fields": "id,name,link", "access_token": data["page_token"],
+        })
+        name = re.sub(r"[\n\r]", " ", str(page.get("name") or ""))[:100]
+        url = str(page.get("link") or "")
+        if str(page.get("id")) == page_id:
+            print("::notice::IDENTITE PAGE " + account + " " + name +
+                  " URL_OFFICIELLE=" + (url if url.startswith("https://") else "INDISPONIBLE"))
+        else:
+            print("::warning::PAGE " + account + " : ID retourné different")
+    except (DeliveryError, ValueError, TypeError):
+        print("::warning::PAGE " + account + " : URL publique indisponible via Graph")
+
+
+def diagnostic_posts(graph, account, data, rows):
+    """Statuts des trois derniers posts FB; Graph n'equivaut PAS à un navigateur anonyme."""
+    for stamp, ident, url in sorted(rows, reverse=True)[:3]:
+        try:
+            status = graph.call("GET", ident, {
+                "fields": "id,is_published,is_hidden",
+                "access_token": data["page_token"],
+            })
+            if str(status.get("id") or "") != ident:
+                print("::warning::POST " + account + " : ID de détail différent")
+                continue
+            pub = str(status.get("is_published", "inconnu")).lower()
+            hidden = str(status.get("is_hidden", "inconnu")).lower()
+            print("::notice::VISIBILITE_GRAPH " + account + " ID=" + ident +
+                  " is_published=" + pub + " is_hidden=" + hidden +
+                  " (visibilité anonyme NON démontrée)")
+        except (DeliveryError, OSError, ValueError, TypeError):
+            print("::warning::VISIBILITE_GRAPH " + account + " ID=" + ident +
+                  " : vérification de détail indisponible; ne pas conclure PUBLIC")
+
+
 def main():
     folder = Path(os.environ["RUNNER_TEMP"]) / "vm-broadcast-state"
     state = State(folder / "state.enc", os.getenv("VM_DIFFUSION_STATE_KEY", ""))
@@ -128,6 +167,7 @@ def main():
         if not data:
             print("::warning::" + account + " : compte non connecté")
             continue
+        diagnostic_page(graph, account, data)
         for label, retrieve in (("FB", graph_page), ("IG", graph_instagram)):
             if label == "IG" and account == "meta_pronos":
                 print("::notice::IG meta_pronos : INTERDIT, aucune requête Instagram")
@@ -136,6 +176,8 @@ def main():
                 items = retrieve(graph, account, data)
                 print("::notice::COMPTE " + label + " " + account +
                       " POSTS_CONFIRME_REPERTOIRES=" + str(len(items)))
+                if label == "FB":
+                    diagnostic_posts(graph, account, data, items)
                 for stamp, ident, url in sorted(items, reverse=True):
                     print("::notice::PUBLICATION " + label + " " + account +
                           " " + stamp.strftime("%Y-%m-%d %H:%M") +

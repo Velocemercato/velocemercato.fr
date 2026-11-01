@@ -2,7 +2,7 @@ name: VM - Releve quotidien des liens Meta (LECTURE SEULE)
 on:
   push:
     branches: [main]
-    paths: ['.github/workflows/rapport-meta-du-jour.yml']
+    paths: ['.github/workflows/rapport-meta-du-jour.yml', 'tools/rapport_meta_du_jour.py']
   schedule:
     # Contrôles chaque jour, heures de Paris approximatives selon heure d'été/hiver.
     # Uniquement des GET Facebook/Instagram, aucune publication.
