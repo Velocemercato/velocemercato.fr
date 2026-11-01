@@ -1,6 +1,16 @@
 name: VM - RQ Pronos publications (apres test confirme)
 
 on:
+  workflow_run:
+    # Secours : si GitHub retarde un cron, la fin d'un robot d'actualité
+    # relance la vérification du créneau, sans renvoyer un post déjà accusé.
+    workflows:
+      - 'Veloce Mercato - Actualites'
+      - 'VM Actus - Actualites'
+      - 'VM Gaming - Actualites'
+      - 'VM Studio - La Pastille TV'
+    types: [completed]
+    branches: [main]
   schedule:
     # UTC : le script applique les horaires Europe/Paris.
     - cron: '25 5-21 * * *'  # actus dès 7h Paris hiver/été
@@ -16,6 +26,8 @@ concurrency:
 
 jobs:
   publications:
+    # Un robot source en échec ne peut pas provoquer de diffusion.
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     # Active avec autorisation utilisateur : le script refuse si le test Facebook n'est pas confirme.
     runs-on: ubuntu-24.04
     timeout-minutes: 15
