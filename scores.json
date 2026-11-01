@@ -37,6 +37,30 @@
    ]
   },
   {
+   "id": 565843,
+   "date": "2026-10-31T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "Bremen",
+   "ext": "Hoffenheim",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    0
+   ]
+  },
+  {
+   "id": 565839,
+   "date": "2026-10-31T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "M'gladbach",
+   "ext": "SC Paderborn",
+   "statut": "IN_PLAY",
+   "score": [
+    1,
+    0
+   ]
+  },
+  {
    "id": 565842,
    "date": "2026-10-31T14:30:00Z",
    "comp": "Bundesliga",
@@ -73,11 +97,11 @@
    ]
   },
   {
-   "id": 565843,
-   "date": "2026-10-31T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "Bremen",
-   "ext": "Hoffenheim",
+   "id": 560630,
+   "date": "2026-10-31T15:00:00Z",
+   "comp": "Premier League",
+   "dom": "Brentford",
+   "ext": "Nottingham",
    "statut": "FINISHED",
    "score": [
     2,
@@ -85,14 +109,14 @@
    ]
   },
   {
-   "id": 565839,
-   "date": "2026-10-31T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "M'gladbach",
-   "ext": "SC Paderborn",
-   "statut": "IN_PLAY",
+   "id": 560624,
+   "date": "2026-10-31T15:00:00Z",
+   "comp": "Premier League",
+   "dom": "Bournemouth",
+   "ext": "Leeds United",
+   "statut": "FINISHED",
    "score": [
-    1,
+    2,
     0
    ]
   },
@@ -130,30 +154,6 @@
    "score": [
     2,
     2
-   ]
-  },
-  {
-   "id": 560630,
-   "date": "2026-10-31T15:00:00Z",
-   "comp": "Premier League",
-   "dom": "Brentford",
-   "ext": "Nottingham",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
-   ]
-  },
-  {
-   "id": 560624,
-   "date": "2026-10-31T15:00:00Z",
-   "comp": "Premier League",
-   "dom": "Bournemouth",
-   "ext": "Leeds United",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
    ]
   },
   {
@@ -301,18 +301,6 @@
    ]
   },
   {
-   "id": 558544,
-   "date": "2026-11-01T14:00:00Z",
-   "comp": "Serie A",
-   "dom": "Frosinone",
-   "ext": "Torino",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
-   ]
-  },
-  {
    "id": 558546,
    "date": "2026-11-01T14:00:00Z",
    "comp": "Serie A",
@@ -322,6 +310,18 @@
    "score": [
     2,
     1
+   ]
+  },
+  {
+   "id": 558544,
+   "date": "2026-11-01T14:00:00Z",
+   "comp": "Serie A",
+   "dom": "Frosinone",
+   "ext": "Torino",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    0
    ]
   },
   {
@@ -349,18 +349,6 @@
    ]
   },
   {
-   "id": 559640,
-   "date": "2026-11-01T16:15:00Z",
-   "comp": "Ligue 1",
-   "dom": "Olympique Lyon",
-   "ext": "Angers SCO",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
-   ]
-  },
-  {
    "id": 559642,
    "date": "2026-11-01T16:15:00Z",
    "comp": "Ligue 1",
@@ -370,6 +358,18 @@
    "score": [
     3,
     1
+   ]
+  },
+  {
+   "id": 559640,
+   "date": "2026-11-01T16:15:00Z",
+   "comp": "Ligue 1",
+   "dom": "Olympique Lyon",
+   "ext": "Angers SCO",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    0
    ]
   },
   {
@@ -457,5 +457,5 @@
    ]
   }
  ],
- "maj": "2026-11-01T19:32:14Z"
+ "maj": "2026-11-01T19:34:07Z"
 }
