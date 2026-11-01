@@ -1,10 +1,10 @@
-name: VM - Releve des liens Meta dimanche (LECTURE SEULE)
+name: VM - Releve quotidien des liens Meta (LECTURE SEULE)
 on:
   push:
     branches: [main]
     paths: ['.github/workflows/rapport-meta-du-jour.yml']
   schedule:
-    # Points de contrôle : 07h50, 11h50, 18h50 et 22h50 Paris (hiver).
+    # Contrôles chaque jour, heures de Paris approximatives selon heure d'été/hiver.
     # Uniquement des GET Facebook/Instagram, aucune publication.
     - cron: '50 6,10,17,21 * * *'
   workflow_dispatch:

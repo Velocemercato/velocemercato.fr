@@ -1,0 +1,33 @@
+name: VM - Tests de la grille quotidienne (sans publication)
+on:
+  pull_request:
+    paths:
+      - 'programmes/grille_vm_quotidienne.json'
+      - 'tools/publier_meta.py'
+      - 'tools/pronos_programme.py'
+      - 'tools/rapport_meta_du_jour.py'
+      - 'tools/programme_vmunivers.py'
+      - 'tests/test_grille_quotidienne.py'
+      - '.github/workflows/tests-grille-quotidienne.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'programmes/grille_vm_quotidienne.json'
+      - 'tools/publier_meta.py'
+      - 'tools/pronos_programme.py'
+      - 'tests/test_grille_quotidienne.py'
+      - '.github/workflows/tests-grille-quotidienne.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Tests sans API ni diffusion
+        run: python -m unittest discover -s tests -p 'test_grille_quotidienne.py' -v

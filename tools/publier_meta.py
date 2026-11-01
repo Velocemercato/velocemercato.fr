@@ -11,6 +11,7 @@ Aucun jeton n'est affiché ; les erreurs Meta sont résumées.
 """
 import argparse
 import datetime as dt
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -33,8 +34,8 @@ HOSTS = {'graph.facebook.com'}
 PARIS = ZoneInfo('Europe/Paris')
 UTC = dt.timezone.utc
 # Heure de Paris -> univers de l'article publié sur Facebook (demande de Romain, 26/10/2026).
-SLOTS = {7: 'foot', 8: 'actus', 9: 'gaming', 12: 'foot', 13: 'actus', 14: 'gaming',
-         16: 'foot', 17: 'actus', 18: 'gaming', 20: 'foot'}
+SLOTS = {7: 'actus', 8: 'foot', 13: 'gaming',
+         18: 'foot', 19: 'actus', 20: 'gaming'}
 UNIVERS = {
     'foot': {'file': 'articles.json', 'emoji': '⚽', 'site': 'velocemercato.fr',
              'tags': '#foot #mercato #football #velocemercato'},
@@ -50,7 +51,7 @@ UNIVERS = {
 # Environ 1 pub pour 4 publications normales : au-delà, Facebook et Instagram montrent moins la page.
 DEBUT_UNIVERS = dt.date(2026, 10, 26)
 HEURES_UNIVERS = {DEBUT_UNIVERS: (16, 19, 21, 23)}   # lancement ; ensuite tous les jours :
-HEURES_UNIVERS_DEFAUT = (9, 13, 19)
+HEURES_UNIVERS_DEFAUT = (10, 15, 21)
 YOUTUBE_CHAINE = 'https://www.youtube.com/@VeloceMercato'
 STUDIO_URL = 'https://velocemercato.fr/web-studio.html'
 STUDIO_PITCH = ('Un site clair sur téléphone, à prix fixe. Tout se fait à distance.\n'
@@ -380,7 +381,7 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
     if str((state.data.get('tokens', {}).get('meta_pronos') or {}).get('page_id') or '') == expected_id:
         raise DeliveryError('Destination également assignée à RQ Pronos, diffusion refusée.')
     local_now = now.astimezone(PARIS)
-    slots = {h: 'projet' for h in heures_univers(local_now.date())} if account == 'meta_univers' else SLOTS
+    slots = {10: 'belfort', 15: 'belfort', 21: 'projet'} if account == 'meta_univers' else SLOTS
     done = state.data.setdefault('meta' if account == 'meta' else account + '_accuses', {})
     errors, sent = [], 0
 
@@ -389,7 +390,11 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
         state.save()
 
     projets_seulement = account == 'meta_univers'  # VM Univers : pas de JT ni d'articles, seulement les projets
-    for row in ([] if projets_seulement else youtube_jt(root, now)[:2]):
+    # Ne relayer les JT qu'aux créneaux correspondants, avec une URL YouTube déjà publique.
+    jt_type = {11: 'foot', 12: 'actus'}.get(local_now.hour)
+    jt_ok = bool(jt_type) or (local_now.hour == 22 and local_now.minute >= 30)
+    jt_rows = [r for r in youtube_jt(root, now) if not jt_type or r['id'].startswith(jt_type + '-')]
+    for row in ([] if projets_seulement or not jt_ok else jt_rows[:1]):
         key = 'jt/facebook/' + row['id']
         if key in done:
             continue
@@ -436,8 +441,8 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
     # GitHub saute parfois un passage : on rattrape le créneau le plus récent manqué (moins de 3 h).
     def cle(h):
         return (f'projet/{local:%Y-%m-%d}/{h:02d}' if slots.get(h) == 'projet' else f'creneau/{local:%Y-%m-%d}/{h:02d}')
-    manques = [h for h in sorted(slots, reverse=True) if 0 <= local.hour - h < 3 and cle(h) not in done]
-    heure = manques[0] if manques else local.hour
+    # Ne pas publier rétroactivement des créneaux manqués.
+    heure = local.hour
     cible = local.replace(hour=heure, minute=10)
     if not force and slots.get(heure) == 'projet':
         key = cle(heure)
@@ -469,8 +474,81 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
             except (DeliveryError, OSError, subprocess.CalledProcessError) as error:
                 mark(key, 'echec', projet=name)
                 errors.append(f'VM Univers {name} : {str(error)[:150]}')
+    if not force and account == 'meta_univers' and slots.get(heure) == 'belfort':
+        slot_belfort = cle(heure)
+        if slot_belfort not in done:
+            payload = read(Path(root) / 'belfort/actus.json', {})
+            rows = payload.get('titres', []) if isinstance(payload, dict) else []
+            for item in rows:
+                if not isinstance(item, dict):
+                    continue
+                posted_at = when(item.get('d'))
+                source_url = str(item.get('u') or '')
+                source_host = urllib.parse.urlsplit(source_url)
+                headline = str(item.get('t') or '')
+                if (not posted_at or not dt.timedelta(0) <= now - posted_at <= dt.timedelta(hours=36)
+                        or source_host.scheme != 'https' or not source_host.hostname
+                        or source_host.username or not item.get('s')
+                        or not headline or 'content.Title' in headline):
+                    continue
+                fingerprint = hashlib.sha256(source_url.encode()).hexdigest()[:20]
+                fb_key = 'belfort/source/' + fingerprint
+                if fb_key in done:
+                    continue
+                text = (f"📍 VM BELFORT · LE FLASH LOCAL\n\n{clean(headline, 240)}\n\n"
+                        f"Source : {clean(item['s'], 80)}\n"
+                        f"Article source : {source_url}\n\n"
+                        "Découvrir VM Belfort : https://velocemercato.fr/belfort/\n"
+                        "#VMBelfort #VMUnivers")
+                mark(slot_belfort, 'envoi', source=fingerprint)
+                mark(fb_key, 'envoi', source=fingerprint)
+                try:
+                    post_id = str(graph.call('POST', expected_id + '/feed', {
+                        'message': text, 'link': source_url,
+                        'access_token': meta['page_token']}).get('id') or '')
+                    mark(fb_key, 'envoye_a_verifier', post=post_id)
+                    if not post_id.startswith(expected_id + '_'):
+                        raise DeliveryError('VM Belfort : identifiant Facebook inattendu.')
+                    proof = graph.call('GET', post_id, {
+                        'fields': 'id,from{id},permalink_url',
+                        'access_token': meta['page_token']})
+                    permalink = str(proof.get('permalink_url') or '')
+                    if (str(proof.get('id')) != post_id
+                            or str((proof.get('from') or {}).get('id')) != expected_id
+                            or not permalink.startswith('https://www.facebook.com/')):
+                        raise DeliveryError('VM Belfort : lien Facebook public non confirmé.')
+                    mark(fb_key, 'publie_confirme', post=post_id, url=permalink)
+                    mark(slot_belfort, 'publie_confirme', url=permalink, source=fingerprint)
+                    print('::notice::VM Belfort Facebook confirmé : ' + permalink)
+                except DeliveryError as error:
+                    errors.append('VM Belfort Facebook : ' + str(error))
+                if meta.get('ig_id'):
+                    ig_key = 'belfort/instagram/' + fingerprint
+                    if ig_key not in done:
+                        mark(ig_key, 'envoi')
+                        try:
+                            image_url = (card or instagram_projet_card)(
+                                'VM Belfort', 'belfort', clean(headline, 110))
+                            ig_text = (f"📍 VM BELFORT · {clean(headline, 200)}\n\n"
+                                       f"Source : {clean(item['s'], 70)}\n"
+                                       "Retrouve cette info sur VM Belfort (lien en bio).\n"
+                                       "#VMBelfort #VMUnivers")
+                            ig_id = str(instagram_image(graph, meta, image_url, ig_text, sleep=sleep) or '')
+                            mark(ig_key, 'envoye_a_verifier', post=ig_id)
+                            proof = graph.call('GET', ig_id, {
+                                'fields': 'id,permalink', 'access_token': meta['page_token']})
+                            url = str(proof.get('permalink') or '')
+                            if str(proof.get('id')) != ig_id or not url.startswith('https://www.instagram.com/'):
+                                raise DeliveryError('VM Belfort : lien Instagram non confirmé.')
+                            mark(ig_key, 'publie_confirme', post=ig_id, url=url)
+                            print('::notice::VM Belfort Instagram confirmé : ' + url)
+                        except (DeliveryError, OSError, subprocess.CalledProcessError) as error:
+                            errors.append('VM Belfort Instagram : ' + str(error)[:150])
+                break
+            else:
+                print('::notice::VM Belfort : aucune brève locale inédite et récente.')
     univers = force or slots.get(heure)
-    if univers == 'projet':
+    if univers in ('projet', 'belfort'):
         univers = None
     slot_key = cle(heure) if not force else f'manuel/{local:%Y-%m-%d-%H%M}/{force}'
     if univers and slot_key not in done:

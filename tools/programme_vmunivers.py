@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Génère studio/programme-vmunivers.html : le programme VM Univers du jour (et des 2 jours suivants),
-prêt à copier-coller sur TikTok, Snapchat ou ailleurs. Mêmes contenus et mêmes textes que la publication
-automatique Facebook/Instagram (tools/publier_meta.py), calculés dans le navigateur.
+prépare les fiches projets et affiche les créneaux locaux conditionnels. Les flashes Belfort
+sont sourcés en temps réel par le robot Meta, jamais inventés dans cette page.
 
 Usage : python tools/programme_vmunivers.py  (à relancer seulement si la liste des projets change)
 """
@@ -47,9 +47,9 @@ a.b.alt{background:#fff}
 .tip{background:#121d44;border-radius:14px;padding:12px 14px;color:var(--muted);font-size:.92rem}
 @media(max-width:480px){.post{grid-template-columns:92px 1fr}.media{width:92px}}
 </style></head><body>
-<header><h1>📅 Programme VM Univers</h1><p>Facebook et Instagram : publiés automatiquement. Ici : copie-colle sur TikTok, Snapchat…</p></header>
+<header><h1>📅 Programme VM Univers</h1><p>Facebook et Instagram : créneaux automatisés sous réserve de contenus vérifiés. Les flashes locaux sont à contrôler.</p></header>
 <main>
-<div class="tip">1) <b>📋 Copier le texte</b> · 2) <b>⬇️ Enregistrer</b> la vidéo ou l'image · 3) Publie sur TikTok/Snap et colle le texte. Ajoute cette page à ton écran d'accueil.</div>
+<div class="tip">1) Vérifie que le contenu est prêt · 2) Copie le texte et le média s'ils existent · 3) Publie uniquement les contenus vérifiés. Les flashes locaux ne sont pas prêts automatiquement pour TikTok/Snap.</div>
 <div id="liste"></div>
 </main>
 <script>
@@ -58,10 +58,12 @@ function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'
 function heures(d){return D.heures[iso(d)]||D.defaut}
 function jours(a,b){return Math.round((Date.UTC(b.getFullYear(),b.getMonth(),b.getDate())-Date.UTC(a.getFullYear(),a.getMonth(),a.getDate()))/864e5)}
 var debut=new Date(D.debut+'T12:00:00');
-function contenu(d,h){var hs=heures(d),r=hs.indexOf(h);r=r<0?0:r;
+function contenu(d,h){if(h===10||h===15)return {type:'carte',name:'VM Belfort',icon:'belfort',titre:'VM Belfort · flash local',pitch:'Information à sélectionner et à vérifier dans les sources du jour',tags:'#VMBelfort #VMUnivers',unverified:true};
+ var hs=heures(d),r=hs.indexOf(h);r=r<0?0:r;
  var l=D.rotations[r%D.rotations.length],it=Object.assign({},l[jours(debut,d)%l.length]);
  if(it.type==='video')it.video='/media/promos/'+it.video_id+'-vertical.mp4';return it}
-function texte(it){var fin=it.type==='video'?'\\nVidéo réalisée avec l’aide de l’IA.':'';
+function texte(it){if(it.unverified)return 'Créneau local programmé : consulter les dernières sources vérifiées sur velocemercato.fr/belfort/. Ne pas publier de flash sans article daté et sourcé.';
+ var fin=it.type==='video'?'\\nVidéo réalisée avec l’aide de l’IA.':'';
  return it.titre+'\\n\\n'+it.pitch+'\\n\\n👉 Lien en bio\\nTous nos projets : vmunivers.fr'+fin+'\\n\\n'+it.tags}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 var L=document.getElementById('liste'),now=new Date(),html='';
@@ -71,7 +73,7 @@ for(var k=0;k<3;k++){var d=new Date(now);d.setDate(d.getDate()+k);
   var m=it.type==='video'?'<video class="media" src="'+it.video+'" poster="'+it.video.replace('.mp4','.jpg')+'" preload="none" controls playsinline></video>':it.type==='image'?'<img class="media img" src="'+it.image+'" alt="">':'<img class="media img" src="/app/'+it.icon+'-512.png" alt="">';
   var dl=it.type==='video'?it.video:it.type==='image'?it.image:'/app/'+it.icon+'-512.png';
   html+='<div class="post'+(cur?' now':'')+'">'+m+'<div><div class="h">'+h+' h · <span class="t '+it.type+'">'+(it.type==='video'?'🎬 VIDÉO':it.type==='image'?'🖼️ AFFICHE':'✨ CARTE')+'</span>'+esc(it.name)+'</div>'+
-   '<pre>'+esc(tx)+'</pre><div class="btns"><button type="button" data-t="'+esc(tx)+'">📋 Copier le texte</button><a class="b alt" href="'+dl+'" download>⬇️ Enregistrer</a></div></div></div>'})}
+   '<pre>'+esc(tx)+'</pre><div class="btns">'+(it.unverified?'<a class="b alt" href="/belfort/">🔎 Vérifier les sources</a>':'<button type="button" data-t="'+esc(tx)+'">📋 Copier le texte</button><a class="b alt" href="'+dl+'" download>⬇️ Enregistrer</a>')+'</div></div></div>'})}
 L.innerHTML=html;
 L.addEventListener('click',function(e){var b=e.target.closest('button[data-t]');if(!b)return;
  navigator.clipboard.writeText(b.getAttribute('data-t')).then(function(){b.textContent='✅ Copié !';setTimeout(function(){b.textContent='📋 Copier le texte'},1800)})});

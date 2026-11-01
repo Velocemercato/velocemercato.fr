@@ -5,6 +5,8 @@ on:
     # Toutes les heures de 7 h à 23 h Paris (été et hiver) : articles selon le programme, pastilles dès qu'elles sont prêtes,
     # et les 4 publications VM Univers.
     - cron: '5 5-22 * * *'
+    # Bilan vers 22 h 40 Paris, en tenant compte des horaires UTC été/hiver.
+    - cron: '40 20,21 * * *'
   workflow_dispatch:
     inputs:
       article:
