@@ -16,10 +16,11 @@
       ],
       "sources": [
         {
-          "nom": "Ligue 1 / LFP",
+          "nom": "Ligue 1 / LFP — J9",
           "url": "https://ligue1.com/fr/articles/l1_article_5805-"
         }
-      ]
+      ],
+      "official_verified": true
     },
     {
       "affiche": "Paris FC – Monaco",
@@ -31,25 +32,51 @@
       ],
       "sources": [
         {
-          "nom": "Ligue 1 / LFP",
+          "nom": "Ligue 1 / LFP — J9",
           "url": "https://ligue1.com/fr/articles/l1_article_5805-"
         }
-      ]
+      ],
+      "official_verified": true
+    },
+    {
+      "affiche": "Lyon – Angers",
+      "competition": "Ligue 1",
+      "heure_paris": "17:15",
+      "facts": [
+        "La LFP a officiellement déplacé Lyon–Angers du samedi 31 octobre au dimanche 1er novembre à 17 h 15.",
+        "La programmation corrigée date du 27 octobre 2026 ; ne pas réutiliser l'ancien créneau du samedi."
+      ],
+      "sources": [
+        {
+          "nom": "Ligue 1 / LFP — modification officielle",
+          "url": "https://ligue1.com/fr/articles/l1_article_6010-j9-ol-angers-decale-au-dimanche-1er-novembre-ligue-1-2026-2027"
+        },
+        {
+          "nom": "Olympique Lyonnais — billetterie officielle",
+          "url": "https://billetterie.ol.fr/fr/calendrier?subscriberkey=0031o00001sOojHAAS"
+        }
+      ],
+      "official_verified": true
     },
     {
       "affiche": "Liverpool – Arsenal",
       "competition": "Premier League",
       "heure_paris": "17:30",
       "facts": [
-        "Premier League annonce la rencontre dimanche à 16 h 30 heure GMT, soit 17 h 30 à Paris.",
-        "Les blessures et les titulaires doivent être vérifiés avant toute analyse de performance."
+        "Liverpool FC confirme le match le dimanche 1er novembre à 16 h 30 heure britannique (GMT), soit 17 h 30 à Paris.",
+        "Les prévisions de score et absences doivent être validées séparément ; aucun pronostic chiffré n'est établi par ce calendrier."
       ],
       "sources": [
         {
-          "nom": "Premier League",
-          "url": "https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-season-2026-27"
+          "nom": "Liverpool FC — centre de match officiel",
+          "url": "https://lfcbeta.liverpoolfc.com/matches/mens-team/liverpool-v-arsenal-english-premier-league-20261101"
+        },
+        {
+          "nom": "Premier League — calendrier officiel",
+          "url": "https://fplchallenge.premierleague.com/en/fixtures/9"
         }
-      ]
+      ],
+      "official_verified": true
     },
     {
       "affiche": "Marseille – Toulouse",
@@ -61,14 +88,16 @@
       ],
       "sources": [
         {
-          "nom": "Ligue 1 / LFP",
+          "nom": "Ligue 1 / LFP — J9",
           "url": "https://ligue1.com/fr/articles/l1_article_5805-"
         }
-      ]
+      ],
+      "official_verified": true
     }
   ],
   "probabilites_1n2": null,
   "raison": "Aucune estimation statistique calibrée vérifiable n'a été calculée; ne pas afficher de pourcentages inventés.",
   "bankroll": "100 points virtuels, aucune transaction ni montante",
-  "risque": "Jouer comporte des risques, 18+, Joueurs Info Service 09 74 75 13 13"
+  "risque": "18+ · Jouer comporte des risques : endettement, isolement, dépendance · Joueurs Info Service 09 74 75 13 13",
+  "official_sources_only": true
 }
