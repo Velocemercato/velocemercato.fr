@@ -110,6 +110,25 @@ class PublicationTests(unittest.TestCase):
             self.assertFalse(fn(FakeState(), graph, dt.datetime(2026, 11, 2, 17, 40, tzinfo=dt.timezone.utc)))
         graph.call.assert_not_called()
 
+    def test_delayed_regular_cron_at_minute_46_still_posts_only_one(self):
+        fn, graph, _ = load_publish_slot()
+        graph.call.return_value = {"id": "112294796981981_9876"}
+        state = FakeState()
+        when = dt.datetime(2026, 11, 1, 17, 46, tzinfo=dt.timezone.utc)
+        with patch.dict(os.environ, {"VM_AUTO_PRONOS": "true",
+                                     "VM_TRIGGER_CRON": "25 5-21 * * *"}):
+            self.assertTrue(fn(state, graph, when))
+            self.assertFalse(fn(state, graph, when))
+        self.assertEqual(graph.call.call_count, 1)
+
+    def test_special_cron_never_sends_regular_story_in_same_hour(self):
+        fn, graph, _ = load_publish_slot()
+        when = dt.datetime(2026, 11, 1, 17, 40, tzinfo=dt.timezone.utc)
+        with patch.dict(os.environ, {"VM_AUTO_PRONOS": "true",
+                                     "VM_TRIGGER_CRON": "40 8-21 * * *"}):
+            self.assertFalse(fn(FakeState(), graph, when))
+        graph.call.assert_not_called()
+
     def test_no_new_content_does_not_post(self):
         fn, graph, _ = load_publish_slot(candidates=[])
         with patch.dict(os.environ, {"VM_AUTO_PRONOS": "true"}):
