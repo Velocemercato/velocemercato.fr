@@ -250,16 +250,19 @@ def publish_slot(state, graph, now=None):
     if not str(test.get("id", "")).startswith(page_id + "_") or not str(test.get("url", "")).startswith("https://"):
         raise DeliveryError("Confirmation du test incohérente avec l'ID Facebook demandé.")
     local = now.astimezone(PARIS)
-    # Les lancements :40 servent au rendez-vous fictif de 10 h et au
-    # bilan de 22 h 30 ; aucune mise réelle ni combiné à enjeu.
-    if local.hour == 10 and local.minute >= 35:
+    # GitHub Actions peut déclencher le cron :25 plusieurs minutes en retard.
+    # Identifier le CRON ORIGINAL, non l'heure réelle du runner : cela évite
+    # d'ignorer une publication valide arrivée à :40, sans créer de doublon.
+    regular_cron = os.getenv("VM_TRIGGER_CRON", "") == "25 5-21 * * *"
+    special_cron = os.getenv("VM_TRIGGER_CRON", "") == "40 8-21 * * *"
+    if local.hour == 10 and local.minute >= 35 and (special_cron or not regular_cron):
         kind = "prono"
         slot = f"creneau/{local:%Y-%m-%d}/10-prono"
-    elif local.hour == 22 and local.minute >= 30:
+    elif local.hour == 22 and local.minute >= 30 and (special_cron or not regular_cron):
         kind = "week_summary"
         slot = f"creneau/{local:%Y-%m-%d}/22h30-bilan"
-    elif local.minute >= 35:
-        print("::notice::Aucun créneau spécial à cette heure.")
+    elif (local.minute >= 35 and not regular_cron) or special_cron:
+        print("::notice::Ce déclenchement n'est pas un créneau éditorial à rattraper.")
         return False
     else:
         # Rattraper uniquement l'heure courante (pas de publication ancienne
