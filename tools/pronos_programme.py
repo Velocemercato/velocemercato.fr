@@ -28,7 +28,7 @@ UTC = dt.timezone.utc
 # Grille éditoriale en heure Europe/Paris. Le programme sélectionne les
 # contenus existants et vérifiés; il ne fabrique ni JT, ni vidéo d'une heure.
 # Les créneaux absents de contenu fiable restent vides, sans doublons.
-SLOTS = {7: "actus", 8: "foot", 9: "gaming", 10: "belfort",
+SLOTS = {7: "actus", 8: "foot", 10: "belfort",
          11: "jt_foot", 12: "jt_actus", 13: "gaming",
          15: "belfort", 18: "foot", 19: "actus", 20: "gaming",
          21: "projet"}
@@ -144,16 +144,11 @@ def project_candidate(now):
 
 
 def preview_sourcee(now):
-    """Agenda SOURCÉ du dimanche 1er ou lundi 2 novembre, sans cotes inventées."""
+    """Agenda officiel du jour, chaque jour si le fichier vérifié existe."""
     local = now.astimezone(PARIS)
     today = local.date()
-    # Le lundi est déjà préparé, mais le dimanche a priorité ABSOLUE le 1er novembre.
-    if today == dt.date(2026, 11, 1):
-        target = dt.date(2026, 11, 1)
-    elif today == dt.date(2026, 11, 2):
-        target = dt.date(2026, 11, 2)
-    else:
-        return None
+    # Aucun agenda ne doit être recopié du jour précédent.
+    target = today
     filename = "programmes/avant_match_" + target.isoformat() + ".json"
     dataset = load_json(filename, {})
     if not isinstance(dataset, dict) or dataset.get("date_matchs") != target.isoformat():
@@ -161,7 +156,7 @@ def preview_sourcee(now):
     matches = dataset.get("matches") or []
     if len(matches) < 2:
         return None
-    titre_jour = "DIMANCHE 1er NOVEMBRE" if target.day == 1 else "LUNDI 2 NOVEMBRE"
+    titre_jour = f"PROGRAMME DU {target:%d/%m/%Y}"
     lines = [
         "⚽ RQ PRONOS — AGENDA DU JOUR ET ANALYSE 100 % FICTIVE",
         "",
@@ -211,8 +206,9 @@ def candidates(now, kind):
     if kind == "week_summary":
         # Pas de faux "direct" ni de vidéo d'une heure si ce montage n'existe pas :
         # partager une émission hebdomadaire déjà réellement mise en ligne.
-        return [r for r in jt_candidates(now)
-                if "buts" in r["key"] or "debat" in r["key"] or "speciale" in r["key"]]
+        # Chaque soir : une édition du jour réellement publiée, même sans magazine
+        # hebdomadaire. Ne jamais annoncer 60 minutes sans vidéo confirmée.
+        return jt_candidates(now)
     if kind == "projet":
         return [project_candidate(now)]
     if kind == "prono":
