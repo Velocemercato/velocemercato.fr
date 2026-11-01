@@ -1,7 +1,7 @@
 name: VM - Audit Meta 3 Pages ID exact (sans publication)
 on:
   push:
-    branches: [correctif-securite-meta-agenda-2026-11-01]
+    branches: [main, correctif-securite-meta-agenda-2026-11-01]
     paths:
       - 'tools/publier_meta.py'
       - 'tools/pronos_facebook.py'
