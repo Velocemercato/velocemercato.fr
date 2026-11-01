@@ -1,0 +1,55 @@
+name: VM - Coup d'envoi dimanche RQ Pronos (unique)
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/boot-rq-dimanche.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+jobs:
+  lancement:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+      VM_FACEBOOK_PRONOS_PAGE_ID: ${{ vars.VM_FACEBOOK_PRONOS_PAGE_ID }}
+      VM_AUTO_PRONOS: 'true'
+      # Réutilise le créneau normal même si GitHub a lancé en retard.
+      # Le script lit la date/heure REELLES pour son accusé Facebook.
+      VM_TRIGGER_CRON: '25 5-21 * * *'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet 'cryptography==50.0.0'
+      - name: Garde stricte dimanche et Page RQ Pronos
+        run: |
+          set -euo pipefail
+          [ "$(TZ=Europe/Paris date +%F)" = '2026-11-01' ] || {
+            echo "::error::Ce lancement est réservé au dimanche 1er novembre 2026"; exit 1;
+          }
+          hour="$(TZ=Europe/Paris date +%H)"
+          [ "$hour" -ge 7 ] && [ "$hour" -le 21 ] || {
+            echo "::error::Pas de publication hors créneau éditorial"; exit 1;
+          }
+          [ "$VM_FACEBOOK_PRONOS_PAGE_ID" = '112294796981981' ] || {
+            echo "::error::Mauvaise Page Facebook"; exit 1;
+          }
+      - name: Vérifier les tests sans diffusion
+        run: |
+          python -m py_compile tools/pronos_programme.py tools/pronos_facebook.py
+          python -m unittest discover -s tests -p test_pronos_programme.py -v
+      - name: Lire les reçus chiffrés sans réinitialiser
+        run: |
+          set -euo pipefail
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "https://github.com/$GITHUB_REPOSITORY.git" "$RUNNER_TEMP/vm-broadcast-state"
+          test -s "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+      - name: Un seul post Facebook confirmé ou rien si déjà envoyé
+        run: python tools/pronos_programme.py --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
