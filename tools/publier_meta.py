@@ -829,10 +829,10 @@ if __name__ == '__main__':
             if eligible:
                 row, ident, link = eligible[0]
                 fb_key = 'belfort/source/' + ident
-                message = (f"📍 VM BELFORT · INFO LOCALE\\n\\n{clean(row['t'], 240)}\\n\\n"
-                           f"Source : {clean(row['s'], 80)}\\n"
-                           f"À lire sur le site du média : {link}\\n\\n"
-                           f"Nos projets : https://vmunivers.fr/\\n#VMBelfort #VMUnivers")
+                message = (f"📍 VM BELFORT · INFO LOCALE\n\n{clean(row['t'], 240)}\n\n"
+                           f"Source : {clean(row['s'], 80)}\n"
+                           f"À lire sur le site du média : {link}\n\n"
+                           f"Nos projets : https://vmunivers.fr/\n#VMBelfort #VMUnivers")
                 mark(slot_key, 'envoi', article=ident)
                 mark(fb_key, 'envoi')
                 try:
