@@ -232,6 +232,10 @@ def main():
               for u, d in urls]
     lines.append('</urlset>')
     Path('sitemap.xml').write_text('\n'.join(lines) + '\n', encoding='utf-8')
+    # Une sélection statique de brèves sourcées reste visible sur l'accueil
+    # même quand le chargement du fil JavaScript échoue.
+    from tools.home_news_static import update_index
+    update_index(Path('.'), ARTICLES)
     print(f'Pages : {len(written)} brèves avec leur propre page, sitemap à jour.')
 
 
