@@ -144,44 +144,50 @@ def project_candidate(now):
 
 
 def preview_sourcee(now):
-    """Agenda sourcé du lundi : aucun pourcentage inventé ni pari d'argent."""
+    """Agenda SOURCÉ du dimanche 1er ou lundi 2 novembre, sans cotes inventées."""
     local = now.astimezone(PARIS)
-    dataset = load_json("programmes/avant_match_2026-11-02.json", {})
-    if not isinstance(dataset, dict) or dataset.get("date_matchs") != "2026-11-02":
+    today = local.date()
+    # Le lundi est déjà préparé, mais le dimanche a priorité ABSOLUE le 1er novembre.
+    if today == dt.date(2026, 11, 1):
+        target = dt.date(2026, 11, 1)
+    elif today == dt.date(2026, 11, 2):
+        target = dt.date(2026, 11, 2)
+    else:
         return None
-    target = dt.date(2026, 11, 2)
-    if target - dt.timedelta(days=1) > local.date() or local.date() > target:
+    filename = "programmes/avant_match_" + target.isoformat() + ".json"
+    dataset = load_json(filename, {})
+    if not isinstance(dataset, dict) or dataset.get("date_matchs") != target.isoformat():
         return None
     matches = dataset.get("matches") or []
     if len(matches) < 2:
         return None
+    titre_jour = "DIMANCHE 1er NOVEMBRE" if target.day == 1 else "LUNDI 2 NOVEMBRE"
     lines = [
-        "⚽ VM ACTUS & PRONOS — AGENDA SPORTIF ET ANALYSE FICTIVE",
+        "⚽ RQ PRONOS — AGENDA DU JOUR ET ANALYSE 100 % FICTIVE",
         "",
-        "LUNDI 2 NOVEMBRE : DEUX RENCONTRES À SUIVRE 📊",
+        titre_jour + " : LES MATCHS À SUIVRE 📊",
     ]
-    for row in matches[:2]:
+    for row in matches[:5]:
         sources = row.get("sources") or []
         if not (row.get("affiche") and row.get("heure_paris") and row.get("facts")
                 and sources and all(safe_url(s.get("url")) for s in sources)):
             return None
-        lines.extend(["", f"🏟️ {normal(row['affiche'])} — {normal(row['heure_paris'])} (heure de Paris)"])
-        for f in row["facts"][:3]:
+        lines.extend(["", f"🏟️ {normal(row['affiche'])} — {normal(row['heure_paris'])} (Paris)"])
+        for f in row["facts"][:2]:
             lines.append("• " + normal(f))
-        lines.append("📎 Sources : " + ", ".join(s["url"] for s in sources[:2]))
+        lines.append("📎 Source : " + sources[0]["url"])
     lines.extend([
         "",
-        "🧠 Notre lecture : affiche par affiche, on analysera la forme récente, les absents "
-        "confirmés et les compositions. Aucune probabilité VM 1/N/2 publiée "
-        "sans modèle et validation statistique.",
-        "🎲 Bankroll de démonstration : 100 points fictifs. "
-        "Un combiné ajouterait de l'incertitude ; aucune montante, aucune mise réelle.",
+        "🧠 Analyse VM : calendrier et composition des équipes à vérifier avant les matchs. "
+        "Aucun pourcentage 1/N/2 inventé.",
+        "🎲 Simulation : bankroll théorique 100 points, aucune mise réelle. "
+        "Un combiné multiplie les risques : aucun gain certain ni montante.",
         "",
         RISK,
-        "#RQPronos #Football #Statistiques #VMUnivers",
+        "#RQPronos #Football #VMUnivers",
     ])
     return {
-        "key": "agenda/2026-11-02",
+        "key": "agenda/" + target.isoformat(),
         "text": "\n".join(lines),
         "link": "https://velocemercato.fr/",
     }
