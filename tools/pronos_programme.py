@@ -25,10 +25,13 @@ from tools.pronos_facebook import page_access, verify, normal, recent, prono, RI
 
 PARIS = ZoneInfo("Europe/Paris")
 UTC = dt.timezone.utc
-# 7-8 posts réguliers + 1 pronostic seulement s'il existe le jour concerné.
-# Pas de rafale : 1 seul post par lancement, et des créneaux espacés.
-SLOTS = {8: "foot", 10: "foot", 12: "belfort", 14: "gaming",
-         16: "foot", 17: "prono", 18: "actus", 20: "jt", 21: "projet"}
+# Grille éditoriale en heure Europe/Paris. Le programme sélectionne les
+# contenus existants et vérifiés; il ne fabrique ni JT, ni vidéo d'une heure.
+# Les créneaux absents de contenu fiable restent vides, sans doublons.
+SLOTS = {7: "actus", 8: "foot", 9: "gaming", 10: "belfort",
+         11: "jt_foot", 12: "jt_actus", 13: "gaming",
+         15: "belfort", 18: "foot", 19: "actus", 20: "gaming",
+         21: "projet"}
 NEWS = {
     "foot": ("articles.json", "⚽", "https://velocemercato.fr/"),
     "actus": ("actus/news.json", "📰", "https://velocemercato.fr/actus/"),
@@ -107,7 +110,7 @@ def belfort_candidates(now):
     return out
 
 
-def jt_candidates(now):
+def jt_candidates(now, universe=None):
     rows = load_json("studio/diffusions.json", [])
     out = []
     for a in rows if isinstance(rows, list) else []:
@@ -118,6 +121,8 @@ def jt_candidates(now):
         if youtube.get("status") != "published" or not re.fullmatch(r"https://www\.youtube\.com/watch\?v=[A-Za-z0-9_-]{11}", url):
             continue
         ident = str(a.get("id", ""))
+        if universe and not ident.startswith(universe + "-"):
+            continue
         if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,99}", ident):
             continue
         out.append({"key": "jt/" + ident, "link": url,
@@ -145,6 +150,13 @@ def candidates(now, kind):
         return belfort_candidates(now)
     if kind == "jt":
         return jt_candidates(now)
+    if kind in ("jt_foot", "jt_actus", "jt_gaming"):
+        return jt_candidates(now, kind.split("_", 1)[1])
+    if kind == "week_summary":
+        # Pas de faux "direct" ni de vidéo d'une heure si ce montage n'existe pas :
+        # partager une émission hebdomadaire déjà réellement mise en ligne.
+        return [r for r in jt_candidates(now)
+                if "buts" in r["key"] or "debat" in r["key"] or "speciale" in r["key"]]
     if kind == "projet":
         return [project_candidate(now)]
     if kind == "prono":
@@ -168,15 +180,25 @@ def publish_slot(state, graph, now=None):
     if not str(test.get("id", "")).startswith(page_id + "_") or not str(test.get("url", "")).startswith("https://"):
         raise DeliveryError("Confirmation du test incohérente avec l'ID Facebook demandé.")
     local = now.astimezone(PARIS)
-    # Rattraper au plus le dernier créneau manqué (moins de deux heures).
-    eligible_hours = [hour for hour in SLOTS if 0 <= local.hour - hour < 2
-                      and f"creneau/{local:%Y-%m-%d}/{hour:02d}" not in receipts]
-    slot_hour = max(eligible_hours) if eligible_hours else local.hour
-    kind = SLOTS.get(slot_hour)
-    if not kind:
-        print("::notice::Aucun créneau éditorial à cette heure.")
+    # Les lancements :40 servent au rendez-vous fictif de 10 h et au
+    # bilan de 22 h 30 ; aucune mise réelle ni combiné à enjeu.
+    if local.hour == 10 and local.minute >= 35:
+        kind = "prono"
+        slot = f"creneau/{local:%Y-%m-%d}/10-prono"
+    elif local.hour == 22 and local.minute >= 30:
+        kind = "week_summary"
+        slot = f"creneau/{local:%Y-%m-%d}/22h30-bilan"
+    elif local.minute >= 35:
+        print("::notice::Aucun créneau spécial à cette heure.")
         return False
-    slot = f"creneau/{local:%Y-%m-%d}/{slot_hour:02d}"
+    else:
+        # Rattraper uniquement l'heure courante (pas de publication ancienne
+        # ou d'un autre thème à la mauvaise heure).
+        kind = SLOTS.get(local.hour)
+        slot = f"creneau/{local:%Y-%m-%d}/{local.hour:02d}"
+        if not kind:
+            print("::notice::Aucun créneau éditorial à cette heure.")
+            return False
     if slot in receipts:
         print("::notice::Créneau déjà traité : aucun doublon.")
         return False
