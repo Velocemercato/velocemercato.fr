@@ -21,7 +21,7 @@ from tools.publier_meta import Graph
 PARIS = ZoneInfo("Europe/Paris")
 UTC = dt.timezone.utc
 PAGE_VAR = "VM_FACEBOOK_PRONOS_PAGE_ID"
-RISK = "Jouer comporte des risques, 18+, Joueurs Info Service 09 74 75 13 13"
+RISK = "18+ · Jouer comporte des risques : endettement, isolement, dépendance · Joueurs Info Service 09 74 75 13 13"
 VALID_POST = re.compile(r"^[0-9]+_[0-9]+$")
 VALID_URL = re.compile(r"^https://(?:www\.|m\.)?facebook\.com/[^\s]+$")
 
@@ -49,6 +49,8 @@ def page_access(state):
     wanted = os.getenv(PAGE_VAR, "").strip()
     if not re.fullmatch(r"[0-9]{5,25}", wanted):
         raise DeliveryError(PAGE_VAR + " manquant ou invalide.")
+    if wanted != "112294796981981":
+        raise DeliveryError("RQ Pronos : Page ID non autorisé, aucune publication.")
     meta = state.data.get("tokens", {}).get("meta_pronos") or {}
     if str(meta.get("page_id") or "") != wanted or not meta.get("page_token"):
         raise DeliveryError("RQ Pronos non autorisée : lancer connecter-meta.yml en mode pronos.")
