@@ -3,6 +3,14 @@
 ## DIRECTIVE POUR CLAUDE
 L'utilisateur a corrigé : il veut **DIMANCHE 1er NOVEMBRE**, pas lundi. Ne pas poster le dossier de lundi sur les créneaux du dimanche. Lundi 2 reste préparé séparément dans `docs/DOSSIER_CLAUDE_PROGRAMME_VM_2026-11-02.md`.
 
+## CONTRÔLE DE SÉCURITÉ AVANT DIFFUSION — BLOCAGE VOLONTAIRE
+
+**État de cette branche : préparation seulement, aucune nouvelle publication déclenchée.**
+- Détection dans `tools/publier_meta.py` d'un ancien `return available[next(iter(requested.values()))]` : la connexion publiait pourtant via identifiants sauvegardés, mais ce retour implicite était ambigu.
+- Correction de ce retour sur `correctif-securite-meta-agenda-2026-11-01` ; contrôle additionnel des IDs exacts : `meta = 1384363904759072`, `meta_univers = 1349998758205153`, `meta_pronos = 112294796981981`.
+- Tout Instagram sur `meta_pronos` bloque désormais la diffusion (Facebook seul), y compris dans le contrôleur de diffusion principal. Les workflow automatiques historiques sur `main` **ne sont pas modifiés par ce correctif**.
+- Attendre le succès des tests de la branche, puis validation et intégration contrôlée avant de relancer une nouvelle campagne. Ne pas contourner ce verrou via un autre workflow.
+
 ### Réseaux et marques
 - Facebook VeloceMercato = `meta`, football / actualités ;
 - Facebook VMunivers.fr = `meta_univers`, projets et communication VM ;
@@ -33,14 +41,17 @@ L'utilisateur a corrigé : il veut **DIMANCHE 1er NOVEMBRE**, pas lundi. Ne pas 
 Le fichier `programmes/avant_match_2026-11-01.json` contient l'agenda et des liens sources :
 1. Strasbourg–Auxerre, 15h Paris (Ligue 1, LFP).
 2. Paris FC–Monaco, 17h15 (Ligue 1, LFP).
-3. Liverpool–Arsenal, 17h30 (Premier League, Liverpool FC et Premier League).
-4. Marseille–Toulouse, 20h45 (Ligue 1, LFP).
+3. **Lyon–Angers, 17h15** (Ligue 1, match décalé du samedi au dimanche par la LFP le 27/10/2026).
+4. Liverpool–Arsenal, 17h30 Paris (16h30 GMT, calendrier officiel Liverpool FC).
+5. Marseille–Toulouse, 20h45 (Ligue 1, LFP).
 
 **Liens officiels** :
-- https://ligue1.com/fr/articles/l1_article_5805-
-- https://www.liverpoolfc.com/news/fixture-updates-new-dates-anfield-games-against-man-city-and-arsenal
+- https://ligue1.com/fr/articles/l1_article_5805- (calendrier L1, hors modification OL)
+- https://ligue1.com/fr/articles/l1_article_6010-j9-ol-angers-decale-au-dimanche-1er-novembre-ligue-1-2026-2027 (correction OL–Angers, 17h15)
+- https://lfcbeta.liverpoolfc.com/matches/mens-team/liverpool-v-arsenal-english-premier-league-20261101 (16h30 GMT)
+- https://fplchallenge.premierleague.com/en/fixtures/9 (calendrier Premier League)
 
-Ne pas transformer un horaire vérifié en probabilité ou score garanti. Vérifier les compositions, blessures et forme des équipes avant tout chiffrage ; un modèle Elo/Poisson doit fournir ses données et sa calibration avant publication. On peut afficher **100 points fictifs de bankroll** et expliquer qu'un combiné augmente les risques, mais **aucune mise réelle, aucune montante**. Mention obligatoire : « Jouer comporte des risques, 18+, Joueurs Info Service 09 74 75 13 13 ».
+Ne pas transformer un horaire vérifié en probabilité ou score garanti. Vérifier les compositions, blessures et forme des équipes avant tout chiffrage ; un modèle Elo/Poisson doit fournir ses données et sa calibration avant publication. On peut afficher **100 points fictifs de bankroll** et expliquer qu'un combiné augmente les risques, mais **aucune mise réelle, aucune montante**. Mention obligatoire : « 18+ · Jouer comporte des risques : endettement, isolement, dépendance · Joueurs Info Service 09 74 75 13 13 ».
 
 ### Livrables et méthode technique
 - Scripts actuels : `tools/pronos_programme.py`, `tools/pronos_facebook.py`, `tools/publier_meta.py`, `pastille_schedule.py`, `tools/reseaux_jt.py`.
@@ -51,4 +62,4 @@ Ne pas transformer un horaire vérifié en probabilité ou score garanti. Vérif
 - Le kit de JT a eu des erreurs liées aux commits Git vides ; une correction a été apportée à `tools/reseaux_jt.py` ; surveiller les exécutions après modification.
 
 ### TEXTE À COPIER À CLAUDE
-> PRIORITÉ ABSOLUE AU DIMANCHE 1er NOVEMBRE 2026. Applique le programme du dossier `docs/DOSSIER_CLAUDE_PROGRAMME_VM_2026-11-01.md` et les 4 affiches du fichier `programmes/avant_match_2026-11-01.json`. Contrôle les sources, la date des matchs, les nouvelles vidéos et le statut de chaque destination. Mets en forme différemment les posts pour VeloceMercato, VMunivers.fr et RQ Pronos, plus les deux Instagram connectés. Ne publie aucune fausse vidéo, aucune cote ou probabilité inventée, et aucune montante ; bankroll de 100 points uniquement fictifs. Après chaque publication, rapporte le lien confirmé par Facebook/Instagram. Pour les créneaux manqués, ne fais pas de rafale de posts rétroactifs.
+> PRIORITÉ ABSOLUE AU DIMANCHE 1er NOVEMBRE 2026. Applique le programme du dossier `docs/DOSSIER_CLAUDE_PROGRAMME_VM_2026-11-01.md` et les 5 affiches officielles du fichier `programmes/avant_match_2026-11-01.json`. Contrôle les sources, la date des matchs, les nouvelles vidéos et le statut de chaque destination. Mets en forme différemment les posts pour VeloceMercato, VMunivers.fr et RQ Pronos, plus les deux Instagram connectés. Ne publie aucune fausse vidéo, aucune cote ou probabilité inventée, et aucune montante ; bankroll de 100 points uniquement fictifs. Utilise seulement la signature éditoriale « VM », sans prénom ni ville personnelle. Après chaque publication, rapporte le lien confirmé par Facebook/Instagram. Pour les créneaux manqués, ne fais pas de rafale de posts rétroactifs.
