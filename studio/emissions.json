@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261101-1900",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 19 h",
+  "titre": "La Pastille Actus : le JT express du dimanche 1er novembre",
+  "accroche": "Le JT express de 19 heures, avec six brèves sourcées et un ton neutre.",
+  "duree": 137,
+  "date": "2026-11-01T19:41+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261101-1900.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-01T19:00:00+01:00",
+  "source_start": "2026-11-01T13:00:00+01:00",
+  "source_end": "2026-11-01T19:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-0e0e377a89ec3837bc45ef",
+    "titre": "Serbie : arrestation du chef de la police criminelle après les législatives",
+    "publishedAt": "2026-11-01T17:33:35Z",
+    "createdAt": "2026-11-01T17:36:50Z",
+    "references": [
+     {
+      "nom": "RFI",
+      "url": "https://www.rfi.fr/fr/europe/20261101-serbie-arrestation-du-chef-de-la-police-criminelle-dans-le-sillage-des-l%C3%A9gislatives"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-a7b6843aaf835a542ba23b",
+    "titre": "Des avocats dénoncent des assignations à résidence visant des militants avant une manifestation",
+    "publishedAt": "2026-11-01T16:36:06Z",
+    "createdAt": "2026-11-01T16:43:13Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/manifestations/des-avocats-denoncent-l-utilisation-d-assignations-a-residence-pour-empecher-certains-militants-de-manifester-le-24-octobre_8262932.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-2534f393bd9570166fe019",
+    "titre": "« Singapura » : la série de Canal+ s'inspire de « The White Lotus »",
+    "publishedAt": "2026-11-01T16:00:02Z",
+    "createdAt": "2026-11-01T16:11:24Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/replay-radio/l-empire-des-series/nailia-harzoune-dans-singapura-a-ete-inspiree-par-the-white-lotus_8221666.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-77ae50f74bf7785792f7dc",
+    "titre": "Carburants, retraites complémentaires et gaz : les changements du 1er novembre",
+    "publishedAt": "2026-11-01T15:05:28Z",
+    "createdAt": "2026-11-01T15:13:42Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/pouvoir-achat/baisse-des-carburants-revalorisation-des-retraites-complementaires-hausse-des-prix-du-gaz-ce-qui-change-pour-votre-portefeuille-dimanche-1er-novembre_8262782.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-d07a7b00ba10a18bf6c61a",
+    "titre": "Jean-Pierre Chevènement soutient la candidature de Natacha Polony à la présidentielle",
+    "publishedAt": "2026-11-01T14:24:36Z",
+    "createdAt": "2026-11-01T14:39:15Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/elections/presidentielle/jean-pierre-chevenement-apporte-son-soutien-a-natacha-polony-pour-l-election-presidentielle_8262794.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-fa2e3b48ddbdc2061bed60",
+    "titre": "Moscou : l'ambassade américaine signale une menace terroriste crédible au parc Tsaritsyno",
+    "publishedAt": "2026-11-01T14:25:35Z",
+    "createdAt": "2026-11-01T14:39:12Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/01/moscou-lambassade-americaine-signale-une-menace-terroriste-credible-a-tsaritsyno"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-b8f4abe668d5dada16d4ea",
+    "titre": "Francfort : émeutes après une manifestation, vitrines brisées et boutiques pillées",
+    "publishedAt": "2026-11-01T13:37:49Z",
+    "createdAt": "2026-11-01T13:48:22Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/video/2026/11/01/francfort-emeutes-apres-une-manifestation-vitrines-brisees-et-boutiques-pillees"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-01ade898b7e54fa63a464a",
+    "titre": "Berlin : des centaines de jeunes manifestent lors d'une journée nationale de mobilisation",
+    "publishedAt": "2026-11-01T12:40:04Z",
+    "createdAt": "2026-11-01T12:53:33Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/video/2026/11/01/berlin-des-centaines-de-jeunes-manifestent-pour-la-journee-nationale-de-protestation-genz"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "gaming-edition-20261101-1800",
   "univers": "gaming",
   "format": "edition",
