@@ -24,6 +24,7 @@ jobs:
       VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
       VM_FACEBOOK_PRONOS_PAGE_ID: ${{ vars.VM_FACEBOOK_PRONOS_PAGE_ID }}
       VM_AUTO_PRONOS: 'true'
+      VM_TRIGGER_CRON: ${{ github.event.schedule }}
     steps:
       - uses: actions/checkout@v4
         with:
