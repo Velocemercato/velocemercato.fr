@@ -1,0 +1,26 @@
+name: VM - Tests hors ligne du calendrier RQ Pronos
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/pronos_programme.py'
+      - 'tests/test_pronos_programme.py'
+      - '.github/workflows/tests-pronos-programme.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile calendar and validate all offline anti-duplicate tests
+        run: |
+          python -m py_compile tools/pronos_programme.py tools/pronos_facebook.py
+          python -m unittest discover -s tests -p 'test_pronos_programme.py' -v
