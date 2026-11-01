@@ -1,0 +1,30 @@
+name: VM - Audit Meta 3 Pages ID exact (sans publication)
+on:
+  push:
+    branches: [correctif-securite-meta-agenda-2026-11-01]
+    paths:
+      - 'tools/publier_meta.py'
+      - 'tools/pronos_facebook.py'
+      - 'tools/pronos_programme.py'
+      - 'tests/test_meta_guardrails.py'
+      - 'tests/test_pronos_meta.py'
+      - 'tests/test_pronos_programme.py'
+      - '.github/workflows/tests-meta-guardrails.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Valider syntaxe et securite hors ligne
+        run: |
+          python -m py_compile tools/publier_meta.py tools/pronos_facebook.py tools/pronos_programme.py
+          python -m unittest discover -s tests -p 'test_meta_guardrails.py' -v
+          python -m unittest discover -s tests -p 'test_pronos_meta.py' -v
+          python -m unittest discover -s tests -p 'test_pronos_programme.py' -v

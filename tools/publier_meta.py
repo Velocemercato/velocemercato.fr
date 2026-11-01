@@ -208,6 +208,18 @@ def connect(state, graph, app_id, app_secret, user_token, scope='all', dry_run=F
         raise DeliveryError('Variable VM_FACEBOOK_PRONOS_PAGE_ID absente.')
     if not requested:
         raise DeliveryError('Aucun identifiant Facebook connu : renseigner les variables PAGE_ID ou conserver les IDs déjà enregistrés.')
+    # Liste blanche basée sur les identifiants réels déjà vérifiés sur Meta.
+    # Ne pas réorienter silencieusement une marque vers une autre Page.
+    expected_ids = {
+        'meta': '1384363904759072',
+        'meta_univers': '1349998758205153',
+        'meta_pronos': '112294796981981',
+    }
+    for key, identifier in requested.items():
+        if identifier != expected_ids[key]:
+            raise DeliveryError(f'{key} : identifiant de Page inattendu, connexion bloquée.')
+    if len(set(requested.values())) != len(requested):
+        raise DeliveryError('Même identifiant Facebook configuré pour plusieurs Pages.')
     try:
         long = graph.call('GET', 'oauth/access_token', {'grant_type': 'fb_exchange_token', 'client_id': app_id,
                                                         'client_secret': app_secret, 'fb_exchange_token': user_token})
@@ -246,7 +258,8 @@ def connect(state, graph, app_id, app_secret, user_token, scope='all', dry_run=F
         state.save()
         print(f'::notice::Connexion confirmée : {key}, Page ID {wanted_id}'
               + (' (Facebook uniquement)' if key == 'meta_pronos' else ''), flush=True)
-    return available[next(iter(requested.values()))]
+    # Résultat explicite par destination, sans choisir une première Page par défaut.
+    return {key: requested[key] for key in requested}
 
 
 def read(path, default):
@@ -356,9 +369,16 @@ def instagram_reel(graph, meta, row, wait=480, sleep=time.sleep):
 
 def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=None, card=None, account='meta'):
     now = now or dt.datetime.now(UTC)
+    if account not in ('meta', 'meta_univers'):
+        raise DeliveryError('Destination inconnue : RQ Pronos publie par un workflow distinct.')
     meta = state.data.get('tokens', {}).get(account)
     if not meta or not meta.get('page_token'):
         raise DeliveryError('Meta non connecté : lancer « Connecter Facebook et Instagram ».')
+    expected_id = {'meta': '1384363904759072', 'meta_univers': '1349998758205153'}[account]
+    if str(meta.get('page_id') or '') != expected_id:
+        raise DeliveryError('ID Facebook invalide : refus de diffuser vers ' + account)
+    if str((state.data.get('tokens', {}).get('meta_pronos') or {}).get('page_id') or '') == expected_id:
+        raise DeliveryError('Destination également assignée à RQ Pronos, diffusion refusée.')
     local_now = now.astimezone(PARIS)
     slots = {h: 'projet' for h in heures_univers(local_now.date())} if account == 'meta_univers' else SLOTS
     done = state.data.setdefault('meta' if account == 'meta' else account + '_accuses', {})
@@ -695,6 +715,29 @@ def ballon_dor(state, graph, root=ROOT, sleep=time.sleep):
     return errors
 
 
+def ensure_meta_targets(state):
+    """Contrôle non destructif : la diffusion doit respecter les Pages exactes."""
+    expected_ids = {
+        'meta': '1384363904759072',
+        'meta_univers': '1349998758205153',
+        'meta_pronos': '112294796981981',
+    }
+    tokens = state.data.get('tokens', {})
+    used = set()
+    for account, expected in expected_ids.items():
+        current = tokens.get(account) or {}
+        if not current:
+            continue
+        identifier = str(current.get('page_id') or '')
+        if identifier != expected:
+            raise DeliveryError(f'{account} : ID Facebook inattendu ; aucun envoi.')
+        if identifier in used:
+            raise DeliveryError('Plusieurs marques ciblent une même Page Facebook.')
+        used.add(identifier)
+        if account == 'meta_pronos' and (current.get('ig_id') or current.get('ig_username')):
+            raise DeliveryError('RQ Pronos : association Instagram interdite.')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action', choices=['connecter', 'publier', 'lancement', 'annonce', 'ballon-dor'])
@@ -727,6 +770,9 @@ def main():
         connect(state, graph, app_id.group(0) if app_id else values[0], secret.group(0) if secret else values[1].strip(),
                 user_token, scope=args.cible, dry_run=args.dry_run)
         return
+    # Toutes les actions de publication (articles, JT, annonces, lancement)
+    # partagent ce contrôle, et la connexion reste un parcours sans publication.
+    ensure_meta_targets(state)
     if args.action == 'annonce':
         if annonce(state, Graph()):
             sys.exit(1)
