@@ -51,7 +51,7 @@ def load_publish_slot(candidates=None):
 
 
 class PublicationTests(unittest.TestCase):
-    NOW = dt.datetime(2026, 10, 31, 17, 35, tzinfo=dt.timezone.utc)  # 18h35 Paris
+    NOW = dt.datetime(2026, 10, 31, 17, 25, tzinfo=dt.timezone.utc)  # 18h25 Paris
 
     def test_off_does_not_post(self):
         fn, graph, _ = load_publish_slot()
@@ -87,6 +87,28 @@ class PublicationTests(unittest.TestCase):
             self.assertFalse(fn(state, graph, self.NOW))
         self.assertEqual(graph.call.call_count, 1)
         self.assertEqual(state.data["meta_pronos_accuses"]["post/actus/id-a"]["status"], "envoi")
+
+    def test_special_10h40_is_separate_from_belfort_10h25(self):
+        fn, graph, _ = load_publish_slot()
+        state = FakeState()
+        graph.call.return_value = {"id": "112294796981981_9876"}
+        with patch.dict(os.environ, {"VM_AUTO_PRONOS": "true"}):
+            self.assertTrue(fn(state, graph, dt.datetime(2026, 11, 2, 9, 40, tzinfo=dt.timezone.utc)))
+        self.assertIn("creneau/2026-11-02/10-prono", state.data["meta_pronos_accuses"])
+
+    def test_special_22h40_summary_slot(self):
+        fn, graph, _ = load_publish_slot()
+        state = FakeState()
+        graph.call.return_value = {"id": "112294796981981_9876"}
+        with patch.dict(os.environ, {"VM_AUTO_PRONOS": "true"}):
+            self.assertTrue(fn(state, graph, dt.datetime(2026, 11, 2, 21, 40, tzinfo=dt.timezone.utc)))
+        self.assertIn("creneau/2026-11-02/22h30-bilan", state.data["meta_pronos_accuses"])
+
+    def test_random_40th_minute_is_not_an_extra_post(self):
+        fn, graph, _ = load_publish_slot()
+        with patch.dict(os.environ, {"VM_AUTO_PRONOS": "true"}):
+            self.assertFalse(fn(FakeState(), graph, dt.datetime(2026, 11, 2, 17, 40, tzinfo=dt.timezone.utc)))
+        graph.call.assert_not_called()
 
     def test_no_new_content_does_not_post(self):
         fn, graph, _ = load_publish_slot(candidates=[])
