@@ -143,6 +143,50 @@ def project_candidate(now):
                      f"Découvrir 👉 {link}\n\n#VMUnivers #RQPronos")}
 
 
+def preview_sourcee(now):
+    """Agenda sourcé du lundi : aucun pourcentage inventé ni pari d'argent."""
+    local = now.astimezone(PARIS)
+    dataset = load_json("programmes/avant_match_2026-11-02.json", {})
+    if not isinstance(dataset, dict) or dataset.get("date_matchs") != "2026-11-02":
+        return None
+    target = dt.date(2026, 11, 2)
+    if target - dt.timedelta(days=1) > local.date() or local.date() > target:
+        return None
+    matches = dataset.get("matches") or []
+    if len(matches) < 2:
+        return None
+    lines = [
+        "⚽ VM ACTUS & PRONOS — AGENDA SPORTIF ET ANALYSE FICTIVE",
+        "",
+        "LUNDI 2 NOVEMBRE : DEUX RENCONTRES À SUIVRE 📊",
+    ]
+    for row in matches[:2]:
+        sources = row.get("sources") or []
+        if not (row.get("affiche") and row.get("heure_paris") and row.get("facts")
+                and sources and all(safe_url(s.get("url")) for s in sources)):
+            return None
+        lines.extend(["", f"🏟️ {normal(row['affiche'])} — {normal(row['heure_paris'])} (heure de Paris)"])
+        for f in row["facts"][:3]:
+            lines.append("• " + normal(f))
+        lines.append("📎 Sources : " + ", ".join(s["url"] for s in sources[:2]))
+    lines.extend([
+        "",
+        "🧠 Notre lecture : affiche par affiche, on analysera la forme récente, les absents "
+        "confirmés et les compositions. Aucune probabilité VM 1/N/2 publiée "
+        "sans modèle et validation statistique.",
+        "🎲 Bankroll de démonstration : 100 points fictifs. "
+        "Un combiné ajouterait de l'incertitude ; aucune montante, aucune mise réelle.",
+        "",
+        RISK,
+        "#RQPronos #Football #Statistiques #VMUnivers",
+    ])
+    return {
+        "key": "agenda/2026-11-02",
+        "text": "\n".join(lines),
+        "link": "https://velocemercato.fr/",
+    }
+
+
 def candidates(now, kind):
     if kind in NEWS:
         return article_candidates(kind, now)
@@ -161,7 +205,10 @@ def candidates(now, kind):
         return [project_candidate(now)]
     if kind == "prono":
         selected = prono(now)
-        return [selected] if selected else []
+        if selected:
+            return [selected]
+        verified_preview = preview_sourcee(now)
+        return [verified_preview] if verified_preview else []
     return []
 
 
