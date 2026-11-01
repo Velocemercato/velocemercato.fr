@@ -204,11 +204,22 @@ def candidates(now, kind):
     if kind == "projet":
         return [project_candidate(now)]
     if kind == "prono":
-        selected = prono(now)
-        if selected:
-            return [selected]
+        # Un fichier prono.json peut dater de la veille alors que le match est fini.
+        # Ne PAS republier un ancien pronostic sur le seul critère « créé <30h ».
+        # Donner la priorité à l'agenda factuel dont les rencontres sont futures.
         verified_preview = preview_sourcee(now)
-        return [verified_preview] if verified_preview else []
+        if verified_preview:
+            return [verified_preview]
+        data = load_json("prono.json", {})
+        match_date = str(data.get("match_date") or "") if isinstance(data, dict) else ""
+        # Seul un prono portant une date de match explicite valide peut être relayé.
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", match_date):
+            return []
+        if match_date not in (now.astimezone(PARIS).date().isoformat(),
+                              (now.astimezone(PARIS).date() + dt.timedelta(days=1)).isoformat()):
+            return []
+        selected = prono(now)
+        return [selected] if selected else []
     return []
 
 
