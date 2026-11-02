@@ -1,0 +1,114 @@
+/* VM : véritables titres par sport. Aucune vidéo, score ou statistique inventés. */
+(()=>{'use strict';
+const $=id=>document.getElementById(id);
+const configs={
+foot:{name:'FOOT',icon:'⚽',img:'foot',results:'https://www.fff.fr',videos:'/studio.html#tv',france:'Ligue 1, clubs et talents français',europe:'Les coupes et championnats européens',world:'Le football international'},
+nba:{name:'NBA',icon:'🏀',img:'nba',results:'https://www.nba.com/games',videos:'https://www.youtube.com/@NBA',france:'Les Français en NBA',europe:'Les Européens en NBA',world:'Le basket US dans le monde'},
+nfl:{name:'NFL',icon:'🏈',img:'nfl',results:'https://www.nfl.com/schedules/',videos:'https://www.youtube.com/@NFL',france:'La NFL vue de France',europe:'La NFL en Europe',world:'Football américain international'},
+f1:{name:'FORMULE 1',icon:'🏁',img:'f1',results:'https://www.formula1.com/en/results/2026/races',videos:'https://www.youtube.com/@F1',france:'Pilotes et équipes françaises',europe:'Les Grands Prix européens',world:'La saison F1'},
+motogp:{name:'MOTOGP',icon:'🏍️',img:'motogp',results:'https://www.motogp.com/en/results',videos:'https://www.youtube.com/@motogp',france:'Les pilotes français',europe:'Les Grands Prix européens',world:'Le championnat MotoGP'},
+tennis:{name:'TENNIS',icon:'🎾',img:'tennis',results:'https://www.atptour.com/en/scores/current',videos:'https://www.youtube.com/@atptour',france:'Les Français en tournoi',europe:'Tournois ATP/WTA européens',world:'Le tennis mondial'},
+rugby:{name:'RUGBY',icon:'🏉',img:'foot',results:'https://www.sixnationsrugby.com/en/m6n/fixtures',videos:'https://www.youtube.com/@SixNationsRugby',france:'Top 14 et XV de France',europe:'Rugby européen',world:'Rugby international'},
+cyclisme:{name:'CYCLISME',icon:'🚴',img:'foot',results:'https://www.uci.org/competition-hub',videos:'https://www.youtube.com/@letourdefrance',france:'Les Français du peloton',europe:'Les grandes classiques européennes',world:'Le cyclisme mondial'},
+nhl:{name:'NHL',icon:'🏒',img:'nfl',results:'https://www.nhl.com/scores',videos:'https://www.youtube.com/@NHL',france:'Les hockeyeurs français',europe:'Les Européens en NHL',world:'Le hockey international'},
+mlb:{name:'MLB',icon:'⚾',img:'nba',results:'https://www.mlb.com/scores',videos:'https://www.youtube.com/@MLB',france:'Baseball en France',europe:'Le baseball européen',world:'Le baseball américain'},
+mma:{name:'MMA / UFC',icon:'🥊',img:'nfl',results:'https://www.ufc.com/events',videos:'https://www.youtube.com/@ufc',france:'Combattants français',europe:'Les rendez-vous européens',world:'Combats et événements du monde'},
+ski:{name:'SKI',icon:'🎿',img:'ski',results:'https://www.fis-ski.com/',videos:'https://www.youtube.com/@fisalpine',france:'Les skieurs français',europe:'Les grandes stations européennes',world:'Les compétitions mondiales'}
+};
+const mode=document.body.dataset.mode;
+const selected=mode==='sport'?document.body.dataset.currentSport:'portail';
+const c=configs[selected]||configs.foot;
+const icon=name=>configs[name]?.icon||'🏆';
+const target=(row)=>{try{let u=new URL(row.url,location.origin);return ['https:','http:'].includes(u.protocol)?u.href:null}catch{return null}};
+const recent=(row)=>{const t=Date.parse(row.date);return Number.isFinite(t)&&Date.now()-t>=-60000&&Date.now()-t<=7*86400000};
+const fmt=t=>{let d=new Date(t);return Number.isNaN(d.getTime())?'Date non renseignée':d.toLocaleString('fr-FR',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})};
+const create=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=String(text);return e};
+const art=name=>'/assets/mascottes/vm-'+(configs[name]?.img||'foot')+'.svg';
+let rows=[],video=null;
+function linkFor(row){const url=target(row);if(!url)return '/multisport/';return url}
+function external(a,url){a.href=url;const u=new URL(url,location.origin);if(u.origin!==location.origin){a.target='_blank';a.rel='noopener noreferrer'}}
+function allNews(data,foot){
+ let out=[];if(mode==='portal'){
+  if(foot?.titres)out.push(...foot.titres.filter(x=>x.k==='foot'&&x.t&&x.u&&x.d).slice(0,12).map(x=>({sport:'foot',title:x.t,url:x.u,date:x.d,source:x.s||'Presse sportive',tags:['international']})));
+  for(const [sport,items]of Object.entries(data?.sports||{})){if(!(sport in configs))continue;
+   out.push(...items.slice(0,7).map(x=>({sport,title:x.titre,url:x.url,date:x.date,source:x.source,tags:x.rubriques||['international']})));
+  }
+ }else{
+  const subset=selected==='foot'?((foot?.titres||[]).filter(x=>x.k==='foot').map(x=>({sport:'foot',title:x.t,url:x.u,date:x.d,source:x.s||'Presse sportive',tags:['international']}))):((data?.sports?.[selected]||[]).map(x=>({sport:selected,title:x.titre,url:x.url,date:x.date,source:x.source,tags:x.rubriques||['international']})));
+  out=subset;
+ }
+ const unique=new Set();
+ return out.filter(x=>x.title&&x.source&&target(x)&&recent(x)).sort((a,b)=>Date.parse(b.date)-Date.parse(a.date)).filter(x=>{const key=x.sport+'|'+x.title.toLowerCase();if(unique.has(key))return false;unique.add(key);return true}).slice(0,90);
+}
+function feature(prefix,row,alt){
+ const a=$(prefix+'-url'),title=$(prefix+'-title'),summary=$(prefix+'-summary'),button=$(prefix+'-cta'),image=$(prefix+'-img');
+ if(!row){title.textContent=prefix==='feature-a'?'Aucune actualité vérifiée cette semaine':'Retrouve ton sport sur Véloce Mercato';summary.textContent='Les titres réels seront affichés après la prochaine mise à jour.';external(a,'/multisport/');external(button,'/multisport/');image.src=art(selected);return}
+ title.textContent=row.title;summary.textContent='📰 '+row.source+' · '+fmt(row.date);
+ image.src=art(row.sport);image.alt='Illustration originale '+(configs[row.sport]?.name||'Véloce Mercato');
+ external(a,linkFor(row));external(button,linkFor(row));button.textContent='LIRE L’ACTU →';
+}
+function listNews(targetId,items,count,numbered){
+ const el=$(targetId);el.replaceChildren();
+ if(!items.length){el.append(create('p','empty','Aucune actualité récente et sourcée disponible pour cette rubrique.'));return}
+ items.slice(0,count).forEach((r,i)=>{
+  const a=create('a');external(a,linkFor(r));
+  if(numbered){const li=create('li'),badge=create('b','',i+1);a.textContent=r.title;li.append(badge,a);el.append(li)}
+  else{const ic=create('i','',icon(r.sport)),body=create('span','',r.title),small=create('small','',(r.source||'Source')+' · '+fmt(r.date));body.append(small);a.append(ic,body);el.append(a)}
+ });
+}
+function stories(items){
+ const el=$('news-list');el.replaceChildren();
+ if(!items.length){el.append(create('p','empty','Aucune actualité vérifiée récente. Revenez après la prochaine mise à jour.'));return}
+ items.slice(0,24).forEach(r=>{const box=create('article','story'),a=create('a','',r.title),small=create('small','',icon(r.sport)+' '+(configs[r.sport]?.name||'Sport')+' · '+r.source+' · '+fmt(r.date));external(a,linkFor(r));box.append(a,small);el.append(box)});
+}
+function fill(){
+ feature('feature-a',rows[0]);feature('feature-b',rows[1]||rows[0]);
+ listNews('recent-list',rows,5,false);listNews('follow-list',rows,5,true);stories(rows);
+ $('france-label').textContent=mode==='sport'?c.france:'Clubs et sportifs français';
+ $('europe-label').textContent=mode==='sport'?c.europe:'Compétitions et acteurs européens';
+ $('international-label').textContent=mode==='sport'?c.world:'Toute l’actualité sportive mondiale';
+ $('list-title').textContent=mode==='sport'?'⚡ LES ACTUS '+c.name+' DE LA SEMAINE':'⚡ LES ACTUS DE TOUS LES SPORTS';
+ $('official-results').textContent=mode==='sport'?'Consulter les résultats officiels '+c.name+' ↗':'Choisir mon sport et ses résultats ↗';
+ external($('official-results'),mode==='sport'?c.results:'/multisport/');
+ $('official-videos').textContent=mode==='sport'?'Voir les vidéos officielles '+c.name+' ↗':'La Pastille Foot et les vidéos originales VM ↗';
+ external($('official-videos'),mode==='sport'?c.videos:'/studio.html#tv');
+ $('video-note').textContent='La Pastille TV est disponible pour le Foot lorsque l’émission a réellement été publiée. Pour '+(mode==='sport'?c.name:'les autres sports')+', nous proposons les vidéos des chaînes officielles jusqu’à la création de JT dédiés.';
+ const female=rows.filter(r=>r.tags.includes('feminin')||/\bféminin(?:e|es|s)?\b|\bWTA\b|\bWNBA\b|\bPWHL\b|\bfemmes\b/i.test(r.title));
+ const f=$('female-list');f.replaceChildren();
+ if(!female.length){f.append(create('p','', 'Aucune nouvelle vérifiée sur les compétitions féminines cette semaine.'))}else for(const r of female.slice(0,4)){const p=create('p'),a=create('a','',r.title);external(a,linkFor(r));p.append(a);f.append(p)}
+ if(mode==='sport')for(const nav of document.querySelectorAll('.sport-nav a'))nav.setAttribute('aria-current',nav.dataset.sport===selected?'page':'false');
+ if(mode==='sport'){
+ const colors={nba:'#fd9d43',nfl:'#50aeff',f1:'#fd3555',motogp:'#ff5a50',tennis:'#e4db4e',ski:'#a9eaff'};
+ const center=document.querySelector('.banner .scene:nth-child(2) img');if(center)center.src=art(selected);
+ const hero=$('hero-title');hero.replaceChildren(create('strong','', 'VM'),document.createTextNode(' '+c.name));
+ $('hero-subtitle').textContent="Ton sport, tes actus, ton univers";
+ }
+ // Capsules géographiques : les zones ont des URL de sélection dédiées.
+ for(const [id,reg] of [['france','france'],['europe','europe'],['international','international']]){
+  const a=$(id);const list=rows.filter(r=>reg==='international'||r.tags.includes(reg));
+  a.href='#actualites';a.dataset.region=reg;
+  a.title=list.length+' actus vérifiées de cette rubrique';
+ }
+}
+function pickRegion(reg){
+ const data=rows.filter(r=>reg==='international'||r.tags.includes(reg));
+ stories(data);$('list-title').textContent=reg==='france'?'🇫🇷 ACTUS FRANCE':reg==='europe'?'🇪🇺 ACTUS EUROPE':'🌍 ACTUS INTERNATIONALES';
+}
+async function load(){
+const urls=['/multisport/actualites.json','/fil.json','/studio/diffusions.json'];
+const results=await Promise.allSettled(urls.map(url=>fetch(url+'?t='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(url);return r.json()})));
+const json=i=>results[i].status==='fulfilled'?results[i].value:null;
+rows=allNews(json(0),json(1));
+const videos=json(2);video=Array.isArray(videos)?videos.find(x=>(x.universes||[]).includes('foot')&&x.plateformes?.youtube?.status==='published'):null;
+fill();
+if(mode==='portal'&&video&&/^https:\/\/www\.youtube\.com\/watch\?v=[A-Za-z0-9_-]{11}$/.test(video.plateformes.youtube.url)){
+const row={sport:'foot',title:video.titre,date:video.date_publication,url:video.plateformes.youtube.url,source:'La Pastille TV'};feature('feature-a',row);$('feature-a-img').src='/img/studio/plateau-veloce-600.webp';$('feature-a-play').hidden=false;$('feature-a-cta').textContent='▶ REGARDER LA PASTILLE';
+}
+}
+function init(){
+ document.querySelectorAll('.region').forEach(a=>a.addEventListener('click',()=>pickRegion(a.dataset.region)));
+ for(const a of document.querySelectorAll('.sport-nav a'))a.addEventListener('click',()=>{try{localStorage.setItem('vm-sport-favori',a.dataset.sport)}catch{}});
+ load();document.addEventListener('visibilitychange',()=>{if(!document.hidden)load()});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
