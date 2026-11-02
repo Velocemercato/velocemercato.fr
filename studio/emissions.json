@@ -1,5 +1,113 @@
 [
  {
+  "id": "gaming-edition-20261102-1800",
+  "univers": "gaming",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 18 h",
+  "titre": "La Pastille Gaming : le JT du 2 novembre 2026",
+  "accroche": "Moteur, jeux, matériel : le point gaming du soir.",
+  "duree": 152,
+  "date": "2026-11-02T18:00+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "gaming-edition-20261102-1800.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-02T18:00:00+01:00",
+  "source_start": "2026-11-01T18:00:00+01:00",
+  "source_end": "2026-11-02T18:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-12c3574f48dd768da35e43",
+    "titre": "id Software et MachineGames se rapprochent pour faire évoluer l'id Tech",
+    "publishedAt": "2026-11-02T16:06:00Z",
+    "createdAt": "2026-11-02T16:10:18Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/apres-les-licenciements-id-software-doom-et-machinegames-wolfenstein-se-rapprochent-pour-ecrire-l-avenir-de-l-id-tech-3050872699.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-1d8bd6b65c9bcccb4e05b5",
+    "titre": "Alterium Shift, le JRPG indé de Drattzy Games, quittera l'accès anticipé en février 2027",
+    "publishedAt": "2026-11-02T13:16:00Z",
+    "createdAt": "2026-11-02T13:51:47Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/le-jrpg-inde-alterium-shift-quittera-son-long-acces-anticipe-des-le-mois-de-fevrier-prochain-3050872703.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-904c268b71bb0c759f5149",
+    "titre": "Killzone, vingt ans après : retour sur le « Halo Killer » de PlayStation",
+    "publishedAt": "2026-11-02T08:00:00Z",
+    "createdAt": "2026-11-02T12:36:41Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/killzone-ou-la-quete-o-combien-revolue-du-halo-killer-101-3050866478.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-9e6cbb0b4875a87728b60a",
+    "titre": "Une RTX 2080 Ti passée à 22 Go de VRAM : des gains réels en 4K",
+    "publishedAt": "2026-11-02T08:17:00Z",
+    "createdAt": "2026-11-02T11:33:19Z",
+    "references": [
+     {
+      "nom": "Tom’s Hardware",
+      "url": "https://www.tomshardware.fr/ils-doublent-la-memoire-dune-rtx-2080-ti-les-resultats-en-4k-sont-impressionnants/"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-07bf3fa5329614ec3f5d4f",
+    "titre": "Dune Awakening : l'extension gratuite Blood and Ice arrive le 1er décembre",
+    "publishedAt": "2026-11-02T10:36:00Z",
+    "createdAt": "2026-11-02T10:38:34Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/dune-awakening-arrakis-troque-le-sable-pour-la-neige-avec-l-extension-gratuite-blood-and-ice-3050872696.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-40cfadf521992b2987be82",
+    "titre": "Black Friday 2026 : l'écran AOC Q27G4ZR 27 pouces 240 Hz à 149,99 €",
+    "publishedAt": "2026-11-02T09:10:00Z",
+    "createdAt": "2026-11-02T09:17:23Z",
+    "references": [
+     {
+      "nom": "Les Numériques",
+      "url": "https://www.lesnumeriques.com/moniteur/black-friday-2026-le-moniteur-aoc-q27g4zr-a-149-99-15-n266647.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-54354481e2b53275ec6f85",
+    "titre": "Yacht Club Games : Mina The Hollower relance le studio, un nouveau jeu 3D en préparation",
+    "publishedAt": "2026-11-02T07:03:00Z",
+    "createdAt": "2026-11-02T07:46:32Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/il-semblerait-que-mina-the-hollower-ait-sauve-yacht-club-games-dont-l-equipe-travaille-deja-sur-un-nouveau-projet-3050872692.html"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "actus-edition-20261102-1300",
   "univers": "actus",
   "format": "edition",
