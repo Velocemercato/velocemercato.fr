@@ -1,0 +1,32 @@
+name: VM - Test accueil cinéma Multisport
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'multisport/assets/**'
+      - 'tests/test_accueil_cinema.py'
+      - '.github/workflows/test-accueil-cinema.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'multisport/assets/**'
+      - 'tests/test_accueil_cinema.py'
+      - '.github/workflows/test-accueil-cinema.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validation JavaScript
+        run: node --check multisport/assets/accueil-cinema.js
+      - name: Validation des interfaces sans publication
+        run: python tests/test_accueil_cinema.py
