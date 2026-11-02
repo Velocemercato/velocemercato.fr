@@ -12,6 +12,17 @@ const CFG={
  mlb:{label:'MLB',emoji:'⚾',desc:'Baseball américain : World Series, équipes et stars.',official:'https://www.mlb.com/scores',officialLabel:'Résultats officiels MLB',videos:'https://www.youtube.com/@MLB',videoLabel:'Vidéos MLB (chaîne officielle)',program:null},
  mma:{label:'MMA / UFC',emoji:'🥊',desc:'Arts martiaux mixtes, grands combats, calendriers et actualités UFC.',official:'https://www.ufc.com/events',officialLabel:'Calendrier officiel UFC',videos:'https://www.youtube.com/@ufc',videoLabel:'Vidéos UFC (chaîne officielle)',program:null}
 };
+const SPORT_REGIONS={
+nba:['Les Français en NBA','Les Européens en NBA',"Toute l'actualité NBA"],
+nfl:['Les Français et la NFL','La NFL en Europe','La NFL dans le monde'],
+f1:['Pilotes et écuries français','Grands Prix européens','Toute la Formule 1'],
+motogp:['Les pilotes français','Les courses européennes','Le championnat du monde'],
+tennis:['Le tennis français','Les tournois européens','ATP et WTA dans le monde'],
+rugby:['Top 14 et XV de France','Le rugby européen','Le rugby international'],
+cyclisme:['Les coureurs français','Les courses européennes','Les grands rendez-vous mondiaux'],
+nhl:['Les Français en NHL','Les Européens en NHL','Toute la NHL'],
+mlb:['Le baseball français','Le baseball en Europe','Toute la MLB'],
+mma:['Les combattants français','Les événements européens','Le MMA international']};
 const $=id=>document.getElementById(id);
 const safe=(u)=>{try{const x=new URL(u);return x.protocol==='https:'?x.href:null}catch{return null}};
 let current='nba',feed=null,currentRubrique='une';
@@ -33,6 +44,10 @@ function choose(k,history=true){
  $('video-heading').textContent='🎬 Vidéos '+c.label;
  $('video-note').textContent='Les éditions originales de La Pastille '+c.label+' ne sont pas encore produites. Voici les publications de la chaîne officielle.';
  $('favorite-message').textContent='Préférence « '+c.label+' » mémorisée sur cet appareil. Tu peux changer de sport à tout moment.';
+ const headings=SPORT_REGIONS[k];
+ $('region-france-heading').textContent=headings[0];
+ $('region-europe-heading').textContent=headings[1];
+ $('region-international-heading').textContent=headings[2];
  renderResults(c);renderRubriqueTabs();renderNews();renderRegionalOverview();renderTicker();
 }
 function addLink(box,label,url){const u=safe(url);if(!u)return;const a=document.createElement('a');a.href=u;a.target='_blank';a.rel='noopener noreferrer';a.textContent='↗ '+label;box.append(a)}
