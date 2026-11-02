@@ -10,7 +10,7 @@ js=read("multisport/app.js")
 home=read("index.html")
 alerts=read("notifications/alertes.js")
 prefs=read("notifications/index.html")
-sports=("nba","nfl","f1","motogp","tennis","rugby","cyclisme")
+sports=("nba","nfl","f1","motogp","tennis","rugby","cyclisme","nhl","mlb","mma")
 for sport in sports:
  assert f'data-sport-choice="{sport}"' in html, sport
  assert f" {sport}:" in js or f"\n {sport}:" in js, sport
@@ -43,4 +43,20 @@ assert not mod.relevant("nba","Mbappé : le Real Madrid voudrait des revenus com
 assert mod.relevant("nfl","NFL : les Ravens et les Chiefs au cœur des débats")
 assert mod.relevant("f1","F1 : Leclerc au Grand Prix")
 assert mod.relevant("motogp","MotoGP : victoire à Sepang")
-print("OK : bascule sport, flux datés, notifications, résultats et présentation vidéo honnête.")
+assert mod.relevant("nhl","NHL : une victoire des Oilers")
+assert mod.relevant("mlb","MLB : les Dodgers préparent leur saison")
+assert mod.relevant("mma","UFC : les meilleurs combats de la semaine")
+# Navigation éditoriale inspirée des rubriques Foot de Véloce Mercato
+for rubrique in ('une','france','europe','international'):
+ assert f'data-news-rubrique="{rubrique}"' in html, "Rubrique absente : "+rubrique
+for rubrique in ('france','europe','international'):
+ assert f'id="region-{rubrique}"' in html, "Tour d'horizon absent : "+rubrique
+assert 'data-news-rubrique' in js and 'currentRubrique' in js, "Filtre éditorial non branché"
+assert 'renderRegionalOverview' in js and 'renderTicker' in js, "Sections régionales non alimentées"
+assert "textContent=item.titre" in js, "Les titres doivent rester échappés"
+assert mod.rubriques("nba","NBA : 42 points pour Victor Wembanyama")==["international","france","europe"]
+assert "france" in mod.rubriques("f1","F1 : Pierre Gasly décroche la pole")
+assert "france" not in mod.rubriques("f1","F1 : Charles Leclerc remporte le Grand Prix")
+assert "europe" in mod.rubriques("f1","F1 : Grand Prix de Monza")
+assert mod.rubriques("mlb","MLB : les Yankees battent les Dodgers")==["international"]
+print("OK : bascule sport, flux datés, notifications, résultats et rubriques géographiques et présentation vidéo honnête.")
