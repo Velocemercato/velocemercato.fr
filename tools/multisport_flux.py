@@ -28,6 +28,26 @@ SPORTS={
  'rugby': 'Top 14 rugby XV international actualité',
  'cyclisme': 'cyclisme UCI Tour de France actualité',
 }
+# Écarter les résultats RSS hors sujet : être cité « comme la NBA » n'en fait pas une actu basket.
+RELEVANCE={
+ 'nba': r'\\bNBA\\b|\\bbasket(?:-ball)?\\b|Wemb|LeBron|Curry|Embiid|Spurs|Lakers|Celtics|Warriors|Knicks|Sixers|Thunder|Nuggets|Grizzlies|Heat|Bulls|Bucks|Raptors|Mavericks|Timberwolves|Clippers|Pacers|Rockets',
+ 'nfl': r'\\bNFL\\b|football américain|Super Bowl|quarterback|touchdown|Ravens|Chiefs|Eagles|Patriots|Bills|Cowboys|Bears|Vikings|Broncos|Seahawks|49ers|Steelers|Dolphins|Lions|Bengals|Rams|Chargers',
+ 'f1': r'\\bF1\\b|Formule 1|Formula 1|Grand Prix|Verstappen|Leclerc|Antonelli|Hamilton|Norris|Russell|Piastri|McLaren|Ferrari',
+ 'motogp': r'MotoGP|Moto2|Moto3|Grand Prix moto|Márquez|Marquez|Bagnaia|Quartararo|Acosta|Bezzecchi|Sepang',
+ 'tennis': r'tennis|\\bATP\\b|\\bWTA\\b|Roland.Garros|Wimbledon|Alcaraz|Sinner|Djokovic|Swiatek|Sabalenka',
+ 'rugby': r'rugby|Top 14|XV de France|Six Nations|All Blacks|Stade Toulousain|Champions Cup',
+ 'cyclisme': r'cyclisme|\\bUCI\\b|Tour de France|Tour d.Italie|Tour d.Espagne|Giro|Vuelta|Pogacar|Vingegaard|Evenepoel',
+}
+NEGATIVE={
+ 'nba': r'Kardashian|OnlyFans|Tissot|Mbappé|Real Madrid|programme TV|TV-Programme|sneakers',
+ 'nfl': r'programme TV|sneakers|casquette',
+ 'f1': r'parfum|montre de luxe|jeu vidéo',
+ 'motogp': r'jeu vidéo|moto électrique.*prix',
+}
+def relevant(sport,title):
+ return (bool(re.search(RELEVANCE[sport],title,re.IGNORECASE))
+         and not bool(re.search(NEGATIVE.get(sport,r'(?!)'),title,re.IGNORECASE)))
+
 def stamp(raw):
  try:
   x=email.utils.parsedate_to_datetime(raw)
@@ -50,7 +70,7 @@ def fetch(sport,query,now):
   pub=stamp(item.findtext('pubDate'))
   source=item.find('source')
   source_name=clean(source.text if source is not None else '',100)
-  if not(title and source_name and url.startswith('https://news.google.com/') and pub):
+  if not(title and source_name and relevant(sport,title) and url.startswith('https://news.google.com/') and pub):
    continue
   age=now-pub
   if not dt.timedelta(0)<=age<=dt.timedelta(days=7):continue
@@ -86,7 +106,7 @@ def main():
    for row in old:
     try:age=now-dt.datetime.fromisoformat(row['date'])
     except (KeyError,ValueError,TypeError):continue
-    if dt.timedelta(0)<=age<=dt.timedelta(days=7) and row.get('url','').startswith('https://news.google.com/'):
+    if dt.timedelta(0)<=age<=dt.timedelta(days=7) and row.get('url','').startswith('https://news.google.com/') and relevant(sport,row.get('titre','')):
      items.append(row)
    items=items[:20]
   data['sports'][sport]=items
