@@ -1,41 +1,81 @@
-/* VM MANGAS — habillage cinématographique à partir des artworks VM et miniatures officielles. */
-body{background:radial-gradient(ellipse at top left,#460918 0,transparent 34%),radial-gradient(ellipse at 75% 10%,#0b3985 0,transparent 35%),#030613!important}
-.vm-manga-top{background:#03050ded!important;border-bottom:3px solid #ff2e4f!important;padding:8px clamp(12px,1.5vw,24px)!important;box-shadow:0 7px 22px #000a}
-.vm-manga-top .vm-mark{font-size:clamp(21px,2.2vw,30px)!important;letter-spacing:-.045em}
-.vm-manga-top .vm-mark span{color:#abf775!important}
-.vm-manga-top nav a{font-size:clamp(10px,.92vw,13px)!important;font-weight:900!important;color:#f4f6ff!important}
-.vm-manga-top nav a:hover{background:#d32041!important}
-.vm-manga-top nav .active{outline:2px solid #ff5b70!important;background:#bc0929!important;box-shadow:0 0 15px #f32245}
-.vm-manga-shell{max-width:1650px!important;padding:0 13px 30px!important}
-.vm-manga-hero{min-height:385px!important;border:3px solid #fa3a59!important;box-shadow:0 8px 30px #000c,0 0 17px #f931526c!important;border-radius:7px!important;background:linear-gradient(90deg,#07070d0f 0,#100510f2 39%,#100919db 62%,#06142682),url('/img/studio/manga-vm-studio.webp') 11% 42%/cover no-repeat!important;display:grid!important;grid-template-columns:31% 43% 26%!important;gap:0}
-.vm-manga-hero:before{background:linear-gradient(90deg,transparent 0,#080615ed 33%,#090b22d0 65%,transparent)!important;z-index:0!important}
-.vm-manga-hero:after{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-conic-gradient(from 9deg at 8% 55%,#f5283c12 0 2deg,transparent 2deg 16deg);z-index:0}
-.vm-manga-hero .hero-villain{display:block!important;grid-column:1;min-height:300px;position:relative}
-.vm-manga-hero .hero-type{grid-column:2;align-self:center;position:relative;z-index:2;padding:30px 12px!important}
-.vm-manga-hero .hero-type .crown{font-size:39px;color:#ffdc72;text-shadow:2px 3px #000}
-.vm-manga-hero .hero-type h1{font:italic 900 clamp(54px,7.4vw,122px)/.84 Impact,'Arial Black',sans-serif!important;letter-spacing:-.055em;text-shadow:5px 6px 0 #040409,0 0 20px #ff35536b!important}
-.vm-manga-hero .hero-type h1 span{color:#ff3c58;text-shadow:4px 4px 0 #05050a!important}
-.vm-manga-hero .hero-type .hero-tag{font:italic 900 clamp(18px,2.3vw,31px)/1.02 Impact,'Arial Black',sans-serif!important;text-shadow:3px 4px #000}
-.vm-manga-hero .hero-type .hero-sub{color:#fff1d9!important}
-.vm-manga-hero .hero-right{grid-column:3;display:flex!important;flex-direction:column;gap:10px;justify-content:center;align-self:stretch;max-height:unset!important;z-index:3;margin:13px!important}
-.vm-manga-hero .hero-right a{flex:1;min-height:130px;max-height:176px;border:2px solid #529aff!important;box-shadow:0 0 10px #3586fb85!important}
-.vm-manga-hero .hero-right a:last-child{border-color:#ff365b!important;box-shadow:0 0 10px #f62b5687!important}
-.vm-manga-hero .hero-right a img{filter:saturate(1.17) contrast(1.08)}
-.vm-manga-hero .hero-right a span{font:900 13px system-ui!important;text-transform:uppercase}
-.vm-strip{gap:8px!important;padding:13px 4px!important}
-.vm-tile{flex-basis:145px!important;box-shadow:0 4px 8px #000a, inset 0 0 12px #ffffff17!important;border-color:#4f7cba!important}
-.vm-tile:first-child{border:2px solid #ff3454!important;box-shadow:0 0 17px #ed2b4cb3!important}
-.vm-tile:hover{border-color:#f33453!important}
-.vm-featured{grid-template-columns:1fr 1fr minmax(295px,.85fr)!important;gap:14px!important}
-.vm-feature,.vm-new{background:linear-gradient(135deg,#0f172a,#050812)!important;border:2px solid #48628a!important;box-shadow:0 5px 19px #000b!important}
-.vm-feature:first-child{border-color:#dd3453!important}.vm-feature:nth-child(2){border-color:#cc3b5b!important}
-.vm-feature .cover{aspect-ratio:16/9!important;object-fit:cover;box-shadow:0 0 6px #f73c5c66}
-.vm-feature h2,.vm-new h2{font:italic 900 clamp(19px,2.15vw,31px)/1.06 Impact,system-ui!important;color:white;text-transform:uppercase}
-.vm-feature h3{font:900 17px/1.25 system-ui!important}
-.vm-feature .btn{background:#d52041!important;border-color:#ff8293!important;box-shadow:0 0 8px #ef345982!important}
-.vm-new .vm-new-list a{border-bottom:1px solid #38496a!important}
-.vm-new .vm-new-list a:hover{color:#ffdc70!important}
-.vm-benefits{border:2px solid #46608b!important;background:#060d1bea!important;box-shadow:0 0 12px #1a2d5588!important}
-.vm-mini-section .panel{border-color:#435b87!important}
-@media(max-width:1050px){.vm-manga-hero{grid-template-columns:26% 47% 27%!important}.vm-manga-hero .hero-type h1{font-size:clamp(44px,8vw,86px)!important}.vm-featured{grid-template-columns:repeat(2,minmax(0,1fr))!important}.vm-new{grid-column:1/-1}.vm-new .vm-new-list{display:grid;grid-template-columns:1fr 1fr;gap:2px 15px}}
-@media(max-width:700px){.vm-manga-top{flex-wrap:wrap!important}.vm-manga-top nav{overflow-x:auto;width:100%}.vm-manga-hero{grid-template-columns:1fr!important;min-height:530px!important;background-position:30% top!important}.vm-manga-hero:before{background:linear-gradient(180deg,#080b14ad 0,#070917ce 47%,#050713b8 100%)!important}.vm-manga-hero .hero-villain{display:none!important}.vm-manga-hero .hero-type{grid-column:1;align-self:end;margin-top:48px;padding:12px!important}.vm-manga-hero .hero-type h1{font-size:clamp(55px,14vw,92px)!important}.vm-manga-hero .hero-right{grid-column:1;display:grid!important;grid-template-columns:1fr 1fr;margin:5px 10px 14px!important;align-self:auto}.vm-manga-hero .hero-right a{min-height:95px;max-height:110px}.vm-featured{grid-template-columns:1fr!important}.vm-new{grid-column:auto}.vm-new .vm-new-list{display:block}.vm-tile{flex-basis:122px!important}}
+/* VM MANGAS — carrousel, cartes et bandeau de réassurance (maquette 02). */
+/* ---------- CARROUSEL DES SÉRIES ---------- */
+.vm-carousel{display:flex;align-items:stretch;gap:8px;margin:12px 0 14px}
+.vm-arrow{flex:0 0 34px;display:grid;place-items:center;border:1px solid #3a3a44;border-radius:8px;background:linear-gradient(180deg,#1a1a22,#0b0b10);color:#e6e6ea;cursor:pointer}
+.vm-arrow svg{width:22px;height:22px}.vm-arrow.prev svg{transform:scaleX(-1)}
+.vm-arrow:hover{border-color:var(--neon);box-shadow:0 0 10px #ff1f3d88}
+.vm-strip{flex:1 1 auto;min-width:0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;scroll-behavior:smooth;padding:5px 3px}
+.vm-strip::-webkit-scrollbar{display:none}
+.vm-tile{flex:0 0 calc((100% - 80px)/11);min-width:112px;display:flex;flex-direction:column;border:2px solid #34343e;border-radius:8px;overflow:hidden;background:linear-gradient(180deg,#16161c,#0b0b10);text-decoration:none;color:#fff;box-shadow:0 4px 10px #000a}
+.vm-tile img,.vm-tile .vm-placeholder{display:block;width:100%;aspect-ratio:16/11.5;height:auto;object-fit:cover;border-bottom:1px solid #000}
+.vm-tile b{flex:1;display:grid;place-items:center;text-align:center;padding:5px 4px 6px;min-height:2.6em;font:700 14px/1.05 'Barlow Condensed','Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:.01em}
+.vm-tile.on,.vm-tile:hover,.vm-tile:focus-visible{border-color:var(--neon);box-shadow:0 0 14px #ff1f3dcc,inset 0 0 10px #ff1f3d44}
+.vm-placeholder{position:relative;display:grid!important;place-items:center;text-align:center;font:400 clamp(15px,1.25vw,19px)/.95 Knewave,Impact,sans-serif;text-transform:uppercase;color:#fff;text-shadow:2px 2px 0 #000;padding:6px}
+.vm-placeholder::after{content:"Bientôt";position:absolute;right:4px;top:4px;background:#000c;border:1px solid #ffc21a88;color:#ffc21a;font:700 10px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;padding:2px 4px;border-radius:3px;text-shadow:none}
+.vm-placeholder.c1{background:linear-gradient(135deg,#1b2a55,#0a0f20 60%,#3a0a10)}
+.vm-placeholder.c2{background:linear-gradient(135deg,#d0367a,#5a1a6a 60%,#1a0a30)}
+.vm-placeholder.c3{background:linear-gradient(135deg,#d0301a,#7a1a10 55%,#2a0a08)}
+.vm-placeholder.c4{background:linear-gradient(135deg,#ff8a1a,#9a3a08 55%,#1a1a3a)}
+.vm-placeholder.c5{background:linear-gradient(135deg,#ff6a1a,#2a2a30 55%,#0a0a10)}
+.vm-placeholder.c6{background:linear-gradient(135deg,#2a5ad0,#122a6a 55%,#300a10)}
+.vm-placeholder.c7{background:linear-gradient(135deg,#7a2ad0,#2a0a5a 55%,#d0a01a)}
+.vm-placeholder.c8{font-size:clamp(12px,1vw,15px);padding-top:16px;background:linear-gradient(135deg,#ffc21a,#9a5a08 50%,#1a2a6a)}
+/* ---------- 3 COLONNES ---------- */
+.vm-featured{display:grid;grid-template-columns:1fr 1fr .92fr;gap:14px;margin:0 0 14px}
+.vm-feature,.vm-new{display:flex;flex-direction:column;min-width:0;border:2px solid var(--neon2);border-radius:10px;background:linear-gradient(180deg,#131318,#09090d);box-shadow:0 0 14px #ff1f3d55,inset 0 0 18px #ff1f3d14;padding:10px 12px 12px}
+.vm-new{border-color:#3a3a44;box-shadow:0 0 10px #0008}
+.vm-feature h2,.vm-new h2{display:flex;align-items:center;gap:9px;margin:0 0 9px;font:italic 800 clamp(22px,2vw,30px)/1 'Barlow Condensed',Impact,sans-serif;text-transform:uppercase;color:#fff}
+.vm-new h2{font-style:normal;font-weight:700}
+.h-ico{width:32px;height:32px;flex:0 0 auto}.h-ico.gold{color:var(--vm-gold);filter:drop-shadow(0 0 6px #ff9a0088)}.h-ico.red{color:var(--neon);filter:drop-shadow(0 0 6px #ff1f3d88)}
+.vm-cover{position:relative;display:block;aspect-ratio:16/6.6;overflow:hidden;border-radius:6px;border:1px solid #2b2b33;background:#14141a}
+.vm-cover img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;transform:scale(1.02)}
+.vm-play{position:absolute;left:50%;top:50%;width:60px;height:60px;transform:translate(-50%,-50%);display:grid;place-items:center;border-radius:50%;border:3px solid #fff;background:#000a;box-shadow:0 0 14px #000}
+.vm-play svg{width:26px;height:26px;margin-left:4px;color:#fff}
+.vm-badge{position:absolute;left:8px;bottom:8px;background:#000c;border:1px solid #fff3;border-radius:5px;color:#fff;font:700 14px/1 'Barlow Condensed',sans-serif;font-style:normal;padding:5px 8px;text-transform:uppercase}
+.vm-cover:hover .vm-play{background:var(--neon)}
+.vm-feature h3{margin:10px 0 6px;font:800 clamp(18px,1.6vw,23px)/1.05 'Barlow Condensed',Impact,sans-serif;text-transform:uppercase;color:#fff}
+.vm-feature p{margin:0 0 10px;color:#e0e0e6;font:500 14px/1.35 system-ui,sans-serif}
+.vm-btn{margin-top:auto;align-self:flex-end;display:inline-flex;align-items:center;padding:10px 18px;border-radius:7px;border:1px solid #ff5a6e;background:linear-gradient(180deg,#e0102c,#a8061c);box-shadow:0 0 12px #ff1f3d88;color:#fff;text-decoration:none;font:700 clamp(15px,1.3vw,19px)/1 'Barlow Condensed',Impact,sans-serif;text-transform:uppercase}
+.vm-btn:hover{background:var(--neon)}
+.vm-new-list{display:grid}
+.vm-new-list a{display:grid;grid-template-columns:clamp(96px,7.6vw,118px) minmax(0,1fr) 16px;gap:12px;align-items:center;padding:7px 0;border-bottom:1px solid #26262e;color:#fff;text-decoration:none}
+.vm-new-list a:last-child{border-bottom:0}
+.vm-new-list .th{position:relative;display:block;aspect-ratio:16/9.5;overflow:hidden;border-radius:5px;border:1px solid #33333c}
+.vm-new-list .th img{width:100%;height:100%;object-fit:cover}
+.vm-new-list .th em{position:absolute;right:4px;bottom:4px;background:#000c;border-radius:4px;color:#fff;font:700 13px/1 'Barlow Condensed',sans-serif;font-style:normal;padding:3px 5px}
+.vm-new-list .copy strong,.vm-new-list .copy b{display:block;font:700 15px/1.25 system-ui,sans-serif}
+.vm-new-list .copy small{display:block;color:#d0d0d6;font:500 13.5px/1.3 system-ui,sans-serif}
+.vm-new-list .chev{width:16px;height:16px;color:#c9c9d0}
+.vm-new-list a:hover strong{color:#ffd36a}
+/* ---------- BANDEAU DE RÉASSURANCE ---------- */
+.vm-benefits{list-style:none;margin:0;padding:12px clamp(10px,2vw,30px);display:flex;justify-content:space-between;align-items:center;gap:10px 18px;flex-wrap:wrap;border:1px solid #2a2a33;border-radius:8px;background:linear-gradient(180deg,#121217,#0a0a0e)}
+.vm-benefits li{display:flex;align-items:center;gap:10px;font:700 clamp(15px,1.35vw,20px)/1 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.02em;color:#fff}
+.vm-benefits svg{width:28px;height:28px;color:#fff}.vm-benefits svg.gold{color:var(--vm-gold)}
+.vm-fine{margin:7px 4px 10px}
+.vm-fine a{color:#ffd36a}
+/* ---------- BAS DE PAGE ---------- */
+.vm-mini-section{padding:20px 0}
+.vm-mini-section h2{font:italic 800 clamp(24px,2.4vw,32px)/1.05 'Barlow Condensed',Impact,sans-serif;text-transform:uppercase;margin:8px 0}
+.vm-mini-section .episode-catalogue{grid-template-columns:repeat(4,minmax(0,1fr))}
+.vm-mini-section .panel{border:2px solid #3a1018!important;background:linear-gradient(180deg,#131318,#09090d);box-shadow:0 6px 16px #000a}
+.vm-mini-section .panel:hover{border-color:var(--neon)!important;box-shadow:0 0 14px #ff1f3d77}
+.vm-mini-section .poster{border-bottom:2px solid var(--neon);aspect-ratio:16/9;height:auto;min-height:0;width:100%;object-fit:cover}
+.vm-mini-section .eyebrow{color:var(--vm-gold)}
+.vm-mangas-page .note{background:linear-gradient(110deg,#200810,#0b0b10);border-color:#3a1018;border-left:5px solid var(--neon)}
+.vm-wish{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:12px 0}
+.vm-wish article,.vm-adults{border:1px solid #3a1018;border-radius:12px;padding:16px;background:linear-gradient(180deg,#131318,#09090d)}
+.vm-wish h3,.vm-adults h3{margin:0 0 8px;font:italic 800 22px 'Barlow Condensed',Impact,sans-serif;text-transform:uppercase}
+.vm-adults{border:2px solid #d6a45e;background:#1d1414;margin:14px 0}
+.vm-readmore{color:#e8e8ee;background:#120a0e;padding:13px 16px;border-left:4px solid var(--neon);border-radius:7px;margin-top:16px}
+.vm-readmore a,.vm-foot a{color:#ffd36a}
+.vm-foot{padding:25px clamp(10px,1.1vw,18px)}
+@media(max-width:1100px){.vm-featured{grid-template-columns:1fr 1fr}.vm-new{grid-column:1/-1}.vm-mini-section .episode-catalogue{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:730px){
+ .vm-featured,.vm-wish{grid-template-columns:1fr}
+ .vm-arrow{flex-basis:28px}
+ .vm-tile{flex-basis:108px;min-width:108px}
+ .vm-cover{aspect-ratio:16/8.5}
+ .vm-benefits{justify-content:flex-start}.vm-benefits li{flex:1 1 calc(50% - 18px)}
+ .vm-mini-section .episode-catalogue{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(prefers-reduced-motion:reduce){.vm-strip{scroll-behavior:auto}}
