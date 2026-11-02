@@ -24,6 +24,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install --quiet "pillow>=11,<13" "cairosvg>=2.7,<3"
+      - name: Installer FFmpeg vérifié pour le Short original
+        run: bash tools/installer_ffmpeg.sh
       - name: Générer l'affiche PNG et le visuel de diffusion JPEG
         run: python tools/vm_mangas_art.py
       - name: Enregistrer les deux illustrations publiques
