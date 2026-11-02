@@ -19,3 +19,6 @@ document.querySelectorAll('[data-copy-link]').forEach(function(button){
     catch(e){window.prompt('Copie ce lien :',location.href);}
   });
 });
+
+/* Bouton d'accès aux préférences alertes sur les pages épisodes. */
+(function(){const css=document.createElement('link');css.rel='stylesheet';css.href='/notifications/alertes.css';document.head.appendChild(css);const js=document.createElement('script');js.src='/notifications/alertes.js';js.defer=true;document.head.appendChild(js)})();
