@@ -1,0 +1,120 @@
+{
+ "id": "actus-edition-20261102-1300",
+ "univers": "actus",
+ "format": "edition",
+ "moment": "midi",
+ "label": "JT 13 h",
+ "titre": "La Pastille Actus - Midi du lundi 2 novembre 2026",
+ "accroche": "Bonjour à tous, voici l'essentiel de l'actu de ce lundi midi.",
+ "duree": 96,
+ "date": "2026-11-02T13:37+01:00",
+ "publie": false,
+ "voix": [
+  "piper"
+ ],
+ "speech_rate": 1.12,
+ "fichier": "actus-edition-20261102-1300.mp4",
+ "editorial_revision": "court-v1",
+ "edition_at": "2026-11-02T13:00:00+01:00",
+ "source_start": "2026-11-01T19:00:00+01:00",
+ "source_end": "2026-11-02T13:00:00+01:00",
+ "sources": [
+  {
+   "id": "rss-v2-982a0e90c145e5e9e8e0f4",
+   "titre": "Apple: John Ternus présente ses premiers résultats, sous le regard des investisseurs",
+   "publishedAt": "2026-11-02T11:39:48Z",
+   "createdAt": "2026-11-02T11:56:37Z",
+   "references": [
+    {
+     "nom": "Euronews",
+     "url": "https://fr.euronews.com/2026/11/02/apple-premiers-resultats-de-john-ternus-avec-des-couts-de-puces-en-hausse"
+    }
+   ]
+  },
+  {
+   "id": "rss-v2-48439f2d58f7af24e65035",
+   "titre": "Effondrements de la rue d'Aubagne : le procès en appel s'ouvre à Marseille",
+   "publishedAt": "2026-11-02T11:53:12Z",
+   "createdAt": "2026-11-02T11:56:33Z",
+   "references": [
+    {
+     "nom": "franceinfo",
+     "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/bouches-du-rhone/marseille/audiences-hors-normes-nouvelles-convocations-ce-qu-il-faut-savoir-du-proces-en-appel-apres-les-effondrements-de-la-rue-d-aubagne-3442467.html#xtor=RSS-3-[lestitres]"
+    }
+   ]
+  },
+  {
+   "id": "rss-v2-f38833e0a9f3d6d96c5294",
+   "titre": "Négociations commerciales : la FCD pointe l'écart de marges entre industriels",
+   "publishedAt": "2026-11-02T10:42:51Z",
+   "createdAt": "2026-11-02T11:01:15Z",
+   "references": [
+    {
+     "nom": "Ouest-France",
+     "url": "https://www.ouest-france.fr/economie/commerce/grande-distribution/avant-les-negociations-commerciales-les-distributeurs-denoncent-les-marges-des-grands-industriels-39cf6d9e-d6a8-11f1-84f3-5611f158a658?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu"
+    }
+   ]
+  },
+  {
+   "id": "rss-v2-e5dc5029f52de29602a34b",
+   "titre": "Asaf Avidan publie l'EP Lost Ballads, des chansons écrites sur dix ans",
+   "publishedAt": "2026-11-02T09:51:13Z",
+   "createdAt": "2026-11-02T10:05:21Z",
+   "references": [
+    {
+     "nom": "franceinfo",
+     "url": "https://www.franceinfo.fr/replay-radio/le-monde-d-elodie/asaf-avidan-retrouve-des-chansons-vieilles-de-dix-ans-j-ai-decide-de-les-laisser-respirer_8243374.html#xtor=RSS-3-%5Bgeneral%5D"
+    }
+   ]
+  },
+  {
+   "id": "rss-v2-ff987c407fd00b4584f1a5",
+   "titre": "Sophie Adenot tient sa première conférence de presse après son retour sur Terre",
+   "publishedAt": "2026-11-02T10:00:08Z",
+   "createdAt": "2026-11-02T10:05:13Z",
+   "references": [
+    {
+     "nom": "franceinfo",
+     "url": "https://www.franceinfo.fr/sciences/espace/sophie-adenot/sophie-adenot-dans-l-espace/direct-sophie-adenot-de-retour-sur-terre-suivez-sa-premiere-conference-de-presse-depuis-la-fin-de-son-programme-de-readaptation_8263655.html#xtor=RSS-3-[lestitres]"
+    }
+   ]
+  },
+  {
+   "id": "rss-v2-cd91e20381423ba0e04f33",
+   "titre": "Belgique : le Premier ministre Bart De Wever remet sa démission au roi Philippe",
+   "publishedAt": "2026-11-02T08:38:00Z",
+   "createdAt": "2026-11-02T08:43:22Z",
+   "references": [
+    {
+     "nom": "Euronews",
+     "url": "https://fr.euronews.com/2026/11/02/belgique-le-premier-ministre-bart-de-wever-remet-sa-demission-au-roi-philippe"
+    }
+   ]
+  },
+  {
+   "id": "rss-v2-03a743865f65352b8730f7",
+   "titre": "Mois sans tabac : un pneumologue affirme qu'un mois d'arrêt multiplie par cinq les chances de renoncer",
+   "publishedAt": "2026-11-02T08:38:06Z",
+   "createdAt": "2026-11-02T08:43:19Z",
+   "references": [
+    {
+     "nom": "franceinfo",
+     "url": "https://www.franceinfo.fr/sante/drogue-addictions/lutte-contre-le-tabagisme/arreter-de-fumer-pendant-un-mois-multiplie-par-cinq-ses-chances-d-arreter-definitivement-encourage-le-professeur-yves-martinet_8263661.html#xtor=RSS-3-%5Bgeneral%5D"
+    }
+   ]
+  },
+  {
+   "id": "rss-v2-ad982430899fcc621313f3",
+   "titre": "Gazole en baisse, gaz en hausse et retraites complémentaires revalorisées au 1er novembre",
+   "publishedAt": "2026-11-02T07:09:06Z",
+   "createdAt": "2026-11-02T07:24:58Z",
+   "references": [
+    {
+     "nom": "franceinfo",
+     "url": "https://www.franceinfo.fr/economie/transports/prix-des-carburants/j-avais-besoin-de-refaire-le-plein-les-prix-du-gazole-en-baisse-ceux-du-gaz-en-hausse_8263553.html#xtor=RSS-3-%5Bgeneral%5D"
+    }
+   ]
+  }
+ ],
+ "diffusion": "youtube"
+}
