@@ -1,14 +1,3 @@
-export const categories = Object.freeze({cbd:'boutique CBD',caviste:'caviste magasin alcool',taxi:'taxi VTC'});
-export function categoryOrDefault(value) {
-  return Object.hasOwn(categories, value) ? value : 'cbd';
-}
-export function mapsSearch(category, city, open = false) {
-  const location = String(city).trim().slice(0,100);
-  if (!location) throw new Error('Indique une ville ou un code postal.');
-  const key = categoryOrDefault(category);
-  const query = `${categories[key]} ${location}${open && key !== 'taxi' ? ' ouvert maintenant' : ''}`;
-  const url = new URL('https://www.google.com/maps/search/');
-  url.searchParams.set('api','1');
-  url.searchParams.set('query',query);
-  return url.href;
-}
+export const categories = Object.freeze({garage:'garage automobile',dentiste:'dentiste',coiffeur:'coiffeur salon de coiffure',sante:'professionnel de santé',plombier:'plombier',electricien:'électricien',taxi:'taxi VTC',commerce:'commerce de proximité'});
+export function categoryOrDefault(value) { return Object.hasOwn(categories,value) ? value : 'garage'; }
+export function mapsSearch(category,city,open=false,minutes=20) {const location=String(city).trim().slice(0,100);if(!location)throw new Error('Indique une ville ou un code postal.');const key=categoryOrDefault(category);const m=[10,20,40].includes(Number(minutes))?Number(minutes):20;const query=`${categories[key]} près de ${location}${open&&key!=='taxi'?' ouvert maintenant':''}`;const url=new URL('https://www.google.com/maps/search/');url.searchParams.set('api','1');url.searchParams.set('query',query);return url.href;}
