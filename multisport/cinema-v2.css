@@ -1,0 +1,38 @@
+/* Extension esthétique VM : rendre le haut du portail proche de la maquette validée. */
+body[data-mode=portal] .banner{height:clamp(320px,31vw,480px);border-top:2px solid #591024;border-bottom:4px solid #ff3558;box-shadow:0 15px 30px #02040e}
+body[data-mode=portal] .banner .scene:nth-child(1) img{object-position:65% 26%;filter:contrast(1.22) saturate(1.32) drop-shadow(0 0 5px #df214b)}
+body[data-mode=portal] .banner .scene:nth-child(2) img{filter:hue-rotate(34deg) saturate(1.65) brightness(1.02)}
+body[data-mode=portal] .banner .scene:nth-child(3) img{filter:hue-rotate(175deg) saturate(1.6)}
+body[data-mode=portal] .banner .scene:nth-child(4) img{filter:hue-rotate(330deg) saturate(1.6)}
+body[data-mode=portal] .banner .scenes{grid-template-columns:25% 18% 17% 19% 21%}
+body[data-mode=portal] .banner::after{background:linear-gradient(90deg,#10010c33,#060a1999 33%,#07101df2 49%,#080c168f 72%,#06051155)!important}
+body[data-mode=portal] .banner .content{left:41%;right:0;width:39%;max-width:none;inset:0 auto 0 37%;transform:none;margin:0;z-index:3;filter:drop-shadow(3px 5px 1px #000)}
+body[data-mode=portal] .banner .content h1{font-size:clamp(55px,7.8vw,129px);line-height:.87;letter-spacing:-.06em;text-shadow:5px 6px #000,0 0 24px #fa3153}
+body[data-mode=portal] .banner .content h1 strong{font-size:1.24em;background:linear-gradient(180deg,#fff2b0,#ffbd28);color:transparent;background-clip:text}
+body[data-mode=portal] .banner .content .crown{color:#ffe089;text-shadow:0 0 12px #fa4d43}
+body[data-mode=portal] .banner .content p{font-size:clamp(14px,2.3vw,26px)}
+body[data-mode=portal] .banner .content .sub{font-size:10px;letter-spacing:.045em}
+.hero-manga-promo{position:absolute;right:1%;top:5%;width:24%;height:87%;z-index:5;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(12px,2vw,25px);color:#fff;text-decoration:none;border:3px solid #fe3b61;border-radius:12px;background:linear-gradient(180deg,#22041133,#05040dbe 60%,#44091bf5),url('/img/studio/manga-vm-studio.webp') 55% 28%/cover no-repeat;box-shadow:0 0 20px #f8295688;text-shadow:2px 3px 3px #000}
+.hero-manga-promo strong{font:italic 900 clamp(26px,3.5vw,53px)/.96 Impact,'Arial Black',sans-serif;text-transform:uppercase;color:#ff4864}
+.hero-manga-promo small{font:900 clamp(10px,1.15vw,14px)/1.3 system-ui,sans-serif;text-transform:uppercase;padding:10px 0}
+.hero-manga-promo span{align-self:flex-start;border:1px solid #ffbecb;background:#d51a3f;padding:9px 11px;border-radius:7px;font:900 12px system-ui,sans-serif}
+.hero-manga-promo:hover{box-shadow:0 0 32px #fb3b6d}
+body[data-mode=sport] .banner{height:clamp(275px,28vw,390px)}
+body[data-mode=sport] .banner .content{left:36%;right:22%;width:45%;margin:0;z-index:5}
+body[data-mode=sport] .banner .content h1{font-size:clamp(45px,6.7vw,100px)}
+body[data-mode=sport] .banner .scenes .scene:nth-child(1) img{object-position:70% 35%}
+body[data-mode=sport] .banner:after{background:linear-gradient(90deg,#06060a22,#070916c9 42%,#070917ba 68%,#07080b33)}
+body[data-mode=sport] .hero-manga-promo{width:21%;top:8%;height:84%;background-position:60% 20%}
+body[data-mode=sport] .hero-manga-promo strong{font-size:clamp(24px,2.8vw,42px)}
+.sitehead nav .manga-highlight{background:#c11236!important;outline:2px solid #ff5371;box-shadow:0 0 14px #ff3151a3}
+.sport-nav a{min-width:108px;max-width:146px;font-size:13px;font-style:italic;font-weight:900}
+.sport-nav a .ico{font-size:33px;filter:drop-shadow(2px 3px #030612)}
+.main-grid .panel{border:2px solid #344870;box-shadow:inset 0 0 12px #273d6e40,0 7px 22px #000b}
+.main-grid .panel:first-child{border-color:#f5324d;box-shadow:0 0 11px #ff294944}
+.main-grid .panel:nth-child(4){border-color:#c9973b;box-shadow:0 0 10px #e0aa3940}
+.feature-image img{filter:contrast(1.14) saturate(1.25)}
+.region{box-shadow:0 4px 13px #0008}
+.region:hover{box-shadow:0 0 18px #f135567a}
+.promo-manga{border-width:2px;border-color:#fd3e5e;box-shadow:0 0 14px #e827544e}
+@media(max-width:1150px){body[data-mode=portal] .banner .content{left:23%;width:54%}body[data-mode=portal] .hero-manga-promo{width:23%}body[data-mode=sport] .banner .content{left:27%;right:21%;width:51%}}
+@media(max-width:750px){body[data-mode=portal] .banner .content,body[data-mode=sport] .banner .content{left:0;right:0;width:100%;padding:20px 14px 90px;background:linear-gradient(90deg,#070819ab,#0710219e)}body[data-mode=portal] .banner .content h1,body[data-mode=sport] .banner .content h1{font-size:clamp(49px,12vw,83px)}.banner .hero-manga-promo{position:absolute;right:3%;top:auto;bottom:10px;width:58%;height:90px;padding:7px 10px;z-index:6;background-position:45% 20%}.hero-manga-promo strong,body[data-mode=sport] .hero-manga-promo strong{font-size:24px}.hero-manga-promo small{display:none}.hero-manga-promo span{font-size:10px;padding:6px}body[data-mode=portal] .banner .scene:nth-child(n+4){display:none}.sitehead nav a{padding:10px 8px}}
