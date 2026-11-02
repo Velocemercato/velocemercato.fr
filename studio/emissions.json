@@ -1,5 +1,125 @@
 [
  {
+  "id": "foot-edition-20261102-2000",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 20 h",
+  "titre": "La Pastille Foot - Lundi 2 novembre, 20 heures",
+  "accroche": "Le JT foot du soir, six brèves à ne pas rater, c'est parti.",
+  "duree": 138,
+  "date": "2026-11-02T20:52+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261102-2000.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-02T20:00:00+01:00",
+  "source_start": "2026-11-02T12:00:00+01:00",
+  "source_end": "2026-11-02T20:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-1d8ca4278ba16b24b521f2",
+    "titre": "Pocognoli prépare la liste de l'Écosse face à un choix décisif",
+    "publishedAt": "2026-11-02T17:35:14Z",
+    "createdAt": "2026-11-02T18:19:16Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/ckpqg82yxqgyo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-841da3198387c4bdf91a03",
+    "titre": "Méziane Guerd, jeune latéral gauche de Villefranche-Beaujolais, se raconte",
+    "publishedAt": "2026-11-02T18:00:00Z",
+    "createdAt": "2026-11-02T18:19:10Z",
+    "references": [
+     {
+      "nom": "Foot National",
+      "url": "https://www.foot-national.com/actus/brassard-de-capitaine-grave-blessure-et-polyvalence-portrait-de-meziane-guard-grand-espoir-de-villefranche-beaujolais-961888"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-db4d906fc6407f607c893c",
+    "titre": "ASSE : Larry Tanenbaum, propriétaire des Verts, estimé à 2,3 milliards d'euros",
+    "publishedAt": "2026-11-02T17:00:00Z",
+    "createdAt": "2026-11-02T17:26:14Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/st-etienne/asse-23-milliards-deuros-les-verts-sont-tranquilles"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-18a842a1527f01ef0e8939",
+    "titre": "Espagne : Jesus de Miguel victime d'un arrêt cardiaque après un choc avec le gardien andorran",
+    "publishedAt": "2026-11-02T17:08:22Z",
+    "createdAt": "2026-11-02T17:26:10Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/liga/espagne-un-match-de-d2-arrete-apres-un-enorme-choc-entre-le-gardien-et-un-attaquant-evacue-en-ambulance_AV-202611020699.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-66a21b6dcde0c03f64efaf",
+    "titre": "La FIFPro dévoile les 26 joueurs nommés pour son onze de l'année",
+    "publishedAt": "2026-11-02T15:36:06Z",
+    "createdAt": "2026-11-02T16:29:35Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a1281778510978519162-les-26-nommes-pour-le-onze-de-lannee-fifpro-avec-messi-et-cristiano-ronaldo"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-7dd95f7cf78219dd9ba4f5",
+    "titre": "Bournemouth : Amine Adli, trois buts en trois matches depuis son retour de blessure",
+    "publishedAt": "2026-11-02T16:00:46Z",
+    "createdAt": "2026-11-02T16:29:24Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a1751617777471711742-bournemouth-amine-adli-le-super-sub-qui-cartonne-en-angleterre"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-661364c11e4711964c0988",
+    "titre": "Anthony Gordon veut être plus égoïste avec le Barça avant Aston Villa",
+    "publishedAt": "2026-11-02T14:19:21Z",
+    "createdAt": "2026-11-02T15:20:55Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cqgm0k9xg4p7o?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-fbf701211fa6caac189b45",
+    "titre": "Adil Rami critiqué après une remarque sur le discours d'Alexia Putellas",
+    "publishedAt": "2026-11-02T15:00:00Z",
+    "createdAt": "2026-11-02T15:20:48Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/marseille/adil-rami-provoque-la-colere-de-lom"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "actus-edition-20261102-1900",
   "univers": "actus",
   "format": "edition",
