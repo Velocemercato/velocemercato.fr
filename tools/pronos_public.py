@@ -191,6 +191,7 @@ footer{padding:15px 20px 30px;color:var(--muted);font-size:.85rem}
 <a href="#gaming">Gaming</a><a href="#agenda">Matchs du jour</a>
 <a href="https://www.facebook.com/112294796981981" target="_blank" rel="noopener noreferrer">Page Facebook</a>
 <a href="https://velocemercato.fr/">VeloceMercato</a></nav></div></header>
+<aside aria-label="Les univers Véloce Mercato" style="max-width:1180px;margin:15px auto;padding:13px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:linear-gradient(100deg,#6b0c28,#0a1a3f);color:#fff;border:2px solid #fa4665;border-radius:13px"><div><b style="font:900 22px Impact,system-ui;color:#ffe078">📺 VM MANGAS : LE CLUB NOSTALGIE</b><p style="margin:4px 0;font:700 13px system-ui">Olive et Tom, L'École des champions… et tous les sports dans notre univers VM !</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><a style="color:#fff;background:#d71b42;border:1px solid #ffbdc7;border-radius:8px;text-decoration:none;padding:10px 12px;font-weight:900" href="/mangas/">👑 VM MANGAS</a><a style="color:#0b1230;background:#ffe27b;border-radius:8px;text-decoration:none;padding:10px 12px;font-weight:900" href="/multisport/">🏆 VM MULTISPORT</a></div></aside>
 <main>__CONTENT__</main>
 <footer>VM · Actualités issues des sources citées. Les posts Facebook sont gérés séparément
 et leur visibilité dépend aussi des paramètres de la Page Meta.</footer></body></html>
