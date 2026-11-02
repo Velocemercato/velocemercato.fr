@@ -1,0 +1,38 @@
+name: VM - Tests mode multisport et alertes
+on:
+  pull_request:
+    paths:
+      - 'multisport/**'
+      - 'tools/multisport_flux.py'
+      - 'notifications/**'
+      - 'index.html'
+      - 'tests/test_multisport.py'
+      - '.github/workflows/tests-multisport.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'multisport/**'
+      - 'tools/multisport_flux.py'
+      - 'notifications/**'
+      - 'tests/test_multisport.py'
+      - '.github/workflows/tests-multisport.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Valider JS sélecteur sport et alertes
+        run: |
+          node --check multisport/app.js
+          node --check notifications/alertes.js
+      - name: Vérifier les données et les liens
+        run: python tests/test_multisport.py
