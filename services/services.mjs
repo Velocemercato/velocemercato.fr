@@ -10,7 +10,7 @@ function refresh() {
   if (taxi) open.checked = false;
   document.getElementById('search-note').textContent = taxi
     ? 'Les coordonnées sont fournies par Google Maps. Contacte le professionnel pour convenir d’une prise en charge.'
-    : 'Les résultats et les horaires sont fournis par Google Maps. Confirme les horaires avant de te déplacer.';
+    : 'Les résultats, horaires et distances sont fournis par Google Maps. Confirme-les avant de te déplacer.';
   document.querySelectorAll('[data-category]').forEach(link => {
     if (link.dataset.category === category.value) link.setAttribute('aria-current','true');
     else link.removeAttribute('aria-current');
