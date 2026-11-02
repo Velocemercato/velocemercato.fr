@@ -1,0 +1,25 @@
+name: VM - Tests accueil manga et multisport
+on:
+  pull_request:
+    paths: ['index.html','assets/home-multisport-wow.*','assets/mascottes/**','tests/test_home_multisport.py','.github/workflows/tests-home-multisport.yml']
+  push:
+    branches: [main]
+    paths: ['assets/home-multisport-wow.*','assets/mascottes/**','tests/test_home_multisport.py','.github/workflows/tests-home-multisport.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntaxe JavaScript
+        run: node --check assets/home-multisport-wow.js
+      - name: Accueil, mascottes et préservation des modules Foot
+        run: python -m unittest -q tests.test_home_multisport
