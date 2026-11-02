@@ -10,6 +10,13 @@
 - **Vidéos** : liens vers chaînes officielles. La Pastille multisport doit être créée éditorialement sport par sport, non simulée. Ne jamais diffuser des extraits de matchs sans droits.
 - Notifications : mêmes préférences que le Centre d'alertes VM, avec 7 nouvelles catégories. Pour l'instant elles ne s'affichent que pendant qu'une page VM est ouverte. Le push hors site demande un service serveur et l'accord du visiteur.
 
+## Rubriques éditoriales par sport
+La page propose désormais **À la une**, **France**, **Europe**, **International** et un tour d'horizon en trois colonnes. Ces rubriques fonctionnent avec tous les sports, avec des intitulés personnalisés (NBA : Français/Européens ; F1 : pilotes français et Grands Prix européens ; rugby : Top 14/XV de France, etc.).
+
+La catégorisation est volontairement prudente : seuls des mots et noms explicites présents dans le titre de presse donnent les étiquettes `france` et `europe`. Un événement aux États-Unis concernant un Français peut être classé dans « France » pour le suivi des sportifs français ; il ne s'agit pas de prétendre que le match se déroule en France. Le fil « International » est le panorama global du sport sélectionné. Les titres sans signal géographique restent dans « À la une » et « International ».
+
+Si la rubrique est vide, elle l'annonce clairement au lieu de fabriquer une information. Chaque onglet peut être partagé par URL (`?sport=nba&rubrique=france`). Les titres récents restent limités à sept jours, affichés avec la date et la source, et ouvrent le lien de l'éditeur.
+
 ## Points d'amélioration
 1. Acheter ou négocier un flux score/licence par sport si besoin d'affichage de résultats en direct dans l'interface sans widget tiers.
 2. Ajouter un générateur **original** de La Pastille basket, NFL, F1, MotoGP, avec validation éditoriale des informations et respect des droits vidéo, puis publier seulement des éditions vraiment créées.
