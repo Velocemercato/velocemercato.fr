@@ -44,11 +44,11 @@ def scan(rootdirs,out):
       continue
      for width in (390,1440):
       ctx=browser.new_context(viewport={"width":width,"height":844 if width==390 else 900},service_workers="block")
-      ctx.route("**/*",lambda route,b=base:route.continue_() if route.request.url.startswith(b+"/") else route.abort())
+      ctx.route("**/*",lambda route:route.continue_() if route.request.url.startswith(base+"/") else route.abort())
       page=ctx.new_page()
       errors=[];broken=[]
       page.on("pageerror",lambda error:errors.append(str(error)))
-      page.on("response",lambda res,b=base:broken.append(res.url[len(b):]) if res.status>=400 and res.url.startswith(b+"/") else None)
+      page.on("response",lambda res:broken.append(res.url[len(base):]) if res.status>=400 and res.url.startswith(base+"/") else None)
       try:
        page.goto(base+path,wait_until="domcontentloaded",timeout=15000)
        page.wait_for_timeout(650)
