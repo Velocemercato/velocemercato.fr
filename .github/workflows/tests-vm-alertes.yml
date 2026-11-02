@@ -1,0 +1,39 @@
+name: VM - Tests Manga, alertes et liens de soutien
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'notifications/**'
+      - 'mangas/index.html'
+      - 'mangas/assets/neon-v2.css'
+      - 'mangas/assets/vm-87.svg'
+      - 'liens.json'
+      - 'tests/test_vm_alertes.py'
+      - '.github/workflows/tests-vm-alertes.yml'
+  pull_request:
+    paths:
+      - 'notifications/**'
+      - 'mangas/index.html'
+      - 'mangas/assets/neon-v2.css'
+      - 'tests/test_vm_alertes.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Valider le JavaScript des alertes et du lecteur officiel
+        run: |
+          node --check notifications/alertes.js
+          node --check mangas/assets/player.js
+          node --check notifications/sw.js
+      - name: Valider JSON, liens, consentement et fichiers
+        run: python tests/test_vm_alertes.py
