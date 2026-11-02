@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>VM Foot amateur – N2, N3, Régional, District et Coupe de France près de chez toi | Véloce Mercato</title>
+<meta name="description" content="Le foot amateur de ta région, mis à jour toute la journée : National 2, National 3, Régional, District, Coupe de France, féminines, jeunes et futsal. Titres de la presse régionale avec lien vers la source.">
+<link rel="canonical" href="https://velocemercato.fr/foot-amateur/">
+<meta property="og:title" content="VM Foot amateur – le foot de ta région"><meta property="og:url" content="https://velocemercato.fr/foot-amateur/"><meta property="og:image" content="https://velocemercato.fr/img/partage-velocemercato.jpg"><meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07070b">
+<style>
+:root{--bg:#07070b;--surface:#121219;--surface2:#1a1a24;--ink:#f5f2ea;--muted:#b3ad9f;--red:#e3122b;--red-glow:rgba(227,18,43,.55);--gold:#f4c430;--gold-glow:rgba(244,196,48,.45);--line:#2a2a36}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:radial-gradient(1200px 500px at 50% -120px,#3a0710 0,transparent 70%),var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px 40px}
+.hero{margin:18px 0 14px;padding:22px 18px;border:2px solid var(--red);border-radius:18px;background:linear-gradient(135deg,#1b0207,#0b0b12 55%,#1c1404);box-shadow:0 0 26px var(--red-glow),inset 0 0 40px rgba(0,0,0,.6)}
+.hero h1{margin:0;font:900 italic clamp(2rem,6vw,3.4rem)/1 Impact,"Arial Black",sans-serif;text-transform:uppercase;letter-spacing:.01em}
+.hero h1 b{color:var(--gold);text-shadow:0 0 18px var(--gold-glow)}
+.hero p{margin:8px 0 0;color:var(--muted);max-width:720px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px}
+.choix{display:grid;gap:12px;grid-template-columns:1fr auto;align-items:end}
+label{display:block;font:800 .78rem/1 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+select{width:100%;min-height:46px;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface2);color:var(--ink);font:700 1rem system-ui,sans-serif}
+select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.btn{min-height:46px;padding:10px 14px;border-radius:12px;border:2px solid var(--gold);background:transparent;color:var(--gold);font:800 .95rem system-ui,sans-serif;cursor:pointer}
+.btn:hover{background:rgba(244,196,48,.12)}
+#geoNote{grid-column:1/-1;margin:0;color:var(--muted);font-size:.88rem}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:12px 2px 4px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;min-height:40px;padding:8px 14px;border-radius:999px;border:2px solid var(--line);background:var(--surface2);color:var(--ink);font:800 .85rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.04em;cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--red);background:var(--red);box-shadow:0 0 14px var(--red-glow)}
+.head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:18px 0 10px}
+.head h2{margin:0;font:900 italic 1.5rem/1.1 Impact,"Arial Black",sans-serif;text-transform:uppercase}
+.head span{color:var(--muted);font-size:.9rem}
+#liste{list-style:none;margin:0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+#liste li a{display:flex;flex-direction:column;gap:6px;height:100%;padding:14px;border-radius:14px;background:var(--surface);border:1px solid var(--line);text-decoration:none;transition:border-color .15s,box-shadow .15s}
+#liste li a:hover{border-color:var(--red);box-shadow:0 0 16px var(--red-glow)}
+.meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.8rem;color:var(--muted)}
+.badge{padding:3px 8px;border-radius:6px;background:var(--red);color:#fff;font:800 .72rem/1.2 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.05em}
+.badge.r{background:#3a2c05;color:var(--gold);border:1px solid var(--gold)}
+#liste strong{font-size:1.02rem;line-height:1.35}
+.vide{padding:22px;text-align:center;color:var(--muted)}
+.note{margin-top:22px;font-size:.85rem;color:var(--muted)}
+.liens{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.liens a{padding:9px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);text-decoration:none;font-weight:700}
+@media(max-width:560px){.choix{grid-template-columns:1fr}#liste{grid-template-columns:1fr}}
+</style>
+<!-- Cloudflare Web Analytics --><script id="vm-cfwa">(function(h){if(h==='velocemercato.fr'||h==='www.velocemercato.fr'){var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "35ce3d9fb9144124a0bb97db4e89dbb2"}');document.head.appendChild(s)}})(location.hostname)</script><link rel="manifest" href="/app/foot.webmanifest" id="vmapp-m"><meta name="theme-color" content="#060b1d" id="vmapp-t"><link rel="apple-touch-icon" href="/app/foot-apple.png" id="vmapp-i"><meta name="apple-mobile-web-app-title" content="VM Foot" id="vmapp-n"><style id="vmbar-css">
+.vmbar{background:#04060f;border-bottom:1px solid rgba(255,255,255,.12);font:700 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:sticky;top:0;z-index:80}
+.vmbar+header{top:49px!important}
+.vmbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:6px max(10px,env(safe-area-inset-left,0px));overflow-x:auto;scrollbar-width:none}
+.vmbar-in::-webkit-scrollbar{display:none}
+.vmbar-in{min-height:48px}
+.vmbar a{flex:none;color:#cfd6ea;text-decoration:none;padding:7px 10px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.vmbar a:hover{background:rgba(255,255,255,.08);color:#fff}
+.vmbar a:focus-visible{outline:2px solid #f4cf55;outline-offset:2px}
+.vmbar .vmb-logo small{font:800 9px/1 system-ui,sans-serif;font-style:normal;letter-spacing:.06em;margin-left:4px;vertical-align:middle}
+.vmbar .vmb-logo{font:italic 900 18px/1 Impact,"Arial Black",sans-serif;color:#04060f;background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);padding:6px 9px;border-radius:8px;margin-right:4px;letter-spacing:.02em}
+.vmbar .vmb-logo{position:sticky;left:0;z-index:2;box-shadow:6px 0 0 #04060f;font-size:15px;min-height:36px;display:flex;flex-direction:column;justify-content:center;gap:3px;align-items:center}
+.vmbar .vmb-logo small{margin:0;font-size:8px}
+.vmbar a.on{color:#04060f;background:#fff}
+.vmbar a.on.f{background:#f4cf55}.vmbar a.on.g{background:#d6ff6e}.vmbar a.on.a{background:#ff5a6e;color:#fff}
+.vmbar .vmb-don{margin-left:auto;background:#f4cf55;color:#0b1533}
+.vmbar a.p{background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a);color:#0b1533;font-weight:900}.vmbar a.p.on{background:#fff;color:#0b1533;box-shadow:inset 0 0 0 2px #f4cf55}.vmbar a.s{background:#e1243a;color:#fff}.vmbar a.s.on{background:#fff;color:#e1243a}
+@media(max-width:520px){.vmbar a{padding:7px 8px;font-size:12px}}
+</style><style id="vmshare-css">
+.vminst{display:none;position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#1d3fb8;color:#fff;box-shadow:3px 3px 0 #000;cursor:pointer}
+.vminst.show{display:flex}
+.vmfab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:75;display:flex;align-items:center;gap:6px;font:800 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid #000;background:#f4cf55;color:#0b1533;box-shadow:3px 3px 0 #000;cursor:pointer}
+.vmsh{position:fixed;inset:0;z-index:90;background:rgba(5,9,23,.78);display:flex;align-items:flex-end;justify-content:center;padding:12px}
+.vmsh[hidden]{display:none}
+.vmsh-box{width:100%;max-width:420px;background:#fff;color:#0b1533;border:3px solid #000;border-radius:20px;padding:16px 16px 18px;box-shadow:6px 6px 0 #1d3fb8;font:15px/1.4 system-ui,sans-serif;max-height:92vh;overflow:auto}
+.vmsh-box h3{margin:0 0 4px;font:900 1.25rem system-ui,sans-serif}
+.vmsh-t{margin:0 0 12px;color:#4e5b7d;font-size:.85rem;word-break:break-word}
+.vmsh-g{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.vmsh-g a,.vmsh-g button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 4px;border-radius:14px;border:2px solid #0b1533;background:#f3f5fb;color:#0b1533;font:700 .78rem system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.vmsh-g span{font-size:1.5rem}
+.vmsh-qr{display:flex;justify-content:center;margin:14px 0 4px}.vmsh-qr canvas,.vmsh-qr img{border:8px solid #fff;outline:2px solid #0b1533;border-radius:6px}
+.vmsh-c{display:block;width:100%;margin-top:12px;font:800 1rem system-ui,sans-serif;padding:12px;border-radius:999px;border:2px solid #0b1533;background:#fff;color:#0b1533;cursor:pointer}
+@media print{.vmfab{display:none}}
+</style></head>
+<body><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="VM Univers, tous les projets">VM UNIVERS<small>TOUS LES PROJETS</small></a><a class="f on" href="/" aria-current="page">⚽ Foot</a><a class="fa" href="/foot-amateur/">🥅 Foot amateur</a><a class="m" href="/multisport/">🏆 Multisport</a><a class="a" href="/actus/">📰 Actus</a><a class="k" href="/mangas/">👑 VM Mangas</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="sv" href="/services/">📍 Services</a><a class="pr" href="/pronos/">🔞 Pronos 18+</a><a class="pl" href="/decouvrir.html">➕ Plus</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
+<div class="wrap">
+<section class="hero">
+<h1>VM <b>Foot amateur</b></h1>
+<p>National 2, National 3, Régional, District, Coupe de France, féminines, jeunes et futsal : les titres du jour de la presse régionale, région par région, avec le lien vers l'article d'origine.</p>
+</section>
+
+<section class="panel" aria-labelledby="choixTitre">
+<h2 id="choixTitre" class="sr" style="position:absolute;left:-9999px">Choisir ta région</h2>
+<div class="choix">
+<div><label for="region">Ta région</label><select id="region"><option value="">Toute la France</option></select></div>
+<button class="btn" type="button" id="geo">📍 Me localiser</button>
+<p id="geoNote">Ton choix reste sur ton téléphone. La localisation n'est utilisée qu'une fois, pour proposer ta région, et n'est jamais envoyée.</p>
+</div>
+<div class="chips" id="niveaux" role="group" aria-label="Niveau">
+<button class="chip" type="button" data-n="" aria-pressed="true">Tout</button>
+<button class="chip" type="button" data-n="NATIONAL" aria-pressed="false">N2 / N3</button>
+<button class="chip" type="button" data-n="REGIONAL" aria-pressed="false">Régional</button>
+<button class="chip" type="button" data-n="DISTRICT" aria-pressed="false">District</button>
+<button class="chip" type="button" data-n="COUPE" aria-pressed="false">Coupe de France</button>
+<button class="chip" type="button" data-n="FEMININ" aria-pressed="false">Féminines</button>
+<button class="chip" type="button" data-n="JEUNES" aria-pressed="false">Jeunes</button>
+<button class="chip" type="button" data-n="FUTSAL" aria-pressed="false">Futsal</button>
+</div>
+</section>
+
+<div class="head"><h2 id="titreListe">Le foot amateur du jour</h2><span id="compte" aria-live="polite"></span></div>
+<ul id="liste" aria-describedby="titreListe"></ul>
+<p class="vide panel" id="vide" hidden></p>
+
+<div class="liens">
+<a href="/">⚽ Le foot pro du jour</a>
+<a href="/belfort/">VM Belfort</a>
+<a href="/actus/">VM Actus</a>
+<a href="/multisport/">VM Multisport</a>
+</div>
+<p class="note">Véloce Mercato reprend seulement les titres et renvoie vers les médias qui les ont publiés (Google Actualités, Ouest-France Foot Amateur, Foot National). Chaque matin à 5 h, les titres de la veille s'effacent. Résultats et classements officiels : <a href="https://www.fff.fr/" target="_blank" rel="noopener">fff.fr</a>.</p>
+</div>
+<script>
+(function(){
+  var NOMS = {}, rows = [], niveau = '', region = '';
+  var LIBELLES = {NATIONAL:'N2 / N3', REGIONAL:'Régional', DISTRICT:'District', COUPE:'Coupe de France', FEMININ:'Féminines', JEUNES:'Jeunes', FUTSAL:'Futsal', AMATEUR:'Amateur'};
+  // Centres approximatifs des régions, pour proposer la plus proche (aucun envoi de la position).
+  var CENTRES = {ARA:[45.5,4.5],BFC:[47.2,4.8],BRE:[48.2,-2.9],CVL:[47.5,1.7],COR:[42.1,9.0],GES:[48.7,5.6],HDF:[50.0,2.8],IDF:[48.7,2.5],NOR:[49.1,0.1],NAQ:[45.2,0.2],OCC:[43.7,2.2],PDL:[47.4,-0.8],PAC:[43.9,6.1]};
+  var $ = function(id){return document.getElementById(id);};
+  function lire(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
+  function garder(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+  function esc(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function ilya(iso){var m=Math.round((Date.now()-new Date(iso).getTime())/60000);if(!(m>=0))return '';if(m<1)return "à l'instant";if(m<60)return 'il y a '+m+' min';var h=Math.floor(m/60);return 'il y a '+h+' h';}
+  function sur(u){return /^https:\/\//.test(u)?u:'';}
+  function dessiner(){
+    var liste = rows.filter(function(r){return (!region || r.l===region || (r.l==='FR' && (r.n==='NATIONAL' || r.n==='COUPE'))) && (!niveau || r.n===niveau);});
+    if (region) liste.sort(function(a,b){return (a.l===region?0:1)-(b.l===region?0:1) || (b.d>a.d?1:-1);});
+    $('liste').innerHTML = liste.map(function(r){
+      var u = sur(r.u); if(!u) return '';
+      return '<li><a href="'+esc(u)+'" target="_blank" rel="noopener nofollow"><span class="meta"><span class="badge">'+esc(LIBELLES[r.n]||'Amateur')+'</span>'+(NOMS[r.l]?'<span class="badge r">'+esc(NOMS[r.l])+'</span>':'')+'<span>'+esc(r.s)+' · '+esc(ilya(r.d))+'</span></span><strong>'+esc(r.t)+'</strong></a></li>';
+    }).join('');
+    $('titreListe').textContent = region ? 'Foot amateur · '+(NOMS[region]||region) : 'Le foot amateur du jour';
+    $('compte').textContent = liste.length ? liste.length+(liste.length>1?' titres':' titre') : '';
+    $('vide').hidden = liste.length>0;
+    $('vide').textContent = rows.length ? "Pas encore de titre pour ce choix aujourd'hui. Essaie un autre niveau ou toute la France." : "Les titres du jour arrivent : chaque matin à 5 h, le fil repart à neuf. Reviens un peu plus tard.";
+  }
+  function choisir(code){
+    region = NOMS[code] ? code : '';
+    $('region').value = region; garder('vm-region', region);
+    try{var u=new URL(location.href);if(region)u.searchParams.set('region',region);else u.searchParams.delete('region');history.replaceState(null,'',u);}catch(e){}
+    dessiner();
+  }
+  $('region').addEventListener('change', function(){choisir(this.value);});
+  Array.prototype.forEach.call(document.querySelectorAll('#niveaux .chip'), function(b){
+    b.addEventListener('click', function(){
+      niveau = b.getAttribute('data-n');
+      Array.prototype.forEach.call(document.querySelectorAll('#niveaux .chip'), function(x){x.setAttribute('aria-pressed', String(x===b));});
+      dessiner();
+    });
+  });
+  $('geo').addEventListener('click', function(){
+    if (!navigator.geolocation){$('geoNote').textContent="La localisation n'est pas disponible sur cet appareil : choisis ta région dans la liste.";return;}
+    $('geoNote').textContent = 'Recherche de ta région…';
+    navigator.geolocation.getCurrentPosition(function(p){
+      var best='', dmin=1e9, la=p.coords.latitude, lo=p.coords.longitude;
+      Object.keys(CENTRES).forEach(function(k){var c=CENTRES[k],d=Math.pow(c[0]-la,2)+Math.pow((c[1]-lo)*Math.cos(la*Math.PI/180),2);if(d<dmin){dmin=d;best=k;}});
+      if (dmin>9){$('geoNote').textContent="Tu sembles hors de la métropole : choisis ta région dans la liste (Outre-mer est disponible).";return;}
+      choisir(best);
+      $('geoNote').textContent = 'Région proposée : '+(NOMS[best]||best)+'. Si ce n’est pas la bonne, change-la dans la liste.';
+    }, function(){$('geoNote').textContent="Localisation refusée : aucun souci, choisis ta région dans la liste.";}, {timeout:10000, maximumAge:600000});
+  });
+  fetch('/foot-amateur/actus.json', {cache:'no-cache'}).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){
+    NOMS = d.regions || {}; rows = Array.isArray(d.titres) ? d.titres : [];
+    $('region').insertAdjacentHTML('beforeend', Object.keys(NOMS).map(function(k){return '<option value="'+esc(k)+'">'+esc(NOMS[k])+'</option>';}).join(''));
+    var q=''; try{q=new URL(location.href).searchParams.get('region')||'';}catch(e){}
+    choisir((q||lire('vm-region')).toUpperCase());
+  }).catch(function(){ $('vide').hidden=false; $('vide').textContent="Le fil n'a pas pu se charger. Vérifie ta connexion et recharge la page."; });
+})();
+</script>
+
+<button type="button" class="vmfab" id="vmFab" aria-haspopup="dialog">📤 Partager</button>
+<button type="button" class="vminst" id="vmInst">📲 Installer l'app</button>
+<div class="vmsh" id="vmSh" hidden role="dialog" aria-modal="true" aria-labelledby="vmShT"><div class="vmsh-box">
+<h3 id="vmShT">📤 Partager cette page</h3><p class="vmsh-t" id="vmShU"></p>
+<div class="vmsh-g">
+<a id="vmS-wa" target="_blank" rel="noopener"><span>💬</span>WhatsApp</a>
+<a id="vmS-fb" target="_blank" rel="noopener"><span>📘</span>Facebook</a>
+<a id="vmS-x" target="_blank" rel="noopener"><span>✖️</span>X</a>
+<a id="vmS-tg" target="_blank" rel="noopener"><span>✈️</span>Telegram</a>
+<a id="vmS-sms"><span>📱</span>SMS</a>
+<button type="button" id="vmS-cp"><span>🔗</span>Copier le lien</button>
+</div>
+<button type="button" class="vmsh-c" id="vmS-more" hidden>Plus d’options (Insta, Snap…)</button>
+<div class="vmsh-qr" id="vmShQ" aria-label="QR code de la page"></div>
+<p class="vmsh-t" style="text-align:center;margin:4px 0 0">📷 Fais scanner ce QR code avec l’appareil photo d’un ami</p>
+<button type="button" class="vmsh-c" id="vmShX">Fermer</button>
+</div></div>
+<script>
+(function(){var $=function(i){return document.getElementById(i)},f=$('vmFab'),m=$('vmSh'),qr=false;if(!f||!m)return;
+function url(){return window.vmShareURL?window.vmShareURL():(/^#a=/.test(location.hash)?location.href:location.href.split('#')[0])}
+function open(){var u=url(),t=document.title,e=encodeURIComponent;$('vmShU').textContent=t;
+ $('vmS-wa').href='https://wa.me/?text='+e(t+' '+u);$('vmS-fb').href='https://www.facebook.com/sharer/sharer.php?u='+e(u);$('vmS-x').href='https://twitter.com/intent/tweet?text='+e(t)+'&url='+e(u);$('vmS-tg').href='https://t.me/share/url?url='+e(u)+'&text='+e(t);$('vmS-sms').href='sms:?&body='+e(t+' '+u);
+ $('vmS-more').hidden=!navigator.share;
+ if(!qr){qr=true;var s=document.createElement('script');s.src='/assets/vendor/qrcode.min.js';var fb=function(){var q=$('vmShQ');if(q.firstChild)return;var p=document.createElement('p');p.textContent='QR code indisponible. Vous pouvez copier le lien ci-dessus.';q.appendChild(p)};s.onload=function(){try{new QRCode($('vmShQ'),{text:u,width:180,height:180,correctLevel:QRCode.CorrectLevel.M})}catch(x){fb()}};s.onerror=fb;setTimeout(fb,4000);document.head.appendChild(s)}
+ m.hidden=false;$('vmShX').focus()}
+f.onclick=open;$('vmShX').onclick=function(){m.hidden=true;f.focus()};m.onclick=function(e){if(e.target===m)m.hidden=true};
+$('vmS-more').onclick=function(){navigator.share({title:document.title,url:url()}).catch(function(){})};
+$('vmS-cp').onclick=function(){var b=this;(navigator.clipboard?navigator.clipboard.writeText(url()):Promise.reject()).then(function(){b.lastChild.textContent='Copié ✓'}).catch(function(){prompt('Copie ce lien :',url())})};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')m.hidden=true});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(function(){});
+var ib=$('vmInst'),dp=null,standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone,ios=/iphone|ipad|ipod/i.test(navigator.userAgent),andr=/android/i.test(navigator.userAgent);
+var mf=(($('vmapp-m')||{}).getAttribute&&$('vmapp-m').getAttribute('href'))||'',app=(mf.match(/app[/]([a-z]+)[.]webmanifest/)||[,'foot'])[1];
+var NOMS={autopart:'VM Auto Particulier',location:'VM Detailing',menu:'VM Menu QR',pro:'VM Pro Local',cv:'VM CV',emploi:'VM Emploi',univers:'VM Univers',foot:'VM Foot',gaming:'VM Gaming',actus:'VM Actus',arena:'VM Arena',tv:'La Pastille TV',annonces:'VM Shop',allolivre:'AlloLivre',recettes:'VM Recettes',produits:'VM Produits locaux',sport:'VM Sport',immo:'VM Immo',rdv:'VM RDV du jour',meteo:'VM Météo',comparateur:'VM Comparateur',boutique:'VM Boutique',belfort:'VM Belfort',pub:'Publicité VM',services:'VM Services',pepite:'Pépite FC',radio:'VM Radio',studio:'VM Studio'},nom=NOMS[app]||'VM',key='vm-app-non-'+app,no=false;try{no=localStorage.getItem(key)==='1'}catch(e){}
+ib.textContent='📲 Installer '+nom;
+function show(){if(!no)ib.classList.add('show')}
+if(!standalone){addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;show()});if(ios)show();}
+addEventListener('appinstalled',function(){ib.classList.remove('show')});
+ib.onclick=function(){
+ if(dp){dp.prompt();dp.userChoice.then(function(){ib.classList.remove('show')});dp=null;return}
+ if(ios){alert('Pour installer '+nom+' sur iPhone : — 1. Ouvre cette page dans Safari — 2. Bouton Partager ↑ en bas — 3. « Sur l’écran d’accueil » — 4. « Ajouter »')}
+
+ try{localStorage.setItem(key,'1')}catch(e){}ib.classList.remove('show')};
+window.vmMail=function(su,bo){var to='velocemercato.fr@gmail.com';location.href='mailto:'+to+'?subject='+encodeURIComponent(su)+'&body='+encodeURIComponent(bo);
+ var d=document.getElementById('vmMailBox');if(d)d.remove();d=document.createElement('div');d.id='vmMailBox';d.setAttribute('role','dialog');
+ d.style.cssText='position:fixed;left:12px;right:12px;bottom:12px;z-index:95;max-width:440px;margin:0 auto;background:#fff;color:#0b1533;border:3px solid #000;border-radius:16px;padding:14px;box-shadow:5px 5px 0 #1d3fb8;font:15px/1.4 system-ui,sans-serif';
+ d.innerHTML='<b>✉️ Ton appli e-mail s’ouvre avec le message prêt.</b><br>Appuie sur « Envoyer » dedans : tant que ce n’est pas fait, rien n’est envoyé.<br><small>Rien ne s’ouvre ? Copie la demande et envoie-la à '+to+'.</small><div style="display:flex;gap:8px;margin-top:10px"><button type="button" id="vmMailCp" style="flex:1;font:800 .95rem system-ui;padding:10px;border-radius:999px;border:2px solid #000;background:#f4cf55;cursor:pointer">📋 Copier la demande</button><button type="button" id="vmMailX" style="font:800 .95rem system-ui;padding:10px 14px;border-radius:999px;border:2px solid #000;background:#fff;cursor:pointer">OK</button></div>';
+ document.body.appendChild(d);document.getElementById('vmMailX').onclick=function(){d.remove()};
+ document.getElementById('vmMailCp').onclick=function(){var t='À : '+to+'\nObjet : '+su+'\n\n'+bo,b=this;function ok(){b.textContent='✅ Copié !'}if(navigator.clipboard)navigator.clipboard.writeText(t).then(ok,function(){prompt('Copie ce texte :',t)});else prompt('Copie ce texte :',t)}};
+})();
+</script></body>
+</html>

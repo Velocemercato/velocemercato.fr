@@ -31,7 +31,7 @@ assert "/fil.json" in js
 assert "status==='published'" in js
 assert '7*86400000' in js
 data=json.loads(read("multisport/actualites.json"))
-assert data.get("fenetreJours")==7
+assert data.get("fenetreJours") in (1,7)  # 1 : la veille s efface chaque matin (vm_fraicheur)
 assert all(sport in data["sports"] for sport in sports)
 py_compile.compile(str(ROOT/"tools/multisport_flux.py"),doraise=True)
 spec=importlib.util.spec_from_file_location('flux',ROOT/'tools/multisport_flux.py')

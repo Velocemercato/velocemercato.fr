@@ -17,6 +17,8 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+import vm_fraicheur
+
 OUT = Path('videos.json')
 CACHE = Path('video-channels.json')   # pseudo YouTube -> identifiant de chaîne
 NOW = dt.datetime.now(dt.timezone.utc)
@@ -161,6 +163,7 @@ def main():
                     found.append(v)
             except (KeyError, ValueError):
                 pass
+    found = vm_fraicheur.du_jour(found)  # rien de la veille
     found.sort(key=lambda v: v['publishedAt'], reverse=True)
     keep = {'ok:' + v['id'] for v in found[:MAX_VIDEOS]}
     cache = {k: v for k, v in cache.items() if not k.startswith('ok:') or k in keep or v is False}

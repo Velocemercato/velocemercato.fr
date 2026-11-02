@@ -25,6 +25,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+import vm_fraicheur
+
 ARTICLES = Path('articles.json')
 FLASH = Path('flash.json')
 NOW = dt.datetime.now(dt.timezone.utc)
@@ -431,6 +433,11 @@ def main():
     seen_urls.update(ignored)
     ignored_before = len(ignored)
     previous_titles = [t for a in old for t in (a.get('titre'), a.get('titreSource')) if isinstance(t, str) and t]
+    # Brèves déjà effacées par le ménage du matin : on ne les réécrit pas.
+    for m in vm_fraicheur.lire_memoire(ARTICLES):
+        seen_urls.update(u for u in m.get('urls', []) if isinstance(u, str))
+        seen_ids.add(m.get('id'))
+        previous_titles.extend(t for t in m.get('titres', []) if isinstance(t, str))
     unique = {}
     for post in sorted(all_candidates, key=lambda p: p['date'], reverse=True):
         url = post['url'].split('?')[0]
@@ -517,6 +524,11 @@ def main():
             raise fatal_error
         return
     merged = sorted(additions + old, key=lambda a: str(a.get('publishedAt', '')), reverse=True)
+    # Fraîcheur : ce qui date d'avant la journée VM en cours (5 h, heure de Paris) s'efface.
+    kept = vm_fraicheur.du_jour(merged, ('createdAt', 'publishedAt'))
+    if len(kept) != len(merged):
+        vm_fraicheur.memoriser(ARTICLES, [a for a in merged if a not in kept])
+        merged = kept
     articles_content = json.dumps(merged, ensure_ascii=False, indent=2) + '\n'
     # Flash de 24h pour chacun des articles nouveaux, sans toucher aux anciens articles.
     now_cutoff = NOW - dt.timedelta(hours=24)
@@ -526,6 +538,7 @@ def main():
         fid = 'flash-' + a['id']
         if fid not in known_flash_ids:
             flashes.append({'id': fid, 'publishedAt': a['publishedAt'], 'texte': a['resume'], 'hot': False})
+    flashes = vm_fraicheur.du_jour(flashes)
     flashes.sort(key=lambda f: str(f.get('publishedAt', '')), reverse=True)
     flash_content = json.dumps(flashes[:45], ensure_ascii=False, indent=2) + '\n'
     # Écrit les articles en premier ; l'étape git commit sauvegarde les deux JSON ensemble.

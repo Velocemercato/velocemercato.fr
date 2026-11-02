@@ -1,0 +1,60 @@
+name: Véloce Mercato - Ménage du matin (la veille s'efface)
+
+# Chaque matin à 5 h (heure de Paris), tout ce qui date de la veille est retiré :
+# brèves et leurs pages, flashs, fils, VM Belfort, foot amateur, multisport, vidéos, gaming.
+# Deux horaires UTC pour couvrir l'heure d'hiver et l'heure d'été ; le script est sans effet s'il repasse.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '5 3 * * *'
+    - cron: '5 4 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: actualites
+  cancel-in-progress: false
+
+jobs:
+  menage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Ménage, pages et publication
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for essai in 1 2 3 4; do
+            python vm_fraicheur.py
+            python build_pages.py
+            fichiers="articles.json flash.json actus psg vm-gaming videos.json fil.json belfort foot-amateur multisport deja-publies.json a sitemap.xml index.html pronos/index.html"
+            for f in $(find $fichiers -maxdepth 1 -name '*.json' 2>/dev/null); do
+              python -m json.tool "$f" > /dev/null
+            done
+            git add -A $(ls -d $fichiers 2>/dev/null)
+            if git diff --cached --quiet; then
+              echo 'Rien de la veille à effacer.'
+              exit 0
+            fi
+            git commit -q -m 'Ménage du matin : la veille s’efface'
+            if git pull --rebase origin main && git push; then
+              echo 'Publié.'
+              exit 0
+            fi
+            # Un autre robot a publié en même temps : on repart de la dernière version et on refait le ménage.
+            git rebase --abort 2>/dev/null || true
+            git fetch -q origin main
+            git reset -q --hard origin/main
+            sleep $((essai * 10))
+          done
+          echo "::error::Ménage non publié après 4 essais ; il sera refait au prochain passage."
+          exit 1

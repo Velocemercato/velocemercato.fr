@@ -16,6 +16,9 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import vm_fraicheur  # noqa: E402
+
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'multisport'/'actualites.json'
 UTC=dt.timezone.utc
@@ -134,7 +137,7 @@ def main():
  try:current=json.loads(OUT.read_text(encoding='utf-8')) if OUT.is_file() else {}
  except (ValueError,OSError):current={}
  old_data=current.get('sports') if isinstance(current.get('sports'),dict) else {}
- data={'misAJour':now.isoformat(timespec='seconds'),'fenetreJours':7,'source':'Google News RSS — liens vers les éditeurs originaux',
+ data={'misAJour':now.isoformat(timespec='seconds'),'fenetreJours':1,'source':'Google News RSS — liens vers les éditeurs originaux',
        'sports':{}}
  success=0
  for sport,query in SPORTS.items():
@@ -154,7 +157,7 @@ def main():
     if dt.timedelta(0)<=age<=dt.timedelta(days=7) and row.get('url','').startswith('https://news.google.com/') and relevant(sport,row.get('titre','')):
      items.append({**row,'rubriques':rubriques(sport,row.get('titre',''))})
    items=items[:20]
-  data['sports'][sport]=items
+  data['sports'][sport]=vm_fraicheur.du_jour(items,('date',))  # rien de la veille
   time.sleep(0.8)
  if not success and not any(data['sports'].values()):
   print('::warning::Aucun flux récupéré. Pas de publication de faux articles.',flush=True)
@@ -162,7 +165,7 @@ def main():
  OUT.parent.mkdir(parents=True,exist_ok=True)
  content=json.dumps(data,ensure_ascii=False,indent=2)+'\n'
  OUT.write_text(content,encoding='utf-8')
- print(f'::notice::Actus 7 jours par sport: '+', '.join(f'{k}={len(v)}' for k,v in data['sports'].items()),flush=True)
+ print(f'::notice::Actus du jour par sport: '+', '.join(f'{k}={len(v)}' for k,v in data['sports'].items()),flush=True)
  return 0
 if __name__=='__main__':
  try:sys.exit(main())
