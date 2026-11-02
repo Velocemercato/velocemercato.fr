@@ -65,6 +65,40 @@ def scan(rootdirs,out):
         if page.locator('a[href="/multisport/nba/"]').count()<1:reports.append({"project":name,"page":path,"width":width,"issue":"selection_nba_absente","detail":""})
        if path=="/mangas/":
         if page.locator("a[href*='episodes/ecole-des-champions-01.html']").count()<1:reports.append({"project":name,"page":path,"width":width,"issue":"episodes_absents","detail":""})
+       if name=="foot" and path=="/":
+        cat=page.locator('#cats button[data-cat="LIGUE_1"]').first
+        if cat.count():
+         cat.click(timeout=6500)
+         if cat.get_attribute("aria-pressed")!="true":
+          reports.append({"project":name,"page":path,"width":width,"issue":"filtre_foot_inactif","detail":"Clic Ligue 1 ne sélectionne pas le filtre"})
+       if name=="foot" and path=="/multisport/":
+        a=page.locator('a[data-sport="nba"]').first
+        if a.count():
+         a.click(timeout=6500)
+         if not page.url.endswith("/multisport/nba/"):
+          reports.append({"project":name,"page":path,"width":width,"issue":"choix_nba_inactif","detail":"Le clic NBA ne navigue pas sur la page dédiée"})
+       if name=="foot" and path=="/mangas/":
+        a=page.locator('a[href="/mangas/episodes/ecole-des-champions-01.html"]').first
+        if a.count():
+         a.click(timeout=6500)
+         if "/mangas/episodes/ecole-des-champions-01.html" not in page.url:
+          reports.append({"project":name,"page":path,"width":width,"issue":"navigation_manga_inactive","detail":"La carte épisode n'ouvre pas sa page"})
+       if name=="foot" and path=="/mangas/episodes/ecole-des-champions-01.html":
+        a=page.locator('.video button').first
+        if a.count():
+         a.click(timeout=6000)
+         iframe=page.locator('iframe[src*="youtube-nocookie.com/embed/"]').first
+         if not iframe.count():
+          reports.append({"project":name,"page":path,"width":width,"issue":"lecteur_manga_inactif","detail":"Clic charger lecteur sans iframe officielle"})
+       if name=="foot" and path=="/notifications/":
+        checkbox=page.locator('[data-topic="mangas"]').first
+        if checkbox.count() and page.locator('#vm-alert-enable').count():
+         checkbox.check(timeout=4500)
+         page.locator('#vm-alert-enable').click(timeout=4500)
+         page.wait_for_timeout(450)
+         status=page.locator('#vm-alert-status').inner_text().lower()
+         if "activ" not in status:
+          reports.append({"project":name,"page":path,"width":width,"issue":"notifications_inactives","detail":status[:190]})
        if name=="foot" and path=="/notifications/":
         if page.locator('[data-topic="mangas"]').count()!=1:reports.append({"project":name,"page":path,"width":width,"issue":"preferences_mangas_absentes","detail":""})
       except Exception as exc:
