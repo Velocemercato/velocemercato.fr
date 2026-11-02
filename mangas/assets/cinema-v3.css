@@ -1,0 +1,41 @@
+/* VM MANGAS — habillage cinématographique à partir des artworks VM et miniatures officielles. */
+body{background:radial-gradient(ellipse at top left,#460918 0,transparent 34%),radial-gradient(ellipse at 75% 10%,#0b3985 0,transparent 35%),#030613!important}
+.vm-manga-top{background:#03050ded!important;border-bottom:3px solid #ff2e4f!important;padding:8px clamp(12px,1.5vw,24px)!important;box-shadow:0 7px 22px #000a}
+.vm-manga-top .vm-mark{font-size:clamp(21px,2.2vw,30px)!important;letter-spacing:-.045em}
+.vm-manga-top .vm-mark span{color:#abf775!important}
+.vm-manga-top nav a{font-size:clamp(10px,.92vw,13px)!important;font-weight:900!important;color:#f4f6ff!important}
+.vm-manga-top nav a:hover{background:#d32041!important}
+.vm-manga-top nav .active{outline:2px solid #ff5b70!important;background:#bc0929!important;box-shadow:0 0 15px #f32245}
+.vm-manga-shell{max-width:1650px!important;padding:0 13px 30px!important}
+.vm-manga-hero{min-height:385px!important;border:3px solid #fa3a59!important;box-shadow:0 8px 30px #000c,0 0 17px #f931526c!important;border-radius:7px!important;background:linear-gradient(90deg,#07070d0f 0,#100510f2 39%,#100919db 62%,#06142682),url('/img/studio/manga-vm-studio.webp') 11% 42%/cover no-repeat!important;display:grid!important;grid-template-columns:31% 43% 26%!important;gap:0}
+.vm-manga-hero:before{background:linear-gradient(90deg,transparent 0,#080615ed 33%,#090b22d0 65%,transparent)!important;z-index:0!important}
+.vm-manga-hero:after{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-conic-gradient(from 9deg at 8% 55%,#f5283c12 0 2deg,transparent 2deg 16deg);z-index:0}
+.vm-manga-hero .hero-villain{display:block!important;grid-column:1;min-height:300px;position:relative}
+.vm-manga-hero .hero-type{grid-column:2;align-self:center;position:relative;z-index:2;padding:30px 12px!important}
+.vm-manga-hero .hero-type .crown{font-size:39px;color:#ffdc72;text-shadow:2px 3px #000}
+.vm-manga-hero .hero-type h1{font:italic 900 clamp(54px,7.4vw,122px)/.84 Impact,'Arial Black',sans-serif!important;letter-spacing:-.055em;text-shadow:5px 6px 0 #040409,0 0 20px #ff35536b!important}
+.vm-manga-hero .hero-type h1 span{color:#ff3c58;text-shadow:4px 4px 0 #05050a!important}
+.vm-manga-hero .hero-type .hero-tag{font:italic 900 clamp(18px,2.3vw,31px)/1.02 Impact,'Arial Black',sans-serif!important;text-shadow:3px 4px #000}
+.vm-manga-hero .hero-type .hero-sub{color:#fff1d9!important}
+.vm-manga-hero .hero-right{grid-column:3;display:flex!important;flex-direction:column;gap:10px;justify-content:center;align-self:stretch;max-height:unset!important;z-index:3;margin:13px!important}
+.vm-manga-hero .hero-right a{flex:1;min-height:130px;max-height:176px;border:2px solid #529aff!important;box-shadow:0 0 10px #3586fb85!important}
+.vm-manga-hero .hero-right a:last-child{border-color:#ff365b!important;box-shadow:0 0 10px #f62b5687!important}
+.vm-manga-hero .hero-right a img{filter:saturate(1.17) contrast(1.08)}
+.vm-manga-hero .hero-right a span{font:900 13px system-ui!important;text-transform:uppercase}
+.vm-strip{gap:8px!important;padding:13px 4px!important}
+.vm-tile{flex-basis:145px!important;box-shadow:0 4px 8px #000a, inset 0 0 12px #ffffff17!important;border-color:#4f7cba!important}
+.vm-tile:first-child{border:2px solid #ff3454!important;box-shadow:0 0 17px #ed2b4cb3!important}
+.vm-tile:hover{border-color:#f33453!important}
+.vm-featured{grid-template-columns:1fr 1fr minmax(295px,.85fr)!important;gap:14px!important}
+.vm-feature,.vm-new{background:linear-gradient(135deg,#0f172a,#050812)!important;border:2px solid #48628a!important;box-shadow:0 5px 19px #000b!important}
+.vm-feature:first-child{border-color:#dd3453!important}.vm-feature:nth-child(2){border-color:#cc3b5b!important}
+.vm-feature .cover{aspect-ratio:16/9!important;object-fit:cover;box-shadow:0 0 6px #f73c5c66}
+.vm-feature h2,.vm-new h2{font:italic 900 clamp(19px,2.15vw,31px)/1.06 Impact,system-ui!important;color:white;text-transform:uppercase}
+.vm-feature h3{font:900 17px/1.25 system-ui!important}
+.vm-feature .btn{background:#d52041!important;border-color:#ff8293!important;box-shadow:0 0 8px #ef345982!important}
+.vm-new .vm-new-list a{border-bottom:1px solid #38496a!important}
+.vm-new .vm-new-list a:hover{color:#ffdc70!important}
+.vm-benefits{border:2px solid #46608b!important;background:#060d1bea!important;box-shadow:0 0 12px #1a2d5588!important}
+.vm-mini-section .panel{border-color:#435b87!important}
+@media(max-width:1050px){.vm-manga-hero{grid-template-columns:26% 47% 27%!important}.vm-manga-hero .hero-type h1{font-size:clamp(44px,8vw,86px)!important}.vm-featured{grid-template-columns:repeat(2,minmax(0,1fr))!important}.vm-new{grid-column:1/-1}.vm-new .vm-new-list{display:grid;grid-template-columns:1fr 1fr;gap:2px 15px}}
+@media(max-width:700px){.vm-manga-top{flex-wrap:wrap!important}.vm-manga-top nav{overflow-x:auto;width:100%}.vm-manga-hero{grid-template-columns:1fr!important;min-height:530px!important;background-position:30% top!important}.vm-manga-hero:before{background:linear-gradient(180deg,#080b14ad 0,#070917ce 47%,#050713b8 100%)!important}.vm-manga-hero .hero-villain{display:none!important}.vm-manga-hero .hero-type{grid-column:1;align-self:end;margin-top:48px;padding:12px!important}.vm-manga-hero .hero-type h1{font-size:clamp(55px,14vw,92px)!important}.vm-manga-hero .hero-right{grid-column:1;display:grid!important;grid-template-columns:1fr 1fr;margin:5px 10px 14px!important;align-self:auto}.vm-manga-hero .hero-right a{min-height:95px;max-height:110px}.vm-featured{grid-template-columns:1fr!important}.vm-new{grid-column:auto}.vm-new .vm-new-list{display:block}.vm-tile{flex-basis:122px!important}}
