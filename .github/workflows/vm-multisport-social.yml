@@ -1,0 +1,47 @@
+name: VM Multisport - Fabriquer affiches originales réseaux
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/vm_multisport_social.py'
+      - '.github/workflows/vm-multisport-social.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: vm-multisport-social-art
+  cancel-in-progress: false
+jobs:
+  images:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet "pillow>=11,<13" "cairosvg>=2.7,<3"
+      - name: Rendu affiche VM originale (sans vidéo tierce)
+        run: python tools/vm_multisport_social.py
+      - name: Publier affiches dans les assets
+        run: |
+          set -euo pipefail
+          cp assets/social/vm-multisport-lancement-portrait.jpg "$RUNNER_TEMP/portrait.jpg"
+          cp assets/social/vm-multisport-lancement-paysage.jpg "$RUNNER_TEMP/paysage.jpg"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main --quiet
+            git reset --hard origin/main --quiet
+            mkdir -p assets/social
+            cp "$RUNNER_TEMP/portrait.jpg" assets/social/vm-multisport-lancement-portrait.jpg
+            cp "$RUNNER_TEMP/paysage.jpg" assets/social/vm-multisport-lancement-paysage.jpg
+            git add assets/social/vm-multisport-lancement-*.jpg
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -qm "VM Multisport: affiches réseau originales [skip ci]"
+            if git push -q origin HEAD:main; then exit 0; fi
+            sleep "$((attempt*3))"
+          done
+          exit 1
