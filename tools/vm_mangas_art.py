@@ -30,7 +30,7 @@ try:
     small=ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",29)
 except OSError:
     bold=sub=small=ImageFont.load_default()
-d.text((58,867),"VM MANGAS 87",font=bold,fill="#ffe275",stroke_width=3,stroke_fill="#000000")
+d.text((58,867),"VM MANGAS",font=bold,fill="#ffe275",stroke_width=3,stroke_fill="#000000")
 d.text((60,990),"LE CLUB NOSTALGIE",font=sub,fill="white")
 d.text((60,1060),"ÉPISODES OFFICIELS • FOOT & MANGAS",font=small,fill="#efcfb8")
 d.rounded_rectangle((45,1130,1035,1258),radius=18,fill="#de1d42",outline="#ffbc9f",width=3)
@@ -48,7 +48,7 @@ for yy in range(STORY_H):
     d.line((0,yy,W,yy),fill=(int(32-18*frac),int(9+10*frac),int(35+24*frac)))
 story.paste(im,(0,210))
 d=ImageDraw.Draw(story)
-d.text((70,50),"LE CLUB DU N°87",font=sub,fill="#ffe17a")
+d.text((70,50),"LES MANGAS DE NOTRE ENFANCE",font=sub,fill="#ffe17a")
 d.text((70,113),"LE RETOUR DE NOTRE ENFANCE",font=small,fill="#fff7e9")
 d.text((74,1640),"REJOINS-NOUS SUR",font=sub,fill="#ffe17a")
 d.text((74,1700),"VELOCEMERCATO.FR/MANGAS",font=sub,fill="#ffffff")
