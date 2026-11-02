@@ -1,0 +1,42 @@
+name: VM Multisport - Publier annonces officielles Meta (une seule fois)
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/publier_vm_multisport.py'
+      - '.github/workflows/vm-multisport-meta.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+jobs:
+  annonce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 32
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet 'cryptography==50.0.0'
+      - name: Retrouver les accusés de publication chiffrés
+        env:
+          STATE_DIR: ${{ runner.temp }}/vm-broadcast-state
+        run: |
+          set -euo pipefail
+          url="https://github.com/${GITHUB_REPOSITORY}.git"
+          if git -c credential.helper='!gh auth git-credential' ls-remote --exit-code "$url" refs/heads/broadcast-state >/dev/null; then
+            git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "$url" "$STATE_DIR"
+          else
+            echo "::error::Branche chiffrée broadcast-state absente"
+            exit 1
+          fi
+      - name: Campagne unique Facebook Instagram et Stories
+        run: python tools/publier_vm_multisport.py --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
