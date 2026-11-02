@@ -14,12 +14,15 @@ const CFG={
 };
 const $=id=>document.getElementById(id);
 const safe=(u)=>{try{const x=new URL(u);return x.protocol==='https:'?x.href:null}catch{return null}};
-let current='nba',feed=null;
+let current='nba',feed=null,currentRubrique='une';
+const RUBRIQUES=['une','france','europe','international'];
+const RUBRIQUE_LABELS={une:'À la une',france:'France',europe:'Europe',international:'International'};
 function choose(k,history=true){
  if(!Object.prototype.hasOwnProperty.call(CFG,k))k='nba';
  current=k;const c=CFG[k];document.body.dataset.sport=k;
  try{localStorage.setItem(KEY,k)}catch{}
- if(history){const url=new URL(location.href);url.searchParams.set('sport',k);window.history.pushState({sport:k},'',url.pathname+url.search+url.hash)}
+ if(history){currentRubrique='une';const url=new URL(location.href);url.searchParams.set('sport',k);url.searchParams.delete('rubrique');window.history.pushState({sport:k,rubrique:'une'},'',url.pathname+url.search+url.hash)}
+ else {const wanted=new URL(location.href).searchParams.get('rubrique');currentRubrique=RUBRIQUES.includes(wanted)?wanted:'une';}
  document.querySelectorAll('[data-sport-choice]').forEach(b=>{const sel=b.dataset.sportChoice===k;b.setAttribute('aria-pressed',String(sel));if(sel)b.scrollIntoView({behavior:'auto',block:'nearest',inline:'nearest'})});
  $('sport-hero').dataset.ball=c.emoji;
  $('sport-title').replaceChildren(document.createTextNode('VÉLOCE '));const em=document.createElement('em');em.textContent=c.label;$('sport-title').append(em);
@@ -30,7 +33,7 @@ function choose(k,history=true){
  $('video-heading').textContent='🎬 Vidéos '+c.label;
  $('video-note').textContent='Les éditions originales de La Pastille '+c.label+' ne sont pas encore produites. Voici les publications de la chaîne officielle.';
  $('favorite-message').textContent='Préférence « '+c.label+' » mémorisée sur cet appareil. Tu peux changer de sport à tout moment.';
- renderResults(c);renderNews();
+ renderResults(c);renderRubriqueTabs();renderNews();renderRegionalOverview();renderTicker();
 }
 function addLink(box,label,url){const u=safe(url);if(!u)return;const a=document.createElement('a');a.href=u;a.target='_blank';a.rel='noopener noreferrer';a.textContent='↗ '+label;box.append(a)}
 function renderResults(c){const links=$('results-links');links.replaceChildren();addLink(links,c.officialLabel,c.official);const vids=$('video-links');vids.replaceChildren();addLink(vids,c.videoLabel,c.videos);
@@ -41,18 +44,82 @@ function renderResults(c){const links=$('results-links');links.replaceChildren()
  },{once:true});
 }
 function humanDate(s){const d=new Date(s);return Number.isNaN(d.getTime())?'Date non disponible':d.toLocaleString('fr-FR',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}
-function renderNews(){const box=$('sport-news');box.replaceChildren();const rows=(feed?.sports?.[current]||[]).filter(a=>a&&a.titre&&a.url&&a.source&&a.date).filter(a=>{let t=Date.parse(a.date);return Number.isFinite(t)&&Date.now()-t>=-60000&&Date.now()-t<=7*86400000});
- if(!rows.length){const p=document.createElement('p');p.className='placeholder';p.textContent=feed?'Pas de titre vérifié des sept derniers jours dans ce sport. Consulte les sources officielles pendant la prochaine mise à jour.':'Le fil sport est en cours de préparation. Les articles apparaîtront après une récupération de sources vérifiées.';box.append(p);return}
- $('date-source').textContent='Titres sourcés · relevé du '+humanDate(feed.misAJour);
- for(const [i,item]of rows.slice(0,18).entries()){const link=safe(item.url);if(!link||new URL(link).hostname!=='news.google.com')continue;
- const a=document.createElement('a');a.href=link;a.target='_blank';a.rel='noopener noreferrer';a.textContent=item.titre;
- const meta=document.createElement('small');meta.textContent='Source : '+item.source+' · '+humanDate(item.date);
- const card=document.createElement(i?'article':'article');card.className=i?'newsitem':'feature';card.append(a,document.createElement('br'),meta);box.append(card);}
+
+function allNews(){
+return (feed?.sports?.[current]||[]).filter(a=>a&&a.titre&&a.url&&a.source&&a.date)
+.filter(a=>{let t=Date.parse(a.date);return Number.isFinite(t)&&Date.now()-t>=-60000&&Date.now()-t<=7*86400000});
 }
-async function loadNews(){try{const r=await fetch('/multisport/actualites.json?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('http');const d=await r.json();if(!d||typeof d.sports!=='object')throw Error('format');feed=d;renderNews()}catch{feed=null;renderNews()}}
+function categories(item){
+return Array.isArray(item.rubriques)?item.rubriques.filter(x=>RUBRIQUES.includes(x)):['international'];
+}
+function listFor(region){const all=allNews();return region==='une'||region==='international'?all:all.filter(a=>categories(a).includes(region));}
+function renderRubriqueTabs(){
+for(const button of document.querySelectorAll('[data-news-rubrique]')){
+const reg=button.dataset.newsRubrique;
+button.setAttribute('aria-pressed',String(currentRubrique===reg));
+}
+for(const el of document.querySelectorAll('[data-count-rubrique]')){
+ const count=listFor(el.dataset.countRubrique).length;el.textContent=feed?String(count):'';
+}
+$('news-heading').textContent=CFG[current].emoji+' '+CFG[current].label+' : '+RUBRIQUE_LABELS[currentRubrique];
+}
+function selectRubrique(rubrique,updateUrl=true){
+if(!RUBRIQUES.includes(rubrique))return;currentRubrique=rubrique;
+if(updateUrl){const url=new URL(location.href);
+ if(rubrique==='une')url.searchParams.delete('rubrique');else url.searchParams.set('rubrique',rubrique);
+ window.history.pushState({sport:current,rubrique},'',url.pathname+url.search+url.hash)}
+renderRubriqueTabs();renderNews();
+}
+function renderTicker(){
+const el=$('sport-ticker');el.replaceChildren();
+const rows=allNews().slice(0,3);
+if(!rows.length){el.textContent='Les nouvelles vérifiées des sept derniers jours apparaîtront ici.';return}
+for(const [i,row] of rows.entries()){
+const link=safe(row.url);if(!link||new URL(link).hostname!=='news.google.com')continue;
+if(i){const sep=document.createElement('span');sep.textContent='   ◆   ';el.append(sep)}
+const a=document.createElement('a');a.href=link;a.target='_blank';a.rel='noopener noreferrer';a.textContent=row.titre;a.style.color='inherit';a.style.textDecoration='none';el.append(a);
+}}
+function renderNews(){
+const box=$('sport-news');box.replaceChildren();
+const rows=listFor(currentRubrique);
+renderRubriqueTabs();
+if(!rows.length){
+const p=document.createElement('p');p.className='placeholder';
+p.textContent=feed?(currentRubrique==='une'||currentRubrique==='international'
+?'Pas de titre récent vérifié pour ce sport cette semaine. Les prochaines mises à jour pourront compléter la rubrique.'
+:'Aucun titre vérifié pour la rubrique '+RUBRIQUE_LABELS[currentRubrique]+' cette semaine. Nous n’attribuons pas artificiellement une zone géographique à un article.')
+:'Chargement du fil sourcé de la semaine en cours.';
+box.append(p);return}
+$('date-source').textContent='Titres sourcés · '+humanDate(feed.misAJour)+' · '+rows.length+' articles';
+const c=CFG[current];
+for(const [i,item] of rows.slice(0,20).entries()){
+const link=safe(item.url);if(!link||new URL(link).hostname!=='news.google.com')continue;
+const card=document.createElement('article');card.className='vm-news-card';
+const emoji=document.createElement('div');emoji.className='vm-news-icon';emoji.textContent=c.emoji;emoji.setAttribute('aria-hidden','true');
+const body=document.createElement('div');
+const a=document.createElement('a');a.href=link;a.target='_blank';a.rel='noopener noreferrer';a.textContent=item.titre;
+const meta=document.createElement('div');meta.className='vm-news-meta';meta.textContent='📰 '+item.source+' · '+humanDate(item.date);
+const tags=document.createElement('div');tags.className='vm-news-tags';
+for(const zone of categories(item)){const t=document.createElement('span');t.textContent=RUBRIQUE_LABELS[zone];tags.append(t)}
+body.append(a,meta,tags);card.append(emoji,body);box.append(card);
+}}
+function renderRegionalOverview(){
+for(const reg of ['france','europe','international']){
+const holder=$('region-'+reg);holder.replaceChildren();
+const rows=listFor(reg).slice(0,3);
+if(!rows.length){const empty=document.createElement('p');empty.className='placeholder';empty.textContent='Aucune actualité sourcée dans cette rubrique cette semaine.';holder.append(empty);continue}
+for(const row of rows){const link=safe(row.url);if(!link||new URL(link).hostname!=='news.google.com')continue;
+const container=document.createElement('div'),a=document.createElement('a'),small=document.createElement('small');
+a.href=link;a.target='_blank';a.rel='noopener noreferrer';a.textContent=row.titre;small.textContent=row.source+' · '+humanDate(row.date);
+container.append(a,small);holder.append(container);
+}}
+}
+async function loadNews(){try{const r=await fetch('/multisport/actualites.json?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('http');const d=await r.json();if(!d||typeof d.sports!=='object')throw Error('format');feed=d;renderNews();renderRegionalOverview();renderTicker()}catch{feed=null;renderNews();renderRegionalOverview();renderTicker()}}
 function init(){const p=new URL(location.href).searchParams.get('sport');let stored;try{stored=localStorage.getItem(KEY)}catch{}choose(p&&CFG[p]?p:stored&&CFG[stored]?stored:'nba',Boolean(!p));
  document.querySelectorAll('[data-sport-choice]').forEach(button=>button.addEventListener('click',()=>choose(button.dataset.sportChoice)));
  document.querySelectorAll('[data-home-foot]').forEach(a=>a.addEventListener('click',()=>{try{localStorage.setItem(KEY,'foot')}catch{}}));
+ document.querySelectorAll('[data-news-rubrique]').forEach(button=>button.addEventListener('click',()=>selectRubrique(button.dataset.newsRubrique)));
+ document.querySelectorAll('[data-open-rubrique]').forEach(button=>button.addEventListener('click',()=>{selectRubrique(button.dataset.openRubrique);$('actus-sport').scrollIntoView({behavior:'smooth',block:'start'})}));
  window.addEventListener('popstate',()=>{const q=new URL(location.href).searchParams.get('sport');choose(q&&CFG[q]?q:'nba',false)});
  loadNews();document.addEventListener('visibilitychange',()=>{if(!document.hidden)loadNews()});
 }
