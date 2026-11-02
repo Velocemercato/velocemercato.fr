@@ -1,0 +1,52 @@
+
+/* VM MANGAS — habillage éditorial inspiré de l'affiche fournie (sans copier les personnages d'autres séries) */
+:root{--neon:#f52c4a;--ice:#62baff;--vm-gold:#ffdd79}
+body{background:linear-gradient(120deg,#060912ed,#040914ee),repeating-conic-gradient(from 45deg at 45% 0,#1d3565 0deg 2deg,#050912 3deg 12deg)!important;color:#f8f6f0}
+.vm-manga-shell{max-width:1536px;margin:auto;padding:0 14px 40px}
+.vm-manga-top{position:sticky;top:0;z-index:90;display:flex;align-items:center;gap:12px;justify-content:space-between;background:#040710f7;border-bottom:2px solid var(--neon);padding:9px clamp(12px,2vw,30px);overflow-x:auto;box-shadow:0 4px 24px #000a}
+.vm-manga-top .vm-mark{font:italic 900 22px/1 Impact,'Arial Black',sans-serif;color:#fff;flex:0 0 auto;text-decoration:none;text-shadow:2px 2px 0 #000}
+.vm-mark span{color:#72ff99}.vm-manga-top nav{display:flex;gap:5px;align-items:center}.vm-manga-top nav a{white-space:nowrap;text-decoration:none;font:800 13px system-ui,sans-serif;text-transform:uppercase;letter-spacing:.02em;padding:11px 13px;border-radius:7px;color:#fafafa}.vm-manga-top nav .active{background:#a90822;outline:2px solid #ff5b73;box-shadow:0 0 15px #ff244f}
+.vm-manga-top nav a:hover{background:#ed274e}
+.vm-manga-hero{border:2px solid #75233e;position:relative;min-height:360px;overflow:hidden;background:linear-gradient(90deg,#06071470 0 20%,#060714ea 35%,#071024f5 66%,#06101ab0 100%),url('/mangas/assets/vm-87.svg') left 43%/auto 119% no-repeat,#06101a;display:grid;grid-template-columns:31% 43% 26%;align-items:center;isolation:isolate;box-shadow:0 12px 38px #0009}
+.vm-manga-hero::before{content:"";pointer-events:none;position:absolute;inset:0;z-index:-1;background:repeating-conic-gradient(from 14deg at 70% 0,#e31d361a 0deg 2deg,transparent 2deg 16deg)}
+.vm-manga-hero::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#a90c2f,#ffec83,#32b6ff)}
+.hero-villain{align-self:stretch;display:grid;align-items:end;padding:15px}
+.hero-villain .vm-shirt{display:inline-flex;align-items:center;justify-content:center;background:#0d0b19e8;border:3px solid #e93c5b;box-shadow:0 0 20px #f2254f8a;border-radius:99px;color:#ffdb7c;font:900 21px Impact,sans-serif;width:58px;height:58px;transform:rotate(-10deg)}
+.hero-type{text-align:center;padding:24px 12px;min-width:0}
+.hero-type .crown{font-size:2.2rem;color:#ffe069;text-shadow:0 0 13px #f4294b}
+.hero-type h1{font:italic 900 clamp(3.6rem,7.5vw,8rem)/.88 Impact,'Arial Black',system-ui,sans-serif;margin:0 0 15px;letter-spacing:-.035em;text-shadow:6px 6px 0 #03040b,0 0 32px #f21b40}
+.hero-type h1 span{display:block;color:#ff3d5b}
+.hero-type .hero-tag{font:italic 900 clamp(1.2rem,2vw,2rem) Impact,system-ui,sans-serif;line-height:1.08;text-transform:uppercase;color:white;text-shadow:3px 3px 0 #05050a}
+.hero-type .hero-sub{color:#fff0d2;font:750 12px/1.6 system-ui,sans-serif;letter-spacing:.12em;margin:9px 0 14px}
+.hero-type .btn{padding:10px 18px;margin:4px;min-height:40px}
+.hero-right{display:grid;grid-template-rows:1fr 1fr;gap:8px;margin:12px 12px 12px 0;max-height:310px}
+.hero-right a{position:relative;display:block;min-height:125px;overflow:hidden;border:2px solid #5b7cb5;background:#122043;text-decoration:none;border-radius:9px;box-shadow:0 0 13px #050817}
+.hero-right img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.13) contrast(1.12)}
+.hero-right span{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,#020716e8);padding:26px 9px 8px;color:#fff;font:850 12px system-ui,sans-serif;text-transform:uppercase}
+.vm-strip{display:flex;gap:9px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-color:#fc365d #081023;padding:14px 4px 12px}
+.vm-tile{scroll-snap-align:start;flex:0 0 150px;overflow:hidden;text-align:center;text-decoration:none;border:2px solid #6886b8;border-radius:10px;background:linear-gradient(150deg,#18385d,#04090e);box-shadow:0 4px 10px #0009;color:#fff;transition:border-color .2s}
+.vm-tile:first-child{border-color:#ff3556;box-shadow:0 0 12px #ff35567d}
+.vm-tile:hover{border-color:#ff4063;transform:translateY(-2px)}
+.vm-tile img,.vm-tile .vm-placeholder{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.vm-placeholder{display:grid!important;place-items:center;background:linear-gradient(135deg,#3c205d,#0e2b48 45%,#1d0829);color:#ffde83;font-size:2.2rem}
+.vm-tile b{display:block;font:850 11px/1.15 system-ui,sans-serif;text-transform:uppercase;padding:10px 5px 2px}.vm-tile small{display:block;color:#b8cbe7;padding:0 4px 8px;font:11px/1.3 system-ui,sans-serif}
+.vm-featured{display:grid;grid-template-columns:1fr 1fr minmax(280px,.88fr);gap:13px;margin-top:5px}
+.vm-feature,.vm-new{border:1px solid #466086;border-radius:12px;background:linear-gradient(130deg,#0d1424,#070b14);padding:13px;box-shadow:0 9px 24px #0009;min-width:0}
+.vm-feature h2,.vm-new h2{font:italic 900 clamp(1.2rem,2.1vw,2rem) Impact,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.025em;margin:0 0 9px;color:#fff}
+.vm-feature:first-child h2{color:#ffe6a3}.vm-feature:nth-child(2) h2{color:#f5a8b7}
+.vm-feature .cover{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:9px;border:2px solid #315d8e}
+.vm-feature h3{font:850 18px system-ui,sans-serif;text-transform:uppercase;margin:10px 0 5px}
+.vm-feature p{font:13px/1.48 system-ui,sans-serif;color:#c3d5ee;min-height:42px}
+.vm-feature .btn{display:flex;margin:6px 0 0 auto;width:fit-content;font:850 13px system-ui,sans-serif;min-height:42px}
+.vm-new h2{border-bottom:1px solid #405176;padding-bottom:9px}
+.vm-new a{display:flex;gap:10px;align-items:center;text-decoration:none;border-bottom:1px solid #29374d;padding:9px 0;color:#fff}
+.vm-new a:hover{color:#ffe28a}.vm-new a img{width:100px;aspect-ratio:16/9;object-fit:cover;border-radius:6px;flex:0 0 auto}
+.vm-new .copy{min-width:0;font:700 12px/1.4 system-ui,sans-serif}.vm-new .copy strong{display:block;font:850 13px system-ui,sans-serif}.vm-new .copy small{display:block;color:#b7c9e0}
+.vm-benefits{display:flex;justify-content:space-around;gap:10px;flex-wrap:wrap;margin:16px 0 4px;padding:12px;background:#07101df5;border:1px solid #304b77;border-radius:12px;color:#fff;font:800 13px system-ui,sans-serif}
+.vm-mini-section{padding:20px 0}.vm-mini-section h2{font:900 26px Impact,system-ui,sans-serif;text-transform:uppercase;margin:8px 0}
+.vm-mini-section .episode-catalogue{grid-template-columns:repeat(4,minmax(0,1fr))}
+.vm-readmore{color:#e1ecff;background:#0b1934;padding:13px 16px;border-left:4px solid #ff3854;border-radius:7px;margin-top:16px}
+.vm-readmore a{color:#ffe17c}
+@media(max-width:1100px){.vm-manga-top nav a{padding:9px 7px;font-size:12px}.vm-featured{grid-template-columns:repeat(2,minmax(0,1fr))}.vm-new{grid-column:1/-1}.vm-new .vm-new-list{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}}
+@media(max-width:720px){.vm-manga-top{padding:8px;align-items:stretch}.vm-manga-top .vm-mark{font-size:18px}.vm-manga-top nav a{font-size:11px;padding:8px 6px}.vm-manga-hero{min-height:425px;grid-template-columns:1fr;grid-template-rows:1fr; background:linear-gradient(180deg,#070b14bb,#060714a8 52%,#06101af8),url('/mangas/assets/vm-87.svg') center top/auto 103% no-repeat,#06101a}.hero-villain{display:none}.hero-type{padding:54px 17px 20px;align-self:end}.hero-type h1{font-size:5rem}.hero-right{display:none}.vm-featured{grid-template-columns:1fr}.vm-new{grid-column:auto}.vm-new .vm-new-list{display:block}.vm-mini-section .episode-catalogue{grid-template-columns:repeat(2,minmax(0,1fr))}.vm-tile{flex-basis:125px}.vm-manga-shell{padding:0 10px 30px}}
+@media(prefers-reduced-motion:reduce){.vm-tile{transition:none}}
