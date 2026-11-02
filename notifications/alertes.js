@@ -1,16 +1,23 @@
 
 (()=>{'use strict';const KEY='vm-alertes-v1';
-const TOP={foot:['⚽ Foot','/#feed-title'],actus:['📰 VM Actus','/actus/'],gaming:['🎮 Gaming','/vm-gaming/'],pronos:['📊 Pronos','/pronos/'],mangas:['📺 Mangas','/mangas/']};
-const empty=()=>({enabled:false,topics:{foot:false,actus:false,gaming:false,pronos:false,mangas:false},seen:{}});
+const TOP={foot:['⚽ Foot','/#feed-title'],actus:['📰 VM Actus','/actus/'],gaming:['🎮 Gaming','/vm-gaming/'],pronos:['📊 Pronos','/pronos/'],mangas:['📺 Mangas','/mangas/'],nba:['🏀 NBA','/multisport/?sport=nba'],nfl:['🏈 NFL','/multisport/?sport=nfl'],f1:['🏎️ F1','/multisport/?sport=f1'],motogp:['🏍️ MotoGP','/multisport/?sport=motogp'],tennis:['🎾 Tennis','/multisport/?sport=tennis'],rugby:['🏉 Rugby','/multisport/?sport=rugby'],cyclisme:['🚴 Cyclisme','/multisport/?sport=cyclisme']};
+const empty=()=>({enabled:false,topics:Object.fromEntries(Object.keys(TOP).map(k=>[k,false])),seen:{}});
 function read(){try{const s=JSON.parse(localStorage.getItem(KEY)||'null');return s?.topics&&s?.seen?s:empty()}catch{return empty()}}
 function save(s){try{localStorage.setItem(KEY,JSON.stringify(s))}catch{}}
 async function get(path){const r=await fetch(path+'?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error(path);return r}
 function mk(k,id,t,u){return {k,id:String(id),title:String(t).slice(0,160),url:u,label:TOP[k][0]}}
-async function latest(){const a={foot:[],actus:[],gaming:[],pronos:[],mangas:[]};
-const vals=await Promise.allSettled([get('/fil.json').then(r=>r.json()),get('/notifications/episodes.json').then(r=>r.json()),get('/pronos/').then(r=>r.text())]);
+async function latest(){const a=Object.fromEntries(Object.keys(TOP).map(k=>[k,[]]));
+const vals=await Promise.allSettled([get('/fil.json').then(r=>r.json()),get('/notifications/episodes.json').then(r=>r.json()),get('/pronos/').then(r=>r.text()),get('/multisport/actualites.json').then(r=>r.json())]);
 if(vals[0].status==='fulfilled'){const lines=vals[0].value.titres||[];for(const k of ['foot','actus','gaming'])a[k]=lines.filter(x=>x.k===k&&x.t&&x.d).sort((x,y)=>Date.parse(y.d)-Date.parse(x.d)).slice(0,7).map(x=>mk(k,x.d+'/'+x.t,x.t,TOP[k][1]));}
 if(vals[1].status==='fulfilled')a.mangas=vals[1].value.slice(0,10).map(x=>{let u=new URL(x.url,location.origin);return mk('mangas',x.id,x.title,u.origin===location.origin?u.pathname:'/mangas/')});
 if(vals[2].status==='fulfilled'){const d=new DOMParser().parseFromString(vals[2].value,'text/html'),ed=d.querySelector('header strong')?.textContent?.trim(),title=d.querySelector('#football article h3')?.textContent?.trim();if(ed)a.pronos=[mk('pronos',ed+'/'+title,title||'Nouvelle édition des pronos','/pronos/')]}
+if(vals[3].status==='fulfilled'&&vals[3].value&&vals[3].value.sports){
+ const now=Date.now(),windowMs=7*86400000;
+ for(const k of ['nba','nfl','f1','motogp','tennis','rugby','cyclisme']){
+  const rows=vals[3].value.sports[k]||[];
+  a[k]=rows.filter(x=>x&&x.id&&x.titre&&x.date&&Number.isFinite(Date.parse(x.date))&&now-Date.parse(x.date)>=-60000&&now-Date.parse(x.date)<=windowMs).slice(0,8).map(x=>mk(k,x.id,x.titre,TOP[k][1]));
+ }
+}
 return a}
 let service=null;async function sw(){if(!('serviceWorker'in navigator))return null;if(service)return service;try{service=await navigator.serviceWorker.register('/notifications/sw.js',{scope:'/notifications/'});return service}catch{return null}}
 function toast(n){const e=document.createElement('div'),a=document.createElement('a'),p=document.createElement('p');e.className='vm-alert-toast';a.href=n.url;a.textContent='Voir la nouveauté';p.textContent=n.label+' : '+n.title;e.append(p,a);document.body.append(e);setTimeout(()=>e.remove(),8500)}
