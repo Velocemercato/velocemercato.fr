@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'tools/audit_vm_sites.py'
+      - 'tools/audit_vm_navigateur.py'
       - '.github/workflows/audit-vm-global.yml'
   push:
     branches: [main]
@@ -51,4 +52,36 @@ jobs:
           name: audit-vm-liens-complet
           path: audit-resultats/
           if-no-files-found: warn
+          retention-days: 30
+
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: foot
+      - uses: actions/checkout@v4
+        with:
+          repository: Velocemercato/vmunivers
+          path: univers
+      - uses: actions/checkout@v4
+        with:
+          repository: Velocemercato/Papiers-sans-galere
+          path: papiers
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Installer Chromium de tests
+        run: |
+          python -m pip install playwright==1.62.0
+          python -m playwright install chromium --with-deps
+      - name: Exercer les 32 écrans clés en 390px et 1440px
+        run: python foot/tools/audit_vm_navigateur.py --foot foot --univers univers --papiers papiers --out audit-browser
+      - name: Rapports navigateur
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-vm-navigateur
+          path: audit-browser/
           retention-days: 30
