@@ -12,7 +12,7 @@ class AccueilMultisportTests(unittest.TestCase):
   self.assertIn('id="feed-title"',home)
   self.assertIn('id="pastille-tv"',home)
   self.assertIn('id="feed"',home)
-  self.assertIn('id="vitrine"',home)
+  self.assertNotIn('id="vitrine"',home)
   self.assertIn('class="v2-hero"',home)
   self.assertEqual(home.count('<!-- VM_ACTUS_VISIBLES_START -->'),1)
   self.assertEqual(home.count('<!-- VM_ACTUS_VISIBLES_END -->'),1)
