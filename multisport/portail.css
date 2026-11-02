@@ -1,0 +1,124 @@
+/* VM MULTISPORT — portail calqué sur la maquette 01_REFERENCE_VM_MULTISPORT (noir / rouge / or, néons).
+   Chargé uniquement par /multisport/index.html ; les pages sport gardent univers.css + cinema-v2.css. */
+body[data-mode=portal]{--red:#ff1f3d;--red2:#c4081f;--gold:#ffc21a;--ink:#050608;--card:#0c0c11;background:radial-gradient(ellipse at 0 40%,#3a0610 0,transparent 40%),radial-gradient(ellipse at 100% 70%,#3a0610 0,transparent 38%),linear-gradient(180deg,#07080b,#030304);color:#f4f4f6;font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;overflow-x:hidden}
+body[data-mode=portal] .wrap{max-width:1536px;padding:0 clamp(10px,1.1vw,18px)}
+body[data-mode=portal] h2,body[data-mode=portal] h3{font-family:'Barlow Condensed','Arial Narrow',Impact,sans-serif}
+
+/* ---------- HÉROS ---------- */
+body[data-mode=portal] .banner{position:relative;height:clamp(260px,27vw,415px);overflow:hidden;isolation:isolate;background:#08070a;border:0;border-bottom:2px solid #2a0710;box-shadow:none}
+.ms-slices{position:absolute;inset:0 -6%;display:flex;z-index:-2}
+.ms-slice{position:relative;flex:1 1 0;overflow:hidden;transform:skewX(-14deg);margin-right:4px;background:var(--bg);box-shadow:inset 0 0 40px #000;outline:1px solid #000}
+.ms-slice::before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,transparent 45%,#0008 100%),var(--tint);mix-blend-mode:normal;pointer-events:none}
+.ms-slice::after{content:"";position:absolute;top:0;bottom:0;right:0;width:3px;z-index:3;background:linear-gradient(180deg,#fff7,var(--line),#fff3);box-shadow:0 0 14px var(--line),0 0 4px #fff}
+.ms-slice img{position:absolute;left:-30%;width:160%;height:118%;top:-4%;max-width:none;object-fit:cover;object-position:50% 18%;transform:skewX(14deg);filter:var(--f,none) saturate(1.35) contrast(1.12) brightness(1.08)}
+.ms-slice i{position:absolute;z-index:4;bottom:24%;left:50%;transform:skewX(14deg) translateX(-50%) rotate(-10deg);font-style:normal;font-size:clamp(34px,4.6vw,74px);filter:drop-shadow(0 6px 6px #000) drop-shadow(0 0 16px var(--line))}
+.s-foot{--bg:#3b0a0a;--line:#ffb21a;--tint:linear-gradient(120deg,#ff5a0055,#00000000 60%)}
+.s-nba{--bg:#2b0608;--line:#ff4d1a;--tint:linear-gradient(120deg,#ff2a0040,#0000);--f:hue-rotate(-12deg)}
+.s-nfl{--bg:#2a0505;--line:#ffd21a;--tint:linear-gradient(120deg,#ffc21a33,#d4002244);--f:hue-rotate(8deg)}
+.s-f1{--bg:#2a0007;--line:#ff2a3d;--tint:linear-gradient(120deg,#ff1f3d40,#ffffff14)}
+.s-motogp{--bg:#060c2a;--line:#5aa0ff;--tint:linear-gradient(120deg,#1a3dff44,#ff1f3d30);--f:hue-rotate(190deg)}
+.s-tennis{--bg:#06163a;--line:#6fd0ff;--tint:linear-gradient(120deg,#1a7dff40,#ffffff12);--f:hue-rotate(200deg)}
+body[data-mode=portal] .banner::after{display:none!important}
+body[data-mode=portal] .banner::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 40% 38% at 53% 82%,#000000b0 0,#0006 50%,transparent 78%),linear-gradient(180deg,transparent 65%,#000a)}
+.ms-hero-title{position:absolute;left:50%;bottom:7%;transform:translateX(-46%) rotate(-4deg);text-align:left;z-index:2;width:max-content;max-width:94%}
+.ms-hero-title h1{margin:0;line-height:.8;font-weight:400;font-family:Knewave,'Arial Black',Impact,sans-serif;text-transform:uppercase;white-space:nowrap;letter-spacing:-.01em}
+.ms-hero-title h1 strong{position:relative;display:inline-block;font-weight:400;font-size:clamp(70px,10.4vw,160px);background:linear-gradient(180deg,#fff7c0 0,#ffd23a 35%,#ff9a00 70%,#c45a00 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(3px 4px 0 #3a0a00) drop-shadow(0 0 14px #ff6a0099)}
+.ms-hero-title h1 .ms-word{font-size:clamp(40px,6.2vw,96px);color:#fff;text-shadow:3px 4px 0 #000,0 0 18px #000;vertical-align:.05em}
+.ms-crown{position:absolute;margin:-.9em 0 0 .6em;color:#ffc21a;filter:drop-shadow(0 0 8px #ff9a00)}
+.ms-crown svg{width:clamp(36px,4.6vw,70px);height:clamp(36px,4.6vw,70px)}
+.ms-hero-title p{position:relative;margin:.2em 0 0 22%;font:400 clamp(15px,2vw,31px)/1 'Permanent Marker',Impact,cursive;text-transform:uppercase;color:#fff;text-shadow:2px 3px 0 #000;letter-spacing:.02em;white-space:nowrap}
+.ms-hero-title p::before{content:"";position:absolute;left:-4%;right:12%;top:-.32em;height:.2em;background:linear-gradient(90deg,transparent,#ff1f3d 15%,#ff1f3d 70%,transparent);border-radius:50%;transform:skewX(-30deg);box-shadow:0 0 12px #ff1f3d}
+
+/* ---------- RANGÉE DES SPORTS ---------- */
+.ms-tiles{display:flex;align-items:stretch;gap:8px;margin:14px 0 14px}
+.ms-arrow{flex:0 0 38px;display:grid;place-items:center;border:1px solid #3a3a44;border-radius:8px;background:linear-gradient(180deg,#1a1a22,#0b0b10);color:#d9d9e0}
+.ms-arrow svg{width:22px;height:22px}.ms-arrow.prev svg{transform:scaleX(-1)}
+.ms-arrow:hover{border-color:var(--red);color:#fff;box-shadow:0 0 10px #ff1f3d88}
+body[data-mode=portal] .sport-nav{flex:1 1 auto;min-width:0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;scroll-behavior:smooth;padding:6px 4px}
+body[data-mode=portal] .sport-nav::-webkit-scrollbar{display:none}
+body[data-mode=portal] .sport-nav a{--c:#ff1f3d;flex:0 0 calc((100% - 80px)/11);min-width:96px;max-width:none;min-height:78px;gap:2px;justify-content:center;border:2px solid var(--c);border-radius:9px;background:linear-gradient(150deg,color-mix(in srgb,var(--c) 45%,#000) 0,#0b0b10 55%,color-mix(in srgb,var(--c) 22%,#000) 100%);box-shadow:0 0 10px color-mix(in srgb,var(--c) 70%,transparent),inset 0 0 14px color-mix(in srgb,var(--c) 35%,transparent);font:italic 800 clamp(18px,1.55vw,24px)/1 'Barlow Condensed',Impact,sans-serif;letter-spacing:.01em;color:#fff;text-shadow:2px 2px 0 #000}
+body[data-mode=portal] .sport-nav a .ico{font-size:clamp(26px,2.3vw,34px);filter:drop-shadow(1px 3px 2px #000)}
+body[data-mode=portal] .sport-nav a:hover,body[data-mode=portal] .sport-nav a:focus-visible{background:linear-gradient(150deg,color-mix(in srgb,var(--c) 70%,#000),#120a0e);box-shadow:0 0 18px var(--c),inset 0 0 18px color-mix(in srgb,var(--c) 50%,transparent)}
+body[data-mode=portal] .sport-nav a[data-sport=nba]{--c:#ff7a1a}body[data-mode=portal] .sport-nav a[data-sport=nfl]{--c:#2f74ff}body[data-mode=portal] .sport-nav a[data-sport=tennis]{--c:#e9df00}body[data-mode=portal] .sport-nav a[data-sport=rugby]{--c:#2f74ff}body[data-mode=portal] .sport-nav a[data-sport=cyclisme]{--c:#17c4bd}body[data-mode=portal] .sport-nav a[data-sport=nhl]{--c:#2f9bff}body[data-mode=portal] .sport-nav a[data-sport=ski]{--c:#8fdcff}
+
+/* ---------- 4 COLONNES ---------- */
+body[data-mode=portal] .ms-grid{display:grid;grid-template-columns:1.27fr 1fr 1fr .8fr;gap:14px;align-items:stretch}
+body[data-mode=portal] .ms-card{border:2px solid var(--red2);border-radius:10px;background:linear-gradient(180deg,#131318,#09090d);box-shadow:0 0 14px #ff1f3d55,inset 0 0 18px #ff1f3d14;padding:10px 12px 12px;min-height:0}
+body[data-mode=portal] .ms-card.ms-dark{border-color:#5a1420;box-shadow:0 0 10px #ff1f3d33}
+body[data-mode=portal] .ms-card.ms-gold{border-color:var(--gold);box-shadow:0 0 16px #ffc21a77,inset 0 0 18px #ffc21a1c}
+body[data-mode=portal] .ms-card h2{display:flex;align-items:center;gap:9px;margin:0 0 9px;font:italic 800 clamp(20px,1.75vw,27px)/1 'Barlow Condensed',Impact,sans-serif;text-transform:uppercase;color:#fff;letter-spacing:.005em}
+.h-ico{width:30px;height:30px;flex:0 0 auto}.h-ico.gold{color:var(--gold);filter:drop-shadow(0 0 6px #ff9a0088)}.h-ico.red{color:var(--red);filter:drop-shadow(0 0 6px #ff1f3d88)}
+body[data-mode=portal] .ms-card .feature-image{position:relative;height:auto;aspect-ratio:16/8.4;border:1px solid #2b2b33;border-radius:6px;background:#111}
+body[data-mode=portal] .ms-card .feature-image img{object-position:50% 22%}
+body[data-mode=portal] .ms-card .feature-image .play span{width:58px;height:58px;border:3px solid #fff;background:#0009;box-shadow:0 0 14px #000}
+.feature-image .play svg{width:26px;height:26px;margin-left:4px;color:#fff}
+.ms-tag{position:absolute;left:8px;bottom:8px;background:var(--red);color:#fff;font:italic 800 15px/1 'Barlow Condensed',Impact,sans-serif;padding:4px 8px;border-radius:3px;text-transform:uppercase;box-shadow:0 0 8px #ff1f3daa}
+body[data-mode=portal] .ms-card h3{margin:9px 0 5px;font:italic 800 clamp(19px,1.6vw,25px)/1.02 'Barlow Condensed',Impact,sans-serif;text-transform:uppercase;color:#fff;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+body[data-mode=portal] .ms-card p{margin:0 0 8px;color:#d6d6dc;font:500 13px/1.35 system-ui,sans-serif}
+.ms-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.ms-meta{color:#c9c9d0;font:600 12.5px system-ui,sans-serif}
+body[data-mode=portal] .ms-card .cta{align-self:auto;margin:0 0 0 auto;display:inline-flex;align-items:center;gap:6px;background:linear-gradient(180deg,#e0102c,#a8061c);border:1px solid #ff5a6e;border-radius:7px;box-shadow:0 0 12px #ff1f3d88;color:#fff;font:italic 800 16px/1 'Barlow Condensed',Impact,sans-serif;letter-spacing:.02em;padding:9px 14px;text-transform:uppercase;text-decoration:none}
+body[data-mode=portal] .ms-card .cta::after{content:"›";font-size:20px;line-height:.6}
+body[data-mode=portal] .ms-card .cta:hover{background:#ff1f3d}
+.ms-note{font-size:11.5px!important;color:#a8a8b0!important;margin:-4px 0 4px!important}
+/* Derniers ajouts */
+body[data-mode=portal] .ms-recent{display:grid;gap:0}
+body[data-mode=portal] .ms-recent a{display:grid;grid-template-columns:clamp(96px,8.6vw,134px) minmax(0,1fr) 14px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid #26262e;text-decoration:none;color:#fff}
+body[data-mode=portal] .ms-recent a:last-child{border-bottom:0}
+.ms-thumb{position:relative;display:block;aspect-ratio:16/10;border-radius:5px;overflow:hidden;border:1px solid #33333c;background:#151520}
+.ms-thumb img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.ms-thumb em{position:absolute;right:4px;bottom:4px;background:#000c;border:1px solid #fff3;border-radius:4px;color:#fff;font:700 12px/1 'Barlow Condensed',system-ui,sans-serif;font-style:normal;padding:3px 5px}
+body[data-mode=portal] .ms-recent .t{font:700 14px/1.2 system-ui,sans-serif;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+body[data-mode=portal] .ms-recent small{display:block;margin-top:4px;color:#b7b7c0;font:500 12px system-ui,sans-serif}
+body[data-mode=portal] .ms-recent svg{width:14px;height:14px;color:#bdbdc5}
+body[data-mode=portal] .ms-recent a:hover .t{color:#ffd36a}
+/* Tendances */
+body[data-mode=portal] .ms-trends{list-style:none;margin:0;padding:0;display:grid;gap:0}
+body[data-mode=portal] .ms-trends li{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:9px;align-items:center;padding:8px 0;border-bottom:1px solid #2c2a20}
+body[data-mode=portal] .ms-trends li:last-child{border-bottom:0}
+body[data-mode=portal] .ms-trends b{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#ffe58a,#f0a400 70%);color:#1a1000;font:900 15px/1 'Barlow Condensed',sans-serif;box-shadow:0 0 8px #ffc21a88}
+body[data-mode=portal] .ms-trends li:nth-child(n+4) b{background:#2a2a30;color:#fff;box-shadow:inset 0 0 0 1px #55555e}
+body[data-mode=portal] .ms-trends a{color:#fff;text-decoration:none;font:700 13px/1.25 system-ui,sans-serif;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+body[data-mode=portal] .ms-trends a:hover{color:#ffd36a}
+body[data-mode=portal] .ms-trends .n{color:#ffc21a;font:800 13px 'Barlow Condensed',sans-serif;white-space:nowrap}
+/* ---------- FRANCE / EUROPE / INTERNATIONAL ---------- */
+body[data-mode=portal] .ms-regions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:16px 0 22px}
+body[data-mode=portal] .ms-regions .region{display:flex;flex-direction:column;gap:8px;padding:8px 10px 10px;border:2px solid var(--red2);border-radius:10px;background:linear-gradient(180deg,#131318,#09090d);box-shadow:0 0 14px #ff1f3d55;color:#fff;text-decoration:none;grid-template-columns:none}
+body[data-mode=portal] .ms-regions #europe{border-color:#d99a00;box-shadow:0 0 14px #ffc21a55}
+body[data-mode=portal] .ms-regions #international{border-color:#e2361a;box-shadow:0 0 14px #ff5a1a55}
+body[data-mode=portal] .ms-regions .region:hover{box-shadow:0 0 24px #ff1f3d99}
+.ms-rhead{display:flex;align-items:center;gap:10px}
+.ms-rhead strong{font:italic 800 clamp(22px,1.8vw,28px)/1 'Barlow Condensed',Impact,sans-serif!important;text-transform:uppercase;align-self:auto!important}
+.ms-rhead .chev{width:20px;height:20px;margin-left:auto;color:#fff}
+.flag{width:38px;height:26px;border-radius:4px;flex:0 0 auto;box-shadow:0 0 0 1px #fff4,0 2px 6px #000;display:grid;place-items:center;font-size:22px;line-height:1}
+.flag.fr{background:linear-gradient(90deg,#1f3fbf 0 33.3%,#fff 33.3% 66.6%,#e8102c 66.6%)}
+.flag.eu{background:radial-gradient(circle,transparent 0 6px,#ffd400 6px 7.5px,transparent 7.5px),#1c3fbf}
+.flag.world{background:#0f3d1f;box-shadow:0 0 0 1px #6fdc8c88}
+.ms-rbody{display:grid!important;grid-template-columns:47% minmax(0,1fr);gap:12px;align-items:start;font:inherit!important;color:inherit!important}
+.ms-rbody img{width:100%;height:auto;aspect-ratio:16/8.6;object-fit:cover;object-position:50% 20%;border-radius:6px;border:1px solid #2b2b33}
+.ms-rbody b{display:block;color:#fff;font:700 15.5px/1.2 system-ui,sans-serif;margin-bottom:5px}
+.ms-rbody span span{display:block;font:500 13px/1.35 system-ui,sans-serif;color:#cfcfd6}
+.ms-rbody small{display:block;margin-top:6px;color:#ffc21a;font:700 12px system-ui,sans-serif}
+/* ---------- BAS DE PAGE (fil complet) ---------- */
+body[data-mode=portal] .lower h2{font:italic 800 28px 'Barlow Condensed',Impact,sans-serif}
+body[data-mode=portal] .story,body[data-mode=portal] .sidebar .block{background:linear-gradient(180deg,#121217,#0a0a0e);border:1px solid #3a1018;border-radius:10px}
+body[data-mode=portal] .story small,body[data-mode=portal] .sidebar .block p{color:#c4c4cc}
+body[data-mode=portal] .sidebar .block h3{font:italic 800 22px 'Barlow Condensed',Impact,sans-serif}
+body[data-mode=portal] .promo-manga{background:linear-gradient(90deg,#4a0612,#0e0a10 55%,#1a0a0e);border-color:var(--red)}
+body[data-mode=portal] .footer{border-top-color:#3a1018}
+body[data-mode=portal] .empty{border-color:#4a2028;color:#c9c9d0}
+@media(max-width:1200px){body[data-mode=portal] .ms-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:900px){body[data-mode=portal] .ms-regions{grid-template-columns:1fr}}
+@media(max-width:730px){
+ body[data-mode=portal] .banner{height:300px}
+ .ms-slices{inset:0 -18%}.ms-slice:nth-child(n+4){display:none}
+ .ms-slice i{bottom:46%;font-size:40px}
+ .ms-hero-title{left:50%;bottom:8%;transform:translateX(-50%) rotate(-4deg)}
+ .ms-hero-title h1 strong{font-size:clamp(64px,22vw,100px)}
+ .ms-hero-title h1 .ms-word{font-size:clamp(34px,11.5vw,56px)}
+ .ms-hero-title p{margin-left:6%;font-size:clamp(14px,4.6vw,22px)}
+ .ms-arrow{flex-basis:30px}
+ body[data-mode=portal] .sport-nav a{flex-basis:96px;min-height:72px}
+ body[data-mode=portal] .ms-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){body[data-mode=portal] .sport-nav{scroll-behavior:auto}}
