@@ -163,7 +163,7 @@ def render(root=ROOT, now=None):
     updated = local.strftime("%d/%m/%Y à %H:%M (Paris)")
     content = section_news(root, now) + section_agenda(root, now) + section_videos(root, now)
     return """<!doctype html>
-<html lang="fr"><head><meta charset="utf-8">
+<html lang="fr" data-vmt="pronos"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>VM Actus &amp; Pronos — Actualités et agenda sportif</title>
 <meta name="description" content="Actualités football, informations générales, gaming et agenda sportif sourcé. Pronostics uniquement fictifs.">
@@ -183,8 +183,8 @@ main{padding:24px 15px 48px;display:grid;gap:18px}
 .meta{font-size:.8rem;color:var(--muted)}.source{font-size:.88rem}
 .agenda{padding-left:20px}.agenda li{padding:5px 0}.risk{font-size:.87rem;color:var(--muted);margin-top:18px}
 footer{padding:15px 20px 30px;color:var(--muted);font-size:.85rem}
-</style><link rel="stylesheet" href="/notifications/alertes.css"><script src="/notifications/alertes.js" defer></script></head><body>
-<header><div><h1>⚽ VM ACTUS &amp; PRONOS</h1>
+</style><link rel="stylesheet" href="/notifications/alertes.css"><script src="/notifications/alertes.js" defer></script><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,800;1,900&family=Knewave&family=Permanent+Marker&display=swap"><link rel="stylesheet" href="/assets/vm-theme.css"></head><body>
+<header class="vmt-hero"><div><h1>⚽ VM ACTUS &amp; PRONOS</h1>
 <p>Les informations du jour, le foot, le gaming et les matchs sourcés. Aucun pari réel.</p>
 <p><strong>Édition actualisée : __UPDATED__</strong></p>
 <nav><a href="/notifications/">🔔 Mes alertes</a><a href="#football">Football</a><a href="#actualites">Actualités</a>

@@ -32,7 +32,7 @@ OUT = Path('a')
 ARTICLES = json.loads(Path('articles.json').read_text(encoding='utf-8'))
 
 PAGE = """<!doctype html>
-<html lang="fr">
+<html lang="fr" data-vmt="article">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title} – Véloce Mercato</title>
@@ -43,40 +43,41 @@ PAGE = """<!doctype html>
 <meta property="og:image" content="{ogimg}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="fr_FR">
 <meta property="article:published_time" content="{iso}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{ogimg}">
-<meta name="theme-color" content="#070c1f">
+<meta name="theme-color" content="#050608">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2470'/%3E%3Ctext x='32' y='44' font-family='Impact,sans-serif' font-size='30' font-style='italic' text-anchor='middle' fill='%23f4cf55'%3EVM%3C/text%3E%3C/svg%3E">
 <script type="application/ld+json">{ld}</script>
 <style>
-:root{{--bg:#070c1f;--surface:#0f1a3d;--ink:#eef2ff;--muted:#a9b4d6;--royal:#6f8fff;--gold:#f4cf55;--red:#e1243a;--green:#14a35a;--c:{color}}}
+:root{{--bg:#050608;--surface:#0e0e13;--ink:#f4f4f6;--muted:#b9b9c2;--royal:#c4081f;--gold:#ffc21a;--red:#e0102c;--green:#14a35a;--c:{color}}}
 *{{box-sizing:border-box}}
-body{{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 Barlow,system-ui,sans-serif}}
-header{{background:#050917;padding:12px 16px;border-bottom:6px solid;border-image:linear-gradient(90deg,#1d3fb8 0 33.3%,#fff 33.3% 66.6%,#e1243a 66.6%) 1;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}}
-.logo{{color:#fff;text-decoration:none;font:italic 1.55rem/1 Impact,Anton,sans-serif;letter-spacing:.03em;text-shadow:3px 3px 0 #000}}.logo b{{color:var(--gold);font-weight:400}}
-nav{{display:flex;gap:6px;flex-wrap:wrap}}nav a{{color:#0b1533;background:#fff;border:2px solid #000;border-radius:999px;padding:3px 10px;font:700 .78rem/1.4 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;text-decoration:none;box-shadow:2px 2px 0 #000}}
-nav a.don{{background:var(--gold)}}
+body{{margin:0;background:radial-gradient(ellipse at 0 30%,#3a0610 0,transparent 42%),radial-gradient(ellipse at 100% 75%,#2a0610 0,transparent 40%),linear-gradient(180deg,#07080b,#030304);background-attachment:fixed;color:var(--ink);font:17px/1.65 Barlow,system-ui,sans-serif}}
+header{{background:linear-gradient(180deg,#0b0c12,#050608);padding:12px 16px;border-bottom:1px solid #3a0a12;box-shadow:0 6px 18px #000c;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}}
+.logo{{color:#fff;text-decoration:none;font:italic 900 1.6rem/1 'Barlow Condensed',Impact,sans-serif;letter-spacing:.02em;text-shadow:2px 2px 0 #000}}.logo b{{color:#9fe34b;font-weight:900}}
+nav{{display:flex;gap:6px;flex-wrap:wrap}}nav a{{color:#fff;background:transparent;border:2px solid #5a1420;border-radius:7px;padding:8px 11px;font:700 1rem/1 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;text-decoration:none;min-height:40px;display:inline-flex;align-items:center}}nav a:hover{{border-color:var(--red);box-shadow:0 0 12px #ff1f3d88}}
+nav a.don{{border-color:var(--gold);color:var(--gold)}}
 main{{max-width:760px;margin:0 auto;padding:22px 16px 48px}}
-article{{background:var(--surface);border:3px solid #000;box-shadow:7px 7px 0 var(--c);border-radius:16px;overflow:hidden}}
-.cover{{background:var(--c);border-bottom:3px solid #000;display:flex;align-items:center;gap:10px;padding:10px 16px;min-height:56px}}
-.cover .rub{{font:400 1.5rem/1 Impact,Anton,sans-serif;text-transform:uppercase;color:#fff;text-shadow:3px 3px 0 #000;letter-spacing:.02em}}
+article{{background:linear-gradient(180deg,#131318,#09090d);border:2px solid #c4081f;box-shadow:0 0 14px #ff1f3d55,inset 0 0 18px #ff1f3d14;border-radius:10px;overflow:hidden}}
+.cover{{background:linear-gradient(90deg,var(--c) 32%,transparent 78%),url('/img/vm-art/vm-banniere-tetes-768.webp') right 25%/auto 300% no-repeat,#0a080c;border-bottom:2px solid #c4081f;display:flex;align-items:center;gap:10px;padding:10px 16px;min-height:56px}}
+.cover .rub{{font:italic 800 1.6rem/1 'Barlow Condensed',Impact,sans-serif;text-transform:uppercase;color:#fff;text-shadow:3px 3px 0 #000;letter-spacing:.02em}}
 .badge{{margin-left:auto;flex:none;font:400 1rem/1 Impact,Anton,sans-serif;letter-spacing:.06em;padding:5px 10px 3px;border:2px solid #000;background:#fff;color:#0b1533}}
 .badge.OFFICIEL{{background:var(--green);color:#fff}}.badge.RUMEUR{{background:var(--gold)}}.badge.EUROPE{{background:var(--royal);color:#fff}}
 .in{{padding:18px 20px 22px}}
 .meta{{color:var(--gold);font:700 .85rem/1.3 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.07em}}
-h1{{font:400 2rem/1.08 Impact,Anton,sans-serif;text-transform:uppercase;margin:.35em 0 .6em;text-wrap:balance;text-shadow:2px 2px 0 #000}}
+h1{{font:italic 800 2.3rem/1.02 'Barlow Condensed',Impact,sans-serif;text-transform:uppercase;margin:.35em 0 .6em;text-wrap:balance;text-shadow:2px 2px 0 #000}}
 .chapo{{font-weight:600;color:#fff;border-left:4px solid var(--c);padding-left:12px}}
 .src{{border-top:2px dashed rgba(255,255,255,.2);margin-top:18px;padding-top:12px;font-size:.92rem;color:var(--muted)}}.src a{{color:var(--gold)}}
 .tools{{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}}
-.btn{{display:inline-flex;align-items:center;gap:6px;border:3px solid #000;border-radius:999px;padding:9px 16px;font:700 .95rem/1 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.04em;text-decoration:none;cursor:pointer;box-shadow:3px 3px 0 #000;background:var(--royal);color:#fff}}
-.btn.gold{{background:var(--gold);color:#0b1533}}.btn.red{{background:var(--red)}}
-h2{{font:400 1.6rem/1 Impact,Anton,sans-serif;text-transform:uppercase;margin:28px 0 10px;color:#fff;text-shadow:3px 3px 0 var(--c)}}
+.btn{{display:inline-flex;align-items:center;gap:6px;min-height:42px;border:1px solid #ff5a6e;border-radius:7px;padding:9px 16px;font:italic 800 1rem/1 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.03em;text-decoration:none;cursor:pointer;box-shadow:0 0 12px #ff1f3d66;background:linear-gradient(180deg,#e0102c,#a8061c);color:#fff}}
+.btn.gold{{background:linear-gradient(180deg,#ffd75a,#e19a00);border-color:#ffe58a;color:#120a00;box-shadow:0 0 12px #ffc21a66}}.btn.red{{background:linear-gradient(180deg,#e0102c,#a8061c)}}
+h2{{font:italic 800 1.8rem/1 'Barlow Condensed',Impact,sans-serif;text-transform:uppercase;margin:28px 0 10px;color:#fff}}h2::before{{content:'♛ ';color:var(--gold)}}
 .rel{{display:grid;gap:10px}}@media(min-width:640px){{.rel{{grid-template-columns:1fr 1fr}}}}
-.rel a{{display:block;background:var(--surface);border:2px solid #000;border-radius:12px;padding:10px 12px;color:var(--ink);text-decoration:none;box-shadow:3px 3px 0 var(--c);line-height:1.3;font-weight:600}}
+.rel a{{display:block;background:linear-gradient(180deg,#131318,#09090d);border:2px solid #3a1018;border-radius:10px;padding:10px 12px;color:var(--ink);text-decoration:none;line-height:1.3;font-weight:600}}
 .rel a small{{display:block;color:var(--gold);font:700 .75rem/1.3 'Barlow Condensed',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}}
 .ai{{font-size:.8rem;color:var(--muted);margin-top:10px}}
-.react{{margin:22px 0 4px;padding:14px 16px;border:2px solid #000;border-radius:14px;background:var(--surface);box-shadow:3px 3px 0 var(--c)}}.react b{{display:block;font-size:1.1rem}}.react p{{margin:4px 0 10px;color:var(--muted)}}
+.react{{margin:22px 0 4px;padding:14px 16px;border:2px solid #c4081f;border-radius:10px;background:#0e0e13;box-shadow:0 0 12px #ff1f3d44}}.react b{{display:block;font-size:1.1rem}}.react p{{margin:4px 0 10px;color:var(--muted)}}
 figure{{margin:0 0 16px}}figure img{{display:block;width:100%;height:auto;border:2px solid #000;border-radius:12px}}figcaption,.credit{{font-size:.8rem;color:var(--muted);margin-top:6px}}.vid{{position:relative;aspect-ratio:16/9;margin:16px 0 6px;border:2px solid #000;border-radius:12px;overflow:hidden;background:#000}}.vid iframe{{position:absolute;inset:0;width:100%;height:100%;border:0}}
 footer{{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 34px}}footer a{{color:var(--gold)}}
 </style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Barlow+Condensed:ital,wght@0,700;1,800&display=swap"><link rel="stylesheet" href="/assets/vm-theme.css">
 </head>
 <body>
 <header><a class="logo" href="/">VÉLOCE <b>MERCATO</b></a><nav><a href="/">Brèves</a><a href="/#videos">Vidéos</a><a href="/archives.html">Rechercher</a><a class="don" href="/soutenir.html">💛 Soutenir</a></nav></header>
