@@ -45,3 +45,5 @@ h1,h2,h3,.brand,.eyebrow,.btn,.tag{font-family:Impact,Haettenschweiler,'Arial Na
 @media(max-width:850px){.episode-catalogue{grid-template-columns:repeat(2,minmax(0,1fr))}.boss-hero{min-height:340px;background-position:58% center}.boss-content{max-width:520px}}
 @media(max-width:600px){.boss-hero{min-height:480px;align-items:flex-start;padding:25px 19px;background-position:67% center}.boss-hero::before{background:linear-gradient(180deg,#060815eb 0%,#080917c9 42%,#07081140 78%)}.boss-content h1{font-size:3.95rem}.manga-tile{flex-basis:132px}.episode-catalogue{gap:10px}.episode-catalogue .card-body{padding:12px}.episode-catalogue h3{font-size:1rem}.top .brand{font-size:1.2rem}.top nav a{font-size:.73rem;padding:8px}.top nav a:nth-last-child(2){display:none}}
 @media(prefers-reduced-motion:reduce){.panel,.manga-tile,.btn{transition:none}}
+
+.next-ep{display:block;margin:14px 0 0;padding:14px 18px;border-radius:14px;background:#fd314b;color:#fff;font-weight:900;text-align:center;text-decoration:none;border:2px solid #ffa8b3}.next-ep:hover{background:#ff4d63}
