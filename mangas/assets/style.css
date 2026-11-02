@@ -21,7 +21,7 @@ footer{border-top:1px solid var(--stroke);margin-top:52px;padding:27px 0 40px;co
 @media(max-width:680px){.top-in{align-items:start}.top nav a{padding:6px 7px;font-size:.76rem}.hero{padding-top:45px}.cards,.feature,.article-grid{grid-template-columns:1fr}.feature .poster{min-height:0;aspect-ratio:16/9}.upcoming{grid-template-columns:1fr}.card-body{padding:19px}.episode-head{padding-top:37px}}
 
 
-/* VM MANGAS 87 — thème manga original, édition 02/11/2026 */
+/* VM MANGAS — thème manga original, édition 02/11/2026 */
 :root{--bg:#070911;--bg2:#101827;--ink:#fff8ed;--muted:#aab7cb;--stroke:#4d2635;--yellow:#ffe06f;--blue:#4394ff;--pink:#ff294c}
 body{background-color:#070912;background-image:repeating-conic-gradient(from 0deg at 50% 0,rgba(252,25,63,.045) 0deg 1.5deg,transparent 2deg 11deg),radial-gradient(ellipse 80% 70% at 0 15%,#540e27 0,transparent 70%),radial-gradient(ellipse 80% 70% at 100% 30%,#122f6b 0,transparent 70%);background-attachment:fixed}
 h1,h2,h3,.brand,.eyebrow,.btn,.tag{font-family:Impact,Haettenschweiler,'Arial Narrow Bold',system-ui,sans-serif;letter-spacing:.028em;text-transform:uppercase}
