@@ -31,7 +31,7 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add mangas/assets/vm-87.png mangas/assets/vm-mangas-reseaux.jpg
+          git add mangas/assets/vm-87.png mangas/assets/vm-mangas-reseaux.jpg mangas/assets/vm-mangas-story.jpg mangas/assets/vm-mangas-short.mp4
           if git diff --cached --quiet; then echo "Illustrations déjà publiées"; exit 0; fi
           git commit -m 'VM MANGAS: afficher le boss numéro 87 et visuel réseaux [skip ci]'
           for i in 1 2 3 4; do
