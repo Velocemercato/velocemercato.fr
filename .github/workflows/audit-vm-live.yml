@@ -1,0 +1,27 @@
+name: VM — Test HTTPS public 30 URLs
+on:
+  pull_request:
+    paths: ['tools/audit_vm_live.py','.github/workflows/audit-vm-live.yml']
+  push:
+    branches: [main]
+    paths: ['tools/audit_vm_live.py','.github/workflows/audit-vm-live.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  urls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test des URL officielles en lecture seule
+        run: python tools/audit_vm_live.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-vm-https
+          path: audit-live/
+          retention-days: 30
