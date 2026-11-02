@@ -30,6 +30,7 @@ SPORTS={
  'nhl': 'NHL hockey sur glace résultats actualité',
  'mlb': 'MLB baseball World Series actualité',
  'mma': 'UFC MMA combat arts martiaux mixtes actualité',
+ 'ski': 'ski alpin ski nordique biathlon coupe du monde sports hiver actualité',
 }
 # Écarter les résultats RSS hors sujet : être cité « comme la NBA » n'en fait pas une actu basket.
 RELEVANCE={
@@ -43,6 +44,7 @@ RELEVANCE={
  'nhl': r'\bNHL\b|hockey sur glace|Stanley Cup|Canadiens de Montréal|Maple Leafs|Bruins|Rangers|Red Wings|Oilers|Penguins',
  'mlb': r'\bMLB\b|baseball|World Series|Yankees|Dodgers|Mets|Astros|Phillies|Red Sox|Blue Jays',
  'mma': r'\bUFC\b|\bMMA\b|arts martiaux mixtes|octogone|Pereira|Makhachev|Jon Jones|Adesanya|McGregor',
+ 'ski': r'\bski\b|ski alpin|ski de fond|biathlon|descente|slalom|super.G|sports d.hiver|Coupe du monde FIS|Odermatt|Shiffrin|Pinturault|Fourcade|Boe',
 }
 NEGATIVE={
  'nba': r'Kardashian|OnlyFans|Tissot|Mbappé|Real Madrid|programme TV|TV-Programme|sneakers',
@@ -67,6 +69,7 @@ FRANCE_HINTS={
  'nhl': r'Alexandre Texier|Bellemare|français|France|hockey français',
  'mlb': r'français|France|baseball français',
  'mma': r'Ciryl Gane|Beno[iî]t Saint.Denis|Imavov|Manon Fiorot|français|française|France',
+ 'ski': r'Pinturault|Clément Noël|Julia Simon|Justine Braisaz|France|français|française|Le Grand Bornand|Val d.Isère|Courchevel',
 }
 EUROPE_HINTS={
  'nba': r'Europe|européen|européenne|EuroLeague|Euroligue|Joki[cć]|Don[cč]i[cć]|Giannis|Antetokounmpo|Porzingis|Wembanyama|Wemby',
@@ -79,11 +82,15 @@ EUROPE_HINTS={
  'nhl': r'Europe|européen|européenne|Finlande|Suède|République tchèque|Slovaquie|Suisse',
  'mlb': r'Europe|européen|européenne|Londres|London|Paris|Allemagne',
  'mma': r'Europe|européen|européenne|Paris|Londres|London|Dublin|Angleterre|France',
+ 'ski': r'Europe|européen|européenne|Alpes|Autriche|Suisse|Italie|Val d.Isère|Courchevel|Bormio|Kitzbühel|Oslo|Norvège',
 }
 def rubriques(sport,title):
     categories=['international']  # édition globale : articles vérifiés de cette discipline
     if re.search(FRANCE_HINTS[sport],title,re.IGNORECASE):categories.append('france')
     if re.search(EUROPE_HINTS[sport],title,re.IGNORECASE):categories.append('europe')
+    # Les compétitions féminines ne sont classées que si le titre le précise.
+    if re.search(r"\bféminin(?:e|es|s)?\b|\bfemmes\b|\bdames\b|\bWTA\b|\bWNBA\b|\bPWHL\b|Women's|\bF1 Academy\b|\bUFC Women\b",title,re.IGNORECASE):
+        categories.append('feminin')
     return categories
 
 def stamp(raw):
