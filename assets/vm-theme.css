@@ -174,3 +174,6 @@ html:is([data-vmt=gen],[data-vmt=light]) .vmt-hero :is(.beta,.badge,.kicker,.tag
 html[data-vmt] body>.vmbar{width:100%;max-width:100vw;min-width:0;align-self:start;justify-self:stretch}
 html[data-vmt-page="404"] body{place-items:start center!important;padding:0 0 16px!important;align-content:start}
 html[data-vmt-page="404"] body>:not(.vmbar){margin-top:24px;max-width:calc(100vw - 32px)}
+
+/* Boutons : texte net, sans contour hérité du héros */
+html[data-vmt] .vmt-hero a,html[data-vmt] .vmt-hero button,html[data-vmt] .btn{text-shadow:none!important}
