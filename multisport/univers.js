@@ -106,9 +106,15 @@ const row={sport:'foot',title:video.titre,date:video.date_publication,url:video.
 }
 }
 function init(){
+ const qp=new URL(location.href).searchParams;
+ if(mode==='portal'&&configs[qp.get('sport')]){
+   const dest='/multisport/'+encodeURIComponent(qp.get('sport'))+'/';
+   location.replace(dest+(qp.get('rubrique')?'?rubrique='+encodeURIComponent(qp.get('rubrique')):''));return;
+ }
  document.querySelectorAll('.region').forEach(a=>a.addEventListener('click',()=>pickRegion(a.dataset.region)));
  for(const a of document.querySelectorAll('.sport-nav a'))a.addEventListener('click',()=>{try{localStorage.setItem('vm-sport-favori',a.dataset.sport)}catch{}});
- load();document.addEventListener('visibilitychange',()=>{if(!document.hidden)load()});
+ load().then(()=>{const region=qp.get('rubrique');if(['france','europe','international'].includes(region)){pickRegion(region);document.getElementById('actualites').scrollIntoView({block:'start'})}}).catch(()=>{});
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)load()});
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
