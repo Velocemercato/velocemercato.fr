@@ -26,6 +26,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install --quiet 'cryptography==50.0.0'
+      - name: Valider le script avant tout envoi
+        run: python -m py_compile tools/publier_vm_multisport.py
       - name: Retrouver les accusés de publication chiffrés
         env:
           STATE_DIR: ${{ runner.temp }}/vm-broadcast-state
