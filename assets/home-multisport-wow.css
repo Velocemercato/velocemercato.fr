@@ -1,0 +1,87 @@
+/* ACCUEIL VM 2026 — édition manga/multisport.
+   Respecte les lecteurs et robots d'actualités existants. Aucun faux score ni vidéo. */
+:root{--wow-r:#fc294a;--wow-g:#ffe16f;--wow-b:#4b9dff}
+body.home-simple{background:#060812!important;color:#edf3ff}
+body.home-simple .vmbar,body.home-simple>header.sticky{display:none!important}
+body.home-simple .home-main{background:linear-gradient(180deg,#060a17,#071327)!important;color:#eff5ff}
+body.home-simple .home-main h2{color:#fff}
+body.home-simple:not([data-vm-sport=foot]) .home-main{display:none!important}
+.vm-wow{font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;color:#f8faff;background:radial-gradient(ellipse at 10% 4%,#3d1025 0,transparent 38%),radial-gradient(ellipse at 80% 50%,#091d4b 0,transparent 38%),#050912;overflow:hidden;padding-bottom:17px}
+.vm-wow a:focus-visible,.vm-wow button:focus-visible{outline:3px solid #ffe17a;outline-offset:3px}
+.vm-wow-top{position:sticky;top:0;z-index:70;background:#05070dec;border-bottom:2px solid #f02a48;box-shadow:0 5px 22px #000c}
+.vm-wow-topin{display:flex;align-items:center;gap:12px;max-width:1600px;margin:auto;padding:8px 13px;min-height:62px}
+.vm-wow-brand{font:italic 900 clamp(19px,2.1vw,29px)/.9 Impact,'Arial Black',system-ui,sans-serif;color:white;letter-spacing:.01em;white-space:nowrap;text-decoration:none;display:flex;align-items:center;gap:8px;flex:none;text-shadow:2px 2px 0 #010207}
+.vm-wow-brand img{height:41px;width:41px;object-fit:contain}.vm-wow-brand b{display:block;color:#afff80}
+.vm-wow-topnav{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;margin-left:auto;min-width:0}
+.vm-wow-topnav a{color:#f4f7ff;text-decoration:none;font:900 12px/1.1 system-ui,sans-serif;text-transform:uppercase;white-space:nowrap;padding:13px 12px;border-radius:7px}
+.vm-wow-topnav a:hover,.vm-wow-topnav a[aria-current=page]{color:#fff;background:#c91a34;box-shadow:0 0 15px #f8234a88}
+.vm-wow-topnav .vm-wow-navactive{background:#bb0f2a;border:1px solid #fa4760}
+.vm-wow-shell{max-width:1600px;margin:auto;padding:0 clamp(10px,1.5vw,21px)}
+.vm-wow-hero{height:clamp(280px,30vw,430px);position:relative;isolation:isolate;overflow:hidden;border-bottom:3px solid #fb384e;background:#020510;box-shadow:inset 0 -35px 45px #0009}
+.vm-wow-hero:after{content:'';pointer-events:none;position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,#05071130,#0007 37%,#03050d99 48%,#07112740 63%,#090c1933)}
+.vm-wow-scenes{position:absolute;inset:0;display:grid;grid-template-columns:24% 20% 20% 20% 16%;transform:scale(1.015)}
+.vm-wow-scene{position:relative;overflow:hidden;border-right:3px solid #080b17;transform:skewX(-9deg);margin:-30px -9px}
+.vm-wow-scene::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,#03040e94,transparent 30%,#080a17bb);box-shadow:inset 10px 0 20px #0009}
+.vm-wow-scene img{position:absolute;height:115%;width:115%;max-width:none;left:-10%;top:-4%;object-fit:cover;object-position:75% center;transform:skewX(9deg) scale(1.25);filter:contrast(1.15) saturate(1.2)}
+.vm-wow-scene:nth-child(1){background:#29050f}.vm-wow-scene:nth-child(2){background:#593405}.vm-wow-scene:nth-child(3){background:#092149}.vm-wow-scene:nth-child(4){background:#530a1d}.vm-wow-scene:nth-child(5){background:#083c5d}
+.vm-wow-scene:nth-child(2) img{filter:hue-rotate(25deg) saturate(1.7) brightness(.85);object-position:65% center}
+.vm-wow-scene:nth-child(3) img{filter:hue-rotate(185deg) saturate(1.35) brightness(.8)}
+.vm-wow-scene:nth-child(4) img{filter:hue-rotate(325deg) brightness(.8)}
+.vm-wow-scene:nth-child(5) img{filter:hue-rotate(160deg) brightness(.93)}
+.vm-wow-scene .symbol{position:absolute;z-index:2;right:12%;top:18%;font-size:clamp(42px,6vw,90px);filter:drop-shadow(4px 4px 1px #010208);transform:skewX(9deg)}
+.vm-wow-hero-copy{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(760px,66vw);z-index:3;text-align:center;pointer-events:none}
+.vm-wow-hero-copy>*{pointer-events:auto}
+.vm-wow-hero-copy .kicker{font:900 clamp(11px,1.25vw,17px)/1.2 Impact,system-ui,sans-serif;color:#ffde75;text-transform:uppercase;letter-spacing:.15em;text-shadow:2px 3px #000}
+.vm-wow-hero-copy h1{font:italic 900 clamp(48px,8.8vw,150px)/.83 Impact,'Arial Black',system-ui,sans-serif;color:#fff;margin:5px 0 10px;letter-spacing:-.05em;text-shadow:4px 5px 0 #000,0 0 20px #000}
+.vm-wow-hero-copy h1 strong{display:inline;color:#ffcd3c;font-weight:900}.vm-wow-hero-copy h1 span{color:#fff}
+.vm-wow-hero-copy p{font:italic 900 clamp(14px,2.25vw,32px)/1.04 Impact,system-ui,sans-serif;text-transform:uppercase;text-shadow:3px 4px 1px #000;margin:2px 0 13px;letter-spacing:.04em;color:#fff}
+.vm-wow-hero-copy .tagline{font:750 clamp(10px,1vw,14px) system-ui,sans-serif;letter-spacing:.13em;color:#e4ecff;text-transform:uppercase;text-shadow:2px 3px 2px #000;margin-bottom:12px}
+.vm-wow-hero-copy .cta{display:inline-flex;text-decoration:none;background:linear-gradient(90deg,#b80c2b,#fa2a4a);color:#fff;padding:10px 22px;border-radius:8px;box-shadow:0 0 14px #ec214da1;border:2px solid #ff9c9f;font:900 13px system-ui,sans-serif;text-transform:uppercase}
+.vm-wow-hero-copy .cta:hover{background:#ff4160}
+.vm-wow-sports{display:flex;overflow-x:auto;gap:11px;padding:13px 5px 13px;scrollbar-color:#fc3b58 #071024;scroll-snap-type:x proximity}
+.vm-wow-sport{flex:1 0 90px;max-width:150px;min-width:88px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:10px 8px 8px;min-height:92px;border:2px solid #5a7196;border-radius:12px;background:linear-gradient(145deg,#1a2948,#070d1b);color:#fff;box-shadow:inset 0 0 17px #4576b023,0 5px 14px #0008;text-decoration:none;font:italic 900 12px/1.12 Impact,system-ui,sans-serif;text-transform:uppercase;text-align:center;white-space:nowrap;scroll-snap-align:start}
+.vm-wow-sport .sport-emoji{font-size:34px;line-height:1;filter:drop-shadow(2px 3px 2px #000)}
+.vm-wow-sport:hover,.vm-wow-sport[aria-pressed=true]{border-color:#ff4c69;background:linear-gradient(155deg,#a20e2c,#200a21);box-shadow:0 0 17px #ff2b50d9;color:#fff}
+.vm-wow-sport[data-sport=nba]:hover,.vm-wow-sport[data-sport=nba][aria-pressed=true]{border-color:#ffae5b;background:#6c300d}
+.vm-wow-sport[data-sport=f1]:hover,.vm-wow-sport[data-sport=f1][aria-pressed=true]{border-color:#f6304a;background:#5d0920}
+.vm-wow-section{padding:3px 0 21px}
+.vm-wow-dashboard{display:grid;grid-template-columns:1.15fr 1.15fr 1fr .9fr;gap:12px;align-items:stretch}
+.vm-wow-panel{min-width:0;display:flex;flex-direction:column;border:1px solid #475a7a;border-radius:14px;padding:13px;background:linear-gradient(145deg,#101e33,#070a14);box-shadow:0 5px 19px #0009}
+.vm-wow-panel:nth-child(1){border-color:#cf384c}.vm-wow-panel:nth-child(2){border-color:#c17236}.vm-wow-panel:nth-child(4){border-color:#d9a42e}
+.vm-wow-panel h2{display:flex;gap:8px;align-items:center;font:italic 900 clamp(18px,2.3vw,28px)/1 Impact,system-ui,sans-serif;text-transform:uppercase;color:#fff;margin:1px 0 13px;text-shadow:2px 2px #03050b}
+.vm-wow-panel .featured-media{position:relative;overflow:hidden;aspect-ratio:16/9;display:grid;place-items:center;text-decoration:none;border:1px solid #6d789f;border-radius:10px;background:radial-gradient(circle at 60% 40%,#234774,#060e21)}
+.vm-wow-panel .featured-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vm-wow-panel .featured-media:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,#06060c66,transparent 70%)}
+.vm-wow-panel .featured-media .play{position:relative;z-index:1;display:grid;place-items:center;width:56px;height:56px;border:3px solid #fff;border-radius:50%;background:#0a182baa;color:#fff;font-size:24px;box-shadow:0 0 13px #000a}
+.vm-wow-panel h3{font:900 16px/1.22 system-ui,sans-serif;margin:13px 0 5px;color:#fff;min-height:2.4em}
+.vm-wow-panel p{font:600 12px/1.55 system-ui,sans-serif;color:#b8cae2;margin:0 0 12px}
+.vm-wow-panel .panel-action{margin-top:auto;align-self:flex-end;display:inline-flex;gap:7px;align-items:center;background:linear-gradient(95deg,#c70f30,#fa3859);border:1px solid #ff7c8d;border-radius:9px;padding:10px 12px;color:#fff;text-decoration:none;font:900 12px system-ui,sans-serif;text-transform:uppercase}
+.vm-wow-panel .panel-action:hover{filter:brightness(1.15)}
+.vm-wow-new-list{display:grid;gap:2px}
+.vm-wow-new-list a{display:grid;grid-template-columns:65px minmax(0,1fr);align-items:center;gap:8px;border-bottom:1px solid #32435b;padding:9px 0;text-decoration:none;color:#f5f8ff}
+.vm-wow-new-list a:hover{color:#ffe07b}
+.vm-wow-new-list .item-icon{display:grid;place-items:center;border:1px solid #6383b4;border-radius:7px;aspect-ratio:1.12;background:#132645;font-size:25px}
+.vm-wow-new-list .item-copy{min-width:0;font:750 12px/1.25 system-ui,sans-serif;display:block}
+.vm-wow-new-list small{display:block;font:500 11px/1.5 system-ui,sans-serif;color:#b5c9e2;margin-top:4px}
+.vm-wow-trends{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.vm-wow-trends li{display:flex;gap:8px;align-items:start;border-bottom:1px solid #233653;padding:9px 0}
+.vm-wow-trends .rank{flex:none;background:#f0b938;color:#1b1420;border-radius:50%;height:25px;width:25px;display:grid;place-items:center;font:900 13px system-ui,sans-serif}
+.vm-wow-trends a{color:#fff;text-decoration:none;font:750 12px/1.4 system-ui,sans-serif}
+.vm-wow-trends a:hover{text-decoration:underline;color:#ffdb6c}
+.vm-wow-tours{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:13px 0}
+.vm-wow-tour{display:grid;grid-template-columns:90px minmax(0,1fr);grid-template-rows:auto 1fr;gap:7px 11px;align-items:center;min-height:113px;padding:12px;border-radius:12px;background:linear-gradient(120deg,#0b1c33,#070b18);border:2px solid #3a5d82;color:#fff;text-decoration:none}
+.vm-wow-tour:hover{border-color:#f84761;box-shadow:0 0 16px #f02c4c55}
+.vm-wow-tour .emblem{grid-row:1 / span 2;display:grid;place-items:center;border-radius:10px;background:linear-gradient(130deg,#263f77,#11162d);font-size:49px;min-height:87px}
+.vm-wow-tour strong{align-self:end;font:italic 900 23px Impact,system-ui,sans-serif;text-transform:uppercase}.vm-wow-tour span:last-child{align-self:start;font:600 12px/1.4 system-ui,sans-serif;color:#b4c9e0}
+.vm-wow-footer{display:flex;gap:13px;align-items:center;justify-content:center;flex-wrap:wrap;margin:5px 0 14px;padding:13px;background:#070d17;border-radius:11px;border:1px solid #263b5e;color:#fff;font:900 12px system-ui,sans-serif}
+.vm-wow-footer a{color:#ffdc79}
+.vm-wow-expanded{max-width:1600px;margin:5px auto 25px;padding:0 clamp(12px,2vw,22px);color:#f5f9ff}
+.vm-wow-expanded h2{font:italic 900 clamp(27px,4vw,42px)/1 Impact,system-ui,sans-serif;text-transform:uppercase;margin:14px 0}
+.vm-wow-expanded-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.vm-wow-expanded-list article{border:1px solid #3c5270;background:#0b1a30;padding:14px 15px;border-radius:12px}
+.vm-wow-expanded-list a{color:#fff;text-decoration:none;font:800 16px/1.4 system-ui,sans-serif}
+.vm-wow-expanded-list a:hover{color:#ffe37c}.vm-wow-expanded-list small{display:block;color:#abc1dd;margin-top:8px}
+.vm-wow-static-note{font-size:12px;color:#b6c6df;text-align:center;margin:8px 0}
+@media(max-width:1220px){.vm-wow-dashboard{grid-template-columns:repeat(2,minmax(0,1fr))}.vm-wow-panel{min-height:300px}.vm-wow-topnav a{padding:10px 8px}}
+@media(max-width:750px){.vm-wow-topin{flex-wrap:wrap}.vm-wow-topnav{order:2;width:100%;margin:0}.vm-wow-hero{height:340px}.vm-wow-hero-copy{width:92vw}.vm-wow-hero-copy h1{font-size:clamp(48px,13.2vw,90px)}.vm-wow-hero-copy p{font-size:clamp(14px,4vw,26px)}.vm-wow-scenes{grid-template-columns:repeat(3,1fr)}.vm-wow-scene:nth-child(n+4){display:none}.vm-wow-scene .symbol{font-size:51px}.vm-wow-sport{min-width:90px;flex:0 0 94px}.vm-wow-tours{grid-template-columns:1fr}.vm-wow-dashboard{grid-template-columns:1fr}.vm-wow-panel{min-height:0}.vm-wow-new-list{grid-template-columns:repeat(2,minmax(0,1fr))}.vm-wow-expanded-list{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.vm-wow-sport{transition:none}}
