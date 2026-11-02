@@ -1,0 +1,22 @@
+{
+  "id": "/series/",
+  "name": "VM Séries de mon enfance",
+  "short_name": "VM Séries",
+  "start_url": "/series/",
+  "scope": "/series/",
+  "display": "standalone",
+  "background_color": "#070910",
+  "theme_color": "#e1243a",
+  "icons": [
+    {
+      "src": "/img/logo-vm-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/logo-vm-400.png",
+      "sizes": "400x400",
+      "type": "image/png"
+    }
+  ]
+}
