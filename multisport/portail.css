@@ -5,30 +5,10 @@ body[data-mode=portal] .wrap{max-width:1536px;padding:0 clamp(10px,1.1vw,18px)}
 body[data-mode=portal] h2,body[data-mode=portal] h3{font-family:'Barlow Condensed','Arial Narrow',Impact,sans-serif}
 
 /* ---------- HÉROS ---------- */
-body[data-mode=portal] .banner{position:relative;height:clamp(260px,27vw,415px);overflow:hidden;isolation:isolate;background:#08070a;border:0;border-bottom:2px solid #2a0710;box-shadow:none}
-.ms-slices{position:absolute;inset:0 -6%;display:flex;z-index:-2}
-.ms-slice{position:relative;flex:1 1 0;overflow:hidden;transform:skewX(-14deg);margin-right:4px;background:var(--bg);box-shadow:inset 0 0 40px #000;outline:1px solid #000}
-.ms-slice::before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,transparent 45%,#0008 100%),var(--tint);mix-blend-mode:normal;pointer-events:none}
-.ms-slice::after{content:"";position:absolute;top:0;bottom:0;right:0;width:3px;z-index:3;background:linear-gradient(180deg,#fff7,var(--line),#fff3);box-shadow:0 0 14px var(--line),0 0 4px #fff}
-.ms-slice img{position:absolute;left:-30%;width:160%;height:118%;top:-4%;max-width:none;object-fit:cover;object-position:50% 18%;transform:skewX(14deg);filter:var(--f,none) saturate(1.35) contrast(1.12) brightness(1.08)}
-.ms-slice i{position:absolute;z-index:4;bottom:24%;left:50%;transform:skewX(14deg) translateX(-50%) rotate(-10deg);font-style:normal;font-size:clamp(34px,4.6vw,74px);filter:drop-shadow(0 6px 6px #000) drop-shadow(0 0 16px var(--line))}
-.s-foot{--bg:#3b0a0a;--line:#ffb21a;--tint:linear-gradient(120deg,#ff5a0055,#00000000 60%)}
-.s-nba{--bg:#2b0608;--line:#ff4d1a;--tint:linear-gradient(120deg,#ff2a0040,#0000);--f:hue-rotate(-12deg)}
-.s-nfl{--bg:#2a0505;--line:#ffd21a;--tint:linear-gradient(120deg,#ffc21a33,#d4002244);--f:hue-rotate(8deg)}
-.s-f1{--bg:#2a0007;--line:#ff2a3d;--tint:linear-gradient(120deg,#ff1f3d40,#ffffff14)}
-.s-motogp{--bg:#060c2a;--line:#5aa0ff;--tint:linear-gradient(120deg,#1a3dff44,#ff1f3d30);--f:hue-rotate(190deg)}
-.s-tennis{--bg:#06163a;--line:#6fd0ff;--tint:linear-gradient(120deg,#1a7dff40,#ffffff12);--f:hue-rotate(200deg)}
-body[data-mode=portal] .banner::after{display:none!important}
-body[data-mode=portal] .banner::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 40% 38% at 53% 82%,#000000b0 0,#0006 50%,transparent 78%),linear-gradient(180deg,transparent 65%,#000a)}
-.ms-hero-title{position:absolute;left:50%;bottom:7%;transform:translateX(-46%) rotate(-4deg);text-align:left;z-index:2;width:max-content;max-width:94%}
-.ms-hero-title h1{margin:0;line-height:.8;font-weight:400;font-family:Knewave,'Arial Black',Impact,sans-serif;text-transform:uppercase;white-space:nowrap;letter-spacing:-.01em}
-.ms-hero-title h1 strong{position:relative;display:inline-block;font-weight:400;font-size:clamp(70px,10.4vw,160px);background:linear-gradient(180deg,#fff7c0 0,#ffd23a 35%,#ff9a00 70%,#c45a00 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(3px 4px 0 #3a0a00) drop-shadow(0 0 14px #ff6a0099)}
-.ms-hero-title h1 .ms-word{font-size:clamp(40px,6.2vw,96px);color:#fff;text-shadow:3px 4px 0 #000,0 0 18px #000;vertical-align:.05em}
-.ms-crown{position:absolute;margin:-.9em 0 0 .6em;color:#ffc21a;filter:drop-shadow(0 0 8px #ff9a00)}
-.ms-crown svg{width:clamp(36px,4.6vw,70px);height:clamp(36px,4.6vw,70px)}
-.ms-hero-title p{position:relative;margin:.2em 0 0 22%;font:400 clamp(15px,2vw,31px)/1 'Permanent Marker',Impact,cursive;text-transform:uppercase;color:#fff;text-shadow:2px 3px 0 #000;letter-spacing:.02em;white-space:nowrap}
-.ms-hero-title p::before{content:"";position:absolute;left:-4%;right:12%;top:-.32em;height:.2em;background:linear-gradient(90deg,transparent,#ff1f3d 15%,#ff1f3d 70%,transparent);border-radius:50%;transform:skewX(-30deg);box-shadow:0 0 12px #ff1f3d}
+body[data-mode=portal] .banner{position:relative;height:auto;overflow:hidden;isolation:isolate;background:#08070a;border:0;border-bottom:2px solid #2a0710;box-shadow:none}
 
+body[data-mode=portal] .banner::before,body[data-mode=portal] .banner::after{display:none!important}
+.ms-art,.ms-art img{display:block;width:100%;height:auto}
 /* ---------- RANGÉE DES SPORTS ---------- */
 .ms-tiles{display:flex;align-items:stretch;gap:8px;margin:14px 0 14px}
 .ms-arrow{flex:0 0 38px;display:grid;place-items:center;border:1px solid #3a3a44;border-radius:8px;background:linear-gradient(180deg,#1a1a22,#0b0b10);color:#d9d9e0}
@@ -48,8 +28,8 @@ body[data-mode=portal] .ms-card.ms-dark{border-color:#5a1420;box-shadow:0 0 10px
 body[data-mode=portal] .ms-card.ms-gold{border-color:var(--gold);box-shadow:0 0 16px #ffc21a77,inset 0 0 18px #ffc21a1c}
 body[data-mode=portal] .ms-card h2{display:flex;align-items:center;gap:9px;margin:0 0 9px;font:italic 800 clamp(20px,1.75vw,27px)/1 'Barlow Condensed',Impact,sans-serif;text-transform:uppercase;color:#fff;letter-spacing:.005em}
 .h-ico{width:30px;height:30px;flex:0 0 auto}.h-ico.gold{color:var(--gold);filter:drop-shadow(0 0 6px #ff9a0088)}.h-ico.red{color:var(--red);filter:drop-shadow(0 0 6px #ff1f3d88)}
-body[data-mode=portal] .ms-card .feature-image{position:relative;height:auto;aspect-ratio:16/8.4;border:1px solid #2b2b33;border-radius:6px;background:#111}
-body[data-mode=portal] .ms-card .feature-image img{object-position:50% 22%}
+body[data-mode=portal] .ms-card .feature-image{position:relative;height:auto;aspect-ratio:2.75;border:1px solid #2b2b33;border-radius:6px;background:#111}
+body[data-mode=portal] .ms-card .feature-image img{object-position:50% 30%}
 body[data-mode=portal] .ms-card .feature-image .play span{width:58px;height:58px;border:3px solid #fff;background:#0009;box-shadow:0 0 14px #000}
 .feature-image .play svg{width:26px;height:26px;margin-left:4px;color:#fff}
 .ms-tag{position:absolute;left:8px;bottom:8px;background:var(--red);color:#fff;font:italic 800 15px/1 'Barlow Condensed',Impact,sans-serif;padding:4px 8px;border-radius:3px;text-transform:uppercase;box-shadow:0 0 8px #ff1f3daa}
@@ -95,7 +75,7 @@ body[data-mode=portal] .ms-regions .region:hover{box-shadow:0 0 24px #ff1f3d99}
 .flag.eu{background:radial-gradient(circle,transparent 0 6px,#ffd400 6px 7.5px,transparent 7.5px),#1c3fbf}
 .flag.world{background:#0f3d1f;box-shadow:0 0 0 1px #6fdc8c88}
 .ms-rbody{display:grid!important;grid-template-columns:47% minmax(0,1fr);gap:12px;align-items:start;font:inherit!important;color:inherit!important}
-.ms-rbody img{width:100%;height:auto;aspect-ratio:16/8.6;object-fit:cover;object-position:50% 20%;border-radius:6px;border:1px solid #2b2b33}
+.ms-rbody img{width:100%;height:auto;aspect-ratio:2.6;object-fit:cover;object-position:50% 20%;border-radius:6px;border:1px solid #2b2b33}
 .ms-rbody b{display:block;color:#fff;font:700 15.5px/1.2 system-ui,sans-serif;margin-bottom:5px}
 .ms-rbody span span{display:block;font:500 13px/1.35 system-ui,sans-serif;color:#cfcfd6}
 .ms-rbody small{display:block;margin-top:6px;color:#ffc21a;font:700 12px system-ui,sans-serif}
@@ -110,13 +90,7 @@ body[data-mode=portal] .empty{border-color:#4a2028;color:#c9c9d0}
 @media(max-width:1200px){body[data-mode=portal] .ms-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:900px){body[data-mode=portal] .ms-regions{grid-template-columns:1fr}}
 @media(max-width:730px){
- body[data-mode=portal] .banner{height:300px}
- .ms-slices{inset:0 -18%}.ms-slice:nth-child(n+4){display:none}
- .ms-slice i{bottom:46%;font-size:40px}
- .ms-hero-title{left:50%;bottom:8%;transform:translateX(-50%) rotate(-4deg)}
- .ms-hero-title h1 strong{font-size:clamp(64px,22vw,100px)}
- .ms-hero-title h1 .ms-word{font-size:clamp(34px,11.5vw,56px)}
- .ms-hero-title p{margin-left:6%;font-size:clamp(14px,4.6vw,22px)}
+ .ms-art img{height:170px;object-fit:cover;object-position:56% 50%}
  .ms-arrow{flex-basis:30px}
  body[data-mode=portal] .sport-nav a{flex-basis:96px;min-height:72px}
  body[data-mode=portal] .ms-grid{grid-template-columns:1fr}

@@ -8,12 +8,12 @@ nfl:{name:'NFL',icon:'🏈',img:'nfl',results:'https://www.nfl.com/schedules/',v
 f1:{name:'FORMULE 1',icon:'🏁',img:'f1',results:'https://www.formula1.com/en/results/2026/races',videos:'https://www.youtube.com/@F1',france:'Pilotes et équipes françaises',europe:'Les Grands Prix européens',world:'La saison F1'},
 motogp:{name:'MOTOGP',icon:'🏍️',img:'motogp',results:'https://www.motogp.com/en/results',videos:'https://www.youtube.com/@motogp',france:'Les pilotes français',europe:'Les Grands Prix européens',world:'Le championnat MotoGP'},
 tennis:{name:'TENNIS',icon:'🎾',img:'tennis',results:'https://www.atptour.com/en/scores/current',videos:'https://www.youtube.com/@atptour',france:'Les Français en tournoi',europe:'Tournois ATP/WTA européens',world:'Le tennis mondial'},
-rugby:{name:'RUGBY',icon:'🏉',img:'foot',results:'https://www.sixnationsrugby.com/en/m6n/fixtures',videos:'https://www.youtube.com/@SixNationsRugby',france:'Top 14 et XV de France',europe:'Rugby européen',world:'Rugby international'},
-cyclisme:{name:'CYCLISME',icon:'🚴',img:'foot',results:'https://www.uci.org/competition-hub',videos:'https://www.youtube.com/@letourdefrance',france:'Les Français du peloton',europe:'Les grandes classiques européennes',world:'Le cyclisme mondial'},
-nhl:{name:'NHL',icon:'🏒',img:'nfl',results:'https://www.nhl.com/scores',videos:'https://www.youtube.com/@NHL',france:'Les hockeyeurs français',europe:'Les Européens en NHL',world:'Le hockey international'},
-mlb:{name:'MLB',icon:'⚾',img:'nba',results:'https://www.mlb.com/scores',videos:'https://www.youtube.com/@MLB',france:'Baseball en France',europe:'Le baseball européen',world:'Le baseball américain'},
-mma:{name:'MMA / UFC',icon:'🥊',img:'nfl',results:'https://www.ufc.com/events',videos:'https://www.youtube.com/@ufc',france:'Combattants français',europe:'Les rendez-vous européens',world:'Combats et événements du monde'},
-ski:{name:'SKI',icon:'🎿',img:'ski',results:'https://www.fis-ski.com/',videos:'https://www.youtube.com/@fisalpine',france:'Les skieurs français',europe:'Les grandes stations européennes',world:'Les compétitions mondiales'}
+rugby:{name:'RUGBY',icon:'🏉',img:'nfl',results:'https://www.sixnationsrugby.com/en/m6n/fixtures',videos:'https://www.youtube.com/@SixNationsRugby',france:'Top 14 et XV de France',europe:'Rugby européen',world:'Rugby international'},
+cyclisme:{name:'CYCLISME',icon:'🚴',img:'europe',results:'https://www.uci.org/competition-hub',videos:'https://www.youtube.com/@letourdefrance',france:'Les Français du peloton',europe:'Les grandes classiques européennes',world:'Le cyclisme mondial'},
+nhl:{name:'NHL',icon:'🏒',img:'international',results:'https://www.nhl.com/scores',videos:'https://www.youtube.com/@NHL',france:'Les hockeyeurs français',europe:'Les Européens en NHL',world:'Le hockey international'},
+mlb:{name:'MLB',icon:'⚾',img:'europe',results:'https://www.mlb.com/scores',videos:'https://www.youtube.com/@MLB',france:'Baseball en France',europe:'Le baseball européen',world:'Le baseball américain'},
+mma:{name:'MMA / UFC',icon:'🥊',img:'international',results:'https://www.ufc.com/events',videos:'https://www.youtube.com/@ufc',france:'Combattants français',europe:'Les rendez-vous européens',world:'Combats et événements du monde'},
+ski:{name:'SKI',icon:'🎿',img:'europe',results:'https://www.fis-ski.com/',videos:'https://www.youtube.com/@fisalpine',france:'Les skieurs français',europe:'Les grandes stations européennes',world:'Les compétitions mondiales'}
 };
 const mode=document.body.dataset.mode;
 const selected=mode==='sport'?document.body.dataset.currentSport:'portail';
@@ -23,7 +23,8 @@ const target=(row)=>{try{let u=new URL(row.url,location.origin);return ['https:'
 const recent=(row)=>{const t=Date.parse(row.date);return Number.isFinite(t)&&Date.now()-t>=-60000&&Date.now()-t<=7*86400000};
 const fmt=t=>{let d=new Date(t);return Number.isNaN(d.getTime())?'Date non renseignée':d.toLocaleString('fr-FR',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})};
 const create=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=String(text);return e};
-const art=name=>'/assets/mascottes/vm-'+(configs[name]?.img||'foot')+'.svg';
+/* Illustrations VM (mascotte du propriétaire) découpées dans la maquette 01 : une par sport, repli sur une image générique. */
+const art=name=>'/img/vm-art/vm-carte-'+(configs[name]?.img||'foot')+'.webp';
 let rows=[],video=null;
 const portal=mode==='portal';
 const EMPTY='Pas encore d’actu aujourd’hui pour ce sport — reviens un peu plus tard.';
@@ -66,8 +67,8 @@ function listNews(targetId,items,count,numbered){
 function recentPortal(items){
  const el=$('recent-list');el.replaceChildren();
  if(!items.length){el.append(create('p','empty',EMPTY));return}
- items.slice(0,4).forEach(r=>{const a=create('a');external(a,linkFor(r));
-  const th=create('span','ms-thumb'),img=create('img');img.src=art(r.sport);img.alt='';img.loading='lazy';img.width=1000;img.height=750;th.append(img,create('em','',(configs[r.sport]?.icon||'')+' '+sportName(r.sport)));
+ items.slice(0,4).forEach((r,i)=>{const a=create('a');external(a,linkFor(r));
+  const th=create('span','ms-thumb'),img=create('img');img.src=r.sport==='foot'&&i%2?'/img/vm-art/vm-carte-france.webp':art(r.sport);img.alt='';img.loading='lazy';img.width=1000;img.height=750;th.append(img,create('em','',(configs[r.sport]?.icon||'')+' '+sportName(r.sport)));
   const body=create('span'),t=create('span','t',r.title),small=create('small','',rel(r.date)+' · '+r.source);body.append(t,small);
   const chev=document.createElementNS('http://www.w3.org/2000/svg','svg');chev.setAttribute('aria-hidden','true');const use=document.createElementNS('http://www.w3.org/2000/svg','use');use.setAttribute('href','#i-chev');chev.append(use);
   a.append(th,body,chev);el.append(a)});
