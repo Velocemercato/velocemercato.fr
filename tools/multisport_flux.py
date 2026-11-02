@@ -27,6 +27,9 @@ SPORTS={
  'tennis': 'ATP WTA tennis résultats actualité',
  'rugby': 'Top 14 rugby XV international actualité',
  'cyclisme': 'cyclisme UCI Tour de France actualité',
+ 'nhl': 'NHL hockey sur glace résultats actualité',
+ 'mlb': 'MLB baseball World Series actualité',
+ 'mma': 'UFC MMA combat arts martiaux mixtes actualité',
 }
 # Écarter les résultats RSS hors sujet : être cité « comme la NBA » n'en fait pas une actu basket.
 RELEVANCE={
@@ -37,6 +40,9 @@ RELEVANCE={
  'tennis': r'tennis|\bATP\b|\bWTA\b|Roland.Garros|Wimbledon|Alcaraz|Sinner|Djokovic|Swiatek|Sabalenka',
  'rugby': r'rugby|Top 14|XV de France|Six Nations|All Blacks|Stade Toulousain|Champions Cup',
  'cyclisme': r'cyclisme|\bUCI\b|Tour de France|Tour d.Italie|Tour d.Espagne|Giro|Vuelta|Pogacar|Vingegaard|Evenepoel',
+ 'nhl': r'\bNHL\b|hockey sur glace|Stanley Cup|Canadiens de Montréal|Maple Leafs|Bruins|Rangers|Red Wings|Oilers|Penguins',
+ 'mlb': r'\bMLB\b|baseball|World Series|Yankees|Dodgers|Mets|Astros|Phillies|Red Sox|Blue Jays',
+ 'mma': r'\bUFC\b|\bMMA\b|arts martiaux mixtes|octogone|Pereira|Makhachev|Jon Jones|Adesanya|McGregor',
 }
 NEGATIVE={
  'nba': r'Kardashian|OnlyFans|Tissot|Mbappé|Real Madrid|programme TV|TV-Programme|sneakers',
