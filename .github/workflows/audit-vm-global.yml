@@ -1,0 +1,54 @@
+name: VM — Audit complet des 3 sites et vérification des liens
+on:
+  pull_request:
+    paths:
+      - 'tools/audit_vm_sites.py'
+      - '.github/workflows/audit-vm-global.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/audit_vm_sites.py'
+      - '.github/workflows/audit-vm-global.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Dépôt Véloce Mercato
+        uses: actions/checkout@v4
+        with:
+          path: foot
+      - name: Dépôt VM Univers
+        uses: actions/checkout@v4
+        with:
+          repository: Velocemercato/vmunivers
+          path: univers
+      - name: Dépôt Papiers Sans Galère
+        uses: actions/checkout@v4
+        with:
+          repository: Velocemercato/Papiers-sans-galere
+          path: papiers
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compiler le programme d'audit
+        run: python -m py_compile foot/tools/audit_vm_sites.py
+      - name: Scanner tous les HTML CSS JSON et liens internes des 3 sites
+        run: python foot/tools/audit_vm_sites.py --foot foot --univers univers --papiers papiers --out audit-resultats
+      - name: Résultats consultables dans GitHub
+        if: always()
+        run: |
+          if test -f audit-resultats/rapport.md; then
+            cat audit-resultats/rapport.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Rapports complets téléchargeables
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-vm-liens-complet
+          path: audit-resultats/
+          if-no-files-found: warn
+          retention-days: 30
