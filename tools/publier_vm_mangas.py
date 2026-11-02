@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Campagne UNIQUE VM MANGAS n°87 : posts Meta + IG Stories/Reels + YouTube Short original.
+"""Campagne UNIQUE VM MANGAS : posts Meta + IG Stories/Reels + YouTube Short original.
 N'utilise JAMAIS les vidéos de mangas : seul l'art original 87 est posté.
 Chaque action porte un accusé chiffré avant l'envoi ; aucun doublon en cas de réexécution.
 """
@@ -20,7 +20,7 @@ STORY="https://velocemercato.fr/mangas/assets/vm-mangas-story.jpg"
 VIDEO="https://velocemercato.fr/mangas/assets/vm-mangas-short.mp4"
 URL="https://velocemercato.fr/mangas/"
 CAPTION=(
-    "📺👑 VM MANGAS 87 : LE GRAND RETOUR DE NOTRE ENFANCE ! ⚽🐉\n\n"
+    "📺👑 VM MANGAS : LE GRAND RETOUR DE NOTRE ENFANCE ! ⚽🐉\n\n"
     "Olive et Tom, L'École des champions, Dragon Ball Z : redécouvre les séries cultes "
     "dans notre nouveau club sur Véloce Mercato. "
     "Épisodes publiés par leurs chaînes YouTube officielles, souvenirs et débats !\n\n"
@@ -110,7 +110,7 @@ def publish_youtube(state):
     http=HTTP()
     client=YouTube(http,state,access_token('youtube',state,http))
     client.verify_channel()
-    metadata={'snippet':{'title':'VM MANGAS 87 👑 Les dessins animés de notre enfance #Shorts',
+    metadata={'snippet':{'title':'VM MANGAS 👑 Les dessins animés de notre enfance #Shorts',
         'description':'Le club nostalgie de Véloce Mercato ! 🐉⚽\n'
           'Olive et Tom, L’École des champions, Dragon Ball Z (lecteurs officiels).\n'
           '👉 https://velocemercato.fr/mangas/\nVisuel et montage originaux VM MANGAS, réalisés avec l’aide de l’IA.',
