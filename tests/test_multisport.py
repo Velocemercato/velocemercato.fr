@@ -10,7 +10,7 @@ js=read("multisport/app.js")
 home=read("index.html")
 alerts=read("notifications/alertes.js")
 prefs=read("notifications/index.html")
-sports=("nba","nfl","f1","motogp","tennis","rugby","cyclisme")
+sports=("nba","nfl","f1","motogp","tennis","rugby","cyclisme","nhl","mlb","mma")
 for sport in sports:
  assert f'data-sport-choice="{sport}"' in html, sport
  assert f" {sport}:" in js or f"\n {sport}:" in js, sport
@@ -43,4 +43,7 @@ assert not mod.relevant("nba","Mbappé : le Real Madrid voudrait des revenus com
 assert mod.relevant("nfl","NFL : les Ravens et les Chiefs au cœur des débats")
 assert mod.relevant("f1","F1 : Leclerc au Grand Prix")
 assert mod.relevant("motogp","MotoGP : victoire à Sepang")
+assert mod.relevant("nhl","NHL : une victoire des Oilers")
+assert mod.relevant("mlb","MLB : les Dodgers préparent leur saison")
+assert mod.relevant("mma","UFC : les meilleurs combats de la semaine")
 print("OK : bascule sport, flux datés, notifications, résultats et présentation vidéo honnête.")
