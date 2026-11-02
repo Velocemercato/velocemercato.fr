@@ -1,65 +1,80 @@
 {
- "id": "2026-11-01-08",
- "date": "2026-11-01T08:30:29+01:00",
+ "id": "2026-11-02-08",
+ "date": "2026-11-02T08:52:39+01:00",
  "questions": [
   {
-   "q": "Combien de matchs de suspension Francisco Conceição a-t-il écopés de la part de l'UEFA ?",
+   "q": "Quel club de Serie A a été battu 2-5 par l'AS Roma selon la brève sur l'Udinese ?",
    "choix": [
-    "Un match",
-    "Deux matchs",
-    "Trois matchs",
-    "Cinq matchs"
+    "Udinese",
+    "Lazio",
+    "Juventus",
+    "Fiorentina"
    ],
-   "bonne": 2,
-   "explication": "Selon Foot Mercato, le Comité de l'UEFA a sanctionné Conceição de trois matchs de suspension.",
+   "bonne": 0,
+   "explication": "La brève indique que la lourde défaite de l'Udinese contre l'AS Roma s'est soldée par un score de 2-5.",
    "source": {
-    "titre": "Portugal : Francisco Conceição suspendu trois matchs par l'UEFA",
-    "id": "rss-v2-e8769808ccfc414c239967"
+    "titre": "L'Udinese envisagerait Vladimir Petkovic pour remplacer Kosta Runjaic",
+    "id": "rss-v2-4cdfd5b06975106b470c3c"
    }
   },
   {
-   "q": "Quel score Montpellier a-t-il obtenu lors de son déplacement à Annecy ?",
+   "q": "Quel joueur a ouvert le score pour l'Athletic Bilbao face à la Real Sociedad ?",
    "choix": [
-    "2-0",
-    "3-0",
-    "3-1",
-    "1-0"
+    "Nico Williams",
+    "Iñaki Williams",
+    "Alex Berenguer",
+    "Luka Sučić"
    ],
    "bonne": 1,
-   "explication": "Montpellier s'est imposé 3-0 à Annecy, selon la brève de Foot Mercato sur la 11e journée de Ligue 2.",
+   "explication": "La brève précise qu'Iñaki Williams a ouvert le score dès la 14e minute, servi par son frère Nico.",
    "source": {
-    "titre": "Ligue 2 : Montpellier s'impose 3-0 à Annecy et revient à un point de Saint-Étienne",
-    "id": "rss-v2-7dd09f4278358ffba62cf6"
+    "titre": "Liga : l'Athletic Bilbao s'impose 2-1 face à la Real Sociedad dans le derby basque",
+    "id": "rss-v2-1928cf902bd29d8340fc89"
    }
   },
   {
-   "q": "Quel joueur a inscrit le deuxième but de l'Atlético de Madrid à Levante ?",
+   "q": "À quelle minute Kerim-Sam Alajbegovic a-t-il marqué pour la Juventus contre Naples ?",
    "choix": [
-    "Alejandro Grimaldo",
-    "Giuliano Simeone",
-    "Diego Simeone",
-    "Antoine Griezmann"
+    "à la 45e minute",
+    "à la 70e minute",
+    "à la 75e minute",
+    "à la 87e minute"
    ],
    "bonne": 1,
-   "explication": "Grimaldo a ouvert le score et Giuliano Simeone a doublé la mise au retour des vestiaires, selon Foot Mercato.",
+   "explication": "La brève indique que Kerim-Sam Alajbegovic a inscrit son but à la 70e minute d'une frappe du gauche à distance.",
    "source": {
-    "titre": "Liga : l'Atlético de Madrid s'impose 2-0 à Levante et prend la tête",
-    "id": "rss-v2-6bd845605a11fb466aa1da"
+    "titre": "Serie A : la Juventus s'impose 2-0 face à Naples, Alajbegovic et Boga buteurs",
+    "id": "rss-v2-f1fb156c123ac30472650a"
    }
   },
   {
-   "q": "Combien de buts Will Lankshear a-t-il inscrits en 13 matchs de Championship ?",
+   "q": "Quel est le nombre de buts de Amine Gouiri en Ligue 1 cette saison après son but contre Toulouse ?",
    "choix": [
-    "9",
-    "11",
-    "13",
-    "15"
+    "quatre",
+    "cinq",
+    "six",
+    "sept"
    ],
    "bonne": 2,
-   "explication": "BBC Sport indique que Lankshear compte 13 réalisations en 13 matchs de championnat cette saison.",
+   "explication": "La brève précise que ce but porte à six le nombre de réalisations de Gouiri en Ligue 1 cette saison.",
    "source": {
-    "titre": "Lankshear feu d'artifice avec Middlesbrough, West Ham en difficulté à domicile",
-    "id": "rss-v2-5900cbc614898f2c2a7997"
+    "titre": "OM : Gouiri double la mise face à Toulouse au Vélodrome",
+    "id": "rss-v2-0cded9c8848f707691daf2"
+   }
+  },
+  {
+   "q": "Quel était le score de la demi-finale de League Cup remportée par Hibs face à Hearts ?",
+   "choix": [
+    "1-0",
+    "2-1",
+    "2-2",
+    "3-1"
+   ],
+   "bonne": 1,
+   "explication": "La brève indique que Hibs a vaincu Hearts 2-1 à Hampden lors de cette demi-finale de League Cup.",
+   "source": {
+    "titre": "Hibs lève la malédiction Hearts et file en finale de League Cup",
+    "id": "rss-v2-c226dccbc572b4df5e84b4"
    }
   }
  ]
