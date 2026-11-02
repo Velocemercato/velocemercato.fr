@@ -47,7 +47,7 @@ def resolve(current,ref,roots,domain,github_root):
  if is_ignored(ref):return "skip",None
  if ref.startswith("javascript:"):return "unsafe",None
  if ref.startswith("//"):ref="https:"+ref
- base="https://"+domain+"/"+current.relative_to(roots).as_posix()
+ base=("https://velocemercato.github.io/Papiers-sans-galere/" if domain=="velocemercato.github.io" else "https://"+domain+"/")+current.relative_to(roots).as_posix()
  try:p=urlparse(urljoin(base,ref))
  except ValueError:return "invalid",None
  if p.scheme not in ("http","https"):return "skip",None
