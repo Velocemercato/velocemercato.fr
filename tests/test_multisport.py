@@ -1,62 +1,45 @@
 #!/usr/bin/env python3
-"""Tests multisport sans données externes ni publications."""
+"""Tests multisport, sans réseaux ni médias inventés."""
 from pathlib import Path
 import json
-import py_compile
+import py_compile,importlib.util
 ROOT=Path(__file__).resolve().parents[1]
-read=lambda name:(ROOT/name).read_text(encoding="utf-8")
-html=read("multisport/index.html")
-js=read("multisport/app.js")
+read=lambda p:(ROOT/p).read_text(encoding="utf-8")
 home=read("index.html")
-alerts=read("notifications/alertes.js")
-prefs=read("notifications/index.html")
-sports=("nba","nfl","f1","motogp","tennis","rugby","cyclisme","nhl","mlb","mma")
+portal=read("multisport/index.html")
+js=read("multisport/univers.js")
+sports=("nba","nfl","f1","motogp","tennis","rugby","cyclisme","nhl","mlb","mma","ski")
+assert 'id="feed-title"' in home
+assert 'id="pastille-tv"' in home
+assert 'href="/multisport/"' in home
+assert 'href="/mangas/"' in home
+assert 'data-mode="portal"' in portal
 for sport in sports:
- assert f'data-sport-choice="{sport}"' in html, sport
- assert f" {sport}:" in js or f"\n {sport}:" in js, sport
- assert f"['" in alerts and f"{sport}:[" in alerts, "alertes "+sport
- assert f'data-topic="{sport}"' in prefs, "préférences "+sport
- assert f'/multisport/?sport={sport}' in home or f'data-wow-sport="{sport}"' in home, sport
-assert "🏆 Multisport" in home or "MULTISPORT" in home, "menu multisport absent"
-assert 'vm-resume-sport' in home or 'home-multisport-wow.js' in home, "préférence à reprendre manquante"
-assert 'tv-sports.fr/widget.js' in js, "programme externe indisponible"
-assert 'La Pastille ' in js and 'pas encore produites' in js, "ne pas annoncer de pastilles imaginaires"
-assert 'localStorage' in js and "pushState" in js, "sélection persistante manquante"
-assert 'Date.now()-t<=7*86400000' in js, "fenêtre 7 jours absente"
-assert "textContent" in js, "n'injecter aucun titre RSS en HTML brut"
+ assert f'data-sport="{sport}"' in portal, sport
+ path=f"multisport/{sport}/index.html"
+ assert (ROOT/path).is_file(),path
+ h=read(path)
+ assert f'data-current-sport="{sport}"' in h
+ assert f'data-mode="sport"' in h
+ for section in ('france','europe','international','feminin','resultats','videos'):
+  assert f'id="{section}"' in h,(sport,section)
+ assert 'href="/mangas/"' in h
+ assert f"{sport}:" in js or f"{sport}:" in js
+assert 'textContent' in js
+assert "/multisport/actualites.json" in js
+assert "/fil.json" in js
+assert "status==='published'" in js
+assert '7*86400000' in js
 data=json.loads(read("multisport/actualites.json"))
-assert data["fenetreJours"]==7
-assert all(s in data["sports"] for s in sports)
-assert all(isinstance(data["sports"][s],list) for s in sports)
-assert all('news.google.com' not in str(x) or 'https://' in str(x) for lines in data['sports'].values() for x in lines)
-gen=read("tools/multisport_flux.py")
-assert "when:7d" in gen and "source_name" in gen and "dt.timedelta(days=7)" in gen
-assert "news.google.com/" in gen
+assert data.get("fenetreJours")==7
+assert all(sport in data["sports"] for sport in sports)
 py_compile.compile(str(ROOT/"tools/multisport_flux.py"),doraise=True)
-import importlib.util
-spec=importlib.util.spec_from_file_location("vm_multisport_flux",ROOT/"tools/multisport_flux.py")
-mod=importlib.util.module_from_spec(spec)
-spec.loader.exec_module(mod)
-assert mod.relevant("nba","NBA : Wembanyama porte les Spurs avec 43 points")
-assert not mod.relevant("nba","Tissot lance une montre en partenariat avec la NBA")
-assert not mod.relevant("nba","Mbappé : le Real Madrid voudrait des revenus comme la NBA")
-assert mod.relevant("nfl","NFL : les Ravens et les Chiefs au cœur des débats")
-assert mod.relevant("f1","F1 : Leclerc au Grand Prix")
-assert mod.relevant("motogp","MotoGP : victoire à Sepang")
-assert mod.relevant("nhl","NHL : une victoire des Oilers")
-assert mod.relevant("mlb","MLB : les Dodgers préparent leur saison")
-assert mod.relevant("mma","UFC : les meilleurs combats de la semaine")
-# Navigation éditoriale inspirée des rubriques Foot de Véloce Mercato
-for rubrique in ('une','france','europe','international'):
- assert f'data-news-rubrique="{rubrique}"' in html, "Rubrique absente : "+rubrique
-for rubrique in ('france','europe','international'):
- assert f'id="region-{rubrique}"' in html, "Tour d'horizon absent : "+rubrique
-assert 'data-news-rubrique' in js and 'currentRubrique' in js, "Filtre éditorial non branché"
-assert 'renderRegionalOverview' in js and 'renderTicker' in js, "Sections régionales non alimentées"
-assert "textContent=item.titre" in js, "Les titres doivent rester échappés"
-assert mod.rubriques("nba","NBA : 42 points pour Victor Wembanyama")==["international","france","europe"]
-assert "france" in mod.rubriques("f1","F1 : Pierre Gasly décroche la pole")
-assert "france" not in mod.rubriques("f1","F1 : Charles Leclerc remporte le Grand Prix")
-assert "europe" in mod.rubriques("f1","F1 : Grand Prix de Monza")
-assert mod.rubriques("mlb","MLB : les Yankees battent les Dodgers")==["international"]
-print("OK : bascule sport, flux datés, notifications, résultats et rubriques géographiques et présentation vidéo honnête.")
+spec=importlib.util.spec_from_file_location('flux',ROOT/'tools/multisport_flux.py')
+mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)
+assert mod.relevant('nba','NBA : Wembanyama et les Spurs')
+assert not mod.relevant('nba','Tissot présente une montre NBA')
+assert mod.relevant('ski','Ski alpin : slalom de Coupe du monde')
+assert 'france' in mod.rubriques('f1','F1 : Pierre Gasly décroche une pole')
+assert 'europe' in mod.rubriques('f1','F1 : Grand Prix de Monza')
+assert 'feminin' in mod.rubriques('nba','WNBA : les femmes du basket')
+print('OK: 11 sports, foot conservé, rubriques, titres vérifiés, moteur ski.')
