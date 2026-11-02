@@ -1,0 +1,22 @@
+name: VM - Test en-tête Véloce Mercato + VMUNIVERS.FR
+on:
+  pull_request:
+    paths: ['index.html','assets/vm-cinema-foot.css','tests/test_header_vmunivers.py','.github/workflows/tests-entete.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  entete:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Installer Playwright et Chromium
+        run: |
+          python -m pip install 'playwright==1.62.0'
+          python -m playwright install --with-deps chromium
+      - name: Logo et VMUNIVERS.FR sur une ligne (320 à 1366 px)
+        run: python -m unittest -v tests.test_header_vmunivers
