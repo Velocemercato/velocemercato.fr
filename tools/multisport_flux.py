@@ -54,6 +54,38 @@ def relevant(sport,title):
  return (bool(re.search(RELEVANCE[sport],title,re.IGNORECASE))
          and not bool(re.search(NEGATIVE.get(sport,r'(?!)'),title,re.IGNORECASE)))
 
+# Rubriques éditoriales : elles concernent les personnes, équipes et compétitions citées,
+# pas nécessairement le pays où un match ou une course se déroule.
+FRANCE_HINTS={
+ 'nba': r'Wembanyama|Wemby|Gobert|Risacher|Sarr|Coulibaly|Batum|Yabusele|français|France',
+ 'nfl': r'français|française|France|Paris|équipe de France',
+ 'f1': r'Gasly|Ocon|Hadjar|Alpine|écurie française|pilote français|Grand Prix de France',
+ 'motogp': r'Quartararo|Zarco|pilote français|Grand Prix de France|Le Mans|français',
+ 'tennis': r'Alcaraz(?: contre | face à )Fils|Arthur Fils|Humbert|Moutet|Monfils|Mannarino|Cazaux|Gaston|Garcia|français|française|France',
+ 'rugby': r'Top 14|XV de France|Toulouse|La Rochelle|Racing 92|Stade Français|Bordeaux.Bègles|Bayonne|Castres|Pau|Toulon|Montpellier|France|français',
+ 'cyclisme': r'Alaphilippe|Gaudu|Laporte|Madouas|Vauquelin|France|français|française|Arkéa|Decathlon AG2R',
+ 'nhl': r'Alexandre Texier|Bellemare|français|France|hockey français',
+ 'mlb': r'français|France|baseball français',
+ 'mma': r'Ciryl Gane|Beno[iî]t Saint.Denis|Imavov|Manon Fiorot|français|française|France',
+}
+EUROPE_HINTS={
+ 'nba': r'Europe|européen|européenne|EuroLeague|Euroligue|Joki[cć]|Don[cč]i[cć]|Giannis|Antetokounmpo|Porzingis|Wembanyama|Wemby',
+ 'nfl': r'Europe|européen|européenne|Allemagne|Berlin|Madrid|Londres|London|Dublin|Irlande',
+ 'f1': r'Europe|européen|européenne|Monaco|Monza|Silverstone|Spa.Francorchamps|Barcelone|Imola|Zandvoort|Belgique|Italie|Espagne',
+ 'motogp': r'Europe|européen|européenne|Le Mans|Misano|Assen|Mugello|Jerez|Aragon|Catalogne',
+ 'tennis': r'Europe|européen|européenne|Wimbledon|Roland.Garros|Paris|Madrid|Rome|Bercy|Vienne|Bâle|Monte.Carlo',
+ 'rugby': r'Europe|européen|européenne|Champions Cup|Six Nations|Tournoi des Six Nations|Angleterre|Italie|Écosse|Irlande|Pays de Galles|Top 14',
+ 'cyclisme': r'Europe|européen|européenne|Tour de France|Giro|Vuelta|Paris.Roubaix|Liège.Bastogne|Flandres|Milan.Sanremo',
+ 'nhl': r'Europe|européen|européenne|Finlande|Suède|République tchèque|Slovaquie|Suisse',
+ 'mlb': r'Europe|européen|européenne|Londres|London|Paris|Allemagne',
+ 'mma': r'Europe|européen|européenne|Paris|Londres|London|Dublin|Angleterre|France',
+}
+def rubriques(sport,title):
+    categories=['international']  # édition globale : articles vérifiés de cette discipline
+    if re.search(FRANCE_HINTS[sport],title,re.IGNORECASE):categories.append('france')
+    if re.search(EUROPE_HINTS[sport],title,re.IGNORECASE):categories.append('europe')
+    return categories
+
 def stamp(raw):
  try:
   x=email.utils.parsedate_to_datetime(raw)
@@ -81,7 +113,7 @@ def fetch(sport,query,now):
   age=now-pub
   if not dt.timedelta(0)<=age<=dt.timedelta(days=7):continue
   items.append({'id':sport+'-'+str(int(pub.timestamp()))+'-'+re.sub('[^a-z0-9]','',title.lower())[:28],
-    'titre':title,'source':source_name,'url':url,'date':pub.isoformat(timespec='seconds')})
+    'titre':title,'source':source_name,'url':url,'date':pub.isoformat(timespec='seconds'),'rubriques':rubriques(sport,title)})
  seen=set();out=[]
  for row in sorted(items,key=lambda x:x['date'],reverse=True):
   key=(row['titre'].casefold(),row['source'].casefold())
@@ -113,7 +145,7 @@ def main():
     try:age=now-dt.datetime.fromisoformat(row['date'])
     except (KeyError,ValueError,TypeError):continue
     if dt.timedelta(0)<=age<=dt.timedelta(days=7) and row.get('url','').startswith('https://news.google.com/') and relevant(sport,row.get('titre','')):
-     items.append(row)
+     items.append({**row,'rubriques':rubriques(sport,row.get('titre',''))})
    items=items[:20]
   data['sports'][sport]=items
   time.sleep(0.8)
