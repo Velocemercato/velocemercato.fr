@@ -1,49 +1,49 @@
-"""Tests du nouveau portail d'accueil VM, sans publication et sans réseau."""
+"""Le Foot historique reste intact ; le portail et les pages sport sont séparés."""
 from pathlib import Path
 import unittest
 import xml.etree.ElementTree as ET
 
 ROOT=Path(__file__).resolve().parents[1]
-read=lambda p:(ROOT/p).read_text(encoding="utf-8")
+def read(path):return (ROOT/path).read_text(encoding="utf-8")
+SPORTS=("nba","nfl","f1","motogp","tennis","rugby","cyclisme","nhl","mlb","mma","ski")
 class AccueilMultisportTests(unittest.TestCase):
- def test_site_preserve_football_and_robots(self):
-  h=read("index.html")
-  self.assertEqual(h.count('id="vm-wow-app"'),1)
-  self.assertEqual(h.count('<!-- VM_ACTUS_VISIBLES_START -->'),1)
-  self.assertEqual(h.count('<!-- VM_ACTUS_VISIBLES_END -->'),1)
-  self.assertIn('id="pastille-tv"',h)
-  self.assertIn('id="feed"',h)
-  self.assertIn('id="feed-title"',h)
-  self.assertIn('id="vitrine"',h)
-  self.assertIn('id="vm-wow-expanded"',h)
-  self.assertIn('src="/assets/home-multisport-wow.js?v=1"',h)
- def test_accessible_real_sports(self):
-  h=read("index.html")
-  for sport in ('foot','nba','nfl','f1','motogp','tennis','rugby','cyclisme','nhl','mlb','mma'):
-   self.assertIn('data-wow-sport="'+sport+'"',h)
-  for group in ('wow-france','wow-europe','wow-world'):
-   self.assertIn('id="'+group+'"',h)
-  self.assertNotIn('VM MULTISPORT 87',h)
-  self.assertNotIn('ÉPISODE DU JOUR :',h) # Pas de vidéo de tous les sports inventée
- def test_original_mascot_assets(self):
-  h=read("index.html")
-  for sport in ('foot','nba','nfl','f1','motogp','tennis'):
-   path="assets/mascottes/vm-"+sport+".svg"
-   self.assertTrue((ROOT/path).is_file())
-   svg=read(path)
+ def test_foot_restored_with_robots(self):
+  home=read("index.html")
+  self.assertIn('id="feed-title"',home)
+  self.assertIn('id="pastille-tv"',home)
+  self.assertIn('id="feed"',home)
+  self.assertIn('id="vitrine"',home)
+  self.assertIn('class="v2-hero"',home)
+  self.assertEqual(home.count('<!-- VM_ACTUS_VISIBLES_START -->'),1)
+  self.assertEqual(home.count('<!-- VM_ACTUS_VISIBLES_END -->'),1)
+  self.assertNotIn('id="vm-wow-app"',home)
+  self.assertNotIn('src="/assets/home-multisport-wow.js?v=1"',home)
+  self.assertIn('href="/mangas/"',home)
+  self.assertIn('href="/multisport/"',home)
+ def test_portal_sport_pages(self):
+  portal=read("multisport/index.html")
+  self.assertIn('data-mode="portal"',portal)
+  self.assertIn('VM MANGAS',portal)
+  self.assertIn('id="recent-list"',portal)
+  self.assertIn('id="news-list"',portal)
+  self.assertIn('class="banner"',portal)
+  for sport in SPORTS:
+   content=read(f"multisport/{sport}/index.html")
+   self.assertIn(f'data-current-sport="{sport}"',content)
+   self.assertIn('data-mode="sport"',content)
+   for section in ('actualites','france','europe','international','feminin','resultats','videos'):
+    self.assertIn(f'id="{section}"',content)
+   self.assertIn('href="/mangas/"',content)
+ def test_mascots(self):
+  for sport in ("foot","nba","nfl","f1","motogp","tennis","ski"):
+   svg=read(f"assets/mascottes/vm-{sport}.svg")
    ET.fromstring(svg)
-   self.assertIn('>87</text>',svg) # Numéro sur le maillot, pas dans le nom du site
-   self.assertIn('VM MULTISPORT',svg)
-  for sport in ('foot','nba','nfl','f1','tennis'):
-   self.assertIn('/assets/mascottes/vm-'+sport+'.svg',h)
- def test_real_source_data_no_invented_headlines(self):
-  js=read("assets/home-multisport-wow.js")
-  self.assertIn("fetchJSON('/fil.json')",js)
-  self.assertIn("fetchJSON('/multisport/actualites.json')",js)
-  self.assertIn("fetchJSON('/studio/diffusions.json')",js)
+   self.assertIn('>87</text>',svg)
+ def test_no_fabricated_videos_or_scores(self):
+  js=read("multisport/univers.js")
+  for path in ('/fil.json','/multisport/actualites.json','/studio/diffusions.json'):self.assertIn(path,js)
   self.assertIn("status==='published'",js)
   self.assertIn('textContent',js)
   self.assertIn('localStorage',js)
-  self.assertIn("pushState",js)
-  self.assertIn("home-main",read("assets/home-multisport-wow.css"))
-if __name__=='__main__':unittest.main()
+  self.assertNotIn('10:24',js)
+if __name__=="__main__":unittest.main()
