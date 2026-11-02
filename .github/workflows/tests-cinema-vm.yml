@@ -1,0 +1,38 @@
+name: VM - Vérification des trois interfaces ciné
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'multisport/**'
+      - 'mangas/**'
+      - 'assets/vm-cinema-foot.*'
+      - 'tests/test_cinema_vm.py'
+      - '.github/workflows/tests-cinema-vm.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/vm-cinema-foot.*'
+      - 'multisport/cinema-v2.css'
+      - 'mangas/assets/cinema-v3.css'
+      - 'tests/test_cinema_vm.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cinemavm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Contrôler les scripts
+        run: |
+          node --check assets/vm-cinema-foot.js
+          node --check multisport/univers.js
+          node --check notifications/alertes.js
+      - name: Contrôler pages, sources et liens
+        run: python -m unittest -q tests.test_cinema_vm
