@@ -30,13 +30,13 @@ SPORTS={
 }
 # Écarter les résultats RSS hors sujet : être cité « comme la NBA » n'en fait pas une actu basket.
 RELEVANCE={
- 'nba': r'\\bNBA\\b|\\bbasket(?:-ball)?\\b|Wemb|LeBron|Curry|Embiid|Spurs|Lakers|Celtics|Warriors|Knicks|Sixers|Thunder|Nuggets|Grizzlies|Heat|Bulls|Bucks|Raptors|Mavericks|Timberwolves|Clippers|Pacers|Rockets',
- 'nfl': r'\\bNFL\\b|football américain|Super Bowl|quarterback|touchdown|Ravens|Chiefs|Eagles|Patriots|Bills|Cowboys|Bears|Vikings|Broncos|Seahawks|49ers|Steelers|Dolphins|Lions|Bengals|Rams|Chargers',
- 'f1': r'\\bF1\\b|Formule 1|Formula 1|Grand Prix|Verstappen|Leclerc|Antonelli|Hamilton|Norris|Russell|Piastri|McLaren|Ferrari',
+ 'nba': r'\bNBA\b|\bbasket(?:-ball)?\b|Wemb|LeBron|Curry|Embiid|Spurs|Lakers|Celtics|Warriors|Knicks|Sixers|Thunder|Nuggets|Grizzlies|Heat|Bulls|Bucks|Raptors|Mavericks|Timberwolves|Clippers|Pacers|Rockets',
+ 'nfl': r'\bNFL\b|football américain|Super Bowl|quarterback|touchdown|Ravens|Chiefs|Eagles|Patriots|Bills|Cowboys|Bears|Vikings|Broncos|Seahawks|49ers|Steelers|Dolphins|Lions|Bengals|Rams|Chargers',
+ 'f1': r'\bF1\b|Formule 1|Formula 1|Grand Prix|Verstappen|Leclerc|Antonelli|Hamilton|Norris|Russell|Piastri|McLaren|Ferrari',
  'motogp': r'MotoGP|Moto2|Moto3|Grand Prix moto|Márquez|Marquez|Bagnaia|Quartararo|Acosta|Bezzecchi|Sepang',
- 'tennis': r'tennis|\\bATP\\b|\\bWTA\\b|Roland.Garros|Wimbledon|Alcaraz|Sinner|Djokovic|Swiatek|Sabalenka',
+ 'tennis': r'tennis|\bATP\b|\bWTA\b|Roland.Garros|Wimbledon|Alcaraz|Sinner|Djokovic|Swiatek|Sabalenka',
  'rugby': r'rugby|Top 14|XV de France|Six Nations|All Blacks|Stade Toulousain|Champions Cup',
- 'cyclisme': r'cyclisme|\\bUCI\\b|Tour de France|Tour d.Italie|Tour d.Espagne|Giro|Vuelta|Pogacar|Vingegaard|Evenepoel',
+ 'cyclisme': r'cyclisme|\bUCI\b|Tour de France|Tour d.Italie|Tour d.Espagne|Giro|Vuelta|Pogacar|Vingegaard|Evenepoel',
 }
 NEGATIVE={
  'nba': r'Kardashian|OnlyFans|Tissot|Mbappé|Real Madrid|programme TV|TV-Programme|sneakers',
