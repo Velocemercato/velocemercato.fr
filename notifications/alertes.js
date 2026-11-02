@@ -1,6 +1,6 @@
 
 (()=>{'use strict';const KEY='vm-alertes-v1';
-const TOP={foot:['⚽ Foot','/#feed-title'],actus:['📰 VM Actus','/actus/'],gaming:['🎮 Gaming','/vm-gaming/'],pronos:['📊 Pronos','/pronos/'],mangas:['📺 Mangas','/mangas/'],nba:['🏀 NBA','/multisport/?sport=nba'],nfl:['🏈 NFL','/multisport/?sport=nfl'],f1:['🏎️ F1','/multisport/?sport=f1'],motogp:['🏍️ MotoGP','/multisport/?sport=motogp'],tennis:['🎾 Tennis','/multisport/?sport=tennis'],rugby:['🏉 Rugby','/multisport/?sport=rugby'],cyclisme:['🚴 Cyclisme','/multisport/?sport=cyclisme']};
+const TOP={foot:['⚽ Foot','/#feed-title'],actus:['📰 VM Actus','/actus/'],gaming:['🎮 Gaming','/vm-gaming/'],pronos:['📊 Pronos','/pronos/'],mangas:['📺 Mangas','/mangas/'],nba:['🏀 NBA','/multisport/?sport=nba'],nfl:['🏈 NFL','/multisport/?sport=nfl'],f1:['🏎️ F1','/multisport/?sport=f1'],motogp:['🏍️ MotoGP','/multisport/?sport=motogp'],tennis:['🎾 Tennis','/multisport/?sport=tennis'],rugby:['🏉 Rugby','/multisport/?sport=rugby'],cyclisme:['🚴 Cyclisme','/multisport/?sport=cyclisme'],nhl:['🏒 NHL','/multisport/?sport=nhl'],mlb:['⚾ MLB','/multisport/?sport=mlb'],mma:['🥊 MMA','/multisport/?sport=mma']};
 const empty=()=>({enabled:false,topics:Object.fromEntries(Object.keys(TOP).map(k=>[k,false])),seen:{}});
 function read(){try{const s=JSON.parse(localStorage.getItem(KEY)||'null');return s?.topics&&s?.seen?s:empty()}catch{return empty()}}
 function save(s){try{localStorage.setItem(KEY,JSON.stringify(s))}catch{}}
@@ -13,7 +13,7 @@ if(vals[1].status==='fulfilled')a.mangas=vals[1].value.slice(0,10).map(x=>{let u
 if(vals[2].status==='fulfilled'){const d=new DOMParser().parseFromString(vals[2].value,'text/html'),ed=d.querySelector('header strong')?.textContent?.trim(),title=d.querySelector('#football article h3')?.textContent?.trim();if(ed)a.pronos=[mk('pronos',ed+'/'+title,title||'Nouvelle édition des pronos','/pronos/')]}
 if(vals[3].status==='fulfilled'&&vals[3].value&&vals[3].value.sports){
  const now=Date.now(),windowMs=7*86400000;
- for(const k of ['nba','nfl','f1','motogp','tennis','rugby','cyclisme']){
+ for(const k of ['nba','nfl','f1','motogp','tennis','rugby','cyclisme','nhl','mlb','mma']){
   const rows=vals[3].value.sports[k]||[];
   a[k]=rows.filter(x=>x&&x.id&&x.titre&&x.date&&Number.isFinite(Date.parse(x.date))&&now-Date.parse(x.date)>=-60000&&now-Date.parse(x.date)<=windowMs).slice(0,8).map(x=>mk(k,x.id,x.titre,TOP[k][1]));
  }
