@@ -38,3 +38,31 @@ d.text((73,1172),"VELOCEMERCATO.FR/MANGAS",font=sub,fill="#fff7ee")
 out=folder/"vm-mangas-reseaux.jpg"
 im.save(out,"JPEG",quality=89,optimize=True,subsampling=0)
 print(png, png.stat().st_size, out, out.stat().st_size)
+
+# Vers la Story 9:16 : affiche entière, fond rouge-bleu et appel à retrouver le site.
+STORY_H=1920
+story=Image.new("RGB",(W,STORY_H),(8,12,27))
+d=ImageDraw.Draw(story)
+for yy in range(STORY_H):
+    frac=yy/STORY_H
+    d.line((0,yy,W,yy),fill=(int(32-18*frac),int(9+10*frac),int(35+24*frac)))
+story.paste(im,(0,210))
+d=ImageDraw.Draw(story)
+d.text((70,50),"LE CLUB DU N°87",font=sub,fill="#ffe17a")
+d.text((70,113),"LE RETOUR DE NOTRE ENFANCE",font=small,fill="#fff7e9")
+d.text((74,1640),"REJOINS-NOUS SUR",font=sub,fill="#ffe17a")
+d.text((74,1700),"VELOCEMERCATO.FR/MANGAS",font=sub,fill="#ffffff")
+story_path=folder/"vm-mangas-story.jpg"
+story.save(story_path,"JPEG",quality=88,optimize=True,subsampling=0)
+
+# Mini vidéo promotionnelle originale : pas d'extrait d'anime ni musique protégée.
+import subprocess
+short_path=folder/"vm-mangas-short.mp4"
+command=['ffmpeg','-hide_banner','-loglevel','error','-y','-loop','1','-framerate','25',
+         '-i',str(story_path),'-t','11',
+         '-vf',"scale=720:1280,zoompan=z='min(zoom+0.0004,1.10)':d=1:s=720x1280:fps=25,scale=1080:1920,format=yuv420p",
+         '-an','-c:v','libx264','-preset','veryfast','-crf','28','-pix_fmt','yuv420p',
+         '-movflags','+faststart',str(short_path)]
+subprocess.run(command,check=True,timeout=180)
+print("Stories:",story_path.stat().st_size,"Short:",short_path.stat().st_size)
+
