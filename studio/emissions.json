@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261102-1900",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 19 h",
+  "titre": "La Pastille Actus : l'essentiel du 2 novembre",
+  "accroche": "Alpiniste secouru, traité sur les pandémies, cyberattaque en Europe : l'actu du soir.",
+  "duree": 164,
+  "date": "2026-11-02T19:56+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261102-1900.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-02T19:00:00+01:00",
+  "source_start": "2026-11-02T13:00:00+01:00",
+  "source_end": "2026-11-02T19:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-c9a275f203fc78bebfbbaf",
+    "titre": "Un alpiniste allemand de 20 ans secouru à 2 600 mètres dans les Alpes autrichiennes",
+    "publishedAt": "2026-11-02T17:26:26Z",
+    "createdAt": "2026-11-02T17:30:03Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/02/un-alpiniste-allemand-secouru-a-2-600-metres-dans-les-alpes-autrichiennes-apres-14-heures-"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-3f6f11a458539fd6751899",
+    "titre": "OMS : Tedros appelle à finaliser le traité sur les pandémies",
+    "publishedAt": "2026-11-02T17:27:38Z",
+    "createdAt": "2026-11-02T17:29:56Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/02/oms-des-flambees-mortelles-rendent-urgent-lachevement-du-traite-pandemique"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-73aab417105e455aefe78a",
+    "titre": "Cyberattaque : des réfrigérateurs de supermarchés touchés dans cinq pays de l'UE",
+    "publishedAt": "2026-11-02T16:27:30Z",
+    "createdAt": "2026-11-02T16:38:09Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/des-refrigerateurs-affectes-par-une-cyberattaque-dans-des-magasins-carrefour-en-belgique-des-incidents-signales-dans-d-autres-enseignes_8264036.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-ba062ad990b5f6f528543a",
+    "titre": "Ukraine : un drone d'évacuation baptisé « Stargate » utilisé pour des soldats blessés",
+    "publishedAt": "2026-11-02T16:28:00Z",
+    "createdAt": "2026-11-02T16:38:05Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/video/2026/11/02/ukraine-utilise-un-drone-devacuation-stargate-pour-soldats-blesses"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-26e24991efe8f6c34aa1fd",
+    "titre": "Huile d'olive : une récolte de caillettes abondante pour les producteurs niçois",
+    "publishedAt": "2026-11-02T15:07:59Z",
+    "createdAt": "2026-11-02T15:30:17Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/sante/alimentation/huile-d-olive-les-producteurs-nicois-profitent-d-une-recolte-abondante_8264273.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-1ce1c4cfe765862c8e55f3",
+    "titre": "Une étude commandée par la grande distribution chiffre les marges des géants de l'agroalimentaire",
+    "publishedAt": "2026-11-02T15:10:22Z",
+    "createdAt": "2026-11-02T15:30:12Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/commerce/des-hausses-qu-on-ne-peut-pas-accepter-les-distributeurs-denoncent-les-marges-pres-de-quatre-fois-plus-elevees-de-geants-de-l-agroalimentaire-dont-coca-et-danone_8264270.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-d624df893688c9c13db8c6",
+    "titre": "Cyberattaque présumée sur des congélateurs de supermarchés dans sept pays européens",
+    "publishedAt": "2026-11-02T14:11:13Z",
+    "createdAt": "2026-11-02T14:19:56Z",
+    "references": [
+     {
+      "nom": "BBC News",
+      "url": "https://www.bbc.co.uk/news/articles/cq1kd1nee80eo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-e41d44505327961093f08f",
+    "titre": "Le marcheur britannique Karl Bushby accueilli à Hull après vingt-huit ans de voyage à pied",
+    "publishedAt": "2026-11-02T14:13:41Z",
+    "createdAt": "2026-11-02T14:19:49Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/l-aventurier-britannique-karl-bushby-accueilli-en-heros-dans-sa-ville-natale-de-hull-apres-28-ans-de-marche-autour-du-monde_8264063.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "gaming-edition-20261102-1800",
   "univers": "gaming",
   "format": "edition",
