@@ -59,7 +59,7 @@ jobs:
       - name: Save
         if: always() && steps.validate.outcome == 'success'
         run: |
-          git add vm-gaming/news.json vm-gaming/flash.json vm-gaming/robot-log.txt vm-gaming/ignores.json
+          git add vm-gaming/news.json vm-gaming/flash.json vm-gaming/robot-log.txt vm-gaming/ignores.json $(ls vm-gaming/deja-publies.json 2>/dev/null)
           if git diff --cached --quiet; then
             echo 'Rien de nouveau.'
           else

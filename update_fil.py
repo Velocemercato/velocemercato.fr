@@ -13,6 +13,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import update_news as robot
+import vm_fraicheur
 
 FOOT = list(robot.FEEDS)
 FOOT_HOSTS = set(robot.ALLOWED_HOSTS)
@@ -73,6 +74,7 @@ def main():
     if not rows:
         print('Aucun titre récupéré : fil inchangé.')
         return
+    rows = vm_fraicheur.du_jour(rows, ('d',))  # rien de la veille
     seen, out, count = set(), [], {}
     for r in sorted(rows, key=lambda r: r['d'], reverse=True):
         key = robot.normal(r['t'])[:70]

@@ -12,6 +12,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import update_news as robot
+import vm_fraicheur
 
 robot.MAX_AGE_HOURS = 72
 robot.ALLOWED_HOSTS = {'estrepublicain.fr', 'francetvinfo.fr', 'francebleu.fr', 'ici.fr', 'lepays.fr',
@@ -60,6 +61,7 @@ def main():
     if not rows:
         print('Aucun titre local : fichier inchangé.')
         return
+    rows = vm_fraicheur.du_jour(rows, ('d',))  # rien de la veille
     seen, out = set(), []
     for r in sorted(rows, key=lambda r: r['d'], reverse=True):
         key = robot.normal(r['t'])[:70]

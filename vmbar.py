@@ -99,7 +99,8 @@ window.vmMail=function(su,bo){var to='velocemercato.fr@gmail.com';location.href=
 </script>'''
 
 def bar(active):
-    items=[('f','/','⚽ Foot'),('p','/web-studio.html','💼 VM Studio'),('s','/studio.html#tv','📺 Pastille TV'),('g','/vm-gaming/','🎮 Gaming'),('a','/actus/','📰 Actus'),('r','/radio.html','📻 Radio'),('v','/#videos','🎬 Vidéos')]
+    # Une plateforme, des rubriques : le foot d'abord, puis les univers ; le reste est dans « Plus ».
+    items=[('f','/','⚽ Foot'),('fa','/foot-amateur/','🥅 Foot amateur'),('m','/multisport/','🏆 Multisport'),('a','/actus/','📰 Actus'),('k','/mangas/','👑 VM Mangas'),('g','/vm-gaming/','🎮 Gaming'),('v','/#videos','🎬 Vidéos'),('sv','/services/','📍 Services'),('pr','/pronos/','🔞 Pronos 18+'),('pl','/decouvrir.html','➕ Plus')]
     links=''.join(f'<a class="{k}{" on" if k==active else ""}" href="{h}"{" aria-current=\"page\"" if k==active else ""}>{t}</a>' for k,h,t in items)
     return f'<nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="VM Univers, tous les projets">VM UNIVERS<small>TOUS LES PROJETS</small></a>{links}<a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>'
 def inject(s,active,app='foot',contact='velocemercato.fr@gmail.com'):
@@ -127,6 +128,9 @@ def build_vm():
     (source.parent.parent / 'groupe.html').write_text(source.read_text(encoding='utf-8'), encoding='utf-8')
 
 if __name__=='__main__':
-    for p,a,*x in [('index.html','f'),('vm-gaming/index.html','g','gaming'),('actus/index.html','a','actus'),('archives.html','f'),('studio.html','s','tv'),('radio.html','r','radio'),('gaming.html','f','arena'),('soutenir.html',''),('shop/index.html','','annonces'),('allolivre/index.html','','allolivre'),('comparateur/index.html','','comparateur'),('web-studio.html','','studio'),('boutique/index.html','','boutique'),('cv/index.html','','cv'),('menu/index.html','','menu'),('pro/index.html','','pro'),('emploi/index.html','','emploi'),('belfort/index.html','','belfort'),('vm-location/index.html','','location'),('pro-auto/index.html','','autopart'),('pub/index.html','','pub'),('mentions-legales.html','')]:
+    from pathlib import Path
+    for p,a,*x in [('index.html','f'),('vm-gaming/index.html','g','gaming'),('actus/index.html','a','actus'),('archives.html','f'),('studio.html','s','tv'),('radio.html','r','radio'),('gaming.html','f','arena'),('soutenir.html',''),('shop/index.html','','annonces'),('allolivre/index.html','','allolivre'),('comparateur/index.html','','comparateur'),('web-studio.html','','studio'),('boutique/index.html','','boutique'),('cv/index.html','','cv'),('menu/index.html','','menu'),('pro/index.html','','pro'),('emploi/index.html','','emploi'),('belfort/index.html','','belfort'),('foot-amateur/index.html','f'),('vm-location/index.html','','location'),('pro-auto/index.html','','autopart'),('pub/index.html','','pub'),('mentions-legales.html','')]:
+        if not Path(p).is_file():
+            print('absente (ignorée)',p); continue
         apply(p,a,*x); print('ok',p)
     build_vm(); print('ok vm/')

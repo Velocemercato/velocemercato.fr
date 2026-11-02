@@ -50,8 +50,9 @@ def render(articles, now=None, max_cards=4):
         '<h3 style="font-family:Anton,Impact,sans-serif;margin:0 0 10px;color:var(--ink);font-size:1.35rem">⚡ À LA UNE — ACTUALITÉS SOURCÉES</h3>',
     ]
     if not selected:
-        out.append('<p>Pas de brève récente et vérifiée pour le moment. '
-                   '<a href="/archives.html">Consulter les archives</a>.</p>')
+        out.append('<p>Les actus du jour arrivent : chaque matin à 5 h, le site repart à neuf. '
+                   'En attendant, <a href="/foot-amateur/">le foot amateur de ta région</a> '
+                   'et <a href="/actus/">les actus du jour</a>.</p>')
     else:
         out.append('<ul style="list-style:none;padding:0;margin:0;display:grid;gap:10px">')
         for row, pub, source in selected:
