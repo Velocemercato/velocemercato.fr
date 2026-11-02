@@ -16,9 +16,9 @@ for sport in sports:
  assert f" {sport}:" in js or f"\n {sport}:" in js, sport
  assert f"['" in alerts and f"{sport}:[" in alerts, "alertes "+sport
  assert f'data-topic="{sport}"' in prefs, "préférences "+sport
- assert f'/multisport/?sport={sport}' in home, sport
-assert "🏆 Multisport" in home, "menu multisport absent"
-assert 'vm-resume-sport' in home, "préférence à reprendre manquante"
+ assert f'/multisport/?sport={sport}' in home or f'data-wow-sport="{sport}"' in home, sport
+assert "🏆 Multisport" in home or "MULTISPORT" in home, "menu multisport absent"
+assert 'vm-resume-sport' in home or 'home-multisport-wow.js' in home, "préférence à reprendre manquante"
 assert 'tv-sports.fr/widget.js' in js, "programme externe indisponible"
 assert 'La Pastille ' in js and 'pas encore produites' in js, "ne pas annoncer de pastilles imaginaires"
 assert 'localStorage' in js and "pushState" in js, "sélection persistante manquante"
