@@ -25,3 +25,5 @@ a{color:inherit}a:focus-visible,button:focus-visible{outline:3px solid var(--acc
 body[data-sport=nba]{--accent:#ff9b37}body[data-sport=nfl]{--accent:#63c6ff}body[data-sport=f1]{--accent:#ff4957}body[data-sport=motogp]{--accent:#ee515d}body[data-sport=tennis]{--accent:#b7df53}body[data-sport=rugby]{--accent:#82e5ac}body[data-sport=cyclisme]{--accent:#f6de66}
 @media(max-width:780px){.topin{flex-wrap:wrap}.top nav{width:100%}.dashboard{grid-template-columns:1fr}.hero{min-height:270px}.hero:after{opacity:.2}.panel{padding:16px}.hero h1{font-size:clamp(2.55rem,11vw,4.3rem)}.sportswitch{margin-right:-18px}.sportchip{padding:10px 12px}}
 @media(prefers-reduced-motion:reduce){.sportchip{transition:none}}
+
+body[data-sport=nhl]{--accent:#9fe6ff}body[data-sport=mlb]{--accent:#ffa28b}body[data-sport=mma]{--accent:#ff555c}
