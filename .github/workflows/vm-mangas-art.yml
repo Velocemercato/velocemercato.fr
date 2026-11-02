@@ -1,0 +1,43 @@
+name: VM MANGAS - Visuels du boss 87
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'mangas/assets/vm-87.svg'
+      - 'tools/vm_mangas_art.py'
+      - '.github/workflows/vm-mangas-art.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: vm-mangas-visuels
+  cancel-in-progress: false
+jobs:
+  renders:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet "pillow>=11,<13" "cairosvg>=2.7,<3"
+      - name: Générer l'affiche PNG et le visuel de diffusion JPEG
+        run: python tools/vm_mangas_art.py
+      - name: Enregistrer les deux illustrations publiques
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add mangas/assets/vm-87.png mangas/assets/vm-mangas-reseaux.jpg
+          if git diff --cached --quiet; then echo "Illustrations déjà publiées"; exit 0; fi
+          git commit -m 'VM MANGAS: afficher le boss numéro 87 et visuel réseaux [skip ci]'
+          for i in 1 2 3 4; do
+            git -c credential.helper='!gh auth git-credential' fetch -q origin main
+            git rebase origin/main
+            if git -c credential.helper='!gh auth git-credential' push -q origin HEAD:main; then exit 0; fi
+            sleep $((i*3))
+          done
+          exit 1

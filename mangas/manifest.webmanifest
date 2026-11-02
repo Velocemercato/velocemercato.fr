@@ -1,0 +1,24 @@
+{
+  "name": "VM MANGAS 87 — Le club nostalgie",
+  "short_name": "VM MANGAS",
+  "description": "Le club des dessins animés cultes de Véloce Mercato",
+  "start_url": "/mangas/",
+  "scope": "/mangas/",
+  "display": "standalone",
+  "background_color": "#070911",
+  "theme_color": "#e71f47",
+  "icons": [
+    {
+      "src": "/img/logo-vm-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/logo-vm-400.png",
+      "sizes": "400x400",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
