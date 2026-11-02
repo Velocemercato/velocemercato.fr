@@ -33,4 +33,14 @@ gen=read("tools/multisport_flux.py")
 assert "when:7d" in gen and "source_name" in gen and "dt.timedelta(days=7)" in gen
 assert "news.google.com/" in gen
 py_compile.compile(str(ROOT/"tools/multisport_flux.py"),doraise=True)
+import importlib.util
+spec=importlib.util.spec_from_file_location("vm_multisport_flux",ROOT/"tools/multisport_flux.py")
+mod=importlib.util.module_from_spec(spec)
+spec.loader.exec_module(mod)
+assert mod.relevant("nba","NBA : Wembanyama porte les Spurs avec 43 points")
+assert not mod.relevant("nba","Tissot lance une montre en partenariat avec la NBA")
+assert not mod.relevant("nba","Mbappé : le Real Madrid voudrait des revenus comme la NBA")
+assert mod.relevant("nfl","NFL : les Ravens et les Chiefs au cœur des débats")
+assert mod.relevant("f1","F1 : Leclerc au Grand Prix")
+assert mod.relevant("motogp","MotoGP : victoire à Sepang")
 print("OK : bascule sport, flux datés, notifications, résultats et présentation vidéo honnête.")
