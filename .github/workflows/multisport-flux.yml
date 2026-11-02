@@ -1,0 +1,48 @@
+name: VM Multisport — Actualités de la semaine (liens sourcés)
+on:
+  schedule:
+    - cron: '18 5,9,13,17,21 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/multisport_flux.py'
+      - '.github/workflows/multisport-flux.yml'
+permissions:
+  contents: write
+concurrency:
+  group: vm-multisport-feed
+  cancel-in-progress: false
+jobs:
+  liens:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Mettre à jour les titres vérifiés des 7 derniers jours
+        run: python tools/multisport_flux.py
+      - name: Contrôler le JSON
+        run: python -m json.tool multisport/actualites.json > /dev/null
+      - name: Enregistrer seulement les nouveautés
+        run: |
+          set -euo pipefail
+          cp multisport/actualites.json "$RUNNER_TEMP/vm-multisport.json"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            git fetch -q origin main
+            git reset --hard -q origin/main
+            cp "$RUNNER_TEMP/vm-multisport.json" multisport/actualites.json
+            git add multisport/actualites.json
+            if git diff --cached --quiet; then echo "Aucun nouveau titre."; exit 0; fi
+            git commit -qm "VM Multisport: titres sourcés de la semaine"
+            if git push -q origin HEAD:main; then exit 0; fi
+            sleep "$((attempt*3))"
+          done
+          echo "::error::Impossible de publier les liens multisport."
+          exit 1
