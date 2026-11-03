@@ -37,7 +37,9 @@
         return;
       }
       message = `Bonjour,\n\nJe souhaite échanger sur : ${label}.\n\nNom / activité : ${name}\nVille : ${form.elements.ville.value.trim() || 'À préciser'}\nDélai souhaité : ${form.elements.delai.value.trim() || 'À définir ensemble'}\n\nMon projet :\n${need}\n\nMerci !`;
-      const subject = `Projet VM — ${label}`;
+      // Objet repérable dans la messagerie (filtre Gmail) ; les autres formulaires gardent l'objet habituel.
+      const stamp = new Date().toISOString().slice(0, 16).replace(/[-:T]/g, '');
+      const subject = form.dataset.subject ? `${form.dataset.subject} ${label} · réf. VMS-${stamp}` : `Projet VM — ${label}`;
       const address = form.dataset.proContact;
       preview.textContent = `À : ${address}\nObjet : ${subject}\n\n${message}`;
       mail.href = `mailto:${address}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
