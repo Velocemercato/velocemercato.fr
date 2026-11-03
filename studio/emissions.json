@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261103-1900",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 19 h",
+  "titre": "La Pastille Actus : mardi 3 novembre, 19 heures",
+  "accroche": "Les brèves du soir, sans détour, avec VM Actus.",
+  "duree": 145,
+  "date": "2026-11-03T19:17+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261103-1900.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-03T19:00:00+01:00",
+  "source_start": "2026-11-03T13:00:00+01:00",
+  "source_end": "2026-11-03T19:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-18aef8789b368a26274794",
+    "titre": "Plus de 22 tonnes de protoxyde d'azote saisies sur l'A89 en Corrèze",
+    "publishedAt": "2026-11-03T17:38:30Z",
+    "createdAt": "2026-11-03T17:53:07Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/sante/drogue-addictions/plus-de-22-tonnes-de-protoxyde-d-azote-saisies-en-correze_8266343.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-9377414419452d59b5f44c",
+    "titre": "En Iran, une population prise entre répression et menace d'une reprise de la guerre",
+    "publishedAt": "2026-11-03T17:40:30Z",
+    "createdAt": "2026-11-03T17:53:04Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/replay-radio/la-question-des-informes/en-iran-une-population-prise-en-etau-entre-la-repression-du-regime-et-la-menace-d-une-reprise-de-la-guerre_8244820.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-eddc54f6d8b25cb2f58057",
+    "titre": "Lisbonne : la justice autorise une tente sur la place du Rossio",
+    "publishedAt": "2026-11-03T16:47:45Z",
+    "createdAt": "2026-11-03T16:58:52Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/video/2026/11/03/lisbonne-la-justice-autorise-une-tente-sur-rossio-victoire-des-manifestants-du-logement"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-dccd109bc7830a1b9bca27",
+    "titre": "Blocus lycéens à Marseille : certains élèves envisagent un retour en cours",
+    "publishedAt": "2026-11-03T16:50:16Z",
+    "createdAt": "2026-11-03T16:58:48Z",
+    "references": [
+     {
+      "nom": "20 Minutes",
+      "url": "https://www.20minutes.fr/societe/greve/4260066-20261103-colere-sociale-ca-va-etre-chaud-rattraper-retard-lyceens-prets-retourner-cours-malgre-blocus?at_medium=display&at_campaign=149"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-cf03ea4771597fb5f4a296",
+    "titre": "Shampoings 2-en-1 : efficaces ou simple argument marketing ?",
+    "publishedAt": "2026-11-03T15:43:21Z",
+    "createdAt": "2026-11-03T15:53:29Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/les-shampoings-2-en-1-cheveux-et-corps-tiennent-ils-leurs-promesses_8266085.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-9beaec61fa5c1579974cf6",
+    "titre": "Euronaval 2026 : la Marine nationale mise sur les drones et l'intelligence artificielle",
+    "publishedAt": "2026-11-03T15:46:17Z",
+    "createdAt": "2026-11-03T15:53:26Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/armee-securite-defense/euronaval-2026-comment-l-armee-navale-se-dronise_8265899.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-29c93ed8031772038559ef",
+    "titre": "L'Arcom saisit la justice après des propos d'Éric Zemmour sur plusieurs chaînes",
+    "publishedAt": "2026-11-03T14:40:01Z",
+    "createdAt": "2026-11-03T14:58:33Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/faits-divers/terrorisme/attentat-raciste-a-trappes/attentat-raciste-a-trappes-l-arcom-n-a-pas-a-se-prononcer-sur-la-responsabilite-de-certains-medias-selon-le-president-de-l-institution_8265884.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-9ab58557874aa86cd321bd",
+    "titre": "À Saint-Gaudens, la liquidation de l'usine Fibre Excellence fait craindre un choc économique",
+    "publishedAt": "2026-11-03T14:47:45Z",
+    "createdAt": "2026-11-03T14:58:23Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/a-saint-gaudens-la-fermeture-de-fibre-excellence-fait-craindre-un-choc-economique_8266001.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "gaming-edition-20261103-1800",
   "univers": "gaming",
   "format": "edition",
