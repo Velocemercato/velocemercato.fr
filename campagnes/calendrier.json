@@ -9,7 +9,11 @@
    "surtitre": "VM Foot amateur",
    "titre": "TON CLUB, TA RÉGION",
    "accroche": "National 2, N3, Régional, District",
-   "points": ["Les titres du jour, région par région", "La Coupe de France des amateurs", "Gratuit, sans inscription"],
+   "points": [
+    "Les titres du jour, région par région",
+    "La Coupe de France des amateurs",
+    "Gratuit, sans inscription"
+   ],
    "couleur": "vert",
    "illustration": "img/banniere-foot.webp",
    "lien": "https://velocemercato.fr/foot-amateur/",
@@ -22,7 +26,11 @@
    "surtitre": "VM MANGAS",
    "titre": "NOTRE ENFANCE EN DESSINS ANIMÉS",
    "accroche": "Un toucher et l'épisode démarre",
-   "points": ["Olive et Tom, L'École des champions", "Dragon Ball, Z, Super, GT, One Piece", "Oggy, Les Zinzins de l'espace"],
+   "points": [
+    "Olive et Tom, L'École des champions",
+    "Dragon Ball, Z, Super, GT, One Piece",
+    "Oggy, Les Zinzins de l'espace"
+   ],
    "couleur": "rouge",
    "illustration": "img/vm-art/vm-mangas-hero.webp",
    "lien": "https://velocemercato.fr/mangas/",
@@ -35,7 +43,11 @@
    "surtitre": "VM Séries",
    "titre": "LES SÉRIES DE NOTRE ENFANCE",
    "accroche": "Les années 80, 90 et 2000",
-   "points": ["Hélène et les garçons, Premiers Baisers", "Buffy, Malcolm, Walker Texas Ranger", "Où les regarder gratuitement et légalement"],
+   "points": [
+    "Hélène et les garçons, Premiers Baisers",
+    "Buffy, Malcolm, Walker Texas Ranger",
+    "Où les regarder gratuitement et légalement"
+   ],
    "couleur": "or",
    "illustration": "",
    "lien": "https://velocemercato.fr/series/",
@@ -48,7 +60,11 @@
    "surtitre": "VM Actu",
    "titre": "TA RÉGION, TON ACTU",
    "accroche": "Courte, sourcée, chaque jour",
-   "points": ["Choisis ta région", "Belfort, Montbéliard, Haute-Saône", "Le lien vers le journal à chaque titre"],
+   "points": [
+    "Choisis ta région",
+    "Belfort, Montbéliard, Haute-Saône",
+    "Le lien vers le journal à chaque titre"
+   ],
    "couleur": "rouge",
    "illustration": "img/v2-actus.webp",
    "lien": "https://velocemercato.fr/actus/",
@@ -61,7 +77,11 @@
    "surtitre": "Véloce Team",
    "titre": "REJOINS LA VÉLOCE TEAM",
    "accroche": "Deux univers, une passion",
-   "points": ["velocemercato.fr : foot, actu, mangas, séries", "vmunivers.fr : projets, services, pros", "Toujours gratuit"],
+   "points": [
+    "velocemercato.fr : foot, actu, mangas, séries",
+    "vmunivers.fr : projets, services, pros",
+    "Toujours gratuit"
+   ],
    "couleur": "or",
    "illustration": "",
    "lien": "https://vmunivers.fr/",
@@ -76,7 +96,11 @@
    "surtitre": "VM Services",
    "titre": "LE BON PRO PRÈS DE CHEZ TOI",
    "accroche": "Garage, dentiste, coiffeur, artisan",
-   "points": ["Taxis, commerces, santé", "Recherche par ville ou code postal", "Haute-Saône, Belfort, Doubs, Vosges"],
+   "points": [
+    "Taxis, commerces, santé",
+    "Recherche par ville ou code postal",
+    "Haute-Saône, Belfort, Doubs, Vosges"
+   ],
    "couleur": "vert",
    "illustration": "",
    "lien": "https://velocemercato.fr/services/",
@@ -89,11 +113,136 @@
    "surtitre": "VM Univers",
    "titre": "TOUS LES PROJETS VM",
    "accroche": "Médias, services et projets d'ici",
-   "points": ["Le réseau de projets de la Véloce Team", "Annuaire, services, créations", "Franche-Comté et partout en France"],
+   "points": [
+    "Le réseau de projets de la Véloce Team",
+    "Annuaire, services, créations",
+    "Franche-Comté et partout en France"
+   ],
    "couleur": "or",
    "illustration": "img/vm-art/vm-banniere-tetes.webp",
    "lien": "https://vmunivers.fr/",
    "texte": "👑 VM UNIVERS : tous les projets de la Véloce Team !\n\nMédias, services, annuaire, créations : découvre ce qui te ressemble, en Franche-Comté et partout en France.\n\n👉 https://vmunivers.fr/\n\nQuel projet VM tu veux découvrir en premier ? 👇\n#VeloceTeam #VMUnivers #FrancheComte #ProjetsLocaux",
+   "reel": true
+  },
+  {
+   "date": "2026-11-11",
+   "statut": "pret",
+   "surtitre": "VM Multisport",
+   "titre": "TON SPORT, TON UNIVERS",
+   "accroche": "NBA, NFL, F1, MotoGP, tennis, rugby",
+   "points": [
+    "Les actus sourcées de 11 sports",
+    "Une page pour chaque discipline",
+    "Tes alertes, ton choix"
+   ],
+   "couleur": "rouge",
+   "illustration": "img/vm-art/vm-multisport-hero.webp",
+   "lien": "https://velocemercato.fr/multisport/",
+   "texte": "🏆 VM MULTISPORT : ton sport, ton univers !\n\nNBA, NFL, F1, MotoGP, tennis, rugby, cyclisme, NHL, MLB, MMA, ski : les actus sourcées de 11 sports, avec une page pour chaque discipline.\n\n👉 https://velocemercato.fr/multisport/\n\nTu suis quel sport en dehors du foot ? 👇\n#VeloceTeam #VMMultisport #NBA #NFL #F1 #MotoGP #Rugby",
+   "reel": true
+  },
+  {
+   "date": "2026-11-12",
+   "statut": "pret",
+   "surtitre": "VM Gaming",
+   "titre": "L'ACTU JEUX VIDÉO",
+   "accroche": "Sorties, mises à jour, esport",
+   "points": [
+    "L'essentiel du jeu vidéo chaque jour",
+    "Warzone, GTA, EA FC et les autres",
+    "Les tournois de Véloce Arena"
+   ],
+   "couleur": "vert",
+   "illustration": "vm-gaming/img/vm-gaming-univers-960.webp",
+   "lien": "https://velocemercato.fr/vm-gaming/",
+   "texte": "🎮 VM GAMING : l'actu jeux vidéo du jour !\n\nSorties, mises à jour, esport : l'essentiel du jeu vidéo chaque jour, et les tournois de Véloce Arena.\n\n👉 https://velocemercato.fr/vm-gaming/\n\nTu joues à quoi en ce moment ? 👇\n#VeloceTeam #VMGaming #JeuxVideo #Esport #Warzone #EAFC",
+   "reel": false
+  },
+  {
+   "date": "2026-11-13",
+   "statut": "pret",
+   "surtitre": "Véloce Mercato",
+   "titre": "LE MERCATO EN DIRECT",
+   "accroche": "Transferts, rumeurs et vérités",
+   "points": [
+    "Les infos foot du jour, sourcées",
+    "Ligue 1, Ligue 2, Europe",
+    "Les JT vidéo de 8 h, 12 h et 20 h"
+   ],
+   "couleur": "or",
+   "illustration": "img/v2-mercato.webp",
+   "lien": "https://velocemercato.fr/",
+   "texte": "⇄ VÉLOCE MERCATO : le mercato en direct !\n\nTransferts, rumeurs et vérités : les infos foot du jour, sourcées, de la Ligue 1 à l'Europe. Et nos JT vidéo à 8 h, 12 h et 20 h.\n\n👉 https://velocemercato.fr/\n\nLe transfert que tu rêves de voir cet hiver ? 👇\n#VeloceTeam #VeloceMercato #Mercato #Ligue1 #Foot",
+   "reel": true
+  },
+  {
+   "date": "2026-11-14",
+   "statut": "pret",
+   "surtitre": "VM Belfort",
+   "titre": "L'ACTU DE CHEZ NOUS",
+   "accroche": "Belfort, Montbéliard, Haute-Saône",
+   "points": [
+    "Toute l'actu locale au même endroit",
+    "Mise à jour toute la journée",
+    "Le foot amateur de Bourgogne-Franche-Comté"
+   ],
+   "couleur": "vert",
+   "illustration": "",
+   "lien": "https://velocemercato.fr/belfort/",
+   "texte": "📍 VM BELFORT : l'actu de chez nous !\n\nBelfort, le Pays de Montbéliard et la Haute-Saône : toute l'actu locale au même endroit, mise à jour toute la journée, avec le foot amateur de Bourgogne-Franche-Comté.\n\n👉 https://velocemercato.fr/belfort/\n\nTu es de quel coin ? 👇\n#VeloceTeam #VMBelfort #Belfort #Montbeliard #HauteSaone #FrancheComte",
+   "reel": false
+  },
+  {
+   "date": "2026-11-15",
+   "statut": "pret",
+   "surtitre": "La Pastille TV",
+   "titre": "LE JT FOOT EN VIDÉO",
+   "accroche": "Chaque jour à 8 h, 12 h et 20 h",
+   "points": [
+    "Le foot du jour en quelques minutes",
+    "VM Actu et VM Gaming aussi en JT",
+    "Sur YouTube et sur le site"
+   ],
+   "couleur": "rouge",
+   "illustration": "img/studio/plateau-veloce-600.webp",
+   "lien": "https://velocemercato.fr/",
+   "texte": "📺 LA PASTILLE TV : le JT foot en vidéo !\n\nChaque jour à 8 h, 12 h et 20 h, le foot du jour en quelques minutes, plus les JT VM Actu et VM Gaming. Sur YouTube et sur le site.\n\n👉 https://velocemercato.fr/\n\nAbonne-toi à la chaîne pour ne rien rater 🔔\n#VeloceTeam #VeloceMercato #JT #Foot #LaPastille",
+   "reel": true,
+   "youtube_short": true,
+   "youtube_titre": "LE JT FOOT EN VIDÉO 📺 Véloce Mercato #Shorts"
+  },
+  {
+   "date": "2026-11-16",
+   "statut": "pret",
+   "surtitre": "VM Séries",
+   "titre": "HÉLÈNE ET LES GARÇONS",
+   "accroche": "Les épisodes à regarder sur VM",
+   "points": [
+    "Hélène et les garçons, Premiers Baisers",
+    "Lecteur en un toucher",
+    "Épisodes de la chaîne officielle des séries AB"
+   ],
+   "couleur": "or",
+   "illustration": "",
+   "lien": "https://velocemercato.fr/series/",
+   "texte": "🎬 HÉLÈNE ET LES GARÇONS sur VM SÉRIES !\n\nLa cafétéria, la bande et les chansons : des épisodes d'Hélène et les garçons et de Premiers Baisers à regarder en un toucher, publiés par la chaîne officielle des séries AB.\n\n👉 https://velocemercato.fr/series/\n\nTu étais plutôt team Hélène ou team Johanna ? 👇\n#VeloceTeam #VMSeries #HeleneEtLesGarcons #PremiersBaisers #Nostalgie",
+   "reel": false
+  },
+  {
+   "date": "2026-11-17",
+   "statut": "pret",
+   "surtitre": "Véloce Team",
+   "titre": "MERCI LA VÉLOCE TEAM",
+   "accroche": "Partage à ton équipe",
+   "points": [
+    "velocemercato.fr : foot, actu, mangas, séries",
+    "vmunivers.fr : projets, services, pros",
+    "Gratuit, et ça le restera"
+   ],
+   "couleur": "or",
+   "illustration": "",
+   "lien": "https://velocemercato.fr/",
+   "texte": "❤️ MERCI LA VÉLOCE TEAM !\n\nMerci d'être de plus en plus nombreux sur nos deux sites :\n⚽ https://velocemercato.fr/ : le foot, l'actu, le multisport, les mangas et les séries.\n👑 https://vmunivers.fr/ : les projets VM, les services et la communauté.\n\nTag un pote qui doit rejoindre la team 👇\n#VeloceTeam #VeloceMercato #VMUnivers",
    "reel": true
   }
  ]
