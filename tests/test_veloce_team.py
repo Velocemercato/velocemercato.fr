@@ -43,11 +43,11 @@ class FakeYouTube:
         self.uploads, self.public = 0, 0
 
     def upload(self, file, metadata, receipt):
-        assert metadata['status']['privacyStatus'] == 'private'
+        assert metadata['status']['privacyStatus'] == 'public'
         if receipt.get('video_id'):
             return receipt['video_id']
         self.uploads += 1
-        receipt.update(video_id='abcdefghijk', status='private')
+        receipt.update(video_id='abcdefghijk', status='uploaded')
 
     def make_public(self, receipt):
         self.public += 1
@@ -69,12 +69,11 @@ class CampagneTests(unittest.TestCase):
         vt.os.environ.clear()
         vt.os.environ.update(self.env)
 
-    def test_essai_publishes_nothing_on_meta_and_keeps_short_private(self):
+    def test_essai_publishes_nothing_anywhere(self):
         state = FakeState()
         vt.essai(state)
         self.assertFalse([c for c in FakeGraph.calls if c[0] == 'POST'])
-        self.assertEqual(self.yt.uploads, 1)
-        self.assertEqual(self.yt.public, 0)
+        self.assertEqual((self.yt.uploads, self.yt.public), (0, 0))
         self.assertEqual(state.data[vt.KEY]['essai']['status'], 'ok')
 
     def test_publier_requires_successful_essai(self):
@@ -88,7 +87,7 @@ class CampagneTests(unittest.TestCase):
         vt.publier(state)
         posts = [c for c in FakeGraph.calls if c[0] == 'POST' and (c[1].endswith('/photos') or c[1].endswith('/media_publish'))]
         self.assertEqual(len(posts), 6)  # 2 Pages × (photo Facebook + photo Instagram + story)
-        self.assertEqual(self.yt.public, 1)
+        self.assertEqual((self.yt.uploads, self.yt.public), (1, 0))
         bilan = state.data[vt.KEY]
         self.assertEqual(bilan['youtube/short']['url'], 'https://www.youtube.com/shorts/abcdefghijk')
         self.assertTrue(bilan['meta/facebook/photo']['url'].startswith('https://www.facebook.com/'))
@@ -97,7 +96,16 @@ class CampagneTests(unittest.TestCase):
         vt.essai(state)
         vt.publier(state)
         self.assertFalse([c for c in FakeGraph.calls if c[0] == 'POST'])
-        self.assertEqual((self.yt.uploads, self.yt.public), (1, 1))
+        self.assertEqual((self.yt.uploads, self.yt.public), (1, 0))
+
+    def test_existing_private_short_is_never_reuploaded(self):
+        state = FakeState()
+        vt.essai(state)
+        state.data['promos'] = {'veloce-team-short': {'video_id': '_3CM-P0wqJg', 'status': 'private'}}
+        with self.assertRaises(DeliveryError):
+            vt.publier(state)
+        self.assertEqual(self.yt.uploads, 0)
+        self.assertIn('studio.youtube.com/video/_3CM-P0wqJg', state.data[vt.KEY]['youtube/short']['raison'])
 
     def test_unknown_outcome_is_never_resent(self):
         state = FakeState()
