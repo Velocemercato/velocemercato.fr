@@ -1,0 +1,89 @@
+name: VM - JT vers TikTok (Metricool)
+# Lit les verticales du kit réseaux, les convertit en 1080x1920 et les transmet à Metricool.
+# « essai » (par défaut) : brouillon Metricool en « moi uniquement », rien n'est publié.
+# « publier » : seulement si la variable VM_AUTO_TIKTOK vaut true. Aucun robot existant n'est modifié.
+
+on:
+  workflow_run:
+    workflows: ['VM - Kit réseaux des JT']
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'essai (brouillon Metricool, rien de publié) ou publier'
+        type: choice
+        options: [essai, publier]
+        default: essai
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vm-tiktok
+  cancel-in-progress: false
+
+jobs:
+  tiktok:
+    # Automatique après le kit réseaux uniquement si Heineguez a activé VM_AUTO_TIKTOK.
+    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && vars.VM_AUTO_TIKTOK == 'true')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GITHUB_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+      VM_AUTO_TIKTOK: ${{ vars.VM_AUTO_TIKTOK }}
+      VM_TIKTOK_UNIVERS: ${{ vars.VM_TIKTOK_UNIVERS || 'foot' }}
+      VM_TIKTOK_PAR_PASSAGE: ${{ vars.VM_TIKTOK_PAR_PASSAGE || '1' }}
+      METRICOOL_USER_TOKEN: ${{ secrets.METRICOOL_USER_TOKEN }}
+      METRICOOL_USER_ID: ${{ secrets.METRICOOL_USER_ID }}
+      METRICOOL_BLOG_ID: ${{ secrets.METRICOOL_BLOG_ID }}
+      MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'publier' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Outils
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
+          python -m pip install --quiet 'cryptography==50.0.0'
+          python -m py_compile tools/tiktok_metricool.py
+      - name: Ouvrir les accusés TikTok chiffrés (branche tiktok-state)
+        env:
+          STATE_DIR: ${{ runner.temp }}/vm-tiktok-state
+        run: |
+          set -euo pipefail
+          url="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git ls-remote --exit-code "$url" refs/heads/tiktok-state > /dev/null; then
+            git clone --quiet --depth 1 --branch tiktok-state "$url" "$STATE_DIR"
+          else
+            mkdir -p "$STATE_DIR"
+            git -C "$STATE_DIR" init --quiet -b tiktok-state
+            git -C "$STATE_DIR" remote add origin "$url"
+          fi
+          git -C "$STATE_DIR" config user.name 'github-actions[bot]'
+          git -C "$STATE_DIR" config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+      - name: JT vers Metricool (${{ env.MODE }})
+        run: python tools/tiktok_metricool.py --mode "$MODE" --state "$RUNNER_TEMP/vm-tiktok-state/state.enc"
+      - name: Enregistrer le journal TikTok (studio/tiktok.json)
+        if: always()
+        run: |
+          set -euo pipefail
+          [ -f studio/tiktok.json ] || exit 0
+          save_file=$(mktemp); cp studio/tiktok.json "$save_file"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3 4 5; do
+            git fetch -q origin main; git reset --hard -q origin/main
+            cp "$save_file" studio/tiktok.json
+            git add studio/tiktok.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -qm 'TikTok : journal Metricool'
+            if git push -q origin HEAD:main; then exit 0; fi
+            sleep $((attempt*3))
+          done
+          exit 1
