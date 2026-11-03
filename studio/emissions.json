@@ -1,5 +1,101 @@
 [
  {
+  "id": "foot-edition-20261103-0800",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "matin",
+  "label": "JT 08 h",
+  "titre": "La Pastille Foot - Édition du mardi 3 novembre, 08 heures",
+  "accroche": "Bonjour, voici les six brèves foot du matin, avec la mention IA affichée à l'écran.",
+  "duree": 129,
+  "date": "2026-11-03T08:04+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261103-0800.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-03T08:00:00+01:00",
+  "source_start": "2026-11-02T20:00:00+01:00",
+  "source_end": "2026-11-03T08:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-3bab979f7841c731d58f3b",
+    "titre": "Brest : Julien Lachuer défend Ludovic Ajorque pour une place en équipe de France",
+    "publishedAt": "2026-11-03T06:18:12Z",
+    "createdAt": "2026-11-03T06:53:58Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/ligue-1/si-zidane-a-besoin-de-lui-il-va-repondre-present-brest-vante-ludovic-ajorque-pour-l-equipe-de-france_AV-202611030166.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-7b700b173aca8602a1d3b6",
+    "titre": "Darren England, l'arbitre VAR qui a rebondi après l'erreur sur le but de Diaz",
+    "publishedAt": "2026-11-03T06:41:31Z",
+    "createdAt": "2026-11-03T06:53:49Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cdj4z0lwjzlo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-4953e778dc412cc262d448",
+    "titre": "Coventry : un adolescent de 14 ans se moque d'un jeune supporter de Sunderland décédé",
+    "publishedAt": "2026-11-02T18:32:50Z",
+    "createdAt": "2026-11-03T05:45:16Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a2452107422254169397-coventry-un-adolescent-de-14-ans-se-moque-dun-jeune-supporter-de-sunderland-decede-a-6-ans"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-620c1be349dd3a1bf4c273",
+    "titre": "Affaire Mbappé : la Chine toujours fermée, Tebas veut renouer le dialogue",
+    "publishedAt": "2026-11-02T20:00:00Z",
+    "createdAt": "2026-11-03T05:45:13Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/espagne/affaire-mbappe-la-liga-boycottee-tebas-contre-attaque"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-8a62bcdb80dbe5a24c5bc3",
+    "titre": "Benzema, Ballon d'or 2022 : une réaction très froide au téléphone, selon Pascal Ferré",
+    "publishedAt": "2026-11-02T14:56:49Z",
+    "createdAt": "2026-11-03T04:45:02Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/ballon-d-or/ah-bon-d-accord-merci-pourquoi-benzema-a-reagi-tres-froidement-en-apprenant-qu-il-remportait-le-ballon-d-or-2022_AV-202611020624.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-420106d21fa9b52c1925d9",
+    "titre": "L'OL expulse une vingtaine de supporters du groupe Atypik lors de Lyon-Angers",
+    "publishedAt": "2026-11-02T16:30:00Z",
+    "createdAt": "2026-11-03T04:44:50Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/ol/lol-vire-20-supporters-dun-groupe-anti-racisme-en-plein-match"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261102-2000",
   "univers": "foot",
   "format": "edition",
