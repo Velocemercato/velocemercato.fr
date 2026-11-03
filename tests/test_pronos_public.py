@@ -54,6 +54,33 @@ class PronosPublicTests(unittest.TestCase):
             }]}))
             self.assertNotIn("Faux match", section_agenda(root, self.NOW))
 
+
+    def selection(self, root, **over):
+        data = {"valide": True, "valide_par": "Rédaction VM", "debut": "2026-11-01T06:00:00Z",
+                "expire": "2026-11-02T06:00:00Z", "verifie_le": "2026-11-01T08:00:00Z",
+                "combines": [{"titre": "Combiné test", "probabilite": "46 %", "cote": "1,96",
+                              "selections": [{"match": "Équipe A – Équipe B", "heure_paris": "21 h",
+                                              "marche": "Équipe A gagne", "cote": "1,40", "probabilite": "68 %",
+                                              "type_estimation": "modèle",
+                                              "source": {"nom": "Src", "url": "https://example.org/m"}}]}]}
+        data.update(over)
+        (root / "pronos").mkdir(exist_ok=True)
+        (root / "pronos/selection.json").write_text(json.dumps(data), encoding="utf-8")
+
+    def test_selection_only_when_validated_and_current(self):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            self.selection(root)
+            text = render(root, self.NOW)
+            self.assertIn("Combiné test", text)
+            self.assertIn("interdits aux mineurs", text)
+            self.selection(root, valide=False)
+            self.assertNotIn("Combiné test", render(root, self.NOW))
+            self.selection(root, valide_par="")
+            self.assertNotIn("Combiné test", render(root, self.NOW))
+            self.selection(root, expire="2026-11-01T09:00:00Z")
+            self.assertNotIn("Combiné test", render(root, self.NOW))
+
     def test_build_idempotent(self):
         with tempfile.TemporaryDirectory() as name:
             root = Path(name)
