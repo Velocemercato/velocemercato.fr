@@ -26,7 +26,8 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
       VM_AUTO_YOUTUBE: ${{ vars.VM_AUTO_YOUTUBE }}
-      VM_YOUTUBE_PUBLIC: ${{ vars.VM_YOUTUBE_PUBLIC }}
+      # Comme les Shorts du JT : publication publique demandée par le propriétaire pour cette campagne.
+      VM_YOUTUBE_PUBLIC: 'true'
       YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
       YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
       YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
