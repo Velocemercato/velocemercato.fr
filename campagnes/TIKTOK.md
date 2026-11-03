@@ -9,9 +9,9 @@ TikTok n'a pas de connexion automatique dans le projet. Pour que tout parte pend
 
 Ne publie que des vidéos de ce kit : visuels originaux VM, sans musique tierce (si tu ajoutes un son, prends-le dans la « bibliothèque de musique commerciale » de TikTok, autorisée pour les comptes de marque).
 
-## 2026-11-04 — Ton club, ta région (vidéo)
+## 2026-11-04 — Ton club, ta région (vidéo, animée)
 
-- Vidéo : https://velocemercato.fr/assets/social/campagne/2026-11-04-reel.mp4
+- Vidéo : https://velocemercato.fr/assets/social/promo/foot-amateur.mp4
 - Affiche : https://velocemercato.fr/assets/social/campagne/2026-11-04-post.jpg
 
 ```
@@ -25,9 +25,9 @@ Ton club joue à quel niveau ? Dis-le en commentaire 👇
 #VeloceTeam #FootAmateur #National2 #National3 #District #CoupeDeFrance
 ```
 
-## 2026-11-05 — Notre enfance en dessins animés (vidéo)
+## 2026-11-05 — Notre enfance en dessins animés (vidéo, animée)
 
-- Vidéo : https://velocemercato.fr/assets/social/campagne/2026-11-05-reel.mp4
+- Vidéo : https://velocemercato.fr/assets/social/promo/vm-mangas-teaser.mp4
 - Affiche : https://velocemercato.fr/assets/social/campagne/2026-11-05-post.jpg
 
 ```
@@ -72,9 +72,9 @@ Tu nous lis depuis quelle région ? 👇
 #VeloceTeam #VMActu #Belfort #Montbeliard #HauteSaone #FrancheComte
 ```
 
-## 2026-11-08 — Rejoins la véloce team (vidéo)
+## 2026-11-08 — Rejoins la véloce team (vidéo, animée)
 
-- Vidéo : https://velocemercato.fr/assets/social/campagne/2026-11-08-reel.mp4
+- Vidéo : https://velocemercato.fr/assets/social/promo/veloce-team-intro.mp4
 - Affiche : https://velocemercato.fr/assets/social/campagne/2026-11-08-post.jpg
 
 ```
@@ -212,9 +212,9 @@ Tu étais plutôt team Hélène ou team Johanna ? 👇
 #VeloceTeam #VMSeries #HeleneEtLesGarcons #PremiersBaisers #Nostalgie
 ```
 
-## 2026-11-17 — Merci la véloce team (vidéo)
+## 2026-11-17 — Merci la véloce team (vidéo, animée)
 
-- Vidéo : https://velocemercato.fr/assets/social/campagne/2026-11-17-reel.mp4
+- Vidéo : https://velocemercato.fr/assets/social/promo/question-team.mp4
 - Affiche : https://velocemercato.fr/assets/social/campagne/2026-11-17-post.jpg
 
 ```
@@ -224,7 +224,7 @@ Merci d'être de plus en plus nombreux sur nos deux sites :
 ⚽ velocemercato.fr : le foot, l'actu, le multisport, les mangas et les séries.
 👑 vmunivers.fr : les projets VM, les services et la communauté.
 
-Tag un pote qui doit rejoindre la team 👇
+Team foot ou team univers ? Réponds en commentaire, et tag un pote qui doit rejoindre la team 👇
 #VeloceTeam #VeloceMercato #VMUnivers
 ```
 
@@ -321,9 +321,9 @@ Team Buffy ou team Charmed ? 👇
 #VeloceTeam #VMSeries #Buffy #Malcolm #Nostalgie
 ```
 
-## 2026-11-24 — Véloce arena (vidéo)
+## 2026-11-24 — Véloce arena (vidéo, animée)
 
-- Vidéo : https://velocemercato.fr/assets/social/campagne/2026-11-24-reel.mp4
+- Vidéo : https://velocemercato.fr/assets/social/promo/veloce-arena.mp4
 - Affiche : https://velocemercato.fr/assets/social/campagne/2026-11-24-post.jpg
 
 ```

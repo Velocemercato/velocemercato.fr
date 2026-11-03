@@ -126,6 +126,25 @@ class PublicationTests(unittest.TestCase):
         with self.assertRaises(DeliveryError):
             pj.publish(bad, self.entry(), FakeGraph())
 
+    def test_custom_promo_video_is_used_for_reel_and_facebook_video(self):
+        state, graph = FakeState(), FakeGraph()
+        sent = []
+        orig = graph.call
+        def call(method, path, params):
+            sent.append(params.get('file_url') or params.get('video_url') or '')
+            return orig(method, path, params)
+        graph.call = call
+        day = self.entry(reel=True, youtube_short=False, video='assets/social/promo/foot-amateur.mp4')
+        pj.publish(state, day, graph)
+        used = [u for u in sent if u]
+        self.assertEqual(len(used), 4)  # vidéo Facebook + Reel Instagram, sur les deux Pages
+        self.assertTrue(all(u == 'https://velocemercato.fr/assets/social/promo/foot-amateur.mp4' for u in used))
+
+    def test_video_outside_vm_folders_is_refused(self):
+        for bad in ('media/tiers.mp4', 'assets/social/promo/../../x.mp4', 'https://exemple.com/v.mp4', 'assets/social/promo/a.mov'):
+            with self.assertRaises(ValueError):
+                cq.files(self.entry(video=bad))
+
 
 if __name__ == '__main__':
     unittest.main()
