@@ -9,17 +9,26 @@ Tout doit continuer à tourner **sans rien casser**. En cas de doute : ne rien p
 - **Facebook / Instagram automatiques** (`publier-meta.yml`) : actus et JT sur Véloce Mercato, VM Univers, RQ Pronos.
 - **Campagne quotidienne VÉLOCE TEAM** (`campagne-quotidienne.yml`, 17 h 41 Paris) : publie le jour prévu dans
   `campagnes/calendrier.json` (Facebook + Instagram de Véloce Mercato et VM Univers ; Short YouTube le dimanche).
-  Calendrier rempli jusqu'au **17 novembre**. Liens publics : `campagnes/journal.json`.
+  Calendrier rempli jusqu'au **24 novembre**. Liens publics : `campagnes/journal.json`.
 - **Séance Claude chaque lundi matin** : prépare la semaine suivante du calendrier (visuels + textes + tests).
 
 ## Ton rôle
 1. **Chaque jour après 18 h** : ouvrir GitHub → Actions → « VM - Campagne quotidienne VÉLOCE TEAM ».
    Vert = publié (liens dans le résumé et `campagnes/journal.json`). Rouge = lire le « BILAN » de l'exécution.
-2. **Si le lundi la semaine suivante n'a pas été ajoutée** (moins de 3 jours d'avance dans le calendrier) :
+2. **Préparer de nouveaux jours seulement si nécessaire** (voir « Coordination » ci-dessous) :
    ajouter 7 jours en suivant `campagnes/README.md`, générer les visuels avec
    `python tools/campagne_quotidienne.py --visuels --depuis AAAA-MM-JJ`, lancer
    `python -m pytest tests/test_campagne_quotidienne.py`, ouvrir une PR et la fusionner seulement si tout passe.
 3. **TikTok** (pas automatique) : le kit est dans `campagnes/TIKTOK.md` (vidéo + texte de chaque jour).
+
+## Coordination Claude / ChatGPT (pour ne jamais préparer deux fois)
+- **Claude** prépare le **lundi matin** (séance automatique 8 h 23) et écrit son bilan dans `campagnes/BILAN.md`.
+- **ChatGPT** surveille chaque soir et **ne prépare de nouveaux jours que si, le mardi à 12 h**, le calendrier a moins de 10 jours d'avance.
+- Règle commune : on n'ajoute des jours **que si la dernière date du calendrier est à moins de 10 jours** d'aujourd'hui,
+  et **jamais** si une pull request ou une branche récente modifie déjà `campagnes/calendrier.json`.
+- Si Claude a poussé une branche `campagne-semaine-…` sans pouvoir la fusionner (indiqué en tête de `campagnes/BILAN.md`),
+  ChatGPT la fusionne après avoir vérifié que les tests passent, au lieu de préparer une autre semaine.
+- Sécurités automatiques : un test refuse deux jours à la même date, et le robot ne publie jamais deux fois le même jour.
 
 ## Règles absolues
 - **Jamais** de doublon : ne jamais relancer à la main une publication déjà « PUBLIÉ » ; le robot l'ignore de toute façon.
