@@ -5,9 +5,10 @@ Destinations : Facebook + Instagram (photo et story) des Pages Véloce Mercato e
 et un Short YouTube. Visuels originaux VM (assets/social/veloce-team-*), aucun contenu tiers.
 
 Deux étapes :
-  --mode essai    : aucune publication Meta. Vérifie les médias publics, les Pages, les comptes Instagram
-                    et la chaîne YouTube, puis envoie le Short en PRIVÉ (visible du seul propriétaire).
-  --mode publier  : exige un essai réussi. Publie les posts Meta et passe le Short privé en public.
+  --mode essai    : aucune publication. Vérifie les médias publics, les Pages, les comptes Instagram
+                    et la chaîne YouTube exacte.
+  --mode publier  : exige un essai réussi. Publie les posts Meta et envoie le Short directement en public
+                    (l'autorisation YouTube permet l'envoi, pas la modification d'une vidéo existante).
 
 Chaque action est inscrite dans l'état chiffré AVANT l'envoi : relancer ne crée jamais de doublon.
 Aucun identifiant n'est créé, modifié ni affiché.
@@ -153,12 +154,8 @@ def essai(state):
             print('::warning::Pas de compte Instagram relié pour ' + account, flush=True)
     if os.getenv('VM_AUTO_YOUTUBE') != 'true':
         raise DeliveryError('YouTube non activé (VM_AUTO_YOUTUBE) : essai incomplet')
-    client = youtube_client(state)
-    receipt = state.data.setdefault('promos', {}).setdefault('veloce-team-short', {})
-    client.upload(SHORT_FILE, YT_META, receipt)
-    if receipt.get('status') not in ('private', 'uploaded', 'public'):
-        raise DeliveryError('Short non confirmé par YouTube')
-    note('Short YouTube envoyé en PRIVÉ (visible du seul propriétaire) : https://studio.youtube.com/video/' + receipt['video_id'] + '/edit')
+    youtube_client(state)  # chaîne exacte vérifiée, aucun envoi pendant l'essai
+    note('Chaîne YouTube confirmée ; le Short sera envoyé directement en public à la publication.')
     state.data.setdefault(KEY, {})['essai'] = {'status': 'ok', 'at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}
     state.save()
     note('ESSAI RÉUSSI : aucune publication Facebook ou Instagram effectuée.')
@@ -182,15 +179,20 @@ def publier(state):
                 return ident, permalink(graph, ident, 'permalink', m['page_token']) if ident else ''
             action(state, account + '/instagram/photo', ig)
             action(state, account + '/instagram/story', lambda m=meta: (ig_story(graph, m), 'story Instagram (24 h)'))
-    receipt = state.data.get('promos', {}).get('veloce-team-short', {})
-    if not receipt.get('video_id'):
-        raise DeliveryError('Short privé introuvable dans les accusés')
+    receipt = state.data.setdefault('promos', {}).setdefault('veloce-team-short', {})
 
     def yt():
+        if receipt.get('video_id') and receipt.get('status') in ('private', 'private_ready'):
+            # L'autorisation YouTube actuelle permet l'envoi, pas la modification d'une vidéo :
+            # on ne renvoie pas de copie (doublon), le propriétaire la passe en public dans YouTube Studio.
+            raise DeliveryError('Short déjà envoyé en privé : à passer en public dans YouTube Studio → '
+                                'https://studio.youtube.com/video/' + receipt['video_id'] + '/edit')
         if not public_allowed():
             raise DeliveryError('Passage en public non autorisé (VM_YOUTUBE_PUBLIC)')
-        if receipt.get('status') != 'public':
-            youtube_client(state).make_public(receipt)
+        meta = {'snippet': YT_META['snippet'], 'status': dict(YT_META['status'], privacyStatus='public')}
+        youtube_client(state).upload(SHORT_FILE, meta, receipt)
+        if not receipt.get('video_id'):
+            raise DeliveryError('Short non confirmé par YouTube')
         return receipt['video_id'], 'https://www.youtube.com/shorts/' + receipt['video_id']
     action(state, 'youtube/short', yt)
     bilan = state.data.get(KEY, {})
