@@ -130,6 +130,45 @@ def section_agenda(root, now):
     return "\n".join(result)
 
 
+def section_selection(root, now):
+    """Pronos du jour VM : affichés UNIQUEMENT si pronos/selection.json est validé par un humain
+    (« valide »: true, « valide_par » renseigné) et encore en cours de validité. Sinon : rien."""
+    data = load(root, "pronos/selection.json", {})
+    if not isinstance(data, dict) or data.get("valide") is not True or not str(data.get("valide_par") or "").strip():
+        return ""
+    debut, fin = parsed(data.get("debut")), parsed(data.get("expire"))
+    if debut is None or fin is None or not debut <= now < fin:
+        return ""
+    blocs = []
+    for combo in data.get("combines") or []:
+        if not isinstance(combo, dict) or not combo.get("titre"):
+            continue
+        rows = []
+        for leg in combo.get("selections") or []:
+            if not isinstance(leg, dict) or not leg.get("match") or not leg.get("marche"):
+                continue
+            src = leg.get("source") or {}
+            lien = (f' · <a href="{e(src["url"])}" target="_blank" rel="noopener noreferrer">{e(src.get("nom") or "Source")}</a>'
+                    if isinstance(src, dict) and safe_url(src.get("url")) else "")
+            rows.append(f'<li><b>{e(leg["match"])}</b> · {e(leg.get("heure_paris"))} · {e(leg["marche"])}'
+                        f' · cote relevée {e(leg.get("cote"))} · estimation {e(leg.get("probabilite"))}'
+                        f' ({e(leg.get("type_estimation"))}){lien}</li>')
+        if rows:
+            blocs.append(f'<article class="news"><h3>{e(combo["titre"])}</h3><ul class="agenda">' + "".join(rows) +
+                         f'</ul><p class="meta">Probabilité combinée estimée : {e(combo.get("probabilite"))}'
+                         f' · cote combinée indicative : {e(combo.get("cote"))}. {e(combo.get("note"))}</p></article>')
+    if not blocs:
+        return ""
+    verif = parsed(data.get("verifie_le"))
+    stamp = verif.astimezone(PARIS).strftime("%d/%m/%Y à %H:%M") if verif else "?"
+    return ('<section class="panel" id="pronos-du-jour"><h2>👑 Les pronos du jour VM</h2>'
+            f'<p class="meta">Données vérifiées le {e(stamp)} (Paris) · validé par {e(data["valide_par"])}. '
+            'Estimations externes, cotes indicatives qui évoluent : aucun résultat garanti.</p>'
+            + "\n".join(blocs) +
+            '<p class="risk">Un combiné multiplie les risques : sa probabilité est le produit de celles de chaque sélection. '
+            'Ni conseil, ni promesse de gain.<br>' + e(RISK) + ' · Les jeux d’argent sont interdits aux mineurs.</p></section>')
+
+
 def section_videos(root, now):
     rows = load(root, "studio/diffusions.json", [])
     choices = []
@@ -161,7 +200,7 @@ def render(root=ROOT, now=None):
         raise ValueError("Horodatage sans fuseau")
     local = now.astimezone(PARIS)
     updated = local.strftime("%d/%m/%Y à %H:%M (Paris)")
-    content = section_news(root, now) + section_agenda(root, now) + section_videos(root, now)
+    content = section_selection(root, now) + section_news(root, now) + section_agenda(root, now) + section_videos(root, now)
     return """<!doctype html>
 <html lang="fr" data-vmt="pronos"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">

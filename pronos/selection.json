@@ -1,0 +1,42 @@
+{
+ "_note": "Section « Les pronos du jour VM » de /pronos/ uniquement. Invisible tant que valide=false et valide_par est vide. Données relevées le 03/11/2026, à revérifier le 04/11 (cotes, compositions, blessures).",
+ "valide": false,
+ "valide_par": "",
+ "debut": "2026-11-04T05:00:00Z",
+ "expire": "2026-11-05T05:00:00Z",
+ "verifie_le": "2026-11-03T22:45:00Z",
+ "combines": [
+  {
+   "titre": "🛡️ Combiné prudent n°1 · Real + Arsenal",
+   "probabilite": "≈ 56 %",
+   "cote": "≈ 1,61",
+   "note": "Les deux favoris jouent à l'extérieur. Estimations de marché (Covers/Kalshi), pas de modèle VM.",
+   "selections": [
+    {"match": "AEK Athènes – Real Madrid", "heure_paris": "18 h 45", "marche": "Victoire du Real Madrid", "cote": "1,25", "probabilite": "76 %", "type_estimation": "marché de prévisions via Covers", "source": {"nom": "Covers", "url": "https://www.covers.com/soccer/champions-league-moneyline-picks-matchday-4-2026"}},
+    {"match": "Slavia Prague – Arsenal", "heure_paris": "21 h", "marche": "Victoire d'Arsenal", "cote": "1,29", "probabilite": "74 %", "type_estimation": "marché de prévisions via Covers", "source": {"nom": "Covers", "url": "https://www.covers.com/soccer/champions-league-moneyline-picks-matchday-4-2026"}}
+   ]
+  },
+  {
+   "titre": "🛡️ Combiné prudent n°2 · Zverev + Panthers",
+   "probabilite": "≈ 47 %",
+   "cote": "≈ 1,96",
+   "note": "Deux sélections avec modèle publié. Les deux modèles sont au niveau de la cote, pas au-dessus : aucun avantage démontré.",
+   "selections": [
+    {"match": "Zverev – Musetti (Paris Masters)", "heure_paris": "pas avant 13 h 30", "marche": "Victoire de Zverev", "cote": "1,40", "probabilite": "68,6 %", "type_estimation": "modèle Dimers", "source": {"nom": "Dimers", "url": "https://www.dimers.com/tennis/news/alexander-zverev-vs-lorenzo-musetti-tennis-prediction-atp-paris-masters-2026-ac"}},
+    {"match": "Blackhawks – Panthers (NHL)", "heure_paris": "nuit, ≈ 0 h 30 (à confirmer)", "marche": "Victoire des Panthers", "cote": "1,40", "probabilite": "68 %", "type_estimation": "modèle Puckey", "source": {"nom": "Puckey", "url": "https://puckey.ca/matches/2026020248/"}}
+   ]
+  },
+  {
+   "titre": "🎉 Combiné fun · 4 sélections",
+   "probabilite": "≈ 12 % (environ 1 chance sur 8)",
+   "cote": "≈ 8",
+   "note": "Pour le plaisir : il perd environ 7 fois sur 8. Guirassy buteur et « les deux équipes marquent » sont liés, donc la probabilité réelle diffère un peu.",
+   "selections": [
+    {"match": "RB Leipzig – Manchester City", "heure_paris": "21 h", "marche": "Victoire de Manchester City", "cote": "1,57", "probabilite": "62 %", "type_estimation": "marché de prévisions via Covers", "source": {"nom": "Covers", "url": "https://www.covers.com/soccer/champions-league-moneyline-picks-matchday-4-2026"}},
+    {"match": "Dortmund – Betis Séville", "heure_paris": "21 h", "marche": "Guirassy buteur", "cote": "2,05", "probabilite": "≈ 48 %", "type_estimation": "cote, pas de modèle", "source": {"nom": "Squawka", "url": "https://www.squawka.com/en/news/borussia-dortmund-vs-real-betis-bet-builder-tips-wednesday-04-11-2026/"}},
+    {"match": "Dortmund – Betis Séville", "heure_paris": "21 h", "marche": "Les deux équipes marquent", "cote": "1,65", "probabilite": "≈ 60 %", "type_estimation": "cotes de 1,53 à 1,80, pas de modèle", "source": {"nom": "Tribuna", "url": "https://tribuna.com/en/betting/blogs/dortmund-vs-betis-prediction-odds-best-bets-champions-league/"}},
+    {"match": "Real Madrid – Panathinaikos (EuroLeague)", "heure_paris": "20 h 45", "marche": "Victoire du Real Madrid", "cote": "1,52", "probabilite": "≈ 66 %", "type_estimation": "cote, pas de modèle", "source": {"nom": "Dailysports", "url": "https://dailysports.net/predictions/a-test-for-the-greek-giants-in-madrid-euroleague-prediction-for-real-madrid-vs-panathinaikos/"}}
+   ]
+  }
+ ]
+}
