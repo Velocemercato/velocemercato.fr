@@ -105,9 +105,17 @@ def video(story_path, out_path, seconds=10):
                     '-crf', '26', '-c:a', 'aac', '-b:a', '48k', '-movflags', '+faststart', str(out_path)], check=True)
 
 
+VIDEO_DIRS = ('assets/social/promo/', 'assets/social/campagne/')
+
+
 def files(day):
+    """Fichiers d'un jour. Champ facultatif "video" : une vidéo VM déjà prête (assets/social/promo/…)
+    utilisée à la place du zoom sur l'affiche pour le Reel, la vidéo Facebook et le Short."""
     base = 'assets/social/campagne/' + day['date']
-    return {'post': base + '-post.jpg', 'story': base + '-story.jpg', 'video': base + '-reel.mp4'}
+    video = day.get('video') or base + '-reel.mp4'
+    if not video.startswith(VIDEO_DIRS) or not video.endswith('.mp4') or '..' in video:
+        raise ValueError(f"{day['date']} : vidéo non autorisée {video}")
+    return {'post': base + '-post.jpg', 'story': base + '-story.jpg', 'video': video}
 
 
 def render(day):
@@ -115,7 +123,7 @@ def render(day):
     f = files(day)
     poster(day, 1350).save(ROOT / f['post'], quality=88, optimize=True, progressive=True)
     poster(day, 1920).save(ROOT / f['story'], quality=88, optimize=True, progressive=True)
-    if day.get('reel') or day.get('youtube_short'):
+    if (day.get('reel') or day.get('youtube_short')) and not day.get('video'):
         video(ROOT / f['story'], ROOT / f['video'])
 
 

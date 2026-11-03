@@ -1,4 +1,4 @@
-"""Vidéos promo VM : format 9:16, 15 s, son muet (aucune musique tierce), sources VM, hors calendrier."""
+"""Vidéos promo VM : format 9:16, 15 s, son muet (aucune musique tierce), sources VM, calendrier contrôlé."""
 import json
 from pathlib import Path
 import subprocess
@@ -44,9 +44,17 @@ class VideosPromoTests(unittest.TestCase):
             for t in (0.5, 2.0, 4.0, 7.0, 9.5, 12.0, 14.9):
                 self.assertEqual(concept.frame(t).size, (1080, 1920))  # l'assertion interne vérifie la zone sûre
 
-    def test_not_scheduled_automatically(self):
-        cal = (ROOT / 'campagnes/calendrier.json').read_text(encoding='utf-8')
-        self.assertNotIn('assets/social/promo/', cal)
+    def test_scheduled_only_through_video_field_of_video_days(self):
+        cal = json.loads((ROOT / 'campagnes/calendrier.json').read_text(encoding='utf-8'))
+        ids = {c['id'] for c in vp.CONCEPTS}
+        for day in cal['jours']:
+            for key, value in day.items():
+                if key != 'video':
+                    self.assertNotIn('assets/social/promo/', str(value), day['date'])
+            if day.get('video'):
+                self.assertTrue(day.get('reel') or day.get('youtube_short'), day['date'])
+                self.assertIn(Path(day['video']).stem, ids)
+                self.assertTrue((ROOT / day['video']).is_file())
 
 
 if __name__ == '__main__':
