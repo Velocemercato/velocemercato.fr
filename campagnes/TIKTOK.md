@@ -227,3 +227,112 @@ Merci d'être de plus en plus nombreux sur nos deux sites :
 Tag un pote qui doit rejoindre la team 👇
 #VeloceTeam #VeloceMercato #VMUnivers
 ```
+
+## 2026-11-18 — Dragon ball de a à z (vidéo)
+
+- Vidéo : https://velocemercato.fr/assets/social/campagne/2026-11-18-reel.mp4
+- Affiche : https://velocemercato.fr/assets/social/campagne/2026-11-18-post.jpg
+
+```
+🐉 DRAGON BALL DE A À Z sur VM MANGAS !
+
+Dragon Ball, Dragon Ball Z, Super et GT : le premier épisode de chaque saga, à regarder en un toucher sur VM MANGAS.
+
+🔗 velocemercato.fr/mangas (lien dans la bio TikTok)
+
+Ta saga préférée, c'est laquelle ? 👇
+#VeloceTeam #VMMangas #DragonBall #DragonBallZ #DragonBallSuper #Nostalgie
+```
+
+## 2026-11-19 — Les amateurs à l'honneur (photo)
+
+- Affiche : https://velocemercato.fr/assets/social/campagne/2026-11-19-post.jpg
+
+```
+🥅 LES AMATEURS À L'HONNEUR sur VM FOOT !
+
+Coupe de France, National 2, National 3, Régional, District : les titres du foot amateur du jour, région par région.
+
+🔗 velocemercato.fr/foot-amateur (lien dans la bio TikTok)
+
+Tu joues ou tu supportes quel club amateur ? 👇
+#VeloceTeam #FootAmateur #CoupeDeFrance #National3 #District
+```
+
+## 2026-11-20 — Ton commerce mérite d'être vu (vidéo)
+
+- Vidéo : https://velocemercato.fr/assets/social/campagne/2026-11-20-reel.mp4
+- Affiche : https://velocemercato.fr/assets/social/campagne/2026-11-20-post.jpg
+
+```
+💼 VM PRO LOCAL : ton commerce mérite d'être vu !
+
+Artisans, commerçants, indépendants : propose ton établissement et sois trouvé par les gens du coin, en Haute-Saône, à Belfort, dans le Doubs et les Vosges.
+
+🔗 velocemercato.fr/pro (lien dans la bio TikTok)
+
+Tu connais un pro génial près de chez toi ? Tag-le 👇
+#VeloceTeam #VMProLocal #CommerceLocal #HauteSaone #Belfort
+```
+
+## 2026-11-21 — L'essentiel du jour (photo)
+
+- Affiche : https://velocemercato.fr/assets/social/campagne/2026-11-21-post.jpg
+
+```
+📰 VM ACTU : l'essentiel du jour !
+
+Les infos du jour en bref, ta région en un toucher, et le lien vers le journal à chaque titre.
+
+🔗 velocemercato.fr/actus (lien dans la bio TikTok)
+
+Tu lis l'actu plutôt le matin ou le soir ? 👇
+#VeloceTeam #VMActu #Actualite #FrancheComte
+```
+
+## 2026-11-22 — Ton week-end de sport (vidéo)
+
+- Vidéo : https://velocemercato.fr/assets/social/campagne/2026-11-22-reel.mp4
+- Affiche : https://velocemercato.fr/assets/social/campagne/2026-11-22-post.jpg
+
+```
+🏆 TON WEEK-END DE SPORT avec la Véloce Team !
+
+Foot, NBA, NFL, F1, rugby, tennis : les actus sourcées de 11 sports, une page par discipline, et tout le foot sur Véloce Mercato.
+
+🔗 velocemercato.fr/multisport (lien dans la bio TikTok)
+
+Quel match tu ne rates pas ce dimanche ? 👇
+#VeloceTeam #VMMultisport #NBA #NFL #F1 #Rugby
+```
+
+## 2026-11-23 — Buffy en intégrale (photo)
+
+- Affiche : https://velocemercato.fr/assets/social/campagne/2026-11-23-post.jpg
+
+```
+🧛 BUFFY CONTRE LES VAMPIRES sur VM SÉRIES !
+
+Buffy, Malcolm, Walker Texas Ranger, Hélène et les garçons, Premiers Baisers : retrouve tes séries cultes et où les regarder gratuitement et légalement.
+
+🔗 velocemercato.fr/series (lien dans la bio TikTok)
+
+Team Buffy ou team Charmed ? 👇
+#VeloceTeam #VMSeries #Buffy #Malcolm #Nostalgie
+```
+
+## 2026-11-24 — Véloce arena (vidéo)
+
+- Vidéo : https://velocemercato.fr/assets/social/campagne/2026-11-24-reel.mp4
+- Affiche : https://velocemercato.fr/assets/social/campagne/2026-11-24-post.jpg
+
+```
+🎮 VÉLOCE ARENA : les tournois EA FC de la communauté !
+
+Ligues, coupes et défis EA SPORTS FC, gratuits et entre potes. Et l'actu jeux vidéo chaque jour sur VM Gaming.
+
+🔗 velocemercato.fr/gaming.html (lien dans la bio TikTok)
+
+Ton meilleur score sur EA FC ? 👇
+#VeloceTeam #VMGaming #VeloceArena #EAFC #Esport
+```
