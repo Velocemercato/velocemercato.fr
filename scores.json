@@ -121,18 +121,6 @@
    ]
   },
   {
-   "id": 575379,
-   "date": "2026-11-03T20:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Feyenoord",
-   "ext": "Inter",
-   "statut": "IN_PLAY",
-   "score": [
-    0,
-    3
-   ]
-  },
-  {
    "id": 575385,
    "date": "2026-11-03T20:00:00Z",
    "comp": "Ligue des champions",
@@ -162,12 +150,24 @@
    "comp": "Ligue des champions",
    "dom": "Man United",
    "ext": "Roma",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     3,
     2
    ]
+  },
+  {
+   "id": 575379,
+   "date": "2026-11-03T20:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Feyenoord",
+   "ext": "Inter",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    3
+   ]
   }
  ],
- "maj": "2026-11-03T22:00:24Z"
+ "maj": "2026-11-03T22:02:21Z"
 }
