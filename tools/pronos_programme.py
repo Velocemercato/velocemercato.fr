@@ -28,10 +28,12 @@ UTC = dt.timezone.utc
 # Grille éditoriale en heure Europe/Paris. Le programme sélectionne les
 # contenus existants et vérifiés; il ne fabrique ni JT, ni vidéo d'une heure.
 # Les créneaux absents de contenu fiable restent vides, sans doublons.
-SLOTS = {7: "actus", 8: "foot", 10: "belfort",
-         11: "jt_foot", 12: "jt_actus", 13: "gaming",
-         15: "belfort", 18: "foot", 19: "actus", 20: "gaming",
-         21: "projet"}
+# 04/11 (« go 1 + B » du propriétaire) : VM actus et pronos (≈1 490 abonnés) est la seule Page
+# avec une audience réelle. Plus de foot et de JT, et une promotion quotidienne (16 h).
+SLOTS = {7: "actus", 8: "foot", 9: "foot", 10: "belfort",
+         11: "jt_foot", 12: "jt_actus", 13: "gaming", 14: "foot",
+         15: "belfort", 16: "promo", 17: "foot", 18: "foot", 19: "actus", 20: "gaming",
+         21: "jt"}
 NEWS = {
     "foot": ("articles.json", "⚽", "https://velocemercato.fr/"),
     "actus": ("actus/news.json", "📰", "https://velocemercato.fr/pronos/"),
@@ -134,6 +136,34 @@ def jt_candidates(now, universe=None):
     return out
 
 
+PROMOS = (
+    ("studio", "https://vmunivers.fr/professionnels/",
+     "🛠️ VM STUDIO : TON COMMERCE MÉRITE SA VITRINE\n\nSite internet dès 290 €, sites complets de 590 € à 1 490 €, "
+     "visuels dès 90 €. Devis gratuit et sans engagement 👇\nhttps://vmunivers.fr/professionnels/#devis\n\n#VMStudio #VeloceUniverse"),
+    ("sponsors", "https://velocemercato.fr/pub/",
+     "📣 FAITES-VOUS CONNAÎTRE SUR NOS MÉDIAS\n\nFiche Pro Local dès 9,90 €/mois, encart VM Belfort 29 €/mois, "
+     "bannière sur Véloce Mercato 39 €/mois, partenaire du JT 49 €/mois 👇\nhttps://velocemercato.fr/pub/\n\n#Partenaires #VeloceUniverse"),
+    ("univers", "https://vmunivers.fr/",
+     "👑 VÉLOCE UNIVERSE : UN SEUL UNIVERS, TOUTES NOS PASSIONS\n\nMédias, services pour les pros et projets utiles, "
+     "tout est réuni ici 👇\nhttps://vmunivers.fr/\n\n#VeloceUniverse #VMUnivers"),
+    ("site", "https://velocemercato.fr/",
+     "⚽ TOUTE L'ACTU FOOT ET MERCATO SUR LE SITE\n\nBrèves sourcées, JT en vidéo, scores en direct, multisport "
+     "et gaming 👇\nhttps://velocemercato.fr/\n\n#VeloceMercato #Football #Mercato"),
+    ("vip", "https://velocemercato.fr/pronos/#acces-vip",
+     "🔒 LE PRONO PUBLIC DU JOUR EST SUR LE SITE\n\nLes autres sélections sont réservées aux membres VIP : accès gratuit "
+     "sur demande par e-mail 👇\nhttps://velocemercato.fr/pronos/#acces-vip\n\n"
+     "18+ · Aucun résultat garanti · Jouer comporte des risques : endettement, isolement, dépendance · "
+     "Joueurs Info Service 09 74 75 13 13 · Interdit aux mineurs\n#VeloceMercato"),
+)
+
+
+def promo_candidate(now):
+    """Une promotion par jour, en rotation, avec les seuls tarifs publiés sur les sites. Jamais de prono ni de cote."""
+    local = now.astimezone(PARIS)
+    key, link, text = PROMOS[local.toordinal() % len(PROMOS)]
+    return {"key": f"promo/{local:%Y-%m-%d}/{key}", "link": link, "text": text}
+
+
 def project_candidate(now):
     local = now.astimezone(PARIS)
     name, link, description = PROJETS[local.toordinal() % len(PROJETS)]
@@ -233,6 +263,8 @@ def candidates(now, kind):
         return jt_candidates(now)
     if kind == "projet":
         return [project_candidate(now)]
+    if kind == "promo":
+        return [promo_candidate(now)]
     if kind == "prono":
         # Un fichier prono.json peut dater de la veille alors que le match est fini.
         # Ne PAS republier un ancien pronostic sur le seul critère « créé <30h ».
