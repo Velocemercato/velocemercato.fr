@@ -148,6 +148,34 @@ class State:
             self.persist()
 
 
+def describe_called_process(error):
+    """Résumé sûr d'une commande en échec : outil, sous-commande, code et fin du message filtrée (aucun jeton ni URL)."""
+    cmd = [str(part) for part in (error.cmd if isinstance(error.cmd, (list, tuple)) else [error.cmd])]
+    tool = Path(cmd[0]).name if cmd else '?'
+    sub = next((part for part in cmd[1:] if re.fullmatch(r'[a-z][a-z-]{1,20}', part)), '')
+    detail = error.stderr.decode('utf-8', 'replace') if isinstance(error.stderr, bytes) else str(error.stderr or '')
+    detail = re.sub(r'(gh[pousr]_[A-Za-z0-9]+|x-access-token:[^@\s]+|https?://\S+)', '…',
+                    detail.strip().splitlines()[-1] if detail.strip() else '')[:160]
+    return f'Commande : {tool} {sub} (code {error.returncode}). {detail}'.rstrip()
+
+
+def git_push_with_retry(cwd, ref, attempts=3, sleep=time.sleep):
+    """Envoi des accusés avec nouvelles tentatives en cas de coupure réseau passagère.
+    Jamais de --force : si la branche a avancé ailleurs, l'échec est remonté tel quel (aucun accusé écrasé)."""
+    for attempt in range(1, attempts + 1):
+        try:
+            subprocess.run(['git', '-c', 'credential.helper=!gh auth git-credential', 'push', '--quiet', 'origin', ref],
+                           cwd=cwd, check=True, capture_output=True)
+            return
+        except subprocess.CalledProcessError as error:
+            rejected = b'rejected' in (error.stderr or b'') or b'non-fast-forward' in (error.stderr or b'')
+            print('::warning::Accusés : envoi refusé (tentative ' + str(attempt) + '/' + str(attempts) + '). '
+                  + describe_called_process(error), file=sys.stderr)
+            if rejected or attempt == attempts:
+                raise
+            sleep(2 * attempt)
+
+
 def git_save(path):
     def git(*args):
         subprocess.run(['git', '-c', 'credential.helper=!gh auth git-credential', *args],
@@ -155,7 +183,7 @@ def git_save(path):
     git('add', Path(path).name)
     git('-c', 'user.name=github-actions[bot]', '-c', 'user.email=41898282+github-actions[bot]@users.noreply.github.com',
         'commit', '--quiet', '-m', 'Accusés de diffusion chiffrés')
-    git('push', '--quiet', 'origin', 'HEAD:broadcast-state')
+    git_push_with_retry(Path(path).parent, 'HEAD:broadcast-state')
 
 
 def public_allowed():
@@ -652,12 +680,7 @@ if __name__ == '__main__':
         if isinstance(error, subprocess.CalledProcessError):
             # Seuls l'outil, la sous-commande et le code de sortie sont affichés ; la fin du message
             # d'erreur est filtrée (aucun jeton, aucune adresse privée).
-            cmd = [str(part) for part in (error.cmd if isinstance(error.cmd, (list, tuple)) else [error.cmd])]
-            tool = Path(cmd[0]).name if cmd else '?'
-            sub = next((part for part in cmd[1:] if re.fullmatch(r'[a-z][a-z-]{1,20}', part)), '')
-            detail = error.stderr.decode('utf-8', 'replace') if isinstance(error.stderr, bytes) else str(error.stderr or '')
-            detail = re.sub(r'(gh[pousr]_[A-Za-z0-9]+|x-access-token:[^@\s]+|https?://\S+)', '…', detail.strip().splitlines()[-1] if detail.strip() else '')[:160]
-            message += f' Commande : {tool} {sub} (code {error.returncode}). {detail}'.rstrip()
+            message += ' ' + describe_called_process(error)
         print(message, file=sys.stderr)
         print('::error::' + message.replace('\n', ' '))  # visible dans les annotations GitHub
         sys.exit(1)

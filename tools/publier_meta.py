@@ -879,5 +879,8 @@ if __name__ == '__main__':
         main()
     except Exception as error:  # message contrôlé, sans jeton
         message = str(error) if isinstance(error, DeliveryError) else 'Interrompu (' + type(error).__name__ + ').'
+        if isinstance(error, subprocess.CalledProcessError):
+            from tools.diffuser_jt import describe_called_process
+            message += ' ' + describe_called_process(error)
         print('::error::' + message.replace('\n', ' '))
         sys.exit(1)
