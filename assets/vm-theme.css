@@ -177,3 +177,5 @@ html[data-vmt-page="404"] body>:not(.vmbar){margin-top:24px;max-width:calc(100vw
 
 /* Boutons : texte net, sans contour hérité du héros */
 html[data-vmt] .vmt-hero a,html[data-vmt] .vmt-hero button,html[data-vmt] .btn{text-shadow:none!important}
+/* Pastilles du héros (« Soutien facultatif », badges…) : texte net sur fond doré, sans ombre dédoublée, et retour à la ligne propre sur petit écran (Android 360 px). */
+html[data-vmt] .vmt-hero :is(.beta,.badge,.kicker,.tag){text-shadow:none!important;-webkit-text-stroke:0!important;line-height:1.35!important;white-space:normal;max-width:100%;overflow-wrap:anywhere;box-sizing:border-box}
