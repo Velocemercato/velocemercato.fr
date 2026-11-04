@@ -1,6 +1,18 @@
 {
  "matchs": [
   {
+   "id": 575378,
+   "date": "2026-11-03T17:45:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Galatasaray",
+   "ext": "Stuttgart",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    1
+   ]
+  },
+  {
    "id": 575377,
    "date": "2026-11-03T17:45:00Z",
    "comp": "Ligue des champions",
@@ -13,15 +25,39 @@
    ]
   },
   {
-   "id": 575378,
-   "date": "2026-11-03T17:45:00Z",
+   "id": 575382,
+   "date": "2026-11-03T20:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Galatasaray",
-   "ext": "Stuttgart",
+   "dom": "Villarreal",
+   "ext": "PSG",
    "statut": "FINISHED",
    "score": [
-    2,
-    1
+    0,
+    6
+   ]
+  },
+  {
+   "id": 575384,
+   "date": "2026-11-03T20:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Bodø/Glimt",
+   "ext": "Lille",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": 575380,
+   "date": "2026-11-03T20:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Barça",
+   "ext": "Aston Villa",
+   "statut": "FINISHED",
+   "score": [
+    3,
+    0
    ]
   },
   {
@@ -73,54 +109,6 @@
    ]
   },
   {
-   "id": 575382,
-   "date": "2026-11-03T20:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Villarreal",
-   "ext": "PSG",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    6
-   ]
-  },
-  {
-   "id": 575384,
-   "date": "2026-11-03T20:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Bodø/Glimt",
-   "ext": "Lille",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    0
-   ]
-  },
-  {
-   "id": 575380,
-   "date": "2026-11-03T20:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Barça",
-   "ext": "Aston Villa",
-   "statut": "FINISHED",
-   "score": [
-    3,
-    0
-   ]
-  },
-  {
-   "id": 575387,
-   "date": "2026-11-04T17:45:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Fenerbahçe",
-   "ext": "Liverpool",
-   "statut": "IN_PLAY",
-   "score": [
-    3,
-    2
-   ]
-  },
-  {
    "id": 575386,
    "date": "2026-11-04T17:45:00Z",
    "comp": "Ligue des champions",
@@ -133,39 +121,15 @@
    ]
   },
   {
-   "id": 575393,
-   "date": "2026-11-04T20:00:00Z",
+   "id": 575387,
+   "date": "2026-11-04T17:45:00Z",
    "comp": "Ligue des champions",
-   "dom": "RC Lens",
-   "ext": "Como 1907",
-   "statut": "TIMED",
+   "dom": "Fenerbahçe",
+   "ext": "Liverpool",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 575389,
-   "date": "2026-11-04T20:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Slavia Praha",
-   "ext": "Arsenal",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 575391,
-   "date": "2026-11-04T20:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Dortmund",
-   "ext": "Real Betis",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
+    3,
+    2
    ]
   },
   {
@@ -215,7 +179,43 @@
     null,
     null
    ]
+  },
+  {
+   "id": 575393,
+   "date": "2026-11-04T20:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "RC Lens",
+   "ext": "Como 1907",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 575389,
+   "date": "2026-11-04T20:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Slavia Praha",
+   "ext": "Arsenal",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 575391,
+   "date": "2026-11-04T20:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Dortmund",
+   "ext": "Real Betis",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
   }
  ],
- "maj": "2026-11-04T19:42:30Z"
+ "maj": "2026-11-04T19:44:24Z"
 }
