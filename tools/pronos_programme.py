@@ -202,6 +202,10 @@ def annonce_pronos_du_jour(now):
     ia = load_json("pronos/analyse-claude.json", {})
     if not (selection_active(owner, now, True) or selection_active(ia, now, False)):
         return None
+    # Annonce Facebook désactivée par défaut (demande du propriétaire, 04/11 :
+    # pronos uniquement sur velocemercato.fr et VM Actus & Pronos).
+    if not (owner.get("annonce_rq_pronos") is True or ia.get("annonce_rq_pronos") is True):
+        return None
     local = now.astimezone(PARIS)
     anchor = "pronos-du-jour" if selection_active(owner, now, True) else "analyse-claude"
     return {"key": "pronos-du-jour/" + local.date().isoformat(),
