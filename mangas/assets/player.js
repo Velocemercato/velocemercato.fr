@@ -1,6 +1,5 @@
 
-function vmBindPlayers(){document.querySelectorAll('[data-youtube-id]:not([data-vm-bound])').forEach(function(el){
-  el.setAttribute('data-vm-bound','');
+document.querySelectorAll('[data-youtube-id]').forEach(function(el){
   const id=el.getAttribute('data-youtube-id');
   const btn=el.querySelector('button');
   if(!/^[A-Za-z0-9_-]{11}$/.test(id)||!btn)return;
@@ -17,8 +16,7 @@ function vmBindPlayers(){document.querySelectorAll('[data-youtube-id]:not([data-
   }
   btn.addEventListener('click',play);
   if(poster){poster.style.cursor='pointer';poster.addEventListener('click',function(e){if(e.target!==btn)play();});}
-});}
-window.VMPlayer=vmBindPlayers;vmBindPlayers();
+});
 document.querySelectorAll('[data-copy-link]').forEach(function(button){
   button.addEventListener('click',async function(){
     try{await navigator.clipboard.writeText(location.href);button.textContent='✓ Lien copié';}
