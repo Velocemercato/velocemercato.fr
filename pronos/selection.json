@@ -1,36 +1,41 @@
 {
- "_note": "Section « Les pronos du jour VM » de /pronos/ uniquement. Données relevées le 03/11/2026 vers 23 h 45, nouvelle vérification prévue le 04/11 à 10 h (cotes, compositions, blessures).",
+ "_note": "Pronos du jour du propriétaire VM (visuel du 04/11). Probabilités = implicite des cotes sauf mention ; plusieurs sélections non vérifiées par VM.",
  "valide": true,
- "valide_par": "Propriétaire VM (accord du 03/11/2026)",
- "debut": "2026-11-03T23:00:00Z",
+ "valide_par": "Propriétaire VM (pronos et accord du 04/11/2026)",
+ "debut": "2026-11-04T08:00:00Z",
  "expire": "2026-11-05T05:00:00Z",
- "verifie_le": "2026-11-03T22:45:00Z",
+ "verifie_le": "2026-11-04T08:30:00Z",
+ "analyse": "Les cotes affichées viennent du visuel du propriétaire. La probabilité indiquée est celle impliquée par la cote, marge du bookmaker incluse, donc un peu optimiste. Les remarques VM signalent ce qui est vérifié, ce qui ne l'est pas, et les écarts avec nos relevés de la veille.",
  "combines": [
   {
-   "titre": "🛡️ Combiné prudent n°1 · Real + Arsenal",
-   "probabilite": "≈ 56 %",
-   "cote": "≈ 1,61",
-   "note": "Les deux favoris jouent à l'extérieur. Estimations de marché (Covers/Kalshi), pas de modèle VM.",
+   "titre": "Combiné n°1 · cote totale 2,28",
+   "probabilite": "≈ 44 % (implicite)",
+   "cote": "2,28",
+   "note": "Mbappé : 3 buts et 1 passe en 3 titularisations de LDC. Viking : 1,30 ici contre 1,44 relevé hier, et le marché Kalshi ne donne que 66 %. PSV – Bruges : non vérifié par VM.",
    "selections": [
     {
      "match": "AEK Athènes – Real Madrid",
      "heure_paris": "18 h 45",
-     "marche": "Victoire du Real Madrid",
-     "cote": "1,25",
-     "probabilite": "76 %",
-     "type_estimation": "marché de prévisions via Covers",
-     "source": {
-      "nom": "Covers",
-      "url": "https://www.covers.com/soccer/champions-league-moneyline-picks-matchday-4-2026"
-     }
+     "marche": "Mbappé buteur (90 min)",
+     "cote": "1,35",
+     "probabilite": "74 %",
+     "type_estimation": "implicite de la cote, pas de modèle"
     },
     {
-     "match": "Slavia Prague – Arsenal",
+     "match": "PSV Eindhoven – Club Bruges",
      "heure_paris": "21 h",
-     "marche": "Victoire d'Arsenal",
-     "cote": "1,29",
-     "probabilite": "74 %",
-     "type_estimation": "marché de prévisions via Covers",
+     "marche": "Les 2 équipes marquent (90 min)",
+     "cote": "1,30",
+     "probabilite": "77 %",
+     "type_estimation": "implicite de la cote, pas de modèle, non vérifié par VM"
+    },
+    {
+     "match": "Viking – Sabah",
+     "heure_paris": "21 h",
+     "marche": "Viking gagne (90 min)",
+     "cote": "1,30",
+     "probabilite": "77 % (marché Kalshi : 66 %)",
+     "type_estimation": "implicite de la cote, pas de modèle",
      "source": {
       "nom": "Covers",
       "url": "https://www.covers.com/soccer/champions-league-moneyline-picks-matchday-4-2026"
@@ -39,18 +44,86 @@
    ]
   },
   {
-   "titre": "🛡️ Combiné prudent n°2 · Zverev + Panthers",
-   "probabilite": "≈ 47 %",
-   "cote": "≈ 1,96",
-   "note": "Deux sélections avec modèle publié. Les deux modèles sont au niveau de la cote, pas au-dessus : aucun avantage démontré.",
+   "titre": "Combiné n°2 · cote totale 2,10",
+   "probabilite": "≈ 48 % (implicite)",
+   "cote": "2,10",
+   "note": "Fils – Machač (Paris Masters) et Lens – Como : non vérifiés par VM (horaires, compositions, modèles).",
+   "selections": [
+    {
+     "match": "A. Fils – T. Machač (Paris Masters)",
+     "heure_paris": "horaire à vérifier sur atptour.com",
+     "marche": "Fils gagne le match",
+     "cote": "1,45",
+     "probabilite": "69 %",
+     "type_estimation": "implicite de la cote, pas de modèle, non vérifié par VM"
+    },
+    {
+     "match": "Lens – Côme",
+     "heure_paris": "horaire à vérifier sur uefa.com",
+     "marche": "Les 2 équipes marquent (90 min)",
+     "cote": "1,45",
+     "probabilite": "69 %",
+     "type_estimation": "implicite de la cote, pas de modèle, non vérifié par VM"
+    }
+   ]
+  },
+  {
+   "titre": "Combiné n°3 · cote totale 5,07 (fun)",
+   "probabilite": "≈ 20 % (implicite), environ 1 chance sur 5",
+   "cote": "5,07",
+   "note": "Dortmund – Betis : les scores annoncés vont de 3-1 Dortmund à 2-1 Betis. Fenerbahçe – Liverpool : Opta donne 59 % à Liverpool et 21,5 % au nul (double chance ≈ 80 %), mais le « les 2 marquent » n'a pas de modèle. Real – Panathinaikos : le Pana a gagné les 3 derniers duels. Sabres – Senators : non vérifié par VM.",
+   "selections": [
+    {
+     "match": "Dortmund – Betis Séville",
+     "heure_paris": "21 h",
+     "marche": "Les 2 équipes marquent + plus de 2,5 buts (90 min)",
+     "cote": "1,64",
+     "probabilite": "61 %",
+     "type_estimation": "implicite de la cote, pas de modèle"
+    },
+    {
+     "match": "Fenerbahçe – Liverpool",
+     "heure_paris": "horaire à vérifier sur uefa.com",
+     "marche": "Double chance nul/Liverpool + les 2 équipes marquent",
+     "cote": "1,72",
+     "probabilite": "58 %",
+     "type_estimation": "implicite de la cote, pas de modèle",
+     "source": {
+      "nom": "Opta Analyst",
+      "url": "https://theanalyst.com/articles/fenerbahce-vs-liverpool-prediction-uefa-champions-league-preview"
+     }
+    },
+    {
+     "match": "Real Madrid – Panathinaikos (EuroLeague)",
+     "heure_paris": "20 h 45",
+     "marche": "Real Madrid +6 (handicap)",
+     "cote": "1,45",
+     "probabilite": "69 %",
+     "type_estimation": "implicite de la cote, pas de modèle"
+    },
+    {
+     "match": "Sabres – Senators (NHL)",
+     "heure_paris": "nuit, horaire à vérifier",
+     "marche": "Sabres +2 (handicap)",
+     "cote": "1,24",
+     "probabilite": "81 %",
+     "type_estimation": "implicite de la cote, pas de modèle, non vérifié par VM"
+    }
+   ]
+  },
+  {
+   "titre": "Combiné n°4 · cote totale 2,00",
+   "probabilite": "≈ 50 % (implicite)",
+   "cote": "2,00",
+   "note": "Zverev : le modèle Dimers (68,6 %) est nettement sous l'implicite (80 %) de cette cote de 1,25. Panthers en 1N2 (temps réglementaire, d'où la cote de 1,60) : Barkov et Marchand sont absents.",
    "selections": [
     {
      "match": "Zverev – Musetti (Paris Masters)",
      "heure_paris": "pas avant 13 h 30",
-     "marche": "Victoire de Zverev",
-     "cote": "1,40",
-     "probabilite": "68,6 %",
-     "type_estimation": "modèle Dimers",
+     "marche": "Zverev gagne le match",
+     "cote": "1,25",
+     "probabilite": "80 % (modèle Dimers : 68,6 %)",
+     "type_estimation": "implicite de la cote, pas de modèle",
      "source": {
       "nom": "Dimers",
       "url": "https://www.dimers.com/tennis/news/alexander-zverev-vs-lorenzo-musetti-tennis-prediction-atp-paris-masters-2026-ac"
@@ -59,10 +132,10 @@
     {
      "match": "Blackhawks – Panthers (NHL)",
      "heure_paris": "nuit, ≈ 0 h 30 (à confirmer)",
-     "marche": "Victoire des Panthers",
-     "cote": "1,40",
-     "probabilite": "68 %",
-     "type_estimation": "modèle Puckey",
+     "marche": "Panthers gagnent (1N2, temps réglementaire)",
+     "cote": "1,60",
+     "probabilite": "63 %",
+     "type_estimation": "implicite de la cote, pas de modèle",
      "source": {
       "nom": "Puckey",
       "url": "https://puckey.ca/matches/2026020248/"
@@ -71,58 +144,30 @@
    ]
   },
   {
-   "titre": "🎉 Combiné fun · 4 sélections",
-   "probabilite": "≈ 12 % (environ 1 chance sur 8)",
-   "cote": "≈ 8",
-   "note": "Pour le plaisir : il perd environ 7 fois sur 8. Guirassy buteur et « les deux équipes marquent » sont liés, donc la probabilité réelle diffère un peu.",
+   "titre": "Combiné n°5 · cote totale 1,76",
+   "probabilite": "≈ 57 % (implicite)",
+   "cote": "1,76",
+   "note": "Mêmes sélections que dans le combiné n°1 : si Mbappé ne marque pas ou si Viking ne gagne pas, les deux combinés tombent ensemble.",
    "selections": [
     {
-     "match": "RB Leipzig – Manchester City",
+     "match": "Viking – Sabah",
      "heure_paris": "21 h",
-     "marche": "Victoire de Manchester City",
-     "cote": "1,57",
-     "probabilite": "62 %",
-     "type_estimation": "marché de prévisions via Covers",
+     "marche": "Viking gagne (90 min)",
+     "cote": "1,30",
+     "probabilite": "77 % (marché Kalshi : 66 %)",
+     "type_estimation": "implicite de la cote, pas de modèle",
      "source": {
       "nom": "Covers",
       "url": "https://www.covers.com/soccer/champions-league-moneyline-picks-matchday-4-2026"
      }
     },
     {
-     "match": "Dortmund – Betis Séville",
-     "heure_paris": "21 h",
-     "marche": "Guirassy buteur",
-     "cote": "2,05",
-     "probabilite": "≈ 48 %",
-     "type_estimation": "cote, pas de modèle",
-     "source": {
-      "nom": "Squawka",
-      "url": "https://www.squawka.com/en/news/borussia-dortmund-vs-real-betis-bet-builder-tips-wednesday-04-11-2026/"
-     }
-    },
-    {
-     "match": "Dortmund – Betis Séville",
-     "heure_paris": "21 h",
-     "marche": "Les deux équipes marquent",
-     "cote": "1,65",
-     "probabilite": "≈ 60 %",
-     "type_estimation": "cotes de 1,53 à 1,80, pas de modèle",
-     "source": {
-      "nom": "Tribuna",
-      "url": "https://tribuna.com/en/betting/blogs/dortmund-vs-betis-prediction-odds-best-bets-champions-league/"
-     }
-    },
-    {
-     "match": "Real Madrid – Panathinaikos (EuroLeague)",
-     "heure_paris": "20 h 45",
-     "marche": "Victoire du Real Madrid",
-     "cote": "1,52",
-     "probabilite": "≈ 66 %",
-     "type_estimation": "cote, pas de modèle",
-     "source": {
-      "nom": "Dailysports",
-      "url": "https://dailysports.net/predictions/a-test-for-the-greek-giants-in-madrid-euroleague-prediction-for-real-madrid-vs-panathinaikos/"
-     }
+     "match": "AEK Athènes – Real Madrid",
+     "heure_paris": "18 h 45",
+     "marche": "Mbappé buteur (90 min)",
+     "cote": "1,35",
+     "probabilite": "74 %",
+     "type_estimation": "implicite de la cote, pas de modèle"
     }
    ]
   }

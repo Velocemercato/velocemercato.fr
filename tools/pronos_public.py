@@ -130,14 +130,35 @@ def section_agenda(root, now):
     return "\n".join(result)
 
 
-def section_selection(root, now):
-    """Pronos du jour VM : affichés UNIQUEMENT si pronos/selection.json est validé par un humain
-    (« valide »: true, « valide_par » renseigné) et encore en cours de validité. Sinon : rien."""
-    data = load(root, "pronos/selection.json", {})
-    if not isinstance(data, dict) or data.get("valide") is not True or not str(data.get("valide_par") or "").strip():
-        return ""
+SELECTIONS = (
+    # (fichier, ancre, titre, exige une validation humaine)
+    ("pronos/selection.json", "pronos-du-jour", "👑 Les pronos du jour VM", True),
+    ("pronos/analyse-claude.json", "analyse-claude", "🤖 L'analyse prono de Claude", False),
+)
+
+
+def selection_active(data, now, humain=True):
+    """Une sélection n'est visible que pendant sa fenêtre de validité, et :
+    - pronos du propriétaire : « valide »: true ET « valide_par » renseigné ;
+    - analyse de Claude : « publie_sans_validation »: true (mention affichée en clair)."""
+    if not isinstance(data, dict):
+        return False
+    if humain:
+        if data.get("valide") is not True or not str(data.get("valide_par") or "").strip():
+            return False
+    elif data.get("publie_sans_validation") is not True:
+        return False
     debut, fin = parsed(data.get("debut")), parsed(data.get("expire"))
-    if debut is None or fin is None or not debut <= now < fin:
+    return debut is not None and fin is not None and debut <= now < fin
+
+
+def section_selection(root, now):
+    return "".join(section_une_selection(root, now, *row) for row in SELECTIONS)
+
+
+def section_une_selection(root, now, path, anchor, title, humain):
+    data = load(root, path, {})
+    if not selection_active(data, now, humain):
         return ""
     blocs = []
     for combo in data.get("combines") or []:
@@ -161,10 +182,15 @@ def section_selection(root, now):
         return ""
     verif = parsed(data.get("verifie_le"))
     stamp = verif.astimezone(PARIS).strftime("%d/%m/%Y à %H:%M") if verif else "?"
-    return ('<section class="panel" id="pronos-du-jour"><h2>👑 Les pronos du jour VM</h2>'
-            f'<p class="meta">Données vérifiées le {e(stamp)} (Paris) · validé par {e(data["valide_par"])}. '
+    if humain:
+        qui = f'validé par {e(data["valide_par"])}'
+    else:
+        qui = ("<b>publié automatiquement par Claude (IA), sans validation du propriétaire du site</b>")
+    analyse = f'<p>{e(data["analyse"])}</p>' if data.get("analyse") else ""
+    return (f'<section class="panel" id="{e(anchor)}"><h2>{e(title)}</h2>'
+            f'<p class="meta">Données vérifiées le {e(stamp)} (Paris) · {qui}. '
             'Estimations externes, cotes indicatives qui évoluent : aucun résultat garanti.</p>'
-            + "\n".join(blocs) +
+            + analyse + "\n".join(blocs) +
             '<p class="risk">Un combiné multiplie les risques : sa probabilité est le produit de celles de chaque sélection. '
             'Ni conseil, ni promesse de gain.<br>' + e(RISK) + ' · Les jeux d’argent sont interdits aux mineurs.</p></section>')
 

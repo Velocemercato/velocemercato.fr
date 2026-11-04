@@ -194,6 +194,25 @@ def preview_sourcee(now):
     }
 
 
+def annonce_pronos_du_jour(now):
+    """Annonce « les pronos du jour sont en ligne » : uniquement un lien vers /pronos/,
+    sans cote ni combiné dans le post, et seulement si une sélection du jour est active."""
+    from tools.pronos_public import selection_active
+    owner = load_json("pronos/selection.json", {})
+    ia = load_json("pronos/analyse-claude.json", {})
+    if not (selection_active(owner, now, True) or selection_active(ia, now, False)):
+        return None
+    local = now.astimezone(PARIS)
+    anchor = "pronos-du-jour" if selection_active(owner, now, True) else "analyse-claude"
+    return {"key": "pronos-du-jour/" + local.date().isoformat(),
+            "link": "https://velocemercato.fr/pronos/#" + anchor,
+            "text": ("👑 LES PRONOS DU JOUR SONT EN LIGNE !\n\n"
+                     f"Nos sélections du {local:%d/%m} avec les sources, les probabilités et les remarques VM "
+                     "sont sur VM Actus & Pronos 👇\nhttps://velocemercato.fr/pronos/#" + anchor + "\n\n"
+                     "Analyse, pas une promesse : aucun résultat garanti. Bilan publié après les matchs.\n\n"
+                     + RISK + " · Interdit aux mineurs\n#RQPronos #VeloceTeam")}
+
+
 def candidates(now, kind):
     if kind in NEWS:
         return article_candidates(kind, now)
@@ -215,6 +234,9 @@ def candidates(now, kind):
         # Un fichier prono.json peut dater de la veille alors que le match est fini.
         # Ne PAS republier un ancien pronostic sur le seul critère « créé <30h ».
         # Donner la priorité à l'agenda factuel dont les rencontres sont futures.
+        annonce = annonce_pronos_du_jour(now)
+        if annonce:
+            return [annonce]
         verified_preview = preview_sourcee(now)
         if verified_preview:
             return [verified_preview]

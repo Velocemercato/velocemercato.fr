@@ -81,6 +81,22 @@ class PronosPublicTests(unittest.TestCase):
             self.selection(root, expire="2026-11-01T09:00:00Z")
             self.assertNotIn("Combiné test", render(root, self.NOW))
 
+    def test_claude_analysis_labelled_unvalidated(self):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            self.selection(root)
+            data = json.loads((root / "pronos/selection.json").read_text(encoding="utf-8"))
+            data.pop("valide"); data.pop("valide_par")
+            data["publie_sans_validation"] = True
+            data["combines"][0]["titre"] = "Combiné Claude"
+            (root / "pronos/analyse-claude.json").write_text(json.dumps(data), encoding="utf-8")
+            text = render(root, self.NOW)
+            self.assertIn("Combiné Claude", text)
+            self.assertIn("sans validation du propriétaire", text)
+            data["publie_sans_validation"] = False
+            (root / "pronos/analyse-claude.json").write_text(json.dumps(data), encoding="utf-8")
+            self.assertNotIn("Combiné Claude", render(root, self.NOW))
+
     def test_build_idempotent(self):
         with tempfile.TemporaryDirectory() as name:
             root = Path(name)
