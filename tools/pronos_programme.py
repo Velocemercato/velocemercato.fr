@@ -209,12 +209,11 @@ def annonce_pronos_du_jour(now):
     local = now.astimezone(PARIS)
     anchor = "pronos-du-jour" if selection_active(owner, now, True) else "analyse-claude"
     return {"key": "pronos-du-jour/" + local.date().isoformat(),
-            "link": "https://velocemercato.fr/pronos/#" + anchor,
-            "text": ("👑 LES PRONOS DU JOUR SONT EN LIGNE !\n\n"
-                     f"Nos sélections du {local:%d/%m} avec les sources, les probabilités et les remarques VM "
-                     "sont sur VM Actus & Pronos 👇\nhttps://velocemercato.fr/pronos/#" + anchor + "\n\n"
-                     "Analyse, pas une promesse : aucun résultat garanti. Bilan publié après les matchs.\n\n"
-                     + RISK + " · Interdit aux mineurs\n#RQPronos #VeloceTeam")}
+            "link": "https://velocemercato.fr/pronos/",
+            "text": ("🎁 LE PRONO PUBLIC DU JOUR EST EN LIGNE !\n\n"
+                     f"Il est à découvrir uniquement sur le site, pas sur Facebook 👇\nhttps://velocemercato.fr/pronos/\n\n"
+                     "🔒 Tous les autres pronos : accès VIP gratuit sur demande par email (bouton sur le site).\n\n"
+                     + RISK + " · Interdit aux mineurs · Aucun résultat garanti\n#VeloceMercato #VeloceTeam")}
 
 
 def candidates(now, kind):

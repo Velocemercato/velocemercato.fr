@@ -27,7 +27,7 @@ class PronosPublicTests(unittest.TestCase):
             self.assertIn("Info sourcée", text)
             self.assertIn("Brève vérifiable", text)
             self.assertIn("Source test", text)
-            self.assertIn('href="https://www.facebook.com/112294796981981"', text)
+            self.assertIn('href="https://www.facebook.com/share/1E6nH6RZzX/"', text)
             self.assertIn("18+", text)
 
     def test_html_escaped_and_false_stories_excluded(self):
@@ -74,6 +74,10 @@ class PronosPublicTests(unittest.TestCase):
             text = render(root, self.NOW)
             self.assertIn("Combiné test", text)
             self.assertIn("interdits aux mineurs", text)
+            self.selection(root, cote_max_public=1.30)
+            self.assertNotIn("Combiné test", render(root, self.NOW))
+            self.selection(root, cote_max_public=2)
+            self.assertIn("Combiné test", render(root, self.NOW))
             self.selection(root, valide=False)
             self.assertNotIn("Combiné test", render(root, self.NOW))
             self.selection(root, valide_par="")
