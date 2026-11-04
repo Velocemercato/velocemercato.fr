@@ -25,30 +25,6 @@
    ]
   },
   {
-   "id": 575383,
-   "date": "2026-11-03T20:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Man United",
-   "ext": "Roma",
-   "statut": "FINISHED",
-   "score": [
-    3,
-    2
-   ]
-  },
-  {
-   "id": 575379,
-   "date": "2026-11-03T20:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Feyenoord",
-   "ext": "Inter",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    3
-   ]
-  },
-  {
    "id": 575385,
    "date": "2026-11-03T20:00:00Z",
    "comp": "Ligue des champions",
@@ -73,15 +49,27 @@
    ]
   },
   {
-   "id": 575384,
+   "id": 575383,
    "date": "2026-11-03T20:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Bodø/Glimt",
-   "ext": "Lille",
+   "dom": "Man United",
+   "ext": "Roma",
+   "statut": "FINISHED",
+   "score": [
+    3,
+    2
+   ]
+  },
+  {
+   "id": 575379,
+   "date": "2026-11-03T20:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Feyenoord",
+   "ext": "Inter",
    "statut": "FINISHED",
    "score": [
     0,
-    0
+    3
    ]
   },
   {
@@ -109,6 +97,18 @@
    ]
   },
   {
+   "id": 575384,
+   "date": "2026-11-03T20:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Bodø/Glimt",
+   "ext": "Lille",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    0
+   ]
+  },
+  {
    "id": 575387,
    "date": "2026-11-04T17:45:00Z",
    "comp": "Ligue des champions",
@@ -130,18 +130,6 @@
    "score": [
     2,
     3
-   ]
-  },
-  {
-   "id": 575393,
-   "date": "2026-11-04T20:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "RC Lens",
-   "ext": "Como 1907",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    9
    ]
   },
   {
@@ -169,15 +157,15 @@
    ]
   },
   {
-   "id": 575388,
+   "id": 575393,
    "date": "2026-11-04T20:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "RB Leipzig",
-   "ext": "Man City",
+   "dom": "RC Lens",
+   "ext": "Como 1907",
    "statut": "FINISHED",
    "score": [
-    2,
-    3
+    1,
+    9
    ]
   },
   {
@@ -215,7 +203,19 @@
     4,
     1
    ]
+  },
+  {
+   "id": 575388,
+   "date": "2026-11-04T20:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "RB Leipzig",
+   "ext": "Man City",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    3
+   ]
   }
  ],
- "maj": "2026-11-04T22:41:18Z"
+ "maj": "2026-11-04T22:43:11Z"
 }
