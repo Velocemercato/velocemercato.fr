@@ -141,21 +141,31 @@ if __name__ == "__main__":
 
 
 class PromoEtGrilleTests(unittest.TestCase):
-    def test_promo_rotation_sans_cote_et_unique_par_jour(self):
+    def test_promo_calendrier_sans_prix_ni_pari_ni_vip(self):
         import datetime as dt
         from tools import pronos_programme as P
-        seen = set()
-        for day in range(5):
-            now = dt.datetime(2026, 11, 5 + day, 15, 0, tzinfo=dt.timezone.utc)
+        themes = set()
+        for day in range(28):
+            now = dt.datetime(2026, 11, 2, 15, 0, tzinfo=dt.timezone.utc) + dt.timedelta(days=day)
             item = P.candidates(now, "promo")[0]
-            self.assertTrue(item["key"].startswith("promo/2026-11-"))
             self.assertTrue(P.safe_url(item["link"]))
-            self.assertNotRegex(item["text"].lower(), r"\bcote|combin|bookmaker|mise\b")
-            if "prono" in item["text"].lower():
-                self.assertIn("18+", item["text"])
-                self.assertIn("09 74 75 13 13", item["text"])
-            seen.add(item["key"].split("/")[-1])
-        self.assertEqual(len(seen), 5)
+            low = item["text"].lower()
+            self.assertNotIn("€", item["text"])
+            self.assertNotRegex(low, r"\bcote|combin|bookmaker|\bmise\b|vip|prono")
+            self.assertIn(item["link"], item["text"])
+            themes.add(item["key"].split("/")[-1])
+        self.assertEqual(themes, set(P.PROMO_TEXTES))
+        lundi = P.candidates(dt.datetime(2026, 11, 2, 15, tzinfo=dt.timezone.utc), "promo")[0]
+        self.assertTrue(lundi["key"].endswith("/univers"))
+        jeudi = P.candidates(dt.datetime(2026, 11, 5, 15, tzinfo=dt.timezone.utc), "promo")[0]
+        self.assertTrue(jeudi["key"].endswith("/jt"))
+
+    def test_annonces_pronos_informatives(self):
+        from tools import pronos_programme as P
+        for texte in P.ANNONCES_PRONOS:
+            self.assertIn("18+ · Aucun résultat garanti · Joueurs Info Service : 09 74 75 13 13", texte)
+            self.assertNotRegex(texte.lower(), r"\bcote\b(?! publiée)|vip|combin")
+            self.assertIn("https://velocemercato.fr/pronos/", texte)
 
     def test_grille_foot_jt_et_promo(self):
         from tools import pronos_programme as P
