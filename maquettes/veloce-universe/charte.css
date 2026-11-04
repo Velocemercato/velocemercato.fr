@@ -1,0 +1,50 @@
+/* VÉLOCE UNIVERSE — charte commune (maquette). Noir · rouge néon · bleu · or. */
+:root{
+  --noir:#07080b;--noir2:#0f1118;--carte:#141722;--ligne:#262b3b;
+  --rouge:#ff1f3d;--rouge2:#c4081f;--bleu:#2b7bff;--bleu-neon:#3fb8ff;--or:#ffc21a;--or2:#f0a800;
+  --encre:#f5f6fa;--doux:#b9bfd0;--titre:'Barlow Condensed','Arial Narrow',Impact,sans-serif;
+  --texte:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --lueur-rouge:0 0 18px #ff1f3d66;--lueur-bleu:0 0 18px #3fb8ff55;--r:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 0 0,#2a0610 0,transparent 40%),radial-gradient(ellipse at 100% 30%,#071d44 0,transparent 42%),var(--noir);color:var(--encre);font:16px/1.55 var(--texte);overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1240px;margin:0 auto;padding:0 16px}
+.maquette{position:sticky;top:0;z-index:50;background:repeating-linear-gradient(135deg,var(--or) 0 12px,#111 12px 24px);padding:3px}
+.maquette p{margin:0;background:#111;color:#ffe27b;font:800 13px/1.3 var(--texte);text-align:center;padding:6px 10px}
+.univers{background:#000;border-bottom:1px solid var(--ligne);font:700 12px var(--texte);color:var(--doux)}
+.univers .wrap{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:34px;flex-wrap:wrap}
+.univers a{text-decoration:none}.univers b{color:var(--or);letter-spacing:.08em}
+.reseaux{display:flex;gap:6px;flex-wrap:wrap}
+.reseaux span{border:1px solid var(--ligne);border-radius:999px;padding:2px 8px;color:var(--encre)}
+.entete{background:linear-gradient(180deg,#0b0d14,#06070a);border-bottom:2px solid var(--rouge);box-shadow:0 6px 24px #000c}
+.entete .wrap{display:flex;align-items:center;gap:14px;min-height:72px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo img{width:54px;height:54px;object-fit:contain;filter:drop-shadow(0 0 10px #ffc21a55)}
+.logo strong{font:900 italic 30px/0.95 var(--titre);letter-spacing:.02em}
+.logo strong i{font-style:normal;color:var(--rouge);text-shadow:var(--lueur-rouge)}
+.logo small{display:block;font:700 11px var(--texte);color:var(--or);letter-spacing:.18em}
+.menu{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+.menu a{font:800 15px var(--titre);text-transform:uppercase;letter-spacing:.04em;text-decoration:none;padding:8px 10px;border-radius:8px;border:1px solid transparent}
+.menu a:hover,.menu a.on{border-color:var(--rouge);box-shadow:var(--lueur-rouge)}
+.menu a.pronos{color:var(--or);border-color:#5a4610}
+h1,h2,h3{font-family:var(--titre);line-height:1.05;margin:0}
+h2.sec{font:900 italic clamp(26px,4vw,38px) var(--titre);text-transform:uppercase;margin:34px 0 14px;display:flex;align-items:center;gap:10px}
+h2.sec::before{content:"";width:8px;height:30px;background:linear-gradient(var(--rouge),var(--bleu));border-radius:4px;box-shadow:var(--lueur-rouge)}
+.puce{display:inline-block;font:800 11px var(--texte);text-transform:uppercase;letter-spacing:.06em;padding:4px 8px;border-radius:6px;background:#2a0b12;color:#ffb3bf;border:1px solid var(--rouge)}
+.puce.bleu{background:#081a38;color:#a9d6ff;border-color:var(--bleu)}
+.puce.or{background:#2a2108;color:#ffe27b;border-color:var(--or)}
+.btn{display:inline-flex;align-items:center;gap:8px;font:900 16px var(--titre);text-transform:uppercase;letter-spacing:.04em;text-decoration:none;padding:12px 18px;border-radius:10px;background:linear-gradient(90deg,var(--rouge2),var(--rouge));color:#fff;box-shadow:var(--lueur-rouge);border:0}
+.btn.or{background:linear-gradient(90deg,var(--or2),var(--or));color:#111;box-shadow:0 0 18px #ffc21a55}
+.btn.ghost{background:transparent;border:2px solid var(--bleu-neon);box-shadow:var(--lueur-bleu)}
+.carte{text-decoration:none;color:inherit;background:linear-gradient(180deg,var(--carte),#0b0d14);border:1px solid var(--ligne);border-radius:var(--r);overflow:hidden;position:relative}
+.carte:hover{border-color:var(--rouge);box-shadow:var(--lueur-rouge)}
+.grille{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.pied{margin-top:46px;background:#000;border-top:2px solid var(--or);color:var(--doux);font-size:14px}
+.pied .wrap{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));padding-top:26px;padding-bottom:26px}
+.pied h3{color:var(--encre);font-size:20px;margin-bottom:8px}
+.pied a{display:block;text-decoration:none;padding:2px 0}
+.legal{border-top:1px solid var(--ligne);text-align:center;padding:12px 16px;font-size:12px}
+@media (max-width:760px){.univers .reseaux{display:none}.menu{margin-left:0;overflow-x:auto;flex-wrap:nowrap;width:100%;padding-bottom:4px}.menu a{white-space:nowrap}.logo strong{font-size:26px}}

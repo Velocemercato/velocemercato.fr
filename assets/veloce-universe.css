@@ -1,0 +1,9 @@
+/* VÉLOCE UNIVERSE — charte commune (noir, rouge néon, bleu, or) côté média.
+   Habillage léger uniquement : le décor et les rubriques de Véloce Mercato ne changent pas. */
+:root{--vu-noir:#07080b;--vu-rouge:#ff1f3d;--vu-bleu:#2b7bff;--vu-bleu-neon:#3fb8ff;--vu-or:#ffc21a}
+.vu-strip{background:#000;border-bottom:2px solid var(--vu-bleu);font:700 12px/1.3 system-ui,-apple-system,'Segoe UI',sans-serif}
+.vu-strip a,.vu-strip a span{text-decoration:none}
+.vu-strip a{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 10px;min-height:30px;padding:5px 14px;color:#d7dcea;text-decoration:none;text-align:center}
+.vu-strip b{color:var(--vu-or);letter-spacing:.14em;font-weight:900}
+.vu-strip a:hover span,.vu-strip a:focus-visible span{color:#fff;text-decoration:underline;text-decoration-color:var(--vu-bleu-neon)}
+@media (max-width:420px){.vu-strip span{font-size:11px}}
