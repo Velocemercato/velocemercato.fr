@@ -21,13 +21,14 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.diffuser_jt import State, DeliveryError, git_save
 from tools.publier_meta import Graph
-from tools.pronos_facebook import page_access, verify, normal, recent, prono, RISK
+from tools.pronos_facebook import page_access, verify, normal, recent
 
 PARIS = ZoneInfo("Europe/Paris")
 UTC = dt.timezone.utc
 # Grille éditoriale en heure Europe/Paris. Le programme sélectionne les
 # contenus existants et vérifiés; il ne fabrique ni JT, ni vidéo d'une heure.
 # Les créneaux absents de contenu fiable restent vides, sans doublons.
+# 04/11 (#162 : Page prioritaire, autorisation écrite du propriétaire)
 # 04/11 (« go 1 + B » du propriétaire) : VM actus et pronos (≈1 490 abonnés) est la seule Page
 # avec une audience réelle. Plus de foot et de JT, et une promotion quotidienne (16 h).
 SLOTS = {7: "actus", 8: "foot", 9: "foot", 10: "belfort",
@@ -36,8 +37,8 @@ SLOTS = {7: "actus", 8: "foot", 9: "foot", 10: "belfort",
          21: "jt"}
 NEWS = {
     "foot": ("articles.json", "⚽", "https://velocemercato.fr/"),
-    "actus": ("actus/news.json", "📰", "https://velocemercato.fr/pronos/"),
-    "gaming": ("vm-gaming/news.json", "🎮", "https://velocemercato.fr/pronos/"),
+    "actus": ("actus/news.json", "📰", "https://velocemercato.fr/actus/"),
+    "gaming": ("vm-gaming/news.json", "🎮", "https://velocemercato.fr/vm-gaming/"),
 }
 PROJETS = (
     ("VM Univers", "https://vmunivers.fr/", "Découvre tous nos projets, sites et outils"),
@@ -84,8 +85,8 @@ def article_candidates(universe, now):
         content = (f"{icon} LE POINT VM — {headline}\n\n{summary}\n\n"
                    f"Info d'après {normal(src['nom'])[:75]}. "
                    f"Lire la suite et les autres actus : {link}\n\n"
-                   f"#RQPronos #{'Football' if universe == 'foot' else 'VMActus' if universe == 'actus' else 'VMGaming'}")
-        out.append({"key": f"{universe}/{ident}", "text": content, "link": link})
+                   f"#VeloceMercato #{'Football' if universe == 'foot' else 'VMActus' if universe == 'actus' else 'VMGaming'}")
+        out.append({"key": f"{universe}/{ident}", "text": content, "link": link, "empreinte": headline})
     return out
 
 
@@ -108,7 +109,7 @@ def belfort_candidates(now):
                              f"Retrouve les détails directement chez le média source : {link}\n\n"
                              f"Les autres informations locales : https://velocemercato.fr/belfort/\n"
                              f"#Belfort #FrancheComte #VMUnivers"),
-                    "link": link})
+                    "link": link, "empreinte": title})
     return out
 
 
@@ -127,13 +128,75 @@ def jt_candidates(now, universe=None):
             continue
         if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,99}", ident):
             continue
-        out.append({"key": "jt/" + ident, "link": url,
+        out.append({"key": "jt/" + ident, "link": url, "empreinte": url,
                     "text": (f"🎬 LE JT DE L'UNIVERS VM\n\n{normal(a.get('titre'))[:200]}\n\n"
                              f"Les infos importantes en vidéo. Notre émission résume l'essentiel "
                              f"du jour : regarde-la ici 👉 {url}\n\n"
                              f"Émission réalisée avec l'aide de l'IA, informations sourcées.\n"
                              f"#JT #VeloceMercato #VMActus")})
     return out
+
+
+def multisport_candidates(now):
+    """Actus multisport (NBA, F1, tennis, rugby…) déjà sourcées sur velocemercato.fr/multisport/."""
+    payload = load_json("multisport/actualites.json", {})
+    sports = payload.get("sports") if isinstance(payload, dict) else None
+    rows = []
+    for sport, items in (sports.items() if isinstance(sports, dict) else []):
+        for a in items if isinstance(items, list) else []:
+            if isinstance(a, dict):
+                rows.append((str(a.get("date", "")), sport, a))
+    out = []
+    for _, sport, a in sorted(rows, key=lambda r: r[0], reverse=True):
+        ident = str(a.get("id") or "")
+        if not recent(a.get("date"), now, 30) or not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,99}", ident):
+            continue
+        source = normal(a.get("source"))[:80]
+        titre = normal(a.get("titre"))
+        if source and titre.endswith(" - " + source):
+            titre = titre[: -len(" - " + source)]
+        if not (titre and source and safe_url(a.get("url"))):
+            continue
+        link = "https://velocemercato.fr/multisport/"
+        out.append({"key": "multisport/" + ident, "link": link, "empreinte": titre[:180],
+                    "text": (f"🏅 VM MULTISPORT · {sport.upper()}\n\n{titre[:200]}\n\n"
+                             f"Info d'après {source}. Toute l'actu NBA, F1, tennis, rugby et plus : {link}\n\n"
+                             f"#VMMultisport #VeloceMercato")})
+    return out
+
+
+# Aucune sélection, cote, ticket ou combiné de pari sur Facebook (autorisation #162).
+# Seule exception : l'annonce informative figée (suspendue tant que la conformité n'est pas validée).
+PARI_INTERDIT = re.compile(
+    r"\b(?:cotes?|combin[ée]s?|bookmakers?|paris sportifs|parier|bankroll|montantes?|freebets?|value ?bets?|"
+    r"pronos?|pronostics?|tickets? (?:gagnants?|combin[ée]s?|de paris?)|mises? (?:réelles?|de départ)|vip)\b",
+    re.IGNORECASE)
+
+
+def contenu_autorise(item):
+    if str(item.get("key", "")).startswith("pronos-du-jour/"):
+        return item.get("text") in ANNONCES_PRONOS
+    return not PARI_INTERDIT.search(str(item.get("text", "")))
+
+
+def empreinte(item):
+    return normal(item.get("empreinte") or item.get("text", "")[:120]).lower()[:120]
+
+
+def deja_sur_la_page(graph, token, page_id, now):
+    """Journal distant : textes des posts publiés sur la Page depuis 48 h. Lecture seule.
+    En cas d'échec de lecture, aucun envoi (pas de publication à l'aveugle)."""
+    try:
+        data = graph.call("GET", page_id + "/published_posts", {
+            "fields": "message,created_time", "limit": "100",
+            "since": str(int((now - dt.timedelta(hours=48)).timestamp())), "access_token": token})
+    except Exception as error:
+        raise DeliveryError("Lecture des posts déjà publiés impossible : aucun envoi ("
+                            + type(error).__name__ + ").")
+    rows = data.get("data") if isinstance(data, dict) else None
+    if not isinstance(rows, list):
+        raise DeliveryError("Journal des posts de la Page illisible : aucun envoi.")
+    return [normal(r.get("message")).lower() for r in rows if isinstance(r, dict) and r.get("message")]
 
 
 # Pack éditorial ChatGPT (issue #161) : 10 textes SANS prix ni pari, calendrier de 4 semaines.
@@ -190,58 +253,7 @@ def project_candidate(now):
     return {"key": f"projet/{local:%Y-%m-%d}", "link": link,
             "text": (f"👑 LE PROJET VM DU JOUR : {name}\n\n{description}. "
                      f"Notre groupe développe aussi des médias foot, des JT et des outils gratuits.\n\n"
-                     f"Découvrir 👉 {link}\n\n#VMUnivers #RQPronos")}
-
-
-def preview_sourcee(now):
-    """Agenda officiel du jour, chaque jour si le fichier vérifié existe."""
-    local = now.astimezone(PARIS)
-    today = local.date()
-    # Aucun agenda ne doit être recopié du jour précédent.
-    target = today
-    filename = "programmes/avant_match_" + target.isoformat() + ".json"
-    dataset = load_json(filename, {})
-    if not isinstance(dataset, dict) or dataset.get("date_matchs") != target.isoformat():
-        return None
-    matches = dataset.get("matches") or []
-    if len(matches) < 2:
-        return None
-    titre_jour = f"PROGRAMME DU {target:%d/%m/%Y}"
-    lines = [
-        "⚽ RQ PRONOS — AGENDA DU JOUR ET ANALYSE 100 % FICTIVE",
-        "",
-        titre_jour + " : LES MATCHS À SUIVRE 📊",
-    ]
-    for row in matches[:5]:
-        sources = row.get("sources") or []
-        # Un horaire sans preuve officielle bloque l'ensemble du programme.
-        official_hosts = {"ligue1.com", "www.ligue1.com", "lfp.fr", "www.lfp.fr",
-                          "liverpoolfc.com", "www.liverpoolfc.com", "lfcbeta.liverpoolfc.com",
-                          "premierleague.com", "www.premierleague.com", "fplchallenge.premierleague.com"}
-        if not (row.get("official_verified") is True and row.get("affiche")
-                and row.get("heure_paris") and row.get("facts") and sources
-                and all(safe_url(s.get("url")) and urlparse(s["url"]).hostname in official_hosts
-                        for s in sources)):
-            return None
-        lines.extend(["", f"🏟️ {normal(row['affiche'])} — {normal(row['heure_paris'])} (Paris)"])
-        for f in row["facts"][:2]:
-            lines.append("• " + normal(f))
-        lines.append("📎 Source : " + sources[0]["url"])
-    lines.extend([
-        "",
-        "🧠 Analyse VM : calendrier et composition des équipes à vérifier avant les matchs. "
-        "Aucun pourcentage 1/N/2 inventé.",
-        "🎲 Simulation : bankroll théorique 100 points, aucune mise réelle. "
-        "Un combiné multiplie les risques : aucun gain certain ni montante.",
-        "",
-        RISK,
-        "#RQPronos #Football #VMUnivers",
-    ])
-    return {
-        "key": "agenda/" + target.isoformat(),
-        "text": "\n".join(lines),
-        "link": "https://velocemercato.fr/pronos/",
-    }
+                     f"Découvrir 👉 {link}\n\n#VMUnivers #VeloceMercato")}
 
 
 MENTION_PRONOS = "18+ · Aucun résultat garanti · Joueurs Info Service : 09 74 75 13 13"
@@ -293,26 +305,13 @@ def candidates(now, kind):
         return [project_candidate(now)]
     if kind == "promo":
         return [promo_candidate(now)]
+    if kind == "multisport":
+        return multisport_candidates(now)
     if kind == "prono":
-        # Un fichier prono.json peut dater de la veille alors que le match est fini.
-        # Ne PAS republier un ancien pronostic sur le seul critère « créé <30h ».
-        # Donner la priorité à l'agenda factuel dont les rencontres sont futures.
+        # 10 h 40 : jamais de sélection, de cote ni de combiné (#162). L'annonce informative
+        # reste suspendue (annonce_rq_pronos=false) ; à la place, l'actu multisport.
         annonce = annonce_pronos_du_jour(now)
-        if annonce:
-            return [annonce]
-        verified_preview = preview_sourcee(now)
-        if verified_preview:
-            return [verified_preview]
-        data = load_json("prono.json", {})
-        match_date = str(data.get("match_date") or "") if isinstance(data, dict) else ""
-        # Seul un prono portant une date de match explicite valide peut être relayé.
-        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", match_date):
-            return []
-        if match_date not in (now.astimezone(PARIS).date().isoformat(),
-                              (now.astimezone(PARIS).date() + dt.timedelta(days=1)).isoformat()):
-            return []
-        selected = prono(now)
-        return [selected] if selected else []
+        return ([annonce] if annonce else []) + multisport_candidates(now)
     return []
 
 
@@ -356,9 +355,15 @@ def publish_slot(state, graph, now=None):
     if slot in receipts:
         print("::notice::Créneau déjà traité : aucun doublon.")
         return False
-    choice = next((p for p in candidates(now, kind)
-                   if isinstance(p, dict) and p.get("key") and p["key"] != test.get("key")
-                   and "post/" + p["key"] not in receipts and safe_url(p.get("link"))), None)
+    possibles = [p for p in candidates(now, kind)
+                 if isinstance(p, dict) and p.get("key") and p["key"] != test.get("key")
+                 and "post/" + p["key"] not in receipts and safe_url(p.get("link"))
+                 and contenu_autorise(p)]
+    if possibles:
+        # Anti-doublon distant : ne pas republier un sujet déjà présent sur la Page (48 h).
+        journal = deja_sur_la_page(graph, account["page_token"], page_id, now)
+        possibles = [p for p in possibles if not any(empreinte(p) in m for m in journal)]
+    choice = possibles[0] if possibles else None
     if not choice:
         print("::notice::Aucune information récente et sourcée pour " + kind + ". Rien n'est publié.")
         return False

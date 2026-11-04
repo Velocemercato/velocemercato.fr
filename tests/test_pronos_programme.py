@@ -27,7 +27,7 @@ class FakeState:
         self.saves += 1
 
 
-def load_publish_slot(candidates=None):
+def load_publish_slot(candidates=None, journal=()):
     source = Path(__file__).resolve().parents[1] / "tools" / "pronos_programme.py"
     tree = ast.parse(source.read_text(encoding="utf-8"))
     fn = next(node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name == "publish_slot")
@@ -45,6 +45,9 @@ def load_publish_slot(candidates=None):
             "link": "https://velocemercato.fr/actus/"}],
         "safe_url": lambda url: str(url).startswith("https://"),
         "verify": mock_verification,
+        "contenu_autorise": lambda item: "cote" not in item["text"],
+        "empreinte": lambda item: item.get("empreinte", item["text"]).lower(),
+        "deja_sur_la_page": lambda graph, token, page_id, now: [m.lower() for m in journal],
     }
     exec(compile(ast.Module(body=[fn], type_ignores=[]), str(source), "exec"), env)
     return env["publish_slot"], graph, mock_verification
@@ -135,9 +138,18 @@ class PublicationTests(unittest.TestCase):
             self.assertFalse(fn(FakeState(), graph, self.NOW))
         graph.call.assert_not_called()
 
+    def test_sujet_deja_present_sur_la_page_n_est_pas_republie(self):
+        fn, graph, _ = load_publish_slot(journal=["📰 Une actualité avec ses faits vérifiés. Lire la suite"])
+        with patch.dict(os.environ, {"VM_AUTO_PRONOS": "true"}):
+            self.assertFalse(fn(FakeState(), graph, self.NOW))
+        graph.call.assert_not_called()
 
-if __name__ == "__main__":
-    unittest.main()
+    def test_contenu_de_pari_jamais_envoye(self):
+        fn, graph, _ = load_publish_slot(candidates=[{
+            "key": "actus/x", "text": "Combiné du jour, cote 1.95", "link": "https://velocemercato.fr/"}])
+        with patch.dict(os.environ, {"VM_AUTO_PRONOS": "true"}):
+            self.assertFalse(fn(FakeState(), graph, self.NOW))
+        graph.call.assert_not_called()
 
 
 class PromoEtGrilleTests(unittest.TestCase):
@@ -172,3 +184,64 @@ class PromoEtGrilleTests(unittest.TestCase):
         self.assertEqual(P.SLOTS[16], "promo")
         self.assertEqual(P.SLOTS[21], "jt")
         self.assertGreaterEqual(list(P.SLOTS.values()).count("foot"), 5)
+
+
+class PagePrioritaireTests(unittest.TestCase):
+    """Issue #162 : VM actus et pronos, Page prioritaire, sans aucun contenu de pari."""
+
+    def test_filtre_pari(self):
+        from tools import pronos_programme as P
+        for texte in ("Notre combiné du jour", "Cote à 1,95", "Le prono VM", "Accès VIP", "Bankroll simulée",
+                      "Ticket gagnant", "Les paris sportifs du soir", "https://velocemercato.fr/pronos/"):
+            self.assertFalse(P.contenu_autorise({"key": "actus/x", "text": texte}), texte)
+        self.assertTrue(P.contenu_autorise({"key": "actus/x", "text": "Mbappé marque, Côte d'Ivoire qualifiée"}))
+        self.assertTrue(P.contenu_autorise({"key": "pronos-du-jour/2026-11-05", "text": P.ANNONCES_PRONOS[0]}))
+        self.assertFalse(P.contenu_autorise({"key": "pronos-du-jour/2026-11-05", "text": "Cote 1,95 en VIP"}))
+
+    def test_creneau_10h40_sans_pari_et_annonce_suspendue(self):
+        import datetime as dt
+        from tools import pronos_programme as P
+        now = dt.datetime(2026, 11, 5, 9, 40, tzinfo=dt.timezone.utc)
+        for item in P.candidates(now, "prono"):
+            self.assertFalse(item["key"].startswith(("pronos-du-jour/", "agenda/", "prono/")), item["key"])
+            self.assertTrue(P.contenu_autorise(item))
+        self.assertFalse(hasattr(P, "preview_sourcee"))
+
+    def test_multisport_source_et_lien_site(self):
+        import datetime as dt
+        from unittest.mock import patch as p
+        from tools import pronos_programme as P
+        data = {"sports": {"nba": [{"id": "nba-1-test", "titre": "Wembanyama brille - L'Équipe", "source": "L'Équipe",
+                                    "url": "https://news.google.com/rss/articles/abc", "date": "2026-11-05T08:00:00+00:00"}],
+                           "f1": [{"id": "f1-vieux", "titre": "Vieille info", "source": "X",
+                                   "url": "https://x.fr/", "date": "2026-10-01T08:00:00+00:00"}]}}
+        with p.object(P, "load_json", return_value=data):
+            rows = P.multisport_candidates(dt.datetime(2026, 11, 5, 9, 40, tzinfo=dt.timezone.utc))
+        self.assertEqual([r["key"] for r in rows], ["multisport/nba-1-test"])
+        self.assertEqual(rows[0]["link"], "https://velocemercato.fr/multisport/")
+        self.assertIn("Wembanyama brille\n", rows[0]["text"])
+        self.assertIn("L'Équipe", rows[0]["text"])
+
+    def test_journal_illisible_bloque_l_envoi(self):
+        import datetime as dt
+        from unittest.mock import Mock
+        from tools import pronos_programme as P
+        graph = Mock()
+        graph.call.side_effect = RuntimeError("réseau")
+        with self.assertRaises(P.DeliveryError):
+            P.deja_sur_la_page(graph, "T", "112294796981981", dt.datetime(2026, 11, 5, tzinfo=dt.timezone.utc))
+        graph.call.side_effect = None
+        graph.call.return_value = {"data": [{"message": "Bonjour  Le Monde"}]}
+        self.assertEqual(P.deja_sur_la_page(graph, "T", "112294796981981",
+                                            dt.datetime(2026, 11, 5, tzinfo=dt.timezone.utc)), ["bonjour le monde"])
+        self.assertEqual(graph.call.call_args.args[:2], ("GET", "112294796981981/published_posts"))
+
+    def test_aucun_contenu_reel_du_jour_ne_parle_de_pari(self):
+        import datetime as dt
+        from tools import pronos_programme as P
+        base = dt.datetime(2026, 11, 4, 6, 0, tzinfo=dt.timezone.utc)
+        for hour, kind in P.SLOTS.items():
+            for item in P.candidates(base.replace(hour=hour - 1), kind):
+                if P.contenu_autorise(item):
+                    self.assertNotIn("/pronos/", item["text"])
+                    self.assertNotIn("RQPronos", item["text"])
