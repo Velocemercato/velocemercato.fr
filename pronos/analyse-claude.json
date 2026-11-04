@@ -1,9 +1,31 @@
 {
- "_note": "Désactivé le 04/11 : l'analyse de Claude est envoyée en privé (VIP), plus publiée.",
- "debut": "2026-11-03T23:00:00Z",
- "expire": "2026-11-05T05:00:00Z",
- "verifie_le": "2026-11-03T22:45:00Z",
- "combines": [],
- "publie_sans_validation": false,
- "analyse": ""
+ "_note": "Prono public de secours préparé par Claude (IA) le 04/11 au soir, sans validation du propriétaire. Remplacé par le prono du propriétaire s'il en envoie un.",
+ "publie_sans_validation": true,
+ "cote_max_public": 2,
+ "debut": "2026-11-05T05:00:00Z",
+ "expire": "2026-11-06T05:00:00Z",
+ "verifie_le": "2026-11-04T19:50:00Z",
+ "analyse": "Prono public du jour proposé par Claude. Le modèle Sportytrader donne 53 % à Crystal Palace, au-dessus de la probabilité implicite de la cote une fois la marge retirée (environ 48,5 %). L'écart est mince et les avis divergent : Squawka voit Palace gagner 2-0, Goal annonce plutôt un faux pas. Aucun résultat garanti.",
+ "combines": [
+  {
+   "titre": "🎁 Le prono public du jour · cote 1,95",
+   "probabilite": "≈ 53 % (modèle Sportytrader)",
+   "cote": "1,95",
+   "note": "Cote 1xBet 1,95 (Palace) / 3,80 (nul) / 3,55 (Hoffenheim) ; Paddy Power 10/11. Horaire à confirmer sur uefa.com le matin même.",
+   "selections": [
+    {
+     "match": "Crystal Palace – Hoffenheim (Ligue Europa)",
+     "heure_paris": "jeudi 5/11, horaire à confirmer",
+     "marche": "Victoire de Crystal Palace (90 min)",
+     "cote": "1,95",
+     "probabilite": "53 % (implicite sans marge ≈ 48,5 %)",
+     "type_estimation": "modèle Sportytrader",
+     "source": {
+      "nom": "Sportytrader",
+      "url": "https://www.sportytrader.com/en/betting-tips/football/europe/europa-league-481/"
+     }
+    }
+   ]
+  }
+ ]
 }
