@@ -132,6 +132,21 @@ def diagnostic_page(graph, account, data):
             print("::warning::PAGE " + account + " : ID retourné different")
     except (DeliveryError, ValueError, TypeError):
         print("::warning::PAGE " + account + " : URL publique indisponible via Graph")
+    # Audience réelle (lecture seule), appel séparé : un champ refusé n'empêche pas le reste du relevé.
+    try:
+        audience = graph.call("GET", page_id, {"fields": "followers_count,fan_count", "access_token": data["page_token"]})
+        print("::notice::AUDIENCE FB " + account + " abonnés=" + str(int(audience.get("followers_count") or 0))
+              + " mentions_j_aime=" + str(int(audience.get("fan_count") or 0)))
+    except (DeliveryError, ValueError, TypeError):
+        print("::warning::AUDIENCE FB " + account + " : nombre d'abonnés non communiqué par Graph")
+    ig = str(data.get("ig_id") or "")
+    if account != "meta_pronos" and ig.isdecimal():
+        try:
+            profil = graph.call("GET", ig, {"fields": "username,followers_count", "access_token": data["page_token"]})
+            print("::notice::AUDIENCE IG " + account + " @" + re.sub(r"[^A-Za-z0-9._]", "", str(profil.get("username") or ""))[:40]
+                  + " abonnés=" + str(int(profil.get("followers_count") or 0)))
+        except (DeliveryError, ValueError, TypeError):
+            print("::warning::AUDIENCE IG " + account + " : nombre d'abonnés non communiqué par Graph")
 
 
 def diagnostic_posts(graph, account, data, rows):
