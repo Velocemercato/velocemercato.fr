@@ -34,7 +34,8 @@ def git_save(path):
     git('add', Path(path).name)
     git('-c', 'user.name=github-actions[bot]', '-c', 'user.email=41898282+github-actions[bot]@users.noreply.github.com',
         'commit', '--quiet', '-m', 'Accusés des Shorts chiffrés')
-    git('push', '--quiet', 'origin', 'HEAD:' + BRANCH)
+    from tools.diffuser_jt import git_push_with_retry
+    git_push_with_retry(Path(path).parent, 'HEAD:' + BRANCH)
 
 PARIS = ZoneInfo('Europe/Paris')
 LIST = ROOT / 'studio/reseaux.json'
@@ -159,5 +160,8 @@ if __name__ == '__main__':
         main()
     except Exception as error:
         message = str(error) if isinstance(error, DeliveryError) else 'Shorts interrompus (' + type(error).__name__ + '). Aucun succès annoncé.'
+        if isinstance(error, subprocess.CalledProcessError):
+            from tools.diffuser_jt import describe_called_process
+            message += ' ' + describe_called_process(error)
         print('::error::' + message.replace('\n', ' '))
         sys.exit(1)
