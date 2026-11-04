@@ -25,18 +25,6 @@
    ]
   },
   {
-   "id": 575382,
-   "date": "2026-11-03T20:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Villarreal",
-   "ext": "PSG",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    6
-   ]
-  },
-  {
    "id": 575384,
    "date": "2026-11-03T20:00:00Z",
    "comp": "Ligue des champions",
@@ -61,15 +49,15 @@
    ]
   },
   {
-   "id": 575381,
+   "id": 575382,
    "date": "2026-11-03T20:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Atleti",
-   "ext": "Bayern",
+   "dom": "Villarreal",
+   "ext": "PSG",
    "statut": "FINISHED",
    "score": [
     0,
-    2
+    6
    ]
   },
   {
@@ -109,6 +97,18 @@
    ]
   },
   {
+   "id": 575381,
+   "date": "2026-11-03T20:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Atleti",
+   "ext": "Bayern",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    2
+   ]
+  },
+  {
    "id": 575386,
    "date": "2026-11-04T17:45:00Z",
    "comp": "Ligue des champions",
@@ -126,18 +126,6 @@
    "comp": "Ligue des champions",
    "dom": "Fenerbahçe",
    "ext": "Liverpool",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 575392,
-   "date": "2026-11-04T20:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Porto",
-   "ext": "Napoli",
    "statut": "TIMED",
    "score": [
     null,
@@ -181,11 +169,11 @@
    ]
   },
   {
-   "id": 575391,
+   "id": 575392,
    "date": "2026-11-04T20:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Dortmund",
-   "ext": "Real Betis",
+   "dom": "Porto",
+   "ext": "Napoli",
    "statut": "TIMED",
    "score": [
     null,
@@ -215,7 +203,19 @@
     null,
     null
    ]
+  },
+  {
+   "id": 575391,
+   "date": "2026-11-04T20:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Dortmund",
+   "ext": "Real Betis",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
   }
  ],
- "maj": "2026-11-04T16:44:01Z"
+ "maj": "2026-11-04T16:45:55Z"
 }
