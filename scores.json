@@ -1,18 +1,6 @@
 {
  "matchs": [
   {
-   "id": 575377,
-   "date": "2026-11-03T17:45:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Shaktar",
-   "ext": "Sporting CP",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    1
-   ]
-  },
-  {
    "id": 575378,
    "date": "2026-11-03T17:45:00Z",
    "comp": "Ligue des champions",
@@ -25,26 +13,50 @@
    ]
   },
   {
-   "id": 575379,
-   "date": "2026-11-03T20:00:00Z",
+   "id": 575377,
+   "date": "2026-11-03T17:45:00Z",
    "comp": "Ligue des champions",
-   "dom": "Feyenoord",
-   "ext": "Inter",
+   "dom": "Shaktar",
+   "ext": "Sporting CP",
    "statut": "FINISHED",
    "score": [
     0,
-    3
+    1
    ]
   },
   {
-   "id": 575385,
+   "id": 575382,
    "date": "2026-11-03T20:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "LASK",
-   "ext": "Sl. Bratislava",
+   "dom": "Villarreal",
+   "ext": "PSG",
    "statut": "FINISHED",
    "score": [
-    4,
+    0,
+    6
+   ]
+  },
+  {
+   "id": 575384,
+   "date": "2026-11-03T20:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Bodø/Glimt",
+   "ext": "Lille",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": 575380,
+   "date": "2026-11-03T20:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Barça",
+   "ext": "Aston Villa",
+   "statut": "FINISHED",
+   "score": [
+    3,
     0
    ]
   },
@@ -73,51 +85,27 @@
    ]
   },
   {
-   "id": 575384,
+   "id": 575379,
    "date": "2026-11-03T20:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Bodø/Glimt",
-   "ext": "Lille",
+   "dom": "Feyenoord",
+   "ext": "Inter",
    "statut": "FINISHED",
    "score": [
     0,
-    0
+    3
    ]
   },
   {
-   "id": 575380,
+   "id": 575385,
    "date": "2026-11-03T20:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Barça",
-   "ext": "Aston Villa",
+   "dom": "LASK",
+   "ext": "Sl. Bratislava",
    "statut": "FINISHED",
    "score": [
-    3,
+    4,
     0
-   ]
-  },
-  {
-   "id": 575382,
-   "date": "2026-11-03T20:00:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Villarreal",
-   "ext": "PSG",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    6
-   ]
-  },
-  {
-   "id": 575387,
-   "date": "2026-11-04T17:45:00Z",
-   "comp": "Ligue des champions",
-   "dom": "Fenerbahçe",
-   "ext": "Liverpool",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
    ]
   },
   {
@@ -133,11 +121,11 @@
    ]
   },
   {
-   "id": 575389,
-   "date": "2026-11-04T20:00:00Z",
+   "id": 575387,
+   "date": "2026-11-04T17:45:00Z",
    "comp": "Ligue des champions",
-   "dom": "Slavia Praha",
-   "ext": "Arsenal",
+   "dom": "Fenerbahçe",
+   "ext": "Liverpool",
    "statut": "TIMED",
    "score": [
     null,
@@ -145,11 +133,11 @@
    ]
   },
   {
-   "id": 575391,
+   "id": 575392,
    "date": "2026-11-04T20:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Dortmund",
-   "ext": "Real Betis",
+   "dom": "Porto",
+   "ext": "Napoli",
    "statut": "TIMED",
    "score": [
     null,
@@ -157,11 +145,11 @@
    ]
   },
   {
-   "id": 575393,
+   "id": 575388,
    "date": "2026-11-04T20:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "RC Lens",
-   "ext": "Como 1907",
+   "dom": "RB Leipzig",
+   "ext": "Man City",
    "statut": "TIMED",
    "score": [
     null,
@@ -193,11 +181,11 @@
    ]
   },
   {
-   "id": 575392,
+   "id": 575391,
    "date": "2026-11-04T20:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "Porto",
-   "ext": "Napoli",
+   "dom": "Dortmund",
+   "ext": "Real Betis",
    "statut": "TIMED",
    "score": [
     null,
@@ -205,11 +193,23 @@
    ]
   },
   {
-   "id": 575388,
+   "id": 575393,
    "date": "2026-11-04T20:00:00Z",
    "comp": "Ligue des champions",
-   "dom": "RB Leipzig",
-   "ext": "Man City",
+   "dom": "RC Lens",
+   "ext": "Como 1907",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 575389,
+   "date": "2026-11-04T20:00:00Z",
+   "comp": "Ligue des champions",
+   "dom": "Slavia Praha",
+   "ext": "Arsenal",
    "statut": "TIMED",
    "score": [
     null,
@@ -217,5 +217,5 @@
    ]
   }
  ],
- "maj": "2026-11-04T13:56:44Z"
+ "maj": "2026-11-04T13:58:38Z"
 }
