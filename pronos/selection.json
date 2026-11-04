@@ -4,14 +4,14 @@
  "valide_par": "Propriétaire VM (pronos et accord du 04/11/2026)",
  "debut": "2026-11-04T08:00:00Z",
  "expire": "2026-11-05T05:00:00Z",
- "verifie_le": "2026-11-04T08:30:00Z",
+ "verifie_le": "2026-11-04T09:10:00Z",
  "analyse": "Les cotes affichées viennent du visuel du propriétaire. La probabilité indiquée est celle impliquée par la cote, marge du bookmaker incluse, donc un peu optimiste. Les remarques VM signalent ce qui est vérifié, ce qui ne l'est pas, et les écarts avec nos relevés de la veille.",
  "combines": [
   {
    "titre": "Combiné n°1 · cote totale 2,28",
    "probabilite": "≈ 44 % (implicite)",
    "cote": "2,28",
-   "note": "Mbappé : 3 buts et 1 passe en 3 titularisations de LDC. Viking : 1,30 ici contre 1,44 relevé hier, et le marché Kalshi ne donne que 66 %. PSV – Bruges : non vérifié par VM.",
+   "note": "Mbappé est bien convoqué (liste officielle du Real ; Tchouaméni et Güler absents). PSV – Bruges : aucun absent signalé des deux côtés. Viking : 1,30 ici contre 1,44 relevé hier, et le marché Kalshi ne donne que 66 %.",
    "selections": [
     {
      "match": "AEK Athènes – Real Madrid",
@@ -27,7 +27,7 @@
      "marche": "Les 2 équipes marquent (90 min)",
      "cote": "1,30",
      "probabilite": "77 %",
-     "type_estimation": "implicite de la cote, pas de modèle, non vérifié par VM"
+     "type_estimation": "implicite de la cote, pas de modèle"
     },
     {
      "match": "Viking – Sabah",
@@ -47,11 +47,11 @@
    "titre": "Combiné n°2 · cote totale 2,10",
    "probabilite": "≈ 48 % (implicite)",
    "cote": "2,10",
-   "note": "Fils – Machač (Paris Masters) et Lens – Como : non vérifiés par VM (horaires, compositions, modèles).",
+   "note": "Fils – Machač : dernier match de la soirée, pas avant 20 h 30 (un autre site annonce 18 h). Première confrontation. Machač n'a pas perdu un jeu de service au tour précédent. Lens – Côme : Côme a marqué 10 buts en 3 matchs de LDC, mais Lens reste sur 2 défaites sans marquer (Edouard et Sima absents).",
    "selections": [
     {
      "match": "A. Fils – T. Machač (Paris Masters)",
-     "heure_paris": "horaire à vérifier sur atptour.com",
+     "heure_paris": "pas avant 20 h 30 (programme ATP)",
      "marche": "Fils gagne le match",
      "cote": "1,45",
      "probabilite": "69 %",
@@ -59,7 +59,7 @@
     },
     {
      "match": "Lens – Côme",
-     "heure_paris": "horaire à vérifier sur uefa.com",
+     "heure_paris": "21 h",
      "marche": "Les 2 équipes marquent (90 min)",
      "cote": "1,45",
      "probabilite": "69 %",
@@ -71,7 +71,7 @@
    "titre": "Combiné n°3 · cote totale 5,07 (fun)",
    "probabilite": "≈ 20 % (implicite), environ 1 chance sur 5",
    "cote": "5,07",
-   "note": "Dortmund – Betis : les scores annoncés vont de 3-1 Dortmund à 2-1 Betis. Fenerbahçe – Liverpool : Opta donne 59 % à Liverpool et 21,5 % au nul (double chance ≈ 80 %), mais le « les 2 marquent » n'a pas de modèle. Real – Panathinaikos : le Pana a gagné les 3 derniers duels. Sabres – Senators : non vérifié par VM.",
+   "note": "Dortmund – Betis : les scores annoncés vont de 3-1 Dortmund à 2-1 Betis. Fenerbahçe – Liverpool (18 h 45) : Opta donne 59 % à Liverpool et 21,5 % au nul (double chance ≈ 80 %), sans modèle pour « les 2 marquent ». Real – Panathinaikos : le Pana a gagné les 3 derniers duels. Sabres – Senators (1 h 30) : Buffalo est favori (−132) et reste sur 3 victoires, modèle iHeart 4-3.",
    "selections": [
     {
      "match": "Dortmund – Betis Séville",
@@ -83,7 +83,7 @@
     },
     {
      "match": "Fenerbahçe – Liverpool",
-     "heure_paris": "horaire à vérifier sur uefa.com",
+     "heure_paris": "18 h 45",
      "marche": "Double chance nul/Liverpool + les 2 équipes marquent",
      "cote": "1,72",
      "probabilite": "58 %",
@@ -103,7 +103,7 @@
     },
     {
      "match": "Sabres – Senators (NHL)",
-     "heure_paris": "nuit, horaire à vérifier",
+     "heure_paris": "nuit, 1 h 30 (jeudi)",
      "marche": "Sabres +2 (handicap)",
      "cote": "1,24",
      "probabilite": "81 %",
