@@ -136,32 +136,52 @@ def jt_candidates(now, universe=None):
     return out
 
 
-PROMOS = (
-    ("studio", "https://vmunivers.fr/professionnels/",
-     "🛠️ VM STUDIO : TON COMMERCE MÉRITE SA VITRINE\n\nSite internet dès 290 €, sites complets de 590 € à 1 490 €, "
-     "visuels dès 90 €. Devis gratuit et sans engagement 👇\nhttps://vmunivers.fr/professionnels/#devis\n\n#VMStudio #VeloceUniverse"),
-    ("sponsors", "https://velocemercato.fr/pub/",
-     "📣 FAITES-VOUS CONNAÎTRE SUR NOS MÉDIAS\n\nFiche Pro Local dès 9,90 €/mois, encart VM Belfort 29 €/mois, "
-     "bannière sur Véloce Mercato 39 €/mois, partenaire du JT 49 €/mois 👇\nhttps://velocemercato.fr/pub/\n\n#Partenaires #VeloceUniverse"),
-    ("univers", "https://vmunivers.fr/",
-     "👑 VÉLOCE UNIVERSE : UN SEUL UNIVERS, TOUTES NOS PASSIONS\n\nMédias, services pour les pros et projets utiles, "
-     "tout est réuni ici 👇\nhttps://vmunivers.fr/\n\n#VeloceUniverse #VMUnivers"),
-    ("site", "https://velocemercato.fr/",
-     "⚽ TOUTE L'ACTU FOOT ET MERCATO SUR LE SITE\n\nBrèves sourcées, JT en vidéo, scores en direct, multisport "
-     "et gaming 👇\nhttps://velocemercato.fr/\n\n#VeloceMercato #Football #Mercato"),
-    ("vip", "https://velocemercato.fr/pronos/#acces-vip",
-     "🔒 LE PRONO PUBLIC DU JOUR EST SUR LE SITE\n\nLes autres sélections sont réservées aux membres VIP : accès gratuit "
-     "sur demande par e-mail 👇\nhttps://velocemercato.fr/pronos/#acces-vip\n\n"
-     "18+ · Aucun résultat garanti · Jouer comporte des risques : endettement, isolement, dépendance · "
-     "Joueurs Info Service 09 74 75 13 13 · Interdit aux mineurs\n#VeloceMercato"),
+# Pack éditorial ChatGPT (issue #161) : 10 textes SANS prix ni pari, calendrier de 4 semaines.
+PROMO_TEXTES = {
+    "studio_vitrine": ("https://vmunivers.fr/professionnels/",
+        "Votre activité mérite un site clair, rapide et lisible sur téléphone. Découvrez les créations VM Studio "
+        "et décrivez votre projet sans engagement : https://vmunivers.fr/professionnels/"),
+    "studio_artisans": ("https://vmunivers.fr/professionnels/",
+        "Artisans : présentez vos réalisations, horaires et coordonnées sur un site à votre image. "
+        "Échangeons sur votre projet via https://vmunivers.fr/professionnels/"),
+    "studio_commerces": ("https://vmunivers.fr/professionnels/",
+        "Un commerce, une histoire, une vitrine numérique. VM Studio accompagne la présentation de votre activité : "
+        "https://vmunivers.fr/professionnels/"),
+    "studio_portfolio": ("https://vmunivers.fr/professionnels/",
+        "Découvrez nos réalisations et les formules VM Studio. Chaque prestation fait l'objet d'un périmètre et "
+        "d'un devis avant accord : https://vmunivers.fr/professionnels/"),
+    "univers": ("https://vmunivers.fr/",
+        "Un seul endroit pour explorer nos projets, médias et services : l'annuaire VM Univers. https://vmunivers.fr/"),
+    "actu": ("https://velocemercato.fr/",
+        "Le football et le mercato restent au cœur de Véloce Mercato. Retrouvez les articles complets sur https://velocemercato.fr/"),
+    "jt": ("https://velocemercato.fr/",
+        "Nos JT et formats courts vous donnent les grandes lignes ; les contenus complets sont à retrouver sur https://velocemercato.fr/"),
+    "multisport": ("https://velocemercato.fr/multisport/",
+        "Du football aux autres disciplines : découvrez les actualités et dossiers de Véloce Mercato. https://velocemercato.fr/multisport/"),
+    "gaming_mangas": ("https://velocemercato.fr/",
+        "Gaming, mangas, BD et séries : explorez les univers VM et leurs nouveautés depuis notre média. https://velocemercato.fr/"),
+    "partenaires": ("https://vmunivers.fr/professionnels/",
+        "Vous représentez un commerce, une association ou une entreprise ? Échangeons sur une collaboration éditoriale "
+        "ou un espace partenaire, avec conditions et tarif annoncés à l'avance. https://vmunivers.fr/professionnels/"),
+}
+# Semaines S1 à S4, du lundi au dimanche (calendrier ChatGPT). Semaine 1 = celle du lundi 2 novembre 2026.
+PROMO_CALENDRIER = (
+    ("univers", "studio_vitrine", "actu", "jt", "studio_artisans", "gaming_mangas", "partenaires"),
+    ("studio_portfolio", "multisport", "univers", "jt", "studio_commerces", "actu", "partenaires"),
+    ("studio_artisans", "gaming_mangas", "studio_vitrine", "jt", "partenaires", "multisport", "univers"),
+    ("studio_portfolio", "actu", "univers", "jt", "studio_commerces", "gaming_mangas", "partenaires"),
 )
+PROMO_DEBUT = dt.date(2026, 11, 2)
 
 
 def promo_candidate(now):
-    """Une promotion par jour, en rotation, avec les seuls tarifs publiés sur les sites. Jamais de prono ni de cote."""
-    local = now.astimezone(PARIS)
-    key, link, text = PROMOS[local.toordinal() % len(PROMOS)]
-    return {"key": f"promo/{local:%Y-%m-%d}/{key}", "link": link, "text": text}
+    """Une promotion par jour au maximum, selon le calendrier : sans prix, sans pari, sans VIP."""
+    local = now.astimezone(PARIS).date()
+    jours = (local - PROMO_DEBUT).days
+    semaine = (jours // 7) % len(PROMO_CALENDRIER)
+    theme = PROMO_CALENDRIER[semaine][local.weekday()]
+    link, text = PROMO_TEXTES[theme]
+    return {"key": f"promo/{local:%Y-%m-%d}/{theme}", "link": link, "text": text + "\n\n#VeloceUniverse"}
 
 
 def project_candidate(now):
@@ -224,6 +244,17 @@ def preview_sourcee(now):
     }
 
 
+MENTION_PRONOS = "18+ · Aucun résultat garanti · Joueurs Info Service : 09 74 75 13 13"
+ANNONCES_PRONOS = (
+    "Le rendez-vous quotidien de la rubrique pronostics est à consulter sur notre site, et non dans nos publications "
+    "Facebook : https://velocemercato.fr/pronos/. " + MENTION_PRONOS,
+    "Notre page partage les actualités sportives ; la rubrique pronostics est accessible uniquement depuis "
+    "https://velocemercato.fr/pronos/. " + MENTION_PRONOS,
+    "Vous cherchez la rubrique pronostics VM ? Retrouvez les informations du jour directement sur "
+    "https://velocemercato.fr/pronos/, sans sélection ni cote publiée ici. " + MENTION_PRONOS,
+)
+
+
 def annonce_pronos_du_jour(now):
     """Annonce « les pronos du jour sont en ligne » : uniquement un lien vers /pronos/,
     sans cote ni combiné dans le post, et seulement si une sélection du jour est active."""
@@ -240,10 +271,7 @@ def annonce_pronos_du_jour(now):
     anchor = "pronos-du-jour" if selection_active(owner, now, True) else "analyse-claude"
     return {"key": "pronos-du-jour/" + local.date().isoformat(),
             "link": "https://velocemercato.fr/pronos/",
-            "text": ("🎁 LE PRONO PUBLIC DU JOUR EST EN LIGNE !\n\n"
-                     f"Il est à découvrir uniquement sur le site, pas sur Facebook 👇\nhttps://velocemercato.fr/pronos/\n\n"
-                     "🔒 Tous les autres pronos : accès VIP gratuit sur demande par email (bouton sur le site).\n\n"
-                     + RISK + " · Interdit aux mineurs · Aucun résultat garanti\n#VeloceMercato #VeloceTeam")}
+            "text": ANNONCES_PRONOS[local.toordinal() % len(ANNONCES_PRONOS)]}
 
 
 def candidates(now, kind):
