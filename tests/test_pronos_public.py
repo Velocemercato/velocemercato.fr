@@ -97,6 +97,18 @@ class PronosPublicTests(unittest.TestCase):
             (root / "pronos/analyse-claude.json").write_text(json.dumps(data), encoding="utf-8")
             self.assertNotIn("Combiné Claude", render(root, self.NOW))
 
+    def test_acces_vip_mailto_only(self):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            (root / "pronos").mkdir()
+            (root / "pronos/acces.json").write_text(json.dumps({"actif": True, "email": "vm@example.org",
+                                                               "titre": "VIP", "texte": "Accès"}), encoding="utf-8")
+            text = render(root, self.NOW)
+            self.assertIn('id="acces-vip"', text)
+            self.assertIn("mailto:vm@example.org", text)
+            (root / "pronos/acces.json").write_text(json.dumps({"actif": False, "email": "vm@example.org"}), encoding="utf-8")
+            self.assertNotIn('id="acces-vip"', render(root, self.NOW))
+
     def test_build_idempotent(self):
         with tempfile.TemporaryDirectory() as name:
             root = Path(name)

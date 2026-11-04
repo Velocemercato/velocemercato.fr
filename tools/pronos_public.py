@@ -195,6 +195,23 @@ def section_une_selection(root, now, path, anchor, title, humain):
             'Ni conseil, ni promesse de gain.<br>' + e(RISK) + ' · Les jeux d’argent sont interdits aux mineurs.</p></section>')
 
 
+def section_acces(root):
+    """Encadré « Accès VIP » : un simple lien email (aucune donnée collectée par le site)."""
+    from urllib.parse import quote
+    data = load(root, "pronos/acces.json", {})
+    email = str(data.get("email") or "") if isinstance(data, dict) else ""
+    if not (isinstance(data, dict) and data.get("actif") is True and re.fullmatch(r"[\w.+-]+@[\w-]+(\.[\w-]+)+", email)):
+        return ""
+    href = ("mailto:" + email + "?subject=" + quote(str(data.get("sujet") or "Accès VIP pronos VM"))
+            + "&body=" + quote(str(data.get("corps") or "")))
+    return ('<section class="panel" id="acces-vip" style="border:2px solid #f4cf55">'
+            f'<h2>{e(data.get("titre") or "🔒 Pronos VIP")}</h2><p>{e(data.get("texte"))}</p>'
+            f'<p><a href="{e(href)}" style="display:inline-block;background:#f4cf55;color:#111;font-weight:900;'
+            f'padding:12px 16px;border-radius:10px;text-decoration:none">{e(data.get("bouton") or "📩 Demander mon accès")}</a>'
+            f' <span class="meta">ou écris à <b>{e(email)}</b></span></p>'
+            f'<p class="meta">{e(data.get("rgpd"))}</p><p class="risk">{e(RISK)} · Interdit aux mineurs</p></section>')
+
+
 def section_videos(root, now):
     rows = load(root, "studio/diffusions.json", [])
     choices = []
@@ -226,7 +243,7 @@ def render(root=ROOT, now=None):
         raise ValueError("Horodatage sans fuseau")
     local = now.astimezone(PARIS)
     updated = local.strftime("%d/%m/%Y à %H:%M (Paris)")
-    content = section_selection(root, now) + section_news(root, now) + section_agenda(root, now) + section_videos(root, now)
+    content = section_acces(root) + section_selection(root, now) + section_news(root, now) + section_agenda(root, now) + section_videos(root, now)
     return """<!doctype html>
 <html lang="fr" data-vmt="pronos"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">

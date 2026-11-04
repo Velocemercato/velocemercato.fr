@@ -12,17 +12,17 @@
     return fetch(BASE + f + '?v=' + Math.floor(Date.now() / 300000), { cache: 'no-store' })
       .then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
   }
-  Promise.all([get('selection.json'), get('analyse-claude.json')]).then(function (r) {
-    var owner = active(r[0], true), ia = active(r[1], false);
-    if (!owner && !ia) return;
+  Promise.all([get('selection.json'), get('analyse-claude.json'), get('acces.json')]).then(function (r) {
+    var owner = active(r[0], true), ia = active(r[1], false), vip = r[2] && r[2].actif === true;
+    if (!owner && !ia && !vip) return;
     var a = document.createElement('a');
-    a.href = BASE + (owner ? '#pronos-du-jour' : '#analyse-claude');
+    a.href = BASE + (owner ? '#pronos-du-jour' : ia ? '#analyse-claude' : '#acces-vip');
     a.setAttribute('aria-label', 'Les pronos du jour sont en ligne sur VM Actus et Pronos, réservé aux 18 ans et plus');
     a.style.cssText = 'display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin:0;padding:10px 14px;' +
       'background:linear-gradient(90deg,#c4081f,#ff1f3d);color:#fff;font:800 15px/1.3 system-ui,sans-serif;text-decoration:none;' +
       'text-align:center;border-bottom:3px solid #ffc21a';
-    a.innerHTML = '<span>👑 Les pronos du jour sont en ligne</span>' +
-      '<span style="background:#ffc21a;color:#111;border-radius:999px;padding:3px 10px">VM Actus &amp; Pronos →</span>' +
+    a.innerHTML = '<span>' + (owner || ia ? '👑 Pronos du jour : exclusivement sur velocemercato.fr' : '🔒 Pronos VIP : accès gratuit par email') + '</span>' +
+      '<span style="background:#ffc21a;color:#111;border-radius:999px;padding:3px 10px">' + (owner || ia ? 'Voir les pronos →' : 'Demander l’accès →') + '</span>' +
       '<span style="font-weight:700;font-size:12px;opacity:.9">🔞 18+</span>';
     document.body.insertBefore(a, document.body.firstChild);
   });
