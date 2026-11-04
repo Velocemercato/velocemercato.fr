@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261104-1900",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 19 h",
+  "titre": "La Pastille Actus : grève du 5 novembre, climat et santé, Lyon, Corse, Géorgie",
+  "accroche": "Grève jeudi, trafic SNCF perturbé, et plusieurs sujets à suivre ce soir.",
+  "duree": 141,
+  "date": "2026-11-04T19:34+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261104-1900.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-04T19:00:00+01:00",
+  "source_start": "2026-11-04T13:00:00+01:00",
+  "source_end": "2026-11-04T19:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-9e8a77dd7e74cf28d4d48d",
+    "titre": "Grève du 5 novembre : la SNCF prévoit un trafic perturbé, avec des situations variables selon les lignes",
+    "publishedAt": "2026-11-04T17:16:50Z",
+    "createdAt": "2026-11-04T17:29:13Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/greve/greve/tgv-ter-rer-la-sncf-devoile-son-plan-de-circulation-a-la-veille-de-la-mobilisation-du-5-novembre_8268011.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-141b0c4cffc680af4030c3",
+    "titre": "Six mesures climatiques pourraient éviter 1,6 million de décès par an, selon l'OMS",
+    "publishedAt": "2026-11-04T17:17:45Z",
+    "createdAt": "2026-11-04T17:29:09Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/04/six-mesures-climatiques-pourraient-sauver-16-million-de-vies-par-an-selon-loms"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-ad5fbfa5632760f3c52b85",
+    "titre": "Trois sites de l'EFS visés par une cyberattaque, sans perte de produits sanguins",
+    "publishedAt": "2026-11-04T16:21:55Z",
+    "createdAt": "2026-11-04T16:29:38Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/les-frigos-de-l-etablissement-francais-du-sang-ont-ete-pirates-mais-aucune-perte-n-est-a-deplorer_8267747.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-5789d4952380eaa3f0dab1",
+    "titre": "Grève du 5 novembre : les syndicats appellent public et privé à se mobiliser",
+    "publishedAt": "2026-11-04T16:25:01Z",
+    "createdAt": "2026-11-04T16:29:33Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/greve/greve-pour-les-salaires-les-emplois-et-les-services-publics-la-mobilisation-du-5-novembre-sera-t-elle-suivie_8267762.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-5c691722ab161ff73d35df",
+    "titre": "Haute-Corse et Corse-du-Sud en vigilance orange pluie-inondations dès jeudi",
+    "publishedAt": "2026-11-04T15:06:27Z",
+    "createdAt": "2026-11-04T15:27:37Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/environnement/meteo/les-deux-departements-corses-places-en-vigilance-orange-pluie-inondations-a-partir-de-jeudi-matin_8267861.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-e1161b8d5a289a35933b5f",
+    "titre": "Lyon : des commerçants réclament des ouvertures dominicales après les pillages",
+    "publishedAt": "2026-11-04T15:11:12Z",
+    "createdAt": "2026-11-04T15:27:33Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/commerce/on-ne-veut-pas-etre-encore-les-grands-punis-l-ouverture-exceptionnelle-des-commerces-le-dimanche-une-mesure-insuffisante_8267846.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-feed42eceaed47cb998f46",
+    "titre": "Grève du 5 novembre : les syndicats réclament salaires, services publics et justice fiscale",
+    "publishedAt": "2026-11-04T14:15:05Z",
+    "createdAt": "2026-11-04T14:19:53Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/greve/revalorisation-des-salaires-services-publics-justice-fiscale-quelles-sont-les-revendications-des-syndicats-pour-la-greve-du-5-novembre_8263733.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-3e90f9d64e86b5a9a228b3",
+    "titre": "Géorgie : un incendie force une chaîne d'opposition à cesser d'émettre à Tbilissi",
+    "publishedAt": "2026-11-04T14:16:56Z",
+    "createdAt": "2026-11-04T14:19:48Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/04/georgie-des-journalistes-pris-au-piege-dans-un-incendie-dans-les-locaux-de-leur-chaine"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "gaming-edition-20261104-1800",
   "univers": "gaming",
   "format": "edition",
