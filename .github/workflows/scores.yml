@@ -2,8 +2,11 @@ name: Resultats en direct
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '*/15 10-23 * * *'   # relance régulière ; chaque passage surveille les scores pendant ~50 minutes
+  # EN PAUSE depuis le 5/11/2026 : 375 commits et autant de déploiements Pages en un jour
+  # (limite indicative GitHub : 10 déploiements par heure). À réactiver seulement avec
+  # une fréquence réduite et un enregistrement hors de la branche publiée.
+  # schedule:
+  #   - cron: '*/15 10-23 * * *'
 
 permissions:
   contents: write
