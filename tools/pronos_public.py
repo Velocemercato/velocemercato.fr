@@ -199,6 +199,8 @@ def section_une_selection(root, now, path, anchor, title, humain):
             f'<p class="meta">Données vérifiées le {e(stamp)} (Paris) · {qui}. '
             'Estimations externes, cotes indicatives qui évoluent : aucun résultat garanti.</p>'
             + analyse + "\n".join(blocs) +
+            '<p><a href="#acces-vip" style="display:inline-block;background:#111;color:#ffe27b;border:2px solid #f4cf55;'
+            'border-radius:10px;padding:10px 14px;font-weight:900;text-decoration:none">🔒 Les autres pronos en VIP : demander mon accès gratuit →</a></p>'
             '<p class="risk">Un combiné multiplie les risques : sa probabilité est le produit de celles de chaque sélection. '
             'Ni conseil, ni promesse de gain.<br>' + e(RISK) + ' · Les jeux d’argent sont interdits aux mineurs.</p></section>')
 
