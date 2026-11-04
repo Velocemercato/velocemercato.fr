@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261104-1300",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "midi",
+  "label": "JT 13 h",
+  "titre": "La Pastille Actus : midi du mercredi 4 novembre",
+  "accroche": "Mobilisation, cyberattaque, Route du Rhum et élections américaines, c'est la Pastille Actus.",
+  "duree": 159,
+  "date": "2026-11-04T13:10+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261104-1300.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-04T13:00:00+01:00",
+  "source_start": "2026-11-03T19:00:00+01:00",
+  "source_end": "2026-11-04T13:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-034c2a1648ec33f3a35c68",
+    "titre": "Mobilisation du 5 novembre : le renseignement territorial anticipe 500 000 à 700 000 manifestants",
+    "publishedAt": "2026-11-04T11:40:24Z",
+    "createdAt": "2026-11-04T11:58:51Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/manifestations/mobilisation-du-5-novembre-une-journee-classee-a-risque-par-le-renseignement-territorial_8267621.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-6de23ceb8bc56033650a03",
+    "titre": "Cyberattaque visant des chambres froides de l'EFS : aucun produit sanguin perdu",
+    "publishedAt": "2026-11-04T11:50:56Z",
+    "createdAt": "2026-11-04T11:58:45Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/04/cyberattaque-des-chambres-froides-de-letablissement-francais-du-sang-piratees"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-7cad6712c28139b6510972",
+    "titre": "Route du Rhum : Armel Le Cléac'h chavire au large des Açores, sain et sauf",
+    "publishedAt": "2026-11-04T10:37:05Z",
+    "createdAt": "2026-11-04T10:43:12Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/voile/route-du-rhum/route-du-rhum-le-navigateur-armel-le-cleac-h-a-chavire-durant-la-nuit-mais-est-en-securite_8267318.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-e7b5a77fac0c9115d2b096",
+    "titre": "Un député opposé à la fermeture de CNews malgré une pétition à près de 815 000 signatures",
+    "publishedAt": "2026-11-04T10:41:36Z",
+    "createdAt": "2026-11-04T10:43:07Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/medias/le-depute-jeremie-patrier-leitus-se-dit-oppose-a-la-fermeture-de-cnews-apres-la-petition-demandant-la-fermeture-de-la-chaine_8267513.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-c6d133bb76744ee0948707",
+    "titre": "UE : la flambée des prix de l'énergie inquiète face à 50 millions d'Européens vulnérables",
+    "publishedAt": "2026-11-04T09:20:02Z",
+    "createdAt": "2026-11-04T09:31:01Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/04/lue-face-a-la-flambee-des-prix-de-lenergie-et-a-50-millions-deuropeens-vulnerables"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-12b0c28603d74d1c489a6b",
+    "titre": "Ukraine : 31 morts et plus de 45 disparus après un bombardement à Zaporizhzhia",
+    "publishedAt": "2026-11-04T09:27:35Z",
+    "createdAt": "2026-11-04T09:30:55Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/video/2026/11/04/ukraine-31-morts-plus-de-45-disparus-apres-un-bombardement-russe-a-zaporizhzhia"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-04f2b24624167f5b2adeb9",
+    "titre": "Texas : le démocrate Talarico projeté vainqueur de la sénatoriale face à Ken Paxton",
+    "publishedAt": "2026-11-04T08:29:27Z",
+    "createdAt": "2026-11-04T08:36:10Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/video/2026/11/04/texas-la-victoire-senatoriale-democrate-de-talarico-est-projetee"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-5f766e0f1f6f80b26bb0b9",
+    "titre": "Mutuelles santé : « Cash Investigation » interroge la hausse continue des cotisations",
+    "publishedAt": "2026-11-04T08:31:57Z",
+    "createdAt": "2026-11-04T08:36:01Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/replay-magazine/france-2/cash-investigation/cash-investigation-mutuelles-sante-pourquoi-payons-nous-toujours-plus-cher_8240236.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261104-1200",
   "univers": "foot",
   "format": "edition",
