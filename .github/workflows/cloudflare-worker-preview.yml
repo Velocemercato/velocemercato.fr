@@ -79,7 +79,7 @@ jobs:
               assert 'vm-essentiel-title' in page.ids and 'vm-cinema-home' not in page.ids, filename
               content = Path('/tmp', filename).read_text()
               assert all(f'href="{url}"' in content for url in ('#feed-title', '#pastille-tv', '/belfort/', '/scores/', '/multisport/', '/vm-gaming/')), filename
-              assert {'feed', 'pastille-tv'} <= page.ids, filename
+              assert {'feed', 'pastille-tv', 'themeBtn', 'themeIco', 'themeTxt', 'ticker', 'tickerRun'} <= page.ids, filename
               assert 'href="#actualites-du-jour"' not in Path('/tmp', filename).read_text()
               print('Verified', filename)
           univers = Ids()

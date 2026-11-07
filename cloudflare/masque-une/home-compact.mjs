@@ -48,7 +48,7 @@ export const compactStyle = `<style id="vm-home-mobile">
 .vm-essentiel-more nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 12px;margin:4px 0 0}
 .vm-essentiel-more a{min-height:32px}
 .vm-essentiel-more [hidden]{display:none}
-.home-simple>.vm-flash-toggle{display:none!important}
+.home-simple>.vm-flash-toggle,.home-simple>.home-flash-top,.home-simple>header.sticky{display:none!important}
 #vm-essentiel-install #vmInst,#reseaux #vmFab{position:static!important;transform:none!important;margin-top:8px}
 #feed-title,#pastille-tv,#reseaux{scroll-margin-top:16px}
 .home-main{padding-top:0!important}
@@ -58,7 +58,7 @@ export const compactStyle = `<style id="vm-home-mobile">
 
 export function compactHome(rewriter) {
   return rewriter
-    .on('body > #vm-reseaux-bar, body > .vu-strip, body > .home-flash-top, body > .vmbar, body > header.sticky, #vm-cinema-home, body > aside[aria-label="Nouveau VM MANGAS"], #vm-choisir-sport, body > section.v2, script[src^="/assets/vm-cinema-foot.js"], script[src="/pronos/bandeau.js"]', {
+    .on('body > #vm-reseaux-bar, body > .vu-strip, body > .vmbar, #vm-cinema-home, body > aside[aria-label="Nouveau VM MANGAS"], #vm-choisir-sport, body > section.v2, script[src^="/assets/vm-cinema-foot.js"], script[src="/pronos/bandeau.js"]', {
       element(element) { element.remove(); }
     })
     .on('body > .vu-pub, .home-content > .vu-pub-jt, .home-news > .vu-pub-carte, .home-content > section[aria-label="Grand reportage Loïc Tanzi"]', {
