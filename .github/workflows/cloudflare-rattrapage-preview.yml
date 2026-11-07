@@ -1,0 +1,66 @@
+name: Preview merged news feeds
+on:
+  push:
+    branches: [codex/preview-rattrapage]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: 42368972847
+          pattern: rattrapage-*
+          path: /tmp/rattrapage
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate the prepared articles
+        working-directory: cloudflare/rattrapage
+        run: |
+          set -euo pipefail
+          mkdir -p data
+          for feed in foot actus gaming; do
+            jq -e 'type == "array" and length > 0 and all(.[]; .id and .titre and .texte and (.sources | length > 0))' "/tmp/rattrapage/rattrapage-$feed/nouveaux.json" >/dev/null
+            cp "/tmp/rattrapage/rattrapage-$feed/nouveaux.json" "data/$feed.json"
+          done
+      - name: Deploy the preview Worker only
+        working-directory: cloudflare/rattrapage
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKER_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: c5227875896e9a281915ed70c146e845
+        run: npx --yes wrangler@4 deploy
+      - name: Verify archives and additions
+        working-directory: cloudflare/rattrapage
+        run: |
+          python - <<'PY'
+          import json, pathlib, time, urllib.request
+          host = 'https://vm-rattrapage.velocemercato87.workers.dev'
+          def get(url):
+              req = urllib.request.Request(url, headers={'User-Agent': 'VeloceMercato-Deployment-Check/1.0', 'Cache-Control':'no-cache'})
+              with urllib.request.urlopen(req, timeout=15) as r:
+                  return json.load(r)
+          for category, path in [('foot','/articles.json'), ('actus','/actus/news.json'), ('gaming','/vm-gaming/news.json')]:
+              base = get('https://velocemercato.fr' + path)
+              old = {a['id'] for a in base}
+              for attempt in range(5):
+                  try:
+                      output = get(host + path)
+                      break
+                  except Exception:
+                      if attempt == 4:
+                          raise
+                      time.sleep(8)
+              ids = {a['id'] for a in output}
+              prepared = {a['id'] for a in json.loads(pathlib.Path('data', category + '.json').read_text())}
+              print('MERGED', category, 'live=' + str(len(old)), 'preview=' + str(len(ids)), 'new=' + str(len((ids & prepared) - old)), 'missing=' + str(len(old - ids)), flush=True)
+              assert len(ids) == len(output)
+              assert not old - ids
+          PY
