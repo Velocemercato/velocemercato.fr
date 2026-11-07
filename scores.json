@@ -85,18 +85,6 @@
    ]
   },
   {
-   "id": 558532,
-   "date": "2026-11-07T14:00:00Z",
-   "comp": "Serie A",
-   "dom": "Torino",
-   "ext": "Lecce",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    1
-   ]
-  },
-  {
    "id": 558534,
    "date": "2026-11-07T14:00:00Z",
    "comp": "Serie A",
@@ -109,27 +97,15 @@
    ]
   },
   {
-   "id": 565851,
-   "date": "2026-11-07T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "Mainz",
-   "ext": "Bayern",
+   "id": 558532,
+   "date": "2026-11-07T14:00:00Z",
+   "comp": "Serie A",
+   "dom": "Torino",
+   "ext": "Lecce",
    "statut": "FINISHED",
    "score": [
     1,
-    2
-   ]
-  },
-  {
-   "id": 565853,
-   "date": "2026-11-07T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "SC Paderborn",
-   "ext": "Frankfurt",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    2
+    1
    ]
   },
   {
@@ -154,6 +130,30 @@
    "score": [
     2,
     1
+   ]
+  },
+  {
+   "id": 565851,
+   "date": "2026-11-07T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "Mainz",
+   "ext": "Bayern",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": 565853,
+   "date": "2026-11-07T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "SC Paderborn",
+   "ext": "Frankfurt",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    2
    ]
   },
   {
@@ -289,5 +289,5 @@
    ]
   }
  ],
- "maj": "2026-11-07T19:48:30Z"
+ "maj": "2026-11-07T19:50:39Z"
 }
