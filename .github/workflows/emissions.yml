@@ -41,9 +41,8 @@ on:
         options: ['auto', 'hd', 'cdn']
         default: auto
   schedule:
-    # JT courts séparés (créneaux en pause : VM_JT_PAUSE), heure de Paris et changement d'heure automatique.
-    # À :07 puis rattrapages :27/:47 ; publication après rendu et traitement YouTube.
-    - cron: '7,27,47 * * * *'
+    # Grille en heure de Paris, point match à :15, puis rattrapages.
+    - cron: '2,15,32,47 * * * *'
 
 permissions:
   contents: write
@@ -57,7 +56,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 90
     env:
-      # 6 JT par jour (limite YouTube) : 8 h, 12 h, 13 h, 18 h, 19 h, 20 h.
+      # Compatibilité des originaux produits avant la nouvelle grille.
       VM_JT_PAUSE: ${{ vars.VM_JT_PAUSE || 'actus:7,foot:23,gaming:0,gaming:10' }}
     steps:
       - uses: actions/checkout@v4
@@ -73,12 +72,20 @@ jobs:
           CRON: ${{ github.event.schedule }}
         run: |
           python - <<'PYCODE'
-          import datetime as dt, os
+          import datetime as dt, json, os
           from pathlib import Path
-          from pastille_schedule import SEPARATE_CRON, due_edition, sunday_show_due
+          from pastille_matchs import fixtures
+          from pastille_schedule import PARIS, GRID_START, SEPARATE_CRON, due_edition, long_delivery, sunday_show_due
           now = dt.datetime.now(dt.timezone.utc)
+          local = now.astimezone(PARIS)
           scheduled = os.environ['CRON'] == SEPARATE_CRON
-          edition = due_edition(Path('.'), now) if scheduled else None
+          scores = []
+          if scheduled and local.date() >= GRID_START and (
+                  (local.hour == 20 and 15 <= local.minute < 50) or local.hour in (23, 0, 1)):
+              day = local.date() - dt.timedelta(days=int(local.hour < 2))
+              scores = fixtures(day)
+              (Path(os.environ['RUNNER_TEMP']) / 'vm-pastille-scores.json').write_text(json.dumps(scores))
+          edition = due_edition(Path('.'), now, extra_scores=scores) if scheduled else None
           sunday = scheduled and not edition and sunday_show_due(Path('.'), now)
           with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
               if sunday:
@@ -89,6 +96,7 @@ jobs:
               if edition:
                   for key in ('univers', 'edition_at', 'moment'):
                       output.write(key + '=' + edition[key] + '\n')
+                  output.write('long=' + ('1' if long_delivery(edition) else '0') + '\n')
           if os.environ['GITHUB_EVENT_NAME'] == 'schedule' and not edition and not sunday:
               with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
                   summary.write('Aucun nouveau JT à produire pour ce créneau de Paris.\n')
@@ -143,13 +151,14 @@ jobs:
           VM_PUBLISH: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.publish) && '1' || '0' }}
           VM_SPEECH_RATE: '1.12'
           VM_VIDEO_PROFILE: ${{ inputs.qualite || 'auto' }}
-          VM_KEEP_HD_MASTER: ${{ steps.diffusion.outputs.ready == '1' && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.publish) && '1' || '0' }}
+          VM_KEEP_HD_MASTER: ${{ steps.diffusion.outputs.ready == '1' && github.ref == 'refs/heads/main' && (inputs.publish || (github.event_name == 'schedule' && steps.plan.outputs.long != '0')) && '1' || '0' }}
           VM_SITE_YOUTUBE: ${{ steps.diffusion.outputs.youtube || '0' }}
           VM_REFRESH_EDITION: ${{ github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.publish && inputs.refaire && '1' || '0' }}
           PLAN: ${{ steps.plan.outputs.plan }}
           PLANNED_UNIVERS: ${{ steps.plan.outputs.univers }}
           PLANNED_MOMENT: ${{ steps.plan.outputs.moment }}
           VM_EDITION_AT: ${{ steps.plan.outputs.edition_at || inputs.edition_at }}
+          VM_EDITION_SCORES: ${{ runner.temp }}/vm-pastille-scores.json
           UNIVERS: ${{ inputs.univers }}
           FORMAT: ${{ inputs.format }}
           MOMENT: ${{ inputs.moment }}

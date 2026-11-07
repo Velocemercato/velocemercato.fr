@@ -241,7 +241,8 @@ def youtube_metadata(manifest):
     if manifest.get('edition_at') and len(universe) == 1:
         name = {'foot': 'Véloce Mercato', 'actus': 'VM Actus', 'gaming': 'VM Gaming'}[universe[0]]
         hour = dt.datetime.fromisoformat(manifest['edition_at']).astimezone(ZoneInfo('Europe/Paris')).strftime('%H h')
-        title = f'{name} — JT {hour} — {date}'
+        label = manifest.get('label') or f'JT {hour}'
+        title = f'{name} — {label} — {date}'
     elif manifest.get('format') in ('speciale', 'debat', 'buts'):
         label = {'speciale': 'Spéciale avant-match', 'debat': 'Le débat du soir', 'buts': 'Les buts de la semaine'}[manifest['format']]
         title = f'Véloce Mercato — {label} — {date}'
@@ -267,6 +268,12 @@ def youtube_metadata(manifest):
                     description += str(source.get('nom', 'Source'))[:80] + ' : ' + url + '\n'
     if universe == ['foot']:
         description += '\nOù regarder légalement les matchs : https://velocemercato.fr/ou-regarder.html\n'
+        if manifest.get('matchs_confirmes'):
+            description += 'Source du calendrier et des résultats : https://velocemercato.fr/scores/\n'
+            for row in manifest['matchs_confirmes']:
+                url = row.get('source', '')
+                if re.fullmatch(r'https://www\.espn\.com/soccer/match/_/gameId/\d+', url):
+                    description += 'Fiche ESPN : ' + url + '\n'
     category = '20' if universe == ['gaming'] else '17' if universe == ['foot'] else '25'
     return {'snippet': {'title': title[:100], 'description': description[:4900], 'categoryId': category, 'defaultLanguage': 'fr'},
             'status': {'privacyStatus': 'private', 'selfDeclaredMadeForKids': False, 'containsSyntheticMedia': True}}
@@ -526,9 +533,12 @@ def prepare(masters, output, now=None, expected_run=None):
                 or any(row.get(key) != edition[key] for key in ('edition_at', 'source_start', 'source_end'))):
             raise DeliveryError('Original ou période des sources incohérente.')
         sources = row.get('sources', [])
+        fixtures = row.get('matchs_confirmes', [])
         start = dt.datetime.fromisoformat(edition['source_start'])
-        if not sources or any(not start < dt.datetime.fromisoformat((s.get('createdAt') or s['publishedAt']).replace('Z', '+00:00')) <= target
-                              or dt.datetime.fromisoformat(s['publishedAt'].replace('Z', '+00:00')) > target for s in sources):
+        if (not sources and not (edition['univers'] == 'foot' and edition['kind'] in ('match', 'debrief', 'semaine')
+                                 and fixtures)) or any(
+                not start < dt.datetime.fromisoformat((s.get('createdAt') or s['publishedAt']).replace('Z', '+00:00')) <= target
+                or dt.datetime.fromisoformat(s['publishedAt'].replace('Z', '+00:00')) > target for s in sources):
             raise DeliveryError('Sources absentes ou en dehors du créneau annoncé.')
         output.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(masters / (ident + '.mp4'), output)
@@ -539,6 +549,8 @@ def prepare(masters, output, now=None, expected_run=None):
                   'edition_at': edition['edition_at'], 'source_start': edition['source_start'], 'source_end': edition['source_end'],
                   'editorial_revision': row.get('editorial_revision', ''), 'sources': sources, 'duree_mesuree': duration,
                   'chapitres': [{'debut_secondes': 0, 'univers': edition['univers'], 'titre': row['titre'], 'id': ident}]}
+        if row.get('edition_kind') == edition['kind']:
+            result.update(label=edition['label'], matchs_confirmes=fixtures)
     elif kind in ('speciale', 'debat', 'buts'):
         ident = authorization.get('unit', '')
         if not re.fullmatch(r'[a-z0-9-]+', ident):
