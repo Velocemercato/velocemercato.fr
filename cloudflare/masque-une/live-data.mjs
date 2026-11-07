@@ -1,12 +1,13 @@
 const github = 'https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/main';
 const pages = 'https://velocemercato.pages.dev';
 const mirror = 'https://vm-masque-une.velocemercato87.workers.dev';
+const programme = '/programmes/grille_vm_quotidienne.json';
 const minute = 60_000;
 const hour = 60 * minute;
 
 export const livePaths = new Set([
   '/fil.json', '/scores.json', '/matchs.json', '/videos.json', '/flash.json',
-  '/studio/emissions.json', '/studio/diffusions.json'
+  '/studio/emissions.json', '/studio/diffusions.json', programme
 ]);
 
 function timestamp(value, now) {
@@ -19,6 +20,10 @@ function publishedAt(row) {
 }
 
 function validated(path, data, now) {
+  if (path === programme) {
+    const time = timestamp(data?.updated_at ?? data?.start_date, now);
+    return time && data?.timezone === 'Europe/Paris' && Array.isArray(data?.slots) ? { data, time } : null;
+  }
   if (path === '/scores.json' || path === '/fil.json') {
     const key = path === '/scores.json' ? 'matchs' : 'titres';
     const time = timestamp(data?.maj, now);
@@ -53,7 +58,7 @@ async function read(origin, path, cacheSeconds, now) {
 async function current(path, now) {
   const seconds = path === '/scores.json' ? 60 : 180;
   const fresh = await read(github, path, seconds, now);
-  if (fresh && now - fresh.time <= (path === '/scores.json' ? 20 * minute : 48 * hour)) return fresh;
+  if (fresh && (path === programme || now - fresh.time <= (path === '/scores.json' ? 20 * minute : 48 * hour))) return fresh;
   const baseline = await read(pages, path, seconds, now);
   if (!baseline || (fresh && fresh.time >= baseline.time)) return fresh;
   return baseline;
