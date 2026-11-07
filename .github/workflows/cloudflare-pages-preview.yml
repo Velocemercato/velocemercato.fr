@@ -1,0 +1,54 @@
+name: Cloudflare Pages - Apercu Veloce
+on:
+  push:
+    branches: [codex/pages-preview]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-pages-preview-velocemercato
+  cancel-in-progress: false
+
+jobs:
+  preview:
+    if: github.ref_name == 'codex/pages-preview'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Build static site
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - name: Check the homepage and required assets
+        run: |
+          set -euo pipefail
+          grep -Fq '#actualites-du-jour{display:none!important}' _site/index.html
+          test -s _site/articles.json
+          test -s _site/actus/news.json
+          test -s _site/vm-gaming/news.json
+          test -s _site/studio/emissions.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify token and target preview branch
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: c5227875896e9a281915ed70c146e845
+        run: |
+          set -euo pipefail
+          test -n "$CLOUDFLARE_API_TOKEN" || { echo "::error::CLOUDFLARE_API_TOKEN is missing"; exit 1; }
+          curl --fail --silent --show-error \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/velocemercato" \
+            | jq -e '.success and (.result.name == "velocemercato") and ((.result.production_branch // "") | length > 0) and (.result.production_branch != "codex-pages-preview")'
+      - name: Deploy to Cloudflare Pages preview
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: c5227875896e9a281915ed70c146e845
+        run: npx --yes wrangler@4 pages deploy _site --project-name=velocemercato --branch=codex-pages-preview
