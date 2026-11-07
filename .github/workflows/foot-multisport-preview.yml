@@ -1,0 +1,94 @@
+name: Prepare and verify Foot and Multisport
+on:
+  push:
+    branches: [codex/foot-multisport]
+permissions:
+  contents: read
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Update the existing Multisport feed locally
+        run: python tools/multisport_flux.py
+      - name: Compare public feeds and prepare the preview
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/vm-sport
+          python - <<'PY'
+          import collections, json, pathlib, time, urllib.request
+          from datetime import datetime, timezone
+          def get(host, path):
+              req = urllib.request.Request(host + path, headers={'User-Agent':'VeloceMercato-Deployment-Check/1.0','Cache-Control':'no-cache'})
+              with urllib.request.urlopen(req, timeout=12) as response:
+                  return json.load(response)
+          root = 'https://velocemercato.fr'
+          preview = 'https://vm-rattrapage.velocemercato87.workers.dev'
+          def save(name, value):
+              pathlib.Path('/tmp/vm-sport', name).write_text(json.dumps(value, ensure_ascii=False))
+          for path in ['/vm-gaming/news.json', '/vm-gaming/news.json?v=' + str(int(time.time()*1000))]:
+              try:
+                  gaming = get(root, path)
+                  print('GAMING', path, len(gaming), dict(collections.Counter(a.get('championnat') for a in gaming)))
+              except Exception as exc:
+                  print('GAMING_ERROR', path, type(exc).__name__)
+          old = get(root, '/articles.json')
+          recovery = get(preview, '/articles.json')
+          recent = json.loads(pathlib.Path('articles.json').read_text())
+          def time_key(a):
+              try:
+                  return datetime.fromisoformat(a.get('publishedAt', '').replace('Z','+00:00'))
+              except ValueError:
+                  return datetime.min.replace(tzinfo=timezone.utc)
+          items = {a['id']:a for a in old}
+          urls = {s['url'] for a in old for s in (a.get('sources') or []) if s.get('url')}
+          for a in recent + recovery:
+              links = {s['url'] for s in (a.get('sources') or []) if s.get('url')}
+              if a.get('id') and a['id'] not in items and links and not links & urls and time_key(a) <= datetime.now(timezone.utc):
+                  items[a['id']] = a
+                  urls.update(links)
+          foot = sorted(items.values(), key=time_key, reverse=True)
+          assert {a['id'] for a in old} <= set(items)
+          print('FOOT', 'public='+str(len(old)), 'preview='+str(len(foot)), 'latest='+time_key(foot[0]).isoformat())
+          save('articles.json', foot)
+          multisport = json.loads(pathlib.Path('multisport/actualites.json').read_text())
+          assert isinstance(multisport['sports'], dict) and multisport['sports']
+          published = get(root, '/multisport/actualites.json')
+          before = sum(len(v) for v in published['sports'].values())
+          count = sum(len(v) for v in multisport['sports'].values())
+          print('MULTISPORT', 'public='+str(before), 'preview='+str(count), 'updated='+multisport['misAJour'], {k:len(v) for k,v in multisport['sports'].items()})
+          if count <= 0 or multisport['misAJour'] <= published['misAJour']:
+              raise SystemExit('No newer multisport content')
+          save('actualites.json', multisport)
+          PY
+          cat >/tmp/vm-sport/worker.mjs <<'EOF'
+          import foot from './articles.json';
+          import multisport from './actualites.json';
+          export default {
+            fetch(request) {
+              const path = new URL(request.url).pathname;
+              if (request.method !== 'GET') return new Response(null, { status: 405 });
+              const data = path === '/articles.json' ? foot : path === '/multisport/actualites.json' ? multisport : null;
+              return data ? Response.json(data, { headers: { 'Cache-Control': 'no-store' } }) : new Response(null, { status: 404 });
+            }
+          };
+          EOF
+          cat >/tmp/vm-sport/wrangler.jsonc <<'EOF'
+          {"name":"vm-sport-apercu","main":"worker.mjs","compatibility_date":"2026-11-07","workers_dev":true}
+          EOF
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Deploy preview only
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKER_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: c5227875896e9a281915ed70c146e845
+        run: |
+          cd /tmp/vm-sport
+          npx --yes wrangler@4 deploy
