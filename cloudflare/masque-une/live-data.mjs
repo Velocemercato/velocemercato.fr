@@ -5,7 +5,7 @@ const minute = 60_000;
 const hour = 60 * minute;
 
 export const livePaths = new Set([
-  '/fil.json', '/scores.json', '/videos.json', '/flash.json',
+  '/fil.json', '/scores.json', '/matchs.json', '/videos.json', '/flash.json',
   '/studio/emissions.json', '/studio/diffusions.json'
 ]);
 
@@ -25,6 +25,11 @@ function validated(path, data, now) {
     return time && Array.isArray(data?.[key]) ? { data, time } : null;
   }
   if (!Array.isArray(data)) return null;
+  if (path === '/matchs.json') {
+    const rows = data.filter(row => row?.id != null && Number.isFinite(Date.parse(row.date)));
+    const time = Math.max(0, ...rows.map(row => Date.parse(row.date)));
+    return time ? { data: rows, time } : null;
+  }
   const rows = data.filter(row => timestamp(publishedAt(row), now));
   const time = Math.max(0, ...rows.map(row => timestamp(publishedAt(row), now)));
   return time ? { data: rows, time } : null;
@@ -68,6 +73,7 @@ export async function liveResponse(request, path, now = Date.now()) {
   if (match) headers.set('X-VM-Data-Time', new Date(match.time).toISOString());
 
   let data = match?.data ?? null;
+  const recent = new URL(request.url).searchParams.get('vm_recent') === '1';
   if (path === '/scores.json' && (!match || now - match.time > 20 * minute)) {
     data = { matchs: [], maj: null, indisponible: true };
   } else if (path === '/fil.json') {
@@ -78,7 +84,7 @@ export async function liveResponse(request, path, now = Date.now()) {
       }),
       maj: data?.maj ?? null
     };
-  } else if (path === '/flash.json' || path === '/videos.json' || path === '/studio/emissions.json') {
+  } else if (path === '/flash.json' || (recent && (path === '/videos.json' || path === '/studio/emissions.json'))) {
     data = (data ?? []).filter(row => now - timestamp(publishedAt(row), now) < 48 * hour);
   }
   const response = Response.json(data ?? [], { headers });
@@ -105,7 +111,10 @@ export const liveBootstrap = `<script id="vm-live-bootstrap">
     if (typeof resource !== 'string' && !(resource instanceof URL)) return original(resource, options);
     const url = new URL(resource, document.baseURI);
     if (url.origin === location.origin && (!options?.method || options.method === 'GET')) {
-      if (paths.has(url.pathname)) return original(${JSON.stringify(mirror)} + url.pathname, options);
+      if (paths.has(url.pathname)) {
+        const recent = url.pathname === '/studio/emissions.json' || url.pathname === '/videos.json';
+        return original(${JSON.stringify(mirror)} + url.pathname + (recent ? '?vm_recent=1' : ''), options);
+      }
       if (url.pathname === '/prono.json') return Promise.resolve(new Response('null'));
     }
     return original(resource, options);

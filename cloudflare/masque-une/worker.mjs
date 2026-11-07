@@ -160,8 +160,8 @@ export default {
         }
       }).on('#ptvMain', {
         element(element) {
-          if (pastille) element.setInnerContent('<a class="ptv-big" href="' + escape(pastille.plateformes.youtube.url) +
-            '"><span class="ptv-play">▶</span><b>' + escape(pastille.titre) + '</b></a>', { html: true });
+          if (pastille) element.before('<p class="ptv-cap"><a href="' + escape(pastille.plateformes.youtube.url) +
+            '">▶ ' + escape(pastille.titre) + ' sur YouTube</a></p>', { html: true });
         }
       }).on('#actualites-du-jour', {
         element(element) {
