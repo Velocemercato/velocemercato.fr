@@ -1,5 +1,7 @@
 const ORIGIN = 'https://velocemercato.pages.dev';
 
+const SCORE_STYLE = '<style id="vm-readable-scores">#sTicker .sviewport{min-width:0;overflow-x:auto}#sRun{animation:none!important;transform:none!important;padding-left:0!important}</style>';
+
 export default {
   async fetch(request) {
     const url = new URL(request.url);
@@ -25,6 +27,10 @@ export default {
     const rewritten = new HTMLRewriter().on('#actualites-du-jour', {
       element(element) {
         element.remove();
+      }
+    }).on('head', {
+      element(element) {
+        element.append(SCORE_STYLE, { html: true });
       }
     }).transform(response);
 

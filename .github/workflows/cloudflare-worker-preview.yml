@@ -32,11 +32,15 @@ jobs:
             echo "::error::CLOUDFLARE_WORKER_API_TOKEN is missing"
             exit 1
           fi
-          npx --yes wrangler@4 deploy
+          npx --yes wrangler@4 versions upload | tee /tmp/veloce-upload.log
+          version=$(sed -nE 's/.*Worker Version ID: ([0-9a-f-]{36}).*/\1/p' /tmp/veloce-upload.log | tail -n1)
+          test -n "$version"
+          npx --yes wrangler@4 versions deploy "$version@100%" -y
       - name: Verify the public preview
         run: |
           set -euo pipefail
           curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 15 https://vm-masque-une.velocemercato87.workers.dev/ -o /tmp/veloce-preview.html
+          curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 15 https://velocemercato.fr/ -o /tmp/veloce-production.html
           python - <<'PY'
           from html.parser import HTMLParser
           from pathlib import Path
@@ -48,9 +52,12 @@ jobs:
                   attrs = dict(attrs)
                   if 'id' in attrs:
                       self.ids.add(attrs['id'])
-          page = Ids()
-          page.feed(Path('/tmp/veloce-preview.html').read_text())
-          assert 'actualites-du-jour' not in page.ids
-          assert {'feed', 'pastille-tv'} <= page.ids
+          for filename in ('veloce-preview.html', 'veloce-production.html'):
+              page = Ids()
+              page.feed(Path('/tmp', filename).read_text())
+              assert 'actualites-du-jour' not in page.ids, filename
+              assert 'vm-readable-scores' in page.ids, filename
+              assert {'feed', 'pastille-tv'} <= page.ids, filename
+              print('Verified', filename)
           print('Featured block removed, football feed and Pastille still present.')
           PY
