@@ -157,18 +157,6 @@
    ]
   },
   {
-   "id": 560633,
-   "date": "2026-11-07T15:00:00Z",
-   "comp": "Premier League",
-   "dom": "Fulham",
-   "ext": "Newcastle",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    1
-   ]
-  },
-  {
    "id": 560640,
    "date": "2026-11-07T15:00:00Z",
    "comp": "Premier League",
@@ -178,6 +166,18 @@
    "score": [
     1,
     0
+   ]
+  },
+  {
+   "id": 560633,
+   "date": "2026-11-07T15:00:00Z",
+   "comp": "Premier League",
+   "dom": "Fulham",
+   "ext": "Newcastle",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    1
    ]
   },
   {
@@ -222,7 +222,7 @@
    "comp": "Liga",
    "dom": "Osasuna",
    "ext": "Athletic",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     1,
     1
@@ -234,7 +234,7 @@
    "comp": "Premier League",
    "dom": "Nottingham",
    "ext": "Man City",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     3,
     1
@@ -289,5 +289,5 @@
    ]
   }
  ],
- "maj": "2026-11-07T19:31:32Z"
+ "maj": "2026-11-07T19:33:26Z"
 }
