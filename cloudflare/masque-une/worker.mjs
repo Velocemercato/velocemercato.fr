@@ -1,3 +1,4 @@
+import { amazonFooter, amazonSelection } from './amazon-selection.mjs';
 import { gamingPressScript, multisportEdition, pronosPage, verifiedAdvice } from './public-content.mjs';
 import { renderKit, renderKitCards } from './kit-reseaux.mjs';
 import { pronoKitContent, readPronoDesk } from './prono-desk.mjs';
@@ -95,6 +96,9 @@ export default {
       return Response.redirect(new URL('/assets/vm-logo-optimized.webp', url), 302);
     }
     if (!isUnivers && livePaths.has(url.pathname)) return liveResponse(request, url.pathname);
+    if (!isUnivers && url.pathname === '/selection-amazon') {
+      return amazonSelection(request.method === 'HEAD');
+    }
     if (!isUnivers && url.pathname === '/kit-pronos') {
       const now = new Date();
       const [desk, analysis] = await Promise.all([readPronoDesk(env, now.getTime()), verifiedAdvice(now.getTime())]);
@@ -154,6 +158,7 @@ export default {
     }
 
     const rewriter = polish(new HTMLRewriter(), url, isUnivers);
+    if (home) amazonFooter(rewriter);
     if (!isUnivers && url.pathname === '/pronos/') {
       pronosPage(rewriter, advice);
       rewriter.on('#conseil-contenu', {
