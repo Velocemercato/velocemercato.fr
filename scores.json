@@ -109,18 +109,6 @@
    ]
   },
   {
-   "id": 565853,
-   "date": "2026-11-07T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "SC Paderborn",
-   "ext": "Frankfurt",
-   "statut": "IN_PLAY",
-   "score": [
-    1,
-    1
-   ]
-  },
-  {
    "id": 565851,
    "date": "2026-11-07T14:30:00Z",
    "comp": "Bundesliga",
@@ -130,6 +118,18 @@
    "score": [
     0,
     2
+   ]
+  },
+  {
+   "id": 565853,
+   "date": "2026-11-07T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "SC Paderborn",
+   "ext": "Frankfurt",
+   "statut": "IN_PLAY",
+   "score": [
+    2,
+    1
    ]
   },
   {
@@ -162,7 +162,7 @@
    "comp": "Premier League",
    "dom": "Arsenal",
    "ext": "Hull City",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     0,
     0
@@ -174,7 +174,7 @@
    "comp": "Premier League",
    "dom": "Fulham",
    "ext": "Newcastle",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     0,
     0
@@ -289,5 +289,5 @@
    ]
   }
  ],
- "maj": "2026-11-07T16:06:36Z"
+ "maj": "2026-11-07T16:08:30Z"
 }
