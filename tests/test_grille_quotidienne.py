@@ -6,7 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 TIMES = ("07:00", "08:00", "10:00", "10:40", "11:00", "12:00", "13:00",
-         "15:00", "18:00", "19:00", "20:00", "21:00", "22:30")
+         "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "22:30", "23:00")
 
 
 def assign(path, name):
@@ -34,8 +34,10 @@ class GrilleQuotidienneTests(unittest.TestCase):
     def test_meta_hours_and_pronos_hours(self):
         meta = assign("tools/publier_meta.py", "SLOTS")
         rq = assign("tools/pronos_programme.py", "SLOTS")
-        self.assertEqual(meta, {7: "actus", 8: "foot", 13: "gaming",
-                                18: "foot", 19: "actus", 20: "gaming"})
+        self.assertEqual(meta, {7: "actus", 8: "foot", 10: "multisport", 11: "foot",
+                                12: "multisport", 13: "gaming", 15: "multisport", 16: "gaming",
+                                17: "multisport", 18: "foot", 19: "actus", 20: "gaming",
+                                21: "multisport", 22: "actus", 23: "multisport"})
         self.assertEqual(assign("tools/publier_meta.py", "HEURES_UNIVERS_DEFAUT"), (10, 15, 21))
         for hour in (7, 8, 10, 11, 12, 13, 15, 18, 19, 20, 21):
             self.assertIn(hour, rq)
