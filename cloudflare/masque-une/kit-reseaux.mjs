@@ -57,6 +57,8 @@ export async function renderKit(now = new Date()) {
         try {
           await navigator.clipboard.writeText(card.querySelector('.copy').textContent + '\\n' + url);
           status.textContent = 'Texte et lien copiés.';
+          event.target.textContent = 'Copié ✓';
+          setTimeout(() => { event.target.textContent = 'Copier le texte'; }, 2000);
         } catch {
           status.textContent = 'Tu peux sélectionner le texte et le lien pour les copier.';
         }
@@ -76,6 +78,12 @@ export async function renderKit(now = new Date()) {
       ctx.fillText(card.querySelector('small').textContent, 104, 150, 864);
       ctx.fillStyle = '#d74352';
       ctx.beginPath(); ctx.moveTo(108, 690); ctx.lineTo(365, 351); ctx.lineTo(584, 548); ctx.lineTo(872, 297); ctx.lineTo(984, 690); ctx.fill();
+      try {
+        const mark = new Image();
+        mark.src = '/assets/vm-logo-optimized.webp';
+        await mark.decode();
+        ctx.drawImage(mark, 337, 250, 406, 406);
+      } catch {}
       ctx.fillStyle = '#fff5db'; ctx.fillRect(72, 745, 930, 365);
       ctx.fillStyle = '#101930'; ctx.font = 'bold ' + (card.dataset.visual.length > 34 ? 57 : 76) + 'px sans-serif';
       const words = card.dataset.visual.split(' ');
@@ -89,7 +97,7 @@ export async function renderKit(now = new Date()) {
       ctx.fillStyle = '#ffc957'; ctx.font = 'bold 40px sans-serif';
       ctx.fillText(new URL(url).hostname, 84, 1232, 900);
       ctx.font = 'bold 27px sans-serif';
-      ctx.fillText(document.documentElement.dataset.date, 84, 1286, 900);
+      ctx.fillText(document.documentElement.dataset.date.split('-').reverse().join('/'), 84, 1286, 900);
       const download = document.createElement('a');
       download.download = 'vm-' + document.documentElement.dataset.date + '-' + Array.from(document.querySelectorAll('article')).indexOf(card) + '.png';
       download.href = canvas.toDataURL('image/png');

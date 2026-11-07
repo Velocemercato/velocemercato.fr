@@ -1,4 +1,5 @@
 import { renderKit } from './kit-reseaux.mjs';
+import { logo } from './logo.mjs';
 import { latestPastille, liveBootstrap, livePaths, liveResponse } from './live-data.mjs';
 
 const VELOCE_ORIGIN = 'https://velocemercato.pages.dev';
@@ -38,6 +39,25 @@ const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;',
 
 const AD_OFFERS = '<section class="vms-section" id="publicite-vm" aria-labelledby="titre-publicite-vm"><div class="vms-wrap"><h2 id="titre-publicite-vm">Publicité sur les sites et réseaux VM</h2><dl><dt>Véloce Mercato, VM Actus ou VM Gaming</dt><dd>Encart média à 39 €/mois. Emplacement convenu selon la disponibilité.</dd><dt>VM Belfort</dt><dd>Encart local à 29 €/mois.</dd><dt>VM Univers</dt><dd>Emplacement sur devis, selon le format et la durée.</dd><dt>Réseaux VM</dt><dd>Pack Visibilité Pro à 39 €/mois, avec une vidéo courte par mois. Pour une page ou une campagne dédiée, demande un devis.</dd></dl><p><a class="vms-btn" href="https://velocemercato.fr/pub/#packs">Voir les formats et demander un devis</a></p></div></section>';
 
+const universNotFound = '<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Page introuvable · VM Univers</title><main><h1>Page introuvable</h1><p>Retrouve les rubriques dans l’annuaire VM Univers.</p><a href="https://vmunivers.fr/#projets">Ouvrir l’annuaire</a></main></html>';
+
+async function universPage(request, url, preview) {
+  if (url.pathname === '/index.html') return Response.redirect(new URL('/' + url.search, url), 301);
+  const originUrl = new URL(url.pathname + url.search, UNIVERS_ORIGIN);
+  const response = preview ? await fetch(originUrl, { method: request.method }) : await fetch(request);
+  if (!response.ok || !response.headers.get('Content-Type')?.includes('text/html')) return response;
+  const check = request.method === 'HEAD'
+    ? await fetch(originUrl)
+    : response.clone();
+  const html = await check.text();
+  const servesHomepage = html.includes('id="projets"') &&
+    /<link\b[^>]*\brel=["']canonical["'][^>]*\bhref=["']https:\/\/vmunivers\.fr\/["']/i.test(html);
+  if (!servesHomepage) return response;
+  return new Response(request.method === 'HEAD' ? null : universNotFound, {
+    status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' }
+  });
+}
+
 export default {
   async fetch(request) {
     const url = new URL(request.url);
@@ -48,11 +68,25 @@ export default {
       return new Response(null, { status: 404 });
     }
 
+    if (!isPreview && url.protocol === 'http:') {
+      url.protocol = 'https:';
+      return Response.redirect(url, 301);
+    }
+    if (isPreview) url.searchParams.delete('site');
     if (!['GET', 'HEAD'].includes(request.method)) {
       return isPreview ? new Response(null, { status: 404 }) : fetch(request);
     }
+    if (url.pathname === '/assets/vm-logo-optimized.webp' ||
+        (url.pathname === '/img/logo-vm-officiel.png' && request.headers.get('Accept')?.includes('image/webp'))) {
+      return new Response(request.method === 'HEAD' ? null : logo, {
+        headers: { 'Content-Type': 'image/webp', 'Cache-Control': 'public, max-age=86400', 'Vary': 'Accept' }
+      });
+    }
+    if (isPreview && url.pathname === '/favicon.ico') {
+      return Response.redirect(new URL('/assets/vm-logo-optimized.webp', url), 302);
+    }
     if (!isUnivers && livePaths.has(url.pathname)) return liveResponse(request, url.pathname);
-    if (url.pathname === '/kit-reseaux-vm' || (!isUnivers && url.pathname === '/kit-du-jour')) {
+    if (url.pathname === '/kit-reseaux-vm' || url.pathname === '/kit-du-jour') {
       const kit = await renderKit();
       return request.method === 'HEAD' ? new Response(null, { headers: kit.headers }) : kit;
     }
@@ -61,11 +95,11 @@ export default {
     const velocePage = !isUnivers && (VELOCE_HTML.has(url.pathname) ||
       /^\/multisport\/(nba|nfl|f1|motogp|tennis|rugby|cyclisme|nhl|mlb|mma|ski)\/$/.test(url.pathname));
     if (!home && !studio && !velocePage) {
+      if (isUnivers) return universPage(request, url, isPreview);
       return isPreview ? new Response(null, { status: 404 }) : fetch(request);
     }
 
     const origin = isUnivers ? UNIVERS_ORIGIN : VELOCE_ORIGIN;
-    if (isPreview) url.searchParams.delete('site');
     const originPath = studio ? '/web-studio' : url.pathname.replace(/\.html$/, '');
     const [response, pastille] = await Promise.all([
       fetch(new URL(originPath + url.search, origin), {
@@ -118,12 +152,11 @@ export default {
         }
       }).on('.pastille-feed[data-broadcast-feed]', {
         element(element) {
-          if (!pastille) element.remove();
-          else {
-            element.removeAttribute('data-broadcast-universe');
-            element.removeAttribute('data-broadcast-single');
-            element.setAttribute('aria-label', 'Dernière Pastille publiée');
-          }
+          element.remove();
+        }
+      }).on('h1#v2-title', {
+        element(element) {
+          element.tagName = 'h2';
         }
       }).on('#ptvMain', {
         element(element) {

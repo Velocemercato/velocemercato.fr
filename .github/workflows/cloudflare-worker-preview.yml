@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: '22'
       - name: Check Worker syntax
-        run: node --check worker.mjs && node --check kit-reseaux.mjs && node --check live-data.mjs
+        run: node --check worker.mjs && node --check kit-reseaux.mjs && node --check live-data.mjs && node --check logo.mjs
       - name: Deploy homepage Worker without changing routes
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKER_API_TOKEN }}
@@ -47,6 +47,9 @@ jobs:
           curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 15 'https://vm-masque-une.velocemercato87.workers.dev/kit-reseaux-vm' -o /tmp/vm-kit.html
           curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 15 'https://vm-masque-une.velocemercato87.workers.dev/web-studio' -o /tmp/vm-studio-preview.html
           curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 15 'https://vm-masque-une.velocemercato87.workers.dev/fil.json' -o /tmp/vm-live-fil.json
+          curl --fail --silent --show-error --max-time 15 'https://vm-masque-une.velocemercato87.workers.dev/assets/vm-logo-optimized.webp' -o /tmp/vm-logo.webp
+          test "$(wc -c < /tmp/vm-logo.webp)" -lt 40000
+          test "$(curl -s -o /dev/null -w '%{http_code}' 'https://vm-masque-une.velocemercato87.workers.dev/vm-page-inexistante-404?site=vmunivers')" = 404
           python - <<'PY'
           from html.parser import HTMLParser
           from pathlib import Path
