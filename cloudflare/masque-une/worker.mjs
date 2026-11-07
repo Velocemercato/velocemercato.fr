@@ -1,4 +1,5 @@
-const ORIGIN = 'https://velocemercato.pages.dev';
+const VELOCE_ORIGIN = 'https://velocemercato.pages.dev';
+const UNIVERS_ORIGIN = 'https://vmunivers.pages.dev';
 
 const SCORE_STYLE = '<style id="vm-readable-scores">#sTicker .sviewport{min-width:0;overflow-x:auto}#sRun{animation:none!important;transform:none!important;padding-left:0!important}</style>';
 
@@ -29,7 +30,9 @@ export default {
   async fetch(request) {
     const url = new URL(request.url);
     const isPreview = url.hostname.endsWith('.workers.dev');
-    if (url.hostname !== 'velocemercato.fr' && !isPreview) {
+    const isUnivers = url.hostname === 'vmunivers.fr' ||
+      (isPreview && url.searchParams.get('site') === 'vmunivers');
+    if (url.hostname !== 'velocemercato.fr' && !isUnivers && !isPreview) {
       return new Response(null, { status: 404 });
     }
 
@@ -37,7 +40,9 @@ export default {
       return isPreview ? new Response(null, { status: 404 }) : fetch(request);
     }
 
-    const response = await fetch(new URL('/' + url.search, ORIGIN), {
+    const origin = isUnivers ? UNIVERS_ORIGIN : VELOCE_ORIGIN;
+    if (isPreview) url.searchParams.delete('site');
+    const response = await fetch(new URL('/' + url.search, origin), {
       method: request.method,
       headers: { Accept: 'text/html' },
       redirect: 'manual'
@@ -47,19 +52,29 @@ export default {
       return response;
     }
 
-    const rewritten = new HTMLRewriter().on('#actualites-du-jour', {
-      element(element) {
-        element.remove();
-      }
-    }).on('.vm-mother-portals', {
-      element(element) {
-        element.prepend(MOBILE_LINKS, { html: true });
-      }
-    }).on('head', {
-      element(element) {
-        element.append(SCORE_STYLE + MOBILE_STYLE, { html: true });
-      }
-    }).transform(response);
+    const rewriter = new HTMLRewriter();
+    if (isUnivers) {
+      rewriter.on('section#edition-vm', {
+        element(element) {
+          element.remove();
+        }
+      });
+    } else {
+      rewriter.on('#actualites-du-jour', {
+        element(element) {
+          element.remove();
+        }
+      }).on('.vm-mother-portals', {
+        element(element) {
+          element.prepend(MOBILE_LINKS, { html: true });
+        }
+      }).on('head', {
+        element(element) {
+          element.append(SCORE_STYLE + MOBILE_STYLE, { html: true });
+        }
+      });
+    }
+    const rewritten = rewriter.transform(response);
 
     const headers = new Headers(rewritten.headers);
     for (const name of ['Content-Length', 'ETag', 'Last-Modified']) {

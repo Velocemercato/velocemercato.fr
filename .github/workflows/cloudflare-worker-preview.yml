@@ -43,6 +43,7 @@ jobs:
           set -euo pipefail
           curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 15 https://vm-masque-une.velocemercato87.workers.dev/ -o /tmp/veloce-preview.html
           curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 15 https://velocemercato.fr/ -o /tmp/veloce-production.html
+          curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 15 'https://vm-masque-une.velocemercato87.workers.dev/?site=vmunivers' -o /tmp/vmunivers-preview.html
           python - <<'PY'
           from html.parser import HTMLParser
           from pathlib import Path
@@ -65,5 +66,9 @@ jobs:
               assert {'#feed-title', '#pastille-tv', '/belfort/'} == page.shortcuts, filename
               assert {'feed', 'pastille-tv'} <= page.ids, filename
               print('Verified', filename)
-          print('Featured block removed, football feed and Pastille still present.')
+          univers = Ids()
+          univers.feed(Path('/tmp/vmunivers-preview.html').read_text())
+          assert {'edition-vm', 'edition-titre', 'vm-home-mobile'}.isdisjoint(univers.ids)
+          assert {'projets', 'vitrine'} <= univers.ids
+          print('VM Univers edition removed in preview, directory and project showcase retained.')
           PY
