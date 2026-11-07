@@ -90,7 +90,7 @@
    "comp": "Serie A",
    "dom": "Cagliari",
    "ext": "Frosinone",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
     1,
     0
@@ -116,7 +116,7 @@
    "ext": "Augsburg",
    "statut": "IN_PLAY",
    "score": [
-    0,
+    2,
     1
    ]
   },
@@ -133,18 +133,6 @@
    ]
   },
   {
-   "id": 565851,
-   "date": "2026-11-07T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "Mainz",
-   "ext": "Bayern",
-   "statut": "IN_PLAY",
-   "score": [
-    0,
-    1
-   ]
-  },
-  {
    "id": 565853,
    "date": "2026-11-07T14:30:00Z",
    "comp": "Bundesliga",
@@ -157,15 +145,15 @@
    ]
   },
   {
-   "id": 560640,
-   "date": "2026-11-07T15:00:00Z",
-   "comp": "Premier League",
-   "dom": "Arsenal",
-   "ext": "Hull City",
+   "id": 565851,
+   "date": "2026-11-07T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "Mainz",
+   "ext": "Bayern",
    "statut": "IN_PLAY",
    "score": [
     0,
-    0
+    1
    ]
   },
   {
@@ -174,6 +162,18 @@
    "comp": "Premier League",
    "dom": "Fulham",
    "ext": "Newcastle",
+   "statut": "IN_PLAY",
+   "score": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": 560640,
+   "date": "2026-11-07T15:00:00Z",
+   "comp": "Premier League",
+   "dom": "Arsenal",
+   "ext": "Hull City",
    "statut": "IN_PLAY",
    "score": [
     0,
@@ -289,5 +289,5 @@
    ]
   }
  ],
- "maj": "2026-11-07T15:08:54Z"
+ "maj": "2026-11-07T15:10:48Z"
 }
