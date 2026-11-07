@@ -66,7 +66,7 @@
    "comp": "Premier League",
    "dom": "Leeds United",
    "ext": "Tottenham",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
     0,
     0
@@ -157,11 +157,11 @@
    ]
   },
   {
-   "id": 560633,
+   "id": 560640,
    "date": "2026-11-07T15:00:00Z",
    "comp": "Premier League",
-   "dom": "Fulham",
-   "ext": "Newcastle",
+   "dom": "Arsenal",
+   "ext": "Hull City",
    "statut": "TIMED",
    "score": [
     null,
@@ -169,11 +169,11 @@
    ]
   },
   {
-   "id": 560640,
+   "id": 560633,
    "date": "2026-11-07T15:00:00Z",
    "comp": "Premier League",
-   "dom": "Arsenal",
-   "ext": "Hull City",
+   "dom": "Fulham",
+   "ext": "Newcastle",
    "statut": "TIMED",
    "score": [
     null,
@@ -289,5 +289,5 @@
    ]
   }
  ],
- "maj": "2026-11-07T13:38:27Z"
+ "maj": "2026-11-07T13:42:13Z"
 }
