@@ -84,18 +84,6 @@
   ]
  },
  {
-  "id": 558534,
-  "date": "2026-11-07T14:00:00Z",
-  "competition": "Serie A",
-  "domicile": "Cagliari",
-  "exterieur": "Frosinone",
-  "statut": "FINISHED",
-  "score": [
-   1,
-   0
-  ]
- },
- {
   "id": 558532,
   "date": "2026-11-07T14:00:00Z",
   "competition": "Serie A",
@@ -105,6 +93,18 @@
   "score": [
    1,
    1
+  ]
+ },
+ {
+  "id": 558534,
+  "date": "2026-11-07T14:00:00Z",
+  "competition": "Serie A",
+  "domicile": "Cagliari",
+  "exterieur": "Frosinone",
+  "statut": "FINISHED",
+  "score": [
+   1,
+   0
   ]
  },
  {
@@ -204,18 +204,6 @@
   ]
  },
  {
-  "id": 564739,
-  "date": "2026-11-07T17:30:00Z",
-  "competition": "Liga",
-  "domicile": "Osasuna",
-  "exterieur": "Athletic",
-  "statut": "FINISHED",
-  "score": [
-   1,
-   1
-  ]
- },
- {
   "id": 560641,
   "date": "2026-11-07T17:30:00Z",
   "competition": "Premier League",
@@ -224,6 +212,18 @@
   "statut": "FINISHED",
   "score": [
    3,
+   1
+  ]
+ },
+ {
+  "id": 564739,
+  "date": "2026-11-07T17:30:00Z",
+  "competition": "Liga",
+  "domicile": "Osasuna",
+  "exterieur": "Athletic",
+  "statut": "FINISHED",
+  "score": [
+   1,
    1
   ]
  },
@@ -257,9 +257,9 @@
   "competition": "Serie A",
   "domicile": "Roma",
   "exterieur": "Sassuolo",
-  "statut": "IN_PLAY",
+  "statut": "FINISHED",
   "score": [
-   2,
+   3,
    0
   ]
  },
@@ -272,7 +272,7 @@
   "statut": "IN_PLAY",
   "score": [
    0,
-   2
+   3
   ]
  },
  {
@@ -360,6 +360,18 @@
   ]
  },
  {
+  "id": 560636,
+  "date": "2026-11-08T14:00:00Z",
+  "competition": "Premier League",
+  "domicile": "Sunderland",
+  "exterieur": "Chelsea",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
   "id": 560638,
   "date": "2026-11-08T14:00:00Z",
   "competition": "Premier League",
@@ -377,18 +389,6 @@
   "competition": "Ligue 1",
   "domicile": "Stade Rennais",
   "exterieur": "Lille",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
-  "id": 560636,
-  "date": "2026-11-08T14:00:00Z",
-  "competition": "Premier League",
-  "domicile": "Sunderland",
-  "exterieur": "Chelsea",
   "statut": "TIMED",
   "score": [
    null,
@@ -420,11 +420,11 @@
   ]
  },
  {
-  "id": 559631,
+  "id": 559633,
   "date": "2026-11-08T16:15:00Z",
   "competition": "Ligue 1",
-  "domicile": "Le Mans",
-  "exterieur": "Monaco",
+  "domicile": "Le Havre",
+  "exterieur": "Lorient",
   "statut": "TIMED",
   "score": [
    null,
@@ -432,11 +432,11 @@
   ]
  },
  {
-  "id": 559633,
+  "id": 559631,
   "date": "2026-11-08T16:15:00Z",
   "competition": "Ligue 1",
-  "domicile": "Le Havre",
-  "exterieur": "Lorient",
+  "domicile": "Le Mans",
+  "exterieur": "Monaco",
   "statut": "TIMED",
   "score": [
    null,
@@ -540,11 +540,11 @@
   ]
  },
  {
-  "id": 558529,
+  "id": 559630,
   "date": "2026-11-08T19:45:00Z",
-  "competition": "Serie A",
-  "domicile": "Fiorentina",
-  "exterieur": "Juventus",
+  "competition": "Ligue 1",
+  "domicile": "RC Lens",
+  "exterieur": "Marseille",
   "statut": "TIMED",
   "score": [
    null,
@@ -552,11 +552,11 @@
   ]
  },
  {
-  "id": 559630,
+  "id": 558529,
   "date": "2026-11-08T19:45:00Z",
-  "competition": "Ligue 1",
-  "domicile": "RC Lens",
-  "exterieur": "Marseille",
+  "competition": "Serie A",
+  "domicile": "Fiorentina",
+  "exterieur": "Juventus",
   "statut": "TIMED",
   "score": [
    null,
