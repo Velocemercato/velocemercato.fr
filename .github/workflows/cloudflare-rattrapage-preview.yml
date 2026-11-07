@@ -1,7 +1,7 @@
-name: Preview merged news feeds
+name: Verify merged news feeds after propagation
 on:
   push:
-    branches: [codex/preview-rattrapage]
+    branches: [codex/verify-rattrapage]
 permissions:
   contents: read
   actions: read
@@ -41,12 +41,6 @@ jobs:
               assert all(isinstance(entry.get('id'), str) for entry in entries)
               pathlib.Path('data', category + '-baseline.json').write_text(json.dumps(entries, ensure_ascii=False))
           PY
-      - name: Deploy the preview Worker only
-        working-directory: cloudflare/rattrapage
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKER_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: c5227875896e9a281915ed70c146e845
-        run: npx --yes wrangler@4 deploy
       - name: Verify archives and additions
         working-directory: cloudflare/rattrapage
         run: |
