@@ -1,4 +1,5 @@
 import { renderKit } from './kit-reseaux.mjs';
+import { htmlResponse, polish, sitemap } from './site-polish.mjs';
 import { logo } from './logo.mjs';
 import { latestPastille, liveBootstrap, livePaths, liveResponse } from './live-data.mjs';
 
@@ -90,13 +91,28 @@ export default {
       const kit = await renderKit();
       return request.method === 'HEAD' ? new Response(null, { headers: kit.headers }) : kit;
     }
+    if (url.pathname === '/sitemap.xml' && request.method === 'GET') {
+      const origin = isUnivers ? UNIVERS_ORIGIN : VELOCE_ORIGIN;
+      return sitemap(await fetch(new URL('/sitemap.xml', origin)), isUnivers);
+    }
+    if (isUnivers && ['/studio/reseaux', '/studio/reseaux.html', '/studio/reseaux/'].includes(url.pathname)) {
+      return Response.redirect('https://vmunivers.fr/kit-du-jour' + url.search, 302);
+    }
+    if (isUnivers && ['/studio', '/studio/', '/studio.html'].includes(url.pathname)) {
+      return Response.redirect('https://velocemercato.fr/web-studio' + url.search, 302);
+    }
     const studio = !isUnivers && ['/web-studio', '/web-studio.html'].includes(url.pathname);
     const home = url.pathname === '/';
     const velocePage = !isUnivers && (VELOCE_HTML.has(url.pathname) ||
       /^\/multisport\/(nba|nfl|f1|motogp|tennis|rugby|cyclisme|nhl|mlb|mma|ski)\/$/.test(url.pathname));
     if (!home && !studio && !velocePage) {
-      if (isUnivers) return universPage(request, url, isPreview);
-      return isPreview ? new Response(null, { status: 404 }) : fetch(request);
+      const response = isUnivers ? await universPage(request, url, isPreview) : isPreview
+        ? await fetch(new URL(url.pathname + url.search, VELOCE_ORIGIN), { method: request.method, redirect: 'manual' })
+        : await fetch(request);
+      if (request.method === 'HEAD' || !response.ok ||
+          !response.headers.get('Content-Type')?.includes('text/html')) return response;
+      const rewriter = polish(new HTMLRewriter(), url, isUnivers);
+      return htmlResponse(rewriter.transform(response), !isPreview);
     }
 
     const origin = isUnivers ? UNIVERS_ORIGIN : VELOCE_ORIGIN;
@@ -114,7 +130,7 @@ export default {
       return response;
     }
 
-    const rewriter = new HTMLRewriter();
+    const rewriter = polish(new HTMLRewriter(), url, isUnivers);
     if (studio) {
       rewriter.on('#tarifs', {
         element(element) {
@@ -227,13 +243,6 @@ export default {
         });
       }
     }
-    const rewritten = rewriter.transform(response);
-
-    const headers = new Headers(rewritten.headers);
-    for (const name of ['Content-Length', 'ETag', 'Last-Modified']) {
-      headers.delete(name);
-    }
-    headers.set('Cache-Control', 'no-store');
-    return new Response(rewritten.body, { status: rewritten.status, headers });
+    return htmlResponse(rewriter.transform(response), !isPreview);
   }
 };

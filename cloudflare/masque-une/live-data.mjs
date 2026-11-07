@@ -84,7 +84,7 @@ export async function liveResponse(request, path, now = Date.now()) {
       }),
       maj: data?.maj ?? null
     };
-  } else if (path === '/flash.json' || (recent && (path === '/videos.json' || path === '/studio/emissions.json'))) {
+  } else if (path === '/flash.json' || (recent && (path === '/videos.json' || path === '/studio/emissions.json' || path === '/studio/diffusions.json'))) {
     data = (data ?? []).filter(row => now - timestamp(publishedAt(row), now) < 48 * hour);
   }
   const response = Response.json(data ?? [], { headers });
@@ -112,7 +112,7 @@ export const liveBootstrap = `<script id="vm-live-bootstrap">
     const url = new URL(resource, document.baseURI);
     if (url.origin === location.origin && (!options?.method || options.method === 'GET')) {
       if (paths.has(url.pathname)) {
-        const recent = url.pathname === '/studio/emissions.json' || url.pathname === '/videos.json';
+        const recent = url.pathname === '/studio/emissions.json' || url.pathname === '/studio/diffusions.json' || url.pathname === '/videos.json';
         return original(${JSON.stringify(mirror)} + url.pathname + (recent ? '?vm_recent=1' : ''), options);
       }
       if (url.pathname === '/prono.json') return Promise.resolve(new Response('null'));
