@@ -69,6 +69,23 @@ document.addEventListener('click', event => {
 });
 </script>`;
 
+const universBannerStyle = `<style id="vm-univers-manga-align">
+.vu-manga-banner{
+  display:grid!important;grid-template-columns:minmax(0,1fr) repeat(2,max-content);
+  align-items:center;gap:12px 16px!important
+}
+.vu-manga-banner>div{min-width:0}
+.vu-manga-banner>a{margin:0!important;text-align:center}
+@media(max-width:1020px){
+  .vu-manga-banner{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vu-manga-banner>div{grid-column:1/-1}
+}
+@media(max-width:560px){
+  .vu-manga-banner{grid-template-columns:minmax(0,1fr);padding:14px!important}
+  .vu-manga-banner>a{width:100%;box-sizing:border-box;overflow-wrap:anywhere}
+}
+</style>`;
+
 const offlineNotice = `<p class="vm-offline" role="status" hidden>Hors connexion · les actualités et les scores ne peuvent pas être actualisés.</p><script>
 (() => {
   const banner = document.querySelector('.vm-offline');
@@ -145,7 +162,14 @@ export function polish(rewriter, url, universe) {
     });
   }
   if (universe && pathname === '/') {
-    rewriter.on('.vmv-credit', {
+    rewriter.on('aside[aria-label="Découvrir VM MANGAS"]', {
+      element(banner) {
+        const classes = banner.getAttribute('class');
+        banner.setAttribute('class', classes ? classes + ' vu-manga-banner' : 'vu-manga-banner');
+      }
+    }).on('head', {
+      element(head) { head.append(universBannerStyle, { html: true }); }
+    }).on('.vmv-credit', {
       text(chunk) { chunk.replace(chunk.text.replace(/Prix de création TTC/g, 'Prix de création')); }
     });
   }
