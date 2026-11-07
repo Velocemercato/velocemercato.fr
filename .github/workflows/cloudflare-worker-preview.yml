@@ -67,7 +67,7 @@ jobs:
               def __init__(self):
                   super().__init__()
                   self.ids = set()
-                  def handle_starttag(self, tag, attrs):
+              def handle_starttag(self, tag, attrs):
                   attrs = dict(attrs)
                   if 'id' in attrs:
                       self.ids.add(attrs['id'])
