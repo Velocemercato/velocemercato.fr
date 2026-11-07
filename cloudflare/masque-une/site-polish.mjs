@@ -46,6 +46,8 @@ const mobileStyle = `<style id="vm-audit-polish">
 :where(main,section,h2,h3)[id]{scroll-margin-top:88px}
 .vm-flash-toggle{display:block;max-width:100%;margin:6px 12px;padding:6px 10px;border-radius:6px;border:1px solid currentColor;background:#132144;color:#fff;font:600 .78rem system-ui;cursor:pointer}
 body:has(#ticker[hidden]) .vm-flash-toggle{display:none}
+.vm-offline{background:#172442;color:#fff;text-align:center;padding:8px 16px;font:600 .875rem system-ui}
+.vm-offline[hidden]{display:none}
 .vm-flash-paused *{animation-play-state:paused!important}
 @media(prefers-reduced-motion:reduce){#tickerRun,.home-tickers [class*="run"]{animation:none!important;transform:none!important}}
 @media(max-width:640px){
@@ -65,6 +67,16 @@ document.addEventListener('click', event => {
   button.setAttribute('aria-pressed', String(paused));
   button.textContent = paused ? 'Reprendre le flash' : 'Mettre le flash en pause';
 });
+</script>`;
+
+const offlineNotice = `<p class="vm-offline" role="status" hidden>Hors connexion · les actualités et les scores ne peuvent pas être actualisés.</p><script>
+(() => {
+  const banner = document.querySelector('.vm-offline');
+  const update = () => { banner.hidden = navigator.onLine; };
+  window.addEventListener('offline', update);
+  window.addEventListener('online', update);
+  update();
+})();
 </script>`;
 
 export function polish(rewriter, url, universe) {
@@ -90,6 +102,10 @@ export function polish(rewriter, url, universe) {
     }
   }).on('meta[property="og:image"]', {
     element() { shareImage = true; }
+  }).on('body', {
+    element(body) {
+      body.prepend(offlineNotice, { html: true });
+    }
   }).on('head', {
     element(head) {
       head.onEndTag(end => {
@@ -104,7 +120,7 @@ export function polish(rewriter, url, universe) {
     }
   });
 
-  if (!universe && ['/actus/', '/vm-gaming/'].includes(pathname)) {
+  if (!universe && ['/', '/actus/', '/vm-gaming/'].includes(pathname)) {
     rewriter.on('#ticker', {
       element(ticker) { ticker.before(flashButton + flashScript, { html: true }); }
     });
@@ -118,7 +134,9 @@ export function polish(rewriter, url, universe) {
     });
   }
   if (!universe && pathname === '/') {
-    rewriter.on('.quiz-tag', {
+    rewriter.on('details.pollbox', {
+      element(poll) { poll.setAttribute('hidden', ''); }
+    }).on('.quiz-tag', {
       element(tag) { tag.setInnerContent('🧠 LE QUIZ VM'); }
     }).on('a[href="/pronos/#pronos-du-jour"]', {
       element(link) {

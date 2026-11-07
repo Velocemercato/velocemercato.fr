@@ -110,6 +110,10 @@ export const liveBootstrap = `<script id="vm-live-bootstrap">
   window.fetch = (resource, options) => {
     if (typeof resource !== 'string' && !(resource instanceof URL)) return original(resource, options);
     const url = new URL(resource, document.baseURI);
+    if (location.pathname === '/' && url.origin === 'https://countapi.mileshilliard.com' &&
+        ['/api/v1/get/velocemercato-pastille-', '/api/v1/hit/velocemercato-pastille-'].some(prefix => url.pathname.startsWith(prefix))) {
+      return Promise.resolve(new Response(null, { status: 410 }));
+    }
     if (url.origin === location.origin && (!options?.method || options.method === 'GET')) {
       if (paths.has(url.pathname)) {
         const recent = url.pathname === '/studio/emissions.json' || url.pathname === '/studio/diffusions.json' || url.pathname === '/videos.json';

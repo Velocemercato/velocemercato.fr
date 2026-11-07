@@ -1,5 +1,6 @@
 import { renderKit } from './kit-reseaux.mjs';
 import { htmlResponse, polish, sitemap } from './site-polish.mjs';
+import { footServiceWorker, pwaIcon } from './pwa-assets.mjs';
 import { logo } from './logo.mjs';
 import { latestPastille, liveBootstrap, livePaths, liveResponse } from './live-data.mjs';
 
@@ -76,6 +77,11 @@ export default {
     if (isPreview) url.searchParams.delete('site');
     if (!['GET', 'HEAD'].includes(request.method)) {
       return isPreview ? new Response(null, { status: 404 }) : fetch(request);
+    }
+    const icon = pwaIcon(url.pathname, isUnivers, request.method === 'HEAD');
+    if (icon) return icon;
+    if (!isUnivers && url.pathname === '/sw.js' && request.method === 'GET') {
+      return footServiceWorker(await fetch(new URL('/sw.js', VELOCE_ORIGIN)));
     }
     if (url.pathname === '/assets/vm-logo-optimized.webp' ||
         (url.pathname === '/img/logo-vm-officiel.png' && request.headers.get('Accept')?.includes('image/webp'))) {
