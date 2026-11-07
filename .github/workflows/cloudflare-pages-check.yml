@@ -1,0 +1,44 @@
+name: Compare Veloce public and preview
+on:
+  push:
+    branches: [codex/pages-check]
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Compare the home page and content
+        run: |
+          python - <<'PY'
+          import datetime, json, re, urllib.request
+          sites = {
+              'preview': 'https://a35dcff0.velocemercato.pages.dev',
+              'origin': 'https://velocemercato.pages.dev',
+              'public': 'https://velocemercato.fr',
+          }
+          paths = ('/', '/articles.json', '/actus/news.json', '/vm-gaming/news.json', '/studio/emissions.json', '/videos.json', '/flash.json')
+          for name, base in sites.items():
+              for path in paths:
+                  try:
+                      req = urllib.request.Request(base + path, headers={'User-Agent': 'VeloceMercato-Deployment-Check/1.0', 'Cache-Control': 'no-cache'})
+                      with urllib.request.urlopen(req, timeout=8) as response:
+                          data = response.read().decode()
+                      if path == '/':
+                          print(name, path, 'homepage_css=' + str('#actualites-du-jour{display:none!important}' in data), 'feed=' + str('id="feed"' in data), 'pastille=' + str('id="pastille-tv"' in data))
+                          continue
+                      rows = json.loads(data)
+                      dates = []
+                      for row in rows:
+                          d = row.get('publishedAt') or row.get('date') or row.get('createdAt')
+                          if isinstance(d, str):
+                              try:
+                                  t = datetime.datetime.fromisoformat(d.replace('Z', '+00:00'))
+                                  dates.append(t if t.tzinfo else t.replace(tzinfo=datetime.timezone.utc))
+                              except ValueError:
+                                  pass
+                      print(name, path, 'count=' + str(len(rows)), 'newest=' + str(max(dates).isoformat() if dates else None))
+                  except Exception as e:
+                      print(name, path, type(e).__name__, str(e)[:160])
+          PY
