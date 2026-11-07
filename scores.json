@@ -109,18 +109,6 @@
    ]
   },
   {
-   "id": 565850,
-   "date": "2026-11-07T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "Dortmund",
-   "ext": "Elversberg",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    1
-   ]
-  },
-  {
    "id": 565848,
    "date": "2026-11-07T14:30:00Z",
    "comp": "Bundesliga",
@@ -133,15 +121,15 @@
    ]
   },
   {
-   "id": 565851,
+   "id": 565850,
    "date": "2026-11-07T14:30:00Z",
    "comp": "Bundesliga",
-   "dom": "Mainz",
-   "ext": "Bayern",
+   "dom": "Dortmund",
+   "ext": "Elversberg",
    "statut": "FINISHED",
    "score": [
-    1,
-    2
+    2,
+    1
    ]
   },
   {
@@ -153,6 +141,18 @@
    "statut": "FINISHED",
    "score": [
     2,
+    2
+   ]
+  },
+  {
+   "id": 565851,
+   "date": "2026-11-07T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "Mainz",
+   "ext": "Bayern",
+   "statut": "FINISHED",
+   "score": [
+    1,
     2
    ]
   },
@@ -270,7 +270,7 @@
    "comp": "Liga",
    "dom": "Valencia",
    "ext": "Real Madrid",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     0,
     2
@@ -282,12 +282,12 @@
    "comp": "Ligue 1",
    "dom": "PSG",
    "ext": "Troyes",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     1,
     0
    ]
   }
  ],
- "maj": "2026-11-07T21:10:38Z"
+ "maj": "2026-11-07T21:12:32Z"
 }
