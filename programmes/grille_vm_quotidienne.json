@@ -35,12 +35,13 @@
     },
     {
       "heure": "10:00",
-      "rubrique": "VM Belfort",
+      "rubrique": "VM Belfort · Brève Multisport sur VéloceMercato",
       "pages_facebook": [
+        "meta",
         "meta_univers",
         "meta_pronos"
       ],
-      "condition": "Flash local sourcé; aucun JT vidéo fictif"
+      "condition": "Flash local sourcé; aucun JT vidéo fictif. Brève Multisport récente, source et lien"
     },
     {
       "heure": "10:40",
@@ -52,21 +53,21 @@
     },
     {
       "heure": "11:00",
-      "rubrique": "JT Foot",
+      "rubrique": "JT Foot · Brève Foot sur VéloceMercato",
       "pages_facebook": [
         "meta",
         "meta_pronos"
       ],
-      "condition": "Lien public YouTube confirmé; sinon non publié"
+      "condition": "JT avec lien YouTube confirmé ou brève Foot avec source et lien"
     },
     {
       "heure": "12:00",
-      "rubrique": "JT Actus",
+      "rubrique": "JT Actus · Brève Multisport sur VéloceMercato",
       "pages_facebook": [
         "meta",
         "meta_pronos"
       ],
-      "condition": "Lien public YouTube confirmé; sinon non publié"
+      "condition": "Lien public YouTube confirmé; sinon non publié. Brève Multisport récente, source et lien"
     },
     {
       "heure": "13:00",
@@ -79,12 +80,29 @@
     },
     {
       "heure": "15:00",
-      "rubrique": "VM Belfort, deuxième flash",
+      "rubrique": "VM Belfort, deuxième flash · Brève Multisport sur VéloceMercato",
       "pages_facebook": [
+        "meta",
         "meta_univers",
         "meta_pronos"
       ],
-      "condition": "Autre information locale récente; vidéo seulement produite"
+      "condition": "Autre information locale récente; vidéo seulement produite. Brève Multisport récente, source et lien"
+    },
+    {
+      "heure": "16:00",
+      "rubrique": "Gaming",
+      "pages_facebook": [
+        "meta"
+      ],
+      "condition": "Brève récente, source et lien"
+    },
+    {
+      "heure": "17:00",
+      "rubrique": "Brève Multisport",
+      "pages_facebook": [
+        "meta"
+      ],
+      "condition": "Brève récente, source et lien"
     },
     {
       "heure": "18:00",
@@ -115,12 +133,21 @@
     },
     {
       "heure": "21:00",
-      "rubrique": "Projet VM Univers",
+      "rubrique": "Projet VM Univers · Brève Multisport sur VéloceMercato",
       "pages_facebook": [
+        "meta",
         "meta_univers",
         "meta_pronos"
       ],
-      "condition": "Mettre en avant un projet réel du groupe"
+      "condition": "Mettre en avant un projet réel du groupe. Brève Multisport récente, source et lien"
+    },
+    {
+      "heure": "22:00",
+      "rubrique": "Actualités générales",
+      "pages_facebook": [
+        "meta"
+      ],
+      "condition": "Brève récente, source et lien"
     },
     {
       "heure": "22:30",
@@ -130,12 +157,21 @@
         "meta_pronos"
       ],
       "condition": "Partager uniquement les JT publics du jour; le dimanche, rétrospective hebdomadaire si produite"
+    },
+    {
+      "heure": "23:00",
+      "rubrique": "Brève Multisport",
+      "pages_facebook": [
+        "meta"
+      ],
+      "condition": "Brève récente, source et lien"
     }
   ],
   "sources": [
     "articles.json",
     "actus/news.json",
     "vm-gaming/news.json",
+    "multisport/actualites.json",
     "belfort/actus.json",
     "studio/diffusions.json",
     "studio/reseaux.json",
