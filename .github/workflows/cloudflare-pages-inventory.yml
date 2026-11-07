@@ -1,0 +1,35 @@
+name: Inventaire de la version Cloudflare
+on:
+  push:
+    branches: [codex/pages-inventory]
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Compare public assets without deploying
+        run: |
+          python - <<'PY'
+          import hashlib, json, urllib.request, urllib.parse, xml.etree.ElementTree as ET
+          origin = 'https://velocemercato.pages.dev'
+          preview = 'https://a35dcff0.velocemercato.pages.dev'
+          def get(base, path):
+              with urllib.request.urlopen(base + path, timeout=12) as response:
+                  return response.read()
+          def paths(base):
+              root = ET.fromstring(get(base, '/sitemap.xml'))
+              return {urllib.parse.urlsplit(n.text).path for n in root.iter() if n.tag.split('}')[-1] == 'loc' and n.text}
+          a, b = paths(origin), paths(preview)
+          print('SITEMAPS', len(a), len(b))
+          print('ORIGIN_ONLY', json.dumps(sorted(a-b), ensure_ascii=False))
+          print('PREVIEW_ONLY', json.dumps(sorted(b-a), ensure_ascii=False))
+          for path in ('/', '/articles.json', '/actus/news.json', '/vm-gaming/news.json', '/studio/emissions.json', '/videos.json', '/flash.json'):
+              x, y = get(origin, path), get(preview, path)
+              print('FILE', path, 'same=' + str(hashlib.sha256(x).digest() == hashlib.sha256(y).digest()))
+              if path.endswith('.json'):
+                  n, m = json.loads(x), json.loads(y)
+                  old = {row.get('id') for row in m}
+                  print('ORIGIN_EXTRA', path, json.dumps([row.get('id') for row in n if row.get('id') not in old], ensure_ascii=False))
+          PY
