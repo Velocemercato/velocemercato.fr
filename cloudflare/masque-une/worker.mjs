@@ -1,3 +1,5 @@
+import { renderKit } from './kit-reseaux.mjs';
+
 const VELOCE_ORIGIN = 'https://velocemercato.pages.dev';
 const UNIVERS_ORIGIN = 'https://vmunivers.pages.dev';
 
@@ -26,6 +28,8 @@ const MOBILE_STYLE = `<style id="vm-home-mobile">
 </style>`;
 const MOBILE_LINKS = '<a class="vm-mother-tile vm-mobile-hub" href="#feed-title"><span class="vm-mother-icon" aria-hidden="true">⚽</span><strong>Actus foot</strong></a><a class="vm-mother-tile vm-mobile-hub" href="#pastille-tv"><span class="vm-mother-icon" aria-hidden="true">▶</span><strong>Pastilles vidéo</strong></a><a class="vm-mother-tile vm-mobile-hub" href="/belfort/"><span class="vm-mother-icon" aria-hidden="true">📍</span><strong>VM Belfort</strong></a>';
 
+const AD_OFFERS = '<section class="vms-section" id="publicite-vm" aria-labelledby="titre-publicite-vm"><div class="vms-wrap"><h2 id="titre-publicite-vm">Publicité sur les sites et réseaux VM</h2><dl><dt>Véloce Mercato, VM Actus ou VM Gaming</dt><dd>Encart média à 39 €/mois. Emplacement convenu selon la disponibilité.</dd><dt>VM Belfort</dt><dd>Encart local à 29 €/mois.</dd><dt>VM Univers</dt><dd>Emplacement sur devis, selon le format et la durée.</dd><dt>Réseaux VM</dt><dd>Pack Visibilité Pro à 39 €/mois, avec une vidéo courte par mois. Pour une page ou une campagne dédiée, demande un devis.</dd></dl><p><a class="vms-btn" href="https://velocemercato.fr/pub/#packs">Voir les formats et demander un devis</a></p></div></section>';
+
 export default {
   async fetch(request) {
     const url = new URL(request.url);
@@ -36,13 +40,21 @@ export default {
       return new Response(null, { status: 404 });
     }
 
-    if (url.pathname !== '/' || !['GET', 'HEAD'].includes(request.method)) {
+    if (!['GET', 'HEAD'].includes(request.method)) {
+      return isPreview ? new Response(null, { status: 404 }) : fetch(request);
+    }
+    if (url.pathname === '/kit-reseaux-vm') {
+      const kit = await renderKit();
+      return request.method === 'HEAD' ? new Response(null, { headers: kit.headers }) : kit;
+    }
+    const studio = !isUnivers && ['/web-studio', '/web-studio.html'].includes(url.pathname);
+    if (url.pathname !== '/' && !studio) {
       return isPreview ? new Response(null, { status: 404 }) : fetch(request);
     }
 
     const origin = isUnivers ? UNIVERS_ORIGIN : VELOCE_ORIGIN;
     if (isPreview) url.searchParams.delete('site');
-    const response = await fetch(new URL('/' + url.search, origin), {
+    const response = await fetch(new URL((studio ? '/web-studio' : '/') + url.search, origin), {
       method: request.method,
       headers: { Accept: 'text/html' },
       redirect: 'manual'
@@ -53,7 +65,13 @@ export default {
     }
 
     const rewriter = new HTMLRewriter();
-    if (isUnivers) {
+    if (studio) {
+      rewriter.on('#tarifs', {
+        element(element) {
+          element.after(AD_OFFERS, { html: true });
+        }
+      });
+    } else if (isUnivers) {
       rewriter.on('section#edition-vm', {
         element(element) {
           element.remove();
