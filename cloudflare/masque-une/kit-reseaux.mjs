@@ -32,7 +32,7 @@ async function latest(path, today, now) {
   }
 }
 
-export async function renderKit(now = new Date()) {
+export async function renderKit(now = new Date(), analysis = null) {
   const today = calendar.format(now);
   const [foot, news] = await Promise.all([latest('/articles.json', today, now), latest('/vm-gaming/news.json', today, now)]);
   const cards = [
@@ -45,6 +45,19 @@ export async function renderKit(now = new Date()) {
     { brand: 'Véloce Mercato × VM Univers', headline: 'Fais connaître ton activité', link: formats,
       text: '📣 Un événement, une ouverture ou une offre locale ? Découvrez les encarts VM Belfort à 29 €/mois, les encarts sur un média VM à 39 €/mois et les formats réseaux sur devis selon le canal.' }
   ];
+  if (analysis) {
+    const kickoff = new Intl.DateTimeFormat('fr-FR', {
+      dateStyle: 'full', timeStyle: 'short', timeZone: 'Europe/Paris'
+    }).format(analysis.kickoff);
+    cards.push({
+      brand: 'VM Multisport',
+      headline: 'Analyse sportive',
+      visual: analysis.match,
+      link: media + '/pronos/#pronos-du-jour',
+      text: '🏟️ Avant-match VM · ' + analysis.match + ' · ' + kickoff + ' (Paris). ' +
+        analysis.analysis + ' Sources : ' + analysis.sources.map(source => source.name).join(', ') + '.'
+    });
+  }
   const markup = cards.map(card => '<article data-visual="' + escape(card.visual ? card.visual.length > 68 ? card.visual.slice(0, 65).replace(/\s+\S*$/, '') + '…' : card.visual : card.headline) + '"><small>' + escape(card.brand) + '</small><h2>' + escape(card.headline) + '</h2><p class="copy">' + escape(card.text) + '</p><a class="destination" href="' + escape(card.link) + '">' + escape(card.link) + '</a><div class="actions"><button type="button" data-action="copy">Copier le texte</button><button type="button" data-action="image">Télécharger le visuel</button></div><p class="status" role="status"></p></article>').join('');
   const script = `
   document.querySelectorAll('article').forEach(card => {

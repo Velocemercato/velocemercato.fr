@@ -64,9 +64,9 @@ function pressCategory(row) {
   const url = URL.parse(row.u ?? '');
   if (!url) return row;
   const host = url.hostname.replace(/^www\./, '');
-  const mixedSection = (host === 'lesnumeriques.com' && /^\/(voiture|cine-svod|informatique)\//.test(url.pathname)) ||
-    (host === 'numerama.com' && /^\/tech\//.test(url.pathname));
-  const aboutGames = /\b(gaming|jeux? vidéo|consoles?|playstation|xbox|switch|steam|nintendo|esport|geforce|manettes?)\b/i.test(row.t);
+  const mixedSection = ['lesnumeriques.com', 'numerama.com', 'journaldugeek.com', 'next.ink'].includes(host);
+  const aboutGames = /\b(gaming|jeux? vid[eé]o|consoles?|playstation|ps5|xbox|switch|steam|nintendo|esport|geforce|manettes?|itch\.io|gta|zelda|bioware|warzone|phantom blade|kojima)\b/i
+    .test(row.t + ' ' + url.pathname.replace(/-/g, ' '));
   return mixedSection && !aboutGames ? { ...row, k: 'actus' } : row;
 }
 

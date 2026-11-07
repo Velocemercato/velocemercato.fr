@@ -90,7 +90,8 @@ jobs:
           assert isinstance(json.loads(Path('/tmp/vm-live-fil.json').read_text())['titres'], list)
           assert 'vm-live-bootstrap' in Path('/tmp/veloce-production.html').read_text()
           kit = Path('/tmp/vm-kit.html').read_text()
-          assert kit.count('data-action="copy"') == 4 and kit.count('data-action="image"') == 4
+          assert 4 <= kit.count('data-action="copy"') <= 5
+          assert kit.count('data-action="copy"') == kit.count('data-action="image"')
           studio = Ids()
           studio.feed(Path('/tmp/vm-studio-preview.html').read_text())
           assert {'publicite-vm', 'tarifs', 'devis'} <= studio.ids
@@ -98,5 +99,5 @@ jobs:
           assert 'href="#list-france"' not in Path('/tmp/vm-nba.html').read_text()
           assert 'vm-flash-toggle' in Path('/tmp/vm-gaming.html').read_text()
           assert '<loc>https://velocemercato.fr/kit-du-jour</loc>' in Path('/tmp/vm-sitemap.xml').read_text()
-          assert Path('/tmp/vmu-kit.html').read_text().count('data-action="copy"') == 4
+          assert 4 <= Path('/tmp/vmu-kit.html').read_text().count('data-action="copy"') <= 5
           PY

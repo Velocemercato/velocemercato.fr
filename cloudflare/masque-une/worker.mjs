@@ -95,7 +95,8 @@ export default {
     }
     if (!isUnivers && livePaths.has(url.pathname)) return liveResponse(request, url.pathname);
     if (url.pathname === '/kit-reseaux-vm' || url.pathname === '/kit-du-jour') {
-      const kit = await renderKit();
+      const now = new Date();
+      const kit = await renderKit(now, await verifiedAdvice(now.getTime()));
       return request.method === 'HEAD' ? new Response(null, { headers: kit.headers }) : kit;
     }
     if (!isUnivers && url.pathname === '/multisport/univers.js' && request.method === 'GET') {
