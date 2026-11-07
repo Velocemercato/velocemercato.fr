@@ -1,3 +1,4 @@
+import { gamingPressScript, multisportEdition, pronosPage, verifiedAdvice } from './public-content.mjs';
 import { renderKit } from './kit-reseaux.mjs';
 import { htmlResponse, polish, sitemap } from './site-polish.mjs';
 import { footServiceWorker, pwaIcon } from './pwa-assets.mjs';
@@ -97,6 +98,9 @@ export default {
       const kit = await renderKit();
       return request.method === 'HEAD' ? new Response(null, { headers: kit.headers }) : kit;
     }
+    if (!isUnivers && url.pathname === '/multisport/univers.js' && request.method === 'GET') {
+      return multisportEdition(await fetch(new URL(url.pathname + url.search, VELOCE_ORIGIN)));
+    }
     if (url.pathname === '/sitemap.xml' && request.method === 'GET') {
       const origin = isUnivers ? UNIVERS_ORIGIN : VELOCE_ORIGIN;
       return sitemap(await fetch(new URL('/sitemap.xml', origin)), isUnivers);
@@ -123,13 +127,14 @@ export default {
 
     const origin = isUnivers ? UNIVERS_ORIGIN : VELOCE_ORIGIN;
     const originPath = studio ? '/web-studio' : url.pathname.replace(/\.html$/, '');
-    const [response, pastille] = await Promise.all([
+    const [response, pastille, advice] = await Promise.all([
       fetch(new URL(originPath + url.search, origin), {
         method: request.method,
         headers: { Accept: 'text/html' },
         redirect: 'manual'
       }),
-      !isUnivers && request.method === 'GET' && (home || url.pathname === '/belfort/') ? latestPastille(Date.now(), home ? null : 'actus') : null
+      !isUnivers && request.method === 'GET' && (home || url.pathname === '/belfort/') ? latestPastille(Date.now(), home ? null : 'actus') : null,
+      !isUnivers && url.pathname === '/pronos/' && request.method === 'GET' ? verifiedAdvice() : null
     ]);
     if (request.method === 'HEAD' || !response.ok ||
         !response.headers.get('Content-Type')?.includes('text/html')) {
@@ -137,6 +142,16 @@ export default {
     }
 
     const rewriter = polish(new HTMLRewriter(), url, isUnivers);
+    if (!isUnivers && url.pathname === '/pronos/') pronosPage(rewriter, advice);
+    if (!isUnivers && url.pathname === '/vm-gaming/') {
+      rewriter.on('head', { element(head) { head.append(gamingPressScript, { html: true }); } })
+        .on('#t-presse', {
+          element(title) { title.setInnerContent('Derniers titres Gaming <small>Le fil de la presse, avec les liens vers les sources</small>', { html: true }); }
+        }).on('#maj', {
+          element(note) { note.setInnerContent('Brèves VM'); }
+        });
+    }
+
     if (studio) {
       rewriter.on('#tarifs', {
         element(element) {
