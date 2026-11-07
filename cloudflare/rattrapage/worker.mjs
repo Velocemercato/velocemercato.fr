@@ -6,6 +6,9 @@ import actusBaseline from './data/actus-baseline.json';
 import gamingBaseline from './data/gaming-baseline.json';
 
 const pages = 'https://velocemercato.pages.dev';
+const github = 'https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/main';
+const sportPreview = 'https://vm-sport-apercu.velocemercato87.workers.dev';
+const specialPaths = new Set(['/multisport/actualites.json', '/belfort/actus.json']);
 const collector = 'https://vm-flux-3min.velocemercato87.workers.dev';
 const feeds = new Map([
   ['/articles.json', { additions: foot, baseline: footBaseline }],
@@ -40,28 +43,81 @@ function merge(base, additions) {
   return result.sort((a, b) => Date.parse(b.publishedAt ?? b.createdAt) - Date.parse(a.publishedAt ?? a.createdAt));
 }
 
+async function readJson(origin, path) {
+  try {
+    const response = await fetch(origin + path, {
+      signal: AbortSignal.timeout(5000),
+      cf: { cacheEverything: true, cacheTtl: 180 }
+    });
+    if (response.ok) return await response.json();
+  } catch {}
+  return null;
+}
+
+function mergeLocal(base, next) {
+  if (!Array.isArray(base?.titres) || !Array.isArray(next?.titres)) return base ?? next;
+  const titles = new Map();
+  for (const item of [...base.titres, ...next.titres]) {
+    if (item?.u && !titles.has(item.u)) titles.set(item.u, item);
+  }
+  return {
+    ...base, ...next,
+    maj: [base.maj, next.maj].filter(Boolean).sort().at(-1),
+    titres: [...titles.values()].sort((a, b) => String(b.d).localeCompare(String(a.d)))
+  };
+}
+
+function mergeSports(base, next) {
+  if (!base?.sports) return next;
+  if (!next?.sports) return base;
+  const sports = { ...base.sports };
+  for (const [sport, incoming] of Object.entries(next.sports)) {
+    if (!Array.isArray(incoming)) continue;
+    const rows = new Map((sports[sport] ?? []).map(item => [item.id, item]));
+    for (const item of incoming) if (item?.id) rows.set(item.id, item);
+    sports[sport] = [...rows.values()].sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  }
+  return {
+    ...base, ...next, sports,
+    misAJour: [base.misAJour, next.misAJour].filter(Boolean).sort().at(-1)
+  };
+}
+
+function reply(data) {
+  return data
+    ? Response.json(data, { headers: { 'Cache-Control': 'no-store' } })
+    : new Response(null, { status: 503 });
+}
+
 export default {
   async fetch(request) {
     const url = new URL(request.url);
-    if (request.method !== 'GET' || !feeds.has(url.pathname)) {
+    if (request.method !== 'GET' || (!feeds.has(url.pathname) && !specialPaths.has(url.pathname))) {
       if (url.hostname === 'velocemercato.fr') return fetch(request);
       return new Response(null, { status: 404 });
     }
-    const base = await fetch(new URL(url.pathname, pages));
+    const path = url.pathname;
+    if (specialPaths.has(path)) {
+      const [base, fresh, recovered] = await Promise.all([
+        readJson(pages, path), readJson(github, path),
+        path === '/multisport/actualites.json' ? readJson(sportPreview, path) : null
+      ]);
+      if (path === '/belfort/actus.json') return reply(mergeLocal(base, fresh));
+      return reply(mergeSports(mergeSports(base, recovered), fresh));
+    }
+    const base = await fetch(new URL(path, pages));
     if (!base.ok) return base;
     const originals = await base.clone().json().catch(() => null);
     if (!Array.isArray(originals)) return base;
-    let live = [];
-    try {
-      const response = await fetch(new URL(url.pathname, collector), { signal: AbortSignal.timeout(5000) });
-      if (response.ok) {
-        const json = await response.json();
-        if (Array.isArray(json)) live = json;
-      }
-    } catch {}
+    const [current, editorial] = await Promise.all([readJson(collector, path), readJson(github, path)]);
+    const live = Array.isArray(current) ? current : [];
     const { additions, baseline } = feeds.get(url.pathname);
     const existing = [...new Map([...originals, ...baseline, ...live].map(article => [article.id, article])).values()];
-    const entries = merge(existing, additions);
+    const fresh = Array.isArray(editorial) ? editorial.filter(article => {
+      const date = Date.parse(article.publishedAt ?? article.createdAt);
+      return Number.isFinite(date) && date <= Date.now();
+    }) : [];
+    const entries = merge(merge(existing, additions), fresh);
     return Response.json(entries, { headers: { 'Cache-Control': 'no-store' } });
   }
 };

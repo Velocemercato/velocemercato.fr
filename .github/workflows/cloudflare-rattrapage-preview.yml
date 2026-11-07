@@ -46,7 +46,12 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKER_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: c5227875896e9a281915ed70c146e845
-        run: npx --yes wrangler@4 deploy
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@4 versions upload | tee /tmp/vm-rattrapage-upload.log
+          version=$(sed -nE 's/.*Worker Version ID: ([0-9a-f-]{36}).*/\1/p' /tmp/vm-rattrapage-upload.log | tail -n1)
+          test -n "$version"
+          npx --yes wrangler@4 versions deploy "$version@100%" -y
       - name: Verify archives and additions
         working-directory: cloudflare/rattrapage
         run: |
@@ -57,6 +62,11 @@ jobs:
               req = urllib.request.Request(url, headers={'User-Agent': 'VeloceMercato-Deployment-Check/1.0', 'Cache-Control':'no-cache'})
               with urllib.request.urlopen(req, timeout=15) as r:
                   return json.load(r)
+          time.sleep(12)
+          for path, key in [('/multisport/actualites.json','sports'),('/belfort/actus.json','titres')]:
+              extra = get(host + path)
+              assert extra[key], path
+              print('EXTRA', path, len(extra[key]), extra.get('misAJour') or extra.get('maj'), flush=True)
           for category, path in [('foot','/articles.json'), ('actus','/actus/news.json'), ('gaming','/vm-gaming/news.json')]:
               base = get('https://velocemercato.fr' + path)
               old = {a['id'] for a in base}
