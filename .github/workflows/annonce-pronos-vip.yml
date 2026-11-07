@@ -1,0 +1,78 @@
+name: VM · Annonce des demandes VIP
+on:
+  push:
+    branches: [codex/annonce-pronos-vip-20261107]
+    paths: [.github/workflows/annonce-pronos-vip.yml]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+
+jobs:
+  publier:
+    if: vars.VM_AUTO_META == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet 'cryptography==50.0.0' pillow
+      - name: Ouvrir les accusés chiffrés
+        run: |
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state \
+            "https://github.com/${GITHUB_REPOSITORY}.git" "$RUNNER_TEMP/vm-broadcast-state"
+      - name: Publier sur VM actus et pronos
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          from tools.publier_meta import DeliveryError, Graph, State, ensure_meta_targets, git_save
+
+          path = Path(os.environ['RUNNER_TEMP'], 'vm-broadcast-state', 'state.enc')
+          state = State(path, os.environ['VM_DIFFUSION_STATE_KEY'], lambda: git_save(path))
+          ensure_meta_targets(state)
+
+          page_id = '112294796981981'
+          token = state.data.get('tokens', {}).get('meta_pronos') or {}
+          if str(token.get('page_id')) != page_id or not token.get('page_token'):
+              raise SystemExit('Connexion à VM actus et pronos indisponible.')
+
+          receipts = state.data.setdefault('annonces_pronos_vm', {})
+          key = '2026-11-07/vip-ouvert'
+          if key in receipts:
+              print(f'Annonce déjà traitée ({receipts[key]["status"]}).')
+              raise SystemExit(0)
+
+          message = (
+              '⚽ L’avant-match VM est en ligne !\n\n'
+              'Lens–Marseille, dimanche 8 novembre à 20 h 45. Retrouvez notre analyse et les sources sur Véloce Mercato.\n\n'
+              '📩 Les demandes d’accès VIP gratuit sont ouvertes aux majeurs. Le bouton de la rubrique prépare un e-mail à envoyer à l’équipe, qui traite chaque demande manuellement.\n\n'
+              '🔞 18+ · Jouer comporte des risques. Aucun gain garanti.\n\n'
+              'https://velocemercato.fr/pronos/#pronos-du-jour'
+          )
+          receipts[key] = {'status': 'envoi'}
+          state.save()
+          try:
+              result = Graph().call('POST', page_id + '/feed', {
+                  'message': message,
+                  'access_token': token['page_token'],
+              })
+              if not result.get('id'):
+                  raise DeliveryError('Identifiant de publication absent.')
+          except (DeliveryError, OSError) as error:
+              print(f'::error::Envoi à vérifier ({type(error).__name__}).', flush=True)
+              raise SystemExit(1) from None
+
+          post_id = str(result['id']).split('_')[-1]
+          receipts[key] = {'status': 'publie', 'post_id': post_id}
+          print(f'Publié · https://www.facebook.com/{page_id}/posts/{post_id}', flush=True)
+          state.save()
+          PY
