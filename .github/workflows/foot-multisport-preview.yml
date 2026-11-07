@@ -65,6 +65,12 @@ jobs:
           print('MULTISPORT', 'public='+str(before), 'preview='+str(count), 'updated='+multisport['misAJour'], {k:len(v) for k,v in multisport['sports'].items()})
           if count <= 0 or multisport['misAJour'] <= published['misAJour']:
               raise SystemExit('No newer multisport content')
+          for sport, old_rows in published['sports'].items():
+              rows = {entry['id']: entry for entry in old_rows}
+              rows.update({entry['id']: entry for entry in multisport['sports'].get(sport, [])})
+              multisport['sports'][sport] = sorted(rows.values(), key=lambda item: item.get('date',''), reverse=True)
+              assert {entry['id'] for entry in old_rows} <= set(rows)
+          print('MULTISPORT_MERGED', sum(len(rows) for rows in multisport['sports'].values()), 'archives=preserved')
           save('actualites.json', multisport)
           PY
           cat >/tmp/vm-sport/worker.mjs <<'EOF'
