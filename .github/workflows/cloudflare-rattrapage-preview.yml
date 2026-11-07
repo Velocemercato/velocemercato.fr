@@ -31,6 +31,16 @@ jobs:
             jq -e 'type == "array" and length > 0 and all(.[]; .id and .titre and .texte and (.sources | length > 0))' "/tmp/rattrapage/rattrapage-$feed/nouveaux.json" >/dev/null
             cp "/tmp/rattrapage/rattrapage-$feed/nouveaux.json" "data/$feed.json"
           done
+          python - <<'PY'
+          import json, pathlib, urllib.request
+          for category, path in [('foot','/articles.json'), ('actus','/actus/news.json'), ('gaming','/vm-gaming/news.json')]:
+              req = urllib.request.Request('https://velocemercato.fr' + path, headers={'User-Agent':'VeloceMercato-Deployment-Check/1.0','Cache-Control':'no-cache'})
+              with urllib.request.urlopen(req, timeout=15) as response:
+                  entries = json.load(response)
+              assert isinstance(entries, list) and entries
+              assert all(isinstance(entry.get('id'), str) for entry in entries)
+              pathlib.Path('data', category + '-baseline.json').write_text(json.dumps(entries, ensure_ascii=False))
+          PY
       - name: Deploy the preview Worker only
         working-directory: cloudflare/rattrapage
         env:

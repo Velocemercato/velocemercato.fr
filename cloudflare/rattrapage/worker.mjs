@@ -1,13 +1,16 @@
 import foot from './data/foot.json';
 import actus from './data/actus.json';
 import gaming from './data/gaming.json';
+import footBaseline from './data/foot-baseline.json';
+import actusBaseline from './data/actus-baseline.json';
+import gamingBaseline from './data/gaming-baseline.json';
 
 const pages = 'https://velocemercato.pages.dev';
 const collector = 'https://vm-flux-3min.velocemercato87.workers.dev';
 const feeds = new Map([
-  ['/articles.json', foot],
-  ['/actus/news.json', actus],
-  ['/vm-gaming/news.json', gaming]
+  ['/articles.json', { additions: foot, baseline: footBaseline }],
+  ['/actus/news.json', { additions: actus, baseline: actusBaseline }],
+  ['/vm-gaming/news.json', { additions: gaming, baseline: gamingBaseline }]
 ]);
 
 function sourceKeys(article) {
@@ -56,7 +59,9 @@ export default {
         if (Array.isArray(json)) live = json;
       }
     } catch {}
-    const entries = merge(merge(originals, live), feeds.get(url.pathname));
+    const { additions, baseline } = feeds.get(url.pathname);
+    const existing = [...new Map([...originals, ...baseline, ...live].map(article => [article.id, article])).values()];
+    const entries = merge(existing, additions);
     return Response.json(entries, { headers: { 'Cache-Control': 'no-store' } });
   }
 };
