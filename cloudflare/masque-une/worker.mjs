@@ -47,29 +47,33 @@ async function articleFallback(pathname, method, missing) {
 
   const path = '/a/' + id;
   const canonical = 'https://velocemercato.fr' + path;
-  const file = new URL('https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/main' + path + '.html');
-  file.searchParams.set('vm', String(Math.floor(Date.now() / 120_000)));
+  const origins = [
+    'https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/main',
+    'https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@main'
+  ];
   const unavailable = reason => {
     const headers = new Headers(missing.headers);
     headers.set('X-VM-Article-Fallback', reason);
     return new Response(missing.body, { status: missing.status, headers });
   };
   try {
-    const source = await fetch(file, {
-      headers: { Accept: 'text/html, text/plain' },
-      redirect: 'error',
-      signal: AbortSignal.timeout(4500),
-      cf: { cacheEverything: true, cacheTtlByStatus: { '200-299': 120, '400-599': 0 } }
-    });
-    if (!source.ok) return unavailable('source-' + source.status);
-    const html = await source.text();
-    if (!html.includes('<link rel="canonical" href="' + canonical + '.html">') &&
-        !html.includes('<link rel="canonical" href="' + canonical + '">')) return unavailable('source-non-conforme');
+    const html = await Promise.any(origins.map(async origin => {
+      const file = new URL(origin + path + '.html');
+      file.searchParams.set('vm', String(Math.floor(Date.now() / 120_000)));
+      const source = await fetch(file, { signal: AbortSignal.timeout(4500) });
+      if (!source.ok) throw new Error('source-' + source.status);
+      const body = await source.text();
+      if (!body.includes('<link rel="canonical" href="' + canonical + '.html">') &&
+          !body.includes('<link rel="canonical" href="' + canonical + '">')) throw new Error('source-non-conforme');
+      return body;
+    }));
     return new Response(method === 'HEAD' ? null : html, {
       headers: { 'Content-Type': 'text/html; charset=utf-8', 'X-Content-Type-Options': 'nosniff' }
     });
-  } catch {
-    return unavailable('source-indisponible');
+  } catch (error) {
+    const reason = error.errors?.map(item => /^source-(?:\d{3}|non-conforme)$/.test(item.message) ?
+      item.message : item.name === 'TimeoutError' ? 'delai' : 'connexion').join(', ');
+    return unavailable(reason || 'source-indisponible');
   }
 }
 
