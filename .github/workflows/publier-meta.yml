@@ -12,7 +12,7 @@ on:
       article:
         description: 'Publier un article tout de suite'
         type: choice
-        options: ['', 'foot', 'actus', 'gaming', 'lancement-vmunivers', 'annonce-vm-meta-gaming', 'ballon-dor-2026']
+        options: ['', 'foot', 'actus', 'gaming', 'multisport', 'lancement-vmunivers', 'annonce-vm-meta-gaming', 'ballon-dor-2026']
         default: ''
 
 permissions:
@@ -54,7 +54,12 @@ jobs:
             git -C "$STATE_DIR" remote add origin "$repo_url"
           fi
       - name: Publier les pastilles et un article (si VM_AUTO_META=true)
+        env:
+          VM_MULTISPORT_FEED: ${{ runner.temp }}/vm-multisport.json
         run: |
+          if [[ "${ARTICLE:-}" = multisport || "$(TZ=Europe/Paris date +%H)" =~ ^(10|12|15|17|21|23)$ ]]; then
+            curl -fsS --max-time 10 https://velocemercato.fr/multisport/actualites.json -o "$VM_MULTISPORT_FEED" || rm -f "$VM_MULTISPORT_FEED"
+          fi
           if [ "${ARTICLE:-}" = ballon-dor-2026 ]; then python tools/publier_meta.py ballon-dor --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
           elif [ "${ARTICLE:-}" = annonce-vm-meta-gaming ]; then python tools/publier_meta.py annonce --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
           elif [ "${ARTICLE:-}" = lancement-vmunivers ]; then python tools/publier_meta.py lancement --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
