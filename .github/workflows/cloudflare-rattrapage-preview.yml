@@ -2,6 +2,9 @@ name: Preview merged news feeds
 on:
   push:
     branches: [codex/preview-rattrapage]
+    paths:
+      - cloudflare/rattrapage/worker.mjs
+      - .github/workflows/cloudflare-rattrapage-preview.yml
 permissions:
   contents: read
   actions: read
@@ -41,7 +44,7 @@ jobs:
               assert all(isinstance(entry.get('id'), str) for entry in entries)
               pathlib.Path('data', category + '-baseline.json').write_text(json.dumps(entries, ensure_ascii=False))
           PY
-      - name: Deploy the preview Worker only
+      - name: Deploy the Worker version without changing routes
         working-directory: cloudflare/rattrapage
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKER_API_TOKEN }}
@@ -63,7 +66,9 @@ jobs:
               with urllib.request.urlopen(req, timeout=15) as r:
                   return json.load(r)
           time.sleep(12)
-          for path, key in [('/multisport/actualites.json','sports'),('/belfort/actus.json','titres')]:
+          advice = get(host + '/pronos/selection.json')
+          assert 'publicAdvice' in advice
+          for path, key in [('/multisport/actualites.json','sports'),('/belfort/actus.json','titres'),('/foot-amateur/actus.json','titres')]:
               extra = get(host + path)
               assert extra[key], path
               print('EXTRA', path, len(extra[key]), extra.get('misAJour') or extra.get('maj'), flush=True)
