@@ -1,0 +1,51 @@
+name: Audit editorial feed candidates
+on:
+  push:
+    branches: [codex/sources-vm]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check RSS endpoints and source dates
+        run: |
+          python - <<'PY'
+          import concurrent.futures, datetime, email.utils, json, urllib.request, xml.etree.ElementTree as ET
+          from pathlib import Path
+
+          data = json.loads(Path('sources-vm/candidats.json').read_text())
+          assert all(len(data[name]) == 10 for name in ('foot', 'actus', 'gaming', 'multisport'))
+
+          def check(entry):
+              category, name, address = entry
+              try:
+                  req = urllib.request.Request(address, headers={'User-Agent':'VeloceMercato-FeedAudit/1.0', 'Accept':'application/rss+xml, application/atom+xml, text/xml'})
+                  with urllib.request.urlopen(req, timeout=10) as response:
+                      root = ET.fromstring(response.read(2000000))
+                  rows = [el for el in root.iter() if el.tag.split('}')[-1] in ('item', 'entry')]
+                  dates = []
+                  for row in rows:
+                      for element in row:
+                          if element.tag.split('}')[-1] not in ('pubDate','published','updated','date') or not element.text:
+                              continue
+                          try:
+                              date = datetime.datetime.fromisoformat(element.text.strip().replace('Z', '+00:00'))
+                          except ValueError:
+                              try:
+                                  date = email.utils.parsedate_to_datetime(element.text.strip())
+                              except (ValueError, TypeError):
+                                  continue
+                          dates.append(date if date.tzinfo else date.replace(tzinfo=datetime.timezone.utc))
+                  return ('SOURCE', category, name, 'items=' + str(len(rows)), 'last=' + (max(dates).isoformat() if dates else 'unknown'))
+              except Exception as exc:
+                  return ('SOURCE_ERROR', category, name, type(exc).__name__, str(exc)[:100])
+
+          with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+              for result in pool.map(check, data['flux_a_tester']):
+                  print(*result)
+          PY
