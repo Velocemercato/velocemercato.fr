@@ -1,0 +1,91 @@
+name: VM · Invitation à suivre les trois Pages
+on:
+  push:
+    branches: [codex/partage-trois-pages-20261107]
+    paths: [.github/workflows/publier-partage-trois-pages.yml]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+
+jobs:
+  publier:
+    if: vars.VM_AUTO_META == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet 'cryptography==50.0.0' pillow
+      - name: Ouvrir les accusés chiffrés
+        run: |
+          set -euo pipefail
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state \
+            "https://github.com/${GITHUB_REPOSITORY}.git" "$RUNNER_TEMP/vm-broadcast-state"
+      - name: Publier une fois sur les trois Pages vérifiées
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          from tools.publier_meta import DeliveryError, Graph, State, ensure_meta_targets, git_save
+
+          path = Path(os.environ['RUNNER_TEMP'], 'vm-broadcast-state', 'state.enc')
+          state = State(path, os.environ['VM_DIFFUSION_STATE_KEY'], lambda: git_save(path))
+          ensure_meta_targets(state)
+
+          common = (
+              '\n\nRetrouvez les trois pages Facebook de la Team Véloce 👇\n\n'
+              '⚽ VéloceMercato · foot, mercato, scores et multisport\n'
+              'https://www.facebook.com/1384363904759072\n\n'
+              '📰 VM actus et pronos · les infos du jour et nos analyses sportives (18+)\n'
+              'https://www.facebook.com/112294796981981\n\n'
+              '🌐 VMunivers.fr · notre annuaire, nos applis et nos projets locaux\n'
+              'https://www.facebook.com/1349998758205153\n\n'
+              'Abonne-toi et partage ce post à un ami qui aimerait découvrir la Team. Merci pour le soutien ! ❤️\n\n'
+              'https://velocemercato.fr/ · https://vmunivers.fr/\n\n#TeamVeloce'
+          )
+          targets = {
+              'meta': ('VéloceMercato', '⚽ Vous êtes ici pour le foot ? Découvrez aussi les autres pages de la Team.'),
+              'meta_pronos': ('VM actus et pronos', '📰 Vous suivez nos actus ? Retrouvez aussi le foot et les projets de la Team.'),
+              'meta_univers': ('VMunivers.fr', '🌐 Vous connaissez VM Univers ? Retrouvez aussi nos pages d’actualité et de sport.'),
+          }
+          graph = Graph()
+          receipts = state.data.setdefault('invitation_pages_vm', {})
+          failed = False
+          for account, (label, lead) in targets.items():
+              key = '2026-11-07/' + account
+              if key in receipts:
+                  print(f'{label} déjà traité ({receipts[key]["status"]}).')
+                  continue
+              token = state.data.get('tokens', {}).get(account) or {}
+              if not token.get('page_token'):
+                  print(f'::error::{label} : Page non connectée.')
+                  failed = True
+                  continue
+              receipts[key] = {'status': 'envoi'}
+              state.save()
+              try:
+                  result = graph.call('POST', token['page_id'] + '/feed', {
+                      'message': lead + common,
+                      'access_token': token['page_token'],
+                  })
+                  if not result.get('id'):
+                      raise DeliveryError('Identifiant de publication absent.')
+                  post_id = str(result['id']).split('_')[-1]
+                  receipts[key] = {'status': 'publie', 'post_id': post_id}
+                  print(f'Publié · {label} · https://www.facebook.com/{token["page_id"]}/posts/{post_id}', flush=True)
+              except (DeliveryError, OSError) as error:
+                  receipts[key] = {'status': 'echec'}
+                  print(f'::error::{label} : {type(error).__name__}', flush=True)
+                  failed = True
+              state.save()
+          raise SystemExit(int(failed))
+          PY
