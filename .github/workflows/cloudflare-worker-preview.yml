@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: '22'
       - name: Check Worker syntax
-        run: node --check worker.mjs && node --check kit-reseaux.mjs && node --check live-data.mjs && node --check logo.mjs && node --check site-polish.mjs && node --check verified-urls.mjs && node --check pwa-assets.mjs
+        run: node --check worker.mjs && node --check kit-reseaux.mjs && node --check live-data.mjs && node --check logo.mjs && node --check site-polish.mjs && node --check verified-urls.mjs && node --check pwa-assets.mjs && node --check prono-desk.mjs
       - name: Deploy homepage Worker without changing routes
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKER_API_TOKEN }}
@@ -58,6 +58,7 @@ jobs:
           test "$(wc -c < /tmp/vm-icon.png)" -lt 60000
           curl --fail --silent --show-error --max-time 15 'https://velocemercato.fr/sw.js' -o /tmp/vm-sw.js
           grep -q '"/app/foot.webmanifest"' /tmp/vm-sw.js
+          curl --fail --silent --show-error --retry 3 --max-time 15 'https://velocemercato.fr/kit-pronos' -o /tmp/vm-prono-kit.html
           python - <<'PY'
           from html.parser import HTMLParser
           from pathlib import Path
@@ -100,4 +101,6 @@ jobs:
           assert 'vm-flash-toggle' in Path('/tmp/vm-gaming.html').read_text()
           assert '<loc>https://velocemercato.fr/kit-du-jour</loc>' in Path('/tmp/vm-sitemap.xml').read_text()
           assert 4 <= Path('/tmp/vmu-kit.html').read_text().count('data-action="copy"') <= 5
+          prono_kit = Path('/tmp/vm-prono-kit.html').read_text()
+          assert 'Kit Pronos VM' in prono_kit and 'http-equiv="refresh"' in prono_kit
           PY

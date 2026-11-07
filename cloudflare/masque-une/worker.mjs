@@ -1,5 +1,6 @@
 import { gamingPressScript, multisportEdition, pronosPage, verifiedAdvice } from './public-content.mjs';
-import { renderKit } from './kit-reseaux.mjs';
+import { renderKit, renderKitCards } from './kit-reseaux.mjs';
+import { pronoKitContent, readPronoDesk } from './prono-desk.mjs';
 import { htmlResponse, polish, sitemap } from './site-polish.mjs';
 import { footServiceWorker, pwaIcon } from './pwa-assets.mjs';
 import { logo } from './logo.mjs';
@@ -62,7 +63,7 @@ async function universPage(request, url, preview) {
 }
 
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     const url = new URL(request.url);
     const isPreview = url.hostname.endsWith('.workers.dev');
     const isUnivers = url.hostname === 'vmunivers.fr' ||
@@ -94,6 +95,16 @@ export default {
       return Response.redirect(new URL('/assets/vm-logo-optimized.webp', url), 302);
     }
     if (!isUnivers && livePaths.has(url.pathname)) return liveResponse(request, url.pathname);
+    if (!isUnivers && url.pathname === '/kit-pronos') {
+      const now = new Date();
+      const [desk, analysis] = await Promise.all([readPronoDesk(env, now.getTime()), verifiedAdvice(now.getTime())]);
+      const content = pronoKitContent(desk, analysis, now.getTime());
+      const kit = renderKitCards(now, content.cards, {
+        title: 'Kit Pronos VM', heading: 'VÉLOCE MERCATO · MULTISPORT', status: content.status,
+        refreshIn: content.refreshIn
+      });
+      return request.method === 'HEAD' ? new Response(null, { headers: kit.headers }) : kit;
+    }
     if (url.pathname === '/kit-reseaux-vm' || url.pathname === '/kit-du-jour') {
       const now = new Date();
       const kit = await renderKit(now, await verifiedAdvice(now.getTime()));
@@ -143,7 +154,12 @@ export default {
     }
 
     const rewriter = polish(new HTMLRewriter(), url, isUnivers);
-    if (!isUnivers && url.pathname === '/pronos/') pronosPage(rewriter, advice);
+    if (!isUnivers && url.pathname === '/pronos/') {
+      pronosPage(rewriter, advice);
+      rewriter.on('#conseil-contenu', {
+        element(section) { section.after('<p><a href="/kit-pronos">Ouvrir le kit Pronos VM</a></p>', { html: true }); }
+      });
+    }
     if (!isUnivers && url.pathname === '/vm-gaming/') {
       rewriter.on('head', { element(head) { head.append(gamingPressScript, { html: true }); } })
         .on('#t-presse', {

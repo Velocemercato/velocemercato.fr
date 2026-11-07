@@ -58,13 +58,29 @@ export async function renderKit(now = new Date(), analysis = null) {
         analysis.analysis + ' Sources : ' + analysis.sources.map(source => source.name).join(', ') + '.'
     });
   }
-  const markup = cards.map(card => '<article data-visual="' + escape(card.visual ? card.visual.length > 68 ? card.visual.slice(0, 65).replace(/\s+\S*$/, '') + '…' : card.visual : card.headline) + '"><small>' + escape(card.brand) + '</small><h2>' + escape(card.headline) + '</h2><p class="copy">' + escape(card.text) + '</p><a class="destination" href="' + escape(card.link) + '">' + escape(card.link) + '</a><div class="actions"><button type="button" data-action="copy">Copier le texte</button><button type="button" data-action="image">Télécharger le visuel</button></div><p class="status" role="status"></p></article>').join('');
+  return renderKitCards(now, cards);
+}
+
+export function renderKitCards(now, cards, options = {}) {
+  const today = calendar.format(now);
+  const title = options.title ?? 'Kit réseaux du jour';
+  const heading = options.heading ?? 'VÉLOCE MERCATO · VM UNIVERS · VM STUDIO';
+  const schedule = options.refreshIn ? '<meta http-equiv="refresh" content="' + options.refreshIn + '">' : '';
+  const instructions = options.status
+    ? '<p id="kit-pronos-status">' + escape(options.status) + '</p><p>Contrôle toutes les 30 minutes sur cette page, et plus tôt à l’expiration d’une fiche.</p>'
+    : '<p>Copie le texte, télécharge le visuel, puis publie sur ton compte.</p>';
+  const links = options.status
+    ? '<p><a href="/kit-du-jour">Kit réseaux VM</a> · <a href="/pronos/#pronos-du-jour">Analyses publiques</a></p>'
+    : '<p><a href="' + studio + '">Création de sites</a> · <a href="' + formats + '">Publicité et partenariats</a> · <a href="https://velocemercato.fr/kit-pronos">Kit Pronos</a></p>';
+  const markup = cards.map(card => '<article data-expires="' + escape(card.expires ?? '') + '" data-visual="' + escape(card.visual ? card.visual.length > 68 ? card.visual.slice(0, 65).replace(/\s+\S*$/, '') + '…' : card.visual : card.headline) + '"><small>' + escape(card.brand) + '</small><h2>' + escape(card.headline) + '</h2><p class="copy">' + escape(card.text) + '</p><a class="destination" href="' + escape(card.link) + '">' + escape(card.link) + '</a><div class="actions"><button type="button" data-action="copy">Copier le texte</button><button type="button" data-action="image">Télécharger le visuel</button></div><p class="status" role="status"></p></article>').join('');
   const script = `
   document.querySelectorAll('article').forEach(card => {
     const status = card.querySelector('.status');
+    const expired = () => card.dataset.expires && Date.now() >= Number(card.dataset.expires);
     card.addEventListener('click', async event => {
       const action = event.target.dataset.action;
       if (!action) return;
+      if (expired()) { location.reload(); return; }
       const url = card.querySelector('.destination').href;
       if (action === 'copy') {
         try {
@@ -111,6 +127,7 @@ export async function renderKit(now = new Date(), analysis = null) {
       ctx.fillText(new URL(url).hostname, 84, 1232, 900);
       ctx.font = 'bold 27px sans-serif';
       ctx.fillText(document.documentElement.dataset.date.split('-').reverse().join('/'), 84, 1286, 900);
+      if (expired()) { location.reload(); return; }
       const download = document.createElement('a');
       download.download = 'vm-' + document.documentElement.dataset.date + '-' + Array.from(document.querySelectorAll('article')).indexOf(card) + '.png';
       download.href = canvas.toDataURL('image/png');
@@ -119,7 +136,7 @@ export async function renderKit(now = new Date(), analysis = null) {
     });
   });
   `;
-  return new Response('<!doctype html><html lang="fr" data-date="' + escape(today) + '"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Kit réseaux du jour · VM Studio</title><style>*{box-sizing:border-box}body{margin:0;background:#101930;color:#fff5db;font:16px/1.55 system-ui}main{width:min(100% - 32px,1040px);margin:28px auto}h1,h2{line-height:1.16}h1{font-size:clamp(2rem,5vw,3.5rem)}a,small{color:#ffc957;overflow-wrap:anywhere}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:14px}article{background:#192645;border:1px solid #465a83;border-radius:16px;padding:17px;min-width:0}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}button{min-height:46px;padding:8px 12px;background:#ffc957;color:#101930;border:0;border-radius:8px;font:700 1rem system-ui;cursor:pointer}.status{margin:.5rem 0 0}small{font-weight:750}a:focus-visible,button:focus-visible{outline:3px solid white;outline-offset:3px}</style><main><small>VÉLOCE MERCATO · VM UNIVERS · VM STUDIO</small><h1>Kit réseaux du jour</h1><p>' + escape(displayDate.format(now)) + ' · Copie le texte, télécharge le visuel, puis publie sur ton compte.</p><div class="grid">' + markup + '</div><p><a href="' + studio + '">Création de sites</a> · <a href="' + formats + '">Publicité et partenariats</a></p></main><script>' + script + '</script></html>', {
+  return new Response('<!doctype html><html lang="fr" data-date="' + escape(today) + '"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">' + schedule + '<title>' + escape(title) + ' · VM</title><style>*{box-sizing:border-box}body{margin:0;background:#101930;color:#fff5db;font:16px/1.55 system-ui}main{width:min(100% - 32px,1040px);margin:28px auto}h1,h2{line-height:1.16}h1{font-size:clamp(2rem,5vw,3.5rem)}a,small{color:#ffc957;overflow-wrap:anywhere}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:14px}article{background:#192645;border:1px solid #465a83;border-radius:16px;padding:17px;min-width:0}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}button{min-height:46px;padding:8px 12px;background:#ffc957;color:#101930;border:0;border-radius:8px;font:700 1rem system-ui;cursor:pointer}.status{margin:.5rem 0 0}small{font-weight:750}a:focus-visible,button:focus-visible{outline:3px solid white;outline-offset:3px}</style><main><small>' + escape(heading) + '</small><h1>' + escape(title) + '</h1><p>' + escape(displayDate.format(now)) + '</p>' + instructions + '<div class="grid">' + markup + '</div>' + links + '</main><script>' + script + '</script></html>', {
     headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' }
   });
 }
