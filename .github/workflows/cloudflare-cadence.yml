@@ -1,0 +1,59 @@
+name: Verify live scores and set RSS cadence
+on:
+  push:
+    branches: [codex/cadence-rss-3]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Set three-minute cadence for the existing RSS worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKER_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          endpoint=https://api.cloudflare.com/client/v4/accounts/c5227875896e9a281915ed70c146e845/workers/scripts/vm-flux-3min/schedules
+          request() { curl --fail-with-body --silent --show-error -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$@"; }
+          before=$(request "$endpoint")
+          crons=$(jq -ce 'select(.success) | [.result.schedules[].cron]' <<<"$before")
+          case "$crons" in
+            '["*/3 * * * *"]') echo "RSS cadence already three minutes" ;;
+            '["*/5 * * * *"]')
+              request -X PUT -H 'Content-Type: application/json' --data '[{"cron":"*/3 * * * *"}]' "$endpoint" | jq -e '.success'
+              ;;
+            *) echo "Unexpected existing schedule: $crons"; exit 1 ;;
+          esac
+          request "$endpoint" | jq -e 'select(.success) | [.result.schedules[].cron] | select(. == ["*/3 * * * *"])'
+      - name: Verify live homepage and news feeds
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, urllib.request
+          from html.parser import HTMLParser
+          class Parser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.ids = set()
+              def handle_starttag(self, tag, attrs):
+                  attrs = dict(attrs)
+                  if 'id' in attrs:
+                      self.ids.add(attrs['id'])
+          def get(url):
+              req = urllib.request.Request(url, headers={'User-Agent': 'VeloceMercato-Deployment-Check/1.0', 'Cache-Control': 'no-cache'})
+              return urllib.request.urlopen(req, timeout=10).read().decode()
+          for host in ('vm-masque-une.velocemercato87.workers.dev', 'velocemercato.fr'):
+              try:
+                  page = Parser()
+                  page.feed(get('https://' + host + '/'))
+                  print('SCORES', host, 'readable=' + str('vm-readable-scores' in page.ids), 'featured=' + str('actualites-du-jour' in page.ids), 'feed=' + str('feed' in page.ids), 'pastille=' + str('pastille-tv' in page.ids))
+              except Exception as exc:
+                  print('SCORES_ERROR', host, type(exc).__name__, str(exc)[:140])
+          for path in ('/articles.json','/actus/news.json','/vm-gaming/news.json','/studio/emissions.json'):
+              try:
+                  rows = json.loads(get('https://velocemercato.fr' + path))
+                  print('FEED', path, 'count=' + str(len(rows)), 'latest=' + max((row.get('publishedAt') or row.get('date') or '') for row in rows))
+              except Exception as exc:
+                  print('FEED_ERROR', path, type(exc).__name__, str(exc)[:140])
+          PY
