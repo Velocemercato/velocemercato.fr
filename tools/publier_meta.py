@@ -33,9 +33,13 @@ GRAPH = 'https://graph.facebook.com/'
 HOSTS = {'graph.facebook.com'}
 PARIS = ZoneInfo('Europe/Paris')
 UTC = dt.timezone.utc
-# Heure de Paris -> univers de l'article publié sur Facebook (demande de Romain, 26/10/2026).
-SLOTS = {7: 'actus', 8: 'foot', 13: 'gaming',
-         18: 'foot', 19: 'actus', 20: 'gaming'}
+# Heure de Paris, page Facebook VéloceMercato.
+SLOTS = {7: 'actus', 8: 'foot', 10: 'multisport', 11: 'foot', 12: 'multisport',
+         13: 'gaming', 15: 'multisport', 16: 'gaming', 17: 'multisport',
+         18: 'foot', 19: 'actus', 20: 'gaming', 21: 'multisport', 22: 'actus', 23: 'multisport'}
+SPORTS = {'nba': 'NBA', 'nfl': 'NFL', 'f1': 'Formule 1', 'motogp': 'MotoGP',
+          'tennis': 'Tennis', 'rugby': 'Rugby', 'cyclisme': 'Cyclisme',
+          'nhl': 'Hockey sur glace', 'mlb': 'Baseball', 'mma': 'MMA', 'ski': 'Ski'}
 STUDIO_SPOT = (
     '📣 VM Studio pour les clubs, commerces et artisans. Sites dès 290 € TTC '
     'et encarts média à 39 €/mois. Voir les offres : https://velocemercato.fr/pub/#packs'
@@ -308,6 +312,81 @@ def article(root, now, done, univers='foot', hours=12):
     return None, None
 
 
+def multisport_article(root, now, done):
+    live = os.getenv('VM_MULTISPORT_FEED')
+    feed = read(Path(live), {}) if live else {}
+    if not feed.get('sports'):
+        feed = read(Path(root) / 'multisport/actualites.json', {})
+    recent_by_sport = {}
+    for key, receipt in done.items():
+        if not key.startswith('article/multisport/') or receipt.get('status') not in ('publie', 'envoye_a_verifier'):
+            continue
+        date = when(receipt.get('at'))
+        sport = receipt.get('sport')
+        if date and sport in SPORTS:
+            recent_by_sport[sport] = max(date, recent_by_sport.get(sport, date))
+    choices = []
+    for sport, rows in feed.get('sports', {}).items():
+        if sport not in SPORTS:
+            continue
+        for row in rows:
+            date = when(row.get('date'))
+            source = clean(row.get('source') or '', 75)
+            title = clean(row.get('titre') or '', 215)
+            title = re.sub(r'\s+[-–—]\s+' + re.escape(source) + r'$', '', title, flags=re.I)
+            url = str(row.get('url') or '')
+            if (not date or not dt.timedelta() <= now - date <= dt.timedelta(hours=18)
+                    or not source or not title or not re.fullmatch(r'https://[^\s<>]+', url)):
+                continue
+            if re.search(r'\b(pronostic|bookmaker|maison blanche|porte-parole)\b', title, re.I):
+                continue
+            if sport == 'ski' and not re.search(r'\b(ski|biathlon|slalom|saut à ski|combiné nordique)\b', title, re.I):
+                continue
+            fingerprint = hashlib.sha256(re.sub(r'\W+', '', title.casefold()).encode()).hexdigest()[:24]
+            key = 'article/multisport/' + fingerprint
+            if key not in done:
+                choices.append((sport, date, key, title, source, url))
+    return min(choices, key=lambda item: (
+        recent_by_sport.get(item[0], dt.datetime.min.replace(tzinfo=UTC)), -item[1].timestamp()), default=None)
+
+
+def publish_multisport(graph, meta, root, now, done, mark):
+    page_id = '1384363904759072'
+    if str(meta.get('page_id')) != page_id:
+        raise DeliveryError('Multisport : destination Facebook inattendue.')
+    slot = f'multisport/creneau/{now.astimezone(PARIS):%Y-%m-%d/%H}'
+    if slot in done:
+        return []
+    choice = multisport_article(root, now, done)
+    if not choice:
+        print('::notice::Multisport : aucune brève récente et inédite pour ce créneau.')
+        return []
+    sport, _, key, title, source, url = choice
+    destination = f'https://velocemercato.fr/multisport/{sport}/'
+    message = (f'🏆 VM Multisport · {SPORTS[sport]}\n\n{title}\n\n'
+               f'📰 Source · {source}\n{url}\n\n'
+               f'👉 Toutes les actus {SPORTS[sport]} sur VM\n{destination}\n\n#VMMultisport #VeloceMercato')
+    mark(slot, 'envoi', sport=sport)
+    mark(key, 'envoi', sport=sport)
+    try:
+        post_id = str(graph.call('POST', page_id + '/feed', {'message': message, 'link': destination,
+                                                             'access_token': meta['page_token']}).get('id') or '')
+        if not re.fullmatch(page_id + r'_\d+', post_id):
+            raise DeliveryError('Identifiant Facebook absent ou inattendu.')
+        mark(key, 'envoye_a_verifier', sport=sport, post=post_id)
+        proof = graph.call('GET', post_id, {'fields': 'id,from{id},permalink_url', 'access_token': meta['page_token']})
+        permalink = str(proof.get('permalink_url') or '')
+        if (proof.get('id') != post_id or str((proof.get('from') or {}).get('id')) != page_id
+                or not permalink.startswith('https://www.facebook.com/')):
+            raise DeliveryError('Publication envoyée, lien Facebook à vérifier.')
+        mark(key, 'publie', sport=sport, url=permalink)
+        mark(slot, 'publie', sport=sport, url=permalink)
+        print('::notice::Multisport Facebook confirmé : ' + permalink, flush=True)
+        return []
+    except DeliveryError as error:
+        return ['Multisport Facebook : ' + str(error)]
+
+
 YOUTUBE = re.compile(r'https://www\.youtube\.com/watch\?v=[A-Za-z0-9_-]{11}')
 
 
@@ -392,6 +471,13 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
     def mark(key, status, **extra):
         done[key] = {'status': status, 'at': now.isoformat(timespec='seconds'), **extra}
         state.save()
+
+    if account == 'meta' and (force == 'multisport' or (not force and slots.get(local_now.hour) == 'multisport')):
+        errors.extend(publish_multisport(graph, meta, root, now, done, mark))
+        if force:
+            for line in errors:
+                print('::error::' + line)
+            return errors
 
     projets_seulement = account == 'meta_univers'  # VM Univers : pas de JT ni d'articles, seulement les projets
     # Ne relayer les JT qu'aux créneaux correspondants, avec une URL YouTube déjà publique.
@@ -553,7 +639,7 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
             else:
                 print('::notice::VM Belfort : aucune brève locale inédite et récente.')
     univers = force or slots.get(heure)
-    if univers in ('projet', 'belfort'):
+    if univers in ('projet', 'belfort', 'multisport'):
         univers = None
     slot_key = cle(heure) if not force else f'manuel/{local:%Y-%m-%d-%H%M}/{force}'
     if univers and slot_key not in done:
@@ -827,7 +913,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action', choices=['connecter', 'publier', 'lancement', 'annonce', 'ballon-dor'])
     parser.add_argument('--state', type=Path, required=True)
-    parser.add_argument('--article', choices=['', 'foot', 'actus', 'gaming'], default='', help='Publier un article tout de suite')
+    parser.add_argument('--article', choices=['', 'foot', 'actus', 'gaming', 'multisport'], default='', help='Publier un article tout de suite')
     parser.add_argument('--cible', choices=['all', 'pronos'], default='all', help='Connexion isolée de RQ Pronos')
     parser.add_argument('--dry-run', action='store_true', help='Vérification sans enregistrer de jeton ni publier')
     args = parser.parse_args()
@@ -874,7 +960,8 @@ def main():
         print('Facebook/Instagram : publication automatique non activée (VM_AUTO_META). Rien n’est publié.')
         return
     failed = False
-    for account in ('meta', 'meta_univers'):
+    accounts = ('meta',) if args.article == 'multisport' else ('meta', 'meta_univers')
+    for account in accounts:
         if state.data.get('tokens', {}).get(account):
             failed |= bool(publish(state, Graph(), force=args.article or None if account == 'meta' else None, account=account))
     if failed:
