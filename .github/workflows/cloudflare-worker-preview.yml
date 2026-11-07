@@ -1,0 +1,56 @@
+name: Preview homepage fix
+on:
+  push:
+    branches: [codex/masque-une]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    if: github.ref_name == 'codex/masque-une'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    defaults:
+      run:
+        working-directory: cloudflare/masque-une
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Deploy preview Worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKER_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: c5227875896e9a281915ed70c146e845
+        run: |
+          set -euo pipefail
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::error::CLOUDFLARE_WORKER_API_TOKEN is missing"
+            exit 1
+          fi
+          npx --yes wrangler@4 deploy
+      - name: Verify the public preview
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 15 https://vm-masque-une.velocemercato87.workers.dev/ -o /tmp/veloce-preview.html
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          class Ids(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.ids = set()
+              def handle_starttag(self, tag, attrs):
+                  attrs = dict(attrs)
+                  if 'id' in attrs:
+                      self.ids.add(attrs['id'])
+          page = Ids()
+          page.feed(Path('/tmp/veloce-preview.html').read_text())
+          assert 'actualites-du-jour' not in page.ids
+          assert {'feed', 'pastille-tv'} <= page.ids
+          print('Featured block removed, football feed and Pastille still present.')
+          PY
