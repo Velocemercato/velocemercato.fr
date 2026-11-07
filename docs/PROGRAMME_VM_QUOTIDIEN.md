@@ -27,6 +27,19 @@
 
 Le contenu **change chaque jour**, mais la structure reste la même. Tous les créneaux sont conditionnels : si les sources manquent, le robot affiche « non publié » au lieu de remplir avec des données inventées. **Aucun rattrapage massif des heures manquées.**
 
+### Brèves sur la page Facebook VéloceMercato
+
+Depuis le 8 novembre, jusqu’à 15 créneaux quotidiens de brèves sourcées (heure de Paris). La nouvelle rotation Multisport vise uniquement cette page Facebook.
+
+| Rubrique | Créneaux |
+|---|---|
+| Actus | 7 h, 19 h, 22 h |
+| Foot | 8 h, 11 h, 18 h |
+| Gaming | 13 h, 16 h, 20 h |
+| Multisport | 10 h, 12 h, 15 h, 17 h, 21 h, 23 h |
+
+Le robot utilise le flux Multisport public, avec le fichier du dépôt en secours. Il varie les sports selon les brèves disponibles et conserve le lien public confirmé pour chaque envoi.
+
 ## Connexions et sécurité inchangées
 - Facebook Véloce : `meta` = `1384363904759072`.
 - Facebook VM Univers : `meta_univers` = `1349998758205153`.
