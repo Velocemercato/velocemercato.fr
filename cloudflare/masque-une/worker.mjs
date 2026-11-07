@@ -35,7 +35,7 @@ const MOBILE_LINKS = '<a class="vm-mother-tile vm-mobile-hub" href="#feed-title"
 const STUDIO_HELP = '<p class="vms-fine">Prépare ta demande, puis envoie-la dans ta messagerie. Tu peux aussi copier le texte et le coller dans le service de messagerie de ton choix.</p>';
 const ANALYSIS_LINK = '<h2>Analyse sportive du jour</h2><p>Retrouve l’analyse vérifiée et son horaire sur la page dédiée.</p><p><a href="/pronos/#pronos-du-jour">Voir l’analyse sportive</a></p>';
 const MOBILE_ACCESS = '<style id="vm-a11y">.vm-skip{position:absolute;left:12px;top:12px;transform:translateY(-250%);z-index:9999;background:#ffd54a;color:#111;padding:10px 14px;border-radius:5px}.vm-skip:focus{transform:none}a:focus-visible,button:focus-visible{outline:3px solid #ffd54a;outline-offset:2px}#feed-title,#actualites{scroll-margin-top:85px}@media(max-width:360px){.vm-mother-quicklinks,.vm-social-icons{flex-wrap:wrap}.vm-mother-tile strong{overflow-wrap:anywhere}}@media(prefers-reduced-motion:reduce){.home-tickers *,#sRun{animation:none!important;scroll-behavior:auto!important}}</style>';
-const VELOCE_HTML = new Set(['/scores/', '/belfort/', '/multisport/', '/kit-reseaux', '/kit-reseaux.html', '/rentabilite', '/rentabilite.html', '/mangas/', '/pronos/']);
+const VELOCE_HTML = new Set(['/scores/', '/belfort/', '/actus/', '/vm-gaming/', '/multisport/', '/kit-reseaux', '/kit-reseaux.html', '/rentabilite', '/rentabilite.html', '/mangas/', '/pronos/']);
 
 const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[char]);
 

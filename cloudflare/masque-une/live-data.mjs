@@ -59,6 +59,17 @@ async function current(path, now) {
   return baseline;
 }
 
+function pressCategory(row) {
+  if (row.k !== 'gaming') return row;
+  const url = URL.parse(row.u ?? '');
+  if (!url) return row;
+  const host = url.hostname.replace(/^www\./, '');
+  const mixedSection = (host === 'lesnumeriques.com' && /^\/(voiture|cine-svod|informatique)\//.test(url.pathname)) ||
+    (host === 'numerama.com' && /^\/tech\//.test(url.pathname));
+  const aboutGames = /\b(gaming|jeux? vidéo|consoles?|playstation|xbox|switch|steam|nintendo|esport|geforce|manettes?)\b/i.test(row.t);
+  return mixedSection && !aboutGames ? { ...row, k: 'actus' } : row;
+}
+
 export async function liveResponse(request, path, now = Date.now()) {
   const match = await current(path, now);
   const headers = new Headers({
@@ -81,7 +92,7 @@ export async function liveResponse(request, path, now = Date.now()) {
       titres: (data?.titres ?? []).filter(row => {
         const date = timestamp(row?.d, now);
         return date && now - date < 48 * hour;
-      }),
+      }).map(pressCategory),
       maj: data?.maj ?? null
     };
   } else if (path === '/flash.json' || (recent && (path === '/videos.json' || path === '/studio/emissions.json' || path === '/studio/diffusions.json'))) {
