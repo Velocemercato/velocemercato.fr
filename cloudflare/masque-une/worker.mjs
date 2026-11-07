@@ -41,6 +41,30 @@ async function universPage(request, url, preview) {
   });
 }
 
+async function articleFallback(pathname, method, missing) {
+  const id = /^\/a\/([a-z0-9][a-z0-9-]{1,99})(?:\.html)?$/.exec(pathname)?.[1];
+  if (!id || missing.status !== 404) return missing;
+
+  const path = '/a/' + id;
+  try {
+    const source = await fetch('https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/main' + path + '.html', {
+      redirect: 'error',
+      signal: AbortSignal.timeout(4500),
+      cf: { cacheEverything: true, cacheTtlByStatus: { '200-299': 120, '400-599': 0 } }
+    });
+    if (!source.ok) return missing;
+    const html = await source.text();
+    const canonical = 'https://velocemercato.fr' + path;
+    if (!html.includes('<link rel="canonical" href="' + canonical + '.html">') &&
+        !html.includes('<link rel="canonical" href="' + canonical + '">')) return missing;
+    return new Response(method === 'HEAD' ? null : html, {
+      headers: { 'Content-Type': 'text/html; charset=utf-8', 'X-Content-Type-Options': 'nosniff' }
+    });
+  } catch {
+    return missing;
+  }
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -110,9 +134,12 @@ export default {
     const velocePage = !isUnivers && (VELOCE_HTML.has(url.pathname) ||
       /^\/multisport\/(nba|nfl|f1|motogp|tennis|rugby|cyclisme|nhl|mlb|mma|ski)\/$/.test(url.pathname));
     if (!home && !studio && !velocePage) {
-      const response = isUnivers ? await universPage(request, url, isPreview) : isPreview
+      let response = isUnivers ? await universPage(request, url, isPreview) : isPreview
         ? await fetch(new URL(url.pathname + url.search, VELOCE_ORIGIN), { method: request.method, redirect: 'manual' })
         : await fetch(request);
+      if (!isUnivers && response.status === 404 && url.pathname.startsWith('/a/')) {
+        response = await articleFallback(url.pathname, request.method, response);
+      }
       if (request.method === 'HEAD' || !response.ok ||
           !response.headers.get('Content-Type')?.includes('text/html')) return response;
       const rewriter = polish(new HTMLRewriter(), url, isUnivers);
