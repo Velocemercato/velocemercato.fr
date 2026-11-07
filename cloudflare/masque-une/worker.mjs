@@ -1,3 +1,4 @@
+import { compactHeader, compactHome, compactStyle } from './home-compact.mjs';
 import { amazonFooter, amazonSelection } from './amazon-selection.mjs';
 import { gamingPressScript, multisportEdition, pronosPage, verifiedAdvice } from './public-content.mjs';
 import { renderKit, renderKitCards } from './kit-reseaux.mjs';
@@ -11,29 +12,6 @@ const VELOCE_ORIGIN = 'https://velocemercato.pages.dev';
 const UNIVERS_ORIGIN = 'https://vmunivers.pages.dev';
 
 const SCORE_STYLE = '<style id="vm-readable-scores">#sTicker .sviewport{min-width:0;overflow-x:auto}#sRun{animation:none!important;transform:none!important;padding-left:0!important}</style>';
-
-const MOBILE_STYLE = `<style id="vm-home-mobile">
-.vm-mother-portals .vm-mobile-hub{display:none}
-@media(max-width:640px){
-  .vm-mother-hero>img{height:145px}
-  .vm-mother-hero-copy{padding:18px 8px 10px}
-  .vm-mother-hero-copy h1{font-size:clamp(1.55rem,8vw,2.4rem)}
-  .vm-mother-hero-copy p{display:none}
-  .vm-mother-portals{gap:7px;margin:8px auto}
-  .vm-mother-portals .vm-mother-tile{
-    display:flex;flex-direction:row;align-items:center;justify-content:flex-start;
-    gap:7px;min-height:50px;padding:8px 10px;text-align:left;
-    border:1px solid #b9304b;border-radius:9px;box-shadow:none
-  }
-  .vm-mother-portals .vm-mother-tile::before,.vm-mother-portals .vm-mother-tile::after,
-  .vm-mother-portals .vm-mother-tile small,.vm-mother-portals .vm-mother-arrow,
-  .vm-mother-columns,.vm-mother-bottom,.vm-cinema-ribbons{display:none}
-  .vm-mother-portals .vm-mother-icon{flex:none;font-size:1.1rem}
-  .vm-mother-portals .vm-mobile-hub{display:flex}
-  .vm-mother-portals a:focus-visible{outline:2px solid #ffe16e;outline-offset:2px}
-}
-</style>`;
-const MOBILE_LINKS = '<a class="vm-mother-tile vm-mobile-hub" href="#feed-title"><span class="vm-mother-icon" aria-hidden="true">⚽</span><strong>Actus foot</strong></a><a class="vm-mother-tile vm-mobile-hub" href="#pastille-tv"><span class="vm-mother-icon" aria-hidden="true">▶</span><strong>Pastilles vidéo</strong></a><a class="vm-mother-tile vm-mobile-hub" href="/belfort/"><span class="vm-mother-icon" aria-hidden="true">📍</span><strong>VM Belfort</strong></a>';
 
 const STUDIO_HELP = '<p class="vms-fine">Prépare ta demande, puis envoie-la dans ta messagerie. Tu peux aussi copier le texte et le coller dans le service de messagerie de ton choix.</p>';
 const ANALYSIS_LINK = '<h2>Analyse sportive du jour</h2><p>Retrouve l’analyse vérifiée et son horaire sur la page dédiée.</p><p><a href="/pronos/#pronos-du-jour">Voir l’analyse sportive</a></p>';
@@ -149,7 +127,7 @@ export default {
         headers: { Accept: 'text/html' },
         redirect: 'manual'
       }),
-      !isUnivers && request.method === 'GET' && (home || url.pathname === '/belfort/') ? latestPastille(Date.now(), home ? null : 'actus') : null,
+      !isUnivers && request.method === 'GET' && (home || url.pathname === '/belfort/') ? latestPastille(Date.now(), home ? 'foot' : 'actus') : null,
       !isUnivers && url.pathname === '/pronos/' && request.method === 'GET' ? verifiedAdvice() : null
     ]);
     if (request.method === 'HEAD' || !response.ok ||
@@ -199,9 +177,11 @@ export default {
         }
       });
     } else if (home) {
+      compactHome(rewriter);
       rewriter.on('body', {
         element(element) {
-          element.prepend('<a class="vm-skip" href="#feed-title">Aller aux actualités</a>', { html: true });
+          element.prepend('<a class="vm-skip" href="#feed-title">Aller aux actualités</a>' + compactHeader, { html: true });
+          element.append(`<script>const install=document.getElementById('vmInst');if(install)document.getElementById('vm-essentiel-install').append(install);</script>`, { html: true });
         }
       }).on('#prono', {
         element(element) {
@@ -212,10 +192,6 @@ export default {
       }).on('.pastille-feed[data-broadcast-feed]', {
         element(element) {
           element.remove();
-        }
-      }).on('h1#v2-title', {
-        element(element) {
-          element.tagName = 'h2';
         }
       }).on('#ptvMain', {
         element(element) {
@@ -230,14 +206,10 @@ export default {
         element(element) {
           element.setAttribute('href', '#feed-title');
         }
-      }).on('.vm-mother-portals', {
-        element(element) {
-          element.prepend(MOBILE_LINKS, { html: true });
-        }
       }).on('head', {
         element(element) {
           element.prepend(liveBootstrap, { html: true });
-          element.append(SCORE_STYLE + MOBILE_STYLE + MOBILE_ACCESS, { html: true });
+          element.append(SCORE_STYLE + MOBILE_ACCESS + compactStyle, { html: true });
         }
       });
     } else {

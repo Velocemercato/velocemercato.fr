@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: '22'
       - name: Check Worker syntax
-        run: node --check worker.mjs && node --check kit-reseaux.mjs && node --check live-data.mjs && node --check logo.mjs && node --check site-polish.mjs && node --check verified-urls.mjs && node --check pwa-assets.mjs && node --check prono-desk.mjs && node --check amazon-selection.mjs
+        run: node --check worker.mjs && node --check kit-reseaux.mjs && node --check live-data.mjs && node --check logo.mjs && node --check site-polish.mjs && node --check verified-urls.mjs && node --check pwa-assets.mjs && node --check prono-desk.mjs && node --check amazon-selection.mjs && node --check home-compact.mjs
       - name: Deploy homepage Worker without changing routes
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKER_API_TOKEN }}
@@ -67,11 +67,8 @@ jobs:
               def __init__(self):
                   super().__init__()
                   self.ids = set()
-                  self.shortcuts = set()
-              def handle_starttag(self, tag, attrs):
+                  def handle_starttag(self, tag, attrs):
                   attrs = dict(attrs)
-                  if 'vm-mobile-hub' in attrs.get('class', '').split():
-                      self.shortcuts.add(attrs.get('href'))
                   if 'id' in attrs:
                       self.ids.add(attrs['id'])
           for filename in ('veloce-preview.html', 'veloce-production.html'):
@@ -79,7 +76,9 @@ jobs:
               page.feed(Path('/tmp', filename).read_text())
               assert 'actualites-du-jour' not in page.ids, filename
               assert {'vm-readable-scores', 'vm-home-mobile'} <= page.ids, filename
-              assert {'#feed-title', '#pastille-tv', '/belfort/'} == page.shortcuts, filename
+              assert 'vm-essentiel-title' in page.ids and 'vm-cinema-home' not in page.ids, filename
+              content = Path('/tmp', filename).read_text()
+              assert all(f'href="{url}"' in content for url in ('#feed-title', '#pastille-tv', '/belfort/', '/scores/', '/multisport/', '/vm-gaming/')), filename
               assert {'feed', 'pastille-tv'} <= page.ids, filename
               assert 'href="#actualites-du-jour"' not in Path('/tmp', filename).read_text()
               print('Verified', filename)
