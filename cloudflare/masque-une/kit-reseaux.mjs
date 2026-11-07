@@ -41,7 +41,7 @@ export async function renderKit(now = new Date()) {
     { brand: 'VM Univers', headline: 'Les médias et services VM', link: univers + '/', visual: news ? titleOf(news) : null,
       text: (news ? '🎮 Côté gaming aujourd’hui : ' + titleOf(news).slice(0, 220) + ' · ' : '') + 'Découvre VM Univers, le portail des médias, applications et services VM.' },
     { brand: 'VM Studio', headline: 'Un site pour ton activité', link: studio,
-      text: '🛠️ Artisan, club ou commerce ? VM Studio crée des sites à partir de 290 € TTC. Découvrez les modèles et les formules, puis demandez un devis.' },
+      text: '🛠️ Artisan, club ou commerce ? VM Studio crée des sites à partir de 290 €. Découvrez les modèles et les formules, puis demandez un devis.' },
     { brand: 'Véloce Mercato × VM Univers', headline: 'Fais connaître ton activité', link: formats,
       text: '📣 Un événement, une ouverture ou une offre locale ? Découvrez les encarts VM Belfort à 29 €/mois, les encarts sur un média VM à 39 €/mois et les formats réseaux sur devis selon le canal.' }
   ];

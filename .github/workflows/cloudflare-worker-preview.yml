@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: '22'
       - name: Check Worker syntax
-        run: node --check worker.mjs && node --check kit-reseaux.mjs
+        run: node --check worker.mjs && node --check kit-reseaux.mjs && node --check live-data.mjs
       - name: Deploy homepage Worker without changing routes
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKER_API_TOKEN }}
@@ -46,6 +46,7 @@ jobs:
           curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 15 'https://vm-masque-une.velocemercato87.workers.dev/?site=vmunivers' -o /tmp/vmunivers-preview.html
           curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 15 'https://vm-masque-une.velocemercato87.workers.dev/kit-reseaux-vm' -o /tmp/vm-kit.html
           curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 15 'https://vm-masque-une.velocemercato87.workers.dev/web-studio' -o /tmp/vm-studio-preview.html
+          curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 15 'https://vm-masque-une.velocemercato87.workers.dev/fil.json' -o /tmp/vm-live-fil.json
           python - <<'PY'
           from html.parser import HTMLParser
           from pathlib import Path
@@ -74,6 +75,9 @@ jobs:
           assert {'edition-vm', 'edition-titre', 'vm-home-mobile'}.isdisjoint(univers.ids)
           assert {'projets', 'vitrine'} <= univers.ids
           print('VM Univers edition removed in preview, directory and project showcase retained.')
+          import json
+          assert isinstance(json.loads(Path('/tmp/vm-live-fil.json').read_text())['titres'], list)
+          assert 'vm-live-bootstrap' in Path('/tmp/veloce-production.html').read_text()
           kit = Path('/tmp/vm-kit.html').read_text()
           assert kit.count('data-action="copy"') == 4 and kit.count('data-action="image"') == 4
           studio = Ids()
