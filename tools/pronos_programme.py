@@ -137,23 +137,21 @@ def jt_candidates(now, universe=None):
 
 
 PROMOS = (
-    ("studio", "https://vmunivers.fr/professionnels/",
-     "🛠️ VM STUDIO : TON COMMERCE MÉRITE SA VITRINE\n\nSite internet dès 290 €, sites complets de 590 € à 1 490 €, "
-     "visuels dès 90 €. Devis gratuit et sans engagement 👇\nhttps://vmunivers.fr/professionnels/#devis\n\n#VMStudio #VeloceUniverse"),
-    ("sponsors", "https://velocemercato.fr/pub/",
-     "📣 FAITES-VOUS CONNAÎTRE SUR NOS MÉDIAS\n\nFiche Pro Local dès 9,90 €/mois, encart VM Belfort 29 €/mois, "
-     "bannière sur Véloce Mercato 39 €/mois, partenaire du JT 49 €/mois 👇\nhttps://velocemercato.fr/pub/\n\n#Partenaires #VeloceUniverse"),
+    ("studio", "https://velocemercato.fr/web-studio#tarifs",
+     "🛠️ Un site pour votre activité. VM Studio crée des sites dès 290 € TTC pour les commerces, clubs et artisans. "
+     "Voir les formules : https://velocemercato.fr/web-studio#tarifs"),
+    ("sponsors", "https://velocemercato.fr/pub/#packs",
+     "📣 Faites connaître votre activité sur les médias VM. Encart Belfort à 29 €/mois, encart média à 39 €/mois. "
+     "Formats et devis : https://velocemercato.fr/pub/#packs"),
     ("univers", "https://vmunivers.fr/",
-     "👑 VÉLOCE UNIVERSE : UN SEUL UNIVERS, TOUTES NOS PASSIONS\n\nMédias, services pour les pros et projets utiles, "
-     "tout est réuni ici 👇\nhttps://vmunivers.fr/\n\n#VeloceUniverse #VMUnivers"),
-    ("site", "https://velocemercato.fr/",
-     "⚽ TOUTE L'ACTU FOOT ET MERCATO SUR LE SITE\n\nBrèves sourcées, JT en vidéo, scores en direct, multisport "
-     "et gaming 👇\nhttps://velocemercato.fr/\n\n#VeloceMercato #Football #Mercato"),
-    ("vip", "https://velocemercato.fr/pronos/#acces-vip",
-     "🔒 LE PRONO PUBLIC DU JOUR EST SUR LE SITE\n\nLes autres sélections sont réservées aux membres VIP : accès gratuit "
-     "sur demande par e-mail 👇\nhttps://velocemercato.fr/pronos/#acces-vip\n\n"
-     "18+ · Aucun résultat garanti · Jouer comporte des risques : endettement, isolement, dépendance · "
-     "Joueurs Info Service 09 74 75 13 13 · Interdit aux mineurs\n#VeloceMercato"),
+     "👑 Découvrez VM Univers. Notre portail réunit les médias, les applications et les services du groupe, "
+     "dont VM Studio pour les professionnels : https://vmunivers.fr/"),
+    ("site", "https://velocemercato.fr/web-studio#modeles",
+     "🌐 Vous lancez votre activité ? Retrouvez les exemples de sites VM Studio pour choisir un format adapté "
+     "à votre métier : https://velocemercato.fr/web-studio#modeles"),
+    ("visibilite", "https://velocemercato.fr/pub/#packs",
+     "🎬 Le Pack Visibilité Pro à 39 €/mois comprend une fiche locale, un QR pour votre carte et une vidéo courte "
+     "par mois sur les réseaux VM. Détails : https://velocemercato.fr/pub/#packs"),
 )
 
 

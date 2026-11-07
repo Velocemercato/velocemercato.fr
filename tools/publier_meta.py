@@ -36,6 +36,10 @@ UTC = dt.timezone.utc
 # Heure de Paris -> univers de l'article publié sur Facebook (demande de Romain, 26/10/2026).
 SLOTS = {7: 'actus', 8: 'foot', 13: 'gaming',
          18: 'foot', 19: 'actus', 20: 'gaming'}
+STUDIO_SPOT = (
+    '📣 VM Studio pour les clubs, commerces et artisans. Sites dès 290 € TTC '
+    'et encarts média à 39 €/mois. Voir les offres : https://velocemercato.fr/pub/#packs'
+)
 UNIVERS = {
     'foot': {'file': 'articles.json', 'emoji': '⚽', 'site': 'velocemercato.fr',
              'tags': '#foot #mercato #football #velocemercato'},
@@ -449,16 +453,17 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
         if key not in done:
             item = contenu_univers(cible)
             name, text = item['name'], texte_univers(item)
+            facebook_text = text + '\n\n' + STUDIO_SPOT if account == 'meta_univers' and heure == 21 else text
             mark(key, 'envoi', projet=name, type=item['type'])
             try:
                 if item['type'] == 'video':
-                    graph.call('POST', meta['page_id'] + '/videos', {'file_url': item['video'], 'description': text,
+                    graph.call('POST', meta['page_id'] + '/videos', {'file_url': item['video'], 'description': facebook_text,
                                                                      'access_token': meta['page_token']})
                 elif item['type'] == 'image':
-                    graph.call('POST', meta['page_id'] + '/photos', {'url': item['image'], 'caption': text,
+                    graph.call('POST', meta['page_id'] + '/photos', {'url': item['image'], 'caption': facebook_text,
                                                                      'access_token': meta['page_token']})
                 else:
-                    graph.call('POST', meta['page_id'] + '/feed', {'message': text, 'link': item['url'], 'access_token': meta['page_token']})
+                    graph.call('POST', meta['page_id'] + '/feed', {'message': facebook_text, 'link': item['url'], 'access_token': meta['page_token']})
                 print(f'::notice::facebook : {item["type"]} {name}')
                 if meta.get('ig_id'):
                     insta_text = text.replace('👉 ' + item['url'], '👉 Lien en bio')
@@ -560,6 +565,8 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
             mark(key, 'envoi')
             message = (f'{conf["emoji"]} {clean(row["titre"], 200)}\n\n{clean(row["resume"], 500)}\n\n'
                        f'Selon {clean(source["nom"], 70)}\n👉 Toute l’info sur {conf["site"]}\n\n{conf["tags"]}')
+            if account == 'meta' and not force and heure == 18:
+                message += '\n\n' + STUDIO_SPOT
             try:
                 result = graph.call('POST', meta['page_id'] + '/feed', {'message': message, 'link': article_url(univers, row['id']),
                                                                         'access_token': meta['page_token']}).get('id')
