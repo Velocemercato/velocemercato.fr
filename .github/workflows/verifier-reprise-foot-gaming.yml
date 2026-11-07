@@ -1,0 +1,56 @@
+name: Vérifier la reprise Foot et Gaming
+on:
+  push:
+    branches: [codex/verifier-reprise-foot-gaming-20261107]
+    paths: [.github/workflows/verifier-reprise-foot-gaming.yml]
+permissions:
+  contents: write
+jobs:
+  verifier:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - group: actualites
+            script: update_news.py
+            articles: articles.json
+            flash: flash.json
+          - group: gaming
+            script: update_gaming.py
+            articles: vm-gaming/news.json
+            flash: vm-gaming/flash.json
+    concurrency:
+      group: ${{ matrix.group }}
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet trafilatura
+      - name: Produire une brève vérifiée au maximum
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          VM_TEST: '1'
+          SCRIPT: ${{ matrix.script }}
+          ARTICLES: ${{ matrix.articles }}
+          FLASH: ${{ matrix.flash }}
+        run: |
+          set -euo pipefail
+          python "$SCRIPT"
+          python -m json.tool "$ARTICLES" >/dev/null
+          python -m json.tool "$FLASH" >/dev/null
+          if git diff --quiet -- "$ARTICLES" "$FLASH"; then
+            echo "Aucune nouvelle brève valide dans ce passage."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$ARTICLES" "$FLASH"
+          git commit -m "Reprise vérifiée des brèves ($SCRIPT)"
+          git pull --rebase origin main
+          git push origin HEAD:main || { git pull --rebase origin main && git push origin HEAD:main; }
