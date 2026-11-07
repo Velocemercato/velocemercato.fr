@@ -85,6 +85,18 @@
    ]
   },
   {
+   "id": 558532,
+   "date": "2026-11-07T14:00:00Z",
+   "comp": "Serie A",
+   "dom": "Torino",
+   "ext": "Lecce",
+   "statut": "IN_PLAY",
+   "score": [
+    1,
+    0
+   ]
+  },
+  {
    "id": 558534,
    "date": "2026-11-07T14:00:00Z",
    "comp": "Serie A",
@@ -97,15 +109,27 @@
    ]
   },
   {
-   "id": 558532,
-   "date": "2026-11-07T14:00:00Z",
-   "comp": "Serie A",
-   "dom": "Torino",
-   "ext": "Lecce",
+   "id": 565851,
+   "date": "2026-11-07T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "Mainz",
+   "ext": "Bayern",
    "statut": "IN_PLAY",
    "score": [
     1,
-    0
+    1
+   ]
+  },
+  {
+   "id": 565853,
+   "date": "2026-11-07T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "SC Paderborn",
+   "ext": "Frankfurt",
+   "statut": "IN_PLAY",
+   "score": [
+    1,
+    1
    ]
   },
   {
@@ -128,43 +152,7 @@
    "ext": "Elversberg",
    "statut": "IN_PLAY",
    "score": [
-    0,
-    0
-   ]
-  },
-  {
-   "id": 565853,
-   "date": "2026-11-07T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "SC Paderborn",
-   "ext": "Frankfurt",
-   "statut": "IN_PLAY",
-   "score": [
     1,
-    1
-   ]
-  },
-  {
-   "id": 565851,
-   "date": "2026-11-07T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "Mainz",
-   "ext": "Bayern",
-   "statut": "IN_PLAY",
-   "score": [
-    1,
-    1
-   ]
-  },
-  {
-   "id": 560633,
-   "date": "2026-11-07T15:00:00Z",
-   "comp": "Premier League",
-   "dom": "Fulham",
-   "ext": "Newcastle",
-   "statut": "IN_PLAY",
-   "score": [
-    0,
     0
    ]
   },
@@ -174,6 +162,18 @@
    "comp": "Premier League",
    "dom": "Arsenal",
    "ext": "Hull City",
+   "statut": "IN_PLAY",
+   "score": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": 560633,
+   "date": "2026-11-07T15:00:00Z",
+   "comp": "Premier League",
+   "dom": "Fulham",
+   "ext": "Newcastle",
    "statut": "IN_PLAY",
    "score": [
     0,
@@ -289,5 +289,5 @@
    ]
   }
  ],
- "maj": "2026-11-07T15:51:13Z"
+ "maj": "2026-11-07T15:53:07Z"
 }
