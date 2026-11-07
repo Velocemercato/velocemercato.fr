@@ -85,6 +85,18 @@
    ]
   },
   {
+   "id": 558534,
+   "date": "2026-11-07T14:00:00Z",
+   "comp": "Serie A",
+   "dom": "Cagliari",
+   "ext": "Frosinone",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    0
+   ]
+  },
+  {
    "id": 558532,
    "date": "2026-11-07T14:00:00Z",
    "comp": "Serie A",
@@ -97,15 +109,27 @@
    ]
   },
   {
-   "id": 558534,
-   "date": "2026-11-07T14:00:00Z",
-   "comp": "Serie A",
-   "dom": "Cagliari",
-   "ext": "Frosinone",
+   "id": 565850,
+   "date": "2026-11-07T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "Dortmund",
+   "ext": "Elversberg",
    "statut": "FINISHED",
    "score": [
-    1,
-    0
+    2,
+    1
+   ]
+  },
+  {
+   "id": 565848,
+   "date": "2026-11-07T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "RB Leipzig",
+   "ext": "Augsburg",
+   "statut": "FINISHED",
+   "score": [
+    5,
+    2
    ]
   },
   {
@@ -130,30 +154,6 @@
    "score": [
     2,
     2
-   ]
-  },
-  {
-   "id": 565848,
-   "date": "2026-11-07T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "RB Leipzig",
-   "ext": "Augsburg",
-   "statut": "FINISHED",
-   "score": [
-    5,
-    2
-   ]
-  },
-  {
-   "id": 565850,
-   "date": "2026-11-07T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "Dortmund",
-   "ext": "Elversberg",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    1
    ]
   },
   {
@@ -260,7 +260,7 @@
    "ext": "Sassuolo",
    "statut": "IN_PLAY",
    "score": [
-    1,
+    2,
     0
    ]
   },
@@ -289,5 +289,5 @@
    ]
   }
  ],
- "maj": "2026-11-07T20:21:12Z"
+ "maj": "2026-11-07T20:23:06Z"
 }
