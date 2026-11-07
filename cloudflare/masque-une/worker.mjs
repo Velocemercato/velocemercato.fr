@@ -82,6 +82,10 @@ export default {
         element(element) {
           element.remove();
         }
+      }).on('a[href="#actualites-du-jour"]', {
+        element(element) {
+          element.setAttribute('href', '#feed-title');
+        }
       }).on('.vm-mother-portals', {
         element(element) {
           element.prepend(MOBILE_LINKS, { html: true });

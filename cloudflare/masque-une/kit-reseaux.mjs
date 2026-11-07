@@ -6,6 +6,16 @@ const calendar = new Intl.DateTimeFormat('fr-CA', { timeZone: 'Europe/Paris', ye
 const displayDate = new Intl.DateTimeFormat('fr-FR', { timeZone: 'Europe/Paris', dateStyle: 'long' });
 const escape = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 
+function titleOf(row) {
+  const names = { amp: '&', quot: '"', apos: "'", lt: '<', gt: '>', nbsp: ' ' };
+  return row.titre.replace(/&(#x[0-9a-f]+|#\d+|amp|quot|apos|lt|gt|nbsp);/gi, (entity, value) => {
+    const key = value.toLowerCase();
+    if (key[0] !== '#') return names[key] ?? entity;
+    const code = key[1] === 'x' ? Number.parseInt(key.slice(2), 16) : Number(key.slice(1));
+    return code > 0 && code <= 0x10ffff && !(code >= 0xd800 && code <= 0xdfff) ? String.fromCodePoint(code) : entity;
+  }).trim();
+}
+
 async function latest(path, today, now) {
   try {
     const response = await fetch(media + path, { signal: AbortSignal.timeout(5000), cf: { cacheTtl: 180 } });
@@ -24,18 +34,18 @@ async function latest(path, today, now) {
 
 export async function renderKit(now = new Date()) {
   const today = calendar.format(now);
-  const [foot, news] = await Promise.all([latest('/articles.json', today, now), latest('/actus/news.json', today, now)]);
+  const [foot, news] = await Promise.all([latest('/articles.json', today, now), latest('/vm-gaming/news.json', today, now)]);
   const cards = [
-    { brand: 'Véloce Mercato', headline: 'Le foot et le sport au quotidien', link: media + '/#feed-title',
-      text: foot ? '⚽ À lire sur Véloce Mercato aujourd’hui. ' + foot.titre.trim().slice(0, 220) + ' Retrouvez aussi les résultats et le multisport.': '⚽ Foot, résultats, mercato et multisport. Retrouve les derniers titres et les Pastilles de Véloce Mercato.' },
-    { brand: 'VM Univers', headline: 'Les médias et services VM', link: univers + '/',
-      text: (news ? '📰 Dans l’actualité aujourd’hui : ' + news.titre.trim().slice(0, 220) + '. ' : '') + 'Découvre VM Univers, le portail des médias, applications et services VM.' },
+    { brand: 'Véloce Mercato', headline: 'Le foot et le sport au quotidien', link: media + '/#feed-title', visual: foot ? titleOf(foot) : null,
+      text: foot ? '⚽ À lire sur Véloce Mercato aujourd’hui. ' + titleOf(foot).slice(0, 220) + ' · Retrouvez aussi les résultats et le multisport.': '⚽ Foot, résultats, mercato et multisport. Retrouve les derniers titres et les Pastilles de Véloce Mercato.' },
+    { brand: 'VM Univers', headline: 'Les médias et services VM', link: univers + '/', visual: news ? titleOf(news) : null,
+      text: (news ? '🎮 Côté gaming aujourd’hui : ' + titleOf(news).slice(0, 220) + ' · ' : '') + 'Découvre VM Univers, le portail des médias, applications et services VM.' },
     { brand: 'VM Studio', headline: 'Un site pour ton activité', link: studio,
       text: '🛠️ Artisan, club ou commerce ? VM Studio crée des sites à partir de 290 € TTC. Découvrez les modèles et les formules, puis demandez un devis.' },
     { brand: 'Véloce Mercato × VM Univers', headline: 'Fais connaître ton activité', link: formats,
       text: '📣 Un événement, une ouverture ou une offre locale ? Découvrez les encarts VM Belfort à 29 €/mois, les encarts sur un média VM à 39 €/mois et les formats réseaux sur devis selon le canal.' }
   ];
-  const markup = cards.map(card => '<article><small>' + escape(card.brand) + '</small><h2>' + escape(card.headline) + '</h2><p class="copy">' + escape(card.text) + '</p><a class="destination" href="' + escape(card.link) + '">' + escape(card.link) + '</a><div class="actions"><button type="button" data-action="copy">Copier le texte</button><button type="button" data-action="image">Télécharger le visuel</button></div><p class="status" role="status"></p></article>').join('');
+  const markup = cards.map(card => '<article data-visual="' + escape(card.visual ? card.visual.length > 68 ? card.visual.slice(0, 65).replace(/\s+\S*$/, '') + '…' : card.visual : card.headline) + '"><small>' + escape(card.brand) + '</small><h2>' + escape(card.headline) + '</h2><p class="copy">' + escape(card.text) + '</p><a class="destination" href="' + escape(card.link) + '">' + escape(card.link) + '</a><div class="actions"><button type="button" data-action="copy">Copier le texte</button><button type="button" data-action="image">Télécharger le visuel</button></div><p class="status" role="status"></p></article>').join('');
   const script = `
   document.querySelectorAll('article').forEach(card => {
     const status = card.querySelector('.status');
@@ -67,8 +77,8 @@ export async function renderKit(now = new Date()) {
       ctx.fillStyle = '#d74352';
       ctx.beginPath(); ctx.moveTo(108, 690); ctx.lineTo(365, 351); ctx.lineTo(584, 548); ctx.lineTo(872, 297); ctx.lineTo(984, 690); ctx.fill();
       ctx.fillStyle = '#fff5db'; ctx.fillRect(72, 745, 930, 365);
-      ctx.fillStyle = '#101930'; ctx.font = 'bold 76px sans-serif';
-      const words = card.querySelector('h2').textContent.split(' ');
+      ctx.fillStyle = '#101930'; ctx.font = 'bold ' + (card.dataset.visual.length > 34 ? 57 : 76) + 'px sans-serif';
+      const words = card.dataset.visual.split(' ');
       let line = '', y = 854;
       for (const word of words) {
         const next = line ? line + ' ' + word : word;
@@ -78,6 +88,8 @@ export async function renderKit(now = new Date()) {
       ctx.fillText(line, 108, y, 842);
       ctx.fillStyle = '#ffc957'; ctx.font = 'bold 40px sans-serif';
       ctx.fillText(new URL(url).hostname, 84, 1232, 900);
+      ctx.font = 'bold 27px sans-serif';
+      ctx.fillText(document.documentElement.dataset.date, 84, 1286, 900);
       const download = document.createElement('a');
       download.download = 'vm-' + document.documentElement.dataset.date + '-' + Array.from(document.querySelectorAll('article')).indexOf(card) + '.png';
       download.href = canvas.toDataURL('image/png');

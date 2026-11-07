@@ -67,6 +67,7 @@ jobs:
               assert {'vm-readable-scores', 'vm-home-mobile'} <= page.ids, filename
               assert {'#feed-title', '#pastille-tv', '/belfort/'} == page.shortcuts, filename
               assert {'feed', 'pastille-tv'} <= page.ids, filename
+              assert 'href="#actualites-du-jour"' not in Path('/tmp', filename).read_text()
               print('Verified', filename)
           univers = Ids()
           univers.feed(Path('/tmp/vmunivers-preview.html').read_text())
