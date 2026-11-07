@@ -22,7 +22,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Deploy preview Worker
+      - name: Check Worker syntax
+        run: node --check worker.mjs
+      - name: Deploy homepage Worker without changing routes
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKER_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: c5227875896e9a281915ed70c146e845
@@ -48,15 +50,19 @@ jobs:
               def __init__(self):
                   super().__init__()
                   self.ids = set()
+                  self.shortcuts = set()
               def handle_starttag(self, tag, attrs):
                   attrs = dict(attrs)
+                  if 'vm-mobile-hub' in attrs.get('class', '').split():
+                      self.shortcuts.add(attrs.get('href'))
                   if 'id' in attrs:
                       self.ids.add(attrs['id'])
           for filename in ('veloce-preview.html', 'veloce-production.html'):
               page = Ids()
               page.feed(Path('/tmp', filename).read_text())
               assert 'actualites-du-jour' not in page.ids, filename
-              assert 'vm-readable-scores' in page.ids, filename
+              assert {'vm-readable-scores', 'vm-home-mobile'} <= page.ids, filename
+              assert {'#feed-title', '#pastille-tv', '/belfort/'} == page.shortcuts, filename
               assert {'feed', 'pastille-tv'} <= page.ids, filename
               print('Verified', filename)
           print('Featured block removed, football feed and Pastille still present.')
