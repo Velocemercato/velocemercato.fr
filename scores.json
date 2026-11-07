@@ -25,18 +25,6 @@
    ]
   },
   {
-   "id": 558532,
-   "date": "2026-11-07T14:00:00Z",
-   "comp": "Serie A",
-   "dom": "Torino",
-   "ext": "Lecce",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    1
-   ]
-  },
-  {
    "id": 558534,
    "date": "2026-11-07T14:00:00Z",
    "comp": "Serie A",
@@ -49,15 +37,15 @@
    ]
   },
   {
-   "id": 565848,
-   "date": "2026-11-07T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "RB Leipzig",
-   "ext": "Augsburg",
+   "id": 558532,
+   "date": "2026-11-07T14:00:00Z",
+   "comp": "Serie A",
+   "dom": "Torino",
+   "ext": "Lecce",
    "statut": "FINISHED",
    "score": [
-    5,
-    2
+    1,
+    1
    ]
   },
   {
@@ -81,6 +69,18 @@
    "statut": "FINISHED",
    "score": [
     2,
+    2
+   ]
+  },
+  {
+   "id": 565848,
+   "date": "2026-11-07T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "RB Leipzig",
+   "ext": "Augsburg",
+   "statut": "FINISHED",
+   "score": [
+    5,
     2
    ]
   },
@@ -289,11 +289,11 @@
    ]
   },
   {
-   "id": 560637,
+   "id": 560635,
    "date": "2026-11-08T14:00:00Z",
    "comp": "Premier League",
-   "dom": "Ipswich Town",
-   "ext": "Bournemouth",
+   "dom": "Crystal Palace",
+   "ext": "Liverpool",
    "statut": "TIMED",
    "score": [
     null,
@@ -301,11 +301,11 @@
    ]
   },
   {
-   "id": 560635,
+   "id": 560637,
    "date": "2026-11-08T14:00:00Z",
    "comp": "Premier League",
-   "dom": "Crystal Palace",
-   "ext": "Liverpool",
+   "dom": "Ipswich Town",
+   "ext": "Bournemouth",
    "statut": "TIMED",
    "score": [
     null,
@@ -517,5 +517,5 @@
    ]
   }
  ],
- "maj": "2026-11-07T23:03:27Z"
+ "maj": "2026-11-07T23:05:21Z"
 }
