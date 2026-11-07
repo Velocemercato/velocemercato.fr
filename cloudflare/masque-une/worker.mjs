@@ -46,22 +46,30 @@ async function articleFallback(pathname, method, missing) {
   if (!id || missing.status !== 404) return missing;
 
   const path = '/a/' + id;
+  const canonical = 'https://velocemercato.fr' + path;
+  const file = new URL('https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/main' + path + '.html');
+  file.searchParams.set('vm', String(Math.floor(Date.now() / 120_000)));
+  const unavailable = reason => {
+    const headers = new Headers(missing.headers);
+    headers.set('X-VM-Article-Fallback', reason);
+    return new Response(missing.body, { status: missing.status, headers });
+  };
   try {
-    const source = await fetch('https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/main' + path + '.html', {
+    const source = await fetch(file, {
+      headers: { Accept: 'text/html, text/plain' },
       redirect: 'error',
       signal: AbortSignal.timeout(4500),
       cf: { cacheEverything: true, cacheTtlByStatus: { '200-299': 120, '400-599': 0 } }
     });
-    if (!source.ok) return missing;
+    if (!source.ok) return unavailable('source-' + source.status);
     const html = await source.text();
-    const canonical = 'https://velocemercato.fr' + path;
     if (!html.includes('<link rel="canonical" href="' + canonical + '.html">') &&
-        !html.includes('<link rel="canonical" href="' + canonical + '">')) return missing;
+        !html.includes('<link rel="canonical" href="' + canonical + '">')) return unavailable('source-non-conforme');
     return new Response(method === 'HEAD' ? null : html, {
       headers: { 'Content-Type': 'text/html; charset=utf-8', 'X-Content-Type-Options': 'nosniff' }
     });
   } catch {
-    return missing;
+    return unavailable('source-indisponible');
   }
 }
 
