@@ -1,0 +1,36 @@
+name: VM · Première brève Multisport Facebook
+on:
+  push:
+    branches: [codex/multisport-facebook-20261108]
+    paths: [.github/workflows/multisport-facebook-une-fois.yml]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+
+jobs:
+  publier:
+    if: vars.VM_AUTO_META == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+      VM_AUTO_META: 'true'
+      VM_MULTISPORT_FEED: ${{ runner.temp }}/vm-multisport.json
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet 'cryptography==50.0.0' pillow
+      - name: Publier une brève Multisport sur Facebook
+        run: |
+          set -euo pipefail
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state \
+            "https://github.com/${GITHUB_REPOSITORY}.git" "$RUNNER_TEMP/vm-broadcast-state"
+          curl -fsS --max-time 10 https://velocemercato.fr/multisport/actualites.json -o "$VM_MULTISPORT_FEED" || rm -f "$VM_MULTISPORT_FEED"
+          python tools/publier_meta.py publier --article multisport --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
