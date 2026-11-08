@@ -1,0 +1,47 @@
+name: VM - Audit des sites et accès stockage Atelier
+on:
+  push:
+    branches: [codex/vm-studio-atelier-prive]
+    paths: ['.github/workflows/verifier-atelier-vm.yml']
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet lxml
+      - name: Explorer les deux sites et vérifier les liens
+        run: |
+          python cloudflare/studio-prive/audit.py crawl
+          python - <<'PY'
+          from collections import Counter
+          import json
+          j = json.load(open('cloudflare/studio-prive/crawl.json'))
+          print('AUDIT BILAN', json.dumps(dict(heure=j['created'], pages=Counter(str(r['code']) for r in j['pages'].values()), liens=len(j['edges']), controles=Counter(f"{r['kind']}:{r['code']}" for r in j['checks']), sitemap=[len(s['locs']) for s in j['sitemaps']], ancres=len(j['anchors']), limites=j['pending']),ensure_ascii=False))
+          print('AUDIT LIENS', json.dumps([ [r['url'],r['code']] for r in list(j['pages'].values())+j['checks'] if r['code'] in (404,410,500,502,503)][:28],ensure_ascii=False))
+          print('AUDIT ANCRES', json.dumps(j['anchors'][:14],ensure_ascii=False))
+          PY
+      - name: Vérifier les parcours clés en lecture seule
+        run: |
+          for u in https://velocemercato.fr/studio/atelier-cf03b9883e72 https://velocemercato.fr/multisport/ https://vmunivers.fr/professionnels/ https://velocemercato.fr/web-studio https://vmunivers.fr/kit-du-jour; do
+            curl -sSL --max-time 12 -o /tmp/vm-check -w 'AUDIT PARCOURS %{http_code} %{url_effective}\n' "$u"
+            if [[ "$u" == *atelier* ]]; then
+              grep -q 'Créer un site démo' /tmp/vm-check && echo 'AUDIT ATELIER interface accessible anonymement'
+              grep -q 'issues/new?template=studio-express.yml' /tmp/vm-check && echo 'AUDIT ATELIER création déléguée à GitHub'
+            fi
+          done
+  stockage:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKER_API_TOKEN }}
+    steps:
+      - name: Vérifier l'accès Cloudflare D1 sans afficher les identifiants
+        run: |
+          code=$(curl -sS --max-time 20 -o /dev/null -w '%{http_code}' -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" 'https://api.cloudflare.com/client/v4/accounts/c5227875896e9a281915ed70c146e845/d1/database')
+          echo "ATELIER D1 HTTP $code"
