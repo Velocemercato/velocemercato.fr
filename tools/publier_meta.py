@@ -484,7 +484,35 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
                 print('::error::' + line)
             return errors
 
-    projets_seulement = account == 'meta_univers'  # VM Univers : pas de JT ni d'articles, seulement les projets
+    projets_seulement = account == 'meta_univers'  # Les éditions VM Univers sont relayées uniquement sur Instagram.
+    if projets_seulement and not force and meta.get('ig_id') and local_now.hour in (11, 14, 22):
+        slot = f'pastille/instagram/{local_now:%Y-%m-%d/%H}'
+        if slot not in done:
+            row = next((row for row in reversed(reels(root, now, hours=8))
+                        if f'reel/instagram/{row["id"]}' not in done
+                        and when(row['date']).astimezone(PARIS).date() == local_now.date()), None)
+            if row:
+                key = f'reel/instagram/{row["id"]}'
+                try:
+                    profile = graph.call('GET', str(meta['ig_id']), {
+                        'fields': 'username', 'access_token': meta['page_token']})
+                    if str(profile.get('username', '')).lower() != 'vmunivers.fr':
+                        raise DeliveryError('Destination Instagram VM Univers inattendue.')
+                    mark(slot, 'envoi', source=row['id'])
+                    mark(key, 'envoi')
+                    ident = instagram_reel(graph, meta, row, sleep=sleep)
+                    if not ident:
+                        raise DeliveryError('Identifiant Reel Instagram absent.')
+                    proof = graph.call('GET', str(ident), {
+                        'fields': 'permalink', 'access_token': meta['page_token']})
+                    url = str(proof.get('permalink') or '')
+                    if not url.startswith('https://www.instagram.com/'):
+                        raise DeliveryError('Lien Reel Instagram à vérifier.')
+                    mark(key, 'publie_confirme', url=url)
+                    mark(slot, 'publie_confirme', url=url)
+                    print('::notice::Pastille VM Univers Instagram confirmée : ' + url)
+                except DeliveryError as error:
+                    errors.append(f'Instagram VM Univers : {str(error)[:150]}')
     # Ne relayer les JT qu'aux créneaux correspondants, avec une URL YouTube déjà publique.
     jt_type = {11: 'foot', 12: 'actus'}.get(local_now.hour)
     jt_ok = bool(jt_type) or (local_now.hour == 22 and local_now.minute >= 30)
