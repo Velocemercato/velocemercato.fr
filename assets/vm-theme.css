@@ -256,3 +256,18 @@ html[data-vmt] .vmc-une-t { color: #FFC72C !important; }
 /* Titres de chapitres : or + liseré rouge */
 html[data-vmt] .vmc-ch-head h2 { color: #fff !important; text-shadow: 0 0 26px rgba(255,43,74,.25) !important; }
 html[data-vmt] .vmc-chapter { background: transparent !important; }
+
+/* Anti-débordement défensif (contre-audit 8 nov 2026 : /multisport/nba/ +34px à 768,
+   /foot-amateur/ +22px et /belfort/ +10px à 320 — non reproduits à l'instant, contenu tournant) */
+html[data-vmt] img, html[data-vmt] video, html[data-vmt] iframe, html[data-vmt] svg {
+  max-width: 100%;
+}
+html[data-vmt] main, html[data-vmt] main *, html[data-vmt] .vmc-une-card, html[data-vmt] .vmc-une-card * {
+  min-width: 0;
+}
+html[data-vmt] main, html[data-vmt] main h1, html[data-vmt] main h2, html[data-vmt] main h3,
+html[data-vmt] main p, html[data-vmt] main a, html[data-vmt] main li, html[data-vmt] main td,
+html[data-vmt] main th, html[data-vmt] main figcaption {
+  overflow-wrap: break-word;
+}
+html[data-vmt] table { max-width: 100%; }

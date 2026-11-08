@@ -20,6 +20,7 @@ document.querySelectorAll('[data-broadcast-feed]').forEach(async section => {
     if ((latest.edition_at || section.dataset.broadcastSingle==='true') && youtube && valid({plateformes:{youtube}})) {
       const play=document.createElement('button');play.type='button';play.className='broadcast-play';
       play.textContent='▶ Lire ce JT en HD ici';
+      play.setAttribute('aria-label','▶ Lire ce JT en HD ici');
       if (/^(foot|actus|gaming)-edition-[0-9]{8}-[0-9]{4}$/.test(latest.id)) {
         const poster=document.createElement('img');poster.src='/studio/episodes/posters/'+latest.id+'.jpg';
         poster.alt='';poster.loading='lazy';play.prepend(poster);

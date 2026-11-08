@@ -26,6 +26,8 @@
 </head>
 <body>
 
+<a href="#contenu-principal" class="skip-link">Aller au contenu</a>
+
 <!-- Sprite SVG -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-wing" viewBox="0 0 32 32"><path fill="currentColor" d="M16 4c-2 3-5 4-8 4 3 1 4 2 5 4-4 0-7 1-9 3 4 0 6 1 8 3-2 1-3 3-3 5 3-2 5-3 7-3s4 1 7 3c0-2-1-4-3-5 2-2 4-3 8-3-2-2-5-3-9-3 1-2 2-3 5-4-3 0-6-1-8-4h-3z" opacity=".95"/><circle cx="16" cy="16" r="4.5" fill="#fff"/></symbol>
@@ -57,10 +59,11 @@
 </svg>
 
 <!-- Barre live -->
+<section class="livebar-wrap" aria-label="Matchs du jour en direct">
 <div class="livebar" role="marquee" aria-label="Matchs du jour en direct">
   <div class="wrap">
     <span class="live-dot">DIRECT</span>
-    <div class="ticker">
+    <div class="ticker" tabindex="0" aria-label="Derniers titres">
       <span><b>15:00</b> Rennes – Lille · Ligue 1</span>
       <span><b>17:15</b> Le Havre – Lorient · Ligue 1</span>
       <span><b>17:15</b> Le Mans – Monaco · Ligue 1</span>
@@ -73,11 +76,12 @@
     </div>
   </div>
 </div>
+</section>
 
 <!-- Navigation -->
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="Véloce Mercato — accueil">
+    <a class="brand" href="/" aria-label="Véloce Mercato, média sport VM — accueil">
       <svg class="wing"><use href="#i-wing"/></svg>
       <span>
         <span class="b1">Véloce <i>Mercato</i></span>
@@ -100,7 +104,7 @@
 </header>
 
 <!-- Hero -->
-<section class="hero">
+<section class="hero" aria-label="À la une">
   <img class="hero-img" src="/assets/hero-multisport.jpg" alt="Illustration VM : athlète anime entouré de foot, basket, F1, moto et tennis">
   <div class="wrap">
     <div class="hero-inner">
@@ -127,7 +131,7 @@
   </div>
 </section>
 
-<main>
+<main id="contenu-principal">
   <!-- Pastilles catégories -->
   <section class="section wrap" aria-label="Catégories">
     <div class="pills pills-scroll">
@@ -227,7 +231,7 @@
 <li style="border-bottom:1px solid var(--line);padding-bottom:9px"><a href="/a/rss-v2-262d06afadebe020aed4df.html" style="display:block;font-weight:800;text-decoration:underline;color:var(--ink)">OM : Faris Moumbagna ouvert à un départ en janvier pour gagner du temps de jeu</a><small style="display:block;color:var(--muted)">08/11 à 14h00 · Source : Foot01</small><span style="display:block;color:var(--muted)">Écarté du groupe marseillais par Bruno Genesio depuis octobre, Faris Moumbagna serait prêt à quitter l&#x27;OM lors du mercato d&#x27;hiver, afin de jouer davantage avant la CAN.</span></li>
 <li style="border-bottom:1px solid var(--line);padding-bottom:9px"><a href="/a/rss-v2-4e3786d878dd53cc5e06ed.html" style="display:block;font-weight:800;text-decoration:underline;color:var(--ink)">Ligue 1 : Patrick Videira réagit aux rumeurs sur son avenir au Mans</a><small style="display:block;color:var(--muted)">08/11 à 13h50 · Source : Foot Mercato</small><span style="display:block;color:var(--muted)">Selon Foot Mercato, Patrick Videira n&#x27;est pas menacé à l&#x27;heure actuelle malgré des rumeurs sur son avenir. Le coach du Mans se dit concentré sur son travail avant Monaco.</span></li>
 </ul>
-<p style="margin:10px 0 0"><a href="/#feed-title" style="color:var(--royal);font-weight:700">Voir toutes les actualités mises à jour</a></p>
+<p style="margin:10px 0 0"><a href="/#feed-title" style="color:#ff8a97;font-weight:700">Voir toutes les actualités mises à jour</a></p>
 </section>
 <!-- VM_ACTUS_VISIBLES_END -->
   </section>

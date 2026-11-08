@@ -68,7 +68,7 @@ def render(articles, now=None, max_cards=4):
                 f'<span style="display:block;color:var(--muted)">{summary}</span>'
                 '</li>')
         out.append('</ul>')
-        out.append('<p style="margin:10px 0 0"><a href="/#feed-title" style="color:var(--royal);font-weight:700">Voir toutes les actualités mises à jour</a></p>')
+        out.append('<p style="margin:10px 0 0"><a href="/#feed-title" style="color:#ff8a97;font-weight:700">Voir toutes les actualités mises à jour</a></p>')
     out += ['</section>', END]
     return "\n".join(out)
 

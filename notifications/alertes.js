@@ -31,7 +31,7 @@ document.getElementById('vm-alert-enable').addEventListener('click',async()=>{co
 document.getElementById('vm-alert-disable').addEventListener('click',()=>{const s=read();s.enabled=false;save(s);status.textContent='Alertes désactivées.'});
 document.getElementById('vm-alert-refresh').addEventListener('click',async()=>{try{draw(await latest());status.textContent='Nouveautés actualisées.'}catch{status.textContent='Flux temporairement indisponible.'}});
 latest().then(draw).catch(()=>{});
-}else{const a=document.createElement('a');a.className='vm-alert-fab';a.href='/notifications/';a.textContent='🔔 Mes alertes';a.setAttribute('aria-label','Choisir mes alertes');document.body.append(a)}
+}else{const a=document.createElement('a');a.className='vm-alert-fab';a.href='/notifications/';a.textContent='🔔 Mes alertes';a.setAttribute('aria-label','Choisir mes alertes');(document.querySelector('main')||document.body).append(a)}
 if(read().enabled){sw().catch(()=>{});check(false);setInterval(()=>{if(!document.hidden)check(true)},180000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)check(true)})}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
 })();
