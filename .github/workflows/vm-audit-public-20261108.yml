@@ -1,0 +1,39 @@
+name: VM - Audit approfondi production publique
+on:
+  push:
+    branches: [codex/audit-public-vm-20261108]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 19
+    strategy:
+      fail-fast: false
+      matrix:
+        phase: [crawl, browser, feeds]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            audit-public-vm
+      - name: Run public audit
+        env:
+          PHASE: ${{ matrix.phase }}
+        run: |
+          set -euo pipefail
+          mkdir -p evidence
+          case "$PHASE" in
+            browser)
+              npm install --no-save playwright
+              npx playwright install chromium
+              node audit-public-vm/browser.cjs ;;
+            crawl|feeds) python3 audit-public-vm/crawl.py "$PHASE" ;;
+          esac
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: vm-audit-${{ matrix.phase }}
+          path: evidence/
+          retention-days: 30
