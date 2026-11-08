@@ -82,7 +82,7 @@ jobs:
           console.log('ATELIER MOBILE SAUVE',created.status(),Object.keys(data),Boolean(data.url));
           assert.equal(created.status(),200);
           assert.match(data.url,/^http:\/\/127\.0\.0\.1:8787\/p\//);
-          await page.getByText('Projet enregistré.').waitFor();
+          await page.getByText('Projet enregistré.',{exact:true}).waitFor();
           const url=await page.locator('#share-url').inputValue();
           const first=await page.locator('#share-code').inputValue();
           console.log('ATELIER MOBILE PARTAGE',Boolean(url),Boolean(first));
