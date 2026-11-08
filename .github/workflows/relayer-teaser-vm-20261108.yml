@@ -1,0 +1,129 @@
+name: VM - Relayer le teaser par les connexions directes
+
+on:
+  push:
+    branches: [codex/teaser-vm-20261108]
+    paths: ['.github/workflows/relayer-teaser-vm-20261108.yml']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+
+jobs:
+  meta:
+    if: vars.VM_AUTO_META == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+      VM_AUTO_META: ${{ vars.VM_AUTO_META }}
+      VM_AUTO_YOUTUBE: ${{ vars.VM_AUTO_YOUTUBE }}
+      YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+      YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+      YOUTUBE_CHANNEL_ID: ${{ secrets.YOUTUBE_CHANNEL_ID }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/teaser-vm-20261108
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet 'cryptography==50.0.0' pillow
+      - name: Ouvrir les accusés chiffrés
+        env:
+          STATE_DIR: ${{ runner.temp }}/vm-broadcast-state
+        run: |
+          set -euo pipefail
+          repo_url="https://github.com/${GITHUB_REPOSITORY}.git"
+          if git -c credential.helper='!gh auth git-credential' ls-remote --exit-code "$repo_url" refs/heads/broadcast-state > /dev/null; then
+            git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "$repo_url" "$STATE_DIR"
+          else
+            mkdir -p "$STATE_DIR"
+            git -C "$STATE_DIR" init --quiet -b broadcast-state
+            git -C "$STATE_DIR" remote add origin "$repo_url"
+          fi
+      - name: Diffuser le teaser sans doublon
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          from tools.publier_meta import DeliveryError, Graph, State, git_save, instagram_reel
+          from tools.diffuser_jt import HTTP, YouTube, access_token
+          from tools.pronos_facebook import page_access
+
+          path = Path(os.environ["RUNNER_TEMP"]) / "vm-broadcast-state/state.enc"
+          state = State(path, os.environ["VM_DIFFUSION_STATE_KEY"], lambda: git_save(path))
+          graph = Graph()
+          caption = "🚀 La Team Véloce ouvre grand ses deux maisons.\n\n⚽ velocemercato.fr — Le foot, le mercato et les scores, avec du multisport, du gaming, des mangas et des séries.\n🌐 vmunivers.fr — L’annuaire de nos applis, outils et projets. Côté VM Studio, on crée des sites, des applis, des kits réseaux automatisés et des campagnes avec encarts publicitaires sur nos projets.\n\nSur Facebook, suis VéloceMercato, VM actus et pronos et VMunivers.fr. Et partage le teaser à la personne avec qui tu refais le match. 🙌\n\n#TeamVeloce #VeloceMercato #VMUnivers"
+          asset = "https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/3b78469dd964e17f447b1b09099127d4a02e413b/media/promos/teaser-team-veloce-20261108.mp4"
+          receipts = state.data.setdefault("vm_teasers", {})
+          ok = True
+
+          def run(key, publish):
+              global ok
+              key = "2026-11-08/teaser/" + key
+              if key in receipts:
+                  return
+              receipts[key] = {"status": "envoi"}
+              state.save()
+              try:
+                  url = publish()
+                  receipts[key] = {"status": "publie_confirme", "url": url}
+                  print(f"::notice::TEASER DIRECT {key.rsplit('/', 1)[-1]} {url}")
+              except (DeliveryError, OSError, KeyError, ValueError) as error:
+                  print(f"::error::{key} : {str(error)[:160]}")
+                  ok = False
+              state.save()
+
+          def facebook():
+              account = page_access(state)
+              reply = graph.call("POST", str(account["page_id"]) + "/videos", {
+                  "file_url": asset, "description": caption, "published": "true",
+                  "access_token": account["page_token"]})
+              ident = str(reply.get("id") or "")
+              if not ident.isdigit():
+                  raise DeliveryError("Facebook : identifiant vidéo absent.")
+              return "https://www.facebook.com/reel/" + ident + "/"
+
+          def instagram():
+              account = state.data["tokens"]["meta_univers"]
+              if str(account["page_id"]) != "1349998758205153" or not account.get("ig_id"):
+                  raise DeliveryError("Instagram VM Univers non connecté.")
+              info = graph.call("GET", str(account["ig_id"]), {
+                  "fields": "username", "access_token": account["page_token"]})
+              if str(info.get("username") or "").lower() != "vmunivers.fr":
+                  raise DeliveryError("Compte Instagram différent de vmunivers.fr.")
+              ident = instagram_reel(graph, account, {"verticale": asset, "texte_vertical": caption})
+              data = graph.call("GET", str(ident), {"fields": "permalink", "access_token": account["page_token"]})
+              url = str(data.get("permalink") or "")
+              if not url.startswith("https://www.instagram.com/"):
+                  raise DeliveryError("Lien Instagram non confirmé.")
+              return url
+
+          def youtube():
+              if os.getenv("VM_AUTO_YOUTUBE") != "true":
+                  raise DeliveryError("YouTube non activé.")
+              http = HTTP()
+              client = YouTube(http, state, access_token("youtube", state, http))
+              client.verify_channel()
+              receipt = state.data.setdefault("promos", {}).setdefault("team-veloce-20261108", {})
+              file = Path("media/promos/teaser-team-veloce-20261108.mp4")
+              client.upload(file, {"snippet": {"title": "Team Véloce · Deux sites, trois pages à suivre #Shorts",
+                  "description": caption, "categoryId": "17", "defaultLanguage": "fr"},
+                  "status": {"privacyStatus": "public", "selfDeclaredMadeForKids": False,
+                             "containsSyntheticMedia": True}}, receipt)
+              ident = str(receipt.get("video_id") or "")
+              if not ident:
+                  raise DeliveryError("Identifiant YouTube absent.")
+              return "https://www.youtube.com/shorts/" + ident
+
+          run("meta_pronos", facebook)
+          run("instagram", instagram)
+          run("youtube", youtube)
+          raise SystemExit(not ok)
+          PY
