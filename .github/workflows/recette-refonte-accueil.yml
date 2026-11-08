@@ -1,0 +1,202 @@
+name: VM - Aperçu Cloudflare refonte accueil
+on:
+  push:
+    branches: [codex/recette-refonte-accueil]
+    paths: [.github/workflows/recette-refonte-accueil.yml]
+permissions:
+  contents: read
+concurrency:
+  group: vm-pages-refonte-accueil-preview
+  cancel-in-progress: false
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: refonte-accueil
+          persist-credentials: false
+      - name: Tester les fichiers sources
+        run: |
+          python3 -m unittest discover -s tests -p 'test_home*.py'
+          python3 -m unittest discover -s tests -p test_cinema_vm.py
+          node --check assets/vm-editorial.js
+      - uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Déployer uniquement en aperçu Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: c5227875896e9a281915ed70c146e845
+        run: |
+          set -euo pipefail
+          export NO_COLOR=1
+          project=velocemercato
+          preview_branch=refonte-accueil
+          api="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$project"
+          info() { curl -fsS --max-time 20 -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$api"; }
+          state=$(info)
+          production_branch=$(jq -er '.result.production_branch' <<<"$state")
+          production_id=$(jq -er '.result.canonical_deployment.id' <<<"$state")
+          test "$production_branch" != "$preview_branch"
+          mkdir -p evidence
+          for page in index.html multisport/index.html actus/index.html vm-gaming/index.html mangas/index.html; do
+            grep -Fq 'vm-refonte-hero' "_site/$page"
+          done
+          git rev-parse HEAD | tee evidence/source-commit.txt
+          npx --yes wrangler@4 pages deploy _site --project-name="$project" --branch="$preview_branch" --commit-hash="$(git rev-parse HEAD)" | tee "$RUNNER_TEMP/refonte.log"
+          preview=$(grep -Eo 'https://[a-f0-9]+\.velocemercato\.pages\.dev' "$RUNNER_TEMP/refonte.log" | tail -1)
+          test -n "$preview"
+          test "$production_id" = "$(info | jq -er '.result.canonical_deployment.id')"
+          printf '%s\n' "$preview" | tee evidence/preview-url.txt
+          echo "VM_PREVIEW $preview"
+      - name: Recette mobile et accessibilité
+        run: |
+          set -euo pipefail
+          npm install --prefix "$RUNNER_TEMP/vm-test" --no-audit --no-fund playwright axe-core pngjs
+          "$RUNNER_TEMP/vm-test/node_modules/.bin/playwright" install chromium
+          cat > "$RUNNER_TEMP/vm-test/check.cjs" <<'JS'
+          const fs = require('node:fs');
+          const {chromium} = require('playwright');
+          const {PNG} = require('pngjs');
+          const preview = fs.readFileSync('evidence/preview-url.txt','utf8').trim();
+          const origin = new URL(preview).origin;
+          const routes = [
+            ['/', 'accueil', 'Véloce Mercato'],
+            ['/multisport/', 'multisport', 'VM Multisport'],
+            ['/actus/', 'actus', 'VM Actus'],
+            ['/vm-gaming/', 'gaming', 'VM Gaming'],
+            ['/mangas/', 'mangas', 'VM Mangas'],
+          ];
+          const axePath = require.resolve('axe-core/axe.min.js');
+          const luminance = rgb => rgb.slice(0,3).map(v=>v/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4)
+            .reduce((sum,v,i)=>sum+v*[.2126,.7152,.0722][i],0);
+          const ratio = (a,b) => (Math.max(a,b)+.05)/(Math.min(a,b)+.05);
+          async function contrast(page) {
+            const copy = page.locator('.vm-refonte-copy');
+            const nodes = await copy.evaluate(el => {
+              const areas=[];
+              for(const child of el.querySelectorAll('h1,p')){
+                const walker=document.createTreeWalker(child,NodeFilter.SHOW_TEXT);
+                for(let text=walker.nextNode();text;text=walker.nextNode()){
+                  if(!text.textContent.trim())continue;
+                  const style=getComputedStyle(text.parentElement);
+                  const range=document.createRange();range.selectNodeContents(text);
+                  for(const r of range.getClientRects()) areas.push({x:r.x,y:r.y,w:r.width,h:r.height,color:style.color,large:!!child.closest('h1')});
+                }
+              }
+              el.style.visibility='hidden';
+              return areas;
+            });
+            let png;
+            try { png=PNG.sync.read(await page.screenshot({animations:'disabled'})); }
+            finally { await copy.evaluate(el=>el.style.removeProperty('visibility')); }
+            return nodes.map(area=>{
+              const rgb=area.color.match(/[\d.]+/g).slice(0,3).map(Number);
+              const foreground=luminance(rgb);
+              let min=21, samples=0;
+              for(let y=Math.max(0,Math.ceil(area.y));y<Math.min(png.height,area.y+area.h);y+=3)
+                for(let x=Math.max(0,Math.ceil(area.x));x<Math.min(png.width,area.x+area.w);x+=3){
+                  const i=(y*png.width+x)*4;
+                  min=Math.min(min,ratio(foreground,luminance([...png.data.subarray(i,i+3)])));
+                  samples++;
+                }
+              return {kind:area.large?'titre':'texte',ratio:samples?Math.round(min*100)/100:null,threshold:area.large?3:4.5};
+            });
+          }
+          async function test(browser,route,name,title,width){
+            const page=await browser.newPage({viewport:{width,height:900},deviceScaleFactor:1,serviceWorkers:'block'});
+            const record={route,width,failures:[]};
+            const check=(condition,message)=>{if(!condition)record.failures.push(message);};
+            try{
+              await page.route('https://www.youtube-nocookie.com/**',r=>r.fulfill({status:200,body:''}));
+              const response=await page.goto(preview+route,{waitUntil:'domcontentloaded',timeout:20000});
+              check(response.status()===200,'HTTP '+response.status());
+              const hero=page.locator('.vm-refonte-hero');
+              const heading=page.locator('h1');
+              check(await heading.count()===1,'H1 non unique');
+              check((await heading.first().innerText()).trim().replace(/\s+/g,' ')===title,'Titre inattendu');
+              await page.waitForFunction(()=>{const img=document.querySelector('.vm-refonte-art img');return img?.complete&&img.naturalWidth>0;},{},{timeout:10000});
+              record.widths=await page.evaluate(()=>[document.documentElement.clientWidth,document.documentElement.scrollWidth]);
+              check(record.widths[0]===record.widths[1],'Débordement '+record.widths.join('/'));
+              record.hero=await hero.locator('img').evaluate(i=>new URL(i.currentSrc).pathname);
+              check(record.hero.endsWith('.webp'),'Fond non WebP');
+              if(route==='/'){
+                const box=await heading.first().boundingBox();
+                check(box && box.y+box.height<900,'Titre sous le premier écran');
+                if(width<=390)check(record.hero.endsWith('/accueil-mobile.webp'),'Portrait mobile absent');
+              }
+              if(width===390){
+                await page.screenshot({path:'evidence/'+name+'-390.png',animations:'disabled'});
+                await page.addScriptTag({path:axePath});
+                const axe=await page.evaluate(async()=>await window.axe.run('.vm-refonte-hero',{
+                  runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}
+                }));
+                record.axe=axe.violations.map(v=>v.id);
+                check(!record.axe.length,'Axe : '+record.axe.join(', '));
+                record.contrast=await contrast(page);
+                check(record.contrast.length>0&&record.contrast.every(x=>x.ratio!==null&&x.ratio>=x.threshold),'Contraste du bandeau sous le seuil');
+                const anchors=await hero.locator('a[href^="#"]').evaluateAll(links=>links.filter(a=>!document.getElementById(a.hash.slice(1))).map(a=>a.hash));
+                check(anchors.length===0,'Ancres absentes : '+anchors.join(', '));
+                if(route==='/'||route==='/actus/'||route==='/vm-gaming/'){
+                  await page.locator('[data-vm-editorial] article a').first().waitFor({state:'attached',timeout:10000});
+                  record.articles=await page.locator('[data-vm-editorial] article a').count();
+                  check(record.articles===3,'Cartes éditoriales incomplètes');
+                }
+                if(route==='/'){
+                  const links=page.locator('#univers-vm nav a');
+                  const destinations=await links.evaluateAll(list=>list.map(a=>new URL(a.href).pathname+a.hash));
+                  check(JSON.stringify(destinations)===JSON.stringify(['/multisport/','/actus/','/#videos','/vm-gaming/','/mangas/']),'Volets incorrects');
+                  await page.locator('#univers-vm nav a[href="#videos"]').click();
+                  check(new URL(page.url()).hash==='#videos','Ancre Vidéos');
+                  const player=page.locator('#videos .broadcast-play');
+                  await player.waitFor({state:'visible',timeout:12000});
+                  await player.click();
+                  const frame=await page.locator('#videos iframe').getAttribute('src');
+                  check(frame?.startsWith('https://www.youtube-nocookie.com/embed/'),'Lecteur Pastille TV absent après le clic');
+                  record.player=!!frame;
+                }
+                if(route==='/multisport/'){
+                  check(await page.locator('#sports a').first().getAttribute('data-sport')==='foot','Foot absent en première position');
+                  await page.locator('#recent-list a').first().waitFor({state:'attached',timeout:10000});
+                  record.recent=await page.locator('#recent-list a').count();
+                }
+                if(route==='/mangas/'){
+                  const episodes=await page.locator('.vm-featured a[href*="/episodes/"]').evaluateAll(links=>[...new Set(links.map(a=>a.href))]);
+                  record.episodes=episodes.length;
+                  for(const url of episodes){
+                    check(new URL(url).origin===origin,'Épisode hors des routes VM');
+                    const res=await page.request.get(url,{timeout:10000});
+                    check(res.ok(),'Épisode '+url+' : HTTP '+res.status());
+                  }
+                }
+              }
+            }catch(error){record.failures.push(error.message.split('\n')[0]);}
+            finally{await page.close();}
+            return record;
+          }
+          (async()=>{
+            const browser=await chromium.launch();
+            const records=[];
+            try{
+              for(const width of [320,390,768,1440]){
+                records.push(...await Promise.all(routes.map(args=>test(browser,...args,width))));
+              }
+            }finally{await browser.close();}
+            fs.writeFileSync('evidence/recette.json',JSON.stringify(records,null,2));
+            for(const r of records)console.log('VM_CASE '+JSON.stringify(r));
+            if(records.some(r=>r.failures.length))process.exitCode=1;
+          })().catch(e=>{console.error(e);process.exitCode=1;});
+          JS
+          node "$RUNNER_TEMP/vm-test/check.cjs"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: recette-mobile-refonte
+          path: evidence/
+          retention-days: 30
