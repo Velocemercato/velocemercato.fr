@@ -25,18 +25,6 @@
    ]
   },
   {
-   "id": 558532,
-   "date": "2026-11-07T14:00:00Z",
-   "comp": "Serie A",
-   "dom": "Torino",
-   "ext": "Lecce",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    1
-   ]
-  },
-  {
    "id": 558534,
    "date": "2026-11-07T14:00:00Z",
    "comp": "Serie A",
@@ -49,6 +37,18 @@
    ]
   },
   {
+   "id": 558532,
+   "date": "2026-11-07T14:00:00Z",
+   "comp": "Serie A",
+   "dom": "Torino",
+   "ext": "Lecce",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    1
+   ]
+  },
+  {
    "id": 565851,
    "date": "2026-11-07T14:30:00Z",
    "comp": "Bundesliga",
@@ -58,6 +58,18 @@
    "score": [
     1,
     2
+   ]
+  },
+  {
+   "id": 565850,
+   "date": "2026-11-07T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "Dortmund",
+   "ext": "Elversberg",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    1
    ]
   },
   {
@@ -85,15 +97,15 @@
    ]
   },
   {
-   "id": 565850,
-   "date": "2026-11-07T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "Dortmund",
-   "ext": "Elversberg",
+   "id": 560640,
+   "date": "2026-11-07T15:00:00Z",
+   "comp": "Premier League",
+   "dom": "Arsenal",
+   "ext": "Hull City",
    "statut": "FINISHED",
    "score": [
-    2,
-    1
+    1,
+    0
    ]
   },
   {
@@ -106,18 +118,6 @@
    "score": [
     1,
     1
-   ]
-  },
-  {
-   "id": 560640,
-   "date": "2026-11-07T15:00:00Z",
-   "comp": "Premier League",
-   "dom": "Arsenal",
-   "ext": "Hull City",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    0
    ]
   },
   {
@@ -265,11 +265,11 @@
    ]
   },
   {
-   "id": 560637,
+   "id": 560635,
    "date": "2026-11-08T14:00:00Z",
    "comp": "Premier League",
-   "dom": "Ipswich Town",
-   "ext": "Bournemouth",
+   "dom": "Crystal Palace",
+   "ext": "Liverpool",
    "statut": "TIMED",
    "score": [
     null,
@@ -277,11 +277,11 @@
    ]
   },
   {
-   "id": 560635,
+   "id": 560637,
    "date": "2026-11-08T14:00:00Z",
    "comp": "Premier League",
-   "dom": "Crystal Palace",
-   "ext": "Liverpool",
+   "dom": "Ipswich Town",
+   "ext": "Bournemouth",
    "statut": "TIMED",
    "score": [
     null,
@@ -385,11 +385,11 @@
    ]
   },
   {
-   "id": 559631,
+   "id": 559633,
    "date": "2026-11-08T16:15:00Z",
    "comp": "Ligue 1",
-   "dom": "Le Mans",
-   "ext": "Monaco",
+   "dom": "Le Havre",
+   "ext": "Lorient",
    "statut": "TIMED",
    "score": [
     null,
@@ -397,11 +397,11 @@
    ]
   },
   {
-   "id": 559633,
+   "id": 559631,
    "date": "2026-11-08T16:15:00Z",
    "comp": "Ligue 1",
-   "dom": "Le Havre",
-   "ext": "Lorient",
+   "dom": "Le Mans",
+   "ext": "Monaco",
    "statut": "TIMED",
    "score": [
     null,
@@ -517,5 +517,5 @@
    ]
   }
  ],
- "maj": "2026-11-08T00:01:05Z"
+ "maj": "2026-11-08T00:02:58Z"
 }
