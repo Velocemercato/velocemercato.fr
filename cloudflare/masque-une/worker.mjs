@@ -94,6 +94,14 @@ export default {
     if (!['GET', 'HEAD'].includes(request.method)) {
       return isPreview ? new Response(null, { status: 404 }) : fetch(request);
     }
+    if (!isUnivers && ['GET', 'HEAD'].includes(request.method) &&
+        /^\/studio\/atelier-cf03b9883e72(?:\.html|\/)?$/.test(url.pathname)) {
+      return new Response(null, { status: 302, headers: {
+        location: 'https://vm-studio-prive.velocemercato87.workers.dev/',
+        'cache-control': 'no-store',
+        'referrer-policy': 'no-referrer',
+      } });
+    }
     const icon = pwaIcon(url.pathname, isUnivers, request.method === 'HEAD');
     if (icon) return icon;
     if (!isUnivers && url.pathname === '/sw.js' && request.method === 'GET') {
