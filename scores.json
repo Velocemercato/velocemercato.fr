@@ -25,18 +25,6 @@
    ]
   },
   {
-   "id": 558534,
-   "date": "2026-11-07T14:00:00Z",
-   "comp": "Serie A",
-   "dom": "Cagliari",
-   "ext": "Frosinone",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    0
-   ]
-  },
-  {
    "id": 558532,
    "date": "2026-11-07T14:00:00Z",
    "comp": "Serie A",
@@ -49,6 +37,18 @@
    ]
   },
   {
+   "id": 558534,
+   "date": "2026-11-07T14:00:00Z",
+   "comp": "Serie A",
+   "dom": "Cagliari",
+   "ext": "Frosinone",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    0
+   ]
+  },
+  {
    "id": 565851,
    "date": "2026-11-07T14:30:00Z",
    "comp": "Bundesliga",
@@ -57,6 +57,18 @@
    "statut": "FINISHED",
    "score": [
     1,
+    2
+   ]
+  },
+  {
+   "id": 565848,
+   "date": "2026-11-07T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "RB Leipzig",
+   "ext": "Augsburg",
+   "statut": "FINISHED",
+   "score": [
+    5,
     2
    ]
   },
@@ -81,18 +93,6 @@
    "statut": "FINISHED",
    "score": [
     2,
-    2
-   ]
-  },
-  {
-   "id": 565848,
-   "date": "2026-11-07T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "RB Leipzig",
-   "ext": "Augsburg",
-   "statut": "FINISHED",
-   "score": [
-    5,
     2
    ]
   },
@@ -282,7 +282,7 @@
    "comp": "Premier League",
    "dom": "Ipswich Town",
    "ext": "Bournemouth",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     1,
     2
@@ -294,7 +294,7 @@
    "comp": "Premier League",
    "dom": "Brighton Hove",
    "ext": "Brentford",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     2,
     0
@@ -318,7 +318,7 @@
    "comp": "Serie A",
    "dom": "Genoa",
    "ext": "Milan",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     1,
     2
@@ -517,5 +517,5 @@
    ]
   }
  ],
- "maj": "2026-11-08T16:03:07Z"
+ "maj": "2026-11-08T16:05:07Z"
 }
