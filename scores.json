@@ -49,18 +49,6 @@
    ]
   },
   {
-   "id": 565853,
-   "date": "2026-11-07T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "SC Paderborn",
-   "ext": "Frankfurt",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    2
-   ]
-  },
-  {
    "id": 565848,
    "date": "2026-11-07T14:30:00Z",
    "comp": "Bundesliga",
@@ -82,6 +70,18 @@
    "score": [
     2,
     1
+   ]
+  },
+  {
+   "id": 565853,
+   "date": "2026-11-07T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "SC Paderborn",
+   "ext": "Frankfurt",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    2
    ]
   },
   {
@@ -265,18 +265,6 @@
    ]
   },
   {
-   "id": 560636,
-   "date": "2026-11-08T14:00:00Z",
-   "comp": "Premier League",
-   "dom": "Sunderland",
-   "ext": "Chelsea",
-   "statut": "IN_PLAY",
-   "score": [
-    1,
-    0
-   ]
-  },
-  {
    "id": 560638,
    "date": "2026-11-08T14:00:00Z",
    "comp": "Premier League",
@@ -289,15 +277,15 @@
    ]
   },
   {
-   "id": 560637,
+   "id": 560636,
    "date": "2026-11-08T14:00:00Z",
    "comp": "Premier League",
-   "dom": "Ipswich Town",
-   "ext": "Bournemouth",
+   "dom": "Sunderland",
+   "ext": "Chelsea",
    "statut": "IN_PLAY",
    "score": [
     1,
-    2
+    0
    ]
   },
   {
@@ -309,6 +297,18 @@
    "statut": "IN_PLAY",
    "score": [
     0,
+    2
+   ]
+  },
+  {
+   "id": 560637,
+   "date": "2026-11-08T14:00:00Z",
+   "comp": "Premier League",
+   "dom": "Ipswich Town",
+   "ext": "Bournemouth",
+   "statut": "IN_PLAY",
+   "score": [
+    1,
     2
    ]
   },
@@ -385,11 +385,11 @@
    ]
   },
   {
-   "id": 559634,
+   "id": 559632,
    "date": "2026-11-08T16:15:00Z",
    "comp": "Ligue 1",
-   "dom": "Angers SCO",
-   "ext": "Nice",
+   "dom": "Brest",
+   "ext": "Olympique Lyon",
    "statut": "TIMED",
    "score": [
     null,
@@ -397,11 +397,11 @@
    ]
   },
   {
-   "id": 559632,
+   "id": 559634,
    "date": "2026-11-08T16:15:00Z",
    "comp": "Ligue 1",
-   "dom": "Brest",
-   "ext": "Olympique Lyon",
+   "dom": "Angers SCO",
+   "ext": "Nice",
    "statut": "TIMED",
    "score": [
     null,
@@ -517,5 +517,5 @@
    ]
   }
  ],
- "maj": "2026-11-08T15:44:06Z"
+ "maj": "2026-11-08T15:46:00Z"
 }
