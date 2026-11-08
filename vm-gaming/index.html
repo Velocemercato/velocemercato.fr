@@ -219,30 +219,40 @@ h2.big small{text-shadow:none;color:var(--muted);letter-spacing:0;font-family:'D
 .ptv-embed .ptv-big:hover{transform:translate(-2px,-2px)}
 .ptv-embed .ptv-play{font-size:1.2rem}
 </style>
+<link rel="stylesheet" href="/assets/vm-refonte.css">
+<script src="/assets/vm-editorial.js" defer></script>
 </head>
 <body class="gaming-simple"><a id="ticker" class="ticker home-flash home-flash-top" href="#t-actus" hidden aria-label="Flash gaming : voir les actus"><span class="lbl">⚡ FLASH GAMING</span><span class="trk"><span id="tickerRun" class="run"></span></span></a><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="VM Univers, tous les projets">VM UNIVERS<small>TOUS LES PROJETS</small></a><a class="f" href="/">⚽ Foot</a><a class="fa" href="/foot-amateur/">🥅 Foot amateur</a><a class="m" href="/multisport/">🏆 Multisport</a><a class="a" href="/actus/">📰 Actus</a><a class="k" href="/mangas/">👑 VM Mangas</a><a class="g on" href="/vm-gaming/" aria-current="page">🎮 Gaming</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="sv" href="/services/">📍 Services</a><a class="pr" href="/pronos/">🔞 Pronos 18+</a><a class="pl" href="/decouvrir.html">➕ Plus</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
 
 <header class="bar"><div class="wrap"><a class="logo" href="./"><img src="img/logo-vm-gaming.webp" width="640" height="185" alt="VM Gaming"></a><a class="mini-cta" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener noreferrer">Discord ↗</a></div>
 <nav class="g-nav" aria-label="Raccourcis de la page"><a href="#t-actus">Actus</a><a href="#t-arena">🏆 Arena</a><a href="#jeux">🎮 Jeux</a><a href="#t-squad">🦸 Escouade</a><a href="#jt" id="navJt" hidden>📺 JT</a><a href="#t-show">🎬 VM Show</a><a href="#t-rdv" id="navRdv" hidden>📅 Soirées</a><a href="#t-comment">💬 Discord</a></nav></header>
 
-<section class="g-hero" aria-labelledby="g-title">
-<div class="g-hero-in">
-<div class="banner">
-<img src="img/vm-gaming-960.webp" srcset="img/vm-gaming-960.webp 960w, img/vm-gaming.webp 1916w" sizes="(min-width:900px) 640px, 100vw" width="1916" height="821" alt="Affiche VM Gaming : GTA, Warzone, un stade EA FC et REDSEC réunis dans un même décor" fetchpriority="high">
-<a class="hot" style="left:39.2%;width:11.7%" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener noreferrer" aria-label="Rejoindre la communauté sur Discord"></a>
-<a class="hot" style="left:51%;width:9.6%" href="#jeux" aria-label="Trouver ton équipe : choisis ton jeu"></a>
-</div>
-<div class="g-txt">
-<span class="g-eye">LE COIN GAMING DE VM UNIVERS</span>
-<h1 class="big" id="g-title">Tu cherches des potes <span>pour jouer&nbsp;?</span></h1>
-<p class="lead">Les actus de tes jeux toutes les 30 minutes, et un Discord pour jouer ensemble.</p>
-<nav class="vm-volets" aria-label="Les trois rubriques VM"><a class="vv vv-foot" href="/" style="--img:url(/img/v2-mercato-800.webp)"><span aria-hidden="true">⚽</span><b>VM Foot</b><small>Véloce</small></a><a class="vv vv-actus" href="/actus/" style="--img:url(/img/v2-actus-640.webp)"><span aria-hidden="true">📰</span><b>VM Actu</b><small>du jour</small></a><a class="vv vv-gaming" href="/vm-gaming/" aria-current="page" style="--img:url(/vm-gaming/img/vm-gaming-univers-960.webp)"><span aria-hidden="true">🎮</span><b>VM Gaming</b><small>& Arena</small></a></nav>
-<div class="vm-duo"><a class="vm-recrute vr-arena" href="/gaming.html"><span class="vr-star" aria-hidden="true">🏆</span><span class="vr-txt"><small>VÉLOCE ARENA</small><b>Tournois EA FC →</b></span></a><a class="vm-recrute vr-discord" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener noreferrer"><span class="vr-star" aria-hidden="true">💬</span><span class="vr-txt"><small>DISCORD</small><b>Rejoindre la communauté ↗</b></span></a></div>
-</div>
-</div>
+<section class="vm-refonte-hero" aria-labelledby="g-title">
+  <picture class="vm-refonte-art">
+    <img src="/img/vm-refonte/gaming.webp" alt="" fetchpriority="high">
+  </picture>
+  <div class="vm-refonte-copy">
+    <p class="vm-refonte-kicker">Le coin gaming de VM Univers</p>
+    <h1 id="g-title">VM <span>Gaming</span></h1>
+    <p>Actus des jeux, compétitions et communauté VM.</p>
+    <nav class="vm-refonte-links" aria-label="Accès rapides VM Gaming">
+      <a href="#t-actus">Voir les actus gaming</a>
+      <a href="#jeux">Choisir un jeu</a>
+      <a href="https://discord.gg/JEgfrUtJaX" rel="noopener noreferrer">Rejoindre le Discord</a>
+      <a href="/gaming.html">Véloce Arena</a>
+      <a href="/actus/">VM Actus</a>
+      <a href="/">Retour à l’accueil</a>
+    </nav>
+  </div>
 </section>
 
 <main class="wrap">
+<section class="vm-editorial" aria-label="Derniers ajouts">
+  <h2>Derniers ajouts</h2>
+  <div class="vm-editorial-grid" data-vm-editorial="/vm-gaming/news.json">
+    <p class="vm-refonte-empty"><a href="#t-actus">Voir le fil d’actualités</a></p>
+  </div>
+</section>
 <div class="wrap" style="margin:14px auto 22px;padding:14px 17px;border:2px solid #ff3158;border-radius:15px;background:linear-gradient(100deg,#5f0a29,#112a54);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap"><div><b style="color:#ffe36d">📺 VM MANGAS est arrivé !</b><br>Les légendes des dessins animés, les gamers et les footeux enfin réunis.</div><a href="/mangas/" style="font-weight:900;color:white;text-decoration:none;padding:10px 16px;background:#ee2447;border-radius:8px">▶ Découvrir</a></div><div class="wrap" style="margin-top:14px"><a href="/vm-gaming/meta/" style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:16px;background:#121513;border:2px solid #b5ef39;color:#f2f4ec;text-decoration:none;font-weight:700"><span style="font-size:1.5rem" aria-hidden="true">🎯</span><span><small style="display:block;color:#b5ef39;font-weight:900;letter-spacing:.08em">NOUVEAU · VM META GAMING</small>Les meilleures classes Warzone, CoD, Battlefield, REDSEC et FC 27 →</span></a></div>
 <section class="g-news" aria-labelledby="t-actus">
 <h2 class="big" id="t-actus">Les actus<small id="maj">Mises à jour toutes les 30 minutes</small></h2>
