@@ -41,8 +41,14 @@ jobs:
           <!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Brèves VM du 8 novembre 2026</title><style>body{font:1.05rem/1.6 system-ui,sans-serif;max-width:44rem;margin:auto;padding:1.4rem;color:#14243a}h1,h2{line-height:1.2}article{border-top:1px solid #ccd5e0;padding:.5rem 0 1rem}a{color:#17488d}</style><main><p><a href="/">Retour à l’accueil</a></p><h1>Brèves VM du 8 novembre 2026</h1><p>Football, Belfort, jeux vidéo et voile.</p><article><h2>Lens–OM, un hommage à Bollaert</h2><p>Lens reçoit Marseille ce dimanche à 20 h 45. Avant le match, Bollaert observera une minute d’applaudissements en mémoire des personnes disparues de la communauté du Racing. Leurs noms seront affichés dans le stade.</p><a href="https://www.rclens.fr/fr/match-de-la-memoire-rclens-marseille-20261008">RC Lens · le Match de la mémoire</a></article><article><h2>Belfort, dernier jour pour Yozenco</h2><p>Le salon Yozenco se poursuit ce dimanche au Parc des Expositions de Belfort. Le rendez-vous propose des stands et des conférences autour du bien-être.</p><a href="https://www.territoiredebelfort.fr/agenda">Agenda du Territoire de Belfort</a></article><article><h2>Nexus Mods détaille ses règles sur l’IA</h2><p>Les nouveaux dépôts doivent renseigner les champs de déclaration et d’autorisation mis à jour. Les mods déjà en ligne disposent d’un délai d’adaptation de 60 jours pour les nouvelles exigences détaillées.</p><a href="https://help.nexusmods.com/article/180-ai-policy-changes-2026">Nexus Mods · règles de la plateforme</a></article><article><h2>Route du Rhum, cap sur Pointe-à-Pitre</h2><p>Une semaine après le départ de Saint-Malo, la carte officielle permet de suivre la flotte par catégorie. En Guadeloupe, le village du Mémorial ACTe accueille les animations liées aux arrivées.</p><a href="https://www.routedurhum.com/guadeloupe">Route du Rhum · programme en Guadeloupe</a></article></main></html>
           HTML
           cp ve-build/edition/2026-11-08/index.html vu-build/edition/2026-11-08/
-          test -s ve-build/index.html && test -s vu-build/index.html
-          test -s ve-build/articles.json && test -s ve-build/actus/news.json && test -s ve-build/vm-gaming/news.json
+          for f in index.html articles.json actus/news.json vm-gaming/news.json; do
+            if ! test -s "ve-build/$f" && test -s "veloce/$f"; then
+              install -D "veloce/$f" "ve-build/$f"
+            fi
+            test -s "ve-build/$f" || { echo "::error::Fichier Véloce absent du build et du dépôt : $f"; exit 1; }
+          done
+          if ! test -s vu-build/index.html && test -s univers/index.html; then cp univers/index.html vu-build/; fi
+          test -s vu-build/index.html || { echo "::error::Accueil VM Univers absent du build"; exit 1; }
           echo "SOURCE_VM velocemercato $(git -C veloce rev-parse HEAD)"
           echo "SOURCE_VM vmunivers $(git -C univers rev-parse HEAD)"
       - name: Prévisualiser les deux projets puis publier dans l'ordre demandé
