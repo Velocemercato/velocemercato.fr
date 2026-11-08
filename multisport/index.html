@@ -3,7 +3,18 @@
 <link rel="canonical" href="https://velocemercato.fr/multisport/"><meta property="og:title" content="VM MULTISPORT – Véloce Mercato"><meta property="og:description" content="Tous tes sports, un seul univers"><meta property="og:image" content="https://velocemercato.fr/img/partage-velocemercato.jpg"><meta name="theme-color" content="#050608">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800;1,900&family=Knewave&family=Permanent+Marker&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/multisport/univers.css"><link rel="stylesheet" href="/multisport/cinema-v2.css"><link rel="stylesheet" href="/assets/vm-topbar.css"><link rel="stylesheet" href="/multisport/portail.css"><link rel="stylesheet" href="/notifications/alertes.css"><script src="/notifications/alertes.js" defer></script><script src="/multisport/univers.js" defer></script><link rel="manifest" href="/multisport/manifest.webmanifest"><link rel="apple-touch-icon" href="/img/logo-vm-192.png"></head>
+<link rel="stylesheet" href="/multisport/univers.css"><link rel="stylesheet" href="/multisport/cinema-v2.css"><link rel="stylesheet" href="/assets/vm-topbar.css"><link rel="stylesheet" href="/multisport/portail.css"><link rel="stylesheet" href="/notifications/alertes.css"><script src="/notifications/alertes.js" defer></script><script src="/multisport/univers.js" defer></script><link rel="manifest" href="/multisport/manifest.webmanifest"><link rel="apple-touch-icon" href="/img/logo-vm-192.png">
+<style id="ptv-embed-css">
+.ptv-embed{margin:32px 0;padding:22px;border:3px solid #000;border-radius:18px;background:linear-gradient(135deg,#0b1533,#1d3fb8);color:#fff;box-shadow:6px 6px 0 var(--gold-hi)}
+.ptv-embed-in{display:flex;flex-direction:column;gap:12px}
+.ptv-embed-t{font-family:Bangers,Impact,sans-serif;font-size:clamp(1.3rem,3vw,2rem);letter-spacing:.05em;margin:0;color:var(--gold-hi);text-shadow:2px 2px 0 #000}
+.ptv-embed .pastille-host{margin:0;font-size:.95rem;color:#c9d3f5}
+.ptv-embed .ptv-main{margin:0}
+.ptv-embed .ptv-big{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:var(--gold-hi);color:#0b1533;border:3px solid #000;border-radius:14px;text-decoration:none;font-weight:800;box-shadow:4px 4px 0 #000;transition:transform .15s}
+.ptv-embed .ptv-big:hover{transform:translate(-2px,-2px)}
+.ptv-embed .ptv-play{font-size:1.2rem}
+</style>
+</head>
 <body data-current-sport="portail" data-mode="portal">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
 <symbol id="i-news" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2M7 9h7M7 13h7M7 16h5"/></symbol>
@@ -59,6 +70,23 @@
 <section class="block" id="videos"><h3>🎬 LA PASTILLE TV & VIDÉOS</h3><p id="video-note">Les JT VM originaux disponibles sont proposés sans inventer d'émission. Les vidéos d'autres diffuseurs restent sur leurs chaînes officielles.</p><a id="official-videos" href="/studio.html#tv">Les véritables éditions VM ↗</a></section>
 <section class="block"><h3>🔔 TES ALERTES</h3><p>Choisis les sports dont tu veux recevoir les nouveautés lorsque le site reste ouvert.</p><a href="/notifications/">Configurer mes alertes →</a></section>
 </div></section>
-<div class="promo-manga"><div><strong>📺 VM MANGAS — LE CLUB NOSTALGIE</strong><p>Olive et Tom, L'École des champions, Dragon Ball Z… des épisodes publiés par les chaînes officielles.</p></div><a href="/mangas/">👑 DÉCOUVRIR VM MANGAS →</a></div></div></main>
+<div class="promo-manga"><div><strong>📺 VM MANGAS — LE CLUB NOSTALGIE</strong><p>Olive et Tom, L'École des champions, Dragon Ball Z… des épisodes publiés par les chaînes officielles.</p></div><a href="/mangas/">👑 DÉCOUVRIR VM MANGAS →</a></div></div>
+<!-- Pastille TV : le JT multisport -->
+<section class="ptv ptv-embed" aria-label="La Pastille TV — JT multisport">
+<link rel="stylesheet" href="/assets/pastille.css">
+<script src="/assets/pastille-player.js" defer></script>
+<script src="/assets/broadcast-feed.js?v=20261023-clarte1" defer></script>
+<div class="ptv-embed-in">
+<h2 class="ptv-embed-t">📺 LA PASTILLE TV — JT MULTISPORT</h2>
+<section class="pastille-feed" data-broadcast-feed data-broadcast-single="true" data-broadcast-universe="foot" hidden aria-label="Le JT multisport sur YouTube et Twitch"></section>
+<p class="pastille-host">Avec <b>Heineguez</b> · présentateur virtuel · émission générée par IA</p>
+<div class="vm-channels" role="group" aria-label="Nos chaînes vidéo">
+<a class="vm-channel vm-channel--youtube" href="https://www.youtube.com/@VeloceMercato" target="_blank" rel="noopener">▶ YouTube</a>
+<a class="vm-channel vm-channel--twitch" href="https://www.twitch.tv/velocemercato" target="_blank" rel="noopener">Twitch ↗</a>
+</div>
+<div class="ptv-main"><a class="ptv-big" href="/studio.html#tv"><span class="ptv-play">▶</span><b>Voir toutes les émissions</b></a></div>
+</div>
+</section>
+</main>
 <footer class="footer"><a href="/foot-amateur/">⚽ VM FOOT (pro, amateur et régional)</a><a href="/multisport/">🏆 VM Multisport</a><a href="/mangas/">📺 VM Mangas</a><a href="/vm-gaming/">🎮 Gaming</a><a href="/actus/">📰 Actus</a><a href="/pub/">🤝 Partenaires</a><a href="/soutenir.html">💛 Soutenir</a><span>Actualités provenant des sources indiquées ; aucune vidéo de match réhébergée.</span></footer>
 <div style="position:fixed;right:12px;bottom:12px;z-index:20"><button id="vmInstallSeparate" type="button" style="background:#e1243a;color:#fff;border:2px solid #ffdc72;border-radius:999px;padding:12px 16px;font-weight:900;box-shadow:0 4px 14px #0009">📲 Installer VM Multisport</button></div><script>(function(){var b=document.getElementById('vmInstallSeparate'),pending=null;addEventListener('beforeinstallprompt',function(e){e.preventDefault();pending=e});addEventListener('appinstalled',function(){b.hidden=true});b.addEventListener('click',async function(){if(pending){var p=pending;pending=null;await p.prompt();return}var ios=/iPhone|iPad|iPod/.test(navigator.userAgent);alert(ios?'Pour installer cette rubrique : ouvre-la dans Safari, touche Partager puis Sur l’écran d’accueil.':'Pour installer cette rubrique : ouvre le menu de ton navigateur et choisis Installer l’application ou Ajouter à l’écran d’accueil, si proposé.')});if(matchMedia('(display-mode: standalone)').matches||navigator.standalone)b.hidden=true})();</script></body></html>

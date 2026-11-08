@@ -208,7 +208,18 @@ h2.big small{text-shadow:none;color:var(--muted);letter-spacing:0;font-family:'D
 .vmsh-c{display:block;width:100%;margin-top:12px;font:800 1rem system-ui,sans-serif;padding:12px;border-radius:999px;border:2px solid #0b1533;background:#fff;color:#0b1533;cursor:pointer}
 @media print{.vmfab{display:none}}
 </style><link rel="stylesheet" href="/assets/pastille.css"><script src="/assets/pastille-player.js"></script><script src="/assets/pastille-feed.js" defer></script><script src="/assets/broadcast-feed.js" defer></script><link rel="stylesheet" href="/assets/gaming-clarity.css?v=20261024-gaming"><script src="/assets/vm-guide.js" defer></script>
-<!-- Cloudflare Web Analytics --><script id="vm-cfwa">(function(h){if(h==='velocemercato.fr'||h==='www.velocemercato.fr'){var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "35ce3d9fb9144124a0bb97db4e89dbb2"}');document.head.appendChild(s)}})(location.hostname)</script><link rel="stylesheet" href="/notifications/alertes.css"><script src="/notifications/alertes.js" defer></script><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,800;1,900&family=Knewave&family=Permanent+Marker&display=swap"><link rel="stylesheet" href="/assets/vm-theme.css"></head>
+<!-- Cloudflare Web Analytics --><script id="vm-cfwa">(function(h){if(h==='velocemercato.fr'||h==='www.velocemercato.fr'){var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "35ce3d9fb9144124a0bb97db4e89dbb2"}');document.head.appendChild(s)}})(location.hostname)</script><link rel="stylesheet" href="/notifications/alertes.css"><script src="/notifications/alertes.js" defer></script><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,800;1,900&family=Knewave&family=Permanent+Marker&display=swap"><link rel="stylesheet" href="/assets/vm-theme.css">
+<style id="ptv-embed-css">
+.ptv-embed{margin:32px 0;padding:22px;border:3px solid #000;border-radius:18px;background:linear-gradient(135deg,#0b1533,#1d3fb8);color:#fff;box-shadow:6px 6px 0 var(--gold-hi)}
+.ptv-embed-in{display:flex;flex-direction:column;gap:12px}
+.ptv-embed-t{font-family:Bangers,Impact,sans-serif;font-size:clamp(1.3rem,3vw,2rem);letter-spacing:.05em;margin:0;color:var(--gold-hi);text-shadow:2px 2px 0 #000}
+.ptv-embed .pastille-host{margin:0;font-size:.95rem;color:#c9d3f5}
+.ptv-embed .ptv-main{margin:0}
+.ptv-embed .ptv-big{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:var(--gold-hi);color:#0b1533;border:3px solid #000;border-radius:14px;text-decoration:none;font-weight:800;box-shadow:4px 4px 0 #000;transition:transform .15s}
+.ptv-embed .ptv-big:hover{transform:translate(-2px,-2px)}
+.ptv-embed .ptv-play{font-size:1.2rem}
+</style>
+</head>
 <body class="gaming-simple"><a id="ticker" class="ticker home-flash home-flash-top" href="#t-actus" hidden aria-label="Flash gaming : voir les actus"><span class="lbl">⚡ FLASH GAMING</span><span class="trk"><span id="tickerRun" class="run"></span></span></a><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="VM Univers, tous les projets">VM UNIVERS<small>TOUS LES PROJETS</small></a><a class="f" href="/">⚽ Foot</a><a class="fa" href="/foot-amateur/">🥅 Foot amateur</a><a class="m" href="/multisport/">🏆 Multisport</a><a class="a" href="/actus/">📰 Actus</a><a class="k" href="/mangas/">👑 VM Mangas</a><a class="g on" href="/vm-gaming/" aria-current="page">🎮 Gaming</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="sv" href="/services/">📍 Services</a><a class="pr" href="/pronos/">🔞 Pronos 18+</a><a class="pl" href="/decouvrir.html">➕ Plus</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
 
 <header class="bar"><div class="wrap"><a class="logo" href="./"><img src="img/logo-vm-gaming.webp" width="640" height="185" alt="VM Gaming"></a><a class="mini-cta" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener noreferrer">Discord ↗</a></div>
@@ -325,6 +336,23 @@ h2.big small{text-shadow:none;color:var(--muted);letter-spacing:0;font-family:'D
 </div></details>
 
 <p class="rules"><b>Les règles :</b> respect pour tout le monde · jamais d'adresse, de téléphone ou de mot de passe · un souci ? préviens un modérateur sur Discord.</p>
+
+<!-- Pastille TV : le JT gaming -->
+<section class="ptv ptv-embed" aria-label="La Pastille TV — JT gaming">
+<link rel="stylesheet" href="/assets/pastille.css">
+<script src="/assets/pastille-player.js" defer></script>
+<script src="/assets/broadcast-feed.js?v=20261023-clarte1" defer></script>
+<div class="ptv-embed-in">
+<h2 class="ptv-embed-t">📺 LA PASTILLE TV — JT GAMING</h2>
+<section class="pastille-feed" data-broadcast-feed data-broadcast-single="true" data-broadcast-universe="gaming" hidden aria-label="Le JT gaming sur YouTube et Twitch"></section>
+<p class="pastille-host">Avec <b>Heineguez</b> · présentateur virtuel · émission générée par IA</p>
+<div class="vm-channels" role="group" aria-label="Nos chaînes vidéo">
+<a class="vm-channel vm-channel--youtube" href="https://www.youtube.com/@VeloceMercato" target="_blank" rel="noopener">▶ YouTube</a>
+<a class="vm-channel vm-channel--twitch" href="https://www.twitch.tv/velocemercato" target="_blank" rel="noopener">Twitch ↗</a>
+</div>
+<div class="ptv-main"><a class="ptv-big" href="/studio.html#tv"><span class="ptv-play">▶</span><b>Voir toutes les émissions</b></a></div>
+</div>
+</section>
 </main>
 
 <footer><div class="wrap">
