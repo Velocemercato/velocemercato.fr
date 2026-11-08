@@ -19,6 +19,7 @@ DATA = {
     'heures': {day.isoformat(): list(hours) for day, hours in M.HEURES_UNIVERS.items()},
     'defaut': list(M.HEURES_UNIVERS_DEFAUT),
     'rotations': M.ROTATIONS,
+    'rotation_par_heure': M.UNIVERS_ROTATION,
 }
 
 PAGE = """<!doctype html>
@@ -47,7 +48,7 @@ a.b.alt{background:#fff}
 .tip{background:#121d44;border-radius:14px;padding:12px 14px;color:var(--muted);font-size:.92rem}
 @media(max-width:480px){.post{grid-template-columns:92px 1fr}.media{width:92px}}
 </style></head><body>
-<header><h1>📅 Programme VM Univers</h1><p>Facebook et Instagram : créneaux automatisés sous réserve de contenus vérifiés. Les flashes locaux sont à contrôler.</p></header>
+<header><h1>📅 Programme VM Univers</h1><p>Créneaux Facebook. Les flashes Belfort et le projet de 21 h peuvent aussi paraître sur Instagram.</p></header>
 <main>
 <div class="tip">1) Vérifie que le contenu est prêt · 2) Copie le texte et le média s'ils existent · 3) Publie uniquement les contenus vérifiés. Les flashes locaux ne sont pas prêts automatiquement pour TikTok/Snap.</div>
 <div id="liste"></div>
@@ -60,7 +61,8 @@ function jours(a,b){return Math.round((Date.UTC(b.getFullYear(),b.getMonth(),b.g
 var debut=new Date(D.debut+'T12:00:00');
 function contenu(d,h){if(h===10||h===15)return {type:'carte',name:'VM Belfort',icon:'belfort',titre:'VM Belfort · flash local',pitch:'Information à sélectionner et à vérifier dans les sources du jour',tags:'#VMBelfort #VMUnivers',unverified:true};
  var hs=heures(d),r=hs.indexOf(h);r=r<0?0:r;
- var l=D.rotations[r%D.rotations.length],it=Object.assign({},l[jours(debut,d)%l.length]);
+ var c=iso(d)===D.debut?[r%D.rotations.length,0]:D.rotation_par_heure[h];
+ var l=D.rotations[c[0]],it=Object.assign({},l[(jours(debut,d)+c[1])%l.length]);
  if(it.type==='video')it.video='/media/promos/'+it.video_id+'-vertical.mp4';return it}
 function texte(it){if(it.unverified)return 'Créneau local programmé : consulter les dernières sources vérifiées sur velocemercato.fr/belfort/. Ne pas publier de flash sans article daté et sourcé.';
  var fin=it.type==='video'?'\\nVidéo réalisée avec l’aide de l’IA.':'';
