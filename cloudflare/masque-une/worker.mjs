@@ -116,7 +116,7 @@ export default {
       }), !isPreview);
     }
     if (isUnivers && url.pathname === '/assets/pro-contact.js') {
-      const js = await fetch(new URL('/assets/pro-contact.js', VELOCE_ORIGIN), { method: request.method });
+      const js = await fetch(new URL(url.pathname + url.search, VELOCE_ORIGIN), { method: request.method });
       if (js.ok) return js;
     }
     if (!isUnivers && livePaths.has(url.pathname)) return liveResponse(request, url.pathname);
@@ -170,6 +170,8 @@ export default {
           element(form) {
             form.prepend('<input type="hidden" name="_next" value="https://vmunivers.fr/devis-merci">', { html: true });
           }
+        }).on('script[src="/assets/pro-contact.js"]', {
+          element(script) { script.setAttribute('src', '/assets/pro-contact.js?v=20261108-devis'); }
         });
       }
       return htmlResponse(rewriter.transform(response), !isPreview);
@@ -209,7 +211,9 @@ export default {
     }
 
     if (studio) {
-      rewriter.on('#tarifs', {
+      rewriter.on('script[src="/assets/pro-contact.js"]', {
+        element(script) { script.setAttribute('src', '/assets/pro-contact.js?v=20261108-devis'); }
+      }).on('#tarifs', {
         element(element) {
           element.after(AD_OFFERS, { html: true });
         }
@@ -277,6 +281,11 @@ export default {
           element.setAttribute('href', '/#feed-title');
         }
       });
+      if (url.pathname === '/scores/') {
+        rewriter.on('script[src="app.js"]', {
+          element(script) { script.setAttribute('src', 'app.js?v=20261108-fraicheur'); }
+        });
+      }
       if (['/kit-reseaux','/kit-reseaux.html','/rentabilite','/rentabilite.html'].includes(url.pathname)) {
         rewriter.on('a[href="#modeles"], a[href="#tarifs"], a[href="#gerance"], a[href="#devis"]', {
           element(element) {
