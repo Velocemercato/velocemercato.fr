@@ -144,6 +144,8 @@ function init(){
  for(const a of document.querySelectorAll('.sport-nav a'))a.addEventListener('click',()=>{try{localStorage.setItem('vm-sport-favori',a.dataset.sport)}catch{}});
  load().then(()=>{const region=qp.get('rubrique');if(['france','europe','international'].includes(region)){pickRegion(region);document.getElementById('actualites').scrollIntoView({block:'start'})}}).catch(()=>{});
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)load()});
+ // Actualiser les titres depuis les sources existantes toutes les cinq minutes, sans inventer de nouveaux articles.
+ setInterval(()=>{if(!document.hidden)load().catch(()=>{})},300000);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
