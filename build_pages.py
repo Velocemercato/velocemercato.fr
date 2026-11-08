@@ -205,10 +205,10 @@ def main():
     from tools.pronos_public import build as build_pronos
     build_pronos(Path('.'))
 
-    # Les pages des brèves retirées du fil sont supprimées (pas de page orpheline).
-    for old in OUT.glob('*.html'):
-        if old.name not in written:
-            old.unlink()
+    # Les pages des brèves retirées du fil restent en ligne (archive) :
+    # les liens « À lire aussi » des brèves publiées et les partages déjà diffusés
+    # continuent d'ouvrir la bonne page au lieu d'une 404 (poids négligeable, ~25 Ko par brève).
+    # Seules les pages des brèves courantes sont réécrites ; aucune page n'est supprimée.
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
              f'  <url><loc>{SITE}/</loc><changefreq>hourly</changefreq></url>',
@@ -240,6 +240,11 @@ def main():
              f'  <url><loc>{SITE}/pronos/</loc><changefreq>hourly</changefreq></url>']
     lines += [f'  <url><loc>{html.escape(u)}</loc>' + (f'<lastmod>{html.escape(d[:10])}</lastmod>' if d else '') + '</url>'
               for u, d in urls]
+    # Les brèves archivées (présentes sur le disque mais retirées du fil du jour)
+    # restent référencées : leurs liens « À lire aussi » et partages restent valides.
+    archived = sorted(OUT.glob('*.html'))
+    lines += [f'  <url><loc>{SITE}/a/{html.escape(p.name)}</loc></url>'
+              for p in archived if f'{SITE}/a/{p.name}' not in {u for u, _ in urls}]
     lines.append('</urlset>')
     Path('sitemap.xml').write_text('\n'.join(lines) + '\n', encoding='utf-8')
     # Une sélection statique de brèves sourcées reste visible sur l'accueil
