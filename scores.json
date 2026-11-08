@@ -25,6 +25,18 @@
    ]
   },
   {
+   "id": 558532,
+   "date": "2026-11-07T14:00:00Z",
+   "comp": "Serie A",
+   "dom": "Torino",
+   "ext": "Lecce",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    1
+   ]
+  },
+  {
    "id": 558534,
    "date": "2026-11-07T14:00:00Z",
    "comp": "Serie A",
@@ -37,15 +49,15 @@
    ]
   },
   {
-   "id": 558532,
-   "date": "2026-11-07T14:00:00Z",
-   "comp": "Serie A",
-   "dom": "Torino",
-   "ext": "Lecce",
+   "id": 565848,
+   "date": "2026-11-07T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "RB Leipzig",
+   "ext": "Augsburg",
    "statut": "FINISHED",
    "score": [
-    1,
-    1
+    5,
+    2
    ]
   },
   {
@@ -73,18 +85,6 @@
    ]
   },
   {
-   "id": 565848,
-   "date": "2026-11-07T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "RB Leipzig",
-   "ext": "Augsburg",
-   "statut": "FINISHED",
-   "score": [
-    5,
-    2
-   ]
-  },
-  {
    "id": 565851,
    "date": "2026-11-07T14:30:00Z",
    "comp": "Bundesliga",
@@ -97,18 +97,6 @@
    ]
   },
   {
-   "id": 560640,
-   "date": "2026-11-07T15:00:00Z",
-   "comp": "Premier League",
-   "dom": "Arsenal",
-   "ext": "Hull City",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    0
-   ]
-  },
-  {
    "id": 560633,
    "date": "2026-11-07T15:00:00Z",
    "comp": "Premier League",
@@ -118,6 +106,18 @@
    "score": [
     1,
     1
+   ]
+  },
+  {
+   "id": 560640,
+   "date": "2026-11-07T15:00:00Z",
+   "comp": "Premier League",
+   "dom": "Arsenal",
+   "ext": "Hull City",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    0
    ]
   },
   {
@@ -265,18 +265,6 @@
    ]
   },
   {
-   "id": 560636,
-   "date": "2026-11-08T14:00:00Z",
-   "comp": "Premier League",
-   "dom": "Sunderland",
-   "ext": "Chelsea",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    0
-   ]
-  },
-  {
    "id": 560638,
    "date": "2026-11-08T14:00:00Z",
    "comp": "Premier League",
@@ -289,15 +277,15 @@
    ]
   },
   {
-   "id": 560635,
+   "id": 560636,
    "date": "2026-11-08T14:00:00Z",
    "comp": "Premier League",
-   "dom": "Crystal Palace",
-   "ext": "Liverpool",
+   "dom": "Sunderland",
+   "ext": "Chelsea",
    "statut": "FINISHED",
    "score": [
     1,
-    3
+    0
    ]
   },
   {
@@ -310,6 +298,18 @@
    "score": [
     1,
     2
+   ]
+  },
+  {
+   "id": 560635,
+   "date": "2026-11-08T14:00:00Z",
+   "comp": "Premier League",
+   "dom": "Crystal Palace",
+   "ext": "Liverpool",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    3
    ]
   },
   {
@@ -361,18 +361,6 @@
    ]
   },
   {
-   "id": 559633,
-   "date": "2026-11-08T16:15:00Z",
-   "comp": "Ligue 1",
-   "dom": "Le Havre",
-   "ext": "Lorient",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    2
-   ]
-  },
-  {
    "id": 559631,
    "date": "2026-11-08T16:15:00Z",
    "comp": "Ligue 1",
@@ -385,11 +373,11 @@
    ]
   },
   {
-   "id": 559634,
+   "id": 559633,
    "date": "2026-11-08T16:15:00Z",
    "comp": "Ligue 1",
-   "dom": "Angers SCO",
-   "ext": "Nice",
+   "dom": "Le Havre",
+   "ext": "Lorient",
    "statut": "FINISHED",
    "score": [
     0,
@@ -406,6 +394,18 @@
    "score": [
     2,
     0
+   ]
+  },
+  {
+   "id": 559634,
+   "date": "2026-11-08T16:15:00Z",
+   "comp": "Ligue 1",
+   "dom": "Angers SCO",
+   "ext": "Nice",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    2
    ]
   },
   {
@@ -517,5 +517,5 @@
    ]
   }
  ],
- "maj": "2026-11-08T22:45:15Z"
+ "maj": "2026-11-08T22:47:08Z"
 }
