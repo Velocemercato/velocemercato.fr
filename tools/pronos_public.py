@@ -158,10 +158,45 @@ def section_selection(root, now):
     return "".join(section_une_selection(root, now, *row) for row in SELECTIONS)
 
 
+def conseil_public_html(data, pa, anchor, title, humain):
+    """Conseil public unique (publicAdvice) : match, analyse et sources, sans cote.
+
+    Rendu prioritaire dès qu'un conseil public valide existe dans la sélection :
+    la page publique affiche alors exactement le même conseil que l'accueil et
+    que pronos/selection.json, sans combiné ni cote (règle du 04/11/2026)."""
+    verif = parsed(data.get("verifie_le"))
+    stamp = verif.astimezone(PARIS).strftime("%d/%m/%Y à %H:%M") if verif else "?"
+    qui = f'validé par {e(data["valide_par"])}' if humain else "<b>publié automatiquement par Claude (IA), sans validation du propriétaire du site</b>"
+    kick = parsed(pa.get("kickoff"))
+    heure = kick.astimezone(PARIS).strftime("%d/%m/%Y · coup d'envoi à %H h %M (Paris)") if kick else ""
+    pub = parsed(pa.get("publishedAt"))
+    pubtxt = pub.astimezone(PARIS).strftime("publié le %d/%m/%Y à %H:%M") if pub else ""
+    liens = " · ".join(
+        f'<a href="{e(s["url"])}" target="_blank" rel="noopener noreferrer">{e(s.get("name") or s.get("nom") or "Source")}</a>'
+        for s in (pa.get("sources") or [])
+        if isinstance(s, dict) and safe_url(s.get("url")))
+    sources = f'<p class="source">Sources : {liens}</p>' if liens else ""
+    return (f'<section class="panel" id="{e(anchor)}"><h2>{e(title)}</h2>'
+            f'<p class="meta">Le conseil public unique du jour · vérifié le {e(stamp)} (Paris) · {qui} · {e(pubtxt)}.</p>'
+            f'<article class="news"><h3>{e(str(pa.get("match") or "").strip())}</h3>'
+            + (f'<p class="meta">{e(heure)}</p>' if heure else "")
+            + f'<p>{e(str(pa.get("analysis") or ""))}</p>{sources}</article>'
+            '<p><a href="#acces-vip" style="display:inline-block;background:#111;color:#ffe27b;border:2px solid #f4cf55;'
+            'border-radius:10px;padding:10px 14px;font-weight:900;text-decoration:none">🔒 Les autres pronos en VIP : demander mon accès gratuit →</a></p>'
+            '<p class="risk">Aucune cote affichée : le conseil public expire au coup d\'envoi. '
+            'Jouer comporte des risques : endettement, isolement, dépendance · Joueurs Info Service 09 74 75 13 13 · '
+            'Les jeux d’argent sont interdits aux mineurs.</p></section>')
+
+
 def section_une_selection(root, now, path, anchor, title, humain):
     data = load(root, path, {})
     if not selection_active(data, now, humain):
         return ""
+    pa = data.get("publicAdvice") if isinstance(data.get("publicAdvice"), dict) else None
+    if pa and str(pa.get("match") or "").strip() and str(pa.get("analysis") or "").strip():
+        # Règle du 04/11/2026 : un seul conseil public, sourcé, sans cote,
+        # identique sur l'accueil, la page et le JSON. Les combinés restent VIP.
+        return conseil_public_html(data, pa, anchor, title, humain)
     blocs = []
     plafond = data.get("cote_max_public")
     for combo in data.get("combines") or []:

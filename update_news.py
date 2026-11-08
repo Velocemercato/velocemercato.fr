@@ -193,6 +193,12 @@ def rss_items(feed):
             continue
         if not (NOW - dt.timedelta(hours=MAX_AGE_HOURS) <= date <= NOW + dt.timedelta(minutes=10)):
             continue
+        # Certains flux (ex. Gameblog) servent des liens en double préfixe
+        # « https://hote/https://hote/… » : on garde l'URL réelle, sinon la
+        # source publiée renvoie un 404.
+        doubled = re.match(r'^(https?://[^/]+?)/(https?://.+)$', link)
+        if doubled:
+            link = doubled.group(2)
         if BLOCK.search(title) or not allowed_url(link):
             continue
         posts.append({'title': title, 'url': link, 'date': date,

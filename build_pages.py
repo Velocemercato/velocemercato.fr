@@ -130,7 +130,9 @@ def main():
         if not a.get('id') or not a.get('titre') or not a.get('texte'):
             continue
         name = safe_id(a['id']) + '.html'
-        url = f'{SITE}/a/{name}'
+        # Sitemap, canonical et JSON-LD pointent vers l'URL finale servie
+        # (les adresses /a/xxx.html redirigent en 301 vers /a/xxx).
+        url = f'{SITE}/a/{safe_id(a["id"])}'
         try:
             when = dt.datetime.fromisoformat(str(a.get('publishedAt', '')).replace('Z', '+00:00'))
         except ValueError:
@@ -243,8 +245,8 @@ def main():
     # Les brèves archivées (présentes sur le disque mais retirées du fil du jour)
     # restent référencées : leurs liens « À lire aussi » et partages restent valides.
     archived = sorted(OUT.glob('*.html'))
-    lines += [f'  <url><loc>{SITE}/a/{html.escape(p.name)}</loc></url>'
-              for p in archived if f'{SITE}/a/{p.name}' not in {u for u, _ in urls}]
+    lines += [f'  <url><loc>{SITE}/a/{html.escape(p.stem)}</loc></url>'
+              for p in archived if f'{SITE}/a/{p.stem}' not in {u for u, _ in urls}]
     lines.append('</urlset>')
     Path('sitemap.xml').write_text('\n'.join(lines) + '\n', encoding='utf-8')
     # Une sélection statique de brèves sourcées reste visible sur l'accueil

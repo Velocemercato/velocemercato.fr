@@ -15,6 +15,7 @@
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#08090C">
+<link rel="manifest" href="/manifest.webmanifest">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2308090C'/%3E%3Ctext x='32' y='44' font-family='Impact,sans-serif' font-size='30' font-style='italic' text-anchor='middle' fill='%23FFC72C'%3EVM%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -118,11 +119,11 @@
   </div>
   <div class="sport-slats" aria-label="Nos sports">
     <a class="slat" style="--sc:#3DDC84" href="/actus/"><svg><use href="#i-ball"/></svg><span class="sl">Foot</span></a>
-    <a class="slat" style="--sc:#FF9F1C" href="/multisport/"><svg><use href="#i-basket"/></svg><span class="sl">Basket</span></a>
-    <a class="slat" style="--sc:#FF2B4A" href="/multisport/"><svg><use href="#i-f1"/></svg><span class="sl">F1</span></a>
-    <a class="slat" style="--sc:#B14CFF" href="/multisport/"><svg><use href="#i-moto"/></svg><span class="sl">MotoGP</span></a>
-    <a class="slat" style="--sc:#4DE1FF" href="/multisport/"><svg><use href="#i-tennis"/></svg><span class="sl">Tennis</span></a>
-    <a class="slat" style="--sc:#FF5C8A" href="/multisport/"><svg><use href="#i-mma"/></svg><span class="sl">MMA</span></a>
+    <a class="slat" style="--sc:#FF9F1C" href="/multisport/nba/"><svg><use href="#i-basket"/></svg><span class="sl">Basket</span></a>
+    <a class="slat" style="--sc:#FF2B4A" href="/multisport/f1/"><svg><use href="#i-f1"/></svg><span class="sl">F1</span></a>
+    <a class="slat" style="--sc:#B14CFF" href="/multisport/motogp/"><svg><use href="#i-moto"/></svg><span class="sl">MotoGP</span></a>
+    <a class="slat" style="--sc:#4DE1FF" href="/multisport/tennis/"><svg><use href="#i-tennis"/></svg><span class="sl">Tennis</span></a>
+    <a class="slat" style="--sc:#FF5C8A" href="/multisport/mma/"><svg><use href="#i-mma"/></svg><span class="sl">MMA</span></a>
   </div>
 </section>
 
@@ -131,16 +132,16 @@
   <section class="section wrap" aria-label="Catégories">
     <div class="pills pills-scroll">
       <a class="pill active" style="--sc:#3DDC84" href="/actus/"><svg><use href="#i-ball"/></svg> Foot</a>
-      <a class="pill" style="--sc:#FF9F1C" href="/multisport/"><svg><use href="#i-basket"/></svg> NBA</a>
-      <a class="pill" style="--sc:#9C27B0" href="/multisport/"><svg><use href="#i-nfl"/></svg> NFL</a>
+      <a class="pill" style="--sc:#FF9F1C" href="/multisport/nba/"><svg><use href="#i-basket"/></svg> NBA</a>
+      <a class="pill" style="--sc:#9C27B0" href="/multisport/nfl/"><svg><use href="#i-nfl"/></svg> NFL</a>
       <a class="pill" style="--sc:#FF2B4A" href="/multisport/"><svg><use href="#i-f1"/></svg> F1</a>
-      <a class="pill" style="--sc:#B14CFF" href="/multisport/"><svg><use href="#i-moto"/></svg> MotoGP</a>
-      <a class="pill" style="--sc:#4DE1FF" href="/multisport/"><svg><use href="#i-tennis"/></svg> Tennis</a>
-      <a class="pill" style="--sc:#FFD166" href="/multisport/"><svg><use href="#i-rugby"/></svg> Rugby</a>
-      <a class="pill" style="--sc:#3DDC84" href="/multisport/"><svg><use href="#i-cycle"/></svg> Cyclisme</a>
-      <a class="pill" style="--sc:#4DE1FF" href="/multisport/"><svg><use href="#i-nhl"/></svg> NHL</a>
-      <a class="pill" style="--sc:#FF9F1C" href="/multisport/"><svg><use href="#i-mlb"/></svg> MLB</a>
-      <a class="pill" style="--sc:#FF5C8A" href="/multisport/"><svg><use href="#i-mma"/></svg> MMA</a>
+      <a class="pill" style="--sc:#B14CFF" href="/multisport/motogp/"><svg><use href="#i-moto"/></svg> MotoGP</a>
+      <a class="pill" style="--sc:#4DE1FF" href="/multisport/tennis/"><svg><use href="#i-tennis"/></svg> Tennis</a>
+      <a class="pill" style="--sc:#FFD166" href="/multisport/rugby/"><svg><use href="#i-rugby"/></svg> Rugby</a>
+      <a class="pill" style="--sc:#3DDC84" href="/multisport/cyclisme/"><svg><use href="#i-cycle"/></svg> Cyclisme</a>
+      <a class="pill" style="--sc:#4DE1FF" href="/multisport/nhl/"><svg><use href="#i-nhl"/></svg> NHL</a>
+      <a class="pill" style="--sc:#FF9F1C" href="/multisport/mlb/"><svg><use href="#i-mlb"/></svg> MLB</a>
+      <a class="pill" style="--sc:#FF5C8A" href="/multisport/mma/"><svg><use href="#i-mma"/></svg> MMA</a>
     </div>
   </section>
 
@@ -168,21 +169,21 @@
 
       <div class="side-list" aria-label="À ne pas manquer">
         <div class="section-head"><h2>À ne pas manquer</h2></div>
-        <article class="card" style="--sc:#FF2B4A">
+        <a class="card" style="--sc:#FF2B4A" href="/multisport/f1/">
           <div class="thumb"><img src="/assets/hero-multisport.jpg" alt="Grand Prix de Formule 1" style="object-position:60% 40%"><span class="badge gold">F1</span></div>
           <div class="card-body"><h3>GP du jour — qualifications et course à suivre</h3><div class="card-meta"><span><b>Multisport</b> · 5 min</span></div></div>
-        </article>
-        <article class="card" style="--sc:#FF9F1C">
+        </a>
+        <a class="card" style="--sc:#FF9F1C" href="/multisport/nba/">
           <div class="thumb"><img src="/assets/hero-multisport.jpg" alt="NBA" style="object-position:30% 60%"><span class="badge gold">NBA</span></div>
           <div class="card-body"><h3>NBA — la nuit de basket résumée</h3><div class="card-meta"><span><b>Multisport</b> · 4 min</span></div></div>
-        </article>
-        <article class="card" style="--sc:#4DE1FF">
+        </a>
+        <a class="card" style="--sc:#4DE1FF" href="/multisport/tennis/">
           <div class="thumb"><img src="/assets/hero-multisport.jpg" alt="Tennis" style="object-position:85% 20%"><span class="badge gold">Tennis</span></div>
           <div class="card-body"><h3>ATP & WTA — les résultats du tournoi</h3><div class="card-meta"><span><b>Multisport</b> · 3 min</span></div></div>
-        </article>
+        </a>
       </div>
 
-      <div>
+      <div id="videos">
         <div class="section-head"><h2>Derniers ajouts</h2></div>
         <div class="vlist">
           <a class="vitem" href="https://www.youtube.com/watch?v=EvD-v3bCX1c" target="_blank" rel="noopener">
@@ -272,7 +273,7 @@
   <section class="section wrap" id="agenda" aria-label="Agenda du jour">
     <div class="section-head">
       <h2>L'agenda du jour</h2>
-      <a class="more" href="#agenda">Revenir à l'agenda →</a>
+      <a class="more" href="/scores/">Tous les scores →</a>
     </div>
     <div class="score-row"><span class="comp">Ligue 1</span><span class="teams">Stade Rennais – <span>Lille</span></span><span class="score">—</span><span class="hour">15:00</span></div>
     <div class="score-row"><span class="comp">Ligue 1</span><span class="teams">Le Havre – <span>Lorient</span></span><span class="score">—</span><span class="hour">17:15</span></div>
@@ -384,7 +385,7 @@
           <li><a href="mailto:velocemercato.fr@gmail.com">velocemercato.fr@gmail.com</a></li>
           <li><a href="/pronos/">Pronos & VIP</a></li>
           <li><a href="/soutenir.html">Soutenir VM</a></li>
-          <li><a href="https://vmunivers.fr/" target="_blank" rel="noopener">Publicité & VM Studio</a></li>
+          <li><a href="/pub/">Publicité</a> · <a href="/web-studio.html">VM Studio</a></li>
         </ul>
       </div>
     </div>
