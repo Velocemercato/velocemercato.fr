@@ -32,6 +32,9 @@ jobs:
           grep -Fq 'https://www.seloger.com/#' _site/comparateur/index.html
           test -s _site/articles.json
           test -s _site/scores.json
+          grep -Fq 'data-pro-endpoint="https://formsubmit.co/ajax/' _site/web-studio.html
+          grep -Fq 'name="email" required' _site/web-studio.html
+          grep -Fq 'Derniers scores connus' _site/scores/app.js
           for f in rss-v2-0be27d1586f08c2f32e3f6 rss-v2-1fc814d6155ac9da1d853f rss-v2-56f7f12e31ceddaadfde23 rss-v2-9daaf5b035097daf6a1542 rss-v2-7620370f6c55de43261973; do
             test -s "_site/a/$f.html"
           done
