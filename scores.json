@@ -25,18 +25,6 @@
    ]
   },
   {
-   "id": 558534,
-   "date": "2026-11-07T14:00:00Z",
-   "comp": "Serie A",
-   "dom": "Cagliari",
-   "ext": "Frosinone",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    0
-   ]
-  },
-  {
    "id": 558532,
    "date": "2026-11-07T14:00:00Z",
    "comp": "Serie A",
@@ -46,6 +34,18 @@
    "score": [
     1,
     1
+   ]
+  },
+  {
+   "id": 558534,
+   "date": "2026-11-07T14:00:00Z",
+   "comp": "Serie A",
+   "dom": "Cagliari",
+   "ext": "Frosinone",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    0
    ]
   },
   {
@@ -510,12 +510,12 @@
    "comp": "Liga",
    "dom": "Atleti",
    "ext": "Barça",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   }
  ],
- "maj": "2026-11-08T20:04:34Z"
+ "maj": "2026-11-08T20:06:28Z"
 }
