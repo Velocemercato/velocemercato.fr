@@ -1,0 +1,91 @@
+name: VM - Recette mobile des sites et de l’atelier
+on:
+  push:
+    branches: [codex/vm-studio-atelier-prive]
+    paths: ['.github/workflows/tester-atelier-mobile.yml']
+permissions:
+  contents: read
+jobs:
+  mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    defaults:
+      run:
+        working-directory: cloudflare/studio-prive
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Installer le navigateur
+        run: |
+          npm install --no-audit --no-fund --no-save playwright
+          npx playwright install chromium
+      - name: Tester des parcours publics aux trois largeurs
+        run: |
+          node --input-type=module <<'JS'
+          import {chromium} from 'playwright';
+          const browser=await chromium.launch({args:['--no-sandbox']});
+          const routes=['https://velocemercato.fr/','https://velocemercato.fr/multisport/','https://velocemercato.fr/web-studio','https://vmunivers.fr/','https://vmunivers.fr/professionnels/','https://vm-studio-prive.velocemercato87.workers.dev/'];
+          await Promise.all([320,390,768].map(async width=>{
+            const page=await browser.newPage({viewport:{width,height:844},ignoreHTTPSErrors:false});
+            for(const url of routes){
+              try{
+                const res=await page.goto(url,{waitUntil:'domcontentloaded',timeout:18000});
+                await page.waitForTimeout(450);
+                const result=await page.evaluate(()=>({width:document.documentElement.scrollWidth,h1:document.querySelector('h1')?.textContent?.trim().slice(0,65)}));
+                console.log('AUDIT MOBILE',width,res?.status(),result.width,url,result.h1);
+              }catch(e){console.log('AUDIT MOBILE erreur',width,url,e.name);}
+            }
+            await page.close();
+          }));
+          await browser.close();
+          JS
+      - name: Tester le parcours atelier dans Chromium
+        run: |
+          CODE='Test-atelier-mobile-seulement-2026'
+          export CODE
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          import {pbkdf2Sync} from 'node:crypto';
+          const config=JSON.parse(fs.readFileSync('wrangler.jsonc','utf8'));
+          const salt='00000000000000000000000000000002';
+          config.vars.STUDIO_BOOTSTRAP=salt+':'+pbkdf2Sync(process.env.CODE,salt,100000,32,'sha256').toString('hex');
+          fs.writeFileSync('wrangler-local.jsonc',JSON.stringify(config));
+          JS
+          npx --yes wrangler@4 dev --local --config wrangler-local.jsonc --ip 127.0.0.1 --port 8787 > "$RUNNER_TEMP/atelier-local.log" 2>&1 &
+          for i in $(seq 1 45); do if curl -fsS http://127.0.0.1:8787/ >/dev/null 2>&1; then break; fi; sleep 1; done
+          node --input-type=module <<'JS'
+          import assert from 'node:assert/strict';
+          import {chromium} from 'playwright';
+          const browser=await chromium.launch({args:['--no-sandbox']});
+          const context=await browser.newContext({viewport:{width:390,height:844}});
+          const page=await context.newPage();
+          await page.goto('http://127.0.0.1:8787/');
+          await page.getByLabel('Code atelier').fill(process.env.CODE);
+          await page.getByRole('button',{name:'Ouvrir',exact:true}).click();
+          await page.waitForURL('**/atelier');
+          await page.getByText('36 modèles · Site vitrine').waitFor();
+          await page.getByRole('button',{name:'Coiffure Graphique',exact:true}).click();
+          await page.getByLabel('Nom du client').fill('Salon démo VM');
+          await page.getByRole('button',{name:'Créer le lien client'}).click();
+          await page.getByText('Projet enregistré.').waitFor();
+          const url=await page.getByLabel('Lien client').inputValue();
+          const first=await page.getByLabel('Code client',{exact:true}).inputValue();
+          const client=await (await browser.newContext()).newPage();
+          await client.goto(url);
+          assert.equal(await client.getByText('Salon démo VM').count(),0);
+          await client.getByLabel('Code client').fill(first);
+          await client.getByRole('button',{name:'Ouvrir'}).click();
+          await client.getByRole('heading',{name:'Une nouvelle coupe, une nouvelle énergie.'}).waitFor();
+          page.once('dialog',d=>d.accept());
+          await page.getByRole('button',{name:'Changer le code',exact:true}).click();
+          await page.getByText('Nouveau code prêt à copier.').waitFor();
+          await client.goto(url);
+          await client.getByLabel('Code client').fill(first);
+          await client.getByRole('button',{name:'Ouvrir'}).click();
+          await client.getByRole('alert').waitFor();
+          assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),390);
+          console.log('ATELIER MOBILE OK · 390 px · 36 modèles sur le volet · création du lien · code initial accepté · ancien code refusé');
+          await browser.close();
+          JS
