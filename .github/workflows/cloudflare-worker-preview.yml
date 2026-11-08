@@ -74,13 +74,17 @@ jobs:
           for filename in ('veloce-preview.html', 'veloce-production.html'):
               page = Ids()
               page.feed(Path('/tmp', filename).read_text())
-              assert 'actualites-du-jour' not in page.ids, filename
-              assert {'vm-readable-scores', 'vm-home-mobile'} <= page.ids, filename
-              assert 'vm-essentiel-title' in page.ids and 'vm-cinema-home' not in page.ids, filename
               content = Path('/tmp', filename).read_text()
-              assert all(f'href="{url}"' in content for url in ('#feed-title', '#pastille-tv', '/belfort/', '/scores/', '/multisport/', '/vm-gaming/')), filename
-              assert {'feed', 'pastille-tv', 'themeBtn', 'themeIco', 'themeTxt', 'ticker', 'tickerRun'} <= page.ids, filename
-              assert 'href="#actualites-du-jour"' not in Path('/tmp', filename).read_text()
+              if 'href="/assets/vm-home.css"' in content:
+                  assert {'actu-jour', 'actualites-du-jour', 'feed-title'} <= page.ids, filename
+                  assert 'class="nav-tabs"' in content and 'vm-essentiel-title' not in page.ids, filename
+              else:
+                  assert 'actualites-du-jour' not in page.ids, filename
+                  assert {'vm-readable-scores', 'vm-home-mobile'} <= page.ids, filename
+                  assert 'vm-essentiel-title' in page.ids and 'vm-cinema-home' not in page.ids, filename
+                  assert all(f'href="{url}"' in content for url in ('#feed-title', '#pastille-tv', '/belfort/', '/scores/', '/multisport/', '/vm-gaming/')), filename
+                  assert {'feed', 'pastille-tv', 'themeBtn', 'themeIco', 'themeTxt', 'ticker', 'tickerRun'} <= page.ids, filename
+                  assert 'href="#actualites-du-jour"' not in content
               print('Verified', filename)
           univers = Ids()
           univers.feed(Path('/tmp/vmunivers-preview.html').read_text())

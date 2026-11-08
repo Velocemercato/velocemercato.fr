@@ -203,6 +203,14 @@ export default {
 
     const rewriter = polish(new HTMLRewriter(), url, isUnivers);
     if (home) amazonFooter(rewriter);
+    if (home && !isUnivers && (await response.clone().text()).includes('href="/assets/vm-home.css"')) {
+      rewriter.on('#actualites-du-jour', {
+        element(section) { section.prepend('<span id="feed-title"></span>', { html: true }); }
+      }).on('head', {
+        element(head) { head.prepend(liveBootstrap, { html: true }); }
+      });
+      return htmlResponse(rewriter.transform(response), !isPreview);
+    }
     if (!isUnivers && url.pathname === '/pronos/') {
       pronosPage(rewriter, advice);
       rewriter.on('#conseil-contenu', {
