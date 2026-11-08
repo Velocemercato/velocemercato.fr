@@ -61,18 +61,6 @@
    ]
   },
   {
-   "id": 565853,
-   "date": "2026-11-07T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "SC Paderborn",
-   "ext": "Frankfurt",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    2
-   ]
-  },
-  {
    "id": 565848,
    "date": "2026-11-07T14:30:00Z",
    "comp": "Bundesliga",
@@ -97,15 +85,15 @@
    ]
   },
   {
-   "id": 560640,
-   "date": "2026-11-07T15:00:00Z",
-   "comp": "Premier League",
-   "dom": "Arsenal",
-   "ext": "Hull City",
+   "id": 565853,
+   "date": "2026-11-07T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "SC Paderborn",
+   "ext": "Frankfurt",
    "statut": "FINISHED",
    "score": [
-    1,
-    0
+    2,
+    2
    ]
   },
   {
@@ -118,6 +106,18 @@
    "score": [
     1,
     1
+   ]
+  },
+  {
+   "id": 560640,
+   "date": "2026-11-07T15:00:00Z",
+   "comp": "Premier League",
+   "dom": "Arsenal",
+   "ext": "Hull City",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    0
    ]
   },
   {
@@ -265,18 +265,6 @@
    ]
   },
   {
-   "id": 560637,
-   "date": "2026-11-08T14:00:00Z",
-   "comp": "Premier League",
-   "dom": "Ipswich Town",
-   "ext": "Bournemouth",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    2
-   ]
-  },
-  {
    "id": 560635,
    "date": "2026-11-08T14:00:00Z",
    "comp": "Premier League",
@@ -289,15 +277,15 @@
    ]
   },
   {
-   "id": 560636,
+   "id": 560637,
    "date": "2026-11-08T14:00:00Z",
    "comp": "Premier League",
-   "dom": "Sunderland",
-   "ext": "Chelsea",
+   "dom": "Ipswich Town",
+   "ext": "Bournemouth",
    "statut": "FINISHED",
    "score": [
     1,
-    0
+    2
    ]
   },
   {
@@ -309,6 +297,18 @@
    "statut": "FINISHED",
    "score": [
     2,
+    0
+   ]
+  },
+  {
+   "id": 560636,
+   "date": "2026-11-08T14:00:00Z",
+   "comp": "Premier League",
+   "dom": "Sunderland",
+   "ext": "Chelsea",
+   "statut": "FINISHED",
+   "score": [
+    1,
     0
    ]
   },
@@ -361,18 +361,6 @@
    ]
   },
   {
-   "id": 559634,
-   "date": "2026-11-08T16:15:00Z",
-   "comp": "Ligue 1",
-   "dom": "Angers SCO",
-   "ext": "Nice",
-   "statut": "IN_PLAY",
-   "score": [
-    0,
-    1
-   ]
-  },
-  {
    "id": 559632,
    "date": "2026-11-08T16:15:00Z",
    "comp": "Ligue 1",
@@ -382,6 +370,18 @@
    "score": [
     1,
     0
+   ]
+  },
+  {
+   "id": 559634,
+   "date": "2026-11-08T16:15:00Z",
+   "comp": "Ligue 1",
+   "dom": "Angers SCO",
+   "ext": "Nice",
+   "statut": "IN_PLAY",
+   "score": [
+    0,
+    1
    ]
   },
   {
@@ -517,5 +517,5 @@
    ]
   }
  ],
- "maj": "2026-11-08T17:10:36Z"
+ "maj": "2026-11-08T17:12:30Z"
 }
