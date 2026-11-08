@@ -1,0 +1,55 @@
+name: Cloudflare Pages - Deploiement production
+on:
+  push:
+    branches: [codex/pages-production-20261108]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cloudflare-pages-production-velocemercato
+  cancel-in-progress: false
+jobs:
+  deploy:
+    if: github.ref_name == 'codex/pages-production-20261108'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Build static site
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - name: Verify the audit fixes are present
+        run: |
+          set -euo pipefail
+          grep -Fq 'https://www.seloger.com/immobilier/grand-est.htm' _site/immo/index.html
+          grep -Fq 'https://www.seloger.com/immobilier/971/guadeloupe.htm' _site/immo/index.html
+          grep -Fq '/nos-offres/?s=' _site/emploi/index.html
+          grep -Fq 'https://www.seloger.com/#' _site/comparateur/index.html
+          test -s _site/articles.json
+          test -s _site/scores.json
+          for f in rss-v2-0be27d1586f08c2f32e3f6 rss-v2-1fc814d6155ac9da1d853f rss-v2-56f7f12e31ceddaadfde23 rss-v2-9daaf5b035097daf6a1542 rss-v2-7620370f6c55de43261973; do
+            test -s "_site/a/$f.html"
+          done
+          echo "Toutes les corrections de l'audit sont presentes dans le build."
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Discover production branch and deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: c5227875896e9a281915ed70c146e845
+        run: |
+          set -euo pipefail
+          test -n "$CLOUDFLARE_API_TOKEN" || { echo "::error::CLOUDFLARE_API_TOKEN is missing"; exit 1; }
+          PROD_BRANCH=$(curl --fail --silent --show-error \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/velocemercato" \
+            | jq -r '.result.production_branch')
+          echo "Branche de production Cloudflare Pages : $PROD_BRANCH"
+          test -n "$PROD_BRANCH" && [ "$PROD_BRANCH" != "null" ] || { echo "::error::production_branch introuvable"; exit 1; }
+          npx --yes wrangler@4 pages deploy _site --project-name=velocemercato --branch="$PROD_BRANCH"
