@@ -39,7 +39,8 @@ class AccueilMultisportTests(unittest.TestCase):
   self.assertIn('VM MANGAS',portal)
   self.assertIn('id="recent-list"',portal)
   self.assertIn('id="news-list"',portal)
-  self.assertIn('class="banner"',portal)
+  self.assertIn('class="vm-refonte-hero" data-layout="multi"',portal)
+  self.assertRegex(portal, r'id="sports"[^>]*>\s*<a [^>]*data-sport="foot"')
   for sport in SPORTS:
    content=read(f"multisport/{sport}/index.html")
    self.assertIn(f'data-current-sport="{sport}"',content)

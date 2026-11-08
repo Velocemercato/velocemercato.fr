@@ -14,6 +14,7 @@
 .ptv-embed .ptv-big:hover{transform:translate(-2px,-2px)}
 .ptv-embed .ptv-play{font-size:1.2rem}
 </style>
+<link rel="stylesheet" href="/assets/vm-refonte.css">
 </head>
 <body data-current-sport="portail" data-mode="portal">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
@@ -31,17 +32,24 @@
 <symbol id="i-chev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></symbol>
 </defs></svg>
 <header class="vmtop"><div class="vmtop-in"><a class="vmtop-logo" href="/" aria-label="Véloce Mercato, accueil foot"><img src="/img/logo-vm-192.png" alt="" width="42" height="42"><span>Véloce <b>Mercato</b></span></a>
-<nav class="vmtop-nav" aria-label="Réseau Véloce Mercato"><a href="/actus/"><svg aria-hidden="true"><use href="#i-news"/></svg>Actus</a><a href="/pronos/"><svg aria-hidden="true"><use href="#i-bolt"/></svg>Pronos</a><a href="/"><svg aria-hidden="true"><use href="#i-swap"/></svg>Mercato</a><a href="/studio.html#tv"><svg aria-hidden="true"><use href="#i-play"/></svg>Vidéos</a><a href="/vm-gaming/"><svg aria-hidden="true"><use href="#i-pad"/></svg>VM Gaming</a><a class="on" href="/multisport/" aria-current="page"><svg aria-hidden="true"><use href="#i-crown"/></svg>VM Multisport</a></nav>
+<nav class="vmtop-nav" aria-label="Réseau Véloce Mercato"><a href="/actus/"><svg aria-hidden="true"><use href="#i-news"/></svg>VM Actus</a><a href="/pronos/"><svg aria-hidden="true"><use href="#i-bolt"/></svg>Pronos</a><a href="/"><svg aria-hidden="true"><use href="#i-swap"/></svg>Mercato</a><a href="/studio.html#tv"><svg aria-hidden="true"><use href="#i-play"/></svg>Vidéos</a><a href="/vm-gaming/"><svg aria-hidden="true"><use href="#i-pad"/></svg>VM Gaming</a><a class="on" href="/multisport/" aria-current="page"><svg aria-hidden="true"><use href="#i-crown"/></svg>VM Multisport</a></nav>
 <div class="vmtop-tools"><a class="vmtop-search" href="/archives.html" aria-label="Rechercher dans les archives"><svg aria-hidden="true"><use href="#i-search"/></svg></a><a class="vmtop-account" href="/notifications/" aria-label="Mon espace : mes alertes"><svg aria-hidden="true"><use href="#i-user"/></svg></a><span class="vmtop-87" aria-hidden="true">87</span></div></div></header>
 <main>
-<section class="banner" data-layout="multi" id="haut" aria-labelledby="hero-title">
-<!-- Visuel du propriétaire (mascotte VM, maquette 01) : le lettrage « VM MULTISPORT » est dans l'image, le titre reste lisible par les lecteurs d'écran. -->
-<picture class="ms-art"><source media="(max-width:768px)" srcset="/img/vm-art/vm-multisport-hero-768.webp"><img src="/img/vm-art/vm-multisport-hero.webp" alt="" width="1536" height="356" fetchpriority="high"></picture>
-<div class="ms-hero-title sr-only"><h1 id="hero-title">VM MULTISPORT</h1><p id="hero-subtitle">Tous tes sports, un seul univers</p></div>
+<section class="vm-refonte-hero" data-layout="multi" id="haut" aria-labelledby="hero-title">
+  <picture class="vm-refonte-art">
+    <img src="/img/vm-refonte/multisport.webp" alt="" fetchpriority="high">
+  </picture>
+  <div class="vm-refonte-copy">
+    <p class="vm-refonte-kicker">Véloce Mercato présente</p>
+    <h1 id="hero-title">VM <span>Multisport</span></h1>
+    <p>Tous tes sports, un seul univers.</p>
+    <a class="vm-refonte-button" href="#actualites">Voir les actualités sportives</a>
+  </div>
 </section>
 <div class="wrap">
 <div class="ms-tiles"><button type="button" class="ms-arrow prev" data-scroll="-1" aria-label="Sports précédents"><svg aria-hidden="true"><use href="#i-chev"/></svg></button>
 <nav class="sport-nav" id="sports" aria-label="Choisir son univers sportif">
+<a href="/#actualites-du-jour" data-sport="foot"><span class="ico" aria-hidden="true">⚽</span>FOOT</a>
 <a href="/multisport/nba/" data-sport="nba"><span class="ico" aria-hidden="true">🏀</span>NBA</a>
 <a href="/multisport/nfl/" data-sport="nfl"><span class="ico" aria-hidden="true">🏈</span>NFL</a>
 <a href="/multisport/f1/" data-sport="f1"><span class="ico" aria-hidden="true">🏁</span>F1</a>
