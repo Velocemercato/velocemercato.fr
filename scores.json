@@ -97,18 +97,6 @@
    ]
   },
   {
-   "id": 560640,
-   "date": "2026-11-07T15:00:00Z",
-   "comp": "Premier League",
-   "dom": "Arsenal",
-   "ext": "Hull City",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    0
-   ]
-  },
-  {
    "id": 560633,
    "date": "2026-11-07T15:00:00Z",
    "comp": "Premier League",
@@ -118,6 +106,18 @@
    "score": [
     1,
     1
+   ]
+  },
+  {
+   "id": 560640,
+   "date": "2026-11-07T15:00:00Z",
+   "comp": "Premier League",
+   "dom": "Arsenal",
+   "ext": "Hull City",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    0
    ]
   },
   {
@@ -385,11 +385,11 @@
    ]
   },
   {
-   "id": 559634,
+   "id": 559632,
    "date": "2026-11-08T16:15:00Z",
    "comp": "Ligue 1",
-   "dom": "Angers SCO",
-   "ext": "Nice",
+   "dom": "Brest",
+   "ext": "Olympique Lyon",
    "statut": "TIMED",
    "score": [
     null,
@@ -397,11 +397,11 @@
    ]
   },
   {
-   "id": 559632,
+   "id": 559634,
    "date": "2026-11-08T16:15:00Z",
    "comp": "Ligue 1",
-   "dom": "Brest",
-   "ext": "Olympique Lyon",
+   "dom": "Angers SCO",
+   "ext": "Nice",
    "statut": "TIMED",
    "score": [
     null,
@@ -517,5 +517,5 @@
    ]
   }
  ],
- "maj": "2026-11-08T14:14:10Z"
+ "maj": "2026-11-08T14:16:06Z"
 }
