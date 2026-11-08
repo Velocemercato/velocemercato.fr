@@ -1,28 +1,130 @@
 {
-  "misAJour": "2026-11-08T05:56:58+00:00",
+  "misAJour": "2026-11-08T09:55:49+00:00",
   "fenetreJours": 1,
   "source": "Google News RSS — liens vers les éditeurs originaux",
   "sports": {
-    "nba": [],
-    "nfl": [],
-    "f1": [],
-    "motogp": [],
-    "tennis": [
+    "nba": [
       {
-        "id": "tennis-1794114034-tjenlinettewta250chennaifina",
-        "titre": "Tjen - Linette, WTA 250, Chennai, Finale, match en direct le 08-11-2026 - L'Équipe",
+        "id": "nba-1794121978-lanuitdesfranaisdenbatraorsc",
+        "titre": "La nuit des Français de NBA : Traoré score encore, Bilal Coulibaly et Alex Sarr en difficulté - L'Équipe",
         "source": "L'Équipe",
-        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPWHo0UnBNenA1QWdqZy12a1oxNDhIV2pZLTNQLTVzcEpWVFoxQV9VNTZ5ellsczNod3pmaDA0WHFXNlYyMlRCancwaXdtMnd1ZW04dk5NMXVBRHlMV1ZtT1pwbGF2SktzcHVsVVJSWHBzMm9ndEY3bUlCdUFyLTZxZWVsVkJ5Rmw5OHlsdVFMWlZldGtkRHY0TzRtN0hEa3FBUDBMTXhsZmViLTJkMll3Nkk3SEJON2tDblF3Wg?oc=5",
-        "date": "2026-11-08T05:00:34+00:00",
+        "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxNMkI3eHZMSkU1Q19qVlRtVnNzRUdoZGVjZnAzU1IyMEFkelU1Ujh2dDNpZ0lOd3VzLVVnakJ3Z1BDQUUtemJobzFUMWluU055WnhHRDFkUnRyeHRZTnh0ZGNBU1BPN0FMODNIR3Bial9GbWZtQjc0bGFtTVZFWE50N3NhVXkzOGVmVUVkS1pLbnE3VGg4cjlZd21lR1lOdmxwYW5tb2N0V1ZOcy11YkJ6OU5IRC10UnA5enZqY0dBT1l0VVRSVXB6MG9kVlVIdWRBWURXYVozU29aeV9qTmY4ZS1vb1k3TlJDSXZBcFpYSW1YMnJuYnc?oc=5",
+        "date": "2026-11-08T07:12:58+00:00",
         "rubriques": [
           "international",
-          "feminin"
+          "france"
+        ]
+      },
+      {
+        "id": "nba-1794116228-sanantoniodrouleportlandvict",
+        "titre": "San Antonio déroule à Portland, Victor Wembanyama termine avec 29 points sans avoir eu à forcer - L'Équipe",
+        "source": "L'Équipe",
+        "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNV1BILUpzU2gtOFFGUEdiZ21odE94WFA4aHhWSjVXWXBCVzc0WmREeVY5eTlYUWxIaDVhcWgyOUNSUktqa3B3NkJmZ2hQSUd4NURGQWdxLVZ2ZWtGY1ZtVkNPZ1RKeVN5UUVRcFJsVm96ZFFtWENIdkV0NWV3emV2cDVqeGFtRXdYbWMxbXN1MDNqNWhpX19iZFVMdWUxaUNIMXdwenJhV3FRSTZjdktKWV9LUGtkVmwzMi16ODJ0NFVpQU90akNXdGZNbEt6MDFKSVJwYnM3NXVOT2c?oc=5",
+        "date": "2026-11-08T05:37:08+00:00",
+        "rubriques": [
+          "international",
+          "france",
+          "europe"
         ]
       }
     ],
-    "rugby": [],
+    "nfl": [
+      {
+        "id": "nfl-1794119460-aprstroisannesdedisettelesci",
+        "titre": "Après trois années de disette, les Cincinnati Bengals connaissent enfin un bon début de saison en NFL - L'Équipe",
+        "source": "L'Équipe",
+        "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNbjc4cXBpRkRyOHprOUxoUXlRWmdxdUtrT3B0cmY4T1c4R1RtUnktRVJlSmlEQmRJZDVZSVZjVnlVRmxkLWJlU0NpNS0tMkF4elh3SUJwb3ZvSktqYm5zVHFqR2FnSE03S3Y5Qi1MRXRRRjNMeVgxUjREOXZ2YUFZck0wMXZtUEU3cklaSW1KYTB0OUk1ZjloRWxZaG5jYV96ZDhpMS1VXzVWdWUyY1pac2ZWaG85X2IzY2trXzEyM2s0STg?oc=5",
+        "date": "2026-11-08T06:31:00+00:00",
+        "rubriques": [
+          "international"
+        ]
+      }
+    ],
+    "f1": [
+      {
+        "id": "f1-1794124800-f1letitreestdjattribumaisleg",
+        "titre": "F1 : le titre est déjà attribué, mais le Grand Prix du Brésil promet encore du spectacle sur CANAL+ - Ariase",
+        "source": "Ariase",
+        "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPTm03c2pUUlVPODlpUDRQR1RNT1ZjRjFHTEVtY1hUczU2RTA0RWpRWkNqa1pfYVFyeWY1amVOTGNyS0o2dGVzVWNhMFRNZHNYcWRSdUJ1OFk0bjFtUnVMYm1oMUU3bXZiOWI1T2QtenJuMTA4cUo5TmU0MUFlU281V1VLTVE3N2FyMW81ckRQcWJkelpQbVhOQnZ0dU95RXpqTmN3dEE1MC1nZzNoNDlsblVGMURKX29hOC01enVFOVZFNjdSbGltU212Qm9ULW1WRmlacQ?oc=5",
+        "date": "2026-11-08T08:00:00+00:00",
+        "rubriques": [
+          "international"
+        ]
+      },
+      {
+        "id": "f1-1794124767-grilledfinitivesopaulonorris",
+        "titre": "Grille définitive à São Paulo : Norris devant Antonelli, Hamilton et Verstappen au fond - F1 news",
+        "source": "F1 news",
+        "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1Qc09LY095b3ZHMTJfMGxiYk5wY0dWSEJiYWhSWmpIMWZiOTluQVM4VDV1dUJFU19zTnBTQ2R6ZU1uQjcwTDhNX2JnWVZGTkp0QnhrTnItc1UzRFFpU2MxQTU5MHNzZWo2cUJBLWF3?oc=5",
+        "date": "2026-11-08T07:59:27+00:00",
+        "rubriques": [
+          "international"
+        ]
+      }
+    ],
+    "motogp": [
+      {
+        "id": "motogp-1794124800-motogpvusurinstagrammrquezte",
+        "titre": "MotoGP, Vu sur Instagram - Márquez tente d'échanger avec Bezzecchi à l'arrivée, Rossi félicite Di Giannantonio, Zarco ovationné par son équipe - Paddock GP",
+        "source": "Paddock GP",
+        "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQcllGT0s3OEc5MzZJQ2ZWRWtHVV9JYnpwWDVma0xmcC01dkVZYUMyenpOTDc0azcwRGFjTEM5NUxEYVYycFNaVzhISHZjZU11SjVjTTl0VkVRTHpBcVI0QUk2VEJwbXF6VjRTR2gyX0FuQUY4RF96V1dLQmRmRnhzUEVxSmQ2d3N4dEtkYUhRc0dFSDBVRkZzU0lod1FXNDFDbGQtc2g2ck1mTFhSZ3JrSnVmckhfWW1odVk1c185NXN0a0lmckw3MEF1d2xHalJaX3gyTWhJSlpMUUFRUUlHazFoVXBzdVM1QmdQSFA3T3I1dnJYcVE?oc=5",
+        "date": "2026-11-08T08:00:00+00:00",
+        "rubriques": [
+          "international",
+          "france"
+        ]
+      }
+    ],
+    "tennis": [],
+    "rugby": [
+      {
+        "id": "rugby-1794125310-sondagelexvdefrancepeutilbat",
+        "titre": "SONDAGE. Le XV de France peut-il battre l’Afrique du Sud ? - Rugby Scope",
+        "source": "Rugby Scope",
+        "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQZU05UzNzQ0ZTNHdHaVd0UjZtTUp4cVFwa1BMMC1XLW4wc0lxV0hMMzVwMlFtZUZvU0VmYjRwVDdTSWhUX2ktcFBKQ0RjcExwV3ZtSEszakR4R2ZIS0NNYmFwSnZubHk4WVoyX3lQc0pscDl3YUItREZvN2ZnR2VNRXJVOTdXQlRk?oc=5",
+        "date": "2026-11-08T08:08:30+00:00",
+        "rubriques": [
+          "international",
+          "france"
+        ]
+      },
+      {
+        "id": "rugby-1794116940-directtop14suivezvannesubben",
+        "titre": "DIRECT. Top 14 : suivez Vannes – UBB en live commenté - Sud Ouest",
+        "source": "Sud Ouest",
+        "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQX0NCb3FJeDR6OUQyb1dmaDVIOEtKSHBuWjRReU5kRGpxTXRCYV9fVzRseUdKTDdQWE5vV3dTaGQyWWdMTzJIa1FRR2lBM0Rab3o1N0x0U2ZsSm5tWG0xWjhqNjFzUVpOTm5jVWFGTkhzZUxHRm9acTVPOXhnRWRPNzZ3bE5CNmVjX1g3TXF3bWx1VXphdDFudl9JWVRLODl0Q3ZScC0tT2Nqay1nekk4VnN3aw?oc=5",
+        "date": "2026-11-08T05:49:00+00:00",
+        "rubriques": [
+          "international",
+          "france",
+          "europe"
+        ]
+      }
+    ],
     "cyclisme": [],
-    "nhl": [],
+    "nhl": [
+      {
+        "id": "nhl-1794126613-tourdhorizondesmatchsdu7nove",
+        "titre": "Tour d'horizon des matchs du 7 novembre - NHL.com",
+        "source": "NHL.com",
+        "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBicEswTmR3a0NHNWhwaXBLamxsNjlJWUNDS3NxZFRGODZQZ0k0MzVrVkxFRjh2eDBMZG0wSmhaT2NBN0dNSFlpS0pwTXZJZjEtaHVfSTEtZkdFZGdIQm9WdHhGa3ZRcDQ?oc=5",
+        "date": "2026-11-08T08:30:13+00:00",
+        "rubriques": [
+          "international"
+        ]
+      },
+      {
+        "id": "nhl-1794123019-alexandretexieradisputson300",
+        "titre": "Alexandre Texier a disputé son 300e match de saison régulière de NHL - L'Équipe",
+        "source": "L'Équipe",
+        "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOWW1nNDJpX0d2aF9XZENjcDJhekRpRmkzUkQyaVQxdTVUZ2lfYlVGTkI5X0VJRkg2QWszbnRJdmdtdDVSSEhndm1fS2JHLWM0UGhJdXJvZWRQWHBxT3hRWUdYWE5YejNBTnVtVHl1VEE2NmVkWU42VW5KU2ppNVZ6X2ktaWpNa1hBWHlGWWJGTjRVSUROd2hVQW9ZWVNjZmFIZzJkWHdMdTcwT050N0hLVnFrc0lBbFE5Zkg5QkFIVjk3LXJCb0E?oc=5",
+        "date": "2026-11-08T07:30:19+00:00",
+        "rubriques": [
+          "international",
+          "france"
+        ]
+      }
+    ],
     "mlb": [],
     "mma": [],
     "ski": []
