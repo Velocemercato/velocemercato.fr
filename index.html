@@ -4,7 +4,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800;1,900&family=Knewave&family=Permanent+Marker&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/multisport/univers.css"><link rel="stylesheet" href="/multisport/cinema-v2.css"><link rel="stylesheet" href="/assets/vm-topbar.css"><link rel="stylesheet" href="/multisport/portail.css"><link rel="stylesheet" href="/notifications/alertes.css"><script src="/notifications/alertes.js" defer></script><script src="/multisport/univers.js" defer></script><link rel="manifest" href="/multisport/manifest.webmanifest"><link rel="apple-touch-icon" href="/img/logo-vm-192.png">
-<style>.vm-home-foot-news{margin:16px 0 22px}.vm-home-foot-news a{color:#fff}.vm-home-foot-news a:hover{color:#ffdb65}</style><style id="ptv-embed-css">
+<style>.vm-direct-foot{color:#fff!important;font-weight:900!important;border:1px solid #ef3048;border-radius:9px;padding:6px 10px!important}.vm-home-foot-news{margin:16px 0 22px}.vm-home-foot-news a{color:#fff}.vm-home-foot-news a:hover{color:#ffdb65}</style><style id="ptv-embed-css">
 .ptv-embed{margin:32px 0;padding:22px;border:3px solid #000;border-radius:18px;background:linear-gradient(135deg,#0b1533,#1d3fb8);color:#fff;box-shadow:6px 6px 0 var(--gold-hi)}
 .ptv-embed-in{display:flex;flex-direction:column;gap:12px}
 .ptv-embed-t{font-family:Bangers,Impact,sans-serif;font-size:clamp(1.3rem,3vw,2rem);letter-spacing:.05em;margin:0;color:var(--gold-hi);text-shadow:2px 2px 0 #000}
@@ -31,7 +31,7 @@
 <symbol id="i-chev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></symbol>
 </defs></svg>
 <header class="vmtop"><div class="vmtop-in"><a class="vmtop-logo" href="/" aria-label="Véloce Mercato, accueil foot"><img src="/img/logo-vm-192.png" alt="" width="42" height="42"><span>Véloce <b>Mercato</b></span></a>
-<nav class="vmtop-nav" aria-label="Réseau Véloce Mercato"><a href="/actus/"><svg aria-hidden="true"><use href="#i-news"/></svg>Actus</a><a href="/pronos/"><svg aria-hidden="true"><use href="#i-bolt"/></svg>Pronos</a><a href="/"><svg aria-hidden="true"><use href="#i-swap"/></svg>Mercato</a><a href="/studio.html#tv"><svg aria-hidden="true"><use href="#i-play"/></svg>Vidéos</a><a href="/vm-gaming/"><svg aria-hidden="true"><use href="#i-pad"/></svg>VM Gaming</a><a class="on" href="/multisport/" aria-current="page"><svg aria-hidden="true"><use href="#i-crown"/></svg>VM Multisport</a></nav>
+<nav class="vmtop-nav" aria-label="Réseau Véloce Mercato"><a href="#actualites-du-jour" class="vm-direct-foot">⚽ FOOT</a><a href="/actus/"><svg aria-hidden="true"><use href="#i-news"/></svg>Actus</a><a href="/pronos/"><svg aria-hidden="true"><use href="#i-bolt"/></svg>Pronos</a><a href="/"><svg aria-hidden="true"><use href="#i-swap"/></svg>Mercato</a><a href="/studio.html#tv"><svg aria-hidden="true"><use href="#i-play"/></svg>Vidéos</a><a href="/vm-gaming/"><svg aria-hidden="true"><use href="#i-pad"/></svg>VM Gaming</a><a class="on" href="/multisport/" aria-current="page"><svg aria-hidden="true"><use href="#i-crown"/></svg>VM Multisport</a></nav>
 <div class="vmtop-tools"><a class="vmtop-search" href="/archives.html" aria-label="Rechercher dans les archives"><svg aria-hidden="true"><use href="#i-search"/></svg></a><a class="vmtop-account" href="/notifications/" aria-label="Mon espace : mes alertes"><svg aria-hidden="true"><use href="#i-user"/></svg></a><span class="vmtop-87" aria-hidden="true">87</span></div></div></header>
 <main>
 <section class="banner" data-layout="multi" id="haut" aria-labelledby="hero-title">
@@ -40,21 +40,6 @@
 <div class="ms-hero-title sr-only"><h1 id="hero-title">VM MULTISPORT</h1><p id="hero-subtitle">Tous tes sports, un seul univers</p></div>
 </section>
 <div class="wrap">
-<div class="ms-tiles"><button type="button" class="ms-arrow prev" data-scroll="-1" aria-label="Sports précédents"><svg aria-hidden="true"><use href="#i-chev"/></svg></button>
-<nav class="sport-nav" id="sports" aria-label="Choisir son univers sportif">
-<a href="/#actualites-du-jour" data-sport="foot"><span class="ico" aria-hidden="true">⚽</span>FOOT</a>
-<a href="/multisport/nba/" data-sport="nba"><span class="ico" aria-hidden="true">🏀</span>NBA</a>
-<a href="/multisport/nfl/" data-sport="nfl"><span class="ico" aria-hidden="true">🏈</span>NFL</a>
-<a href="/multisport/f1/" data-sport="f1"><span class="ico" aria-hidden="true">🏁</span>F1</a>
-<a href="/multisport/motogp/" data-sport="motogp"><span class="ico" aria-hidden="true">🏍️</span>MOTOGP</a>
-<a href="/multisport/tennis/" data-sport="tennis"><span class="ico" aria-hidden="true">🎾</span>TENNIS</a>
-<a href="/multisport/rugby/" data-sport="rugby"><span class="ico" aria-hidden="true">🏉</span>RUGBY</a>
-<a href="/multisport/cyclisme/" data-sport="cyclisme"><span class="ico" aria-hidden="true">🚴</span>CYCLISME</a>
-<a href="/multisport/nhl/" data-sport="nhl"><span class="ico" aria-hidden="true">🏒</span>NHL</a>
-<a href="/multisport/mlb/" data-sport="mlb"><span class="ico" aria-hidden="true">⚾</span>MLB</a>
-<a href="/multisport/mma/" data-sport="mma"><span class="ico" aria-hidden="true">🥊</span>MMA</a>
-<a href="/multisport/ski/" data-sport="ski"><span class="ico" aria-hidden="true">🎿</span>SKI</a></nav>
-<button type="button" class="ms-arrow next" data-scroll="1" aria-label="Sports suivants"><svg aria-hidden="true"><use href="#i-chev"/></svg></button></div>
   <!-- Zone d'actus gérée par le robot (ne pas retirer les marqueurs) -->
   <section class="vm-home-foot-news" aria-label="Actualités du jour">
     <!-- VM_ACTUS_VISIBLES_START -->
@@ -66,7 +51,7 @@
 <li style="border-bottom:1px solid var(--line);padding-bottom:9px"><a href="/a/rss-v2-5da0fc2abb6a04502eb86f.html" style="display:block;font-weight:800;text-decoration:underline;color:#fff">Le Mans – Monaco : Kocik maladroit, Coulibaly ouvre le score avant la pause</a><small style="display:block;color:var(--muted)">08/11 à 18h16 · Source : Foot Mercato</small><span style="display:block;color:var(--muted)">Sur la pelouse du Mans, Mamadou Coulibaly a profité d&#x27;une erreur de Nicolas Kocik pour ouvrir le score à la 40e minute. Monaco mène 1-0 à la pause.</span></li>
 <li style="border-bottom:1px solid var(--line);padding-bottom:9px"><a href="/a/rss-v2-8a2d3b4128e2338fdd8f2e.html" style="display:block;font-weight:800;text-decoration:underline;color:#fff">Lille : Létang &quot;très optimiste&quot; pour la prolongation d&#x27;Ethan Mbappé</a><small style="display:block;color:var(--muted)">08/11 à 18h09 · Source : RMC Sport</small><span style="display:block;color:var(--muted)">Selon RMC Sport, le président lillois Olivier Létang se dit très optimiste quant à la prolongation d&#x27;Ethan Mbappé, dont le contrat court jusqu&#x27;à la fin de la saison, après la victoire du Losc à Rennes.</span></li>
 </ul>
-<p style="margin:10px 0 0"><a href="/#feed-title" style="color:#f5c64d;font-weight:700">Voir toutes les actualités mises à jour</a></p>
+<p style="margin:10px 0 0"><a href="#actualites" style="color:#f5c64d;font-weight:700">Voir toutes les actualités mises à jour</a></p>
 </section>
 <!-- VM_ACTUS_VISIBLES_END -->
   </section>
@@ -80,6 +65,22 @@
 <section class="block" id="videos"><h3>🎬 LA PASTILLE TV & VIDÉOS</h3><p id="video-note">Les JT VM originaux disponibles sont proposés sans inventer d'émission. Les vidéos d'autres diffuseurs restent sur leurs chaînes officielles.</p><a id="official-videos" href="/studio.html#tv">Les véritables éditions VM ↗</a></section>
 <section class="block"><h3>🔔 TES ALERTES</h3><p>Choisis les sports dont tu veux recevoir les nouveautés lorsque le site reste ouvert.</p><a href="/notifications/">Configurer mes alertes →</a></section>
 </div></section>
+
+<div class="ms-tiles"><button type="button" class="ms-arrow prev" data-scroll="-1" aria-label="Sports précédents"><svg aria-hidden="true"><use href="#i-chev"/></svg></button>
+<nav class="sport-nav" id="sports" aria-label="Choisir son univers sportif">
+<a href="#actualites-du-jour" data-sport="foot"><span class="ico" aria-hidden="true">⚽</span>FOOT</a>
+<a href="/multisport/nba/" data-sport="nba"><span class="ico" aria-hidden="true">🏀</span>NBA</a>
+<a href="/multisport/nfl/" data-sport="nfl"><span class="ico" aria-hidden="true">🏈</span>NFL</a>
+<a href="/multisport/f1/" data-sport="f1"><span class="ico" aria-hidden="true">🏁</span>F1</a>
+<a href="/multisport/motogp/" data-sport="motogp"><span class="ico" aria-hidden="true">🏍️</span>MOTOGP</a>
+<a href="/multisport/tennis/" data-sport="tennis"><span class="ico" aria-hidden="true">🎾</span>TENNIS</a>
+<a href="/multisport/rugby/" data-sport="rugby"><span class="ico" aria-hidden="true">🏉</span>RUGBY</a>
+<a href="/multisport/cyclisme/" data-sport="cyclisme"><span class="ico" aria-hidden="true">🚴</span>CYCLISME</a>
+<a href="/multisport/nhl/" data-sport="nhl"><span class="ico" aria-hidden="true">🏒</span>NHL</a>
+<a href="/multisport/mlb/" data-sport="mlb"><span class="ico" aria-hidden="true">⚾</span>MLB</a>
+<a href="/multisport/mma/" data-sport="mma"><span class="ico" aria-hidden="true">🥊</span>MMA</a>
+<a href="/multisport/ski/" data-sport="ski"><span class="ico" aria-hidden="true">🎿</span>SKI</a></nav>
+<button type="button" class="ms-arrow next" data-scroll="1" aria-label="Sports suivants"><svg aria-hidden="true"><use href="#i-chev"/></svg></button></div>
 
 <section class="main-grid ms-grid" aria-label="Actualités, vidéos et nouveautés">
 <article class="panel ms-card ms-red"><h2><svg class="h-ico gold" aria-hidden="true"><use href="#i-crown"/></svg>Épisode / actu du jour</h2><a class="feature-image" id="feature-a-url" href="#actualites"><img id="feature-a-img" src="/img/vm-art/vm-carte-foot.webp" alt="Illustration VM : la mascotte en footballeur" loading="eager" width="436" height="133"><span class="play" id="feature-a-play" aria-hidden="true" hidden><span><svg><use href="#i-play"/></svg></span></span><em class="ms-tag" id="feature-a-tag">ACTU</em></a><h3 id="feature-a-title">Les dernières actualités du sport</h3><p id="feature-a-summary">Titres sourcés et actualisés automatiquement.</p><div class="ms-foot"><span class="ms-meta" id="feature-a-meta"></span><a class="cta" href="#actualites" id="feature-a-cta">LIRE L’ACTU</a></div></article>
