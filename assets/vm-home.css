@@ -939,6 +939,18 @@ button { background: none; border: none; }
 }
 
 @media (max-width: 640px) {
+  .nav .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .nav-tabs {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+  .nav-tab { flex: none; }
   .grid-main { grid-template-columns: 1fr; }
   .show-grid { grid-template-columns: 1fr; }
   .press-grid { grid-template-columns: 1fr; }
