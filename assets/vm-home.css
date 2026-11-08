@@ -202,19 +202,6 @@ button { background: none; border: none; }
   box-shadow: var(--shadow-red);
   border-color: rgba(255, 255, 255, 0.18);
 }
-.nav-cta {
-  padding: 0.5rem 1.15rem;
-  border-radius: var(--radius-full);
-  background: transparent;
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  font-size: 0.84rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  transition: all 0.18s ease;
-  white-space: nowrap;
-}
-.nav-cta:hover { background: var(--gold); color: #08090C; box-shadow: var(--shadow-gold); }
 
 /* ---------------- Hero ---------------- */
 .hero {
@@ -963,7 +950,6 @@ button { background: none; border: none; }
   .score-row .comp { display: none; }
   .footer-grid { grid-template-columns: 1fr; }
   .hero-inner { padding-top: 2.2rem; }
-  .nav-cta { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1027,7 +1013,7 @@ button { background: none; border: none; }
   gap: 0.6rem;
   flex-wrap: wrap;
 }
-.badge-87 {
+.nav-univers {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
@@ -1042,7 +1028,9 @@ button { background: none; border: none; }
   font-size: 0.9rem;
   text-shadow: 0 0 12px rgba(255,199,44,.4);
 }
-.badge-87 svg { color: var(--gold); }
+.nav-univers { white-space: nowrap; }
+.nav-univers svg { flex: none; }
+.nav-univers:hover { background: var(--gold); color: var(--bg); }
 
 .btn-soutien {
   font-family: var(--font-display);
@@ -1062,6 +1050,17 @@ button { background: none; border: none; }
   transition: transform .15s ease;
 }
 .btn-soutien:hover { transform: translateY(-2px); }
+
+@media (max-width: 640px) {
+  .nav-right { gap: 0.35rem; }
+  .nav-right .nav-univers,
+  .nav-right .btn-soutien { padding-inline: 0.5rem; font-size: 0.82rem; }
+}
+
+@media (max-width: 350px) {
+  .nav-right { grid-column: 1 / -1; grid-row: 2; }
+  .nav-tabs { grid-row: 3; }
+}
 
 /* ---------------- Réseaux sociaux en couleur ---------------- */
 .social-row { display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; }
