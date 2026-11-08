@@ -33,7 +33,7 @@ UTC = dt.timezone.utc
 SLOTS = {7: "actus", 8: "foot", 9: "foot", 10: "belfort",
          11: "jt_foot", 12: "jt_actus", 13: "gaming", 14: "foot",
          15: "belfort", 16: "promo", 17: "foot", 18: "foot", 19: "actus", 20: "gaming",
-         21: "jt"}
+         21: "jt", 22: "actus", 23: "jt"}
 NEWS = {
     "foot": ("articles.json", "⚽", "https://velocemercato.fr/"),
     "actus": ("actus/news.json", "📰", "https://velocemercato.fr/pronos/"),
@@ -304,8 +304,9 @@ def publish_slot(state, graph, now=None):
     # GitHub Actions peut déclencher le cron :25 plusieurs minutes en retard.
     # Identifier le CRON ORIGINAL, non l'heure réelle du runner : cela évite
     # d'ignorer une publication valide arrivée à :40, sans créer de doublon.
-    regular_cron = os.getenv("VM_TRIGGER_CRON", "") == "25 5-21 * * *"
-    special_cron = os.getenv("VM_TRIGGER_CRON", "") == "40 8-21 * * *"
+    cron = os.getenv("VM_TRIGGER_CRON", "")
+    regular_cron = cron in ("25 5-21 * * *", "25 7-23 * * *")
+    special_cron = cron in ("40 8-21 * * *", "40 10,22 * * *")
     if local.hour == 10 and local.minute >= 35 and (special_cron or not regular_cron):
         kind = "prono"
         slot = f"creneau/{local:%Y-%m-%d}/10-prono"
@@ -326,7 +327,10 @@ def publish_slot(state, graph, now=None):
     if slot in receipts:
         print("::notice::Créneau déjà traité : aucun doublon.")
         return False
-    choice = next((p for p in candidates(now, kind)
+    topics = (kind,)
+    if kind not in ("prono", "promo", "week_summary"):
+        topics += tuple(topic for topic in ("actus", "foot", "gaming") if topic != kind)
+    choice = next((p for topic in topics for p in candidates(now, topic)
                    if isinstance(p, dict) and p.get("key") and p["key"] != test.get("key")
                    and "post/" + p["key"] not in receipts and safe_url(p.get("link"))), None)
     if not choice:
