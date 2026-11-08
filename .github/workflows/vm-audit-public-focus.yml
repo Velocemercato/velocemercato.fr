@@ -1,0 +1,27 @@
+name: VM - Audit accessibilité, navigation et PWA
+on:
+  push:
+    branches: [codex/audit-public-vm-focus-20261108]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: audit-public-vm
+      - name: Vérifier les parcours ciblés
+        run: |
+          mkdir -p evidence
+          npm install --no-save playwright axe-core
+          npx playwright install chromium
+          node audit-public-vm/focus.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: vm-audit-focus
+          path: evidence/
+          retention-days: 30
