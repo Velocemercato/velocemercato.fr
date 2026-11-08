@@ -24,7 +24,7 @@ import urllib.request
 import wave
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFilter, ImageEnhance, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageEnhance, ImageFont, ImageOps
 
 import update_news as robot
 import pastille_media as media
@@ -354,7 +354,7 @@ def card(bg, big, small, foot):
         (656, 'img/studio/manga-vm-studio.webp', 'vmunivers.fr'),
     ):
         with Image.open(ROOT / image) as artwork:
-            im.paste(cover(artwork.convert('RGB'), 560, 158), (x, 34))
+            im.paste(ImageOps.fit(artwork.convert('RGB'), (560, 158)), (x, 34))
         d.rectangle((x, 34, x + 559, 191), outline=(244, 207, 85), width=2)
         d.rounded_rectangle((x + 12, 145, x + 226, 180), 7, fill=(8, 13, 28))
         d.text((x + 23, 151), url, font=font('Poppins-Bold.ttf', 19), fill='white')
