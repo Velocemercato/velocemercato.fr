@@ -33,6 +33,7 @@ jobs:
       - name: Préparer les deux éditions
         run: |
           set -euo pipefail
+          sudo chown -R "$(id -u):$(id -g)" ve-build
           mkdir -p vu-build ve-build/edition/2026-11-08
           git -C univers archive HEAD | tar -x -C vu-build
           rm -rf vu-build/.github
