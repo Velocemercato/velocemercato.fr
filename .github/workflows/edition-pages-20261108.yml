@@ -1,0 +1,103 @@
+name: VM - Prévisualiser et publier les brèves du 8 novembre
+on:
+  push:
+    branches: [codex/continuite-verif-20261108]
+    paths: ['.github/workflows/edition-pages-20261108.yml']
+permissions:
+  contents: read
+concurrency:
+  group: vm-edition-pages-production
+  cancel-in-progress: false
+jobs:
+  edition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: veloce
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: Velocemercato/vmunivers
+          path: univers
+          persist-credentials: false
+      - uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./veloce
+          destination: ./ve-build
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Préparer les deux éditions
+        run: |
+          set -euo pipefail
+          mkdir -p vu-build ve-build/edition/2026-11-08
+          git -C univers archive HEAD | tar -x -C vu-build
+          rm -rf vu-build/.github
+          mkdir -p vu-build/edition/2026-11-08
+          cat > ve-build/edition/2026-11-08/index.html <<'HTML'
+          <!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Brèves VM du 8 novembre 2026</title><style>body{font:1.05rem/1.6 system-ui,sans-serif;max-width:44rem;margin:auto;padding:1.4rem;color:#14243a}h1,h2{line-height:1.2}article{border-top:1px solid #ccd5e0;padding:.5rem 0 1rem}a{color:#17488d}</style><main><p><a href="/">Retour à l’accueil</a></p><h1>Brèves VM du 8 novembre 2026</h1><p>Football, Belfort, jeux vidéo et voile.</p><article><h2>Lens–OM, un hommage à Bollaert</h2><p>Lens reçoit Marseille ce dimanche à 20 h 45. Avant le match, Bollaert observera une minute d’applaudissements en mémoire des personnes disparues de la communauté du Racing. Leurs noms seront affichés dans le stade.</p><a href="https://www.rclens.fr/fr/match-de-la-memoire-rclens-marseille-20261008">RC Lens · le Match de la mémoire</a></article><article><h2>Belfort, dernier jour pour Yozenco</h2><p>Le salon Yozenco se poursuit ce dimanche au Parc des Expositions de Belfort. Le rendez-vous propose des stands et des conférences autour du bien-être.</p><a href="https://www.territoiredebelfort.fr/agenda">Agenda du Territoire de Belfort</a></article><article><h2>Nexus Mods détaille ses règles sur l’IA</h2><p>Les nouveaux dépôts doivent renseigner les champs de déclaration et d’autorisation mis à jour. Les mods déjà en ligne disposent d’un délai d’adaptation de 60 jours pour les nouvelles exigences détaillées.</p><a href="https://help.nexusmods.com/article/180-ai-policy-changes-2026">Nexus Mods · règles de la plateforme</a></article><article><h2>Route du Rhum, cap sur Pointe-à-Pitre</h2><p>Une semaine après le départ de Saint-Malo, la carte officielle permet de suivre la flotte par catégorie. En Guadeloupe, le village du Mémorial ACTe accueille les animations liées aux arrivées.</p><a href="https://www.routedurhum.com/guadeloupe">Route du Rhum · programme en Guadeloupe</a></article></main></html>
+          HTML
+          cp ve-build/edition/2026-11-08/index.html vu-build/edition/2026-11-08/
+          test -s ve-build/index.html && test -s vu-build/index.html
+          test -s ve-build/articles.json && test -s ve-build/actus/news.json && test -s ve-build/vm-gaming/news.json
+          echo "SOURCE_VM velocemercato $(git -C veloce rev-parse HEAD)"
+          echo "SOURCE_VM vmunivers $(git -C univers rev-parse HEAD)"
+      - name: Prévisualiser les deux projets puis publier dans l'ordre demandé
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: c5227875896e9a281915ed70c146e845
+        run: |
+          set -euo pipefail
+          export NO_COLOR=1
+          endpoint="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects"
+          edition='/edition/2026-11-08/'
+          project_info() {
+            curl -fsS --max-time 15 -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$endpoint/$1"
+          }
+          check() {
+            curl -fsSL --max-time 20 --retry 2 --retry-all-errors "$1$edition" -o "$RUNNER_TEMP/edition.html"
+            grep -Fq 'Brèves VM du 8 novembre 2026' "$RUNNER_TEMP/edition.html"
+            grep -Fq 'Nexus Mods' "$RUNNER_TEMP/edition.html"
+          }
+          snapshot() {
+            project_info "$1" > "$RUNNER_TEMP/$1-before.json"
+            jq -er '.result.canonical_deployment.id' "$RUNNER_TEMP/$1-before.json"
+          }
+          preview() {
+            local project="$1" folder="$2" log
+            log="$RUNNER_TEMP/$project-preview.log"
+            npx --yes wrangler@4 pages deploy "$folder" --project-name="$project" --branch=vm-continuite-20261108 --commit-dirty=true | tee "$log"
+            local url
+            url=$(grep -Eo "https://[a-f0-9]+\.$project\.pages\.dev" "$log" | tail -1)
+            test -n "$url"
+            check "$url"
+            for route in "${@:3}"; do
+              curl -fsSL --max-time 15 "$url$route" -o /dev/null
+            done
+            echo "PREVIEW_OK $project $url$edition"
+          }
+          production() {
+            local project="$1" folder="$2" live="$3" prev current prod log deployment
+            prev=$(jq -er '.result.canonical_deployment.id' "$RUNNER_TEMP/$project-before.json")
+            current=$(project_info "$project" | jq -er '.result.canonical_deployment.id')
+            test "$prev" = "$current" || { echo "::error::Déploiement concurrent sur $project"; exit 1; }
+            prod=$(jq -er '.result.production_branch' "$RUNNER_TEMP/$project-before.json")
+            log="$RUNNER_TEMP/$project-prod.log"
+            echo "PRECEDENT_VM $project $prev"
+            npx --yes wrangler@4 pages deploy "$folder" --project-name="$project" --branch="$prod" --commit-dirty=true | tee "$log"
+            deployment=$(grep -Eo "https://[a-f0-9]+\.$project\.pages\.dev" "$log" | tail -1)
+            test -n "$deployment"
+            check "$deployment"
+            check "https://$project.pages.dev"
+            check "$live"
+            echo "PRODUCTION_OK $project $live$edition https://$project.pages.dev$edition"
+          }
+          echo "PRECEDENT_VM velocemercato $(snapshot velocemercato)"
+          echo "PRECEDENT_VM vmunivers $(snapshot vmunivers)"
+          preview velocemercato ve-build / /articles.json /actus/news.json /vm-gaming/news.json /pronos/ /web-studio
+          preview vmunivers vu-build / /professionnels/ /sitemap.xml
+          production velocemercato ve-build https://velocemercato.fr
+          production vmunivers vu-build https://vmunivers.fr
