@@ -1,5 +1,84 @@
 [
  {
+  "id": "actus-edition-20261108-0700",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "matin",
+  "label": "JT 07 h",
+  "titre": "La Pastille Actus : Édition du matin, dimanche 8 novembre",
+  "accroche": "Bonjour, voici les actus de ce dimanche matin, en quatre brèves.",
+  "duree": 101,
+  "date": "2026-11-08T07:22+01:00",
+  "publie": true,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261108-0700.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-08T07:00:00+01:00",
+  "source_start": "2026-11-07T19:00:00+01:00",
+  "source_end": "2026-11-08T07:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-e7e54b325dbf1b864bf63a",
+    "titre": "Nouvelle-Zélande : résultats serrés aux législatives, la coalition sortante en quête de majorité",
+    "publishedAt": "2026-11-08T05:14:52Z",
+    "createdAt": "2026-11-08T05:49:38Z",
+    "references": [
+     {
+      "nom": "20 Minutes",
+      "url": "https://www.20minutes.fr/monde/4261243-20261108-nouvelle-zelande-tout-savoir-situation-politique-tres-incertaine-apres-legislatives?at_medium=display&at_campaign=149"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-2177a4965d046013b66881",
+    "titre": "Nouvelle-Zélande : législatives serrées, résultats définitifs attendus le 27 novembre",
+    "publishedAt": "2026-11-08T05:43:44Z",
+    "createdAt": "2026-11-08T05:49:35Z",
+    "references": [
+     {
+      "nom": "RFI",
+      "url": "https://www.rfi.fr/fr/asie-pacifique/20261108-nouvelle-z%C3%A9lande-des-l%C3%A9gislatives-tr%C3%A8s-serr%C3%A9es-des-r%C3%A9sultats-encore-incertains"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-97197359da58211bd306d9",
+    "titre": "Japon : un séisme de magnitude 5,7 fait plusieurs blessés dans le centre du pays",
+    "publishedAt": "2026-11-08T04:11:06Z",
+    "createdAt": "2026-11-08T04:53:01Z",
+    "references": [
+     {
+      "nom": "20 Minutes",
+      "url": "https://www.20minutes.fr/monde/4261239-20261108-japon-fort-seisme-fait-blesses-dont-femme-90-ans?at_medium=display&at_campaign=149"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-7c625991204317bd287fa5",
+    "titre": "Guerre en Ukraine : selon Ouest-France, des hackers révèlent des statistiques russes de décès",
+    "publishedAt": "2026-11-08T04:40:00Z",
+    "createdAt": "2026-11-08T04:52:58Z",
+    "references": [
+     {
+      "nom": "Ouest-France",
+      "url": "https://www.ouest-france.fr/europe/ukraine/guerre-en-ukraine-statistiques-de-deces-russes-refonte-des-renseignements-ukrainiens-le-point-sur-la-nuit-bb7f7d84-d7bb-11f1-b736-5b9907ef0b5a?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu"
+     }
+    ]
+   }
+  ],
+  "edition_kind": "jt",
+  "matchs_confirmes": [],
+  "media_sha": "b469c9e7427a1e5b74652e60f700ce5d12630eab",
+  "video": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@b469c9e7427a1e5b74652e60f700ce5d12630eab/actus-edition-20261108-0700.mp4",
+  "image": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@b469c9e7427a1e5b74652e60f700ce5d12630eab/actus-edition-20261108-0700.jpg",
+  "audio": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@b469c9e7427a1e5b74652e60f700ce5d12630eab/actus-edition-20261108-0700.m4a",
+  "page": "https://velocemercato.fr/studio/episodes/actus-edition-20261108-0700.html",
+  "poster": "/studio/episodes/posters/actus-edition-20261108-0700.jpg"
+ },
+ {
   "id": "foot-edition-20261107-2000",
   "univers": "foot",
   "format": "edition",
