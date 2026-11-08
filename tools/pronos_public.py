@@ -90,6 +90,8 @@ def section_news(root, now):
             link = str(src["url"])
             if path == "articles.json" and (Path(root) / "a" / (row["id"] + ".html")).is_file():
                 link = "https://velocemercato.fr/a/" + row["id"] + ".html"
+            elif path == "vm-gaming/news.json":
+                link = "https://velocemercato.fr/vm-gaming/#a=" + row["id"]
             stamp = when.astimezone(PARIS).strftime("%d/%m/%Y %H:%M")
             lines.append(
                 f'<article class="news"><p class="meta">{e(stamp)} · Source : {e(src["nom"])}</p>'
