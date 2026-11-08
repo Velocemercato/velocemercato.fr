@@ -61,18 +61,6 @@
    ]
   },
   {
-   "id": 565850,
-   "date": "2026-11-07T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "Dortmund",
-   "ext": "Elversberg",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    1
-   ]
-  },
-  {
    "id": 565853,
    "date": "2026-11-07T14:30:00Z",
    "comp": "Bundesliga",
@@ -97,14 +85,14 @@
    ]
   },
   {
-   "id": 560633,
-   "date": "2026-11-07T15:00:00Z",
-   "comp": "Premier League",
-   "dom": "Fulham",
-   "ext": "Newcastle",
+   "id": 565850,
+   "date": "2026-11-07T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "Dortmund",
+   "ext": "Elversberg",
    "statut": "FINISHED",
    "score": [
-    1,
+    2,
     1
    ]
   },
@@ -118,6 +106,18 @@
    "score": [
     1,
     0
+   ]
+  },
+  {
+   "id": 560633,
+   "date": "2026-11-07T15:00:00Z",
+   "comp": "Premier League",
+   "dom": "Fulham",
+   "ext": "Newcastle",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    1
    ]
   },
   {
@@ -361,18 +361,6 @@
    ]
   },
   {
-   "id": 559632,
-   "date": "2026-11-08T16:15:00Z",
-   "comp": "Ligue 1",
-   "dom": "Brest",
-   "ext": "Olympique Lyon",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
-   ]
-  },
-  {
    "id": 559634,
    "date": "2026-11-08T16:15:00Z",
    "comp": "Ligue 1",
@@ -382,6 +370,18 @@
    "score": [
     0,
     2
+   ]
+  },
+  {
+   "id": 559632,
+   "date": "2026-11-08T16:15:00Z",
+   "comp": "Ligue 1",
+   "dom": "Brest",
+   "ext": "Olympique Lyon",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    0
    ]
   },
   {
@@ -498,7 +498,7 @@
    "comp": "Serie A",
    "dom": "Fiorentina",
    "ext": "Juventus",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     2,
     2
@@ -517,5 +517,5 @@
    ]
   }
  ],
- "maj": "2026-11-08T21:51:40Z"
+ "maj": "2026-11-08T21:53:33Z"
 }
