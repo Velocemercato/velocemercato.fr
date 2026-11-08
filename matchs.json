@@ -36,18 +36,6 @@
   ]
  },
  {
-  "id": 560634,
-  "date": "2026-11-06T20:00:00Z",
-  "competition": "Premier League",
-  "domicile": "Everton",
-  "exterieur": "Coventry City",
-  "statut": "FINISHED",
-  "score": [
-   3,
-   1
-  ]
- },
- {
   "id": 564740,
   "date": "2026-11-06T20:00:00Z",
   "competition": "Liga",
@@ -57,6 +45,18 @@
   "score": [
    0,
    0
+  ]
+ },
+ {
+  "id": 560634,
+  "date": "2026-11-06T20:00:00Z",
+  "competition": "Premier League",
+  "domicile": "Everton",
+  "exterieur": "Coventry City",
+  "statut": "FINISHED",
+  "score": [
+   3,
+   1
   ]
  },
  {
@@ -533,10 +533,10 @@
   "competition": "Bundesliga",
   "domicile": "Hoffenheim",
   "exterieur": "Schalke",
-  "statut": "IN_PLAY",
+  "statut": "FINISHED",
   "score": [
    2,
-   0
+   1
   ]
  },
  {
@@ -547,7 +547,7 @@
   "exterieur": "Marseille",
   "statut": "IN_PLAY",
   "score": [
-   0,
+   1,
    1
   ]
  },
@@ -560,7 +560,7 @@
   "statut": "IN_PLAY",
   "score": [
    1,
-   0
+   1
   ]
  },
  {
@@ -569,10 +569,10 @@
   "competition": "Liga",
   "domicile": "Atleti",
   "exterieur": "Barça",
-  "statut": "TIMED",
+  "statut": "IN_PLAY",
   "score": [
-   null,
-   null
+   1,
+   1
   ]
  }
 ]
