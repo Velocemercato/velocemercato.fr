@@ -1,0 +1,59 @@
+name: VM - Confirmer les cinq publications du teaser
+on:
+  push:
+    branches: [codex/teaser-vm-20261108]
+    paths: ['.github/workflows/confirmer-reels-team-20261108.yml']
+
+permissions:
+  contents: read
+concurrency:
+  group: vm-releve-meta-dimanche
+  cancel-in-progress: false
+jobs:
+  bilan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet 'cryptography==50.0.0'
+      - name: Verifier l'absence d'envoi et de suppression
+        run: |
+          python -m py_compile tools/rapport_meta_du_jour.py
+          if grep -E 'graph\.call\("(POST|DELETE)"|\.save\(' tools/rapport_meta_du_jour.py; then
+            echo '::error::Rapport: écriture interdite'
+            exit 1
+          fi
+      - name: Lire les accusés chiffrés sans les modifier
+        run: |
+          set -euo pipefail
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "https://github.com/$GITHUB_REPOSITORY.git" "$RUNNER_TEMP/vm-broadcast-state"
+          test -s "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+      - name: Vérifier les publications en lecture seule
+        env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          from tools.publier_meta import Graph, State
+          from tools.diffuser_jt import HTTP, access_token
+          state=State(Path(os.environ['RUNNER_TEMP'])/'vm-broadcast-state/state.enc',os.environ['VM_DIFFUSION_STATE_KEY'],lambda:None)
+          tokens=state.data['tokens']
+          graph=Graph()
+          for account, ident in [('meta','1577775677436549'),('meta_univers','1064069423316784'),('meta_pronos','1875515710097897')]:
+              data=graph.call('GET',ident,{'fields':'id,published,permalink_url,status','access_token':tokens[account]['page_token']})
+              print('TEASER PUBLIC',account,data.get('published'),(data.get('status') or {}).get('video_status'),data.get('permalink_url'))
+          http=HTTP()
+          access=access_token('youtube',state,http)
+          data=http.json('GET','https://www.googleapis.com/youtube/v3/videos?part=status,processingDetails&id=4gZewnlh77Q',access)
+          for row in data.get('items',[]):
+              print('TEASER PUBLIC youtube',row.get('id'),row.get('status',{}).get('privacyStatus'),row.get('processingDetails',{}).get('processingStatus'))
+          PY
