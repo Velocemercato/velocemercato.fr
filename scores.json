@@ -265,18 +265,6 @@
    ]
   },
   {
-   "id": 560636,
-   "date": "2026-11-08T14:00:00Z",
-   "comp": "Premier League",
-   "dom": "Sunderland",
-   "ext": "Chelsea",
-   "statut": "IN_PLAY",
-   "score": [
-    1,
-    0
-   ]
-  },
-  {
    "id": 560638,
    "date": "2026-11-08T14:00:00Z",
    "comp": "Premier League",
@@ -285,6 +273,18 @@
    "statut": "FINISHED",
    "score": [
     2,
+    0
+   ]
+  },
+  {
+   "id": 560636,
+   "date": "2026-11-08T14:00:00Z",
+   "comp": "Premier League",
+   "dom": "Sunderland",
+   "ext": "Chelsea",
+   "statut": "FINISHED",
+   "score": [
+    1,
     0
    ]
   },
@@ -361,11 +361,11 @@
    ]
   },
   {
-   "id": 559633,
+   "id": 559631,
    "date": "2026-11-08T16:15:00Z",
    "comp": "Ligue 1",
-   "dom": "Le Havre",
-   "ext": "Lorient",
+   "dom": "Le Mans",
+   "ext": "Monaco",
    "statut": "TIMED",
    "score": [
     null,
@@ -373,11 +373,11 @@
    ]
   },
   {
-   "id": 559631,
+   "id": 559633,
    "date": "2026-11-08T16:15:00Z",
    "comp": "Ligue 1",
-   "dom": "Le Mans",
-   "ext": "Monaco",
+   "dom": "Le Havre",
+   "ext": "Lorient",
    "statut": "TIMED",
    "score": [
     null,
@@ -517,5 +517,5 @@
    ]
   }
  ],
- "maj": "2026-11-08T16:07:03Z"
+ "maj": "2026-11-08T16:08:58Z"
 }
