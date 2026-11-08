@@ -1,0 +1,24 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Atelier privé VM Studio</title><link rel="stylesheet" href="/studio.css"><script src="/studio.js" defer></script></head>
+<body><header class="top"><a class="brand" href="/atelier">VM STUDIO <span>ATELIER PRIVÉ</span></a><div><button id="passwordOpen" class="ghost">Code atelier</button> <button id="logout" class="ghost">Déconnexion</button></div></header>
+<main class="workspace">
+<section class="intro"><p class="eyebrow">VOTRE BUREAU COMMERCIAL</p><h1>Une idée. Une maquette.</h1><p>Choisis un modèle, personnalise le projet et envoie un aperçu protégé au client.</p></section>
+<section class="catalog" aria-labelledby="model-title"><div class="headrow"><h2 id="model-title">01 · Choisir un modèle</h2><label class="search">Rechercher<input id="search" type="search" placeholder="Ex. coiffure, restaurant…"></label></div>
+<div id="categories" class="categories"></div><p id="model-count" class="hint"></p><div class="models" id="models"></div></section>
+<div class="layout"><section class="editor" aria-labelledby="editor-title"><div class="headrow"><h2 id="editor-title">02 · Personnaliser</h2><button class="ghost" id="new">Nouveau projet</button></div>
+<form id="editor" autocomplete="off">
+<div class="fields"><label>Nom du client <input required name="name" maxlength="90" placeholder="Ex. Maison Élise"></label><label>Ville ou secteur <input name="city" maxlength="70"></label></div>
+<label>Titre de présentation <input name="title" maxlength="105"></label>
+<label>Présentation <textarea name="description" rows="3" maxlength="850"></textarea></label>
+<label>Offres ou rubriques <textarea name="services" rows="3" maxlength="700" placeholder="Une ligne par élément"></textarea></label>
+<div class="fields"><label>Appel à l’action <input name="cta" maxlength="50"></label><label>Prix affiché <input name="price" maxlength="60" placeholder="À partir de…"></label></div>
+<label>Coordonnées à montrer <input name="contact" maxlength="150"></label>
+<label id="paymentRow" hidden>Lien de paiement HTTPS <input name="payment" type="url" maxlength="500" placeholder="https://…"></label>
+<label id="qrRow" hidden>Destination du QR <input name="qrUrl" type="url" maxlength="500" placeholder="https://…"></label>
+<label>Photo du client <input id="photo" type="file" accept="image/jpeg,image/png,image/webp"></label>
+<div class="actionrow"><button id="save">Créer le lien client</button><button type="button" id="remove-photo" class="ghost">Retirer la photo</button></div></form></section>
+<aside><section class="sheet"><h2>Aperçu en direct</h2><div id="preview" class="mini net" aria-live="polite"><p class="eyebrow" id="p-kind"></p><img id="p-photo" alt="Photo de maquette" hidden><h3 id="p-title"></h3><p id="p-desc"></p><ul id="p-services"></ul><p id="p-cta" class="mock-cta"></p></div></section>
+<section class="sheet"><h2>03 · Partager</h2><p id="share-status" class="hint">Le lien et le code apparaîtront ici après l’enregistrement.</p><div id="share" hidden><label>Lien client <input id="share-url" readonly></label><label>Code client <input id="share-code" readonly placeholder="Renouvelle le code pour en afficher un nouveau"></label><div class="actionrow"><button id="copy-link" class="ghost">Copier le lien</button><button id="copy-code" class="ghost">Copier le code</button><button id="rotate" class="ghost">Changer le code</button><button id="close" class="ghost danger">Couper l’accès</button></div><a id="open-preview" target="_blank" rel="noopener noreferrer">Tester le lien client ↗</a></div><p id="notice" role="status"></p></section>
+<section class="sheet"><h2>Mes projets</h2><div id="projects"></div></section></aside></div>
+</main>
+<dialog id="passwordDialog"><form id="passwordForm"><h2>Changer le code atelier</h2><p>Les autres sessions seront déconnectées.</p><label>Code actuel <input name="current" type="password" required maxlength="120"></label><label>Nouveau code <input name="password" type="password" required minlength="20" maxlength="120" autocomplete="new-password"></label><div class="actionrow"><button>Changer</button><button id="passwordClose" class="ghost" type="button">Annuler</button></div><p id="passwordNotice" role="status"></p></form></dialog>
+</body></html>

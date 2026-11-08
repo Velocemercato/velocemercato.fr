@@ -1,0 +1,32 @@
+{
+  "name": "vm-studio-prive",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-11-08",
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "html_handling": "none"
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "STUDIO",
+        "class_name": "StudioStorage"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "StudioStorage"
+      ]
+    }
+  ],
+  "vars": {
+    "STUDIO_BOOTSTRAP": "2dec5cccacd339c724f290f58cd2a13d:90ae03b4c73b7fba19daee258883636d7b1f24fd8c986af1828b49c1733bb46c"
+  }
+}

@@ -1,0 +1,46 @@
+name: VM - Déployer l’atelier privé
+on:
+  push:
+    branches: [codex/vm-studio-atelier-prive]
+    paths: ['cloudflare/studio-prive/**', '.github/workflows/deployer-atelier-vm.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: atelier-studio-prive
+  cancel-in-progress: false
+jobs:
+  atelier:
+    if: github.ref_name == 'codex/vm-studio-atelier-prive'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: cloudflare/studio-prive
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Vérifier les accès, l’édition, la révocation et le QR
+        run: |
+          npm install --ignore-scripts --no-audit --no-fund
+          node --check public/studio.js
+          TEST_QR=1 node test.mjs
+      - name: Déployer le Worker et son stockage privé
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKER_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: c5227875896e9a281915ed70c146e845
+        run: npx --yes wrangler@4 deploy
+      - name: Vérifier les barrières d’accès en production
+        run: |
+          set -euo pipefail
+          site='https://vm-studio-prive.velocemercato87.workers.dev'
+          curl -fsS --retry 4 --retry-all-errors --max-time 15 "$site/" | grep -q 'Ouvrir mon atelier'
+          test "$(curl -sS -o /dev/null -w '%{http_code}' "$site/api/projects")" = 401
+          test "$(curl -sS -o /dev/null -w '%{http_code}' "$site/atelier")" = 303
+          test "$(curl -sS -o /dev/null -w '%{http_code}' "$site/app.html")" = 404
+          curl -fsS "$site/p/000000000000000000000000" | grep -q 'Votre aperçu privé'
+          echo 'ATELIER EN PRODUCTION · éditeur verrouillé, API protégée, aperçu sans données avant code.'
