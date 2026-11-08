@@ -18,6 +18,7 @@
 .ptv-embed .ptv-big:hover{transform:translate(-2px,-2px)}
 .ptv-embed .ptv-play{font-size:1.2rem}
 </style>
+<link rel="stylesheet" href="/assets/vm-refonte.css">
 </head><body class="vm-mangas-page">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
 <symbol id="i-news" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2M7 9h7M7 13h7M7 16h5"/></symbol>
@@ -39,15 +40,23 @@
 <symbol id="i-heart" viewBox="0 0 24 24"><path fill="currentColor" d="M12 21s-8.5-5.3-8.5-11.2A4.8 4.8 0 0 1 12 6.6a4.8 4.8 0 0 1 8.5 3.2C20.5 15.7 12 21 12 21"/></symbol>
 </defs></svg>
 <header class="vmtop vm-manga-top"><div class="vmtop-in"><a class="vmtop-logo" href="/" aria-label="Véloce Mercato, accueil foot"><img src="/img/logo-vm-192.png" alt="" width="42" height="42"><span>Véloce <b>Mercato</b></span></a>
-<nav class="vmtop-nav" aria-label="Les univers VM"><a href="/actus/"><svg aria-hidden="true"><use href="#i-news"/></svg>Actus</a><a href="/pronos/"><svg aria-hidden="true"><use href="#i-bolt"/></svg>Pronos</a><a href="/"><svg aria-hidden="true"><use href="#i-swap"/></svg>Mercato</a><a href="/studio.html#tv"><svg aria-hidden="true"><use href="#i-play"/></svg>Vidéos</a><a href="/vm-gaming/"><svg aria-hidden="true"><use href="#i-pad"/></svg>VM Gaming</a><a class="on" href="/mangas/" aria-current="page"><svg aria-hidden="true"><use href="#i-crown"/></svg>VM Mangas</a><a href="/soutenir.html"><svg aria-hidden="true"><use href="#i-users"/></svg>Communauté</a><a href="/boutique/"><svg aria-hidden="true"><use href="#i-shop"/></svg>Boutique</a></nav>
+<nav class="vmtop-nav" aria-label="Les univers VM"><a href="/actus/"><svg aria-hidden="true"><use href="#i-news"/></svg>VM Actus</a><a href="/pronos/"><svg aria-hidden="true"><use href="#i-bolt"/></svg>Pronos</a><a href="/"><svg aria-hidden="true"><use href="#i-swap"/></svg>Mercato</a><a href="/studio.html#tv"><svg aria-hidden="true"><use href="#i-play"/></svg>Vidéos</a><a href="/vm-gaming/"><svg aria-hidden="true"><use href="#i-pad"/></svg>VM Gaming</a><a class="on" href="/mangas/" aria-current="page"><svg aria-hidden="true"><use href="#i-crown"/></svg>VM Mangas</a><a href="/soutenir.html"><svg aria-hidden="true"><use href="#i-users"/></svg>Communauté</a><a href="/boutique/"><svg aria-hidden="true"><use href="#i-shop"/></svg>Boutique</a></nav>
 <div class="vmtop-tools"><a class="vmtop-search" href="/archives.html" aria-label="Rechercher dans les archives"><svg aria-hidden="true"><use href="#i-search"/></svg></a><a class="vmtop-account" href="/notifications/" aria-label="Mon espace : mes alertes"><svg aria-hidden="true"><use href="#i-user"/></svg></a><span class="vmtop-87" aria-hidden="true">87</span></div></div></header>
 <main class="vm-manga-shell">
-<section class="vm-manga-hero" aria-labelledby="vm-title">
-<!-- Visuel du propriétaire (maquette 02, partie gauche uniquement) : sa mascotte VM au ballon 87 et le lettrage. Aucun personnage tiers. -->
-<div class="mh-art" data-slot="mascotte-vm-mangas"><picture><source media="(max-width:768px)" srcset="/img/vm-art/vm-mangas-hero-768.webp"><img src="/img/vm-art/vm-mangas-hero.webp" alt="" width="1003" height="305" fetchpriority="high"></picture>
-<div class="sr-only"><h1 id="vm-title">VM MANGAS</h1><p>Les dessins animés cultes de notre enfance !</p><p>Foot · Action · Aventure · Humour · Légendes</p></div>
-<div class="mh-ctarow"><a class="mh-cta" href="/"><svg aria-hidden="true"><use href="#i-back"/></svg>Retour sur Véloce Mercato</a></div><div class="mh-actions"><div class="mh-actions-in" role="group" aria-label="Installer et partager VM MANGAS"><button type="button" class="mh-act" id="mgInstall">📲 Installer</button><button type="button" class="mh-act" id="mgShare">↗ Partager</button><p class="mh-act-msg" id="mgMsg" role="status" aria-live="polite"></p></div></div></div>
-<div class="mh-right" aria-hidden="true"><img class="r1" src="https://i.ytimg.com/vi/vtj-9j2Pgzw/hqdefault.jpg" alt="" width="480" height="360"><img class="r2" src="https://i.ytimg.com/vi/cGnMCv-85Ew/hqdefault.jpg" alt="" width="480" height="360"><img class="r3" src="https://i.ytimg.com/vi/1GGzIc2nMZ8/hqdefault.jpg" alt="" width="480" height="360"><p class="mh-motto">Même passion<br>Même génération<br>VM Mangas<br>by 87 <svg><use href="#i-crown"/></svg></p></div>
+<section class="vm-refonte-hero" aria-labelledby="vm-title">
+  <picture class="vm-refonte-art">
+    <img src="/img/vm-refonte/mangas.webp" alt="" fetchpriority="high">
+  </picture>
+  <div class="vm-refonte-copy">
+    <p class="vm-refonte-kicker">Foot · Action · Aventure · Humour</p>
+    <h1 id="vm-title">VM <span>Mangas</span></h1>
+    <p>Les dessins animés cultes de notre enfance.</p>
+    <nav class="vm-refonte-links" aria-label="Accès rapides VM Mangas">
+      <a href="#catalogue">Parcourir les épisodes</a>
+      <a href="/">Retour sur Véloce Mercato</a>
+    </nav>
+    <div class="mh-actions"><div class="mh-actions-in" role="group" aria-label="Installer et partager VM MANGAS"><button type="button" class="mh-act" id="mgInstall">📲 Installer</button><button type="button" class="mh-act" id="mgShare">↗ Partager</button><p class="mh-act-msg" id="mgMsg" role="status" aria-live="polite"></p></div></div>
+  </div>
 </section>
 <div class="vm-carousel"><button type="button" class="vm-arrow prev" data-scroll="-1" aria-label="Séries précédentes"><svg aria-hidden="true"><use href="#i-chev"/></svg></button>
 <nav class="vm-strip" id="series" aria-label="Choisir une série">
