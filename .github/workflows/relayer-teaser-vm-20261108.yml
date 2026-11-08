@@ -21,6 +21,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
       VM_AUTO_META: ${{ vars.VM_AUTO_META }}
+      VM_FACEBOOK_PRONOS_PAGE_ID: ${{ vars.VM_FACEBOOK_PRONOS_PAGE_ID }}
       VM_AUTO_YOUTUBE: ${{ vars.VM_AUTO_YOUTUBE }}
       YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
       YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
@@ -69,7 +70,7 @@ jobs:
               key = "2026-11-08/teaser/" + key
               if key in receipts:
                   return
-              receipts[key] = {"status": "envoi"}
+              receipts[key] = {"status": "envoi", "correctif_id": True}
               state.save()
               try:
                   url = publish()
@@ -122,8 +123,35 @@ jobs:
                   raise DeliveryError("Identifiant YouTube absent.")
               return "https://www.youtube.com/shorts/" + ident
 
+          # Le premier lancement s'est arrêté sur le contrôle d'identifiant, avant tout POST Facebook.
+          prior = receipts.get("2026-11-08/teaser/meta_pronos") or {}
+          if prior.get("status") == "envoi" and not prior.get("correctif_id"):
+              page_access(state)
+              receipts.pop("2026-11-08/teaser/meta_pronos")
+              state.save()
           run("meta_pronos", facebook)
           run("instagram", instagram)
           run("youtube", youtube)
+          from tools.pronos_facebook import verify
+          journal = state.data.setdefault("meta_pronos_accuses", {})
+          edition = "post/jt/foot-edition-20261108-0800"
+          if edition not in journal:
+              account = page_access(state)
+              page_id = str(account["page_id"])
+              journal[edition] = {"status": "envoi"}
+              state.save()
+              try:
+                  link = "https://www.youtube.com/watch?v=Gwb-asX584g"
+                  post = graph.call("POST", page_id + "/feed", {"link": link,
+                      "message": "🏟️ La Pastille Multisport de 8 h est en ligne ! Retrouve l’édition complète et toute l’actu sur https://velocemercato.fr/multisport/. Quel sport veux-tu voir dans la prochaine édition ?",
+                      "access_token": account["page_token"]})
+                  ident = str(post.get("id") or "")
+                  link = verify(graph, account["page_token"], page_id, ident)
+                  journal[edition] = {"status": "publie_confirme", "id": ident, "url": link}
+                  print("::notice::JT 08H FACEBOOK " + link)
+                  state.save()
+              except DeliveryError as error:
+                  print(f"::error::JT 08H FACEBOOK : {str(error)[:120]}")
+                  ok = False
           raise SystemExit(not ok)
           PY
