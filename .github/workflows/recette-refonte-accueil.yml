@@ -120,7 +120,8 @@ jobs:
               const hero=page.locator('.vm-refonte-hero');
               const heading=page.locator('h1');
               check(await heading.count()===1,'H1 non unique');
-              check((await heading.first().innerText()).trim().replace(/\s+/g,' ')===title,'Titre inattendu');
+              record.title=(await heading.first().textContent()).trim().replace(/\s+/g,' ');
+              check(record.title===title,'Titre inattendu : '+record.title);
               await page.waitForFunction(()=>{const img=document.querySelector('.vm-refonte-art img');return img?.complete&&img.naturalWidth>0;},{},{timeout:10000});
               record.widths=await page.evaluate(()=>[document.documentElement.clientWidth,document.documentElement.scrollWidth]);
               check(record.widths[0]===record.widths[1],'Débordement '+record.widths.join('/'));
@@ -128,7 +129,8 @@ jobs:
               check(record.hero.endsWith('.webp'),'Fond non WebP');
               if(route==='/'){
                 const box=await heading.first().boundingBox();
-                check(box && box.y+box.height<900,'Titre sous le premier écran');
+                record.titleBottom=box ? Math.round(box.y+box.height) : null;
+                check(record.titleBottom!==null && record.titleBottom<900,'Titre sous le premier écran : '+record.titleBottom);
                 if(width<=390)check(record.hero.endsWith('/accueil-mobile.webp'),'Portrait mobile absent');
               }
               if(width===390){
