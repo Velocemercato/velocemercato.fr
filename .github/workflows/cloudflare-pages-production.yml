@@ -109,6 +109,12 @@ jobs:
                 await page.locator('.nav-tabs').waitFor({state:'visible'});
                 assert.equal(await page.locator('.hero-img').evaluate(img => img.complete && img.naturalWidth > 0), true, 'Hero absent');
                 const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
+                if (scrollWidth > width) {
+                  console.log('OVERFLOW', await page.evaluate(() => [...document.querySelectorAll('body *')]
+                    .filter(el => el instanceof HTMLElement && !el.closest('.ticker, .pills, .pills-scroll, .nav-tabs'))
+                    .map(el => [el.tagName, el.className, Math.round(el.getBoundingClientRect().right)])
+                    .filter(el => el[2] > document.documentElement.clientWidth).sort((a, b) => b[2] - a[2]).slice(0, 16)));
+                }
                 assert.ok(scrollWidth <= width, 'Débordement horizontal à ' + width + ' px : ' + scrollWidth);
                 const invalid = await page.locator('header a[href^="#"]').evaluateAll(links =>
                   links.map(link => link.getAttribute('href')).filter(href => href.length > 1 && !document.getElementById(href.slice(1))));
@@ -136,4 +142,5 @@ jobs:
           check_home "$production"
           check_home https://velocemercato.pages.dev
           check_home https://velocemercato.fr
+          node "$RUNNER_TEMP/vm-home-check/check.cjs" https://velocemercato.fr
           echo "PRODUCTION_VM $production"
