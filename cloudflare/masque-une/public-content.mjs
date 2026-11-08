@@ -45,8 +45,63 @@ export function pronosPage(rewriter, row) {
     }
   }).on('#acces-vip a[href^="mailto:"]', {
     element(link) { link.setInnerContent('📩 Préparer ma demande VIP'); }
+  }).on('#gaming', {
+    element(section) { section.append(pronosGamingScript, { html: true }); }
   });
 }
+
+const pronosGamingScript = `<script>
+(() => {
+  const panel = document.currentScript.parentElement;
+  const heading = panel.querySelector('h2');
+  if (!heading) return;
+  const clock = new Intl.DateTimeFormat('fr-FR', {
+    dateStyle: 'short', timeStyle: 'short', timeZone: 'Europe/Paris'
+  });
+  const element = (tag, text, className) => {
+    const node = document.createElement(tag);
+    node.textContent = text;
+    if (className) node.className = className;
+    return node;
+  };
+  const original = source => {
+    try {
+      const url = new URL(source?.url);
+      return source.nom && url.protocol === 'https:' && !url.username && !url.password;
+    } catch { return false; }
+  };
+  fetch('/vm-gaming/news.json', { cache: 'no-store' }).then(response => {
+    if (response.ok) return response.json();
+  }).then(rows => {
+    if (!Array.isArray(rows)) return;
+    const now = Date.now();
+    const cards = document.createDocumentFragment();
+    const seen = new Set();
+    for (const row of rows.slice().sort((a, b) => Date.parse(b?.publishedAt) - Date.parse(a?.publishedAt))) {
+      const date = Date.parse(row?.publishedAt);
+      if (!/^[a-z0-9][a-z0-9-]{1,99}$/.test(row?.id ?? '') || seen.has(row.id) ||
+          !row.titre || !row.resume || !(now - 172800000 <= date && date <= now)) continue;
+      const source = Array.isArray(row.sources) && row.sources.find(original);
+      if (!source) continue;
+      const card = element('article', '', 'news');
+      const title = element('h3', '');
+      const link = element('a', row.titre);
+      link.href = '/vm-gaming/#a=' + encodeURIComponent(row.id);
+      title.append(link);
+      const sourceLink = element('a', 'Source originale', 'source');
+      sourceLink.href = source.url;
+      sourceLink.target = '_blank';
+      sourceLink.rel = 'noopener noreferrer';
+      card.append(element('p', clock.format(date) + ' · Source : ' + source.nom, 'meta'),
+        title, element('p', String(row.resume).slice(0, 420)), sourceLink);
+      cards.append(card);
+      seen.add(row.id);
+      if (seen.size === 5) break;
+    }
+    if (seen.size) panel.replaceChildren(heading, cards);
+  }).catch(() => {});
+})();
+</script>`;
 
 export async function multisportEdition(response) {
   if (!response.ok) return response;
