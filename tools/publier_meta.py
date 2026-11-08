@@ -34,8 +34,8 @@ HOSTS = {'graph.facebook.com'}
 PARIS = ZoneInfo('Europe/Paris')
 UTC = dt.timezone.utc
 # Heure de Paris, page Facebook VéloceMercato.
-SLOTS = {7: 'actus', 8: 'foot', 10: 'multisport', 11: 'foot', 12: 'multisport',
-         13: 'gaming', 15: 'multisport', 16: 'gaming', 17: 'multisport',
+SLOTS = {7: 'actus', 8: 'foot', 9: 'foot', 10: 'multisport', 11: 'foot', 12: 'multisport',
+         13: 'gaming', 14: 'actus', 15: 'multisport', 16: 'gaming', 17: 'multisport',
          18: 'foot', 19: 'actus', 20: 'gaming', 21: 'multisport', 22: 'actus', 23: 'multisport'}
 SPORTS = {'nba': 'NBA', 'nfl': 'NFL', 'f1': 'Formule 1', 'motogp': 'MotoGP',
           'tennis': 'Tennis', 'rugby': 'Rugby', 'cyclisme': 'Cyclisme',
@@ -53,13 +53,12 @@ UNIVERS = {
                'tags': '#gaming #jeuxvideo #gamer #vmgaming'},
 }
 
-# Page VM Univers : campagne pub, 3 publications par jour (choix de Romain, 27/10/2026).
-# 9 h : VM Studio (sites pour artisans et pros, son activité principale)
-# 13 h : un outil gratuit VM · 19 h : la vitrine (chaîne YouTube, vmunivers.fr, velocemercato.fr)
-# Environ 1 pub pour 4 publications normales : au-delà, Facebook et Instagram montrent moins la page.
+# VM Univers : services, projets et deux flashes locaux si des sources sont disponibles.
 DEBUT_UNIVERS = dt.date(2026, 10, 26)
-HEURES_UNIVERS = {DEBUT_UNIVERS: (16, 19, 21, 23)}   # lancement ; ensuite tous les jours :
-HEURES_UNIVERS_DEFAUT = (10, 15, 21)
+HEURES_UNIVERS = {DEBUT_UNIVERS: (16, 19, 21, 23)}
+HEURES_UNIVERS_DEFAUT = (9, 10, 12, 15, 17, 19, 21, 23)
+UNIVERS_ROTATION = {9: (1, 0), 10: (1, 3), 12: (2, 0), 15: (1, 4),
+                    17: (1, 1), 19: (0, 0), 21: (2, 1), 23: (1, 2)}
 YOUTUBE_CHAINE = 'https://www.youtube.com/@VeloceMercato'
 STUDIO_URL = 'https://velocemercato.fr/web-studio.html'
 STUDIO_PITCH = ('Un site clair sur téléphone, à prix fixe. Tout se fait à distance.\n'
@@ -67,7 +66,7 @@ STUDIO_PITCH = ('Un site clair sur téléphone, à prix fixe. Tout se fait à di
                 '✅ Vous validez la maquette avant la mise en ligne')
 STUDIO_TAGS = '#VMStudio #siteinternet #artisan #commerce #restaurant #VM'
 GRATUIT_TAGS = '#gratuit #VMUnivers #VM'
-# Une liste par créneau (9 h, 13 h, 19 h) ; chaque jour on avance d'un cran dans chaque liste.
+# Trois listes : VM Studio, outils gratuits et projets du groupe.
 ROTATIONS = [
     [
         {'type': 'video', 'name': 'VM Studio', 'video_id': 'vm-studio-manga', 'url': STUDIO_URL,
@@ -99,7 +98,7 @@ ROTATIONS = [
         {'type': 'carte', 'name': 'YouTube Véloce Mercato', 'icon': 'tv', 'url': YOUTUBE_CHAINE,
          'carte': 'Les JT foot chaque jour. Abonne-toi !',
          'titre': '▶️ Abonne-toi à la chaîne Véloce Mercato',
-         'pitch': 'Les JT foot, actus et gaming chaque jour, et le mag du dimanche à 11 h.', 'tags': '#VeloceMercato #foot #YouTube #VM'},
+         'pitch': 'Retrouve les dernières éditions foot, actus et gaming.', 'tags': '#VeloceMercato #foot #YouTube #VM'},
         {'type': 'carte', 'name': 'VM Univers', 'icon': 'univers', 'url': 'https://vmunivers.fr/',
          'titre': '👑 VM Univers : tous nos projets au même endroit',
          'pitch': 'Sites pour les pros, outils gratuits, foot et gaming : un seul lien.', 'tags': '#VMUnivers #VM'},
@@ -119,8 +118,11 @@ def contenu_univers(local):
     heures = heures_univers(local.date())
     rang = heures.index(local.hour) if local.hour in heures else 0
     jour = (local.date() - DEBUT_UNIVERS).days
-    liste = ROTATIONS[rang % len(ROTATIONS)]
-    item = dict(liste[jour % len(liste)])
+    groupe, decalage = UNIVERS_ROTATION.get(local.hour, (rang % len(ROTATIONS), 0))
+    if local.date() == DEBUT_UNIVERS:
+        groupe, decalage = rang % len(ROTATIONS), 0
+    liste = ROTATIONS[groupe]
+    item = dict(liste[(jour + decalage) % len(liste)])
     if item['type'] == 'video':
         item['video'] = f'https://velocemercato.fr/media/promos/{item["video_id"]}-vertical.mp4'
     return item
@@ -464,7 +466,10 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
     if str((state.data.get('tokens', {}).get('meta_pronos') or {}).get('page_id') or '') == expected_id:
         raise DeliveryError('Destination également assignée à RQ Pronos, diffusion refusée.')
     local_now = now.astimezone(PARIS)
-    slots = {10: 'belfort', 15: 'belfort', 21: 'projet'} if account == 'meta_univers' else SLOTS
+    slots = SLOTS
+    if account == 'meta_univers':
+        slots = dict.fromkeys(HEURES_UNIVERS_DEFAUT, 'projet')
+        slots.update({10: 'belfort', 15: 'belfort'})
     done = state.data.setdefault('meta' if account == 'meta' else account + '_accuses', {})
     errors, sent = [], 0
 
@@ -528,43 +533,11 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
         sent += attempted
 
     local = now.astimezone(PARIS)
-    # GitHub saute parfois un passage : on rattrape le créneau le plus récent manqué (moins de 3 h).
     def cle(h):
         return (f'projet/{local:%Y-%m-%d}/{h:02d}' if slots.get(h) == 'projet' else f'creneau/{local:%Y-%m-%d}/{h:02d}')
     # Ne pas publier rétroactivement des créneaux manqués.
     heure = local.hour
     cible = local.replace(hour=heure, minute=10)
-    if not force and slots.get(heure) == 'projet':
-        key = cle(heure)
-        if key not in done:
-            item = contenu_univers(cible)
-            name, text = item['name'], texte_univers(item)
-            facebook_text = text + '\n\n' + STUDIO_SPOT if account == 'meta_univers' and heure == 21 else text
-            mark(key, 'envoi', projet=name, type=item['type'])
-            try:
-                if item['type'] == 'video':
-                    graph.call('POST', meta['page_id'] + '/videos', {'file_url': item['video'], 'description': facebook_text,
-                                                                     'access_token': meta['page_token']})
-                elif item['type'] == 'image':
-                    graph.call('POST', meta['page_id'] + '/photos', {'url': item['image'], 'caption': facebook_text,
-                                                                     'access_token': meta['page_token']})
-                else:
-                    graph.call('POST', meta['page_id'] + '/feed', {'message': facebook_text, 'link': item['url'], 'access_token': meta['page_token']})
-                print(f'::notice::facebook : {item["type"]} {name}')
-                if meta.get('ig_id'):
-                    insta_text = text.replace('👉 ' + item['url'], '👉 Lien en bio')
-                    if item['type'] == 'video':
-                        instagram_reel(graph, meta, {'verticale': item['video'], 'texte_vertical': insta_text}, sleep=sleep)
-                    elif item['type'] == 'image':
-                        instagram_image(graph, meta, item['image'], insta_text, sleep=sleep)
-                    else:
-                        instagram_image(graph, meta, (card or instagram_projet_card)(name, item['icon'], item.get('carte', item['pitch'])),
-                                        insta_text, sleep=sleep)
-                    print(f'::notice::instagram : {item["type"]} {name}')
-                mark(key, 'publie', projet=name, type=item['type'])
-            except (DeliveryError, OSError, subprocess.CalledProcessError) as error:
-                mark(key, 'echec', projet=name)
-                errors.append(f'VM Univers {name} : {str(error)[:150]}')
     if not force and account == 'meta_univers' and slots.get(heure) == 'belfort':
         slot_belfort = cle(heure)
         if slot_belfort not in done:
@@ -638,6 +611,36 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
                 break
             else:
                 print('::notice::VM Belfort : aucune brève locale inédite et récente.')
+    if not force and account == 'meta_univers' and slots.get(heure) in ('projet', 'belfort'):
+        key = cle(heure)
+        if key not in done:
+            item = contenu_univers(cible)
+            name, text = item['name'], texte_univers(item)
+            mark(key, 'envoi', projet=name, type=item['type'])
+            try:
+                if item['type'] == 'video':
+                    graph.call('POST', meta['page_id'] + '/videos', {'file_url': item['video'], 'description': text,
+                                                                     'access_token': meta['page_token']})
+                elif item['type'] == 'image':
+                    graph.call('POST', meta['page_id'] + '/photos', {'url': item['image'], 'caption': text,
+                                                                     'access_token': meta['page_token']})
+                else:
+                    graph.call('POST', meta['page_id'] + '/feed', {'message': text, 'link': item['url'], 'access_token': meta['page_token']})
+                print(f'::notice::facebook : {item["type"]} {name}')
+                if heure == 21 and meta.get('ig_id'):
+                    insta_text = text.replace('👉 ' + item['url'], '👉 Lien en bio')
+                    if item['type'] == 'video':
+                        instagram_reel(graph, meta, {'verticale': item['video'], 'texte_vertical': insta_text}, sleep=sleep)
+                    elif item['type'] == 'image':
+                        instagram_image(graph, meta, item['image'], insta_text, sleep=sleep)
+                    else:
+                        instagram_image(graph, meta, (card or instagram_projet_card)(name, item['icon'], item.get('carte', item['pitch'])),
+                                        insta_text, sleep=sleep)
+                    print(f'::notice::instagram : {item["type"]} {name}')
+                mark(key, 'publie', projet=name, type=item['type'])
+            except (DeliveryError, OSError, subprocess.CalledProcessError) as error:
+                mark(key, 'echec', projet=name)
+                errors.append(f'VM Univers {name} : {str(error)[:150]}')
     univers = force or slots.get(heure)
     if univers in ('projet', 'belfort', 'multisport'):
         univers = None
