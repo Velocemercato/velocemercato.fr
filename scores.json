@@ -49,6 +49,18 @@
    ]
   },
   {
+   "id": 565853,
+   "date": "2026-11-07T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "SC Paderborn",
+   "ext": "Frankfurt",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    2
+   ]
+  },
+  {
    "id": 565848,
    "date": "2026-11-07T14:30:00Z",
    "comp": "Bundesliga",
@@ -70,18 +82,6 @@
    "score": [
     2,
     1
-   ]
-  },
-  {
-   "id": 565853,
-   "date": "2026-11-07T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "SC Paderborn",
-   "ext": "Frankfurt",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    2
    ]
   },
   {
@@ -265,18 +265,6 @@
    ]
   },
   {
-   "id": 560638,
-   "date": "2026-11-08T14:00:00Z",
-   "comp": "Premier League",
-   "dom": "Brighton Hove",
-   "ext": "Brentford",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
-   ]
-  },
-  {
    "id": 560636,
    "date": "2026-11-08T14:00:00Z",
    "comp": "Premier League",
@@ -289,15 +277,15 @@
    ]
   },
   {
-   "id": 560635,
+   "id": 560638,
    "date": "2026-11-08T14:00:00Z",
    "comp": "Premier League",
-   "dom": "Crystal Palace",
-   "ext": "Liverpool",
+   "dom": "Brighton Hove",
+   "ext": "Brentford",
    "statut": "FINISHED",
    "score": [
-    1,
-    3
+    2,
+    0
    ]
   },
   {
@@ -310,6 +298,18 @@
    "score": [
     1,
     2
+   ]
+  },
+  {
+   "id": 560635,
+   "date": "2026-11-08T14:00:00Z",
+   "comp": "Premier League",
+   "dom": "Crystal Palace",
+   "ext": "Liverpool",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    3
    ]
   },
   {
@@ -385,18 +385,6 @@
    ]
   },
   {
-   "id": 559632,
-   "date": "2026-11-08T16:15:00Z",
-   "comp": "Ligue 1",
-   "dom": "Brest",
-   "ext": "Olympique Lyon",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
-   ]
-  },
-  {
    "id": 559634,
    "date": "2026-11-08T16:15:00Z",
    "comp": "Ligue 1",
@@ -406,6 +394,18 @@
    "score": [
     0,
     2
+   ]
+  },
+  {
+   "id": 559632,
+   "date": "2026-11-08T16:15:00Z",
+   "comp": "Ligue 1",
+   "dom": "Brest",
+   "ext": "Olympique Lyon",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    0
    ]
   },
   {
@@ -517,5 +517,5 @@
    ]
   }
  ],
- "maj": "2026-11-08T20:19:59Z"
+ "maj": "2026-11-08T20:21:53Z"
 }
