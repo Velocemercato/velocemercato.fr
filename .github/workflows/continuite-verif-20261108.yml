@@ -1,0 +1,90 @@
+name: VM - Contrôle continuité du 8 novembre
+on:
+  push:
+    branches: [codex/continuite-verif-20261108]
+    paths: ['.github/workflows/continuite-verif-20261108.yml']
+
+permissions:
+  contents: read
+concurrency:
+  group: vm-releve-meta-dimanche
+  cancel-in-progress: false
+jobs:
+  bilan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet 'cryptography==50.0.0'
+      - name: Verifier l'absence d'envoi et de suppression
+        run: |
+          python -m py_compile tools/rapport_meta_du_jour.py
+          if grep -E 'graph\.call\("(POST|DELETE)"|\.save\(' tools/rapport_meta_du_jour.py; then
+            echo '::error::Rapport: écriture interdite'
+            exit 1
+          fi
+      - name: Lire les accusés chiffrés sans les modifier
+        run: |
+          set -euo pipefail
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "https://github.com/$GITHUB_REPOSITORY.git" "$RUNNER_TEMP/vm-broadcast-state"
+          test -s "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+      - name: Récupérer seulement les liens publics existants
+        run: python tools/rapport_meta_du_jour.py
+      - name: Vérifier les sites, flux et accès Pages
+        if: always()
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_WORKER_API_TOKEN }}
+        run: |
+          python - <<'PY'
+          import json,re,urllib.request,concurrent.futures,os
+          from datetime import datetime,timezone
+          from html import unescape
+          from urllib.parse import urlsplit
+          base='https://velocemercato.fr'
+          urls=[base+'/', 'https://vmunivers.fr/', 'https://velocemercato.pages.dev/', 'https://vmunivers.pages.dev/']+[h+p for h in [base,'https://velocemercato.pages.dev'] for p in ['/articles.json','/actus/news.json','/vm-gaming/news.json','/pronos/selection.json','/pronos/']]+[base+'/belfort/',base+'/multisport/',base+'/vm-gaming/','https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=DipTJj4wrcE']
+          def probe(u):
+           try:
+            with urllib.request.urlopen(urllib.request.Request(u,headers={'User-Agent':'Mozilla/5.0','Cache-Control':'no-cache'}),timeout=12) as r:
+             d=r.read(3000000).decode(errors='replace')
+             info={'url':u,'http':r.status,'final':r.url}
+             if '.json' in u or '/oembed?' in u:
+              obj=json.loads(d)
+              if 'selection.json' in u:
+               info['advice']=obj.get('publicAdvice') if isinstance(obj,dict) else None
+              elif '/oembed?' in u: info.update({k:obj.get(k) for k in ('title','author_name','author_url')})
+              else:
+               stamps=[]
+               def scan(v):
+                if isinstance(v,dict):
+                 for x in v.values():scan(x)
+                if isinstance(v,list):
+                 for x in v:scan(x)
+                if isinstance(v,str) and re.fullmatch(r'20\d\d-\d\d-\d\dT[\d:.]+(?:Z|[+-]\d\d:\d\d)',v):
+                 dt=datetime.fromisoformat(v.replace('Z','+00:00'))
+                 if dt<=datetime.now(timezone.utc): stamps.append(dt)
+               scan(obj)
+               if stamps: info['latest']=max(stamps).isoformat();info['age_min']=round((datetime.now(timezone.utc)-max(stamps)).total_seconds()/60,1)
+               rows=obj if isinstance(obj,list) else next((obj[k] for k in ('articles','items','news','titres') if isinstance(obj.get(k),list)),[])
+               info['head']=[{k:x[k] for k in ('titre','title','t','date','publishedAt') if k in x} for x in rows[:2] if isinstance(x,dict)]
+             else:
+              info['title']=unescape(re.search(r'<title[^>]*>(.*?)</title>',d,re.I|re.S).group(1)) if re.search(r'<title[^>]*>(.*?)</title>',d,re.I|re.S) else ''
+              if '/pronos/' in u: info['anchor']=bool(re.search(r'id=["\x27]pronos-du-jour["\x27]',d))
+             return info
+           except Exception as e:return {'url':u,'error':str(e)[:160]}
+          with concurrent.futures.ThreadPoolExecutor(max_workers=12) as ex:
+           for a in ex.map(probe,urls):print('PUBLIC_VM '+json.dumps(a,ensure_ascii=False))
+          token=os.getenv('CF_TOKEN')
+          account='c5227875896e9a281915ed70c146e845'
+          for project in ['velocemercato','vmunivers']:
+           try:
+            with urllib.request.urlopen(urllib.request.Request(f'https://api.cloudflare.com/client/v4/accounts/{account}/pages/projects/{project}',headers={'Authorization':'Bearer '+token}),timeout=10) as r:
+             obj=json.load(r)['result']; dep=obj.get('canonical_deployment') or {}
+             print('PAGES_VM',project,r.status,dep.get('id'),dep.get('url'))
+           except Exception as e: print('PAGES_VM',project,str(e)[:120])
+          PY
