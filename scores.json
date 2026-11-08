@@ -25,6 +25,18 @@
    ]
   },
   {
+   "id": 558532,
+   "date": "2026-11-07T14:00:00Z",
+   "comp": "Serie A",
+   "dom": "Torino",
+   "ext": "Lecce",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    1
+   ]
+  },
+  {
    "id": 558534,
    "date": "2026-11-07T14:00:00Z",
    "comp": "Serie A",
@@ -37,15 +49,15 @@
    ]
   },
   {
-   "id": 558532,
-   "date": "2026-11-07T14:00:00Z",
-   "comp": "Serie A",
-   "dom": "Torino",
-   "ext": "Lecce",
+   "id": 565848,
+   "date": "2026-11-07T14:30:00Z",
+   "comp": "Bundesliga",
+   "dom": "RB Leipzig",
+   "ext": "Augsburg",
    "statut": "FINISHED",
    "score": [
-    1,
-    1
+    5,
+    2
    ]
   },
   {
@@ -69,18 +81,6 @@
    "statut": "FINISHED",
    "score": [
     2,
-    2
-   ]
-  },
-  {
-   "id": 565848,
-   "date": "2026-11-07T14:30:00Z",
-   "comp": "Bundesliga",
-   "dom": "RB Leipzig",
-   "ext": "Augsburg",
-   "statut": "FINISHED",
-   "score": [
-    5,
     2
    ]
   },
@@ -361,11 +361,11 @@
    ]
   },
   {
-   "id": 559633,
+   "id": 559631,
    "date": "2026-11-08T16:15:00Z",
    "comp": "Ligue 1",
-   "dom": "Le Havre",
-   "ext": "Lorient",
+   "dom": "Le Mans",
+   "ext": "Monaco",
    "statut": "TIMED",
    "score": [
     null,
@@ -373,11 +373,11 @@
    ]
   },
   {
-   "id": 559631,
+   "id": 559633,
    "date": "2026-11-08T16:15:00Z",
    "comp": "Ligue 1",
-   "dom": "Le Mans",
-   "ext": "Monaco",
+   "dom": "Le Havre",
+   "ext": "Lorient",
    "statut": "TIMED",
    "score": [
     null,
@@ -517,5 +517,5 @@
    ]
   }
  ],
- "maj": "2026-11-08T13:32:44Z"
+ "maj": "2026-11-08T13:36:29Z"
 }
