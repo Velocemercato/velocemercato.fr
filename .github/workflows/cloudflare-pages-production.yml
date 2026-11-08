@@ -1,4 +1,4 @@
-name: Cloudflare Pages - Deploiement production
+name: Cloudflare Pages - Recette et publication accueil VM
 on:
   push:
     branches: [codex/pages-production-20261108]
@@ -42,17 +42,98 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Discover production branch and deploy
+      - name: Validate the new VM Multisport homepage
+        run: |
+          set -euo pipefail
+          python3 tests/test_home_clarity.py
+          python3 tests/test_home_multisport.py
+          grep -Fq 'class="nav-tabs"' _site/index.html
+          grep -Fq '/assets/vm-home.css' _site/index.html
+          for f in vm-home.css hero-multisport.jpg hero-mangas.jpg hero-series.jpg; do
+            test -s "_site/assets/$f"
+          done
+          npm install --prefix "$RUNNER_TEMP/vm-home-check" --no-save playwright
+          "$RUNNER_TEMP/vm-home-check/node_modules/.bin/playwright" install chromium
+      - name: Preview, check and publish the VM Multisport homepage
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: c5227875896e9a281915ed70c146e845
         run: |
           set -euo pipefail
-          test -n "$CLOUDFLARE_API_TOKEN" || { echo "::error::CLOUDFLARE_API_TOKEN is missing"; exit 1; }
-          PROD_BRANCH=$(curl --fail --silent --show-error \
-            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/velocemercato" \
-            | jq -r '.result.production_branch')
-          echo "Branche de production Cloudflare Pages : $PROD_BRANCH"
-          test -n "$PROD_BRANCH" && [ "$PROD_BRANCH" != "null" ] || { echo "::error::production_branch introuvable"; exit 1; }
-          npx --yes wrangler@4 pages deploy _site --project-name=velocemercato --branch="$PROD_BRANCH"
+          export NO_COLOR=1
+          project=velocemercato
+          endpoint="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$project"
+          project_info() {
+            curl -fsS --max-time 20 -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$endpoint"
+          }
+          info=$(project_info)
+          previous=$(jq -er '.result.canonical_deployment.id' <<<"$info")
+          previous_url=$(jq -er '.result.canonical_deployment.url' <<<"$info")
+          prod_branch=$(jq -er '.result.production_branch' <<<"$info")
+          preview_branch=vm-home-preview-20261108
+          test "$prod_branch" != "$preview_branch"
+          echo "PREVIOUS_PRODUCTION $previous $previous_url"
+          echo "SOURCE_MAIN $(git rev-parse HEAD)"
+          if [[ "$previous_url" =~ ^https://[a-z0-9-]+\.velocemercato\.pages\.dev$ ]] && ! test -s _site/edition/2026-11-08/index.html; then
+            if curl -fsSL --max-time 20 "$previous_url/edition/2026-11-08/" -o "$RUNNER_TEMP/previous-edition.html" &&
+              grep -Fq 'Brèves VM du 8 novembre 2026' "$RUNNER_TEMP/previous-edition.html"; then
+              sudo install -D -m 644 "$RUNNER_TEMP/previous-edition.html" _site/edition/2026-11-08/index.html
+            fi
+          fi
+          deploy() {
+            local branch="$1" log="$2"
+            npx --yes wrangler@4 pages deploy _site --project-name="$project" --branch="$branch" --commit-dirty=true | tee "$log" >&2
+            grep -Eo 'https://[a-f0-9]+\.velocemercato\.pages\.dev' "$log" | tail -1
+          }
+          check_home() {
+            curl -fsSL --max-time 25 --retry 2 "$1/" -o "$RUNNER_TEMP/vm-home.html"
+            grep -Fq '/assets/vm-home.css' "$RUNNER_TEMP/vm-home.html"
+            grep -Fq 'class="nav-tabs"' "$RUNNER_TEMP/vm-home.html"
+            for f in vm-home.css hero-multisport.jpg hero-mangas.jpg hero-series.jpg; do
+              curl -fsSL --max-time 20 "$1/assets/$f" -o /dev/null
+            done
+            echo "HOME_HTTP_OK $1"
+          }
+          preview=$(deploy "$preview_branch" "$RUNNER_TEMP/vm-home-preview.log")
+          check_home "$preview"
+          cat > "$RUNNER_TEMP/vm-home-check/check.cjs" <<'NODE'
+          const assert = require('node:assert/strict');
+          const { chromium } = require('playwright');
+          (async () => {
+            const browser = await chromium.launch();
+            try {
+              for (const width of [320, 390, 768]) {
+                const page = await browser.newPage({viewport:{width,height:900}, serviceWorkers:'block'});
+                const response = await page.goto(process.argv[2], {waitUntil:'load'});
+                assert.equal(response.status(), 200);
+                await page.locator('.nav-tabs').waitFor({state:'visible'});
+                assert.equal(await page.locator('.hero-img').evaluate(img => img.complete && img.naturalWidth > 0), true, 'Hero absent');
+                const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
+                assert.ok(scrollWidth <= width, 'Débordement horizontal à ' + width + ' px : ' + scrollWidth);
+                const invalid = await page.locator('header a[href^="#"]').evaluateAll(links =>
+                  links.map(link => link.getAttribute('href')).filter(href => href.length > 1 && !document.getElementById(href.slice(1))));
+                assert.deepEqual(invalid, [], 'Ancres du menu');
+                const urls = await page.locator('header a[href^="/"], .vm-banner a[href^="/"]').evaluateAll(links =>
+                  [...new Set(links.map(link => link.href))]);
+                if (width === 390) {
+                  for (const url of urls) {
+                    const link = await page.request.get(url, {timeout:15000});
+                    assert.ok(link.ok(), 'Lien ' + url + ' : HTTP ' + link.status());
+                  }
+                }
+                console.log('PREVIEW_VIEWPORT_OK', width, scrollWidth, urls.length);
+                await page.close();
+              }
+            } finally {
+              await browser.close();
+            }
+          })().catch(error => { console.error(error); process.exitCode = 1; });
+          NODE
+          node "$RUNNER_TEMP/vm-home-check/check.cjs" "$preview"
+          current=$(project_info | jq -er '.result.canonical_deployment.id')
+          test "$previous" = "$current" || { echo "::error::Le déploiement de production a changé pendant la recette"; exit 1; }
+          production=$(deploy "$prod_branch" "$RUNNER_TEMP/vm-home-production.log")
+          check_home "$production"
+          check_home https://velocemercato.pages.dev
+          check_home https://velocemercato.fr
+          echo "PRODUCTION_VM $production"
