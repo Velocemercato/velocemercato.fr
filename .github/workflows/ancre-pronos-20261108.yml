@@ -1,0 +1,33 @@
+name: VM - Vérifier l’ancre publique après rendu
+on:
+  push:
+    branches: [codex/continuite-verif-20261108]
+    paths: ['.github/workflows/ancre-pronos-20261108.yml']
+permissions:
+  contents: read
+jobs:
+  public:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save playwright && npx playwright install chromium
+      - run: |
+          node --input-type=module <<'JS'
+          import {chromium} from 'playwright';
+          const b=await chromium.launch({args:['--no-sandbox']});
+          for(const host of ['https://velocemercato.fr','https://velocemercato.pages.dev']){
+            const p=await b.newPage();
+            try{
+              const r=await p.goto(host+'/pronos/#pronos-du-jour',{waitUntil:'domcontentloaded',timeout:18000});
+              await p.waitForTimeout(2500);
+              const d=await p.evaluate(()=>({anchor:!!document.getElementById('pronos-du-jour'),newText:document.body.innerText.includes('observe où Lens récupère'),ids:[...document.querySelectorAll('[id]')].map(a=>a.id).filter(id=>/prono|advice|conseil|analys/i.test(id))}));
+              console.log('ANCRE_VM',r.status(),p.url(),JSON.stringify(d));
+            }catch(e){console.log('ANCRE_VM',host,e.name);}
+            await p.close();
+          }
+          await b.close();
+          JS
+          curl -fsSG --max-time 10 'https://www.youtube.com/oembed' --data-urlencode 'url=https://www.youtube.com/watch?v=4gZewnlh77Q' | jq -c '{title,author_name,author_url}' | sed 's/^/YOUTUBE_PUBLIC /'
