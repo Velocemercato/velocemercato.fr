@@ -7,7 +7,7 @@
   "facebook": {
     "meta": "VeloceMercato",
     "meta_univers": "VMunivers.fr",
-    "meta_pronos": "RQ Pronos"
+    "meta_pronos": "VM actus et pronos"
   },
   "instagram": [
     "meta",
@@ -17,31 +17,59 @@
   "slots": [
     {
       "heure": "07:00",
-      "rubrique": "Actualités du matin",
+      "rubrique": "Actualités",
       "pages_facebook": [
         "meta",
         "meta_pronos"
       ],
-      "condition": "Brève récente avec titre, source et lien"
+      "condition": "Contenu inédit, daté et sourcé. Pour un JT, lien YouTube confirmé.",
+      "rubriques_facebook": {
+        "meta": "Actualités",
+        "meta_pronos": "Actualités"
+      }
     },
     {
       "heure": "08:00",
-      "rubrique": "Football et gaming",
+      "rubrique": "Football",
       "pages_facebook": [
         "meta",
         "meta_pronos"
       ],
-      "condition": "Brèves distinctes sourcées; pas de scores inventés"
+      "condition": "Contenu inédit, daté et sourcé. Pour un JT, lien YouTube confirmé.",
+      "rubriques_facebook": {
+        "meta": "Football",
+        "meta_pronos": "Football"
+      }
     },
     {
-      "heure": "10:00",
-      "rubrique": "VM Belfort · Brève Multisport sur VéloceMercato",
+      "heure": "09:00",
+      "rubrique": "Football · Outil gratuit",
       "pages_facebook": [
         "meta",
         "meta_univers",
         "meta_pronos"
       ],
-      "condition": "Flash local sourcé; aucun JT vidéo fictif. Brève Multisport récente, source et lien"
+      "condition": "Contenu inédit, daté et sourcé. Pour un JT, lien YouTube confirmé.",
+      "rubriques_facebook": {
+        "meta": "Football",
+        "meta_univers": "Outil gratuit",
+        "meta_pronos": "Football"
+      }
+    },
+    {
+      "heure": "10:00",
+      "rubrique": "Multisport · VM Belfort ou outil gratuit · VM Belfort",
+      "pages_facebook": [
+        "meta",
+        "meta_univers",
+        "meta_pronos"
+      ],
+      "condition": "Contenu inédit, daté et sourcé. Pour un JT, lien YouTube confirmé.",
+      "rubriques_facebook": {
+        "meta": "Multisport",
+        "meta_univers": "VM Belfort ou outil gratuit",
+        "meta_pronos": "VM Belfort"
+      }
     },
     {
       "heure": "10:40",
@@ -53,21 +81,31 @@
     },
     {
       "heure": "11:00",
-      "rubrique": "JT Foot · Brève Foot sur VéloceMercato",
+      "rubrique": "Football · JT Foot",
       "pages_facebook": [
         "meta",
         "meta_pronos"
       ],
-      "condition": "JT avec lien YouTube confirmé ou brève Foot avec source et lien"
+      "condition": "Contenu inédit, daté et sourcé. Pour un JT, lien YouTube confirmé.",
+      "rubriques_facebook": {
+        "meta": "Football",
+        "meta_pronos": "JT Foot"
+      }
     },
     {
       "heure": "12:00",
-      "rubrique": "JT Actus · Brève Multisport sur VéloceMercato",
+      "rubrique": "Multisport · Projet VM Univers · JT Actus",
       "pages_facebook": [
         "meta",
+        "meta_univers",
         "meta_pronos"
       ],
-      "condition": "Lien public YouTube confirmé; sinon non publié. Brève Multisport récente, source et lien"
+      "condition": "Contenu inédit, daté et sourcé. Pour un JT, lien YouTube confirmé.",
+      "rubriques_facebook": {
+        "meta": "Multisport",
+        "meta_univers": "Projet VM Univers",
+        "meta_pronos": "JT Actus"
+      }
     },
     {
       "heure": "13:00",
@@ -76,33 +114,67 @@
         "meta",
         "meta_pronos"
       ],
-      "condition": "Actualité récente et sourcée"
+      "condition": "Contenu inédit, daté et sourcé. Pour un JT, lien YouTube confirmé.",
+      "rubriques_facebook": {
+        "meta": "Gaming",
+        "meta_pronos": "Gaming"
+      }
+    },
+    {
+      "heure": "14:00",
+      "rubrique": "Actualités · Football",
+      "pages_facebook": [
+        "meta",
+        "meta_pronos"
+      ],
+      "condition": "Contenu inédit, daté et sourcé. Pour un JT, lien YouTube confirmé.",
+      "rubriques_facebook": {
+        "meta": "Actualités",
+        "meta_pronos": "Football"
+      }
     },
     {
       "heure": "15:00",
-      "rubrique": "VM Belfort, deuxième flash · Brève Multisport sur VéloceMercato",
+      "rubrique": "Multisport · VM Belfort ou outil gratuit · VM Belfort",
       "pages_facebook": [
         "meta",
         "meta_univers",
         "meta_pronos"
       ],
-      "condition": "Autre information locale récente; vidéo seulement produite. Brève Multisport récente, source et lien"
+      "condition": "Contenu inédit, daté et sourcé. Pour un JT, lien YouTube confirmé.",
+      "rubriques_facebook": {
+        "meta": "Multisport",
+        "meta_univers": "VM Belfort ou outil gratuit",
+        "meta_pronos": "VM Belfort"
+      }
     },
     {
       "heure": "16:00",
-      "rubrique": "Gaming",
+      "rubrique": "Gaming · Projet VM",
       "pages_facebook": [
-        "meta"
+        "meta",
+        "meta_pronos"
       ],
-      "condition": "Brève récente, source et lien"
+      "condition": "Contenu inédit, daté et sourcé. Pour un JT, lien YouTube confirmé.",
+      "rubriques_facebook": {
+        "meta": "Gaming",
+        "meta_pronos": "Projet VM"
+      }
     },
     {
       "heure": "17:00",
-      "rubrique": "Brève Multisport",
+      "rubrique": "Multisport · Outil gratuit · Football",
       "pages_facebook": [
-        "meta"
+        "meta",
+        "meta_univers",
+        "meta_pronos"
       ],
-      "condition": "Brève récente, source et lien"
+      "condition": "Contenu inédit, daté et sourcé. Pour un JT, lien YouTube confirmé.",
+      "rubriques_facebook": {
+        "meta": "Multisport",
+        "meta_univers": "Outil gratuit",
+        "meta_pronos": "Football"
+      }
     },
     {
       "heure": "18:00",
@@ -111,16 +183,26 @@
         "meta",
         "meta_pronos"
       ],
-      "condition": "Brève football distincte sourcée"
+      "condition": "Contenu inédit, daté et sourcé. Pour un JT, lien YouTube confirmé.",
+      "rubriques_facebook": {
+        "meta": "Football",
+        "meta_pronos": "Football"
+      }
     },
     {
       "heure": "19:00",
-      "rubrique": "Actualités",
+      "rubrique": "Actualités · VM Studio",
       "pages_facebook": [
         "meta",
+        "meta_univers",
         "meta_pronos"
       ],
-      "condition": "Brève générale récente et sourcée"
+      "condition": "Contenu inédit, daté et sourcé. Pour un JT, lien YouTube confirmé.",
+      "rubriques_facebook": {
+        "meta": "Actualités",
+        "meta_univers": "VM Studio",
+        "meta_pronos": "Actualités"
+      }
     },
     {
       "heure": "20:00",
@@ -129,42 +211,62 @@
         "meta",
         "meta_pronos"
       ],
-      "condition": "Brève gaming récente et sourcée"
+      "condition": "Contenu inédit, daté et sourcé. Pour un JT, lien YouTube confirmé.",
+      "rubriques_facebook": {
+        "meta": "Gaming",
+        "meta_pronos": "Gaming"
+      }
     },
     {
       "heure": "21:00",
-      "rubrique": "Projet VM Univers · Brève Multisport sur VéloceMercato",
+      "rubrique": "Multisport · Projet VM Univers · JT",
       "pages_facebook": [
         "meta",
         "meta_univers",
         "meta_pronos"
       ],
-      "condition": "Mettre en avant un projet réel du groupe. Brève Multisport récente, source et lien"
+      "condition": "Contenu inédit, daté et sourcé. Pour un JT, lien YouTube confirmé.",
+      "rubriques_facebook": {
+        "meta": "Multisport",
+        "meta_univers": "Projet VM Univers",
+        "meta_pronos": "JT"
+      }
     },
     {
       "heure": "22:00",
-      "rubrique": "Actualités générales",
-      "pages_facebook": [
-        "meta"
-      ],
-      "condition": "Brève récente, source et lien"
-    },
-    {
-      "heure": "22:30",
-      "rubrique": "Bilan du jour",
+      "rubrique": "Actualités",
       "pages_facebook": [
         "meta",
+        "meta_pronos"
+      ],
+      "condition": "Contenu inédit, daté et sourcé. Pour un JT, lien YouTube confirmé.",
+      "rubriques_facebook": {
+        "meta": "Actualités",
+        "meta_pronos": "Actualités"
+      }
+    },
+    {
+      "heure": "22:40",
+      "rubrique": "Bilan du jour",
+      "pages_facebook": [
         "meta_pronos"
       ],
       "condition": "Partager uniquement les JT publics du jour; le dimanche, rétrospective hebdomadaire si produite"
     },
     {
       "heure": "23:00",
-      "rubrique": "Brève Multisport",
+      "rubrique": "Multisport · Outil gratuit · JT",
       "pages_facebook": [
-        "meta"
+        "meta",
+        "meta_univers",
+        "meta_pronos"
       ],
-      "condition": "Brève récente, source et lien"
+      "condition": "Contenu inédit, daté et sourcé. Pour un JT, lien YouTube confirmé.",
+      "rubriques_facebook": {
+        "meta": "Multisport",
+        "meta_univers": "Outil gratuit",
+        "meta_pronos": "JT"
+      }
     }
   ],
   "sources": [
@@ -185,5 +287,5 @@
     "pronos": "100 points fictifs, aucun argent réel, aucune montante ou pourcentage inventé",
     "risk_notice": "18+ · Jouer comporte des risques : endettement, isolement, dépendance · Joueurs Info Service 09 74 75 13 13"
   },
-  "note": "Les robots n'ont pas tous une publication garantie à chaque créneau : pas de contenu vérifié = aucune diffusion."
+  "note": "Horaires de Paris, sous réserve d'un contenu vérifié et du déclenchement GitHub. VM actus et pronos peut relayer une autre brève sourcée si l'édition attendue manque."
 }
