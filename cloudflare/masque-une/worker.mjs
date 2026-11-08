@@ -13,7 +13,6 @@ const UNIVERS_ORIGIN = 'https://vmunivers.pages.dev';
 
 const SCORE_STYLE = '<style id="vm-readable-scores">#sTicker .sviewport{min-width:0;overflow-x:auto}#sRun{animation:none!important;transform:none!important;padding-left:0!important}</style>';
 
-const STUDIO_HELP = '<p class="vms-fine">Prépare ta demande, puis envoie-la dans ta messagerie. Tu peux aussi copier le texte et le coller dans le service de messagerie de ton choix.</p>';
 const ANALYSIS_LINK = '<h2>Analyse sportive du jour</h2><p>Retrouve l’analyse vérifiée et son horaire sur la page dédiée.</p><p><a href="/pronos/#pronos-du-jour">Voir l’analyse sportive</a></p>';
 const MOBILE_ACCESS = '<style id="vm-a11y">.vm-skip{position:absolute;left:12px;top:12px;transform:translateY(-250%);z-index:9999;background:#ffd54a;color:#111;padding:10px 14px;border-radius:5px}.vm-skip:focus{transform:none}a:focus-visible,button:focus-visible{outline:3px solid #ffd54a;outline-offset:2px}#feed-title,#actualites{scroll-margin-top:85px}@media(max-width:360px){.vm-mother-quicklinks,.vm-social-icons{flex-wrap:wrap}.vm-mother-tile strong{overflow-wrap:anywhere}}@media(prefers-reduced-motion:reduce){.home-tickers *,#sRun{animation:none!important;scroll-behavior:auto!important}}</style>';
 const VELOCE_HTML = new Set(['/scores/', '/belfort/', '/actus/', '/vm-gaming/', '/multisport/', '/kit-reseaux', '/kit-reseaux.html', '/rentabilite', '/rentabilite.html', '/mangas/', '/pronos/']);
@@ -109,6 +108,17 @@ export default {
     if (isPreview && url.pathname === '/favicon.ico') {
       return Response.redirect(new URL('/assets/vm-logo-optimized.webp', url), 302);
     }
+    if (url.pathname === '/devis-merci') {
+      const back = isUnivers ? '/professionnels/#devis' : '/web-studio#devis';
+      const body = '<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>VM Studio · Merci</title><main style="font:1rem/1.6 system-ui;max-width:42rem;margin:4rem auto;padding:1rem"><h1>Merci pour votre demande</h1><p>VM Studio vous répondra à l’adresse indiquée dans le formulaire.</p><a href="' + back + '">Retour à VM Studio</a></main>';
+      return htmlResponse(new Response(request.method === 'HEAD' ? null : body, {
+        headers: { 'Content-Type': 'text/html; charset=utf-8' }
+      }), !isPreview);
+    }
+    if (isUnivers && url.pathname === '/assets/pro-contact.js') {
+      const js = await fetch(new URL('/assets/pro-contact.js', VELOCE_ORIGIN), { method: request.method });
+      if (js.ok) return js;
+    }
     if (!isUnivers && livePaths.has(url.pathname)) return liveResponse(request, url.pathname);
     if (!isUnivers && url.pathname === '/selection-amazon') {
       return amazonSelection(request.method === 'HEAD');
@@ -155,6 +165,13 @@ export default {
       if (request.method === 'HEAD' || !response.ok ||
           !response.headers.get('Content-Type')?.includes('text/html')) return response;
       const rewriter = polish(new HTMLRewriter(), url, isUnivers);
+      if (isUnivers && url.pathname === '/professionnels/') {
+        rewriter.on('form[data-pro-contact]', {
+          element(form) {
+            form.prepend('<input type="hidden" name="_next" value="https://vmunivers.fr/devis-merci">', { html: true });
+          }
+        });
+      }
       return htmlResponse(rewriter.transform(response), !isPreview);
     }
 
@@ -195,10 +212,6 @@ export default {
       rewriter.on('#tarifs', {
         element(element) {
           element.after(AD_OFFERS, { html: true });
-        }
-      }).on('#devis form', {
-        element(element) {
-          element.before(STUDIO_HELP, { html: true });
         }
       }).on('.vms-amount small', {
         text(chunk) {
