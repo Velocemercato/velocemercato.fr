@@ -265,18 +265,6 @@
    ]
   },
   {
-   "id": 560635,
-   "date": "2026-11-08T14:00:00Z",
-   "comp": "Premier League",
-   "dom": "Crystal Palace",
-   "ext": "Liverpool",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    3
-   ]
-  },
-  {
    "id": 560637,
    "date": "2026-11-08T14:00:00Z",
    "comp": "Premier League",
@@ -286,6 +274,18 @@
    "score": [
     1,
     2
+   ]
+  },
+  {
+   "id": 560635,
+   "date": "2026-11-08T14:00:00Z",
+   "comp": "Premier League",
+   "dom": "Crystal Palace",
+   "ext": "Liverpool",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    3
    ]
   },
   {
@@ -450,10 +450,10 @@
    "comp": "Liga",
    "dom": "Celta",
    "ext": "Levante",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -462,10 +462,10 @@
    "comp": "Liga",
    "dom": "Villarreal",
    "ext": "Getafe",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -517,5 +517,5 @@
    ]
   }
  ],
- "maj": "2026-11-08T17:35:27Z"
+ "maj": "2026-11-08T17:37:21Z"
 }
