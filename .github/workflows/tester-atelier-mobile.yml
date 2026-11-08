@@ -39,6 +39,9 @@ jobs:
             }
             await page.close();
           }));
+          const verify=await browser.newPage();
+          const old=await verify.goto('https://velocemercato.fr/studio/atelier-cf03b9883e72',{waitUntil:'domcontentloaded',timeout:15000});
+          console.log('AUDIT REDIRECTION ATELIER',old?.status(),verify.url());
           await browser.close();
           JS
       - name: Tester le parcours atelier dans Chromium
@@ -63,10 +66,14 @@ jobs:
           const page=await context.newPage();
           await page.goto('http://127.0.0.1:8787/');
           await page.getByLabel('Code atelier').fill(process.env.CODE);
+          const login=page.waitForResponse(r=>r.url().endsWith('/session')&&r.request().method()==='POST');
           await page.getByRole('button',{name:'Ouvrir',exact:true}).click();
+          const reply=await login;
+          console.log('ATELIER MOBILE LOGIN',reply.status(),reply.request().headers()['origin']);
+          assert.equal(reply.status(),303);
           await page.waitForURL('**/atelier');
           await page.getByText('36 modèles · Site vitrine').waitFor();
-          await page.getByRole('button',{name:'Coiffure Graphique',exact:true}).click();
+          await page.getByRole('button',{name:/^Coiffure\s*Graphique$/}).click();
           await page.getByLabel('Nom du client').fill('Salon démo VM');
           await page.getByRole('button',{name:'Créer le lien client'}).click();
           await page.getByText('Projet enregistré.').waitFor();
