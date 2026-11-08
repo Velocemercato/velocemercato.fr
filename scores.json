@@ -321,7 +321,7 @@
    "statut": "IN_PLAY",
    "score": [
     0,
-    0
+    1
    ]
   },
   {
@@ -361,11 +361,11 @@
    ]
   },
   {
-   "id": 559631,
+   "id": 559633,
    "date": "2026-11-08T16:15:00Z",
    "comp": "Ligue 1",
-   "dom": "Le Mans",
-   "ext": "Monaco",
+   "dom": "Le Havre",
+   "ext": "Lorient",
    "statut": "TIMED",
    "score": [
     null,
@@ -373,11 +373,11 @@
    ]
   },
   {
-   "id": 559633,
+   "id": 559631,
    "date": "2026-11-08T16:15:00Z",
    "comp": "Ligue 1",
-   "dom": "Le Havre",
-   "ext": "Lorient",
+   "dom": "Le Mans",
+   "ext": "Monaco",
    "statut": "TIMED",
    "score": [
     null,
@@ -517,5 +517,5 @@
    ]
   }
  ],
- "maj": "2026-11-08T15:13:09Z"
+ "maj": "2026-11-08T15:15:11Z"
 }
