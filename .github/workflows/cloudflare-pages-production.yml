@@ -89,6 +89,7 @@ jobs:
             curl -fsSL --max-time 25 --retry 2 "$1/" -o "$RUNNER_TEMP/vm-home.html"
             grep -Fq '/assets/vm-home.css' "$RUNNER_TEMP/vm-home.html"
             grep -Fq 'class="nav-tabs"' "$RUNNER_TEMP/vm-home.html"
+            grep -Fq 'class="nav-univers" href="https://vmunivers.fr/"' "$RUNNER_TEMP/vm-home.html"
             for f in vm-home.css hero-multisport.jpg hero-mangas.jpg hero-series.jpg; do
               curl -fsSL --max-time 20 "$1/assets/$f" -o /dev/null
             done
@@ -107,6 +108,10 @@ jobs:
                 const response = await page.goto(process.argv[2], {waitUntil:'load'});
                 assert.equal(response.status(), 200);
                 await page.locator('.nav-tabs').waitFor({state:'visible'});
+                const univers = page.locator('header').getByRole('link', {name:'VM Univers', exact:true});
+                await univers.waitFor({state:'visible'});
+                assert.equal(await univers.getAttribute('href'), 'https://vmunivers.fr/');
+                assert.equal(await page.locator('header .badge-87').count(), 0);
                 assert.equal(await page.locator('.hero-img').evaluate(img => img.complete && img.naturalWidth > 0), true, 'Hero absent');
                 const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
                 if (scrollWidth > width) {
