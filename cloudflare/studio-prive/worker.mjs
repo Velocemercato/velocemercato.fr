@@ -14,7 +14,7 @@ const equal = (a, b) => {
 };
 const headers = {
   'cache-control':'no-store', 'x-robots-tag':'noindex, nofollow, noarchive',
-  'referrer-policy':'no-referrer', 'x-content-type-options':'nosniff',
+  'referrer-policy':'same-origin', 'x-content-type-options':'nosniff',
   'content-security-policy':"default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'none'; object-src 'none'",
 };
 const response = (body, status, type, extra = {}) => new Response(body, {status, headers:{...headers,'content-type':type,...extra}});
