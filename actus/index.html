@@ -117,7 +117,18 @@ footer a{color:var(--gold)}
 .vmsh-c{display:block;width:100%;margin-top:12px;font:800 1rem system-ui,sans-serif;padding:12px;border-radius:999px;border:2px solid #0b1533;background:#fff;color:#0b1533;cursor:pointer}
 @media print{.vmfab{display:none}}
 </style><link rel="stylesheet" href="/assets/pastille.css"><script src="/assets/pastille-player.js"></script><script src="/assets/pastille-feed.js" defer></script><script src="/assets/broadcast-feed.js" defer></script><link rel="stylesheet" href="/assets/actus-clarity.css?v=20261024-actus"><script src="/assets/home-navigation.js" defer></script><script src="/assets/vm-guide.js" defer></script>
-<!-- Cloudflare Web Analytics --><script id="vm-cfwa">(function(h){if(h==='velocemercato.fr'||h==='www.velocemercato.fr'){var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "35ce3d9fb9144124a0bb97db4e89dbb2"}');document.head.appendChild(s)}})(location.hostname)</script><link rel="stylesheet" href="/notifications/alertes.css"><script src="/notifications/alertes.js" defer></script><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,800;1,900&family=Knewave&family=Permanent+Marker&display=swap"><link rel="stylesheet" href="/assets/vm-theme.css"></head>
+<!-- Cloudflare Web Analytics --><script id="vm-cfwa">(function(h){if(h==='velocemercato.fr'||h==='www.velocemercato.fr'){var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "35ce3d9fb9144124a0bb97db4e89dbb2"}');document.head.appendChild(s)}})(location.hostname)</script><link rel="stylesheet" href="/notifications/alertes.css"><script src="/notifications/alertes.js" defer></script><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,800;1,900&family=Knewave&family=Permanent+Marker&display=swap"><link rel="stylesheet" href="/assets/vm-theme.css">
+<style id="ptv-embed-css">
+.ptv-embed{margin:32px 0;padding:22px;border:3px solid #000;border-radius:18px;background:linear-gradient(135deg,#0b1533,#1d3fb8);color:#fff;box-shadow:6px 6px 0 var(--gold-hi)}
+.ptv-embed-in{display:flex;flex-direction:column;gap:12px}
+.ptv-embed-t{font-family:Bangers,Impact,sans-serif;font-size:clamp(1.3rem,3vw,2rem);letter-spacing:.05em;margin:0;color:var(--gold-hi);text-shadow:2px 2px 0 #000}
+.ptv-embed .pastille-host{margin:0;font-size:.95rem;color:#c9d3f5}
+.ptv-embed .ptv-main{margin:0}
+.ptv-embed .ptv-big{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:var(--gold-hi);color:#0b1533;border:3px solid #000;border-radius:14px;text-decoration:none;font-weight:800;box-shadow:4px 4px 0 #000;transition:transform .15s}
+.ptv-embed .ptv-big:hover{transform:translate(-2px,-2px)}
+.ptv-embed .ptv-play{font-size:1.2rem}
+</style>
+</head>
 <body class="actus-simple"><a id="ticker" class="ticker ax-flash" href="#presse" hidden aria-label="Flash Actu : voir les titres de la presse en continu"><span class="lbl">⚡ FLASH ACTU</span><span class="tk-vp"><span id="tickerRun" class="run"></span></span></a><nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="VM Univers, tous les projets">VM UNIVERS<small>TOUS LES PROJETS</small></a><a class="f" href="/">⚽ Foot</a><a class="fa" href="/foot-amateur/">🥅 Foot amateur</a><a class="m" href="/multisport/">🏆 Multisport</a><a class="a on" href="/actus/" aria-current="page">📰 Actus</a><a class="k" href="/mangas/">👑 VM Mangas</a><a class="g" href="/vm-gaming/">🎮 Gaming</a><a class="v" href="/#videos">🎬 Vidéos</a><a class="sv" href="/services/">📍 Services</a><a class="pr" href="/pronos/">🔞 Pronos 18+</a><a class="pl" href="/decouvrir.html">➕ Plus</a><a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>
 <header>
 <div class="top"><a class="logo" href="./">VM <b>ACTUS</b><span>du jour</span></a><span class="ed" id="ed">Édition du jour</span></div>
@@ -173,6 +184,23 @@ footer a{color:var(--gold)}
 <a class="sb s-fb" href="https://www.facebook.com/share/1EiGutypix/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.2h2.8V22h3.4z"/></svg>Facebook</a>
 <a class="sb s-dc" href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.3 5.3A16.5 16.5 0 0 0 15.2 4l-.5 1a15 15 0 0 0-5.4 0l-.5-1a16.5 16.5 0 0 0-4.1 1.3C2.1 9.2 1.4 13 1.8 16.7a16.6 16.6 0 0 0 5 2.5l1.1-1.7a10.7 10.7 0 0 1-1.7-.8l.4-.3a11.8 11.8 0 0 0 10.8 0l.4.3-1.7.8 1.1 1.7a16.5 16.5 0 0 0 5-2.5c.5-4.3-.7-8.1-2.9-11.4zM8.5 14.4c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm7 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/></svg>Discord</a>
 </div></details>
+
+<!-- Pastille TV : le JT actus -->
+<section class="ptv ptv-embed" aria-label="La Pastille TV — JT actus">
+<link rel="stylesheet" href="/assets/pastille.css">
+<script src="/assets/pastille-player.js" defer></script>
+<script src="/assets/broadcast-feed.js?v=20261023-clarte1" defer></script>
+<div class="ptv-embed-in">
+<h2 class="ptv-embed-t">📺 LA PASTILLE TV — JT ACTUS</h2>
+<section class="pastille-feed" data-broadcast-feed data-broadcast-single="true" data-broadcast-universe="actus" hidden aria-label="Le JT actus sur YouTube et Twitch"></section>
+<p class="pastille-host">Avec <b>Heineguez</b> · présentateur virtuel · émission générée par IA</p>
+<div class="vm-channels" role="group" aria-label="Nos chaînes vidéo">
+<a class="vm-channel vm-channel--youtube" href="https://www.youtube.com/@VeloceMercato" target="_blank" rel="noopener">▶ YouTube</a>
+<a class="vm-channel vm-channel--twitch" href="https://www.twitch.tv/velocemercato" target="_blank" rel="noopener">Twitch ↗</a>
+</div>
+<div class="ptv-main"><a class="ptv-big" href="/studio.html#tv"><span class="ptv-play">▶</span><b>Voir toutes les émissions</b></a></div>
+</div>
+</section>
 </main>
 <footer>
 VM Actus du jour : des brèves courtes, neutres et sourcées, rédigées avec l'aide d'une IA à partir des médias cités. Le lien vers l'article d'origine est toujours donné.<br>
