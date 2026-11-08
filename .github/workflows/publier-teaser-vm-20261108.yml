@@ -1,0 +1,87 @@
+name: VM - Teaser lancement sur les pages VéloceMercato et VM Univers
+
+on:
+  push:
+    branches: [codex/teaser-vm-20261108]
+    paths: ['.github/workflows/publier-teaser-vm-20261108.yml']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+
+jobs:
+  meta:
+    if: vars.VM_AUTO_META == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+      VM_AUTO_META: ${{ vars.VM_AUTO_META }}
+      ARTICLE: ${{ inputs.article }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet 'cryptography==50.0.0' pillow
+      - name: Ouvrir les accusés chiffrés
+        env:
+          STATE_DIR: ${{ runner.temp }}/vm-broadcast-state
+        run: |
+          set -euo pipefail
+          repo_url="https://github.com/${GITHUB_REPOSITORY}.git"
+          if git -c credential.helper='!gh auth git-credential' ls-remote --exit-code "$repo_url" refs/heads/broadcast-state > /dev/null; then
+            git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "$repo_url" "$STATE_DIR"
+          else
+            mkdir -p "$STATE_DIR"
+            git -C "$STATE_DIR" init --quiet -b broadcast-state
+            git -C "$STATE_DIR" remote add origin "$repo_url"
+          fi
+      - name: Envoyer une fois le teaser aux deux pages Facebook
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          from tools.publier_meta import DeliveryError, Graph, State, git_save
+
+          path = Path(os.environ["RUNNER_TEMP"]) / "vm-broadcast-state/state.enc"
+          state = State(path, os.environ["VM_DIFFUSION_STATE_KEY"], lambda: git_save(path))
+          graph = Graph()
+          receipts = state.data.setdefault("vm_teasers", {})
+          accounts = {"meta": "1384363904759072", "meta_univers": "1349998758205153"}
+          caption = "🚀 Deux sites, trois pages. La Team Véloce te donne rendez-vous !\n\n⚽ Véloce Mercato, notre média foot et multisport : scores, mercato, NBA, tennis, gaming, mangas et séries.\nhttps://velocemercato.fr/\n\n🌐 VM Univers, l’annuaire de nos applis, outils et projets. VM Studio crée vos sites, applis et kits réseaux automatisés, et propose des encarts pub sur nos projets.\nhttps://vmunivers.fr/\n\nAbonne-toi aux trois pages Facebook :\n⚽ VéloceMercato https://www.facebook.com/1384363904759072\n📰 VM actus et pronos https://www.facebook.com/112294796981981\n🌐 VMunivers.fr https://www.facebook.com/1349998758205153\n\nPartage cette vidéo à la personne avec qui tu refais le match. 🙌 #TeamVeloce"
+          file_url = "https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/3b78469dd964e17f447b1b09099127d4a02e413b/media/promos/teaser-team-veloce-20261108.mp4"
+          failures = False
+          for account, expected in accounts.items():
+              token = (state.data.get("tokens") or {}).get(account) or {}
+              if str(token.get("page_id")) != expected or not token.get("page_token"):
+                  print(f"::error::{account} : identité Facebook non confirmée.")
+                  failures = True
+                  continue
+              key = "2026-11-08/teaser/" + account
+              if key in receipts:
+                  print(f"::notice::{account} : tentative déjà enregistrée.")
+                  continue
+              receipts[key] = {"status": "envoi"}
+              state.save()
+              try:
+                  reply = graph.call("POST", expected + "/videos", {
+                      "file_url": file_url, "description": caption,
+                      "published": "true", "access_token": token["page_token"]})
+                  video_id = str(reply.get("id") or "")
+                  if not video_id.isdigit():
+                      raise DeliveryError("Facebook : identifiant vidéo absent.")
+                  receipts[key] = {"status": "envoye_a_verifier", "video_id": video_id}
+                  state.save()
+                  print(f"::notice::VIDEO FB ENVOYEE {account} https://www.facebook.com/{expected}/videos/{video_id}/")
+              except (DeliveryError, OSError) as error:
+                  print(f"::error::{account} : {str(error)[:170]}")
+                  failures = True
+          raise SystemExit(failures)
+          PY
