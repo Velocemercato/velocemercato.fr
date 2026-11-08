@@ -7,7 +7,13 @@ const hour = 60 * minute;
 
 export const livePaths = new Set([
   '/fil.json', '/scores.json', '/matchs.json', '/videos.json', '/flash.json',
-  '/studio/emissions.json', '/studio/diffusions.json', programme
+  '/studio/emissions.json', '/studio/diffusions.json', programme,
+  // Flux des rubriques : servis depuis GitHub main pour ne plus dépendre
+  // d'un instantané Pages périmé (les pages les chargent via fetch).
+  '/vm-gaming/news.json', '/vm-gaming/flash.json',
+  '/actus/news.json', '/actus/flash.json',
+  '/psg/news.json', '/psg/flash.json',
+  '/belfort/actus.json', '/foot-amateur/actus.json'
 ]);
 
 function timestamp(value, now) {
@@ -24,7 +30,7 @@ function validated(path, data, now) {
     const time = timestamp(data?.updated_at ?? data?.start_date, now);
     return time && data?.timezone === 'Europe/Paris' && Array.isArray(data?.slots) ? { data, time } : null;
   }
-  if (path === '/scores.json' || path === '/fil.json') {
+  if (path === '/scores.json' || path === '/fil.json' || path === '/belfort/actus.json' || path === '/foot-amateur/actus.json') {
     const key = path === '/scores.json' ? 'matchs' : 'titres';
     const time = timestamp(data?.maj, now);
     return time && Array.isArray(data?.[key]) ? { data, time } : null;
@@ -90,8 +96,14 @@ export async function liveResponse(request, path, now = Date.now()) {
 
   let data = match?.data ?? null;
   const recent = new URL(request.url).searchParams.get('vm_recent') === '1';
-  if (path === '/scores.json' && (!match || now - match.time > 20 * minute)) {
+  if (path === '/scores.json' && !match) {
+    // Aucune donnée lisible nulle part : on le dit clairement au lieu de deviner.
     data = { matchs: [], maj: null, indisponible: true };
+  } else if (path === '/scores.json' && match) {
+    // Données anciennes (par exemple la nuit, entre deux fenêtres du robot) :
+    // on les sert quand même avec leur horodatage « maj ». La page Scores
+    // affiche « direct mis à jour à HH:MM », la fraîcheur reste lisible.
+    data = { ...match.data };
   } else if (path === '/fil.json') {
     data = {
       titres: (data?.titres ?? []).filter(row => {
