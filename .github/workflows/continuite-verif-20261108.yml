@@ -39,7 +39,7 @@ jobs:
       - name: Vérifier les sites, flux et accès Pages
         if: always()
         env:
-          CF_TOKEN: ${{ secrets.CLOUDFLARE_WORKER_API_TOKEN }}
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
           python - <<'PY'
           import json,re,urllib.request,concurrent.futures,os
@@ -74,7 +74,11 @@ jobs:
                info['head']=[{k:x[k] for k in ('titre','title','t','date','publishedAt') if k in x} for x in rows[:2] if isinstance(x,dict)]
              else:
               info['title']=unescape(re.search(r'<title[^>]*>(.*?)</title>',d,re.I|re.S).group(1)) if re.search(r'<title[^>]*>(.*?)</title>',d,re.I|re.S) else ''
-              if '/pronos/' in u: info['anchor']=bool(re.search(r'id=["\x27]pronos-du-jour["\x27]',d))
+              if '/pronos/' in u:
+      info['anchor']=bool(re.search(r'id=["\x27]pronos-du-jour["\x27]',d))
+      info['ids']=[s for s in re.findall(r'id=["\x27]([^"\x27]+)',d) if re.search(r'prono|conseil|advice|analys|public',s,re.I)]
+      info['new_text']='observe où Lens récupère' in d
+      info['endpoint']='selection.json' in d
              return info
            except Exception as e:return {'url':u,'error':str(e)[:160]}
           with concurrent.futures.ThreadPoolExecutor(max_workers=12) as ex:
