@@ -1,0 +1,138 @@
+.vm-refonte-hero {
+  --vm-hero-height: clamp(22rem, 42vw, 38rem);
+  position: relative;
+  display: grid;
+  align-items: end;
+  min-height: var(--vm-hero-height);
+  isolation: isolate;
+  background: #08090c;
+  color: #fff;
+  border-block-end: 3px solid #ef304d;
+}
+.vm-refonte-hero--home { --vm-hero-height: calc(100svh - 5.5rem); }
+.vm-refonte-hero > .vm-refonte-art,
+.vm-refonte-hero > .vm-refonte-art > img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.vm-refonte-hero > .vm-refonte-art { z-index: -2; }
+.vm-refonte-hero > .vm-refonte-art > img { object-fit: cover; object-position: center; }
+.vm-refonte-hero::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background: linear-gradient(0deg, #08090c 0%, rgba(8, 9, 12, .94) 27%, rgba(8, 9, 12, .72) 51%, transparent 84%);
+}
+.vm-refonte-copy {
+  width: min(72rem, 100%);
+  box-sizing: border-box;
+  margin-inline: auto;
+  padding: clamp(1rem, 5vw, 3rem);
+}
+.vm-refonte-hero .vm-refonte-copy h1 {
+  color: #fff;
+  font-family: Anton, Impact, "Arial Narrow", sans-serif;
+  font-size: clamp(2.4rem, 8vw, 7rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: .015em;
+  margin: .2em 0;
+  text-transform: uppercase;
+}
+.vm-refonte-hero h1 span { color: #dcfa68; }
+.vm-refonte-hero p { color: #fff; max-width: 44ch; line-height: 1.5; margin: .45rem 0 1rem; }
+.vm-refonte-hero .vm-refonte-kicker { color: #ffe082; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+.vm-refonte-button,
+.nav-tabs .nav-tab.vm-refonte-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: .55rem .95rem;
+  background: #a61937;
+  border: 1px solid #ff6279;
+  border-radius: .55rem;
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+}
+.vm-refonte-button:hover,
+.nav-tabs .nav-tab.vm-refonte-button:hover { background: #b91b3e; color: #fff; }
+.vm-refonte-hero :focus-visible,
+.vm-refonte-button:focus-visible,
+.vm-refonte-links a:focus-visible,
+.vm-editorial a:focus-visible { outline: 3px solid #ffe082; outline-offset: 3px; }
+
+.vm-refonte-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+  gap: .75rem;
+}
+.vm-refonte-links a, .vm-editorial article {
+  min-width: 0;
+  padding: .9rem;
+  background: #131a2b;
+  border: 1px solid #ca3654;
+  border-radius: .75rem;
+  color: #fff;
+}
+.vm-refonte-links a { display: block; font-weight: 800; text-decoration: none; }
+.vm-refonte-links a:hover { background: #272139; }
+.vm-editorial {
+  box-sizing: border-box;
+  width: min(72rem, 100%);
+  margin: 1.25rem auto;
+  padding-inline: .75rem;
+  color: #fff;
+}
+.vm-editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: .75rem;
+}
+.vm-editorial h2 { margin-block: 0 .6rem; color: #ffe082; }
+.vm-editorial h3 { margin: 0; font-size: 1.1rem; }
+.vm-editorial a { color: #fff; text-decoration: underline; overflow-wrap: anywhere; }
+.vm-editorial time, .vm-editorial small { color: #e1e6f3; }
+.vm-editorial p { margin-block: .5rem 0; }
+.vm-editorial article > * + * { margin-top: .5rem; }
+.vm-refonte-empty { color: #e1e6f3; }
+#contenu, #univers-vm, #videos, #feed-title { scroll-margin-top: 7rem; }
+.vm-home-skip {
+  position: absolute;
+  top: .5rem;
+  left: .5rem;
+  z-index: 100;
+  transform: translateY(-160%);
+  padding: .6rem .85rem;
+  background: #fff;
+  color: #08090c;
+}
+.vm-home-skip:focus { transform: none; }
+[data-vm-agenda] .score-row { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) auto; }
+
+@media (max-width: 700px) {
+  .vm-refonte-hero:not(.vm-refonte-hero--home) {
+    --vm-hero-height: 0px;
+    align-items: start;
+  }
+  .vm-refonte-hero:not(.vm-refonte-hero--home) > .vm-refonte-art {
+    position: relative;
+    aspect-ratio: 2 / 1;
+  }
+  .vm-refonte-hero:not(.vm-refonte-hero--home) > .vm-refonte-art > img { object-fit: contain; }
+  .vm-refonte-hero:not(.vm-refonte-hero--home)::before { background: none; }
+  .vm-refonte-hero--home { --vm-hero-height: max(30rem, calc(100svh - 8.5rem)); }
+  .vm-refonte-hero--home > .vm-refonte-art > img { object-fit: contain; object-position: center top; }
+  .nav .nav-tabs { min-width: 0; flex-wrap: nowrap; overflow-x: auto; }
+  .nav .nav-tabs .nav-tab { flex: none; }
+  .nav .brand .b1 { font-size: 1.1rem; white-space: nowrap; }
+  .nav .brand .b2 { font-size: .58rem; white-space: nowrap; }
+}
+
+@media (max-width: 350px) {
+  .vm-refonte-hero--home { --vm-hero-height: max(29rem, calc(100svh - 10rem)); }
+}

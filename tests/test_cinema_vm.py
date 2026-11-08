@@ -14,13 +14,14 @@ class Parser(HTMLParser):
 class CinemaTests(unittest.TestCase):
  def test_foot_and_old_feed_retained(self):
   h=read('index.html');p=Parser();p.feed(h)
-  for id in ('vm-cinema-home','feed-title','feed','pastille-tv','vm-cinema-trends','vm-cinema-new-list'):
+  for id in ('accueil-title','univers-vm','actualites-du-jour','videos','pastille-tv'):
    self.assertIn(id,p.ids)
   self.assertEqual(h.count('<!-- VM_ACTUS_VISIBLES_START -->'),1)
   self.assertEqual(h.count('<!-- VM_ACTUS_VISIBLES_END -->'),1)
   self.assertIn('/mangas/',p.links)
   self.assertIn('/multisport/',p.links)
-  self.assertIn('/assets/vm-cinema-foot.js?v=1',p.script)
+  self.assertIn('/assets/vm-editorial.js',p.script)
+  self.assertIn('/assets/broadcast-feed.js',p.script)
  def test_all_sport_pages_have_cinema_and_manga(self):
   for sport in ('', 'nba/','nfl/','f1/','motogp/','tennis/','rugby/','cyclisme/','nhl/','mlb/','mma/','ski/'):
    with self.subTest(sport=sport):

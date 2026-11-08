@@ -8,13 +8,13 @@ class HomeClarityTests(unittest.TestCase):
  def test_home_has_all_key_sections(self):
   home=(ROOT/"index.html").read_text(encoding="utf-8")
   for marker in (
-   'class="livebar"',
+   'class="vm-refonte-hero vm-refonte-hero--home"',
    'class="nav-tabs"',
    'id="actu-jour"',
    'id="pronos"',
-   'class="press-grid"',
+   'data-vm-editorial="/articles.json"',
    'id="agenda"',
-   'class="geo-grid"',
+   'class="geo-grid vm-refonte-links"',
    'class="social-row"',
    'class="vm-banner"',
    'class="footer"',

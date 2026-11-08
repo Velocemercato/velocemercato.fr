@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Véloce Mercato — VM Multisport · Tous tes sports, un seul univers</title>
-<meta name="description" content="Véloce Mercato devient VM Multisport : toute l'actualité multisport mise à jour en continu — foot, basket, F1, MotoGP, tennis, rugby, MMA — plus VM Actus, VM Mangas, VM Séries, VM Gaming et les pronos VM.">
+<title>Véloce Mercato — Foot, sport et univers VM</title>
+<meta name="description" content="Véloce Mercato : foot, sport, actualités, jeux vidéo, mangas et émissions originales de l’univers VM.">
 <link rel="canonical" href="https://velocemercato.fr/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Véloce Mercato">
-<meta property="og:title" content="Véloce Mercato — VM Multisport · Tous tes sports, un seul univers">
+<meta property="og:title" content="Véloce Mercato — Foot, sport et univers VM">
 <meta property="og:description" content="Foot, basket, F1, MotoGP, tennis, rugby, MMA — l'actualité de tous les sports, plus tous les univers VM : Actus, Mangas, Séries, Gaming, pronos.">
 <meta property="og:url" content="https://velocemercato.fr/">
-<meta property="og:image" content="https://velocemercato.fr/assets/hero-multisport.jpg">
+<meta property="og:image" content="https://velocemercato.fr/img/vm-refonte/accueil.webp">
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#08090C">
@@ -22,8 +22,14 @@
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:ital,wght@0,700;0,800;1,700;1,800&family=Rubik+Brush+Script&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/vm-home.css">
+<link rel="stylesheet" href="/assets/vm-refonte.css">
+<link rel="stylesheet" href="/assets/pastille.css">
+<script src="/assets/pastille-player.js" defer></script>
+<script src="/assets/broadcast-feed.js" defer></script>
+<script src="/assets/vm-editorial.js" defer></script>
 </head>
 <body>
+<a class="vm-home-skip" href="#contenu">Aller au contenu</a>
 
 <!-- Sprite SVG -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -55,24 +61,6 @@
   <symbol id="i-tk" viewBox="0 0 24 24"><path fill="currentColor" d="M16.6 3c.3 1.9 1.5 3.2 3.4 3.4v3c-1.3 0-2.5-.4-3.4-1.1v5.9c0 3.2-2.4 5.3-5.3 5.3A5.3 5.3 0 0 1 6 13.2c0-3 2.4-5.2 5.5-5.2v3.1c-1.4.2-2.4 1.1-2.4 2.3 0 1.4 1.1 2.4 2.4 2.4s2.4-1 2.4-2.6V3h2.7z"/></symbol>
 </svg>
 
-<!-- Barre live -->
-<div class="livebar" role="marquee" aria-label="Matchs du jour en direct">
-  <div class="wrap">
-    <span class="live-dot">DIRECT</span>
-    <div class="ticker">
-      <span><b>15:00</b> Rennes – Lille · Ligue 1</span>
-      <span><b>17:15</b> Le Havre – Lorient · Ligue 1</span>
-      <span><b>17:15</b> Le Mans – Monaco · Ligue 1</span>
-      <span><b>17:15</b> Brest – OL · Ligue 1</span>
-      <span><b>17:30</b> Man United – Aston Villa · Premier League</span>
-      <span><b>18:00</b> Inter – Como · Serie A</span>
-      <span><b>20:45</b> RC Lens – Marseille · Ligue 1</span>
-      <span><b>20:45</b> Fiorentina – Juventus · Serie A</span>
-      <span><b>21:00</b> Atleti – Barça · Liga</span>
-    </div>
-  </div>
-</div>
-
 <!-- Navigation -->
 <header class="nav">
   <div class="wrap">
@@ -84,12 +72,12 @@
       </span>
     </a>
     <nav class="nav-tabs" aria-label="Rubriques VM">
-      <a href="/actus/" class="nav-tab"><svg style="width:14px;height:14px"><use href="#i-news"/></svg> Actus</a>
+      <a href="/actus/" class="nav-tab vm-refonte-button"><svg style="width:14px;height:14px"><use href="#i-news"/></svg> VM Actus</a>
       <a href="/pronos/" class="nav-tab"><svg style="width:14px;height:14px"><use href="#i-ball"/></svg> Pronos</a>
-      <a href="/multisport/" class="nav-tab"><svg style="width:14px;height:14px"><use href="#i-basket"/></svg> Multisport</a>
+      <a href="/multisport/" class="nav-tab vm-refonte-button"><svg style="width:14px;height:14px"><use href="#i-basket"/></svg> VM Multisport</a>
       <a href="/studio.html" class="nav-tab"><svg style="width:14px;height:14px"><use href="#i-tv"/></svg> Vidéos</a>
       <a href="/vm-gaming/" class="nav-tab"><svg style="width:14px;height:14px"><use href="#i-game"/></svg> VM Gaming</a>
-      <a href="/" class="nav-tab active"><svg class="crown-mini" style="width:13px;height:9px"><use href="#i-crown"/></svg> VM Multisport</a>
+      <a href="/mangas/" class="nav-tab"><svg aria-hidden="true" style="width:13px;height:9px"><use href="#i-crown"/></svg> VM Mangas</a>
     </nav>
     <div class="nav-right">
       <a class="nav-univers" href="https://vmunivers.fr/"><svg aria-hidden="true" style="width:13px;height:9px"><use href="#i-crown"/></svg> VM Univers</a>
@@ -98,122 +86,45 @@
   </div>
 </header>
 
-<!-- Hero -->
-<section class="hero">
-  <img class="hero-img" src="/assets/hero-multisport.jpg" alt="Illustration VM : athlète anime entouré de foot, basket, F1, moto et tennis">
-  <div class="wrap">
-    <div class="hero-inner">
-      <span class="vm-crown">
-        <span class="vm-big">VM</span>
-        <svg class="crown" viewBox="0 0 24 16"><path fill="currentColor" d="M1 14h22L21 4l-5 4-4-6-4 6-5-4z"/></svg>
-      </span>
-      <h1 class="display hero-title">Multi<em>sport</em></h1>
-      <p class="hero-tag">Tous tes sports, un seul univers</p>
-      <p class="hero-sub">Foot, basket, F1, MotoGP, tennis, rugby, MMA — l'actualité de tous les sports, vérifiée et mise à jour toutes les 3 minutes. Et autour du sport : VM Actus, VM Mangas, VM Séries, VM Gaming et les pronos VM.</p>
-      <div class="hero-actions">
-        <a class="btn btn-red" href="#actu-jour">Voir l'actu du jour</a>
-        <a class="btn btn-ghost" href="/pronos/">Alertes & pronos</a>
-      </div>
-    </div>
-  </div>
-  <div class="sport-slats" aria-label="Nos sports">
-    <a class="slat" style="--sc:#3DDC84" href="/actus/"><svg><use href="#i-ball"/></svg><span class="sl">Foot</span></a>
-    <a class="slat" style="--sc:#FF9F1C" href="/multisport/"><svg><use href="#i-basket"/></svg><span class="sl">Basket</span></a>
-    <a class="slat" style="--sc:#FF2B4A" href="/multisport/"><svg><use href="#i-f1"/></svg><span class="sl">F1</span></a>
-    <a class="slat" style="--sc:#B14CFF" href="/multisport/"><svg><use href="#i-moto"/></svg><span class="sl">MotoGP</span></a>
-    <a class="slat" style="--sc:#4DE1FF" href="/multisport/"><svg><use href="#i-tennis"/></svg><span class="sl">Tennis</span></a>
-    <a class="slat" style="--sc:#FF5C8A" href="/multisport/"><svg><use href="#i-mma"/></svg><span class="sl">MMA</span></a>
+<main id="contenu">
+<section class="vm-refonte-hero vm-refonte-hero--home" aria-labelledby="accueil-title">
+  <picture class="vm-refonte-art">
+    <source media="(max-width:700px)" srcset="/img/vm-refonte/accueil-mobile.webp">
+    <img src="/img/vm-refonte/accueil.webp" alt="" fetchpriority="high">
+  </picture>
+  <div class="vm-refonte-copy">
+    <p class="vm-refonte-kicker">Le média de l’univers VM</p>
+    <h1 id="accueil-title">Véloce <span>Mercato</span></h1>
+    <p>Foot, multisport, gaming et mangas. Retrouve les actualités et les émissions de l’univers VM.</p>
+    <a class="vm-refonte-button" href="#univers-vm">Explorer les rubriques</a>
   </div>
 </section>
 
-<main>
-  <!-- Pastilles catégories -->
-  <section class="section wrap" aria-label="Catégories">
-    <div class="pills pills-scroll">
-      <a class="pill active" style="--sc:#3DDC84" href="/actus/"><svg><use href="#i-ball"/></svg> Foot</a>
-      <a class="pill" style="--sc:#FF9F1C" href="/multisport/"><svg><use href="#i-basket"/></svg> NBA</a>
-      <a class="pill" style="--sc:#9C27B0" href="/multisport/"><svg><use href="#i-nfl"/></svg> NFL</a>
-      <a class="pill" style="--sc:#FF2B4A" href="/multisport/"><svg><use href="#i-f1"/></svg> F1</a>
-      <a class="pill" style="--sc:#B14CFF" href="/multisport/"><svg><use href="#i-moto"/></svg> MotoGP</a>
-      <a class="pill" style="--sc:#4DE1FF" href="/multisport/"><svg><use href="#i-tennis"/></svg> Tennis</a>
-      <a class="pill" style="--sc:#FFD166" href="/multisport/"><svg><use href="#i-rugby"/></svg> Rugby</a>
-      <a class="pill" style="--sc:#3DDC84" href="/multisport/"><svg><use href="#i-cycle"/></svg> Cyclisme</a>
-      <a class="pill" style="--sc:#4DE1FF" href="/multisport/"><svg><use href="#i-nhl"/></svg> NHL</a>
-      <a class="pill" style="--sc:#FF9F1C" href="/multisport/"><svg><use href="#i-mlb"/></svg> MLB</a>
-      <a class="pill" style="--sc:#FF5C8A" href="/multisport/"><svg><use href="#i-mma"/></svg> MMA</a>
-    </div>
-  </section>
+<section class="section wrap" id="univers-vm" aria-labelledby="univers-vm-title">
+  <h2 id="univers-vm-title">Les rubriques VM</h2>
+  <nav class="vm-refonte-links" aria-label="Rubriques principales">
+    <a href="/multisport/">VM Multisport</a>
+    <a href="/actus/">VM Actus</a>
+    <a href="#videos">Vidéos</a>
+    <a href="/vm-gaming/">VM Gaming</a>
+    <a href="/mangas/">VM Mangas</a>
+  </nav>
+</section>
 
-  <!-- Grille principale -->
-  <section class="section wrap" id="actu-jour" aria-label="Actu du jour">
-    <div class="section-head">
-      <h2>L'actu du jour</h2>
-      <a class="more" href="/actus/">Toutes les actus →</a>
-    </div>
-    <div class="grid-main">
-      <div class="col-main">
-        <article class="card" style="--sc:#3DDC84">
-          <div class="thumb">
-            <img src="/assets/hero-multisport.jpg" alt="La Pastille Multisport, JT express du matin">
-            <span class="badge">Actu</span>
-            <a class="play" href="https://www.youtube.com/watch?v=Gwb-asX584g" target="_blank" rel="noopener" aria-label="Regarder l'épisode"><span><svg><use href="#i-play"/></svg></span></a>
-          </div>
-          <div class="card-body">
-            <h3>La Pastille Multisport — JT express du matin 08 h</h3>
-            <div class="card-meta"><span><b>2 min</b> · JT multisport</span><span>08/11 · 08 h 41</span><span>YouTube & Twitch</span></div>
-            <a class="card-cta" href="https://www.youtube.com/watch?v=Gwb-asX584g" target="_blank" rel="noopener">Regarder l'épisode →</a>
-          </div>
-        </article>
-      </div>
+<div id="actu-jour">
+<section class="vm-editorial" aria-label="À ne pas manquer">
+  <h2>À ne pas manquer</h2>
+  <div class="vm-editorial-grid" data-vm-editorial="/articles.json" data-vm-local="true">
+    <p class="vm-refonte-empty"><a href="/archives.html">Voir le fil d’actualités</a></p>
+  </div>
+</section>
+</div>
 
-      <div class="side-list" aria-label="À ne pas manquer">
-        <div class="section-head"><h2>À ne pas manquer</h2></div>
-        <article class="card" style="--sc:#FF2B4A">
-          <div class="thumb"><img src="/assets/hero-multisport.jpg" alt="Grand Prix de Formule 1" style="object-position:60% 40%"><span class="badge gold">F1</span></div>
-          <div class="card-body"><h3>GP du jour — qualifications et course à suivre</h3><div class="card-meta"><span><b>Multisport</b> · 5 min</span></div></div>
-        </article>
-        <article class="card" style="--sc:#FF9F1C">
-          <div class="thumb"><img src="/assets/hero-multisport.jpg" alt="NBA" style="object-position:30% 60%"><span class="badge gold">NBA</span></div>
-          <div class="card-body"><h3>NBA — la nuit de basket résumée</h3><div class="card-meta"><span><b>Multisport</b> · 4 min</span></div></div>
-        </article>
-        <article class="card" style="--sc:#4DE1FF">
-          <div class="thumb"><img src="/assets/hero-multisport.jpg" alt="Tennis" style="object-position:85% 20%"><span class="badge gold">Tennis</span></div>
-          <div class="card-body"><h3>ATP & WTA — les résultats du tournoi</h3><div class="card-meta"><span><b>Multisport</b> · 3 min</span></div></div>
-        </article>
-      </div>
-
-      <div>
-        <div class="section-head"><h2>Derniers ajouts</h2></div>
-        <div class="vlist">
-          <a class="vitem" href="https://www.youtube.com/watch?v=EvD-v3bCX1c" target="_blank" rel="noopener">
-            <span class="vthumb"><img src="/assets/hero-mangas.jpg" alt="JT Gaming"><span class="tc">09:33</span></span>
-            <span><span class="vtitle">VM Gaming — JT 09 h</span><span class="vmeta">08/11 · 3 min</span></span>
-          </a>
-          <a class="vitem" href="https://www.youtube.com/watch?v=Gwb-asX584g" target="_blank" rel="noopener">
-            <span class="vthumb"><img src="/assets/hero-multisport.jpg" alt="JT multisport" style="object-position:70% 30%"><span class="tc">08:41</span></span>
-            <span><span class="vtitle">JT multisport 08 h — 08/11</span><span class="vmeta">08/11 · 2 min</span></span>
-          </a>
-          <a class="vitem" href="https://www.youtube.com/watch?v=-F4t-hg2JWg" target="_blank" rel="noopener">
-            <span class="vthumb"><img src="/assets/hero-series.jpg" alt="JT Actus"><span class="tc">07:24</span></span>
-            <span><span class="vtitle">VM Actus — JT 07 h</span><span class="vmeta">08/11 · 3 min</span></span>
-          </a>
-          <a class="vitem" href="https://www.youtube.com/watch?v=eufcsast440" target="_blank" rel="noopener">
-            <span class="vthumb"><img src="/assets/hero-multisport.jpg" alt="JT 20 h" style="object-position:20% 70%"><span class="tc">20:27</span></span>
-            <span><span class="vtitle">Véloce Mercato — JT 20 h</span><span class="vmeta">07/11 · 5 min</span></span>
-          </a>
-        </div>
-
-        <div class="section-head" style="margin-top:2rem"><h2>Tendances</h2></div>
-        <div class="vlist">
-          <div class="trend"><span class="rank">1</span><span><span class="t-title">RC Lens – Marseille</span><span class="t-meta" style="display:block">Ligue 1 · 20 h 45</span></span><span class="up"><svg style="width:12px;height:12px"><use href="#i-up"/></svg>+38%</span></div>
-          <div class="trend"><span class="rank">2</span><span><span class="t-title">Nottingham 3–1 Man City</span><span class="t-meta" style="display:block">Premier League</span></span><span class="up"><svg style="width:12px;height:12px"><use href="#i-up"/></svg>+24%</span></div>
-          <div class="trend"><span class="rank">3</span><span><span class="t-title">RB Leipzig 5–2 Augsburg</span><span class="t-meta" style="display:block">Bundesliga</span></span><span class="up"><svg style="width:12px;height:12px"><use href="#i-up"/></svg>+17%</span></div>
-          <div class="trend"><span class="rank">4</span><span><span class="t-title">Valence – Real : les incidents</span><span class="t-meta" style="display:block">Liga</span></span><span class="up"><svg style="width:12px;height:12px"><use href="#i-up"/></svg>+12%</span></div>
-          <div class="trend"><span class="rank">5</span><span><span class="t-title">Le Havre sans entraîneur</span><span class="t-meta" style="display:block">Ligue 1</span></span><span class="up"><svg style="width:12px;height:12px"><use href="#i-up"/></svg>+9%</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
+<section class="vm-editorial" id="videos" aria-labelledby="pastille-tv">
+  <h2 id="pastille-tv">La Pastille TV</h2>
+  <section class="pastille-feed" data-broadcast-feed hidden aria-label="Dernière émission publiée"></section>
+  <p><a href="/studio.html#tv">Voir les émissions et les archives vidéo</a></p>
+</section>
 
   <!-- Zone d'actus gérée par le robot (ne pas retirer les marqueurs) -->
   <section class="section wrap" aria-label="Actualités du jour">
@@ -237,87 +148,26 @@
       <h2>Prono & analyse du jour</h2>
       <a class="more" href="/pronos/">Tous les pronos →</a>
     </div>
-    <div class="prono-card">
-      <div>
-        <p class="prono-kicker">Prono public du jour · un seul prono public, les autres en VIP</p>
-        <p class="prono-match">RC Lens – Olympique de Marseille</p>
-        <p class="prono-info"><b>Ligue 1 · 20 h 45 · Bollaert-Delelis.</b> Observe où Lens récupère le ballon dans le premier quart d'heure : si les milieux restent proches des défenseurs, les récupérations dans l'axe seront un bon repère de la solidité lensoise. Regarde aussi la réaction à la première relance marseillaise qui franchit le pressing.</p>
-        <p class="prono-warn">18+ · Jouer comporte des risques : endettement, isolement, dépendance · Joueurs Info Service 09 74 75 13 13 · Aucun pari réel, pronostics présentés à titre informatif.</p>
-      </div>
-      <div class="prono-side">
-        <span class="lbl">Coup d'envoi</span>
-        <p class="prono-cote">20:45</p>
-        <a class="btn btn-red" style="margin-top:0.8rem;font-size:0.9rem" href="mailto:velocemercato.fr@gmail.com?subject=Demande%20VIP%20gratuite">Pronos VIP gratuits</a>
-      </div>
+    <div class="prono-card" data-vm-advice>
+      <p>Aucune analyse d’avant-match disponible pour le moment.</p>
     </div>
   </section>
 
-  <!-- Presse en continu -->
-  <section class="section wrap" aria-label="Presse en continu">
+  <section class="section wrap" id="agenda" aria-labelledby="agenda-titre">
     <div class="section-head">
-      <h2>Presse en continu</h2>
-      <a class="more" href="/actus/">Plus de titres →</a>
+      <h2 id="agenda-titre">L’agenda du jour</h2>
+      <a class="more" href="/scores/">Voir les scores et le calendrier →</a>
     </div>
-    <div class="press-grid">
-      <article class="press-item"><div class="ph"><span>Foot Mercato</span><b>10:31</b></div><p>Le RC Lens féminin battu 7-1 par l'OL Lyonnes.</p></article>
-      <article class="press-item"><div class="ph"><span>Foot01</span><b>10:30</b></div><p>OM : La Provence démolit Longoria avec une phrase assassine.</p></article>
-      <article class="press-item"><div class="ph"><span>20 Minutes</span><b>10:23</b></div><p>Manchester City à la dérive, Cherki ne s'échappe pas au marasme malgré un but splendide.</p></article>
-      <article class="press-item"><div class="ph"><span>Foot Mercato</span><b>10:20</b></div><p>Bayern Munich : fin de carrière redoutée pour Manuel Neuer.</p></article>
-      <article class="press-item"><div class="ph"><span>Foot National</span><b>10:04</b></div><p>National 2 : première défaite de la saison pour Castanet, qui perd la tête du groupe A.</p></article>
-      <article class="press-item"><div class="ph"><span>Foot01</span><b>10:00</b></div><p>EdF : Mayulu en équipe de France, ça se confirme.</p></article>
-    </div>
+    <div data-vm-agenda><p>Consulte les rencontres sur la page Scores.</p></div>
   </section>
 
-  <!-- Agenda -->
-  <section class="section wrap" id="agenda" aria-label="Agenda du jour">
-    <div class="section-head">
-      <h2>L'agenda du jour</h2>
-      <a class="more" href="#agenda">Revenir à l'agenda →</a>
-    </div>
-    <div class="score-row"><span class="comp">Ligue 1</span><span class="teams">Stade Rennais – <span>Lille</span></span><span class="score">—</span><span class="hour">15:00</span></div>
-    <div class="score-row"><span class="comp">Ligue 1</span><span class="teams">Le Havre – <span>Lorient</span></span><span class="score">—</span><span class="hour">17:15</span></div>
-    <div class="score-row"><span class="comp">Ligue 1</span><span class="teams">Le Mans – <span>Monaco</span></span><span class="score">—</span><span class="hour">17:15</span></div>
-    <div class="score-row"><span class="comp">Ligue 1</span><span class="teams">Angers SCO – <span>Nice</span></span><span class="score">—</span><span class="hour">17:15</span></div>
-    <div class="score-row"><span class="comp">Ligue 1</span><span class="teams">Brest – <span>Olympique Lyon</span></span><span class="score">—</span><span class="hour">17:15</span></div>
-    <div class="score-row"><span class="comp">Premier League</span><span class="teams">Man United – <span>Aston Villa</span></span><span class="score">—</span><span class="hour">17:30</span></div>
-    <div class="score-row"><span class="comp">Serie A</span><span class="teams">Inter – <span>Como</span></span><span class="score">—</span><span class="hour">18:00</span></div>
-    <div class="score-row"><span class="comp">Ligue 1</span><span class="teams">RC Lens – <span>Marseille</span></span><span class="score">—</span><span class="hour">20:45</span></div>
-    <div class="score-row"><span class="comp">Serie A</span><span class="teams">Fiorentina – <span>Juventus</span></span><span class="score">—</span><span class="hour">20:45</span></div>
-    <div class="score-row"><span class="comp">Liga</span><span class="teams">Atleti – <span>Barça</span></span><span class="score">—</span><span class="hour">21:00</span></div>
-  </section>
-
-  <!-- Zone géo -->
-  <section class="section wrap" aria-label="Actus par zone">
-    <div class="section-head"><h2>France · Europe · International</h2><a class="more" href="/regions/">VM Régions →</a></div>
-    <div class="geo-grid">
-      <div class="geo-col">
-        <h3><svg><use href="#i-fr"/></svg> France</h3>
-        <ul>
-          <li><b>Rennes – Lille</b><span class="g">L1 · 15:00</span></li>
-          <li><b>Lens – OM</b><span class="g">L1 · 20:45</span></li>
-          <li><b>Brest – OL</b><span class="g">L1 · 17:15</span></li>
-          <li><b>Mayulu en EdF</b><span class="g">Foot01</span></li>
-        </ul>
-      </div>
-      <div class="geo-col">
-        <h3><svg><use href="#i-eu"/></svg> Europe</h3>
-        <ul>
-          <li><b>Man United – Villa</b><span class="g">PL · 17:30</span></li>
-          <li><b>Inter – Como</b><span class="g">SA · 18:00</span></li>
-          <li><b>Fiorentina – Juve</b><span class="g">SA · 20:45</span></li>
-          <li><b>Neuer : peur</b><span class="g">FM · 10:20</span></li>
-        </ul>
-      </div>
-      <div class="geo-col">
-        <h3><svg><use href="#i-int"/></svg> International</h3>
-        <ul>
-          <li><b>Atleti – Barça</b><span class="g">Liga · 21:00</span></li>
-          <li><b>Nottingham 3–1 City</b><span class="g">PL · hier</span></li>
-          <li><b>Salah à Trabzon</b><span class="g">BBC</span></li>
-          <li><b>Législatives NZ</b><span class="g">RFI</span></li>
-        </ul>
-      </div>
-    </div>
+  <section class="section wrap" aria-labelledby="zones-titre">
+    <h2 id="zones-titre">France · Europe · International</h2>
+    <nav class="geo-grid vm-refonte-links" aria-label="Actualités par zone">
+      <a href="/multisport/?rubrique=france">France</a>
+      <a href="/multisport/?rubrique=europe">Europe</a>
+      <a href="/multisport/?rubrique=international">International</a>
+    </nav>
   </section>
 
   <!-- Réseaux VM en couleur -->
@@ -357,7 +207,7 @@
       <div>
         <h4>Univers VM</h4>
         <ul>
-          <li><a href="/">VM Multisport</a></li>
+          <li><a href="/multisport/">VM Multisport</a></li>
           <li><a href="/actus/">VM Actus</a></li>
           <li><a href="/mangas/">VM Mangas</a></li>
           <li><a href="/series/">VM Séries</a></li>

@@ -8,7 +8,7 @@ def read(path):return (ROOT/path).read_text(encoding="utf-8")
 SPORTS=("nba","nfl","f1","motogp","tennis","rugby","cyclisme","nhl","mlb","mma","ski")
 class AccueilMultisportTests(unittest.TestCase):
  def test_foot_restored_with_robots(self):
-  """Accueil = maquette VM Multisport (thème 08/11/2026, demande du propriétaire)."""
+  """L’accueil est distinct du portail VM Multisport."""
   home=read("index.html")
   self.assertEqual(home.count('<!-- VM_ACTUS_VISIBLES_START -->'),1)
   self.assertEqual(home.count('<!-- VM_ACTUS_VISIBLES_END -->'),1)
@@ -23,7 +23,9 @@ class AccueilMultisportTests(unittest.TestCase):
   self.assertIn('href="/soutenir.html"',home)
   self.assertIn('href="https://vmunivers.fr/"',home)
   self.assertIn('/assets/vm-home.css',home)
-  self.assertIn('/assets/hero-multisport.jpg',home)
+  self.assertIn('/img/vm-refonte/accueil.webp',home)
+  self.assertIn('<h1 id="accueil-title">Véloce <span>Mercato</span></h1>',home)
+  self.assertIn('id="videos"',home)
   # Les 3 pages Facebook + les réseaux en couleur
   for fb in ("1CZ5mPjsaw","14vjnjB1vbZ","1FeRjn2vau"):
    self.assertIn(fb,home)
