@@ -33,14 +33,17 @@ GRAPH = 'https://graph.facebook.com/'
 HOSTS = {'graph.facebook.com'}
 PARIS = ZoneInfo('Europe/Paris')
 UTC = dt.timezone.utc
-# Heure de Paris -> univers de l'article publié sur Facebook (demande de Romain, 26/10/2026).
+# Créneaux thématiques historiques, en heure de Paris.
 SLOTS = {7: 'actus', 8: 'foot', 13: 'gaming',
          18: 'foot', 19: 'actus', 20: 'gaming'}
+HEURES_ACTUALITES = range(8, 23)
 UNIVERS = {
     'foot': {'file': 'articles.json', 'emoji': '⚽', 'site': 'velocemercato.fr',
              'tags': '#foot #mercato #football #velocemercato'},
     'actus': {'file': 'actus/news.json', 'emoji': '📰', 'site': 'velocemercato.fr/actus',
               'tags': '#actualite #info #france #vmactus'},
+    'multisport': {'file': 'multisport/actualites.json', 'emoji': '🏅', 'site': 'velocemercato.fr/multisport',
+                   'tags': '#sport #multisport #velocemercato'},
     'gaming': {'file': 'vm-gaming/news.json', 'emoji': '🎮', 'site': 'velocemercato.fr/vm-gaming',
                'tags': '#gaming #jeuxvideo #gamer #vmgaming'},
 }
@@ -291,7 +294,16 @@ def reels(root, now, hours=30):
 
 
 def article(root, now, done, univers='foot', hours=12):
-    rows = sorted(read(Path(root) / UNIVERS[univers]['file'], []), key=lambda a: a.get('publishedAt', ''), reverse=True)
+    rows = read(Path(root) / UNIVERS[univers]['file'], {} if univers == 'multisport' else [])
+    if univers == 'multisport':
+        sports = rows.get('sports', {}) if isinstance(rows, dict) else {}
+        rows = [
+            {'id': item.get('id'), 'titre': item.get('titre'), 'resume': item.get('titre'),
+             'publishedAt': item.get('date'),
+             'sources': [{'nom': item.get('source'), 'url': item.get('url')}]}
+            for items in sports.values() for item in items
+        ]
+    rows = sorted(rows, key=lambda a: a.get('publishedAt') or '', reverse=True)
     for row in rows:
         ident = str(row.get('id', ''))
         source = next((s for s in row.get('sources', []) if s.get('nom') and str(s.get('url', '')).startswith('https://')), None)
@@ -322,7 +334,7 @@ def youtube_jt(root, now, hours=6):
 def instagram_card(univers, row, source):
     from tools.cartes_insta import make_card, push_card
     with tempfile.TemporaryDirectory(prefix='carte-') as folder:
-        path = make_card(univers, clean(row['titre'], 200), clean(source['nom'], 70), Path(folder) / f'{univers}-{row["id"]}.jpg')
+        path = make_card('foot' if univers == 'multisport' else univers, clean(row['titre'], 200), clean(source['nom'], 70), Path(folder) / f'{univers}-{row["id"]}.jpg')
         return push_card(path)
 
 
@@ -381,6 +393,11 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
     if str((state.data.get('tokens', {}).get('meta_pronos') or {}).get('page_id') or '') == expected_id:
         raise DeliveryError('Destination également assignée à RQ Pronos, diffusion refusée.')
     local_now = now.astimezone(PARIS)
+    second_half = local_now.minute >= 30
+    # Le passage de :35 est réservé aux actualités sportives Facebook.
+    extra_sport = second_half and local_now.hour in HEURES_ACTUALITES and not force
+    if extra_sport and account == 'meta_univers':
+        return []
     slots = {10: 'belfort', 15: 'belfort', 21: 'projet'} if account == 'meta_univers' else SLOTS
     done = state.data.setdefault('meta' if account == 'meta' else account + '_accuses', {})
     errors, sent = [], 0
@@ -392,7 +409,7 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
     projets_seulement = account == 'meta_univers'  # VM Univers : pas de JT ni d'articles, seulement les projets
     # Ne relayer les JT qu'aux créneaux correspondants, avec une URL YouTube déjà publique.
     jt_type = {11: 'foot', 12: 'actus'}.get(local_now.hour)
-    jt_ok = bool(jt_type) or (local_now.hour == 22 and local_now.minute >= 30)
+    jt_ok = (not extra_sport and bool(jt_type)) or (local_now.hour == 22 and local_now.minute >= 30)
     jt_rows = [r for r in youtube_jt(root, now) if not jt_type or r['id'].startswith(jt_type + '-')]
     for row in ([] if projets_seulement or not jt_ok else jt_rows[:1]):
         key = 'jt/facebook/' + row['id']
@@ -413,7 +430,7 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
             mark(key, 'echec')
             errors.append(f'facebook / JT {row["id"]} : {error}')
 
-    for row in ([] if projets_seulement else reels(root, now)):
+    for row in ([] if projets_seulement or extra_sport else reels(root, now)):
         if sent >= limit:
             break
         attempted = False
@@ -548,11 +565,18 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
             else:
                 print('::notice::VM Belfort : aucune brève locale inédite et récente.')
     univers = force or slots.get(heure)
-    if univers in ('projet', 'belfort'):
-        univers = None
+    candidates = (univers,) if univers and univers not in ('projet', 'belfort') else ()
+    if account == 'meta' and not force and heure in HEURES_ACTUALITES:
+        sport = ('multisport', 'foot') if extra_sport else ('foot', 'multisport')
+        candidates = sport if extra_sport else tuple(dict.fromkeys((*candidates, *sport)))
     slot_key = cle(heure) if not force else f'manuel/{local:%Y-%m-%d-%H%M}/{force}'
-    if univers and slot_key not in done:
-        row, source = article(root, now, done, univers)
+    if extra_sport:
+        slot_key += '/30'
+    if candidates and slot_key not in done:
+        for univers in candidates:
+            row, source = article(root, now, done, univers)
+            if row:
+                break
         if row:
             key = f'article/{univers}/{row["id"]}'
             conf = UNIVERS[univers]
@@ -561,7 +585,7 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
             message = (f'{conf["emoji"]} {clean(row["titre"], 200)}\n\n{clean(row["resume"], 500)}\n\n'
                        f'Selon {clean(source["nom"], 70)}\n👉 Toute l’info sur {conf["site"]}\n\n{conf["tags"]}')
             try:
-                result = graph.call('POST', meta['page_id'] + '/feed', {'message': message, 'link': article_url(univers, row['id']),
+                result = graph.call('POST', meta['page_id'] + '/feed', {'message': message, 'link': source['url'] if univers == 'multisport' else article_url(univers, row['id']),
                                                                         'access_token': meta['page_token']}).get('id')
                 mark(key, 'publie', post=str(result or ''))
                 mark(slot_key, 'publie', article=row['id'])
@@ -570,7 +594,7 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
                 mark(key, 'echec')
                 errors.append(f'facebook / article {univers} {row["id"]} : {error}')
             insta = f'insta/{univers}/{row["id"]}'
-            if meta.get('ig_id') and insta not in done:
+            if not extra_sport and meta.get('ig_id') and insta not in done:
                 mark(insta, 'envoi')
                 try:
                     image = (card or instagram_card)(univers, row, source)
