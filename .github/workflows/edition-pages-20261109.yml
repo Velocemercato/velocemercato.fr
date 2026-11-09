@@ -1,0 +1,139 @@
+name: VM - Edition quotidienne du 9 novembre
+on:
+  push:
+    branches: [codex/continuite-edition-20261109]
+    paths: ['.github/workflows/edition-pages-20261109.yml']
+permissions:
+  contents: read
+concurrency:
+  group: vm-edition-pages-production
+  cancel-in-progress: false
+jobs:
+  edition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: veloce
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: Velocemercato/vmunivers
+          path: univers
+          persist-credentials: false
+      - uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./veloce
+          destination: ./ve-build
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Préparer les éditions sans perdre celle du 8
+        run: |
+          set -euo pipefail
+          sudo chown -R "$(id -u):$(id -g)" ve-build
+          mkdir -p vu-build
+          git -C univers archive HEAD | tar -x -C vu-build
+          rm -rf vu-build/.github
+          for target in ve-build vu-build; do
+            mkdir -p "$target/edition/2026-11-08" "$target/edition/2026-11-09"
+            if ! test -s "$target/edition/2026-11-08/index.html"; then
+              if [ "$target" = ve-build ]; then source=https://velocemercato.fr; else source=https://vmunivers.fr; fi
+              curl -fsSL --max-time 30 --retry 2 --retry-all-errors "$source/edition/2026-11-08/" -o "$target/edition/2026-11-08/index.html"
+            fi
+          done
+          cat > "$RUNNER_TEMP/edition-9.html" <<'HTML'
+          <!doctype html>
+          <html lang="fr">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1">
+            <title>Brèves VM du 9 novembre 2026</title>
+            <meta name="description" content="Les quatre brèves vérifiées du 9 novembre 2026 pour Véloce Mercato et VM Univers.">
+            <style>
+              :root{color-scheme:dark}body{margin:0;background:#070913;color:#f6f7fb;font:1.05rem/1.65 system-ui,sans-serif}main{max-width:48rem;margin:auto;padding:1.4rem}a{color:#ffd65a}h1,h2{line-height:1.15}h1{color:#ffcf43}article{border:1px solid #c82343;border-radius:1rem;padding:1rem 1.1rem;margin:1rem 0;background:#101522}small{color:#b8c2d6}.tag{color:#ff5575;font-weight:800;text-transform:uppercase}.back{display:inline-block;margin-bottom:1rem}</style>
+          </head>
+          <body><main>
+            <a class="back" href="/">← Retour à l’accueil</a>
+            <h1>Brèves VM du 9 novembre 2026</h1>
+            <p>Football, Belfort, gaming et tennis. Informations vérifiées le 9 novembre à 9 h 45, heure de Paris.</p>
+            <article><p class="tag">Football</p><h2>Italie–France, rendez-vous jeudi à Milan</h2><p>Les Bleus se déplaceront au stade Giuseppe-Meazza jeudi 12 novembre à 20 h 45 pour la cinquième journée de Ligue des nations. L’Italie, deuxième du groupe, joue sa qualification derrière la France, leader.</p><small>Sources officielles</small><p><a href="https://www.fff.fr/selection/matchs/3774-italie-france.html">FFF · fiche du match</a> · <a href="https://www.figc.it/it/nazionali/news/litalia-a-caccia-del-pass-per-i-quarti-di-nations-league-31-convocati-per-i-match-con-francia-e-belgio-prima-chiamata-per-cassano-lontani-cisse-e-liberali-ax902bda">FIGC · contexte du groupe</a></p></article>
+            <article><p class="tag">Belfort</p><h2>L’ASM Belfort s’impose 4–1 dans les Ardennes</h2><p>Belfort a battu Charleville/Prix-lès-Mézières 4–1 en National 2. L’ASM prolonge une série positive qui dure depuis le 19 septembre.</p><small>Source</small><p><a href="https://www.estrepublicain.fr/sport/2026/11/07/belfort-regale-dans-les-ardennes">L’Est Républicain · compte rendu</a></p></article>
+            <article><p class="tag">Gaming</p><h2>Hozy arrive sur PS5 ce 9 novembre</h2><p>Le jeu de restauration d’intérieur Hozy est annoncé aujourd’hui sur PS5. Son principe repose sur le nettoyage, la réparation et la décoration d’espaces, sans chronomètre ni objectif stressant.</p><small>Source officielle</small><p><a href="https://blog.fr.playstation.com/2026/">PlayStation Blog France · actualités 2026</a></p></article>
+            <article><p class="tag">Tennis</p><h2>Les WTA Finals poursuivent leur phase de groupes</h2><p>La deuxième session des WTA Finals est programmée ce lundi 9 novembre. Le programme officiel annonce des rencontres de simple, suivies des doubles.</p><small>Source officielle</small><p><a href="https://www.wtatennis.com/tournaments/wta-finals/match-schedule">WTA · programme du jour</a></p></article>
+          </main></body></html>
+          HTML
+          cp "$RUNNER_TEMP/edition-9.html" ve-build/edition/2026-11-09/index.html
+          cp "$RUNNER_TEMP/edition-9.html" vu-build/edition/2026-11-09/index.html
+          for f in index.html articles.json actus/news.json vm-gaming/news.json; do
+            if ! test -s "ve-build/$f" && test -s "veloce/$f"; then install -D "veloce/$f" "ve-build/$f"; fi
+            test -s "ve-build/$f"
+          done
+          test -s vu-build/index.html
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for name in ("articles.json","actus/news.json","vm-gaming/news.json"):
+              data=json.loads((Path("ve-build")/name).read_text())
+              rows=data if isinstance(data,list) else next(v for v in data.values() if isinstance(v,list))
+              assert rows, name
+              latest=max(str(x.get("createdAt") or x.get("publishedAt") or "") for x in rows)
+              assert latest.startswith("2026-11-09"), (name,latest)
+              print("FRESH_OK",name,latest)
+          PY
+          echo "SOURCE_VM velocemercato $(git -C veloce rev-parse HEAD)"
+          echo "SOURCE_VM vmunivers $(git -C univers rev-parse HEAD)"
+      - name: Aperçus, validation et production ordonnée
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: c5227875896e9a281915ed70c146e845
+        run: |
+          set -euo pipefail
+          export NO_COLOR=1
+          endpoint="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects"
+          project_info() { curl -fsS --max-time 20 -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$endpoint/$1"; }
+          check_edition() {
+            local base="$1" out="$RUNNER_TEMP/edition-check.html"
+            curl -fsSL --max-time 25 --retry 2 --retry-all-errors "$base/edition/2026-11-09/" -o "$out"
+            grep -Fq 'Brèves VM du 9 novembre 2026' "$out"
+            grep -Fq 'L’ASM Belfort s’impose 4–1' "$out"
+            curl -fsSL --max-time 25 "$base/edition/2026-11-08/" | grep -Fq 'Brèves VM du 8 novembre 2026'
+          }
+          snapshot() {
+            project_info "$1" > "$RUNNER_TEMP/$1-before.json"
+            jq -er '.result.canonical_deployment.id' "$RUNNER_TEMP/$1-before.json"
+          }
+          preview() {
+            local project="$1" folder="$2" log="$RUNNER_TEMP/$1-preview.log"
+            npx --yes wrangler@4 pages deploy "$folder" --project-name="$project" --branch=vm-continuite-20261109 --commit-dirty=true | tee "$log"
+            local url
+            url=$(grep -Eo "https://[a-f0-9]+\.$project\.pages\.dev" "$log" | tail -1)
+            test -n "$url"
+            check_edition "$url"
+            curl -fsSL --max-time 20 "$url/" -o /dev/null
+            echo "PREVIEW_OK $project $url/edition/2026-11-09/"
+          }
+          production() {
+            local project="$1" folder="$2" live="$3" prev current prod log deployment
+            prev=$(jq -er '.result.canonical_deployment.id' "$RUNNER_TEMP/$project-before.json")
+            current=$(project_info "$project" | jq -er '.result.canonical_deployment.id')
+            test "$prev" = "$current" || { echo "::error::Déploiement concurrent sur $project"; exit 1; }
+            prod=$(jq -er '.result.production_branch' "$RUNNER_TEMP/$project-before.json")
+            log="$RUNNER_TEMP/$project-prod.log"
+            echo "PRECEDENT_VM $project $prev"
+            npx --yes wrangler@4 pages deploy "$folder" --project-name="$project" --branch="$prod" --commit-dirty=true | tee "$log"
+            deployment=$(grep -Eo "https://[a-f0-9]+\.$project\.pages\.dev" "$log" | tail -1)
+            test -n "$deployment"
+            check_edition "$deployment"
+            check_edition "https://$project.pages.dev"
+            check_edition "$live"
+            echo "PRODUCTION_OK $project $live/edition/2026-11-09/"
+          }
+          echo "PRECEDENT_VM velocemercato $(snapshot velocemercato)"
+          echo "PRECEDENT_VM vmunivers $(snapshot vmunivers)"
+          preview velocemercato ve-build
+          preview vmunivers vu-build
+          production velocemercato ve-build https://velocemercato.fr
+          production vmunivers vu-build https://vmunivers.fr
