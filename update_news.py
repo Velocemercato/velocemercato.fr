@@ -446,13 +446,12 @@ def main():
     print(f'{len(all_candidates)} titres collectés, {len(candidates)} nouveaux liens, quota {quota}.', flush=True)
     additions = []
     stats = Counter()
-    unavailable_hosts = set()
     fatal_error = None
     for post in candidates[:MAX_ARTICLES_TO_EXAMINE]:
         if len(additions) >= quota:
             break
         if stats['rejet_lecture_ou_ia'] >= MAX_REJECTS:
-            print('Trop de rejets de rédaction dans ce passage : arrêt pour limiter le coût.', flush=True)
+            print('Trop de rejets IA dans ce passage : arrêt pour limiter le coût.', flush=True)
             break
         if stats['non_pertinent'] >= MAX_IGNORED:
             print('Assez de sujets refusés dans ce passage : arrêt pour limiter le coût.', flush=True)
@@ -460,25 +459,13 @@ def main():
         if similar_story(post['title'], previous_titles):
             stats['sujet_deja_traite'] += 1
             continue
-        material = None
-        host = urllib.parse.urlsplit(post['url']).hostname
-        if host not in unavailable_hosts:
-            try:
-                material = extract_article(post['url'])
-            except urllib.error.HTTPError as exc:
-                print(f"Page source inaccessible ({post['source']}) : HTTP {exc.code}", flush=True)
-                if exc.code in (401, 403, 429, 451):
-                    unavailable_hosts.add(host)
-            except (OSError, ValueError) as exc:
-                print(f"Lecture de la source impossible ({post['source']}) : {type(exc).__name__}", flush=True)
-        if material is None and len(post.get('feed_text', '')) >= 420:
-            # Utiliser le texte que l'éditeur a choisi de diffuser dans son flux public.
-            material = post['feed_text'][:MAX_CHARS]
-            stats['source_rss'] += 1
-        if material is None:
-            stats['source_inaccessible_ou_trop_courte'] += 1
-            continue
         try:
+            material = extract_article(post['url'])
+            if material is None and len(post.get('feed_text', '')) >= 420:
+                material = post['feed_text'][:MAX_CHARS]
+            if material is None:
+                stats['source_inaccessible_ou_trop_courte'] += 1
+                continue
             title, resume, texte, meta = summarize(post, material)
             if similar_story(title, previous_titles):
                 stats['sujet_deja_traite'] += 1

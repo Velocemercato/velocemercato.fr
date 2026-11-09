@@ -75,7 +75,7 @@ var S=[['France Travail','Le service public de l’emploi',function(j,v){return 
 ['Indeed','Le plus grand nombre d’offres',function(j,v){return 'https://fr.indeed.com/emplois?q='+E(j)+'&l='+E(v)}],
 ['HelloWork','Offres en régions',function(j,v){return 'https://www.hellowork.com/fr-fr/emploi/recherche.html?k='+E(j)+'&l='+E(v)}],
 ['Apec','Cadres et techniciens',function(j,v){return 'https://www.apec.fr/candidat/recherche-emploi.html/emploi?motsCles='+E(j)+(v?'&lieux='+E(v):'')}],
-['Choisir le service public','Emplois publics',function(j,v){return 'https://choisirleservicepublic.gouv.fr/nos-offres/?s='+E(j||'emploi')}],
+['Choisir le service public','Emplois publics',function(j,v){return 'https://choisirleservicepublic.gouv.fr/nos-offres/filtres/mot-cles/'+E(j||'emploi')+'/'}],
 ['Google','Toutes les offres',function(j,v){return 'https://www.google.com/search?q='+E('offre emploi '+j+' '+v)+'&ibp=htl;jobs'}]];
 function draw(){var j=$('job').value.trim(),v=$('ville').value.trim();$('sites').innerHTML=S.map(function(s){return '<a href="'+s[2](j,v)+'" target="_blank" rel="noopener"><b>'+s[0]+' ›</b><small>'+s[1]+'</small></a>'}).join('');try{localStorage.setItem('vm-emploi',JSON.stringify([j,v]))}catch(e){}}
 try{var s=JSON.parse(localStorage.getItem('vm-emploi')||'[]');$('job').value=s[0]||'';$('ville').value=s[1]||''}catch(e){}

@@ -12,10 +12,9 @@ on:
     types: [completed]
     branches: [main]
   schedule:
-    - cron: '25 7-23 * * *'
-      timezone: 'Europe/Paris'
-    - cron: '40 10,22 * * *'
-      timezone: 'Europe/Paris'
+    # UTC : le script applique les horaires Europe/Paris.
+    - cron: '25 5-21 * * *'  # actus dès 7h Paris hiver/été
+    - cron: '40 8-21 * * *'  # prono fictif 10h40 et bilan du soir 22h40 Paris
   workflow_dispatch:
 
 permissions:

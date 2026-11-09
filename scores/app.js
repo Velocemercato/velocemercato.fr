@@ -6,38 +6,24 @@ const $=id=>document.getElementById(id);
 const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const DAYFMT=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris',year:'numeric',month:'2-digit',day:'2-digit'});
 const HM=new Intl.DateTimeFormat('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Paris'});
-const STAMP=new Intl.DateTimeFormat('fr-FR',{dateStyle:'short',timeStyle:'short',timeZone:'Europe/Paris'});
 const LONG=new Intl.DateTimeFormat('fr-FR',{weekday:'long',day:'numeric',month:'long',timeZone:'Europe/Paris'});
-let comp='all',filter='all',onlyFav=false,toastTimer,DATA=[],fresh=false,loaded=false,prev={};
+let comp='all',filter='all',onlyFav=false,toastTimer,DATA=[],MAJ=null,first=true,prev={};
 let favorites=[];try{const s=JSON.parse(localStorage.getItem('vm-scores-fav')||'[]');favorites=Array.isArray(s)?s.map(String).slice(0,200):[]}catch{}
 const today=()=>DAYFMT.format(new Date());$('date').value=today();
 function toast(t){$('toast').textContent=t;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').textContent='',5000)}
 function state(s){return s==='IN_PLAY'||s==='PAUSED'?'live':s==='FINISHED'?'finished':'scheduled'}
-function label(x){if(!fresh&&state(x.statut)==='live')return 'Dernier état connu';if(x.statut==='PAUSED')return 'Mi-temps';if(x.statut==='IN_PLAY')return 'En direct';if(x.statut==='FINISHED')return 'Terminé';if(x.statut==='POSTPONED')return 'Reporté';if(x.statut==='SUSPENDED')return 'Suspendu';if(x.statut==='CANCELLED')return 'Annulé';return HM.format(new Date(x.date))}
+function label(x){if(x.statut==='PAUSED')return 'Mi-temps';if(x.statut==='IN_PLAY')return 'En direct';if(x.statut==='FINISHED')return 'Terminé';if(x.statut==='POSTPONED')return 'Reporté';if(x.statut==='SUSPENDED')return 'Suspendu';if(x.statut==='CANCELLED')return 'Annulé';return HM.format(new Date(x.date))}
 async function get(url){try{const r=await fetch(url+'?t='+Math.floor(Date.now()/60000),{cache:'no-store'});return r.ok?await r.json():null}catch{return null}}
 async function load(){
   const [live,agenda]=await Promise.all([get('/scores.json'),get('/matchs.json')]);
   const map=new Map();
   for(const m of (Array.isArray(agenda)?agenda:[]))map.set(String(m.id),{id:String(m.id),date:m.date,comp:m.competition,home:m.domicile,away:m.exterieur,statut:m.statut,score:m.score||[null,null]});
   for(const m of ((live&&live.matchs)||[]))map.set(String(m.id),{id:String(m.id),date:m.date,comp:m.comp,home:m.dom,away:m.ext,statut:m.statut,score:m.score||[null,null]});
-  const time=Date.parse(live?.maj);
-  const age=Date.now()-time;
-  const hasScores=Array.isArray(live?.matchs)&&live.matchs.length>0;
-  const wasFresh=fresh;
-  fresh=hasScores&&Number.isFinite(age)&&age>=0&&age<=20*60000;
-  loaded=true;
-  if(!map.size&&DATA.length){
-    $('maj').textContent='Source momentanément indisponible. Derniers scores connus affichés.';
-    render();return;
-  }
+  if(!map.size&&DATA.length){$('maj').textContent='Source momentanément indisponible : derniers scores connus affichés.';return}
   const rows=[...map.values()].sort((a,b)=>String(a.date).localeCompare(String(b.date))||String(a.comp).localeCompare(String(b.comp)));
-  if(fresh&&wasFresh)alerts(rows);
-  prev=Object.fromEntries(rows.map(x=>[x.id,x]));DATA=rows;
-  const stamp=Number.isFinite(time)?STAMP.format(time)+' (heure de Paris)':'';
-  $('maj').textContent=fresh?'Scores mis à jour le '+stamp+' · Vérification chaque minute.'
-    :hasScores?'Derniers scores connus'+(stamp?' du '+stamp:'')+' · Direct temporairement indisponible.'
-    :rows.length?'Direct temporairement indisponible. Les matchs programmés restent visibles.'
-    :'Données de scores temporairement indisponibles.';
+  if(!first)alerts(rows);first=false;
+  prev=Object.fromEntries(rows.map(x=>[x.id,x]));DATA=rows;MAJ=live&&live.maj;
+  $('maj').textContent=rows.length?('Source football-data.org'+(MAJ?' · direct mis à jour à '+HM.format(new Date(MAJ)):'')+' · actualisation automatique chaque minute.'):'Aucune donnée disponible pour le moment.';
   renderComps();render();
 }
 function alerts(rows){
@@ -52,17 +38,15 @@ function renderComps(){$('sports').innerHTML=COMPS.map(c=>'<button type="button"
 function render(){
   document.querySelectorAll('[data-sport]').forEach(b=>b.classList.toggle('active',b.dataset.sport===comp));
   const q=$('search').value.toLocaleLowerCase('fr'),d=$('date').value;
-  const rows=DATA.filter(x=>day(x)===d&&(comp==='all'||x.comp===comp)&&(filter==='all'||(state(x.statut)===filter&&(filter!=='live'||fresh)))&&(!onlyFav||favorites.includes(x.id))&&[x.home,x.away,x.comp].join(' ').toLocaleLowerCase('fr').includes(q));
+  const rows=DATA.filter(x=>day(x)===d&&(comp==='all'||x.comp===comp)&&(filter==='all'||state(x.statut)===filter)&&(!onlyFav||favorites.includes(x.id))&&[x.home,x.away,x.comp].join(' ').toLocaleLowerCase('fr').includes(q));
   $('favCount').textContent=favorites.length;$('favoriteFilter').style.color=onlyFav?'#b2ef83':'';
   $('count').textContent=rows.length+' match'+(rows.length>1?'s':'')+' · '+LONG.format(new Date(d+'T12:00:00'));
   $('sportName').textContent=(COMPS.find(x=>x[0]===comp)||COMPS[0])[2].toUpperCase();
   let html='',last='';
   for(const x of rows){const st=state(x.statut),show=st!=='scheduled',fav=favorites.includes(x.id);
     if(x.comp!==last){html+='<div class="league"><span>'+esc(x.comp)+'</span><small>Football</small></div>';last=x.comp}
-    html+='<article class="match"><button class="star '+(fav?'on':'')+'" data-fav="'+esc(x.id)+'" aria-label="'+(fav?'Retirer':'Ajouter')+' '+esc(x.home)+' – '+esc(x.away)+' des favoris" aria-pressed="'+fav+'">'+(fav?'★':'☆')+'</button><div class="clock '+(st==='live'&&fresh?'live':'')+'">'+(st==='live'&&fresh?'<span class="liveDot"></span>':'')+esc(label(x))+'</div><div class="teams"><div class="team"><small>'+esc(x.home.slice(0,2).toUpperCase())+'</small><b>'+esc(x.home)+'</b></div><div class="team"><small>'+esc(x.away.slice(0,2).toUpperCase())+'</small><b>'+esc(x.away)+'</b></div></div><div class="score"><span>'+(show?esc(x.score[0]??'–'):'–')+'</span><span>'+(show?esc(x.score[1]??'–'):'–')+'</span></div><button class="detailBtn" data-detail="'+esc(x.id)+'" aria-label="Détail de '+esc(x.home)+' contre '+esc(x.away)+'">↗</button></article>'}
-  $('matchList').innerHTML=html||'<div class="empty">'+(filter==='live'&&!fresh&&loaded?'Direct temporairement indisponible.'
-    :DATA.length?'Aucun match pour ces filtres ce jour-là.<br>Changez de date, de compétition ou retirez un filtre.'
-    :loaded?'Aucune donnée disponible pour le moment.':'Chargement des scores…')+'</div>';
+    html+='<article class="match"><button class="star '+(fav?'on':'')+'" data-fav="'+esc(x.id)+'" aria-label="'+(fav?'Retirer':'Ajouter')+' '+esc(x.home)+' – '+esc(x.away)+' des favoris" aria-pressed="'+fav+'">'+(fav?'★':'☆')+'</button><div class="clock '+(st==='live'?'live':'')+'">'+(st==='live'?'<span class="liveDot"></span>':'')+esc(label(x))+'</div><div class="teams"><div class="team"><small>'+esc(x.home.slice(0,2).toUpperCase())+'</small><b>'+esc(x.home)+'</b></div><div class="team"><small>'+esc(x.away.slice(0,2).toUpperCase())+'</small><b>'+esc(x.away)+'</b></div></div><div class="score"><span>'+(show?esc(x.score[0]??'–'):'–')+'</span><span>'+(show?esc(x.score[1]??'–'):'–')+'</span></div><button class="detailBtn" data-detail="'+esc(x.id)+'" aria-label="Détail de '+esc(x.home)+' contre '+esc(x.away)+'">↗</button></article>'}
+  $('matchList').innerHTML=html||'<div class="empty">'+(DATA.length?'Aucun match pour ces filtres ce jour-là.<br>Changez de date, de compétition ou retirez un filtre.':'Chargement des scores…')+'</div>';
 }
 $('sports').onclick=e=>{const b=e.target.closest('[data-sport]');if(b){comp=b.dataset.sport;render()}};
 document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));render()});

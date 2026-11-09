@@ -540,13 +540,12 @@ class TwitchCodeTests(unittest.TestCase):
 class MetaTests(unittest.TestCase):
     def test_connect_hides_token_and_publish_never_duplicates(self):
         import tools.publier_meta as M
-        page_id = '1384363904759072'
         class G:
             def __init__(self): self.calls=[]
             def call(self,m,p,params):
                 self.calls.append(p)
                 if p=='oauth/access_token': return {'access_token':'LONG'}
-                if p=='me/accounts': return {'data':[{'id':page_id,'name':'Véloce Mercato','access_token':'PAGETOKEN','instagram_business_account':{'id':'9','username':'vm'}}]}
+                if p=='me/accounts': return {'data':[{'id':'1','name':'Véloce Mercato','access_token':'PAGETOKEN','instagram_business_account':{'id':'9','username':'vm'}}]}
                 if p.endswith('/media'): return {'id':'c1'}
                 if p=='c1': return {'status_code':'FINISHED'}
                 return {'id':'post'}
@@ -561,19 +560,18 @@ class MetaTests(unittest.TestCase):
             state=D.State(root/'s.enc', base64.b64encode(os.urandom(32)).decode())
             g=G()
             with contextlib.redirect_stdout(io.StringIO()) as out:
-                with patch.dict(os.environ, {'VM_FACEBOOK_VELOCE_PAGE_ID': page_id}, clear=True):
-                    M.connect(state,g,'app','sec','short')
-                self.assertEqual(M.publish(state,g,root=root,now=now,force='foot',sleep=lambda s:None,card=lambda u,r,s:'https://raw.githubusercontent.com/x.jpg'),[])
+                M.connect(state,g,'app','sec','short')
+                self.assertEqual(M.publish(state,g,root=root,now=now,sleep=lambda s:None,card=lambda u,r,s:'https://raw.githubusercontent.com/x.jpg'),[])
             self.assertNotIn('PAGETOKEN',out.getvalue())
             self.assertNotIn(b'PAGETOKEN',(root/'s.enc').read_bytes())
-            self.assertEqual(g.calls.count(page_id + '/videos'),2)
-            self.assertEqual(g.calls.count(page_id + '/feed'),1)
+            self.assertEqual(g.calls.count('1/videos'),2)
+            self.assertEqual(g.calls.count('1/feed'),1)
             with contextlib.redirect_stdout(io.StringIO()):
-                M.publish(state,g,root=root,now=now,force='foot',sleep=lambda s:None,card=lambda u,r,s:'https://raw.githubusercontent.com/x.jpg')
-                M.publish(state,g,root=root,now=now,force='foot',sleep=lambda s:None,card=lambda u,r,s:'https://raw.githubusercontent.com/x.jpg')
-            self.assertEqual(g.calls.count(page_id + '/videos'),3)
+                M.publish(state,g,root=root,now=now,sleep=lambda s:None,card=lambda u,r,s:'https://raw.githubusercontent.com/x.jpg')
+                M.publish(state,g,root=root,now=now,sleep=lambda s:None,card=lambda u,r,s:'https://raw.githubusercontent.com/x.jpg')
+            self.assertEqual(g.calls.count('1/videos'),3)
             self.assertEqual(g.calls.count('9/media_publish'),4)  # 3 Reels + 1 carte article
-            self.assertEqual(g.calls.count(page_id + '/feed'),1)
+            self.assertEqual(g.calls.count('1/feed'),1)
 
 
 if __name__=='__main__':

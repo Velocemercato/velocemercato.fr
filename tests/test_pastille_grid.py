@@ -19,33 +19,6 @@ HD = {'format': {'duration': '165.2'}, 'streams': [
 
 
 class GridTests(unittest.TestCase):
-    def test_new_grid_keeps_the_three_daily_rotations_and_prioritises_recaps(self):
-        for day in [dt.date(2026, 11, 9), dt.date(2027, 7, 12)]:
-            expected = {'actus': (7, 12, 19), 'foot': (8, 13, 20, 23), 'gaming': (9, 16, 22)}
-            for universe, hours in expected.items():
-                self.assertEqual(tuple(h for h, m, _ in S.paris_slots(universe, day) if m == 0), hours)
-            friday, sunday = day + dt.timedelta(days=4), day + dt.timedelta(days=6)
-            self.assertIn((18, 0, 'semaine'), S.paris_slots('foot', friday))
-            for universe in expected:
-                target = dt.datetime.combine(sunday, dt.time(23), S.PARIS)
-                edition = S.edition_window(universe, target)
-                self.assertEqual(edition['kind'], 'semaine')
-                self.assertEqual(dt.datetime.fromisoformat(edition['source_start']).date(), day)
-                self.assertTrue(S.long_delivery(edition))
-            midday = S.edition_window('foot', dt.datetime.combine(day, dt.time(13), S.PARIS))
-            self.assertFalse(S.long_delivery(midday))
-
-    def test_match_slot_needs_a_confirmed_evening_fixture(self):
-        now = dt.datetime(2026, 11, 12, 20, 15, tzinfo=S.PARIS)
-        with tempfile.TemporaryDirectory() as folder:
-            root = Path(folder)
-            row = {'id': '12345', 'date': now.replace(hour=21, minute=0).isoformat(),
-                   'comp': 'Ligue Europa', 'dom': 'Équipe A', 'ext': 'Équipe B', 'statut': 'SCHEDULED'}
-            self.assertEqual(S.due_edition(root, now, 'foot')['kind'], 'jt')
-            self.assertEqual(S.due_edition(root, now, 'foot', extra_scores=[row])['kind'], 'match')
-            self.assertEqual(S.due_edition(root, now, 'foot', extra_scores=[{**row, 'statut': 'POSTPONED'}])['kind'], 'jt')
-            self.assertEqual(S.due_edition(root, now + dt.timedelta(minutes=35), 'foot', extra_scores=[row])['kind'], 'jt')
-
     def test_each_requested_slot_is_due_once_in_summer_winter_and_dst(self):
         for day in ['2026-01-15', '2026-07-15', '2026-03-29', '2026-10-25']:
             with tempfile.TemporaryDirectory() as tmp:
@@ -122,7 +95,7 @@ class GridTests(unittest.TestCase):
             self.assertEqual(result['sources'][0]['publishedAt'],'2026-10-24T01:00:00+02:00')
 
     def test_no_new_articles_never_calls_writer_or_recycles_old_news(self):
-        now = dt.datetime(2026, 10, 23, tzinfo=S.PARIS)
+        now = dt.datetime.now(S.PARIS)
         target = now.replace(hour=13, minute=0, second=0, microsecond=0)
         # Figer une date de test, sans utiliser une heure future réelle.
         class Clock(dt.datetime):

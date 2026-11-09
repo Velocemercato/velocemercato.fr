@@ -20,13 +20,6 @@ import update_emission as emission
 from tools.assembler_jt import assemble
 
 
-def cdn_episode():
-    ident = 'foot-edition-20261107-0800'
-    base = 'https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@' + 'a' * 40 + '/'
-    return {'id': ident, 'titre': 'Le journal VM', 'fichier': ident + '.mp4',
-            'video': base + ident + '.mp4', 'image': base + ident + '.jpg', 'publie': True}
-
-
 class PastilleTests(unittest.TestCase):
     def test_paris_schedule_winter_summer_and_clock_change(self):
         for date in ['2026-01-15','2026-07-15','2026-03-29','2026-10-25']:
@@ -84,7 +77,7 @@ class PastilleTests(unittest.TestCase):
             self.assertIn('Paris Saint-Germain',process.call_args.kwargs['input'].decode())
 
     def test_per_episode_links_survive_a_later_media_commit(self):
-        original=cdn_episode()
+        original=json.loads((ROOT/'studio/emissions.json').read_text())[0]
         with tempfile.TemporaryDirectory() as folder:
             root=Path(folder);tv=root/'studio/tv';tv.mkdir(parents=True)
             row=dict(original);row.pop('media_sha',None)
@@ -97,7 +90,7 @@ class PastilleTests(unittest.TestCase):
             self.assertTrue((root/'studio/episodes'/f"{row['id']}.html").is_file())
 
     def test_social_metadata_exists_without_javascript_and_is_escaped(self):
-        row=cdn_episode()
+        row=dict(json.loads((ROOT/'studio/emissions.json').read_text())[0])
         row['titre']='Une émission <script>alert(1)</script>'
         with tempfile.TemporaryDirectory() as folder:
             pages.build_episode_pages([row],folder)

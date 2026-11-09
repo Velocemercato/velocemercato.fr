@@ -28,12 +28,10 @@ UTC = dt.timezone.utc
 # Grille éditoriale en heure Europe/Paris. Le programme sélectionne les
 # contenus existants et vérifiés; il ne fabrique ni JT, ni vidéo d'une heure.
 # Les créneaux absents de contenu fiable restent vides, sans doublons.
-# 04/11 (« go 1 + B » du propriétaire) : VM actus et pronos (≈1 490 abonnés) est la seule Page
-# avec une audience réelle. Plus de foot et de JT, et une promotion quotidienne (16 h).
-SLOTS = {7: "actus", 8: "foot", 9: "foot", 10: "belfort",
-         11: "jt_foot", 12: "jt_actus", 13: "gaming", 14: "foot",
-         15: "belfort", 16: "promo", 17: "foot", 18: "foot", 19: "actus", 20: "gaming",
-         21: "jt", 22: "actus", 23: "jt"}
+SLOTS = {7: "actus", 8: "foot", 10: "belfort",
+         11: "jt_foot", 12: "jt_actus", 13: "gaming",
+         15: "belfort", 18: "foot", 19: "actus", 20: "gaming",
+         21: "projet"}
 NEWS = {
     "foot": ("articles.json", "⚽", "https://velocemercato.fr/"),
     "actus": ("actus/news.json", "📰", "https://velocemercato.fr/pronos/"),
@@ -136,32 +134,6 @@ def jt_candidates(now, universe=None):
     return out
 
 
-PROMOS = (
-    ("studio", "https://velocemercato.fr/web-studio#tarifs",
-     "🛠️ Un site pour votre activité. VM Studio crée des sites dès 290 € TTC pour les commerces, clubs et artisans. "
-     "Voir les formules : https://velocemercato.fr/web-studio#tarifs"),
-    ("sponsors", "https://velocemercato.fr/pub/#packs",
-     "📣 Faites connaître votre activité sur les médias VM. Encart Belfort à 29 €/mois, encart média à 39 €/mois. "
-     "Formats et devis : https://velocemercato.fr/pub/#packs"),
-    ("univers", "https://vmunivers.fr/",
-     "👑 Découvrez VM Univers. Notre portail réunit les médias, les applications et les services du groupe, "
-     "dont VM Studio pour les professionnels : https://vmunivers.fr/"),
-    ("site", "https://velocemercato.fr/web-studio#modeles",
-     "🌐 Vous lancez votre activité ? Retrouvez les exemples de sites VM Studio pour choisir un format adapté "
-     "à votre métier : https://velocemercato.fr/web-studio#modeles"),
-    ("visibilite", "https://velocemercato.fr/pub/#packs",
-     "🎬 Le Pack Visibilité Pro à 39 €/mois comprend une fiche locale, un QR pour votre carte et une vidéo courte "
-     "par mois sur les réseaux VM. Détails : https://velocemercato.fr/pub/#packs"),
-)
-
-
-def promo_candidate(now):
-    """Une promotion par jour, en rotation, avec les seuls tarifs publiés sur les sites. Jamais de prono ni de cote."""
-    local = now.astimezone(PARIS)
-    key, link, text = PROMOS[local.toordinal() % len(PROMOS)]
-    return {"key": f"promo/{local:%Y-%m-%d}/{key}", "link": link, "text": text}
-
-
 def project_candidate(now):
     local = now.astimezone(PARIS)
     name, link, description = PROJETS[local.toordinal() % len(PROJETS)]
@@ -261,8 +233,6 @@ def candidates(now, kind):
         return jt_candidates(now)
     if kind == "projet":
         return [project_candidate(now)]
-    if kind == "promo":
-        return [promo_candidate(now)]
     if kind == "prono":
         # Un fichier prono.json peut dater de la veille alors que le match est fini.
         # Ne PAS republier un ancien pronostic sur le seul critère « créé <30h ».
@@ -304,9 +274,8 @@ def publish_slot(state, graph, now=None):
     # GitHub Actions peut déclencher le cron :25 plusieurs minutes en retard.
     # Identifier le CRON ORIGINAL, non l'heure réelle du runner : cela évite
     # d'ignorer une publication valide arrivée à :40, sans créer de doublon.
-    cron = os.getenv("VM_TRIGGER_CRON", "")
-    regular_cron = cron in ("25 5-21 * * *", "25 7-23 * * *")
-    special_cron = cron in ("40 8-21 * * *", "40 10,22 * * *")
+    regular_cron = os.getenv("VM_TRIGGER_CRON", "") == "25 5-21 * * *"
+    special_cron = os.getenv("VM_TRIGGER_CRON", "") == "40 8-21 * * *"
     if local.hour == 10 and local.minute >= 35 and (special_cron or not regular_cron):
         kind = "prono"
         slot = f"creneau/{local:%Y-%m-%d}/10-prono"
@@ -327,10 +296,7 @@ def publish_slot(state, graph, now=None):
     if slot in receipts:
         print("::notice::Créneau déjà traité : aucun doublon.")
         return False
-    topics = (kind,)
-    if kind not in ("prono", "promo", "week_summary"):
-        topics += tuple(topic for topic in ("actus", "foot", "gaming") if topic != kind)
-    choice = next((p for topic in topics for p in candidates(now, topic)
+    choice = next((p for p in candidates(now, kind)
                    if isinstance(p, dict) and p.get("key") and p["key"] != test.get("key")
                    and "post/" + p["key"] not in receipts and safe_url(p.get("link"))), None)
     if not choice:

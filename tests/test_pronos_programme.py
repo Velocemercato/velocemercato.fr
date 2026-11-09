@@ -138,27 +138,3 @@ class PublicationTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
-
-class PromoEtGrilleTests(unittest.TestCase):
-    def test_promo_rotation_sans_cote_et_unique_par_jour(self):
-        import datetime as dt
-        from tools import pronos_programme as P
-        seen = set()
-        for day in range(5):
-            now = dt.datetime(2026, 11, 5 + day, 15, 0, tzinfo=dt.timezone.utc)
-            item = P.candidates(now, "promo")[0]
-            self.assertTrue(item["key"].startswith("promo/2026-11-"))
-            self.assertTrue(P.safe_url(item["link"]))
-            self.assertNotRegex(item["text"].lower(), r"\bcote|combin|bookmaker|mise\b")
-            if "prono" in item["text"].lower():
-                self.assertIn("18+", item["text"])
-                self.assertIn("09 74 75 13 13", item["text"])
-            seen.add(item["key"].split("/")[-1])
-        self.assertEqual(len(seen), 5)
-
-    def test_grille_foot_jt_et_promo(self):
-        from tools import pronos_programme as P
-        self.assertEqual(P.SLOTS[16], "promo")
-        self.assertEqual(P.SLOTS[21], "jt")
-        self.assertGreaterEqual(list(P.SLOTS.values()).count("foot"), 5)

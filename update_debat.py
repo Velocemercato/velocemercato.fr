@@ -24,7 +24,7 @@ import urllib.request
 import wave
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFilter, ImageEnhance, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageFilter, ImageEnhance, ImageFont
 
 import update_news as robot
 import pastille_media as media
@@ -349,15 +349,6 @@ def frame(bg, perso, sub, title, order, scene=0):
 def card(bg, big, small, foot):
     im = bg.copy()
     d = ImageDraw.Draw(im)
-    for x, image, url in (
-        (64, 'img/banniere-foot-960.webp', 'velocemercato.fr'),
-        (656, 'img/studio/manga-vm-studio.webp', 'vmunivers.fr'),
-    ):
-        with Image.open(ROOT / image) as artwork:
-            im.paste(ImageOps.fit(artwork.convert('RGB'), (560, 158)), (x, 34))
-        d.rectangle((x, 34, x + 559, 191), outline=(244, 207, 85), width=2)
-        d.rounded_rectangle((x + 12, 145, x + 226, 180), 7, fill=(8, 13, 28))
-        d.text((x + 23, 151), url, font=font('Poppins-Bold.ttf', 19), fill='white')
     d.text((W / 2, 250), 'VM STUDIO', font=font('Poppins-BoldItalic.ttf', 40), fill=(244, 207, 85), anchor='mm')
     bf = font('Poppins-BoldItalic.ttf', 64)
     lines = wrap(big, bf, 1100, d)[:2]

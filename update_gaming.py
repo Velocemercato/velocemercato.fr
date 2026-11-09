@@ -14,8 +14,8 @@ import update_news as robot
 
 robot.ARTICLES = Path('vm-gaming/news.json')
 robot.FLASH = Path('vm-gaming/flash.json')
-robot.MAX_PER_RUN = 2
-robot.MAX_PER_DAY = 50
+robot.MAX_PER_RUN = 1
+robot.MAX_PER_DAY = 16
 robot.MAX_AGE_HOURS = 48
 
 # (zone, jeu par défaut, média, flux) — les flux muets ou disparus sont simplement ignorés et notés dans le journal.
@@ -25,9 +25,6 @@ robot.FEEDS = [
     ('GAMING', 'GAMING', 'Dexerto', 'https://www.dexerto.fr/feed/'),
     ('GAMING', 'GAMING', 'JV France', 'https://www.jvfrance.com/feed/'),
     ('GAMING', 'GAMING', 'GamerGen', 'https://gamergen.com/rss'),
-    ('GAMING', 'GAMING', 'ActuGaming', 'https://www.actugaming.net/feed/'),
-    ('GAMING', 'GAMING', 'Gameblog', 'https://www.gameblog.fr/rss'),
-    ('GAMING', 'GAMING', 'IGN France', 'https://fr.ign.com/feed.xml'),
     # Tech et matériel : seulement les articles jeux, consoles et cartes graphiques (filtre TECH ci-dessous).
     ('GAMING', 'GAMING', 'Next', 'https://next.ink/feed/'),
     ('GAMING', 'GAMING', 'Tom’s Hardware', 'https://www.tomshardware.fr/feed/'),
@@ -35,7 +32,6 @@ robot.FEEDS = [
 ]
 robot.ALLOWED_HOSTS = {
     'jeuxvideo.com', 'gamekult.com', 'dexerto.fr', 'jvfrance.com', 'gamergen.com',
-    'actugaming.net', 'gameblog.fr', 'ign.com',
     'next.ink', 'tomshardware.fr', 'lesnumeriques.com',
 }
 # Seulement nos quatre jeux, et pas de promos, concours ou paris.

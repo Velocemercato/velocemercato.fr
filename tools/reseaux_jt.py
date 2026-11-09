@@ -22,7 +22,7 @@ import tempfile
 import textwrap
 import urllib.request
 
-from PIL import Image, ImageDraw, ImageEnhance, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO = 'Velocemercato/velocemercato.fr'
@@ -101,9 +101,6 @@ def overlay(entry, path):
     for line in lines[:6]:
         d.text((36, y), line, font=title, fill=(255, 255, 255, 255), stroke_width=5, stroke_fill=(0, 0, 0, 255))
         y += size + 14
-    for x, url in ((36, 'velocemercato.fr'), (316, 'vmunivers.fr')):
-        d.rounded_rectangle((x, 970, x + 267, 1017), 10, fill=(4, 6, 15, 235))
-        d.text((x + 133, 994), url, anchor='mm', font=font(FONT_BOLD, 22), fill=(255, 255, 255, 255))
     d.rounded_rectangle((36, H - 210, W - 36, H - 120), radius=22, fill=(4, 6, 15, 235), outline=u['couleur'] + (255,), width=4)
     msg, size = 'JT complet sur ' + u['lien'], 36
     while size > 20 and d.textlength(msg, font=font(FONT_BOLD, size)) > W - 120:
@@ -113,30 +110,20 @@ def overlay(entry, path):
     img.save(path)
 
 
-def branded_background(path):
-    image = Image.new('RGB', (W, H))
-    for y, art in ((0, 'img/banniere-foot-960.webp'), (H // 2, 'img/studio/manga-vm-studio.webp')):
-        with Image.open(ROOT / art) as artwork:
-            panel = ImageOps.fit(artwork.convert('RGB'), (W, H // 2))
-        image.paste(ImageEnhance.Brightness(panel).enhance(0.58), (0, y))
-    image.save(path)
-
-
 def vertical(src, entry, out):
-    """9:16 avec les deux décors VM, extrait au centre et bandeaux superposés."""
+    """9:16, fond flou de l'image elle-même, vidéo au centre, bandeaux par-dessus, moins d'une minute."""
     with tempfile.TemporaryDirectory() as tmp:
         layer = Path(tmp) / 'calque.png'
         overlay(entry, layer)
-        background = Path(tmp) / 'plateaux.jpg'
-        branded_background(background)
         probe = subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', str(src)],
                                check=True, capture_output=True, text=True).stdout.strip()
         dur = min(MAX_SECONDS, float(probe or MAX_SECONDS))
         fade = max(0.0, dur - 1.5)
-        graph = (f'[0:v]scale={W}:-2[fg];[2:v][fg]overlay=0:(H-h)/2+60[v1];[v1][1:v]overlay=0:0,'
+        graph = (f'[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=24:2,eq=brightness=-0.18[bg];'
+                 f'[0:v]scale={W}:-2[fg];[bg][fg]overlay=0:(H-h)/2+60[v1];[v1][1:v]overlay=0:0,'
                  f'fade=t=out:st={fade:.2f}:d=1.5,format=yuv420p[v]')
         subprocess.run(['ffmpeg', '-v', 'error', '-y', '-t', f'{dur:.2f}', '-i', str(src), '-i', str(layer),
-                        '-loop', '1', '-framerate', '30', '-i', str(background), '-filter_complex', graph, '-map', '[v]', '-map', '0:a?', '-af', f'afade=t=out:st={fade:.2f}:d=1.5',
+                        '-filter_complex', graph, '-map', '[v]', '-map', '0:a?', '-af', f'afade=t=out:st={fade:.2f}:d=1.5',
                         '-t', f'{dur:.2f}', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '26', '-r', '30',
                         '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', str(out)], check=True)
     return round(dur)
