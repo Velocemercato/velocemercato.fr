@@ -1,22 +1,129 @@
 {
-  "misAJour": "2026-11-09T06:17:44+00:00",
+  "misAJour": "2026-11-09T10:09:46+00:00",
   "fenetreJours": 1,
   "source": "Google News RSS — liens vers les éditeurs originaux",
   "sports": {
-    "nba": [],
-    "nfl": [],
-    "f1": [],
-    "motogp": [],
-    "tennis": [
+    "nba": [
       {
-        "id": "tennis-1794202306-directtjenlinettewta250chenn",
-        "titre": "DIRECT. Tjen - Linette, WTA 250, Chennai, Finale : 3-4 en direct - L'Équipe",
-        "source": "L'Équipe",
-        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPWHo0UnBNenA1QWdqZy12a1oxNDhIV2pZLTNQLTVzcEpWVFoxQV9VNTZ5ellsczNod3pmaDA0WHFXNlYyMlRCancwaXdtMnd1ZW04dk5NMXVBRHlMV1ZtT1pwbGF2SktzcHVsVVJSWHBzMm9ndEY3bUlCdUFyLTZxZWVsVkJ5Rmw5OHlsdVFMWlZldGtkRHY0TzRtN0hEa3FBUDBMTXhsZmViLTJkMll3Nkk3SEJON2tDblF3Wg?oc=5",
-        "date": "2026-11-09T05:31:46+00:00",
+        "id": "nba-1794210600-actualitssportivesenafriquel",
+        "titre": "Actualités sportives en Afrique : les tendances en RDC - Inside Basket",
+        "source": "Inside Basket",
+        "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxObGdwM0ZNLTVTTGpyTFVRVWViaEp4ZTRiWUhoUDlvM1Uzb0pyYmN5THlILWdwVFlhcHNkUFRsQ3otVFNIRzJHUFZnRkpkZ1d5ZmNEYktvTnJKOWczNl9LYUpsclhXejlFSUFSc3BvdnV0M1k4Tm9saGR3dUtIOC1ublhNeFhvdWRNc21uZXFxX1B4WU8yRmc?oc=5",
+        "date": "2026-11-09T07:50:00+00:00",
+        "rubriques": [
+          "international"
+        ]
+      },
+      {
+        "id": "nba-1794208740-nbalessixersetleslakerssinst",
+        "titre": "NBA. Les Sixers et les Lakers s’installent au sommet, LeBron James décisif… Le résumé de la nuit - Ouest-France",
+        "source": "Ouest-France",
+        "url": "https://news.google.com/rss/articles/CBMihAJBVV95cUxNREc1MUp6TmVUSVNiZG5PYzMwWlhkN29ZYzR3QTRrSnR2dVZHcFpJOTVQOEJ5QUhhNllNUmh5Tlk4dXYtejRJMHQ2TXNFOF9aYVdLLUhTdHV2YVgtWUFfUFdwdl95a2VLZ2ppcFhQTjEyWnhFOS1FNVFjOGlDVlBwSk1CNU43OGJIbE9RZnR4aXkwRGtwSThuQ0lpZ2hId0dCcGJseXVxY0pZUkRxQ3I3OUdqMlFBUlBOaE1sWUNERjdZTWk5amZRUndvWmt1dnI1TUVGYlJONncyTzIzbktkRDNiY19OX184RE53Y2lVc2RXQks3NWh5VldHVW9peEUzZTkwZw?oc=5",
+        "date": "2026-11-09T07:19:00+00:00",
         "rubriques": [
           "international",
-          "feminin"
+          "france"
+        ]
+      },
+      {
+        "id": "nba-1794207322-cooperflaggportelesmavericks",
+        "titre": "Cooper Flagg porte les Mavericks, Giannis Antetokounmpo dépasse Larry Bird, les Bucks toujours en crise - L'Équipe",
+        "source": "L'Équipe",
+        "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQeW5ZN0hWeXJsWEZpMVBDWGV3R3VkOHpKUXo2ckF3THRzZ3IxWjRiUmM5Vm1mWUNiS1I0Ymxua2s5ZDFUQ1p4YW1ScU92VlBsamNudXZzb3JINVpNM0pTN0JsWmNpOWZ0M2VWakV3S0NfcFhnX1NkcndBRmNvRS1YX1Y1V19Iam9IbmVtRElSaUo4X3cyMGZXM2t0SzI0dEZtS0J4U1JMNEJRSFoxTC1NTElYQW1sOTJFcE5DaVFkbVhlSkJJbUdkdE1HeE1IZHYtY3FnX2x6dy1LNnROd1hPZGQwMDM?oc=5",
+        "date": "2026-11-09T06:55:22+00:00",
+        "rubriques": [
+          "international",
+          "europe"
+        ]
+      }
+    ],
+    "nfl": [
+      {
+        "id": "nfl-1794213137-bearsbuccaneers2724santosdli",
+        "titre": "Bears-Buccaneers (27-24) : Santos délivre Chicago à la sirène - DAZN",
+        "source": "DAZN",
+        "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQR3Y4eHBOY3RNYnhpWFVtaUFfVmZPcXlZM3IyZjZYYjhvb1hhV3NfcFNSME1XVS0xTmRqRGh0UWVhVXhfUGNRbVpXY3I5WlJQbjItaGl6c1FRTHVEeWJXbjAwbUs1Nk9wZTEwRGpDaWlqZ1NyTldQNXNUakZDeVRLcU5Fa3cwT1ZHQzZZT0NkZzBlVm5IRW9RcTVjeW9UUFBQNXNLU0tPU3FoTXZzbmZsN2ZoWjAyV2tpS3JnXzVXRQ?oc=5",
+        "date": "2026-11-09T08:32:17+00:00",
+        "rubriques": [
+          "international"
+        ]
+      },
+      {
+        "id": "nfl-1794208269-lesgreenbaypackersetleshoust",
+        "titre": "Les Green Bay Packers et les Houston Texans brillent, Arvell Reese (New York Giants) impressionne en NFL - L'Équipe",
+        "source": "L'Équipe",
+        "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPdXpiSlFzbUprSG1oeV9CakJQWEJjZ1ZwcFpScWk5bzJNUTFKR1pWQ3I4YVFZUUdqazVHVUt5ZFdUMzh0NDVQSnBvX1g1T2dlY2VhajcxMFlsdWpGVjZ0azNraGoycEJNRHdXZmVGWDNDaXkwRGMxckVFLVE0aEdVdzljVHlUNDRPUTl2UFJta0hGdEpEVW5PYm5RSDZvVEcwYXU1MDYwOWcxYS0zNXBYNk8xbWd3cWg1dmtPeWcxb0Jra2ZJS2ZDWS1VTWxybS1uMnpGbVNEaWtNRmZiM29qa0o4RkFwNHBiWUEtWmxuY1hpYVJF?oc=5",
+        "date": "2026-11-09T07:11:09+00:00",
+        "rubriques": [
+          "international"
+        ]
+      }
+    ],
+    "f1": [
+      {
+        "id": "f1-1794217241-gpdubrsildef1laractiondefrdr",
+        "titre": "GP du Brésil de F1 - La réaction de Frédéric Vasseur à l'arrivée de la course : \"Nous savions que notre course serait compliquée\" - Turbo.fr",
+        "source": "Turbo.fr",
+        "url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxOYVk2bXJsbks5YzhfSW1hVUJFOWF4NTNIbnpNOEtDU3h3al9CUnl2amVYUHZsVzdZclF4RzhXRmlCNG9fWndObWhUZVMtaUZQVHFKZEJTYlVOVkJpQmp1YzdzSC1UQ1RMbXdCT3FTQ05xRUhaYWFUSUR1cHpuSnFnZG81ZTJjeGZBbTh6b3NOMmpVZ0c2SXJPbHd6b0FtcU11eHF5ODgzdWo4M0hlZFVzMHFNQW9QYWF1THFiVWE0SVI4NmlqaGs3enVPejIyc0M4TU90YlBFdDgySnlyci1BRXB4aE1Qd3RsTXpySmZUTmk2b0s5TzA3cXo1bFM2QQ?oc=5",
+        "date": "2026-11-09T09:40:41+00:00",
+        "rubriques": [
+          "international"
+        ]
+      },
+      {
+        "id": "f1-1794212207-gpdubrsildef1laractiondelewi",
+        "titre": "GP du Brésil de F1 - La réaction de Lewis Hamilton à l'arrivée de la course : \"Je suis resté un tour de trop en piste à la fin\" - Turbo.fr",
+        "source": "Turbo.fr",
+        "url": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxPd1Bacl85TDFfZHhZeFQ0N0NWWWE4T01aUjRlV18tajlieW5FN3V4djA2QlFKVThoZjFRem9YMEZrclUzTDlMNmxkOXdhXzZmRjBpX2lnUkJYaXZyajFOYl9LMS0wdHM1bEkxZHRVLWJlNTRRdDljMlk3RVNKQVZ1WUpHRlFHNm1ySW1ZMzd2Zm5TN0EzVS1sNktPcXYwNEkyRXZTaXVvMW52ZW1TVERreFJfWVc0VHB1czJqYmdOM3FmUWVLVXZMdTJXbURtaEdTNmc3OG5oN3ItdE5NUUV4ZGFsd1FHNGVXVERGdTNGN2k1YjNZTVVhVg?oc=5",
+        "date": "2026-11-09T08:16:47+00:00",
+        "rubriques": [
+          "international"
+        ]
+      },
+      {
+        "id": "f1-1794204324-hadjarretrouvedurythmesurles",
+        "titre": "Hadjar retrouve du rythme sur les tendres et savoure son podium au Brésil - F1 news",
+        "source": "F1 news",
+        "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE42Qy1zSmdaV0ZRWS13b1pLTnhydEstUW1qdXVnanUyQ1F1VEJJWG5jUXlZM2NOOE1UVGFzcElkNk53MG55b0ZmNDVCOFdRc0JoX1ZWY0tVRUFTRTAybmp3VlY5UURQMzhkUE5n?oc=5",
+        "date": "2026-11-09T06:05:24+00:00",
+        "rubriques": [
+          "international",
+          "france"
+        ]
+      }
+    ],
+    "motogp": [
+      {
+        "id": "motogp-1794210600-gpduqatardemotogpleclassemen",
+        "titre": "GP du Qatar de MotoGP : le classement final de la course, Johann Zarco manque son coup, Marc Marquez subit la domination de Marco Bezzecchi - Turbo.fr",
+        "source": "Turbo.fr",
+        "url": "https://news.google.com/rss/articles/CBMikgJBVV95cUxOZHNvX0tnNGd1X1RXbWpTbHU0NmVxTlJDWUpjS0xfX0YtZXhxemFsLVlXbGtUbWRkOF9WVV96WUhYb29qVzNfRy1zb25Vc1ZrajR6TDlXSG42bTNSSEc5WFRnbWtMN1I5ZDdYelR0R1hNT3RlaW9Kb0NvLXg2dGt2M0h2T215aVVHV0hMVjc4SFdZR3ZOQ3FIQWRyR3FxcFgybGRsVk1ORTAyTDFRb084NmlGWndURjdjVnZCbC02WkhxczVEQ0MxMDlfenNHemJpMWpQUWtCdFVUWDFIRG9kb3QtNmw0eDB4R2RmOHBQX0hTelRTUXVYYkVGSUF5ZDZyRWlady1DVzdWYkZnR2J2MzJR?oc=5",
+        "date": "2026-11-09T07:50:00+00:00",
+        "rubriques": [
+          "international",
+          "france"
+        ]
+      }
+    ],
+    "tennis": [
+      {
+        "id": "tennis-1794213486-tennismeilleurclassementpour",
+        "titre": "Tennis : meilleur classement pour Van Assche qui se rapproche du top 30, Alcaraz solide 3e à l’ATP - Le Figaro",
+        "source": "Le Figaro",
+        "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQb1ZJdGdQU3ZtRm1od0dmRmF4Tm96bGVMMndiTUVPNnNOZFJCdEl0ZFJmckxRQVQzUU1rcDVEaUVpM09PcV9FTUtHbHQwdVN5a2xwc2VCWjV1cVNSYWUySHJGckFvS2ViZlRPOGVpeEQ2LWRJVTVQTVNHVmkzcVNwQWtUcHkxb3BvZm0yVkxPMi10N1lvdkZqSTQ5RkU4SVRFamxZYXh4a2l0dDFsd0ZiSjJjZ2w5S2F2RXYwOGExM0VDRDMxbXJneWs3dXlqZFRQUEdCSzhib0J2UQ?oc=5",
+        "date": "2026-11-09T08:38:06+00:00",
+        "rubriques": [
+          "international"
+        ]
+      },
+      {
+        "id": "tennis-1794203040-usopensaschazverevetbenshelt",
+        "titre": "US Open: Sascha Zverev et Ben Shelton en finale : les résultats de vendredi - Tennis Actu",
+        "source": "Tennis Actu",
+        "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOb01NRGdNZzZGVFpTNVFJelBwR3BFUjF4T0pfLUdPUUtxWkRBaVZjSDRUc1dRUFZPaW93UEJKd2NjTTB3dVJGRWJpM01nQTN1NHZIQnRlY2s1OHgxNC1zcGpzMVJzUmxWSFNyYU4tUW52cldJOW9nQUJ3MVNMOG9rM29wc0VFV1BqNkVLVkRvMWdPWm9wWEVyMkhmd2FjbENlTWczbmg5X0JnVVlpRnJ5RVFTaWpCZ1XSAbcBQVVfeXFMT0xWSVY5ZUJVRkhMZUFuY2czNU45ZEJZbHMtOVVxcWdxVjdNcTZoeU5COGRHWjRQZHcyVjZCYW80YzFCaktnZ2NmTmJRNFcxYm5YeTlrM3VJck00TU1rWnZ4OFU0eDc4eUtaQ0N1MFVzZlV1YmxCUVR1aHZ3cThOY0RpX003Rm80Ui1GY29GWWVpWE5BbEVPdW5icDhndUM3Nk9mcWtvaXhZVk9SeVdtZGxKcEkyd0lB?oc=5",
+        "date": "2026-11-09T05:44:00+00:00",
+        "rubriques": [
+          "international"
         ]
       },
       {
@@ -32,19 +139,66 @@
         ]
       }
     ],
-    "rugby": [],
+    "rugby": [
+      {
+        "id": "rugby-1794217923-nationscuplagorgiedroulelest",
+        "titre": "Nations Cup : la Géorgie déroule, les États-Unis s’en sortent de justesse - Rugby Scope",
+        "source": "Rugby Scope",
+        "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNMVNweFJtZ3o4YTlMaERGM2dMUzkza1ZLSjk2RW9SSFRKeVFjRWJ4aXhrcHRDTlNvU1E4S29rcll1RHluZnJteFZFUzBGNkFOX251Q1JnUmdHVzJLM1Z3bHBieFpvR3l3Qlk4X3VQdU5hcXhMMFdYOXZpdTRfRDZ0bGZ5LVJEWmNCSWhqcjNCZXkxNDlaTzZFajQwRjM?oc=5",
+        "date": "2026-11-09T09:52:03+00:00",
+        "rubriques": [
+          "international"
+        ]
+      },
+      {
+        "id": "rugby-1794206185-top14j9toulousetientbonpauca",
+        "titre": "Top 14 – J9 : Toulouse tient bon, Pau cartonne, Vannes renverse l’UBB - Quinze Ovalie",
+        "source": "Quinze Ovalie",
+        "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9oZHA5SDdVQU92RWp6UV81X0Z1R1B4ek9jWS1qYVlTa3JxNVNVY2tMWHQzSDdCODIyQUpXNU1tdFdiRGtuRGhnWUQ1bl9NMkhrNkJJWnNROA?oc=5",
+        "date": "2026-11-09T06:36:25+00:00",
+        "rubriques": [
+          "international",
+          "france",
+          "europe"
+        ]
+      }
+    ],
     "cyclisme": [],
     "nhl": [],
     "mlb": [],
     "mma": [
       {
-        "id": "mma-1794197090-donaldtrumpaffirmequesapropo",
-        "titre": "Donald Trump affirme que sa proposition de nommer Dana White, patron de l’UFC, porte-parole de la Maison Blanche, était une blague - Le Monde.fr",
+        "id": "mma-1794205534-danaadorecetteidedonaldtrump",
+        "titre": "« Dana adore cette idée »: Donald Trump assure que sa proposition de nommer le patron du MMA porte-parole est une blague - Ouest-France",
+        "source": "Ouest-France",
+        "url": "https://news.google.com/rss/articles/CBMitAJBVV95cUxNN0dXQW1zOXhpZ2x1UkYzb3ZtZG1PMDNxSDRHR0dIMF9pcmFKNkFyTTdOQXVOU29ab2F0MkZpQlFrVUdnMDN4bG1kRkxIN2NCd0NtdHZHRUY5X2FicTBzcDBBMDBsMzUtNG9nX3BOQ1lIZG42RENtTXA3RnJVQmZaeXhMc3FqbC1YMkw0UWRjdXF6d2lDWVhSYkh5bG5YeXQ3OGJ6VU1mTkdTTXdYVWF2SlRvaWZBcURGOXZPT0V1TlJPQlV3Ym9aSTlBb1dsb042ZmxLcGpqSUJVdDV5blA0TGtqcXM1allabGpwdkhZWXgtVkRwV0h6VWlTVEpBRzl1T3NxMzJtRDFiZV9YMGJPaHBkLUdiLWlTUHdRTkJCU3hVcGotMEVJenc4aU9na0hFRm04Yw?oc=5",
+        "date": "2026-11-09T06:25:34+00:00",
+        "rubriques": [
+          "international",
+          "france",
+          "europe"
+        ]
+      },
+      {
+        "id": "mma-1794197086-donaldtrumpaffirmequesapropo",
+        "titre": "Donald Trump affirme que sa proposition de nommer Dana White, patron de l’UFC, porte-parole de la Maison Blanche était une blague - Le Monde.fr",
         "source": "Le Monde.fr",
         "url": "https://news.google.com/rss/articles/CBMiqAJBVV95cUxQR0FtdUx3S1U5OHVzWk1hZ2pxRlIzUnJjc0VoWVUwWWozTWE5YlI2am9DXzNOOG1Pb1ZRZWhFbkpuM3pnTU5iY1dkVHhrYm5HcUtDcW0xWmFzWUhSUU1uRHZkeUxDazdCRnBnNllNal8yMGtab25PN3hoaFFpQTN1R0ZDMmZxdXB1ZjN5ZEVwZDl3YUtGMGkxWTcwdVpZZVBMcjFkQ2ZERWlSLXg3NDhVM0pSRVd6WWRnS1NOSVZERFFpZXBGcDRVRmlCeGZNU3hWRHY1WFVXODR3WWpuSnloZy1uNWZKZ2Z6Q09GdmtPU2NTU3dzSzVRQTk3czVsTTRsNEhaOVJQM3BvcWwtODh0a0Ixa01IT2VFSVZERGd5TGZ0X0p5UGtsVQ?oc=5",
-        "date": "2026-11-09T04:04:50+00:00",
+        "date": "2026-11-09T04:04:46+00:00",
         "rubriques": [
           "international"
+        ]
+      },
+      {
+        "id": "mma-1794196921-lepatrondummaporteparoledela",
+        "titre": "Le patron du MMA porte-parole de la Maison Blanche ? Une blague, dit Trump - France 24",
+        "source": "France 24",
+        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQOXVjclY3LWkxa3E2YTlDVUJlNHhxM08tNEs5Q2lkUnZ4WFQxZG00SnFSXzR4TkdHU3VERGFscFVjME5MYWFQQXI3ZUE5WUtjemFiRVpxTWlZc3lINVMxSXJlOGNrTk1raGxaMDBTNklldHNEVlRrd1pVZHk3WXRqa0VzSldKeG5LNWR0U2pBU0NwdWZLbnBaX2NfZHZRejU2Ynhsc29CcDJlYmhYdy0wQUpzVC1sX0hjakMzR0tFS3NGQQ?oc=5",
+        "date": "2026-11-09T04:02:01+00:00",
+        "rubriques": [
+          "international",
+          "france",
+          "europe"
         ]
       }
     ],
