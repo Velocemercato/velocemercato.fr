@@ -1,0 +1,77 @@
+name: VM - Restaurer le thème public avec l’édition du 9
+on:
+  push:
+    branches: [codex/continuite-edition-20261109]
+    paths: ['.github/workflows/restaure-theme-edition-20261109.yml']
+permissions:
+  contents: read
+concurrency:
+  group: vm-edition-pages-production
+  cancel-in-progress: false
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 3d4d758ec45d6e4572f06a7a52c71402dfae9dea
+          path: public-before
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: fresh
+          persist-credentials: false
+      - uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./public-before
+          destination: ./build
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Conserver le thème précédent, les flux frais et les éditions
+        run: |
+          set -euo pipefail
+          sudo chown -R "$(id -u):$(id -g)" build
+          for f in articles.json actus/news.json vm-gaming/news.json; do
+            install -D "fresh/$f" "build/$f"
+          done
+          for d in 08 09; do
+            mkdir -p "build/edition/2026-11-$d"
+            curl -fsSL --max-time 30 --retry 2 --retry-all-errors "https://velocemercato.fr/edition/2026-11-$d/" -o "build/edition/2026-11-$d/index.html"
+          done
+          grep -Fq '<title>Véloce Mercato — VM Multisport · Tous tes sports, un seul univers</title>' build/index.html
+          grep -Fq 'VM Univers' build/index.html
+          ! grep -Fq '>87<' build/index.html
+          grep -Fq 'Brèves VM du 9 novembre 2026' build/edition/2026-11-09/index.html
+          echo "RESTORE_SOURCE 3d4d758ec45d6e4572f06a7a52c71402dfae9dea"
+          echo "FRESH_SOURCE $(git -C fresh rev-parse HEAD)"
+      - name: Aperçu puis restauration de la production Véloce
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: c5227875896e9a281915ed70c146e845
+        run: |
+          set -euo pipefail
+          export NO_COLOR=1
+          endpoint="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/velocemercato"
+          info() { curl -fsS --max-time 20 -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$endpoint"; }
+          info > "$RUNNER_TEMP/before.json"
+          previous=$(jq -er '.result.canonical_deployment.id' "$RUNNER_TEMP/before.json")
+          prod=$(jq -er '.result.production_branch' "$RUNNER_TEMP/before.json")
+          npx --yes wrangler@4 pages deploy build --project-name=velocemercato --branch=vm-continuite-restore-20261109 --commit-dirty=true | tee "$RUNNER_TEMP/preview.log"
+          preview=$(grep -Eo 'https://[a-f0-9]+\.velocemercato\.pages\.dev' "$RUNNER_TEMP/preview.log" | tail -1)
+          test -n "$preview"
+          curl -fsSL --max-time 25 "$preview/" | grep -Fq 'VM Multisport · Tous tes sports'
+          curl -fsSL --max-time 25 "$preview/edition/2026-11-09/" | grep -Fq 'Brèves VM du 9 novembre 2026'
+          current=$(info | jq -er '.result.canonical_deployment.id')
+          test "$previous" = "$current" || { echo "::error::Déploiement concurrent"; exit 1; }
+          echo "PREVIEW_OK $preview"
+          echo "PRECEDENT_VM velocemercato $previous"
+          npx --yes wrangler@4 pages deploy build --project-name=velocemercato --branch="$prod" --commit-dirty=true | tee "$RUNNER_TEMP/prod.log"
+          deployment=$(grep -Eo 'https://[a-f0-9]+\.velocemercato\.pages\.dev' "$RUNNER_TEMP/prod.log" | tail -1)
+          for base in "$deployment" https://velocemercato.pages.dev https://velocemercato.fr; do
+            curl -fsSL --max-time 25 --retry 2 --retry-all-errors "$base/" | grep -Fq 'VM Multisport · Tous tes sports'
+            curl -fsSL --max-time 25 --retry 2 --retry-all-errors "$base/edition/2026-11-09/" | grep -Fq 'Brèves VM du 9 novembre 2026'
+          done
+          echo "PRODUCTION_RESTORED https://velocemercato.fr/"
