@@ -1,5 +1,77 @@
 [
  {
+  "id": "actus-edition-20261109-1300",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "midi",
+  "label": "JT 13 h",
+  "titre": "La Pastille Actus - Édition du lundi 9 novembre, 13 heures",
+  "accroche": "Économie, politique et Airbnb : le point actus du midi.",
+  "duree": 108,
+  "date": "2026-11-09T13:40+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261109-1300.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-09T13:00:00+01:00",
+  "source_start": "2026-11-08T19:00:00+01:00",
+  "source_end": "2026-11-09T13:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-060ac31e01801965156b9f",
+    "titre": "Airbnb : les propriétaires ne pourront plus exiger le ménage des locataires à partir du 20 novembre",
+    "publishedAt": "2026-11-09T11:51:18Z",
+    "createdAt": "2026-11-09T11:56:52Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/internet/airbnb/reportage-on-ne-peut-pas-tout-faire-non-plus-airbnb-allege-les-obligations-de-menage-demandees-aux-locataires_8274107.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-27cdc221e8a531126df7dc",
+    "titre": "Smic : le gouvernement annonce une hausse de 1,6 % au 1er décembre, à 1 502 euros net",
+    "publishedAt": "2026-11-09T11:52:46Z",
+    "createdAt": "2026-11-09T11:56:50Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/greve/direct-conference-sociale-pour-repondre-a-la-colere-le-premier-ministre-reunit-lundi-matin-les-syndicats_8273954.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-f4ad6a5068576477eb908b",
+    "titre": "Glucksmann dit vouloir revenir aux prochaines manifestations de l'intersyndicale après avoir quitté un cortège",
+    "publishedAt": "2026-11-09T10:50:32Z",
+    "createdAt": "2026-11-09T10:59:09Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/politique/direct-politique-je-n-attends-plus-grand-chose-de-ce-gouvernement-a-part-de-le-remplacer-par-nous-memes-tacle-le-depute-lfi-antoine-leaument_8273093.html#xtor=RSS-3-%5Bgeneral%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-7fe5427df02108cf0446c5",
+    "titre": "Teddy Riner annonce sa candidature à l'élection présidentielle de 2027",
+    "publishedAt": "2026-11-09T10:55:03Z",
+    "createdAt": "2026-11-09T10:59:04Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/elections/presidentielle/la-resignation-n-est-pas-une-option-teddy-riner-annonce-sa-candidature-a-l-election-presidentielle-2027_8274359.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261109-1200",
   "univers": "foot",
   "format": "edition",
