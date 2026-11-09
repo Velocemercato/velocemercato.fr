@@ -1,5 +1,101 @@
 [
  {
+  "id": "gaming-edition-20261109-1800",
+  "univers": "gaming",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 18 h",
+  "titre": "La Pastille Gaming : édition du lundi 9 novembre",
+  "accroche": "Driver AMD, GTA 6, PlayStation Portal et WoW, c'est parti pour La Pastille Gaming !",
+  "duree": 145,
+  "date": "2026-11-09T18:05+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "gaming-edition-20261109-1800.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-09T18:00:00+01:00",
+  "source_start": "2026-11-08T18:00:00+01:00",
+  "source_end": "2026-11-09T18:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-efeb566c8807c5b83083d7",
+    "titre": "Activité disque permanente liée à l'External Events Utility des pilotes Radeon, AMD reconnaît le problème",
+    "publishedAt": "2026-11-09T16:35:00Z",
+    "createdAt": "2026-11-09T16:42:50Z",
+    "references": [
+     {
+      "nom": "Tom’s Hardware",
+      "url": "https://www.tomshardware.fr/votre-pc-ne-fait-rien-mais-votre-ssd-travaille-sans-arret-amd-reconnait-un-probleme/"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-87dcde7ddd159beb1642b7",
+    "titre": "GTA 6 : des fichiers de préchargement révèlent un traitement à part pour la PS5 Pro",
+    "publishedAt": "2026-11-09T15:04:00Z",
+    "createdAt": "2026-11-09T15:34:39Z",
+    "references": [
+     {
+      "nom": "Les Numériques",
+      "url": "https://www.lesnumeriques.com/jeux-video/gta-6-des-fans-ont-fouille-les-fichiers-du-prechargement-la-ps5-pro-a-droit-a-un-traitement-de-faveur-n267085.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-2c0eb7320e50517bbd2e96",
+    "titre": "PlayStation Portal : un modèle Midnight Black réservé au Japon et à la Corée du Sud",
+    "publishedAt": "2026-11-09T13:45:00Z",
+    "createdAt": "2026-11-09T14:35:55Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/le-playstation-portal-revient-avec-un-modele-reserve-au-japon-et-a-la-coree-du-sud-sony-tease-de-nouvelles-fonctionnalites-a-venir-3050872854.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-15d2ec223f995c5810dbc5",
+    "titre": "NieR: Automata affiche 366 Go à l'installation sur Steam après un patch",
+    "publishedAt": "2026-11-09T12:51:00Z",
+    "createdAt": "2026-11-09T13:16:19Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/a-cause-d-une-mise-a-jour-ratee-nier-automata-pese-desormais-366-go-sur-steam-3050872853.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-19c2fdf5665ed525727d88",
+    "titre": "WoW Forever : Blizzard annonce le plus grand pic de joueurs simultanés de la franchise",
+    "publishedAt": "2026-11-09T11:45:00Z",
+    "createdAt": "2026-11-09T11:59:51Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/wow-forever-pulverise-les-compteurs-et-signe-le-plus-gros-lancement-de-l-histoire-de-la-franchise-3050872852.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-b478eedf8df91b3ad62ecf",
+    "titre": "Fortnite dévoile enfin les chances d'obtenir le Jeton de la boutique Pirate",
+    "publishedAt": "2026-11-09T09:55:31Z",
+    "createdAt": "2026-11-09T11:01:11Z",
+    "references": [
+     {
+      "nom": "Dexerto",
+      "url": "https://www.dexerto.fr/fortnite/fortnite-revele-enfin-chances-obtenir-jeton-boutique-pirate-1663649/"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "actus-edition-20261109-1300",
   "univers": "actus",
   "format": "edition",
