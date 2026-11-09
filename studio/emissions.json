@@ -1,5 +1,125 @@
 [
  {
+  "id": "foot-edition-20261109-2000",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 20 h",
+  "titre": "La Pastille Foot - Édition du lundi 9 novembre",
+  "accroche": "Carrick, Porto, Lyon, les Bleus : c'est parti pour La Pastille Foot.",
+  "duree": 91,
+  "date": "2026-11-09T20:56+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261109-2000.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-09T20:00:00+01:00",
+  "source_start": "2026-11-09T12:00:00+01:00",
+  "source_end": "2026-11-09T20:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-80af384803fa976ddc707b",
+    "titre": "Manchester United : la direction n'a pas encore tranché sur l'avenir de Carrick",
+    "publishedAt": "2026-11-09T17:49:05Z",
+    "createdAt": "2026-11-09T18:17:21Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cw4g1g7z2mdgo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-e32127fcf31f4fcafee835",
+    "titre": "FC Porto : 11 victoires en 11 matches, un début de saison historique",
+    "publishedAt": "2026-11-09T18:01:39Z",
+    "createdAt": "2026-11-09T18:17:18Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a6240046133101389451-fc-porto-11-victoires-en-11-matches-le-debut-de-saison-totalement-fou-des-dragons"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-a53de57f1486d4a3a564b2",
+    "titre": "L'OL officialise Carlos Vicens comme nouvel entraîneur après le départ de Paulo Fonseca",
+    "publishedAt": "2026-11-09T17:18:42Z",
+    "createdAt": "2026-11-09T17:29:39Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/clubs/olympique-lyon/l-ol-intronise-son-nouvel-entraineur-apres-le-depart-de-paulo-fonseca_AV-202611090754.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-46266e0ebf6149edf23047",
+    "titre": "Equipe de France : les Bleus réunis à Clairefontaine pour leur rassemblement",
+    "publishedAt": "2026-11-09T17:27:58Z",
+    "createdAt": "2026-11-09T17:29:36Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a2288990019779129386-equipe-de-france-les-images-de-larrivee-des-bleus-a-clairefontaine"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-41169b587be7b5761296fe",
+    "titre": "Erling Haaland élu Golden Player 2026 lors des Golden Boy Awards",
+    "publishedAt": "2026-11-09T16:22:47Z",
+    "createdAt": "2026-11-09T16:29:16Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a567856036960449060-erling-haaland-sacre-golden-player-2026"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-015c52250937f5d3707e98",
+    "titre": "Paris FC : Antoine Arnault nommé président après le départ de Pierre Ferracci",
+    "publishedAt": "2026-11-09T16:25:47Z",
+    "createdAt": "2026-11-09T16:29:13Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/transferts/direct-mercato-suivez-en-live-toutes-les-infos-et-rumeurs-du-lundi-9-novembre-2026_LN-202611090138.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-9942f17aad8e4807deadb7",
+    "titre": "Crystal Palace : Pierre Sage proche du départ, un expert prend sa défense",
+    "publishedAt": "2026-11-09T15:00:00Z",
+    "createdAt": "2026-11-09T15:21:11Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/angleterre/crystal-palace-pierre-sage-vire-son-avocat-fait-un-miracle"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-532db786bc9d72aa214f1c",
+    "titre": "Kettering Town reconnaît ne plus pouvoir ignorer le racisme dans ses rangs",
+    "publishedAt": "2026-11-09T15:10:38Z",
+    "createdAt": "2026-11-09T15:21:05Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cr0j0jnln3j0o?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "actus-edition-20261109-1900",
   "univers": "actus",
   "format": "edition",
