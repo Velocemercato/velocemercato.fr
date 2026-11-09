@@ -1,0 +1,38 @@
+name: Restaurer Véloce Mercato sur Cloudflare
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: velocemercato-cloudflare-restoration
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - name: Vérifier les accès Cloudflare
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::error::Les secrets CLOUDFLARE_API_TOKEN et CLOUDFLARE_ACCOUNT_ID sont requis."
+            exit 1
+          fi
+      - uses: actions/checkout@v4
+        with:
+          ref: 6e5dba1c6a3542c50c3ff7ad0e7a2064d8c53e4c
+          persist-credentials: false
+      - name: Préparer le site du 4 novembre
+        run: |
+          test "$(git rev-parse HEAD)" = 6e5dba1c6a3542c50c3ff7ad0e7a2064d8c53e4c
+          mkdir "$RUNNER_TEMP/velocemercato-site"
+          git archive HEAD | tar -x -C "$RUNNER_TEMP/velocemercato-site"
+          test -s "$RUNNER_TEMP/velocemercato-site/index.html"
+      - name: Déployer en production
+        run: npx --yes wrangler@4 pages deploy "$RUNNER_TEMP/velocemercato-site" --project-name velocemercato --branch main
