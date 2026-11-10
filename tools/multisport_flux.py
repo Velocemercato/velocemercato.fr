@@ -55,8 +55,11 @@ NEGATIVE={
  'f1': r'parfum|montre de luxe|jeu vidéo',
  'motogp': r'jeu vidéo|moto électrique.*prix',
 }
+GAMING_CONTENT = '\\b(?:gta(?:\\s*(?:vi|[56]))?|grand theft auto|playstation|xbox|nintendo|fortnite|minecraft|roblox|esports?|e-sports?|nba\\s*2k\\w*|madden|ea\\s*(?:sports\\s*)?fc|fifa\\s*2[0-9]|jeux? vid[eé]o|gaming|steam|ubisoft|activision|call of duty)\\b'
+
 def relevant(sport,title):
- return (bool(re.search(RELEVANCE[sport],title,re.IGNORECASE))
+ return (sport in RELEVANCE and not re.search(GAMING_CONTENT,title,re.IGNORECASE)
+         and bool(re.search(RELEVANCE[sport],title,re.IGNORECASE))
          and not bool(re.search(NEGATIVE.get(sport,r'(?!)'),title,re.IGNORECASE)))
 
 # Rubriques éditoriales : elles concernent les personnes, équipes et compétitions citées,
@@ -172,3 +175,4 @@ if __name__=='__main__':
  except Exception as error:
   print('::error::Récupération multisport: '+type(error).__name__)
   sys.exit(1)
+

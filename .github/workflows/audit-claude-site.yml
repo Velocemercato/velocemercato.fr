@@ -1,0 +1,41 @@
+name: Audit des liens et des rubriques pour Claude
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['tools/audit_claude_site.py', '.github/workflows/audit-claude-site.yml']
+permissions:
+  contents: write
+concurrency:
+  group: audit-claude-site
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Contrôler les pages, les liens et les rubriques
+        run: python tools/audit_claude_site.py
+      - name: Rendre le rapport accessible à Claude
+        run: |
+          set -euo pipefail
+          cp docs/AUDIT_CLAUDE_2026-11-11.md "$RUNNER_TEMP/audit.md"
+          cp docs/AUDIT_CLAUDE_2026-11-11.json "$RUNNER_TEMP/audit.json"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3 4 5; do
+            git fetch -q origin main
+            git reset --hard -q origin/main
+            cp "$RUNNER_TEMP/audit.md" docs/AUDIT_CLAUDE_2026-11-11.md
+            cp "$RUNNER_TEMP/audit.json" docs/AUDIT_CLAUDE_2026-11-11.json
+            git add docs/AUDIT_CLAUDE_2026-11-11.md docs/AUDIT_CLAUDE_2026-11-11.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -qm 'Ajoute le rapport des liens et rubriques pour Claude'
+            if git push -q origin HEAD:main; then exit 0; fi
+            sleep 3
+          done
+          exit 1

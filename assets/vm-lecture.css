@@ -1,0 +1,23 @@
+/* Lecture et navigation commune des rubriques du média. */
+body > .vm-essentiel, .vmbar, .vmtop, .vm-volets, .vm-duo,
+.vminst, #vmInst, #vmInstallSeparate, #mgInstall, .vmg {
+  display: none !important;
+}
+.sport-nav a[data-sport="foot"] { display:none !important; }
+.vm-retour-accueil { display:inline-flex; align-items:center; min-height:42px; margin:8px 14px; padding:6px 12px; border:1px solid #9b7951; border-radius:8px; background:#17121a; color:#fff0c8 !important; font:700 15px/1.4 system-ui,sans-serif; text-decoration:none; }
+html body .modal .box, html body dialog.espace-accueil {
+  background:#10131d !important; color:#f4f4f6 !important; color-scheme:dark;
+}
+html body .modal .box :is(h1,h2,h3,h4,p,li,blockquote),
+html body dialog.espace-accueil :is(h1,h2,h3,h4,p,li,blockquote),
+html[data-vmt="article"] body article :is(h1,h2,h3,h4,p,li,blockquote) {
+  color:#f4f4f6 !important;
+}
+html body .modal .box a, html body dialog.espace-accueil a,
+html[data-vmt="article"] body article a { color:#ffe08a !important; }
+html body .modal .box :is(small,time), html body dialog.espace-accueil :is(small,time) { color:#ced3df !important; }
+html body .modal .box button, html body dialog.espace-accueil form button { color:#fff !important; background:#a91731 !important; border:1px solid #f3a6b4 !important; }
+html[data-vmt="article"] body article, html[data-vmt="article"] body .in { background:#10131d; color:#f4f4f6 !important; }
+html body .item .body { color:#f4f4f6 !important; }
+.vm-retour-accueil:focus-visible { outline:3px solid #ffe08a; outline-offset:3px; }
+html body dialog.espace-accueil a.vm-collection-play { color:#17121b !important; }

@@ -43,7 +43,7 @@
     if (key === 'multisport') {
       return Object.entries(primary?.sports ?? {}).flatMap(([sport, items]) =>
         (Array.isArray(items) ? items : [])
-          .filter(item => sportsSources.test(item?.source?.trim() ?? '') && !/\b(gta|xbox|playstation|jeux vidéo)\b/i.test(item?.titre ?? ''))
+          .filter(item => sportsSources.test(item?.source?.trim() ?? '') && window.VM_Multisport?.isRelevant(sport, item?.titre))
           .slice(0, 1)
           .map(item => ({title: item.titre, source: item.source, date: item.date,
             url: item.url, theme: sport.toUpperCase()})));
@@ -185,7 +185,8 @@
     if (!feeds[key]) return true;
     clearInterval(timer);
     const expectedVersion = ++version;
-    render(panel, key, snapshots[key] ?? []);
+    const saved = snapshots[key] ?? [];
+    render(panel, key, key === 'multisport' ? saved.filter(row => window.VM_Multisport?.isRelevant(String(row.theme ?? '').toLowerCase(), row.title)) : saved);
     if (key === 'actus' && belfortList && !belfortList.children.length) {
       renderList(belfortList, snapshots.belfort ?? []);
       updateRegion();
@@ -211,3 +212,4 @@
   window.addEventListener('hashchange', openFootAnchor);
   openFootAnchor();
 })();
+

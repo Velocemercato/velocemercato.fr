@@ -51,6 +51,7 @@ jobs:
           set -euo pipefail
           mkdir "$RUNNER_TEMP/velocemercato-site"
           git archive HEAD | tar -x -C "$RUNNER_TEMP/velocemercato-site"
+          python tools/prepare_public_site.py "$RUNNER_TEMP/velocemercato-site"
           echo "$GITHUB_SHA" > "$RUNNER_TEMP/velocemercato-site/version.txt"
           npx --yes wrangler@4 pages deploy "$RUNNER_TEMP/velocemercato-site" --project-name velocemercato --branch main --commit-hash "$GITHUB_SHA"
       - name: Contrôler le domaine
@@ -64,3 +65,4 @@ jobs:
           done
           echo "::error::Déployé, mais velocemercato.fr n'affiche pas encore $GITHUB_SHA (domaine relié à un autre projet ?)."
           exit 1
+

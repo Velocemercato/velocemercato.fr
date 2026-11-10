@@ -8,13 +8,13 @@ document.querySelectorAll('[data-broadcast-feed]').forEach(async section => {
     const valid = row => row && row.plateformes && Object.entries(row.plateformes).some(([name,p]) =>
       (name === 'youtube' && p.status === 'published' && /^https:\/\/www\.youtube\.com\/watch\?v=[A-Za-z0-9_-]{11}$/.test(p.url)) ||
       (name === 'twitch' && p.status === 'ended' && /^https:\/\/www\.twitch\.tv\/[a-z0-9_]+$/.test(p.url)));
-    const universe = section.dataset.broadcastUniverse;
+    const universe = section.dataset.broadcastUniverse || (location.pathname.replace(/\.html$/, '').replace(/\/$/, '') === '/studio' ? new URLSearchParams(location.search).get('univers') : '');
     const latest = rows.filter(valid).filter(row=>!universe || (row.universes || ['foot','actus','gaming']).includes(universe))
       .filter(row=>section.dataset.broadcastSingle!=='true' || (row.universes || []).length===1)
       .sort((a,b)=>String(b.date_publication || b.date || '').localeCompare(String(a.date_publication || a.date || '')) || String(b.id).localeCompare(String(a.id)))[0];
     if (!latest) return;
     const title = document.createElement('h2');title.textContent=latest.titre;section.append(title);
-    const names={foot:'Foot',actus:'Actus',gaming:'Gaming'};
+    const names={multisport:'Multisport',foot:'Foot',actus:'Actus',gaming:'Gaming'};
     const description = document.createElement('p');description.textContent=(latest.universes || ['foot','actus','gaming']).map(name=>names[name]).filter(Boolean).join(', ')+' · programme enregistré, généré par IA';section.append(description);
     const youtube = latest.plateformes.youtube;
     if ((latest.edition_at || section.dataset.broadcastSingle==='true') && youtube && valid({plateformes:{youtube}})) {
@@ -47,3 +47,4 @@ document.querySelectorAll('[data-broadcast-feed]').forEach(async section => {
     section.hidden=false;
   } catch (_) { /* Conserver les JT habituels quand aucune diffusion longue n'est disponible. */ }
 });
+
