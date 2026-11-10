@@ -4,12 +4,13 @@
   const feeds = {
     foot: ['/articles.json'],
     multisport: ['/multisport/actualites.json'],
-    actus: ['/actus/news.json', '/belfort/actus.json'],
+    actus: ['/actus/news.json', '/belfort/actus.json', '/actus/regions-accueil.json'],
     gaming: ['/vm-gaming/news.json'],
     pastille: ['/studio/diffusions.json'],
   };
   const region = document.querySelector('#choix-region');
   const regionLink = document.querySelector('#lien-region');
+  const regionalList = document.querySelector('#titres-region');
   const belfortList = document.querySelector('#actus-belfort');
   const regionalSite = 'https://france3-regions.franceinfo.fr/';
   const sportsSources = /^(?:l['’]équipe|eurosport|bbc sport|ouest-france|dazn|le figaro|le monde(?:\.fr)?|franceinfo|france 24|sud ouest|rugbyrama|tennis actu|inside basket|f1 news|ski-nordique\.net)$/i;
@@ -18,6 +19,7 @@
   const dateFormat = new Intl.DateTimeFormat('fr-FR', {
     day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris',
   });
+  let regionalRows = snapshots.regions ?? {};
   let timer;
   let version = 0;
 
@@ -126,10 +128,12 @@
     regionLink.textContent = choice
       ? 'Voir les actualités de ' + region.selectedOptions[0].textContent
       : 'Voir les actualités régionales · France 3';
+    const rows = Array.isArray(regionalRows[choice]) ? regionalRows[choice] : [];
+    regionalList.hidden = !renderList(regionalList, rows);
     belfortList.hidden = choice !== 'bourgogne-franche-comte' || !belfortList.children.length;
   }
 
-  if (region && regionLink && belfortList) {
+  if (region && regionLink && regionalList && belfortList) {
     try { region.value = localStorage.getItem('vm-accueil-region') || ''; } catch {}
     if (region.selectedIndex < 0) region.selectedIndex = 0;
     updateRegion();
@@ -150,10 +154,13 @@
   async function refresh(panel, key, expectedVersion) {
     const status = panel.querySelector('.etat-rubrique');
     try {
-      const [main, local] = await Promise.allSettled(feeds[key].map(fetchFeed));
+      const [main, local, regions] = await Promise.allSettled(feeds[key].map(fetchFeed));
       if (!panel.open || version !== expectedVersion) return;
-      if (key === 'actus' && local?.status === 'fulfilled') {
-        renderList(belfortList, formatRegion(local.value));
+      if (key === 'actus') {
+        if (local?.status === 'fulfilled') renderList(belfortList, formatRegion(local.value));
+        if (regions?.status === 'fulfilled' && regions.value && typeof regions.value === 'object') {
+          regionalRows = regions.value;
+        }
         updateRegion();
       }
       if (main.status !== 'fulfilled') throw new Error('Flux indisponible');

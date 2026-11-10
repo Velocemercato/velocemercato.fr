@@ -59,6 +59,11 @@ jobs:
           echo "--- Papiers Sans Galère ---" >> actus/robot-log.txt
           python update_demarches.py 2>&1 | tee -a actus/robot-log.txt
 
+      - name: Actualiser les titres régionaux de l’accueil
+        if: always()
+        continue-on-error: true
+        run: python tools/accueil_regions.py
+
       - name: Validate JSON
         id: validate
         if: always()
@@ -69,7 +74,7 @@ jobs:
       - name: Save
         if: always() && steps.validate.outcome == 'success'
         run: |
-          git add actus/news.json actus/flash.json actus/robot-log.txt psg/news.json psg/flash.json actus/ignores.json psg/ignores.json $(ls actus/deja-publies.json psg/deja-publies.json 2>/dev/null)
+          git add actus/regions-accueil.json actus/news.json actus/flash.json actus/robot-log.txt psg/news.json psg/flash.json actus/ignores.json psg/ignores.json $(ls actus/deja-publies.json psg/deja-publies.json 2>/dev/null)
           if git diff --cached --quiet; then
             echo 'Rien de nouveau.'
           else

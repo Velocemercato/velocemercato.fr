@@ -604,6 +604,7 @@
       <h2 id="ma-region">Les actualités de ma région</h2>
       <label for="choix-region">Choisir ma région</label>
       <select id="choix-region"><option value="">Toutes les régions</option><option value="auvergne-rhone-alpes">Auvergne-Rhône-Alpes</option><option value="bourgogne-franche-comte">Bourgogne-Franche-Comté</option><option value="bretagne">Bretagne</option><option value="centre-val-de-loire">Centre-Val de Loire</option><option value="corse">Corse</option><option value="grand-est">Grand Est</option><option value="hauts-de-france">Hauts-de-France</option><option value="paris-ile-de-france">Île-de-France</option><option value="normandie">Normandie</option><option value="nouvelle-aquitaine">Nouvelle-Aquitaine</option><option value="occitanie">Occitanie</option><option value="pays-de-la-loire">Pays de la Loire</option><option value="provence-alpes-cote-d-azur">Provence-Alpes-Côte d’Azur</option><option value="outre-mer">Outre-mer</option></select>
+      <ul class="articles-rubrique" id="titres-region" hidden></ul>
       <p><a id="lien-region" href="https://france3-regions.franceinfo.fr/">Voir les actualités régionales · France 3</a></p>
       <p><a href="https://velocemercato.fr/belfort/">Belfort et alentours · VM Régions</a></p>
       <ul class="articles-rubrique" id="actus-belfort" hidden></ul>
@@ -1576,7 +1577,451 @@
       "url": "https://www.estrepublicain.fr/culture-loisirs/2026/11/09/la-menon-courtoise-organise-une-soiree-jeux-de-societe-samedi",
       "theme": "Belfort et alentours"
     }
-  ]
+  ],
+  "regions": {
+    "auvergne-rhone-alpes": [
+      {
+        "date": "Tue, 10 Nov 2026 18:57:24 +0100",
+        "source": "France 3",
+        "title": "Un salarié meurt après avoir été renversé par un poids lourd sur le chantier du futur centre d'exploitation des bus de Chambéry",
+        "url": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/savoie/chambery/un-salarie-meurt-apres-avoir-ete-renverse-par-un-poids-lourd-sur-le-chantier-du-futur-centre-d-exploitation-des-bus-de-chambery-3447639.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:21:20 +0100",
+        "source": "France 3",
+        "title": "\"On a entendu des tirs, on s'est mis à couvert, on a été chanceux\" : Des touristes ardéchois témoins de l'attentat de Cracovie",
+        "url": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/ardeche/on-a-entendu-des-tirs-on-s-est-mis-a-couvert-on-a-ete-chanceux-des-touristes-ardechois-temoins-de-l-attentat-de-cracovie-3447354.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:03:30 +0100",
+        "source": "France 3",
+        "title": "Travaux SNCF : aucun train entre Grenoble, Chambéry et Gap pendant deux jours, des autocars de substitution mis en place",
+        "url": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/isere/grenoble/travaux-sncf-aucun-train-entre-grenoble-chambery-et-gap-pendant-deux-jours-des-autocars-de-substitution-mis-en-place-3447573.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 17:50:15 +0100",
+        "source": "France 3",
+        "title": "Manifestation du 10 novembre : une nouvelle journée de mobilisation rassemble 1800 étudiants, lycéens et enseignants à Grenoble",
+        "url": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/isere/grenoble/manifestation-du-10-novembre-une-nouvelle-journee-de-mobilisation-rassemble-1800-etudiants-lyceens-et-enseignants-a-grenoble-3447654.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 17:49:46 +0100",
+        "source": "France 3",
+        "title": "\"On a l'impression que certains nageurs préparent les JO\" : comment préserver le bien-vivre ensemble à la piscine ?",
+        "url": "https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/puy-de-dome/clermont-ferrand/on-a-l-impression-que-certains-nageurs-preparent-les-jo-comment-preserver-le-bien-vivre-ensemble-a-la-piscine-3444093.html"
+      }
+    ],
+    "bourgogne-franche-comte": [
+      {
+        "date": "Tue, 10 Nov 2026 19:04:24 +0100",
+        "source": "France 3",
+        "title": "Manifestation du 10 novembre : 1100 personnes défilent dans le calme dans les rues de Besançon, la mobilisation baisse d'un cran",
+        "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/doubs/besancon/manifestation-du-10-novembre-1100-personnes-defilent-dans-le-calme-dans-les-rues-de-besancon-la-mobilisation-baisse-d-un-cran-3447507.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:33:10 +0100",
+        "source": "France 3",
+        "title": "Grande roue, traîneau sur le Doubs et budget multiplié par quatre : Besançon dévoile son nouveau marché de Noël",
+        "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/doubs/besancon/grande-roue-traineau-sur-le-doubs-et-budget-multiplie-par-quatre-besancon-devoile-son-nouveau-marche-de-noel-3447321.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 19:12:40 +0100",
+        "source": "France 3",
+        "title": "\"Plus on avance, plus c’est orange\" : après la sécheresse estivale, quel début de saison pour les producteurs de sapins de Noël ?",
+        "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/haute-saone/plus-on-avance-plus-c-est-orange-apres-la-secheresse-estivale-quel-debut-de-saison-pour-les-producteurs-de-sapins-de-noel-3447516.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:51:07 +0100",
+        "source": "France 3",
+        "title": "\"Ce que le gouvernement propose, ce sont des miettes\" : enseignants et étudiants maintiennent la pression à Dijon avant de nouvelles grèves",
+        "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/l-intersyndicale-de-l-education-nationale-maintient-la-pression-ce-mardi-a-dijon-3447423.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 17:47:57 +0100",
+        "source": "France 3",
+        "title": "Vitrine explosée, débris au sol : une boutique Orange attaquée à la voiture bélier à Saint-Claude dans le Jura",
+        "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/jura/vitrine-explosee-debris-au-sol-une-boutique-orange-attaquee-a-la-voiture-belier-a-saint-claude-dans-le-jura-3447585.html"
+      }
+    ],
+    "bretagne": [
+      {
+        "date": "Tue, 10 Nov 2026 19:07:01 +0100",
+        "source": "France 3",
+        "title": "Route du Rhum. \"On a vraiment envie d’aller au bout tous les deux\", les Pilliard déterminés malgré la collision du père et les avaries du fils",
+        "url": "https://france3-regions.franceinfo.fr/bretagne/morbihan/route-du-rhum-on-a-vraiment-envie-d-aller-au-bout-tous-les-deux-les-pilliard-determines-malgre-la-collision-du-pere-et-les-avaries-du-fils-3447528.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:47:06 +0100",
+        "source": "France 3",
+        "title": "REPLAY. Route du Rhum 2026. Arrivée record du premier IMOCA, bagarre chez les OCEAN FIFTY",
+        "url": "https://france3-regions.franceinfo.fr/bretagne/ille-et-vilaine/saint-malo/direct-route-du-rhum-2026-suivez-notre-emission-quotidienne-des-18h-3446925.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:15:50 +0100",
+        "source": "France 3",
+        "title": "\"On ne peut pas s'arrêter maintenant\" : lycéens et professeurs se mobilisent à Rennes, un nouvel appel à manifester déjà lancé",
+        "url": "https://france3-regions.franceinfo.fr/bretagne/ille-et-vilaine/rennes/on-ne-peut-pas-s-arreter-maintenant-lyceens-et-professeurs-se-mobilisent-a-rennes-un-nouvel-appel-a-manifester-deja-lance-3447525.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 17:52:57 +0100",
+        "source": "France 3",
+        "title": "Équipe de France : Eli Junior Kroupi appelé pour la première fois, nouveau signe que la Bretagne inspire Zidane",
+        "url": "https://france3-regions.franceinfo.fr/bretagne/morbihan/lorient/equipe-de-france-eli-junior-kroupi-appele-pour-la-premiere-fois-nouveau-signe-que-la-bretagne-inspire-zidane-3447594.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 17:35:35 +0100",
+        "source": "France 3",
+        "title": "Le retraité ivre qui voulait \"parler à quelqu'un\" vient \"sonner\" à la gendarmerie de cette petite ville",
+        "url": "https://france3-regions.franceinfo.fr/bretagne/ille-et-vilaine/rennes/avec-2-70-g-d-alcool-par-litre-de-sang-ce-retraite-voulait-parler-a-quelqu-un-il-sonne-a-la-gendarmerie-apres-avoir-bu-trois-bieres-en-ville-3447471.html"
+      }
+    ],
+    "centre-val-de-loire": [
+      {
+        "date": "Tue, 10 Nov 2026 18:23:56 +0100",
+        "source": "France 3",
+        "title": "Solange Alexandre, figure de la Résistance et cheffe de maquis, s'est éteinte à 104 ans",
+        "url": "https://france3-regions.franceinfo.fr/pays-de-la-loire/sarthe/le-mans/solange-alexandre-figure-de-la-resistance-et-cheffe-de-maquis-s-est-eteinte-a-104-ans-3447153.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:00:41 +0100",
+        "source": "France 3",
+        "title": "Clément Réauté, pâtissier du chef Christophe Hay, sacré Pâtissier de l'Année 2027",
+        "url": "https://france3-regions.franceinfo.fr/centre-val-de-loire/loir-cher/clement-reaute-patissier-du-chef-christophe-hay-sacre-patissier-de-l-annee-2027-3447243.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 17:01:45 +0100",
+        "source": "France 3",
+        "title": "\"C'est un sujet de priorisation\" : le président de la Région Centre-Val de Loire annonce des investissements pour la rénovation des lycées",
+        "url": "https://france3-regions.franceinfo.fr/centre-val-de-loire/loiret/orleans/c-est-un-sujet-de-priorisation-le-president-de-la-region-centre-val-de-loire-annonce-des-investissements-pour-la-renovation-des-lycees-3447519.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 16:39:17 +0100",
+        "source": "France 3",
+        "title": "\"Il ne faut pas relâcher la pression\". Grève dans l'Education nationale ce 10 novembre à Orléans",
+        "url": "https://france3-regions.franceinfo.fr/centre-val-de-loire/loiret/il-ne-faut-pas-relacher-la-pression-greve-dans-l-education-nationale-ce-10-novembre-a-orleans-3447279.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 15:55:18 +0100",
+        "source": "France 3",
+        "title": "\"Petite martyre de l'A10\" : la mère d'Inass Touloub avait-elle conscience de ses actes ? L'expert psychiatre divise la cour d'assises",
+        "url": "https://france3-regions.franceinfo.fr/centre-val-de-loire/loir-cher/blois/petite-martyre-de-l-a10-la-mere-d-inass-touloub-avait-elle-conscience-de-ses-actes-l-expert-psychiatre-divise-la-cour-d-assises-3446997.html"
+      }
+    ],
+    "corse": [
+      {
+        "date": "Tue, 10 Nov 2026 22:22:43 +0100",
+        "source": "France 3",
+        "title": "Assassinat d'Antoine Sollacaro : \"Je n'ai jamais amené de moto dans un garage, ça ne m'est jamais arrivé\", assure Michaël Ettori",
+        "url": "https://france3-regions.franceinfo.fr/corse/corse-du-sud/direct-assassinat-d-antoine-sollacaro-la-telephonie-occulte-de-la-bande-criminelle-du-petit-bar-expliquee-par-un-enqueteur-3447168.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 19:45:32 +0100",
+        "source": "France 3",
+        "title": "Tentative d'attentat contre une résidence secondaire à Porto-Vecchio",
+        "url": "https://france3-regions.franceinfo.fr/corse/corse-du-sud/porto-vecchio/tentative-d-attentat-contre-une-maison-a-porto-vecchio-3447624.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:37:14 +0100",
+        "source": "France 3",
+        "title": "Intempéries à Porto-Vecchio : entre émotion et reconstruction",
+        "url": "https://france3-regions.franceinfo.fr/corse/corse-du-sud/porto-vecchio/intemperies-a-porto-vecchio-entre-emotion-et-reconstruction-3447447.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 19:52:46 +0100",
+        "source": "France 3",
+        "title": "La RT 40 fermée à Bonifacio, en raison du risque de rupture d'une digue",
+        "url": "https://france3-regions.franceinfo.fr/corse/corse-du-sud/bonifacio/la-rt-40-fermee-a-bonifacio-en-raison-du-risque-de-rupture-d-une-digue-3447582.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 15:33:03 +0100",
+        "source": "France 3",
+        "title": "Yannick Cahuzac évincé du RC Lens",
+        "url": "https://france3-regions.franceinfo.fr/corse/yannick-cahuzac-evince-du-rc-lens-3447441.html"
+      }
+    ],
+    "grand-est": [
+      {
+        "date": "Tue, 10 Nov 2026 19:45:02 +0100",
+        "source": "France 3",
+        "title": "Manifestations du 10 novembre, quand les dessinateurs s'invitent dans le cortège : \"Ce sont des moments militants, pas seulement de belles images \"",
+        "url": "https://france3-regions.franceinfo.fr/grand-est/alsace/manifestations-du-10-novembre-quand-les-dessinateurs-s-invitent-dans-le-cortege-ce-sont-des-moments-militants-pas-seulement-de-belles-images-3447666.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 19:14:04 +0100",
+        "source": "France 3",
+        "title": "Un premier de marché de Noël pour la municipalité Trautmann : \"Oui, nous voulons que les touristes viennent à Strasbourg\"",
+        "url": "https://france3-regions.franceinfo.fr/grand-est/bas-rhin/un-premier-de-marche-de-noel-pour-la-municipalite-trautmann-oui-nous-voulons-que-les-touristes-viennent-a-strasbourg-3447615.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 20:18:22 +0100",
+        "source": "France 3",
+        "title": "\"Certains étudiants sont très inquiets et désemparés\", la présidente de l'Université de Strasbourg s'exprime sur les blocages du campus",
+        "url": "https://france3-regions.franceinfo.fr/grand-est/bas-rhin/strasbourg-0/certains-etudiants-sont-tres-inquiets-et-desempares-la-presidente-de-l-universite-de-strasbourg-s-exprime-sur-les-blocages-du-campus-3447705.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:40:56 +0100",
+        "source": "France 3",
+        "title": "Disparition inquiétante d'une adolescente âgée de 15 ans : la police lance un appel à témoins",
+        "url": "https://france3-regions.franceinfo.fr/grand-est/meurthe-et-moselle/nancy/disparition-inquietante-d-une-adolescente-agee-de-15-ans-la-police-lance-un-appel-a-temoins-3447675.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 17:55:49 +0100",
+        "source": "France 3",
+        "title": "Mort de Carlo Molinari : \"Carlo, passion président\", un documentaire pour retracer sa vie",
+        "url": "https://france3-regions.franceinfo.fr/grand-est/moselle/metz/mort-de-carlo-molinari-carlo-passion-president-un-documentaire-pour-retracer-sa-vie-3447486.html"
+      }
+    ],
+    "hauts-de-france": [
+      {
+        "date": "Tue, 10 Nov 2026 18:34:02 +0100",
+        "source": "France 3",
+        "title": "\"L'État est un mauvais patron\" : la colère des enseignants se joint à celle de leurs élèves ce 10 novembre",
+        "url": "https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/lille/l-etat-est-un-mauvais-patron-la-colere-des-enseignants-se-joint-a-celle-de-leurs-eleves-ce-10-novembre-3447567.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:13:57 +0100",
+        "source": "France 3",
+        "title": "\"Il faut qu'on fasse quelque chose pour Nicolas\" : une association propose d'adopter une vache pour aider un agriculteur après la perte de ses animaux",
+        "url": "https://france3-regions.franceinfo.fr/hauts-de-france/aisne/il-faut-qu-on-fasse-quelque-chose-pour-nicolas-une-association-propose-d-adopter-une-vache-pour-aider-un-agriculteur-apres-la-perte-de-ses-animaux-3447540.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 16:32:11 +0100",
+        "source": "France 3",
+        "title": "Moins de gardes et de meilleures protections en intervention, les pompiers du Nord mettent fin à la grève",
+        "url": "https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/lille/moins-de-gardes-et-de-meilleures-protections-en-interventions-les-pompiers-du-nord-mettent-fin-a-la-greve-3447264.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 17:15:51 +0100",
+        "source": "France 3",
+        "title": "Football : l'entraîneur du RC Lens Yannick Cahuzac limogé par la direction du club",
+        "url": "https://france3-regions.franceinfo.fr/hauts-de-france/pas-calais/lens/football-l-entraineur-du-rc-lens-yannick-cahuzac-aurait-ete-limoge-par-la-direction-du-club-3443739.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 12:17:29 +0100",
+        "source": "France 3",
+        "title": "Pillages des commerces à Lille : certaines boutiques pourront ouvrir le dimanche pour amortir leurs pertes financières",
+        "url": "https://france3-regions.franceinfo.fr/hauts-de-france/nord-0/lille/pillages-des-commerces-a-lille-certaines-boutiques-pourront-ouvrir-le-dimanche-pour-amortir-leurs-pertes-financieres-3447291.html"
+      }
+    ],
+    "normandie": [
+      {
+        "date": "Tue, 10 Nov 2026 19:14:57 +0100",
+        "source": "France 3",
+        "title": "Festival Beauregard 2027 : The Strokes, Placebo, Suzane... John dévoile ses 15 premiers noms !",
+        "url": "https://france3-regions.franceinfo.fr/normandie/festival-beauregard-2027-the-strokes-placebo-suzane-john-devoile-ses-15-premiers-noms-3447483.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:42:30 +0100",
+        "source": "France 3",
+        "title": "Grève du 10 novembre. \"La mobilisation ne faiblit pas, elle continue !\" Plusieurs centaines d'enseignants, d'étudiants et de lycéens défilent dans les rues de Rouen",
+        "url": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/greve-du-10-novembre-la-mobilisation-ne-faiblit-pas-elle-continue-plusieurs-centaines-d-enseignants-d-etudiants-et-de-lyceens-defilent-dans-les-rues-de-rouen-3447489.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:12:46 +0100",
+        "source": "France 3",
+        "title": "Un animateur périscolaire près de Rouen soupçonné de \"faits graves\" de voyeurisme sur des enfants",
+        "url": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/un-animateur-periscolaire-pres-de-rouen-soupconne-de-faits-graves-de-voyeurisme-sur-des-enfants-3447558.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:12:45 +0100",
+        "source": "France 3",
+        "title": "Coup de pouce au Smic : \"des miettes\" pour la CGT, \"une méthode dangereuse\" pour les patrons",
+        "url": "https://france3-regions.franceinfo.fr/normandie/seine-maritime/rouen/coup-de-pouce-au-smic-des-miettes-pour-la-cgt-une-methode-dangereuse-pour-les-patrons-3447408.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 17:06:06 +0100",
+        "source": "France 3",
+        "title": "MÉTÉO. Nuages nombreux sur toute la Normandie ce mercredi 11 novembre",
+        "url": "https://france3-regions.franceinfo.fr/normandie/meteo-nuages-nombreux-sur-toute-la-normandie-ce-mercredi-11-novembre-3447591.html"
+      }
+    ],
+    "nouvelle-aquitaine": [
+      {
+        "date": "Tue, 10 Nov 2026 19:46:54 +0100",
+        "source": "France 3",
+        "title": "\"Elle sait pertinemment qu'elle ment\" : quel rôle a joué la mère de Lyanna, morte à 16 mois de multiples traumatismes crâniens ?",
+        "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/correze/tulle/elle-sait-pertinemment-qu-elle-ment-quel-role-a-joue-la-mere-de-lyanna-morte-a-16-mois-de-multiples-traumatismes-craniens-3447651.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 19:34:32 +0100",
+        "source": "France 3",
+        "title": "\"C'est une première, ça pourrait faire jurisprudence\" : présence de gaz cancérogène dans l'eau potable, un syndicat des eaux condamné",
+        "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/correze/brive/c-est-une-premiere-ca-pourrait-faire-jurisprudence-presence-de-gaz-cancerogene-dans-l-eau-potable-un-syndicat-des-eaux-condamne-3447312.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:12:49 +0100",
+        "source": "France 3",
+        "title": "Manifestations du 10 novembre : déçus par les annonces pour l'Éducation, et face à une mobilisation en baisse, les syndicats réfléchissent à la suite du mouvement",
+        "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/manifestations-du-10-novembre-decus-par-les-annonces-pour-l-education-et-face-a-une-mobilisation-en-baisse-les-syndicats-reflechissent-a-la-suite-du-mouvement-3447210.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:11:55 +0100",
+        "source": "France 3",
+        "title": "Manifestations du 10 novembre : plusieurs centaines d'étudiants, lycéens et enseignants mobilisés à La Rochelle, Poitiers et Angoulême pour dénoncer \"une provocation de plus\"",
+        "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/vienne/poitiers/manifestations-du-10-novembre-plusieurs-centaines-d-etudiants-lyceens-et-enseignants-mobilises-a-la-rochelle-poitiers-et-angouleme-pour-denoncer-une-provocation-de-plus-3447282.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 17:50:54 +0100",
+        "source": "France 3",
+        "title": "Une véritable caverne aux trésors, 450 lots du XXe siècle vendus aux enchères à Saintes séduisent les amoureux d’objets rétro et d'automobiles",
+        "url": "https://france3-regions.franceinfo.fr/nouvelle-aquitaine/charente-maritime/saintes/une-veritable-caverne-aux-tresors-450-lots-du-xxe-siecle-vendus-aux-encheres-a-saintes-seduisent-les-amoureux-d-objets-retro-et-d-automobiles-3447549.html"
+      }
+    ],
+    "occitanie": [
+      {
+        "date": "Tue, 10 Nov 2026 19:01:05 +0100",
+        "source": "France 3",
+        "title": "Un cheval coincé sur le dos extrait d'un fossé : l'animal sauvé après trois heures d'une intervention hors norme des sapeurs-pompiers et spécialistes",
+        "url": "https://france3-regions.franceinfo.fr/occitanie/gard/ales/un-cheval-coince-sur-le-dos-extrait-d-un-fosse-l-anomal-sauve-apres-trois-heures-d-une-intervention-hors-norme-des-sapeurs-pompiers-et-specialistes-3447681.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:09:53 +0100",
+        "source": "France 3",
+        "title": "Toulouse-Melbourne : un Airbus A350 bat le record du monde du vol commercial le plus long en 24 heures",
+        "url": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/toulouse-melbourne-un-airbus-a350-bat-le-record-du-monde-du-vol-commercial-le-plus-long-en-24-heures-3447597.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 19:02:10 +0100",
+        "source": "France 3",
+        "title": "\"Nos enfants régressent !\" : excédés par l'absence d'enseignants réguliers, des parents d'élèves ont bloqué une école élémentaire",
+        "url": "https://france3-regions.franceinfo.fr/occitanie/gard/nimes/nos-enfants-regressent-excedes-par-l-absence-d-enseignants-reguliers-des-parents-d-eleves-ont-bloque-une-ecole-elementaire-3447480.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 17:50:31 +0100",
+        "source": "France 3",
+        "title": "Pour répondre à la forte demande de nouveaux avions, Airbus va construire une usine supplémentaire près de Toulouse",
+        "url": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/pour-repondre-a-la-forte-demande-de-nouveaux-avions-airbus-va-construire-une-usine-supplementaire-pres-de-toulouse-3447606.html"
+      },
+      {
+        "date": "Mon, 02 Nov 2026 10:16:43 +0100",
+        "source": "France 3",
+        "title": "Cinéma à Toulouse : 3 films à découvrir au Festival International du Film d’Environnement",
+        "url": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/cinema-a-toulouse-3-films-a-decouvrir-au-festival-international-du-film-d-environnement-3438117.html"
+      }
+    ],
+    "outre-mer": [
+      {
+        "date": "Sat, 19 Mar 2016 16:56:25 +0100",
+        "source": "franceinfo",
+        "title": "La chute du nickel en Nouvelle-Calédonie",
+        "url": "https://www.franceinfo.fr/replay-radio/le-journal-des-outre-mers/la-chute-du-nickel-en-nouvelle-caledonie_1778877.html#xtor=RSS-3-%5Bfrance%2Foutre-mer%5D"
+      },
+      {
+        "date": "Tue, 02 Feb 2016 21:03:23 +0100",
+        "source": "franceinfo",
+        "title": "La défiscalisation outre-mer est-elle vraiment utile ?",
+        "url": "https://www.franceinfo.fr/economie/impots/impots/la-defiscalisation-outre-mer-est-elle-vraiment-utile_1296667.html#xtor=RSS-3-%5Bfrance%2Foutre-mer%5D"
+      },
+      {
+        "date": "Thu, 07 May 2015 15:00:43 +0200",
+        "source": "franceinfo",
+        "title": "Les fonctionnaires dans les DOM-TOM ont-ils trop d'avantages ?",
+        "url": "https://www.franceinfo.fr/economie/les-fonctionnaires-dans-les-dom-tom-ont-ils-trop-d-avantages_896783.html#xtor=RSS-3-%5Bfrance%2Foutre-mer%5D"
+      },
+      {
+        "date": "Fri, 09 May 2014 23:31:34 +0200",
+        "source": "franceinfo",
+        "title": "Bientôt un nouvel aéroport aux îles Marquises?",
+        "url": "https://www.franceinfo.fr/replay-radio/le-journal-des-outre-mers/bientot-un-nouvel-aeroport-aux-iles-marquises_1755399.html#xtor=RSS-3-%5Bfrance%2Foutre-mer%5D"
+      }
+    ],
+    "paris-ile-de-france": [
+      {
+        "date": "Tue, 10 Nov 2026 20:54:19 +0100",
+        "source": "France 3",
+        "title": "\"Vos collègues m’ont traité de sale nègre et vous n’avez rien dit ! \" : Michel Zecler raconte à la barre son passage à tabac par des policiers",
+        "url": "https://france3-regions.franceinfo.fr/paris-ile-de-france/paris/vos-collegues-m-ont-traite-de-sale-negre-et-vous-n-avez-rien-dit-michel-zecler-raconte-a-la-barre-son-passage-a-tabac-par-des-policiers-3447669.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:08:00 +0100",
+        "source": "France 3",
+        "title": "Intervention de 34 policiers, grenade, coups de matraque... ce que révèlent les images de l'agression de Michel Zecler projetées au deuxième jour du procès des policiers",
+        "url": "https://france3-regions.franceinfo.fr/paris-ile-de-france/intervention-de-34-policiers-grenade-coups-de-matraque-ce-que-revele-les-images-de-l-agression-de-michel-zecler-projetee-au-deuxieme-jour-du-proces-des-policiers-3447465.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 17:14:08 +0100",
+        "source": "France 3",
+        "title": "\"Une défaite cinglante pour le gouvernement\" : un parcours interdit par la préfecture de police finalement autorisé par la justice",
+        "url": "https://france3-regions.franceinfo.fr/paris-ile-de-france/paris/une-defaite-cinglante-pour-le-gouvernement-un-parcours-interdit-par-la-prefecture-de-police-finalement-autorise-par-la-justice-3447504.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 15:29:12 +0100",
+        "source": "France 3",
+        "title": "Mortier d'artifice, jet de bouteille d'essence sur une élue, intervention de la police : des tensions éclatent devant un lycée de Chelles",
+        "url": "https://france3-regions.franceinfo.fr/paris-ile-de-france/seine-et-marne/mortier-d-artifice-jet-de-bouteille-d-essence-sur-une-elue-intervention-de-la-police-des-tensions-eclatent-devant-un-lycee-de-chelles-3447306.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 14:12:39 +0100",
+        "source": "France 3",
+        "title": "Mobilisation étudiante : une professeure de l'université Cergy-Paris, accusée d'avoir proféré des \"propos racistes\" a été suspendue",
+        "url": "https://france3-regions.franceinfo.fr/paris-ile-de-france/val-d-oise/mobilisation-etudiante-une-professeure-de-l-universite-cergy-paris-accusee-d-avoir-profere-des-propos-racistes-a-ete-suspendue-3447222.html"
+      }
+    ],
+    "pays-de-la-loire": [
+      {
+        "date": "Tue, 10 Nov 2026 19:09:13 +0100",
+        "source": "France 3",
+        "title": "Suspicion de violences sexuelles. L'agent du périscolaire dénoncé par des parents a été placé sous le statut de témoin assisté",
+        "url": "https://france3-regions.franceinfo.fr/pays-de-la-loire/maine-et-loire/angers/suspicion-de-violences-sexuelles-en-milieu-periscolaire-l-animateur-denonce-par-des-parents-a-ete-place-sous-le-statut-de-temoin-assiste-3447522.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:23:56 +0100",
+        "source": "France 3",
+        "title": "Solange Alexandre, figure de la Résistance et cheffe de maquis, s'est éteinte à 104 ans",
+        "url": "https://france3-regions.franceinfo.fr/pays-de-la-loire/sarthe/le-mans/solange-alexandre-figure-de-la-resistance-et-cheffe-de-maquis-s-est-eteinte-a-104-ans-3447153.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 16:37:02 +0100",
+        "source": "France 3",
+        "title": "\"C'est pas vivable au quotidien\". Salariés et assurés dénoncent deux ans de cauchemar avec le logiciel ARPEGE",
+        "url": "https://france3-regions.franceinfo.fr/pays-de-la-loire/loire-atlantique/nantes/c-est-pas-vivable-au-quotidien-salaries-et-assures-denoncent-deux-ans-de-cauchemar-avec-le-logiciel-arpege-3447396.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 15:07:36 +0100",
+        "source": "France 3",
+        "title": "\"C'est la décision la plus responsable et la plus protectrice\", l'association en charge de l'accueil périscolaire à Nantes placée en redressement judiciaire",
+        "url": "https://france3-regions.franceinfo.fr/pays-de-la-loire/loire-atlantique/nantes/c-est-la-decision-la-plus-responsable-et-la-plus-protectrice-l-association-en-charge-de-l-accueil-periscolaire-a-nantes-placee-en-redressement-judiciaire-3446988.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 14:48:10 +0100",
+        "source": "France 3",
+        "title": "\"On a les mêmes valeurs\", le groupe Xefi, nouveau sponsor de l'équipe cycliste de Jean-René Bernaudeau",
+        "url": "https://france3-regions.franceinfo.fr/pays-de-la-loire/vendee/la-roche-sur-yon/on-a-les-memes-valeurs-le-groupe-xefi-nouveau-sponsor-de-l-equipe-de-jean-rene-bernaudeau-3447384.html"
+      }
+    ],
+    "provence-alpes-cote-d-azur": [
+      {
+        "date": "Tue, 10 Nov 2026 18:47:29 +0100",
+        "source": "France 3",
+        "title": "On a suivi le saxophoniste star des manifestations à Nice : \"Ça fait du bien aux gens\"",
+        "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/nice/on-a-suivi-le-saxophoniste-star-des-manifestations-a-nice-ca-fait-du-bien-aux-gens-3447699.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:25:20 +0100",
+        "source": "France 3",
+        "title": "CARTE. Grasse, Nice, Cannes… Où s'installent les \"docteurs juniors\", ces médecins censés renforcer l'offre de soins dans les Alpes-Maritimes ?",
+        "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/nice/carte-grasse-nice-cannes-ou-vont-s-installer-les-docteurs-juniors-ces-medecins-censes-renforcer-l-offre-de-soins-dans-les-alpes-maritimes-3447633.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:12:28 +0100",
+        "source": "France 3",
+        "title": "\"Tout le monde nous reconnaît\": des VTC roses pour rassurer les femmes lors de leurs trajets à Marseille",
+        "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/bouches-du-rhone/marseille/tout-le-monde-nous-reconnait-des-vtc-roses-pour-rassurer-les-femmes-lors-de-leurs-trajets-a-marseille-3447564.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 18:10:45 +0100",
+        "source": "France 3",
+        "title": "\"On peut donner du temps\", les gilets orange de la banque alimentaire des Alpes-Maritimes manquent de bras et cherchent des bénévoles",
+        "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/nice/on-peut-donner-du-temps-les-gilets-orange-de-la-banque-alimentaire-des-alpes-maritimes-manquent-de-bras-et-cherchent-des-benevoles-3447315.html"
+      },
+      {
+        "date": "Tue, 10 Nov 2026 21:00:01 +0100",
+        "source": "France 3",
+        "title": "Teddy Riner en campagne : qui est son bras droit Philippe Veran, un proche d'Emmanuel Macron, soutien d'Edouard Philippe et entrepreneur \"ultralibéral\" de Salon-de-Provence",
+        "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/bouches-du-rhone/aix-en-provence/teddy-riner-en-campagne-qui-est-son-bras-droit-philippe-veran-un-proche-d-emmanuel-macron-soutien-d-edouard-philippe-entrepreneur-ultraliberal-de-salon-de-provence-3447240.html"
+      }
+    ]
+  }
 }
   </script>
   <script src="assets/accueil-rubriques.js"></script>
