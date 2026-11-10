@@ -34,7 +34,7 @@
       pointer-events: none;
     }
 
-    .zone-logo :is(rect, circle) {
+    .zone-logo a > :is(rect, circle) {
       fill: transparent;
       stroke: transparent;
       stroke-width: 2;
@@ -43,8 +43,8 @@
       cursor: pointer;
     }
 
-    .zone-logo a:hover :is(rect, circle),
-    .zone-logo a:focus-visible :is(rect, circle) {
+    .zone-logo a:hover > :is(rect, circle),
+    .zone-logo a:focus-visible > :is(rect, circle) {
       stroke: #ffd875;
     }
 
@@ -108,15 +108,6 @@
       .reseaux a { width: 41px; }
     }
 
-    .legende-globe {
-      fill: #fff2cf;
-      stroke: #160d07;
-      stroke-width: 2px;
-      paint-order: stroke fill;
-      font: 700 9px system-ui, sans-serif;
-      pointer-events: visiblePainted;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
@@ -131,8 +122,17 @@
         <rect x="320" y="221" width="66" height="55" rx="10"/>
       </a>
       <a href="https://velocemercato.fr/actus/" aria-label="VM Actus et Pronos — ouvrir VM Actus" tabindex="0">
+        <defs>
+          <clipPath id="visuel-globe-paysage">
+            <circle cx="601" cy="261" r="46"/>
+          </clipPath>
+        </defs>
+        <g clip-path="url(#visuel-globe-paysage)" pointer-events="none" aria-hidden="true">
+          <svg x="555" y="215" width="92" height="92" viewBox="180 0 1180 1180">
+            <image href="img/vm-actus-pronos-globe.webp" width="1536" height="1536"/>
+          </svg>
+        </g>
         <circle cx="601" cy="261" r="54"/>
-        <text class="legende-globe" x="601" y="328" text-anchor="middle" aria-hidden="true">VM Actus et Pronos</text>
       </a>
     </svg>
     <svg class="zone-logo zone-logo--portrait" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
@@ -140,8 +140,17 @@
         <rect x="158" y="374" width="52" height="48" rx="9"/>
       </a>
       <a href="https://velocemercato.fr/actus/" aria-label="VM Actus et Pronos — ouvrir VM Actus" tabindex="0">
+        <defs>
+          <clipPath id="visuel-globe-portrait">
+            <circle cx="299" cy="390" r="24"/>
+          </clipPath>
+        </defs>
+        <g clip-path="url(#visuel-globe-portrait)" pointer-events="none" aria-hidden="true">
+          <svg x="275" y="366" width="48" height="48" viewBox="180 0 1180 1180">
+            <image href="img/vm-actus-pronos-globe.webp" width="1536" height="1536"/>
+          </svg>
+        </g>
         <circle cx="304" cy="390" r="33"/>
-        <text class="legende-globe" x="313" y="441" text-anchor="end" aria-hidden="true">VM Actus et Pronos</text>
       </a>
     </svg>
     <nav class="reseaux" aria-label="Réseaux sociaux Véloce Mercato">
