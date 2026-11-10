@@ -61,6 +61,52 @@
         display: block;
       }
     }
+
+    .reseaux {
+      position: absolute;
+      z-index: 1;
+      left: 50%;
+      bottom: max(14px, env(safe-area-inset-bottom));
+      transform: translateX(-50%);
+      box-sizing: border-box;
+      width: max-content;
+      max-width: calc(100% - 12px);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2px;
+      padding: 4px;
+      border: 1px solid #d7ab6477;
+      border-radius: 22px;
+      background: #100b09e8;
+      box-shadow: 0 6px 24px #0008;
+    }
+
+    .reseaux a {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 17px;
+      color: var(--logo-color);
+    }
+
+    .reseaux a:hover,
+    .reseaux a:focus-visible {
+      background: #ffffff1f;
+      outline: 2px solid #ffd875;
+      outline-offset: -2px;
+    }
+
+    .reseaux svg {
+      width: 23px;
+      height: 23px;
+    }
+
+    @media (max-width: 340px) {
+      .reseaux { gap: 0; }
+      .reseaux a { width: 41px; }
+    }
   </style>
 </head>
 <body>
@@ -86,6 +132,29 @@
         <circle cx="304" cy="390" r="33"/>
       </a>
     </svg>
+    <nav class="reseaux" aria-label="Réseaux sociaux Véloce Mercato">
+      <a href="https://www.facebook.com/velocemercato.fr" target="_blank" rel="noopener noreferrer" aria-label="Facebook Véloce Mercato" title="Facebook" style="--logo-color: #72aaff">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M14 22v-8h3l.5-4H14V8c0-1.2.4-2 2-2h2V2.3A26 26 0 0 0 15 2c-3 0-5 1.8-5 5v3H7v4h3v8z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/veloce.mercato" target="_blank" rel="noopener noreferrer" aria-label="Instagram Véloce Mercato" title="Instagram" style="--logo-color: #ff91b8">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@velocemercato" target="_blank" rel="noopener noreferrer" aria-label="TikTok Véloce Mercato" title="TikTok" style="--logo-color: #baf9f4">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M15 2h3c.2 2.5 1.6 4 4 4.4v3.2c-2.5 0-4.6-.9-6.5-2.5V16a7 7 0 1 1-7-7v3.4a3.6 3.6 0 1 0 3.6 3.6V2H15z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@VeloceMercato" target="_blank" rel="noopener noreferrer" aria-label="YouTube Véloce Mercato" title="YouTube" style="--logo-color: #ff7670">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor"/><path d="m10 9 6 3-6 3z" fill="#070910"/></svg>
+      </a>
+      <a href="https://www.snapchat.com/add/velocemercato" target="_blank" rel="noopener noreferrer" aria-label="Snapchat Véloce Mercato" title="Snapchat" style="--logo-color: #ffed6b">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-3.1 0-4.8 2.3-4.8 5.2v2.2c0 1-1.1 1.1-2.2.7-1.2-.4-1.9.6-.7 1.2 1.9.9 2.4 1.3 1.7 2.3-.7 1-1.8 1.5-3 2-.8.3-.7 1.1.1 1.3 1 .3 2.2.3 2.5 1.2.3.7 1.2.3 2.2.4 1.5.1 2.2 1.5 4.2 1.5s2.7-1.4 4.2-1.5c1-.1 1.9.3 2.2-.4.3-.9 1.5-.9 2.5-1.2.8-.2.9-1 .1-1.3-1.2-.5-2.3-1-3-2-.7-1-.2-1.4 1.7-2.3 1.2-.6.5-1.6-.7-1.2-1.1.4-2.2.3-2.2-.7V8.2C16.8 5.3 15.1 3 12 3Z"/></svg>
+      </a>
+      <a href="https://discord.gg/JEgfrUtJaX" target="_blank" rel="noopener noreferrer" aria-label="Discord Véloce Mercato" title="Discord" style="--logo-color: #a8abff">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.3 5.3A16.5 16.5 0 0 0 15.2 4l-.5 1a15 15 0 0 0-5.4 0l-.5-1a16.5 16.5 0 0 0-4.1 1.3C2.1 9.2 1.4 13 1.8 16.7a16.6 16.6 0 0 0 5 2.5l1.1-1.7a10.7 10.7 0 0 1-1.7-.8l.4-.3a11.8 11.8 0 0 0 10.8 0l.4.3-1.7.8 1.1 1.7a16.5 16.5 0 0 0 5-2.5c.5-4.3-.7-8.1-2.9-11.4zM8.5 14.4c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm7 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/></svg>
+      </a>
+      <a href="https://www.twitch.tv/velocemercato" target="_blank" rel="noopener noreferrer" aria-label="Twitch Véloce Mercato" title="Twitch" style="--logo-color: #c29aff">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.3 2 2.6 6.3v15.1h5.2V24h2.9l2.8-2.6h4.2L23.4 16V2H4.3zm17.1 13-3.2 3.2h-5.2l-2.8 2.6v-2.6H5.9V3.9h15.5V15zm-3.2-6.6v5.7h-1.9V8.4h1.9zm-5.2 0v5.7h-1.9V8.4H13z"/></svg>
+      </a>
+    </nav>
   </main>
 </body>
 </html>
