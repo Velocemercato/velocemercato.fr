@@ -173,6 +173,17 @@
       outline: 2px solid #ffd875;
       outline-offset: 2px;
     }
+
+    .zone-logo .acces-cadre {
+      pointer-events: all;
+      cursor: pointer;
+    }
+
+    .acces-cadre:hover .cadre-bord,
+    .acces-cadre:focus-visible .cadre-bord {
+      stroke: #fff1bd;
+      stroke-width: 2.5;
+    }
   </style>
 </head>
 <body>
@@ -183,6 +194,105 @@
         alt="Bureau aux lumières dorées, avec des trophées, un globe et une vue sur la tour Eiffel au coucher du soleil. L’enseigne Véloce Mercato domine le décor.">
     </picture>
     <svg class="zone-logo zone-logo--paysage" viewBox="0 0 720 405" preserveAspectRatio="xMidYMid slice">
+      <defs data-cadres="large">
+        <clipPath id="cadre-large"><rect x="1" y="1" width="80" height="41" rx="6"/></clipPath>
+        <linearGradient id="ombre-cadre-large" x1="0" x2="0" y1="0" y2="1" gradientUnits="objectBoundingBox">
+          <stop offset="0" stop-color="#090c17" stop-opacity=".13"/>
+          <stop offset=".4" stop-color="#090c17" stop-opacity=".25"/>
+          <stop offset=".76" stop-color="#090c17" stop-opacity=".83"/>
+          <stop offset="1" stop-color="#090c17" stop-opacity=".98"/>
+        </linearGradient>
+      </defs>
+      <a class="acces-cadre" data-cadre="large" href="https://velocemercato.fr/#actualites-du-jour" aria-label="VM Foot" tabindex="0">
+        <svg x="40" y="96" width="90" height="47" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
+          <g clip-path="url(#cadre-large)">
+            <svg width="82" height="43" viewBox="0 0 360 180" preserveAspectRatio="xMidYMid slice">
+              <image href="img/cadres-vm.webp" width="360" height="1080"/>
+            </svg>
+            <rect width="82" height="43" fill="url(#ombre-cadre-large)"/>
+            <path d="M0 38 21 29M63 6 82 0" fill="none" stroke="#ff504f" opacity=".8"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#ff504f" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#ff504f" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">FOOT</text>
+        </svg>
+      </a>
+      <a class="acces-cadre" data-cadre="large" href="https://velocemercato.fr/multisport/" aria-label="VM Multisport" tabindex="0">
+        <svg x="40" y="153" width="90" height="47" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
+          <g clip-path="url(#cadre-large)">
+            <svg width="82" height="43" viewBox="0 180 360 180" preserveAspectRatio="xMidYMid slice">
+              <image href="img/cadres-vm.webp" width="360" height="1080"/>
+            </svg>
+            <rect width="82" height="43" fill="url(#ombre-cadre-large)"/>
+            <path d="M0 38 21 29M63 6 82 0" fill="none" stroke="#ffc85a" opacity=".8"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#ffc85a" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#ffc85a" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">MULTISPORT</text>
+        </svg>
+      </a>
+      <a class="acces-cadre" data-cadre="large" href="https://velocemercato.fr/actus/" aria-label="VM Actus" tabindex="0">
+        <svg x="40" y="210" width="90" height="47" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
+          <g clip-path="url(#cadre-large)">
+            <svg width="82" height="43" viewBox="0 360 360 180" preserveAspectRatio="xMidYMid slice">
+              <image href="img/cadres-vm.webp" width="360" height="1080"/>
+            </svg>
+            <rect width="82" height="43" fill="url(#ombre-cadre-large)"/>
+            <path d="M0 38 21 29M63 6 82 0" fill="none" stroke="#68caff" opacity=".8"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#68caff" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#68caff" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">ACTUS</text>
+        </svg>
+      </a>
+      <a class="acces-cadre" data-cadre="large" href="https://velocemercato.fr/mangas/" aria-label="VM Manga et Séries" tabindex="0">
+        <svg x="630" y="38" width="52" height="34" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
+          <g clip-path="url(#cadre-large)">
+            <svg width="82" height="43" viewBox="0 540 360 180" preserveAspectRatio="xMidYMid slice">
+              <image href="img/cadres-vm.webp" width="360" height="1080"/>
+            </svg>
+            <rect width="82" height="43" fill="url(#ombre-cadre-large)"/>
+            <path d="M0 38 21 29M63 6 82 0" fill="none" stroke="#c28cff" opacity=".8"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#c28cff" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#c28cff" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="6.8" font-weight="bold">MANGA &amp; SÉRIES</text>
+        </svg>
+      </a>
+      <a class="acces-cadre" data-cadre="large" href="https://velocemercato.fr/web-studio.html" aria-label="VM Studio" tabindex="0">
+        <svg x="630" y="73" width="52" height="34" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
+          <g clip-path="url(#cadre-large)">
+            <svg width="82" height="43" viewBox="0 720 360 180" preserveAspectRatio="xMidYMid slice">
+              <image href="img/cadres-vm.webp" width="360" height="1080"/>
+            </svg>
+            <rect width="82" height="43" fill="url(#ombre-cadre-large)"/>
+            <path d="M0 38 21 29M63 6 82 0" fill="none" stroke="#ffd181" opacity=".8"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#ffd181" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#ffd181" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">STUDIO</text>
+        </svg>
+      </a>
+      <a class="acces-cadre" data-cadre="large" href="https://velocemercato.fr/studio.html#tv" aria-label="VM Pastille" tabindex="0">
+        <svg x="630" y="183" width="52" height="34" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
+          <g clip-path="url(#cadre-large)">
+            <svg width="82" height="43" viewBox="0 900 360 180" preserveAspectRatio="xMidYMid slice">
+              <image href="img/cadres-vm.webp" width="360" height="1080"/>
+            </svg>
+            <rect width="82" height="43" fill="url(#ombre-cadre-large)"/>
+            <path d="M0 38 21 29M63 6 82 0" fill="none" stroke="#f7659a" opacity=".8"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#f7659a" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#f7659a" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">PASTILLE</text>
+        </svg>
+      </a>
+      <a class="acces-cadre" data-cadre="large" href="https://vmunivers.fr/" aria-label="VM Univers, ouvrir le site vitrine" tabindex="0">
+        <svg x="47" y="364" width="91" height="26" viewBox="0 0 86 25" aria-hidden="true">
+          <rect class="cadre-bord" x="1" y="1" width="84" height="23" rx="8" fill="#1c100c" fill-opacity=".9" stroke="#e9b969" stroke-width="1.3"/>
+          <text x="43" y="16" text-anchor="middle" fill="#ffe5ac" font-family="DejaVu Sans, sans-serif" font-size="9" font-weight="bold">VM UNIVERS ›</text>
+        </svg>
+      </a>
       <foreignObject class="zone-enseigne" x="540" y="108" width="132" height="74">
         <button xmlns="http://www.w3.org/1999/xhtml" class="ouvrir-veloce" type="button"
           aria-label="Ouvrir Véloce Mercato" aria-haspopup="dialog" aria-controls="espace-veloce"></button>
@@ -205,6 +315,105 @@
       </a>
     </svg>
     <svg class="zone-logo zone-logo--portrait" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
+      <defs data-cadres="mobile">
+        <clipPath id="cadre-mobile"><rect x="1" y="1" width="80" height="41" rx="6"/></clipPath>
+        <linearGradient id="ombre-cadre-mobile" x1="0" x2="0" y1="0" y2="1" gradientUnits="objectBoundingBox">
+          <stop offset="0" stop-color="#090c17" stop-opacity=".13"/>
+          <stop offset=".4" stop-color="#090c17" stop-opacity=".25"/>
+          <stop offset=".76" stop-color="#090c17" stop-opacity=".83"/>
+          <stop offset="1" stop-color="#090c17" stop-opacity=".98"/>
+        </linearGradient>
+      </defs>
+      <a class="acces-cadre" data-cadre="mobile" href="https://velocemercato.fr/#actualites-du-jour" aria-label="VM Foot" tabindex="0">
+        <svg x="37" y="213" width="81" height="43" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
+          <g clip-path="url(#cadre-mobile)">
+            <svg width="82" height="43" viewBox="0 0 360 180" preserveAspectRatio="xMidYMid slice">
+              <image href="img/cadres-vm.webp" width="360" height="1080"/>
+            </svg>
+            <rect width="82" height="43" fill="url(#ombre-cadre-mobile)"/>
+            <path d="M0 38 21 29M63 6 82 0" fill="none" stroke="#ff504f" opacity=".8"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#ff504f" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#ff504f" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">FOOT</text>
+        </svg>
+      </a>
+      <a class="acces-cadre" data-cadre="mobile" href="https://velocemercato.fr/multisport/" aria-label="VM Multisport" tabindex="0">
+        <svg x="37" y="264" width="81" height="43" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
+          <g clip-path="url(#cadre-mobile)">
+            <svg width="82" height="43" viewBox="0 180 360 180" preserveAspectRatio="xMidYMid slice">
+              <image href="img/cadres-vm.webp" width="360" height="1080"/>
+            </svg>
+            <rect width="82" height="43" fill="url(#ombre-cadre-mobile)"/>
+            <path d="M0 38 21 29M63 6 82 0" fill="none" stroke="#ffc85a" opacity=".8"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#ffc85a" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#ffc85a" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">MULTISPORT</text>
+        </svg>
+      </a>
+      <a class="acces-cadre" data-cadre="mobile" href="https://velocemercato.fr/actus/" aria-label="VM Actus" tabindex="0">
+        <svg x="37" y="315" width="81" height="43" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
+          <g clip-path="url(#cadre-mobile)">
+            <svg width="82" height="43" viewBox="0 360 360 180" preserveAspectRatio="xMidYMid slice">
+              <image href="img/cadres-vm.webp" width="360" height="1080"/>
+            </svg>
+            <rect width="82" height="43" fill="url(#ombre-cadre-mobile)"/>
+            <path d="M0 38 21 29M63 6 82 0" fill="none" stroke="#68caff" opacity=".8"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#68caff" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#68caff" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">ACTUS</text>
+        </svg>
+      </a>
+      <a class="acces-cadre" data-cadre="mobile" href="https://velocemercato.fr/mangas/" aria-label="VM Manga et Séries" tabindex="0">
+        <svg x="242" y="213" width="80" height="43" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
+          <g clip-path="url(#cadre-mobile)">
+            <svg width="82" height="43" viewBox="0 540 360 180" preserveAspectRatio="xMidYMid slice">
+              <image href="img/cadres-vm.webp" width="360" height="1080"/>
+            </svg>
+            <rect width="82" height="43" fill="url(#ombre-cadre-mobile)"/>
+            <path d="M0 38 21 29M63 6 82 0" fill="none" stroke="#c28cff" opacity=".8"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#c28cff" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#c28cff" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="6.8" font-weight="bold">MANGA &amp; SÉRIES</text>
+        </svg>
+      </a>
+      <a class="acces-cadre" data-cadre="mobile" href="https://velocemercato.fr/web-studio.html" aria-label="VM Studio" tabindex="0">
+        <svg x="242" y="264" width="80" height="43" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
+          <g clip-path="url(#cadre-mobile)">
+            <svg width="82" height="43" viewBox="0 720 360 180" preserveAspectRatio="xMidYMid slice">
+              <image href="img/cadres-vm.webp" width="360" height="1080"/>
+            </svg>
+            <rect width="82" height="43" fill="url(#ombre-cadre-mobile)"/>
+            <path d="M0 38 21 29M63 6 82 0" fill="none" stroke="#ffd181" opacity=".8"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#ffd181" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#ffd181" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">STUDIO</text>
+        </svg>
+      </a>
+      <a class="acces-cadre" data-cadre="mobile" href="https://velocemercato.fr/studio.html#tv" aria-label="VM Pastille" tabindex="0">
+        <svg x="242" y="315" width="80" height="43" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
+          <g clip-path="url(#cadre-mobile)">
+            <svg width="82" height="43" viewBox="0 900 360 180" preserveAspectRatio="xMidYMid slice">
+              <image href="img/cadres-vm.webp" width="360" height="1080"/>
+            </svg>
+            <rect width="82" height="43" fill="url(#ombre-cadre-mobile)"/>
+            <path d="M0 38 21 29M63 6 82 0" fill="none" stroke="#f7659a" opacity=".8"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#f7659a" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#f7659a" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">PASTILLE</text>
+        </svg>
+      </a>
+      <a class="acces-cadre" data-cadre="mobile" href="https://vmunivers.fr/" aria-label="VM Univers, ouvrir le site vitrine" tabindex="0">
+        <svg x="38" y="496" width="86" height="25" viewBox="0 0 86 25" aria-hidden="true">
+          <rect class="cadre-bord" x="1" y="1" width="84" height="23" rx="8" fill="#1c100c" fill-opacity=".9" stroke="#e9b969" stroke-width="1.3"/>
+          <text x="43" y="16" text-anchor="middle" fill="#ffe5ac" font-family="DejaVu Sans, sans-serif" font-size="9" font-weight="bold">VM UNIVERS ›</text>
+        </svg>
+      </a>
       <foreignObject class="zone-enseigne" x="60" y="110" width="244" height="52">
         <button xmlns="http://www.w3.org/1999/xhtml" class="ouvrir-veloce" type="button"
           aria-label="Ouvrir Véloce Mercato" aria-haspopup="dialog" aria-controls="espace-veloce"></button>
