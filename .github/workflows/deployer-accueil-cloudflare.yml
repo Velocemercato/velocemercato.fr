@@ -1,0 +1,43 @@
+name: Publier le nouvel accueil Véloce Mercato sur Cloudflare
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/deployer-accueil-cloudflare.yml']
+permissions:
+  contents: read
+concurrency:
+  group: velocemercato-cloudflare-restoration
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Vérifier le domaine et déployer si nécessaire
+        shell: bash
+        run: |
+          set -euo pipefail
+          if curl -fsSL --max-time 15 -H 'Cache-Control: no-cache' "https://velocemercato.fr/?vm-release=$GITHUB_SHA" -o "$RUNNER_TEMP/veloce-public.html" &&
+             grep -q 'id="titres-region"' "$RUNNER_TEMP/veloce-public.html"; then
+            echo 'La nouvelle version est déjà sur le domaine public.'
+            exit 0
+          fi
+          if [[ -z "$CLOUDFLARE_API_TOKEN" || -z "$CLOUDFLARE_ACCOUNT_ID" ]]; then
+            echo "::error::Les identifiants de déploiement Cloudflare ne sont pas configurés dans GitHub."
+            exit 1
+          fi
+          grep -q 'id="titres-region"' index.html
+          test -s actus/regions-accueil.json
+          mkdir "$RUNNER_TEMP/velocemercato-site"
+          git archive HEAD | tar -x -C "$RUNNER_TEMP/velocemercato-site"
+          npx --yes wrangler@4 pages deploy "$RUNNER_TEMP/velocemercato-site" --project-name velocemercato --branch main --commit-hash "$GITHUB_SHA"
