@@ -12,7 +12,7 @@ on:
         type: boolean
         default: false
   schedule:
-    - cron: '15,45 * * * *'   # décalé du robot foot (0 et 30) pour éviter qu'ils publient en même temps
+    - cron: '6-59/10 * * * *'
 
 permissions:
   contents: write

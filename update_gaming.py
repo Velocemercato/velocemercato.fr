@@ -20,6 +20,7 @@ robot.MAX_AGE_HOURS = 48
 
 # (zone, jeu par défaut, média, flux) — les flux muets ou disparus sont simplement ignorés et notés dans le journal.
 robot.FEEDS = [
+    ('GAMING', 'GAMING', 'Eurogamer', 'https://www.eurogamer.net/feed/news'),
     ('GAMING', 'GAMING', 'Jeuxvideo.com', 'https://www.jeuxvideo.com/rss/rss.xml'),
     ('GAMING', 'GAMING', 'Gamekult', 'https://www.gamekult.com/feed.xml'),
     ('GAMING', 'GAMING', 'Dexerto', 'https://www.dexerto.fr/feed/'),
@@ -31,6 +32,7 @@ robot.FEEDS = [
     ('GAMING', 'GAMING', 'Les Numériques', 'https://www.lesnumeriques.com/rss.xml'),
 ]
 robot.ALLOWED_HOSTS = {
+    'eurogamer.net',
     'jeuxvideo.com', 'gamekult.com', 'dexerto.fr', 'jvfrance.com', 'gamergen.com',
     'next.ink', 'tomshardware.fr', 'lesnumeriques.com',
 }
@@ -72,7 +74,7 @@ def summarize_gaming(post, material):
         'mises à jour, saisons, événements, sorties, annonces officielles. '
         'N’invente RIEN (date, prix, contenu, chiffre). Chaque date citée doit dire clairement à quoi elle se rapporte (sortie du jeu, d’une bande-annonce, d’une mise à jour) ; en cas de doute, ne cite pas la date. Une rumeur ou une fuite reste au conditionnel, et si l’article '
         'ne repose que sur une fuite, une promo, un concours ou un test d’un autre jeu, réponds uniquement {"ignorer": true}. '
-        'Style simple et direct, tutoiement interdit, pas de sensationnalisme. '
+        'Écris le titre, le résumé et le texte en français, y compris si la source est étrangère. Style simple et direct, sans sensationnalisme. '
         'Format strictement JSON (sans markdown) avec les clés titre, resume, texte, categorie, championnat, officiel. '
         'championnat : WARZONE, REDSEC (toute la série Battlefield), FC (EA SPORTS FC), GTA, ou GAMING pour tous les autres jeux. '
         'categorie : ACTUALITES. officiel : true seulement si l’éditeur l’a annoncé officiellement. '
