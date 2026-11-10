@@ -184,6 +184,33 @@
       stroke: #fff1bd;
       stroke-width: 2.5;
     }
+
+    .banniere-argent {
+      position: absolute;
+      z-index: 1;
+      left: 50%;
+      bottom: calc(max(14px, env(safe-area-inset-bottom)) + 64px);
+      transform: translateX(-50%);
+      box-sizing: border-box;
+      width: min(322px, calc(100% - 16px));
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      border: 1px solid #e5ad66;
+      border-radius: 15px;
+      background: linear-gradient(100deg, #2a1013, #651f26 52%, #2a1013);
+      box-shadow: 0 3px 14px #0009;
+      color: #fff1d3;
+      font: 800 .82rem system-ui, sans-serif;
+      letter-spacing: .09em;
+    }
+
+    .banniere-argent svg {
+      width: 24px;
+      height: 24px;
+    }
   </style>
 </head>
 <body>
@@ -316,6 +343,10 @@
     </svg>
     <svg class="zone-logo zone-logo--portrait" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
       <defs data-cadres="mobile">
+          <pattern id="fil-pouf" patternUnits="userSpaceOnUse" width="2" height="2">
+            <rect width="2" height="2" fill="#d7a75c"/>
+            <path d="M-1 2 1 0M1 2 3 0" stroke="#fff0bb" stroke-width=".45"/>
+          </pattern>
         <clipPath id="cadre-mobile"><rect x="1" y="1" width="80" height="41" rx="6"/></clipPath>
         <linearGradient id="ombre-cadre-mobile" x1="0" x2="0" y1="0" y2="1" gradientUnits="objectBoundingBox">
           <stop offset="0" stop-color="#090c17" stop-opacity=".13"/>
@@ -411,7 +442,7 @@
       <a class="acces-cadre" data-cadre="mobile" href="https://vmunivers.fr/" aria-label="VM Univers, ouvrir le site vitrine" tabindex="0">
         <svg x="139" y="503" width="76" height="23" viewBox="0 0 86 25" aria-hidden="true">
           <rect class="cadre-bord" x="1" y="1" width="84" height="23" rx="8" fill="none" stroke="none" stroke-width="1.3" pointer-events="all"/>
-          <text x="43" y="16" text-anchor="middle" fill="#f7d995" stroke="#100b09" stroke-width=".9" paint-order="stroke fill" font-family="DejaVu Sans, sans-serif" font-size="10" font-weight="bold">VMunivers.fr</text>
+          <text x="43" y="16" text-anchor="middle" fill="url(#fil-pouf)" stroke="#100b09" stroke-width=".65" paint-order="stroke fill" font-family="DejaVu Sans, sans-serif" font-size="10" font-weight="bold">VMunivers.fr</text>
         </svg>
       </a>
       <foreignObject class="zone-enseigne" x="60" y="110" width="244" height="52">
@@ -435,6 +466,13 @@
         <circle cx="304" cy="390" r="33"/>
       </a>
     </svg>
+    <aside class="banniere-argent" aria-label="Le jeux d’argent, réservé aux 18 ans et plus">
+      <span aria-hidden="true">LE JEUX D’ARGENT</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" fill="#fff1d3" stroke="#f36b69" stroke-width="2"/>
+        <text x="12" y="15" text-anchor="middle" fill="#671f26" font-family="sans-serif" font-size="8" font-weight="bold">18+</text>
+      </svg>
+    </aside>
     <nav class="reseaux" aria-label="Réseaux sociaux Véloce Mercato">
       <a href="https://www.facebook.com/velocemercato.fr" target="_blank" rel="noopener noreferrer" aria-label="Facebook Véloce Mercato" title="Facebook" style="--logo-color: #72aaff">
         <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M14 22v-8h3l.5-4H14V8c0-1.2.4-2 2-2h2V2.3A26 26 0 0 0 15 2c-3 0-5 1.8-5 5v3H7v4h3v8z"/></svg>
