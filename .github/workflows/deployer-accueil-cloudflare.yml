@@ -1,8 +1,7 @@
 name: Publier Véloce Mercato sur Cloudflare
 # Le domaine velocemercato.fr est servi par le projet Cloudflare Pages « velocemercato ».
 # Toutes les 20 minutes, ce robot compare la version en ligne (version.txt) à main
-# et publie seulement si le site a changé. Sans les secrets Cloudflare, il ne fait rien
-# (avertissement, pas d'échec).
+# et publie seulement si le site a changé. Les accès manquants sont signalés en erreur.
 on:
   workflow_dispatch:
   schedule:
@@ -36,8 +35,8 @@ jobs:
             echo 'Le domaine affiche déjà cette version.'
             echo "deployer=non" >> "$GITHUB_OUTPUT"
           elif [[ -z "$CLOUDFLARE_API_TOKEN" || -z "$CLOUDFLARE_ACCOUNT_ID" ]]; then
-            echo "::warning::Secrets CLOUDFLARE_API_TOKEN et CLOUDFLARE_ACCOUNT_ID absents : publication impossible (voir docs/PASSATION_VM_2026-11-10.md)."
-            echo "deployer=non" >> "$GITHUB_OUTPUT"
+            echo "::error::Secrets CLOUDFLARE_API_TOKEN et CLOUDFLARE_ACCOUNT_ID absents : publication impossible (voir docs/PASSATION_VM_2026-11-10.md)."
+            exit 1
           else
             echo "deployer=oui" >> "$GITHUB_OUTPUT"
           fi
