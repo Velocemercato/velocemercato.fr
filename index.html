@@ -108,6 +108,71 @@
       .reseaux a { width: 41px; }
     }
 
+
+    .zone-enseigne {
+      pointer-events: all;
+    }
+
+    .ouvrir-veloce {
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .ouvrir-veloce:hover,
+    .ouvrir-veloce:focus-visible {
+      border-color: #ffd875;
+      outline: none;
+    }
+
+    #espace-veloce {
+      box-sizing: border-box;
+      width: min(420px, calc(100% - 32px));
+      min-height: 180px;
+      padding: 26px;
+      border: 1px solid #d7ab64;
+      border-radius: 20px;
+      background: #100b09;
+      color: #fff2cf;
+      font: 1rem system-ui, sans-serif;
+    }
+
+    #espace-veloce::backdrop {
+      background: #100b09bb;
+    }
+
+    #espace-veloce h1 {
+      margin: 0 48px 0 0;
+      font-size: 1.4rem;
+    }
+
+    #espace-veloce form {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      margin: 0;
+    }
+
+    #espace-veloce button {
+      width: 44px;
+      height: 44px;
+      border: 1px solid #d7ab64;
+      border-radius: 50%;
+      background: transparent;
+      color: inherit;
+      font: 1.4rem system-ui, sans-serif;
+      cursor: pointer;
+    }
+
+    #espace-veloce button:focus-visible {
+      outline: 2px solid #ffd875;
+      outline-offset: 2px;
+    }
   </style>
 </head>
 <body>
@@ -118,6 +183,10 @@
         alt="Bureau aux lumières dorées, avec des trophées, un globe et une vue sur la tour Eiffel au coucher du soleil. L’enseigne Véloce Mercato domine le décor.">
     </picture>
     <svg class="zone-logo zone-logo--paysage" viewBox="0 0 720 405" preserveAspectRatio="xMidYMid slice">
+      <foreignObject class="zone-enseigne" x="540" y="108" width="132" height="74">
+        <button xmlns="http://www.w3.org/1999/xhtml" class="ouvrir-veloce" type="button"
+          aria-label="Ouvrir Véloce Mercato" aria-haspopup="dialog" aria-controls="espace-veloce"></button>
+      </foreignObject>
       <a href="https://vmunivers.fr/" aria-label="VM Univers, le site vitrine" tabindex="0">
         <rect x="320" y="221" width="66" height="55" rx="10"/>
       </a>
@@ -136,6 +205,10 @@
       </a>
     </svg>
     <svg class="zone-logo zone-logo--portrait" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
+      <foreignObject class="zone-enseigne" x="60" y="110" width="244" height="52">
+        <button xmlns="http://www.w3.org/1999/xhtml" class="ouvrir-veloce" type="button"
+          aria-label="Ouvrir Véloce Mercato" aria-haspopup="dialog" aria-controls="espace-veloce"></button>
+      </foreignObject>
       <a href="https://vmunivers.fr/" aria-label="VM Univers, le site vitrine" tabindex="0">
         <rect x="158" y="374" width="52" height="48" rx="9"/>
       </a>
@@ -177,5 +250,17 @@
       </a>
     </nav>
   </main>
+  <dialog id="espace-veloce" aria-labelledby="titre-espace-veloce">
+    <h1 id="titre-espace-veloce">Véloce Mercato</h1>
+    <form method="dialog">
+      <button aria-label="Fermer Véloce Mercato" autofocus>×</button>
+    </form>
+  </dialog>
+  <script>
+    const espaceVeloce = document.querySelector('#espace-veloce');
+    for (const enseigne of document.querySelectorAll('.ouvrir-veloce')) {
+      enseigne.addEventListener('click', () => espaceVeloce.showModal());
+    }
+  </script>
 </body>
 </html>
