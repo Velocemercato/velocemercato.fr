@@ -24,18 +24,6 @@
   ]
  },
  {
-  "id": 558538,
-  "date": "2026-11-08T14:00:00Z",
-  "competition": "Serie A",
-  "domicile": "Monza",
-  "exterieur": "Atalanta",
-  "statut": "FINISHED",
-  "score": [
-   0,
-   1
-  ]
- },
- {
   "id": 560635,
   "date": "2026-11-08T14:00:00Z",
   "competition": "Premier League",
@@ -60,15 +48,15 @@
   ]
  },
  {
-  "id": 560638,
+  "id": 558538,
   "date": "2026-11-08T14:00:00Z",
-  "competition": "Premier League",
-  "domicile": "Brighton Hove",
-  "exterieur": "Brentford",
+  "competition": "Serie A",
+  "domicile": "Monza",
+  "exterieur": "Atalanta",
   "statut": "FINISHED",
   "score": [
-   2,
-   0
+   0,
+   1
   ]
  },
  {
@@ -108,6 +96,18 @@
   ]
  },
  {
+  "id": 560638,
+  "date": "2026-11-08T14:00:00Z",
+  "competition": "Premier League",
+  "domicile": "Brighton Hove",
+  "exterieur": "Brentford",
+  "statut": "FINISHED",
+  "score": [
+   2,
+   0
+  ]
+ },
+ {
   "id": 565855,
   "date": "2026-11-08T14:30:00Z",
   "competition": "Bundesliga",
@@ -132,18 +132,6 @@
   ]
  },
  {
-  "id": 559632,
-  "date": "2026-11-08T16:15:00Z",
-  "competition": "Ligue 1",
-  "domicile": "Brest",
-  "exterieur": "Olympique Lyon",
-  "statut": "FINISHED",
-  "score": [
-   2,
-   0
-  ]
- },
- {
   "id": 559634,
   "date": "2026-11-08T16:15:00Z",
   "competition": "Ligue 1",
@@ -156,15 +144,15 @@
   ]
  },
  {
-  "id": 559633,
+  "id": 559632,
   "date": "2026-11-08T16:15:00Z",
   "competition": "Ligue 1",
-  "domicile": "Le Havre",
-  "exterieur": "Lorient",
+  "domicile": "Brest",
+  "exterieur": "Olympique Lyon",
   "statut": "FINISHED",
   "score": [
-   0,
-   2
+   2,
+   0
   ]
  },
  {
@@ -177,6 +165,18 @@
   "score": [
    1,
    1
+  ]
+ },
+ {
+  "id": 559633,
+  "date": "2026-11-08T16:15:00Z",
+  "competition": "Ligue 1",
+  "domicile": "Le Havre",
+  "exterieur": "Lorient",
+  "statut": "FINISHED",
+  "score": [
+   0,
+   2
   ]
  },
  {
@@ -252,18 +252,6 @@
   ]
  },
  {
-  "id": 558529,
-  "date": "2026-11-08T19:45:00Z",
-  "competition": "Serie A",
-  "domicile": "Fiorentina",
-  "exterieur": "Juventus",
-  "statut": "FINISHED",
-  "score": [
-   2,
-   2
-  ]
- },
- {
   "id": 559630,
   "date": "2026-11-08T19:45:00Z",
   "competition": "Ligue 1",
@@ -272,6 +260,18 @@
   "statut": "FINISHED",
   "score": [
    1,
+   2
+  ]
+ },
+ {
+  "id": 558529,
+  "date": "2026-11-08T19:45:00Z",
+  "competition": "Serie A",
+  "domicile": "Fiorentina",
+  "exterieur": "Juventus",
+  "statut": "FINISHED",
+  "score": [
+   2,
    2
   ]
  },
