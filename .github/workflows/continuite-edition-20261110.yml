@@ -1,0 +1,60 @@
+name: Continuite edition 2026-11-10
+on:
+  push:
+    branches: [codex/continuite-edition-20261110]
+    paths:
+      - editions/2026-11-10/index.html
+      - .github/workflows/continuite-edition-20261110.yml
+permissions:
+  contents: read
+concurrency:
+  group: continuite-edition-20261110
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Préparer le site sans altérer la version précédente
+        run: |
+          set -euo pipefail
+          test -n "$CLOUDFLARE_API_TOKEN"
+          test -n "$CLOUDFLARE_ACCOUNT_ID"
+          mkdir "$RUNNER_TEMP/site"
+          git archive HEAD | tar -x -C "$RUNNER_TEMP/site"
+          rm -rf "$RUNNER_TEMP/site/.github"
+          curl --fail --silent --show-error --location https://velocemercato.fr/articles.json -o "$RUNNER_TEMP/site/articles.json"
+          mkdir -p "$RUNNER_TEMP/site/actus" "$RUNNER_TEMP/site/vm-gaming"
+          curl --fail --silent --show-error --location https://velocemercato.fr/actus/news.json -o "$RUNNER_TEMP/site/actus/news.json"
+          curl --fail --silent --show-error --location https://velocemercato.fr/vm-gaming/news.json -o "$RUNNER_TEMP/site/vm-gaming/news.json"
+          test -s "$RUNNER_TEMP/site/index.html"
+          test -s "$RUNNER_TEMP/site/editions/2026-11-10/index.html"
+          grep -q "VM Multisport" "$RUNNER_TEMP/site/index.html"
+          grep -q "Nintendo prépare" "$RUNNER_TEMP/site/editions/2026-11-10/index.html"
+      - name: Déployer et tester l’aperçu
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@4 pages deploy "$RUNNER_TEMP/site" --project-name velocemercato --branch codex-continuite-20261110 | tee "$RUNNER_TEMP/preview.log"
+          PREVIEW_URL=$(grep -Eo 'https://[A-Za-z0-9.-]+\.pages\.dev' "$RUNNER_TEMP/preview.log" | tail -1)
+          test -n "$PREVIEW_URL"
+          for i in 1 2 3 4 5; do
+            if curl --fail --silent --show-error --location "$PREVIEW_URL/editions/2026-11-10/" | grep -q "Édition du"; then exit 0; fi
+            sleep 5
+          done
+          exit 1
+      - name: Publier dans le projet Pages existant
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@4 pages deploy "$RUNNER_TEMP/site" --project-name velocemercato --branch main
+      - name: Valider la production
+        run: |
+          set -euo pipefail
+          for i in 1 2 3 4 5; do
+            if curl --fail --silent --show-error --location https://velocemercato.pages.dev/editions/2026-11-10/ | grep -q "Édition du"; then exit 0; fi
+            sleep 5
+          done
+          exit 1
