@@ -109,26 +109,6 @@
     }
 
 
-    .zone-enseigne {
-      pointer-events: all;
-    }
-
-    .ouvrir-espace {
-      display: block;
-      width: 100%;
-      height: 100%;
-      padding: 0;
-      border: 2px solid transparent;
-      border-radius: 10px;
-      background: transparent;
-      cursor: pointer;
-    }
-
-    .ouvrir-espace:hover,
-    .ouvrir-espace:focus-visible {
-      border-color: #ffd875;
-      outline: none;
-    }
 
     .espace-accueil {
       box-sizing: border-box;
@@ -211,6 +191,47 @@
       width: 24px;
       height: 24px;
     }
+
+    .espace-rubrique {
+      max-height: min(78dvh, 650px);
+      overflow: auto;
+    }
+
+    .espace-rubrique p {
+      color: #decab0;
+      line-height: 1.5;
+    }
+
+    .espace-rubrique a {
+      color: #ffe2a6;
+      text-underline-offset: .18em;
+    }
+
+    .espace-rubrique a:focus-visible {
+      outline: 2px solid #ffd875;
+      outline-offset: 3px;
+    }
+
+    .articles-rubrique {
+      margin: 12px 0 20px;
+      padding-left: 1.2em;
+    }
+
+    .articles-rubrique li {
+      padding: 9px 0;
+      border-bottom: 1px solid #d7ab6440;
+    }
+
+    .articles-rubrique small {
+      display: block;
+      margin-top: 5px;
+      color: #decab0;
+    }
+
+    .etat-rubrique {
+      min-height: 1.4em;
+      font-size: .8rem;
+    }
   </style>
 </head>
 <body>
@@ -221,6 +242,24 @@
         alt="Bureau aux lumières dorées, avec des trophées, un globe et une vue sur la tour Eiffel au coucher du soleil. L’enseigne Véloce Mercato domine le décor.">
     </picture>
     <svg class="zone-logo zone-logo--paysage" viewBox="0 0 720 405" preserveAspectRatio="xMidYMid slice">
+      <a class="acces-cadre" data-cadre="large" data-rubrique="gaming" href="https://velocemercato.fr/vm-gaming/" aria-label="VM Gaming" tabindex="0">
+        <svg x="318" y="57" width="77" height="41" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <clipPath id="gaming-large"><rect x="1" y="1" width="80" height="41" rx="6"/></clipPath>
+            <linearGradient id="ombre-gaming-large" x2="0" y2="1">
+              <stop offset=".35" stop-color="#090c17" stop-opacity=".12"/>
+              <stop offset="1" stop-color="#090c17" stop-opacity=".96"/>
+            </linearGradient>
+          </defs>
+          <g clip-path="url(#gaming-large)">
+            <image href="img/cadre-vm-gaming.webp" width="82" height="43" preserveAspectRatio="xMidYMid slice"/>
+            <rect width="82" height="43" fill="url(#ombre-gaming-large)"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#a0e65c" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#a0e65c" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">GAMING</text>
+        </svg>
+      </a>
       <defs data-cadres="large">
         <clipPath id="cadre-large"><rect x="1" y="1" width="80" height="41" rx="6"/></clipPath>
         <linearGradient id="ombre-cadre-large" x1="0" x2="0" y1="0" y2="1" gradientUnits="objectBoundingBox">
@@ -230,7 +269,7 @@
           <stop offset="1" stop-color="#090c17" stop-opacity=".98"/>
         </linearGradient>
       </defs>
-      <a class="acces-cadre" data-cadre="large" href="https://velocemercato.fr/#actualites-du-jour" aria-label="VM Foot" tabindex="0">
+      <a class="acces-cadre" data-cadre="large" href="https://velocemercato.fr/#actualites-du-jour" aria-label="VM Foot" data-rubrique="foot" tabindex="0">
         <svg x="40" y="96" width="90" height="47" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
           <g clip-path="url(#cadre-large)">
             <svg width="82" height="43" viewBox="0 0 360 180" preserveAspectRatio="xMidYMid slice">
@@ -244,7 +283,7 @@
           <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">FOOT</text>
         </svg>
       </a>
-      <a class="acces-cadre" data-cadre="large" href="https://velocemercato.fr/multisport/" aria-label="VM Multisport" tabindex="0">
+      <a class="acces-cadre" data-cadre="large" href="https://velocemercato.fr/multisport/" aria-label="VM Multisport" data-rubrique="multisport" tabindex="0">
         <svg x="40" y="153" width="90" height="47" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
           <g clip-path="url(#cadre-large)">
             <svg width="82" height="43" viewBox="0 180 360 180" preserveAspectRatio="xMidYMid slice">
@@ -258,7 +297,7 @@
           <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">MULTISPORT</text>
         </svg>
       </a>
-      <a class="acces-cadre" data-cadre="large" href="https://velocemercato.fr/actus/" aria-label="VM Actus" tabindex="0">
+      <a class="acces-cadre" data-cadre="large" href="https://velocemercato.fr/actus/" aria-label="VM Actus" data-rubrique="actus" tabindex="0">
         <svg x="40" y="210" width="90" height="47" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
           <g clip-path="url(#cadre-large)">
             <svg width="82" height="43" viewBox="0 360 360 180" preserveAspectRatio="xMidYMid slice">
@@ -272,7 +311,7 @@
           <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">ACTUS</text>
         </svg>
       </a>
-      <a class="acces-cadre" data-cadre="large" href="https://velocemercato.fr/mangas/" aria-label="VM Manga et Séries" tabindex="0">
+      <a class="acces-cadre" data-cadre="large" href="https://velocemercato.fr/mangas/" aria-label="VM Manga et Séries" data-rubrique="manga" tabindex="0">
         <svg x="630" y="38" width="52" height="34" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
           <g clip-path="url(#cadre-large)">
             <svg width="82" height="43" viewBox="0 540 360 180" preserveAspectRatio="xMidYMid slice">
@@ -286,7 +325,7 @@
           <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="6.8" font-weight="bold">MANGA &amp; SÉRIES</text>
         </svg>
       </a>
-      <a class="acces-cadre" data-cadre="large" href="https://velocemercato.fr/web-studio.html" aria-label="VM Studio" tabindex="0">
+      <a class="acces-cadre" data-cadre="large" href="https://velocemercato.fr/web-studio.html" aria-label="VM Studio" data-rubrique="studio" tabindex="0">
         <svg x="630" y="73" width="52" height="34" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
           <g clip-path="url(#cadre-large)">
             <svg width="82" height="43" viewBox="0 720 360 180" preserveAspectRatio="xMidYMid slice">
@@ -300,7 +339,7 @@
           <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">STUDIO</text>
         </svg>
       </a>
-      <a class="acces-cadre" data-cadre="large" href="https://velocemercato.fr/studio.html#tv" aria-label="VM Pastille" tabindex="0">
+      <a class="acces-cadre" data-cadre="large" href="https://velocemercato.fr/studio.html#tv" aria-label="VM Pastille" data-rubrique="pastille" tabindex="0">
         <svg x="630" y="183" width="52" height="34" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
           <g clip-path="url(#cadre-large)">
             <svg width="82" height="43" viewBox="0 900 360 180" preserveAspectRatio="xMidYMid slice">
@@ -314,16 +353,15 @@
           <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">PASTILLE</text>
         </svg>
       </a>
-      <a class="acces-cadre" data-cadre="large" href="https://vmunivers.fr/" aria-label="VM Univers, ouvrir le site vitrine" tabindex="0">
+      <a class="acces-cadre" data-cadre="large" href="https://velocemercato.fr/pronos/" aria-label="Les Conseils Pronos" tabindex="0">
         <svg x="47" y="364" width="91" height="26" viewBox="0 0 86 25" aria-hidden="true">
           <rect class="cadre-bord" x="1" y="1" width="84" height="23" rx="8" fill="#1c100c" fill-opacity=".9" stroke="#e9b969" stroke-width="1.3"/>
-          <text x="43" y="16" text-anchor="middle" fill="#ffe5ac" font-family="DejaVu Sans, sans-serif" font-size="9" font-weight="bold">VM UNIVERS ›</text>
+          <text x="43" y="16" text-anchor="middle" fill="#ffe5ac" font-family="DejaVu Sans, sans-serif" font-size="7.5" font-weight="bold">CONSEILS PRONOS</text>
         </svg>
       </a>
-      <foreignObject class="zone-enseigne" x="540" y="108" width="132" height="74">
-        <button xmlns="http://www.w3.org/1999/xhtml" class="ouvrir-espace" type="button"
-          aria-label="Ouvrir Véloce Mercato" aria-haspopup="dialog" aria-controls="espace-veloce"></button>
-      </foreignObject>
+      <a href="https://vmunivers.fr/" aria-label="Véloce Mercato, ouvrir le site vitrine VM Univers" tabindex="0">
+        <rect x="540" y="108" width="132" height="74" rx="10"/>
+      </a>
       <a href="https://www.facebook.com/VMunivers.fr/" aria-label="Facebook VM Univers" tabindex="0">
         <rect x="320" y="221" width="66" height="55" rx="10"/>
       </a>
@@ -342,6 +380,24 @@
       </a>
     </svg>
     <svg class="zone-logo zone-logo--portrait" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
+      <a class="acces-cadre" data-cadre="mobile" data-rubrique="gaming" href="https://velocemercato.fr/vm-gaming/" aria-label="VM Gaming" tabindex="0">
+        <svg x="143" y="171" width="74" height="40" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <clipPath id="gaming-mobile"><rect x="1" y="1" width="80" height="41" rx="6"/></clipPath>
+            <linearGradient id="ombre-gaming-mobile" x2="0" y2="1">
+              <stop offset=".35" stop-color="#090c17" stop-opacity=".12"/>
+              <stop offset="1" stop-color="#090c17" stop-opacity=".96"/>
+            </linearGradient>
+          </defs>
+          <g clip-path="url(#gaming-mobile)">
+            <image href="img/cadre-vm-gaming.webp" width="82" height="43" preserveAspectRatio="xMidYMid slice"/>
+            <rect width="82" height="43" fill="url(#ombre-gaming-mobile)"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#a0e65c" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#a0e65c" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">GAMING</text>
+        </svg>
+      </a>
       <a href="https://www.facebook.com/velocemercato.fr" aria-label="Facebook Véloce Mercato" tabindex="0">
         <rect x="80" y="390" width="45" height="57" rx="8"/>
         <g class="plaque-micro" aria-hidden="true" pointer-events="all" cursor="pointer">
@@ -364,7 +420,7 @@
           <stop offset="1" stop-color="#090c17" stop-opacity=".98"/>
         </linearGradient>
       </defs>
-      <a class="acces-cadre" data-cadre="mobile" href="https://velocemercato.fr/#actualites-du-jour" aria-label="VM Foot" tabindex="0">
+      <a class="acces-cadre" data-cadre="mobile" href="https://velocemercato.fr/#actualites-du-jour" aria-label="VM Foot" data-rubrique="foot" tabindex="0">
         <svg x="39" y="182" width="74" height="40" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
           <g clip-path="url(#cadre-mobile)">
             <svg width="82" height="43" viewBox="0 0 360 180" preserveAspectRatio="xMidYMid slice">
@@ -378,7 +434,7 @@
           <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">FOOT</text>
         </svg>
       </a>
-      <a class="acces-cadre" data-cadre="mobile" href="https://velocemercato.fr/multisport/" aria-label="VM Multisport" tabindex="0">
+      <a class="acces-cadre" data-cadre="mobile" href="https://velocemercato.fr/multisport/" aria-label="VM Multisport" data-rubrique="multisport" tabindex="0">
         <svg x="39" y="232" width="74" height="40" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
           <g clip-path="url(#cadre-mobile)">
             <svg width="82" height="43" viewBox="0 180 360 180" preserveAspectRatio="xMidYMid slice">
@@ -392,7 +448,7 @@
           <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">MULTISPORT</text>
         </svg>
       </a>
-      <a class="acces-cadre" data-cadre="mobile" href="https://velocemercato.fr/actus/" aria-label="VM Actus" tabindex="0">
+      <a class="acces-cadre" data-cadre="mobile" href="https://velocemercato.fr/actus/" aria-label="VM Actus" data-rubrique="actus" tabindex="0">
         <svg x="39" y="282" width="74" height="40" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
           <g clip-path="url(#cadre-mobile)">
             <svg width="82" height="43" viewBox="0 360 360 180" preserveAspectRatio="xMidYMid slice">
@@ -406,7 +462,7 @@
           <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">ACTUS</text>
         </svg>
       </a>
-      <a class="acces-cadre" data-cadre="mobile" href="https://velocemercato.fr/mangas/" aria-label="VM Manga et Séries" tabindex="0">
+      <a class="acces-cadre" data-cadre="mobile" href="https://velocemercato.fr/mangas/" aria-label="VM Manga et Séries" data-rubrique="manga" tabindex="0">
         <svg x="245" y="182" width="74" height="40" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
           <g clip-path="url(#cadre-mobile)">
             <svg width="82" height="43" viewBox="0 540 360 180" preserveAspectRatio="xMidYMid slice">
@@ -420,7 +476,7 @@
           <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="6.8" font-weight="bold">MANGA &amp; SÉRIES</text>
         </svg>
       </a>
-      <a class="acces-cadre" data-cadre="mobile" href="https://velocemercato.fr/web-studio.html" aria-label="VM Studio" tabindex="0">
+      <a class="acces-cadre" data-cadre="mobile" href="https://velocemercato.fr/web-studio.html" aria-label="VM Studio" data-rubrique="studio" tabindex="0">
         <svg x="245" y="232" width="74" height="40" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
           <g clip-path="url(#cadre-mobile)">
             <svg width="82" height="43" viewBox="0 720 360 180" preserveAspectRatio="xMidYMid slice">
@@ -434,7 +490,7 @@
           <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">STUDIO</text>
         </svg>
       </a>
-      <a class="acces-cadre" data-cadre="mobile" href="https://velocemercato.fr/studio.html#tv" aria-label="VM Pastille" tabindex="0">
+      <a class="acces-cadre" data-cadre="mobile" href="https://velocemercato.fr/studio.html#tv" aria-label="VM Pastille" data-rubrique="pastille" tabindex="0">
         <svg x="245" y="282" width="74" height="40" viewBox="0 0 82 43" preserveAspectRatio="none" aria-hidden="true">
           <g clip-path="url(#cadre-mobile)">
             <svg width="82" height="43" viewBox="0 900 360 180" preserveAspectRatio="xMidYMid slice">
@@ -448,7 +504,7 @@
           <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">PASTILLE</text>
         </svg>
       </a>
-      <a class="acces-cadre" data-cadre="mobile" href="https://vmunivers.fr/" aria-label="VM Univers, ouvrir le site vitrine" tabindex="0">
+      <a class="acces-cadre" data-cadre="mobile" href="https://velocemercato.fr/pronos/" aria-label="Les Conseils Pronos" tabindex="0">
         <svg x="138" y="499" width="78" height="27" viewBox="0 0 86 25" aria-hidden="true">
           <rect class="cadre-bord" x="1" y="1" width="84" height="23" rx="8" fill="none" stroke="none" stroke-width="1.3" pointer-events="all"/>
           <g class="brodage-pouf" pointer-events="none">
@@ -457,14 +513,13 @@
             <path d="m38 9 2.5.6 2.5-3 2.5 3L48 9m-10 3.1h10"
               fill="none" stroke="#ffe5a0" stroke-width=".65" stroke-linecap="round" stroke-dasharray="1 .45"/>
             <text x="43" y="22.5" text-anchor="middle" fill="url(#fil-pouf)" stroke="#160f0d" stroke-width="1.05"
-              paint-order="stroke fill" font-family="DejaVu Sans, sans-serif" font-size="10.5" font-weight="bold" font-style="italic">VMunivers.fr</text>
+              paint-order="stroke fill" font-family="DejaVu Sans, sans-serif" font-size="7.2" font-weight="bold" font-style="italic">LES CONSEILS PRONOS</text>
           </g>
         </svg>
       </a>
-      <foreignObject class="zone-enseigne" x="60" y="110" width="244" height="52">
-        <button xmlns="http://www.w3.org/1999/xhtml" class="ouvrir-espace" type="button"
-          aria-label="Ouvrir Véloce Mercato" aria-haspopup="dialog" aria-controls="espace-veloce"></button>
-      </foreignObject>
+      <a href="https://vmunivers.fr/" aria-label="Véloce Mercato, ouvrir le site vitrine VM Univers" tabindex="0">
+        <rect x="60" y="110" width="244" height="52" rx="10"/>
+      </a>
       <a href="https://www.facebook.com/VMunivers.fr/" aria-label="Facebook VM Univers" tabindex="0">
         <rect x="158" y="374" width="52" height="48" rx="9"/>
       </a>
@@ -513,17 +568,268 @@
       </a>
     </nav>
   </main>
-  <dialog class="espace-accueil" id="espace-veloce" aria-labelledby="titre-espace-veloce">
-    <h1 id="titre-espace-veloce">Véloce Mercato</h1>
-    <form method="dialog">
-      <button aria-label="Fermer Véloce Mercato" autofocus>×</button>
-    </form>
+  <dialog class="espace-accueil espace-rubrique" id="rubrique-foot" aria-labelledby="titre-foot">
+    <h1 id="titre-foot">VM Foot</h1>
+    <form method="dialog"><button aria-label="Fermer VM Foot" autofocus>×</button></form>
+    <p>Foot professionnel et amateur, mercato et équipes nationales.</p>
+    <p class="etat-rubrique" role="status"></p>
+    <ul class="articles-rubrique"></ul>
+    <p><a href="https://www.facebook.com/velocemercato.fr">Suivre Véloce Mercato sur Facebook</a></p>
   </dialog>
-  <script>
-    for (const bouton of document.querySelectorAll('.ouvrir-espace')) {
-      const espace = document.getElementById(bouton.getAttribute('aria-controls'));
-      bouton.addEventListener('click', () => espace.showModal());
+  <dialog class="espace-accueil espace-rubrique" id="rubrique-multisport" aria-labelledby="titre-multisport">
+    <h1 id="titre-multisport">VM Multisport</h1>
+    <form method="dialog"><button aria-label="Fermer VM Multisport" autofocus>×</button></form>
+    <p>Basket, tennis, F1, MotoGP, rugby, cyclisme et autres disciplines.</p>
+    <p class="etat-rubrique" role="status"></p>
+    <ul class="articles-rubrique"></ul>
+    <p><a href="https://velocemercato.fr/multisport/">Ouvrir la rubrique complète</a></p>
+  </dialog>
+  <dialog class="espace-accueil espace-rubrique" id="rubrique-actus" aria-labelledby="titre-actus">
+    <h1 id="titre-actus">VM Actus</h1>
+    <form method="dialog"><button aria-label="Fermer VM Actus" autofocus>×</button></form>
+    <p>Actualités France et monde, et informations régionales.</p>
+    <p class="etat-rubrique" role="status"></p>
+    <ul class="articles-rubrique"></ul>
+    <p><a href="https://velocemercato.fr/actus/">Ouvrir la rubrique complète</a></p>
+  </dialog>
+  <dialog class="espace-accueil espace-rubrique" id="rubrique-manga" aria-labelledby="titre-manga">
+    <h1 id="titre-manga">VM Manga &amp; Séries</h1>
+    <form method="dialog"><button aria-label="Fermer VM Manga &amp; Séries" autofocus>×</button></form>
+    <p>Le catalogue et les séries de l’univers VM.</p>
+    <ul class="articles-rubrique">
+      <li><a href="https://velocemercato.fr/mangas/catalogue/">Parcourir le catalogue VM Manga</a></li>
+      <li><a href="https://velocemercato.fr/series/">Découvrir les séries</a></li>
+    </ul>
+    <p><a href="https://velocemercato.fr/mangas/">Ouvrir la rubrique complète</a></p>
+  </dialog>
+  <dialog class="espace-accueil espace-rubrique" id="rubrique-studio" aria-labelledby="titre-studio">
+    <h1 id="titre-studio">VM Studio</h1>
+    <form method="dialog"><button aria-label="Fermer VM Studio" autofocus>×</button></form>
+    <p>Création de sites, visuels et projets pour les commerces et les artisans.</p>
+    <ul class="articles-rubrique">
+      <li><a href="https://velocemercato.fr/web-studio.html">Découvrir les créations et offres VM Studio</a></li>
+      <li><a href="https://vmunivers.fr/">Voir la vitrine VM Univers</a></li>
+    </ul>
+    <p><a href="https://velocemercato.fr/web-studio.html">Ouvrir la rubrique complète</a></p>
+  </dialog>
+  <dialog class="espace-accueil espace-rubrique" id="rubrique-pastille" aria-labelledby="titre-pastille">
+    <h1 id="titre-pastille">VM Pastille</h1>
+    <form method="dialog"><button aria-label="Fermer VM Pastille" autofocus>×</button></form>
+    <p>Les dernières éditions publiées de La Pastille TV.</p>
+    <p class="etat-rubrique" role="status"></p>
+    <ul class="articles-rubrique"></ul>
+    <p><a href="https://velocemercato.fr/studio.html#tv">Ouvrir la rubrique complète</a></p>
+  </dialog>
+  <dialog class="espace-accueil espace-rubrique" id="rubrique-gaming" aria-labelledby="titre-gaming">
+    <h1 id="titre-gaming">VM Gaming</h1>
+    <form method="dialog"><button aria-label="Fermer VM Gaming" autofocus>×</button></form>
+    <p>Les dernières infos sur les jeux vidéo et la communauté gaming.</p>
+    <p class="etat-rubrique" role="status"></p>
+    <ul class="articles-rubrique"></ul>
+    <p><a href="https://velocemercato.fr/vm-gaming/">Ouvrir la rubrique complète</a></p>
+  </dialog>
+  <template id="actualites-robot">
+    <!-- VM_ACTUS_VISIBLES_START -->
+    <!-- VM_ACTUS_VISIBLES_END -->
+  </template>
+  <script id="instantane-veloce" type="application/json">
+{
+  "foot": [
+    {
+      "title": "Équipe de France : Aurélien Tchouameni déclare forfait pour ce rassemblement",
+      "date": "2026-11-10T20:31:23Z",
+      "source": "Foot Mercato",
+      "url": "https://velocemercato.fr/a/rss-v2-ca5d2a4ac86c007f1b0385.html"
+    },
+    {
+      "title": "Bayern : Eberl reste flou sur la clause libératoire d’Upamecano",
+      "date": "2026-11-10T20:27:06Z",
+      "source": "Foot Mercato",
+      "url": "https://velocemercato.fr/a/rss-v2-881b584c82c1379842d0fa.html"
+    },
+    {
+      "title": "Le gardien parisien Alessandro Longoni forfait avec l'Italie U19",
+      "date": "2026-11-10T19:28:45Z",
+      "source": "Foot Mercato",
+      "url": "https://velocemercato.fr/a/rss-v2-be40daf45e2ddae12fdf85.html"
+    },
+    {
+      "title": "Partick Thistle sanctionné de trois points en SWPL pour paiements à des joueuses amateurs",
+      "date": "2026-11-10T19:23:42Z",
+      "source": "BBC Sport",
+      "url": "https://velocemercato.fr/a/rss-v2-daad724bacd1090197b853.html"
+    },
+    {
+      "title": "Brésil : le Barça et la sélection pourraient organiser le temps de jeu de Raphinha",
+      "date": "2026-11-10T18:22:53Z",
+      "source": "Foot Mercato",
+      "url": "https://velocemercato.fr/a/rss-v2-0381f18294efb50ddb5305.html"
     }
+  ],
+  "actus": [
+    {
+      "title": "Bulgarie : un carambolage sur autoroute fait au moins 11 morts et 51 blessés",
+      "date": "2026-11-10T20:41:44Z",
+      "source": "franceinfo",
+      "url": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/un-carambolage-fait-au-moins-11-morts-et-51-blesses-en-bulgarie_8276918.html#xtor=RSS-3-%5Bmonde%5D"
+    },
+    {
+      "title": "Lisbonne : le Web Summit annule sa deuxième journée à cause de la tempête Charles",
+      "date": "2026-11-10T20:30:14Z",
+      "source": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/10/lisbonne-le-web-summit-annule-son-deuxieme-jour-a-cause-de-la-tempete-charles"
+    },
+    {
+      "title": "Amazonie : Marajó, région riche en eau mais privée d’accès à l’eau potable",
+      "date": "2026-11-10T19:50:07Z",
+      "source": "Ouest-France",
+      "url": "https://www.ouest-france.fr/leditiondusoir/2026-11-10/cette-region-est-l-une-des-plus-riches-au-monde-en-eau-alors-pourquoi-manque-t-elle-d-eau-potable-ac8d81fc-5ca4-484c-b14c-cd5094f7e589?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu"
+    },
+    {
+      "title": "Éric Zemmour officialise sa candidature à la présidentielle",
+      "date": "2026-11-10T19:49:36Z",
+      "source": "franceinfo",
+      "url": "https://www.franceinfo.fr/elections/presidentielle/eric-zemmour-leader-du-parti-d-extreme-droite-reconquete-officialise-sa-candidature-a-la-presidentielle_8276858.html#xtor=RSS-3-[lestitres]"
+    },
+    {
+      "title": "L’Isle-sur-le-Doubs. Premier hommage aux morts pour la France au collège",
+      "date": "2026-11-10T19:18:01Z",
+      "source": "L'Est Républicain",
+      "url": "https://www.estrepublicain.fr/societe/2026/11/10/premier-hommage-aux-morts-pour-la-france-au-college",
+      "theme": "Régions"
+    },
+    {
+      "title": "Pont-de-Roide-Vermondans. 11-Novembre : une première cérémonie avec les collègiens",
+      "date": "2026-11-10T19:18:01Z",
+      "source": "L'Est Républicain",
+      "url": "https://www.estrepublicain.fr/defense-guerre-conflit/2026/11/10/11-novembre-une-premiere-ceremonie-avec-les-collegiens",
+      "theme": "Régions"
+    }
+  ],
+  "gaming": [
+    {
+      "title": "Devolver Digital annonce All Army Attack, un jeu qu'il présente comme son premier AAA",
+      "date": "2026-11-10T20:23:03Z",
+      "source": "JV France",
+      "url": "https://www.jvfrance.com/devolver-digital-annonce-all-army-attack-pc-285841/"
+    },
+    {
+      "title": "GTA 6 sur Xbox One via le cloud gaming, les joueurs PC toujours en attente",
+      "date": "2026-11-10T17:33:10Z",
+      "source": "Dexerto",
+      "url": "https://www.dexerto.fr/gta/gta-6-sera-jouable-sur-xbox-one-grace-cloud-gaming-mais-pc-1663789/"
+    },
+    {
+      "title": "PlayStation Plus : Death Stranding 2 et des jeux Yakuza et Dragon Quest en novembre",
+      "date": "2026-11-10T17:30:00Z",
+      "source": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/playstation-plus-extra-et-premium-death-stranding-2-a-l-affiche-mais-aussi-du-yakuza-et-du-dragon-quest-3050872887.html"
+    },
+    {
+      "title": "Big Walk : House House s'explique sur son usage de l'IA après une lettre de jurés de l'IGF",
+      "date": "2026-11-10T17:05:00Z",
+      "source": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/big-walk-vise-par-des-jures-de-l-independent-game-festival-house-house-s-explique-sur-son-utilisation-derisoire-de-l-ia-3050872879.html"
+    },
+    {
+      "title": "Hollow Knight : Silksong prépare des extensions gratuites, selon le manuel",
+      "date": "2026-11-10T16:32:00Z",
+      "source": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/hollow-knight-silksong-reparle-timidement-de-ses-extensions-3050872876.html"
+    }
+  ],
+  "multisport": [
+    {
+      "title": "Face à Victor Wembanyama et aux San Antonio Spurs, « il est quasiment impossible de pénétrer dans la raquette » - L'Équipe",
+      "date": "2026-11-10T10:23:16+00:00",
+      "source": "L'Équipe",
+      "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxOX3I0dVdHRnhCbVFfQTZqRjQxeW44WnZ0dG5MQmhBM1poMmQ1bXUzeXkyU01PWS1jYWxGMzBBT0ZVOVU2aU5WbFA3Q2NiTmt2VTdSSElYREFnNFJ0WVlXMk12dmh4TXJ1anRYcERUSXNFVmZWYTJXR3l3RTBfeEhrWExVT3FYcUpWaXlGT1YwNEhKWndLYU5QbjRnR3AxUVVURGd5TW5aelZNUnN6SlBUTUcwSHVxZ0ZXbkFjZV9XRGJhYmppbThwTHJKOFpZRnlIWE9FdGtsRUF3WVhrdHZhbHVHZXk3NXRKaExv?oc=5",
+      "theme": "NBA"
+    },
+    {
+      "title": "Vikings : un nouveau quarterback avant la trade deadline ? - DAZN",
+      "date": "2026-11-10T14:11:01+00:00",
+      "source": "DAZN",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQN05yVWJWNjBBcjE5V1BESVJ4V2s2RFgtZkV2T3NlRWlEXy1rSnJXMGVKM01ydElWMUhmV1RiY091WGxfZVdlbXFTdlZ0U3Z2U2o1d3YwdTgtam1YVTB6azFoWUZ1c01mUUIwZUplNlZOb2hIZEJVSTVtc1BtM1E3bXhWMG9lcElWSnBJbm8ydFFOZzFhY3k1N1lZVEpkQnpzMnp2V0hsMmpQOVN1dlpONmtlQnBlVUtMUVFJNUJPSGI?oc=5",
+      "theme": "NFL"
+    },
+    {
+      "title": "GP du Brésil de F1 - La réaction de Flavio Briatore à l'arrivée de la course : \"Une fin décevante pour un week-end où nous avons sous-performé\" - Turbo.fr",
+      "date": "2026-11-10T09:04:12+00:00",
+      "source": "Turbo.fr",
+      "url": "https://news.google.com/rss/articles/CBMikAJBVV95cUxPRF82NE5fNXpOUmJuVTBNZ2RDWUNvdndIZ0ZnMDRVMEhlRkNoYnRPMjdJbUdwNUVuYk95eERJbVQ0X2lBZ0NkRWxRYW5FTEs0Zm1KVXE2ZGdvWHRJRFJzcDkya1FYWEhRbktSb0hyT3JYUDZlY01hRXhjVmRWX2NQNkYtVWdZZ2hZS1U5UVlSeXBQT1JYRlVzMUVmZkg4UnVZODNINHlwOFJ4di02czF3Y3lDS2NrOHRqREpHclZQdTJlcEFIc0pvQnJ0WkdsMFdrQ25PaFoycUNCanJQTDd1cTNUVkZzZGVXcDlfbHBXc3NkN1BTb3M2T3dZZmp4elprNkxFVWNpWkpfVFc4cktXRw?oc=5",
+      "theme": "F1"
+    },
+    {
+      "title": "Application M Sports News : actualité MotoGP et F1, Race Hubs et chronométrage en direct - Motorcycle Sports",
+      "date": "2026-11-10T09:53:35+00:00",
+      "source": "Motorcycle Sports",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPZ0JQeVFmR2ltMEFpcjBuTG84aXBlM2RvZ2JXbC0zMHFXd3hxdGRSLUVuOHhzUjlvb2JvQVJybGhOZjBiRmFORml2QkRDNkdpRXpwWWdBTXB3bHoycTdvcXBwMEk4U1d1WWpfcEJ1VmFmVFFQMDZWdnZweUc3ZkZNUlFFc1VqUVhXeUI3R0FZSXlGUXJBYmcyTkJVZ2xDN215ZDYwNTNmeWNNNWdl?oc=5",
+      "theme": "MOTOGP"
+    },
+    {
+      "title": "Nouvelle-Zélande à la Coupe du monde de rugby 2023 : actualités, matches en direct, joueurs, compositions, calendriers et résultats des All Blacks. - Rugbyrama",
+      "date": "2026-11-10T13:51:37+00:00",
+      "source": "Rugbyrama",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1SZ0xVU0RKWUxPdHFBYzd4cENHQlZlMmFqVnZ6cG1leWFLNDF0T0laMTNXLW1OT043cm92SjVyT2IzNXpFSDhPeVhwTjM2ckpWeWVDTGR0TVpCRWRCc2c?oc=5",
+      "theme": "RUGBY"
+    },
+    {
+      "title": "Cyclisme. Gros changement pour arriver au Mans : quel est le parcours 2027 du Région Pays de la Loire Tour ? - Actu.fr",
+      "date": "2026-11-10T16:00:02+00:00",
+      "source": "Actu.fr",
+      "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNRElsbFRobzQ5Z0VOaDE5UV9YbTJ0ejg3VEVUSndnT1lnMFNQVE1na0VmZWQxRlFrOUI2NGkxNjZpS1E2ZHZXN1Q4U0Jva244cmRJVnRWVTk1QlA0ZWJQWk5FdllGaFhlT3dTVF92c0JHbDNBLTJnYVVOenhaUEhIZ2haUHhYQUNqd0hib0pqUFAxX3VkbE5wZUQ0UXdLLXZDWE1FX2lJVmpCbXNsZ1N0Q010OG5XckduWjBQdVVkek1DMUo2ZW5tN2dPdHBYRDdrVnpjR3BGdF9jTzk0N25yUk1jc0liQWdJbWJtQVVXSEVRV0VnaTVj?oc=5",
+      "theme": "CYCLISME"
+    },
+    {
+      "title": "Mises à jour de l’entraînement matinal facultatif – 10 nov. - NHL.com",
+      "date": "2026-11-10T16:00:00+00:00",
+      "source": "NHL.com",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOTTBVVklZOVlocDVOYjVQdHJiSmw0TmZLWW5aR3Utdm0zcUgxTVRGMi04b1ZNdHNqRlozTzdlSDV5WnNCUGgxWUFkOWFrRWVXMFl4LVMzTXdCNWMyeDJVUlVpZk0yS2ktSEJDV1lmVnB6c3Y1TnJVOXAxSnRRLUNQZ2Z4TXJ5WnZLclhiaXRzR3hmbHZOUmxWWElHdWZkVThm?oc=5",
+      "theme": "NHL"
+    },
+    {
+      "title": "Le patron du MMA décline la prétendue offre d'emploi de Trump - Flashscore.fr",
+      "date": "2026-11-10T07:45:16+00:00",
+      "source": "Flashscore.fr",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQQ2NPN3Y5NU5vTXNaUGI3NmttSWdiMGdIcnUzUnFOY3VpVG9PTXllZ3ZqUU9tSUhYV05WOXVMZ2t2eERpYzNPUllhRi1sMnlWZkVTZnNVTU9rdFlIak8yUExWUkdLZXI2dDhUd2RsQ1lodVp2Ym96SW1PSzRpMHA4UmkxeUtSdzdWMTF6SG05cDdTa2w5X21FaFIyWnBlTzROaEJfOEdtQ0dIQ1Rj?oc=5",
+      "theme": "MMA"
+    }
+  ],
+  "pastille": [
+    {
+      "title": "Véloce Mercato — JT 20 h — 10/11/2026",
+      "date": "2026-11-10T19:28:36+00:00",
+      "source": "La Pastille TV",
+      "url": "https://www.youtube.com/watch?v=Jqli7X_yuLo"
+    },
+    {
+      "title": "VM Actus — JT 19 h — 10/11/2026",
+      "date": "2026-11-10T18:27:14+00:00",
+      "source": "La Pastille TV",
+      "url": "https://www.youtube.com/watch?v=zil0jtQHZ1k"
+    },
+    {
+      "title": "VM Gaming — JT 18 h — 10/11/2026",
+      "date": "2026-11-10T17:32:43+00:00",
+      "source": "La Pastille TV",
+      "url": "https://www.youtube.com/watch?v=N0Jn2v0_4Pk"
+    },
+    {
+      "title": "VM Actus — JT 13 h — 10/11/2026",
+      "date": "2026-11-10T12:12:34+00:00",
+      "source": "La Pastille TV",
+      "url": "https://www.youtube.com/watch?v=FoGRLZqL9VY"
+    },
+    {
+      "title": "Véloce Mercato — JT 12 h — 10/11/2026",
+      "date": "2026-11-10T11:16:06+00:00",
+      "source": "La Pastille TV",
+      "url": "https://www.youtube.com/watch?v=carDahM6nl0"
+    }
+  ]
+}
   </script>
+  <script src="assets/accueil-rubriques.js"></script>
 </body>
 </html>
