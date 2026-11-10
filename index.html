@@ -240,13 +240,36 @@
     .vm-cartes-video span { font-size:.85rem; color:#ddd8cd; }
     .vm-replay { margin:.7rem 0; padding:.7rem; border:1px solid #b39560; border-radius:.7rem; }
     .vm-replay summary { cursor:pointer; color:#ffe5a3; font-weight:750; }
-  </style>
+  
+    /* La scène verticale (photo de référence) partout : sur grand écran, elle reste au format
+       téléphone, centrée, avec le décor flouté autour, au lieu d'être coupée sur les côtés. */
+    .zone-logo--paysage { display: none !important; }
+    .zone-logo--portrait { display: block !important; }
+    @media (min-aspect-ratio: 10/16) {
+      html { background: #100b09; }
+      body {
+        min-height: 100dvh;
+        background: #100b09 url('img/accueil-bureau-veloce.webp') center / cover no-repeat fixed;
+      }
+      body::before {
+        content: ""; position: fixed; inset: 0; z-index: 0;
+        backdrop-filter: blur(14px) brightness(.45); -webkit-backdrop-filter: blur(14px) brightness(.45);
+        background: #100b0966;
+      }
+      main {
+        z-index: 1;
+        width: min(100vw, calc(100dvh * 9 / 16));
+        margin: 0 auto;
+        box-shadow: 0 0 60px #000c, 0 0 0 1px #d7ab6455;
+      }
+    }
+</style>
 <link rel="stylesheet" href="/assets/mangas-collections.css">
 </head>
 <body>
   <main aria-label="Véloce Mercato">
     <picture>
-      <source media="(orientation: portrait)" srcset="img/accueil-bureau-veloce-portrait-micro.webp">
+      <source srcset="img/accueil-bureau-veloce-portrait-micro.webp">
       <img class="accueil" src="img/accueil-bureau-veloce.webp"
         alt="Bureau aux lumières dorées, avec des trophées, un globe et une vue sur la tour Eiffel au coucher du soleil. L’enseigne Véloce Mercato domine le décor.">
     </picture>
@@ -522,7 +545,7 @@
             <path d="m38 9 2.5.6 2.5-3 2.5 3L48 9m-10 3.1h10"
               fill="none" stroke="#ffe5a0" stroke-width=".65" stroke-linecap="round" stroke-dasharray="1 .45"/>
             <text x="43" y="22.5" text-anchor="middle" fill="url(#fil-pouf)" stroke="#160f0d" stroke-width="1.05"
-              paint-order="stroke fill" font-family="DejaVu Sans, sans-serif" font-size="7.2" font-weight="bold" font-style="italic">LES CONSEILS PRONOS</text>
+              paint-order="stroke fill" font-family="DejaVu Sans, sans-serif" font-size="7.2" font-weight="bold" font-style="italic" textLength="80" lengthAdjust="spacingAndGlyphs">LES CONSEILS PRONOS</text>
           </g>
         </svg>
       </a>
@@ -546,8 +569,8 @@
         <circle cx="304" cy="390" r="33"/>
       </a>
     </svg>
-    <aside class="banniere-argent" aria-label="Le jeux d’argent, réservé aux 18 ans et plus">
-      <span aria-hidden="true">LE JEUX D’ARGENT</span>
+    <aside class="banniere-argent" aria-label="Les jeux d’argent, réservés aux 18 ans et plus">
+      <span aria-hidden="true">LES JEUX D’ARGENT</span>
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <circle cx="12" cy="12" r="10" fill="#fff1d3" stroke="#f36b69" stroke-width="2"/>
         <text x="12" y="15" text-anchor="middle" fill="#671f26" font-family="sans-serif" font-size="8" font-weight="bold">18+</text>
