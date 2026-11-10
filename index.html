@@ -113,7 +113,7 @@
       pointer-events: all;
     }
 
-    .ouvrir-veloce {
+    .ouvrir-espace {
       display: block;
       width: 100%;
       height: 100%;
@@ -124,13 +124,13 @@
       cursor: pointer;
     }
 
-    .ouvrir-veloce:hover,
-    .ouvrir-veloce:focus-visible {
+    .ouvrir-espace:hover,
+    .ouvrir-espace:focus-visible {
       border-color: #ffd875;
       outline: none;
     }
 
-    #espace-veloce {
+    .espace-accueil {
       box-sizing: border-box;
       width: min(420px, calc(100% - 32px));
       min-height: 180px;
@@ -142,23 +142,23 @@
       font: 1rem system-ui, sans-serif;
     }
 
-    #espace-veloce::backdrop {
+    .espace-accueil::backdrop {
       background: #100b09bb;
     }
 
-    #espace-veloce h1 {
+    .espace-accueil h1 {
       margin: 0 48px 0 0;
       font-size: 1.4rem;
     }
 
-    #espace-veloce form {
+    .espace-accueil form {
       position: absolute;
       top: 12px;
       right: 12px;
       margin: 0;
     }
 
-    #espace-veloce button {
+    .espace-accueil button {
       width: 44px;
       height: 44px;
       border: 1px solid #d7ab64;
@@ -169,7 +169,7 @@
       cursor: pointer;
     }
 
-    #espace-veloce button:focus-visible {
+    .espace-accueil button:focus-visible {
       outline: 2px solid #ffd875;
       outline-offset: 2px;
     }
@@ -216,7 +216,7 @@
 <body>
   <main aria-label="Véloce Mercato">
     <picture>
-      <source media="(orientation: portrait)" srcset="img/accueil-bureau-veloce-portrait-cuir.webp">
+      <source media="(orientation: portrait)" srcset="img/accueil-bureau-veloce-portrait-micro.webp">
       <img class="accueil" src="img/accueil-bureau-veloce.webp"
         alt="Bureau aux lumières dorées, avec des trophées, un globe et une vue sur la tour Eiffel au coucher du soleil. L’enseigne Véloce Mercato domine le décor.">
     </picture>
@@ -321,7 +321,7 @@
         </svg>
       </a>
       <foreignObject class="zone-enseigne" x="540" y="108" width="132" height="74">
-        <button xmlns="http://www.w3.org/1999/xhtml" class="ouvrir-veloce" type="button"
+        <button xmlns="http://www.w3.org/1999/xhtml" class="ouvrir-espace" type="button"
           aria-label="Ouvrir Véloce Mercato" aria-haspopup="dialog" aria-controls="espace-veloce"></button>
       </foreignObject>
       <a href="https://vmunivers.fr/" aria-label="VM Univers, le site vitrine" tabindex="0">
@@ -342,6 +342,10 @@
       </a>
     </svg>
     <svg class="zone-logo zone-logo--portrait" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
+      <foreignObject class="zone-enseigne" x="80" y="390" width="45" height="57">
+        <button xmlns="http://www.w3.org/1999/xhtml" class="ouvrir-espace" type="button"
+          aria-label="Ouvrir l’espace du micro" aria-haspopup="dialog" aria-controls="espace-micro"></button>
+      </foreignObject>
       <defs data-cadres="mobile">
           <pattern id="fil-pouf" patternUnits="userSpaceOnUse" width="2" height="2">
             <rect width="2" height="2" fill="#e7d6b2"/>
@@ -453,7 +457,7 @@
         </svg>
       </a>
       <foreignObject class="zone-enseigne" x="60" y="110" width="244" height="52">
-        <button xmlns="http://www.w3.org/1999/xhtml" class="ouvrir-veloce" type="button"
+        <button xmlns="http://www.w3.org/1999/xhtml" class="ouvrir-espace" type="button"
           aria-label="Ouvrir Véloce Mercato" aria-haspopup="dialog" aria-controls="espace-veloce"></button>
       </foreignObject>
       <a href="https://vmunivers.fr/" aria-label="VM Univers, le site vitrine" tabindex="0">
@@ -504,16 +508,22 @@
       </a>
     </nav>
   </main>
-  <dialog id="espace-veloce" aria-labelledby="titre-espace-veloce">
+  <dialog class="espace-accueil" id="espace-veloce" aria-labelledby="titre-espace-veloce">
     <h1 id="titre-espace-veloce">Véloce Mercato</h1>
     <form method="dialog">
       <button aria-label="Fermer Véloce Mercato" autofocus>×</button>
     </form>
   </dialog>
+  <dialog class="espace-accueil" id="espace-micro" aria-labelledby="titre-espace-micro">
+    <h1 id="titre-espace-micro">Micro du studio</h1>
+    <form method="dialog">
+      <button aria-label="Fermer l’espace du micro" autofocus>×</button>
+    </form>
+  </dialog>
   <script>
-    const espaceVeloce = document.querySelector('#espace-veloce');
-    for (const enseigne of document.querySelectorAll('.ouvrir-veloce')) {
-      enseigne.addEventListener('click', () => espaceVeloce.showModal());
+    for (const bouton of document.querySelectorAll('.ouvrir-espace')) {
+      const espace = document.getElementById(bouton.getAttribute('aria-controls'));
+      bouton.addEventListener('click', () => espace.showModal());
     }
   </script>
 </body>
