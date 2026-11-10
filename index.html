@@ -8,15 +8,35 @@
   <style>
     body {
       margin: 0;
-      background: #fff;
+      background: #100b09;
     }
 
-    main {
-      min-height: 100vh;
+    .accueil {
+      display: block;
+      width: 100%;
+      height: 100vh;
+      height: 100svh;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    @media (orientation: portrait) {
+      main {
+        display: grid;
+        min-height: 100svh;
+        place-items: center;
+      }
+
+      .accueil {
+        height: auto;
+      }
     }
   </style>
 </head>
 <body>
-  <main aria-label="Page d’accueil de Véloce Mercato"></main>
+  <main aria-label="Véloce Mercato">
+    <img class="accueil" src="img/accueil-bureau-veloce.webp"
+      alt="Bureau aux lumières dorées, avec des trophées, un globe et une vue sur la tour Eiffel au coucher du soleil. Sur le mur, l’enseigne Véloce Mercato.">
+  </main>
 </body>
 </html>
