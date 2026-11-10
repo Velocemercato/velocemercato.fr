@@ -66,7 +66,7 @@ def prepare(root):
         if parser.depth:
             raise ValueError(f'Bloc de navigation non fermé dans {path.relative_to(root)}')
         text = ''.join(parser.output)
-        css = '<link rel="stylesheet" href="/assets/vm-lecture.css?v=20261111">'
+        css = '<link rel="stylesheet" href="/assets/vm-lecture.css?v=20261111b">'
         if '/assets/vm-lecture.css' not in text:
             text = text.replace('</head>', css + '\n</head>', 1)
         if 'multisport/univers.js' in text or 'assets/accueil-rubriques.js' in text:
