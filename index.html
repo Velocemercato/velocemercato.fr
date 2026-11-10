@@ -12,6 +12,10 @@
       background: #100b09;
     }
 
+    main {
+      position: relative;
+    }
+
     picture,
     .accueil {
       display: block;
@@ -22,6 +26,41 @@
       object-position: center;
     }
 
+    .zone-logo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .zone-logo rect {
+      fill: transparent;
+      stroke: transparent;
+      stroke-width: 2;
+      vector-effect: non-scaling-stroke;
+      pointer-events: all;
+      cursor: pointer;
+    }
+
+    .zone-logo a:hover rect,
+    .zone-logo a:focus-visible rect {
+      stroke: #ffd875;
+    }
+
+    .zone-logo--portrait {
+      display: none;
+    }
+
+    @media (orientation: portrait) {
+      .zone-logo--paysage {
+        display: none;
+      }
+
+      .zone-logo--portrait {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
@@ -31,6 +70,16 @@
       <img class="accueil" src="img/accueil-bureau-veloce.webp"
         alt="Bureau aux lumières dorées, avec des trophées, un globe et une vue sur la tour Eiffel au coucher du soleil. L’enseigne Véloce Mercato domine le décor.">
     </picture>
+    <svg class="zone-logo zone-logo--paysage" viewBox="0 0 720 405" preserveAspectRatio="xMidYMid slice">
+      <a href="https://vmunivers.fr/" aria-label="VM Univers, le site vitrine" tabindex="0">
+        <rect x="320" y="221" width="66" height="55" rx="10"/>
+      </a>
+    </svg>
+    <svg class="zone-logo zone-logo--portrait" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
+      <a href="https://vmunivers.fr/" aria-label="VM Univers, le site vitrine" tabindex="0">
+        <rect x="158" y="374" width="52" height="48" rx="9"/>
+      </a>
+    </svg>
   </main>
 </body>
 </html>
