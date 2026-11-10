@@ -107,6 +107,16 @@
       .reseaux { gap: 0; }
       .reseaux a { width: 41px; }
     }
+
+    .legende-globe {
+      fill: #fff2cf;
+      stroke: #160d07;
+      stroke-width: 2px;
+      paint-order: stroke fill;
+      font: 700 9px system-ui, sans-serif;
+      pointer-events: visiblePainted;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -122,6 +132,7 @@
       </a>
       <a href="https://velocemercato.fr/actus/" aria-label="VM Actus et Pronos — ouvrir VM Actus" tabindex="0">
         <circle cx="601" cy="261" r="54"/>
+        <text class="legende-globe" x="601" y="328" text-anchor="middle" aria-hidden="true">VM Actus et Pronos</text>
       </a>
     </svg>
     <svg class="zone-logo zone-logo--portrait" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
@@ -130,6 +141,7 @@
       </a>
       <a href="https://velocemercato.fr/actus/" aria-label="VM Actus et Pronos — ouvrir VM Actus" tabindex="0">
         <circle cx="304" cy="390" r="33"/>
+        <text class="legende-globe" x="313" y="441" text-anchor="end" aria-hidden="true">VM Actus et Pronos</text>
       </a>
     </svg>
     <nav class="reseaux" aria-label="Réseaux sociaux Véloce Mercato">
