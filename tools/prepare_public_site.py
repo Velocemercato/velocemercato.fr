@@ -4,7 +4,7 @@ from pathlib import Path
 import re
 import sys
 
-REMOVE_CLASSES = {'vmbar', 'vmtop', 'vm-volets', 'vm-duo', 'vm-essentiel'}
+REMOVE_CLASSES = {'vmbar', 'vmtop', 'vm-volets', 'vm-duo', 'vm-essentiel', 'promo-manga'}
 VOID = {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
 
 
@@ -74,6 +74,8 @@ def prepare(root):
                 text = text.replace('</head>', '<script src="/assets/multisport-pertinence.js"></script>\n</head>', 1)
         if path != root/'index.html' and 'class="vm-retour-accueil"' not in text:
             text = re.sub(r'(<body\b[^>]*>)', r'\1<a class="vm-retour-accueil" href="/">← Accueil</a>', text, count=1)
+        for asset in ('assets/broadcast-feed.js', 'assets/accueil-rubriques.js', 'multisport/univers.js'):
+            text = re.sub(r'(src=[\"\']/?' + re.escape(asset) + r')(?:\?[^\"\']*)?([\"\'])', r'\1?v=20261111b\2', text)
         path.write_text(text, encoding='utf-8')
         count += 1
     print(f'{count} pages préparées avec leur accès à l’accueil et leur style de lecture.')

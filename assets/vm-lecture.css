@@ -21,3 +21,6 @@ html[data-vmt="article"] body article, html[data-vmt="article"] body .in { backg
 html body .item .body { color:#f4f4f6 !important; }
 .vm-retour-accueil:focus-visible { outline:3px solid #ffe08a; outline-offset:3px; }
 html body dialog.espace-accueil a.vm-collection-play { color:#17121b !important; }
+
+.promo-manga, footer a[href="/mangas/"], footer a[href="/vm-gaming/"], footer a[href="/actus/"], footer a[href="/multisport/"], footer a[href="/foot-amateur/"] { display:none !important; }
+section[aria-label="Explorer les univers et l\'actualité de votre région"] a:not(#vmRegionOpen):not([href="/belfort/"]) { display:none !important; }
