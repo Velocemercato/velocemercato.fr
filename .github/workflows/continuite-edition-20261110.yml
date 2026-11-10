@@ -16,14 +16,12 @@ jobs:
     timeout-minutes: 20
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
     steps:
       - uses: actions/checkout@v4
       - name: Préparer le site sans altérer la version précédente
         run: |
           set -euo pipefail
           test -n "$CLOUDFLARE_API_TOKEN"
-          test -n "$CLOUDFLARE_ACCOUNT_ID"
           mkdir "$RUNNER_TEMP/site"
           git archive HEAD | tar -x -C "$RUNNER_TEMP/site"
           rm -rf "$RUNNER_TEMP/site/.github"
