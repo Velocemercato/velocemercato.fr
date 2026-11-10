@@ -34,7 +34,7 @@
       pointer-events: none;
     }
 
-    .zone-logo rect {
+    .zone-logo :is(rect, circle) {
       fill: transparent;
       stroke: transparent;
       stroke-width: 2;
@@ -43,8 +43,8 @@
       cursor: pointer;
     }
 
-    .zone-logo a:hover rect,
-    .zone-logo a:focus-visible rect {
+    .zone-logo a:hover :is(rect, circle),
+    .zone-logo a:focus-visible :is(rect, circle) {
       stroke: #ffd875;
     }
 
@@ -74,10 +74,16 @@
       <a href="https://vmunivers.fr/" aria-label="VM Univers, le site vitrine" tabindex="0">
         <rect x="320" y="221" width="66" height="55" rx="10"/>
       </a>
+      <a href="https://velocemercato.fr/actus/" aria-label="VM Actus et Pronos — ouvrir VM Actus" tabindex="0">
+        <circle cx="601" cy="261" r="54"/>
+      </a>
     </svg>
     <svg class="zone-logo zone-logo--portrait" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
       <a href="https://vmunivers.fr/" aria-label="VM Univers, le site vitrine" tabindex="0">
         <rect x="158" y="374" width="52" height="48" rx="9"/>
+      </a>
+      <a href="https://velocemercato.fr/actus/" aria-label="VM Actus et Pronos — ouvrir VM Actus" tabindex="0">
+        <circle cx="304" cy="390" r="33"/>
       </a>
     </svg>
   </main>
