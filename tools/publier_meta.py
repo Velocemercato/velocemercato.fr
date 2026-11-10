@@ -393,9 +393,17 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
     if str((state.data.get('tokens', {}).get('meta_pronos') or {}).get('page_id') or '') == expected_id:
         raise DeliveryError('Destination également assignée à RQ Pronos, diffusion refusée.')
     local_now = now.astimezone(PARIS)
-    second_half = local_now.minute >= 30
+    cron = os.getenv('VM_META_CRON', '')
+    scheduled_minute = {'5 5-22 * * *': 5, '35 5-22 * * *': 35}.get(cron)
+    local = local_now
+    if scheduled_minute is not None and not force:
+        # Un lancement tardif reste associé à son créneau d'origine.
+        local = local_now.replace(minute=scheduled_minute, second=0, microsecond=0)
+        if local > local_now:
+            local -= dt.timedelta(hours=1)
+    second_half = scheduled_minute == 35 if cron else local_now.minute >= 30
     # Le passage de :35 est réservé aux actualités sportives Facebook.
-    extra_sport = second_half and local_now.hour in HEURES_ACTUALITES and not force
+    extra_sport = second_half and local.hour in HEURES_ACTUALITES and not force
     if extra_sport and account == 'meta_univers':
         return []
     slots = {10: 'belfort', 15: 'belfort', 21: 'projet'} if account == 'meta_univers' else SLOTS
@@ -454,8 +462,7 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
                 errors.append(f'{network} / {row["id"]} : {error}')
         sent += attempted
 
-    local = now.astimezone(PARIS)
-    # GitHub saute parfois un passage : on rattrape le créneau le plus récent manqué (moins de 3 h).
+    # Les accusés utilisent l’heure du créneau, y compris si GitHub démarre en retard.
     def cle(h):
         return (f'projet/{local:%Y-%m-%d}/{h:02d}' if slots.get(h) == 'projet' else f'creneau/{local:%Y-%m-%d}/{h:02d}')
     # Ne pas publier rétroactivement des créneaux manqués.

@@ -3,7 +3,8 @@ name: VM - Facebook et Instagram automatiques
 on:
   schedule:
     # :05 pour les deux réseaux, :35 pour le créneau sport Facebook.
-    - cron: '5,35 5-22 * * *'
+    - cron: '5 5-22 * * *'
+    - cron: '35 5-22 * * *'
     # Bilan vers 22 h 40 Paris, en tenant compte des horaires UTC été/hiver.
     - cron: '40 20,21 * * *'
   workflow_dispatch:
@@ -31,6 +32,7 @@ jobs:
       VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
       VM_AUTO_META: ${{ vars.VM_AUTO_META }}
       ARTICLE: ${{ inputs.article }}
+      VM_META_CRON: ${{ github.event.schedule }}
     steps:
       - uses: actions/checkout@v4
         with:
