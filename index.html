@@ -2,7 +2,8 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#100b09">
   <meta name="robots" content="noindex, nofollow">
   <title>Véloce Mercato — Aperçu de l’accueil</title>
   <style>
@@ -11,32 +12,25 @@
       background: #100b09;
     }
 
+    picture,
     .accueil {
       display: block;
       width: 100%;
       height: 100vh;
-      height: 100svh;
+      height: 100dvh;
       object-fit: cover;
       object-position: center;
     }
 
-    @media (orientation: portrait) {
-      main {
-        display: grid;
-        min-height: 100svh;
-        place-items: center;
-      }
-
-      .accueil {
-        height: auto;
-      }
-    }
   </style>
 </head>
 <body>
   <main aria-label="Véloce Mercato">
-    <img class="accueil" src="img/accueil-bureau-veloce.webp"
-      alt="Bureau aux lumières dorées, avec des trophées, un globe et une vue sur la tour Eiffel au coucher du soleil. Sur le mur, l’enseigne Véloce Mercato.">
+    <picture>
+      <source media="(orientation: portrait)" srcset="img/accueil-bureau-veloce-portrait.webp">
+      <img class="accueil" src="img/accueil-bureau-veloce.webp"
+        alt="Bureau aux lumières dorées, avec des trophées, un globe et une vue sur la tour Eiffel au coucher du soleil. L’enseigne Véloce Mercato domine le décor.">
+    </picture>
   </main>
 </body>
 </html>
