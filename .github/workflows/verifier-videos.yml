@@ -1,0 +1,23 @@
+name: Vérifier les chaînes des vidéos (Manga & Séries)
+# Lit tools/videos-a-verifier.json et demande à YouTube (oEmbed) quelle chaîne a publié chaque vidéo.
+# Résultat dans le journal et dans l'artefact « videos-verifiees ». Aucune publication.
+on:
+  workflow_dispatch:
+  push:
+    paths: ['tools/videos-a-verifier.json']
+permissions:
+  contents: read
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python tools/verifier_videos.py tools/videos-a-verifier.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: videos-verifiees
+          path: tools/videos-verifiees.json
