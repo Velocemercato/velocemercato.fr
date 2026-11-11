@@ -54,11 +54,18 @@ TECH = re.compile(r'\b(jeux? vid[eé]o|gaming|gamer|console|playstation|ps5|xbox
                   r'carte graphique|gpu|geforce|rtx|radeon|nvidia|amd|intel arc|dlss|fsr|ray tracing|esport)\b', re.I)
 
 
+MANGA = re.compile(r'\b(manga|anim[eé]|one piece|naruto|boruto|dragon ball|bleach|jujutsu kaisen|demon slayer|'
+                   r'my hero academia|chainsaw man|attack on titan|l.attaque des titans|chapitre|crunchyroll|adn)\b', re.I)
+JEU = re.compile(r'\b(jeux? vid[eé]o|jeu|game|gaming|ps5|playstation|xbox|switch|nintendo|steam|bandai namco)\b', re.I)
+
+
 def rss_items_games(feed):
     name, posts = _rss_items(feed)
     if feed[2] in TECH_SOURCES:
         # Sites tech généralistes : on n'envoie à Claude que le jeu vidéo et le matériel gaming (chaque envoi coûte).
         posts = [p for p in posts if TECH.search(p['title'] + ' ' + p.get('feed_text', '')[:400])]
+    # Manga et animé (chapitres, épisodes, films) : rubrique VM Manga, pas Gaming, sauf s'il s'agit d'un jeu.
+    posts = [p for p in posts if not (MANGA.search(p['title']) and not JEU.search(p['title']))]
     return name, posts  # toute l'actu jeux vidéo (nos 4 jeux sont reconnus par Claude)
 
 

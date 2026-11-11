@@ -57,8 +57,17 @@ NEGATIVE={
 }
 GAMING_CONTENT = '\\b(?:gta(?:\\s*(?:vi|[56]))?|grand theft auto|playstation|xbox|nintendo|fortnite|minecraft|roblox|esports?|e-sports?|nba\\s*2k\\w*|madden|ea\\s*(?:sports\\s*)?fc|fifa\\s*2[0-9]|jeux? vid[eé]o|gaming|steam|ubisoft|activision|call of duty)\\b'
 
+# Pages « hub » permanentes ou événements passés repris par un RSS avec une date récente
+# (ex. « Coupe du monde de rugby 2023 : actualités, matches en direct… ») : jamais des actus du jour.
+HUB_PAGE=r'actualit[ée]s, match(e)?s en direct|calendriers? et r[ée]sultats|joueurs, compositions'
+def past_event(title,year=None):
+ year=year or dt.datetime.now(dt.timezone.utc).year
+ if re.search(r'\b(19|20)\d{2}\s*[-/]\s*\d{2,4}\b',title):return False  # saison 2025-26
+ years=[int(y) for y in re.findall(r'\b((?:19|20)\d{2})\b',title)]
+ return bool(years) and max(years)<year-1
 def relevant(sport,title):
  return (sport in RELEVANCE and not re.search(GAMING_CONTENT,title,re.IGNORECASE)
+         and not re.search(HUB_PAGE,title,re.IGNORECASE) and not past_event(title)
          and bool(re.search(RELEVANCE[sport],title,re.IGNORECASE))
          and not bool(re.search(NEGATIVE.get(sport,r'(?!)'),title,re.IGNORECASE)))
 
