@@ -1,0 +1,33 @@
+name: VM Prono — suivi et alertes
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: vm-prono-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Vérifier les accès et traiter le suivi
+        shell: bash
+        run: |
+          node --input-type=module <<'JS'
+          import assert from 'node:assert/strict';
+          const base='https://vm-prono-club.heineguez.chatgpt.site';
+          async function call(path){return fetch(base+path,{signal:AbortSignal.timeout(25000),headers:{'User-Agent':'VM-Prono-Scheduler/1.0'}})}
+          const publicResponse=await call('/api/public');
+          assert.equal(publicResponse.status,200,'Conseils publics indisponibles');
+          const pub=await publicResponse.json();
+          assert.ok(Array.isArray(pub.posts));
+          assert.ok(pub.posts.every(p=>p.visibility==='public'),'Contenu privé dans le flux public');
+          assert.equal((await call('/api/vip')).status,401,'Le VIP doit refuser les visiteurs anonymes');
+          assert.equal((await call('/api/admin/dashboard')).status,403,'Administration protégée');
+          const response=await call('/api/sync');
+          assert.equal(response.status,200,'Synchronisation indisponible');
+          console.log('Accès vérifiés. Synchronisation :',JSON.stringify(await response.json()));
+          JS
