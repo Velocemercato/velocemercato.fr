@@ -1,5 +1,125 @@
 [
  {
+  "id": "foot-edition-20261111-2000",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 20 h",
+  "titre": "La Pastille Foot - Édition du 11 novembre, 20 heures",
+  "accroche": "La Pastille Foot, le JT express du soir, avec l'IA aux commandes !",
+  "duree": 154,
+  "date": "2026-11-11T20:58+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261111-2000.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-11T20:00:00+01:00",
+  "source_start": "2026-11-11T12:00:00+01:00",
+  "source_end": "2026-11-11T20:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-ea07f7424dcdd7d7a3aa69",
+    "titre": "Manchester City menacé de relégation, Haaland pourrait rejoindre le Barça",
+    "publishedAt": "2026-11-11T18:00:00Z",
+    "createdAt": "2026-11-11T18:29:05Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/angleterre/manchester-city-relegue-haaland-ira-a-barcelone"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-ebb32c4ceaf74abe23f2a1",
+    "titre": "Espoirs : Dehmaine Tabibou appelé pour remplacer Senny Mayulu",
+    "publishedAt": "2026-11-11T18:17:24Z",
+    "createdAt": "2026-11-11T18:28:58Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a1953462594370719004-equipe-de-france-espoirs-dehmaine-tabibou-appele-pour-remplacer-senny-mayulu"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-eb78824bf8a2cdae4218aa",
+    "titre": "MLS : Cédric Bakambu quitte San Diego FC et dépose plainte pour discrimination au logement",
+    "publishedAt": "2026-11-11T17:24:59Z",
+    "createdAt": "2026-11-11T17:37:31Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/major-league-soccer/mls-bakambu-quitte-son-club-apres-deux-mois-et-depose-plainte-pour-discrimination-au-logement_AV-202611110659.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-b8d17a6e625c6f34d5a79b",
+    "titre": "Robert Sanchez indemne après un accident de voiture en Allemagne",
+    "publishedAt": "2026-11-11T17:25:15Z",
+    "createdAt": "2026-11-11T17:37:29Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a7527438859560664308-robert-sanchez-victime-dun-terrible-accident-de-voiture"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-c258854ed97fb6bb8e95ad",
+    "titre": "OM : Di Meco demande à McCourt de ne pas vendre cet hiver pour viser la Ligue des champions",
+    "publishedAt": "2026-11-11T16:17:32Z",
+    "createdAt": "2026-11-11T16:33:21Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/clubs/olympique-marseille/om-il-faut-faire-le-petit-effort-la-demande-de-di-meco-a-mc-court-pour-ne-pas-gacher-la-saison_AV-202611110596.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-c18c918b6b48864744f6dc",
+    "titre": "Un observateur d'arbitres suspendu neuf semaines pour propos discriminatoires",
+    "publishedAt": "2026-11-11T16:26:24Z",
+    "createdAt": "2026-11-11T16:33:18Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/ckedq15wq0dlo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-1fbfe2e0d30b0a907b4d90",
+    "titre": "Harry Kane vise le record de sélections avec l'Angleterre face à la Croatie",
+    "publishedAt": "2026-11-11T15:12:28Z",
+    "createdAt": "2026-11-11T15:33:11Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/equipe-angleterre/apres-le-ballon-d-or-un-record-absolu-avec-l-angleterre-harry-kane-va-devenir-le-joueur-le-plus-cape-de-l-histoire-de-sa-selection_AV-202611110559.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-5e41f3cb661ec2f424f690",
+    "titre": "Bayern Munich : Manuel Neuer n'envisage pas de retraite anticipée malgré sa blessure",
+    "publishedAt": "2026-11-11T15:29:12Z",
+    "createdAt": "2026-11-11T15:33:09Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a2533333249219412186-bayern-munich-pas-de-retraite-anticipee-pour-manuel-neuer"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "actus-edition-20261111-1900",
   "univers": "actus",
   "format": "edition",
@@ -11477,25 +11597,5 @@
   "image": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/foot-edition-20261022-0723.jpg",
   "page": "https://velocemercato.fr/studio/episodes/foot-edition-20261022-0723.html",
   "poster": "/studio/episodes/posters/foot-edition-20261022-0723.jpg"
- },
- {
-  "id": "foot-debat-20261022-0003",
-  "univers": "foot",
-  "format": "debat",
-  "moment": "soir",
-  "label": "Le débat du soir",
-  "titre": "La Pastille Foot : Himbert titulaire, MU sous le choc, le PSG-OL en suspens",
-  "accroche": "Ce soir : Himbert titulaire à Hoffenheim, Manchester United humilié à Côme, Lille battu par Galatasaray et un choc PSG-OL qui pourrait bouger. Au débat !",
-  "duree": 363,
-  "date": "2026-10-22T00:03+02:00",
-  "publie": true,
-  "voix": [
-   "piper"
-  ],
-  "fichier": "foot-debat-20261022-0003.mp4",
-  "video": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/foot-debat-20261022-0003.mp4",
-  "image": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/foot-debat-20261022-0003.jpg",
-  "page": "https://velocemercato.fr/studio/episodes/foot-debat-20261022-0003.html",
-  "poster": "/studio/episodes/posters/foot-debat-20261022-0003.jpg"
  }
 ]
