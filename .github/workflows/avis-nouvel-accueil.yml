@@ -1,0 +1,66 @@
+name: VM - Demander votre avis sur le nouvel accueil
+# Annonce ponctuelle demandée par Romain. Aucun cron, une seule publication par Page.
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/avis-nouvel-accueil.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+jobs:
+  annonce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet 'cryptography==50.0.0'
+      - name: Vérifier les garde-fous sans appel réseau
+        run: python -m unittest discover -s tests -p 'test_annonce_accueil.py' -v
+      - name: Retrouver les connexions et accusés chiffrés existants
+        run: |
+          set -euo pipefail
+          repo_url="https://github.com/$GITHUB_REPOSITORY.git"
+          state_dir="$RUNNER_TEMP/vm-broadcast-state"
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "$repo_url" "$state_dir"
+          test -f "$state_dir/state.enc"
+      - name: Annoncer le nouvel accueil sur les trois Pages Facebook
+        run: python tools/annoncer_nouvel_accueil.py --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+      - name: Conserver le bilan public sans jeton
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: avis-nouvel-accueil-2026-11-11
+          path: studio/avis-nouvel-accueil-2026-11-11.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Sauver uniquement les liens publics
+        if: always()
+        run: |
+          set -euo pipefail
+          test -f studio/avis-nouvel-accueil-2026-11-11.json || exit 0
+          save_file=$(mktemp)
+          cp studio/avis-nouvel-accueil-2026-11-11.json "$save_file"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3 4 5; do
+            git fetch -q origin main
+            git reset --hard -q origin/main
+            cp "$save_file" studio/avis-nouvel-accueil-2026-11-11.json
+            git add studio/avis-nouvel-accueil-2026-11-11.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -qm 'Annonce accueil : reçus et liens publics'
+            if git push -q origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 3))
+          done
+          exit 1
