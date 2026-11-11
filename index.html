@@ -318,6 +318,29 @@
     .vm-sponsor strong { font-size: 1.02rem; }
     .vm-sponsor span:not(.vm-sponsor-tag) { font-size: .88rem; color: #ecdcbf; }
     .vm-sponsor a { justify-self: start; margin-top: 4px; padding: 8px 12px; border-radius: 999px; background: #f4c430; color: #1a0f02 !important; font-weight: 800; text-decoration: none; }
+
+    /* Grand écran : le bureau horizontal et ses zones de clic assorties.
+       Les règles du téléphone restent actives sous 900 px et en portrait. */
+    @media (min-width:900px) and (orientation:landscape) {
+      body { background:#100b09; }
+      body::before { content:none; }
+      main { width:100%; max-width:1600px; min-width:0; margin:0 auto; box-shadow:none; }
+      .scene-accueil { aspect-ratio:16/9; }
+      .scene-accueil .accueil { object-fit:contain; }
+      .zone-logo--paysage { display:block !important; }
+      .zone-logo--portrait { display:none !important; }
+      main .reseaux { display:flex; flex-wrap:wrap; width:max-content; max-width:calc(100% - 32px); }
+      main .reseaux a { width:44px; }
+      .espace-rubrique { width:min(840px,calc(100% - 64px)); padding:30px; }
+    }
+    .espace-rubrique { max-height:85vh; max-height:85dvh; overflow-y:auto; }
+    .acces-rubrique-complete { margin:14px 0 18px; }
+    .espace-rubrique .acces-rubrique-complete a {
+      display:inline-flex; align-items:center; min-height:44px; box-sizing:border-box;
+      padding:10px 16px; border:1px solid #ffe08a; border-radius:12px;
+      background:#f4c430; color:#1a0f02; font-weight:800; text-decoration:none;
+    }
+    .acces-rubrique-complete a:focus-visible { outline:3px solid white; outline-offset:3px; }
 </style>
 <link rel="stylesheet" href="/assets/mangas-collections.css">
 <!-- Cloudflare Web Analytics --><script id="vm-cfwa">(function(h){if(h==='velocemercato.fr'||h==='www.velocemercato.fr'){var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "35ce3d9fb9144124a0bb97db4e89dbb2"}');document.head.appendChild(s)}})(location.hostname)</script><link rel="stylesheet" href="/notifications/alertes.css"><script src="/notifications/alertes.js" defer></script></head>
@@ -325,7 +348,7 @@
   <main aria-label="Véloce Mercato">
     <div class="scene-accueil">
     <picture>
-      <source srcset="img/accueil-bureau-veloce-portrait-micro.webp">
+      <source media="(max-width: 899px), (orientation: portrait)" srcset="img/accueil-bureau-veloce-portrait-micro.webp">
       <img class="accueil" src="img/accueil-bureau-veloce.webp"
         alt="Bureau aux lumières dorées, avec des trophées, un globe et une vue sur la tour Eiffel au coucher du soleil. L’enseigne Véloce Mercato domine le décor.">
     </picture>
@@ -660,25 +683,26 @@
     <h1 id="titre-foot">VM Foot</h1>
     <form method="dialog"><button aria-label="Fermer VM Foot" autofocus>×</button></form>
     <p>Foot professionnel et amateur, mercato et équipes nationales.</p>
+    <p class="acces-rubrique-complete"><a class="ouvrir-foot-complet" href="/foot/">Ouvrir la rubrique complète →</a></p>
     <p class="etat-rubrique" role="status"></p>
     <ul class="articles-rubrique"></ul>
     <p><small>Sources foot en Europe · <a href="https://www.bbc.com/sport/football">BBC Sport</a> · <a href="https://fr.uefa.com/">UEFA</a> · <a href="https://rmcsport.bfmtv.com/football/">RMC Sport</a></small></p>
     <p><a href="https://www.facebook.com/velocemercato.fr">Suivre Véloce Mercato sur Facebook</a></p>
-      <p><a class="ouvrir-foot-complet" href="/foot/">Ouvrir la rubrique complète →</a></p>
 </dialog>
   <dialog class="espace-accueil espace-rubrique" id="rubrique-multisport" aria-labelledby="titre-multisport">
     <h1 id="titre-multisport">VM Multisport</h1>
     <form method="dialog"><button aria-label="Fermer VM Multisport" autofocus>×</button></form>
     <p>Basket, tennis, F1, MotoGP, rugby, cyclisme et autres disciplines.</p>
+    <p class="acces-rubrique-complete"><a href="https://velocemercato.fr/multisport/">Ouvrir la rubrique complète</a></p>
     <p class="etat-rubrique" role="status"></p>
     <ul class="articles-rubrique"></ul>
     <p><small>Sources multisport · <a href="https://www.eurosport.fr/">Eurosport</a> · <a href="https://www.bbc.com/sport">BBC Sport</a> · <a href="https://www.franceinfo.fr/sports/">France TV Sport</a></small></p>
-    <p><a href="https://velocemercato.fr/multisport/">Ouvrir la rubrique complète</a></p>
   </dialog>
   <dialog class="espace-accueil espace-rubrique" id="rubrique-actus" aria-labelledby="titre-actus">
     <h1 id="titre-actus">VM Actus</h1>
     <form method="dialog"><button aria-label="Fermer VM Actus" autofocus>×</button></form>
     <p>Actualités France et monde, et informations régionales.</p>
+    <p class="acces-rubrique-complete"><a href="https://velocemercato.fr/actus/">Ouvrir la rubrique complète</a></p>
     <p class="etat-rubrique" role="status"></p>
     <ul class="articles-rubrique"></ul>
     <section class="rubrique-options" aria-labelledby="ma-region">
@@ -691,12 +715,12 @@
       <ul class="articles-rubrique" id="actus-belfort" hidden></ul>
     </section>
     <p><small>Sources d’actualité · <a href="https://www.france24.com/fr/">France 24</a> · <a href="https://fr.euronews.com/">Euronews</a> · <a href="https://www.bbc.com/news">BBC News</a></small></p>
-    <p><a href="https://velocemercato.fr/actus/">Ouvrir la rubrique complète</a></p>
   </dialog>
   <dialog class="espace-accueil espace-rubrique" id="rubrique-manga" aria-labelledby="titre-manga">
     <h1 id="titre-manga">VM Manga &amp; Séries</h1>
     <form method="dialog"><button aria-label="Fermer VM Manga &amp; Séries" autofocus>×</button></form>
     <p>Les classiques, leurs collections d’épisodes et les documentaires de l’univers VM.</p>
+    <p class="acces-rubrique-complete"><a href="https://velocemercato.fr/mangas/">Ouvrir la rubrique complète</a></p>
     <ul class="articles-rubrique">
       <li><a href="https://velocemercato.fr/mangas/catalogue/">Parcourir le catalogue VM Manga</a></li>
       <li><a href="https://velocemercato.fr/series/">Découvrir les séries</a></li>
@@ -705,38 +729,37 @@
     <h2>Reportages &amp; documentaires</h2>
     <p>Le top 5 de la rédaction, à regarder chez les diffuseurs.</p>
     <ol class="vm-cartes-video"><li><a href="https://www.youtube.com/watch?v=LNO0CQrmIn8"><img loading="lazy" width="320" height="180" src="https://i.ytimg.com/vi/LNO0CQrmIn8/mqdefault.jpg" alt=""><small>01 · Foot · Le Dessous des cartes · ARTE</small><strong>Qatar, au centre du jeu</strong><span>Football et géopolitique autour de la Coupe du monde 2022.</span></a></li><li><a href="https://www.youtube.com/watch?v=Jxi9afBqv9I"><img loading="lazy" width="320" height="180" src="https://i.ytimg.com/vi/Jxi9afBqv9I/mqdefault.jpg" alt=""><small>02 · Multisport · Team Visma | Lease a Bike · en anglais</small><strong>Never Stop Fighting</strong><span>Les coulisses du Tour de France 2025 avec l’équipe Visma.</span></a></li><li><a href="https://www.youtube.com/watch?v=KGqCRbqzvBI"><img loading="lazy" width="320" height="180" src="https://i.ytimg.com/vi/KGqCRbqzvBI/mqdefault.jpg" alt=""><small>03 · Enquête · ARTE</small><strong>La fabrique de l’ignorance</strong><span>Une enquête sur les méthodes utilisées pour semer le doute scientifique.</span></a></li><li><a href="https://www.youtube.com/watch?v=6cCX0vN7DYA"><img loading="lazy" width="320" height="180" src="https://i.ytimg.com/vi/6cCX0vN7DYA/mqdefault.jpg" alt=""><small>04 · Gaming · RTS · Reportages et investigations</small><strong>Les jeux vidéo à la conquête du monde</strong><span>Industrie, e-sport et place du jeu vidéo dans la vie quotidienne.</span></a></li><li><a href="https://www.arte.tv/fr/videos/130279-000-A/manga-tout-un-art/"><small>05 · Manga · ARTE</small><strong>Manga, tout un art !</strong><span>Un documentaire consacré à l’art du manga.</span></a></li></ol>
-    <p><a href="https://velocemercato.fr/mangas/">Ouvrir la rubrique complète</a></p>
   </dialog>
   <dialog class="espace-accueil espace-rubrique" id="rubrique-studio" aria-labelledby="titre-studio">
     <h1 id="titre-studio">VM Studio</h1>
     <form method="dialog"><button aria-label="Fermer VM Studio" autofocus>×</button></form>
     <p>Création de sites, visuels et projets pour les commerces et les artisans.</p>
+    <p class="acces-rubrique-complete"><a href="https://velocemercato.fr/web-studio.html">Ouvrir la rubrique complète</a></p>
     <ul class="articles-rubrique">
       <li><a href="https://velocemercato.fr/web-studio.html">Découvrir les créations et offres VM Studio</a></li>
       <li><a href="https://vmunivers.fr/">Voir la vitrine VM Univers</a></li>
     </ul>
-    <p><a href="https://velocemercato.fr/web-studio.html">Ouvrir la rubrique complète</a></p>
   </dialog>
   <dialog class="espace-accueil espace-rubrique" id="rubrique-pastille" aria-labelledby="titre-pastille">
     <h1 id="titre-pastille">VM Pastille</h1>
     <form method="dialog"><button aria-label="Fermer VM Pastille" autofocus>×</button></form>
     <p>Les éditions publiées de La Pastille TV, classées par genre.</p>
+    <p class="acces-rubrique-complete"><a href="https://velocemercato.fr/studio.html#tv">Ouvrir la rubrique complète</a></p>
     <p class="etat-rubrique" role="status"></p>
     <details class="vm-replay"><summary>Foot</summary><ul class="articles-rubrique" data-replay="foot"></ul></details>
     <details class="vm-replay"><summary>Multisport</summary><ul class="articles-rubrique" data-replay="multisport"></ul></details>
     <details class="vm-replay"><summary>Actus</summary><ul class="articles-rubrique" data-replay="actus"></ul></details>
     <details class="vm-replay"><summary>Gaming</summary><ul class="articles-rubrique" data-replay="gaming"></ul></details>
     <details class="vm-replay"><summary>Autres éditions</summary><ul class="articles-rubrique" data-replay="autres"></ul></details>
-    <p><a href="https://velocemercato.fr/studio.html#tv">Ouvrir la rubrique complète</a></p>
   </dialog>
   <dialog class="espace-accueil espace-rubrique" id="rubrique-gaming" aria-labelledby="titre-gaming">
     <h1 id="titre-gaming">VM Gaming</h1>
     <form method="dialog"><button aria-label="Fermer VM Gaming" autofocus>×</button></form>
     <p>Les dernières infos sur les jeux vidéo et la communauté gaming.</p>
+    <p class="acces-rubrique-complete"><a href="https://velocemercato.fr/vm-gaming/">Ouvrir la rubrique complète</a></p>
     <p class="etat-rubrique" role="status"></p>
     <ul class="articles-rubrique"></ul>
     <p><small>Sources gaming · <a href="https://www.eurogamer.net/">Eurogamer</a> · <a href="https://www.gamekult.com/">Gamekult</a> · <a href="https://www.jeuxvideo.com/">Jeuxvideo.com</a></small></p>
-    <p><a href="https://velocemercato.fr/vm-gaming/">Ouvrir la rubrique complète</a></p>
   </dialog>
   <template id="actualites-robot">
     <!-- VM_ACTUS_VISIBLES_START -->
