@@ -1,4 +1,6 @@
 (() => {
+  // Au moins 15 articles dans chaque volet avant le lien vers la rubrique complète (20 si disponibles).
+  const VOLET_ARTICLES = 20;
   const site = 'https://velocemercato.fr';
   const refreshInterval = 10 * 60_000;
   const feeds = {
@@ -13,7 +15,7 @@
   const regionalList = document.querySelector('#titres-region');
   const belfortList = document.querySelector('#actus-belfort');
   const regionalSite = 'https://france3-regions.franceinfo.fr/';
-  const sportsSources = /^(?:l['’]équipe|eurosport|bbc sport|ouest-france|dazn|le figaro|le monde(?:\.fr)?|franceinfo|france 24|sud ouest|rugbyrama|tennis actu|inside basket|f1 news|ski-nordique\.net)$/i;
+  const sportsSources = /^(?:l['’]équipe|eurosport|bbc sport|ouest-france|dazn|le figaro|le monde(?:\.fr)?|franceinfo|france 24|sud ouest|rugbyrama|tennis actu|inside basket|f1 news|f1news\.fr|ski-nordique\.net|flashscore\.fr|velo 101|velo-club|totalvelo.*|nhl\.com|sports auto moto|turbo\.fr|touchdown actu|motorcycle sports|rugby scope|actu\.fr|tv5monde|lanouvellerepublique\.fr)$/i;
   const panels = document.querySelectorAll('.espace-rubrique');
   const snapshots = JSON.parse(document.querySelector('#instantane-veloce').textContent);
   const dateFormat = new Intl.DateTimeFormat('fr-FR', {
@@ -44,9 +46,10 @@
       return Object.entries(primary?.sports ?? {}).flatMap(([sport, items]) =>
         (Array.isArray(items) ? items : [])
           .filter(item => sportsSources.test(item?.source?.trim() ?? '') && window.VM_Multisport?.isRelevant(sport, item?.titre))
-          .slice(0, 1)
+          .slice(0, 3)
           .map(item => ({title: item.titre, source: item.source, date: item.date,
-            url: item.url, theme: sport.toUpperCase()})));
+            url: item.url, theme: sport.toUpperCase()})))
+        .sort((a, b) => String(b.date).localeCompare(String(a.date)));
     }
     if (key === 'pastille') {
       return (Array.isArray(primary) ? primary : [])
@@ -54,7 +57,7 @@
         .map(item => ({title: item.titre, date: item.date_publication, source: 'La Pastille TV',
           url: item.plateformes.youtube.url, genres: item.universes}));
     }
-    return (Array.isArray(primary) ? primary : []).slice(0, key === 'actus' ? 4 : 7)
+    return (Array.isArray(primary) ? primary : []).slice(0, VOLET_ARTICLES)
       .map(item => fromArticle(item, key));
   }
 
@@ -64,7 +67,7 @@
     }));
   }
 
-  function renderList(list, rows, limit = 8) {
+  function renderList(list, rows, limit = VOLET_ARTICLES) {
     const clean = rows.filter(item => typeof item?.title === 'string' && item.title.trim() && safeLink(item.url));
     const entries = clean.slice(0, limit).map(item => {
       const li = document.createElement('li');
