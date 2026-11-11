@@ -1,0 +1,17 @@
+name = "vm-atelier"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+# Coordonnées publiques affichées aux clients (à remplir par Romain, facultatif).
+[vars]
+CONTACT_EMAIL = ""
+CONTACT_TEL = ""
+
+[[durable_objects.bindings]]
+name = "STORE"
+class_name = "Store"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Store"]
