@@ -1,5 +1,24 @@
 [
  {
+  "id": "actus-edition-20261111-1900",
+  "date": "2026-11-11",
+  "moment": "soir",
+  "universes": [
+   "actus"
+  ],
+  "date_publication": "2026-11-11T18:57:39+00:00",
+  "titre": "VM Actus — JT 19 h — 11/11/2026",
+  "plateformes": {
+   "youtube": {
+    "url": "https://www.youtube.com/watch?v=9J_8R58bKr4",
+    "status": "published"
+   }
+  },
+  "edition_at": "2026-11-11T19:00:00+01:00",
+  "source_start": "2026-11-11T13:00:00+01:00",
+  "source_end": "2026-11-11T19:00:00+01:00"
+ },
+ {
   "id": "gaming-edition-20261111-1800",
   "date": "2026-11-11",
   "moment": "soir",
@@ -1689,23 +1708,5 @@
   "edition_at": "2026-10-23T13:00:00+02:00",
   "source_start": "2026-10-23T07:00:00+02:00",
   "source_end": "2026-10-23T13:00:00+02:00"
- },
- {
-  "id": "jt-2026-10-23-midi-court-v1",
-  "date": "2026-10-23",
-  "moment": "midi",
-  "universes": [
-   "foot",
-   "actus",
-   "gaming"
-  ],
-  "date_publication": "2026-10-23T12:07:23+00:00",
-  "titre": "VM Univers — Le JT express du midi — 23/10/2026",
-  "plateformes": {
-   "youtube": {
-    "url": "https://www.youtube.com/watch?v=TZ2XLleOpVI",
-    "status": "published"
-   }
-  }
  }
 ]
