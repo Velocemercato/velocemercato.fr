@@ -1,5 +1,8 @@
 name: VM Prono — suivi et alertes
 on:
+  push:
+    paths:
+      - '.github/workflows/vm-prono-sync.yml'
   schedule:
     - cron: '*/5 * * * *'
   workflow_dispatch:
