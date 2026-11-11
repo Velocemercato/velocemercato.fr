@@ -15,7 +15,7 @@ function state(s){return s==='IN_PLAY'||s==='PAUSED'?'live':s==='FINISHED'?'fini
 function label(x){if(x.statut==='PAUSED')return 'Mi-temps';if(x.statut==='IN_PLAY')return 'En direct';if(x.statut==='FINISHED')return 'Terminé';if(x.statut==='POSTPONED')return 'Reporté';if(x.statut==='SUSPENDED')return 'Suspendu';if(x.statut==='CANCELLED')return 'Annulé';return HM.format(new Date(x.date))}
 async function get(url){try{const r=await fetch(url+'?t='+Math.floor(Date.now()/60000),{cache:'no-store'});return r.ok?await r.json():null}catch{return null}}
 async function load(){
-  const [live,agenda]=await Promise.all([get('/scores.json'),get('/matchs.json')]);
+  const [live,agenda]=await Promise.all([(get('https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/scores-live/scores.json').then(function(d){return d||get('/scores.json')})),get('/matchs.json')]);
   const map=new Map();
   for(const m of (Array.isArray(agenda)?agenda:[]))map.set(String(m.id),{id:String(m.id),date:m.date,comp:m.competition,home:m.domicile,away:m.exterieur,statut:m.statut,score:m.score||[null,null]});
   for(const m of ((live&&live.matchs)||[]))map.set(String(m.id),{id:String(m.id),date:m.date,comp:m.comp,home:m.dom,away:m.ext,statut:m.statut,score:m.score||[null,null]});

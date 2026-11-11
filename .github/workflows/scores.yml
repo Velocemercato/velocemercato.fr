@@ -26,15 +26,23 @@ jobs:
           FOOTBALL_DATA_KEY: ${{ secrets.FOOTBALL_DATA_KEY }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          for i in $(seq 1 25); do
-            git pull -q --rebase origin main || true
+          # Les scores vivent sur la branche « scores-live », PAS sur main :
+          # aucune mise à jour de score ne relance de déploiement GitHub Pages (cause du blocage du 04/11).
+          # Le site lit https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/scores-live/scores.json
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          LIVE="$RUNNER_TEMP/scores-live"
+          if git ls-remote --exit-code origin refs/heads/scores-live >/dev/null; then
+            git clone -q --depth 1 --branch scores-live "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" "$LIVE"
+          else
+            mkdir -p "$LIVE" && cd "$LIVE" && git init -q -b scores-live && git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" && cd -
+          fi
+          for i in $(seq 1 12); do
+            [ -f "$LIVE/scores.json" ] && cp "$LIVE/scores.json" scores.json
             python update_scores.py
-            if [ -f scores.json ] && ! git diff --quiet -- scores.json; then
-              git add scores.json
-              git commit -qm 'Résultats en direct'
-              for t in 1 2 3; do git pull -q --rebase origin main && git push -q && break; sleep 4; done
+            if [ -f scores.json ] && ! cmp -s scores.json "$LIVE/scores.json"; then
+              cp scores.json "$LIVE/scores.json"
+              (cd "$LIVE" && git add scores.json && git commit -qm 'Scores en direct' && for t in 1 2 3; do git push -q origin scores-live && break; sleep 4; done)
             fi
-            sleep 110
+            sleep 230
           done
