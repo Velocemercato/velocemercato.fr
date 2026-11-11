@@ -1,0 +1,19 @@
+/* VÉLOCE UNIVERSE — charte commune (noir, rouge néon, bleu, or) côté média.
+   Habillage léger uniquement : le décor et les rubriques de Véloce Mercato ne changent pas. */
+:root{--vu-noir:#07080b;--vu-rouge:#ff1f3d;--vu-bleu:#2b7bff;--vu-bleu-neon:#3fb8ff;--vu-or:#ffc21a}
+.vu-strip{background:#000;border-bottom:2px solid var(--vu-bleu);font:700 12px/1.3 system-ui,-apple-system,'Segoe UI',sans-serif}
+.vu-strip a,.vu-strip a span{text-decoration:none}
+.vu-strip a{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 10px;min-height:30px;padding:5px 14px;color:#d7dcea;text-decoration:none;text-align:center}
+.vu-strip b{color:var(--vu-or);letter-spacing:.14em;font-weight:900}
+.vu-strip a:hover span,.vu-strip a:focus-visible span{color:#fff;text-decoration:underline;text-decoration-color:var(--vu-bleu-neon)}
+@media (max-width:420px){.vu-strip span{font-size:11px}}
+/* Emplacements partenaires (étape 3) : toujours signalés « Publicité » ou « Partenaire ». */
+.vu-pub{position:relative;max-width:1152px;margin:14px auto;padding:14px 16px 14px 18px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;
+  background:linear-gradient(100deg,#160409,#06142e);border:1px dashed #ffc21a88;border-left:4px solid var(--vu-or);border-radius:12px;color:#e9ecf5;
+  font:14px/1.45 system-ui,-apple-system,'Segoe UI',sans-serif;box-sizing:border-box}
+.vu-pub p{margin:0;flex:1 1 260px}.vu-pub b{color:#fff}
+.vu-pub a{flex:none;font-weight:800;color:#111;background:var(--vu-or);border-radius:999px;padding:8px 14px;text-decoration:none}
+.vu-pub a:hover,.vu-pub a:focus-visible{box-shadow:0 0 16px #ffc21a88}
+.vu-pub-tag{flex:none;font:800 10px/1 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#111;background:#c9ced9;border-radius:4px;padding:3px 6px}
+.vu-pub-jt{border-left-color:var(--vu-bleu-neon);border-color:#3fb8ff88}.vu-pub-jt a{background:var(--vu-bleu-neon)}
+@media (max-width:1180px){.vu-pub{margin-left:16px;margin-right:16px}}

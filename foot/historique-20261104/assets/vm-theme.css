@@ -1,0 +1,179 @@
+/* VM — thème commun « maquettes 01 / 02 » : noir, rouge néon, or, titres Barlow Condensed,
+   bannière avec la mascotte VM du propriétaire (img/vm-art/). Activé par <html data-vmt="…">.
+   Aucune structure n'est supprimée : uniquement de l'habillage, les id / data-* / scripts restent intacts. */
+html[data-vmt]{--vt-red:#ff1f3d;--vt-red2:#c4081f;--vt-gold:#ffc21a;--vt-ink:#f4f4f6;--vt-muted:#c4c4cc;--vt-line:#2a1218;--vt-card:linear-gradient(180deg,#131318,#09090d);--vt-glow:0 0 14px #ff1f3d55,inset 0 0 18px #ff1f3d14;--vt-font:'Barlow Condensed','Arial Narrow',Impact,sans-serif}
+/* Pages claires (investisseurs, VM Studio) : seuls la barre, le héros mascotte et les titres changent. */
+html[data-vmt]:not([data-vmt=light]) body{background:radial-gradient(ellipse at 0 30%,#3a0610 0,transparent 42%),radial-gradient(ellipse at 100% 75%,#2a0610 0,transparent 40%),linear-gradient(180deg,#07080b,#030304)!important;background-attachment:fixed!important;color:var(--vt-ink);overflow-x:hidden}
+
+/* ---------- Barre du haut (vmbar) façon maquette ---------- */
+html[data-vmt] .vmbar{background:linear-gradient(180deg,#0b0c12,#050608)!important;border-bottom:1px solid #3a0a12!important;box-shadow:0 6px 18px #000c}
+html[data-vmt] .vmbar-in{max-width:1536px!important;min-height:56px!important;gap:6px!important}
+html[data-vmt] .vmbar a{display:inline-flex;align-items:center;min-height:40px;border:2px solid transparent;border-radius:7px!important;padding:8px 11px!important;background:transparent!important;color:#f1f1f4!important;font:700 16px/1 var(--vt-font)!important;letter-spacing:.03em!important;text-transform:uppercase;box-shadow:none!important}
+html[data-vmt] .vmbar a:hover{background:#1a0b10!important;border-color:#5a1420}
+html[data-vmt] .vmbar a.on{background:linear-gradient(180deg,#3a060f,#1a0307)!important;border-color:var(--vt-red)!important;box-shadow:0 0 12px #ff1f3dcc,inset 0 0 10px #ff1f3d55!important;color:#fff!important}
+html[data-vmt] .vmbar .vmb-logo{background:linear-gradient(135deg,#ffe58a,#f4cf55 55%,#c9971a)!important;color:#0a0a0a!important;font:italic 900 15px/1 var(--vt-font)!important;box-shadow:6px 0 0 #050608!important}
+html[data-vmt] .vmbar .vmb-don{border-color:var(--vt-gold)!important;color:var(--vt-gold)!important}
+html[data-vmt] .vmbar+header{top:57px!important}
+@media(max-width:520px){html[data-vmt] .vmbar a{font-size:15px!important;padding:8px 9px!important}}
+
+/* ---------- Titres de rubrique ---------- */
+html[data-vmt] .vmt-title,html[data-vmt] h1.vmt-title{font-family:var(--vt-font)!important;font-style:italic!important;font-weight:800!important;text-transform:uppercase;letter-spacing:.005em;color:#fff}
+.vmt-ico{display:inline-block;width:1.05em;height:1.05em;vertical-align:-.12em;margin-right:.35em;background:currentColor;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
+html[data-vmt] .vmt-crown::before{content:"";display:inline-block;width:1.05em;height:1.05em;margin-right:.35em;vertical-align:-.14em;background:var(--vt-gold);filter:drop-shadow(0 0 6px #ff9a0088);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5zM5 20h14v2H5z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5zM5 20h14v2H5z'/%3E%3C/svg%3E") center/contain no-repeat}
+
+/* ---------- Bannière mascotte (visuel du propriétaire) ---------- */
+html[data-vmt] .vmt-hero{position:relative;isolation:isolate;overflow:hidden;border:2px solid var(--vt-red2)!important;border-radius:12px!important;box-shadow:0 0 18px #ff1f3d66,inset 0 0 30px #000!important;background:linear-gradient(90deg,#07060aee 0,#07060acc 38%,#07060a55 70%,#07060a22 100%),url('/img/vm-art/vm-banniere-tetes.webp') 60% 20%/cover no-repeat,#08070a!important;text-shadow:2px 2px 0 #000,0 0 12px #000}
+html[data-vmt] .vmt-hero h1{font-family:var(--vt-font)!important;font-style:italic!important;font-weight:900!important;text-transform:uppercase;letter-spacing:.005em;color:#fff!important}
+html[data-vmt] .vmt-hero h1 :is(b,em,strong,span){color:var(--vt-gold)!important;font-style:italic}
+@media(max-width:768px){html[data-vmt] .vmt-hero{background:linear-gradient(180deg,#07060a99 0,#07060add 55%,#07060af2 100%),url('/img/vm-art/vm-banniere-tetes-768.webp') 50% 0/cover no-repeat,#08070a!important}}
+
+/* ---------- Cartes noir / rouge néon ---------- */
+html[data-vmt] .vmt-card{background:var(--vt-card)!important;border:2px solid var(--vt-red2)!important;border-radius:10px!important;box-shadow:var(--vt-glow)!important;color:var(--vt-ink)}
+html[data-vmt] .vmt-card.gold{border-color:var(--vt-gold)!important;box-shadow:0 0 16px #ffc21a66,inset 0 0 18px #ffc21a1c!important}
+html[data-vmt] .vmt-btn{background:linear-gradient(180deg,#e0102c,#a8061c)!important;border:1px solid #ff5a6e!important;border-radius:7px!important;box-shadow:0 0 12px #ff1f3d88!important;color:#fff!important;font:italic 800 16px/1 var(--vt-font)!important;text-transform:uppercase;letter-spacing:.02em;text-decoration:none}
+
+/* =================== Pages =================== */
+/* --- VM Foot amateur --- */
+html[data-vmt=fa] .hero{padding:clamp(22px,3vw,40px) clamp(16px,2vw,28px)!important}
+html[data-vmt=fa] .hero h1{font-size:clamp(2.4rem,6vw,4.2rem)!important}
+html[data-vmt=fa] .hero p{color:#e8e8ee!important}
+html[data-vmt=fa] .panel,html[data-vmt=fa] #liste>li,html[data-vmt=fa] #liste .it,html[data-vmt=fa] .empty{background:var(--vt-card)!important;border:2px solid var(--vt-red2)!important;border-radius:10px!important;box-shadow:var(--vt-glow)!important}
+html[data-vmt=fa] .head h2,html[data-vmt=fa] h2{font-family:var(--vt-font)!important;font-style:italic;font-weight:800!important;text-transform:uppercase}
+html[data-vmt=fa] .chip{font:800 15px/1 var(--vt-font)!important;letter-spacing:.03em;text-transform:uppercase;border-color:#3a3a44!important;background:#0e0e13!important}
+html[data-vmt=fa] .chip[aria-pressed=true],html[data-vmt=fa] .chip.on{background:linear-gradient(180deg,#e0102c,#a8061c)!important;border-color:#ff5a6e!important;box-shadow:0 0 12px #ff1f3d88}
+html[data-vmt=fa] .liens a{border-radius:8px!important;border:2px solid var(--vt-red2)!important;background:#0e0e13!important;font:800 16px/1 var(--vt-font)!important;text-transform:uppercase;min-height:42px;display:inline-flex;align-items:center}
+
+/* --- VM Actus --- */
+html[data-vmt=actus] .ax-hero{background:radial-gradient(ellipse at 20% 50%,#3a0610 0,transparent 55%),#08070a!important;border-bottom:2px solid var(--vt-red2)!important}
+html[data-vmt=actus] .ax-hero-in>img,html[data-vmt=actus] .ax-hero-in picture img{border:2px solid var(--vt-red2);border-radius:10px;box-shadow:0 0 18px #ff1f3d66}
+html[data-vmt=actus] #ax-title{font-family:var(--vt-font)!important;font-style:italic;font-weight:900!important;text-transform:uppercase}
+html[data-vmt=actus] h2.sec,html[data-vmt=actus] .presse h2{font-family:var(--vt-font)!important;font-style:italic;font-weight:800!important;text-transform:uppercase}
+/* Titre réel de l'émission : on garde sa casse d'origine (testé par test_pastille_browser). */
+html[data-vmt=actus] .pastille-feed h2{font-family:var(--vt-font)!important;font-style:italic;font-weight:800!important}
+html[data-vmt=actus] #list>*,html[data-vmt=actus] .ax-jt,html[data-vmt=actus] .presse,html[data-vmt=actus] .ax-eds{background:var(--vt-card)!important;border:2px solid var(--vt-red2)!important;border-radius:10px!important;box-shadow:var(--vt-glow)!important;color:var(--vt-ink)}
+html[data-vmt=actus] .ax-filters button,html[data-vmt=actus] #cats button{font-family:var(--vt-font)!important;font-weight:800!important;text-transform:uppercase;border-radius:8px!important;border:2px solid #3a3a44!important;background:#0e0e13!important;color:#fff!important;min-height:40px}
+html[data-vmt=actus] .ax-filters button[aria-pressed=true],html[data-vmt=actus] #cats button.on,html[data-vmt=actus] #cats button[aria-pressed=true]{background:linear-gradient(180deg,#e0102c,#a8061c)!important;border-color:#ff5a6e!important;box-shadow:0 0 12px #ff1f3d88}
+
+/* --- VM Gaming --- */
+html[data-vmt=gaming] .g-hero{border-bottom:2px solid var(--vt-red2)!important}
+html[data-vmt=gaming] .g-hero .banner{border:2px solid var(--vt-red2)!important;border-radius:10px!important;box-shadow:0 0 18px #ff1f3d66!important}
+html[data-vmt=gaming] .news>*,html[data-vmt=gaming] .presse,html[data-vmt=gaming] .arena,html[data-vmt=gaming] .squad,html[data-vmt=gaming] .show,html[data-vmt=gaming] .g-how{background:var(--vt-card)!important;border:2px solid var(--vt-red2)!important;border-radius:10px!important;box-shadow:var(--vt-glow)!important}
+
+/* --- VM Belfort --- */
+html[data-vmt=belfort] header.hero{margin:14px auto 6px;max-width:1180px;padding:clamp(22px,3vw,40px) 16px!important}
+html[data-vmt=belfort] header.hero h1{font-size:clamp(2.4rem,7vw,4rem)!important}
+html[data-vmt=belfort] header.hero p{color:#e8e8ee!important}
+html[data-vmt=belfort] .pastille-feed,html[data-vmt=belfort] .it{background:var(--vt-card)!important;border:2px solid var(--vt-red2)!important;border-radius:10px!important;box-shadow:var(--vt-glow)!important}
+html[data-vmt=belfort] .tools button{font:800 15px/1 var(--vt-font)!important;text-transform:uppercase;border-color:#3a3a44!important;min-height:40px}
+html[data-vmt=belfort] .tools button.on{background:linear-gradient(180deg,#e0102c,#a8061c)!important;border-color:#ff5a6e!important;color:#fff!important;box-shadow:0 0 12px #ff1f3d88}
+html[data-vmt=belfort] #q{border-color:var(--vt-red2)!important;background:#0e0e13;color:#fff}
+
+/* --- VM Actus & Pronos --- */
+html[data-vmt=pronos] body>header{margin:14px auto 0;max-width:1180px;width:calc(100% - 24px);padding:clamp(22px,3vw,40px) clamp(16px,2vw,28px)!important}
+html[data-vmt=pronos] body>header h1{font-size:clamp(2rem,5vw,3.4rem)!important}
+html[data-vmt=pronos] body>header p{color:#e8e8ee!important}
+html[data-vmt=pronos] body>header nav a{border-radius:8px!important;border:2px solid #5a1420!important;background:#0e0e13cc;color:#fff!important;font:800 15px/1 var(--vt-font)!important;text-transform:uppercase;min-height:40px;display:inline-flex;align-items:center}
+html[data-vmt=pronos] .panel{background:var(--vt-card)!important;border:2px solid var(--vt-red2)!important;border-radius:10px!important;box-shadow:var(--vt-glow)!important}
+html[data-vmt=pronos] .panel h2{font-family:var(--vt-font)!important;font-style:italic;font-weight:800!important;text-transform:uppercase;font-size:1.8rem!important}
+html[data-vmt=pronos] .news{border-top-color:#2a2a33!important}
+
+/* --- VM Services --- */
+html[data-vmt=services] body>header{background:linear-gradient(180deg,#0b0c12,#050608)!important;border-bottom:1px solid #3a0a12!important;box-shadow:0 6px 18px #000c}
+html[data-vmt=services] body>header nav a{border:2px solid transparent;border-radius:7px;padding:9px 11px;font:700 16px/1 var(--vt-font)!important;text-transform:uppercase;min-height:40px;display:inline-flex;align-items:center}
+html[data-vmt=services] body>header nav a:hover{border-color:var(--vt-red);box-shadow:0 0 12px #ff1f3d88}
+html[data-vmt=services] section.hero{margin-top:18px;padding:clamp(22px,3vw,44px) clamp(16px,2vw,30px)!important}
+html[data-vmt=services] section.hero h1{font-size:clamp(2.4rem,6.5vw,4.8rem)!important;line-height:.95!important}
+html[data-vmt=services] h2{font-family:var(--vt-font)!important;font-style:italic;font-weight:800!important;text-transform:uppercase}
+html[data-vmt=services] .category,html[data-vmt=services] .search-panel,html[data-vmt=services] .directory{background:var(--vt-card)!important;border:2px solid var(--vt-red2)!important;border-radius:10px!important;box-shadow:var(--vt-glow)!important}
+html[data-vmt=services] .category h3{font-family:var(--vt-font)!important;font-style:italic;font-weight:800!important;text-transform:uppercase;font-size:1.6rem!important}
+
+/* --- Archives --- */
+html[data-vmt=archives] .card{background:var(--vt-card)!important;border:2px solid var(--vt-red2)!important;border-radius:10px!important;box-shadow:var(--vt-glow)!important;color:var(--vt-ink)}
+html[data-vmt=archives] .card.hero{padding:clamp(22px,3vw,40px) clamp(16px,2vw,28px)!important}
+html[data-vmt=archives] .card.hero p{color:#e8e8ee!important}
+html[data-vmt=archives] .item{background:#0e0e13!important;border:2px solid #3a1018!important;box-shadow:none!important;border-radius:8px!important}
+html[data-vmt=archives] .item:hover{border-color:var(--vt-red)!important;box-shadow:0 0 12px #ff1f3d77!important}
+html[data-vmt=archives] .day{color:var(--vt-gold)!important;font-family:var(--vt-font)!important;font-style:italic}
+html[data-vmt=archives] .search input,html[data-vmt=archives] .search select{background:#0e0e13!important;border-color:#3a1018!important;color:#fff!important}
+html[data-vmt=archives] body>header{background:linear-gradient(180deg,#0b0c12,#050608)!important;border-image:none!important;border-bottom:1px solid #3a0a12!important}
+
+/* --- Pages sport VM Multisport (univers.css) --- */
+html[data-vmt=sport] body{font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+html[data-vmt=sport] .sitehead{background:linear-gradient(180deg,#0b0c12,#050608)!important;border-bottom:1px solid #3a0a12!important}
+html[data-vmt=sport] .sitehead nav a{font:700 16px/1 var(--vt-font)!important;border:2px solid transparent;border-radius:7px!important;padding:10px 11px!important;min-height:40px;display:inline-flex;align-items:center}
+html[data-vmt=sport] .sitehead nav a.active{background:linear-gradient(180deg,#3a060f,#1a0307)!important;border-color:var(--vt-red);box-shadow:0 0 12px #ff1f3dcc,inset 0 0 10px #ff1f3d55!important}
+html[data-vmt=sport] .sitehead nav a.manga-highlight{outline:0!important;background:transparent!important;box-shadow:none!important}
+html[data-vmt=sport] .sitehead .logo{font-family:var(--vt-font)!important;font-style:italic}
+html[data-vmt=sport] .banner{border-bottom:2px solid var(--vt-red2)!important}
+html[data-vmt=sport] .banner h1{font-family:Knewave,var(--vt-font)!important;font-weight:400!important;letter-spacing:0!important}
+html[data-vmt=sport] .banner p{font-family:'Permanent Marker',var(--vt-font)!important;font-weight:400!important}
+html[data-vmt=sport] .panel,html[data-vmt=sport] .region,html[data-vmt=sport] .story,html[data-vmt=sport] .sidebar .block{background:var(--vt-card)!important;border:2px solid var(--vt-red2)!important;border-radius:10px!important;box-shadow:var(--vt-glow)!important}
+html[data-vmt=sport] .main-grid .panel:nth-child(4){border-color:var(--vt-gold)!important;box-shadow:0 0 16px #ffc21a66!important}
+html[data-vmt=sport] .panel h2,html[data-vmt=sport] .lower h2,html[data-vmt=sport] .sidebar .block h3,html[data-vmt=sport] .region strong{font-family:var(--vt-font)!important;font-style:italic;font-weight:800!important;text-transform:uppercase}
+html[data-vmt=sport] .sport-nav a{border-width:2px;background:linear-gradient(150deg,#3a0610,#0b0b10 60%)!important;border-color:var(--vt-red2)!important;font-family:var(--vt-font)!important;font-size:20px!important;box-shadow:0 0 10px #ff1f3d55}
+html[data-vmt=sport] .sport-nav a[aria-current=page]{background:linear-gradient(150deg,#a30c29,#3a0610)!important;border-color:var(--vt-red)!important;box-shadow:0 0 18px #ff1f3dcc}
+html[data-vmt=sport] .subnav a{font-family:var(--vt-font)!important;font-size:15px!important;text-transform:uppercase;background:#0e0e13!important;border-color:#3a1018!important;min-height:40px;display:inline-flex;align-items:center}
+html[data-vmt=sport] .panel .cta{background:linear-gradient(180deg,#e0102c,#a8061c)!important;font-family:var(--vt-font)!important;font-style:italic;font-size:16px!important}
+html[data-vmt=sport] .promo-manga{background:linear-gradient(90deg,#4a0612,#0e0a10 55%,#1a0a0e)!important}
+html[data-vmt=sport] .feature-image{border-color:#2b2b33!important;background:#111!important}
+html[data-vmt=sport] .feature-image img{object-position:50% 30%}
+html[data-vmt=sport] .mini-news i{background-size:cover!important}
+
+/* --- Accueil foot (vm-cinema) --- */
+html[data-vmt=home] .vm-cinema-top{background:linear-gradient(180deg,#0b0c12,#050608)!important;border-bottom:1px solid #3a0a12!important}
+html[data-vmt=home] .vm-cinema-menu a{font:700 16px/1 var(--vt-font)!important;letter-spacing:.03em;border:2px solid transparent;border-radius:7px!important;min-height:40px;display:inline-flex;align-items:center}
+html[data-vmt=home] .vm-cinema-menu a.manga-nav{background:linear-gradient(180deg,#3a060f,#1a0307)!important;border-color:var(--vt-red)!important;box-shadow:0 0 12px #ff1f3dcc,inset 0 0 10px #ff1f3d55!important}
+html[data-vmt=home] .vm-cinema-menu a.multisport-nav{background:transparent!important;border-color:#5a1420!important;box-shadow:none!important}
+html[data-vmt=home] .vm-cinema-logo span{font-family:var(--vt-font)!important}
+html[data-vmt=home] .vm-cinema-art img{object-position:50% 25%}
+html[data-vmt=home] .vm-cinema-panel{background:var(--vt-card)!important;border:2px solid var(--vt-red2)!important;border-radius:10px!important;box-shadow:var(--vt-glow)!important}
+html[data-vmt=home] .vm-cinema-panel:nth-child(3){border-color:#5a1420!important}
+html[data-vmt=home] .vm-cinema-panel:nth-child(4){border-color:var(--vt-gold)!important;box-shadow:0 0 16px #ffc21a66,inset 0 0 18px #ffc21a1c!important}
+html[data-vmt=home] .vm-cinema-panel h2,html[data-vmt=home] .vm-cinema-regions strong,html[data-vmt=home] .vm-cinema-ribbons a{font-family:var(--vt-font)!important;font-style:italic;font-weight:800!important;text-transform:uppercase}
+html[data-vmt=home] .vm-cinema-panel h3{font-family:var(--vt-font)!important;font-style:italic;font-weight:800!important;text-transform:uppercase;font-size:1.35rem!important;line-height:1.05!important}
+html[data-vmt=home] .vm-cinema-cta,html[data-vmt=home] .hero-button{background:linear-gradient(180deg,#e0102c,#a8061c)!important;border:1px solid #ff5a6e!important;box-shadow:0 0 12px #ff1f3d88!important;font-family:var(--vt-font)!important;font-style:italic;font-size:16px!important}
+html[data-vmt=home] .vm-cinema-ribbons a{background:linear-gradient(150deg,#3a0610,#0b0b10 60%)!important;border:2px solid var(--vt-red2)!important;box-shadow:0 0 10px #ff1f3d55!important;font-size:19px!important}
+html[data-vmt=home] .vm-cinema-regions a{background:var(--vt-card)!important;border:2px solid var(--vt-red2)!important;box-shadow:var(--vt-glow)!important}
+html[data-vmt=home] .vm-cinema-mini-list .thumb{flex:0 0 auto;width:92px;aspect-ratio:16/10;border-radius:5px;overflow:hidden;border:1px solid #33333c;display:block}
+html[data-vmt=home] .vm-cinema-mini-list .thumb img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block}
+html[data-vmt=home] .vm-cinema-name h1{font-family:Knewave,var(--vt-font)!important;font-weight:400!important;font-style:normal!important;letter-spacing:0!important}
+html[data-vmt=home] .vm-cinema-name .slogan{font-family:'Permanent Marker',var(--vt-font)!important;font-weight:400!important}
+html[data-vmt=home] .vm-cinema-promo.manga:before{background:linear-gradient(95deg,#0a0306f0 0,#17040dcc 50%,#17040d55 100%),var(--promo-image) 0 22%/auto 165% no-repeat,#0a080c!important}
+html[data-vmt=home] .vm-cinema-promo:not(.manga):before{background:linear-gradient(95deg,#050608f0 0,#050608bb 55%,#05060844 100%),var(--promo-image) 30% 30%/cover no-repeat,#0a080c!important}
+html[data-vmt=home] .vm-cinema-promo:not(.manga){border-color:var(--vt-gold)!important}
+
+/* Palette des pages ramenée au noir / rouge / or (variables propres à chaque page). */
+html[data-vmt=actus],html[data-vmt=archives],html[data-vmt=services],html[data-vmt=pronos],html[data-vmt=gaming],html[data-vmt=fa]{--bg:#050608;--surface:#0e0e13;--surface2:#15151b;--card:#0e0e13;--panel:#0e0e13;--ink:#f4f4f6;--text:#f4f4f6;--muted:#b9b9c2;--royal:#ff1f3d;--head:#050608;--line:#3a1018;--red:#e0102c;--gold:#ffc21a;--gold-hi:#ffc21a;color-scheme:dark}
+html[data-vmt=actus] .top,html[data-vmt=actus] body>header{background:linear-gradient(180deg,#0b0c12,#050608)!important}
+html[data-vmt=actus] .une{border:2px solid var(--vt-red2)!important;box-shadow:var(--vt-glow)!important;border-radius:10px!important;background:var(--vt-card)!important}
+html[data-vmt=actus] .une .band{background:linear-gradient(90deg,#c4081f,#7a0414)!important;font-family:var(--vt-font)!important;font-style:italic;font-weight:800!important;border-bottom:0!important}
+html[data-vmt=actus] .une h1,html[data-vmt=actus] .une .une-t{font-family:var(--vt-font)!important;font-style:italic;font-weight:800!important}
+html[data-vmt=actus] .ax-filters button,html[data-vmt=actus] #cats button{font-size:15px!important;padding:8px 12px!important}
+html[data-vmt=gaming]{background:#050608!important}
+html[data-vmt=gaming] body::before,html[data-vmt=gaming] body::after{opacity:.25}
+html[data-vmt=gaming] header.bar{background:linear-gradient(180deg,#0b0c12,#050608)!important;border-bottom:1px solid #3a0a12!important}
+
+/* =================== Pages projets VM (data-vmt="gen") ===================
+   Base commune noir / rouge / or ; chaque projet garde sa couleur d'accent propre (boutons, badges). */
+html[data-vmt=gen]:not([data-vmt-page=investisseurs]):not([data-vmt-page=webstudio]){--bg:#050608;--bg2:#0b0b10;--surface:#0e0e13;--surface2:#15151b;--card:#0e0e13;--panel:#0e0e13;--paper:#0e0e13;--ink:#f4f4f6;--text:#f4f4f6;--fg:#f4f4f6;--muted:#b9b9c2;--head:#050608;--line:#3a1018;--border:#3a1018;--stroke:#3a1018;color-scheme:dark}
+html[data-vmt=gen]:not([data-vmt-page=investisseurs]):not([data-vmt-page=webstudio]) body{color:var(--vt-ink)}
+html:is([data-vmt=gen],[data-vmt=light]) .vmt-hero{color:#f4f4f6!important}
+html:is([data-vmt=gen],[data-vmt=light]) .vmt-hero>p,html:is([data-vmt=gen],[data-vmt=light]) .vmt-hero>div>p{color:#e8e8ee}
+html:is([data-vmt=gen],[data-vmt=light]) .vmt-hero{padding-top:clamp(20px,3vw,40px)!important;padding-bottom:clamp(20px,3vw,40px)!important}
+html[data-vmt=gen] :is(.card,.panel,.box,.pcard,.tile,.item,.it,.offer,.plan,.block,.feature,.step):not(.vmt-hero){background:var(--vt-card)!important;border-color:var(--vt-red2)!important;box-shadow:0 0 12px #ff1f3d44!important;color:var(--vt-ink)}
+html[data-vmt=gen]:not([data-vmt-page=investisseurs]):not([data-vmt-page=webstudio]) main h2,html[data-vmt=gen]:not([data-vmt-page=investisseurs]):not([data-vmt-page=webstudio]) section h2{font-family:var(--vt-font)!important;font-style:italic;font-weight:800!important;letter-spacing:.01em}
+/* Pas de majuscules forcées : les titres dynamiques (ville météo, émission…) gardent leur casse réelle. */
+html[data-vmt=gen]:not([data-vmt-page=investisseurs]):not([data-vmt-page=webstudio]) input:not([type=checkbox]):not([type=radio]),html[data-vmt=gen]:not([data-vmt-page=investisseurs]):not([data-vmt-page=webstudio]) select,html[data-vmt=gen]:not([data-vmt-page=investisseurs]):not([data-vmt-page=webstudio]) textarea{background:#0e0e13!important;color:#f4f4f6!important;border-color:#3a1018!important}
+html[data-vmt=gen] body>header:not(.vmt-hero),html[data-vmt=gen] body>footer{background:linear-gradient(180deg,#0b0c12,#050608)!important;color:#f4f4f6;border-color:#3a0a12!important}
+html[data-vmt=gen]:not([data-vmt-page=investisseurs]):not([data-vmt-page=webstudio]) body>footer a{color:var(--vt-gold)}
+/* Éléments clairs des projets : on garde un contraste lisible sur le fond sombre. */
+html[data-vmt=gen]:not([data-vmt-page=investisseurs]):not([data-vmt-page=webstudio]) :is(.tabs button,.sites a.site.off,button.add,.box .tip,.cats button,button.more,section.rules,.dl .warn,.row button.ghost,.grid .c,.steps li,.box .warn,.box button.x){background:#15151b!important;color:#f4f4f6!important;border-color:#3a1018!important}
+html[data-vmt=gen]:not([data-vmt-page=investisseurs]):not([data-vmt-page=webstudio]) :is(.tabs button.on,.tabs button[aria-selected=true],.cats button.on,.cats button[aria-pressed=true]){background:linear-gradient(180deg,#e0102c,#a8061c)!important;border-color:#ff5a6e!important}
+html:is([data-vmt=gen],[data-vmt=light]) .vmt-hero :is(.beta,.badge,.kicker,.tag){color:#120a00!important}
+/* Corps en grille centrée (404, etc.) : la barre reste à la largeur de l'écran. */
+html[data-vmt] body>.vmbar{width:100%;max-width:100vw;min-width:0;align-self:start;justify-self:stretch}
+html[data-vmt-page="404"] body{place-items:start center!important;padding:0 0 16px!important;align-content:start}
+html[data-vmt-page="404"] body>:not(.vmbar){margin-top:24px;max-width:calc(100vw - 32px)}
+
+/* Boutons : texte net, sans contour hérité du héros */
+html[data-vmt] .vmt-hero a,html[data-vmt] .vmt-hero button,html[data-vmt] .btn{text-shadow:none!important}

@@ -2,6 +2,8 @@
 from html.parser import HTMLParser
 from pathlib import Path
 import re
+import json
+from html import escape
 import sys
 
 REMOVE_CLASSES = {'vmbar', 'vmtop', 'vm-volets', 'vm-duo', 'vm-essentiel', 'promo-manga'}
@@ -61,6 +63,20 @@ def prepare(root):
         if any(part in {'.github', 'tests', 'tools', 'docs'} for part in path.relative_to(root).parts):
             continue
         text = path.read_text(encoding='utf-8')
+        if path == root/'foot/index.html':
+            articles = json.loads((root/'articles.json').read_text(encoding='utf-8'))
+            rows = sorted((a for a in articles if isinstance(a, dict) and a.get('titre') and a.get('id')),
+                          key=lambda a: str(a.get('publishedAt', '')), reverse=True)[:4]
+            items = []
+            for article in rows:
+                source = next((s.get('nom') for s in article.get('sources', []) if s.get('nom')), 'Source citée')
+                ident = re.sub(r'[^a-zA-Z0-9_-]', '', str(article['id']))
+                items.append('<li><a href="/a/'+ident+'.html">'+escape(article['titre'])+'</a><small>'+
+                             escape(str(article.get('publishedAt', ''))+' · '+source)+'</small><p>'+
+                             escape(str(article.get('resume', '')))+'</p></li>')
+            snapshot = '<section id="actualites-du-jour" aria-label="Dernières actualités football sourcées"><h3>Les dernières actualités foot</h3><ul>'+''.join(items)+'</ul><a href="#feed-title">Voir toutes les actualités mises à jour</a></section>'
+            text = re.sub(r'(<!-- VM_ACTUS_VISIBLES_START -->)[\\s\\S]*?(<!-- VM_ACTUS_VISIBLES_END -->)',
+                          lambda match: match[1]+snapshot+match[2], text, count=1)
         parser = RemoveNavigation('multisport' in path.relative_to(root).parts)
         parser.feed(text)
         if parser.depth:
