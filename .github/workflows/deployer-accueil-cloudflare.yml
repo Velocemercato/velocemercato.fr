@@ -8,7 +8,7 @@ on:
     - cron: '*/20 * * * *'
   push:
     branches: [main]
-    paths: ['.github/workflows/deployer-accueil-cloudflare.yml', 'index.html', 'assets/**', 'tools/prepare_public_site.py', 'multisport/**', 'actus/**', 'vm-gaming/**', 'studio.html']
+    paths: ['.github/workflows/deployer-accueil-cloudflare.yml', 'index.html', 'assets/**', 'tools/prepare_public_site.py', 'multisport/**', 'actus/**', 'vm-gaming/**', 'studio.html', 'studio/kit-depannage.html']
 permissions:
   contents: read
 concurrency:
