@@ -271,11 +271,24 @@
       .reseaux a { width:100%; height:44px; }
       .banniere-argent { bottom:calc(max(14px, env(safe-area-inset-bottom)) + 112px); }
     }
+
+    /* Les réseaux passent sous la scène pour laisser le pouf entièrement visible. */
+    .scene-accueil { position:relative; width:100%; aspect-ratio:9/16; }
+    .scene-accueil picture { position:absolute; inset:0; height:100%; }
+    .scene-accueil .accueil { width:100%; height:100%; object-fit:cover; }
+    main .banniere-argent, main .reseaux { position:relative; left:auto; bottom:auto; transform:none; margin:10px auto; }
+    main .reseaux { display:grid; grid-template-columns:repeat(5,1fr); gap:2px; width:min(322px,calc(100% - 16px)); }
+    main .reseaux a { width:100%; height:44px; }
+    main { padding-bottom:max(4px,env(safe-area-inset-bottom)); }
+    .bouton-vitrine svg { pointer-events:all; overflow:visible; }
+    .bouton-vitrine:hover circle, .bouton-vitrine:focus-visible circle { stroke:#fff1bd; stroke-width:2.5; }
+    @media (min-aspect-ratio:10/16) { main { width:min(100vw,calc((100dvh - 162px) * 9/16)); min-width:260px; } }
 </style>
 <link rel="stylesheet" href="/assets/mangas-collections.css">
 </head>
 <body>
   <main aria-label="Véloce Mercato">
+    <div class="scene-accueil">
     <picture>
       <source srcset="img/accueil-bureau-veloce-portrait-micro.webp">
       <img class="accueil" src="img/accueil-bureau-veloce.webp"
@@ -399,11 +412,9 @@
           <text x="43" y="16" text-anchor="middle" fill="#ffe5ac" font-family="DejaVu Sans, sans-serif" font-size="7.5" font-weight="bold">CONSEILS PRONOS</text>
         </svg>
       </a>
-      <a href="https://vmunivers.fr/" aria-label="Véloce Mercato, ouvrir le site vitrine VM Univers" tabindex="0">
-        <rect x="540" y="108" width="132" height="74" rx="10"/>
-      </a>
+      <a class="acces-cadre bouton-vitrine" href="https://vmunivers.fr/" aria-label="VM Univers, ouvrir vmunivers.fr" tabindex="0"><svg x="660" y="95" width="42" height="54" viewBox="0 0 48 60" aria-hidden="true"><circle cx="24" cy="24" r="23" fill="#110d0b" stroke="#e9b969" stroke-width="1.4"/><image href="img/logo-vm-univers-officiel.png" x="4" y="4" width="40" height="40"/><text x="24" y="56" text-anchor="middle" fill="#ffe5ac" font-family="DejaVu Sans,sans-serif" font-size="5.8" font-weight="bold">VMUNIVERS.FR</text></svg></a>
       <a href="https://www.facebook.com/VMunivers.fr/" aria-label="Facebook VM Univers" tabindex="0">
-        <rect x="320" y="221" width="66" height="55" rx="10"/>
+        <rect x="320" y="221" width="66" height="55" rx="10"/><g class="plaque-facebook" aria-hidden="true" pointer-events="all" cursor="pointer"><rect x="316" y="270" width="94" height="14" rx="5" fill="#160e0cf2" stroke="#e4b76d" stroke-width=".7"/><circle cx="324" cy="277" r="4.5" fill="#1877f2"/><path d="M325 281v-3.5h1l.2-1H325v-.6c0-.5.2-.7.7-.7h.6v-1h-.9c-1.1 0-1.6.6-1.6 1.6v.7h-.8v1h.8v3.5z" fill="#fff"/><text x="331" y="279.2" fill="#fff1d3" font-family="DejaVu Sans, sans-serif" font-size="6.2" font-weight="bold">VMUNIVERS.FR</text></g>
       </a>
       <a href="https://www.facebook.com/Veloce.mercato.actus/" aria-label="Facebook VM Actus et Pronos" tabindex="0">
         <defs>
@@ -416,7 +427,7 @@
             <image href="img/vm-actus-pronos-globe.webp" width="1536" height="1536"/>
           </svg>
         </g>
-        <circle cx="601" cy="261" r="54"/>
+        <circle cx="601" cy="261" r="54"/><g class="plaque-facebook" aria-hidden="true" pointer-events="all" cursor="pointer"><rect x="552" y="315" width="100" height="14" rx="5" fill="#160e0cf2" stroke="#e4b76d" stroke-width=".7"/><circle cx="560" cy="322" r="4.5" fill="#1877f2"/><path d="M561 326v-3.5h1l.2-1H561v-.6c0-.5.2-.7.7-.7h.6v-1h-.9c-1.1 0-1.6.6-1.6 1.6v.7h-.8v1h.8v3.5z" fill="#fff"/><text x="567" y="324.2" fill="#fff1d3" font-family="DejaVu Sans, sans-serif" font-size="5.8" font-weight="bold">VM ACTUS PRONOS</text></g>
       </a>
     </svg>
     <svg class="zone-logo zone-logo--portrait" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
@@ -545,23 +556,15 @@
         </svg>
       </a>
       <a class="acces-cadre" data-cadre="mobile" href="https://t.me/VMCONSEILSPRONOS" aria-label="Les Conseils Pronos sur Telegram" tabindex="0">
-        <svg x="138" y="499" width="78" height="27" viewBox="0 0 86 25" aria-hidden="true">
-          <rect class="cadre-bord" x="1" y="1" width="84" height="23" rx="8" fill="none" stroke="none" stroke-width="1.3" pointer-events="all"/>
-          <g class="brodage-pouf" pointer-events="none">
-            <path d="M36 5.5 40 7.5 43 3 46 7.5 50 5.5 48.5 11.3h-11z"
-              fill="#d9a34e" stroke="#38200d" stroke-width=".8" stroke-linejoin="round"/>
-            <path d="m38 9 2.5.6 2.5-3 2.5 3L48 9m-10 3.1h10"
-              fill="none" stroke="#ffe5a0" stroke-width=".65" stroke-linecap="round" stroke-dasharray="1 .45"/>
-            <text x="43" y="22.5" text-anchor="middle" fill="url(#fil-pouf)" stroke="#160f0d" stroke-width="1.05"
-              paint-order="stroke fill" font-family="DejaVu Sans, sans-serif" font-size="7.2" font-weight="bold" font-style="italic" textLength="80" lengthAdjust="spacingAndGlyphs">LES CONSEILS PRONOS</text>
-          </g>
-        </svg>
-      </a>
-      <a href="https://vmunivers.fr/" aria-label="Véloce Mercato, ouvrir le site vitrine VM Univers" tabindex="0">
-        <rect x="60" y="110" width="244" height="52" rx="10"/>
-      </a>
+<svg x="136" y="488" width="86" height="45" viewBox="0 0 86 45" aria-hidden="true">
+<rect x="0" y="0" width="86" height="45" fill="transparent" pointer-events="all"/>
+<g pointer-events="none"><path d="M36 5.5 40 7.5 43 3 46 7.5 50 5.5 48.5 11.3h-11z" fill="#d9a34e" stroke="#38200d" stroke-width=".8"/>
+<text x="43" y="25" text-anchor="middle" fill="#ffe5ac" stroke="#160f0d" stroke-width="1" paint-order="stroke fill" font-family="DejaVu Sans,sans-serif" font-size="9.8" font-weight="bold" font-style="italic">VM PRONO</text>
+<circle cx="23" cy="35" r="5" fill="#229ed9"/><path d="m19.5 34.8 7-2.7-1.2 6-2-1.6-1.2 1v-1.8l3.2-2.4-4.1 1.9z" fill="#fff"/>
+<text x="31" y="37.2" fill="#fff1d3" font-family="DejaVu Sans,sans-serif" font-size="6.3" font-weight="bold">TELEGRAM</text></g></svg></a>
+      <a class="acces-cadre bouton-vitrine" href="https://vmunivers.fr/" aria-label="VM Univers, ouvrir vmunivers.fr" tabindex="0"><svg x="307" y="120" width="38" height="50" viewBox="0 0 48 60" aria-hidden="true"><circle cx="24" cy="24" r="23" fill="#110d0b" stroke="#e9b969" stroke-width="1.4"/><image href="img/logo-vm-univers-officiel.png" x="4" y="4" width="40" height="40"/><text x="24" y="56" text-anchor="middle" fill="#ffe5ac" font-family="DejaVu Sans,sans-serif" font-size="5.8" font-weight="bold">VMUNIVERS.FR</text></svg></a>
       <a href="https://www.facebook.com/VMunivers.fr/" aria-label="Facebook VM Univers" tabindex="0">
-        <rect x="158" y="374" width="52" height="48" rx="9"/>
+        <rect x="145" y="374" width="79" height="62" rx="9"/><g class="plaque-facebook" aria-hidden="true" pointer-events="all" cursor="pointer"><rect x="146" y="417" width="91" height="14" rx="5" fill="#160e0cf2" stroke="#e4b76d" stroke-width=".7"/><circle cx="154" cy="424" r="4.5" fill="#1877f2"/><path d="M155 428v-3.5h1l.2-1H155v-.6c0-.5.2-.7.7-.7h.6v-1h-.9c-1.1 0-1.6.6-1.6 1.6v.7h-.8v1h.8v3.5z" fill="#fff"/><text x="161" y="426.2" fill="#fff1d3" font-family="DejaVu Sans, sans-serif" font-size="6.2" font-weight="bold">VMUNIVERS.FR</text></g>
       </a>
       <a href="https://www.facebook.com/Veloce.mercato.actus/" aria-label="Facebook VM Actus et Pronos" tabindex="0">
         <defs>
@@ -574,9 +577,10 @@
             <image href="img/vm-actus-pronos-globe.webp" width="1536" height="1536"/>
           </svg>
         </g>
-        <circle cx="304" cy="390" r="33"/>
+        <circle cx="304" cy="390" r="33"/><g class="plaque-facebook" aria-hidden="true" pointer-events="all" cursor="pointer"><rect x="261" y="448" width="90" height="14" rx="5" fill="#160e0cf2" stroke="#e4b76d" stroke-width=".7"/><circle cx="269" cy="455" r="4.5" fill="#1877f2"/><path d="M270 459v-3.5h1l.2-1H270v-.6c0-.5.2-.7.7-.7h.6v-1h-.9c-1.1 0-1.6.6-1.6 1.6v.7h-.8v1h.8v3.5z" fill="#fff"/><text x="276" y="457.2" fill="#fff1d3" font-family="DejaVu Sans, sans-serif" font-size="5.3" font-weight="bold">VM ACTUS PRONOS</text></g>
       </a>
     </svg>
+    </div>
     <aside class="banniere-argent" aria-label="Les jeux d’argent, réservés aux 18 ans et plus">
       <span aria-hidden="true">LES JEUX D’ARGENT</span>
       <svg viewBox="0 0 24 24" aria-hidden="true">
