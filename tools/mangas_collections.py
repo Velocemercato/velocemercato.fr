@@ -18,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CIBLES = {
     'mangas/collections.json': ['index.html', 'mangas/index.html', 'mangas/catalogue/index.html'],
-    'series/collections.json': ['series/index.html'],
+    'series/collections.json': ['series/index.html', 'series/catalogue/index.html'],
 }
 BLOC = re.compile(r'(<div class="vm-collections">)(.*?)(</div>\s*</section>)', re.S)
 PLAYLIST = re.compile(r'^PL[A-Za-z0-9_-]{10,60}$')
