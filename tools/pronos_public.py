@@ -293,7 +293,8 @@ et leur visibilité dépend aussi des paramètres de la Page Meta.</footer></bod
 def build(root=ROOT, now=None):
     root = Path(root)
     path = root / "pronos/index.html"
-    content = render(root, now)
+    import vmstats  # compteur de visites Cloudflare (sans cookie), comme sur les autres pages
+    content = vmstats.add(render(root, now))
     path.parent.mkdir(parents=True, exist_ok=True)
     if not path.exists() or path.read_text(encoding="utf-8") != content:
         path.write_text(content, encoding="utf-8")
