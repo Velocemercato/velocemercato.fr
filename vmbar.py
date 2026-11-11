@@ -100,7 +100,7 @@ window.vmMail=function(su,bo){var to='velocemercato.fr@gmail.com';location.href=
 
 def bar(active):
     # Une plateforme, des rubriques : le foot d'abord, puis les univers ; le reste est dans « Plus ».
-    items=[('f','/','⚽ Foot'),('fa','/foot-amateur/','🥅 Foot amateur'),('m','/multisport/','🏆 Multisport'),('a','/actus/','📰 Actus'),('k','/mangas/','👑 VM Mangas'),('g','/vm-gaming/','🎮 Gaming'),('v','/#videos','🎬 Vidéos'),('sv','/services/','📍 Services'),('pr','/pronos/','🔞 Pronos 18+'),('pl','/decouvrir.html','➕ Plus')]
+    items=[('f','/','⚽ Foot'),('fa','/foot-amateur/','🥅 Foot amateur'),('m','/multisport/','🏆 Multisport'),('a','/actus/','📰 Actus'),('k','/mangas/','👑 VM Mangas'),('g','/vm-gaming/','🎮 Gaming'),('v','/foot/#videos','🎬 Vidéos'),('sv','/services/','📍 Services'),('pr','/pronos/','🔞 Pronos 18+'),('pl','/decouvrir.html','➕ Plus')]
     links=''.join(f'<a class="{k}{" on" if k==active else ""}" href="{h}"{" aria-current=\"page\"" if k==active else ""}>{t}</a>' for k,h,t in items)
     return f'<nav class="vmbar" aria-label="Les univers VM"><div class="vmbar-in"><a class="vmb-logo" href="https://vmunivers.fr/" aria-label="VM Univers, tous les projets">VM UNIVERS<small>TOUS LES PROJETS</small></a>{links}<a class="vmb-don" href="/soutenir.html">💛 Soutenir</a></div></nav>'
 def inject(s,active,app='foot',contact='velocemercato.fr@gmail.com'):
