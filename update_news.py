@@ -107,6 +107,11 @@ ALLOWED_HOSTS = {
     'footmercato.net', 'bbc.co.uk', 'bbci.co.uk', 'bbc.com', 'foot01.com', 'francetvinfo.fr', 'franceinfo.fr',
     'theguardian.com',
 }
+from tools.sources_supplementaires import feeds as extra_source_feeds
+_extra_feeds, _extra_hosts = extra_source_feeds('foot')
+FEEDS.extend(feed for feed in _extra_feeds if feed[3] not in {f[3] for f in FEEDS})
+ALLOWED_HOSTS.update(_extra_hosts)
+
 BLOCK = re.compile(
     r'\b(pronostic|paris sportifs|casino|cotes de paris|billetterie|streaming ill[eé]gal|'
     r'en direct|direct live|live score|live updates|as it happened|'

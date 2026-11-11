@@ -40,6 +40,11 @@ robot.ALLOWED_HOSTS = {
     'francetvinfo.fr', 'franceinfo.fr', '20minutes.fr', 'france24.com', 'rfi.fr', 'ouest-france.fr',
     'theguardian.com', 'bbc.co.uk', 'bbci.co.uk', 'bbc.com', 'euronews.com',
 }
+from tools.sources_supplementaires import feeds as extra_source_feeds
+_extra_feeds, _extra_hosts = extra_source_feeds('actus')
+robot.FEEDS.extend(feed for feed in _extra_feeds if feed[3] not in {f[3] for f in robot.FEEDS})
+robot.ALLOWED_HOSTS.update(_extra_hosts)
+
 # Pas de pubs, jeux, horoscopes, directs ou programmes TV.
 robot.BLOCK = re.compile(r'\b(horoscope|bon plan|promo(tion)?s?|soldes?|code promo|jeu concours|concours|'
                          r'pronostic|paris sportifs|casino|en direct|direct live|live|programme tv|'

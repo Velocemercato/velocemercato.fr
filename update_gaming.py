@@ -36,6 +36,11 @@ robot.ALLOWED_HOSTS = {
     'jeuxvideo.com', 'gamekult.com', 'dexerto.fr', 'jvfrance.com', 'gamergen.com',
     'next.ink', 'tomshardware.fr', 'lesnumeriques.com',
 }
+from tools.sources_supplementaires import feeds as extra_source_feeds
+_extra_feeds, _extra_hosts = extra_source_feeds('gaming')
+robot.FEEDS.extend(feed for feed in _extra_feeds if feed[3] not in {f[3] for f in robot.FEEDS})
+robot.ALLOWED_HOSTS.update(_extra_hosts)
+
 # Seulement nos quatre jeux, et pas de promos, concours ou paris.
 GAMES = re.compile(r'\b(warzone|call of duty|black ops|modern warfare|battlefield|redsec|'
                    r'ea sports fc|fc ?2[5-9]|ultimate team|gta|grand theft auto|rockstar)\b', re.I)

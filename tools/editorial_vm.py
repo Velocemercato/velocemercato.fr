@@ -78,7 +78,7 @@ def select_news(root, now, done, account, network, seen, offset=0):
                 continue
             if universe == 'multisport':
                 from tools.multisport_flux import GAMING_CONTENT
-                if GAMING_CONTENT.search(row['titre']):
+                if re.search(GAMING_CONTENT, row['titre'], re.I):
                     continue
             return universe, row, source
     return None
@@ -239,20 +239,29 @@ def run(state, graph, root=ROOT, now=None, burst=False):
     result = {'updated_at': now.isoformat(), 'mode': 'rattrapage_10' if burst else 'programme',
               'targets': {}, 'unconnected': ['Troisième compte Instagram : identité et connexion absentes.']}
     batch = 'editorial/lot-demarre-2026-11-11'
-    # Un lancement du même lot n'est jamais recommencé, y compris après coupure.
-    if burst and state.data.get(batch):
-        result['status'] = 'lot_deja_demarre'
-        return result
-    if burst:
+    # Une correction peut reprendre les seules destinations incomplètes du même lot.
+    # Les envois ambigus comptent comme tentés ; aucun contenu déjà tenté n'est renvoyé.
+    if burst and not state.data.get(batch):
         state.data[batch] = {'at': now.isoformat()}
         state.save()
     for account in TARGETS:
         for network in ('facebook', 'instagram'):
             if account == 'meta_pronos' and network == 'instagram':
                 continue
+            count = 1
+            if burst:
+                started = state.data[batch]['at']
+                attempted = sum(1 for key, value in ledger(state, account).items()
+                                if key.startswith('editorial/' + network + '/')
+                                and not key.startswith('editorial/' + network + '/titre/')
+                                and isinstance(value, dict) and value.get('at', '') >= started)
+                count = max(0, 10 - attempted)
+                if not count:
+                    result['targets'][account + '/' + network] = {'status': 'lot_deja_traite', 'posts': []}
+                    continue
             try:
                 result['targets'][account + '/' + network] = publish_target(
-                    state, graph, account, network, root, now, 10 if burst else 1, burst=burst)
+                    state, graph, account, network, root, now, count, burst=burst)
             except Exception as error:
                 result['targets'][account + '/' + network] = {'status': 'bloque', 'reason': type(error).__name__, 'posts': []}
     return result

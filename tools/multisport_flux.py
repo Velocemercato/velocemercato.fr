@@ -135,6 +135,31 @@ def fetch(sport,query,now):
   if len(out)>=22:break
  return out
 
+def extra_public_feeds(now):
+ import update_news as robot
+ from tools.sources_supplementaires import feeds
+ out={sport:[] for sport in SPORTS}
+ requested=feeds('multisport')[0]
+ for _,_,name,url in requested:
+  try:
+   if not robot.can_fetch(url):continue
+   xml=ET.fromstring(robot.request_bytes(url,limit=2_000_000,timeout=10))
+   for item in xml.findall('./channel/item'):
+    title=clean(item.findtext('title'),210)
+    link=clean(item.findtext('link'),1500)
+    pub=stamp(item.findtext('pubDate'))
+    if not(pub and link.startswith('https://') and dt.timedelta(0)<=now-pub<=dt.timedelta(hours=24)):continue
+    # Ces titres français sont publiés tels quels avec attribution ; les sources étrangères
+    # restent à traduire dans le moteur de brèves, sans inventer une traduction.
+    if name not in ('Sports.fr','Le Monde Sport'):continue
+    for sport in SPORTS:
+     if relevant(sport,title):
+      out[sport].append({'id':sport+'-'+str(int(pub.timestamp()))+'-'+re.sub('[^a-z0-9]','',title.lower())[:28],
+       'titre':title,'source':name,'url':link,'date':pub.isoformat(timespec='seconds'),'rubriques':rubriques(sport,title)})
+  except Exception as error:
+   print(f'::warning::Source {name} indisponible ({type(error).__name__})',flush=True)
+ return out
+
 def main():
  now=dt.datetime.now(UTC)
  try:current=json.loads(OUT.read_text(encoding='utf-8')) if OUT.is_file() else {}
@@ -143,6 +168,7 @@ def main():
  data={'misAJour':now.isoformat(timespec='seconds'),'fenetreJours':1,'source':'Google News RSS — liens vers les éditeurs originaux',
        'sports':{}}
  success=0
+ supplemental=extra_public_feeds(now)
  for sport,query in SPORTS.items():
   try:
    items=fetch(sport,query,now)
@@ -160,7 +186,10 @@ def main():
     if dt.timedelta(0)<=age<=dt.timedelta(days=7) and row.get('url','').startswith('https://news.google.com/') and relevant(sport,row.get('titre','')):
      items.append({**row,'rubriques':rubriques(sport,row.get('titre',''))})
    items=items[:20]
-  data['sports'][sport]=vm_fraicheur.du_jour(items,('date',))  # rien de la veille
+  combined=sorted(items+supplemental.get(sport,[]),key=lambda row:row['date'],reverse=True)
+  unique={}
+  for row in combined:unique.setdefault(row['titre'].casefold(),row)
+  data['sports'][sport]=vm_fraicheur.du_jour(list(unique.values())[:35],('date',))  # rien de la veille
   time.sleep(0.8)
  if not success and not any(data['sports'].values()):
   print('::warning::Aucun flux récupéré. Pas de publication de faux articles.',flush=True)

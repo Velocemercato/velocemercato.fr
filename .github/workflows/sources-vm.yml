@@ -1,0 +1,42 @@
+name: VM - Verifier les nouvelles sources de Romain
+on:
+  push:
+    branches: [main]
+    paths: ['sources/demandees-romain.json', 'tools/verifier_sources_vm.py']
+  workflow_dispatch:
+  schedule:
+    - cron: '16 3 * * 1'
+permissions:
+  contents: write
+concurrency:
+  group: vm-sources
+  cancel-in-progress: false
+jobs:
+  sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python tools/verifier_sources_vm.py
+      - name: Garder les seuls resultats publics
+        run: |
+          set -euo pipefail
+          cp sources/flux-valides.json "$RUNNER_TEMP/flux-valides.json"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3 4 5; do
+            git fetch -q origin main
+            git reset --hard -q origin/main
+            cp "$RUNNER_TEMP/flux-valides.json" sources/flux-valides.json
+            git add sources/flux-valides.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -qm 'Verifier les sources demandees par Romain'
+            if git push -q origin HEAD:main; then exit 0; fi
+            sleep $((attempt*3))
+          done
+          exit 1

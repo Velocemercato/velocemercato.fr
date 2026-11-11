@@ -207,8 +207,17 @@ def wait_public(url, attempts=30):
     raise DeliveryError('Vidéo TikTok non accessible publiquement sur jsDelivr')
 
 
+def planned_block(now):
+    local = now.astimezone(PARIS)
+    for hour in (9, 12, 20):
+        target = local.replace(hour=hour, minute=0, second=0, microsecond=0)
+        if dt.timedelta(minutes=5) <= target - local <= dt.timedelta(minutes=90):
+            return target
+    return None
+
+
 def process(state, rows, mode, universes, limit, client_factory, download, convert_fn=convert, host_fn=host,
-            wait_fn=wait_public, now=None):
+            wait_fn=wait_public, now=None, planned_at=None):
     now = now or dt.datetime.now(PARIS)
     done = state.data.setdefault(KEY, {})
     journal = []
@@ -216,6 +225,18 @@ def process(state, rows, mode, universes, limit, client_factory, download, conve
         prev = done.get(r['id'])
         return prev is None or (prev.get('status') == 'echec_avant_envoi' and prev.get('essais', 0) < 3)
     todo = [r for r in candidates(rows, universes, now) if open_(r)][:limit]
+    if planned_at:
+        # Un nouveau contenu par genre et par bloc ; pas de rediffusion d'un vieux JT.
+        available = [r for r in reversed(candidates(rows, universes, now)) if open_(r)]
+        todo = []
+        for universe in ('foot', 'actus', 'gaming'):
+            slot = f'__slot/{planned_at:%Y-%m-%d}/{planned_at.hour:02d}/{universe}'
+            if slot in done:
+                continue
+            row = next((r for r in available if r.get('univers') == universe), None)
+            if row:
+                todo.append(row)
+        todo = todo[:limit]
     if not todo:
         note('Aucun nouveau JT à envoyer vers TikTok.')
         return journal
@@ -236,15 +257,18 @@ def process(state, rows, mode, universes, limit, client_factory, download, conve
                 media = host_fn(out)
             wait_fn(media)
             draft = mode != 'publier'
-            when = now + dt.timedelta(minutes=15)
+            when = planned_at + dt.timedelta(minutes=3 * ('foot','actus','gaming').index(r['univers'])) if planned_at else now + dt.timedelta(minutes=15)
             done[key] = {'status': 'envoi', 'mode': mode, 'essais': essais, 'media': media}  # accusé AVANT l'envoi
             state.save()
             sent = True
+            if planned_at:
+                done[f'__slot/{planned_at:%Y-%m-%d}/{planned_at.hour:02d}/{r["univers"]}'] = {'status':'envoi','source':key,'heure':when.isoformat()}
+                state.save()
             if client.already_scheduled(media, timezone):
                 raise DeliveryError('déjà présent dans la programmation Metricool')
             ident = client.schedule(caption(r), media, when, timezone, draft)
             status = 'brouillon' if draft else 'programme'
-            done[key] = {'status': status, 'metricool_id': ident, 'media': media, 'duree': secs, 'mode': mode}
+            done[key] = {'status': status, 'metricool_id': ident, 'media': media, 'duree': secs, 'mode': mode, 'heure': when.isoformat()}
             state.save()
             journal.append({'id': key, 'statut': status, 'metricool_id': ident, 'media': media,
                             'heure': when.isoformat(timespec='minutes')})
@@ -281,10 +305,16 @@ def main():
     a = p.parse_args()
     if a.mode == 'publier' and os.getenv('VM_AUTO_TIKTOK') != 'true':
         raise DeliveryError('Publication TikTok non activée (variable VM_AUTO_TIKTOK) : utiliser le mode essai')
+    block = None
+    if os.getenv('VM_TIKTOK_PLAN_VM') == 'true' and a.mode == 'publier':
+        block = planned_block(dt.datetime.now(PARIS))
+        if block is None:
+            note('Prochains blocs TikTok : 9 h, 12 h et 20 h Paris. Aucun envoi hors créneau.')
+            return
     state = State(a.state, os.getenv('VM_DIFFUSION_STATE_KEY', ''), state_saver(a.state))
     rows = json.loads(LIST.read_text(encoding='utf-8'))
     factory = lambda: Metricool(os.getenv('METRICOOL_USER_TOKEN', ''), os.getenv('METRICOOL_USER_ID', ''), os.getenv('METRICOOL_BLOG_ID', ''))
-    journal = process(state, rows, a.mode, set(a.univers.split(',')), max(1, min(a.limite, 3)), factory, fetch)
+    journal = process(state, rows, a.mode, set(a.univers.split(',')), max(1, min(a.limite, 3)), factory, fetch, planned_at=block)
     if journal:
         save_journal(journal)
     if any(r['statut'] == 'echec' for r in journal):

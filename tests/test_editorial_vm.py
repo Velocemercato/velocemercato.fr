@@ -95,6 +95,18 @@ class EditorialTests(unittest.TestCase):
             t = NOW.replace(minute=0)
             self.assertEqual(mod.slot_key(t,account,network),mod.slot_key(t+dt.timedelta(minutes=interval-1),account,network))
             self.assertNotEqual(mod.slot_key(t,account,network),mod.slot_key(t+dt.timedelta(minutes=interval),account,network))
+    def test_multisport_filters_string_pattern_without_failing(self):
+        import sys
+        from types import SimpleNamespace
+        from unittest.mock import patch
+        rows = {'sports': {'nba': [
+            {'id':'nba-test-1','titre':'GTA VI et NBA 2K','date':NOW.isoformat(),'source':'Source','url':'https://example.com/gaming'},
+            {'id':'nba-test-2','titre':'NBA : Wembanyama avec les Spurs','date':NOW.isoformat(),'source':'Source','url':'https://example.com/nba'}]}}
+        (self.root/'multisport/actualites.json').write_text(json.dumps(rows))
+        done = {'article/foot/foot-test-1': True}
+        with patch.dict(sys.modules, {'tools.multisport_flux':SimpleNamespace(GAMING_CONTENT=r'\b(?:gta|gaming)\b')}):
+            choice = mod.select_news(self.root,NOW,done,'meta','facebook',[])
+        self.assertEqual(choice[1]['id'],'nba-test-2')
 
 
 if __name__ == '__main__':

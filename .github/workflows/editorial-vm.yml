@@ -2,7 +2,7 @@ name: VM - Publications editoriales centralisees
 on:
   push:
     branches: [main]
-    paths: ['.github/workflows/editorial-vm.yml']
+    paths: ['.github/workflows/editorial-vm.yml', 'tools/editorial_vm.py']
   schedule:
     - cron: '*/5 * * * *'
   workflow_dispatch:

@@ -59,6 +59,26 @@ def run(state, client, mode='essai', rows=None, convert=lambda s, o: 58, downloa
 
 
 class TikTokTests(unittest.TestCase):
+    def test_planned_block_uses_paris_and_no_night_post(self):
+        morning = NOW.replace(hour=8, minute=0)
+        self.assertEqual(tk.planned_block(morning).hour, 9)
+        self.assertIsNone(tk.planned_block(NOW.replace(hour=2, minute=0)))
+
+    def test_three_distinct_genres_once_per_block(self):
+        state, client = FakeState(), FakeClient()
+        now = NOW.replace(hour=19, minute=0)
+        rows = [row('foot-edition-20261104-1800','foot','2026-11-04T18:30+01:00'),
+                row('actus-edition-20261104-1800','actus','2026-11-04T18:30+01:00'),
+                row('gaming-edition-20261104-1800','gaming','2026-11-04T18:30+01:00')]
+        def invoke():
+            return tk.process(state, rows, 'publier', {'foot','actus','gaming'}, 3, lambda: client,
+                              lambda u,p: None, convert_fn=lambda a,b:58,
+                              host_fn=lambda p:'https://cdn.jsdelivr.net/'+p.name,
+                              wait_fn=lambda u:None, now=now, planned_at=now.replace(hour=20))
+        self.assertEqual(len(invoke()), 3)
+        self.assertEqual(invoke(), [])
+        self.assertEqual(len(client.posts),3)
+
     def test_caption_single_line_with_site_and_ai_label(self):
         c = tk.caption(row())
         self.assertNotIn('\n', c)

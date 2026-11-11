@@ -4,6 +4,11 @@ name: VM - JT vers TikTok (Metricool)
 # « publier » : seulement si la variable VM_AUTO_TIKTOK vaut true. Aucun robot existant n'est modifié.
 
 on:
+  schedule:
+    - cron: '*/30 * * * *'
+  push:
+    branches: [main]
+    paths: ['.github/workflows/tiktok-metricool.yml']
   workflow_run:
     workflows: ['VM - Kit réseaux des JT']
     types: [completed]
@@ -26,16 +31,17 @@ concurrency:
 jobs:
   tiktok:
     # Automatique après le kit réseaux uniquement si Heineguez a activé VM_AUTO_TIKTOK.
-    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && vars.VM_AUTO_TIKTOK == 'true')
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
       GH_TOKEN: ${{ github.token }}
       GITHUB_TOKEN: ${{ github.token }}
       VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
-      VM_AUTO_TIKTOK: ${{ vars.VM_AUTO_TIKTOK }}
-      VM_TIKTOK_UNIVERS: ${{ vars.VM_TIKTOK_UNIVERS || 'foot' }}
-      VM_TIKTOK_PAR_PASSAGE: ${{ vars.VM_TIKTOK_PAR_PASSAGE || '1' }}
+      VM_AUTO_TIKTOK: 'true'
+      VM_TIKTOK_PLAN_VM: 'true'
+      VM_TIKTOK_UNIVERS: 'foot,actus,gaming'
+      VM_TIKTOK_PAR_PASSAGE: '3'
       METRICOOL_USER_TOKEN: ${{ secrets.METRICOOL_USER_TOKEN }}
       METRICOOL_USER_ID: ${{ secrets.METRICOOL_USER_ID }}
       METRICOOL_BLOG_ID: ${{ secrets.METRICOOL_BLOG_ID }}
