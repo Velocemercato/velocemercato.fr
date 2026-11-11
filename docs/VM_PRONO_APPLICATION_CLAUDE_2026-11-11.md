@@ -88,3 +88,8 @@ Compilation TypeScript et build Vinext à réaliser après chaque correction. Ne
 Déployé et rendu public le 11 novembre 2026. Version source : `19edc839f37b21ff8672d22d5faef66ea649a80f`. Le navigateur a affiché l’interface publique, la barrière d’invitation VIP et la connexion propriétaire requise à `/admin`. La recette connectée propriétaire et la réception Push sur un téléphone réel restent à faire.
 
 Le workflow `.github/workflows/vm-prono-sync.yml` traite le suivi et la file d’alertes toutes les cinq minutes selon la disponibilité des exécuteurs GitHub ; ce n’est pas une garantie de temps réel. Il vérifie aussi les refus anonymes VIP/admin.
+
+
+## Recette serveur en production
+
+Le workflow GitHub `VM Prono — suivi et alertes`, exécution 43003154213 du 11 novembre 2026, a réussi : `/api/public` répond 200 avec uniquement des publications publiques ; `/api/vip` répond 401 sans connexion ; `/api/admin/dashboard` répond 403 sans identité propriétaire ; `/api/sync` répond 200. Résultat de synchronisation : source indisponible, aucun match, aucun envoi ni message en attente. Cela ne prouve pas la réception Push sur téléphone. Le déploiement Cloudflare du média, exécution 43003052097, a réussi avec le nouveau lien du pouf.
