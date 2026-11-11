@@ -1,0 +1,251 @@
+{
+  "checked_at": "2026-11-11T00:52:26.598953+00:00",
+  "sources": [
+    {
+      "name": "Jeuxvideo.com",
+      "home": "https://www.jeuxvideo.com/",
+      "sections": [
+        "gaming"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "Gamekult",
+      "home": "https://www.gamekult.com/",
+      "sections": [
+        "gaming"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "IGN France",
+      "home": "https://fr.ign.com/",
+      "sections": [
+        "gaming"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "Gameblog",
+      "home": "https://www.gameblog.fr/",
+      "sections": [
+        "gaming"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "Canard PC",
+      "home": "https://www.canardpc.com/",
+      "sections": [
+        "gaming"
+      ],
+      "feeds": [
+        "https://www.canardpc.com/cat%C3%A9gorie/jeu-video/news-jeu-video/feed"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "L’Équipe",
+      "home": "https://www.lequipe.fr/",
+      "sections": [
+        "foot"
+      ],
+      "manual": "Vérifier les conditions et l’accès éditorial avant collecte automatique.",
+      "status": "validation_editoriale_requise"
+    },
+    {
+      "name": "Eurosport Football",
+      "home": "https://www.eurosport.fr/football/",
+      "sections": [
+        "foot"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "Goal",
+      "home": "https://www.goal.com/fr",
+      "sections": [
+        "foot"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "Foot Mercato",
+      "home": "https://www.footmercato.net/",
+      "sections": [
+        "foot"
+      ],
+      "status": "aucun_flux_public_valide"
+    },
+    {
+      "name": "So Foot",
+      "home": "https://www.sofoot.com/",
+      "sections": [
+        "foot"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "Top Mercato",
+      "home": "https://www.topmercato.com/",
+      "sections": [
+        "foot"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "Maxifoot",
+      "home": "https://www.maxifoot.fr/",
+      "sections": [
+        "foot"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "Observatoire CIES",
+      "home": "https://football-observatory.com/",
+      "sections": [
+        "foot"
+      ],
+      "manual": "Vérifier les conditions et l’accès éditorial avant collecte automatique.",
+      "status": "validation_editoriale_requise"
+    },
+    {
+      "name": "Le Monde",
+      "home": "https://www.lemonde.fr/",
+      "sections": [
+        "actus"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "Le Figaro",
+      "home": "https://www.lefigaro.fr/",
+      "sections": [
+        "actus"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "Libération",
+      "home": "https://www.liberation.fr/",
+      "sections": [
+        "actus"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "20 Minutes",
+      "home": "https://www.20minutes.fr/",
+      "sections": [
+        "actus"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "franceinfo",
+      "home": "https://www.franceinfo.fr/",
+      "sections": [
+        "actus"
+      ],
+      "status": "aucun_flux_public_valide"
+    },
+    {
+      "name": "Ouest-France",
+      "home": "https://www.ouest-france.fr/",
+      "sections": [
+        "actus"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "BFMTV",
+      "home": "https://www.bfmtv.com/",
+      "sections": [
+        "actus"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "France 24",
+      "home": "https://www.france24.com/fr/",
+      "sections": [
+        "actus"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "Reuters",
+      "home": "https://www.reuters.com/",
+      "sections": [
+        "actus"
+      ],
+      "manual": "Vérifier les conditions et l’accès éditorial avant collecte automatique.",
+      "status": "validation_editoriale_requise"
+    },
+    {
+      "name": "Le Point",
+      "home": "https://www.lepoint.fr/",
+      "sections": [
+        "actus"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "ESPN",
+      "home": "https://www.espn.com/",
+      "sections": [
+        "multisport"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "Sports.fr",
+      "home": "https://www.sports.fr/",
+      "sections": [
+        "multisport"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "Le Monde Sport",
+      "home": "https://www.lemonde.fr/sport/",
+      "sections": [
+        "multisport"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "Marca",
+      "home": "https://www.marca.com/",
+      "sections": [
+        "multisport"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "La Gazzetta dello Sport",
+      "home": "https://www.gazzetta.it/",
+      "sections": [
+        "multisport"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "Corriere dello Sport",
+      "home": "https://www.corrieredellosport.it/",
+      "sections": [
+        "multisport"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    },
+    {
+      "name": "Tuttosport",
+      "home": "https://www.tuttosport.com/",
+      "sections": [
+        "multisport"
+      ],
+      "status": "robots_ou_acces_non_autorise"
+    }
+  ]
+}
