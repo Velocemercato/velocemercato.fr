@@ -1,5 +1,125 @@
 [
  {
+  "id": "foot-edition-20261111-1200",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "midi",
+  "label": "JT 12 h",
+  "titre": "La Pastille Foot - Édition du mercredi 11 novembre, 12 heures",
+  "accroche": "Gala au Vélodrome, Strasbourg sous pression et Gleizes toujours détenu.",
+  "duree": 158,
+  "date": "2026-11-11T12:38+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261111-1200.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-11T12:00:00+01:00",
+  "source_start": "2026-11-11T08:00:00+01:00",
+  "source_end": "2026-11-11T12:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-5f6529495d832d0dffd459",
+    "titre": "OM : les South Winners organisent un gala de charité au profit d'enfants placés à Marseille",
+    "publishedAt": "2026-11-11T09:41:57Z",
+    "createdAt": "2026-11-11T10:39:16Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/clubs/olympique-marseille/om-les-south-winners-organisent-un-gala-de-charite-pour-les-enfants-places-et-orphelins_AV-202611110352.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-727bef8bda9651812e9bb8",
+    "titre": "Strasbourg : Hugo Oliveira sous pression, la direction sonde des entraîneurs",
+    "publishedAt": "2026-11-11T10:00:00Z",
+    "createdAt": "2026-11-11T10:39:10Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/strasbourg/hugo-oliveira-inquiete-strasbourg-contacte-plusieurs-entraineurs"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-15cc0d0c1fb945e13acd04",
+    "titre": "National 2 : deux matchs en retard au programme ce mercredi dans le groupe G",
+    "publishedAt": "2026-11-11T09:29:00Z",
+    "createdAt": "2026-11-11T09:36:31Z",
+    "references": [
+     {
+      "nom": "Foot National",
+      "url": "https://www.foot-national.com/actus/le-national-2-met-son-calendrier-a-jour-ce-mercredi-11-novembre-deux-matchs-en-retard-au-programme-963396"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-0eb877bb7694ad369c7b35",
+    "titre": "L'Atlético de Madrid veut relancer Tagliafico à l'OL en janvier",
+    "publishedAt": "2026-11-11T09:30:00Z",
+    "createdAt": "2026-11-11T09:36:28Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/ol/latletico-contacte-lol-pour-un-transfert-hivernal"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-56b843b0411ffd89ea98bd",
+    "titre": "Les Nord-Irlandais en forme avec leurs clubs avant la trêve internationale",
+    "publishedAt": "2026-11-11T08:09:02Z",
+    "createdAt": "2026-11-11T08:38:37Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/c3x2wz2kg0lno?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-1a7aa77d0f96c75c1fd04f",
+    "titre": "Christophe Gleizes détenu depuis 500 jours en Algérie : le cri de son frère Maxime",
+    "publishedAt": "2026-11-11T08:37:17Z",
+    "createdAt": "2026-11-11T08:38:31Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/j-appelle-a-un-allant-d-humanite-et-de-coeur-le-cri-du-coeur-du-frere-de-christophe-gleizes-detenu-depuis-500-jours-en-algerie_AV-202611110318.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-b6d356d0ce98467f156936",
+    "titre": "Équipe d'Italie : une nouvelle génération multiculturelle pourrait transformer la Nazionale",
+    "publishedAt": "2026-11-10T17:02:56Z",
+    "createdAt": "2026-11-11T07:41:34Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a3022771939119141356-cisse-doumbia-kayode-ahanor-la-revolution-multiculturelle-est-enfin-en-marche-dans-litalie-de-giorgia-meloni"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-863dd12055b8757d2ea6f4",
+    "titre": "Pickford face à la concurrence de Trafford chez les Three Lions",
+    "publishedAt": "2026-11-11T06:24:28Z",
+    "createdAt": "2026-11-11T07:41:18Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/crvg9y27n45wo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261111-0800",
   "univers": "foot",
   "format": "edition",
@@ -11077,25 +11197,5 @@
   "image": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/foot-speciale-20261021-1940.jpg",
   "page": "https://velocemercato.fr/studio/episodes/foot-speciale-20261021-1940.html",
   "poster": "/studio/episodes/posters/foot-speciale-20261021-1940.jpg"
- },
- {
-  "id": "actus-edition-20261021-1321",
-  "univers": "actus",
-  "format": "edition",
-  "moment": "midi",
-  "label": "Édition du midi",
-  "titre": "La Pastille Actus : le journal du midi, mercredi 21 octobre",
-  "accroche": "Réseau mobile perturbé, libération d'un Américain en Russie, incendie de câbles SNCF, et le bilan des violences du 17 octobre. On fait le tour de l'actu du jour.",
-  "duree": 556,
-  "date": "2026-10-21T13:21+02:00",
-  "publie": true,
-  "voix": [
-   "piper"
-  ],
-  "fichier": "actus-edition-20261021-1321.mp4",
-  "video": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/actus-edition-20261021-1321.mp4",
-  "image": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/actus-edition-20261021-1321.jpg",
-  "page": "https://velocemercato.fr/studio/episodes/actus-edition-20261021-1321.html",
-  "poster": "/studio/episodes/posters/actus-edition-20261021-1321.jpg"
  }
 ]
