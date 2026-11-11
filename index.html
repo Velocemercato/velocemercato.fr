@@ -290,6 +290,26 @@
     .bouton-vitrine svg { pointer-events:all; overflow:visible; }
     .bouton-vitrine:hover circle, .bouton-vitrine:focus-visible circle { stroke:#fff1bd; stroke-width:2.5; }
     @media (min-aspect-ratio:10/16) { main { width:min(100vw,calc((100dvh - 162px) * 9/16)); min-width:260px; } }
+
+    /* Volets : fond « team Véloce » (mascottes VM) au lieu du noir, articles sur cartes claires. */
+    .espace-accueil {
+      background:
+        linear-gradient(180deg, #7a12358c 0%, #3d1a6e99 40%, #142a6cb3 100%),
+        url('img/vm-art/vm-banniere-tetes-768.webp') center top / auto 100% repeat-x,
+        #24123f;
+      border-color: #f4c430;
+      box-shadow: 0 0 0 1px #ff2a4566, 0 18px 50px #000a, 0 0 30px #ff2a4540;
+    }
+    .espace-accueil h1 { color: #ffd875; text-shadow: 0 2px 0 #000, 0 0 14px #ff2a4580; }
+    .espace-rubrique p { color: #f3e6d0; }
+    .articles-rubrique { padding-left: 0; list-style: none; }
+    .articles-rubrique li {
+      margin: 0 0 10px; padding: 11px 12px;
+      border: 1px solid #ffffff2a; border-left: 3px solid #ff2a45; border-radius: 12px;
+      background: #120a24d9; backdrop-filter: blur(3px);
+    }
+    .articles-rubrique small { color: #ffe9c2; }
+    .espace-rubrique a { color: #ffe08a; }
 </style>
 <link rel="stylesheet" href="/assets/mangas-collections.css">
 </head>
@@ -2088,6 +2108,7 @@
   }
 }
   </script>
+  <script src="assets/multisport-pertinence.js"></script>
   <script src="assets/accueil-rubriques.js"></script>
 <script src="/assets/mangas-collections.js"></script>
 </body>
