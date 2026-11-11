@@ -1,6 +1,6 @@
 # Dossier Claude — Véloce Mercato, site et réseaux
 
-État établi le 2026-11-11T06:32+01:00.
+État établi le 2026-11-11T08:17+01:00.
 
 Ce dossier remplace les anciennes consignes de restauration intégrale et les anciennes cadences. Il décrit le travail autorisé par Romain dans cette conversation. Les accès et conversations de ChatGPT ne sont pas automatiquement accessibles dans Claude.
 
@@ -35,10 +35,10 @@ Sur vmunivers.fr, Romain a demandé : première case à gauche Facebook https://
 
 | Destination | Nombre relevé dans les reçus de cette reprise |
 |---|---|
-| Véloce Mercato · facebook | 15 |
-| Véloce Mercato · instagram | 14 |
-| VM Actus et Pronos · facebook | 15 |
-| VM Univers · facebook | 15 |
+| Véloce Mercato · facebook | 16 |
+| Véloce Mercato · instagram | 15 |
+| VM Actus et Pronos · facebook | 16 |
+| VM Univers · facebook | 16 |
 | VM Univers · instagram | 14 |
 
 Ces nombres comptent les identifiants uniques avec confirmation et URL publique. Un statut programmé, envoi ou workflow réussi ne suffit pas. Les reçus détaillés sont dans studio/editorial-status.json et dans le kit https://velocemercato.fr/studio/kit-automatique.html.
@@ -103,11 +103,11 @@ Pour Multisport, les flux français validés Sports.fr et Le Monde Sport sont ra
 
 ## Audit des pages, liens et classements
 
-- Pages HTML examinées : 149.
-- URL interrogées : 397.
+- Pages HTML examinées : 151.
+- URL interrogées : 405.
 - HTTP 404/410 confirmés : 4.
 - Cibles internes absentes du dépôt : 4.
-- Liens protégés/non vérifiables automatiquement : 88.
+- Liens protégés/non vérifiables automatiquement : 89.
 - Ancres à relire : 58. Certaines existent seulement après chargement JavaScript.
 - Classements à relire : 0.
 
@@ -143,6 +143,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Ligue des Champions (F) : le PSG s’incline 2-1 face au Bayern au Parc — https://www.facebook.com/122106465861520366/posts/122110029627520366
 - meta/facebook — Mercato : Arsenal s'intéresse à Endrick, Newcastle et Sunderland suivent Dion Beljo — https://www.facebook.com/122106465861520366/posts/122110028151520366
 - meta/facebook — Naples intéressé par Tylel Tati, défenseur de Nantes — https://www.facebook.com/122106465861520366/posts/122110055565520366
+- meta/facebook — National 2 : Nicolas Jeannesson réélu à la tête de C'Chartres Football — https://www.facebook.com/122106465861520366/posts/122110092207520366
 - meta/facebook — Nouvelle-Zélande à la Coupe du monde de rugby 2023 : actualités, matches en direct, joueurs, compositions, calendriers et résultats des All Blacks. - Rugbyrama — https://www.facebook.com/122106465861520366/posts/122110029591520366
 - meta/facebook — Rune - Bergs, ATP 250, Stockholm, Premier tour : 2-0, match terminé - L'Équipe — https://www.facebook.com/122106465861520366/posts/122110029663520366
 - meta/facebook — Woodman évoque son départ de Bromley dans le podcast 72+ de la EFL — https://www.facebook.com/122106465861520366/posts/122110029381520366
@@ -157,11 +158,13 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Ligue des Champions (F) : le PSG s’incline 2-1 face au Bayern au Parc — https://www.instagram.com/p/DflPn0nm9HT/
 - meta/instagram — MIN@MTL : Ce que vous devez savoir | Canadiens de Montréal - NHL.com — https://www.instagram.com/p/DflnpJwjQP9/
 - meta/instagram — Mercato : Arsenal s'intéresse à Endrick, Newcastle et Sunderland suivent Dion Beljo — https://www.instagram.com/p/DflPZyYFPC5/
+- meta/instagram — National 2 : Nicolas Jeannesson réélu à la tête de C'Chartres Football — https://www.instagram.com/p/Dfl1NpVDfS0/
 - meta/instagram — Nouvelle-Zélande à la Coupe du monde de rugby 2023 : actualités, matches en direct, joueurs, compositions, calendriers et résultats des All Blacks. - Rugbyrama — https://www.instagram.com/p/DflPhYjFIeR/
 - meta/instagram — Rune - Bergs, ATP 250, Stockholm, Premier tour : 2-0, match terminé - L'Équipe — https://www.instagram.com/p/DflPlwHlByv/
 - meta/instagram — Woodman évoque son départ de Bromley dans le podcast 72+ de la EFL — https://www.instagram.com/p/DflPe1mFIHF/
 - meta/instagram — Écosse : McTominay révèle un choc électrique au cœur avant la Coupe du monde 2026 — https://www.instagram.com/p/DflanbCly78/
 - meta_pronos/facebook — Affaire Epstein : un rapport du Congrès américain dénonce des « défaillances institutionnelles » — https://www.facebook.com/1757379583055094/posts/1769605958499123
+- meta_pronos/facebook — Anthropic prévoit une introduction en Bourse pouvant lever jusqu'à 64 milliards de dollars — https://www.facebook.com/1757379583055094/posts/1769873471805705
 - meta_pronos/facebook — Bob Boone, champion des World Series et membre de la première famille de l’histoire de la MLB à compter 3 générations de joueurs, est mort à 78 - Mezha.net — https://www.facebook.com/1757379583055094/posts/1769605048499214
 - meta_pronos/facebook — Brésil : le TSE inflige une amende de 7,5 millions de réais à Meta pour traitement inégal — https://www.facebook.com/1757379583055094/posts/1769778108481908
 - meta_pronos/facebook — DNCG : encadrement de la masse salariale pour Nîmes et Rouen — https://www.facebook.com/1757379583055094/posts/1769823808477338
@@ -191,6 +194,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_univers/facebook — Découvre VM Shop — https://www.facebook.com/122098313661535169/posts/122107745889535169
 - meta_univers/facebook — Découvre VM Sport & randonnée — https://www.facebook.com/122098313661535169/posts/122107746195535169
 - meta_univers/facebook — Découvre VM Studio — https://www.facebook.com/122098313661535169/posts/122107745307535169
+- meta_univers/facebook — À retrouver dans notre univers VM Emploi — https://www.facebook.com/122098313661535169/posts/122107896411535169
 - meta_univers/instagram — Découvre AlloLivre — https://www.instagram.com/p/DflOoUbCd6Y/
 - meta_univers/instagram — Découvre La Pastille TV — https://www.instagram.com/p/DflOyFpiWwe/
 - meta_univers/instagram — Découvre Pépite FC — https://www.instagram.com/p/Dflnut6lD20/
