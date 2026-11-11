@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-11T00:52:26.598953+00:00",
+  "checked_at": "2026-11-11T01:04:49.646324+00:00",
   "sources": [
     {
       "name": "Jeuxvideo.com",
@@ -7,7 +7,10 @@
       "sections": [
         "gaming"
       ],
-      "status": "robots_ou_acces_non_autorise"
+      "existing_feeds": [
+        "https://www.jeuxvideo.com/rss/rss.xml"
+      ],
+      "status": "deja_configuree_acces_non_verifie"
     },
     {
       "name": "Gamekult",
@@ -15,7 +18,10 @@
       "sections": [
         "gaming"
       ],
-      "status": "robots_ou_acces_non_autorise"
+      "existing_feeds": [
+        "https://www.gamekult.com/feed.xml"
+      ],
+      "status": "deja_configuree_acces_non_verifie"
     },
     {
       "name": "IGN France",
@@ -23,6 +29,7 @@
       "sections": [
         "gaming"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     },
     {
@@ -31,6 +38,7 @@
       "sections": [
         "gaming"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     },
     {
@@ -42,6 +50,7 @@
       "feeds": [
         "https://www.canardpc.com/cat%C3%A9gorie/jeu-video/news-jeu-video/feed"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     },
     {
@@ -51,6 +60,7 @@
         "foot"
       ],
       "manual": "Vérifier les conditions et l’accès éditorial avant collecte automatique.",
+      "existing_feeds": [],
       "status": "validation_editoriale_requise"
     },
     {
@@ -59,6 +69,7 @@
       "sections": [
         "foot"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     },
     {
@@ -67,6 +78,7 @@
       "sections": [
         "foot"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     },
     {
@@ -75,7 +87,12 @@
       "sections": [
         "foot"
       ],
-      "status": "aucun_flux_public_valide"
+      "existing_feeds": [
+        "https://www.footmercato.net/flux-rss"
+      ],
+      "status": "valide",
+      "feed": "https://www.footmercato.net/flux-rss",
+      "items": 48
     },
     {
       "name": "So Foot",
@@ -83,6 +100,7 @@
       "sections": [
         "foot"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     },
     {
@@ -91,6 +109,7 @@
       "sections": [
         "foot"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     },
     {
@@ -99,6 +118,7 @@
       "sections": [
         "foot"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     },
     {
@@ -108,6 +128,7 @@
         "foot"
       ],
       "manual": "Vérifier les conditions et l’accès éditorial avant collecte automatique.",
+      "existing_feeds": [],
       "status": "validation_editoriale_requise"
     },
     {
@@ -116,6 +137,7 @@
       "sections": [
         "actus"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     },
     {
@@ -124,6 +146,7 @@
       "sections": [
         "actus"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     },
     {
@@ -132,6 +155,7 @@
       "sections": [
         "actus"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     },
     {
@@ -140,7 +164,10 @@
       "sections": [
         "actus"
       ],
-      "status": "robots_ou_acces_non_autorise"
+      "existing_feeds": [
+        "https://www.20minutes.fr/feeds/rss-une.xml"
+      ],
+      "status": "deja_configuree_acces_non_verifie"
     },
     {
       "name": "franceinfo",
@@ -148,7 +175,17 @@
       "sections": [
         "actus"
       ],
-      "status": "aucun_flux_public_valide"
+      "existing_feeds": [
+        "https://www.francetvinfo.fr/sports/foot.rss",
+        "https://www.francetvinfo.fr/titres.rss",
+        "https://www.francetvinfo.fr/politique.rss",
+        "https://www.francetvinfo.fr/economie.rss",
+        "https://www.francetvinfo.fr/sante.rss",
+        "https://www.francetvinfo.fr/culture.rss",
+        "https://www.francetvinfo.fr/monde.rss",
+        "https://www.francetvinfo.fr/internet.rss"
+      ],
+      "status": "deja_configuree_acces_non_verifie"
     },
     {
       "name": "Ouest-France",
@@ -156,7 +193,10 @@
       "sections": [
         "actus"
       ],
-      "status": "robots_ou_acces_non_autorise"
+      "existing_feeds": [
+        "https://www.ouest-france.fr/rss/une"
+      ],
+      "status": "deja_configuree_acces_non_verifie"
     },
     {
       "name": "BFMTV",
@@ -164,6 +204,7 @@
       "sections": [
         "actus"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     },
     {
@@ -172,7 +213,10 @@
       "sections": [
         "actus"
       ],
-      "status": "robots_ou_acces_non_autorise"
+      "existing_feeds": [
+        "https://www.france24.com/fr/rss"
+      ],
+      "status": "deja_configuree_acces_non_verifie"
     },
     {
       "name": "Reuters",
@@ -181,6 +225,7 @@
         "actus"
       ],
       "manual": "Vérifier les conditions et l’accès éditorial avant collecte automatique.",
+      "existing_feeds": [],
       "status": "validation_editoriale_requise"
     },
     {
@@ -189,6 +234,7 @@
       "sections": [
         "actus"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     },
     {
@@ -197,6 +243,7 @@
       "sections": [
         "multisport"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     },
     {
@@ -205,6 +252,7 @@
       "sections": [
         "multisport"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     },
     {
@@ -213,6 +261,7 @@
       "sections": [
         "multisport"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     },
     {
@@ -221,6 +270,7 @@
       "sections": [
         "multisport"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     },
     {
@@ -229,6 +279,7 @@
       "sections": [
         "multisport"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     },
     {
@@ -237,6 +288,7 @@
       "sections": [
         "multisport"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     },
     {
@@ -245,6 +297,7 @@
       "sections": [
         "multisport"
       ],
+      "existing_feeds": [],
       "status": "robots_ou_acces_non_autorise"
     }
   ]
