@@ -1,0 +1,48 @@
+name: VM - Audit complet et dossier Claude
+on:
+  workflow_run:
+    workflows: ['VM - Flashes originaux pour les reseaux']
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '35 4 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: bilan-claude-vm
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Examiner les pages, liens et classements
+        run: python tools/audit_claude_site.py
+      - name: Rapprocher les recus et rediger la passation
+        run: python tools/bilan_vm_claude.py
+      - name: Enregistrer les rapports sans ecraser le travail courant
+        run: |
+          set -euo pipefail
+          folder="$RUNNER_TEMP/rapport-claude"
+          mkdir -p "$folder"
+          cp docs/AUDIT_CLAUDE_2026-11-11.md docs/AUDIT_CLAUDE_2026-11-11.json docs/DOSSIER_CLAUDE_VM_2026-11-11.md "$folder/"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3 4 5; do
+            git fetch -q origin main
+            git reset --hard -q origin/main
+            cp "$folder/"* docs/
+            git add docs/AUDIT_CLAUDE_2026-11-11.md docs/AUDIT_CLAUDE_2026-11-11.json docs/DOSSIER_CLAUDE_VM_2026-11-11.md
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -qm 'Audit actuel du site et passation complete pour Claude'
+            if git push -q origin HEAD:main; then exit 0; fi
+            sleep $((attempt*3))
+          done
+          exit 1

@@ -1,4 +1,4 @@
-# Passation VM pour Claude et ChatGPT
+> Mise à jour du 11 novembre : lire en priorité [le dossier actuel](DOSSIER_CLAUDE_VM_2026-11-11.md). Les destinations du titre, du pouf, la publication Cloudflare et les cadences ci-dessous sont historiques et ont été remplacées.\n\n# Passation VM pour Claude et ChatGPT
 
 Mise à jour du 10 novembre 2026, heure de Paris. Ce document décrit les demandes visibles dans cette conversation et les opérations vérifiées. Les consignes récentes ci-dessous remplacent les plans anciens de restauration ou de feuille blanche.
 
