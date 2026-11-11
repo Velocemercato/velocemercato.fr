@@ -1,5 +1,5 @@
 {
-  "maj": "2026-11-11T01:28:38Z",
+  "maj": "2026-11-11T02:23:28Z",
   "regions": {
     "ARA": "Auvergne-Rhône-Alpes",
     "BFC": "Bourgogne-Franche-Comté",
@@ -52,18 +52,10 @@
     {
       "l": "CVL",
       "n": "AMATEUR",
-      "t": "Football. Coupe d'Eure-et-Loir : un alléchant Maintenon - Dammarie dès les 16e de finale !",
+      "t": "Football/Coupe d'Eure-et-Loir : un alléchant Maintenon - Dammarie dès les 16es de finale !",
       "u": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxNdDNMMU4yS0tEclpNenhTVER3LVhGMGowdWhRbVNLVkJNMlcxYVVhdGNFeU44NzRnWUR2QmZKc1BBRmdfRW01c2lnVmJ6c3NUTUQ4cTVmdjEzZ3JEVWVvZnpMUUNxWkc1akhZTTR3aFpqaERLVEhDVE40dS1iUEJoSmI2VUVLZE5WeVhWSGp3UXBTQm9pdVI0VE5IcWp2dThEUHkwMmp6UHJ3SWpDaWhIVWt1anROMkItNlRZNTFuWTFTOWlXZ3QzRDRhUkJTMmhVdFNtc0RJSlVsVTNMUFRZWg?oc=5",
       "s": "L’Écho Républicain",
       "d": "2026-11-10T20:07:00Z"
-    },
-    {
-      "l": "PAC",
-      "n": "REGIONAL",
-      "t": "Football - Régional 1 : Franck Guardiola quitte Luynes",
-      "u": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPSElHZ1FOZnBjZUstMU5RQ2NaRDliSHFySWNlM0l1aDBwVGxnNFBuYnMyYV9UM0pvcGhGcmhYS2p2VEhmSXNkNTBQWnV2N1ZRakRYenJrNVA5aWd5Z2VMWVpYQVpneXlFWXFTUWNsTlM2NjE3eS1Obmg1d1B3NDVOY1J0Q2E2SjNMMGJtcDRXTVZYUzJNZjYyQW5iMklwTkxHTzRwMUMyTHgxaTQ?oc=5",
-      "s": "La Provence",
-      "d": "2026-11-10T19:26:02Z"
     },
     {
       "l": "CVL",
@@ -80,6 +72,14 @@
       "u": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5LRmQwNTdDQWtTdHhBSkFUc0N0TURJNUxSWnRDRTNjTFpESUdacXB1VmZROTBNU1ZiNkJFZnJmVDRPcGptR190M0lCSC1ZX1pWYXlBdE53SmZ4UV9UTXFOazBzR2RrM3FNU3JZ?oc=5",
       "s": "FC Nantes",
       "d": "2026-11-10T18:25:45Z"
+    },
+    {
+      "l": "NOR",
+      "n": "COUPE",
+      "t": "Avant Lannion, En Avant Guingamp a déjà affronté ces clubs costarmoricains en Coupe de France… et n’a jamais perdu",
+      "u": "https://news.google.com/rss/articles/CBMiqwJBVV95cUxNUXA4V3NGZE10aEVxdFFjNTEyTVRlVlVXSWxMT0hpejg4dmdwcGQ2d0poaF9ha2xucmlwZFVQellKMGpqbmQxSGJGV1BDa295c0I1cV9IYk54bVkzcWw2WDMtc0UtZ2JEWjNRUW1NbFZxS2otWjZJTFJCaWhSbVZ1UVBIMFZQOGplamNFOHN6amRsaGViUlJmUUNmLXFkU0pLb0NPSVZINGYtTFp0YkpsN3B6ZW9tSm9nYkwzS1dhaF8yTVM2UmhhOFJPcXN6ZV91bEtkNzlkVWlGX1FFUVl3emh1ZHBMRkdlTzNaTm9LWmJEdDFoZUhuN1c1enpqLUwybGd1cWVwc2hvRzI5ajRwSm9zSFMtMXRGLXluYXliX0ROZ2RMTDFCeTktZw?oc=5",
+      "s": "Ouest-France",
+      "d": "2026-11-10T17:47:49Z"
     },
     {
       "l": "FR",
@@ -234,7 +234,7 @@
       "d": "2026-11-10T12:31:00Z"
     },
     {
-      "l": "NOR",
+      "l": "PDL",
       "n": "REGIONAL",
       "t": "Football. Les cracks de R1 : Leny Vincent toujours au top dans les poules des Pays de la Loire",
       "u": "https://news.google.com/rss/articles/CBMilwJBVV95cUxPWlNCREpIX2htYjVqNU1hZU1KeFYtUnRqLVdoRmEwa1VXQWhqLVAyVzlUSERfLWRoM0hZb19EUzBKVGl4U3FEME1oZzZWZHIxZy1CZlBHMm9BOHp4d1RaVGFFZ2VVMnZoMElCdXBvdG1sc3ZBUnBnQlBZelAwRzJzUFNBZHNsSk84WDJGeWpBSTF5c29zcEhxci1ZUlVuVFU4cXBOSWV3UVE3VnRINnpRNzRRQmJnSEhxV2ZIZUEyTU9iUWhMRUJwUGstMjFRbnI4NkY5clVNeklJTlpMVjFTX3pzVlI0SWdaZmVJT1JLTFZaQmJObnU4alRtNDF2RmNIdUtYU0paM2l2UE8tcFJqVzlDcTBjTEE?oc=5",
@@ -272,6 +272,14 @@
       "u": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOdXF6UUw4aXNKZHlxUGV3TVcxTjVzWnpDdGc4SDVkNGZpcTRYUTRVVWloelJOaGlieWtWQXBiYXRqMmNQQ3pMcjVTWEhRaWVJUHhraDRjVnlkZTFTbkJEZHFtMnlEMUJDeEw2VXNldS1DT2twUUFzRTlGRXlLRDhTc2lHMngzQzZKZzQxeExMTEthTFVxdFZhMFFqQjB1dGRPUTFyd1BkLWNUbmt4SFdfQlpQSGxWS3VQaHNqUHdsbWtFQzNNT3VBa01vRl8?oc=5",
       "s": "Foot National",
       "d": "2026-11-10T10:36:52Z"
+    },
+    {
+      "l": "BRE",
+      "n": "COUPE",
+      "t": "États généraux, Coupe de France, Foetadenn, Trail de Plaintel… Ce qui vous attend cette semaine dans l’agglo de Saint-Brieuc",
+      "u": "https://news.google.com/rss/articles/CBMinAJBVV95cUxQWGVnYTJJQUprT3BrNjh3N2s2cEZFRmNqVTBrWV80TTd1YTZWNFpfeTlVd2lFZmJaOW9EaVV3TzFzckk3ZGVRdnFwSWttOVNFZ0NESVZxNk52S2RnMDBsbVZHVzdfSUhSdlAtVlQ3UzVCVVgwbnhTNktPREQ1NmE2cmtQcUtzbXpvaTVnSUhBdk5jUWhDY1lSNUtEN05pQmxpd3BmN25sTjVTUmJmajFfLUlVMXVsRWI0UHp1b214QlEyUm5ZRmlUT0ZnM3gyWVVwZFF0bzg2Smp3ZUYtMEVjMWc2UXB2RDRKUkxGYXp4c3ZNSEo1bDlkY21MUVk4NHRuaG1RVUFBOF8tZksxYXFlRXNoRGs5U0xudlhYWQ?oc=5",
+      "s": "Le Télégramme",
+      "d": "2026-11-10T10:00:00Z"
     },
     {
       "l": "COR",
@@ -333,8 +341,8 @@
       "l": "CVL",
       "n": "COUPE",
       "t": "“On nous prive de notre rêve” : l’exclusion ubuesque de cette équipe du Loiret en Coupe de France féminine",
-      "u": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxQc2lPR3h0M1lsMHFhOFF1Um1EeTVqTVZ2MjgtdUNHNHdqR0gxUjRVVzQxYzdRZk51bGltVkdaOUliM01oMmZPMEVlVXhiZmhHb0loMnlrNnNOWjVSQmRKVjFoclYtVVBUaU0xYzlEdVRjN290am9iOUJmNl9GSTB1QzRNUXhNUjd4U0dHemJkX2Z3TWR4V3hvcVpoUmh6blBwRDRBTVhsMHFtWHRYWUNSMWQzbDEtYXN2akxuVHptQXFEa1VXc2d1eTBtSXRQeGo0bmFrTklSeVJWMGQyNE5INjZLZkVac0Mtdl9TS2Jrb2Myd1U?oc=5",
-      "s": "La Montagne",
+      "u": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOWjlwNWpxZ3JGVjFWWURONFNhRXJhSXRUS3JHY2ZsOVBZSzhuNVg5RVhkX3A4bXcxcDhOS3NneV9SMUxsV29TUkNudEpCTVdzd1RvaGV2c3BOWHhtRU1HV2xsX0xhazREalZKWVYwcFhNdkhUUjVpZWNHWnBZUWRGbHFVdVk4c1dRQTY0YTJ2VGFPVlB3UmhMTlg2THdwN2o0T05XZTd2dEh5NlY2dEFhMjRjaWd1QnIzbTYwN2t2bHdmbUlZOWlSZmR4MDZtQzFuM041THRXaVg2dWF2Q3RYc1FlY2FuWDhEN1dSQQ?oc=5",
+      "s": "La République du Centre",
       "d": "2026-11-10T07:15:00Z"
     },
     {
@@ -424,14 +432,6 @@
       "u": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPNzNqZHlFejJYRUdDUS1vX0kwaWNOdjRoay1zblIxRlFMSHMzajBrdEx6SXVYQWltcmNuZ0dEdDllNHZvcWM2Uk9LdTkyaG95NW5wZEZreUxSZ00xNTFFWWNUSzllb1R3djRyLWFCdjlZOW1rTDF3SUViQU1vWWM3YXlXRHBiYnQxZzFyci1BNzNqaGtfNXJaUGRadmNiRU5YLURPUUphUUFpVGZhQ25NYVVwaXJvNy1s?oc=5",
       "s": "Le Dauphiné Libéré",
       "d": "2026-11-10T05:09:17Z"
-    },
-    {
-      "l": "NOR",
-      "n": "AMATEUR",
-      "t": "ASSE : Cathro pourrait perdre presque toute son équipe pour un seul match",
-      "u": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPaDhzSnNiMEs0VWtKenRCZGEtTUtNR2V1dUN6bUtDM3k2a1FzVkNTLWN5cjBrV3p4NmFFLWRhS3gzSEZZN0VfdmlfOFZ0emdnMmdaRnExNWhHQVR2Vld2VktRLVBjRHE1WnZldkx0MXpnbFZ4cDlWMGd1NlJ1RWkxQ1I0Smgtcld3OWpTN0Z2a0NSb0lveGdNWnBFXzB0ci0zMVNQSXFrNDVDdnFfbG5fRkVB?oc=5",
-      "s": "Football365",
-      "d": "2026-11-10T04:56:33Z"
     }
   ]
 }
