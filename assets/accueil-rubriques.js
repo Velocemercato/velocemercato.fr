@@ -146,6 +146,20 @@
     });
   }
 
+
+  // Emplacement sponsorisé (VM Studio) en bas de chaque volet, sauf celui de VM Studio lui-même.
+  for (const dialog of document.querySelectorAll('dialog.espace-rubrique')) {
+    if (dialog.id === 'rubrique-studio' || dialog.querySelector('.vm-sponsor')) continue;
+    const aside = document.createElement('aside');
+    aside.className = 'vm-sponsor';
+    aside.setAttribute('aria-label', 'Contenu sponsorisé');
+    aside.innerHTML = '<span class="vm-sponsor-tag">SPONSORISÉ</span>' +
+      '<strong>Besoin d’un site web ou d’une pub ?</strong>' +
+      '<span>VM Studio crée le site de ton commerce à prix fixe, essai 7 jours à 49 €.</span>' +
+      '<a href="/web-studio.html#offres">Découvrir VM Studio →</a>';
+    (dialog.querySelector('form') ? dialog : dialog).appendChild(aside);
+  }
+
   async function fetchFeed(path) {
     const publicOrigin = ['velocemercato.fr', 'www.velocemercato.fr'].includes(location.hostname)
       ? location.origin : site;
