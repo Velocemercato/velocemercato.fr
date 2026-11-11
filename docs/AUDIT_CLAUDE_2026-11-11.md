@@ -1,10 +1,10 @@
 # Audit du site pour Claude
 
-État mesuré le 2026-11-11T02:09:07.856611+01:00.
+État mesuré le 2026-11-11T02:22:56.951229+01:00.
 
 ## Périmètre et limites
 
-185 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 454 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
+185 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 450 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
 
 Un statut 404 ou 410 indique une URL introuvable. Les refus 401/403, les limites 429, les erreurs serveur et les délais dépassés demandent une vérification complémentaire. Le test ne valide pas le visionnage géographique des vidéos ni la véracité des articles. Les classements signalés par mots-clés doivent être relus avant déplacement.
 
@@ -14,9 +14,9 @@ Retirer les accès transversaux aux anciennes applications et leurs invitations 
 
 ## Résultats
 
-- Liens confirmés introuvables en HTTP, 4.
-- Cibles internes absentes du dépôt, 4. Certaines peuvent être servies par Cloudflare, lire leur résultat HTTP avant correction.
-- Ancres à vérifier, 235. Certaines sont gérées par JavaScript.
+- Liens confirmés introuvables en HTTP, 0.
+- Cibles internes absentes du dépôt, 0. Certaines peuvent être servies par Cloudflare, lire leur résultat HTTP avant correction.
+- Ancres à vérifier, 234. Certaines sont gérées par JavaScript.
 - Articles à relire pour leur classement, 1.
 - Replays réellement publiés par genre, {"foot": 40, "actus": 31, "gaming": 17}.
 
@@ -24,10 +24,6 @@ Le fichier JSON associé contient toutes les références, pages et lignes. Les 
 
 ## Liens introuvables
 
-- https://velocemercato.fr/a/rss-v2-0910e73690424d4d6442ea.html — HTTP 404 — foot/index.html ligne 437
-- https://velocemercato.fr/a/rss-v2-36e0584f4553f69ede16f7.html — HTTP 404 — foot/index.html ligne 435
-- https://velocemercato.fr/a/rss-v2-6478b1634540556ab58bad.html — HTTP 404 — foot/index.html ligne 434
-- https://velocemercato.fr/a/rss-v2-994b75dc6996eef4db29a4.html — HTTP 404 — foot/index.html ligne 436
 
 ## Articles à relire
 

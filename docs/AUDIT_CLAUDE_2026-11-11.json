@@ -1,34 +1,9 @@
 {
-  "generated_at": "2026-11-11T02:09:07.856611+01:00",
-  "commit": "14a54697ad95e53c8febdea1c0c2e08a9b8ccbc4",
+  "generated_at": "2026-11-11T02:22:56.951229+01:00",
+  "commit": "9605b3bace5fbf2e3dd922432f1af869062aabd7",
   "html_pages": 185,
-  "live_urls_checked": 454,
-  "local_targets_absent": [
-    {
-      "file": "foot/index.html",
-      "line": 434,
-      "href": "/a/rss-v2-6478b1634540556ab58bad.html",
-      "tag": "a"
-    },
-    {
-      "file": "foot/index.html",
-      "line": 435,
-      "href": "/a/rss-v2-36e0584f4553f69ede16f7.html",
-      "tag": "a"
-    },
-    {
-      "file": "foot/index.html",
-      "line": 436,
-      "href": "/a/rss-v2-994b75dc6996eef4db29a4.html",
-      "tag": "a"
-    },
-    {
-      "file": "foot/index.html",
-      "line": 437,
-      "href": "/a/rss-v2-0910e73690424d4d6442ea.html",
-      "tag": "a"
-    }
-  ],
+  "live_urls_checked": 450,
+  "local_targets_absent": [],
   "anchors_to_review": [
     {
       "file": "archives.html",
@@ -1117,12 +1092,6 @@
       "tag": "a"
     },
     {
-      "file": "foot/index.html",
-      "line": 439,
-      "href": "/#feed-title",
-      "tag": "a"
-    },
-    {
       "file": "immo/index.html",
       "line": 27,
       "href": "/#videos",
@@ -1441,56 +1410,7 @@
       "tag": "a"
     }
   ],
-  "broken_urls_404_410": [
-    {
-      "url": "https://velocemercato.fr/a/rss-v2-0910e73690424d4d6442ea.html",
-      "status": 404,
-      "references": [
-        {
-          "file": "foot/index.html",
-          "line": 437,
-          "href": "/a/rss-v2-0910e73690424d4d6442ea.html",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://velocemercato.fr/a/rss-v2-36e0584f4553f69ede16f7.html",
-      "status": 404,
-      "references": [
-        {
-          "file": "foot/index.html",
-          "line": 435,
-          "href": "/a/rss-v2-36e0584f4553f69ede16f7.html",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://velocemercato.fr/a/rss-v2-6478b1634540556ab58bad.html",
-      "status": 404,
-      "references": [
-        {
-          "file": "foot/index.html",
-          "line": 434,
-          "href": "/a/rss-v2-6478b1634540556ab58bad.html",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://velocemercato.fr/a/rss-v2-994b75dc6996eef4db29a4.html",
-      "status": 404,
-      "references": [
-        {
-          "file": "foot/index.html",
-          "line": 436,
-          "href": "/a/rss-v2-994b75dc6996eef4db29a4.html",
-          "tag": "a"
-        }
-      ]
-    }
-  ],
+  "broken_urls_404_410": [],
   "protected_or_unverified_urls": [
     {
       "url": "https://api-sports.io/",
@@ -2295,13 +2215,13 @@
         },
         {
           "file": "foot/index.html",
-          "line": 452,
+          "line": 441,
           "href": "https://www.instagram.com/veloce.mercato",
           "tag": "a"
         },
         {
           "file": "foot/index.html",
-          "line": 511,
+          "line": 500,
           "href": "https://www.instagram.com/veloce.mercato",
           "tag": "a"
         },
@@ -2916,7 +2836,7 @@
   "all_live_results": [
     {
       "url": "https://anj.fr/coupe-du-monde-de-football-la-dgccrf-et-lanj-appellent-la-vigilance-face-aux-sites-de-conseils-ps",
-      "status": 206,
+      "status": 200,
       "final_url": "https://anj.fr/coupe-du-monde-de-football-la-dgccrf-et-lanj-appellent-la-vigilance-face-aux-sites-de-conseils-ps",
       "references": [
         {
@@ -3632,25 +3552,25 @@
         },
         {
           "file": "foot/index.html",
-          "line": 452,
+          "line": 441,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
         },
         {
           "file": "foot/index.html",
-          "line": 510,
+          "line": 499,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
         },
         {
           "file": "foot/index.html",
-          "line": 511,
+          "line": 500,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
         },
         {
           "file": "foot/index.html",
-          "line": 519,
+          "line": 508,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
         },
@@ -4570,54 +4490,6 @@
       ]
     },
     {
-      "url": "https://velocemercato.fr/a/rss-v2-0910e73690424d4d6442ea.html",
-      "status": 404,
-      "references": [
-        {
-          "file": "foot/index.html",
-          "line": 437,
-          "href": "/a/rss-v2-0910e73690424d4d6442ea.html",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://velocemercato.fr/a/rss-v2-36e0584f4553f69ede16f7.html",
-      "status": 404,
-      "references": [
-        {
-          "file": "foot/index.html",
-          "line": 435,
-          "href": "/a/rss-v2-36e0584f4553f69ede16f7.html",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://velocemercato.fr/a/rss-v2-6478b1634540556ab58bad.html",
-      "status": 404,
-      "references": [
-        {
-          "file": "foot/index.html",
-          "line": 434,
-          "href": "/a/rss-v2-6478b1634540556ab58bad.html",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://velocemercato.fr/a/rss-v2-994b75dc6996eef4db29a4.html",
-      "status": 404,
-      "references": [
-        {
-          "file": "foot/index.html",
-          "line": 436,
-          "href": "/a/rss-v2-994b75dc6996eef4db29a4.html",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://velocemercato.github.io/Papiers-sans-galere/",
       "status": 206,
       "final_url": "https://velocemercato.github.io/Papiers-sans-galere/",
@@ -4648,13 +4520,13 @@
         },
         {
           "file": "foot/index.html",
-          "line": 502,
+          "line": 491,
           "href": "https://velocemercato.github.io/Papiers-sans-galere/",
           "tag": "a"
         },
         {
           "file": "foot/index.html",
-          "line": 511,
+          "line": 500,
           "href": "https://velocemercato.github.io/Papiers-sans-galere/",
           "tag": "a"
         }
@@ -5495,19 +5367,19 @@
         },
         {
           "file": "foot/index.html",
-          "line": 452,
+          "line": 441,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
           "file": "foot/index.html",
-          "line": 495,
+          "line": 484,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
           "file": "foot/index.html",
-          "line": 511,
+          "line": 500,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
@@ -6208,7 +6080,7 @@
     },
     {
       "url": "https://www.bienici.com/recherche?q=Bourgogne-Franche-Comt%C3%A9",
-      "status": 200,
+      "status": 206,
       "final_url": "https://www.bienici.com/recherche?q=Bourgogne-Franche-Comt%C3%A9",
       "references": [
         {
@@ -6325,7 +6197,7 @@
     },
     {
       "url": "https://www.bienici.com/recherche?q=Outre-mer",
-      "status": 206,
+      "status": 200,
       "final_url": "https://www.bienici.com/recherche?q=Outre-mer",
       "references": [
         {
@@ -6618,7 +6490,7 @@
     {
       "url": "https://www.facebook.com/share/19wkqvg6Em/",
       "status": 200,
-      "final_url": "https://www.facebook.com/people/Veloce-Mercato/61584725345167/?rdid=3zsfwG5VJ4YIdzCL&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19wkqvg6Em%2F",
+      "final_url": "https://www.facebook.com/people/Veloce-Mercato/61584725345167/?rdid=7j1VKDr2qZwZOvhI&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19wkqvg6Em%2F",
       "references": [
         {
           "file": "index.html",
@@ -6631,7 +6503,7 @@
     {
       "url": "https://www.facebook.com/share/1C3uyLM2BB/",
       "status": 200,
-      "final_url": "https://www.facebook.com/Vmactusetpronos?rdid=IQZ80WY6NZ9ZWNZe&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1C3uyLM2BB%2F",
+      "final_url": "https://www.facebook.com/Vmactusetpronos?rdid=H77NVaRqq0gnfI4Y&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1C3uyLM2BB%2F",
       "references": [
         {
           "file": "index.html",
@@ -6644,7 +6516,7 @@
     {
       "url": "https://www.facebook.com/share/1DUSALoBzG/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=hWJslxibF5Kdvhuh",
+      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=jQxwVrtbAP4xp7pF",
       "references": [
         {
           "file": "foot/index.html",
@@ -6660,13 +6532,13 @@
         },
         {
           "file": "foot/index.html",
-          "line": 452,
+          "line": 441,
           "href": "https://www.facebook.com/share/1DUSALoBzG/",
           "tag": "a"
         },
         {
           "file": "foot/index.html",
-          "line": 511,
+          "line": 500,
           "href": "https://www.facebook.com/share/1DUSALoBzG/",
           "tag": "a"
         }
@@ -6675,7 +6547,7 @@
     {
       "url": "https://www.facebook.com/share/1E6nH6RZzX/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr?rdid=Z3jxYvN0Ncqioucx&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1E6nH6RZzX%2F",
+      "final_url": "https://www.facebook.com/velocemercato.fr?rdid=zWzXYpfg2Z9EFLKR&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1E6nH6RZzX%2F",
       "references": [
         {
           "file": "pronos/index.html",
@@ -6688,7 +6560,7 @@
     {
       "url": "https://www.facebook.com/share/1EiGutypix/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=gJ7lBLDecr8mrtxG",
+      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=KqMiuZGTLm4HxOl4",
       "references": [
         {
           "file": "studio.html",
@@ -7165,7 +7037,7 @@
     },
     {
       "url": "https://www.foot-national.com/actus/monaco-mamadou-coulibaly-sexpose-a-des-sanctions-apres-sa-celebration-polemique-963165",
-      "status": 200,
+      "status": 206,
       "final_url": "https://www.foot-national.com/actus/monaco-mamadou-coulibaly-sexpose-a-des-sanctions-apres-sa-celebration-polemique-963165",
       "references": [
         {
@@ -7417,7 +7289,7 @@
     },
     {
       "url": "https://www.footmercato.net/a5768329203274671524-bayern-vincent-kompany-est-de-retour",
-      "status": 200,
+      "status": 206,
       "final_url": "https://www.footmercato.net/a5768329203274671524-bayern-vincent-kompany-est-de-retour",
       "references": [
         {
@@ -8109,13 +7981,13 @@
         },
         {
           "file": "foot/index.html",
-          "line": 452,
+          "line": 441,
           "href": "https://www.instagram.com/veloce.mercato",
           "tag": "a"
         },
         {
           "file": "foot/index.html",
-          "line": 511,
+          "line": 500,
           "href": "https://www.instagram.com/veloce.mercato",
           "tag": "a"
         },
@@ -10246,13 +10118,13 @@
         },
         {
           "file": "foot/index.html",
-          "line": 452,
+          "line": 441,
           "href": "https://www.snapchat.com/add/velocemercato",
           "tag": "a"
         },
         {
           "file": "foot/index.html",
-          "line": 511,
+          "line": 500,
           "href": "https://www.snapchat.com/add/velocemercato",
           "tag": "a"
         }
@@ -10338,13 +10210,13 @@
         },
         {
           "file": "foot/index.html",
-          "line": 452,
+          "line": 441,
           "href": "https://www.tiktok.com/@velocemercato",
           "tag": "a"
         },
         {
           "file": "foot/index.html",
-          "line": 511,
+          "line": 500,
           "href": "https://www.tiktok.com/@velocemercato",
           "tag": "a"
         }
@@ -10400,25 +10272,25 @@
         },
         {
           "file": "foot/index.html",
-          "line": 447,
+          "line": 436,
           "href": "https://www.twitch.tv/velocemercato",
           "tag": "a"
         },
         {
           "file": "foot/index.html",
-          "line": 452,
+          "line": 441,
           "href": "https://www.twitch.tv/velocemercato",
           "tag": "a"
         },
         {
           "file": "foot/index.html",
-          "line": 509,
+          "line": 498,
           "href": "https://www.twitch.tv/velocemercato",
           "tag": "a"
         },
         {
           "file": "foot/index.html",
-          "line": 511,
+          "line": 500,
           "href": "https://www.twitch.tv/velocemercato",
           "tag": "a"
         },
@@ -10675,25 +10547,25 @@
         },
         {
           "file": "foot/index.html",
-          "line": 447,
+          "line": 436,
           "href": "https://www.youtube.com/@VeloceMercato",
           "tag": "a"
         },
         {
           "file": "foot/index.html",
-          "line": 452,
+          "line": 441,
           "href": "https://www.youtube.com/@VeloceMercato",
           "tag": "a"
         },
         {
           "file": "foot/index.html",
-          "line": 509,
+          "line": 498,
           "href": "https://www.youtube.com/@VeloceMercato",
           "tag": "a"
         },
         {
           "file": "foot/index.html",
-          "line": 511,
+          "line": 500,
           "href": "https://www.youtube.com/@VeloceMercato",
           "tag": "a"
         },

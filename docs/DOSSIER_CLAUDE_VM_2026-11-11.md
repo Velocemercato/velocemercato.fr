@@ -1,12 +1,12 @@
 # Dossier Claude — Véloce Mercato, site et réseaux
 
-État établi le 2026-11-11T02:09+01:00.
+État établi le 2026-11-11T02:22+01:00.
 
 Ce dossier remplace les anciennes consignes de restauration intégrale et les anciennes cadences. Il décrit le travail autorisé par Romain dans cette conversation. Les accès et conversations de ChatGPT ne sont pas automatiquement accessibles dans Claude.
 
 ## Priorités et périmètre
 
-- Conserver l’accueil bureau et tous les boutons validés. Le site vitrine vmunivers.fr reste inchangé.
+- Conserver l’accueil bureau et tous les boutons validés. Le site vitrine vmunivers.fr conserve sa présentation : seul son tableau de réseaux a été modifié à la demande suivante de Romain.
 - Le volet Foot propose « Ouvrir la rubrique complète » vers https://velocemercato.fr/foot/. Cette page reprend index.html du commit d488e7e20ea3db047e026465139156f5dd109445, dernier changement de cette page avant 21 h Paris le 4 novembre 2026. Ses fichiers JSON sont les flux actuels, pas les informations figées du 4 novembre.
 - Vérifier la rubrique Foot et ses lecteurs sur téléphone avant toute autre refonte. Ne pas remplacer le bureau par l’ancien accueil.
 - Les conseils pronos restent gérés avec Romain ; le pouf VM Prono ouvre https://t.me/VMCONSEILSPRONOS. Ne pas inventer de conseil ou de résultat.
@@ -22,6 +22,10 @@ Ce dossier remplace les anciennes consignes de restauration intégrale et les an
 | Pouf VM PRONO · TELEGRAM | https://t.me/VMCONSEILSPRONOS |
 | Cadres | Foot, Multisport sans Foot, Actus et régions, Gaming, Manga & Séries, Studio, Pastilles |
 | Réseaux en bas | Les deux Facebook et les Instagram/TikTok ajoutés par Romain ; YouTube, Snapchat, Discord, Twitch conservés |
+
+## Correction complémentaire du tableau VM Univers
+
+Sur vmunivers.fr, Romain a demandé : première case à gauche Facebook https://www.facebook.com/share/1FEt9Kprhi/ ; quatrième case à gauche Facebook VM Actus et Pronos https://www.facebook.com/share/1KCGttXow1/ ; cinquième case à droite TikTok https://www.tiktok.com/@vmunivers.fr. Il a confirmé que le deuxième lien était bien Facebook. Le reste de la vitrine est conservé. La correction est dans Velocemercato/vmunivers, commit 262e40c324ef3eb8bbd9ca028cb5286433ec4746.
 
 ## Publications dont les liens sont confirmés
 
@@ -96,11 +100,11 @@ Pour Multisport, les flux français validés Sports.fr et Le Monde Sport sont ra
 ## Audit des pages, liens et classements
 
 - Pages HTML examinées : 185.
-- URL interrogées : 454.
-- HTTP 404/410 confirmés : 4.
-- Cibles internes absentes du dépôt : 4.
+- URL interrogées : 450.
+- HTTP 404/410 confirmés : 0.
+- Cibles internes absentes du dépôt : 0.
 - Liens protégés/non vérifiables automatiquement : 93.
-- Ancres à relire : 235. Certaines existent seulement après chargement JavaScript.
+- Ancres à relire : 234. Certaines existent seulement après chargement JavaScript.
 - Classements à relire : 1.
 
 Le détail exhaustif des contrôles effectués, avec fichiers et lignes, est dans docs/AUDIT_CLAUDE_2026-11-11.json et son résumé Markdown. Un refus 403/429 ne prouve pas un lien mort. Cet audit ne certifie pas tous les faits d’actualité, la disponibilité géographique des vidéos, les paiements ou les espaces authentifiés.
