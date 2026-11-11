@@ -80,7 +80,7 @@ footer{{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Barlow+Condensed:ital,wght@0,700;1,800&display=swap"><link rel="stylesheet" href="/assets/vm-theme.css">
 </head>
 <body>
-<header><a class="logo" href="/">VÉLOCE <b>MERCATO</b></a><nav><a href="/">Brèves</a><a href="/#videos">Vidéos</a><a href="/archives.html">Rechercher</a><a class="don" href="/soutenir.html">💛 Soutenir</a></nav></header>
+<header><a class="logo" href="/">VÉLOCE <b>MERCATO</b></a><nav><a href="/">Brèves</a><a href="/foot/#videos">Vidéos</a><a href="/archives.html">Rechercher</a><a class="don" href="/soutenir.html">💛 Soutenir</a></nav></header>
 <main>
 <article>
 <div class="cover"><span class="rub">{label}</span>{badge}</div>
@@ -95,7 +95,7 @@ footer{{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 
 </div>
 </article>
 {related}
-<div class="tools"><a class="btn red" href="/#videos">🎬 Les vidéos de buts</a><a class="btn" href="/">← Toutes les brèves</a></div>
+<div class="tools"><a class="btn red" href="/foot/#videos">🎬 Les vidéos de buts</a><a class="btn" href="/">← Toutes les brèves</a></div>
 </main>
 <footer><a href="/mentions-legales.html">Mentions légales</a> · <a href="/archives.html">Archives</a></footer>
 <script>
