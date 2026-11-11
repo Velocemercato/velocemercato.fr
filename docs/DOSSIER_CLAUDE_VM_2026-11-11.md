@@ -4,6 +4,10 @@
 
 Ce dossier remplace les anciennes consignes de restauration intégrale et les anciennes cadences. Il décrit le travail autorisé par Romain dans cette conversation. Les accès et conversations de ChatGPT ne sont pas automatiquement accessibles dans Claude.
 
+## Guide des accès pour Claude
+
+Lire [ACCES_CLAUDE_VM_2026-11-11.md](ACCES_CLAUDE_VM_2026-11-11.md) : dépôts, Cloudflare, connexions Meta, marque Metricool, programmateur TikTok, contrôles et accès à connecter dans Claude. Aucun secret n’est inclus et aucun accès Claude n’a été créé automatiquement.
+
 ## Priorités et périmètre
 
 - Conserver l’accueil bureau et tous les boutons validés. Le site vitrine vmunivers.fr conserve sa présentation : seul son tableau de réseaux a été modifié à la demande suivante de Romain.
