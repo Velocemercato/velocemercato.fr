@@ -26,6 +26,14 @@ PAGE_IDS = {
 }
 
 
+def safe_error(error):
+    """Codes numériques seulement : aucune réponse brute ni aucun jeton."""
+    if isinstance(error, DeliveryError):
+        match = re.search(r"Meta a refusé \(([0-9]{3}), code ([0-9]+|\?)\)", str(error))
+        if match:
+            return "Meta HTTP=" + match[1] + " code=" + match[2]
+    return "erreur de contrôle"
+
 def parsed(value):
     t = dt.datetime.fromisoformat(str(value or "").replace("Z", "+00:00"))
     if t.tzinfo is None:
@@ -182,6 +190,18 @@ def main():
         if not data:
             print("::warning::" + account + " : compte non connecté")
             continue
+        # Un seul contrôle par Page avec un accès refusé.
+        try:
+            proof = graph.call("GET", PAGE_IDS[account], {
+                "fields": "id", "access_token": data.get("page_token")})
+            if str(proof.get("id")) != PAGE_IDS[account]:
+                print("::warning::ACCES " + account + " : identité différente, aucun envoi")
+                continue
+        except (DeliveryError, OSError, ValueError, TypeError) as error:
+            print("::warning::ACCES " + account + " : " + safe_error(error) +
+                  " ; contrôle interrompu pour cette Page, aucune publication")
+            continue
+        print("::notice::ACCES " + account + " : identité confirmée en lecture")
         diagnostic_page(graph, account, data)
         for label, retrieve in (("FB", graph_page), ("IG", graph_instagram)):
             if label == "IG" and account == "meta_pronos":
