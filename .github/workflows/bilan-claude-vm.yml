@@ -1,5 +1,8 @@
 name: VM - Audit complet et dossier Claude
 on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/bilan-claude-vm.yml']
   workflow_run:
     workflows: ['VM - Flashes originaux pour les reseaux']
     types: [completed]
