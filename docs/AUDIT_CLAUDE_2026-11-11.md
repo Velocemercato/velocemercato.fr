@@ -1,10 +1,10 @@
 # Audit du site pour Claude
 
-État mesuré le 2026-11-11T02:22:56.951229+01:00.
+État mesuré le 2026-11-11T06:32:48.723144+01:00.
 
 ## Périmètre et limites
 
-185 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 450 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
+149 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 397 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
 
 Un statut 404 ou 410 indique une URL introuvable. Les refus 401/403, les limites 429, les erreurs serveur et les délais dépassés demandent une vérification complémentaire. Le test ne valide pas le visionnage géographique des vidéos ni la véracité des articles. Les classements signalés par mots-clés doivent être relus avant déplacement.
 
@@ -14,20 +14,23 @@ Retirer les accès transversaux aux anciennes applications et leurs invitations 
 
 ## Résultats
 
-- Liens confirmés introuvables en HTTP, 0.
-- Cibles internes absentes du dépôt, 0. Certaines peuvent être servies par Cloudflare, lire leur résultat HTTP avant correction.
-- Ancres à vérifier, 234. Certaines sont gérées par JavaScript.
-- Articles à relire pour leur classement, 1.
+- Liens confirmés introuvables en HTTP, 4.
+- Cibles internes absentes du dépôt, 4. Certaines peuvent être servies par Cloudflare, lire leur résultat HTTP avant correction.
+- Ancres à vérifier, 58. Certaines sont gérées par JavaScript.
+- Articles à relire pour leur classement, 0.
 - Replays réellement publiés par genre, {"foot": 40, "actus": 31, "gaming": 17}.
 
 Le fichier JSON associé contient toutes les références, pages et lignes. Les chemins correspondent au commit indiqué dans ce rapport.
 
 ## Liens introuvables
 
+- https://velocemercato.fr/a/rss-v2-1a9d826af5d5b472ad125c.html — HTTP 404 — foot/index.html ligne 430
+- https://velocemercato.fr/a/rss-v2-26f4ed0fc70e38f1b903f1.html — HTTP 404 — foot/index.html ligne 430
+- https://velocemercato.fr/a/rss-v2-501c2028ba34c3c87d79eb.html — HTTP 404 — foot/index.html ligne 430
+- https://velocemercato.fr/a/rss-v2-99271d85be356a9f3526a1.html — HTTP 404 — foot/index.html ligne 430
 
 ## Articles à relire
 
-- vm-gaming/news.json — rss-v2-fb08bad3c8ffff4fb8746d — One Piece : le chapitre 1199 reporté, la piste du 30e anniversaire — À relire, aucun indice net de la rubrique dans la brève
 
 ## Corrections déjà apportées dans cette reprise
 
