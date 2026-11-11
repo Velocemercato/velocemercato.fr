@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-11T11:03:43.124894+01:00",
-  "commit": "9c2a8a24992f38ea5ae2a0e2e7d6e70b468dca48",
-  "html_pages": 158,
-  "live_urls_checked": 421,
+  "generated_at": "2026-11-11T18:59:26.317245+01:00",
+  "commit": "adc5686c85b010bdbf3bb71168b3e4c832a03a26",
+  "html_pages": 174,
+  "live_urls_checked": 461,
   "local_targets_absent": [
     {
       "file": "foot/index.html",
@@ -1445,21 +1445,20 @@
       ]
     },
     {
-      "url": "https://www.ouest-france.fr/sport/tennis/arthur-fils/atp-finals-quelles-sont-les-chances-darthur-fils-face-au-gratin-du-tennis-mondial-97f2ea5e-dc52-11f1-81f5-8e32b0872d76?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
+      "url": "https://www.ouest-france.fr/sport/football/equipe-de-france/italie-france-konate-zaire-emery-et-gusto-une-semaine-a-enjeux-pour-trois-mondialistes-de-retour-67baf3ae-dd1a-11f1-a62b-776e3051b0df?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
       "status": 403,
       "references": [
         {
-          "file": "pronos/index.html",
-          "line": 45,
-          "href": "https://www.ouest-france.fr/sport/tennis/arthur-fils/atp-finals-quelles-sont-les-chances-darthur-fils-face-au-gratin-du-tennis-mondial-97f2ea5e-dc52-11f1-81f5-8e32b0872d76?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 45,
-          "href": "https://www.ouest-france.fr/sport/tennis/arthur-fils/atp-finals-quelles-sont-les-chances-darthur-fils-face-au-gratin-du-tennis-mondial-97f2ea5e-dc52-11f1-81f5-8e32b0872d76?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
-          "tag": "a"
-        },
+          "file": "actus/news.json",
+          "id": "rss-v2-4cd0285e1d07d595dd05bf",
+          "title": "Konaté, Zaïre-Emery et Gusto de retour en équipe de France pour l'Italie et la Turquie"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ouest-france.fr/sport/tennis/arthur-fils/atp-finals-quelles-sont-les-chances-darthur-fils-face-au-gratin-du-tennis-mondial-97f2ea5e-dc52-11f1-81f5-8e32b0872d76?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
+      "status": 403,
+      "references": [
         {
           "file": "actus/news.json",
           "id": "rss-v2-e754fbf764692915948577",
@@ -1829,16 +1828,22 @@
       "id": "rss-v2-cbcc6315da75101db7e45f",
       "title": "Les Nazgnagôls dans la saison 3 des Anneaux de Pouvoir : qui sont-ils ?",
       "reason": "À relire, aucun indice net de la rubrique dans la brève"
+    },
+    {
+      "file": "vm-gaming/news.json",
+      "id": "rss-v2-ee021f161b555c76c840d1",
+      "title": "VisionQuest : pas de nouvelle saison annoncée, mais l'équipe ouverte à une suite",
+      "reason": "À relire, aucun indice net de la rubrique dans la brève"
     }
   ],
   "feed_counts": {
-    "articles.json": 12,
-    "vm-gaming/news.json": 4
+    "articles.json": 28,
+    "vm-gaming/news.json": 11
   },
   "replay_by_genre": {
-    "foot": 41,
-    "actus": 31,
-    "gaming": 17
+    "gaming": 18,
+    "actus": 32,
+    "foot": 42
   },
   "json_errors": [],
   "all_live_results": [
@@ -2247,7 +2252,31 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-c18c918b6b48864744f6dc.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-5e41f3cb661ec2f424f690.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-4da0942be61ed88027f720.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-0eb877bb7694ad369c7b35.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-c753c54d5ddeafc1d8adb8.html",
           "line": 95,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
@@ -2277,6 +2306,18 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-96609954b85112d4234bb2.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-eb78824bf8a2cdae4218aa.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-66cd7ed54591009030f93b.html",
           "line": 95,
           "href": "https://discord.gg/JEgfrUtJaX",
@@ -2289,7 +2330,19 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-5a65ad2117ad4610b2f745.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-56b843b0411ffd89ea98bd.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-727bef8bda9651812e9bb8.html",
           "line": 95,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
@@ -2301,7 +2354,49 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-ea7b697050ed12a0169d44.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-5f6529495d832d0dffd459.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-a78d77e0e30545fe970c4c.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-c689ab928c38e844e0b4f8.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-c258854ed97fb6bb8e95ad.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-0e56b6523267e7888732b1.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-863dd12055b8757d2ea6f4.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-1fbfe2e0d30b0a907b4d90.html",
           "line": 95,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
@@ -2314,6 +2409,12 @@
         },
         {
           "file": "a/rss-v2-27d2620d860eb3b8fe9b07.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-b8d17a6e625c6f34d5a79b.html",
           "line": 95,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
@@ -2553,6 +2654,24 @@
       ]
     },
     {
+      "url": "https://footamateur.ouest-france.fr/un-joueur-de-22-ans-decede-lors-dun-entrainement-a-la-reunion/",
+      "status": 200,
+      "final_url": "https://footamateur.ouest-france.fr/un-joueur-de-22-ans-decede-lors-dun-entrainement-a-la-reunion/",
+      "references": [
+        {
+          "file": "a/rss-v2-0e56b6523267e7888732b1.html",
+          "line": 92,
+          "href": "https://footamateur.ouest-france.fr/un-joueur-de-22-ans-decede-lors-dun-entrainement-a-la-reunion/",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-0e56b6523267e7888732b1",
+          "title": "Wanis Honsor, 22 ans, décède après un malaise cardiaque à l'entraînement à La Réunion"
+        }
+      ]
+    },
+    {
       "url": "https://fr.euronews.com/",
       "status": 206,
       "final_url": "https://fr.euronews.com/",
@@ -2566,26 +2685,50 @@
       ]
     },
     {
+      "url": "https://fr.euronews.com/2026/11/11/11-novembre-entre-memoire-nationale-et-pacifisme-les-hommages-de-macron-le-pen-et-melencho",
+      "status": 206,
+      "final_url": "https://fr.euronews.com/2026/11/11/11-novembre-entre-memoire-nationale-et-pacifisme-les-hommages-de-macron-le-pen-et-melencho",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 41,
+          "href": "https://fr.euronews.com/2026/11/11/11-novembre-entre-memoire-nationale-et-pacifisme-les-hommages-de-macron-le-pen-et-melencho",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 41,
+          "href": "https://fr.euronews.com/2026/11/11/11-novembre-entre-memoire-nationale-et-pacifisme-les-hommages-de-macron-le-pen-et-melencho",
+          "tag": "a"
+        },
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-c330eb672f69b571a4238c",
+          "title": "11-Novembre : Macron sous l'Arc de Triomphe, Le Pen et Mélenchon en déplacement"
+        }
+      ]
+    },
+    {
       "url": "https://fr.euronews.com/2026/11/11/accords-aeriens-chine-kazakhstan-et-ouzbekistan-augmentent-les-limites-de-vols",
       "status": 206,
       "final_url": "https://fr.euronews.com/2026/11/11/accords-aeriens-chine-kazakhstan-et-ouzbekistan-augmentent-les-limites-de-vols",
       "references": [
         {
-          "file": "pronos/index.html",
-          "line": 43,
-          "href": "https://fr.euronews.com/2026/11/11/accords-aeriens-chine-kazakhstan-et-ouzbekistan-augmentent-les-limites-de-vols",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 43,
-          "href": "https://fr.euronews.com/2026/11/11/accords-aeriens-chine-kazakhstan-et-ouzbekistan-augmentent-les-limites-de-vols",
-          "tag": "a"
-        },
-        {
           "file": "actus/news.json",
           "id": "rss-v2-e8042495b8f3083c3ec07b",
           "title": "Asie centrale et Chine : hausse des plafonds de vols aériens entre les pays"
+        }
+      ]
+    },
+    {
+      "url": "https://fr.euronews.com/2026/11/11/affaire-xenia-fedorova-deux-deputes-et-deux-journalistes-francais-interdits-dentree-en-rus",
+      "status": 206,
+      "final_url": "https://fr.euronews.com/2026/11/11/affaire-xenia-fedorova-deux-deputes-et-deux-journalistes-francais-interdits-dentree-en-rus",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-0743005c6ce02ae53e3abd",
+          "title": "Quatre personnalités françaises interdites d'entrée en Russie après l'affaire Xenia Fedorova"
         }
       ]
     },
@@ -2595,21 +2738,21 @@
       "final_url": "https://fr.euronews.com/2026/11/11/cyberattaques-une-personne-sur-deux-risque-detre-visee-selon-le-hacker-ethique-marco-di-fi",
       "references": [
         {
-          "file": "pronos/index.html",
-          "line": 44,
-          "href": "https://fr.euronews.com/2026/11/11/cyberattaques-une-personne-sur-deux-risque-detre-visee-selon-le-hacker-ethique-marco-di-fi",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 44,
-          "href": "https://fr.euronews.com/2026/11/11/cyberattaques-une-personne-sur-deux-risque-detre-visee-selon-le-hacker-ethique-marco-di-fi",
-          "tag": "a"
-        },
-        {
           "file": "actus/news.json",
           "id": "rss-v2-102df0d1576637955fd088",
           "title": "Cyberattaques : Marco Di Filippo, hacker éthique, pointe le facteur humain"
+        }
+      ]
+    },
+    {
+      "url": "https://fr.euronews.com/2026/11/11/en-chine-les-voitures-volantes-de-xpeng-pourraient-transporter-des-passagers-des-2027",
+      "status": 206,
+      "final_url": "https://fr.euronews.com/2026/11/11/en-chine-les-voitures-volantes-de-xpeng-pourraient-transporter-des-passagers-des-2027",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-3337c074d41d5098956da2",
+          "title": "XPeng prévoit des vols de passagers en voitures volantes en Chine dès 2027"
         }
       ]
     },
@@ -2622,6 +2765,18 @@
           "file": "actus/news.json",
           "id": "rss-v2-27796f4ca04e6018655d9d",
           "title": "Anthropic prévoit une introduction en Bourse pouvant lever jusqu'à 64 milliards de dollars"
+        }
+      ]
+    },
+    {
+      "url": "https://fr.euronews.com/2026/11/11/nick-cave-fustige-lia-musicale-une-humiliation-destructrice",
+      "status": 206,
+      "final_url": "https://fr.euronews.com/2026/11/11/nick-cave-fustige-lia-musicale-une-humiliation-destructrice",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-ba05f36961ff62a0aa64d8",
+          "title": "Nick Cave critique l’IA musicale, qu’il juge « destructrice » pour l’effort humain"
         }
       ]
     },
@@ -3219,6 +3374,66 @@
       ]
     },
     {
+      "url": "https://rmcsport.bfmtv.com/football/clubs/olympique-marseille/om-il-faut-faire-le-petit-effort-la-demande-de-di-meco-a-mc-court-pour-ne-pas-gacher-la-saison_AV-202611110596.html",
+      "status": 206,
+      "final_url": "https://rmcsport.bfmtv.com/football/clubs/olympique-marseille/om-il-faut-faire-le-petit-effort-la-demande-de-di-meco-a-mc-court-pour-ne-pas-gacher-la-saison_AV-202611110596.html",
+      "references": [
+        {
+          "file": "a/rss-v2-c258854ed97fb6bb8e95ad.html",
+          "line": 92,
+          "href": "https://rmcsport.bfmtv.com/football/clubs/olympique-marseille/om-il-faut-faire-le-petit-effort-la-demande-de-di-meco-a-mc-court-pour-ne-pas-gacher-la-saison_AV-202611110596.html",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 36,
+          "href": "https://rmcsport.bfmtv.com/football/clubs/olympique-marseille/om-il-faut-faire-le-petit-effort-la-demande-de-di-meco-a-mc-court-pour-ne-pas-gacher-la-saison_AV-202611110596.html",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-c258854ed97fb6bb8e95ad",
+          "title": "OM : Di Meco demande à McCourt de ne pas vendre cet hiver pour viser la Ligue des champions"
+        }
+      ]
+    },
+    {
+      "url": "https://rmcsport.bfmtv.com/football/clubs/olympique-marseille/om-les-south-winners-organisent-un-gala-de-charite-pour-les-enfants-places-et-orphelins_AV-202611110352.html",
+      "status": 206,
+      "final_url": "https://rmcsport.bfmtv.com/football/clubs/olympique-marseille/om-les-south-winners-organisent-un-gala-de-charite-pour-les-enfants-places-et-orphelins_AV-202611110352.html",
+      "references": [
+        {
+          "file": "a/rss-v2-5f6529495d832d0dffd459.html",
+          "line": 92,
+          "href": "https://rmcsport.bfmtv.com/football/clubs/olympique-marseille/om-les-south-winners-organisent-un-gala-de-charite-pour-les-enfants-places-et-orphelins_AV-202611110352.html",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-5f6529495d832d0dffd459",
+          "title": "OM : les South Winners organisent un gala de charité au profit d'enfants placés à Marseille"
+        }
+      ]
+    },
+    {
+      "url": "https://rmcsport.bfmtv.com/football/equipe-angleterre/apres-le-ballon-d-or-un-record-absolu-avec-l-angleterre-harry-kane-va-devenir-le-joueur-le-plus-cape-de-l-histoire-de-sa-selection_AV-202611110559.html",
+      "status": 206,
+      "final_url": "https://rmcsport.bfmtv.com/football/equipe-angleterre/apres-le-ballon-d-or-un-record-absolu-avec-l-angleterre-harry-kane-va-devenir-le-joueur-le-plus-cape-de-l-histoire-de-sa-selection_AV-202611110559.html",
+      "references": [
+        {
+          "file": "a/rss-v2-1fbfe2e0d30b0a907b4d90.html",
+          "line": 92,
+          "href": "https://rmcsport.bfmtv.com/football/equipe-angleterre/apres-le-ballon-d-or-un-record-absolu-avec-l-angleterre-harry-kane-va-devenir-le-joueur-le-plus-cape-de-l-histoire-de-sa-selection_AV-202611110559.html",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-1fbfe2e0d30b0a907b4d90",
+          "title": "Harry Kane vise le record de sélections avec l'Angleterre face à la Croatie"
+        }
+      ]
+    },
+    {
       "url": "https://rmcsport.bfmtv.com/football/j-appelle-a-un-allant-d-humanite-et-de-coeur-le-cri-du-coeur-du-frere-de-christophe-gleizes-detenu-depuis-500-jours-en-algerie_AV-202611110318.html",
       "status": 206,
       "final_url": "https://rmcsport.bfmtv.com/football/j-appelle-a-un-allant-d-humanite-et-de-coeur-le-cri-du-coeur-du-frere-de-christophe-gleizes-detenu-depuis-500-jours-en-algerie_AV-202611110318.html",
@@ -3230,15 +3445,33 @@
           "tag": "a"
         },
         {
+          "file": "articles.json",
+          "id": "rss-v2-1a7aa77d0f96c75c1fd04f",
+          "title": "Christophe Gleizes détenu depuis 500 jours en Algérie : le cri de son frère Maxime"
+        }
+      ]
+    },
+    {
+      "url": "https://rmcsport.bfmtv.com/football/major-league-soccer/mls-bakambu-quitte-son-club-apres-deux-mois-et-depose-plainte-pour-discrimination-au-logement_AV-202611110659.html",
+      "status": 206,
+      "final_url": "https://rmcsport.bfmtv.com/football/major-league-soccer/mls-bakambu-quitte-son-club-apres-deux-mois-et-depose-plainte-pour-discrimination-au-logement_AV-202611110659.html",
+      "references": [
+        {
+          "file": "a/rss-v2-eb78824bf8a2cdae4218aa.html",
+          "line": 92,
+          "href": "https://rmcsport.bfmtv.com/football/major-league-soccer/mls-bakambu-quitte-son-club-apres-deux-mois-et-depose-plainte-pour-discrimination-au-logement_AV-202611110659.html",
+          "tag": "a"
+        },
+        {
           "file": "pronos/index.html",
-          "line": 35,
-          "href": "https://rmcsport.bfmtv.com/football/j-appelle-a-un-allant-d-humanite-et-de-coeur-le-cri-du-coeur-du-frere-de-christophe-gleizes-detenu-depuis-500-jours-en-algerie_AV-202611110318.html",
+          "line": 34,
+          "href": "https://rmcsport.bfmtv.com/football/major-league-soccer/mls-bakambu-quitte-son-club-apres-deux-mois-et-depose-plainte-pour-discrimination-au-logement_AV-202611110659.html",
           "tag": "a"
         },
         {
           "file": "articles.json",
-          "id": "rss-v2-1a7aa77d0f96c75c1fd04f",
-          "title": "Christophe Gleizes détenu depuis 500 jours en Algérie : le cri de son frère Maxime"
+          "id": "rss-v2-eb78824bf8a2cdae4218aa",
+          "title": "MLS : Cédric Bakambu quitte San Diego FC et dépose plainte pour discrimination au logement"
         }
       ]
     },
@@ -3275,25 +3508,6 @@
           "file": "articles.json",
           "id": "rss-v2-70bcbaac1b178038f203fa",
           "title": "Fiorèse évoque son passage compliqué à l'OM, où il dit avoir reçu des cailloux"
-        }
-      ]
-    },
-    {
-      "url": "https://t.me/VMCONSEILSPRONOS",
-      "status": 200,
-      "final_url": "https://t.me/VMCONSEILSPRONOS",
-      "references": [
-        {
-          "file": "index.html",
-          "line": 444,
-          "href": "https://t.me/VMCONSEILSPRONOS",
-          "tag": "a"
-        },
-        {
-          "file": "index.html",
-          "line": 593,
-          "href": "https://t.me/VMCONSEILSPRONOS",
-          "tag": "a"
         }
       ]
     },
@@ -3410,6 +3624,25 @@
           "file": "foot/index.html",
           "line": 500,
           "href": "https://velocemercato.github.io/Papiers-sans-galere/",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://vm-prono-club.heineguez.chatgpt.site/",
+      "status": 200,
+      "final_url": "https://vm-prono-club.heineguez.chatgpt.site/",
+      "references": [
+        {
+          "file": "index.html",
+          "line": 444,
+          "href": "https://vm-prono-club.heineguez.chatgpt.site/",
+          "tag": "a"
+        },
+        {
+          "file": "index.html",
+          "line": 593,
+          "href": "https://vm-prono-club.heineguez.chatgpt.site/",
           "tag": "a"
         }
       ]
@@ -3726,7 +3959,31 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-c18c918b6b48864744f6dc.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-5e41f3cb661ec2f424f690.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-4da0942be61ed88027f720.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-0eb877bb7694ad369c7b35.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-c753c54d5ddeafc1d8adb8.html",
           "line": 82,
           "href": "https://vmunivers.fr/",
           "tag": "a"
@@ -3756,6 +4013,18 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-96609954b85112d4234bb2.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-eb78824bf8a2cdae4218aa.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-66cd7ed54591009030f93b.html",
           "line": 82,
           "href": "https://vmunivers.fr/",
@@ -3768,7 +4037,19 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-5a65ad2117ad4610b2f745.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-56b843b0411ffd89ea98bd.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-727bef8bda9651812e9bb8.html",
           "line": 82,
           "href": "https://vmunivers.fr/",
           "tag": "a"
@@ -3780,7 +4061,49 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-ea7b697050ed12a0169d44.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-5f6529495d832d0dffd459.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-a78d77e0e30545fe970c4c.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-c689ab928c38e844e0b4f8.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-c258854ed97fb6bb8e95ad.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-0e56b6523267e7888732b1.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-863dd12055b8757d2ea6f4.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-1fbfe2e0d30b0a907b4d90.html",
           "line": 82,
           "href": "https://vmunivers.fr/",
           "tag": "a"
@@ -3793,6 +4116,12 @@
         },
         {
           "file": "a/rss-v2-27d2620d860eb3b8fe9b07.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-b8d17a6e625c6f34d5a79b.html",
           "line": 82,
           "href": "https://vmunivers.fr/",
           "tag": "a"
@@ -4377,6 +4706,30 @@
       ]
     },
     {
+      "url": "https://www.20minutes.fr/high-tech/by-the-web/4262211-20261111-tiktok-ouverture-enquete-espagne-diffusion-contenus-pedopornographiques?at_medium=display&at_campaign=149",
+      "status": 200,
+      "final_url": "https://www.20minutes.fr/high-tech/by-the-web/4262211-20261111-tiktok-ouverture-enquete-espagne-diffusion-contenus-pedopornographiques?at_medium=display&at_campaign=149",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 42,
+          "href": "https://www.20minutes.fr/high-tech/by-the-web/4262211-20261111-tiktok-ouverture-enquete-espagne-diffusion-contenus-pedopornographiques?at_medium=display&at_campaign=149",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 42,
+          "href": "https://www.20minutes.fr/high-tech/by-the-web/4262211-20261111-tiktok-ouverture-enquete-espagne-diffusion-contenus-pedopornographiques?at_medium=display&at_campaign=149",
+          "tag": "a"
+        },
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-da7967c7c92dcb11c78329",
+          "title": "TikTok : une enquête ouverte en Espagne sur des contenus pédocriminels"
+        }
+      ]
+    },
+    {
       "url": "https://www.20minutes.fr/monde/4262106-20261111-justice-depenalise-homosexualite-trinite-tobago?at_medium=display&at_campaign=149",
       "status": 200,
       "final_url": "https://www.20minutes.fr/monde/4262106-20261111-justice-depenalise-homosexualite-trinite-tobago?at_medium=display&at_campaign=149",
@@ -4385,6 +4738,18 @@
           "file": "actus/news.json",
           "id": "rss-v2-19e323b1ddccf0a2a99f82",
           "title": "Trinité-et-Tobago : la justice annule la pénalisation de l’homosexualité"
+        }
+      ]
+    },
+    {
+      "url": "https://www.20minutes.fr/sport/football/4262170-20261111-italie-france-kylian-mbappe-absent-entrainement-senny-mayulu-convoque?at_medium=display&at_campaign=149",
+      "status": 200,
+      "final_url": "https://www.20minutes.fr/sport/football/4262170-20261111-italie-france-kylian-mbappe-absent-entrainement-senny-mayulu-convoque?at_medium=display&at_campaign=149",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-0a96c96431f0b01da15a6e",
+          "title": "Italie-France : Mbappé absent de l’entraînement, Mayulu convoqué pour la première fois"
         }
       ]
     },
@@ -4504,15 +4869,27 @@
           "tag": "a"
         },
         {
-          "file": "pronos/index.html",
-          "line": 36,
-          "href": "https://www.bbc.co.uk/sport/football/articles/c3x2wz2kg0lno?at_medium=RSS&at_campaign=rss",
+          "file": "articles.json",
+          "id": "rss-v2-56b843b0411ffd89ea98bd",
+          "title": "Les Nord-Irlandais en forme avec leurs clubs avant la trêve internationale"
+        }
+      ]
+    },
+    {
+      "url": "https://www.bbc.co.uk/sport/football/articles/c539gkdrn7yeo?at_medium=RSS&at_campaign=rss",
+      "status": 206,
+      "final_url": "https://www.bbc.co.uk/sport/football/articles/c539gkdrn7yeo?at_medium=RSS&at_campaign=rss",
+      "references": [
+        {
+          "file": "a/rss-v2-c689ab928c38e844e0b4f8.html",
+          "line": 92,
+          "href": "https://www.bbc.co.uk/sport/football/articles/c539gkdrn7yeo?at_medium=RSS&at_campaign=rss",
           "tag": "a"
         },
         {
           "file": "articles.json",
-          "id": "rss-v2-56b843b0411ffd89ea98bd",
-          "title": "Les Nord-Irlandais en forme avec leurs clubs avant la trêve internationale"
+          "id": "rss-v2-c689ab928c38e844e0b4f8",
+          "title": "David Bates rappelé en équipe d'Écosse pour remplacer Luis Binks"
         }
       ]
     },
@@ -4535,6 +4912,30 @@
       ]
     },
     {
+      "url": "https://www.bbc.co.uk/sport/football/articles/ckedq15wq0dlo?at_medium=RSS&at_campaign=rss",
+      "status": 206,
+      "final_url": "https://www.bbc.co.uk/sport/football/articles/ckedq15wq0dlo?at_medium=RSS&at_campaign=rss",
+      "references": [
+        {
+          "file": "a/rss-v2-c18c918b6b48864744f6dc.html",
+          "line": 92,
+          "href": "https://www.bbc.co.uk/sport/football/articles/ckedq15wq0dlo?at_medium=RSS&at_campaign=rss",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 35,
+          "href": "https://www.bbc.co.uk/sport/football/articles/ckedq15wq0dlo?at_medium=RSS&at_campaign=rss",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-c18c918b6b48864744f6dc",
+          "title": "Un observateur d'arbitres suspendu neuf semaines pour propos discriminatoires"
+        }
+      ]
+    },
+    {
       "url": "https://www.bbc.co.uk/sport/football/articles/crvg9y27n45wo?at_medium=RSS&at_campaign=rss",
       "status": 206,
       "final_url": "https://www.bbc.co.uk/sport/football/articles/crvg9y27n45wo?at_medium=RSS&at_campaign=rss",
@@ -4542,12 +4943,6 @@
         {
           "file": "a/rss-v2-863dd12055b8757d2ea6f4.html",
           "line": 92,
-          "href": "https://www.bbc.co.uk/sport/football/articles/crvg9y27n45wo?at_medium=RSS&at_campaign=rss",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 37,
           "href": "https://www.bbc.co.uk/sport/football/articles/crvg9y27n45wo?at_medium=RSS&at_campaign=rss",
           "tag": "a"
         },
@@ -4612,7 +5007,7 @@
     },
     {
       "url": "https://www.bienici.com/recherche?q=%C3%8Ele-de-France",
-      "status": 206,
+      "status": 200,
       "final_url": "https://www.bienici.com/recherche?q=%C3%8Ele-de-France",
       "references": [
         {
@@ -4885,6 +5280,30 @@
       ]
     },
     {
+      "url": "https://www.dexerto.fr/call-of-duty/meilleurs-endroits-atterrir-hajin-warzone-1663859/",
+      "status": 206,
+      "final_url": "https://www.dexerto.fr/call-of-duty/meilleurs-endroits-atterrir-hajin-warzone-1663859/",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 49,
+          "href": "https://www.dexerto.fr/call-of-duty/meilleurs-endroits-atterrir-hajin-warzone-1663859/",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 49,
+          "href": "https://www.dexerto.fr/call-of-duty/meilleurs-endroits-atterrir-hajin-warzone-1663859/",
+          "tag": "a"
+        },
+        {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-a2f4c313b38ccb42cc5861",
+          "title": "Warzone : les meilleurs spots où atterrir sur la map Hajin"
+        }
+      ]
+    },
+    {
       "url": "https://www.dexerto.fr/films-series/anneaux-de-pouvoir-explication-nazgnagol-nazgul-1663483/",
       "status": 206,
       "final_url": "https://www.dexerto.fr/films-series/anneaux-de-pouvoir-explication-nazgnagol-nazgul-1663483/",
@@ -4893,6 +5312,42 @@
           "file": "vm-gaming/news.json",
           "id": "rss-v2-cbcc6315da75101db7e45f",
           "title": "Les Nazgnagôls dans la saison 3 des Anneaux de Pouvoir : qui sont-ils ?"
+        }
+      ]
+    },
+    {
+      "url": "https://www.dexerto.fr/films-series/suite-de-visionquest-mcu-apres-final-disney-1663551/",
+      "status": 206,
+      "final_url": "https://www.dexerto.fr/films-series/suite-de-visionquest-mcu-apres-final-disney-1663551/",
+      "references": [
+        {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-ee021f161b555c76c840d1",
+          "title": "VisionQuest : pas de nouvelle saison annoncée, mais l'équipe ouverte à une suite"
+        }
+      ]
+    },
+    {
+      "url": "https://www.dexerto.fr/gta/gta-6-aurait-cache-personnage-culte-gta-4-dans-dernier-trailer-1663853/",
+      "status": 206,
+      "final_url": "https://www.dexerto.fr/gta/gta-6-aurait-cache-personnage-culte-gta-4-dans-dernier-trailer-1663853/",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 50,
+          "href": "https://www.dexerto.fr/gta/gta-6-aurait-cache-personnage-culte-gta-4-dans-dernier-trailer-1663853/",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 50,
+          "href": "https://www.dexerto.fr/gta/gta-6-aurait-cache-personnage-culte-gta-4-dans-dernier-trailer-1663853/",
+          "tag": "a"
+        },
+        {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-f360c2011cf3c8ea97b49e",
+          "title": "GTA 6 : des fans pensent reconnaître Gay Tony dans une nouvelle vidéo"
         }
       ]
     },
@@ -4988,7 +5443,7 @@
     {
       "url": "https://www.facebook.com/share/19wkqvg6Em/",
       "status": 200,
-      "final_url": "https://www.facebook.com/people/Veloce-Mercato/61584725345167/?rdid=kRQsXnMLzpDNMlS3&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19wkqvg6Em%2F",
+      "final_url": "https://www.facebook.com/people/Veloce-Mercato/61584725345167/?rdid=36o82bqhdyAtaPKj&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19wkqvg6Em%2F",
       "references": [
         {
           "file": "index.html",
@@ -5001,7 +5456,7 @@
     {
       "url": "https://www.facebook.com/share/1C3uyLM2BB/",
       "status": 200,
-      "final_url": "https://www.facebook.com/Vmactusetpronos?rdid=XC7nCAotx5fNAT3P&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1C3uyLM2BB%2F",
+      "final_url": "https://www.facebook.com/Vmactusetpronos?rdid=WP99YqwNvoEBLGVp&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1C3uyLM2BB%2F",
       "references": [
         {
           "file": "index.html",
@@ -5014,7 +5469,7 @@
     {
       "url": "https://www.facebook.com/share/1DUSALoBzG/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=wBXUq5GIXrQ7Q2UX",
+      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=QFyOJzxIWNH1aLlS",
       "references": [
         {
           "file": "foot/index.html",
@@ -5045,7 +5500,7 @@
     {
       "url": "https://www.facebook.com/share/1E6nH6RZzX/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr?rdid=Xuoy6KkWnk3g2Rho&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1E6nH6RZzX%2F",
+      "final_url": "https://www.facebook.com/velocemercato.fr?rdid=RRVwHmwlp0YKWuMj&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1E6nH6RZzX%2F",
       "references": [
         {
           "file": "pronos/index.html",
@@ -5058,7 +5513,7 @@
     {
       "url": "https://www.facebook.com/share/1EiGutypix/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=05qmLwwekelIytsH",
+      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=SYBfgM3yeyvvBXKU",
       "references": [
         {
           "file": "studio.html",
@@ -5343,7 +5798,7 @@
     {
       "url": "https://www.facebook.com/velocemercato.fr",
       "status": 200,
-      "final_url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fvelocemercato.fr",
+      "final_url": "https://www.facebook.com/velocemercato.fr",
       "references": [
         {
           "file": "index.html",
@@ -5527,12 +5982,6 @@
           "tag": "a"
         },
         {
-          "file": "pronos/index.html",
-          "line": 34,
-          "href": "https://www.foot-national.com/actus/le-national-2-met-son-calendrier-a-jour-ce-mercredi-11-novembre-deux-matchs-en-retard-au-programme-963396",
-          "tag": "a"
-        },
-        {
           "file": "articles.json",
           "id": "rss-v2-15cc0d0c1fb945e13acd04",
           "title": "National 2 : deux matchs en retard au programme ce mercredi dans le groupe G"
@@ -5558,6 +6007,42 @@
       ]
     },
     {
+      "url": "https://www.foot01.com/marseille/lom-negocie-un-depart-et-trois-arrivees-avec-la-dncg",
+      "status": 200,
+      "final_url": "https://www.foot01.com/marseille/lom-negocie-un-depart-et-trois-arrivees-avec-la-dncg",
+      "references": [
+        {
+          "file": "a/rss-v2-4da0942be61ed88027f720.html",
+          "line": 92,
+          "href": "https://www.foot01.com/marseille/lom-negocie-un-depart-et-trois-arrivees-avec-la-dncg",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-4da0942be61ed88027f720",
+          "title": "L'OM doit vendre un gros joueur et espère recruter via la DNCG"
+        }
+      ]
+    },
+    {
+      "url": "https://www.foot01.com/ol/la-juve-condamne-openda-lol-peut-en-profiter",
+      "status": 200,
+      "final_url": "https://www.foot01.com/ol/la-juve-condamne-openda-lol-peut-en-profiter",
+      "references": [
+        {
+          "file": "a/rss-v2-96609954b85112d4234bb2.html",
+          "line": 92,
+          "href": "https://www.foot01.com/ol/la-juve-condamne-openda-lol-peut-en-profiter",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-96609954b85112d4234bb2",
+          "title": "Openda pas dans les plans de la Juventus, l'OL pourrait en profiter"
+        }
+      ]
+    },
+    {
       "url": "https://www.foot01.com/ol/latletico-contacte-lol-pour-un-transfert-hivernal",
       "status": 200,
       "final_url": "https://www.foot01.com/ol/latletico-contacte-lol-pour-un-transfert-hivernal",
@@ -5569,15 +6054,69 @@
           "tag": "a"
         },
         {
-          "file": "pronos/index.html",
-          "line": 33,
-          "href": "https://www.foot01.com/ol/latletico-contacte-lol-pour-un-transfert-hivernal",
+          "file": "articles.json",
+          "id": "rss-v2-0eb877bb7694ad369c7b35",
+          "title": "L'Atlético de Madrid veut relancer Tagliafico à l'OL en janvier"
+        }
+      ]
+    },
+    {
+      "url": "https://www.foot01.com/paris/son-prix-a-explose-le-psg-veut-faire-revenir-un-titi",
+      "status": 200,
+      "final_url": "https://www.foot01.com/paris/son-prix-a-explose-le-psg-veut-faire-revenir-un-titi",
+      "references": [
+        {
+          "file": "a/rss-v2-5a65ad2117ad4610b2f745.html",
+          "line": 92,
+          "href": "https://www.foot01.com/paris/son-prix-a-explose-le-psg-veut-faire-revenir-un-titi",
           "tag": "a"
         },
         {
           "file": "articles.json",
-          "id": "rss-v2-0eb877bb7694ad369c7b35",
-          "title": "L'Atlético de Madrid veut relancer Tagliafico à l'OL en janvier"
+          "id": "rss-v2-5a65ad2117ad4610b2f745",
+          "title": "Le PSG voudrait refaire revenir Joane Gadou, parti à Dortmund"
+        }
+      ]
+    },
+    {
+      "url": "https://www.foot01.com/strasbourg/hugo-oliveira-inquiete-strasbourg-contacte-plusieurs-entraineurs",
+      "status": 200,
+      "final_url": "https://www.foot01.com/strasbourg/hugo-oliveira-inquiete-strasbourg-contacte-plusieurs-entraineurs",
+      "references": [
+        {
+          "file": "a/rss-v2-727bef8bda9651812e9bb8.html",
+          "line": 92,
+          "href": "https://www.foot01.com/strasbourg/hugo-oliveira-inquiete-strasbourg-contacte-plusieurs-entraineurs",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-727bef8bda9651812e9bb8",
+          "title": "Strasbourg : Hugo Oliveira sous pression, la direction sonde des entraîneurs"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a2533333249219412186-bayern-munich-pas-de-retraite-anticipee-pour-manuel-neuer",
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a2533333249219412186-bayern-munich-pas-de-retraite-anticipee-pour-manuel-neuer",
+      "references": [
+        {
+          "file": "a/rss-v2-5e41f3cb661ec2f424f690.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a2533333249219412186-bayern-munich-pas-de-retraite-anticipee-pour-manuel-neuer",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 37,
+          "href": "https://www.footmercato.net/a2533333249219412186-bayern-munich-pas-de-retraite-anticipee-pour-manuel-neuer",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-5e41f3cb661ec2f424f690",
+          "title": "Bayern Munich : Manuel Neuer n'envisage pas de retraite anticipée malgré sa blessure"
         }
       ]
     },
@@ -5600,6 +6139,24 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a3667971486133809749-fc-barcelone-marc-bernal-se-paie-le-psg-et-le-real-madrid",
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a3667971486133809749-fc-barcelone-marc-bernal-se-paie-le-psg-et-le-real-madrid",
+      "references": [
+        {
+          "file": "a/rss-v2-ea7b697050ed12a0169d44.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a3667971486133809749-fc-barcelone-marc-bernal-se-paie-le-psg-et-le-real-madrid",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-ea7b697050ed12a0169d44",
+          "title": "FC Barcelone : Marc Bernal affirme que le Barça est la meilleure équipe d'Europe"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a4068714242794409970-lens-pense-a-didier-digard",
       "status": 206,
       "final_url": "https://www.footmercato.net/a4068714242794409970-lens-pense-a-didier-digard",
@@ -5614,6 +6171,66 @@
           "file": "articles.json",
           "id": "rss-v2-471e232c075d678bc5c8d0",
           "title": "Lens pense à Didier Digard pour remplacer Yannick Cahuzac"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a7440301629054288912-rudi-garcia-critique-le-mauvais-lobbying-des-entraineurs-francais",
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a7440301629054288912-rudi-garcia-critique-le-mauvais-lobbying-des-entraineurs-francais",
+      "references": [
+        {
+          "file": "a/rss-v2-c753c54d5ddeafc1d8adb8.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a7440301629054288912-rudi-garcia-critique-le-mauvais-lobbying-des-entraineurs-francais",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-c753c54d5ddeafc1d8adb8",
+          "title": "Rudi Garcia pointe le manque de lobbying des entraîneurs français à l'étranger"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a7527438859560664308-robert-sanchez-victime-dun-terrible-accident-de-voiture",
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a7527438859560664308-robert-sanchez-victime-dun-terrible-accident-de-voiture",
+      "references": [
+        {
+          "file": "a/rss-v2-b8d17a6e625c6f34d5a79b.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a7527438859560664308-robert-sanchez-victime-dun-terrible-accident-de-voiture",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 33,
+          "href": "https://www.footmercato.net/a7527438859560664308-robert-sanchez-victime-dun-terrible-accident-de-voiture",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-b8d17a6e625c6f34d5a79b",
+          "title": "Robert Sanchez indemne après un accident de voiture en Allemagne"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a7770723768905724692-atletico-alex-baena-revele-les-tensions-du-vestiaire-apres-le-feuilleton-julian-alvarez",
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a7770723768905724692-atletico-alex-baena-revele-les-tensions-du-vestiaire-apres-le-feuilleton-julian-alvarez",
+      "references": [
+        {
+          "file": "a/rss-v2-a78d77e0e30545fe970c4c.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a7770723768905724692-atletico-alex-baena-revele-les-tensions-du-vestiaire-apres-le-feuilleton-julian-alvarez",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-a78d77e0e30545fe970c4c",
+          "title": "Atlético : Baena évoque les tensions du vestiaire après le feuilleton Julián Álvarez"
         }
       ]
     },
@@ -5656,6 +6273,30 @@
       ]
     },
     {
+      "url": "https://www.franceinfo.fr/culture/intelligence-artificielle-la-nouvelle-regle-du-cnc-en-matiere-de-doublage-est-une-premiere-etape-selon-le-secteur_8277566.html#xtor=RSS-3-%5Bculture%5D",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/culture/intelligence-artificielle-la-nouvelle-regle-du-cnc-en-matiere-de-doublage-est-une-premiere-etape-selon-le-secteur_8277566.html#xtor=RSS-3-%5Bculture%5D",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-f08d433445c483c63613ef",
+          "title": "IA : le CNC exclut ses aides aux doublages sans intervention humaine"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/culture/livres/emprisonnement-du-journaliste-christophe-gleizes-en-algerie/christophe-gleizes-detenu-en-algerie-depuis-500-jours-sa-famille-continue-de-se-mobiliser_8277635.html#xtor=RSS-3-%5Bculture%5D",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/culture/livres/emprisonnement-du-journaliste-christophe-gleizes-en-algerie/christophe-gleizes-detenu-en-algerie-depuis-500-jours-sa-famille-continue-de-se-mobiliser_8277635.html#xtor=RSS-3-%5Bculture%5D",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-e310e7d8a41082cbc40548",
+          "title": "Christophe Gleizes détenu en Algérie depuis 500 jours, sa famille se mobilise"
+        }
+      ]
+    },
+    {
       "url": "https://www.franceinfo.fr/culture/musique/dua-lipa-tame-impala-sza-et-madonna-seront-les-tetes-d-affiche-du-festival-coachella-en-2027_8277554.html#xtor=RSS-3-[lestitres]",
       "status": 200,
       "final_url": "https://www.franceinfo.fr/culture/musique/dua-lipa-tame-impala-sza-et-madonna-seront-les-tetes-d-affiche-du-festival-coachella-en-2027_8277554.html#xtor=RSS-3-[lestitres]",
@@ -5668,21 +6309,33 @@
       ]
     },
     {
-      "url": "https://www.franceinfo.fr/economie/magasins-musees-administrations-qu-est-ce-qui-est-ouvert-ou-ferme-le-11-novembre_8277383.html",
+      "url": "https://www.franceinfo.fr/decouverte/noel/les-lumieres-sont-allumees-tout-le-monde-est-dehors-londres-entre-dans-la-magie-de-noel_8277989.html",
       "status": 200,
-      "final_url": "https://www.franceinfo.fr/economie/magasins-musees-administrations-qu-est-ce-qui-est-ouvert-ou-ferme-le-11-novembre_8277383.html",
+      "final_url": "https://www.franceinfo.fr/decouverte/noel/les-lumieres-sont-allumees-tout-le-monde-est-dehors-londres-entre-dans-la-magie-de-noel_8277989.html",
       "references": [
         {
           "file": "pronos/index.html",
-          "line": 42,
-          "href": "https://www.franceinfo.fr/economie/magasins-musees-administrations-qu-est-ce-qui-est-ouvert-ou-ferme-le-11-novembre_8277383.html#xtor=RSS-3-%5Beconomie%5D",
+          "line": 43,
+          "href": "https://www.franceinfo.fr/decouverte/noel/les-lumieres-sont-allumees-tout-le-monde-est-dehors-londres-entre-dans-la-magie-de-noel_8277989.html#xtor=RSS-3-%5Bmonde%5D",
           "tag": "a"
         },
         {
           "file": "pronos/index.html",
-          "line": 42,
-          "href": "https://www.franceinfo.fr/economie/magasins-musees-administrations-qu-est-ce-qui-est-ouvert-ou-ferme-le-11-novembre_8277383.html#xtor=RSS-3-%5Beconomie%5D",
+          "line": 43,
+          "href": "https://www.franceinfo.fr/decouverte/noel/les-lumieres-sont-allumees-tout-le-monde-est-dehors-londres-entre-dans-la-magie-de-noel_8277989.html#xtor=RSS-3-%5Bmonde%5D",
           "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/decouverte/noel/les-lumieres-sont-allumees-tout-le-monde-est-dehors-londres-entre-dans-la-magie-de-noel_8277989.html#xtor=RSS-3-%5Bmonde%5D",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/decouverte/noel/les-lumieres-sont-allumees-tout-le-monde-est-dehors-londres-entre-dans-la-magie-de-noel_8277989.html#xtor=RSS-3-%5Bmonde%5D",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-767effe4f134912d3cb31a",
+          "title": "Londres se met à l'heure de Noël avec illuminations et marchés dès novembre"
         }
       ]
     },
@@ -5699,21 +6352,76 @@
       ]
     },
     {
-      "url": "https://www.franceinfo.fr/monde/europe/manifestations-en-ukraine/direct-negociations-ukraine-russie-suite-et-fin-des-pourparlers-mercredi-apres-des-changements-salues-par-volodymyr-zelensky_8277323.html",
+      "url": "https://www.franceinfo.fr/economie/transports/sncf/pour-la-premiere-fois-la-sncf-met-en-vente-des-jeudi-12-novembre-ses-billets-de-train-jusqu-au-debut-de-l-ete_8277770.html",
       "status": 200,
-      "final_url": "https://www.franceinfo.fr/monde/europe/manifestations-en-ukraine/direct-negociations-ukraine-russie-suite-et-fin-des-pourparlers-mercredi-apres-des-changements-salues-par-volodymyr-zelensky_8277323.html",
+      "final_url": "https://www.franceinfo.fr/economie/transports/sncf/pour-la-premiere-fois-la-sncf-met-en-vente-des-jeudi-12-novembre-ses-billets-de-train-jusqu-au-debut-de-l-ete_8277770.html",
       "references": [
         {
           "file": "pronos/index.html",
-          "line": 41,
-          "href": "https://www.franceinfo.fr/monde/europe/manifestations-en-ukraine/direct-negociations-ukraine-russie-suite-et-fin-des-pourparlers-mercredi-apres-des-changements-salues-par-volodymyr-zelensky_8277323.html#xtor=RSS-3-%5Bmonde%5D",
+          "line": 45,
+          "href": "https://www.franceinfo.fr/economie/transports/sncf/pour-la-premiere-fois-la-sncf-met-en-vente-des-jeudi-12-novembre-ses-billets-de-train-jusqu-au-debut-de-l-ete_8277770.html#xtor=RSS-3-%5Beconomie%5D",
           "tag": "a"
         },
         {
           "file": "pronos/index.html",
-          "line": 41,
-          "href": "https://www.franceinfo.fr/monde/europe/manifestations-en-ukraine/direct-negociations-ukraine-russie-suite-et-fin-des-pourparlers-mercredi-apres-des-changements-salues-par-volodymyr-zelensky_8277323.html#xtor=RSS-3-%5Bmonde%5D",
+          "line": 45,
+          "href": "https://www.franceinfo.fr/economie/transports/sncf/pour-la-premiere-fois-la-sncf-met-en-vente-des-jeudi-12-novembre-ses-billets-de-train-jusqu-au-debut-de-l-ete_8277770.html#xtor=RSS-3-%5Beconomie%5D",
           "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/economie/transports/sncf/pour-la-premiere-fois-la-sncf-met-en-vente-des-jeudi-12-novembre-ses-billets-de-train-jusqu-au-debut-de-l-ete_8277770.html#xtor=RSS-3-%5Beconomie%5D",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/economie/transports/sncf/pour-la-premiere-fois-la-sncf-met-en-vente-des-jeudi-12-novembre-ses-billets-de-train-jusqu-au-debut-de-l-ete_8277770.html#xtor=RSS-3-%5Beconomie%5D",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-a6eb08daaa690f3e042e49",
+          "title": "La SNCF ouvre dès jeudi les réservations de trains pour janvier et l'hiver"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/environnement/meteo/la-tempete-charles-baisse-d-intensite-au-portugal-et-se-dirige-vers-la-france_8277938.html",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/environnement/meteo/la-tempete-charles-baisse-d-intensite-au-portugal-et-se-dirige-vers-la-france_8277938.html",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 44,
+          "href": "https://www.franceinfo.fr/environnement/meteo/la-tempete-charles-baisse-d-intensite-au-portugal-et-se-dirige-vers-la-france_8277938.html#xtor=RSS-3-[lestitres]",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 44,
+          "href": "https://www.franceinfo.fr/environnement/meteo/la-tempete-charles-baisse-d-intensite-au-portugal-et-se-dirige-vers-la-france_8277938.html#xtor=RSS-3-[lestitres]",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/environnement/meteo/la-tempete-charles-baisse-d-intensite-au-portugal-et-se-dirige-vers-la-france_8277938.html#xtor=RSS-3-[lestitres]",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/environnement/meteo/la-tempete-charles-baisse-d-intensite-au-portugal-et-se-dirige-vers-la-france_8277938.html#xtor=RSS-3-[lestitres]",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-cb2722377cb7c912bf1ea9",
+          "title": "La tempête Charles moins intense que prévu au Portugal, des perturbations attendues en France jeudi"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/monde/europe/direct-des-centaines-d-ecoles-visees-par-des-alertes-a-la-bombe-en-italie-en-irlande-et-au-royaume-uni-de-nombreux-etablissements-evacues_8277773.html#xtor=RSS-3-[lestitres]",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/monde/europe/direct-des-centaines-d-ecoles-visees-par-des-alertes-a-la-bombe-en-italie-en-irlande-et-au-royaume-uni-de-nombreux-etablissements-evacues_8277773.html#xtor=RSS-3-[lestitres]",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-749c10231506cf1f215a92",
+          "title": "Alertes à la bombe visant des écoles : plusieurs centaines d'établissements concernés en Europe"
         }
       ]
     },
@@ -5726,6 +6434,30 @@
           "file": "actus/news.json",
           "id": "rss-v2-ff6f13b71de6bd4dc1ddc7",
           "title": "Ukraine-Russie : Benjamin Haddad regrette la posture de Moscou dans les négociations"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/replay-radio/l-il-de-constance/le-calendrier-de-l-avent-de-kim-kardashian-une-arnaque-a-150-dollars_8256595.html#xtor=RSS-3-%5Bculture%5D",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/replay-radio/l-il-de-constance/le-calendrier-de-l-avent-de-kim-kardashian-une-arnaque-a-150-dollars_8256595.html#xtor=RSS-3-%5Bculture%5D",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-45ff73ada2b3f30d59ee3e",
+          "title": "Calendrier de l'Avent Skims : la marque de Kim Kardashian critiquée et propose des remboursements"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/societe/racisme/un-conseiller-municipal-de-sancoins-dans-le-cher-porte-plainte-pour-injure-raciste-apres-un-commentaire-sur-facebook_8278121.html#xtor=RSS-3-[lestitres]",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/societe/racisme/un-conseiller-municipal-de-sancoins-dans-le-cher-porte-plainte-pour-injure-raciste-apres-un-commentaire-sur-facebook_8278121.html#xtor=RSS-3-[lestitres]",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-715ffe721206a22ea038ca",
+          "title": "Un élu de Sancoins porte plainte pour injure raciste après un commentaire Facebook"
         }
       ]
     },
@@ -5761,18 +6493,6 @@
       "final_url": "https://www.gamekult.com/actualite/carton-confirme-pour-the-legend-of-zelda-ocarina-of-time-qui-devient-l-un-des-meilleurs-demarrages-de-l-histoire-de-nintendo-3050872892.html",
       "references": [
         {
-          "file": "pronos/index.html",
-          "line": 49,
-          "href": "https://www.gamekult.com/actualite/carton-confirme-pour-the-legend-of-zelda-ocarina-of-time-qui-devient-l-un-des-meilleurs-demarrages-de-l-histoire-de-nintendo-3050872892.html",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 49,
-          "href": "https://www.gamekult.com/actualite/carton-confirme-pour-the-legend-of-zelda-ocarina-of-time-qui-devient-l-un-des-meilleurs-demarrages-de-l-histoire-de-nintendo-3050872892.html",
-          "tag": "a"
-        },
-        {
           "file": "vm-gaming/news.json",
           "id": "rss-v2-67940ad58355b731328aa9",
           "title": "Ocarina of Time remake : 5,2 millions d'exemplaires écoulés en quatre jours"
@@ -5785,21 +6505,93 @@
       "final_url": "https://www.gamekult.com/actualite/chuchu-rocket-le-puzzle-game-genial-et-completement-tare-qui-nous-rendait-fous-sur-dreamcast-3050872856.html",
       "references": [
         {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-4ae70c56b83f47e9edb6e8",
+          "title": "ChuChu Rocket ! : le puzzle-game de la Dreamcast qui rendait fou"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gamekult.com/actualite/crystals-of-irm-entre-dungeon-crawler-et-bullet-hell-le-rpg-inde-fixe-sa-date-de-sortie-3050872885.html",
+      "status": 200,
+      "final_url": "https://www.gamekult.com/actualite/crystals-of-irm-entre-dungeon-crawler-et-bullet-hell-le-rpg-inde-fixe-sa-date-de-sortie-3050872885.html",
+      "references": [
+        {
           "file": "pronos/index.html",
           "line": 51,
-          "href": "https://www.gamekult.com/actualite/chuchu-rocket-le-puzzle-game-genial-et-completement-tare-qui-nous-rendait-fous-sur-dreamcast-3050872856.html",
+          "href": "https://www.gamekult.com/actualite/crystals-of-irm-entre-dungeon-crawler-et-bullet-hell-le-rpg-inde-fixe-sa-date-de-sortie-3050872885.html",
           "tag": "a"
         },
         {
           "file": "pronos/index.html",
           "line": 51,
-          "href": "https://www.gamekult.com/actualite/chuchu-rocket-le-puzzle-game-genial-et-completement-tare-qui-nous-rendait-fous-sur-dreamcast-3050872856.html",
+          "href": "https://www.gamekult.com/actualite/crystals-of-irm-entre-dungeon-crawler-et-bullet-hell-le-rpg-inde-fixe-sa-date-de-sortie-3050872885.html",
           "tag": "a"
         },
         {
           "file": "vm-gaming/news.json",
-          "id": "rss-v2-4ae70c56b83f47e9edb6e8",
-          "title": "ChuChu Rocket ! : le puzzle-game de la Dreamcast qui rendait fou"
+          "id": "rss-v2-b83ce24dc8646197eb0db4",
+          "title": "Crystals of Irm sortira le 21 janvier 2027 sur PC et consoles"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gamekult.com/actualite/guerre-froide-et-cyber-espionnage-les-premiers-details-de-physint-le-jeu-d-espionnage-d-hideo-kojima-3050872886.html",
+      "status": 200,
+      "final_url": "https://www.gamekult.com/actualite/guerre-froide-et-cyber-espionnage-les-premiers-details-de-physint-le-jeu-d-espionnage-d-hideo-kojima-3050872886.html",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 53,
+          "href": "https://www.gamekult.com/actualite/guerre-froide-et-cyber-espionnage-les-premiers-details-de-physint-le-jeu-d-espionnage-d-hideo-kojima-3050872886.html",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 53,
+          "href": "https://www.gamekult.com/actualite/guerre-froide-et-cyber-espionnage-les-premiers-details-de-physint-le-jeu-d-espionnage-d-hideo-kojima-3050872886.html",
+          "tag": "a"
+        },
+        {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-1d0164f10a0d6f8ff42374",
+          "title": "Physint : premiers détails sur le jeu d'espionnage de Hideo Kojima"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gamekult.com/actualite/le-prochain-titre-canonique-de-la-serie-trails-de-falcom-sortira-en-septembre-prochain-au-japon-3050872893.html",
+      "status": 200,
+      "final_url": "https://www.gamekult.com/actualite/le-prochain-titre-canonique-de-la-serie-trails-de-falcom-sortira-en-septembre-prochain-au-japon-3050872893.html",
+      "references": [
+        {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-bce99da523000b7d022f6c",
+          "title": "Falcom : une suite à Trails Beyond the Horizon prévue au Japon d'ici septembre 2027"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gamekult.com/actualite/marathon-une-nouvelle-semaine-gratuite-pour-la-grosse-mise-a-jour-du-8-decembre-3050872903.html",
+      "status": 200,
+      "final_url": "https://www.gamekult.com/actualite/marathon-une-nouvelle-semaine-gratuite-pour-la-grosse-mise-a-jour-du-8-decembre-3050872903.html",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 52,
+          "href": "https://www.gamekult.com/actualite/marathon-une-nouvelle-semaine-gratuite-pour-la-grosse-mise-a-jour-du-8-decembre-3050872903.html",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 52,
+          "href": "https://www.gamekult.com/actualite/marathon-une-nouvelle-semaine-gratuite-pour-la-grosse-mise-a-jour-du-8-decembre-3050872903.html",
+          "tag": "a"
+        },
+        {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-a2a849babf8a4747ce90d1",
+          "title": "Marathon : une semaine d'essai gratuite pour la mise à jour Symbiose"
         }
       ]
     },
@@ -5808,18 +6600,6 @@
       "status": 200,
       "final_url": "https://www.gamekult.com/actualite/six-ans-apres-sa-sortie-la-ps5-rejoint-le-club-des-100-millions-3050872891.html",
       "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 50,
-          "href": "https://www.gamekult.com/actualite/six-ans-apres-sa-sortie-la-ps5-rejoint-le-club-des-100-millions-3050872891.html",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 50,
-          "href": "https://www.gamekult.com/actualite/six-ans-apres-sa-sortie-la-ps5-rejoint-le-club-des-100-millions-3050872891.html",
-          "tag": "a"
-        },
         {
           "file": "vm-gaming/news.json",
           "id": "rss-v2-2902b0a064adaf78c4261b",
@@ -7455,21 +8235,20 @@
       ]
     },
     {
-      "url": "https://www.ouest-france.fr/sport/tennis/arthur-fils/atp-finals-quelles-sont-les-chances-darthur-fils-face-au-gratin-du-tennis-mondial-97f2ea5e-dc52-11f1-81f5-8e32b0872d76?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
+      "url": "https://www.ouest-france.fr/sport/football/equipe-de-france/italie-france-konate-zaire-emery-et-gusto-une-semaine-a-enjeux-pour-trois-mondialistes-de-retour-67baf3ae-dd1a-11f1-a62b-776e3051b0df?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
       "status": 403,
       "references": [
         {
-          "file": "pronos/index.html",
-          "line": 45,
-          "href": "https://www.ouest-france.fr/sport/tennis/arthur-fils/atp-finals-quelles-sont-les-chances-darthur-fils-face-au-gratin-du-tennis-mondial-97f2ea5e-dc52-11f1-81f5-8e32b0872d76?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 45,
-          "href": "https://www.ouest-france.fr/sport/tennis/arthur-fils/atp-finals-quelles-sont-les-chances-darthur-fils-face-au-gratin-du-tennis-mondial-97f2ea5e-dc52-11f1-81f5-8e32b0872d76?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
-          "tag": "a"
-        },
+          "file": "actus/news.json",
+          "id": "rss-v2-4cd0285e1d07d595dd05bf",
+          "title": "Konaté, Zaïre-Emery et Gusto de retour en équipe de France pour l'Italie et la Turquie"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ouest-france.fr/sport/tennis/arthur-fils/atp-finals-quelles-sont-les-chances-darthur-fils-face-au-gratin-du-tennis-mondial-97f2ea5e-dc52-11f1-81f5-8e32b0872d76?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
+      "status": 403,
+      "references": [
         {
           "file": "actus/news.json",
           "id": "rss-v2-e754fbf764692915948577",
@@ -7654,6 +8433,18 @@
           "line": 30,
           "href": "https://www.plus.fifa.com/",
           "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.rfi.fr/fr/am%C3%A9riques/20261111-le-venezuela-ouvre-le-secteur-de-l-%C3%A9lectricit%C3%A9-aux-entreprises-priv%C3%A9es-et-esp%C3%A8re-mettre-fin-aux-d%C3%A9faillances-du-r%C3%A9seau",
+      "status": 200,
+      "final_url": "https://www.rfi.fr/fr/am%C3%A9riques/20261111-le-venezuela-ouvre-le-secteur-de-l-%C3%A9lectricit%C3%A9-aux-entreprises-priv%C3%A9es-et-esp%C3%A8re-mettre-fin-aux-d%C3%A9faillances-du-r%C3%A9seau",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-ee13e94976a93a6fea0f36",
+          "title": "Le Venezuela ouvre son secteur électrique aux entreprises privées"
         }
       ]
     },
@@ -7969,7 +8760,7 @@
     },
     {
       "url": "https://www.tiktok.com/@vmunivers.fr",
-      "status": 206,
+      "status": 200,
       "final_url": "https://www.tiktok.com/@vmunivers.fr",
       "references": [
         {
@@ -9160,7 +9951,7 @@
       "references": [
         {
           "file": "pronos/index.html",
-          "line": 57,
+          "line": 61,
           "href": "https://www.youtube.com/watch?v=Jqli7X_yuLo",
           "tag": "a"
         }
@@ -9201,19 +9992,6 @@
           "file": "index.html",
           "line": 707,
           "href": "https://www.youtube.com/watch?v=LNO0CQrmIn8",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=N0Jn2v0_4Pk",
-      "status": 200,
-      "final_url": "https://www.youtube.com/watch?v=N0Jn2v0_4Pk",
-      "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 59,
-          "href": "https://www.youtube.com/watch?v=N0Jn2v0_4Pk",
           "tag": "a"
         }
       ]
@@ -9466,6 +10244,19 @@
       ]
     },
     {
+      "url": "https://www.youtube.com/watch?v=cGNDymPcK5s",
+      "status": 200,
+      "final_url": "https://www.youtube.com/watch?v=cGNDymPcK5s",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 58,
+          "href": "https://www.youtube.com/watch?v=cGNDymPcK5s",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.youtube.com/watch?v=cGnMCv-85Ew",
       "status": 200,
       "final_url": "https://www.youtube.com/watch?v=cGnMCv-85Ew",
@@ -9630,7 +10421,7 @@
       "references": [
         {
           "file": "pronos/index.html",
-          "line": 56,
+          "line": 60,
           "href": "https://www.youtube.com/watch?v=idD620ULKLc",
           "tag": "a"
         }
@@ -9727,6 +10518,19 @@
           "file": "mangas/catalogue/index.html",
           "line": 1,
           "href": "https://www.youtube.com/watch?v=pUI3AUXrccs",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=sxajMJ8xEj0",
+      "status": 200,
+      "final_url": "https://www.youtube.com/watch?v=sxajMJ8xEj0",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 59,
+          "href": "https://www.youtube.com/watch?v=sxajMJ8xEj0",
           "tag": "a"
         }
       ]
@@ -9911,19 +10715,6 @@
           "file": "mangas/catalogue/index.html",
           "line": 1,
           "href": "https://www.youtube.com/watch?v=zdIW6cOouAE",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=zil0jtQHZ1k",
-      "status": 200,
-      "final_url": "https://www.youtube.com/watch?v=zil0jtQHZ1k",
-      "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 58,
-          "href": "https://www.youtube.com/watch?v=zil0jtQHZ1k",
           "tag": "a"
         }
       ]

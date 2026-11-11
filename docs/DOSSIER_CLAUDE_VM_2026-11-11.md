@@ -1,6 +1,6 @@
 # Dossier Claude — Véloce Mercato, site et réseaux
 
-État établi le 2026-11-11T11:03+01:00.
+État établi le 2026-11-11T18:59+01:00.
 
 Ce dossier remplace les anciennes consignes de restauration intégrale et les anciennes cadences. Il décrit le travail autorisé par Romain dans cette conversation. Les accès et conversations de ChatGPT ne sont pas automatiquement accessibles dans Claude.
 
@@ -103,19 +103,19 @@ Pour Multisport, les flux français validés Sports.fr et Le Monde Sport sont ra
 
 ## Audit des pages, liens et classements
 
-- Pages HTML examinées : 158.
-- URL interrogées : 421.
+- Pages HTML examinées : 174.
+- URL interrogées : 461.
 - HTTP 404/410 confirmés : 4.
 - Cibles internes absentes du dépôt : 4.
-- Liens protégés/non vérifiables automatiquement : 91.
+- Liens protégés/non vérifiables automatiquement : 92.
 - Ancres à relire : 58. Certaines existent seulement après chargement JavaScript.
-- Classements à relire : 2.
+- Classements à relire : 3.
 
 Le détail exhaustif des contrôles effectués, avec fichiers et lignes, est dans docs/AUDIT_CLAUDE_2026-11-11.json et son résumé Markdown. Un refus 403/429 ne prouve pas un lien mort. Cet audit ne certifie pas tous les faits d’actualité, la disponibilité géographique des vidéos, les paiements ou les espaces authentifiés.
 
 ## Vidéos, référence musicale et reste à faire
 
-Le dernier rendu répertorie 3 nouveaux flashes, bloc 2026-11-11T12:00:00+01:00. Lire studio/teasers.json pour les URLs réelles.
+Le dernier rendu répertorie 3 nouveaux flashes, bloc 2026-11-11T20:00:00+01:00. Lire studio/teasers.json pour les URLs réelles.
 
 Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, paroles originales proposées, format de livraison, accès CapCut non vérifié, chant encore à produire et dixième clip promotionnel non programmé. Les neuf créneaux TikTok ne constituent pas neuf confirmations de publication.
 
