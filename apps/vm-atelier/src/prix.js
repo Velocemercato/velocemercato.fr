@@ -1,0 +1,40 @@
+// Grille tarifaire VM Studio Express (en euros TTC, proposition de départ).
+// Le serveur recalcule TOUJOURS le total à partir de cette grille : le prix affiché
+// dans le navigateur n'est jamais pris tel quel.
+export const PRIX = {
+  types: {
+    vitrine: { nom: 'Site vitrine (1 page)', prix: 290 },
+    rendezvous: { nom: 'Site + prise de rendez-vous', prix: 410 },
+    boutique: { nom: 'Site + boutique en ligne', prix: 540 },
+  },
+  pageSup: { nom: 'Page supplémentaire', prix: 60, max: 10 },
+  langue: { nom: 'Langue supplémentaire', prix: 90, max: 3 },
+  options: {
+    logo: { nom: 'Logo créé par IA', prix: 49 },
+    carte: { nom: 'Carte de visite (design)', prix: 29 },
+    carte_relief: { nom: 'Carte de visite en relief (design)', prix: 59 },
+    flyer: { nom: 'Flyer ou affiche', prix: 39 },
+    voix: { nom: 'Voix off IA', prix: 39 },
+    musique: { nom: 'Musique IA', prix: 29 },
+    mascotte: { nom: 'Mascotte / personnage 3D', prix: 99 },
+    video: { nom: 'Vidéo pub IA (30 s)', prix: 149 },
+  },
+  pack: { nom: 'Pack 3 ans : domaine + hébergement + maintenance', prix: 390 },
+};
+
+// Calcule les lignes et le total à partir d'une configuration (valeurs non fiables).
+export function devis(cfg) {
+  const c = cfg && typeof cfg === 'object' ? cfg : {};
+  const lignes = [];
+  const type = PRIX.types[c.type] ? c.type : 'vitrine';
+  lignes.push([PRIX.types[type].nom, PRIX.types[type].prix]);
+  const pages = Math.max(0, Math.min(PRIX.pageSup.max, parseInt(c.pages, 10) || 0));
+  if (pages) lignes.push([`${PRIX.pageSup.nom} × ${pages}`, pages * PRIX.pageSup.prix]);
+  const langues = Math.max(0, Math.min(PRIX.langue.max, parseInt(c.langues, 10) || 0));
+  if (langues) lignes.push([`${PRIX.langue.nom} × ${langues}`, langues * PRIX.langue.prix]);
+  const opts = Array.isArray(c.options) ? c.options : [];
+  for (const k of Object.keys(PRIX.options)) if (opts.includes(k)) lignes.push([PRIX.options[k].nom, PRIX.options[k].prix]);
+  if (c.pack !== false) lignes.push([PRIX.pack.nom, PRIX.pack.prix]);
+  const total = lignes.reduce((s, l) => s + l[1], 0);
+  return { type, pages, langues, options: Object.keys(PRIX.options).filter((k) => opts.includes(k)), pack: c.pack !== false, lignes, total };
+}
