@@ -293,6 +293,9 @@ def publish_slot(state, graph, now=None):
         if not kind:
             print("::notice::Aucun créneau éditorial à cette heure.")
             return False
+    if state.data.get('editorial/active/meta_pronos') and kind not in ('prono', 'week_summary'):
+        print('::notice::Articles pris en charge par le circuit éditorial central.')
+        return False
     if slot in receipts:
         print("::notice::Créneau déjà traité : aucun doublon.")
         return False

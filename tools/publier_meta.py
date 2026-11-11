@@ -462,6 +462,10 @@ def publish(state, graph, root=ROOT, now=None, limit=2, sleep=time.sleep, force=
                 errors.append(f'{network} / {row["id"]} : {error}')
         sent += attempted
 
+    # Le nouveau circuit reprend les articles/projets après validation réelle de la connexion.
+    # Les JT et Reels ci-dessus gardent leurs propres accusés.
+    if state.data.get('editorial/active/' + account):
+        return errors
     # Les accusés utilisent l’heure du créneau, y compris si GitHub démarre en retard.
     def cle(h):
         return (f'projet/{local:%Y-%m-%d}/{h:02d}' if slots.get(h) == 'projet' else f'creneau/{local:%Y-%m-%d}/{h:02d}')

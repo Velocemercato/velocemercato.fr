@@ -1,0 +1,66 @@
+name: VM - Publications editoriales centralisees
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/editorial-vm.yml']
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+jobs:
+  editorial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet 'cryptography==50.0.0' pillow
+      - name: Tester les confirmations et les anti-doublons sans publier
+        run: python -m unittest discover -s tests -p 'test_editorial_vm.py' -v
+      - name: Ouvrir les connexions et accuses existants
+        run: |
+          set -euo pipefail
+          repo_url="https://github.com/$GITHUB_REPOSITORY.git"
+          state_dir="$RUNNER_TEMP/vm-broadcast-state"
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "$repo_url" "$state_dir"
+          test -f "$state_dir/state.enc"
+      - name: Publier le lot demande ou verifier les creneaux
+        env:
+          INITIAL_BATCH: ${{ github.event_name == 'push' && 'yes' || 'no' }}
+        run: |
+          if [ "$INITIAL_BATCH" = yes ]; then
+            python tools/editorial_vm.py --state "$RUNNER_TEMP/vm-broadcast-state/state.enc" --burst
+          else
+            python tools/editorial_vm.py --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+          fi
+      - name: Enregistrer uniquement le bilan public
+        if: always()
+        run: |
+          set -euo pipefail
+          test -f studio/editorial-status.json || exit 0
+          save_file=$(mktemp)
+          cp studio/editorial-status.json "$save_file"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3 4 5; do
+            git fetch -q origin main
+            git reset --hard -q origin/main
+            cp "$save_file" studio/editorial-status.json
+            git add studio/editorial-status.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -qm 'Bilan verifie des publications editoriales VM'
+            if git push -q origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 3))
+          done
+          exit 1
