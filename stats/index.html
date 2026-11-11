@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Statistiques VM — accès privé</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<style>
+:root{--bg:#120a24;--card:#1c1236;--ink:#f7f1e6;--muted:#c9bfd8;--gold:#f4c430;--red:#ff2a45;--blue:#4cc3ff;--line:#ffffff22}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(1000px 500px at 50% -150px,#5a1236 0,transparent 70%),var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1100px;margin:0 auto;padding:20px 16px 48px}
+h1{margin:6px 0 4px;font:900 italic 1.9rem/1.1 Impact,"Arial Black",sans-serif;color:var(--gold);text-transform:uppercase}
+.muted{color:var(--muted);font-size:.9rem}
+form{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+input{flex:1 1 220px;min-height:46px;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:#0c0718;color:var(--ink);font:inherit}
+button{min-height:46px;padding:10px 18px;border-radius:12px;border:0;background:var(--red);color:#fff;font-weight:800;cursor:pointer}
+input:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.site{margin:22px 0;padding:16px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.site h2{margin:0 0 10px;font:900 italic 1.4rem Impact,"Arial Black",sans-serif;text-transform:uppercase}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.kpi{padding:12px;border-radius:12px;background:#ffffff0d;border-left:3px solid var(--gold)}
+.kpi b{display:block;font-size:1.6rem}
+.kpi small{color:var(--muted)}
+svg{width:100%;height:auto;margin:14px 0 4px;display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:10px}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+caption{text-align:left;font-weight:800;color:var(--gold);padding:4px 0}
+td{padding:5px 4px;border-bottom:1px solid var(--line);word-break:break-all}
+td:last-child{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.erreur{color:#ffb4bf}
+</style>
+</head>
+<body>
+<main>
+<h1>Statistiques VM</h1>
+<p class="muted">Velocemercato.fr et vmunivers.fr, d'après Cloudflare Web Analytics. Page privée : les chiffres sont chiffrés et ne s'ouvrent qu'avec ton code.</p>
+<form id="acces"><label class="muted" for="code" style="flex-basis:100%">Code d'accès</label><input id="code" type="password" autocomplete="current-password" required minlength="8"><button type="submit">Ouvrir</button></form>
+<p id="etat" class="muted" role="status" aria-live="polite"></p>
+<div id="resultats"></div>
+</main>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+  const nf = new Intl.NumberFormat('fr-FR');
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  async function dechiffrer(paquet, code) {
+    const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(code), 'PBKDF2', false, ['deriveKey']);
+    const cle = await crypto.subtle.deriveKey({name: 'PBKDF2', hash: 'SHA-256', salt: b64(paquet.sel), iterations: paquet.iterations},
+      base, {name: 'AES-GCM', length: 256}, false, ['decrypt']);
+    const clair = await crypto.subtle.decrypt({name: 'AES-GCM', iv: b64(paquet.iv)}, cle, b64(paquet.donnees));
+    return JSON.parse(new TextDecoder().decode(clair));
+  }
+
+  function courbe(jours) {
+    if (!jours.length) return '';
+    const W = 600, H = 160, max = Math.max(1, ...jours.map(j => j.visites)), w = W / jours.length;
+    const barres = jours.map((j, i) => {
+      const h = Math.round((j.visites / max) * (H - 20));
+      return `<rect x="${(i * w + 1).toFixed(1)}" y="${H - h}" width="${Math.max(1, w - 2).toFixed(1)}" height="${h}" rx="2" fill="#ff2a45"><title>${esc(j.date)} : ${nf.format(j.visites)} visites, ${nf.format(j.vues)} pages vues</title></rect>`;
+    }).join('');
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Visites par jour sur 30 jours">${barres}</svg><p class="muted">Visites par jour, 30 derniers jours (touche une barre pour le détail).</p>`;
+  }
+
+  function tableau(titre, lignes, cleNom, cleVal) {
+    if (!lignes?.length) return '';
+    return `<table><caption>${esc(titre)}</caption>${lignes.map(l => `<tr><td>${esc(l[cleNom])}</td><td>${nf.format(l[cleVal])}</td></tr>`).join('')}</table>`;
+  }
+
+  function afficher(d) {
+    const html = Object.entries(d.sites).map(([hote, s]) => {
+      if (s.erreur) return `<section class="site"><h2>${esc(s.nom)}</h2><p class="erreur">Données indisponibles : ${esc(s.erreur)}</p></section>`;
+      const jours = s.jours || [], somme = (arr, k) => arr.reduce((t, j) => t + (j[k] || 0), 0);
+      const auj = jours.at(-1) || {visites: 0, vues: 0}, sept = jours.slice(-7);
+      return `<section class="site"><h2>${esc(s.nom)} <small class="muted">${esc(hote)}</small></h2>
+        <div class="kpis">
+          <div class="kpi"><b>${nf.format(auj.visites)}</b><small>visites aujourd'hui</small></div>
+          <div class="kpi"><b>${nf.format(somme(sept, 'visites'))}</b><small>visites sur 7 jours</small></div>
+          <div class="kpi"><b>${nf.format(somme(jours, 'visites'))}</b><small>visites sur 30 jours</small></div>
+          <div class="kpi"><b>${nf.format(somme(jours, 'vues'))}</b><small>pages vues sur 30 jours</small></div>
+        </div>${courbe(jours)}
+        <div class="grid">${tableau('Pages les plus vues (7 j)', s.pages, 'page', 'vues')}${tableau('D’où viennent les visiteurs (7 j)', s.sources, 'source', 'visites')}${tableau('Pays (7 j)', s.pays, 'pays', 'visites')}${tableau('Appareils (7 j)', s.appareils, 'type', 'visites')}</div></section>`;
+    }).join('');
+    $('resultats').innerHTML = html;
+    $('etat').textContent = 'Mis à jour le ' + new Date(d.maj).toLocaleString('fr-FR') + '. Les « visites » sont une estimation de Cloudflare, pas un décompte exact de personnes.';
+  }
+
+  $('acces').addEventListener('submit', async e => {
+    e.preventDefault();
+    $('etat').textContent = 'Ouverture…';
+    let paquet;
+    try {
+      const r = await fetch('donnees.chiffre.json?r=' + Date.now(), {cache: 'no-store'});
+      if (!r.ok) throw new Error('absent');
+      paquet = await r.json();
+    } catch {
+      $('etat').textContent = 'Les statistiques ne sont pas encore activées (aucune donnée publiée).';
+      return;
+    }
+    try {
+      afficher(await dechiffrer(paquet, $('code').value));
+      try { sessionStorage.setItem('vm-stats-code', $('code').value); } catch {}
+    } catch {
+      $('etat').textContent = 'Code incorrect.';
+    }
+  });
+  try { const c = sessionStorage.getItem('vm-stats-code'); if (c) { $('code').value = c; $('acces').requestSubmit(); } } catch {}
+})();
+</script>
+</body>
+</html>

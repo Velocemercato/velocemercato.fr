@@ -1,0 +1,40 @@
+name: Statistiques privées VM (chiffrées)
+# Chaque heure : lit Cloudflare Web Analytics pour velocemercato.fr et vmunivers.fr,
+# chiffre le résultat avec STATS_CODE et le publie dans stats/donnees.chiffre.json.
+# Lecture sur https://velocemercato.fr/stats/ avec ce code. Sans les secrets : ne fait rien.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+permissions:
+  contents: write
+concurrency:
+  group: stats-vm
+  cancel-in-progress: true
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CLOUDFLARE_ANALYTICS_TOKEN: ${{ secrets.CLOUDFLARE_ANALYTICS_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      STATS_CODE: ${{ secrets.STATS_CODE }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Collecter et chiffrer
+        run: |
+          pip install --quiet 'cryptography>=42'
+          python tools/stats_vm.py
+      - name: Publier
+        run: |
+          [ -f stats/donnees.chiffre.json ] || exit 0
+          git add stats/donnees.chiffre.json
+          git diff --cached --quiet && exit 0
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -q -m 'Statistiques chiffrées'
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q && exit 0; sleep 5; done
+          exit 1
