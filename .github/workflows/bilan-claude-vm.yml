@@ -49,3 +49,5 @@ jobs:
             sleep $((attempt*3))
           done
           exit 1
+
+# Refaire le contrôle après la mise à jour du résumé Foot et du tableau VM Univers.

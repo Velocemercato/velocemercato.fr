@@ -1,0 +1,46 @@
+name: Mettre a jour les liens VM Univers sur Cloudflare
+# Publication ciblée du tableau demandé par Romain, sans refonte de VM Univers.
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/liens-vmunivers-cloudflare.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: vmunivers-cloudflare
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: Velocemercato/vmunivers
+          ref: 262e40c324ef3eb8bbd9ca028cb5286433ec4746
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Publier le tableau corrige
+        run: |
+          set -euo pipefail
+          test -n "$CLOUDFLARE_API_TOKEN"
+          test -n "$CLOUDFLARE_ACCOUNT_ID"
+          mkdir "$RUNNER_TEMP/vmunivers-site"
+          git archive HEAD | tar -x -C "$RUNNER_TEMP/vmunivers-site"
+          echo '262e40c324ef3eb8bbd9ca028cb5286433ec4746' > "$RUNNER_TEMP/vmunivers-site/version.txt"
+          npx --yes wrangler@4 pages deploy "$RUNNER_TEMP/vmunivers-site" --project-name vmunivers --branch main --commit-hash '262e40c324ef3eb8bbd9ca028cb5286433ec4746'
+      - name: Controler le domaine
+        run: |
+          for i in $(seq 1 12); do
+            version=$(curl -fsSL --max-time 15 "https://vmunivers.fr/version.txt?r=$RANDOM" 2>/dev/null | head -c 40 || true)
+            test "$version" = '262e40c324ef3eb8bbd9ca028cb5286433ec4746' && { echo 'Liens VM Univers publies.'; exit 0; }
+            sleep 10
+          done
+          echo '::error::Version non confirmee sur vmunivers.fr.'
+          exit 1
