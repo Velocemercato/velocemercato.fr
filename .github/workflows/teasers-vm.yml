@@ -1,0 +1,71 @@
+name: VM - Flashes originaux pour les reseaux
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/teasers-vm.yml', 'tools/teasers_vm.py']
+  schedule:
+    # Préparation avant les blocs 9 h / 12 h / 20 h de Paris, hiver et été.
+    - cron: '10 6,9,17 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: reseaux
+  cancel-in-progress: false
+jobs:
+  teasers:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GITHUB_TOKEN: ${{ github.token }}
+      VM_SPEECH_RATE: '1.03'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/vm-voices
+          key: vm-voices-piper-1-8-v2
+      - name: Installer les outils de rendu et tester les selections
+        run: |
+          bash tools/installer_ffmpeg.sh
+          python -m pip install --quiet 'piper-tts==1.8.0' pillow
+          python -m unittest discover -s tests -p 'test_teasers_vm.py' -v
+      - name: Rendre trois nouvelles videos avec voix et musique
+        env:
+          INITIAL: ${{ github.event_name != 'schedule' && 'yes' || 'no' }}
+        run: |
+          if [ "$INITIAL" = yes ]; then python tools/teasers_vm.py --prochain; else python tools/teasers_vm.py; fi
+      - name: Actualiser le kit sans toucher aux connexions
+        run: |
+          set -euo pipefail
+          test -f studio/teasers.json || exit 0
+          cp studio/teasers.json "$RUNNER_TEMP/teasers.json"
+          cp studio/reseaux.json "$RUNNER_TEMP/reseaux.json"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3 4 5; do
+            git fetch -q origin main
+            git reset --hard -q origin/main
+            cp "$RUNNER_TEMP/teasers.json" studio/teasers.json
+            python - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path('studio/reseaux.json')
+          current=json.loads(p.read_text())
+          prepared=json.loads((pathlib.Path(os.environ['RUNNER_TEMP'])/'reseaux.json').read_text())
+          merged={row['id']:row for row in current}
+          merged.update({row['id']:row for row in prepared})
+          p.write_text(json.dumps(sorted(merged.values(),key=lambda row:row.get('date',''),reverse=True)[:150],ensure_ascii=False,indent=1)+'\n')
+          PY
+            git add studio/reseaux.json studio/teasers.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -qm 'Kit VM : nouveaux flashes originaux sources'
+            if git push -q origin HEAD:main; then exit 0; fi
+            sleep $((attempt*3))
+          done
+          exit 1

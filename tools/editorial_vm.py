@@ -274,6 +274,18 @@ def main():
     args = parser.parse_args()
     state = State(args.state, os.getenv('VM_DIFFUSION_STATE_KEY', ''), lambda: git_save(args.state))
     result = run(state, Graph(), burst=args.burst)
+    confirmed = []
+    for account in TARGETS:
+        for key, receipt in ledger(state, account).items():
+            match = re.fullmatch(r'editorial/(facebook|instagram)/(?!titre/)([^/]+)/([^/]+)', key)
+            if not match or not isinstance(receipt, dict) or receipt.get('status') != 'publie_confirme':
+                continue
+            url = str(receipt.get('url', ''))
+            if not re.match(r'https://(?:www\.|m\.)?(?:facebook|instagram)\.com/', url):
+                continue
+            confirmed.append({'target': account+'/'+match[1], 'title': receipt.get('title',''),
+                              'section':match[2], 'id':receipt.get('id',''), 'url':url, 'date':receipt.get('at','')})
+    result['confirmed'] = sorted(confirmed,key=lambda row:row['date'],reverse=True)[:500]
     path = ROOT/'studio/editorial-status.json'
     path.parent.mkdir(exist_ok=True)
     if path.exists():

@@ -1,0 +1,72 @@
+{
+  "version": "2026-11-11",
+  "timezone": "Europe/Paris",
+  "facebook": {
+    "meta": {
+      "minutes": 10,
+      "sections": [
+        "foot",
+        "multisport"
+      ]
+    },
+    "meta_pronos": {
+      "minutes": 10,
+      "sections": [
+        "actus",
+        "gaming",
+        "multisport",
+        "foot"
+      ]
+    },
+    "meta_univers": {
+      "minutes": 60,
+      "sections": [
+        "projet"
+      ]
+    }
+  },
+  "instagram": {
+    "veloce.mercato": {
+      "minutes": 15,
+      "sections": [
+        "foot",
+        "multisport"
+      ]
+    },
+    "vmunivers.fr": {
+      "minutes": 15,
+      "sections": [
+        "projet"
+      ]
+    },
+    "troisieme": {
+      "status": "non_identifie_non_connecte"
+    }
+  },
+  "tiktok": {
+    "account": "velocemercato",
+    "blocks": [
+      "09:00",
+      "12:00",
+      "20:00"
+    ],
+    "sections_per_block": [
+      "foot",
+      "actus",
+      "gaming"
+    ],
+    "minutes_between_videos": 3,
+    "objective_per_day": 9,
+    "tenth_video": "Promotion originale à produire et vérifier séparément",
+    "publisher": "chatgpt_metricool",
+    "automation": "Automation_b430a95c1db8819180d7d01ca31231ac"
+  },
+  "rules": [
+    "Uniquement des contenus récents, sourcés et inédits",
+    "Un créneau ne garantit pas une publication",
+    "Respecter les quotas et droits des comptes",
+    "Envoi ambigu : ne jamais renvoyer le même contenu",
+    "Romain garde les conseils pronos",
+    "Ne pas modifier le site vmunivers.fr"
+  ]
+}

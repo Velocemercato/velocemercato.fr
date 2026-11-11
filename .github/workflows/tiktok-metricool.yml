@@ -3,22 +3,14 @@ name: VM - JT vers TikTok (Metricool)
 # « essai » (par défaut) : brouillon Metricool en « moi uniquement », rien n'est publié.
 # « publier » : seulement si la variable VM_AUTO_TIKTOK vaut true. Aucun robot existant n'est modifié.
 
+# Production TikTok : tâche ChatGPT/Metricool unique, trois blocs par jour.
+# Ce workflow reste un outil de diagnostic privé, pour éviter deux expéditeurs.
 on:
-  schedule:
-    - cron: '*/30 * * * *'
-  push:
-    branches: [main]
-    paths: ['.github/workflows/tiktok-metricool.yml']
-  workflow_run:
-    workflows: ['VM - Kit réseaux des JT']
-    types: [completed]
-    branches: [main]
   workflow_dispatch:
     inputs:
       mode:
-        description: 'essai (brouillon Metricool, rien de publié) ou publier'
         type: choice
-        options: [essai, publier]
+        options: [essai]
         default: essai
 
 permissions:
@@ -31,7 +23,7 @@ concurrency:
 jobs:
   tiktok:
     # Automatique après le kit réseaux uniquement si Heineguez a activé VM_AUTO_TIKTOK.
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
@@ -45,7 +37,7 @@ jobs:
       METRICOOL_USER_TOKEN: ${{ secrets.METRICOOL_USER_TOKEN }}
       METRICOOL_USER_ID: ${{ secrets.METRICOOL_USER_ID }}
       METRICOOL_BLOG_ID: ${{ secrets.METRICOOL_BLOG_ID }}
-      MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'publier' }}
+      MODE: 'essai'
     steps:
       - uses: actions/checkout@v4
         with:
