@@ -75,7 +75,7 @@ def prepare(root):
                              escape(str(article.get('publishedAt', ''))+' · '+source)+'</small><p>'+
                              escape(str(article.get('resume', '')))+'</p></li>')
             snapshot = '<section id="actualites-du-jour" aria-label="Dernières actualités football sourcées"><h3>Les dernières actualités foot</h3><ul>'+''.join(items)+'</ul><a href="#feed-title">Voir toutes les actualités mises à jour</a></section>'
-            text = re.sub(r'(<!-- VM_ACTUS_VISIBLES_START -->)[\\s\\S]*?(<!-- VM_ACTUS_VISIBLES_END -->)',
+            text = re.sub(r'(<!-- VM_ACTUS_VISIBLES_START -->)(?s:.*?)(<!-- VM_ACTUS_VISIBLES_END -->)',
                           lambda match: match[1]+snapshot+match[2], text, count=1)
         parser = RemoveNavigation('multisport' in path.relative_to(root).parts)
         parser.feed(text)
