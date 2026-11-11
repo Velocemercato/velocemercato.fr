@@ -1,35 +1,38 @@
-Passage actus du 2026-11-11 00:19 UTC (schedule, main)
+Passage actus du 2026-11-11 01:30 UTC (schedule, main)
 
 [notice] A new release of pip is available: 26.2.2 -> 26.3
 [notice] To update, run: pip install --upgrade pip
-Départ : 36 articles conservés et 36 flashs existants.
+Départ : 37 articles conservés et 37 flashs existants.
 RSS franceinfo / CULTURE : 15 actualités récentes.
-RSS franceinfo / FRANCE : 28 actualités récentes.
-RSS franceinfo / ECONOMIE : 20 actualités récentes.
-RSS franceinfo / TECH : 20 actualités récentes.
-RSS France 24 / INTERNATIONAL : 24 actualités récentes.
 RSS franceinfo / SANTE : 12 actualités récentes.
 RSS franceinfo / POLITIQUE : 19 actualités récentes.
+RSS franceinfo / ECONOMIE : 20 actualités récentes.
+RSS franceinfo / FRANCE : 28 actualités récentes.
+RSS franceinfo / INTERNATIONAL : 19 actualités récentes.
 RSS RFI / INTERNATIONAL : 23 actualités récentes.
+RSS France 24 / INTERNATIONAL : 24 actualités récentes.
 RSS 20 Minutes / FRANCE : 26 actualités récentes.
 RSS BBC News / INTERNATIONAL : 9 actualités récentes.
-RSS franceinfo / INTERNATIONAL : 19 actualités récentes.
-RSS Euronews / INTERNATIONAL : 43 actualités récentes.
-RSS The Guardian / INTERNATIONAL : 4 actualités récentes.
+RSS franceinfo / TECH : 20 actualités récentes.
 RSS Ouest-France / REGIONS : 10 actualités récentes.
-272 titres collectés, 186 nouveaux liens, quota 1.
-Brève prête : 20 Minutes - Le PS s'oppose à la candidature de David Lisnard à la tête de l'AMF
-Bilan : brèves_rédigées=1
-Publié : 1 brèves (total 37). Flash : 37.
+RSS The Guardian / INTERNATIONAL : 4 actualités récentes.
+RSS Euronews / INTERNATIONAL : 43 actualités récentes.
+272 titres collectés, 186 nouveaux liens, quota 2.
+Brève ignorée (20 Minutes) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève prête : 20 Minutes - États-Unis : Jim Jordan élu à la tête des républicains de la Chambre des représentants
+Brève prête : 20 Minutes - Savoie : un skieur retrouvé vivant après 35 heures dans une crevasse
+Bilan : brèves_rédigées=2, rejet_lecture_ou_ia=1, source_inaccessible_ou_trop_courte=1, sujet_deja_traite=1
+Publié : 2 brèves (total 39). Flash : 39.
 --- Papiers Sans Galère ---
 Départ : 8 articles conservés et 7 flashs existants.
-RSS franceinfo / LOGEMENT : 7 actualités récentes.
+RSS franceinfo / JUSTICE : 19 actualités récentes.
 RSS franceinfo / TRAVAIL : 19 actualités récentes.
 RSS franceinfo / AUTRE : 20 actualités récentes.
-RSS franceinfo / JUSTICE : 19 actualités récentes.
-RSS franceinfo / RETRAITE : 2 actualités récentes.
 RSS franceinfo / IMPOTS : 0 actualités récentes.
-67 titres collectés, 48 nouveaux liens, quota 1.
-Assez de sujets refusés dans ce passage : arrêt pour limiter le coût.
-Bilan : non_pertinent=4
-Aucune brève de qualité suffisante ; fichiers JSON inchangés.
+RSS franceinfo / LOGEMENT : 7 actualités récentes.
+RSS franceinfo / RETRAITE : 2 actualités récentes.
+67 titres collectés, 44 nouveaux liens, quota 1.
+Brève ignorée (franceinfo) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève prête : franceinfo - Noël 2026 : les Français prévoient en moyenne 478 euros de dépenses
+Bilan : brèves_rédigées=1, non_pertinent=2, rejet_lecture_ou_ia=1
+Publié : 1 brèves (total 9). Flash : 8.
