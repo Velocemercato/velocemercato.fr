@@ -147,17 +147,31 @@
   }
 
 
-  // Emplacement sponsorisé (VM Studio) en bas de chaque volet, sauf celui de VM Studio lui-même.
+  // Emplacement sponsorisé en bas de chaque volet (sauf VM Studio) : une campagne tirée au hasard
+  // parmi les offres VM et l'espace partenaire. Aucun chiffre d'audience ni gain n'est promis.
+  const campagnes = [
+    {tag: 'SERVICE PRO', titre: 'Un site web ou une pub pour ton commerce ?',
+      texte: 'VM Studio crée ton site à prix fixe, essai 7 jours à 49 €.',
+      lien: '/web-studio.html#offres', bouton: 'Découvrir VM Studio →'},
+    {tag: 'COMMUNAUTÉ', titre: 'Rejoins Véloce Arena !',
+      texte: 'Ligues, coupes et défis EA SPORTS FC avec la communauté.',
+      lien: '/gaming.html', bouton: 'Voir l’Arena →'},
+    {tag: 'SPONSOR', titre: 'Espace partenaire disponible',
+      texte: 'Affiche ta marque devant les passionnés de foot, de sport et de gaming de Véloce Mercato.',
+      lien: 'mailto:velocemercato.fr@gmail.com?subject=R%C3%A9servation%20espace%20partenaire', bouton: 'Devenir partenaire →'},
+  ];
   for (const dialog of document.querySelectorAll('dialog.espace-rubrique')) {
     if (dialog.id === 'rubrique-studio' || dialog.querySelector('.vm-sponsor')) continue;
+    const c = campagnes[Math.floor(Math.random() * campagnes.length)];
     const aside = document.createElement('aside');
     aside.className = 'vm-sponsor';
     aside.setAttribute('aria-label', 'Contenu sponsorisé');
-    aside.innerHTML = '<span class="vm-sponsor-tag">SPONSORISÉ</span>' +
-      '<strong>Besoin d’un site web ou d’une pub ?</strong>' +
-      '<span>VM Studio crée le site de ton commerce à prix fixe, essai 7 jours à 49 €.</span>' +
-      '<a href="/web-studio.html#offres">Découvrir VM Studio →</a>';
-    (dialog.querySelector('form') ? dialog : dialog).appendChild(aside);
+    const tag = document.createElement('span'); tag.className = 'vm-sponsor-tag'; tag.textContent = c.tag;
+    const titre = document.createElement('strong'); titre.textContent = c.titre;
+    const texte = document.createElement('span'); texte.textContent = c.texte;
+    const lien = document.createElement('a'); lien.href = c.lien; lien.textContent = c.bouton;
+    aside.append(tag, titre, texte, lien);
+    dialog.appendChild(aside);
   }
 
   async function fetchFeed(path) {
