@@ -159,6 +159,13 @@
       cursor: pointer;
     }
 
+    /* Chaque cadre contient la planche entière des vignettes (masquée) : elle ne doit pas
+       capter le doigt, sinon toucher FOOT ouvre le cadre voisin. Seul le cadre visible réagit. */
+    .zone-logo .acces-cadre image,
+    .zone-logo .acces-cadre svg svg {
+      pointer-events: none;
+    }
+
     .acces-cadre:hover .cadre-bord,
     .acces-cadre:focus-visible .cadre-bord {
       stroke: #fff1bd;
