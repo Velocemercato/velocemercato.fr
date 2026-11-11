@@ -1,9 +1,34 @@
 {
-  "generated_at": "2026-11-11T00:34:56.441307+01:00",
-  "commit": "1cb3e36aafab38638936d80831fadd187839402e",
-  "html_pages": 179,
-  "live_urls_checked": 437,
-  "local_targets_absent": [],
+  "generated_at": "2026-11-11T02:09:07.856611+01:00",
+  "commit": "14a54697ad95e53c8febdea1c0c2e08a9b8ccbc4",
+  "html_pages": 185,
+  "live_urls_checked": 454,
+  "local_targets_absent": [
+    {
+      "file": "foot/index.html",
+      "line": 434,
+      "href": "/a/rss-v2-6478b1634540556ab58bad.html",
+      "tag": "a"
+    },
+    {
+      "file": "foot/index.html",
+      "line": 435,
+      "href": "/a/rss-v2-36e0584f4553f69ede16f7.html",
+      "tag": "a"
+    },
+    {
+      "file": "foot/index.html",
+      "line": 436,
+      "href": "/a/rss-v2-994b75dc6996eef4db29a4.html",
+      "tag": "a"
+    },
+    {
+      "file": "foot/index.html",
+      "line": 437,
+      "href": "/a/rss-v2-0910e73690424d4d6442ea.html",
+      "tag": "a"
+    }
+  ],
   "anchors_to_review": [
     {
       "file": "archives.html",
@@ -31,7 +56,7 @@
     },
     {
       "file": "index.html",
-      "line": 694,
+      "line": 716,
       "href": "/#feed-title",
       "tag": "a"
     },
@@ -222,6 +247,24 @@
       "tag": "a"
     },
     {
+      "file": "a/rss-v2-c08015b64af48bfddf3f45.html",
+      "line": 82,
+      "href": "/#videos",
+      "tag": "a"
+    },
+    {
+      "file": "a/rss-v2-c08015b64af48bfddf3f45.html",
+      "line": 83,
+      "href": "/#videos",
+      "tag": "a"
+    },
+    {
+      "file": "a/rss-v2-c08015b64af48bfddf3f45.html",
+      "line": 99,
+      "href": "/#videos",
+      "tag": "a"
+    },
+    {
       "file": "a/rss-v2-76e27e199db124b151cfcb.html",
       "line": 82,
       "href": "/#videos",
@@ -438,6 +481,42 @@
       "tag": "a"
     },
     {
+      "file": "a/rss-v2-6dbd59cb85d4514f745cf9.html",
+      "line": 82,
+      "href": "/#videos",
+      "tag": "a"
+    },
+    {
+      "file": "a/rss-v2-6dbd59cb85d4514f745cf9.html",
+      "line": 83,
+      "href": "/#videos",
+      "tag": "a"
+    },
+    {
+      "file": "a/rss-v2-6dbd59cb85d4514f745cf9.html",
+      "line": 99,
+      "href": "/#videos",
+      "tag": "a"
+    },
+    {
+      "file": "a/rss-v2-26f4ed0fc70e38f1b903f1.html",
+      "line": 82,
+      "href": "/#videos",
+      "tag": "a"
+    },
+    {
+      "file": "a/rss-v2-26f4ed0fc70e38f1b903f1.html",
+      "line": 83,
+      "href": "/#videos",
+      "tag": "a"
+    },
+    {
+      "file": "a/rss-v2-26f4ed0fc70e38f1b903f1.html",
+      "line": 99,
+      "href": "/#videos",
+      "tag": "a"
+    },
+    {
       "file": "a/rss-v2-f43e33b8d7cdc58dac3701.html",
       "line": 82,
       "href": "/#videos",
@@ -523,6 +602,24 @@
     },
     {
       "file": "a/rss-v2-b5a6e707a140b437635b08.html",
+      "line": 99,
+      "href": "/#videos",
+      "tag": "a"
+    },
+    {
+      "file": "a/rss-v2-1a9d826af5d5b472ad125c.html",
+      "line": 82,
+      "href": "/#videos",
+      "tag": "a"
+    },
+    {
+      "file": "a/rss-v2-1a9d826af5d5b472ad125c.html",
+      "line": 83,
+      "href": "/#videos",
+      "tag": "a"
+    },
+    {
+      "file": "a/rss-v2-1a9d826af5d5b472ad125c.html",
       "line": 99,
       "href": "/#videos",
       "tag": "a"
@@ -1002,6 +1099,30 @@
       "tag": "a"
     },
     {
+      "file": "foot/index.html",
+      "line": 360,
+      "href": "/#videos",
+      "tag": "a"
+    },
+    {
+      "file": "foot/index.html",
+      "line": 368,
+      "href": "/pronos/#pronos-du-jour",
+      "tag": "a"
+    },
+    {
+      "file": "foot/index.html",
+      "line": 371,
+      "href": "/#feed-title",
+      "tag": "a"
+    },
+    {
+      "file": "foot/index.html",
+      "line": 439,
+      "href": "/#feed-title",
+      "tag": "a"
+    },
+    {
       "file": "immo/index.html",
       "line": 27,
       "href": "/#videos",
@@ -1320,7 +1441,56 @@
       "tag": "a"
     }
   ],
-  "broken_urls_404_410": [],
+  "broken_urls_404_410": [
+    {
+      "url": "https://velocemercato.fr/a/rss-v2-0910e73690424d4d6442ea.html",
+      "status": 404,
+      "references": [
+        {
+          "file": "foot/index.html",
+          "line": 437,
+          "href": "/a/rss-v2-0910e73690424d4d6442ea.html",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://velocemercato.fr/a/rss-v2-36e0584f4553f69ede16f7.html",
+      "status": 404,
+      "references": [
+        {
+          "file": "foot/index.html",
+          "line": 435,
+          "href": "/a/rss-v2-36e0584f4553f69ede16f7.html",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://velocemercato.fr/a/rss-v2-6478b1634540556ab58bad.html",
+      "status": 404,
+      "references": [
+        {
+          "file": "foot/index.html",
+          "line": 434,
+          "href": "/a/rss-v2-6478b1634540556ab58bad.html",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://velocemercato.fr/a/rss-v2-994b75dc6996eef4db29a4.html",
+      "status": 404,
+      "references": [
+        {
+          "file": "foot/index.html",
+          "line": 436,
+          "href": "/a/rss-v2-994b75dc6996eef4db29a4.html",
+          "tag": "a"
+        }
+      ]
+    }
+  ],
   "protected_or_unverified_urls": [
     {
       "url": "https://api-sports.io/",
@@ -1838,13 +2008,13 @@
       "references": [
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.canalplus.com/jeunesse/ulysse-31/h/156707_50036",
           "tag": "a"
         },
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.canalplus.com/jeunesse/ulysse-31/h/156707_50036",
           "tag": "a"
         },
@@ -1904,7 +2074,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 618,
+          "line": 640,
           "href": "https://www.eurosport.fr/",
           "tag": "a"
         }
@@ -2067,12 +2237,29 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a9177615217762529429-losc-olivier-letang-affiche-sa-serenite-pour-la-prolongation-dethan-mbappe",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-f6b6af0c2c170ed5c07372.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a9177615217762529429-losc-olivier-letang-affiche-sa-serenite-pour-la-prolongation-dethan-mbappe",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-f6b6af0c2c170ed5c07372",
+          "title": "LOSC : Létang optimiste sur la prolongation d'Ethan Mbappé"
+        }
+      ]
+    },
+    {
       "url": "https://www.instagram.com/veloce.mercato",
       "status": 429,
       "references": [
         {
           "file": "index.html",
-          "line": 583,
+          "line": 595,
           "href": "https://www.instagram.com/veloce.mercato",
           "tag": "a"
         },
@@ -2095,6 +2282,30 @@
           "tag": "a"
         },
         {
+          "file": "foot/index.html",
+          "line": 361,
+          "href": "https://www.instagram.com/veloce.mercato",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 371,
+          "href": "https://www.instagram.com/veloce.mercato",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 452,
+          "href": "https://www.instagram.com/veloce.mercato",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 511,
+          "href": "https://www.instagram.com/veloce.mercato",
+          "tag": "a"
+        },
+        {
           "file": "mangas/episodes/olive-et-tom-01.html",
           "line": 15,
           "href": "https://www.instagram.com/veloce.mercato",
@@ -2109,12 +2320,24 @@
       ]
     },
     {
+      "url": "https://www.instagram.com/vmunivers.fr",
+      "status": 429,
+      "references": [
+        {
+          "file": "index.html",
+          "line": 601,
+          "href": "https://www.instagram.com/vmunivers.fr",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.jeuxvideo.com/",
       "status": 403,
       "references": [
         {
           "file": "index.html",
-          "line": 681,
+          "line": 703,
           "href": "https://www.jeuxvideo.com/",
           "tag": "a"
         }
@@ -2315,18 +2538,6 @@
       "url": "https://www.ouest-france.fr/leditiondusoir/2026-11-10/cette-region-est-l-une-des-plus-riches-au-monde-en-eau-alors-pourquoi-manque-t-elle-d-eau-potable-ac8d81fc-5ca4-484c-b14c-cd5094f7e589?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
       "status": 403,
       "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 45,
-          "href": "https://www.ouest-france.fr/leditiondusoir/2026-11-10/cette-region-est-l-une-des-plus-riches-au-monde-en-eau-alors-pourquoi-manque-t-elle-d-eau-potable-ac8d81fc-5ca4-484c-b14c-cd5094f7e589?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 45,
-          "href": "https://www.ouest-france.fr/leditiondusoir/2026-11-10/cette-region-est-l-une-des-plus-riches-au-monde-en-eau-alors-pourquoi-manque-t-elle-d-eau-potable-ac8d81fc-5ca4-484c-b14c-cd5094f7e589?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
-          "tag": "a"
-        },
         {
           "file": "actus/news.json",
           "id": "rss-v2-6bd5aa2c09adbcace6c577",
@@ -2686,13 +2897,6 @@
   "server_failures": [],
   "classification_to_review": [
     {
-      "file": "multisport/actualites.json",
-      "section": "nba",
-      "title": "GTA VI explose les attentes en précommandes chez Take-Two, NBA 2K27 en ferait les frais - Xboxygen",
-      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQMmtPUFlIVEwwdVFYSEs3cml2MHBNWXlGa0NQblE0d3RhWERsRDNnZHdjM0JLV1JzMWdXYm4yU2VlV3R1c0ZfUDVyT24xZjJlWTg3MEgtLWhZM2p4dU16Qk5fMkFYejlock45QnZKUE1GV2tFMTVSQmVrSHlkVllOZFZjSWN3aFdtcDZscXJzTWNDNFhNNWN5ZVdTTnRaSVFrdDRUMGcwdUdPYVdGbkFNakhJUzRJdUpDS0J1b0gxQTI?oc=5",
-      "reason": "Titre hors discipline ou jeu vidéo"
-    },
-    {
       "file": "vm-gaming/news.json",
       "id": "rss-v2-fb08bad3c8ffff4fb8746d",
       "title": "One Piece : le chapitre 1199 reporté, la piste du 30e anniversaire",
@@ -2700,8 +2904,8 @@
     }
   ],
   "feed_counts": {
-    "articles.json": 36,
-    "vm-gaming/news.json": 16
+    "articles.json": 40,
+    "vm-gaming/news.json": 17
   },
   "replay_by_genre": {
     "foot": 40,
@@ -3092,7 +3296,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 595,
+          "line": 616,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
         },
@@ -3116,6 +3320,12 @@
         },
         {
           "file": "a/rss-v2-0381f18294efb50ddb5305.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-c08015b64af48bfddf3f45.html",
           "line": 95,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
@@ -3193,6 +3403,18 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-6dbd59cb85d4514f745cf9.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-26f4ed0fc70e38f1b903f1.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-f43e33b8d7cdc58dac3701.html",
           "line": 95,
           "href": "https://discord.gg/JEgfrUtJaX",
@@ -3218,6 +3440,12 @@
         },
         {
           "file": "a/rss-v2-b5a6e707a140b437635b08.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-1a9d826af5d5b472ad125c.html",
           "line": 95,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
@@ -3403,6 +3631,30 @@
           "tag": "a"
         },
         {
+          "file": "foot/index.html",
+          "line": 452,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 510,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 511,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 519,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
           "file": "vm-gaming/meta/index.html",
           "line": 26,
           "href": "https://discord.gg/JEgfrUtJaX",
@@ -3547,7 +3799,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 636,
+          "line": 658,
           "href": "https://fr.euronews.com/",
           "tag": "a"
         }
@@ -3582,18 +3834,6 @@
       "status": 206,
       "final_url": "https://fr.euronews.com/2026/11/10/lisbonne-le-web-summit-annule-son-deuxieme-jour-a-cause-de-la-tempete-charles",
       "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 44,
-          "href": "https://fr.euronews.com/2026/11/10/lisbonne-le-web-summit-annule-son-deuxieme-jour-a-cause-de-la-tempete-charles",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 44,
-          "href": "https://fr.euronews.com/2026/11/10/lisbonne-le-web-summit-annule-son-deuxieme-jour-a-cause-de-la-tempete-charles",
-          "tag": "a"
-        },
         {
           "file": "actus/news.json",
           "id": "rss-v2-5522940e4b28b8e54a8731",
@@ -3633,7 +3873,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 609,
+          "line": 630,
           "href": "https://fr.uefa.com/",
           "tag": "a"
         }
@@ -3659,7 +3899,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 632,
+          "line": 654,
           "href": "https://france3-regions.franceinfo.fr/",
           "tag": "a"
         }
@@ -4188,7 +4428,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 609,
+          "line": 630,
           "href": "https://rmcsport.bfmtv.com/football/",
           "tag": "a"
         }
@@ -4202,12 +4442,6 @@
         {
           "file": "a/rss-v2-397ce1887685e7a53a7b26.html",
           "line": 92,
-          "href": "https://rmcsport.bfmtv.com/football/coupe-du-monde/ecosse-mc-tominay-revele-avoir-recu-un-choc-electrique-au-coeur-a-deux-jours-de-la-coupe-du-monde-2026_AV-202611100978.html",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 36,
           "href": "https://rmcsport.bfmtv.com/football/coupe-du-monde/ecosse-mc-tominay-revele-avoir-recu-un-choc-electrique-au-coeur-a-deux-jours-de-la-coupe-du-monde-2026_AV-202611100978.html",
           "tag": "a"
         },
@@ -4291,6 +4525,25 @@
       ]
     },
     {
+      "url": "https://t.me/VMCONSEILSPRONOS",
+      "status": 200,
+      "final_url": "https://t.me/VMCONSEILSPRONOS",
+      "references": [
+        {
+          "file": "index.html",
+          "line": 409,
+          "href": "https://t.me/VMCONSEILSPRONOS",
+          "tag": "a"
+        },
+        {
+          "file": "index.html",
+          "line": 558,
+          "href": "https://t.me/VMCONSEILSPRONOS",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://twitter.com/intent/tweet?text=%E2%9A%BD%20%F0%9F%93%BA%20Nostalgie%20sur%20VM%20MANGAS%20%3A%20L'%C3%89cole%20des%20champions%20%E2%80%94%20%C3%89pisode%201%20!&url=https%3A%2F%2Fvelocemercato.fr%2Fmangas%2Fepisodes%2Fecole-des-champions-01.html",
       "status": 200,
       "final_url": "https://x.com/i/jf/onboarding/web?redirect_after_login=%2Fintent%2Ftweet%3Ftext%3D%25E2%259A%25BD%2B%25F0%259F%2593%25BA%2BNostalgie%2Bsur%2BVM%2BMANGAS%2B%253A%2BL%2527%25C3%2589cole%2Bdes%2Bchampions%2B%25E2%2580%2594%2B%25C3%2589pisode%2B1%2B%2521%26url%3Dhttps%253A%252F%252Fvelocemercato.fr%252Fmangas%252Fepisodes%252Fecole-des-champions-01.html&mode=login",
@@ -4312,6 +4565,54 @@
           "file": "mangas/episodes/olive-et-tom-01.html",
           "line": 14,
           "href": "https://twitter.com/intent/tweet?text=%E2%9A%BD%20%F0%9F%93%BA%20Nostalgie%20sur%20VM%20MANGAS%20%3A%20Olive%20et%20Tom%20%E2%80%94%20%C3%89pisode%201%20!&url=https%3A%2F%2Fvelocemercato.fr%2Fmangas%2Fepisodes%2Folive-et-tom-01.html",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://velocemercato.fr/a/rss-v2-0910e73690424d4d6442ea.html",
+      "status": 404,
+      "references": [
+        {
+          "file": "foot/index.html",
+          "line": 437,
+          "href": "/a/rss-v2-0910e73690424d4d6442ea.html",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://velocemercato.fr/a/rss-v2-36e0584f4553f69ede16f7.html",
+      "status": 404,
+      "references": [
+        {
+          "file": "foot/index.html",
+          "line": 435,
+          "href": "/a/rss-v2-36e0584f4553f69ede16f7.html",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://velocemercato.fr/a/rss-v2-6478b1634540556ab58bad.html",
+      "status": 404,
+      "references": [
+        {
+          "file": "foot/index.html",
+          "line": 434,
+          "href": "/a/rss-v2-6478b1634540556ab58bad.html",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://velocemercato.fr/a/rss-v2-994b75dc6996eef4db29a4.html",
+      "status": 404,
+      "references": [
+        {
+          "file": "foot/index.html",
+          "line": 436,
+          "href": "/a/rss-v2-994b75dc6996eef4db29a4.html",
           "tag": "a"
         }
       ]
@@ -4344,6 +4645,18 @@
           "line": 124,
           "href": "https://velocemercato.github.io/Papiers-sans-galere/",
           "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 502,
+          "href": "https://velocemercato.github.io/Papiers-sans-galere/",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 511,
+          "href": "https://velocemercato.github.io/Papiers-sans-galere/",
+          "tag": "a"
         }
       ]
     },
@@ -4372,19 +4685,19 @@
         },
         {
           "file": "index.html",
-          "line": 394,
+          "line": 415,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
           "file": "index.html",
-          "line": 552,
+          "line": 565,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
           "file": "index.html",
-          "line": 659,
+          "line": 681,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
@@ -4665,6 +4978,12 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-c08015b64af48bfddf3f45.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-76e27e199db124b151cfcb.html",
           "line": 82,
           "href": "https://vmunivers.fr/",
@@ -4737,6 +5056,18 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-6dbd59cb85d4514f745cf9.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-26f4ed0fc70e38f1b903f1.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-f43e33b8d7cdc58dac3701.html",
           "line": 82,
           "href": "https://vmunivers.fr/",
@@ -4762,6 +5093,12 @@
         },
         {
           "file": "a/rss-v2-b5a6e707a140b437635b08.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-1a9d826af5d5b472ad125c.html",
           "line": 82,
           "href": "https://vmunivers.fr/",
           "tag": "a"
@@ -5055,6 +5392,12 @@
           "tag": "a"
         },
         {
+          "file": "studio/kit-automatique.html",
+          "line": 8,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
           "file": "pro/index.html",
           "line": 57,
           "href": "https://vmunivers.fr/",
@@ -5117,6 +5460,54 @@
         {
           "file": "vm-gaming/index.html",
           "line": 212,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 360,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 360,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 361,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 362,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 366,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 452,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 495,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 511,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
@@ -5412,6 +5803,42 @@
       ]
     },
     {
+      "url": "https://www.20minutes.fr/monde/etats-unis/4262083-20261111-affaire-epstein-commission-parlementaire-congres-americain-denonce-defaillances-institutionnelles?at_medium=display&at_campaign=149",
+      "status": 200,
+      "final_url": "https://www.20minutes.fr/monde/etats-unis/4262083-20261111-affaire-epstein-commission-parlementaire-congres-americain-denonce-defaillances-institutionnelles?at_medium=display&at_campaign=149",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 42,
+          "href": "https://www.20minutes.fr/monde/etats-unis/4262083-20261111-affaire-epstein-commission-parlementaire-congres-americain-denonce-defaillances-institutionnelles?at_medium=display&at_campaign=149",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 42,
+          "href": "https://www.20minutes.fr/monde/etats-unis/4262083-20261111-affaire-epstein-commission-parlementaire-congres-americain-denonce-defaillances-institutionnelles?at_medium=display&at_campaign=149",
+          "tag": "a"
+        },
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-e4d458c7a798f1a58ee93c",
+          "title": "Affaire Epstein : un rapport du Congrès américain dénonce des « défaillances institutionnelles »"
+        }
+      ]
+    },
+    {
+      "url": "https://www.20minutes.fr/politique/4262085-20261111-fustigeant-populisme-ps-lache-lisnard-tete-amf?at_medium=display&at_campaign=149",
+      "status": 200,
+      "final_url": "https://www.20minutes.fr/politique/4262085-20261111-fustigeant-populisme-ps-lache-lisnard-tete-amf?at_medium=display&at_campaign=149",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-423ba7fdc986df8047963d",
+          "title": "Le PS s'oppose à la candidature de David Lisnard à la tête de l'AMF"
+        }
+      ]
+    },
+    {
       "url": "https://www.airbnb.fr/",
       "status": 200,
       "final_url": "https://www.airbnb.fr/",
@@ -5509,7 +5936,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 650,
+          "line": 672,
           "href": "https://www.arte.tv/fr/videos/130279-000-A/manga-tout-un-art/",
           "tag": "a"
         }
@@ -5552,7 +5979,7 @@
         },
         {
           "file": "pronos/index.html",
-          "line": 33,
+          "line": 34,
           "href": "https://www.bbc.co.uk/sounds/play/p0pmc96j?at_medium=RSS&at_campaign=rss",
           "tag": "a"
         },
@@ -5594,7 +6021,7 @@
         },
         {
           "file": "pronos/index.html",
-          "line": 34,
+          "line": 35,
           "href": "https://www.bbc.co.uk/sport/football/articles/cjqlnllkyzd5o?at_medium=RSS&at_campaign=rss",
           "tag": "a"
         },
@@ -5642,6 +6069,30 @@
       ]
     },
     {
+      "url": "https://www.bbc.co.uk/sport/football/articles/cq8jzjz9x23jo?at_medium=RSS&at_campaign=rss",
+      "status": 206,
+      "final_url": "https://www.bbc.co.uk/sport/football/articles/cq8jzjz9x23jo?at_medium=RSS&at_campaign=rss",
+      "references": [
+        {
+          "file": "a/rss-v2-1a9d826af5d5b472ad125c.html",
+          "line": 92,
+          "href": "https://www.bbc.co.uk/sport/football/articles/cq8jzjz9x23jo?at_medium=RSS&at_campaign=rss",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 33,
+          "href": "https://www.bbc.co.uk/sport/football/articles/cq8jzjz9x23jo?at_medium=RSS&at_campaign=rss",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-1a9d826af5d5b472ad125c",
+          "title": "Mercato : Arsenal s'intéresse à Endrick, Newcastle et Sunderland suivent Dion Beljo"
+        }
+      ]
+    },
+    {
       "url": "https://www.bbc.co.uk/sport/football/articles/cw8dzdzq2zn6o?at_medium=RSS&at_campaign=rss",
       "status": 206,
       "final_url": "https://www.bbc.co.uk/sport/football/articles/cw8dzdzq2zn6o?at_medium=RSS&at_campaign=rss",
@@ -5684,7 +6135,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 636,
+          "line": 658,
           "href": "https://www.bbc.com/news",
           "tag": "a"
         }
@@ -5697,7 +6148,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 618,
+          "line": 640,
           "href": "https://www.bbc.com/sport",
           "tag": "a"
         }
@@ -5710,7 +6161,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 609,
+          "line": 630,
           "href": "https://www.bbc.com/sport/football",
           "tag": "a"
         }
@@ -5874,7 +6325,7 @@
     },
     {
       "url": "https://www.bienici.com/recherche?q=Outre-mer",
-      "status": 200,
+      "status": 206,
       "final_url": "https://www.bienici.com/recherche?q=Outre-mer",
       "references": [
         {
@@ -5917,13 +6368,13 @@
       "references": [
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.canalplus.com/jeunesse/ulysse-31/h/156707_50036",
           "tag": "a"
         },
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.canalplus.com/jeunesse/ulysse-31/h/156707_50036",
           "tag": "a"
         },
@@ -6059,9 +6510,21 @@
       "references": [
         {
           "file": "index.html",
-          "line": 681,
+          "line": 703,
           "href": "https://www.eurogamer.net/",
           "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.eurogamer.net/gta-6-most-preordered-game-playstation-store-history",
+      "status": 206,
+      "final_url": "https://www.eurogamer.net/gta-6-most-preordered-game-playstation-store-history",
+      "references": [
+        {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-2aa8ef7a7b0937c3c09a65",
+          "title": "GTA 6 devient le jeu le plus pré-commandé de l'histoire du PlayStation Store"
         }
       ]
     },
@@ -6070,6 +6533,18 @@
       "status": 206,
       "final_url": "https://www.eurogamer.net/ps-plus-games-november-2026-pc-app",
       "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 53,
+          "href": "https://www.eurogamer.net/ps-plus-games-november-2026-pc-app",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 53,
+          "href": "https://www.eurogamer.net/ps-plus-games-november-2026-pc-app",
+          "tag": "a"
+        },
         {
           "file": "vm-gaming/news.json",
           "id": "rss-v2-79b9999ee1c188b20f15ce",
@@ -6083,7 +6558,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 618,
+          "line": 640,
           "href": "https://www.eurosport.fr/",
           "tag": "a"
         }
@@ -6096,13 +6571,13 @@
       "references": [
         {
           "file": "index.html",
-          "line": 397,
+          "line": 416,
           "href": "https://www.facebook.com/VMunivers.fr/",
           "tag": "a"
         },
         {
           "file": "index.html",
-          "line": 555,
+          "line": 566,
           "href": "https://www.facebook.com/VMunivers.fr/",
           "tag": "a"
         }
@@ -6115,13 +6590,13 @@
       "references": [
         {
           "file": "index.html",
-          "line": 400,
+          "line": 419,
           "href": "https://www.facebook.com/Veloce.mercato.actus/",
           "tag": "a"
         },
         {
           "file": "index.html",
-          "line": 558,
+          "line": 569,
           "href": "https://www.facebook.com/Veloce.mercato.actus/",
           "tag": "a"
         }
@@ -6141,9 +6616,66 @@
       ]
     },
     {
+      "url": "https://www.facebook.com/share/19wkqvg6Em/",
+      "status": 200,
+      "final_url": "https://www.facebook.com/people/Veloce-Mercato/61584725345167/?rdid=3zsfwG5VJ4YIdzCL&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19wkqvg6Em%2F",
+      "references": [
+        {
+          "file": "index.html",
+          "line": 592,
+          "href": "https://www.facebook.com/share/19wkqvg6Em/",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.facebook.com/share/1C3uyLM2BB/",
+      "status": 200,
+      "final_url": "https://www.facebook.com/Vmactusetpronos?rdid=IQZ80WY6NZ9ZWNZe&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1C3uyLM2BB%2F",
+      "references": [
+        {
+          "file": "index.html",
+          "line": 598,
+          "href": "https://www.facebook.com/share/1C3uyLM2BB/",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.facebook.com/share/1DUSALoBzG/",
+      "status": 200,
+      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=hWJslxibF5Kdvhuh",
+      "references": [
+        {
+          "file": "foot/index.html",
+          "line": 361,
+          "href": "https://www.facebook.com/share/1DUSALoBzG/",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 371,
+          "href": "https://www.facebook.com/share/1DUSALoBzG/",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 452,
+          "href": "https://www.facebook.com/share/1DUSALoBzG/",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 511,
+          "href": "https://www.facebook.com/share/1DUSALoBzG/",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.facebook.com/share/1E6nH6RZzX/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr?rdid=QaY3abA9Vjkj5n98&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1E6nH6RZzX%2F",
+      "final_url": "https://www.facebook.com/velocemercato.fr?rdid=Z3jxYvN0Ncqioucx&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1E6nH6RZzX%2F",
       "references": [
         {
           "file": "pronos/index.html",
@@ -6156,7 +6688,7 @@
     {
       "url": "https://www.facebook.com/share/1EiGutypix/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=V2qzyPYJeiQpdijw",
+      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=gJ7lBLDecr8mrtxG",
       "references": [
         {
           "file": "studio.html",
@@ -6445,19 +6977,13 @@
       "references": [
         {
           "file": "index.html",
-          "line": 433,
+          "line": 452,
           "href": "https://www.facebook.com/velocemercato.fr",
           "tag": "a"
         },
         {
           "file": "index.html",
-          "line": 580,
-          "href": "https://www.facebook.com/velocemercato.fr",
-          "tag": "a"
-        },
-        {
-          "file": "index.html",
-          "line": 610,
+          "line": 631,
           "href": "https://www.facebook.com/velocemercato.fr",
           "tag": "a"
         }
@@ -6639,7 +7165,7 @@
     },
     {
       "url": "https://www.foot-national.com/actus/monaco-mamadou-coulibaly-sexpose-a-des-sanctions-apres-sa-celebration-polemique-963165",
-      "status": 206,
+      "status": 200,
       "final_url": "https://www.foot-national.com/actus/monaco-mamadou-coulibaly-sexpose-a-des-sanctions-apres-sa-celebration-polemique-963165",
       "references": [
         {
@@ -6688,6 +7214,24 @@
           "file": "articles.json",
           "id": "rss-v2-7e023f8c6e779fa7482630",
           "title": "Zidane appelle Kumbedi (Wolfsburg) en Bleus, selon Foot01"
+        }
+      ]
+    },
+    {
+      "url": "https://www.foot01.com/nantes/naples-debarque-a-nantes-pour-soffrir-tati",
+      "status": 200,
+      "final_url": "https://www.foot01.com/nantes/naples-debarque-a-nantes-pour-soffrir-tati",
+      "references": [
+        {
+          "file": "a/rss-v2-c08015b64af48bfddf3f45.html",
+          "line": 92,
+          "href": "https://www.foot01.com/nantes/naples-debarque-a-nantes-pour-soffrir-tati",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-c08015b64af48bfddf3f45",
+          "title": "Naples intéressé par Tylel Tati, défenseur de Nantes"
         }
       ]
     },
@@ -6783,7 +7327,7 @@
     },
     {
       "url": "https://www.footmercato.net/a2484127957861444626-mu-michael-carrick-vire-mercredi",
-      "status": 200,
+      "status": 206,
       "final_url": "https://www.footmercato.net/a2484127957861444626-mu-michael-carrick-vire-mercredi",
       "references": [
         {
@@ -6819,7 +7363,7 @@
     },
     {
       "url": "https://www.footmercato.net/a3803963511565405194-golden-boy-2026-honest-ahanor-elu-meilleur-joueur-italien-de-lannee",
-      "status": 200,
+      "status": 206,
       "final_url": "https://www.footmercato.net/a3803963511565405194-golden-boy-2026-honest-ahanor-elu-meilleur-joueur-italien-de-lannee",
       "references": [
         {
@@ -6873,7 +7417,7 @@
     },
     {
       "url": "https://www.footmercato.net/a5768329203274671524-bayern-vincent-kompany-est-de-retour",
-      "status": 206,
+      "status": 200,
       "final_url": "https://www.footmercato.net/a5768329203274671524-bayern-vincent-kompany-est-de-retour",
       "references": [
         {
@@ -6919,12 +7463,6 @@
           "tag": "a"
         },
         {
-          "file": "pronos/index.html",
-          "line": 37,
-          "href": "https://www.footmercato.net/a6627745059848400688-equipe-de-france-aurelien-tchouameni-forfait-a-son-tour",
-          "tag": "a"
-        },
-        {
           "file": "articles.json",
           "id": "rss-v2-ca5d2a4ac86c007f1b0385",
           "title": "Équipe de France : Aurélien Tchouameni déclare forfait pour ce rassemblement"
@@ -6950,6 +7488,30 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a7690946377025965627-ligue-des-champions-f-le-psg-sincline-a-domicile-face-au-bayern",
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a7690946377025965627-ligue-des-champions-f-le-psg-sincline-a-domicile-face-au-bayern",
+      "references": [
+        {
+          "file": "a/rss-v2-26f4ed0fc70e38f1b903f1.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a7690946377025965627-ligue-des-champions-f-le-psg-sincline-a-domicile-face-au-bayern",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 36,
+          "href": "https://www.footmercato.net/a7690946377025965627-ligue-des-champions-f-le-psg-sincline-a-domicile-face-au-bayern",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-26f4ed0fc70e38f1b903f1",
+          "title": "Ligue des Champions (F) : le PSG s’incline 2-1 face au Bayern au Parc"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a7803564415882205784-bayern-la-reponse-tres-floue-de-max-eberl-sur-la-clause-dupamecano",
       "status": 206,
       "final_url": "https://www.footmercato.net/a7803564415882205784-bayern-la-reponse-tres-floue-de-max-eberl-sur-la-clause-dupamecano",
@@ -6968,6 +7530,24 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a7965348507510505245-lens-umtiti-on-disait-que-le-directeur-sportif-etait-exceptionnel-cest-parce-quil-avait-de-la-reussite",
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a7965348507510505245-lens-umtiti-on-disait-que-le-directeur-sportif-etait-exceptionnel-cest-parce-quil-avait-de-la-reussite",
+      "references": [
+        {
+          "file": "a/rss-v2-6dbd59cb85d4514f745cf9.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a7965348507510505245-lens-umtiti-on-disait-que-le-directeur-sportif-etait-exceptionnel-cest-parce-quil-avait-de-la-reussite",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-6dbd59cb85d4514f745cf9",
+          "title": "Lens : Umtiti critique la gestion du club après les changements d'entraîneur"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a8081370386039135384-le-bayern-recale-sechement-le-barca-pour-lun-de-ses-cadres",
       "status": 206,
       "final_url": "https://www.footmercato.net/a8081370386039135384-le-bayern-recale-sechement-le-barca-pour-lun-de-ses-cadres",
@@ -6980,7 +7560,7 @@
         },
         {
           "file": "pronos/index.html",
-          "line": 35,
+          "line": 37,
           "href": "https://www.footmercato.net/a8081370386039135384-le-bayern-recale-sechement-le-barca-pour-lun-de-ses-cadres",
           "tag": "a"
         },
@@ -7029,8 +7609,7 @@
     },
     {
       "url": "https://www.footmercato.net/a9177615217762529429-losc-olivier-letang-affiche-sa-serenite-pour-la-prolongation-dethan-mbappe",
-      "status": 200,
-      "final_url": "https://www.footmercato.net/a9177615217762529429-losc-olivier-letang-affiche-sa-serenite-pour-la-prolongation-dethan-mbappe",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-f6b6af0c2c170ed5c07372.html",
@@ -7065,7 +7644,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 636,
+          "line": 658,
           "href": "https://www.france24.com/fr/",
           "tag": "a"
         }
@@ -7114,13 +7693,13 @@
       "references": [
         {
           "file": "pronos/index.html",
-          "line": 42,
+          "line": 45,
           "href": "https://www.franceinfo.fr/economie/automobile/essence/si-l-on-garde-les-memes-tendances-l-essence-repasse-enfin-sous-la-barre-des-deux-euros-mais-pour-combien-de-temps_8276915.html#xtor=RSS-3-%5Bmonde%5D",
           "tag": "a"
         },
         {
           "file": "pronos/index.html",
-          "line": 42,
+          "line": 45,
           "href": "https://www.franceinfo.fr/economie/automobile/essence/si-l-on-garde-les-memes-tendances-l-essence-repasse-enfin-sous-la-barre-des-deux-euros-mais-pour-combien-de-temps_8276915.html#xtor=RSS-3-%5Bmonde%5D",
           "tag": "a"
         }
@@ -7235,25 +7814,6 @@
       ]
     },
     {
-      "url": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/un-carambolage-fait-au-moins-11-morts-et-51-blesses-en-bulgarie_8276918.html",
-      "status": 200,
-      "final_url": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/un-carambolage-fait-au-moins-11-morts-et-51-blesses-en-bulgarie_8276918.html",
-      "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 43,
-          "href": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/un-carambolage-fait-au-moins-11-morts-et-51-blesses-en-bulgarie_8276918.html#xtor=RSS-3-%5Bmonde%5D",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 43,
-          "href": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/un-carambolage-fait-au-moins-11-morts-et-51-blesses-en-bulgarie_8276918.html#xtor=RSS-3-%5Bmonde%5D",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/un-carambolage-fait-au-moins-11-morts-et-51-blesses-en-bulgarie_8276918.html#xtor=RSS-3-%5Bmonde%5D",
       "status": 200,
       "final_url": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/un-carambolage-fait-au-moins-11-morts-et-51-blesses-en-bulgarie_8276918.html#xtor=RSS-3-%5Bmonde%5D",
@@ -7332,7 +7892,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 618,
+          "line": 640,
           "href": "https://www.franceinfo.fr/sports/",
           "tag": "a"
         }
@@ -7345,7 +7905,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 681,
+          "line": 703,
           "href": "https://www.gamekult.com/",
           "tag": "a"
         }
@@ -7356,18 +7916,6 @@
       "status": 200,
       "final_url": "https://www.gamekult.com/actualite/big-walk-vise-par-des-jures-de-l-independent-game-festival-house-house-s-explique-sur-son-utilisation-derisoire-de-l-ia-3050872879.html",
       "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 53,
-          "href": "https://www.gamekult.com/actualite/big-walk-vise-par-des-jures-de-l-independent-game-festival-house-house-s-explique-sur-son-utilisation-derisoire-de-l-ia-3050872879.html",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 53,
-          "href": "https://www.gamekult.com/actualite/big-walk-vise-par-des-jures-de-l-independent-game-festival-house-house-s-explique-sur-son-utilisation-derisoire-de-l-ia-3050872879.html",
-          "tag": "a"
-        },
         {
           "file": "vm-gaming/news.json",
           "id": "rss-v2-88ab963a26a9c3718becac",
@@ -7525,7 +8073,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 583,
+          "line": 595,
           "href": "https://www.instagram.com/veloce.mercato",
           "tag": "a"
         },
@@ -7548,6 +8096,30 @@
           "tag": "a"
         },
         {
+          "file": "foot/index.html",
+          "line": 361,
+          "href": "https://www.instagram.com/veloce.mercato",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 371,
+          "href": "https://www.instagram.com/veloce.mercato",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 452,
+          "href": "https://www.instagram.com/veloce.mercato",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 511,
+          "href": "https://www.instagram.com/veloce.mercato",
+          "tag": "a"
+        },
+        {
           "file": "mangas/episodes/olive-et-tom-01.html",
           "line": 15,
           "href": "https://www.instagram.com/veloce.mercato",
@@ -7562,12 +8134,24 @@
       ]
     },
     {
+      "url": "https://www.instagram.com/vmunivers.fr",
+      "status": 429,
+      "references": [
+        {
+          "file": "index.html",
+          "line": 601,
+          "href": "https://www.instagram.com/vmunivers.fr",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.jeuxvideo.com/",
       "status": 403,
       "references": [
         {
           "file": "index.html",
-          "line": 681,
+          "line": 703,
           "href": "https://www.jeuxvideo.com/",
           "tag": "a"
         }
@@ -9109,7 +9693,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.m6.fr/lecole-des-champions-p_20094",
           "tag": "a"
         },
@@ -9161,18 +9745,6 @@
       "url": "https://www.ouest-france.fr/leditiondusoir/2026-11-10/cette-region-est-l-une-des-plus-riches-au-monde-en-eau-alors-pourquoi-manque-t-elle-d-eau-potable-ac8d81fc-5ca4-484c-b14c-cd5094f7e589?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
       "status": 403,
       "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 45,
-          "href": "https://www.ouest-france.fr/leditiondusoir/2026-11-10/cette-region-est-l-une-des-plus-riches-au-monde-en-eau-alors-pourquoi-manque-t-elle-d-eau-potable-ac8d81fc-5ca4-484c-b14c-cd5094f7e589?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 45,
-          "href": "https://www.ouest-france.fr/leditiondusoir/2026-11-10/cette-region-est-l-une-des-plus-riches-au-monde-en-eau-alors-pourquoi-manque-t-elle-d-eau-potable-ac8d81fc-5ca4-484c-b14c-cd5094f7e589?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu",
-          "tag": "a"
-        },
         {
           "file": "actus/news.json",
           "id": "rss-v2-6bd5aa2c09adbcace6c577",
@@ -9379,13 +9951,13 @@
       "references": [
         {
           "file": "pronos/index.html",
-          "line": 41,
+          "line": 44,
           "href": "https://www.rfi.fr/fr/am%C3%A9riques/20261110-%C3%A9tats-unis-le-secr%C3%A9taire-%C3%A0-la-d%C3%A9fense-pete-hegseth-persiste-et-signe-en-faveur-de-la-guerre-en-iran",
           "tag": "a"
         },
         {
           "file": "pronos/index.html",
-          "line": 41,
+          "line": 44,
           "href": "https://www.rfi.fr/fr/am%C3%A9riques/20261110-%C3%A9tats-unis-le-secr%C3%A9taire-%C3%A0-la-d%C3%A9fense-pete-hegseth-persiste-et-signe-en-faveur-de-la-guerre-en-iran",
           "tag": "a"
         },
@@ -9401,6 +9973,18 @@
       "status": 200,
       "final_url": "https://www.rfi.fr/fr/asie-pacifique/20261110-indon%C3%A9sie-la-jeunesse-%C3%A0-nouveau-dans-la-rue-pour-protester-contre-la-politique-du-gouvernement",
       "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 43,
+          "href": "https://www.rfi.fr/fr/asie-pacifique/20261110-indon%C3%A9sie-la-jeunesse-%C3%A0-nouveau-dans-la-rue-pour-protester-contre-la-politique-du-gouvernement",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 43,
+          "href": "https://www.rfi.fr/fr/asie-pacifique/20261110-indon%C3%A9sie-la-jeunesse-%C3%A0-nouveau-dans-la-rue-pour-protester-contre-la-politique-du-gouvernement",
+          "tag": "a"
+        },
         {
           "file": "actus/news.json",
           "id": "rss-v2-48307a5ce21633ec048a55",
@@ -9429,6 +10013,30 @@
           "file": "actus/news.json",
           "id": "rss-v2-3603e34f5256bbb3728e06",
           "title": "La Norvège suspend les nouvelles connexions de data centers au réseau électrique"
+        }
+      ]
+    },
+    {
+      "url": "https://www.rfi.fr/fr/europe/20261110-pologne-varsovie-accueille-la-marche-de-l-ind%C3%A9pendance-dans-un-climat-de-tensions",
+      "status": 200,
+      "final_url": "https://www.rfi.fr/fr/europe/20261110-pologne-varsovie-accueille-la-marche-de-l-ind%C3%A9pendance-dans-un-climat-de-tensions",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 41,
+          "href": "https://www.rfi.fr/fr/europe/20261110-pologne-varsovie-accueille-la-marche-de-l-ind%C3%A9pendance-dans-un-climat-de-tensions",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 41,
+          "href": "https://www.rfi.fr/fr/europe/20261110-pologne-varsovie-accueille-la-marche-de-l-ind%C3%A9pendance-dans-un-climat-de-tensions",
+          "tag": "a"
+        },
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-bb47b9de880e969fb782be",
+          "title": "Pologne : Varsovie accueille la Marche de l'indépendance dans un climat tendu"
         }
       ]
     },
@@ -9632,7 +10240,19 @@
       "references": [
         {
           "file": "index.html",
-          "line": 592,
+          "line": 613,
+          "href": "https://www.snapchat.com/add/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 452,
+          "href": "https://www.snapchat.com/add/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 511,
           "href": "https://www.snapchat.com/add/velocemercato",
           "tag": "a"
         }
@@ -9645,13 +10265,13 @@
       "references": [
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.tf1.fr/tf1/lecole-des-champions",
           "tag": "a"
         },
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.tf1.fr/tf1/lecole-des-champions",
           "tag": "a"
         },
@@ -9688,7 +10308,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 586,
+          "line": 604,
           "href": "https://www.tiktok.com/@velocemercato",
           "tag": "a"
         },
@@ -9709,6 +10329,37 @@
           "line": 321,
           "href": "https://www.tiktok.com/@velocemercato",
           "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 371,
+          "href": "https://www.tiktok.com/@velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 452,
+          "href": "https://www.tiktok.com/@velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 511,
+          "href": "https://www.tiktok.com/@velocemercato",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.tiktok.com/@vmunivers.fr",
+      "status": 200,
+      "final_url": "https://www.tiktok.com/@vmunivers.fr",
+      "references": [
+        {
+          "file": "index.html",
+          "line": 607,
+          "href": "https://www.tiktok.com/@vmunivers.fr",
+          "tag": "a"
         }
       ]
     },
@@ -9719,7 +10370,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 598,
+          "line": 619,
           "href": "https://www.twitch.tv/velocemercato",
           "tag": "a"
         },
@@ -9744,6 +10395,30 @@
         {
           "file": "vm-gaming/index.html",
           "line": 258,
+          "href": "https://www.twitch.tv/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 447,
+          "href": "https://www.twitch.tv/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 452,
+          "href": "https://www.twitch.tv/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 509,
+          "href": "https://www.twitch.tv/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 511,
           "href": "https://www.twitch.tv/velocemercato",
           "tag": "a"
         },
@@ -9964,7 +10639,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 589,
+          "line": 610,
           "href": "https://www.youtube.com/@VeloceMercato",
           "tag": "a"
         },
@@ -9989,6 +10664,36 @@
         {
           "file": "vm-gaming/index.html",
           "line": 258,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 371,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 447,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 452,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 509,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
+          "file": "foot/index.html",
+          "line": 511,
           "href": "https://www.youtube.com/@VeloceMercato",
           "tag": "a"
         },
@@ -10201,7 +10906,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.youtube.com/playlist?list=PLBqc73oQ4bMM3bZYMVgucM0f6DKLHPmWX",
           "tag": "a"
         },
@@ -10226,7 +10931,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.youtube.com/playlist?list=PLBqc73oQ4bMM97cJFPZQuo6jxhC29JHIN",
           "tag": "a"
         },
@@ -10251,7 +10956,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.youtube.com/playlist?list=PLBqc73oQ4bMMhVRb07nenCP7GvcrKzXKJ",
           "tag": "a"
         },
@@ -10276,7 +10981,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.youtube.com/playlist?list=PLBqc73oQ4bMNaV7mIlsI83qZuLrBbJgJ_",
           "tag": "a"
         },
@@ -10301,7 +11006,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.youtube.com/playlist?list=PLBqc73oQ4bMNc8EbT74vVq4gJeo-hNcTK",
           "tag": "a"
         },
@@ -10326,7 +11031,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.youtube.com/playlist?list=PLBqc73oQ4bMOKd0xilD8AW9sbUJhMP-3a",
           "tag": "a"
         },
@@ -10351,7 +11056,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.youtube.com/playlist?list=PLBqc73oQ4bMOPhZSUIZ5AaUmHhX2l27Cz",
           "tag": "a"
         },
@@ -10376,7 +11081,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.youtube.com/playlist?list=PLBqc73oQ4bMOjj2Pnq1bebrUUGr1QoxFh",
           "tag": "a"
         },
@@ -10401,7 +11106,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.youtube.com/playlist?list=PLBqc73oQ4bMP3RiSsst2V8mZYKq_KGz9j",
           "tag": "a"
         },
@@ -10426,7 +11131,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.youtube.com/playlist?list=PLBqc73oQ4bMPU1KXsTg3QwzbTidZgjJDh",
           "tag": "a"
         },
@@ -10451,7 +11156,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.youtube.com/playlist?list=PLBqc73oQ4bMPXT5mUgN5UNASfop_cYurc",
           "tag": "a"
         },
@@ -10476,7 +11181,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.youtube.com/playlist?list=PLMwDGj-9r3hyN_VCCSlLG5ZqgFs3F4p4L",
           "tag": "a"
         },
@@ -10501,7 +11206,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 647,
+          "line": 669,
           "href": "https://www.youtube.com/playlist?list=PLRVWztDBSD_Jh0PwXtJ0wBP0TLtHga1_Y",
           "tag": "a"
         },
@@ -10578,7 +11283,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 650,
+          "line": 672,
           "href": "https://www.youtube.com/watch?v=6cCX0vN7DYA",
           "tag": "a"
         }
@@ -10682,7 +11387,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 650,
+          "line": 672,
           "href": "https://www.youtube.com/watch?v=Jxi9afBqv9I",
           "tag": "a"
         }
@@ -10695,7 +11400,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 650,
+          "line": 672,
           "href": "https://www.youtube.com/watch?v=KGqCRbqzvBI",
           "tag": "a"
         }
@@ -10708,7 +11413,7 @@
       "references": [
         {
           "file": "index.html",
-          "line": 650,
+          "line": 672,
           "href": "https://www.youtube.com/watch?v=LNO0CQrmIn8",
           "tag": "a"
         }
