@@ -30,8 +30,15 @@ WEBHOOK = os.getenv('DISCORD_WEBHOOK', '').strip() or _salon_discord()
 COMPETITIONS = {'FL1': 'Ligue 1', 'CL': 'Ligue des champions', 'PL': 'Premier League', 'PD': 'Liga',
                 'SA': 'Serie A', 'BL1': 'Bundesliga'}
 # Deuxième source publique (sans clé) pour les sélections, absentes de l'offre gratuite football-data.
-ESPN_LIGUES = {'uefa.nations': 'Ligue des nations', 'fifa.friendly': 'Match amical international',
-               'caf.nations_qual': 'Qualifications CAN', 'uefa.euro_u21_qual': 'Qualifications Euro Espoirs'}
+ESPN_LIGUES = {  # chemin ESPN : (nom affiché, sport)
+    'soccer/uefa.nations': ('Ligue des nations', 'foot'), 'soccer/fifa.friendly': ('Match amical international', 'foot'),
+    'soccer/caf.nations_qual': ('Qualifications CAN', 'foot'), 'soccer/uefa.euro_u21_qual': ('Qualifications Euro Espoirs', 'foot'),
+    # Secours des 5 grands championnats et de la C1 si football-data ne répond pas.
+    'soccer/fra.1': ('Ligue 1', 'foot'), 'soccer/eng.1': ('Premier League', 'foot'), 'soccer/esp.1': ('Liga', 'foot'),
+    'soccer/ita.1': ('Serie A', 'foot'), 'soccer/ger.1': ('Bundesliga', 'foot'), 'soccer/uefa.champions': ('Ligue des champions', 'foot'),
+    'basketball/nba': ('NBA', 'basket'), 'football/nfl': ('NFL', 'nfl'), 'hockey/nhl': ('NHL', 'hockey'),
+}
+SECOURS = {'Ligue 1', 'Premier League', 'Liga', 'Serie A', 'Bundesliga', 'Ligue des champions'}
 DISCORD_COMPS = {'Ligue 1', 'Ligue des champions', 'Ligue des nations'}  # le salon Discord reste centré sur la L1 et la C1
 PARIS = ZoneInfo('Europe/Paris')
 
@@ -68,12 +75,15 @@ def notify(old_rows, rows):
         print(f'Discord : {len(msgs)} notification(s).')
 
 
-def espn_rows(today):
-    """Matchs des sélections (hier, aujourd'hui, demain) depuis le tableau des scores public d'ESPN."""
+def espn_rows(today, deja=frozenset()):
+    """Matchs (hier, aujourd'hui, demain) depuis le tableau des scores public d'ESPN.
+    Les championnats déjà fournis par football-data ne sont pas doublés."""
     rows = []
     jours = '-'.join(d.strftime('%Y%m%d') for d in (today - dt.timedelta(days=1), today + dt.timedelta(days=1)))
-    for slug, nom in ESPN_LIGUES.items():
-        url = f'https://site.api.espn.com/apis/site/v2/sports/soccer/{slug}/scoreboard?dates={jours}&lang=fr&region=fr'
+    for slug, (nom, sport) in ESPN_LIGUES.items():
+        if nom in deja:
+            continue
+        url = f'https://site.api.espn.com/apis/site/v2/sports/{slug}/scoreboard?dates={jours}&lang=fr&region=fr'
         try:
             with urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': 'VeloceMercato/1.0'}), timeout=15) as r:
                 data = json.load(r)
@@ -94,7 +104,7 @@ def espn_rows(today):
                 def but(c):
                     v = c.get('score')
                     return int(v) if statut != 'TIMED' and str(v).isdigit() else None
-                rows.append({'id': 'espn-' + str(e['id']), 'date': e.get('date'), 'comp': nom,
+                rows.append({'id': 'espn-' + str(e['id']), 'date': e.get('date'), 'comp': nom, 'sport': sport,
                              'dom': (home.get('team') or {}).get('shortDisplayName') or '?',
                              'ext': (away.get('team') or {}).get('shortDisplayName') or '?',
                              'statut': statut, 'score': [but(home), but(away)]})
@@ -123,10 +133,10 @@ def main():
             continue
         home, away = m.get('homeTeam') or {}, m.get('awayTeam') or {}
         full = (m.get('score') or {}).get('fullTime') or {}
-        rows.append({'id': m.get('id'), 'date': m.get('utcDate'), 'comp': COMPETITIONS[code],
+        rows.append({'id': m.get('id'), 'date': m.get('utcDate'), 'comp': COMPETITIONS[code], 'sport': 'foot',
                      'dom': home.get('shortName') or home.get('name') or '?', 'ext': away.get('shortName') or away.get('name') or '?',
                      'statut': m.get('status'), 'score': [full.get('home'), full.get('away')]})
-    rows += espn_rows(today)
+    rows += espn_rows(today, SECOURS if data.get('matches') is not None else frozenset())
     rows.sort(key=lambda x: (str(x['date']), x['comp']))
     old = json.loads(OUT.read_text(encoding='utf-8')) if OUT.exists() else {}
     # La source renvoie parfois une ancienne version : on ne revient jamais en arrière

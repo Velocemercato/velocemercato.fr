@@ -3,7 +3,7 @@ name: Resultats en direct
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/15 10-23 * * *'   # relance régulière ; chaque passage surveille les scores pendant ~50 minutes
+    - cron: '*/15 0-5,10-23 * * *'   # relance régulière ; chaque passage surveille les scores pendant ~50 minutes
 
 permissions:
   contents: write
