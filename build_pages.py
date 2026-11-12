@@ -205,10 +205,8 @@ def main():
     from tools.pronos_public import build as build_pronos
     build_pronos(Path('.'))
 
-    # Les pages des brèves retirées du fil sont supprimées (pas de page orpheline).
-    for old in OUT.glob('*.html'):
-        if old.name not in written:
-            old.unlink()
+    # Les pages des brèves sorties du fil sont CONSERVÉES : des liens partagés, des flux
+    # publics en cache et les moteurs de recherche y pointent encore (sinon erreur 404).
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
              f'  <url><loc>{SITE}/</loc><changefreq>hourly</changefreq></url>',
