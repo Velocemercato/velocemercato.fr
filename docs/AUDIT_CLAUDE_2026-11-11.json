@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-12T11:07:36.505561+01:00",
-  "commit": "6db551933308ef02dcd5e80698a05bf37fe4f437",
-  "html_pages": 159,
-  "live_urls_checked": 422,
+  "generated_at": "2026-11-12T18:58:15.561535+01:00",
+  "commit": "3c25dafa8f76829611114c42a178e691abb722c0",
+  "html_pages": 175,
+  "live_urls_checked": 463,
   "local_targets_absent": [
     {
       "file": "foot/index.html",
@@ -450,6 +450,32 @@
           "file": "angle-stat/index.html",
           "line": 20,
           "href": "https://api-sports.io/terms",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f429dca426e0a194c80485853451dfb35df922c/actus-edition-20261022-0728.mp4",
+      "status": "non_teste",
+      "reason": "TimeoutError",
+      "references": [
+        {
+          "file": "studio/episodes/actus-edition-20261022-0728.html",
+          "line": 20,
+          "href": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f429dca426e0a194c80485853451dfb35df922c/actus-edition-20261022-0728.mp4",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f429dca426e0a194c80485853451dfb35df922c/foot-edition-20261022-1309.mp4",
+      "status": "non_teste",
+      "reason": "TimeoutError",
+      "references": [
+        {
+          "file": "studio/episodes/foot-edition-20261022-1309.html",
+          "line": 20,
+          "href": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f429dca426e0a194c80485853451dfb35df922c/foot-edition-20261022-1309.mp4",
           "tag": "a"
         }
       ]
@@ -1718,13 +1744,13 @@
   "server_failures": [],
   "classification_to_review": [],
   "feed_counts": {
-    "articles.json": 12,
-    "vm-gaming/news.json": 3
+    "articles.json": 28,
+    "vm-gaming/news.json": 11
   },
   "replay_by_genre": {
-    "foot": 43,
-    "actus": 30,
-    "gaming": 17
+    "gaming": 17,
+    "actus": 31,
+    "foot": 42
   },
   "json_errors": [],
   "all_live_results": [
@@ -1779,6 +1805,19 @@
       ]
     },
     {
+      "url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f429dca426e0a194c80485853451dfb35df922c/actus-edition-20261022-0728.mp4",
+      "status": "non_teste",
+      "reason": "TimeoutError",
+      "references": [
+        {
+          "file": "studio/episodes/actus-edition-20261022-0728.html",
+          "line": 20,
+          "href": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f429dca426e0a194c80485853451dfb35df922c/actus-edition-20261022-0728.mp4",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f429dca426e0a194c80485853451dfb35df922c/foot-buts-20261101-1108.mp4",
       "status": 206,
       "final_url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f429dca426e0a194c80485853451dfb35df922c/foot-buts-20261101-1108.mp4",
@@ -1787,6 +1826,32 @@
           "file": "studio/episodes/foot-buts-20261101-1108.html",
           "line": 20,
           "href": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f429dca426e0a194c80485853451dfb35df922c/foot-buts-20261101-1108.mp4",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f429dca426e0a194c80485853451dfb35df922c/foot-edition-20261022-0723.mp4",
+      "status": 206,
+      "final_url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f429dca426e0a194c80485853451dfb35df922c/foot-edition-20261022-0723.mp4",
+      "references": [
+        {
+          "file": "studio/episodes/foot-edition-20261022-0723.html",
+          "line": 20,
+          "href": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f429dca426e0a194c80485853451dfb35df922c/foot-edition-20261022-0723.mp4",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f429dca426e0a194c80485853451dfb35df922c/foot-edition-20261022-1309.mp4",
+      "status": "non_teste",
+      "reason": "TimeoutError",
+      "references": [
+        {
+          "file": "studio/episodes/foot-edition-20261022-1309.html",
+          "line": 20,
+          "href": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f429dca426e0a194c80485853451dfb35df922c/foot-edition-20261022-1309.mp4",
           "tag": "a"
         }
       ]
@@ -1857,19 +1922,6 @@
       ]
     },
     {
-      "url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/actus-edition-20261022-0728.mp4",
-      "status": 206,
-      "final_url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/actus-edition-20261022-0728.mp4",
-      "references": [
-        {
-          "file": "studio/episodes/actus-edition-20261022-0728.html",
-          "line": 20,
-          "href": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/actus-edition-20261022-0728.mp4",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/actus-edition-20261022-1311.mp4",
       "status": 206,
       "final_url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/actus-edition-20261022-1311.mp4",
@@ -1891,32 +1943,6 @@
           "file": "studio/episodes/foot-debat-20261022-0003.html",
           "line": 20,
           "href": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/foot-debat-20261022-0003.mp4",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/foot-edition-20261022-0723.mp4",
-      "status": 206,
-      "final_url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/foot-edition-20261022-0723.mp4",
-      "references": [
-        {
-          "file": "studio/episodes/foot-edition-20261022-0723.html",
-          "line": 20,
-          "href": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/foot-edition-20261022-0723.mp4",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/foot-edition-20261022-1309.mp4",
-      "status": 206,
-      "final_url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/foot-edition-20261022-1309.mp4",
-      "references": [
-        {
-          "file": "studio/episodes/foot-edition-20261022-1309.html",
-          "line": 20,
-          "href": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/foot-edition-20261022-1309.mp4",
           "tag": "a"
         }
       ]
@@ -2139,13 +2165,79 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-b717b2ca90ff0171108136.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-92362de0ade975cbb78d73.html",
           "line": 95,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-8f5b356881d6216155a4ac.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-c44e9cb99b6dccb83bc383.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-207ae2f9dc92195a5f4370.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-3a93829dfca081c2db4130.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-b16eac401b1638f860b74f.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-2de10dc3a578c1b0e0e70c.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-b3be9df12f90206bb8863b.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-c37d8fe65ac8cfc50e3554.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-9b4f5bda4f7fc0234f569a.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-2354a2e72d6a38fb3b64cc.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-8a0abe9bcabd19efc0e243.html",
           "line": 95,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
@@ -2169,7 +2261,19 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-efe6768d677cc6a4183d2a.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-23f961a1b39dc6255d42d0.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-664412f78c63e39329cfb0.html",
           "line": 95,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
@@ -2181,7 +2285,19 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-f339f75d1521b00bee832b.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-8244fba075a12db3438abf.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-751901a2c0b756aa7be5e0.html",
           "line": 95,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
@@ -2194,6 +2310,12 @@
         },
         {
           "file": "a/rss-v2-a8af7f56b1ae51070ee75e.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-9a54ff0d0cb69ca34bb31d.html",
           "line": 95,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
@@ -2432,12 +2554,6 @@
           "tag": "a"
         },
         {
-          "file": "pronos/index.html",
-          "line": 34,
-          "href": "https://footamateur.ouest-france.fr/coupe-de-france-le-programme-complet-du-septieme-tour-2026/",
-          "tag": "a"
-        },
-        {
           "file": "articles.json",
           "id": "rss-v2-a8af7f56b1ae51070ee75e",
           "title": "Coupe de France : le programme complet du septième tour dévoilé"
@@ -2470,6 +2586,30 @@
       ]
     },
     {
+      "url": "https://fr.euronews.com/2026/11/12/cristiano-ronaldo-lance-la-production-de-sa-serie-tele-day-1s",
+      "status": 206,
+      "final_url": "https://fr.euronews.com/2026/11/12/cristiano-ronaldo-lance-la-production-de-sa-serie-tele-day-1s",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-056b6d085b9327857fadd4",
+          "title": "Cristiano Ronaldo annonce le début de la production de sa série « Day 1s »"
+        }
+      ]
+    },
+    {
+      "url": "https://fr.euronews.com/2026/11/12/la-fonte-de-la-banquise-arctique-pourrait-annoncer-les-secheresses-estivales-en-europe-de",
+      "status": 206,
+      "final_url": "https://fr.euronews.com/2026/11/12/la-fonte-de-la-banquise-arctique-pourrait-annoncer-les-secheresses-estivales-en-europe-de",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-5d09e7ad38ed83fab1246e",
+          "title": "Une baisse de la banquise arctique pourrait signaler des sécheresses estivales en Europe de l'Est"
+        }
+      ]
+    },
+    {
       "url": "https://fr.euronews.com/2026/11/12/la-sonde-europeenne-hera-inspecte-de-pres-lasteroide-dimorphos-pour-la-defense-planetaire",
       "status": 206,
       "final_url": "https://fr.euronews.com/2026/11/12/la-sonde-europeenne-hera-inspecte-de-pres-lasteroide-dimorphos-pour-la-defense-planetaire",
@@ -2482,22 +2622,34 @@
       ]
     },
     {
+      "url": "https://fr.euronews.com/2026/11/12/le-ministre-thailandais-des-affaires-etrangeres-alerte-sur-leffritement-de-lordre-internat",
+      "status": 206,
+      "final_url": "https://fr.euronews.com/2026/11/12/le-ministre-thailandais-des-affaires-etrangeres-alerte-sur-leffritement-de-lordre-internat",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 41,
+          "href": "https://fr.euronews.com/2026/11/12/le-ministre-thailandais-des-affaires-etrangeres-alerte-sur-leffritement-de-lordre-internat",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 41,
+          "href": "https://fr.euronews.com/2026/11/12/le-ministre-thailandais-des-affaires-etrangeres-alerte-sur-leffritement-de-lordre-internat",
+          "tag": "a"
+        },
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-312295157bcd4383068353",
+          "title": "Bangkok alerte sur l'effritement de l'ordre international fondé sur des règles"
+        }
+      ]
+    },
+    {
       "url": "https://fr.euronews.com/2026/11/12/un-representant-des-colonies-juives-en-cisjordanie-occupee-refoule-a-son-arrivee-en-france",
       "status": 206,
       "final_url": "https://fr.euronews.com/2026/11/12/un-representant-des-colonies-juives-en-cisjordanie-occupee-refoule-a-son-arrivee-en-france",
       "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 45,
-          "href": "https://fr.euronews.com/2026/11/12/un-representant-des-colonies-juives-en-cisjordanie-occupee-refoule-a-son-arrivee-en-france",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 45,
-          "href": "https://fr.euronews.com/2026/11/12/un-representant-des-colonies-juives-en-cisjordanie-occupee-refoule-a-son-arrivee-en-france",
-          "tag": "a"
-        },
         {
           "file": "actus/news.json",
           "id": "rss-v2-20a57898611b0ba0219a00",
@@ -2511,18 +2663,6 @@
       "final_url": "https://fr.euronews.com/video/2026/11/12/a-bogota-des-tournois-de-boxe-amateur-dans-les-parcs-pour-des-prix-en-cash-contestes-par-l",
       "references": [
         {
-          "file": "pronos/index.html",
-          "line": 44,
-          "href": "https://fr.euronews.com/video/2026/11/12/a-bogota-des-tournois-de-boxe-amateur-dans-les-parcs-pour-des-prix-en-cash-contestes-par-l",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 44,
-          "href": "https://fr.euronews.com/video/2026/11/12/a-bogota-des-tournois-de-boxe-amateur-dans-les-parcs-pour-des-prix-en-cash-contestes-par-l",
-          "tag": "a"
-        },
-        {
           "file": "actus/news.json",
           "id": "rss-v2-00c95957bf4e7633f5e8ed",
           "title": "À Bogotá, des tournois de boxe amateur dans les parcs contestés par la police"
@@ -2534,18 +2674,6 @@
       "status": 206,
       "final_url": "https://fr.euronews.com/video/2026/11/12/brooklyn-un-immeuble-seffondre-pres-dun-chantier-17-blesses",
       "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 42,
-          "href": "https://fr.euronews.com/video/2026/11/12/brooklyn-un-immeuble-seffondre-pres-dun-chantier-17-blesses",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 42,
-          "href": "https://fr.euronews.com/video/2026/11/12/brooklyn-un-immeuble-seffondre-pres-dun-chantier-17-blesses",
-          "tag": "a"
-        },
         {
           "file": "actus/news.json",
           "id": "rss-v2-f1dd82cbd8d90aa8d9832f",
@@ -2602,6 +2730,68 @@
           "line": 879,
           "href": "https://france3-regions.franceinfo.fr/",
           "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://france3-regions.franceinfo.fr/corse/haute-corse/corte/video-crue-du-tavignano-a-corte-le-pont-de-baliri-endommage-3448692.html",
+      "status": 200,
+      "final_url": "https://france3-regions.franceinfo.fr/corse/haute-corse/corte/video-crue-du-tavignano-a-corte-le-pont-de-baliri-endommage-3448692.html",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 43,
+          "href": "https://france3-regions.franceinfo.fr/corse/haute-corse/corte/video-crue-du-tavignano-a-corte-le-pont-de-baliri-endommage-3448692.html#xtor=RSS-3-[lestitres]",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 43,
+          "href": "https://france3-regions.franceinfo.fr/corse/haute-corse/corte/video-crue-du-tavignano-a-corte-le-pont-de-baliri-endommage-3448692.html#xtor=RSS-3-[lestitres]",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://france3-regions.franceinfo.fr/corse/haute-corse/corte/video-crue-du-tavignano-a-corte-le-pont-de-baliri-endommage-3448692.html#xtor=RSS-3-[lestitres]",
+      "status": 200,
+      "final_url": "https://france3-regions.franceinfo.fr/corse/haute-corse/corte/video-crue-du-tavignano-a-corte-le-pont-de-baliri-endommage-3448692.html#xtor=RSS-3-[lestitres]",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-2f06478361bb6da601a9a1",
+          "title": "Crue du Tavignano à Corte : le pont de Baliri endommagé et fermé"
+        }
+      ]
+    },
+    {
+      "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/cannes/en-images-inondations-routes-coupees-degats-le-passage-de-la-depression-charles-dans-les-alpes-maritimes-et-le-var-3448560.html",
+      "status": 200,
+      "final_url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/cannes/en-images-inondations-routes-coupees-degats-le-passage-de-la-depression-charles-dans-les-alpes-maritimes-et-le-var-3448560.html",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 42,
+          "href": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/cannes/en-images-inondations-routes-coupees-degats-le-passage-de-la-depression-charles-dans-les-alpes-maritimes-et-le-var-3448560.html#xtor=RSS-3-[lestitres]",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 42,
+          "href": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/cannes/en-images-inondations-routes-coupees-degats-le-passage-de-la-depression-charles-dans-les-alpes-maritimes-et-le-var-3448560.html#xtor=RSS-3-[lestitres]",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/cannes/en-images-inondations-routes-coupees-degats-le-passage-de-la-depression-charles-dans-les-alpes-maritimes-et-le-var-3448560.html#xtor=RSS-3-[lestitres]",
+      "status": 200,
+      "final_url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/cannes/en-images-inondations-routes-coupees-degats-le-passage-de-la-depression-charles-dans-les-alpes-maritimes-et-le-var-3448560.html#xtor=RSS-3-[lestitres]",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-5bc1e7fc0de3607dcddd32",
+          "title": "Intempéries sur la Côte d'Azur : routes inondées et secours à Nice et Fréjus"
         }
       ]
     },
@@ -3076,21 +3266,33 @@
       "final_url": "https://next.ink/brief-article/compte-nintendo-les-connexions-apple-et-google-cest-bientot-fini/",
       "references": [
         {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-883bfce7183704f5677846",
+          "title": "Compte Nintendo : fin des connexions Apple et Google au 26 janvier 2027"
+        }
+      ]
+    },
+    {
+      "url": "https://next.ink/brief-article/la-ps5-passe-les-100-millions-mais-les-ventes-ralentissent/",
+      "status": 200,
+      "final_url": "https://next.ink/brief-article/la-ps5-passe-les-100-millions-mais-les-ventes-ralentissent/",
+      "references": [
+        {
           "file": "pronos/index.html",
-          "line": 51,
-          "href": "https://next.ink/brief-article/compte-nintendo-les-connexions-apple-et-google-cest-bientot-fini/",
+          "line": 50,
+          "href": "https://next.ink/brief-article/la-ps5-passe-les-100-millions-mais-les-ventes-ralentissent/",
           "tag": "a"
         },
         {
           "file": "pronos/index.html",
-          "line": 51,
-          "href": "https://next.ink/brief-article/compte-nintendo-les-connexions-apple-et-google-cest-bientot-fini/",
+          "line": 50,
+          "href": "https://next.ink/brief-article/la-ps5-passe-les-100-millions-mais-les-ventes-ralentissent/",
           "tag": "a"
         },
         {
           "file": "vm-gaming/news.json",
-          "id": "rss-v2-883bfce7183704f5677846",
-          "title": "Compte Nintendo : fin des connexions Apple et Google au 26 janvier 2027"
+          "id": "rss-v2-9e9402404e75278d0b8709",
+          "title": "La PS5 dépasse les 100 millions d'unités, mais les ventes ralentissent"
         }
       ]
     },
@@ -3099,18 +3301,6 @@
       "status": 200,
       "final_url": "https://next.ink/brief-article/steam-affiche-les-performances-des-jeux-en-fps-pour-le-steam-deck/",
       "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 49,
-          "href": "https://next.ink/brief-article/steam-affiche-les-performances-des-jeux-en-fps-pour-le-steam-deck/",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 49,
-          "href": "https://next.ink/brief-article/steam-affiche-les-performances-des-jeux-en-fps-pour-le-steam-deck/",
-          "tag": "a"
-        },
         {
           "file": "vm-gaming/news.json",
           "id": "rss-v2-56d8b582ec92f0dca0171c",
@@ -3171,6 +3361,42 @@
       ]
     },
     {
+      "url": "https://rmcsport.bfmtv.com/football/bundesliga/video-la-revolution-de-jurgen-klopp-avec-l-allemagne_VN-202611120661.html",
+      "status": 206,
+      "final_url": "https://rmcsport.bfmtv.com/football/bundesliga/video-la-revolution-de-jurgen-klopp-avec-l-allemagne_VN-202611120661.html",
+      "references": [
+        {
+          "file": "a/rss-v2-f339f75d1521b00bee832b.html",
+          "line": 92,
+          "href": "https://rmcsport.bfmtv.com/football/bundesliga/video-la-revolution-de-jurgen-klopp-avec-l-allemagne_VN-202611120661.html",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-f339f75d1521b00bee832b",
+          "title": "Jürgen Klopp dévoile sa liste avec l'Allemagne, dont le jeune Wael Mohya"
+        }
+      ]
+    },
+    {
+      "url": "https://rmcsport.bfmtv.com/football/equipe-argentine/argentine-les-images-de-dibu-martinez-et-de-sa-protection-de-la-machoire-apres-son-violent-choc-a-la-tete_AV-202611120511.html",
+      "status": 206,
+      "final_url": "https://rmcsport.bfmtv.com/football/equipe-argentine/argentine-les-images-de-dibu-martinez-et-de-sa-protection-de-la-machoire-apres-son-violent-choc-a-la-tete_AV-202611120511.html",
+      "references": [
+        {
+          "file": "a/rss-v2-9b4f5bda4f7fc0234f569a.html",
+          "line": 92,
+          "href": "https://rmcsport.bfmtv.com/football/equipe-argentine/argentine-les-images-de-dibu-martinez-et-de-sa-protection-de-la-machoire-apres-son-violent-choc-a-la-tete_AV-202611120511.html",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-9b4f5bda4f7fc0234f569a",
+          "title": "Argentine : Dibu Martinez de retour à l'entraînement après sa fracture de la mâchoire"
+        }
+      ]
+    },
+    {
       "url": "https://rmcsport.bfmtv.com/football/equipe-cote-d-ivoire/cote-d-ivoire-les-images-de-yan-diomande-qui-distribue-de-l-argent-a-des-jeunes-supporters_AV-202611120415.html",
       "status": 206,
       "final_url": "https://rmcsport.bfmtv.com/football/equipe-cote-d-ivoire/cote-d-ivoire-les-images-de-yan-diomande-qui-distribue-de-l-argent-a-des-jeunes-supporters_AV-202611120415.html",
@@ -3182,15 +3408,51 @@
           "tag": "a"
         },
         {
-          "file": "pronos/index.html",
-          "line": 33,
-          "href": "https://rmcsport.bfmtv.com/football/equipe-cote-d-ivoire/cote-d-ivoire-les-images-de-yan-diomande-qui-distribue-de-l-argent-a-des-jeunes-supporters_AV-202611120415.html",
+          "file": "articles.json",
+          "id": "rss-v2-92362de0ade975cbb78d73",
+          "title": "Côte d'Ivoire : Yan Diomandé filmé en train de distribuer de l'argent à de jeunes supporters"
+        }
+      ]
+    },
+    {
+      "url": "https://rmcsport.bfmtv.com/football/gianni-infantino_DN-202607290231.html",
+      "status": 206,
+      "final_url": "https://rmcsport.bfmtv.com/football/gianni-infantino_DN-202607290231.html",
+      "references": [
+        {
+          "file": "a/rss-v2-664412f78c63e39329cfb0.html",
+          "line": 92,
+          "href": "https://rmcsport.bfmtv.com/football/gianni-infantino_DN-202607290231.html",
           "tag": "a"
         },
         {
           "file": "articles.json",
-          "id": "rss-v2-92362de0ade975cbb78d73",
-          "title": "Côte d'Ivoire : Yan Diomandé filmé en train de distribuer de l'argent à de jeunes supporters"
+          "id": "rss-v2-664412f78c63e39329cfb0",
+          "title": "Infantino visé par une plainte aux États-Unis pour emploi illégal d'une employée de maison"
+        }
+      ]
+    },
+    {
+      "url": "https://rmcsport.bfmtv.com/football/ligue-des-nations/direct-turquie-belgique-suivez-en-live-le-match-de-ligue-des-nations-qui-peut-deja-qualifier-les-bleus_LS-202611120706.html",
+      "status": 206,
+      "final_url": "https://rmcsport.bfmtv.com/football/ligue-des-nations/direct-turquie-belgique-suivez-en-live-le-match-de-ligue-des-nations-qui-peut-deja-qualifier-les-bleus_LS-202611120706.html",
+      "references": [
+        {
+          "file": "a/rss-v2-3a93829dfca081c2db4130.html",
+          "line": 92,
+          "href": "https://rmcsport.bfmtv.com/football/ligue-des-nations/direct-turquie-belgique-suivez-en-live-le-match-de-ligue-des-nations-qui-peut-deja-qualifier-les-bleus_LS-202611120706.html",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 35,
+          "href": "https://rmcsport.bfmtv.com/football/ligue-des-nations/direct-turquie-belgique-suivez-en-live-le-match-de-ligue-des-nations-qui-peut-deja-qualifier-les-bleus_LS-202611120706.html",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-3a93829dfca081c2db4130",
+          "title": "Turquie-Belgique en direct : une victoire pourrait qualifier les Bleus pour les quarts de finale"
         }
       ]
     },
@@ -3660,13 +3922,79 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-b717b2ca90ff0171108136.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-92362de0ade975cbb78d73.html",
           "line": 82,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-8f5b356881d6216155a4ac.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-c44e9cb99b6dccb83bc383.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-207ae2f9dc92195a5f4370.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-3a93829dfca081c2db4130.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-b16eac401b1638f860b74f.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-2de10dc3a578c1b0e0e70c.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-b3be9df12f90206bb8863b.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-c37d8fe65ac8cfc50e3554.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-9b4f5bda4f7fc0234f569a.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-2354a2e72d6a38fb3b64cc.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-8a0abe9bcabd19efc0e243.html",
           "line": 82,
           "href": "https://vmunivers.fr/",
           "tag": "a"
@@ -3690,7 +4018,19 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-efe6768d677cc6a4183d2a.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-23f961a1b39dc6255d42d0.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-664412f78c63e39329cfb0.html",
           "line": 82,
           "href": "https://vmunivers.fr/",
           "tag": "a"
@@ -3702,7 +4042,19 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-f339f75d1521b00bee832b.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-8244fba075a12db3438abf.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-751901a2c0b756aa7be5e0.html",
           "line": 82,
           "href": "https://vmunivers.fr/",
           "tag": "a"
@@ -3715,6 +4067,12 @@
         },
         {
           "file": "a/rss-v2-a8af7f56b1ae51070ee75e.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-9a54ff0d0cb69ca34bb31d.html",
           "line": 82,
           "href": "https://vmunivers.fr/",
           "tag": "a"
@@ -4420,18 +4778,6 @@
       "final_url": "https://www.bbc.co.uk/news/articles/cr1ewpd95d21o?at_medium=RSS&at_campaign=rss",
       "references": [
         {
-          "file": "pronos/index.html",
-          "line": 43,
-          "href": "https://www.bbc.co.uk/news/articles/cr1ewpd95d21o?at_medium=RSS&at_campaign=rss",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 43,
-          "href": "https://www.bbc.co.uk/news/articles/cr1ewpd95d21o?at_medium=RSS&at_campaign=rss",
-          "tag": "a"
-        },
-        {
           "file": "actus/news.json",
           "id": "rss-v2-f074029439bf683baa12fb",
           "title": "Ukraine : des coupures d'électricité prolongées face aux frappes russes sur le réseau"
@@ -4450,15 +4796,51 @@
           "tag": "a"
         },
         {
+          "file": "articles.json",
+          "id": "rss-v2-86fbd78c768a0040cfb5e6",
+          "title": "Les États-Unis renoncent à la Coupe du monde U17 au Qatar"
+        }
+      ]
+    },
+    {
+      "url": "https://www.bbc.co.uk/sport/football/articles/ckedq01zve04o?at_medium=RSS&at_campaign=rss",
+      "status": 206,
+      "final_url": "https://www.bbc.co.uk/sport/football/articles/ckedq01zve04o?at_medium=RSS&at_campaign=rss",
+      "references": [
+        {
+          "file": "a/rss-v2-9a54ff0d0cb69ca34bb31d.html",
+          "line": 92,
+          "href": "https://www.bbc.co.uk/sport/football/articles/ckedq01zve04o?at_medium=RSS&at_campaign=rss",
+          "tag": "a"
+        },
+        {
           "file": "pronos/index.html",
           "line": 37,
-          "href": "https://www.bbc.co.uk/sport/football/articles/c6y49yz77pppo?at_medium=RSS&at_campaign=rss",
+          "href": "https://www.bbc.co.uk/sport/football/articles/ckedq01zve04o?at_medium=RSS&at_campaign=rss",
           "tag": "a"
         },
         {
           "file": "articles.json",
-          "id": "rss-v2-86fbd78c768a0040cfb5e6",
-          "title": "Les États-Unis renoncent à la Coupe du monde U17 au Qatar"
+          "id": "rss-v2-9a54ff0d0cb69ca34bb31d",
+          "title": "Owono encore indécis sur son avenir après la mort de De Miguel"
+        }
+      ]
+    },
+    {
+      "url": "https://www.bbc.co.uk/sport/football/articles/ckm2mn2lvld9o?at_medium=RSS&at_campaign=rss",
+      "status": 206,
+      "final_url": "https://www.bbc.co.uk/sport/football/articles/ckm2mn2lvld9o?at_medium=RSS&at_campaign=rss",
+      "references": [
+        {
+          "file": "a/rss-v2-b717b2ca90ff0171108136.html",
+          "line": 92,
+          "href": "https://www.bbc.co.uk/sport/football/articles/ckm2mn2lvld9o?at_medium=RSS&at_campaign=rss",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-b717b2ca90ff0171108136",
+          "title": "Mort de Billy Vigar : l'enquête policière toujours en cours"
         }
       ]
     },
@@ -4470,12 +4852,6 @@
         {
           "file": "a/rss-v2-8244fba075a12db3438abf.html",
           "line": 92,
-          "href": "https://www.bbc.co.uk/sport/football/articles/cqg7l9x9jnzko?at_medium=RSS&at_campaign=rss",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 35,
           "href": "https://www.bbc.co.uk/sport/football/articles/cqg7l9x9jnzko?at_medium=RSS&at_campaign=rss",
           "tag": "a"
         },
@@ -4696,7 +5072,7 @@
     },
     {
       "url": "https://www.bienici.com/recherche?q=Pays%20de%20la%20Loire",
-      "status": 206,
+      "status": 200,
       "final_url": "https://www.bienici.com/recherche?q=Pays%20de%20la%20Loire",
       "references": [
         {
@@ -4813,6 +5189,42 @@
       ]
     },
     {
+      "url": "https://www.dexerto.fr/gta/gta-6-devoile-gameplay-si-realiste-que-joueurs-confondent-avec-realite-1663924/",
+      "status": 206,
+      "final_url": "https://www.dexerto.fr/gta/gta-6-devoile-gameplay-si-realiste-que-joueurs-confondent-avec-realite-1663924/",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 51,
+          "href": "https://www.dexerto.fr/gta/gta-6-devoile-gameplay-si-realiste-que-joueurs-confondent-avec-realite-1663924/",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 51,
+          "href": "https://www.dexerto.fr/gta/gta-6-devoile-gameplay-si-realiste-que-joueurs-confondent-avec-realite-1663924/",
+          "tag": "a"
+        },
+        {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-23c911acb779739024276f",
+          "title": "GTA 6 : une séquence de gameplay si réaliste qu'elle passe pour de la vraie vidéo"
+        }
+      ]
+    },
+    {
+      "url": "https://www.dexerto.fr/gta/gta-6-pourrait-etre-censure-dans-certains-pays-joueurs-ont-repere-indice-1663888/",
+      "status": 206,
+      "final_url": "https://www.dexerto.fr/gta/gta-6-pourrait-etre-censure-dans-certains-pays-joueurs-ont-repere-indice-1663888/",
+      "references": [
+        {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-08d2ccde21f5276209c7d7",
+          "title": "GTA 6 : des différences de taille de fichiers selon les régions relancent les soupçons de censure"
+        }
+      ]
+    },
+    {
       "url": "https://www.espn.com/soccer/story/_/id/49866841/ballon-dor-2026-nominees-harry-kane-kylian-mbappe-lead-30-man-shortlist",
       "status": 202,
       "final_url": "https://www.espn.com/soccer/story/_/id/49866841/ballon-dor-2026-nominees-harry-kane-kylian-mbappe-lead-30-man-shortlist",
@@ -4835,6 +5247,54 @@
           "line": 928,
           "href": "https://www.eurogamer.net/",
           "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.eurogamer.net/cd-projekt-red-geralt-gen-ai-voice-polish-jacek-rozenek",
+      "status": 206,
+      "final_url": "https://www.eurogamer.net/cd-projekt-red-geralt-gen-ai-voice-polish-jacek-rozenek",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 52,
+          "href": "https://www.eurogamer.net/cd-projekt-red-geralt-gen-ai-voice-polish-jacek-rozenek",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 52,
+          "href": "https://www.eurogamer.net/cd-projekt-red-geralt-gen-ai-voice-polish-jacek-rozenek",
+          "tag": "a"
+        },
+        {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-ca2842d9531c21416c3ce5",
+          "title": "The Witcher 3 : CD Projekt Red utilise l'IA générative pour la voix de Geralt en polonais"
+        }
+      ]
+    },
+    {
+      "url": "https://www.eurogamer.net/microsoft-xbox-gen-ai-asha-sharma-memo",
+      "status": 206,
+      "final_url": "https://www.eurogamer.net/microsoft-xbox-gen-ai-asha-sharma-memo",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 49,
+          "href": "https://www.eurogamer.net/microsoft-xbox-gen-ai-asha-sharma-memo",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 49,
+          "href": "https://www.eurogamer.net/microsoft-xbox-gen-ai-asha-sharma-memo",
+          "tag": "a"
+        },
+        {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-202a6793aeb9f0ee62a9cd",
+          "title": "Asha Sharma évoque le potentiel de l'IA générative pour les jeux Xbox"
         }
       ]
     },
@@ -4904,7 +5364,7 @@
     {
       "url": "https://www.facebook.com/share/19wkqvg6Em/",
       "status": 200,
-      "final_url": "https://www.facebook.com/people/Veloce-Mercato/61584725345167/?rdid=zQ25SghL5Gc9ZRCB&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19wkqvg6Em%2F",
+      "final_url": "https://www.facebook.com/people/Veloce-Mercato/61584725345167/?rdid=Am6v0YAYHbXjBE1V&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19wkqvg6Em%2F",
       "references": [
         {
           "file": "index.html",
@@ -4917,7 +5377,7 @@
     {
       "url": "https://www.facebook.com/share/1C3uyLM2BB/",
       "status": 200,
-      "final_url": "https://www.facebook.com/Vmactusetpronos?rdid=7vSIyCJQC0rx9MwW&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1C3uyLM2BB%2F",
+      "final_url": "https://www.facebook.com/Vmactusetpronos?rdid=MzniVKjLo0Q9JdXw&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1C3uyLM2BB%2F",
       "references": [
         {
           "file": "index.html",
@@ -4930,7 +5390,7 @@
     {
       "url": "https://www.facebook.com/share/1DUSALoBzG/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=h2u42fTfndSgWEfP",
+      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=F1MRLpsaCDkqzuwJ",
       "references": [
         {
           "file": "foot/index.html",
@@ -4961,7 +5421,7 @@
     {
       "url": "https://www.facebook.com/share/1E6nH6RZzX/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr?rdid=oBB5OsG8vEsoYlP1&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1E6nH6RZzX%2F",
+      "final_url": "https://www.facebook.com/velocemercato.fr?rdid=cfJyZ3qYETRnyU9j&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1E6nH6RZzX%2F",
       "references": [
         {
           "file": "pronos/index.html",
@@ -4974,7 +5434,7 @@
     {
       "url": "https://www.facebook.com/share/1EiGutypix/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=Fg7PNbV6CkU0DlM9",
+      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=dba1DEvk2yqSngEO",
       "references": [
         {
           "file": "studio.html",
@@ -5259,7 +5719,7 @@
     {
       "url": "https://www.facebook.com/velocemercato.fr",
       "status": 200,
-      "final_url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fvelocemercato.fr",
+      "final_url": "https://www.facebook.com/velocemercato.fr",
       "references": [
         {
           "file": "index.html",
@@ -5491,12 +5951,6 @@
           "tag": "a"
         },
         {
-          "file": "pronos/index.html",
-          "line": 36,
-          "href": "https://www.foot01.com/ol/ol-la-rumeur-athekame-est-brutalement-dementie",
-          "tag": "a"
-        },
-        {
           "file": "articles.json",
           "id": "rss-v2-c37d8fe65ac8cfc50e3554",
           "title": "OL : Athekame ne devrait pas quitter Lyon en janvier, selon Foot01"
@@ -5504,8 +5958,188 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a7852157138398775576-les-etats-unis-veulent-pep-guardiola-pour-remplacer-mauricio-pochettino",
+      "url": "https://www.foot01.com/paris/50-me-pour-de-jong-le-psg-debarque",
+      "status": 200,
+      "final_url": "https://www.foot01.com/paris/50-me-pour-de-jong-le-psg-debarque",
+      "references": [
+        {
+          "file": "a/rss-v2-8f5b356881d6216155a4ac.html",
+          "line": 92,
+          "href": "https://www.foot01.com/paris/50-me-pour-de-jong-le-psg-debarque",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 34,
+          "href": "https://www.foot01.com/paris/50-me-pour-de-jong-le-psg-debarque",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-8f5b356881d6216155a4ac",
+          "title": "Frenkie De Jong pourrait quitter le Barça pour 50 M€, PSG et Arsenal intéressés"
+        }
+      ]
+    },
+    {
+      "url": "https://www.foot01.com/paris/le-psg-pret-a-payer-la-petite-clause-dupamecano",
+      "status": 200,
+      "final_url": "https://www.foot01.com/paris/le-psg-pret-a-payer-la-petite-clause-dupamecano",
+      "references": [
+        {
+          "file": "a/rss-v2-b16eac401b1638f860b74f.html",
+          "line": 92,
+          "href": "https://www.foot01.com/paris/le-psg-pret-a-payer-la-petite-clause-dupamecano",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-b16eac401b1638f860b74f",
+          "title": "Le PSG toujours intéressé par Upamecano, une clause libératoire à 65 M€ évoquée"
+        }
+      ]
+    },
+    {
+      "url": "https://www.foot01.com/tv/tv-tf1-encore-prive-de-la-coupe-du-monde-en-2030",
+      "status": 200,
+      "final_url": "https://www.foot01.com/tv/tv-tf1-encore-prive-de-la-coupe-du-monde-en-2030",
+      "references": [
+        {
+          "file": "a/rss-v2-751901a2c0b756aa7be5e0.html",
+          "line": 92,
+          "href": "https://www.foot01.com/tv/tv-tf1-encore-prive-de-la-coupe-du-monde-en-2030",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-751901a2c0b756aa7be5e0",
+          "title": "TV : M6 diffusera seul la Coupe du monde 2030, TF1 encore privé du Mondial"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a1630854547364104967-mercato-las-monaco-sest-positionnee-pour-accueillir-un-indesirable-du-fc-barcelone",
       "status": 206,
+      "final_url": "https://www.footmercato.net/a1630854547364104967-mercato-las-monaco-sest-positionnee-pour-accueillir-un-indesirable-du-fc-barcelone",
+      "references": [
+        {
+          "file": "a/rss-v2-efe6768d677cc6a4183d2a.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a1630854547364104967-mercato-las-monaco-sest-positionnee-pour-accueillir-un-indesirable-du-fc-barcelone",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-efe6768d677cc6a4183d2a",
+          "title": "Mercato : Monaco serait sur les rangs pour Alejandro Baldé, mis à l'écart au Barça"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a417938270778971667-le-psg-annonce-un-partenariat-avec-bentley-motors",
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a417938270778971667-le-psg-annonce-un-partenariat-avec-bentley-motors",
+      "references": [
+        {
+          "file": "a/rss-v2-8a0abe9bcabd19efc0e243.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a417938270778971667-le-psg-annonce-un-partenariat-avec-bentley-motors",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-8a0abe9bcabd19efc0e243",
+          "title": "Le PSG annonce un partenariat avec Bentley Motors jusqu'en 2028"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a5160105061498994501-yaya-fofana-la-nouvelle-star-de-la-cote-divoire-qui-fait-des-miracles-en-ligue-2",
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a5160105061498994501-yaya-fofana-la-nouvelle-star-de-la-cote-divoire-qui-fait-des-miracles-en-ligue-2",
+      "references": [
+        {
+          "file": "a/rss-v2-c44e9cb99b6dccb83bc383.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a5160105061498994501-yaya-fofana-la-nouvelle-star-de-la-cote-divoire-qui-fait-des-miracles-en-ligue-2",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-c44e9cb99b6dccb83bc383",
+          "title": "Yaya Fofana, révélation de Reims, appelé en équipe de Côte d'Ivoire"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a671041331342326787-lens-le-clan-thiago-motta-repond-aux-critiques-sur-son-salaire",
+      "status": 200,
+      "final_url": "https://www.footmercato.net/a671041331342326787-lens-le-clan-thiago-motta-repond-aux-critiques-sur-son-salaire",
+      "references": [
+        {
+          "file": "a/rss-v2-207ae2f9dc92195a5f4370.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a671041331342326787-lens-le-clan-thiago-motta-repond-aux-critiques-sur-son-salaire",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-207ae2f9dc92195a5f4370",
+          "title": "Lens : l'agent de Thiago Motta dément les accusations sur son salaire"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a7179870526308036135-dejan-kulusevski-tacle-tottenham-apres-ses-526-jours-dabsence",
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a7179870526308036135-dejan-kulusevski-tacle-tottenham-apres-ses-526-jours-dabsence",
+      "references": [
+        {
+          "file": "a/rss-v2-b3be9df12f90206bb8863b.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a7179870526308036135-dejan-kulusevski-tacle-tottenham-apres-ses-526-jours-dabsence",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 36,
+          "href": "https://www.footmercato.net/a7179870526308036135-dejan-kulusevski-tacle-tottenham-apres-ses-526-jours-dabsence",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-b3be9df12f90206bb8863b",
+          "title": "Kulusevski critique Tottenham après 526 jours d'absence"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a7414324694540841933-psg-une-tendance-se-degage-pour-lavenir-de-marquinhos",
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a7414324694540841933-psg-une-tendance-se-degage-pour-lavenir-de-marquinhos",
+      "references": [
+        {
+          "file": "a/rss-v2-2354a2e72d6a38fb3b64cc.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a7414324694540841933-psg-une-tendance-se-degage-pour-lavenir-de-marquinhos",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 33,
+          "href": "https://www.footmercato.net/a7414324694540841933-psg-une-tendance-se-degage-pour-lavenir-de-marquinhos",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-2354a2e72d6a38fb3b64cc",
+          "title": "PSG : le club envisagerait de prolonger Marquinhos, sous contrat jusqu'en 2028"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a7852157138398775576-les-etats-unis-veulent-pep-guardiola-pour-remplacer-mauricio-pochettino",
+      "status": 200,
       "final_url": "https://www.footmercato.net/a7852157138398775576-les-etats-unis-veulent-pep-guardiola-pour-remplacer-mauricio-pochettino",
       "references": [
         {
@@ -5518,6 +6152,24 @@
           "file": "articles.json",
           "id": "rss-v2-5954cbe840d98d3c19a1c7",
           "title": "Les États-Unis voudraient Pep Guardiola pour succéder à Mauricio Pochettino"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a8616720903541357796-le-parallele-troublant-de-marco-materazzi-entre-le-coup-de-tete-de-zidane-et-la-mort-de-jesus-de-miguel",
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a8616720903541357796-le-parallele-troublant-de-marco-materazzi-entre-le-coup-de-tete-de-zidane-et-la-mort-de-jesus-de-miguel",
+      "references": [
+        {
+          "file": "a/rss-v2-2de10dc3a578c1b0e0e70c.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a8616720903541357796-le-parallele-troublant-de-marco-materazzi-entre-le-coup-de-tete-de-zidane-et-la-mort-de-jesus-de-miguel",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-2de10dc3a578c1b0e0e70c",
+          "title": "Materazzi revient sur le coup de tête de Zidane en lien avec la mort de Jesus de Miguel"
         }
       ]
     },
@@ -5566,6 +6218,18 @@
       ]
     },
     {
+      "url": "https://www.franceinfo.fr/culture/cinema/depardieu/gerard-depardieu-renonce-a-son-proces-en-appel-pour-deux-agressions-sexuelles-commises-lors-du-tournage-du-film-les-volets-verts_8279438.html#xtor=RSS-3-[lestitres]",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/culture/cinema/depardieu/gerard-depardieu-renonce-a-son-proces-en-appel-pour-deux-agressions-sexuelles-commises-lors-du-tournage-du-film-les-volets-verts_8279438.html#xtor=RSS-3-[lestitres]",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-8e66c06f1434c57d2e8ad4",
+          "title": "Gérard Depardieu renonce à son procès en appel pour agressions sexuelles"
+        }
+      ]
+    },
+    {
       "url": "https://www.franceinfo.fr/economie/emploi/metiers/agriculture/le-dereglement-climatique-pese-lourd-sur-l-inflation-notamment-dans-la-zone-euro-alerte-oxfam_8278283.html#xtor=RSS-3-%5Beconomie%5D",
       "status": 200,
       "final_url": "https://www.franceinfo.fr/economie/emploi/metiers/agriculture/le-dereglement-climatique-pese-lourd-sur-l-inflation-notamment-dans-la-zone-euro-alerte-oxfam_8278283.html#xtor=RSS-3-%5Beconomie%5D",
@@ -5578,21 +6242,14 @@
       ]
     },
     {
-      "url": "https://www.franceinfo.fr/economie/la-liquidation-judiciaire-de-fibre-excellence-l-ex-numero-1-de-la-pate-a-papier-en-france-definitivement-enterinee_8278943.html",
+      "url": "https://www.franceinfo.fr/economie/impots/avec-l-intelligence-artificielle-le-fisc-traque-les-abris-de-jardin-non-declares_8279357.html#xtor=RSS-3-[lestitres]",
       "status": 200,
-      "final_url": "https://www.franceinfo.fr/economie/la-liquidation-judiciaire-de-fibre-excellence-l-ex-numero-1-de-la-pate-a-papier-en-france-definitivement-enterinee_8278943.html",
+      "final_url": "https://www.franceinfo.fr/economie/impots/avec-l-intelligence-artificielle-le-fisc-traque-les-abris-de-jardin-non-declares_8279357.html#xtor=RSS-3-[lestitres]",
       "references": [
         {
-          "file": "pronos/index.html",
-          "line": 41,
-          "href": "https://www.franceinfo.fr/economie/la-liquidation-judiciaire-de-fibre-excellence-l-ex-numero-1-de-la-pate-a-papier-en-france-definitivement-enterinee_8278943.html#xtor=RSS-3-%5Beconomie%5D",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 41,
-          "href": "https://www.franceinfo.fr/economie/la-liquidation-judiciaire-de-fibre-excellence-l-ex-numero-1-de-la-pate-a-papier-en-france-definitivement-enterinee_8278943.html#xtor=RSS-3-%5Beconomie%5D",
-          "tag": "a"
+          "file": "actus/news.json",
+          "id": "rss-v2-bcaef279285632145a44d0",
+          "title": "Le fisc utilise l'IA pour repérer les abris de jardin non déclarés"
         }
       ]
     },
@@ -5609,6 +6266,73 @@
       ]
     },
     {
+      "url": "https://www.franceinfo.fr/economie/le-gout-est-sympa-et-c-est-moins-cher-le-prosecco-detrone-le-champagne-en-supermarche_8279537.html",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/economie/le-gout-est-sympa-et-c-est-moins-cher-le-prosecco-detrone-le-champagne-en-supermarche_8279537.html",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 45,
+          "href": "https://www.franceinfo.fr/economie/le-gout-est-sympa-et-c-est-moins-cher-le-prosecco-detrone-le-champagne-en-supermarche_8279537.html#xtor=RSS-3-%5Beconomie%5D",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 45,
+          "href": "https://www.franceinfo.fr/economie/le-gout-est-sympa-et-c-est-moins-cher-le-prosecco-detrone-le-champagne-en-supermarche_8279537.html#xtor=RSS-3-%5Beconomie%5D",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/economie/le-gout-est-sympa-et-c-est-moins-cher-le-prosecco-detrone-le-champagne-en-supermarche_8279537.html#xtor=RSS-3-%5Beconomie%5D",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/economie/le-gout-est-sympa-et-c-est-moins-cher-le-prosecco-detrone-le-champagne-en-supermarche_8279537.html#xtor=RSS-3-%5Beconomie%5D",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-d4066c9a89bb31a099cf33",
+          "title": "Le prosecco devance le champagne dans les ventes en supermarché en France"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/environnement/meteo/le-departement-de-la-haute-corse-place-en-vigilance-orange-aux-crues_8279591.html#xtor=RSS-3-[lestitres]",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/environnement/meteo/le-departement-de-la-haute-corse-place-en-vigilance-orange-aux-crues_8279591.html#xtor=RSS-3-[lestitres]",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-aa8d0fe4c4b1cf26b4642b",
+          "title": "Haute-Corse en vigilance orange aux crues, crue importante du Tavignano"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/faits-divers/terrorisme/attentat-raciste-a-trappes/attentat-raciste-de-trappes-l-extreme-droite-tue-la-democratie-et-l-extreme-droite-tue-meme-celles-et-ceux-qui-l-exercent-denonce-fabien-roussel_8279168.html#xtor=RSS-3-%5Bpolitique%5D",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/faits-divers/terrorisme/attentat-raciste-a-trappes/attentat-raciste-de-trappes-l-extreme-droite-tue-la-democratie-et-l-extreme-droite-tue-meme-celles-et-ceux-qui-l-exercent-denonce-fabien-roussel_8279168.html#xtor=RSS-3-%5Bpolitique%5D",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-2dc8a5a5bc2a311cda450c",
+          "title": "Trappes : Fabien Roussel dénonce les violences visant les élus après l'attentat raciste"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/le-patron-du-geant-de-la-tech-nvidia-jensen-huang-demissionne-apres-la-revelation-d-une-liaison-avec-une-femme-soupconnee-d-espionnage-pour-la-chine_8279405.html#xtor=RSS-3-[lestitres]",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/internet/intelligence-artificielle/le-patron-du-geant-de-la-tech-nvidia-jensen-huang-demissionne-apres-la-revelation-d-une-liaison-avec-une-femme-soupconnee-d-espionnage-pour-la-chine_8279405.html#xtor=RSS-3-[lestitres]",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-6047844330d19c0eb14c17",
+          "title": "Le PDG de Nvidia, Jensen Huang, démissionne avec effet immédiat"
+        }
+      ]
+    },
+    {
       "url": "https://www.franceinfo.fr/monde/afrique/soudan-du-sud/amnesty-denonce-l-inaction-des-autorites-et-de-l-onu-pour-empecher-un-massacre-au-soudan-du-sud_8278367.html#xtor=RSS-3-%5Bmonde%5D",
       "status": 200,
       "final_url": "https://www.franceinfo.fr/monde/afrique/soudan-du-sud/amnesty-denonce-l-inaction-des-autorites-et-de-l-onu-pour-empecher-un-massacre-au-soudan-du-sud_8278367.html#xtor=RSS-3-%5Bmonde%5D",
@@ -5617,6 +6341,49 @@
           "file": "actus/news.json",
           "id": "rss-v2-f78f68a42366897fdf4a93",
           "title": "Soudan du Sud : Amnesty dénonce l'inaction des autorités et de l'ONU avant un massacre"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/monde/usa/tous-les-visiteurs-doivent-maintenir-une-atmosphere-de-silence-le-ministre-de-la-defense-americain-reprimande-par-un-garde-lors-de-la-ceremonie-de-commemoration-du-11-novembre_8279003.html#xtor=RSS-3-[lestitres]",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/monde/usa/tous-les-visiteurs-doivent-maintenir-une-atmosphere-de-silence-le-ministre-de-la-defense-americain-reprimande-par-un-garde-lors-de-la-ceremonie-de-commemoration-du-11-novembre_8279003.html#xtor=RSS-3-[lestitres]",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-051a6da477d4e258fd01b8",
+          "title": "Pete Hegseth rappelé à l'ordre par un garde au cimetière d'Arlington le 11-Novembre"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/societe/pres-de-nantes-agnieszka-et-marie-remettent-les-meubles-de-nos-grands-parents-au-gout-du-jour_8279663.html",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/societe/pres-de-nantes-agnieszka-et-marie-remettent-les-meubles-de-nos-grands-parents-au-gout-du-jour_8279663.html",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 44,
+          "href": "https://www.franceinfo.fr/societe/pres-de-nantes-agnieszka-et-marie-remettent-les-meubles-de-nos-grands-parents-au-gout-du-jour_8279663.html#xtor=RSS-3-%5Beconomie%5D",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 44,
+          "href": "https://www.franceinfo.fr/societe/pres-de-nantes-agnieszka-et-marie-remettent-les-meubles-de-nos-grands-parents-au-gout-du-jour_8279663.html#xtor=RSS-3-%5Beconomie%5D",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/societe/pres-de-nantes-agnieszka-et-marie-remettent-les-meubles-de-nos-grands-parents-au-gout-du-jour_8279663.html#xtor=RSS-3-%5Beconomie%5D",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/societe/pres-de-nantes-agnieszka-et-marie-remettent-les-meubles-de-nos-grands-parents-au-gout-du-jour_8279663.html#xtor=RSS-3-%5Beconomie%5D",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-6a25bdab92543b0ec067f4",
+          "title": "Près de Nantes, deux artisanes redonnent vie aux vieux meubles familiaux"
         }
       ]
     },
@@ -5730,6 +6497,54 @@
           "line": 928,
           "href": "https://www.gamekult.com/",
           "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gamekult.com/actualite/beholder-iv-la-simulation-d-etat-totalitaire-revient-vous-demander-vos-papiers-3050872917.html",
+      "status": 200,
+      "final_url": "https://www.gamekult.com/actualite/beholder-iv-la-simulation-d-etat-totalitaire-revient-vous-demander-vos-papiers-3050872917.html",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 53,
+          "href": "https://www.gamekult.com/actualite/beholder-iv-la-simulation-d-etat-totalitaire-revient-vous-demander-vos-papiers-3050872917.html",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 53,
+          "href": "https://www.gamekult.com/actualite/beholder-iv-la-simulation-d-etat-totalitaire-revient-vous-demander-vos-papiers-3050872917.html",
+          "tag": "a"
+        },
+        {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-fa76cf1968ab220774857e",
+          "title": "Beholder IV annoncé sur PC : infiltration au sein d'un Ministère totalitaire"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gamekult.com/actualite/non-marvel-1943-rise-of-hydra-n-est-pas-encore-annule-3050872919.html",
+      "status": 200,
+      "final_url": "https://www.gamekult.com/actualite/non-marvel-1943-rise-of-hydra-n-est-pas-encore-annule-3050872919.html",
+      "references": [
+        {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-33a9a3105a30f4d9b164c7",
+          "title": "Marvel 1943 : Rise of Hydra n'est pas annulé, selon Gamekult"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gamekult.com/actualite/the-outer-worlds-2-guaranteed-side-effects-se-la-joue-alien-le-huitieme-passager-3050872920.html",
+      "status": 200,
+      "final_url": "https://www.gamekult.com/actualite/the-outer-worlds-2-guaranteed-side-effects-se-la-joue-alien-le-huitieme-passager-3050872920.html",
+      "references": [
+        {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-0f767bd5de0e091c02c7fd",
+          "title": "The Outer Worlds 2 : une extension Guaranteed Side Effects annoncée"
         }
       ]
     },
@@ -7131,18 +7946,6 @@
       "final_url": "https://www.jvfrance.com/playstation-5-depasse-100-millions-consoles-vendues-285922/",
       "references": [
         {
-          "file": "pronos/index.html",
-          "line": 50,
-          "href": "https://www.jvfrance.com/playstation-5-depasse-100-millions-consoles-vendues-285922/",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 50,
-          "href": "https://www.jvfrance.com/playstation-5-depasse-100-millions-consoles-vendues-285922/",
-          "tag": "a"
-        },
-        {
           "file": "vm-gaming/news.json",
           "id": "rss-v2-428df6eba9da3086d4eb6e",
           "title": "La PlayStation 5 dépasse les 100 millions de consoles vendues"
@@ -7575,6 +8378,18 @@
           "file": "actus/news.json",
           "id": "rss-v2-46a10d937039b2ebb4157d",
           "title": "Au Pérou, le pape Léon XIV appelle à surmonter les divisions du passé"
+        }
+      ]
+    },
+    {
+      "url": "https://www.rfi.fr/fr/podcasts/la-fabrique-du-monde/20261112-indon%C3%A9sie-vice-pr%C3%A9sident-gibran-d%C3%A9missionne-nouvelle-secousse-au-sommet-de-l-%C3%A9tat",
+      "status": 200,
+      "final_url": "https://www.rfi.fr/fr/podcasts/la-fabrique-du-monde/20261112-indon%C3%A9sie-vice-pr%C3%A9sident-gibran-d%C3%A9missionne-nouvelle-secousse-au-sommet-de-l-%C3%A9tat",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-5d2cd865f90609058c3f78",
+          "title": "Indonésie : le vice-président Gibran démissionne après l'invalidation de son diplôme"
         }
       ]
     },
@@ -8935,19 +9750,6 @@
       ]
     },
     {
-      "url": "https://www.youtube.com/watch?v=9J_8R58bKr4",
-      "status": 200,
-      "final_url": "https://www.youtube.com/watch?v=9J_8R58bKr4",
-      "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 58,
-          "href": "https://www.youtube.com/watch?v=9J_8R58bKr4",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.youtube.com/watch?v=9gWB5sJjYMU",
       "status": 200,
       "final_url": "https://www.youtube.com/watch?v=9gWB5sJjYMU",
@@ -8967,7 +9769,7 @@
       "references": [
         {
           "file": "pronos/index.html",
-          "line": 56,
+          "line": 60,
           "href": "https://www.youtube.com/watch?v=BIXcU69H9Ik",
           "tag": "a"
         }
@@ -9140,14 +9942,14 @@
       ]
     },
     {
-      "url": "https://www.youtube.com/watch?v=OS4iLKX7uSY",
+      "url": "https://www.youtube.com/watch?v=OfCKlNYM9mg",
       "status": 200,
-      "final_url": "https://www.youtube.com/watch?v=OS4iLKX7uSY",
+      "final_url": "https://www.youtube.com/watch?v=OfCKlNYM9mg",
       "references": [
         {
           "file": "pronos/index.html",
           "line": 59,
-          "href": "https://www.youtube.com/watch?v=OS4iLKX7uSY",
+          "href": "https://www.youtube.com/watch?v=OfCKlNYM9mg",
           "tag": "a"
         }
       ]
@@ -9343,7 +10145,7 @@
       "references": [
         {
           "file": "pronos/index.html",
-          "line": 57,
+          "line": 61,
           "href": "https://www.youtube.com/watch?v=Z-uwwfA32Jc",
           "tag": "a"
         }
@@ -9820,6 +10622,19 @@
           "file": "series/catalogue/index.html",
           "line": 1,
           "href": "https://www.youtube.com/watch?v=ym2aN7uc9lw",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=zZH6ruLIUsk",
+      "status": 200,
+      "final_url": "https://www.youtube.com/watch?v=zZH6ruLIUsk",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 58,
+          "href": "https://www.youtube.com/watch?v=zZH6ruLIUsk",
           "tag": "a"
         }
       ]
