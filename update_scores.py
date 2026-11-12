@@ -83,12 +83,12 @@ def espn_rows(today, deja=frozenset()):
     for slug, (nom, sport) in ESPN_LIGUES.items():
         if nom in deja:
             continue
-        url = f'https://site.api.espn.com/apis/site/v2/sports/{slug}/scoreboard?dates={jours}&lang=fr&region=fr'
+        url = f'https://site.api.espn.com/apis/site/v2/sports/{slug}/scoreboard?dates={jours}'
         try:
-            with urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': 'VeloceMercato/1.0'}), timeout=15) as r:
+            with urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (compatible; VeloceMercato/1.0)', 'Accept': 'application/json'}), timeout=15) as r:
                 data = json.load(r)
         except Exception as exc:
-            print(f'ESPN {slug} indisponible ({type(exc).__name__})')
+            print(f'ESPN {slug} indisponible ({type(exc).__name__} {getattr(exc, "code", "")})')
             continue
         for e in data.get('events') or []:
             try:
