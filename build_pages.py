@@ -207,12 +207,35 @@ def main():
 
     # Les pages des brèves sorties du fil sont CONSERVÉES : des liens partagés, des flux
     # publics en cache et les moteurs de recherche y pointent encore (sinon erreur 404).
+    # Archive complète : l'accueil et le fil ne montrent que les plus récentes, mais toutes
+    # les brèves conservées restent accessibles depuis /a/ (les plus récentes en premier).
+    archive = []
+    for page_file in OUT.glob('*.html'):
+        if page_file.name == 'index.html':
+            continue
+        raw = page_file.read_text(encoding='utf-8', errors='ignore')
+        if 'noindex' in raw[:600]:
+            continue  # brève archivée sans contenu (redirection)
+        t = re.search(r'<title>(.*?)</title>', raw, re.S)
+        d = re.search(r'article:published_time" content="([^"]+)"', raw)
+        if t:
+            archive.append((d.group(1) if d else '', page_file.name, t.group(1).replace(' – Véloce Mercato', '').strip()))
+    archive.sort(reverse=True)
+    items = ''.join(f'<li><a href="/a/{n}">{ti}</a> <small>{html.escape(dd[:10])}</small></li>' for dd, n, ti in archive)
+    (OUT / 'index.html').write_text(
+        '<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+        f'<title>Toutes les brèves foot – Véloce Mercato</title><link rel="canonical" href="{SITE}/a/"></head>'
+        '<body style="margin:0;background:#07080b;color:#f3f4f8;font:16px/1.6 system-ui,sans-serif">'
+        '<main style="max-width:760px;margin:auto;padding:18px"><p><a href="/foot/" style="color:#f4cf55">← Actu foot</a></p>'
+        f'<h1>Toutes les brèves foot ({len(archive)})</h1><ol style="padding-left:20px">{items}</ol></main>'
+        '<style>a{color:#fff}li{margin:6px 0}small{color:#a9b0c4}</style></body></html>', encoding='utf-8')
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
              f'  <url><loc>{SITE}/</loc><changefreq>hourly</changefreq></url>',
              f'  <url><loc>{SITE}/gaming.html</loc></url>',
              f'  <url><loc>{SITE}/soutenir.html</loc></url>',
              f'  <url><loc>{SITE}/archives.html</loc></url>',
+             f'  <url><loc>{SITE}/a/</loc></url>',
              f'  <url><loc>{SITE}/studio.html</loc></url>',
              f'  <url><loc>{SITE}/ou-regarder.html</loc></url>',
              f'  <url><loc>{SITE}/decouvrir.html</loc></url>',
