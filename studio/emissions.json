@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261112-1900",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 19 h",
+  "titre": "La Pastille Actus - Jeudi 12 novembre, 19 heures",
+  "accroche": "Intempéries, crues en Corse, et plusieurs dossiers économiques et judiciaires ce soir.",
+  "duree": 152,
+  "date": "2026-11-12T19:54+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261112-1900.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-12T19:00:00+01:00",
+  "source_start": "2026-11-12T13:00:00+01:00",
+  "source_end": "2026-11-12T19:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-5bc1e7fc0de3607dcddd32",
+    "titre": "Intempéries sur la Côte d'Azur : routes inondées et secours à Nice et Fréjus",
+    "publishedAt": "2026-11-12T17:22:03Z",
+    "createdAt": "2026-11-12T17:39:00Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/cannes/en-images-inondations-routes-coupees-degats-le-passage-de-la-depression-charles-dans-les-alpes-maritimes-et-le-var-3448560.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-312295157bcd4383068353",
+    "titre": "Bangkok alerte sur l'effritement de l'ordre international fondé sur des règles",
+    "publishedAt": "2026-11-12T17:30:04Z",
+    "createdAt": "2026-11-12T17:38:56Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/12/le-ministre-thailandais-des-affaires-etrangeres-alerte-sur-leffritement-de-lordre-internat"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-6a25bdab92543b0ec067f4",
+    "titre": "Près de Nantes, deux artisanes redonnent vie aux vieux meubles familiaux",
+    "publishedAt": "2026-11-12T16:34:02Z",
+    "createdAt": "2026-11-12T16:43:48Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/pres-de-nantes-agnieszka-et-marie-remettent-les-meubles-de-nos-grands-parents-au-gout-du-jour_8279663.html#xtor=RSS-3-%5Beconomie%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-2f06478361bb6da601a9a1",
+    "titre": "Crue du Tavignano à Corte : le pont de Baliri endommagé et fermé",
+    "publishedAt": "2026-11-12T16:40:25Z",
+    "createdAt": "2026-11-12T16:43:37Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://france3-regions.franceinfo.fr/corse/haute-corse/corte/video-crue-du-tavignano-a-corte-le-pont-de-baliri-endommage-3448692.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-aa8d0fe4c4b1cf26b4642b",
+    "titre": "Haute-Corse en vigilance orange aux crues, crue importante du Tavignano",
+    "publishedAt": "2026-11-12T15:31:30Z",
+    "createdAt": "2026-11-12T15:40:29Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/environnement/meteo/le-departement-de-la-haute-corse-place-en-vigilance-orange-aux-crues_8279591.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-d4066c9a89bb31a099cf33",
+    "titre": "Le prosecco devance le champagne dans les ventes en supermarché en France",
+    "publishedAt": "2026-11-12T15:32:29Z",
+    "createdAt": "2026-11-12T15:40:26Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/le-gout-est-sympa-et-c-est-moins-cher-le-prosecco-detrone-le-champagne-en-supermarche_8279537.html#xtor=RSS-3-%5Beconomie%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-6047844330d19c0eb14c17",
+    "titre": "Le PDG de Nvidia, Jensen Huang, démissionne avec effet immédiat",
+    "publishedAt": "2026-11-12T14:30:42Z",
+    "createdAt": "2026-11-12T14:38:50Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/internet/intelligence-artificielle/le-patron-du-geant-de-la-tech-nvidia-jensen-huang-demissionne-apres-la-revelation-d-une-liaison-avec-une-femme-soupconnee-d-espionnage-pour-la-chine_8279405.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-8e66c06f1434c57d2e8ad4",
+    "titre": "Gérard Depardieu renonce à son procès en appel pour agressions sexuelles",
+    "publishedAt": "2026-11-12T14:32:33Z",
+    "createdAt": "2026-11-12T14:38:47Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/culture/cinema/depardieu/gerard-depardieu-renonce-a-son-proces-en-appel-pour-deux-agressions-sexuelles-commises-lors-du-tournage-du-film-les-volets-verts_8279438.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "gaming-edition-20261112-1800",
   "univers": "gaming",
   "format": "edition",
@@ -11953,25 +12073,5 @@
   "audio": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@a2c1119a0a7af1f7907eca8b27b82c6edd4d9c19/foot-buts-20261023-0414.m4a",
   "page": "https://velocemercato.fr/studio/episodes/foot-buts-20261023-0414.html",
   "poster": "/studio/episodes/posters/foot-buts-20261023-0414.jpg"
- },
- {
-  "id": "foot-speciale-20261022-1940",
-  "univers": "foot",
-  "format": "speciale",
-  "moment": "soir",
-  "label": "Spéciale avant-match",
-  "titre": "La Pastille Foot : spéciale soirs de Ligue des champions et Ligue Europa",
-  "accroche": "Juventus-Rennes, Hoffenheim-OL, Bruges-Lens, et le Real Madrid qui reçoit Leipzig : une soirée européenne chargée, on fait le tour avec nos chroniqueurs.",
-  "duree": 665,
-  "date": "2026-10-22T19:40+02:00",
-  "publie": true,
-  "voix": [
-   "piper"
-  ],
-  "fichier": "foot-speciale-20261022-1940.mp4",
-  "video": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/foot-speciale-20261022-1940.mp4",
-  "image": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/foot-speciale-20261022-1940.jpg",
-  "page": "https://velocemercato.fr/studio/episodes/foot-speciale-20261022-1940.html",
-  "poster": "/studio/episodes/posters/foot-speciale-20261022-1940.jpg"
  }
 ]
