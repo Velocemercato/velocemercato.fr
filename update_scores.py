@@ -99,11 +99,24 @@ def main():
         if older_status or lower_score:
             rows[i] = o
     new = {'matchs': rows}
+    now_iso = dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds').replace('+00:00', 'Z')
     if old.get('matchs') == rows:
-        print('Scores inchangés.')
+        # Preuve de fraîcheur : « vérifié à » est rafraîchi au plus toutes les 30 minutes
+        # (un fichier qui ne change pas ne doit pas faire croire que le robot est arrêté).
+        last = old.get('verifie') or old.get('maj') or ''
+        try:
+            age = (dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(last.replace('Z', '+00:00'))).total_seconds()
+        except ValueError:
+            age = 1e9
+        if age >= 1800:
+            old['verifie'] = now_iso
+            OUT.write_text(json.dumps(old, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+            print('Scores inchangés (vérification horodatée).')
+        else:
+            print('Scores inchangés.')
         return
     notify(old.get('matchs') or [], rows)
-    new['maj'] = dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds').replace('+00:00', 'Z')
+    new['maj'] = new['verifie'] = now_iso
     OUT.write_text(json.dumps(new, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
     print(f'Scores : {len(rows)} matchs mis à jour.')
 
