@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-12T08:23:19.879172+01:00",
-  "commit": "bfd7812b098da74b7ad66355239978924097bc1a",
-  "html_pages": 153,
-  "live_urls_checked": 409,
+  "generated_at": "2026-11-12T11:07:36.505561+01:00",
+  "commit": "6db551933308ef02dcd5e80698a05bf37fe4f437",
+  "html_pages": 159,
+  "live_urls_checked": 422,
   "local_targets_absent": [
     {
       "file": "foot/index.html",
@@ -1175,84 +1175,6 @@
       ]
     },
     {
-      "url": "https://www.instagram.com/veloce.mercato",
-      "status": 429,
-      "references": [
-        {
-          "file": "index.html",
-          "line": 819,
-          "href": "https://www.instagram.com/veloce.mercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio.html",
-          "line": 113,
-          "href": "https://www.instagram.com/veloce.mercato",
-          "tag": "a"
-        },
-        {
-          "file": "actus/index.html",
-          "line": 172,
-          "href": "https://www.instagram.com/veloce.mercato",
-          "tag": "a"
-        },
-        {
-          "file": "vm-gaming/index.html",
-          "line": 322,
-          "href": "https://www.instagram.com/veloce.mercato",
-          "tag": "a"
-        },
-        {
-          "file": "foot/index.html",
-          "line": 361,
-          "href": "https://www.instagram.com/veloce.mercato",
-          "tag": "a"
-        },
-        {
-          "file": "foot/index.html",
-          "line": 371,
-          "href": "https://www.instagram.com/veloce.mercato",
-          "tag": "a"
-        },
-        {
-          "file": "foot/index.html",
-          "line": 441,
-          "href": "https://www.instagram.com/veloce.mercato",
-          "tag": "a"
-        },
-        {
-          "file": "foot/index.html",
-          "line": 500,
-          "href": "https://www.instagram.com/veloce.mercato",
-          "tag": "a"
-        },
-        {
-          "file": "mangas/episodes/olive-et-tom-01.html",
-          "line": 15,
-          "href": "https://www.instagram.com/veloce.mercato",
-          "tag": "a"
-        },
-        {
-          "file": "mangas/episodes/ecole-des-champions-01.html",
-          "line": 15,
-          "href": "https://www.instagram.com/veloce.mercato",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.instagram.com/vmunivers.fr",
-      "status": 429,
-      "references": [
-        {
-          "file": "index.html",
-          "line": 825,
-          "href": "https://www.instagram.com/vmunivers.fr",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.jeuxvideo.com/",
       "status": 403,
       "references": [
@@ -1796,8 +1718,8 @@
   "server_failures": [],
   "classification_to_review": [],
   "feed_counts": {
-    "articles.json": 6,
-    "vm-gaming/news.json": 1
+    "articles.json": 12,
+    "vm-gaming/news.json": 3
   },
   "replay_by_genre": {
     "foot": 43,
@@ -2217,7 +2139,31 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-92362de0ade975cbb78d73.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-c37d8fe65ac8cfc50e3554.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-f21116d6c3c731e4156d20.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-86fbd78c768a0040cfb5e6.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-97a47b910aa2ee6fe71b57.html",
           "line": 95,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
@@ -2235,7 +2181,19 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-8244fba075a12db3438abf.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-4a157aa7f7a32a94d8aab1.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-a8af7f56b1ae51070ee75e.html",
           "line": 95,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
@@ -2463,6 +2421,30 @@
       ]
     },
     {
+      "url": "https://footamateur.ouest-france.fr/coupe-de-france-le-programme-complet-du-septieme-tour-2026/",
+      "status": 200,
+      "final_url": "https://footamateur.ouest-france.fr/coupe-de-france-le-programme-complet-du-septieme-tour-2026/",
+      "references": [
+        {
+          "file": "a/rss-v2-a8af7f56b1ae51070ee75e.html",
+          "line": 92,
+          "href": "https://footamateur.ouest-france.fr/coupe-de-france-le-programme-complet-du-septieme-tour-2026/",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 34,
+          "href": "https://footamateur.ouest-france.fr/coupe-de-france-le-programme-complet-du-septieme-tour-2026/",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-a8af7f56b1ae51070ee75e",
+          "title": "Coupe de France : le programme complet du septième tour dévoilé"
+        }
+      ]
+    },
+    {
       "url": "https://fr.euronews.com/",
       "status": 206,
       "final_url": "https://fr.euronews.com/",
@@ -2488,14 +2470,86 @@
       ]
     },
     {
+      "url": "https://fr.euronews.com/2026/11/12/la-sonde-europeenne-hera-inspecte-de-pres-lasteroide-dimorphos-pour-la-defense-planetaire",
+      "status": 206,
+      "final_url": "https://fr.euronews.com/2026/11/12/la-sonde-europeenne-hera-inspecte-de-pres-lasteroide-dimorphos-pour-la-defense-planetaire",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-c1df940a94a5236ea2fdb8",
+          "title": "La sonde européenne Hera inspecte l'astéroïde Dimorphos après l'impact de la NASA"
+        }
+      ]
+    },
+    {
       "url": "https://fr.euronews.com/2026/11/12/un-representant-des-colonies-juives-en-cisjordanie-occupee-refoule-a-son-arrivee-en-france",
       "status": 206,
       "final_url": "https://fr.euronews.com/2026/11/12/un-representant-des-colonies-juives-en-cisjordanie-occupee-refoule-a-son-arrivee-en-france",
       "references": [
         {
+          "file": "pronos/index.html",
+          "line": 45,
+          "href": "https://fr.euronews.com/2026/11/12/un-representant-des-colonies-juives-en-cisjordanie-occupee-refoule-a-son-arrivee-en-france",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 45,
+          "href": "https://fr.euronews.com/2026/11/12/un-representant-des-colonies-juives-en-cisjordanie-occupee-refoule-a-son-arrivee-en-france",
+          "tag": "a"
+        },
+        {
           "file": "actus/news.json",
           "id": "rss-v2-20a57898611b0ba0219a00",
           "title": "Un dirigeant des colonies de Cisjordanie refoulé à son arrivée en France, Israël proteste"
+        }
+      ]
+    },
+    {
+      "url": "https://fr.euronews.com/video/2026/11/12/a-bogota-des-tournois-de-boxe-amateur-dans-les-parcs-pour-des-prix-en-cash-contestes-par-l",
+      "status": 206,
+      "final_url": "https://fr.euronews.com/video/2026/11/12/a-bogota-des-tournois-de-boxe-amateur-dans-les-parcs-pour-des-prix-en-cash-contestes-par-l",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 44,
+          "href": "https://fr.euronews.com/video/2026/11/12/a-bogota-des-tournois-de-boxe-amateur-dans-les-parcs-pour-des-prix-en-cash-contestes-par-l",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 44,
+          "href": "https://fr.euronews.com/video/2026/11/12/a-bogota-des-tournois-de-boxe-amateur-dans-les-parcs-pour-des-prix-en-cash-contestes-par-l",
+          "tag": "a"
+        },
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-00c95957bf4e7633f5e8ed",
+          "title": "À Bogotá, des tournois de boxe amateur dans les parcs contestés par la police"
+        }
+      ]
+    },
+    {
+      "url": "https://fr.euronews.com/video/2026/11/12/brooklyn-un-immeuble-seffondre-pres-dun-chantier-17-blesses",
+      "status": 206,
+      "final_url": "https://fr.euronews.com/video/2026/11/12/brooklyn-un-immeuble-seffondre-pres-dun-chantier-17-blesses",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 42,
+          "href": "https://fr.euronews.com/video/2026/11/12/brooklyn-un-immeuble-seffondre-pres-dun-chantier-17-blesses",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 42,
+          "href": "https://fr.euronews.com/video/2026/11/12/brooklyn-un-immeuble-seffondre-pres-dun-chantier-17-blesses",
+          "tag": "a"
+        },
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-f1dd82cbd8d90aa8d9832f",
+          "title": "Brooklyn : un immeuble s’effondre près d’un chantier, 17 blessés"
         }
       ]
     },
@@ -3022,9 +3076,45 @@
       "final_url": "https://next.ink/brief-article/compte-nintendo-les-connexions-apple-et-google-cest-bientot-fini/",
       "references": [
         {
+          "file": "pronos/index.html",
+          "line": 51,
+          "href": "https://next.ink/brief-article/compte-nintendo-les-connexions-apple-et-google-cest-bientot-fini/",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 51,
+          "href": "https://next.ink/brief-article/compte-nintendo-les-connexions-apple-et-google-cest-bientot-fini/",
+          "tag": "a"
+        },
+        {
           "file": "vm-gaming/news.json",
           "id": "rss-v2-883bfce7183704f5677846",
           "title": "Compte Nintendo : fin des connexions Apple et Google au 26 janvier 2027"
+        }
+      ]
+    },
+    {
+      "url": "https://next.ink/brief-article/steam-affiche-les-performances-des-jeux-en-fps-pour-le-steam-deck/",
+      "status": 200,
+      "final_url": "https://next.ink/brief-article/steam-affiche-les-performances-des-jeux-en-fps-pour-le-steam-deck/",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 49,
+          "href": "https://next.ink/brief-article/steam-affiche-les-performances-des-jeux-en-fps-pour-le-steam-deck/",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 49,
+          "href": "https://next.ink/brief-article/steam-affiche-les-performances-des-jeux-en-fps-pour-le-steam-deck/",
+          "tag": "a"
+        },
+        {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-56d8b582ec92f0dca0171c",
+          "title": "Steam affiche désormais les FPS des jeux sur Steam Deck"
         }
       ]
     },
@@ -3077,6 +3167,30 @@
           "line": 855,
           "href": "https://rmcsport.bfmtv.com/football/",
           "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://rmcsport.bfmtv.com/football/equipe-cote-d-ivoire/cote-d-ivoire-les-images-de-yan-diomande-qui-distribue-de-l-argent-a-des-jeunes-supporters_AV-202611120415.html",
+      "status": 206,
+      "final_url": "https://rmcsport.bfmtv.com/football/equipe-cote-d-ivoire/cote-d-ivoire-les-images-de-yan-diomande-qui-distribue-de-l-argent-a-des-jeunes-supporters_AV-202611120415.html",
+      "references": [
+        {
+          "file": "a/rss-v2-92362de0ade975cbb78d73.html",
+          "line": 92,
+          "href": "https://rmcsport.bfmtv.com/football/equipe-cote-d-ivoire/cote-d-ivoire-les-images-de-yan-diomande-qui-distribue-de-l-argent-a-des-jeunes-supporters_AV-202611120415.html",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 33,
+          "href": "https://rmcsport.bfmtv.com/football/equipe-cote-d-ivoire/cote-d-ivoire-les-images-de-yan-diomande-qui-distribue-de-l-argent-a-des-jeunes-supporters_AV-202611120415.html",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-92362de0ade975cbb78d73",
+          "title": "Côte d'Ivoire : Yan Diomandé filmé en train de distribuer de l'argent à de jeunes supporters"
         }
       ]
     },
@@ -3546,7 +3660,31 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-92362de0ade975cbb78d73.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-c37d8fe65ac8cfc50e3554.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-f21116d6c3c731e4156d20.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-86fbd78c768a0040cfb5e6.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-97a47b910aa2ee6fe71b57.html",
           "line": 82,
           "href": "https://vmunivers.fr/",
           "tag": "a"
@@ -3564,7 +3702,19 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-8244fba075a12db3438abf.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-4a157aa7f7a32a94d8aab1.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-a8af7f56b1ae51070ee75e.html",
           "line": 82,
           "href": "https://vmunivers.fr/",
           "tag": "a"
@@ -4265,6 +4415,78 @@
       ]
     },
     {
+      "url": "https://www.bbc.co.uk/news/articles/cr1ewpd95d21o?at_medium=RSS&at_campaign=rss",
+      "status": 206,
+      "final_url": "https://www.bbc.co.uk/news/articles/cr1ewpd95d21o?at_medium=RSS&at_campaign=rss",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 43,
+          "href": "https://www.bbc.co.uk/news/articles/cr1ewpd95d21o?at_medium=RSS&at_campaign=rss",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 43,
+          "href": "https://www.bbc.co.uk/news/articles/cr1ewpd95d21o?at_medium=RSS&at_campaign=rss",
+          "tag": "a"
+        },
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-f074029439bf683baa12fb",
+          "title": "Ukraine : des coupures d'électricité prolongées face aux frappes russes sur le réseau"
+        }
+      ]
+    },
+    {
+      "url": "https://www.bbc.co.uk/sport/football/articles/c6y49yz77pppo?at_medium=RSS&at_campaign=rss",
+      "status": 206,
+      "final_url": "https://www.bbc.co.uk/sport/football/articles/c6y49yz77pppo?at_medium=RSS&at_campaign=rss",
+      "references": [
+        {
+          "file": "a/rss-v2-86fbd78c768a0040cfb5e6.html",
+          "line": 92,
+          "href": "https://www.bbc.co.uk/sport/football/articles/c6y49yz77pppo?at_medium=RSS&at_campaign=rss",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 37,
+          "href": "https://www.bbc.co.uk/sport/football/articles/c6y49yz77pppo?at_medium=RSS&at_campaign=rss",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-86fbd78c768a0040cfb5e6",
+          "title": "Les États-Unis renoncent à la Coupe du monde U17 au Qatar"
+        }
+      ]
+    },
+    {
+      "url": "https://www.bbc.co.uk/sport/football/articles/cqg7l9x9jnzko?at_medium=RSS&at_campaign=rss",
+      "status": 206,
+      "final_url": "https://www.bbc.co.uk/sport/football/articles/cqg7l9x9jnzko?at_medium=RSS&at_campaign=rss",
+      "references": [
+        {
+          "file": "a/rss-v2-8244fba075a12db3438abf.html",
+          "line": 92,
+          "href": "https://www.bbc.co.uk/sport/football/articles/cqg7l9x9jnzko?at_medium=RSS&at_campaign=rss",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 35,
+          "href": "https://www.bbc.co.uk/sport/football/articles/cqg7l9x9jnzko?at_medium=RSS&at_campaign=rss",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-8244fba075a12db3438abf",
+          "title": "Tuchel s'engage à rester sélectionneur de l'Angleterre jusqu'à l'Euro 2028"
+        }
+      ]
+    },
+    {
       "url": "https://www.bbc.com/news",
       "status": 206,
       "final_url": "https://www.bbc.com/news",
@@ -4474,7 +4696,7 @@
     },
     {
       "url": "https://www.bienici.com/recherche?q=Pays%20de%20la%20Loire",
-      "status": 200,
+      "status": 206,
       "final_url": "https://www.bienici.com/recherche?q=Pays%20de%20la%20Loire",
       "references": [
         {
@@ -4682,7 +4904,7 @@
     {
       "url": "https://www.facebook.com/share/19wkqvg6Em/",
       "status": 200,
-      "final_url": "https://www.facebook.com/people/Veloce-Mercato/61584725345167/?rdid=7kqv7435I9bloP5G&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19wkqvg6Em%2F",
+      "final_url": "https://www.facebook.com/people/Veloce-Mercato/61584725345167/?rdid=zQ25SghL5Gc9ZRCB&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19wkqvg6Em%2F",
       "references": [
         {
           "file": "index.html",
@@ -4695,7 +4917,7 @@
     {
       "url": "https://www.facebook.com/share/1C3uyLM2BB/",
       "status": 200,
-      "final_url": "https://www.facebook.com/Vmactusetpronos?rdid=5ur41jG2j7x2Xxrx&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1C3uyLM2BB%2F",
+      "final_url": "https://www.facebook.com/Vmactusetpronos?rdid=7vSIyCJQC0rx9MwW&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1C3uyLM2BB%2F",
       "references": [
         {
           "file": "index.html",
@@ -4708,7 +4930,7 @@
     {
       "url": "https://www.facebook.com/share/1DUSALoBzG/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=nEByQpzWhmo2ZL3l",
+      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=h2u42fTfndSgWEfP",
       "references": [
         {
           "file": "foot/index.html",
@@ -4739,7 +4961,7 @@
     {
       "url": "https://www.facebook.com/share/1E6nH6RZzX/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr?rdid=xB8myT4gjVpQVsRT&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1E6nH6RZzX%2F",
+      "final_url": "https://www.facebook.com/velocemercato.fr?rdid=oBB5OsG8vEsoYlP1&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1E6nH6RZzX%2F",
       "references": [
         {
           "file": "pronos/index.html",
@@ -4752,7 +4974,7 @@
     {
       "url": "https://www.facebook.com/share/1EiGutypix/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=k9QGhIeLUnVJQFO5",
+      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=Fg7PNbV6CkU0DlM9",
       "references": [
         {
           "file": "studio.html",
@@ -5233,12 +5455,6 @@
           "tag": "a"
         },
         {
-          "file": "pronos/index.html",
-          "line": 34,
-          "href": "https://www.foot-national.com/actus/national-2-des-joueurs-font-la-greve-de-lentrainement-le-club-implique-sort-du-silence-963590",
-          "tag": "a"
-        },
-        {
           "file": "articles.json",
           "id": "rss-v2-4a157aa7f7a32a94d8aab1",
           "title": "National 2 : grève d'entraînement à Mâcon 71, le club reprend la main"
@@ -5264,6 +5480,30 @@
       ]
     },
     {
+      "url": "https://www.foot01.com/ol/ol-la-rumeur-athekame-est-brutalement-dementie",
+      "status": 200,
+      "final_url": "https://www.foot01.com/ol/ol-la-rumeur-athekame-est-brutalement-dementie",
+      "references": [
+        {
+          "file": "a/rss-v2-c37d8fe65ac8cfc50e3554.html",
+          "line": 92,
+          "href": "https://www.foot01.com/ol/ol-la-rumeur-athekame-est-brutalement-dementie",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 36,
+          "href": "https://www.foot01.com/ol/ol-la-rumeur-athekame-est-brutalement-dementie",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-c37d8fe65ac8cfc50e3554",
+          "title": "OL : Athekame ne devrait pas quitter Lyon en janvier, selon Foot01"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a7852157138398775576-les-etats-unis-veulent-pep-guardiola-pour-remplacer-mauricio-pochettino",
       "status": 206,
       "final_url": "https://www.footmercato.net/a7852157138398775576-les-etats-unis-veulent-pep-guardiola-pour-remplacer-mauricio-pochettino",
@@ -5275,15 +5515,27 @@
           "tag": "a"
         },
         {
-          "file": "pronos/index.html",
-          "line": 33,
-          "href": "https://www.footmercato.net/a7852157138398775576-les-etats-unis-veulent-pep-guardiola-pour-remplacer-mauricio-pochettino",
+          "file": "articles.json",
+          "id": "rss-v2-5954cbe840d98d3c19a1c7",
+          "title": "Les États-Unis voudraient Pep Guardiola pour succéder à Mauricio Pochettino"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a9170500852153719495-cristiano-ronaldo-annonce-sa-premiere-serie-televisee",
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a9170500852153719495-cristiano-ronaldo-annonce-sa-premiere-serie-televisee",
+      "references": [
+        {
+          "file": "a/rss-v2-97a47b910aa2ee6fe71b57.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a9170500852153719495-cristiano-ronaldo-annonce-sa-premiere-serie-televisee",
           "tag": "a"
         },
         {
           "file": "articles.json",
-          "id": "rss-v2-5954cbe840d98d3c19a1c7",
-          "title": "Les États-Unis voudraient Pep Guardiola pour succéder à Mauricio Pochettino"
+          "id": "rss-v2-97a47b910aa2ee6fe71b57",
+          "title": "Cristiano Ronaldo lance le tournage de sa première série télévisée, Day 1s"
         }
       ]
     },
@@ -5314,25 +5566,6 @@
       ]
     },
     {
-      "url": "https://www.franceinfo.fr/economie/emploi/metiers/agriculture/le-dereglement-climatique-pese-lourd-sur-l-inflation-notamment-dans-la-zone-euro-alerte-oxfam_8278283.html",
-      "status": 200,
-      "final_url": "https://www.franceinfo.fr/economie/emploi/metiers/agriculture/le-dereglement-climatique-pese-lourd-sur-l-inflation-notamment-dans-la-zone-euro-alerte-oxfam_8278283.html",
-      "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 41,
-          "href": "https://www.franceinfo.fr/economie/emploi/metiers/agriculture/le-dereglement-climatique-pese-lourd-sur-l-inflation-notamment-dans-la-zone-euro-alerte-oxfam_8278283.html#xtor=RSS-3-%5Beconomie%5D",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 41,
-          "href": "https://www.franceinfo.fr/economie/emploi/metiers/agriculture/le-dereglement-climatique-pese-lourd-sur-l-inflation-notamment-dans-la-zone-euro-alerte-oxfam_8278283.html#xtor=RSS-3-%5Beconomie%5D",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.franceinfo.fr/economie/emploi/metiers/agriculture/le-dereglement-climatique-pese-lourd-sur-l-inflation-notamment-dans-la-zone-euro-alerte-oxfam_8278283.html#xtor=RSS-3-%5Beconomie%5D",
       "status": 200,
       "final_url": "https://www.franceinfo.fr/economie/emploi/metiers/agriculture/le-dereglement-climatique-pese-lourd-sur-l-inflation-notamment-dans-la-zone-euro-alerte-oxfam_8278283.html#xtor=RSS-3-%5Beconomie%5D",
@@ -5341,6 +5574,49 @@
           "file": "actus/news.json",
           "id": "rss-v2-7db101c14a9bffaa90d730",
           "title": "Oxfam attribue une part de l'inflation alimentaire au dérèglement climatique"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/economie/la-liquidation-judiciaire-de-fibre-excellence-l-ex-numero-1-de-la-pate-a-papier-en-france-definitivement-enterinee_8278943.html",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/economie/la-liquidation-judiciaire-de-fibre-excellence-l-ex-numero-1-de-la-pate-a-papier-en-france-definitivement-enterinee_8278943.html",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 41,
+          "href": "https://www.franceinfo.fr/economie/la-liquidation-judiciaire-de-fibre-excellence-l-ex-numero-1-de-la-pate-a-papier-en-france-definitivement-enterinee_8278943.html#xtor=RSS-3-%5Beconomie%5D",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 41,
+          "href": "https://www.franceinfo.fr/economie/la-liquidation-judiciaire-de-fibre-excellence-l-ex-numero-1-de-la-pate-a-papier-en-france-definitivement-enterinee_8278943.html#xtor=RSS-3-%5Beconomie%5D",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/economie/la-liquidation-judiciaire-de-fibre-excellence-l-ex-numero-1-de-la-pate-a-papier-en-france-definitivement-enterinee_8278943.html#xtor=RSS-3-%5Beconomie%5D",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/economie/la-liquidation-judiciaire-de-fibre-excellence-l-ex-numero-1-de-la-pate-a-papier-en-france-definitivement-enterinee_8278943.html#xtor=RSS-3-%5Beconomie%5D",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-30bd5e1045a98088a09372",
+          "title": "Fibre Excellence : la liquidation judiciaire de l'usine de Saint-Gaudens définitivement prononcée"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/monde/afrique/soudan-du-sud/amnesty-denonce-l-inaction-des-autorites-et-de-l-onu-pour-empecher-un-massacre-au-soudan-du-sud_8278367.html#xtor=RSS-3-%5Bmonde%5D",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/monde/afrique/soudan-du-sud/amnesty-denonce-l-inaction-des-autorites-et-de-l-onu-pour-empecher-un-massacre-au-soudan-du-sud_8278367.html#xtor=RSS-3-%5Bmonde%5D",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-f78f68a42366897fdf4a93",
+          "title": "Soudan du Sud : Amnesty dénonce l'inaction des autorités et de l'ONU avant un massacre"
         }
       ]
     },
@@ -5365,12 +5641,6 @@
         {
           "file": "a/rss-v2-f21116d6c3c731e4156d20.html",
           "line": 92,
-          "href": "https://www.franceinfo.fr/sports/foot/equipe-de-france/c-est-un-crime-de-le-raser-les-bleus-a-san-siro-temple-du-football-mondial-condamne-a-la-destruction_8275136.html#xtor=RSS-3-%5Bsports%2Ffoot%5D",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 36,
           "href": "https://www.franceinfo.fr/sports/foot/equipe-de-france/c-est-un-crime-de-le-raser-les-bleus-a-san-siro-temple-du-football-mondial-condamne-a-la-destruction_8275136.html#xtor=RSS-3-%5Bsports%2Ffoot%5D",
           "tag": "a"
         }
@@ -5398,12 +5668,6 @@
           "line": 92,
           "href": "https://www.franceinfo.fr/sports/foot/equipe-de-france/face-a-l-avalanche-de-forfaits-zinedine-zidane-et-les-bleus-obliges-d-innover-en-attaque-pour-defier-l-italie-en-ligue-des-nations_8278229.html#xtor=RSS-3-%5Bsports%2Ffoot%5D",
           "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 37,
-          "href": "https://www.franceinfo.fr/sports/foot/equipe-de-france/face-a-l-avalanche-de-forfaits-zinedine-zidane-et-les-bleus-obliges-d-innover-en-attaque-pour-defier-l-italie-en-ligue-des-nations_8278229.html#xtor=RSS-3-%5Bsports%2Ffoot%5D",
-          "tag": "a"
         }
       ]
     },
@@ -5429,12 +5693,6 @@
           "line": 92,
           "href": "https://www.franceinfo.fr/sports/foot/equipe-de-france/pourquoi-autant-de-joueurs-de-l-equipe-de-france-ont-grandi-au-stade-rennais_8277887.html#xtor=RSS-3-%5Bsports%2Ffoot%5D",
           "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 35,
-          "href": "https://www.franceinfo.fr/sports/foot/equipe-de-france/pourquoi-autant-de-joueurs-de-l-equipe-de-france-ont-grandi-au-stade-rennais_8277887.html#xtor=RSS-3-%5Bsports%2Ffoot%5D",
-          "tag": "a"
         }
       ]
     },
@@ -5447,25 +5705,6 @@
           "file": "articles.json",
           "id": "rss-v2-23f961a1b39dc6255d42d0",
           "title": "Pourquoi tant de joueurs des Bleus ont-ils grandi au Stade Rennais ?"
-        }
-      ]
-    },
-    {
-      "url": "https://www.franceinfo.fr/vrai-ou-fake/vrai-ou-faux-la-tva-a-0-sur-les-produits-de-premiere-necessite-a-t-elle-fait-baisser-l-ensemble-des-prix-en-espagne-et-en-pologne-comme-l-affirme-sebastien-chenu_8276051.html",
-      "status": 200,
-      "final_url": "https://www.franceinfo.fr/vrai-ou-fake/vrai-ou-faux-la-tva-a-0-sur-les-produits-de-premiere-necessite-a-t-elle-fait-baisser-l-ensemble-des-prix-en-espagne-et-en-pologne-comme-l-affirme-sebastien-chenu_8276051.html",
-      "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 42,
-          "href": "https://www.franceinfo.fr/vrai-ou-fake/vrai-ou-faux-la-tva-a-0-sur-les-produits-de-premiere-necessite-a-t-elle-fait-baisser-l-ensemble-des-prix-en-espagne-et-en-pologne-comme-l-affirme-sebastien-chenu_8276051.html#xtor=RSS-3-%5Beconomie%5D",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 42,
-          "href": "https://www.franceinfo.fr/vrai-ou-fake/vrai-ou-faux-la-tva-a-0-sur-les-produits-de-premiere-necessite-a-t-elle-fait-baisser-l-ensemble-des-prix-en-espagne-et-en-pologne-comme-l-affirme-sebastien-chenu_8276051.html#xtor=RSS-3-%5Beconomie%5D",
-          "tag": "a"
         }
       ]
     },
@@ -5496,7 +5735,8 @@
     },
     {
       "url": "https://www.instagram.com/veloce.mercato",
-      "status": 429,
+      "status": 200,
+      "final_url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fveloce.mercato&is_from_rle",
       "references": [
         {
           "file": "index.html",
@@ -5562,7 +5802,8 @@
     },
     {
       "url": "https://www.instagram.com/vmunivers.fr",
-      "status": 429,
+      "status": 200,
+      "final_url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fvmunivers.fr&is_from_rle",
       "references": [
         {
           "file": "index.html",
@@ -6885,6 +7126,30 @@
       ]
     },
     {
+      "url": "https://www.jvfrance.com/playstation-5-depasse-100-millions-consoles-vendues-285922/",
+      "status": 206,
+      "final_url": "https://www.jvfrance.com/playstation-5-depasse-100-millions-consoles-vendues-285922/",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 50,
+          "href": "https://www.jvfrance.com/playstation-5-depasse-100-millions-consoles-vendues-285922/",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 50,
+          "href": "https://www.jvfrance.com/playstation-5-depasse-100-millions-consoles-vendues-285922/",
+          "tag": "a"
+        },
+        {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-428df6eba9da3086d4eb6e",
+          "title": "La PlayStation 5 dépasse les 100 millions de consoles vendues"
+        }
+      ]
+    },
+    {
       "url": "https://www.lafabriquedunet.fr/blog/cout-site-web/",
       "status": 200,
       "final_url": "https://www.lafabriquedunet.fr/agences/pages/agences-site-internet/tarifs",
@@ -7307,18 +7572,6 @@
       "final_url": "https://www.rfi.fr/fr/am%C3%A9riques/20261112-en-visite-dans-sa-patrie-au-p%C3%A9rou-l%C3%A9on-xiv-appelle-%C3%A0-surmonter-les-divisions-du-pass%C3%A9",
       "references": [
         {
-          "file": "pronos/index.html",
-          "line": 43,
-          "href": "https://www.rfi.fr/fr/am%C3%A9riques/20261112-en-visite-dans-sa-patrie-au-p%C3%A9rou-l%C3%A9on-xiv-appelle-%C3%A0-surmonter-les-divisions-du-pass%C3%A9",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 43,
-          "href": "https://www.rfi.fr/fr/am%C3%A9riques/20261112-en-visite-dans-sa-patrie-au-p%C3%A9rou-l%C3%A9on-xiv-appelle-%C3%A0-surmonter-les-divisions-du-pass%C3%A9",
-          "tag": "a"
-        },
-        {
           "file": "actus/news.json",
           "id": "rss-v2-46a10d937039b2ebb4157d",
           "title": "Au Pérou, le pape Léon XIV appelle à surmonter les divisions du passé"
@@ -7330,18 +7583,6 @@
       "status": 200,
       "final_url": "https://www.rfi.fr/fr/science/20261112-soudan-une-cath%C3%A9drale-enfouie-de-la-nubie-m%C3%A9di%C3%A9vale-r%C3%A9v%C3%A8le-son-architecture-monumentale",
       "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 44,
-          "href": "https://www.rfi.fr/fr/science/20261112-soudan-une-cath%C3%A9drale-enfouie-de-la-nubie-m%C3%A9di%C3%A9vale-r%C3%A9v%C3%A8le-son-architecture-monumentale",
-          "tag": "a"
-        },
-        {
-          "file": "pronos/index.html",
-          "line": 44,
-          "href": "https://www.rfi.fr/fr/science/20261112-soudan-une-cath%C3%A9drale-enfouie-de-la-nubie-m%C3%A9di%C3%A9vale-r%C3%A9v%C3%A8le-son-architecture-monumentale",
-          "tag": "a"
-        },
         {
           "file": "actus/news.json",
           "id": "rss-v2-57155689e4154904099d55",
@@ -8700,7 +8941,7 @@
       "references": [
         {
           "file": "pronos/index.html",
-          "line": 54,
+          "line": 58,
           "href": "https://www.youtube.com/watch?v=9J_8R58bKr4",
           "tag": "a"
         }
@@ -8715,6 +8956,19 @@
           "file": "mangas/episodes/ecole-des-champions-03.html",
           "line": 6,
           "href": "https://www.youtube.com/watch?v=9gWB5sJjYMU",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=BIXcU69H9Ik",
+      "status": 200,
+      "final_url": "https://www.youtube.com/watch?v=BIXcU69H9Ik",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 56,
+          "href": "https://www.youtube.com/watch?v=BIXcU69H9Ik",
           "tag": "a"
         }
       ]
@@ -8892,7 +9146,7 @@
       "references": [
         {
           "file": "pronos/index.html",
-          "line": 55,
+          "line": 59,
           "href": "https://www.youtube.com/watch?v=OS4iLKX7uSY",
           "tag": "a"
         }
@@ -9089,7 +9343,7 @@
       "references": [
         {
           "file": "pronos/index.html",
-          "line": 53,
+          "line": 57,
           "href": "https://www.youtube.com/watch?v=Z-uwwfA32Jc",
           "tag": "a"
         }
@@ -9154,19 +9408,6 @@
           "file": "mangas/catalogue/index.html",
           "line": 1,
           "href": "https://www.youtube.com/watch?v=ac6Xz1fV1oc",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=cGNDymPcK5s",
-      "status": 200,
-      "final_url": "https://www.youtube.com/watch?v=cGNDymPcK5s",
-      "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 56,
-          "href": "https://www.youtube.com/watch?v=cGNDymPcK5s",
           "tag": "a"
         }
       ]
