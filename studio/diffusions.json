@@ -1,5 +1,24 @@
 [
  {
+  "id": "gaming-edition-20261112-1800",
+  "date": "2026-11-12",
+  "moment": "soir",
+  "universes": [
+   "gaming"
+  ],
+  "date_publication": "2026-11-12T17:55:14+00:00",
+  "titre": "VM Gaming — JT 18 h — 12/11/2026",
+  "plateformes": {
+   "youtube": {
+    "url": "https://www.youtube.com/watch?v=wuveb_zX6Wo",
+    "status": "published"
+   }
+  },
+  "edition_at": "2026-11-12T18:00:00+01:00",
+  "source_start": "2026-11-11T18:00:00+01:00",
+  "source_end": "2026-11-12T18:00:00+01:00"
+ },
+ {
   "id": "actus-edition-20261112-1300",
   "date": "2026-11-12",
   "moment": "midi",
@@ -1689,24 +1708,5 @@
   "edition_at": "2026-10-24T13:00:00+02:00",
   "source_start": "2026-10-24T07:00:00+02:00",
   "source_end": "2026-10-24T13:00:00+02:00"
- },
- {
-  "id": "foot-edition-20261024-1200",
-  "date": "2026-10-24",
-  "moment": "midi",
-  "universes": [
-   "foot"
-  ],
-  "date_publication": "2026-10-24T10:54:36+00:00",
-  "titre": "Véloce Mercato — JT 12 h — 24/10/2026",
-  "plateformes": {
-   "youtube": {
-    "url": "https://www.youtube.com/watch?v=Aaa1iMUm-Qw",
-    "status": "published"
-   }
-  },
-  "edition_at": "2026-10-24T12:00:00+02:00",
-  "source_start": "2026-10-24T08:00:00+02:00",
-  "source_end": "2026-10-24T12:00:00+02:00"
  }
 ]
