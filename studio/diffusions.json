@@ -1,5 +1,24 @@
 [
  {
+  "id": "actus-edition-20261112-1900",
+  "date": "2026-11-12",
+  "moment": "soir",
+  "universes": [
+   "actus"
+  ],
+  "date_publication": "2026-11-12T18:56:44+00:00",
+  "titre": "VM Actus — JT 19 h — 12/11/2026",
+  "plateformes": {
+   "youtube": {
+    "url": "https://www.youtube.com/watch?v=9OiH1ChlgJk",
+    "status": "published"
+   }
+  },
+  "edition_at": "2026-11-12T19:00:00+01:00",
+  "source_start": "2026-11-12T13:00:00+01:00",
+  "source_end": "2026-11-12T19:00:00+01:00"
+ },
+ {
   "id": "gaming-edition-20261112-1800",
   "date": "2026-11-12",
   "moment": "soir",
@@ -1689,24 +1708,5 @@
   "edition_at": "2026-10-24T18:00:00+02:00",
   "source_start": "2026-10-24T10:00:00+02:00",
   "source_end": "2026-10-24T18:00:00+02:00"
- },
- {
-  "id": "actus-edition-20261024-1300",
-  "date": "2026-10-24",
-  "moment": "midi",
-  "universes": [
-   "actus"
-  ],
-  "date_publication": "2026-10-24T11:10:31+00:00",
-  "titre": "VM Actus — JT 13 h — 24/10/2026",
-  "plateformes": {
-   "youtube": {
-    "url": "https://www.youtube.com/watch?v=1atrnW__F7g",
-    "status": "published"
-   }
-  },
-  "edition_at": "2026-10-24T13:00:00+02:00",
-  "source_start": "2026-10-24T07:00:00+02:00",
-  "source_end": "2026-10-24T13:00:00+02:00"
  }
 ]
