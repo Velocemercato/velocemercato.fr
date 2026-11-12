@@ -25,6 +25,7 @@ jobs:
         env:
           FOOTBALL_DATA_KEY: ${{ secrets.FOOTBALL_DATA_KEY }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          ONESIGNAL_API_KEY: ${{ secrets.ONESIGNAL_API_KEY }}
         run: |
           # Les scores vivent sur la branche « scores-live », PAS sur main :
           # aucune mise à jour de score ne relance de déploiement GitHub Pages (cause du blocage du 04/11).
