@@ -78,18 +78,22 @@ def notify(old_rows, rows):
 def espn_rows(today, deja=frozenset()):
     """Matchs (hier, aujourd'hui, demain) depuis le tableau des scores public d'ESPN.
     Les championnats déjà fournis par football-data ne sont pas doublés."""
-    rows = []
-    jours = '-'.join(d.strftime('%Y%m%d') for d in (today - dt.timedelta(days=1), today + dt.timedelta(days=1)))
+    rows, vus = [], set()
+    jours = [d.strftime('%Y%m%d') for d in (today - dt.timedelta(days=1), today, today + dt.timedelta(days=1))]
+    hdr = {'User-Agent': 'Mozilla/5.0 (compatible; VeloceMercato/1.0)', 'Accept': 'application/json'}
     for slug, (nom, sport) in ESPN_LIGUES.items():
         if nom in deja:
             continue
-        url = f'https://site.api.espn.com/apis/site/v2/sports/{slug}/scoreboard?dates={jours}'
-        try:
-            with urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (compatible; VeloceMercato/1.0)', 'Accept': 'application/json'}), timeout=15) as r:
-                data = json.load(r)
-        except Exception as exc:
-            print(f'ESPN {slug} indisponible ({type(exc).__name__} {getattr(exc, "code", "")})')
-            continue
+        events = []
+        base = f'https://site.api.espn.com/apis/site/v2/sports/{slug}/scoreboard'
+        # Un jour à la fois (les plages de dates sont refusées), puis la journée en cours sans paramètre en secours.
+        for url in [base + '?dates=' + j for j in jours] + [base]:
+            try:
+                with urllib.request.urlopen(urllib.request.Request(url, headers=hdr), timeout=15) as r:
+                    events += json.load(r).get('events') or []
+            except Exception as exc:
+                print(f'ESPN {slug} {url[-8:]} indisponible ({type(exc).__name__} {getattr(exc, "code", "")})')
+        data = {'events': [e for e in events if e.get('id') not in vus and not vus.add(e.get('id'))]}
         for e in data.get('events') or []:
             try:
                 comp = (e.get('competitions') or [{}])[0]
