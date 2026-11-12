@@ -1,5 +1,101 @@
 [
  {
+  "id": "foot-edition-20261112-0800",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "matin",
+  "label": "JT 08 h",
+  "titre": "La Pastille Foot - JT du matin, 12 novembre",
+  "accroche": "Bonjour, c'est parti pour La Pastille Foot.",
+  "duree": 160,
+  "date": "2026-11-12T08:14+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261112-0800.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-12T08:00:00+01:00",
+  "source_start": "2026-11-11T20:00:00+01:00",
+  "source_end": "2026-11-12T08:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-4a157aa7f7a32a94d8aab1",
+    "titre": "National 2 : grève d'entraînement à Mâcon 71, le club reprend la main",
+    "publishedAt": "2026-11-12T06:00:00Z",
+    "createdAt": "2026-11-12T06:42:00Z",
+    "references": [
+     {
+      "nom": "Foot National",
+      "url": "https://www.foot-national.com/actus/national-2-des-joueurs-font-la-greve-de-lentrainement-le-club-implique-sort-du-silence-963590"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-5954cbe840d98d3c19a1c7",
+    "titre": "Les États-Unis voudraient Pep Guardiola pour succéder à Mauricio Pochettino",
+    "publishedAt": "2026-11-12T06:35:00Z",
+    "createdAt": "2026-11-12T06:41:52Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a7852157138398775576-les-etats-unis-veulent-pep-guardiola-pour-remplacer-mauricio-pochettino"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-f21116d6c3c731e4156d20",
+    "titre": "San Siro condamné à la démolition : les Bleus y joueront avant sa destruction",
+    "publishedAt": "2026-11-12T05:00:01Z",
+    "createdAt": "2026-11-12T05:39:11Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/foot/equipe-de-france/c-est-un-crime-de-le-raser-les-bleus-a-san-siro-temple-du-football-mondial-condamne-a-la-destruction_8275136.html#xtor=RSS-3-%5Bsports%2Ffoot%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-23f961a1b39dc6255d42d0",
+    "titre": "Pourquoi tant de joueurs des Bleus ont-ils grandi au Stade Rennais ?",
+    "publishedAt": "2026-11-12T05:00:02Z",
+    "createdAt": "2026-11-12T05:39:09Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/foot/equipe-de-france/pourquoi-autant-de-joueurs-de-l-equipe-de-france-ont-grandi-au-stade-rennais_8277887.html#xtor=RSS-3-%5Bsports%2Ffoot%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-1f20af642e2d52cbb99453",
+    "titre": "National 2 : Fos s'impose 3-1 face à Lucciana et remonte au classement",
+    "publishedAt": "2026-11-11T17:02:00Z",
+    "createdAt": "2026-11-12T04:37:39Z",
+    "references": [
+     {
+      "nom": "Foot National",
+      "url": "https://www.foot-national.com/actus/national-2-fos-enfonce-gallia-lucciana-et-respire-un-grand-coup-963528"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-24b6757239def4449fa478",
+    "titre": "Forfait de Mbappé : Zidane doit innover en attaque face à l'Italie",
+    "publishedAt": "2026-11-11T21:07:17Z",
+    "createdAt": "2026-11-12T04:37:23Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/foot/equipe-de-france/face-a-l-avalanche-de-forfaits-zinedine-zidane-et-les-bleus-obliges-d-innover-en-attaque-pour-defier-l-italie-en-ligue-des-nations_8278229.html#xtor=RSS-3-%5Bsports%2Ffoot%5D"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261111-2000",
   "univers": "foot",
   "format": "edition",
@@ -11577,25 +11673,5 @@
   "image": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/actus-edition-20261022-0728.jpg",
   "page": "https://velocemercato.fr/studio/episodes/actus-edition-20261022-0728.html",
   "poster": "/studio/episodes/posters/actus-edition-20261022-0728.jpg"
- },
- {
-  "id": "foot-edition-20261022-0723",
-  "univers": "foot",
-  "format": "edition",
-  "moment": "matin",
-  "label": "Édition du matin",
-  "titre": "La Pastille Foot : le journal du matin, jeudi 22 octobre",
-  "accroche": "Kane, Diomandé, le PSG qui fait saliver et le choc OL-PSG qui pourrait bouger. Tout le foot du matin en une émission !",
-  "duree": 559,
-  "date": "2026-10-22T07:23+02:00",
-  "publie": true,
-  "voix": [
-   "piper"
-  ],
-  "fichier": "foot-edition-20261022-0723.mp4",
-  "video": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/foot-edition-20261022-0723.mp4",
-  "image": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/foot-edition-20261022-0723.jpg",
-  "page": "https://velocemercato.fr/studio/episodes/foot-edition-20261022-0723.html",
-  "poster": "/studio/episodes/posters/foot-edition-20261022-0723.jpg"
  }
 ]
