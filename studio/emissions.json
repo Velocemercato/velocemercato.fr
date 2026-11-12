@@ -1,5 +1,125 @@
 [
  {
+  "id": "foot-edition-20261112-2000",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 20 h",
+  "titre": "La Pastille Foot - Jeudi 12 novembre",
+  "accroche": "Le JT foot du soir, c'est parti !",
+  "duree": 138,
+  "date": "2026-11-12T20:55+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261112-2000.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-12T20:00:00+01:00",
+  "source_start": "2026-11-12T12:00:00+01:00",
+  "source_end": "2026-11-12T20:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-47c956c4146e549fc797cd",
+    "titre": "Ghana relance sa campagne Afcon 2027 malgré un penalty raté d'Ayew",
+    "publishedAt": "2026-11-12T18:12:55Z",
+    "createdAt": "2026-11-12T18:36:27Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/c61md0mldvdgo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-529ce91866f1a4e615c5b3",
+    "titre": "Le PSV s'intéresserait à Kevin De Bruyne, selon Marca",
+    "publishedAt": "2026-11-12T18:24:00Z",
+    "createdAt": "2026-11-12T18:36:24Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a735463416754002058-le-psv-cible-kevin-de-bruyne"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-8f5b356881d6216155a4ac",
+    "titre": "Frenkie De Jong pourrait quitter le Barça pour 50 M€, PSG et Arsenal intéressés",
+    "publishedAt": "2026-11-12T17:30:00Z",
+    "createdAt": "2026-11-12T17:47:51Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/paris/50-me-pour-de-jong-le-psg-debarque"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-2354a2e72d6a38fb3b64cc",
+    "titre": "PSG : le club envisagerait de prolonger Marquinhos, sous contrat jusqu'en 2028",
+    "publishedAt": "2026-11-12T17:35:27Z",
+    "createdAt": "2026-11-12T17:47:48Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a7414324694540841933-psg-une-tendance-se-degage-pour-lavenir-de-marquinhos"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-b3be9df12f90206bb8863b",
+    "titre": "Kulusevski critique Tottenham après 526 jours d'absence",
+    "publishedAt": "2026-11-12T16:42:57Z",
+    "createdAt": "2026-11-12T16:55:57Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a7179870526308036135-dejan-kulusevski-tacle-tottenham-apres-ses-526-jours-dabsence"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-3a93829dfca081c2db4130",
+    "titre": "Turquie-Belgique en direct : une victoire pourrait qualifier les Bleus pour les quarts de finale",
+    "publishedAt": "2026-11-12T16:54:28Z",
+    "createdAt": "2026-11-12T16:55:54Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/ligue-des-nations/direct-turquie-belgique-suivez-en-live-le-match-de-ligue-des-nations-qui-peut-deja-qualifier-les-bleus_LS-202611120706.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-f339f75d1521b00bee832b",
+    "titre": "Jürgen Klopp dévoile sa liste avec l'Allemagne, dont le jeune Wael Mohya",
+    "publishedAt": "2026-11-12T15:27:36Z",
+    "createdAt": "2026-11-12T15:53:53Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/bundesliga/video-la-revolution-de-jurgen-klopp-avec-l-allemagne_VN-202611120661.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-9a54ff0d0cb69ca34bb31d",
+    "titre": "Owono encore indécis sur son avenir après la mort de De Miguel",
+    "publishedAt": "2026-11-12T15:39:19Z",
+    "createdAt": "2026-11-12T15:53:48Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/ckedq01zve04o?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "actus-edition-20261112-1900",
   "univers": "actus",
   "format": "edition",
@@ -12050,28 +12170,5 @@
   "audio": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f120fca89c2237b15a1771d87b031bec9a2d99a/foot-edition-20261023-0853.m4a",
   "page": "https://velocemercato.fr/studio/episodes/foot-edition-20261023-0853.html",
   "poster": "/studio/episodes/posters/foot-edition-20261023-0853.jpg"
- },
- {
-  "id": "foot-buts-20261023-0414",
-  "univers": "foot",
-  "format": "buts",
-  "moment": "soir",
-  "label": "Les buts de la semaine",
-  "titre": "La Pastille Foot : les buts de la semaine, Lyon, Marseille, Lille et le Ballon d'Or",
-  "accroche": "Une défaite lyonnaise, un Clásico en vue et le Ballon d'Or qui approche.",
-  "duree": 244,
-  "date": "2026-10-23T04:14+02:00",
-  "publie": true,
-  "voix": [
-   "piper"
-  ],
-  "speech_rate": 1.12,
-  "fichier": "foot-buts-20261023-0414.mp4",
-  "media_sha": "a2c1119a0a7af1f7907eca8b27b82c6edd4d9c19",
-  "video": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@a2c1119a0a7af1f7907eca8b27b82c6edd4d9c19/foot-buts-20261023-0414.mp4",
-  "image": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@a2c1119a0a7af1f7907eca8b27b82c6edd4d9c19/foot-buts-20261023-0414.jpg",
-  "audio": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@a2c1119a0a7af1f7907eca8b27b82c6edd4d9c19/foot-buts-20261023-0414.m4a",
-  "page": "https://velocemercato.fr/studio/episodes/foot-buts-20261023-0414.html",
-  "poster": "/studio/episodes/posters/foot-buts-20261023-0414.jpg"
  }
 ]
