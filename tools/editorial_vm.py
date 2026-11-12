@@ -263,7 +263,10 @@ def run(state, graph, root=ROOT, now=None, burst=False):
                 result['targets'][account + '/' + network] = publish_target(
                     state, graph, account, network, root, now, count, burst=burst)
             except Exception as error:
-                result['targets'][account + '/' + network] = {'status': 'bloque', 'reason': type(error).__name__, 'posts': []}
+                # Motif lisible (messages fixes ou erreur Meta), sans jeton ni URL signée.
+                detail = re.sub(r'EA[A-Za-z0-9]{20,}|access_token=[^&\s]+', '[masqué]', str(error))[:240]
+                result['targets'][account + '/' + network] = {'status': 'bloque', 'reason': type(error).__name__,
+                                                              'detail': detail, 'posts': []}
     return result
 
 
