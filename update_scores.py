@@ -39,21 +39,49 @@ ESPN_LIGUES = {  # chemin ESPN : (nom affiché, sport)
     'basketball/nba': ('NBA', 'basket'), 'football/nfl': ('NFL', 'nfl'), 'hockey/nhl': ('NHL', 'hockey'),
 }
 SECOURS = {'Ligue 1', 'Premier League', 'Liga', 'Serie A', 'Bundesliga', 'Ligue des champions'}
+# Notifications « BUT ! » sur les téléphones abonnés (OneSignal). L'App ID est public ;
+# la clé REST reste dans le secret GitHub ONESIGNAL_API_KEY (jamais dans le code).
+ONESIGNAL_APP_ID = 'd3ff7fd0-9e46-4875-b649-ab5f7916bb78'
+ONESIGNAL_KEY = os.getenv('ONESIGNAL_API_KEY', '').strip()
+PUSH_COMPS = {'Ligue 1', 'Ligue des champions', 'Premier League', 'Liga', 'Serie A', 'Bundesliga', 'Ligue des nations'}
 DISCORD_COMPS = {'Ligue 1', 'Ligue des champions', 'Ligue des nations'}  # le salon Discord reste centré sur la L1 et la C1
 PARIS = ZoneInfo('Europe/Paris')
 
 
+def push_but(m, sc):
+    """Notification « ⚽ BUT ! » aux abonnés du thème « buts » (aucune si la clé est absente)."""
+    if not ONESIGNAL_KEY or m.get('comp') not in PUSH_COMPS:
+        return
+    texte = f"{m['dom']} {sc[0]}-{sc[1]} {m['ext']} · {m['comp']}"
+    body = json.dumps({'app_id': ONESIGNAL_APP_ID, 'headings': {'en': '⚽ BUT !', 'fr': '⚽ BUT !'},
+                       'contents': {'en': texte, 'fr': texte}, 'url': 'https://velocemercato.fr/scores/',
+                       'filters': [{'field': 'tag', 'key': 'buts', 'relation': '=', 'value': '1'}],
+                       'collapse_id': 'but-' + str(m['id']), 'ttl': 900}).encode('utf-8')
+    try:
+        urllib.request.urlopen(urllib.request.Request('https://api.onesignal.com/notifications', data=body, method='POST',
+                               headers={'Content-Type': 'application/json', 'Authorization': 'Key ' + ONESIGNAL_KEY}), timeout=10).read()
+        print('OneSignal : but envoyé.')
+    except Exception as exc:
+        print(f'OneSignal : envoi impossible ({type(exc).__name__} {getattr(exc, "code", "")})')
+
+
 def notify(old_rows, rows):
     """Envoie dans le salon Discord : coup d'envoi, but, mi-temps, fin de match (scores officiels seulement)."""
-    if not WEBHOOK.startswith('https://discord.com/api/webhooks/') or not old_rows:
+    if not old_rows:
         return
+    discord = WEBHOOK.startswith('https://discord.com/api/webhooks/')
     before = {m['id']: m for m in old_rows}
     msgs = []
     for m in rows:
         o = before.get(m['id'])
-        if not o or m['comp'] not in DISCORD_COMPS:
+        if not o:
             continue
         sc, so = m['score'], o['score']
+        if (o['statut'] in ('IN_PLAY', 'PAUSED') and m['statut'] in ('IN_PLAY', 'PAUSED', 'FINISHED')
+                and None not in sc and None not in so and sum(sc) > sum(so)):
+            push_but(m, sc)
+        if m['comp'] not in DISCORD_COMPS:
+            continue
         tag = f"**{m['dom']} {sc[0] if sc[0] is not None else 0}-{sc[1] if sc[1] is not None else 0} {m['ext']}** · {m['comp']}"
         if o['statut'] in ('SCHEDULED', 'TIMED') and m['statut'] == 'IN_PLAY':
             msgs.append(f"🟢 Coup d'envoi : {m['dom']} – {m['ext']} ({m['comp']})")
@@ -64,7 +92,7 @@ def notify(old_rows, rows):
             msgs.append(f"⏸ Mi-temps : {tag}")
         if o['statut'] != 'FINISHED' and m['statut'] == 'FINISHED':
             msgs.append(f"🏁 Terminé : {tag}")
-    for text in msgs[:10]:
+    for text in (msgs[:10] if discord else []):
         body = json.dumps({'content': text + '\n<https://velocemercato.fr>', 'username': 'Véloce Mercato · Flash'}).encode('utf-8')
         try:
             urllib.request.urlopen(urllib.request.Request(WEBHOOK, data=body, headers={'Content-Type': 'application/json',
