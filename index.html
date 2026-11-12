@@ -366,6 +366,16 @@
       main .banniere-argent, main .reseaux { grid-column:1/-1; margin:0 auto; }
     }
 
+
+/* Menu complet : les accès des autres rubriques restent faciles à retrouver. */
+.acces-tous-vm { box-sizing:border-box; width:min(900px,calc(100% - 24px)); margin:12px auto; border:1px solid #d7ab64; border-radius:14px; background:#160f0d; color:#fff2cf; font:700 14px/1.4 system-ui,sans-serif; }
+.acces-tous-vm summary { padding:14px 18px; min-height:44px; box-sizing:border-box; cursor:pointer; }
+.acces-tous-vm nav { padding:0 12px 12px; display:grid; grid-template-columns:repeat(auto-fit,minmax(125px,1fr)); gap:8px; }
+.acces-tous-vm a { display:flex; justify-content:center; align-items:center; min-height:44px; padding:6px 10px; box-sizing:border-box; color:#fff2cf; background:#2b1c17; border:1px solid #d7ab6480; border-radius:9px; text-align:center; text-decoration:none; }
+.acces-tous-vm a:hover { background:#493020; }
+.acces-tous-vm :is(a,summary):focus-visible { outline:3px solid #ffd875; outline-offset:2px; }
+@media (min-width:900px) and (orientation:landscape) { .acces-tous-vm { grid-column:1/-1; margin:0 auto; } }
+
 </style>
 <link rel="stylesheet" href="/assets/mangas-collections.css">
 <!-- Cloudflare Web Analytics --><script id="vm-cfwa">(function(h){if(h==='velocemercato.fr'||h==='www.velocemercato.fr'){var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "35ce3d9fb9144124a0bb97db4e89dbb2"}');document.head.appendChild(s)}})(location.hostname)</script><link rel="stylesheet" href="/notifications/alertes.css"><script src="/notifications/alertes.js" defer></script></head>
@@ -774,6 +784,7 @@
         </svg>
       </a><a class="desktop-rubrique" href="https://vm-prono-club.heineguez.chatgpt.site/" aria-label="VM Prono, conseils publics et VIP gratuit sur invitation"><svg viewBox="0 0 82 43" aria-hidden="true"><defs><linearGradient id="menu-prono-fond"><stop stop-color="#221222"/><stop offset="1" stop-color="#4e2a3c"/></linearGradient></defs><rect x="1" y="1" width="80" height="41" rx="6" fill="url(#menu-prono-fond)" stroke="#ffd181" stroke-width="1.4"/><image href="img/vm-actus-pronos-globe.webp" x="43" y="3" width="37" height="37"/><text x="6" y="18" fill="#ffd181" font-family="DejaVu Sans,sans-serif" font-size="7" font-weight="bold">VM</text><text x="6" y="31" fill="white" font-family="DejaVu Sans,sans-serif" font-size="8.5" font-weight="bold">PRONOS</text></svg></a></nav>
 <a class="desktop-univers" href="https://vmunivers.fr/" aria-label="Découvrir VM Univers"><img src="img/logo-vm-univers-officiel.png" width="30" height="30" alt="">Découvrir VM Univers <span aria-hidden="true">↗</span></a>
+<details class="acces-tous-vm"><summary>Toutes les rubriques et tous les accès</summary><nav aria-label="Toutes les rubriques VM"><a href="/foot/">Foot</a><a href="/foot-amateur/">Foot amateur</a><a href="/multisport/">Multisport</a><a href="/actus/">Actus</a><a href="/vm-gaming/">Gaming</a><a href="/mangas/">Mangas et séries</a><a href="/web-studio.html">VM Studio</a><a href="/studio.html#tv">La Pastille</a><a href="https://vm-prono-club.heineguez.chatgpt.site/">Conseils pronos</a><a href="/foot/#videos">Vidéos</a><a href="/services/">Services</a><a href="/decouvrir.html">Découvrir</a><a href="/soutenir.html">Soutenir</a><a href="https://vmunivers.fr/">VM Univers</a></nav></details>
     <aside class="banniere-argent" aria-label="Les jeux d’argent, réservés aux 18 ans et plus">
       <span aria-hidden="true">LES JEUX D’ARGENT</span>
       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -2279,4 +2290,5 @@
 <script src="/assets/mangas-collections.js"></script>
 <script src="/assets/vm-live-ticker.js" defer></script></body>
 </html>
+
 

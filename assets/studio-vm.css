@@ -260,3 +260,27 @@ html:has(.vms){scroll-behavior:smooth;scroll-padding-top:60px}
   .vms-cta{grid-template-columns:1fr}
   .vms-hero h1{font-size:1.9rem}
 }
+
+
+/* Lisibilité et accès VM Studio — 12 novembre 2026 */
+
+/* Le prix reste plein et lisible, indépendamment du dégradé des autres titres. */
+html[data-vmt-page="webstudio"] .vms-price {
+ width:fit-content; max-width:100%; box-sizing:border-box; gap:8px 16px;
+ padding:12px 16px; border:1px solid #ffe08a; border-radius:14px;
+ background:#111626; color:#fff; text-shadow:none;
+}
+html[data-vmt-page="webstudio"] .vms-price span { color:#f6f4ed; }
+html[data-vmt-page="webstudio"] .vms-price b.vms-gold {
+ color:#ffe08a !important; -webkit-text-fill-color:#ffe08a !important;
+ background:none !important; -webkit-text-stroke:0; text-shadow:none; opacity:1;
+}
+html[data-vmt-page="webstudio"] .vms-nav a { display:inline-flex; align-items:center; justify-content:center; min-height:44px; box-sizing:border-box; }
+@media(max-width:699px) {
+ html[data-vmt-page="webstudio"] .vms-head-in { flex-wrap:wrap; gap:12px; }
+ html[data-vmt-page="webstudio"] .vms-nav { width:100%; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; }
+ html[data-vmt-page="webstudio"] .vms-nav a:not(.vms-nav-cta) { display:inline-flex; }
+ html[data-vmt-page="webstudio"] .vms-nav a { padding:9px 6px; font-size:.78rem; background:#14233b; color:#fff; border:1px solid #b69b60; border-radius:10px; }
+ html[data-vmt-page="webstudio"] .vms-nav .vms-nav-cta { background:#ffe08a; color:#101420; }
+ html[data-vmt-page="webstudio"] .vms-head { position:relative; top:auto !important; }
+}
