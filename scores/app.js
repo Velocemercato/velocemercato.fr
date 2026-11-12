@@ -23,7 +23,10 @@ async function load(){
   const rows=[...map.values()].sort((a,b)=>String(a.date).localeCompare(String(b.date))||String(a.comp).localeCompare(String(b.comp)));
   if(!first)alerts(rows);first=false;
   prev=Object.fromEntries(rows.map(x=>[x.id,x]));DATA=rows;MAJ=live&&live.maj;
-  $('maj').textContent=rows.length?('Source football-data.org'+(MAJ?' · direct mis à jour à '+HM.format(new Date(MAJ)):'')+' · actualisation automatique chaque minute.'):'Aucune donnée disponible pour le moment.';
+  var VER=live&&(live.verifie||live.maj),FR={dateStyle:'short',timeStyle:'short',timeZone:'Europe/Paris'};
+  var vieux=!VER||(Date.now()-Date.parse(VER))>3*3600e3;
+  $('maj').textContent=(rows.length?'Source football-data.org':'Aucun match des championnats suivis aujourd’hui (trêve ou jour sans match).')+
+    (VER?' · vérifié le '+new Date(VER).toLocaleString('fr-FR',FR):'')+(vieux?' · ⚠ données anciennes, robot en retard':' · actualisation automatique chaque minute.');
   renderComps();render();
 }
 function alerts(rows){
