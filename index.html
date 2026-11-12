@@ -341,11 +341,111 @@
       background:#f4c430; color:#1a0f02 !important; font-weight:800; text-decoration:none;
     }
     .acces-rubrique-complete a:focus-visible { outline:3px solid white; outline-offset:3px; }
+
+    /* Ordinateur : quatre accès de chaque côté, hors du décor et des logos. */
+    .desktop-rubriques, .desktop-univers { display:none; }
+    @media (min-width:900px) and (orientation:landscape) {
+      main {
+        display:grid; grid-template-columns:clamp(144px,14vw,212px) minmax(0,1fr) clamp(144px,14vw,212px);
+        gap:12px clamp(12px,1.4vw,22px); align-items:center; box-sizing:border-box;
+        padding:20px 16px max(8px,env(safe-area-inset-bottom));
+      }
+      main .scene-accueil { grid-column:2; grid-row:1; min-width:0; }
+      .zone-logo--paysage .acces-cadre { display:none; }
+      .desktop-rubriques { display:grid; gap:12px; width:100%; grid-row:1; }
+      .desktop-rubriques--gauche { grid-column:1; }
+      .desktop-rubriques--droite { grid-column:3; }
+      .desktop-rubrique { display:block; width:100%; aspect-ratio:82/43; border-radius:14px; color:white; text-decoration:none; }
+      .desktop-rubrique svg { display:block; width:100%; height:100%; overflow:hidden; }
+      .desktop-rubrique:focus-visible { outline:3px solid #ffe08a; outline-offset:4px; }
+      .desktop-rubrique:hover { filter:brightness(1.15); }
+      .desktop-univers { grid-column:2; display:inline-flex; justify-self:center; align-items:center; gap:9px;
+        min-height:44px; padding:4px 16px; border:1px solid #d7ab64; border-radius:999px;
+        color:#ffe2a6; font:750 14px system-ui,sans-serif; text-decoration:none; }
+      .desktop-univers img { object-fit:contain; }
+      main .banniere-argent, main .reseaux { grid-column:1/-1; margin:0 auto; }
+    }
+
 </style>
 <link rel="stylesheet" href="/assets/mangas-collections.css">
 <!-- Cloudflare Web Analytics --><script id="vm-cfwa">(function(h){if(h==='velocemercato.fr'||h==='www.velocemercato.fr'){var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "35ce3d9fb9144124a0bb97db4e89dbb2"}');document.head.appendChild(s)}})(location.hostname)</script><link rel="stylesheet" href="/notifications/alertes.css"><script src="/notifications/alertes.js" defer></script></head>
 <body><style id="vlt-css">#vm-live-ticker{display:flex;align-items:center;gap:8px;background:#05060c;border-bottom:1px solid #e52643;overflow:hidden;font:700 13px/1.2 system-ui,-apple-system,Segoe UI,sans-serif;color:#fff;padding:6px 0 6px 8px}#vm-live-ticker[hidden]{display:none}#vm-live-ticker .vlt-title{flex:0 0 auto;background:#e52643;color:#fff;border-radius:6px;padding:4px 8px;text-decoration:none;font-size:11px;letter-spacing:.06em}#vm-live-ticker .vlt-view{flex:1 1 auto;min-width:0;overflow:hidden}#vm-live-ticker .vlt-title{position:relative;z-index:1}#vm-live-ticker .vlt-rail{display:flex;width:max-content;animation:vlt-scroll linear infinite}#vm-live-ticker:hover .vlt-rail{animation-play-state:paused}#vm-live-ticker .vlt-track{display:flex;gap:18px;padding-right:18px}#vm-live-ticker .vlt-item{display:inline-flex;gap:6px;align-items:center;color:#fff;text-decoration:none;white-space:nowrap}#vm-live-ticker .vlt-tag{color:#f4cf55;font-size:11px}#vm-live-ticker .vlt-live .vlt-tag{color:#ff5a72}#vm-live-ticker .vlt-comp{color:#9aa6c2;font-weight:600;font-size:11px}@keyframes vlt-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}@media (prefers-reduced-motion:reduce){#vm-live-ticker .vlt-rail{animation:none}#vm-live-ticker{overflow-x:auto}}</style><div id="vm-live-ticker" role="region" aria-label="Scores en direct et matchs à venir" hidden></div>
   <main aria-label="Véloce Mercato">
+    <nav class="desktop-rubriques desktop-rubriques--gauche" aria-label="Sport, actualités et gaming"><a class="desktop-rubrique acces-cadre" data-cadre="ordinateur" href="https://velocemercato.fr/#actualites-du-jour" aria-label="VM Foot" data-rubrique="foot" tabindex="0">
+        <svg viewBox="0 0 82 43" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs data-cadres="large">
+        <clipPath id="menu-foot-cadre-large"><rect x="1" y="1" width="80" height="41" rx="6"/></clipPath>
+        <linearGradient id="menu-foot-ombre-cadre-large" x1="0" x2="0" y1="0" y2="1" gradientUnits="objectBoundingBox">
+          <stop offset="0" stop-color="#090c17" stop-opacity=".13"/>
+          <stop offset=".4" stop-color="#090c17" stop-opacity=".25"/>
+          <stop offset=".76" stop-color="#090c17" stop-opacity=".83"/>
+          <stop offset="1" stop-color="#090c17" stop-opacity=".98"/>
+        </linearGradient>
+      </defs>
+          <g clip-path="url(#menu-foot-cadre-large)">
+            <defs><pattern id="menu-foot-vignette-vm-1" width="100%" height="100%" viewBox="0 0 360 180" preserveAspectRatio="xMidYMid slice"><image href="img/cadres-vm.webp" width="360" height="1080"/></pattern></defs><rect width="82" height="43" fill="url(#menu-foot-vignette-vm-1)"/>
+            <rect width="82" height="43" fill="url(#menu-foot-ombre-cadre-large)"/>
+            <path d="M0 38 21 29M63 6 82 0" fill="none" stroke="#ff504f" opacity=".8"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#ff504f" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#ff504f" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">FOOT</text>
+        </svg>
+      </a><a class="desktop-rubrique acces-cadre" data-cadre="ordinateur" href="https://velocemercato.fr/multisport/" aria-label="VM Multisport" data-rubrique="multisport" tabindex="0">
+        <svg viewBox="0 0 82 43" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs data-cadres="large">
+        <clipPath id="menu-multisport-cadre-large"><rect x="1" y="1" width="80" height="41" rx="6"/></clipPath>
+        <linearGradient id="menu-multisport-ombre-cadre-large" x1="0" x2="0" y1="0" y2="1" gradientUnits="objectBoundingBox">
+          <stop offset="0" stop-color="#090c17" stop-opacity=".13"/>
+          <stop offset=".4" stop-color="#090c17" stop-opacity=".25"/>
+          <stop offset=".76" stop-color="#090c17" stop-opacity=".83"/>
+          <stop offset="1" stop-color="#090c17" stop-opacity=".98"/>
+        </linearGradient>
+      </defs>
+          <g clip-path="url(#menu-multisport-cadre-large)">
+            <defs><pattern id="menu-multisport-vignette-vm-2" width="100%" height="100%" viewBox="0 180 360 180" preserveAspectRatio="xMidYMid slice"><image href="img/cadres-vm.webp" width="360" height="1080"/></pattern></defs><rect width="82" height="43" fill="url(#menu-multisport-vignette-vm-2)"/>
+            <rect width="82" height="43" fill="url(#menu-multisport-ombre-cadre-large)"/>
+            <path d="M0 38 21 29M63 6 82 0" fill="none" stroke="#ffc85a" opacity=".8"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#ffc85a" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#ffc85a" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">MULTISPORT</text>
+        </svg>
+      </a><a class="desktop-rubrique acces-cadre" data-cadre="ordinateur" href="https://velocemercato.fr/actus/" aria-label="VM Actus" data-rubrique="actus" tabindex="0">
+        <svg viewBox="0 0 82 43" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs data-cadres="large">
+        <clipPath id="menu-actus-cadre-large"><rect x="1" y="1" width="80" height="41" rx="6"/></clipPath>
+        <linearGradient id="menu-actus-ombre-cadre-large" x1="0" x2="0" y1="0" y2="1" gradientUnits="objectBoundingBox">
+          <stop offset="0" stop-color="#090c17" stop-opacity=".13"/>
+          <stop offset=".4" stop-color="#090c17" stop-opacity=".25"/>
+          <stop offset=".76" stop-color="#090c17" stop-opacity=".83"/>
+          <stop offset="1" stop-color="#090c17" stop-opacity=".98"/>
+        </linearGradient>
+      </defs>
+          <g clip-path="url(#menu-actus-cadre-large)">
+            <defs><pattern id="menu-actus-vignette-vm-3" width="100%" height="100%" viewBox="0 360 360 180" preserveAspectRatio="xMidYMid slice"><image href="img/cadres-vm.webp" width="360" height="1080"/></pattern></defs><rect width="82" height="43" fill="url(#menu-actus-vignette-vm-3)"/>
+            <rect width="82" height="43" fill="url(#menu-actus-ombre-cadre-large)"/>
+            <path d="M0 38 21 29M63 6 82 0" fill="none" stroke="#68caff" opacity=".8"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#68caff" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#68caff" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">ACTUS</text>
+        </svg>
+      </a><a class="desktop-rubrique acces-cadre" data-cadre="ordinateur" data-rubrique="gaming" href="https://velocemercato.fr/vm-gaming/" aria-label="VM Gaming" tabindex="0">
+        <svg viewBox="0 0 82 43" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <defs>
+            <clipPath id="menu-gaming-gaming-large"><rect x="1" y="1" width="80" height="41" rx="6"/></clipPath>
+            <linearGradient id="menu-gaming-ombre-gaming-large" x2="0" y2="1">
+              <stop offset=".35" stop-color="#090c17" stop-opacity=".12"/>
+              <stop offset="1" stop-color="#090c17" stop-opacity=".96"/>
+            </linearGradient>
+          </defs>
+          <g clip-path="url(#menu-gaming-gaming-large)">
+            <image href="img/cadre-vm-gaming.webp" width="82" height="43" preserveAspectRatio="xMidYMid slice"/>
+            <rect width="82" height="43" fill="url(#menu-gaming-ombre-gaming-large)"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#a0e65c" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#a0e65c" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">GAMING</text>
+        </svg>
+      </a></nav>
     <div class="scene-accueil">
     <picture>
       <source media="(max-width: 899px), (orientation: portrait)" srcset="img/accueil-bureau-veloce-portrait-micro.webp">
@@ -615,6 +715,65 @@
       </a>
     </svg>
     </div>
+<nav class="desktop-rubriques desktop-rubriques--droite" aria-label="Création, divertissement et pronostics"><a class="desktop-rubrique acces-cadre" data-cadre="ordinateur" href="https://velocemercato.fr/mangas/" aria-label="VM Manga et Séries" data-rubrique="manga" tabindex="0">
+        <svg viewBox="0 0 82 43" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs data-cadres="large">
+        <clipPath id="menu-manga-cadre-large"><rect x="1" y="1" width="80" height="41" rx="6"/></clipPath>
+        <linearGradient id="menu-manga-ombre-cadre-large" x1="0" x2="0" y1="0" y2="1" gradientUnits="objectBoundingBox">
+          <stop offset="0" stop-color="#090c17" stop-opacity=".13"/>
+          <stop offset=".4" stop-color="#090c17" stop-opacity=".25"/>
+          <stop offset=".76" stop-color="#090c17" stop-opacity=".83"/>
+          <stop offset="1" stop-color="#090c17" stop-opacity=".98"/>
+        </linearGradient>
+      </defs>
+          <g clip-path="url(#menu-manga-cadre-large)">
+            <defs><pattern id="menu-manga-vignette-vm-4" width="100%" height="100%" viewBox="0 540 360 180" preserveAspectRatio="xMidYMid slice"><image href="img/cadres-vm.webp" width="360" height="1080"/></pattern></defs><rect width="82" height="43" fill="url(#menu-manga-vignette-vm-4)"/>
+            <rect width="82" height="43" fill="url(#menu-manga-ombre-cadre-large)"/>
+            <path d="M0 38 21 29M63 6 82 0" fill="none" stroke="#c28cff" opacity=".8"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#c28cff" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#c28cff" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="6.8" font-weight="bold">MANGA &amp; SÉRIES</text>
+        </svg>
+      </a><a class="desktop-rubrique acces-cadre" data-cadre="ordinateur" href="https://velocemercato.fr/web-studio.html" aria-label="VM Studio" data-rubrique="studio" tabindex="0">
+        <svg viewBox="0 0 82 43" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs data-cadres="large">
+        <clipPath id="menu-studio-cadre-large"><rect x="1" y="1" width="80" height="41" rx="6"/></clipPath>
+        <linearGradient id="menu-studio-ombre-cadre-large" x1="0" x2="0" y1="0" y2="1" gradientUnits="objectBoundingBox">
+          <stop offset="0" stop-color="#090c17" stop-opacity=".13"/>
+          <stop offset=".4" stop-color="#090c17" stop-opacity=".25"/>
+          <stop offset=".76" stop-color="#090c17" stop-opacity=".83"/>
+          <stop offset="1" stop-color="#090c17" stop-opacity=".98"/>
+        </linearGradient>
+      </defs>
+          <g clip-path="url(#menu-studio-cadre-large)">
+            <defs><pattern id="menu-studio-vignette-vm-5" width="100%" height="100%" viewBox="0 720 360 180" preserveAspectRatio="xMidYMid slice"><image href="img/cadres-vm.webp" width="360" height="1080"/></pattern></defs><rect width="82" height="43" fill="url(#menu-studio-vignette-vm-5)"/>
+            <rect width="82" height="43" fill="url(#menu-studio-ombre-cadre-large)"/>
+            <path d="M0 38 21 29M63 6 82 0" fill="none" stroke="#ffd181" opacity=".8"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#ffd181" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#ffd181" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">STUDIO</text>
+        </svg>
+      </a><a class="desktop-rubrique acces-cadre" data-cadre="ordinateur" href="https://velocemercato.fr/studio.html#tv" aria-label="VM Pastille" data-rubrique="pastille" tabindex="0">
+        <svg viewBox="0 0 82 43" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs data-cadres="large">
+        <clipPath id="menu-pastille-cadre-large"><rect x="1" y="1" width="80" height="41" rx="6"/></clipPath>
+        <linearGradient id="menu-pastille-ombre-cadre-large" x1="0" x2="0" y1="0" y2="1" gradientUnits="objectBoundingBox">
+          <stop offset="0" stop-color="#090c17" stop-opacity=".13"/>
+          <stop offset=".4" stop-color="#090c17" stop-opacity=".25"/>
+          <stop offset=".76" stop-color="#090c17" stop-opacity=".83"/>
+          <stop offset="1" stop-color="#090c17" stop-opacity=".98"/>
+        </linearGradient>
+      </defs>
+          <g clip-path="url(#menu-pastille-cadre-large)">
+            <defs><pattern id="menu-pastille-vignette-vm-6" width="100%" height="100%" viewBox="0 900 360 180" preserveAspectRatio="xMidYMid slice"><image href="img/cadres-vm.webp" width="360" height="1080"/></pattern></defs><rect width="82" height="43" fill="url(#menu-pastille-vignette-vm-6)"/>
+            <rect width="82" height="43" fill="url(#menu-pastille-ombre-cadre-large)"/>
+            <path d="M0 38 21 29M63 6 82 0" fill="none" stroke="#f7659a" opacity=".8"/>
+          </g>
+          <rect class="cadre-bord" x="1" y="1" width="80" height="41" rx="6" fill="none" stroke="#f7659a" stroke-width="1.4"/>
+          <text x="6" y="28" fill="#f7659a" font-family="DejaVu Sans, sans-serif" font-size="7" font-weight="bold">VM</text>
+          <text x="6" y="38" fill="#fff" font-family="DejaVu Sans, sans-serif" font-size="8.5" font-weight="bold">PASTILLE</text>
+        </svg>
+      </a><a class="desktop-rubrique" href="https://vm-prono-club.heineguez.chatgpt.site/" aria-label="VM Prono, conseils publics et VIP gratuit sur invitation"><svg viewBox="0 0 82 43" aria-hidden="true"><defs><linearGradient id="menu-prono-fond"><stop stop-color="#221222"/><stop offset="1" stop-color="#4e2a3c"/></linearGradient></defs><rect x="1" y="1" width="80" height="41" rx="6" fill="url(#menu-prono-fond)" stroke="#ffd181" stroke-width="1.4"/><image href="img/vm-actus-pronos-globe.webp" x="43" y="3" width="37" height="37"/><text x="6" y="18" fill="#ffd181" font-family="DejaVu Sans,sans-serif" font-size="7" font-weight="bold">VM</text><text x="6" y="31" fill="white" font-family="DejaVu Sans,sans-serif" font-size="8.5" font-weight="bold">PRONOS</text></svg></a></nav>
+<a class="desktop-univers" href="https://vmunivers.fr/" aria-label="Découvrir VM Univers"><img src="img/logo-vm-univers-officiel.png" width="30" height="30" alt="">Découvrir VM Univers <span aria-hidden="true">↗</span></a>
     <aside class="banniere-argent" aria-label="Les jeux d’argent, réservés aux 18 ans et plus">
       <span aria-hidden="true">LES JEUX D’ARGENT</span>
       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -2120,3 +2279,4 @@
 <script src="/assets/mangas-collections.js"></script>
 <script src="/assets/vm-live-ticker.js" defer></script></body>
 </html>
+
