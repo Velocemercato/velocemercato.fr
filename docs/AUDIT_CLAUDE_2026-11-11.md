@@ -1,10 +1,10 @@
 # Audit du site pour Claude
 
-État mesuré le 2026-11-11T18:59:26.317245+01:00.
+État mesuré le 2026-11-12T06:36:19.566207+01:00.
 
 ## Périmètre et limites
 
-174 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 461 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
+149 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 396 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
 
 Un statut 404 ou 410 indique une URL introuvable. Les refus 401/403, les limites 429, les erreurs serveur et les délais dépassés demandent une vérification complémentaire. Le test ne valide pas le visionnage géographique des vidéos ni la véracité des articles. Les classements signalés par mots-clés doivent être relus avant déplacement.
 
@@ -17,8 +17,8 @@ Retirer les accès transversaux aux anciennes applications et leurs invitations 
 - Liens confirmés introuvables en HTTP, 4.
 - Cibles internes absentes du dépôt, 4. Certaines peuvent être servies par Cloudflare, lire leur résultat HTTP avant correction.
 - Ancres à vérifier, 58. Certaines sont gérées par JavaScript.
-- Articles à relire pour leur classement, 3.
-- Replays réellement publiés par genre, {"gaming": 18, "actus": 32, "foot": 42}.
+- Articles à relire pour leur classement, 0.
+- Replays réellement publiés par genre, {"foot": 42, "actus": 31, "gaming": 17}.
 
 Le fichier JSON associé contient toutes les références, pages et lignes. Les chemins correspondent au commit indiqué dans ce rapport.
 
@@ -31,9 +31,6 @@ Le fichier JSON associé contient toutes les références, pages et lignes. Les 
 
 ## Articles à relire
 
-- articles.json — rss-v2-863dd12055b8757d2ea6f4 — Pickford face à la concurrence de Trafford chez les Three Lions — À relire, aucun indice net de la rubrique dans la brève
-- vm-gaming/news.json — rss-v2-cbcc6315da75101db7e45f — Les Nazgnagôls dans la saison 3 des Anneaux de Pouvoir : qui sont-ils ? — À relire, aucun indice net de la rubrique dans la brève
-- vm-gaming/news.json — rss-v2-ee021f161b555c76c840d1 — VisionQuest : pas de nouvelle saison annoncée, mais l'équipe ouverte à une suite — À relire, aucun indice net de la rubrique dans la brève
 
 ## Corrections déjà apportées dans cette reprise
 
