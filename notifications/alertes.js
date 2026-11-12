@@ -1,6 +1,6 @@
 
 (()=>{'use strict';const KEY='vm-alertes-v1';
-const TOP={foot:['⚽ Foot','/#feed-title'],actus:['📰 VM Actus','/actus/'],gaming:['🎮 Gaming','/vm-gaming/'],pronos:['📊 Pronos','/pronos/'],mangas:['📺 Mangas','/mangas/'],nba:['🏀 NBA','/multisport/?sport=nba'],nfl:['🏈 NFL','/multisport/?sport=nfl'],f1:['🏎️ F1','/multisport/?sport=f1'],motogp:['🏍️ MotoGP','/multisport/?sport=motogp'],tennis:['🎾 Tennis','/multisport/?sport=tennis'],rugby:['🏉 Rugby','/multisport/?sport=rugby'],cyclisme:['🚴 Cyclisme','/multisport/?sport=cyclisme'],nhl:['🏒 NHL','/multisport/?sport=nhl'],mlb:['⚾ MLB','/multisport/?sport=mlb'],mma:['🥊 MMA','/multisport/?sport=mma'],ski:['🎿 Ski','/multisport/ski/']};
+const TOP={buts:['⚽ BUT !','/scores/'],foot:['⚽ Foot','/#feed-title'],actus:['📰 VM Actus','/actus/'],gaming:['🎮 Gaming','/vm-gaming/'],pronos:['📊 Pronos','/pronos/'],mangas:['📺 Mangas','/mangas/'],nba:['🏀 NBA','/multisport/?sport=nba'],nfl:['🏈 NFL','/multisport/?sport=nfl'],f1:['🏎️ F1','/multisport/?sport=f1'],motogp:['🏍️ MotoGP','/multisport/?sport=motogp'],tennis:['🎾 Tennis','/multisport/?sport=tennis'],rugby:['🏉 Rugby','/multisport/?sport=rugby'],cyclisme:['🚴 Cyclisme','/multisport/?sport=cyclisme'],nhl:['🏒 NHL','/multisport/?sport=nhl'],mlb:['⚾ MLB','/multisport/?sport=mlb'],mma:['🥊 MMA','/multisport/?sport=mma'],ski:['🎿 Ski','/multisport/ski/']};
 const empty=()=>({enabled:false,topics:Object.fromEntries(Object.keys(TOP).map(k=>[k,false])),seen:{}});
 function read(){try{const s=JSON.parse(localStorage.getItem(KEY)||'null');return s?.topics&&s?.seen?s:empty()}catch{return empty()}}
 function save(s){try{localStorage.setItem(KEY,JSON.stringify(s))}catch{}}
@@ -23,7 +23,14 @@ let service=null;async function sw(){if(!('serviceWorker'in navigator))return nu
 function toast(n){const e=document.createElement('div'),a=document.createElement('a'),p=document.createElement('p');e.className='vm-alert-toast';a.href=n.url;a.textContent='Voir la nouveauté';p.textContent=n.label+' : '+n.title;e.append(p,a);document.body.append(e);setTimeout(()=>e.remove(),8500)}
 async function notify(n){toast(n);if('Notification'in window&&Notification.permission==='granted')try{const s=await sw();if(s)await s.showNotification('VM • '+n.label,{body:n.title,icon:'/img/logo-vm-192.png',tag:'vm-'+n.k,data:{url:n.url}})}catch{}}
 function draw(a){const box=document.getElementById('vm-alert-feed');if(!box)return;box.replaceChildren();let yes=false;for(const k of Object.keys(TOP))if(read().topics[k])for(const n of (a[k]||[]).slice(0,4)){yes=true;const art=document.createElement('article'),small=document.createElement('small'),link=document.createElement('a');small.textContent=n.label;link.href=n.url;link.textContent=n.title;art.append(small,document.createElement('br'),link);box.append(art)}if(!yes){const p=document.createElement('p');p.textContent='Choisis tes thèmes pour consulter les nouveautés.';box.append(p)}}
-async function check(pop){const s=read();if(!s.enabled)return;try{const a=await latest();let dirty=false;for(const k of Object.keys(TOP)){if(!s.topics[k]||!a[k].length)continue;const now=a[k][0],old=s.seen[k];if(old!==now.id){s.seen[k]=now.id;dirty=true;if(old&&pop&&a[k].some(x=>x.id===old))await notify(now)}}if(dirty)save(s);if(document.body.classList.contains('vm-alerts-page'))draw(a)}catch{}}
+const LIVE_SRC=['https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/scores-live/scores.json','/scores.json'];
+async function goals(pop){const s=read();if(!s.enabled||!s.topics.buts)return;let d=null;
+ for(const u of LIVE_SRC){try{const r=await fetch(u+'?v='+Math.floor(Date.now()/30000),{cache:'no-store'});if(r.ok){d=await r.json();break}}catch{}}
+ if(!d||!Array.isArray(d.matchs))return;const g=s.goals||{},next={};
+ for(const m of d.matchs){const sc=m&&m.score;if(!Array.isArray(sc)||sc[0]==null||sc[1]==null)continue;const tot=(+sc[0])+(+sc[1]),id=String(m.id);next[id]=tot;
+  if(pop&&g[id]!=null&&tot>g[id]&&['IN_PLAY','PAUSED','FINISHED'].includes(m.statut))await notify({k:'buts-'+id,label:'⚽ BUT !',title:String(m.dom)+' '+sc[0]+'-'+sc[1]+' '+String(m.ext)+' · '+String(m.comp||''),url:'/scores/'})}
+ s.goals=next;save(s)}
+async function check(pop){await goals(pop);const s=read();if(!s.enabled)return;try{const a=await latest();let dirty=false;for(const k of Object.keys(TOP)){if(!s.topics[k]||!a[k].length)continue;const now=a[k][0],old=s.seen[k];if(old!==now.id){s.seen[k]=now.id;dirty=true;if(old&&pop&&a[k].some(x=>x.id===old))await notify(now)}}if(dirty)save(s);if(document.body.classList.contains('vm-alerts-page'))draw(a)}catch{}}
 function start(){if(document.body.classList.contains('vm-alerts-page')){
 const status=document.getElementById('vm-alert-status');const initial=read();status.textContent=initial.enabled?'Alertes activées lorsque le site est ouvert.':'Alertes désactivées.';
 for(const k of Object.keys(TOP)){const c=document.querySelector('[data-topic="'+k+'"]');c.checked=!!initial.topics[k];c.addEventListener('change',()=>{const s=read();s.topics[k]=c.checked;save(s);status.textContent='Choix enregistré sur cet appareil.'})}
@@ -32,6 +39,6 @@ document.getElementById('vm-alert-disable').addEventListener('click',()=>{const 
 document.getElementById('vm-alert-refresh').addEventListener('click',async()=>{try{draw(await latest());status.textContent='Nouveautés actualisées.'}catch{status.textContent='Flux temporairement indisponible.'}});
 latest().then(draw).catch(()=>{});
 }else{const a=document.createElement('a');a.className='vm-alert-fab';a.href='/notifications/';a.textContent='🔔 Mes alertes';a.setAttribute('aria-label','Choisir mes alertes');document.body.append(a)}
-if(read().enabled){sw().catch(()=>{});check(false);setInterval(()=>{if(!document.hidden)check(true)},180000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)check(true)})}}
+if(read().enabled){sw().catch(()=>{});check(false);setInterval(()=>{if(!document.hidden)check(true)},180000);setInterval(()=>{if(!document.hidden)goals(true)},60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)check(true)})}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
 })();

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Résultats en direct : Ligue 1, Ligue des champions et 4 grands championnats (hier, aujourd'hui, demain).
+"""Résultats en direct : Ligue 1, Ligue des champions, 4 grands championnats et sélections (hier, aujourd'hui, demain).
 
 Source officielle de données : football-data.org (offre gratuite, secret GitHub FOOTBALL_DATA_KEY).
 Sans clé, rien n'est publié : aucun score n'est jamais deviné ni écrit par l'IA.
@@ -29,7 +29,10 @@ def _salon_discord():
 WEBHOOK = os.getenv('DISCORD_WEBHOOK', '').strip() or _salon_discord()
 COMPETITIONS = {'FL1': 'Ligue 1', 'CL': 'Ligue des champions', 'PL': 'Premier League', 'PD': 'Liga',
                 'SA': 'Serie A', 'BL1': 'Bundesliga'}
-DISCORD_COMPS = {'Ligue 1', 'Ligue des champions'}  # le salon Discord reste centré sur la L1 et la C1
+# Deuxième source publique (sans clé) pour les sélections, absentes de l'offre gratuite football-data.
+ESPN_LIGUES = {'uefa.nations': 'Ligue des nations', 'fifa.friendly': 'Match amical international',
+               'caf.nations_qual': 'Qualifications CAN', 'uefa.euro_u21_qual': 'Qualifications Euro Espoirs'}
+DISCORD_COMPS = {'Ligue 1', 'Ligue des champions', 'Ligue des nations'}  # le salon Discord reste centré sur la L1 et la C1
 PARIS = ZoneInfo('Europe/Paris')
 
 
@@ -65,6 +68,41 @@ def notify(old_rows, rows):
         print(f'Discord : {len(msgs)} notification(s).')
 
 
+def espn_rows(today):
+    """Matchs des sélections (hier, aujourd'hui, demain) depuis le tableau des scores public d'ESPN."""
+    rows = []
+    jours = '-'.join(d.strftime('%Y%m%d') for d in (today - dt.timedelta(days=1), today + dt.timedelta(days=1)))
+    for slug, nom in ESPN_LIGUES.items():
+        url = f'https://site.api.espn.com/apis/site/v2/sports/soccer/{slug}/scoreboard?dates={jours}&lang=fr&region=fr'
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': 'VeloceMercato/1.0'}), timeout=15) as r:
+                data = json.load(r)
+        except Exception as exc:
+            print(f'ESPN {slug} indisponible ({type(exc).__name__})')
+            continue
+        for e in data.get('events') or []:
+            try:
+                comp = (e.get('competitions') or [{}])[0]
+                teams = {c.get('homeAway'): c for c in comp.get('competitors') or []}
+                home, away = teams['home'], teams['away']
+                st = (e.get('status') or {}).get('type') or {}
+                state, name = st.get('state'), str(st.get('name', ''))
+                statut = ('FINISHED' if state == 'post' else 'PAUSED' if 'HALFTIME' in name
+                          else 'IN_PLAY' if state == 'in' else 'TIMED')
+                if 'POSTPONED' in name or 'CANCELED' in name:
+                    statut = 'POSTPONED'
+                def but(c):
+                    v = c.get('score')
+                    return int(v) if statut != 'TIMED' and str(v).isdigit() else None
+                rows.append({'id': 'espn-' + str(e['id']), 'date': e.get('date'), 'comp': nom,
+                             'dom': (home.get('team') or {}).get('shortDisplayName') or '?',
+                             'ext': (away.get('team') or {}).get('shortDisplayName') or '?',
+                             'statut': statut, 'score': [but(home), but(away)]})
+            except (KeyError, TypeError, ValueError):
+                continue
+    return rows
+
+
 def main():
     if not KEY:
         print('Scores : secret FOOTBALL_DATA_KEY absent, rien à publier.')
@@ -72,8 +110,12 @@ def main():
     today = dt.datetime.now(PARIS).date()
     url = (f"https://api.football-data.org/v4/matches?competitions={','.join(COMPETITIONS)}"
            f'&dateFrom={today - dt.timedelta(days=1)}&dateTo={today + dt.timedelta(days=1)}')
-    with urllib.request.urlopen(urllib.request.Request(url, headers={'X-Auth-Token': KEY}), timeout=20) as r:
-        data = json.load(r)
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url, headers={'X-Auth-Token': KEY}), timeout=20) as r:
+            data = json.load(r)
+    except Exception as exc:  # une source en panne ne doit pas couper l'autre
+        print(f'football-data indisponible ({type(exc).__name__})')
+        data = {}
     rows = []
     for m in data.get('matches', []):
         code = (m.get('competition') or {}).get('code')
@@ -84,6 +126,7 @@ def main():
         rows.append({'id': m.get('id'), 'date': m.get('utcDate'), 'comp': COMPETITIONS[code],
                      'dom': home.get('shortName') or home.get('name') or '?', 'ext': away.get('shortName') or away.get('name') or '?',
                      'statut': m.get('status'), 'score': [full.get('home'), full.get('away')]})
+    rows += espn_rows(today)
     rows.sort(key=lambda x: (str(x['date']), x['comp']))
     old = json.loads(OUT.read_text(encoding='utf-8')) if OUT.exists() else {}
     # La source renvoie parfois une ancienne version : on ne revient jamais en arrière
