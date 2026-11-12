@@ -282,5 +282,5 @@ html[data-vmt-page="webstudio"] .vms-nav a { display:inline-flex; align-items:ce
  html[data-vmt-page="webstudio"] .vms-nav a:not(.vms-nav-cta) { display:inline-flex; }
  html[data-vmt-page="webstudio"] .vms-nav a { padding:9px 6px; font-size:.78rem; background:#14233b; color:#fff; border:1px solid #b69b60; border-radius:10px; }
  html[data-vmt-page="webstudio"] .vms-nav .vms-nav-cta { background:#ffe08a; color:#101420; }
- html[data-vmt-page="webstudio"] .vms-head { position:relative; top:auto !important; }
+ html[data-vmt-page="webstudio"] .vms-head { position:static !important; top:auto !important; }
 }
