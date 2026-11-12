@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-12T06:36:19.566207+01:00",
-  "commit": "c4eb9efcae78dcecb3d9a316afb73ef47f9fe7ca",
-  "html_pages": 149,
-  "live_urls_checked": 396,
+  "generated_at": "2026-11-12T08:23:19.879172+01:00",
+  "commit": "bfd7812b098da74b7ad66355239978924097bc1a",
+  "html_pages": 153,
+  "live_urls_checked": 409,
   "local_targets_absent": [
     {
       "file": "foot/index.html",
@@ -32,7 +32,7 @@
   "anchors_to_review": [
     {
       "file": "index.html",
-      "line": 938,
+      "line": 940,
       "href": "/#feed-title",
       "tag": "a"
     },
@@ -103,212 +103,8 @@
       "tag": "a"
     },
     {
-      "file": "maquettes/veloce-universe/index.html",
-      "line": 38,
-      "href": "/#feed-title",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/f1/index.html",
-      "line": 28,
-      "href": "#list-france",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/f1/index.html",
-      "line": 28,
-      "href": "#list-europe",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/f1/index.html",
-      "line": 28,
-      "href": "#list-international",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/motogp/index.html",
-      "line": 28,
-      "href": "#list-france",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/motogp/index.html",
-      "line": 28,
-      "href": "#list-europe",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/motogp/index.html",
-      "line": 28,
-      "href": "#list-international",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/mlb/index.html",
-      "line": 28,
-      "href": "#list-france",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/mlb/index.html",
-      "line": 28,
-      "href": "#list-europe",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/mlb/index.html",
-      "line": 28,
-      "href": "#list-international",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/cyclisme/index.html",
-      "line": 28,
-      "href": "#list-france",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/cyclisme/index.html",
-      "line": 28,
-      "href": "#list-europe",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/cyclisme/index.html",
-      "line": 28,
-      "href": "#list-international",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/rugby/index.html",
-      "line": 28,
-      "href": "#list-france",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/rugby/index.html",
-      "line": 28,
-      "href": "#list-europe",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/rugby/index.html",
-      "line": 28,
-      "href": "#list-international",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/nba/index.html",
-      "line": 28,
-      "href": "#list-france",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/nba/index.html",
-      "line": 28,
-      "href": "#list-europe",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/nba/index.html",
-      "line": 28,
-      "href": "#list-international",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/tennis/index.html",
-      "line": 28,
-      "href": "#list-france",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/tennis/index.html",
-      "line": 28,
-      "href": "#list-europe",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/tennis/index.html",
-      "line": 28,
-      "href": "#list-international",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/ski/index.html",
-      "line": 28,
-      "href": "#list-france",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/ski/index.html",
-      "line": 28,
-      "href": "#list-europe",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/ski/index.html",
-      "line": 28,
-      "href": "#list-international",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/mma/index.html",
-      "line": 28,
-      "href": "#list-france",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/mma/index.html",
-      "line": 28,
-      "href": "#list-europe",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/mma/index.html",
-      "line": 28,
-      "href": "#list-international",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/nfl/index.html",
-      "line": 28,
-      "href": "#list-france",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/nfl/index.html",
-      "line": 28,
-      "href": "#list-europe",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/nfl/index.html",
-      "line": 28,
-      "href": "#list-international",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/nhl/index.html",
-      "line": 28,
-      "href": "#list-france",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/nhl/index.html",
-      "line": 28,
-      "href": "#list-europe",
-      "tag": "a"
-    },
-    {
-      "file": "multisport/nhl/index.html",
-      "line": 28,
-      "href": "#list-international",
-      "tag": "a"
-    },
-    {
-      "file": "demos/clients/l-essentiel-burger-0d92858a24.html",
-      "line": 17,
+      "file": "demos/clients/nuances-coiffure-9df411eba1.html",
+      "line": 25,
       "href": "#top",
       "tag": "a"
     },
@@ -325,25 +121,19 @@
       "tag": "a"
     },
     {
-      "file": "demos/clients/ma-creation-cc11adf3a2.html",
-      "line": 27,
-      "href": "#top",
-      "tag": "a"
-    },
-    {
       "file": "demos/clients/boulangerie-patisserie-dubret-051a09c5a7.html",
       "line": 16,
       "href": "#top",
       "tag": "a"
     },
     {
-      "file": "demos/clients/le-ribeauville-543747f021.html",
-      "line": 16,
+      "file": "demos/clients/ma-creation-cc11adf3a2.html",
+      "line": 27,
       "href": "#top",
       "tag": "a"
     },
     {
-      "file": "demos/clients/pizzeria-le-napoli-fab2599d78.html",
+      "file": "demos/clients/pizz-burger-3317d2d0d7.html",
       "line": 16,
       "href": "#top",
       "tag": "a"
@@ -355,14 +145,8 @@
       "tag": "a"
     },
     {
-      "file": "demos/clients/pizz-burger-3317d2d0d7.html",
+      "file": "demos/clients/le-ribeauville-543747f021.html",
       "line": 16,
-      "href": "#top",
-      "tag": "a"
-    },
-    {
-      "file": "demos/clients/nuances-coiffure-9df411eba1.html",
-      "line": 25,
       "href": "#top",
       "tag": "a"
     },
@@ -373,9 +157,225 @@
       "tag": "a"
     },
     {
+      "file": "demos/clients/l-essentiel-burger-0d92858a24.html",
+      "line": 17,
+      "href": "#top",
+      "tag": "a"
+    },
+    {
       "file": "demos/clients/le-turquoise-chez-mahmut-cef546b040.html",
       "line": 16,
       "href": "#top",
+      "tag": "a"
+    },
+    {
+      "file": "demos/clients/pizzeria-le-napoli-fab2599d78.html",
+      "line": 16,
+      "href": "#top",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/nhl/index.html",
+      "line": 28,
+      "href": "#list-france",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/nhl/index.html",
+      "line": 28,
+      "href": "#list-europe",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/nhl/index.html",
+      "line": 28,
+      "href": "#list-international",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/mlb/index.html",
+      "line": 28,
+      "href": "#list-france",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/mlb/index.html",
+      "line": 28,
+      "href": "#list-europe",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/mlb/index.html",
+      "line": 28,
+      "href": "#list-international",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/ski/index.html",
+      "line": 28,
+      "href": "#list-france",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/ski/index.html",
+      "line": 28,
+      "href": "#list-europe",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/ski/index.html",
+      "line": 28,
+      "href": "#list-international",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/nba/index.html",
+      "line": 28,
+      "href": "#list-france",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/nba/index.html",
+      "line": 28,
+      "href": "#list-europe",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/nba/index.html",
+      "line": 28,
+      "href": "#list-international",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/tennis/index.html",
+      "line": 28,
+      "href": "#list-france",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/tennis/index.html",
+      "line": 28,
+      "href": "#list-europe",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/tennis/index.html",
+      "line": 28,
+      "href": "#list-international",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/cyclisme/index.html",
+      "line": 28,
+      "href": "#list-france",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/cyclisme/index.html",
+      "line": 28,
+      "href": "#list-europe",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/cyclisme/index.html",
+      "line": 28,
+      "href": "#list-international",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/mma/index.html",
+      "line": 28,
+      "href": "#list-france",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/mma/index.html",
+      "line": 28,
+      "href": "#list-europe",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/mma/index.html",
+      "line": 28,
+      "href": "#list-international",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/motogp/index.html",
+      "line": 28,
+      "href": "#list-france",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/motogp/index.html",
+      "line": 28,
+      "href": "#list-europe",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/motogp/index.html",
+      "line": 28,
+      "href": "#list-international",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/nfl/index.html",
+      "line": 28,
+      "href": "#list-france",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/nfl/index.html",
+      "line": 28,
+      "href": "#list-europe",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/nfl/index.html",
+      "line": 28,
+      "href": "#list-international",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/rugby/index.html",
+      "line": 28,
+      "href": "#list-france",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/rugby/index.html",
+      "line": 28,
+      "href": "#list-europe",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/rugby/index.html",
+      "line": 28,
+      "href": "#list-international",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/f1/index.html",
+      "line": 28,
+      "href": "#list-france",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/f1/index.html",
+      "line": 28,
+      "href": "#list-europe",
+      "tag": "a"
+    },
+    {
+      "file": "multisport/f1/index.html",
+      "line": 28,
+      "href": "#list-international",
+      "tag": "a"
+    },
+    {
+      "file": "maquettes/veloce-universe/index.html",
+      "line": 38,
+      "href": "/#feed-title",
       "tag": "a"
     }
   ],
@@ -459,43 +459,43 @@
       "status": 403,
       "references": [
         {
+          "file": "foot-amateur/territoires/index.html",
+          "line": 1,
+          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
+          "tag": "a"
+        },
+        {
+          "file": "foot-amateur/territoires/index.html",
+          "line": 1,
+          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
+          "tag": "a"
+        },
+        {
+          "file": "foot-amateur/territoires/index.html",
+          "line": 1,
+          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
+          "tag": "a"
+        },
+        {
+          "file": "foot-amateur/territoires/index.html",
+          "line": 1,
+          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
+          "tag": "a"
+        },
+        {
+          "file": "foot-amateur/territoires/index.html",
+          "line": 1,
+          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
+          "tag": "a"
+        },
+        {
+          "file": "foot-amateur/territoires/index.html",
+          "line": 1,
+          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
+          "tag": "a"
+        },
+        {
           "file": "foot-amateur/dossiers/index.html",
-          "line": 1,
-          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
-          "tag": "a"
-        },
-        {
-          "file": "foot-amateur/territoires/index.html",
-          "line": 1,
-          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
-          "tag": "a"
-        },
-        {
-          "file": "foot-amateur/territoires/index.html",
-          "line": 1,
-          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
-          "tag": "a"
-        },
-        {
-          "file": "foot-amateur/territoires/index.html",
-          "line": 1,
-          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
-          "tag": "a"
-        },
-        {
-          "file": "foot-amateur/territoires/index.html",
-          "line": 1,
-          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
-          "tag": "a"
-        },
-        {
-          "file": "foot-amateur/territoires/index.html",
-          "line": 1,
-          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
-          "tag": "a"
-        },
-        {
-          "file": "foot-amateur/territoires/index.html",
           "line": 1,
           "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
           "tag": "a"
@@ -519,13 +519,13 @@
       "status": 403,
       "references": [
         {
-          "file": "foot-amateur/dossiers/index.html",
+          "file": "foot-amateur/territoires/index.html",
           "line": 1,
           "href": "https://gironde.fff.fr/",
           "tag": "a"
         },
         {
-          "file": "foot-amateur/territoires/index.html",
+          "file": "foot-amateur/dossiers/index.html",
           "line": 1,
           "href": "https://gironde.fff.fr/",
           "tag": "a"
@@ -995,6 +995,18 @@
       ]
     },
     {
+      "url": "https://www.dazn.com/",
+      "status": 403,
+      "references": [
+        {
+          "file": "ou-regarder.html",
+          "line": 36,
+          "href": "https://www.dazn.com/",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.eurosport.fr/",
       "status": 403,
       "references": [
@@ -1167,26 +1179,26 @@
       "status": 429,
       "references": [
         {
-          "file": "studio.html",
-          "line": 113,
-          "href": "https://www.instagram.com/veloce.mercato",
-          "tag": "a"
-        },
-        {
           "file": "index.html",
           "line": 819,
           "href": "https://www.instagram.com/veloce.mercato",
           "tag": "a"
         },
         {
-          "file": "vm-gaming/index.html",
-          "line": 322,
+          "file": "studio.html",
+          "line": 113,
           "href": "https://www.instagram.com/veloce.mercato",
           "tag": "a"
         },
         {
           "file": "actus/index.html",
           "line": 172,
+          "href": "https://www.instagram.com/veloce.mercato",
+          "tag": "a"
+        },
+        {
+          "file": "vm-gaming/index.html",
+          "line": 322,
           "href": "https://www.instagram.com/veloce.mercato",
           "tag": "a"
         },
@@ -1215,13 +1227,13 @@
           "tag": "a"
         },
         {
-          "file": "mangas/episodes/ecole-des-champions-01.html",
+          "file": "mangas/episodes/olive-et-tom-01.html",
           "line": 15,
           "href": "https://www.instagram.com/veloce.mercato",
           "tag": "a"
         },
         {
-          "file": "mangas/episodes/olive-et-tom-01.html",
+          "file": "mangas/episodes/ecole-des-champions-01.html",
           "line": 15,
           "href": "https://www.instagram.com/veloce.mercato",
           "tag": "a"
@@ -1236,6 +1248,18 @@
           "file": "index.html",
           "line": 825,
           "href": "https://www.instagram.com/vmunivers.fr",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.jeuxvideo.com/",
+      "status": 403,
+      "references": [
+        {
+          "file": "index.html",
+          "line": 928,
+          "href": "https://www.jeuxvideo.com/",
           "tag": "a"
         }
       ]
@@ -1589,6 +1613,18 @@
       ]
     },
     {
+      "url": "https://www.plus.fifa.com/",
+      "status": 403,
+      "references": [
+        {
+          "file": "ou-regarder.html",
+          "line": 30,
+          "href": "https://www.plus.fifa.com/",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.seloger.com/list.htm?q=%C3%8Ele-de-France",
       "status": 403,
       "references": [
@@ -1760,12 +1796,12 @@
   "server_failures": [],
   "classification_to_review": [],
   "feed_counts": {
-    "articles.json": 2,
-    "vm-gaming/news.json": 0
+    "articles.json": 6,
+    "vm-gaming/news.json": 1
   },
   "replay_by_genre": {
-    "foot": 42,
-    "actus": 31,
+    "foot": 43,
+    "actus": 30,
     "gaming": 17
   },
   "json_errors": [],
@@ -2151,18 +2187,6 @@
       "final_url": "https://discord.com/invite/JEgfrUtJaX",
       "references": [
         {
-          "file": "studio.html",
-          "line": 115,
-          "href": "https://discord.gg/JEgfrUtJaX",
-          "tag": "a"
-        },
-        {
-          "file": "studio.html",
-          "line": 133,
-          "href": "https://discord.gg/JEgfrUtJaX",
-          "tag": "a"
-        },
-        {
           "file": "index.html",
           "line": 840,
           "href": "https://discord.gg/JEgfrUtJaX",
@@ -2175,8 +2199,62 @@
           "tag": "a"
         },
         {
+          "file": "studio.html",
+          "line": 115,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "studio.html",
+          "line": 133,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-24b6757239def4449fa478.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-f21116d6c3c731e4156d20.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-23f961a1b39dc6255d42d0.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-5954cbe840d98d3c19a1c7.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-4a157aa7f7a32a94d8aab1.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-1f20af642e2d52cbb99453.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
           "file": "ballon-dor/index.html",
           "line": 105,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "actus/index.html",
+          "line": 174,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
         },
@@ -2241,12 +2319,6 @@
           "tag": "a"
         },
         {
-          "file": "actus/index.html",
-          "line": 174,
-          "href": "https://discord.gg/JEgfrUtJaX",
-          "tag": "a"
-        },
-        {
           "file": "foot/index.html",
           "line": 441,
           "href": "https://discord.gg/JEgfrUtJaX",
@@ -2271,18 +2343,6 @@
           "tag": "a"
         },
         {
-          "file": "a/rss-v2-1f20af642e2d52cbb99453.html",
-          "line": 95,
-          "href": "https://discord.gg/JEgfrUtJaX",
-          "tag": "a"
-        },
-        {
-          "file": "a/rss-v2-24b6757239def4449fa478.html",
-          "line": 95,
-          "href": "https://discord.gg/JEgfrUtJaX",
-          "tag": "a"
-        },
-        {
           "file": "vm-gaming/meta/index.html",
           "line": 26,
           "href": "https://discord.gg/JEgfrUtJaX",
@@ -2295,43 +2355,43 @@
       "status": 403,
       "references": [
         {
+          "file": "foot-amateur/territoires/index.html",
+          "line": 1,
+          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
+          "tag": "a"
+        },
+        {
+          "file": "foot-amateur/territoires/index.html",
+          "line": 1,
+          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
+          "tag": "a"
+        },
+        {
+          "file": "foot-amateur/territoires/index.html",
+          "line": 1,
+          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
+          "tag": "a"
+        },
+        {
+          "file": "foot-amateur/territoires/index.html",
+          "line": 1,
+          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
+          "tag": "a"
+        },
+        {
+          "file": "foot-amateur/territoires/index.html",
+          "line": 1,
+          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
+          "tag": "a"
+        },
+        {
+          "file": "foot-amateur/territoires/index.html",
+          "line": 1,
+          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
+          "tag": "a"
+        },
+        {
           "file": "foot-amateur/dossiers/index.html",
-          "line": 1,
-          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
-          "tag": "a"
-        },
-        {
-          "file": "foot-amateur/territoires/index.html",
-          "line": 1,
-          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
-          "tag": "a"
-        },
-        {
-          "file": "foot-amateur/territoires/index.html",
-          "line": 1,
-          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
-          "tag": "a"
-        },
-        {
-          "file": "foot-amateur/territoires/index.html",
-          "line": 1,
-          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
-          "tag": "a"
-        },
-        {
-          "file": "foot-amateur/territoires/index.html",
-          "line": 1,
-          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
-          "tag": "a"
-        },
-        {
-          "file": "foot-amateur/territoires/index.html",
-          "line": 1,
-          "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
-          "tag": "a"
-        },
-        {
-          "file": "foot-amateur/territoires/index.html",
           "line": 1,
           "href": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
           "tag": "a"
@@ -2416,6 +2476,30 @@
       ]
     },
     {
+      "url": "https://fr.euronews.com/2026/11/12/aller-au-parc-chaque-semaine-ameliorerait-la-sante-mentale-des-enfants-selon-une-etude",
+      "status": 206,
+      "final_url": "https://fr.euronews.com/2026/11/12/aller-au-parc-chaque-semaine-ameliorerait-la-sante-mentale-des-enfants-selon-une-etude",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-3d3a91aea04d8565c1c56a",
+          "title": "Des visites régulières au parc associées à une meilleure santé mentale des enfants"
+        }
+      ]
+    },
+    {
+      "url": "https://fr.euronews.com/2026/11/12/un-representant-des-colonies-juives-en-cisjordanie-occupee-refoule-a-son-arrivee-en-france",
+      "status": 206,
+      "final_url": "https://fr.euronews.com/2026/11/12/un-representant-des-colonies-juives-en-cisjordanie-occupee-refoule-a-son-arrivee-en-france",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-20a57898611b0ba0219a00",
+          "title": "Un dirigeant des colonies de Cisjordanie refoulé à son arrivée en France, Israël proteste"
+        }
+      ]
+    },
+    {
       "url": "https://fr.linkedin.com/in/lo%C3%AFc-tanzi-5a93973b",
       "status": 200,
       "final_url": "https://fr.linkedin.com/in/lo%C3%AFc-tanzi-5a93973b",
@@ -2472,13 +2556,13 @@
       "status": 403,
       "references": [
         {
-          "file": "foot-amateur/dossiers/index.html",
+          "file": "foot-amateur/territoires/index.html",
           "line": 1,
           "href": "https://gironde.fff.fr/",
           "tag": "a"
         },
         {
-          "file": "foot-amateur/territoires/index.html",
+          "file": "foot-amateur/dossiers/index.html",
           "line": 1,
           "href": "https://gironde.fff.fr/",
           "tag": "a"
@@ -2933,6 +3017,18 @@
       ]
     },
     {
+      "url": "https://next.ink/brief-article/compte-nintendo-les-connexions-apple-et-google-cest-bientot-fini/",
+      "status": 200,
+      "final_url": "https://next.ink/brief-article/compte-nintendo-les-connexions-apple-et-google-cest-bientot-fini/",
+      "references": [
+        {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-883bfce7183704f5677846",
+          "title": "Compte Nintendo : fin des connexions Apple et Google au 26 janvier 2027"
+        }
+      ]
+    },
+    {
       "url": "https://open-meteo.com/",
       "status": 200,
       "final_url": "https://open-meteo.com/",
@@ -3138,7 +3234,103 @@
       "final_url": "https://vmunivers.fr/",
       "references": [
         {
+          "file": "archives.html",
+          "line": 59,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "radio.html",
+          "line": 77,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "soutenir.html",
+          "line": 53,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "index.html",
+          "line": 564,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "index.html",
+          "line": 731,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "index.html",
+          "line": 906,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "gaming.html",
+          "line": 81,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "kit-reseaux.html",
+          "line": 35,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "kit-reseaux.html",
+          "line": 49,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "ou-regarder.html",
+          "line": 26,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "ou-regarder.html",
+          "line": 27,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
           "file": "ballon-dor-2026.html",
+          "line": 39,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "decouvrir.html",
+          "line": 19,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "decouvrir.html",
+          "line": 19,
+          "href": "https://vmunivers.fr/#projets",
+          "tag": "a"
+        },
+        {
+          "file": "decouvrir.html",
+          "line": 19,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "mentions-legales.html",
+          "line": 57,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "404.html",
           "line": 39,
           "href": "https://vmunivers.fr/",
           "tag": "a"
@@ -3168,32 +3360,14 @@
           "tag": "a"
         },
         {
-          "file": "archives.html",
-          "line": 59,
+          "file": "groupe.html",
+          "line": 20,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
-          "file": "decouvrir.html",
-          "line": 19,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "decouvrir.html",
-          "line": 19,
-          "href": "https://vmunivers.fr/#projets",
-          "tag": "a"
-        },
-        {
-          "file": "decouvrir.html",
-          "line": 19,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "404.html",
-          "line": 39,
+          "file": "groupe.html",
+          "line": 20,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
@@ -3228,38 +3402,14 @@
           "tag": "a"
         },
         {
-          "file": "soutenir.html",
-          "line": 53,
+          "file": "rentabilite.html",
+          "line": 35,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
-          "file": "radio.html",
-          "line": 77,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "groupe.html",
-          "line": 20,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "groupe.html",
-          "line": 20,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "ou-regarder.html",
-          "line": 26,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "ou-regarder.html",
-          "line": 27,
+          "file": "rentabilite.html",
+          "line": 88,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
@@ -3276,74 +3426,290 @@
           "tag": "a"
         },
         {
-          "file": "index.html",
-          "line": 564,
+          "file": "sport/index.html",
+          "line": 27,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
-          "file": "index.html",
-          "line": 731,
+          "file": "sport/index.html",
+          "line": 69,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
-          "file": "index.html",
-          "line": 906,
+          "file": "demos/snack.html",
+          "line": 15,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
-          "file": "kit-reseaux.html",
-          "line": 35,
+          "file": "demos/snack.html",
+          "line": 60,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
-          "file": "kit-reseaux.html",
+          "file": "demos/artisan.html",
+          "line": 18,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/artisan.html",
+          "line": 76,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/cbd.html",
+          "line": 17,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/cbd.html",
+          "line": 70,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/drive.html",
+          "line": 15,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/drive.html",
+          "line": 53,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/beaute.html",
+          "line": 12,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/beaute.html",
+          "line": 72,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/coiffeur.html",
+          "line": 12,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/coiffeur.html",
+          "line": 72,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/caviste.html",
+          "line": 18,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/caviste.html",
+          "line": 70,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/restaurant.html",
+          "line": 17,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/restaurant.html",
+          "line": 86,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "pepite/index.html",
+          "line": 66,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-24b6757239def4449fa478.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-f21116d6c3c731e4156d20.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-23f961a1b39dc6255d42d0.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-5954cbe840d98d3c19a1c7.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-4a157aa7f7a32a94d8aab1.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-1f20af642e2d52cbb99453.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "recettes/index.html",
+          "line": 27,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "recettes/index.html",
           "line": 49,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
-          "file": "gaming.html",
-          "line": 81,
+          "file": "shop/index.html",
+          "line": 95,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
-          "file": "mentions-legales.html",
-          "line": 57,
+          "file": "boutique/index.html",
+          "line": 50,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
-          "file": "rentabilite.html",
-          "line": 35,
+          "file": "boutique/index.html",
+          "line": 55,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
-          "file": "rentabilite.html",
-          "line": 88,
+          "file": "vente/index.html",
+          "line": 30,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
-          "file": "vm/index.html",
-          "line": 20,
+          "file": "vente/index.html",
+          "line": 31,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
-          "file": "vm/index.html",
-          "line": 20,
+          "file": "vente/index.html",
+          "line": 47,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "vente/index.html",
+          "line": 67,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "emploi/index.html",
+          "line": 54,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "ballon-dor/index.html",
+          "line": 60,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "ballon-dor/index.html",
+          "line": 61,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "produits-locaux/index.html",
+          "line": 27,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "produits-locaux/index.html",
+          "line": 78,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "menu/index.html",
+          "line": 63,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "comparateur/index.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "comparateur/index.html",
+          "line": 115,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
           "file": "services/index.html",
           "line": 13,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "foot-amateur/index.html",
+          "line": 83,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "pub/index.html",
+          "line": 35,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "pub/index.html",
+          "line": 46,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "pro-auto/index.html",
+          "line": 65,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "pro-auto/index.html",
+          "line": 99,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
@@ -3372,42 +3738,6 @@
           "tag": "a"
         },
         {
-          "file": "ballon-dor/index.html",
-          "line": 60,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "ballon-dor/index.html",
-          "line": 61,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "vm-gaming/index.html",
-          "line": 212,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "menu/index.html",
-          "line": 63,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "pub/index.html",
-          "line": 35,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "pub/index.html",
-          "line": 46,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
           "file": "allolivre/index.html",
           "line": 75,
           "href": "https://vmunivers.fr/",
@@ -3420,14 +3750,8 @@
           "tag": "a"
         },
         {
-          "file": "actus/index.html",
-          "line": 121,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "studio/kit-automatique.html",
-          "line": 8,
+          "file": "studio/kit-depannage.html",
+          "line": 10,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
@@ -3438,38 +3762,14 @@
           "tag": "a"
         },
         {
-          "file": "studio/kit-depannage.html",
-          "line": 10,
+          "file": "studio/kit-automatique.html",
+          "line": 8,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
-          "file": "shop/index.html",
-          "line": 95,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "comparateur/index.html",
-          "line": 82,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "comparateur/index.html",
-          "line": 115,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "recettes/index.html",
-          "line": 27,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "recettes/index.html",
-          "line": 49,
+          "file": "pro/index.html",
+          "line": 57,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
@@ -3486,6 +3786,30 @@
           "tag": "a"
         },
         {
+          "file": "notifications/index.html",
+          "line": 22,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "actus/index.html",
+          "line": 121,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "vm/index.html",
+          "line": 20,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "vm/index.html",
+          "line": 20,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
           "file": "rdv/index.html",
           "line": 27,
           "href": "https://vmunivers.fr/",
@@ -3498,206 +3822,14 @@
           "tag": "a"
         },
         {
-          "file": "foot-amateur/index.html",
-          "line": 83,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "notifications/index.html",
-          "line": 22,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "pro-auto/index.html",
-          "line": 65,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "pro-auto/index.html",
-          "line": 99,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/artisan.html",
-          "line": 18,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/artisan.html",
-          "line": 76,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/caviste.html",
-          "line": 18,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/caviste.html",
-          "line": 70,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/snack.html",
-          "line": 15,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/snack.html",
-          "line": 60,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/restaurant.html",
-          "line": 17,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/restaurant.html",
-          "line": 86,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/beaute.html",
-          "line": 12,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/beaute.html",
-          "line": 72,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/cbd.html",
-          "line": 17,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/cbd.html",
-          "line": 70,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/coiffeur.html",
-          "line": 12,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/coiffeur.html",
-          "line": 72,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/drive.html",
-          "line": 15,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/drive.html",
-          "line": 53,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "emploi/index.html",
-          "line": 54,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "pro/index.html",
-          "line": 57,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "boutique/index.html",
-          "line": 50,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "boutique/index.html",
-          "line": 55,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "immo/index.html",
-          "line": 27,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "immo/index.html",
-          "line": 54,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
           "file": "belfort/index.html",
           "line": 53,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
-          "file": "pepite/index.html",
-          "line": 66,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "sport/index.html",
-          "line": 27,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "sport/index.html",
-          "line": 69,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "vente/index.html",
-          "line": 30,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "vente/index.html",
-          "line": 31,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "vente/index.html",
-          "line": 47,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "vente/index.html",
-          "line": 67,
+          "file": "vm-gaming/index.html",
+          "line": 212,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
@@ -3750,55 +3882,103 @@
           "tag": "a"
         },
         {
-          "file": "a/rss-v2-1f20af642e2d52cbb99453.html",
-          "line": 82,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "a/rss-v2-24b6757239def4449fa478.html",
-          "line": 82,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "produits-locaux/index.html",
+          "file": "immo/index.html",
           "line": 27,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
-          "file": "produits-locaux/index.html",
-          "line": 78,
+          "file": "immo/index.html",
+          "line": 54,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
-          "file": "vm-gaming/meta/index.html",
-          "line": 26,
+          "file": "demos/clients/nuances-coiffure-9df411eba1.html",
+          "line": 70,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/clients/la-dolce-vita-a908808efb.html",
+          "line": 53,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/clients/la-coifferie-e576685632.html",
+          "line": 70,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/clients/boulangerie-patisserie-dubret-051a09c5a7.html",
+          "line": 53,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/clients/ma-creation-cc11adf3a2.html",
+          "line": 72,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/clients/pizz-burger-3317d2d0d7.html",
+          "line": 60,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/clients/coupe-et-coiff-3cd45d18dc.html",
+          "line": 70,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/clients/le-ribeauville-543747f021.html",
+          "line": 53,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/clients/le-belfortain-coiffure-et-barb-303ff37428.html",
+          "line": 59,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/clients/l-essentiel-burger-0d92858a24.html",
+          "line": 61,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/clients/le-turquoise-chez-mahmut-cef546b040.html",
+          "line": 60,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "demos/clients/pizzeria-le-napoli-fab2599d78.html",
+          "line": 60,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/actus-edition-20261020-1853.html",
+          "line": 15,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/foot-edition-20261022-1309.html",
+          "line": 15,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
           "file": "studio/episodes/gaming-debat-20261020-1915.html",
-          "line": 15,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/gaming-edition-20261023-1231.html",
-          "line": 15,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/foot-edition-20261023-1353.html",
-          "line": 15,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/foot-speciale-20261022-1940.html",
           "line": 15,
           "href": "https://vmunivers.fr/",
           "tag": "a"
@@ -3810,43 +3990,13 @@
           "tag": "a"
         },
         {
-          "file": "studio/episodes/actus-edition-20261022-0728.html",
+          "file": "studio/episodes/foot-edition-20261023-0853.html",
           "line": 15,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
-          "file": "studio/episodes/foot-speciale-20261020-1847.html",
-          "line": 15,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/actus-edition-20261020-1853.html",
-          "line": 15,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/gaming-edition-20261023-1357.html",
-          "line": 15,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/actus-edition-20261021-2117.html",
-          "line": 15,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/foot-debat-20261022-0003.html",
-          "line": 15,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/gaming-edition-20261021-2121.html",
+          "file": "studio/episodes/foot-buts-20261023-0414.html",
           "line": 15,
           "href": "https://vmunivers.fr/",
           "tag": "a"
@@ -3864,7 +4014,25 @@
           "tag": "a"
         },
         {
+          "file": "studio/episodes/actus-edition-20261023-1228.html",
+          "line": 15,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
           "file": "studio/episodes/actus-edition-20261023-1355.html",
+          "line": 15,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/foot-speciale-20261020-1847.html",
+          "line": 15,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/foot-edition-20261023-1224.html",
           "line": 15,
           "href": "https://vmunivers.fr/",
           "tag": "a"
@@ -3876,13 +4044,31 @@
           "tag": "a"
         },
         {
-          "file": "studio/episodes/foot-buts-20261023-0414.html",
+          "file": "studio/episodes/actus-edition-20261022-0728.html",
           "line": 15,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
-          "file": "studio/episodes/foot-edition-20261022-1309.html",
+          "file": "studio/episodes/foot-speciale-20261022-1940.html",
+          "line": 15,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/gaming-edition-20261023-1357.html",
+          "line": 15,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/gaming-edition-20261023-1231.html",
+          "line": 15,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/foot-edition-20261023-1353.html",
           "line": 15,
           "href": "https://vmunivers.fr/",
           "tag": "a"
@@ -3894,31 +4080,31 @@
           "tag": "a"
         },
         {
-          "file": "studio/episodes/actus-edition-20261023-1228.html",
-          "line": 15,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
           "file": "studio/episodes/actus-edition-20261021-1321.html",
           "line": 15,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
-          "file": "studio/episodes/foot-edition-20261023-0853.html",
+          "file": "studio/episodes/gaming-edition-20261021-2121.html",
+          "line": 15,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/foot-debat-20261022-0003.html",
+          "line": 15,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/actus-edition-20261021-2117.html",
           "line": 15,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         },
         {
           "file": "studio/episodes/gaming-edition-20261023-0901.html",
-          "line": 15,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/foot-edition-20261023-1224.html",
           "line": 15,
           "href": "https://vmunivers.fr/",
           "tag": "a"
@@ -3942,74 +4128,8 @@
           "tag": "a"
         },
         {
-          "file": "demos/clients/l-essentiel-burger-0d92858a24.html",
-          "line": 61,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/clients/la-dolce-vita-a908808efb.html",
-          "line": 53,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/clients/la-coifferie-e576685632.html",
-          "line": 70,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/clients/ma-creation-cc11adf3a2.html",
-          "line": 72,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/clients/boulangerie-patisserie-dubret-051a09c5a7.html",
-          "line": 53,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/clients/le-ribeauville-543747f021.html",
-          "line": 53,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/clients/pizzeria-le-napoli-fab2599d78.html",
-          "line": 60,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/clients/coupe-et-coiff-3cd45d18dc.html",
-          "line": 70,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/clients/pizz-burger-3317d2d0d7.html",
-          "line": 60,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/clients/nuances-coiffure-9df411eba1.html",
-          "line": 70,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/clients/le-belfortain-coiffure-et-barb-303ff37428.html",
-          "line": 59,
-          "href": "https://vmunivers.fr/",
-          "tag": "a"
-        },
-        {
-          "file": "demos/clients/le-turquoise-chez-mahmut-cef546b040.html",
-          "line": 60,
+          "file": "vm-gaming/meta/index.html",
+          "line": 26,
           "href": "https://vmunivers.fr/",
           "tag": "a"
         }
@@ -4027,15 +4147,15 @@
           "tag": "a"
         },
         {
-          "file": "pub/index.html",
-          "line": 35,
-          "href": "https://vmunivers.fr/professionnels/",
-          "tag": "a"
-        },
-        {
           "file": "vente/index.html",
           "line": 63,
           "href": "https://vmunivers.fr/professionnels/#devis",
+          "tag": "a"
+        },
+        {
+          "file": "pub/index.html",
+          "line": 35,
+          "href": "https://vmunivers.fr/professionnels/",
           "tag": "a"
         }
       ]
@@ -4460,8 +4580,7 @@
     },
     {
       "url": "https://www.dazn.com/",
-      "status": 206,
-      "final_url": "https://www.dazn.com/en-US/welcome",
+      "status": 403,
       "references": [
         {
           "file": "ou-regarder.html",
@@ -4473,7 +4592,7 @@
     },
     {
       "url": "https://www.espn.com/soccer/story/_/id/49866841/ballon-dor-2026-nominees-harry-kane-kylian-mbappe-lead-30-man-shortlist",
-      "status": 206,
+      "status": 202,
       "final_url": "https://www.espn.com/soccer/story/_/id/49866841/ballon-dor-2026-nominees-harry-kane-kylian-mbappe-lead-30-man-shortlist",
       "references": [
         {
@@ -4563,7 +4682,7 @@
     {
       "url": "https://www.facebook.com/share/19wkqvg6Em/",
       "status": 200,
-      "final_url": "https://www.facebook.com/people/Veloce-Mercato/61584725345167/?rdid=3VPTe8tOtQPlMKOA&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19wkqvg6Em%2F",
+      "final_url": "https://www.facebook.com/people/Veloce-Mercato/61584725345167/?rdid=7kqv7435I9bloP5G&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19wkqvg6Em%2F",
       "references": [
         {
           "file": "index.html",
@@ -4576,7 +4695,7 @@
     {
       "url": "https://www.facebook.com/share/1C3uyLM2BB/",
       "status": 200,
-      "final_url": "https://www.facebook.com/Vmactusetpronos?rdid=zvjduElIuwIlCjkN&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1C3uyLM2BB%2F",
+      "final_url": "https://www.facebook.com/Vmactusetpronos?rdid=5ur41jG2j7x2Xxrx&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1C3uyLM2BB%2F",
       "references": [
         {
           "file": "index.html",
@@ -4589,7 +4708,7 @@
     {
       "url": "https://www.facebook.com/share/1DUSALoBzG/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=8iSolvENq5DzTlwg",
+      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=nEByQpzWhmo2ZL3l",
       "references": [
         {
           "file": "foot/index.html",
@@ -4620,7 +4739,7 @@
     {
       "url": "https://www.facebook.com/share/1E6nH6RZzX/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr?rdid=uwQbhq14FjiiaCLp&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1E6nH6RZzX%2F",
+      "final_url": "https://www.facebook.com/velocemercato.fr?rdid=xB8myT4gjVpQVsRT&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1E6nH6RZzX%2F",
       "references": [
         {
           "file": "pronos/index.html",
@@ -4633,7 +4752,7 @@
     {
       "url": "https://www.facebook.com/share/1EiGutypix/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=ygviw0HnSUTDPqaW",
+      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=k9QGhIeLUnVJQFO5",
       "references": [
         {
           "file": "studio.html",
@@ -4642,14 +4761,14 @@
           "tag": "a"
         },
         {
-          "file": "vm-gaming/index.html",
-          "line": 323,
+          "file": "actus/index.html",
+          "line": 173,
           "href": "https://www.facebook.com/share/1EiGutypix/",
           "tag": "a"
         },
         {
-          "file": "actus/index.html",
-          "line": 173,
+          "file": "vm-gaming/index.html",
+          "line": 323,
           "href": "https://www.facebook.com/share/1EiGutypix/",
           "tag": "a"
         }
@@ -4918,7 +5037,7 @@
     {
       "url": "https://www.facebook.com/velocemercato.fr",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr",
+      "final_url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fvelocemercato.fr",
       "references": [
         {
           "file": "index.html",
@@ -5103,16 +5222,34 @@
       ]
     },
     {
+      "url": "https://www.foot-national.com/actus/national-2-des-joueurs-font-la-greve-de-lentrainement-le-club-implique-sort-du-silence-963590",
+      "status": 206,
+      "final_url": "https://www.foot-national.com/actus/national-2-des-joueurs-font-la-greve-de-lentrainement-le-club-implique-sort-du-silence-963590",
+      "references": [
+        {
+          "file": "a/rss-v2-4a157aa7f7a32a94d8aab1.html",
+          "line": 92,
+          "href": "https://www.foot-national.com/actus/national-2-des-joueurs-font-la-greve-de-lentrainement-le-club-implique-sort-du-silence-963590",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 34,
+          "href": "https://www.foot-national.com/actus/national-2-des-joueurs-font-la-greve-de-lentrainement-le-club-implique-sort-du-silence-963590",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-4a157aa7f7a32a94d8aab1",
+          "title": "National 2 : grève d'entraînement à Mâcon 71, le club reprend la main"
+        }
+      ]
+    },
+    {
       "url": "https://www.foot-national.com/actus/national-2-fos-enfonce-gallia-lucciana-et-respire-un-grand-coup-963528",
       "status": 206,
       "final_url": "https://www.foot-national.com/actus/national-2-fos-enfonce-gallia-lucciana-et-respire-un-grand-coup-963528",
       "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 34,
-          "href": "https://www.foot-national.com/actus/national-2-fos-enfonce-gallia-lucciana-et-respire-un-grand-coup-963528",
-          "tag": "a"
-        },
         {
           "file": "a/rss-v2-1f20af642e2d52cbb99453.html",
           "line": 92,
@@ -5123,6 +5260,30 @@
           "file": "articles.json",
           "id": "rss-v2-1f20af642e2d52cbb99453",
           "title": "National 2 : Fos s'impose 3-1 face à Lucciana et remonte au classement"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a7852157138398775576-les-etats-unis-veulent-pep-guardiola-pour-remplacer-mauricio-pochettino",
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a7852157138398775576-les-etats-unis-veulent-pep-guardiola-pour-remplacer-mauricio-pochettino",
+      "references": [
+        {
+          "file": "a/rss-v2-5954cbe840d98d3c19a1c7.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a7852157138398775576-les-etats-unis-veulent-pep-guardiola-pour-remplacer-mauricio-pochettino",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 33,
+          "href": "https://www.footmercato.net/a7852157138398775576-les-etats-unis-veulent-pep-guardiola-pour-remplacer-mauricio-pochettino",
+          "tag": "a"
+        },
+        {
+          "file": "articles.json",
+          "id": "rss-v2-5954cbe840d98d3c19a1c7",
+          "title": "Les États-Unis voudraient Pep Guardiola pour succéder à Mauricio Pochettino"
         }
       ]
     },
@@ -5153,6 +5314,37 @@
       ]
     },
     {
+      "url": "https://www.franceinfo.fr/economie/emploi/metiers/agriculture/le-dereglement-climatique-pese-lourd-sur-l-inflation-notamment-dans-la-zone-euro-alerte-oxfam_8278283.html",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/economie/emploi/metiers/agriculture/le-dereglement-climatique-pese-lourd-sur-l-inflation-notamment-dans-la-zone-euro-alerte-oxfam_8278283.html",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 41,
+          "href": "https://www.franceinfo.fr/economie/emploi/metiers/agriculture/le-dereglement-climatique-pese-lourd-sur-l-inflation-notamment-dans-la-zone-euro-alerte-oxfam_8278283.html#xtor=RSS-3-%5Beconomie%5D",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 41,
+          "href": "https://www.franceinfo.fr/economie/emploi/metiers/agriculture/le-dereglement-climatique-pese-lourd-sur-l-inflation-notamment-dans-la-zone-euro-alerte-oxfam_8278283.html#xtor=RSS-3-%5Beconomie%5D",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/economie/emploi/metiers/agriculture/le-dereglement-climatique-pese-lourd-sur-l-inflation-notamment-dans-la-zone-euro-alerte-oxfam_8278283.html#xtor=RSS-3-%5Beconomie%5D",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/economie/emploi/metiers/agriculture/le-dereglement-climatique-pese-lourd-sur-l-inflation-notamment-dans-la-zone-euro-alerte-oxfam_8278283.html#xtor=RSS-3-%5Beconomie%5D",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-7db101c14a9bffaa90d730",
+          "title": "Oxfam attribue une part de l'inflation alimentaire au dérèglement climatique"
+        }
+      ]
+    },
+    {
       "url": "https://www.franceinfo.fr/sports/",
       "status": 200,
       "final_url": "https://www.franceinfo.fr/sports/",
@@ -5166,19 +5358,50 @@
       ]
     },
     {
+      "url": "https://www.franceinfo.fr/sports/foot/equipe-de-france/c-est-un-crime-de-le-raser-les-bleus-a-san-siro-temple-du-football-mondial-condamne-a-la-destruction_8275136.html",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/sports/foot/equipe-de-france/c-est-un-crime-de-le-raser-les-bleus-a-san-siro-temple-du-football-mondial-condamne-a-la-destruction_8275136.html",
+      "references": [
+        {
+          "file": "a/rss-v2-f21116d6c3c731e4156d20.html",
+          "line": 92,
+          "href": "https://www.franceinfo.fr/sports/foot/equipe-de-france/c-est-un-crime-de-le-raser-les-bleus-a-san-siro-temple-du-football-mondial-condamne-a-la-destruction_8275136.html#xtor=RSS-3-%5Bsports%2Ffoot%5D",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 36,
+          "href": "https://www.franceinfo.fr/sports/foot/equipe-de-france/c-est-un-crime-de-le-raser-les-bleus-a-san-siro-temple-du-football-mondial-condamne-a-la-destruction_8275136.html#xtor=RSS-3-%5Bsports%2Ffoot%5D",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/sports/foot/equipe-de-france/c-est-un-crime-de-le-raser-les-bleus-a-san-siro-temple-du-football-mondial-condamne-a-la-destruction_8275136.html#xtor=RSS-3-%5Bsports%2Ffoot%5D",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/sports/foot/equipe-de-france/c-est-un-crime-de-le-raser-les-bleus-a-san-siro-temple-du-football-mondial-condamne-a-la-destruction_8275136.html#xtor=RSS-3-%5Bsports%2Ffoot%5D",
+      "references": [
+        {
+          "file": "articles.json",
+          "id": "rss-v2-f21116d6c3c731e4156d20",
+          "title": "San Siro condamné à la démolition : les Bleus y joueront avant sa destruction"
+        }
+      ]
+    },
+    {
       "url": "https://www.franceinfo.fr/sports/foot/equipe-de-france/face-a-l-avalanche-de-forfaits-zinedine-zidane-et-les-bleus-obliges-d-innover-en-attaque-pour-defier-l-italie-en-ligue-des-nations_8278229.html",
       "status": 200,
       "final_url": "https://www.franceinfo.fr/sports/foot/equipe-de-france/face-a-l-avalanche-de-forfaits-zinedine-zidane-et-les-bleus-obliges-d-innover-en-attaque-pour-defier-l-italie-en-ligue-des-nations_8278229.html",
       "references": [
         {
-          "file": "pronos/index.html",
-          "line": 33,
+          "file": "a/rss-v2-24b6757239def4449fa478.html",
+          "line": 92,
           "href": "https://www.franceinfo.fr/sports/foot/equipe-de-france/face-a-l-avalanche-de-forfaits-zinedine-zidane-et-les-bleus-obliges-d-innover-en-attaque-pour-defier-l-italie-en-ligue-des-nations_8278229.html#xtor=RSS-3-%5Bsports%2Ffoot%5D",
           "tag": "a"
         },
         {
-          "file": "a/rss-v2-24b6757239def4449fa478.html",
-          "line": 92,
+          "file": "pronos/index.html",
+          "line": 37,
           "href": "https://www.franceinfo.fr/sports/foot/equipe-de-france/face-a-l-avalanche-de-forfaits-zinedine-zidane-et-les-bleus-obliges-d-innover-en-attaque-pour-defier-l-italie-en-ligue-des-nations_8278229.html#xtor=RSS-3-%5Bsports%2Ffoot%5D",
           "tag": "a"
         }
@@ -5193,6 +5416,68 @@
           "file": "articles.json",
           "id": "rss-v2-24b6757239def4449fa478",
           "title": "Forfait de Mbappé : Zidane doit innover en attaque face à l'Italie"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/sports/foot/equipe-de-france/pourquoi-autant-de-joueurs-de-l-equipe-de-france-ont-grandi-au-stade-rennais_8277887.html",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/sports/foot/equipe-de-france/pourquoi-autant-de-joueurs-de-l-equipe-de-france-ont-grandi-au-stade-rennais_8277887.html",
+      "references": [
+        {
+          "file": "a/rss-v2-23f961a1b39dc6255d42d0.html",
+          "line": 92,
+          "href": "https://www.franceinfo.fr/sports/foot/equipe-de-france/pourquoi-autant-de-joueurs-de-l-equipe-de-france-ont-grandi-au-stade-rennais_8277887.html#xtor=RSS-3-%5Bsports%2Ffoot%5D",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 35,
+          "href": "https://www.franceinfo.fr/sports/foot/equipe-de-france/pourquoi-autant-de-joueurs-de-l-equipe-de-france-ont-grandi-au-stade-rennais_8277887.html#xtor=RSS-3-%5Bsports%2Ffoot%5D",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/sports/foot/equipe-de-france/pourquoi-autant-de-joueurs-de-l-equipe-de-france-ont-grandi-au-stade-rennais_8277887.html#xtor=RSS-3-%5Bsports%2Ffoot%5D",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/sports/foot/equipe-de-france/pourquoi-autant-de-joueurs-de-l-equipe-de-france-ont-grandi-au-stade-rennais_8277887.html#xtor=RSS-3-%5Bsports%2Ffoot%5D",
+      "references": [
+        {
+          "file": "articles.json",
+          "id": "rss-v2-23f961a1b39dc6255d42d0",
+          "title": "Pourquoi tant de joueurs des Bleus ont-ils grandi au Stade Rennais ?"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/vrai-ou-fake/vrai-ou-faux-la-tva-a-0-sur-les-produits-de-premiere-necessite-a-t-elle-fait-baisser-l-ensemble-des-prix-en-espagne-et-en-pologne-comme-l-affirme-sebastien-chenu_8276051.html",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/vrai-ou-fake/vrai-ou-faux-la-tva-a-0-sur-les-produits-de-premiere-necessite-a-t-elle-fait-baisser-l-ensemble-des-prix-en-espagne-et-en-pologne-comme-l-affirme-sebastien-chenu_8276051.html",
+      "references": [
+        {
+          "file": "pronos/index.html",
+          "line": 42,
+          "href": "https://www.franceinfo.fr/vrai-ou-fake/vrai-ou-faux-la-tva-a-0-sur-les-produits-de-premiere-necessite-a-t-elle-fait-baisser-l-ensemble-des-prix-en-espagne-et-en-pologne-comme-l-affirme-sebastien-chenu_8276051.html#xtor=RSS-3-%5Beconomie%5D",
+          "tag": "a"
+        },
+        {
+          "file": "pronos/index.html",
+          "line": 42,
+          "href": "https://www.franceinfo.fr/vrai-ou-fake/vrai-ou-faux-la-tva-a-0-sur-les-produits-de-premiere-necessite-a-t-elle-fait-baisser-l-ensemble-des-prix-en-espagne-et-en-pologne-comme-l-affirme-sebastien-chenu_8276051.html#xtor=RSS-3-%5Beconomie%5D",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/vrai-ou-fake/vrai-ou-faux-la-tva-a-0-sur-les-produits-de-premiere-necessite-a-t-elle-fait-baisser-l-ensemble-des-prix-en-espagne-et-en-pologne-comme-l-affirme-sebastien-chenu_8276051.html#xtor=RSS-3-%5Beconomie%5D",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/vrai-ou-fake/vrai-ou-faux-la-tva-a-0-sur-les-produits-de-premiere-necessite-a-t-elle-fait-baisser-l-ensemble-des-prix-en-espagne-et-en-pologne-comme-l-affirme-sebastien-chenu_8276051.html#xtor=RSS-3-%5Beconomie%5D",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-f44d9f2b6d2ed38112d16f",
+          "title": "Vrai ou faux : la TVA à 0% a-t-elle fait baisser l'ensemble des prix en Espagne et en Pologne ?"
         }
       ]
     },
@@ -5214,26 +5499,26 @@
       "status": 429,
       "references": [
         {
-          "file": "studio.html",
-          "line": 113,
-          "href": "https://www.instagram.com/veloce.mercato",
-          "tag": "a"
-        },
-        {
           "file": "index.html",
           "line": 819,
           "href": "https://www.instagram.com/veloce.mercato",
           "tag": "a"
         },
         {
-          "file": "vm-gaming/index.html",
-          "line": 322,
+          "file": "studio.html",
+          "line": 113,
           "href": "https://www.instagram.com/veloce.mercato",
           "tag": "a"
         },
         {
           "file": "actus/index.html",
           "line": 172,
+          "href": "https://www.instagram.com/veloce.mercato",
+          "tag": "a"
+        },
+        {
+          "file": "vm-gaming/index.html",
+          "line": 322,
           "href": "https://www.instagram.com/veloce.mercato",
           "tag": "a"
         },
@@ -5262,13 +5547,13 @@
           "tag": "a"
         },
         {
-          "file": "mangas/episodes/ecole-des-champions-01.html",
+          "file": "mangas/episodes/olive-et-tom-01.html",
           "line": 15,
           "href": "https://www.instagram.com/veloce.mercato",
           "tag": "a"
         },
         {
-          "file": "mangas/episodes/olive-et-tom-01.html",
+          "file": "mangas/episodes/ecole-des-champions-01.html",
           "line": 15,
           "href": "https://www.instagram.com/veloce.mercato",
           "tag": "a"
@@ -5289,8 +5574,7 @@
     },
     {
       "url": "https://www.jeuxvideo.com/",
-      "status": 200,
-      "final_url": "https://www.jeuxvideo.com/",
+      "status": 403,
       "references": [
         {
           "file": "index.html",
@@ -7007,8 +7291,7 @@
     },
     {
       "url": "https://www.plus.fifa.com/",
-      "status": 206,
-      "final_url": "https://www.dazn.com/competition/Competition:50kvbmxi5r9amj2e39hznggqj",
+      "status": 403,
       "references": [
         {
           "file": "ou-regarder.html",
@@ -7025,13 +7308,13 @@
       "references": [
         {
           "file": "pronos/index.html",
-          "line": 38,
+          "line": 43,
           "href": "https://www.rfi.fr/fr/am%C3%A9riques/20261112-en-visite-dans-sa-patrie-au-p%C3%A9rou-l%C3%A9on-xiv-appelle-%C3%A0-surmonter-les-divisions-du-pass%C3%A9",
           "tag": "a"
         },
         {
           "file": "pronos/index.html",
-          "line": 38,
+          "line": 43,
           "href": "https://www.rfi.fr/fr/am%C3%A9riques/20261112-en-visite-dans-sa-patrie-au-p%C3%A9rou-l%C3%A9on-xiv-appelle-%C3%A0-surmonter-les-divisions-du-pass%C3%A9",
           "tag": "a"
         },
@@ -7049,13 +7332,13 @@
       "references": [
         {
           "file": "pronos/index.html",
-          "line": 39,
+          "line": 44,
           "href": "https://www.rfi.fr/fr/science/20261112-soudan-une-cath%C3%A9drale-enfouie-de-la-nubie-m%C3%A9di%C3%A9vale-r%C3%A9v%C3%A8le-son-architecture-monumentale",
           "tag": "a"
         },
         {
           "file": "pronos/index.html",
-          "line": 39,
+          "line": 44,
           "href": "https://www.rfi.fr/fr/science/20261112-soudan-une-cath%C3%A9drale-enfouie-de-la-nubie-m%C3%A9di%C3%A9vale-r%C3%A9v%C3%A8le-son-architecture-monumentale",
           "tag": "a"
         },
@@ -7321,26 +7604,26 @@
       "final_url": "https://www.tiktok.com/@velocemercato",
       "references": [
         {
-          "file": "studio.html",
-          "line": 112,
-          "href": "https://www.tiktok.com/@velocemercato",
-          "tag": "a"
-        },
-        {
           "file": "index.html",
           "line": 828,
           "href": "https://www.tiktok.com/@velocemercato",
           "tag": "a"
         },
         {
-          "file": "vm-gaming/index.html",
-          "line": 321,
+          "file": "studio.html",
+          "line": 112,
           "href": "https://www.tiktok.com/@velocemercato",
           "tag": "a"
         },
         {
           "file": "actus/index.html",
           "line": 171,
+          "href": "https://www.tiktok.com/@velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "vm-gaming/index.html",
+          "line": 321,
           "href": "https://www.tiktok.com/@velocemercato",
           "tag": "a"
         },
@@ -7383,20 +7666,14 @@
       "final_url": "https://www.twitch.tv/velocemercato",
       "references": [
         {
-          "file": "studio.html",
-          "line": 119,
-          "href": "https://www.twitch.tv/velocemercato",
-          "tag": "a"
-        },
-        {
           "file": "index.html",
           "line": 843,
           "href": "https://www.twitch.tv/velocemercato",
           "tag": "a"
         },
         {
-          "file": "vm-gaming/index.html",
-          "line": 258,
+          "file": "studio.html",
+          "line": 119,
           "href": "https://www.twitch.tv/velocemercato",
           "tag": "a"
         },
@@ -7409,6 +7686,12 @@
         {
           "file": "belfort/index.html",
           "line": 55,
+          "href": "https://www.twitch.tv/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "vm-gaming/index.html",
+          "line": 258,
           "href": "https://www.twitch.tv/velocemercato",
           "tag": "a"
         },
@@ -7437,25 +7720,19 @@
           "tag": "a"
         },
         {
+          "file": "studio/episodes/actus-edition-20261020-1853.html",
+          "line": 17,
+          "href": "https://www.twitch.tv/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/foot-edition-20261022-1309.html",
+          "line": 17,
+          "href": "https://www.twitch.tv/velocemercato",
+          "tag": "a"
+        },
+        {
           "file": "studio/episodes/gaming-debat-20261020-1915.html",
-          "line": 17,
-          "href": "https://www.twitch.tv/velocemercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/gaming-edition-20261023-1231.html",
-          "line": 17,
-          "href": "https://www.twitch.tv/velocemercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/foot-edition-20261023-1353.html",
-          "line": 17,
-          "href": "https://www.twitch.tv/velocemercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/foot-speciale-20261022-1940.html",
           "line": 17,
           "href": "https://www.twitch.tv/velocemercato",
           "tag": "a"
@@ -7467,43 +7744,13 @@
           "tag": "a"
         },
         {
-          "file": "studio/episodes/actus-edition-20261022-0728.html",
+          "file": "studio/episodes/foot-edition-20261023-0853.html",
           "line": 17,
           "href": "https://www.twitch.tv/velocemercato",
           "tag": "a"
         },
         {
-          "file": "studio/episodes/foot-speciale-20261020-1847.html",
-          "line": 17,
-          "href": "https://www.twitch.tv/velocemercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/actus-edition-20261020-1853.html",
-          "line": 17,
-          "href": "https://www.twitch.tv/velocemercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/gaming-edition-20261023-1357.html",
-          "line": 17,
-          "href": "https://www.twitch.tv/velocemercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/actus-edition-20261021-2117.html",
-          "line": 17,
-          "href": "https://www.twitch.tv/velocemercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/foot-debat-20261022-0003.html",
-          "line": 17,
-          "href": "https://www.twitch.tv/velocemercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/gaming-edition-20261021-2121.html",
+          "file": "studio/episodes/foot-buts-20261023-0414.html",
           "line": 17,
           "href": "https://www.twitch.tv/velocemercato",
           "tag": "a"
@@ -7521,55 +7768,19 @@
           "tag": "a"
         },
         {
-          "file": "studio/episodes/actus-edition-20261023-1355.html",
-          "line": 17,
-          "href": "https://www.twitch.tv/velocemercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/actus-edition-20261022-1311.html",
-          "line": 17,
-          "href": "https://www.twitch.tv/velocemercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/foot-buts-20261023-0414.html",
-          "line": 17,
-          "href": "https://www.twitch.tv/velocemercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/foot-edition-20261022-1309.html",
-          "line": 17,
-          "href": "https://www.twitch.tv/velocemercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/foot-speciale-20261021-1940.html",
-          "line": 17,
-          "href": "https://www.twitch.tv/velocemercato",
-          "tag": "a"
-        },
-        {
           "file": "studio/episodes/actus-edition-20261023-1228.html",
           "line": 17,
           "href": "https://www.twitch.tv/velocemercato",
           "tag": "a"
         },
         {
-          "file": "studio/episodes/actus-edition-20261021-1321.html",
+          "file": "studio/episodes/actus-edition-20261023-1355.html",
           "line": 17,
           "href": "https://www.twitch.tv/velocemercato",
           "tag": "a"
         },
         {
-          "file": "studio/episodes/foot-edition-20261023-0853.html",
-          "line": 17,
-          "href": "https://www.twitch.tv/velocemercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/gaming-edition-20261023-0901.html",
+          "file": "studio/episodes/foot-speciale-20261020-1847.html",
           "line": 17,
           "href": "https://www.twitch.tv/velocemercato",
           "tag": "a"
@@ -7581,13 +7792,85 @@
           "tag": "a"
         },
         {
-          "file": "mangas/episodes/ecole-des-champions-01.html",
-          "line": 15,
+          "file": "studio/episodes/actus-edition-20261022-1311.html",
+          "line": 17,
+          "href": "https://www.twitch.tv/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/actus-edition-20261022-0728.html",
+          "line": 17,
+          "href": "https://www.twitch.tv/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/foot-speciale-20261022-1940.html",
+          "line": 17,
+          "href": "https://www.twitch.tv/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/gaming-edition-20261023-1357.html",
+          "line": 17,
+          "href": "https://www.twitch.tv/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/gaming-edition-20261023-1231.html",
+          "line": 17,
+          "href": "https://www.twitch.tv/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/foot-edition-20261023-1353.html",
+          "line": 17,
+          "href": "https://www.twitch.tv/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/foot-speciale-20261021-1940.html",
+          "line": 17,
+          "href": "https://www.twitch.tv/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/actus-edition-20261021-1321.html",
+          "line": 17,
+          "href": "https://www.twitch.tv/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/gaming-edition-20261021-2121.html",
+          "line": 17,
+          "href": "https://www.twitch.tv/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/foot-debat-20261022-0003.html",
+          "line": 17,
+          "href": "https://www.twitch.tv/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/actus-edition-20261021-2117.html",
+          "line": 17,
+          "href": "https://www.twitch.tv/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/gaming-edition-20261023-0901.html",
+          "line": 17,
           "href": "https://www.twitch.tv/velocemercato",
           "tag": "a"
         },
         {
           "file": "mangas/episodes/olive-et-tom-01.html",
+          "line": 15,
+          "href": "https://www.twitch.tv/velocemercato",
+          "tag": "a"
+        },
+        {
+          "file": "mangas/episodes/ecole-des-champions-01.html",
           "line": 15,
           "href": "https://www.twitch.tv/velocemercato",
           "tag": "a"
@@ -7652,20 +7935,14 @@
       "final_url": "https://www.youtube.com/@VeloceMercato",
       "references": [
         {
-          "file": "studio.html",
-          "line": 119,
-          "href": "https://www.youtube.com/@VeloceMercato",
-          "tag": "a"
-        },
-        {
           "file": "index.html",
           "line": 834,
           "href": "https://www.youtube.com/@VeloceMercato",
           "tag": "a"
         },
         {
-          "file": "vm-gaming/index.html",
-          "line": 258,
+          "file": "studio.html",
+          "line": 119,
           "href": "https://www.youtube.com/@VeloceMercato",
           "tag": "a"
         },
@@ -7678,6 +7955,12 @@
         {
           "file": "belfort/index.html",
           "line": 55,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
+          "file": "vm-gaming/index.html",
+          "line": 258,
           "href": "https://www.youtube.com/@VeloceMercato",
           "tag": "a"
         },
@@ -7712,25 +7995,19 @@
           "tag": "a"
         },
         {
+          "file": "studio/episodes/actus-edition-20261020-1853.html",
+          "line": 17,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/foot-edition-20261022-1309.html",
+          "line": 17,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
           "file": "studio/episodes/gaming-debat-20261020-1915.html",
-          "line": 17,
-          "href": "https://www.youtube.com/@VeloceMercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/gaming-edition-20261023-1231.html",
-          "line": 17,
-          "href": "https://www.youtube.com/@VeloceMercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/foot-edition-20261023-1353.html",
-          "line": 17,
-          "href": "https://www.youtube.com/@VeloceMercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/foot-speciale-20261022-1940.html",
           "line": 17,
           "href": "https://www.youtube.com/@VeloceMercato",
           "tag": "a"
@@ -7742,43 +8019,13 @@
           "tag": "a"
         },
         {
-          "file": "studio/episodes/actus-edition-20261022-0728.html",
+          "file": "studio/episodes/foot-edition-20261023-0853.html",
           "line": 17,
           "href": "https://www.youtube.com/@VeloceMercato",
           "tag": "a"
         },
         {
-          "file": "studio/episodes/foot-speciale-20261020-1847.html",
-          "line": 17,
-          "href": "https://www.youtube.com/@VeloceMercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/actus-edition-20261020-1853.html",
-          "line": 17,
-          "href": "https://www.youtube.com/@VeloceMercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/gaming-edition-20261023-1357.html",
-          "line": 17,
-          "href": "https://www.youtube.com/@VeloceMercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/actus-edition-20261021-2117.html",
-          "line": 17,
-          "href": "https://www.youtube.com/@VeloceMercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/foot-debat-20261022-0003.html",
-          "line": 17,
-          "href": "https://www.youtube.com/@VeloceMercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/gaming-edition-20261021-2121.html",
+          "file": "studio/episodes/foot-buts-20261023-0414.html",
           "line": 17,
           "href": "https://www.youtube.com/@VeloceMercato",
           "tag": "a"
@@ -7796,55 +8043,19 @@
           "tag": "a"
         },
         {
-          "file": "studio/episodes/actus-edition-20261023-1355.html",
-          "line": 17,
-          "href": "https://www.youtube.com/@VeloceMercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/actus-edition-20261022-1311.html",
-          "line": 17,
-          "href": "https://www.youtube.com/@VeloceMercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/foot-buts-20261023-0414.html",
-          "line": 17,
-          "href": "https://www.youtube.com/@VeloceMercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/foot-edition-20261022-1309.html",
-          "line": 17,
-          "href": "https://www.youtube.com/@VeloceMercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/foot-speciale-20261021-1940.html",
-          "line": 17,
-          "href": "https://www.youtube.com/@VeloceMercato",
-          "tag": "a"
-        },
-        {
           "file": "studio/episodes/actus-edition-20261023-1228.html",
           "line": 17,
           "href": "https://www.youtube.com/@VeloceMercato",
           "tag": "a"
         },
         {
-          "file": "studio/episodes/actus-edition-20261021-1321.html",
+          "file": "studio/episodes/actus-edition-20261023-1355.html",
           "line": 17,
           "href": "https://www.youtube.com/@VeloceMercato",
           "tag": "a"
         },
         {
-          "file": "studio/episodes/foot-edition-20261023-0853.html",
-          "line": 17,
-          "href": "https://www.youtube.com/@VeloceMercato",
-          "tag": "a"
-        },
-        {
-          "file": "studio/episodes/gaming-edition-20261023-0901.html",
+          "file": "studio/episodes/foot-speciale-20261020-1847.html",
           "line": 17,
           "href": "https://www.youtube.com/@VeloceMercato",
           "tag": "a"
@@ -7856,13 +8067,85 @@
           "tag": "a"
         },
         {
-          "file": "mangas/episodes/ecole-des-champions-01.html",
-          "line": 15,
+          "file": "studio/episodes/actus-edition-20261022-1311.html",
+          "line": 17,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/actus-edition-20261022-0728.html",
+          "line": 17,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/foot-speciale-20261022-1940.html",
+          "line": 17,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/gaming-edition-20261023-1357.html",
+          "line": 17,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/gaming-edition-20261023-1231.html",
+          "line": 17,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/foot-edition-20261023-1353.html",
+          "line": 17,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/foot-speciale-20261021-1940.html",
+          "line": 17,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/actus-edition-20261021-1321.html",
+          "line": 17,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/gaming-edition-20261021-2121.html",
+          "line": 17,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/foot-debat-20261022-0003.html",
+          "line": 17,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/actus-edition-20261021-2117.html",
+          "line": 17,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
+          "file": "studio/episodes/gaming-edition-20261023-0901.html",
+          "line": 17,
           "href": "https://www.youtube.com/@VeloceMercato",
           "tag": "a"
         },
         {
           "file": "mangas/episodes/olive-et-tom-01.html",
+          "line": 15,
+          "href": "https://www.youtube.com/@VeloceMercato",
+          "tag": "a"
+        },
+        {
+          "file": "mangas/episodes/ecole-des-champions-01.html",
           "line": 15,
           "href": "https://www.youtube.com/@VeloceMercato",
           "tag": "a"
@@ -8417,7 +8700,7 @@
       "references": [
         {
           "file": "pronos/index.html",
-          "line": 49,
+          "line": 54,
           "href": "https://www.youtube.com/watch?v=9J_8R58bKr4",
           "tag": "a"
         }
@@ -8609,7 +8892,7 @@
       "references": [
         {
           "file": "pronos/index.html",
-          "line": 50,
+          "line": 55,
           "href": "https://www.youtube.com/watch?v=OS4iLKX7uSY",
           "tag": "a"
         }
@@ -8806,7 +9089,7 @@
       "references": [
         {
           "file": "pronos/index.html",
-          "line": 48,
+          "line": 53,
           "href": "https://www.youtube.com/watch?v=Z-uwwfA32Jc",
           "tag": "a"
         }
@@ -8882,7 +9165,7 @@
       "references": [
         {
           "file": "pronos/index.html",
-          "line": 51,
+          "line": 56,
           "href": "https://www.youtube.com/watch?v=cGNDymPcK5s",
           "tag": "a"
         }
