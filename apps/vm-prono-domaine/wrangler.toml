@@ -1,0 +1,8 @@
+name = "vm-prono-domaine"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = false
+
+# Site d'origine (hébergé par ChatGPT Sites), servi sous prono.velocemercato.fr.
+[vars]
+ORIGINE = "https://vm-prono-club.heineguez.chatgpt.site"
