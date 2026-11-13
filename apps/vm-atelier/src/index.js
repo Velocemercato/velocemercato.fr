@@ -7,6 +7,7 @@
 
 import { DurableObject } from 'cloudflare:workers';
 import { devis } from './prix.js';
+import { proposer, iaConfiguree } from './ia.js';
 import { pageStudio, pageSalon, pageVoir, pageAdmin, pageAccueil } from './pages.js';
 
 const CODE_JOURS = 7;        // validité d'un code de consultation non utilisé
@@ -60,6 +61,9 @@ export class Store extends DurableObject {
       CREATE TABLE IF NOT EXISTS commandes(id TEXT PRIMARY KEY, cree TEXT NOT NULL, contact TEXT NOT NULL, config TEXT NOT NULL,
         total INTEGER NOT NULL, statut TEXT NOT NULL DEFAULT 'nouvelle');
       CREATE TABLE IF NOT EXISTS essais(cle TEXT PRIMARY KEY, n INTEGER NOT NULL, depuis TEXT NOT NULL);
+      CREATE TABLE IF NOT EXISTS ia_jour(jour TEXT PRIMARY KEY, n INTEGER NOT NULL);
+      CREATE TABLE IF NOT EXISTS ia_journal(cree TEXT NOT NULL, projet TEXT, resultat TEXT NOT NULL, entree INTEGER, sortie INTEGER, modele TEXT);
+      CREATE TABLE IF NOT EXISTS avis(id TEXT PRIMARY KEY, projet TEXT NOT NULL, bloc INTEGER, texte TEXT NOT NULL, cree TEXT NOT NULL, traite INTEGER NOT NULL DEFAULT 0);
     `);
   }
   now() { return new Date().toISOString(); }
@@ -96,6 +100,35 @@ export class Store extends DurableObject {
         return p ? json({ ok: true, nom: p.nom, doc: JSON.parse(p.doc) }) : json({ error: 'code_invalide' }, 400);
       }
       case 'fermer': this.sql.exec('DELETE FROM vues WHERE hash=?', a.vueHash); return json({ ok: true });
+      // --- Retours du client depuis son lien salon (« non, je veux ça là »).
+      case 'avisAjouter': {
+        const p = this.rows('SELECT id FROM projets WHERE salon=?', a.salon)[0];
+        if (!p) return json({ error: 'lien_invalide' }, 404);
+        if (this.limite('avis:' + a.ip, 30)) return json({ error: 'trop_de_messages' }, 429);
+        const texte = net(a.texte, 600); if (!texte) return json({ error: 'message_vide' }, 400);
+        const bloc = Number.isInteger(a.bloc) && a.bloc >= 0 && a.bloc < 100 ? a.bloc : null;
+        this.sql.exec('INSERT INTO avis(id,projet,bloc,texte,cree) VALUES(?,?,?,?,?)', crypto.randomUUID(), p.id, bloc, texte, this.now());
+        return json({ ok: true });
+      }
+      case 'avisListe': return json({ avis: this.rows('SELECT id, bloc, texte, cree, traite FROM avis WHERE projet=? ORDER BY cree DESC LIMIT 50', a.id) });
+      case 'avisTraite': this.sql.exec('UPDATE avis SET traite=1 WHERE id=?', a.avis); return json({ ok: true });
+      // --- Plafond quotidien d'appels IA (réservation atomique avant l'appel payant).
+      case 'iaReserver': {
+        const jour = this.now().slice(0, 10), max = Math.max(1, Number(a.max) || 40);
+        const ok = this.ctx.storage.transactionSync(() => {
+          const r = this.rows('SELECT n FROM ia_jour WHERE jour=?', jour)[0];
+          if (r && r.n >= max) return false;
+          this.sql.exec('INSERT INTO ia_jour(jour,n) VALUES(?,1) ON CONFLICT(jour) DO UPDATE SET n=n+1', jour); return true;
+        });
+        return ok ? json({ ok: true }) : json({ error: 'ia_plafond' }, 429);
+      }
+      case 'iaJournal':
+        this.sql.exec('INSERT INTO ia_journal(cree,projet,resultat,entree,sortie,modele) VALUES(?,?,?,?,?,?)', this.now(), a.id || null, net(a.resultat, 40), a.entree || 0, a.sortie || 0, net(a.modele, 60));
+        return json({ ok: true });
+      case 'iaEtat': {
+        const r = this.rows('SELECT n FROM ia_jour WHERE jour=?', this.now().slice(0, 10))[0];
+        return json({ utilises: r ? r.n : 0, journal: this.rows('SELECT cree, resultat, entree, sortie, modele FROM ia_journal ORDER BY cree DESC LIMIT 10') });
+      }
       // --- Commande du studio client.
       case 'commande': {
         if (this.limite('cmd:' + a.ip, 5)) return json({ error: 'trop_de_commandes' }, 429);
@@ -122,6 +155,10 @@ export class Store extends DurableObject {
       case 'enregistrer': {
         const s = docValide(a.doc);
         if (!s) return json({ error: 'projet_trop_lourd_ou_invalide' }, 400);
+        if (a.base != null) {
+          const cur = this.rows('SELECT version FROM projets WHERE id=?', a.id)[0];
+          if (cur && cur.version !== Number(a.base)) return json({ error: 'projet_modifie', v: cur.version }, 409);
+        }
         this.sql.exec('UPDATE projets SET doc=?, version=version+1, maj=?, nom=COALESCE(NULLIF(?,\'\'),nom) WHERE id=?', s, this.now(), net(a.nom, 80), a.id);
         const v = this.rows('SELECT version FROM projets WHERE id=?', a.id)[0];
         return v ? json({ ok: true, v: v.version }) : json({ error: 'introuvable' }, 404);
@@ -184,6 +221,11 @@ export default {
       return json({ ok: true }, 200, { 'set-cookie': cookie('vma_v', '', 0) });
     }
     if (req.method !== 'GET' && !memeOrigine(req)) return json({ error: 'origine_refusee' }, 403);
+    const mav = p.match(/^\/api\/salon\/([A-Z0-9]{24})\/avis$/);
+    if (req.method === 'POST' && mav) {
+      const c = await req.json().catch(() => ({}));
+      return appel(env, 'avisAjouter', { salon: mav[1], ip, texte: c.texte, bloc: c.bloc });
+    }
     const corps = req.method === 'POST' ? await req.json().catch(() => ({})) : {};
 
     if (p === '/api/voir/ouvrir' && req.method === 'POST') {
@@ -212,12 +254,32 @@ export default {
       const op = p.slice('/api/admin/'.length);
       if (op === 'etat' && req.method === 'GET') return appel(env, 'etat');
       if (op === 'lire' && req.method === 'GET') return appel(env, 'lire', { id: url.searchParams.get('id') });
+      if (op === 'avis' && req.method === 'GET') return appel(env, 'avisListe', { id: url.searchParams.get('id') });
+      if (op === 'ia-etat' && req.method === 'GET') {
+        const e = await (await appel(env, 'iaEtat')).json();
+        return json({ configuree: iaConfiguree(env), modele: env.ANTHROPIC_MODEL || 'claude-opus-5-5', plafond: Number(env.IA_MAX_JOUR) || 40, ...e });
+      }
       if (req.method !== 'POST') return json({ error: 'methode' }, 405);
       if (op === 'code') {
         const code = jeton(16);
         const r = await appel(env, 'code', { id: corps.id, codeHash: await sha256('c:' + code) });
         if (r.status !== 200) return r;
         return json({ ok: true, code }); // montré une seule fois à Romain ; seul le condensat est stocké
+      }
+      if (op === 'avis-traite') return appel(env, 'avisTraite', { avis: corps.avis });
+      if (op === 'ia') {
+        const consigne = net(corps.consigne, 1500);
+        if (!consigne) return json({ error: 'consigne_vide' }, 400);
+        if (!iaConfiguree(env)) return json({ error: 'ia_non_connectee', message: 'IA à connecter : ajoute le secret ANTHROPIC_API_KEY sur vm-atelier dans Cloudflare.' }, 503);
+        const proj = await (await appel(env, 'lire', { id: corps.id })).json();
+        if (proj.error) return json(proj, 404);
+        const res = await appel(env, 'iaReserver', { max: Number(env.IA_MAX_JOUR) || 40 });
+        if (res.status !== 200) return json({ error: 'ia_plafond', message: 'Plafond d’appels IA du jour atteint.' }, 429);
+        const r = await proposer(env, proj.doc, consigne);
+        await appel(env, 'iaJournal', { id: corps.id, resultat: r.ok ? 'proposition' : r.erreur, entree: r.usage?.entree, sortie: r.usage?.sortie, modele: r.usage?.modele });
+        if (!r.ok) return json({ error: r.erreur, message: r.message }, 502);
+        // La proposition n'est PAS enregistrée : Romain la voit, puis l'applique (ou non).
+        return json({ ok: true, explication: r.explication, doc: r.doc, base: proj.version });
       }
       if (['creer', 'enregistrer', 'supprimer', 'nouveauSalon', 'statut'].includes(op)) return appel(env, op, corps);
     }
