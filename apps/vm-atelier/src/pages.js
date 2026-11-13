@@ -94,7 +94,7 @@ function api(p,body){return fetch('/api/'+p,body?{method:'POST',headers:{'conten
 function page(titre, corps, script, o = {}) {
   const meta = o.index
     ? `<meta name="robots" content="index,follow"><meta name="description" content="${o.description}"><link rel="canonical" href="https://atelier.velocemercato.fr/">
-<meta property="og:type" content="website"><meta property="og:title" content="${titre}"><meta property="og:description" content="${o.description}"><meta property="og:url" content="https://atelier.velocemercato.fr/"><meta property="og:locale" content="fr_FR">`
+<meta property="og:type" content="website"><meta property="og:title" content="${titre}"><meta property="og:description" content="${o.description}"><meta property="og:url" content="https://atelier.velocemercato.fr/"><meta property="og:locale" content="fr_FR"><meta property="og:image" content="https://velocemercato.fr/media/promos/vm-studio-lancement-1080.jpg"><meta property="og:image:width" content="1080"><meta property="og:image:height" content="1080"><meta name="twitter:card" content="summary_large_image">`
     : '<meta name="robots" content="noindex">';
   return `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 ${meta}<title>${titre}</title><style>${CSS}</style></head><body>${corps}

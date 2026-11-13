@@ -828,6 +828,56 @@ def ballon_dor(state, graph, root=ROOT, sleep=time.sleep):
     return errors
 
 
+# Lancement de VM Studio : une seule fois, à partir de cette date (créneau automatique suivant), sur Véloce Mercato et VM Univers.
+STUDIO_DEBUT = dt.datetime(2026, 11, 14, 18, 0, tzinfo=ZoneInfo('Europe/Paris'))
+STUDIO_IMAGE = 'media/promos/vm-studio-lancement-1080.jpg'
+ANNONCE_STUDIO = ('✨ NOUVEAU : VM STUDIO\n\nCrée ton site, ta carte de visite ou ton flyer… et vois-le se construire EN DIRECT !\n\n'
+    '👉 Tu choisis, tu ajoutes ton nom, tes photos, tes couleurs : l’aperçu change sous tes yeux.\n'
+    '👉 Tu vois le prix AVANT d’envoyer. Gratuit pour essayer, sans engagement.\n'
+    '👉 On peaufine ensemble : 50 % au lancement, 50 % à la validation.\n\n'
+    '💳 Carte de visite 29 € · 📄 Flyer 39 € · 📱 Visuel réseaux 19 € · 🌐 Site dès 290 €\n\n'
+    '{lien}\n\n#VMStudio #artisan #commerçant #cartedevisite #flyer #siteinternet #petiteentreprise')
+
+
+def annonce_studio(state, graph, now=None, sleep=time.sleep, image=None):
+    """Annonce unique du lancement de VM Studio (Facebook + Instagram) ; rien avant STUDIO_DEBUT, jamais deux fois."""
+    now = now or dt.datetime.now(dt.timezone.utc)
+    if now < STUDIO_DEBUT:
+        return []
+    url = 'https://atelier.velocemercato.fr/'
+    errors = []
+    for account in ('meta', 'meta_univers'):
+        meta = state.data.get('tokens', {}).get(account) or {}
+        if not meta.get('page_token'):
+            continue
+        done = state.data.setdefault('meta' if account == 'meta' else account + '_accuses', {})
+        for net in ('facebook', 'instagram'):
+            key = 'annonce/vm-studio/' + net
+            if key in done or (net == 'instagram' and not meta.get('ig_id')):
+                continue
+            done[key] = {'status': 'envoi', 'at': now.isoformat()}
+            state.save()
+            try:
+                if not image:
+                    from tools.cartes_insta import push_card
+                    image = push_card(ROOT / STUDIO_IMAGE)
+                if net == 'facebook':
+                    graph.call('POST', meta['page_id'] + '/photos', {'url': image, 'caption': ANNONCE_STUDIO.format(lien='Essaie ici 👉 ' + url),
+                                                                      'access_token': meta['page_token']})
+                else:
+                    instagram_image(graph, meta, image, ANNONCE_STUDIO.format(lien='👉 atelier.velocemercato.fr (lien en bio)'), sleep=sleep)
+                done[key] = {'status': 'publie', 'at': now.isoformat()}
+                print(f'::notice::{account} {net} : lancement VM Studio publié')
+            except (DeliveryError, OSError, subprocess.CalledProcessError) as error:
+                # Une erreur peut survenir après publication effective : pas de renvoi automatique.
+                done[key] = {'status': 'echec', 'at': now.isoformat()}
+                errors.append(f'lancement VM Studio {account} {net} : {str(error)[:150]}')
+            state.save()
+    for line in errors:
+        print('::error::' + line)
+    return errors
+
+
 def ensure_meta_targets(state):
     """Contrôle non destructif : la diffusion doit respecter les Pages exactes."""
     expected_ids = {
@@ -901,7 +951,7 @@ def main():
     if os.getenv('VM_AUTO_META') != 'true':
         print('Facebook/Instagram : publication automatique non activée (VM_AUTO_META). Rien n’est publié.')
         return
-    failed = False
+    failed = bool(annonce_studio(state, Graph()))
     for account in ('meta', 'meta_univers'):
         if state.data.get('tokens', {}).get(account):
             failed |= bool(publish(state, Graph(), force=args.article or None if account == 'meta' else None, account=account))
