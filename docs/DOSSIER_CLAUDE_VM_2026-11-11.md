@@ -1,6 +1,6 @@
 # Dossier Claude — Véloce Mercato, site et réseaux
 
-État établi le 2026-11-13T06:36+01:00.
+État établi le 2026-11-13T08:21+01:00.
 
 Ce dossier remplace les anciennes consignes de restauration intégrale et les anciennes cadences. Il décrit le travail autorisé par Romain dans cette conversation. Les accès et conversations de ChatGPT ne sont pas automatiquement accessibles dans Claude.
 
@@ -35,10 +35,10 @@ Sur vmunivers.fr, Romain a demandé : première case à gauche Facebook https://
 
 | Destination | Nombre relevé dans les reçus de cette reprise |
 |---|---|
-| Véloce Mercato · facebook | 45 |
-| Véloce Mercato · instagram | 44 |
-| VM Actus et Pronos · facebook | 45 |
-| VM Univers · facebook | 44 |
+| Véloce Mercato · facebook | 46 |
+| Véloce Mercato · instagram | 45 |
+| VM Actus et Pronos · facebook | 46 |
+| VM Univers · facebook | 45 |
 | VM Univers · instagram | 14 |
 
 Ces nombres comptent les identifiants uniques avec confirmation et URL publique. Un statut programmé, envoi ou workflow réussi ne suffit pas. Les reçus détaillés sont dans studio/editorial-status.json et dans le kit https://velocemercato.fr/studio/kit-automatique.html.
@@ -103,11 +103,11 @@ Pour Multisport, les flux français validés Sports.fr et Le Monde Sport sont ra
 
 ## Audit des pages, liens et classements
 
-- Pages HTML examinées : 1342.
-- URL interrogées : 1577.
+- Pages HTML examinées : 1343.
+- URL interrogées : 1581.
 - HTTP 404/410 confirmés : 11.
 - Cibles internes absentes du dépôt : 76.
-- Liens protégés/non vérifiables automatiquement : 520.
+- Liens protégés/non vérifiables automatiquement : 577.
 - Ancres à relire : 3120. Certaines existent seulement après chargement JavaScript.
 - Classements à relire : 1.
 
@@ -115,7 +115,7 @@ Le détail exhaustif des contrôles effectués, avec fichiers et lignes, est dan
 
 ## Vidéos, référence musicale et reste à faire
 
-Le dernier rendu répertorie 3 nouveaux flashes, bloc 2026-11-12T20:00:00+01:00. Lire studio/teasers.json pour les URLs réelles.
+Le dernier rendu répertorie 2 nouveaux flashes, bloc 2026-11-13T09:00:00+01:00. Lire studio/teasers.json pour les URLs réelles.
 
 Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, paroles originales proposées, format de livraison, accès CapCut non vérifié, chant encore à produire et dixième clip promotionnel non programmé. Les neuf créneaux TikTok ne constituent pas neuf confirmations de publication.
 
@@ -152,6 +152,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Italie-France : Cherki frustré après la défaite des Bleus face à la Squadra — https://www.facebook.com/122106465861520366/posts/122110572741520366
 - meta/facebook — La F1 maintient Qatar et Abu Dhabi, Imola écarté comme solution de repli - F1 news — https://www.facebook.com/122106465861520366/posts/122110029855520366
 - meta/facebook — Le Bayern refuse de céder Jonathan Tah au Barça lors du mercato — https://www.facebook.com/122106465861520366/posts/122110029765520366
+- meta/facebook — Le Paris FC ouvert à un éventuel accueil au Parc des Princes — https://www.facebook.com/122106465861520366/posts/122110629381520366
 - meta/facebook — Le Top Instagram MotoGP de la semaine : Márquez fête son podium, Martín et Bezzecchi hilares, Lorenzo de retour dans le paddock... (2 au 8 novembre) - Paddock GP — https://www.facebook.com/122106465861520366/posts/122110258725520366
 - meta/facebook — Leicester et Brentford U21 qualifiés pour les huitièmes du Jersey Mike's Trophy — https://www.facebook.com/122106465861520366/posts/122110029567520366
 - meta/facebook — Les Blazers surclassent le Thunder, les Knicks déroulent, Giannis Antetokounmpo porte le Heat - L'Équipe — https://www.facebook.com/122106465861520366/posts/122110116987520366
@@ -195,6 +196,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — La F1 maintient Qatar et Abu Dhabi, Imola écarté comme solution de repli - F1 news — https://www.instagram.com/p/DflPqlLG3xP/
 - meta/instagram — Le Bayern refuse de céder Jonathan Tah au Barça lors du mercato — https://www.instagram.com/p/DflPtQClIYj/
 - meta/instagram — Le PSG toujours intéressé par Upamecano, une clause libératoire à 65 M€ évoquée — https://www.instagram.com/p/DfpSsPOFL87/
+- meta/instagram — Le Paris FC ouvert à un éventuel accueil au Parc des Princes — https://www.instagram.com/p/Dfq_Wlal4Hr/
 - meta/instagram — Le Top Instagram MotoGP de la semaine : Márquez fête son podium, Martín et Bezzecchi hilares, Lorenzo de retour dans le paddock... (2 au 8 novembre) - Paddock GP — https://www.instagram.com/p/DfnqaLZjgb0/
 - meta/instagram — Leicester et Brentford U21 qualifiés pour les huitièmes du Jersey Mike's Trophy — https://www.instagram.com/p/DflPkBElFlE/
 - meta/instagram — Lens : l'agent de Thiago Motta dément les accusations sur son salaire — https://www.instagram.com/p/Dfo9qbPl3uu/
@@ -249,6 +251,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Lecornu formalise la création de 5 000 places supplémentaires en licence — https://www.facebook.com/1757379583055094/posts/1770632745063111
 - meta_pronos/facebook — Marvel 1943 : Rise of Hydra n'est pas annulé, selon Gamekult — https://www.facebook.com/1757379583055094/posts/1771444778315241
 - meta_pronos/facebook — Mercato : Arsenal s'intéresse à Endrick, Newcastle et Sunderland suivent Dion Beljo — https://www.facebook.com/1757379583055094/posts/1769605231832529
+- meta_pronos/facebook — Mobilisation contre la vie chère : des mesures antiterroristes visant des manifestants dénoncées — https://www.facebook.com/1757379583055094/posts/1772408638218855
 - meta_pronos/facebook — Nouvelle-Zélande à la Coupe du monde de rugby 2023 : actualités, matches en direct, joueurs, compositions, calendriers et résultats des All Blacks. - Rugbyrama — https://www.facebook.com/1757379583055094/posts/1769649931828059
 - meta_pronos/facebook — Panne de Microsoft 365 et d'Outlook touchant des dizaines de milliers d'utilisateurs — https://www.facebook.com/1757379583055094/posts/1772137764912609
 - meta_pronos/facebook — Paris Photo 2026 : la foire du Grand Palais célèbre le bicentenaire de la photographie — https://www.facebook.com/1757379583055094/posts/1772361404890245
@@ -290,6 +293,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_univers/facebook — Un projet VM à explorer VM Gaming — https://www.facebook.com/122098313661535169/posts/122108721519535169
 - meta_univers/facebook — Un projet VM à explorer VM Météo & Découverte — https://www.facebook.com/122098313661535169/posts/122108942595535169
 - meta_univers/facebook — Un projet VM à explorer VM Pro Local — https://www.facebook.com/122098313661535169/posts/122108987337535169
+- meta_univers/facebook — Un projet VM à explorer VM Produits locaux — https://www.facebook.com/122098313661535169/posts/122109003117535169
 - meta_univers/facebook — Un projet VM à explorer VM Recettes — https://www.facebook.com/122098313661535169/posts/122108930805535169
 - meta_univers/facebook — Un projet VM à explorer VM Shop — https://www.facebook.com/122098313661535169/posts/122108921295535169
 - meta_univers/facebook — Un projet VM à explorer VM Sport & randonnée — https://www.facebook.com/122098313661535169/posts/122108960985535169
