@@ -1,40 +1,44 @@
 {
  "_note": "Un seul prono public par jour (la plus petite cote). Les autres sont envoyés en privé sur demande par email : NE PAS les mettre dans ce dépôt (tout fichier ici est public).",
  "valide": true,
- "valide_par": "Propriétaire VM (pronos et accord du 04/11/2026)",
- "debut": "2026-11-04T08:00:00Z",
- "expire": "2026-11-05T05:00:00Z",
- "verifie_le": "2026-11-04T09:10:00Z",
- "analyse": "Chaque jour, un seul prono est public : celui à la plus petite cote. Tous les autres pronos VM sont réservés aux membres VIP et envoyés en privé. L'accès est gratuit sur demande par email (bouton ci-dessus). La probabilité indiquée est celle impliquée par la cote, marge du bookmaker incluse.",
+ "valide_par": "Propriétaire VM (pronos et accord du 13/11/2026)",
+ "debut": "2026-11-13T14:00:00Z",
+ "expire": "2026-11-14T05:00:00Z",
+ "verifie_le": "2026-11-13T14:30:00Z",
+ "analyse": "Le combiné public du jour réunit deux favoris à domicile. Pays-Bas – Grèce : les deux équipes sont à égalité en tête du groupe (8 points chacune), les Pays-Bas sont invaincus mais jouent sans Van Dijk ; les avis divergent, Goal voit plutôt un nul 1-1, donc ce n'est pas un match facile. Anadolu Efes – Virtus Bologne : Efes est favori chez lui en Euroligue. Les deux doivent passer : la probabilité combinée (environ 42 %) est plus basse que celle de chaque match. Aujourd'hui en VIP (envoyés en privé) : le conseil du jour cote 2,07, un combiné triple cote 2,83, un fun spécial cote 7,31 et un fun joueurs NBA.",
  "combines": [
   {
-   "titre": "🎁 Le prono public du jour · cote totale 1,76",
-   "probabilite": "≈ 57 % (implicite)",
-   "cote": "1,76",
-   "note": "Mêmes sélections que dans le combiné n°1 : si Mbappé ne marque pas ou si Viking ne gagne pas, les deux combinés tombent ensemble.",
+   "titre": "🎁 Le combiné public du jour · cote totale 2,00",
+   "probabilite": "≈ 42 % (62 % × 67 %)",
+   "cote": "2,00",
+   "note": "La cote 2,00 correspond à 50 % avant marge du bookmaker : les estimations externes sont en dessous. Si l'un des deux matchs ne passe pas, le combiné est perdu.",
    "selections": [
     {
-     "match": "Viking – Sabah",
-     "heure_paris": "21 h",
-     "marche": "Viking gagne (90 min)",
-     "cote": "1,30",
-     "probabilite": "77 % (marché Kalshi : 66 %)",
-     "type_estimation": "implicite de la cote, pas de modèle",
+     "match": "Anadolu Efes – Virtus Bologne (Euroligue)",
+     "heure_paris": "18 h 30",
+     "marche": "Anadolu Efes gagne (prolongation incluse)",
+     "cote": "1,35",
+     "probabilite": "67 %",
+     "type_estimation": "estimation Orakle, relevée sur RueDesJoueurs",
      "source": {
-      "nom": "Covers",
-      "url": "https://www.covers.com/soccer/champions-league-moneyline-picks-matchday-4-2026"
+      "nom": "RueDesJoueurs",
+      "url": "https://www.ruedesjoueurs.com/paris-sportifs/parions-sport.html"
      }
     },
     {
-     "match": "AEK Athènes – Real Madrid",
-     "heure_paris": "18 h 45",
-     "marche": "Mbappé buteur (90 min)",
-     "cote": "1,35",
-     "probabilite": "74 %",
-     "type_estimation": "implicite de la cote, pas de modèle"
+     "match": "Pays-Bas – Grèce (Ligue des nations)",
+     "heure_paris": "20 h 45",
+     "marche": "Pays-Bas gagne (90 min)",
+     "cote": "1,48",
+     "probabilite": "62 %",
+     "type_estimation": "estimation Orakle, relevée sur RueDesJoueurs",
+     "source": {
+      "nom": "RueDesJoueurs",
+      "url": "https://www.ruedesjoueurs.com/paris-sportifs/parions-sport.html"
+     }
     }
    ]
   }
  ],
- "cote_max_public": 2
+ "cote_max_public": 2.01
 }
