@@ -58,3 +58,14 @@ Les robots d'aperçu (HEAD/GET sans saisie) ne consomment pas le code ; anti-for
 ouverture atomique (8 tentatives simultanées → 1 seule acceptée).
 
 Tests : `tests/lot2.test.cjs` (12 vérifications).
+
+## Visuels seuls + vérification avant envoi + page de présentation
+
+- `/` est la **page de présentation** publique (indexée, `robots.txt` + `sitemap.xml`), avec exemples rendus en direct.
+- `/studio` : le client choisit **Site, Carte de visite (recto-verso ou relief), Flyer A5, Affiche A3, Publication carrée, Story**
+  (`/studio?p=carte` ouvre directement le bon produit). L'aperçu au bon format se met à jour en direct et reste collé
+  en haut de l'écran sur téléphone (⤢ Agrandir).
+- « 👀 Vérifier avant d'envoyer » ouvre le récapitulatif (visuel + prix exact) ; rien ne part sans « ✅ C'est bon, j'envoie ».
+- Prix des visuels dans `src/prix.js` (`PRIX.produits`) ; options possibles : logo, retouches IA. Le serveur recalcule le
+  total et impose le format du produit.
+- Tests : `tests/visuels.test.cjs` (21 vérifications, dont 24 affichages 320/390/768/1300 px sans débordement).

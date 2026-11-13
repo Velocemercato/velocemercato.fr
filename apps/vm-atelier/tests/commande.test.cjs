@@ -8,7 +8,7 @@ const PNG = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR
   const cl = await br.newPage({ viewport: { width: 390, height: 844 } }); cl.on('pageerror', e => errs.push(e.message));
   await cl.goto(B + '/studio'); await cl.fill('#nom', 'Pizzeria Marco'); await cl.fill('#slogan', 'Pizzas au feu de bois');
   await cl.setInputFiles('#photo', { name: 'p.png', mimeType: 'image/png', buffer: PNG }); await cl.waitForTimeout(400);
-  await cl.fill('#cnom', 'Marco'); await cl.fill('#ctel', '06 12 34 56 78'); await cl.check('#cgv'); await cl.click('#envoyer');
+  await cl.fill('#cnom', 'Marco'); await cl.fill('#ctel', '06 12 34 56 78'); await cl.check('#cgv'); await cl.click('#envoyer'); await cl.click('#vOk');
   await cl.waitForFunction(() => /envoyée/.test(document.getElementById('msg').textContent));
   const lien = await cl.getAttribute('#msg a', 'href');
   ok(lien && lien.startsWith('https://atelier.velocemercato.fr/salon/'), 'client : reçoit son lien de suivi sur le domaine VM (' + (lien || '').slice(0, 45) + '…)');

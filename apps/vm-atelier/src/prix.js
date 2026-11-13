@@ -2,6 +2,18 @@
 // Le serveur recalcule TOUJOURS le total à partir de cette grille : le prix affiché
 // dans le navigateur n'est jamais pris tel quel.
 export const PRIX = {
+  // Ce que le client peut créer seul : un site, ou un visuel à imprimer / publier.
+  produits: {
+    site: { nom: 'Site internet', icone: '🌐', format: 'site' },
+    carte: { nom: 'Carte de visite recto-verso (design)', icone: '💳', format: 'carte', prix: 29 },
+    carte_relief: { nom: 'Carte de visite en relief (design)', icone: '✨', format: 'carte', prix: 59 },
+    flyer: { nom: 'Flyer A5 (design)', icone: '📄', format: 'flyer', prix: 39 },
+    affiche: { nom: 'Affiche A3 (design)', icone: '🖼️', format: 'affiche', prix: 49 },
+    post: { nom: 'Publication réseaux (carré)', icone: '📱', format: 'post', prix: 19 },
+    story: { nom: 'Story / Reel (vertical)', icone: '📲', format: 'story', prix: 19 },
+  },
+  // Options possibles pour un visuel seul (le reste ne concerne que les sites).
+  optionsVisuel: ['logo', 'retouches_ia'],
   types: {
     vitrine: { nom: 'Site vitrine (1 page)', prix: 290 },
     rendezvous: { nom: 'Site + prise de rendez-vous', prix: 410 },
@@ -28,6 +40,14 @@ export const PRIX = {
 export function devis(cfg) {
   const c = cfg && typeof cfg === 'object' ? cfg : {};
   const lignes = [];
+  const produit = PRIX.produits[c.produit] ? c.produit : 'site';
+  if (produit !== 'site') {
+    const pr = PRIX.produits[produit];
+    lignes.push([pr.nom, pr.prix]);
+    const o = (Array.isArray(c.options) ? c.options : []).filter((k) => PRIX.optionsVisuel.includes(k) && PRIX.options[k]);
+    for (const k of PRIX.optionsVisuel) if (o.includes(k)) lignes.push([PRIX.options[k].nom, PRIX.options[k].prix]);
+    return { produit, format: pr.format, type: produit, pages: 0, langues: 0, options: PRIX.optionsVisuel.filter((k) => o.includes(k)), pack: false, lignes, total: lignes.reduce((s, l) => s + l[1], 0) };
+  }
   const type = PRIX.types[c.type] ? c.type : 'vitrine';
   lignes.push([PRIX.types[type].nom, PRIX.types[type].prix]);
   const pages = Math.max(0, Math.min(PRIX.pageSup.max, parseInt(c.pages, 10) || 0));
@@ -38,5 +58,5 @@ export function devis(cfg) {
   for (const k of Object.keys(PRIX.options)) if (opts.includes(k)) lignes.push([PRIX.options[k].nom, PRIX.options[k].prix]);
   if (c.pack !== false) lignes.push([PRIX.pack.nom, PRIX.pack.prix]);
   const total = lignes.reduce((s, l) => s + l[1], 0);
-  return { type, pages, langues, options: Object.keys(PRIX.options).filter((k) => opts.includes(k)), pack: c.pack !== false, lignes, total };
+  return { produit, format: 'site', type, pages, langues, options: Object.keys(PRIX.options).filter((k) => opts.includes(k)), pack: c.pack !== false, lignes, total };
 }
