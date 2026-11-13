@@ -38,6 +38,8 @@ ESPN_LIGUES = {  # chemin ESPN : (nom affiché, sport)
     'soccer/ita.1': ('Serie A', 'foot'), 'soccer/ger.1': ('Bundesliga', 'foot'), 'soccer/uefa.champions': ('Ligue des champions', 'foot'),
     'basketball/nba': ('NBA', 'basket'), 'football/nfl': ('NFL', 'nfl'), 'hockey/nhl': ('NHL', 'hockey'),
 }
+# Noms des sélections en français (la source ESPN n'accepte pas le paramètre de langue).
+EQUIPES_FR = {"Germany": "Allemagne", "Greece": "Grèce", "Netherlands": "Pays-Bas", "Spain": "Espagne", "Italy": "Italie", "England": "Angleterre", "Switzerland": "Suisse", "Serbia": "Serbie", "Slovenia": "Slovénie", "Czechia": "Tchéquie", "Czech Republic": "Tchéquie", "Croatia": "Croatie", "Belgium": "Belgique", "Turkey": "Turquie", "Türkiye": "Turquie", "Poland": "Pologne", "Denmark": "Danemark", "Norway": "Norvège", "Sweden": "Suède", "Scotland": "Écosse", "Wales": "Pays de Galles", "Republic of Ireland": "Irlande", "Ireland": "Irlande", "Northern Ireland": "Irlande du Nord", "Hungary": "Hongrie", "Austria": "Autriche", "Romania": "Roumanie", "Russia": "Russie", "Iceland": "Islande", "Cyprus": "Chypre", "Armenia": "Arménie", "Georgia": "Géorgie", "Albania": "Albanie", "Bosnia-Herzegovina": "Bosnie", "Bosnia and Herzegovina": "Bosnie", "Montenegro": "Monténégro", "North Macedonia": "Macédoine du Nord", "Finland": "Finlande", "Estonia": "Estonie", "Latvia": "Lettonie", "Lithuania": "Lituanie", "Slovakia": "Slovaquie", "Bulgaria": "Bulgarie", "Belarus": "Biélorussie", "Israel": "Israël", "Azerbaijan": "Azerbaïdjan", "Malta": "Malte", "Faroe Islands": "Îles Féroé", "Andorra": "Andorre", "San Marino": "Saint-Marin", "Morocco": "Maroc", "Algeria": "Algérie", "Tunisia": "Tunisie", "Egypt": "Égypte", "Senegal": "Sénégal", "Ivory Coast": "Côte d'Ivoire", "Cameroon": "Cameroun", "Guinea": "Guinée", "Guinea-Bissau": "Guinée-Bissau", "Eq. Guinea": "Guinée équatoriale", "Equatorial Guinea": "Guinée équatoriale", "Congo DR": "RD Congo", "DR Congo": "RD Congo", "South Africa": "Afrique du Sud", "Cape Verde": "Cap-Vert", "Cabo Verde": "Cap-Vert", "Gambia": "Gambie", "Namibia": "Namibie", "Sudan": "Soudan", "Somalia": "Somalie", "Zambia": "Zambie", "Benin": "Bénin", "Mauritania": "Mauritanie", "Libya": "Libye", "Ethiopia": "Éthiopie", "Uganda": "Ouganda", "Tanzania": "Tanzanie", "Chad": "Tchad", "Central African Republic": "Centrafrique", "Comoros": "Comores", "Brazil": "Brésil", "Argentina": "Argentine", "Mexico": "Mexique", "United States": "États-Unis", "USA": "États-Unis", "Japan": "Japon", "South Korea": "Corée du Sud", "Korea Republic": "Corée du Sud", "Australia": "Australie", "New Zealand": "Nouvelle-Zélande", "India": "Inde", "China": "Chine", "China PR": "Chine", "Vietnam": "Viêt Nam", "Taipei": "Taïwan", "Chinese Taipei": "Taïwan", "Uzbekistan": "Ouzbékistan", "Saudi Arabia": "Arabie saoudite", "Iraq": "Irak", "Colombia": "Colombie", "Chile": "Chili", "Peru": "Pérou", "Ecuador": "Équateur", "Jordan": "Jordanie", "Syria": "Syrie", "Lebanon": "Liban", "Thailand": "Thaïlande", "Indonesia": "Indonésie", "Malaysia": "Malaisie", "Philippines": "Philippines", "Singapore": "Singapour", "Kyrgyzstan": "Kirghizistan", "Tajikistan": "Tadjikistan", "Turkmenistan": "Turkménistan", "Mongolia": "Mongolie", "Cambodia": "Cambodge", "Bahrain": "Bahreïn", "Kuwait": "Koweït", "United Arab Emirates": "Émirats arabes unis", "UAE": "Émirats arabes unis", "Yemen": "Yémen", "Palestine": "Palestine", "Jamaica": "Jamaïque", "Haiti": "Haïti", "Bolivia": "Bolivie", "Venezuela": "Venezuela", "Panama": "Panama", "Costa Rica": "Costa Rica", "Honduras": "Honduras", "Guatemala": "Guatemala", "Trinidad and Tobago": "Trinité-et-Tobago", "Moldova": "Moldavie", "Ukraine": "Ukraine", "Kazakhstan": "Kazakhstan", "Luxembourg": "Luxembourg", "Liechtenstein": "Liechtenstein", "Gibraltar": "Gibraltar", "Kosovo": "Kosovo", "Portugal": "Portugal", "France": "France"}
 SECOURS = {'Ligue 1', 'Premier League', 'Liga', 'Serie A', 'Bundesliga', 'Ligue des champions'}
 # Notifications « BUT ! » sur les téléphones abonnés (OneSignal). L'App ID est public ;
 # la clé REST reste dans le secret GitHub ONESIGNAL_API_KEY (jamais dans le code).
@@ -103,6 +105,13 @@ def notify(old_rows, rows):
         print(f'Discord : {len(msgs)} notification(s).')
 
 
+def fr(nom):
+    nom = str(nom)
+    if nom.endswith(' U21'):
+        return EQUIPES_FR.get(nom[:-4], nom[:-4]) + ' Espoirs'
+    return EQUIPES_FR.get(nom, nom)
+
+
 def espn_rows(today, deja=frozenset()):
     """Matchs (hier, aujourd'hui, demain) depuis le tableau des scores public d'ESPN.
     Les championnats déjà fournis par football-data ne sont pas doublés."""
@@ -137,8 +146,8 @@ def espn_rows(today, deja=frozenset()):
                     v = c.get('score')
                     return int(v) if statut != 'TIMED' and str(v).isdigit() else None
                 rows.append({'id': 'espn-' + str(e['id']), 'date': e.get('date'), 'comp': nom, 'sport': sport,
-                             'dom': (home.get('team') or {}).get('shortDisplayName') or '?',
-                             'ext': (away.get('team') or {}).get('shortDisplayName') or '?',
+                             'dom': fr((home.get('team') or {}).get('shortDisplayName') or '?'),
+                             'ext': fr((away.get('team') or {}).get('shortDisplayName') or '?'),
                              'statut': statut, 'score': [but(home), but(away)]})
             except (KeyError, TypeError, ValueError):
                 continue

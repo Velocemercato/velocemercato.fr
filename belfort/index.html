@@ -70,7 +70,15 @@ var PUB='<a class="pub" href="/pub/"><small>PUBLICITÉ</small>📣 <b>Votre comm
 function quand(d){var m=Math.round((Date.now()-new Date(d))/60000);if(m<60)return 'il y a '+Math.max(m,1)+' min';var h=Math.round(m/60);return h<24?'il y a '+h+' h':new Date(d).toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'})}
 function draw(){var q=norm($('q').value);var L=D.filter(function(r){return (lieu==='all'||r.l===lieu)&&norm(r.t).indexOf(q)>-1});
  $('list').innerHTML=L.slice(0,80).map(function(r,i){var safe=/^https:\/\//.test(r.u)?r.u:'#';return (i&&i%8===0?PUB:'')+'<a class="it" href="'+esc(safe)+'" target="_blank" rel="noopener"><span class="tag">'+esc(NOM[r.l]||r.l)+'</span><b>'+esc(r.t)+'</b><small>'+esc(r.s)+' · '+quand(r.d)+'</small></a>'}).join('')+(L.length?PUB:'');
- $('empty').hidden=L.length>0}
+ $('empty').hidden=L.length>0;
+ // Rien dans l'actu locale : message clair + recherche dans tout le site (foot et actus).
+ if(!L.length&&q&&D.length){$('empty').textContent='Aucune info locale (Belfort, Montbéliard, Haute-Saône, région) pour « '+$('q').value.trim()+' ».';
+  var A=(ALL||[]).filter(function(r){return norm(r.t).indexOf(q)>-1}).slice(0,20);
+  $('list').innerHTML=A.length?'<p class="empty">Ailleurs sur Véloce Mercato :</p>'+A.map(function(r){return '<a class="it" href="'+esc(r.u)+'"><span class="tag">'+esc(r.k)+'</span><b>'+esc(r.t)+'</b></a>'}).join(''):'';
+ } else if(!L.length){$('empty').textContent='Les premières infos arrivent : reviens dans un moment.'}}
+var ALL=null;
+Promise.all([fetch('/articles.json').then(function(r){return r.json()}).catch(function(){return []}),fetch('/actus/news.json').then(function(r){return r.json()}).catch(function(){return []})]).then(function(x){
+ ALL=(x[0]||[]).map(function(a){return {t:a.titre,u:'/a/'+encodeURIComponent(a.id)+'.html',k:'Foot'}}).concat((x[1]||[]).map(function(a){return {t:a.titre,u:'/actus/#a='+encodeURIComponent(a.id),k:'Actus'}})).filter(function(r){return r.t});if($('q').value)draw()});
 fetch('actus.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){D=j.titres||[];if(j.maj)$('maj').textContent='Mis à jour '+quand(j.maj)+' · '+D.length+' infos';draw()}).catch(draw);
 $('q').oninput=draw;$('tools').onclick=function(e){var b=e.target.closest('button');if(!b)return;lieu=b.dataset.l;[].forEach.call(this.children,function(x){x.classList.toggle('on',x===b)});draw()};
 })();
