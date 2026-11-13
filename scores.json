@@ -306,7 +306,7 @@
    "sport": "basket",
    "dom": "76ers",
    "ext": "Raptors",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     60,
     60
@@ -319,7 +319,7 @@
    "sport": "basket",
    "dom": "Wizards",
    "ext": "Pistons",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     61,
     64
@@ -335,7 +335,7 @@
    "statut": "IN_PLAY",
    "score": [
     0,
-    2
+    3
    ]
   },
   {
@@ -347,7 +347,7 @@
    "ext": "Wild",
    "statut": "IN_PLAY",
    "score": [
-    0,
+    1,
     1
    ]
   },
@@ -410,10 +410,10 @@
    "sport": "basket",
    "dom": "Timberwolves",
    "ext": "Mavericks",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    2,
+    0
    ]
   },
   {
@@ -436,10 +436,10 @@
    "sport": "hockey",
    "dom": "Stars",
    "ext": "Jets",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -1756,6 +1756,6 @@
    ]
   }
  ],
- "maj": "2026-11-13T01:07:44Z",
- "verifie": "2026-11-13T01:07:44Z"
+ "maj": "2026-11-13T01:11:42Z",
+ "verifie": "2026-11-13T01:11:42Z"
 }
