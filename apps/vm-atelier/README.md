@@ -31,4 +31,9 @@ Une capture d'écran reste toujours possible. Les créations IA (logo, voix, vid
 - **Retours client en direct** : sur son lien « salon », le client touche un élément et écrit sa demande. Romain la reçoit dans l'atelier en 3 s maximum et peut l'envoyer à l'IA en un clic.
 - **Version** : un enregistrement fait sur une version périmée est refusé (409 `projet_modifie`).
 
-Tests : `node tests/ia.test.mjs` (13 cas, réponses d'Anthropic simulées, aucun appel payant) et `node tests/lot1.test.cjs` (13 vérifications navigateur, Romain + client simultanés, avec une fausse IA locale via `ANTHROPIC_BASE_URL`).
+Tests : `node tests/ia.test.mjs` (21 cas, Claude et Gemini, réponses d'Anthropic simulées, aucun appel payant) et `node tests/lot1.test.cjs` (13 vérifications navigateur, Romain + client simultanés, avec une fausse IA locale via `ANTHROPIC_BASE_URL`).
+
+### Mise à jour du 13/11 (suite)
+- **Deux fournisseurs d'IA** : Claude (`ANTHROPIC_API_KEY`) ou **Gemini, offre gratuite de Google AI Studio** (`GEMINI_API_KEY`, modèle `GEMINI_MODEL`, défaut `gemini-flash-latest`). `IA_FOURNISSEUR=claude|gemini` force le choix ; sinon Claude s'il est configuré, puis Gemini.
+- **Liens clients sur le domaine VM vérifié uniquement** : `https://atelier.velocemercato.fr` (salon, code unique). L'adresse technique `*.workers.dev` redirige en 301 vers ce domaine.
+- **Option payante pour le client** : « Retouches en direct avec l'assistant IA (30 jours) », 29 €, pour que le coût de l'IA soit couvert par le client.

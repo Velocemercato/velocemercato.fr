@@ -16,7 +16,9 @@ const PNG = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR
   await ad.waitForFunction(() => document.querySelector('#apercu img'));
   await ad.waitForFunction(() => /enregistré/.test(document.getElementById('etat').textContent));
   // Le client ouvre son lien sur son téléphone
-  await ad.click('#bSalon'); const lien = await ad.textContent('#partage .code');
+  await ad.click('#bSalon'); const lienPublic = await ad.textContent('#partage .code');
+  ok(lienPublic.startsWith('https://atelier.velocemercato.fr/salon/'), 'lien client sur le domaine VM vérifié (' + lienPublic.slice(0, 40) + '…)');
+  const lien = lienPublic.replace('https://atelier.velocemercato.fr', B);
   const cl = await br.newPage({ viewport: { width: 390, height: 844 } }); cl.on('pageerror', e => errs.push('client ' + e.message));
   await cl.goto(lien); await cl.waitForFunction(() => document.getElementById('site').textContent.includes('Salon Léa'));
   ok(true, 'client : voit le site en direct');

@@ -193,7 +193,8 @@ export const pageAdmin = page('Atelier — VM', `${ENTETE('VM Studio · Atelier 
   <div id="blocs"></div>
  </div><div><div class="card" style="position:sticky;top:10px"><b>Ce que voit le client</b><div class="ecran" id="apercu" style="margin-top:8px"></div></div></div></div></div>
 </div>`,
-`var $=function(i){return document.getElementById(i)},cur=null,minuteur=null,TB=${JSON.stringify(TYPES_BLOCS)};
+`var DOM='https://atelier.velocemercato.fr';api('config').then(function(c){if(c&&/^https:\\/\\/[a-z0-9.-]+\\.(velocemercato|vmunivers)\\.fr$/.test(c.domaine||''))DOM=c.domaine});
+var $=function(i){return document.getElementById(i)},cur=null,minuteur=null,TB=${JSON.stringify(TYPES_BLOCS)};
 function vue(n){['vProjets','vCmd','vEdit'].forEach(function(x){$(x).classList.toggle('hide',x!==n)})}
 function etat(){api('admin/etat').then(function(s){if(s._s===401){$('login').classList.remove('hide');$('app').classList.add('hide');return}
  $('login').classList.add('hide');$('app').classList.remove('hide');
@@ -220,7 +221,7 @@ function memoriser(){pile.push(JSON.stringify(cur.doc));if(pile.length>30)pile.s
 $('annuler').onclick=function(){if(!pile.length)return;cur.doc=JSON.parse(pile.pop());$('annuler').disabled=!pile.length;$('eFormat').value=cur.doc.format||'site';dessiner();sauver()};
 $('eFormat').onchange=function(){memoriser();cur.doc.format=$('eFormat').value;rendre($('apercu'),cur.doc);sauver()};
 $('bPrint').onclick=function(){imprimer(propo||cur.doc,$('apercu'))};
-function iaEtat(){api('admin/ia-etat').then(function(e){if(e._s!==200)return;$('iaEtat').textContent=e.configuree?('· '+e.modele+' · '+e.utilises+'/'+e.plafond+' aujourd’hui'):'· IA à connecter (secret ANTHROPIC_API_KEY)';$('iaGo').disabled=!e.configuree})}
+function iaEtat(){api('admin/ia-etat').then(function(e){if(e._s!==200)return;$('iaEtat').textContent=e.configuree?('· '+e.modele+' · '+e.utilises+'/'+e.plafond+' aujourd’hui'):'· IA à connecter (secret GEMINI_API_KEY gratuit, ou ANTHROPIC_API_KEY)';$('iaGo').disabled=!e.configuree})}
 $('iaGo').onclick=function(){var c=$('iaTxt').value.trim();if(!c){$('iaMsg').textContent='Écris ce que tu veux changer.';return}
  $('iaGo').disabled=true;$('iaMsg').textContent='⏳ L’IA prépare une proposition… (jusqu’à 1 minute)';
  api('admin/ia',{id:cur.id,consigne:c}).then(function(j){$('iaGo').disabled=false;iaEtat();
@@ -258,8 +259,8 @@ function dessiner(){var B=$('blocs');B.replaceChildren();cur.doc.blocs.forEach(f
  B.appendChild(c)});rendre($('apercu'),cur.doc)}
 function montrer(titre,valeur,texte){var P=$('partage');P.replaceChildren();P.appendChild(E('p','',titre));var d=E('div','',valeur);d.className='code';P.appendChild(d);
  var cp=E('button','','Copier le message');cp.className='g';cp.onclick=function(){navigator.clipboard&&navigator.clipboard.writeText(texte)};P.appendChild(cp);P.appendChild(E('p','',texte));P.lastChild.className='muted'}
-$('bSalon').onclick=function(){var u=location.origin+'/salon/'+cur.salon;montrer('Lien à ouvrir sur le téléphone du client (il voit vos changements en direct) :',u,'Ouvre ce lien pour voir ton site se construire en direct : '+u)};
+$('bSalon').onclick=function(){var u=DOM+'/salon/'+cur.salon;montrer('Lien à ouvrir sur le téléphone du client (il voit vos changements en direct) :',u,'Ouvre ce lien pour voir ton site se construire en direct : '+u)};
 $('bNvSalon').onclick=function(){if(confirm('Couper l’ancien lien salon ?'))api('admin/nouveauSalon',{id:cur.id}).then(function(){ouvrir(cur.id)})};
-$('bCode').onclick=function(){api('admin/code',{id:cur.id}).then(function(j){if(!j.ok)return;montrer('Code à usage unique (affiché une seule fois, valable 7 jours) :',j.code,'Ton projet est prêt : ouvre '+location.origin+'/voir et entre le code '+j.code+' (il ne marche qu’une fois).')})};
+$('bCode').onclick=function(){api('admin/code',{id:cur.id}).then(function(j){if(!j.ok)return;montrer('Code à usage unique (affiché une seule fois, valable 7 jours) :',j.code,'Ton projet est prêt : ouvre '+DOM+'/voir et entre le code '+j.code+' (il ne marche qu’une fois).')})};
 $('bSuppr').onclick=function(){if(confirm('Supprimer définitivement ce projet ?'))api('admin/supprimer',{id:cur.id}).then(function(){vue('vProjets');etat()})};
 etat();`);
