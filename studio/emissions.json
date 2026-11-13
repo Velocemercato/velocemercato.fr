@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261113-1900",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 19 h",
+  "titre": "La Pastille Actus : édition du vendredi 13 novembre 2026",
+  "accroche": "Manifestations, grève, Haïti, sapin bordelais : l'essentiel de l'actu du soir.",
+  "duree": 136,
+  "date": "2026-11-13T19:51+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261113-1900.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-13T19:00:00+01:00",
+  "source_start": "2026-11-13T13:00:00+01:00",
+  "source_end": "2026-11-13T19:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-d20d7591f114bd26b52dea",
+    "titre": "Paris : l'itinéraire République-Nation validé pour la mobilisation du 14 novembre",
+    "publishedAt": "2026-11-13T17:07:42Z",
+    "createdAt": "2026-11-13T17:36:25Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/manifestations/la-prefecture-de-police-valide-l-itineraire-commun-republique-nation-a-paris-declare-par-trois-organisateurs-distincts-pour-la-mobilisation-du-14-novembre_8281439.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-7a5e4a4f75c32862a5046d",
+    "titre": "La FCPE appelle à entendre les revendications des lycéens",
+    "publishedAt": "2026-11-13T17:19:07Z",
+    "createdAt": "2026-11-13T17:36:17Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/education/blocage-des-lycees/il-faut-entendre-les-revendications-legitimes-des-lyceens-estime-la-fcpe_8281472.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-ddc31298e2b8d069ef09df",
+    "titre": "La CFDT rejoint l'appel à la grève dans la fonction publique du 17 novembre",
+    "publishedAt": "2026-11-13T16:15:52Z",
+    "createdAt": "2026-11-13T16:36:46Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/greve/la-cfdt-rejoint-l-appel-a-la-greve-dans-la-fonction-publique-le-17-novembre-estimant-que-les-propositions-du-gouvernement-ne-constituent-pas-de-veritables-avancees_8281298.html#xtor=RSS-3-%5Beconomie%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-248182880441286538b6fa",
+    "titre": "À Bordeaux, un sapin de Noël naturel de retour place Pey-Berland",
+    "publishedAt": "2026-11-13T16:19:21Z",
+    "createdAt": "2026-11-13T16:36:36Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/france/nouvelle-aquitaine/gironde/bordeaux/a-bordeaux-un-sapin-de-noel-naturel-fera-son-retour-mardi-en-centre-ville-cinq-ans-apres-son-remplacement-par-une-uvre-en-verre_8281316.html#xtor=RSS-3-%5Bculture%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-3e52430f62455bad0cd7ea",
+    "titre": "Haïti : la police annonce avoir repris le principal stade du pays aux gangs",
+    "publishedAt": "2026-11-13T15:28:03Z",
+    "createdAt": "2026-11-13T15:41:30Z",
+    "references": [
+     {
+      "nom": "France 24",
+      "url": "https://www.france24.com/fr/vid%C3%A9o/20261113-ha%C3%AFti-le-stade-de-l-%C3%A9quipe-national-de-football-repris-aux-gangs"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-5eeb5ad1c2bda552eb8708",
+    "titre": "Au salon du \"Made in France\", des entreprises défendent des produits nationaux abordables",
+    "publishedAt": "2026-11-13T15:29:51Z",
+    "createdAt": "2026-11-13T15:41:28Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/commerce/on-prefere-le-francais-le-propre-et-l-abordable-au-salon-du-made-in-france-les-commercants-prouvent-que-l-on-peut-encore-vendre-des-produits-nationaux-en-restant-abordables_8281241.html#xtor=RSS-3-%5Beconomie%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-bd279cef470ed432ca1d5a",
+    "titre": "« Les Misérables » triomphe au théâtre du Châtelet à Paris",
+    "publishedAt": "2026-11-13T14:42:48Z",
+    "createdAt": "2026-11-13T14:54:00Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/culture/spectacles/comedies-musicales/les-miserables-au-theatre-du-chatelet-le-grand-triomphe_8280938.html#xtor=RSS-3-%5Bculture%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-6c33f3927d0aa6454d0424",
+    "titre": "Kew Gardens illumine Londres avec un parcours lumineux hivernal de 3 km",
+    "publishedAt": "2026-11-13T14:47:56Z",
+    "createdAt": "2026-11-13T14:53:58Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/video/2026/11/13/kew-gardens-illumine-londres-avec-un-parcours-lumineux-hivernal-de-3-km"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "gaming-edition-20261113-1800",
   "univers": "gaming",
   "format": "edition",
@@ -12487,28 +12607,5 @@
   "audio": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@fe5e3af58c309ffe11be5806ed8fdfa46de51082/foot-edition-20261023-1353.m4a",
   "page": "https://velocemercato.fr/studio/episodes/foot-edition-20261023-1353.html",
   "poster": "/studio/episodes/posters/foot-edition-20261023-1353.jpg"
- },
- {
-  "id": "gaming-edition-20261023-1231",
-  "univers": "gaming",
-  "format": "edition",
-  "moment": "midi",
-  "label": "Édition du midi",
-  "titre": "La Pastille Gaming : Miyamoto, Octopath, Talos, GTA 6 et MW4 au menu",
-  "accroche": "Miyamoto décoré, GTA 6 en promo à Miami, et Modern Warfare 4 déjà jouable en avance.",
-  "duree": 267,
-  "date": "2026-10-23T12:31+02:00",
-  "publie": true,
-  "voix": [
-   "piper"
-  ],
-  "speech_rate": 1.12,
-  "fichier": "gaming-edition-20261023-1231.mp4",
-  "media_sha": "bec03baccdd274525867a842bafde71a797e74b3",
-  "video": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@bec03baccdd274525867a842bafde71a797e74b3/gaming-edition-20261023-1231.mp4",
-  "image": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@bec03baccdd274525867a842bafde71a797e74b3/gaming-edition-20261023-1231.jpg",
-  "audio": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@bec03baccdd274525867a842bafde71a797e74b3/gaming-edition-20261023-1231.m4a",
-  "page": "https://velocemercato.fr/studio/episodes/gaming-edition-20261023-1231.html",
-  "poster": "/studio/episodes/posters/gaming-edition-20261023-1231.jpg"
  }
 ]
