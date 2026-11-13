@@ -501,7 +501,7 @@
    "sport": "foot",
    "dom": "Singapour",
    "ext": "Paraguay",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
     1,
     2
@@ -514,10 +514,10 @@
    "sport": "foot",
    "dom": "Comores",
    "ext": "Congo",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -540,10 +540,10 @@
    "sport": "foot",
    "dom": "Zambie",
    "ext": "Burundi",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -1756,6 +1756,6 @@
    ]
   }
  ],
- "maj": "2026-11-13T13:04:29Z",
- "verifie": "2026-11-13T13:04:29Z"
+ "maj": "2026-11-13T13:08:23Z",
+ "verifie": "2026-11-13T13:08:23Z"
 }
