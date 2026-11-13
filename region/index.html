@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07080d">
+<title>VM Région — l'actu de ta région et de ta ville</title>
+<meta name="description" content="Toute l'actualité régionale de France : choisis ta région ou cherche ta ville, un concert, un sujet. Sources : France 3 Régions, franceinfo, L'Est Républicain.">
+<link rel="canonical" href="https://velocemercato.fr/region/">
+<style>
+:root{--bg:#07080d;--card:#11131d;--line:#2b3046;--txt:#f3f4f8;--muted:#a9b0c4;--gold:#f4cf55;--red:#e52643}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+header{padding:14px 16px;border-bottom:2px solid var(--red);display:flex;justify-content:space-between;align-items:center;gap:8px}
+header a{color:var(--gold);text-decoration:none;font-weight:800}h1{margin:0;font-size:1.35rem}
+main{max-width:820px;margin:auto;padding:14px 16px}
+#q{width:100%;background:#0b0d16;color:var(--txt);border:2px solid var(--gold);border-radius:999px;padding:13px 18px;font:inherit}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.chips button{background:#1b2033;color:var(--txt);border:1px solid var(--line);border-radius:999px;padding:9px 13px;font:700 14px system-ui;cursor:pointer;min-height:40px}
+.chips button.on{background:var(--red);border-color:var(--red)}
+.it{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin:8px 0;color:var(--txt);text-decoration:none}
+.it:hover{border-color:var(--gold)}.it b{display:block}.it small{color:var(--muted)}
+.tag{display:inline-block;background:#2a1520;color:#ffb3bf;border-radius:6px;padding:1px 7px;font-size:12px;font-weight:800;margin-right:6px}
+.muted{color:var(--muted);font-size:.9rem}.empty{color:var(--gold)}
+</style></head><body>
+<header><h1>📍 VM Région</h1><a href="/">← Véloce Mercato</a></header>
+<main>
+<input id="q" type="search" aria-label="Chercher une ville, un concert, un sujet" placeholder="Ta ville, un concert, un sujet… (Lyon, Nantes, concert, marché de Noël)">
+<div class="chips" id="regions" role="group" aria-label="Choisir une région"></div>
+<p class="muted" id="maj">Chargement…</p>
+<p class="empty" id="empty" hidden></p>
+<div id="list"></div>
+<p class="muted">Sources : France 3 Régions, franceinfo Outre-mer et L'Est Républicain (Belfort, Montbéliard, Haute-Saône). Chaque titre renvoie vers l'article original.</p>
+</main>
+<script>
+(function(){'use strict';
+var $=function(i){return document.getElementById(i)};
+var NOMS={'auvergne-rhone-alpes':'Auvergne-Rhône-Alpes','bourgogne-franche-comte':'Bourgogne-Franche-Comté','bretagne':'Bretagne','centre-val-de-loire':'Centre-Val de Loire','corse':'Corse','grand-est':'Grand Est','hauts-de-france':'Hauts-de-France','normandie':'Normandie','nouvelle-aquitaine':'Nouvelle-Aquitaine','occitanie':'Occitanie','paris-ile-de-france':'Île-de-France','pays-de-la-loire':'Pays de la Loire','provence-alpes-cote-d-azur':'Provence-Alpes-Côte d’Azur','outre-mer':'Outre-mer'};
+var D=[],choix='all';
+try{var m=location.search.match(/[?&]r=([a-z-]+)/);if(m&&(NOMS[m[1]]||m[1]==='all'))choix=m[1];else{var s=localStorage.getItem('vm-region');if(s&&NOMS[s])choix=s}}catch(e){}
+function norm(t){return String(t||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[-_/]+/g,' ')}
+function titre(slug){return slug.replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase()})}
+// Département ou ville tirés de l'adresse France 3 (ex. /auvergne-rhone-alpes/rhone/lyon/…).
+function lieu(u,reg){try{var p=new URL(u).pathname.split('/').filter(Boolean);var i=p.indexOf(reg);var bits=i>=0?p.slice(i+1,-1):[];return bits.length?titre(bits[bits.length-1]):''}catch(e){return ''}}
+function quand(d){var t=Date.parse(d);if(!t)return '';var m=Math.round((Date.now()-t)/60000);if(m<60)return 'il y a '+Math.max(m,1)+' min';var h=Math.round(m/60);return h<24?'il y a '+h+' h':new Date(t).toLocaleDateString('fr-FR',{day:'numeric',month:'long'})}
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function chips(){var box=$('regions');box.replaceChildren();[['all','Toute la France']].concat(Object.keys(NOMS).map(function(k){return [k,NOMS[k]]})).forEach(function(r){
+ var b=el('button',r[0]===choix?'on':'',r[1]);b.type='button';b.onclick=function(){choix=r[0];try{localStorage.setItem('vm-region',choix)}catch(e){}chips();draw()};box.appendChild(b)})}
+function draw(){var q=norm($('q').value.trim());
+ var L=D.filter(function(r){return (choix==='all'||r.reg===choix)&&(!q||r.cle.indexOf(q)>-1)});
+ $('list').replaceChildren();L.slice(0,100).forEach(function(r){var a=el('a','it');a.href=r.u;a.target='_blank';a.rel='noopener';
+  var info=el('span');info.appendChild(el('span','tag',r.lieu||NOMS[r.reg]||''));a.appendChild(info);a.appendChild(el('b','',r.t));a.appendChild(el('small','',r.s+(r.d?' · '+quand(r.d):'')));$('list').appendChild(a)});
+ var e=$('empty');e.hidden=L.length>0;
+ if(!L.length)e.textContent=D.length?(q?'Aucune actu pour « '+$('q').value.trim()+' »'+(choix!=='all'?' en '+NOMS[choix]+'. Essaie « Toute la France ».':' dans les dernières infos régionales.'):'Pas d’info récente pour cette région.'):'Chargement des infos…'}
+Promise.all([fetch('/actus/regions-accueil.json',{cache:'no-store'}).then(function(r){return r.json()}).catch(function(){return {}}),
+ fetch('/belfort/actus.json',{cache:'no-store'}).then(function(r){return r.json()}).catch(function(){return {}})]).then(function(x){
+ var reg=x[0]||{};Object.keys(reg).forEach(function(k){(reg[k]||[]).forEach(function(a){if(!/^https:\/\//.test(a.url||''))return;var l=lieu(a.url,k);
+  D.push({reg:k,t:a.title,u:a.url,s:a.source||'',d:a.date,lieu:l,cle:norm(a.title+' '+l+' '+a.url+' '+(NOMS[k]||''))})})});
+ ((x[1]||{}).titres||[]).forEach(function(a){if(!/^https:\/\//.test(a.u||''))return;var l={BELFORT:'Belfort & Montbéliard','HAUTE-SAONE':'Haute-Saône',REGION:'Franche-Comté'}[a.l]||'';
+  D.push({reg:'bourgogne-franche-comte',t:a.t,u:a.u,s:a.s||'',d:a.d,lieu:l,cle:norm(a.t+' '+l+' bourgogne franche comte')})});
+ D.sort(function(a,b){return (Date.parse(b.d)||0)-(Date.parse(a.d)||0)});
+ $('maj').textContent=D.length+' infos régionales · tape ta ville ou un sujet, ou choisis ta région';draw()});
+$('q').addEventListener('input',draw);chips();
+})();
+</script>
+</body></html>
