@@ -56,3 +56,9 @@ r = await proposer({ ...envG, IA_DELAI_MS: 200 }, doc, 'x', { fetch: (u, init) =
 ok(r.erreur === 'ia_delai', 'Gemini : délai dépassé');
 const { fournisseur } = await import('../src/ia.js');
 ok(fournisseur({ GEMINI_API_KEY: 'g', ANTHROPIC_API_KEY: 'a' }) === 'claude' && fournisseur({ GEMINI_API_KEY: 'g', ANTHROPIC_API_KEY: 'a', IA_FOURNISSEUR: 'gemini' }) === 'gemini' && fournisseur({}) === null, 'choix du fournisseur selon les clés installées');
+// Gemini saturé : 2e modèle essayé, puis message clair
+let appels = [];
+r = await proposer(envG, doc, 'x', { fetch: async (u) => { appels.push(u); return appels.length === 1 ? new Response('{"error":{"status":"UNAVAILABLE"}}', { status: 503 }) : new Response(JSON.stringify({ candidates: [{ content: { parts: [{ text: JSON.stringify(propG) }] }, finishReason: 'STOP' }] }), { status: 200 }); } });
+ok(r.ok && appels.length === 2 && appels[1].includes('flash-lite'), 'Gemini saturé (503) : réussite avec le modèle de secours');
+r = await proposer(envG, doc, 'x', { fetch: async () => new Response('{}', { status: 503 }) });
+ok(r.erreur === 'ia_surcharge', 'Gemini saturé sur les 2 modèles : message « réessaie dans une minute »');

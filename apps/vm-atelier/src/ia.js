@@ -36,7 +36,8 @@ Règles :
 - Position d'une photo dans un bloc « titre » : champ pos (haut, gauche, droite). Taille du titre : champ taille (normal, grand, tres-grand).
 - Couleurs au format #rrggbb. Liens : https://, mailto: ou tel: uniquement.
 - Le bloc « page » sépare les pages (recto / verso d'une carte, pages d'un flyer).
-- N'invente ni prix, ni numéro de téléphone, ni adresse, ni avis client : laisse vide si l'information manque.`;
+- N'invente ni prix, ni numéro de téléphone, ni adresse, ni avis client : laisse vide si l'information manque.
+- Tu ne crées pas d'image ni de photo. Si on te demande une image (ex. « mets un stade »), garde le projet et explique dans « explication » qu'il faut ajouter la photo avec le bloc Image ou Titre + photo ; tu peux ajouter un texte ou une légende en rapport.`;
 
 // Remplace les photos (data: ou https) par des repères, et garde la correspondance pour les remettre ensuite.
 function sansPhotos(doc) {
@@ -118,12 +119,23 @@ async function viaClaude(env, leger, consigne, options) {
 
 // Gemini (Google AI Studio) : appel REST generateContent, réponse JSON. Offre gratuite avec limites.
 async function viaGemini(env, leger, consigne, options) {
+  // Si le modèle est saturé (503/500 : la demande n'a pas été traitée, donc rien n'est facturé), on essaie un 2e modèle.
+  const modeles = [modele(env), env.GEMINI_MODEL_SECOURS || 'gemini-flash-lite-latest'].filter((m, i, a) => a.indexOf(m) === i);
+  let r;
+  for (const m of modeles) {
+    r = await unAppelGemini(env, leger, consigne, options, m);
+    if (r.statut !== 503 && r.statut !== 500) break;
+  }
+  if (r.statut === 503 || r.statut === 500) return { erreur: 'ia_surcharge', message: 'Les serveurs Gemini de Google sont saturés en ce moment. Réessaie dans une minute (rien n’a été modifié).' };
+  return r;
+}
+async function unAppelGemini(env, leger, consigne, options, nomModele) {
   const f = options.fetch || fetch;
   const base = env.GEMINI_BASE_URL || 'https://generativelanguage.googleapis.com';
   const ctrl = new AbortController(); const minuteur = setTimeout(() => ctrl.abort(), DELAI(env));
   let res, corps;
   try {
-    res = await f(base + '/v1beta/models/' + encodeURIComponent(modele(env)) + ':generateContent', {
+    res = await f(base + '/v1beta/models/' + encodeURIComponent(nomModele) + ':generateContent', {
       method: 'POST', signal: ctrl.signal,
       headers: { 'content-type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
       body: JSON.stringify({
@@ -141,12 +153,12 @@ async function viaGemini(env, leger, consigne, options) {
     const raison = JSON.stringify(corps?.error || '');
     if (res.status === 429) return { erreur: 'ia_quota', message: 'Quota gratuit Gemini atteint. Réessaie plus tard.' };
     if (res.status === 401 || res.status === 403 || /API_KEY_INVALID|API key not valid/i.test(raison)) return { erreur: 'ia_cle_invalide', message: 'La clé Gemini est refusée par Google (invalide ou sans droits).' };
-    return { erreur: 'ia_erreur', message: 'L’IA Gemini a renvoyé une erreur (' + res.status + ').' };
+    return { erreur: 'ia_erreur', statut: res.status, message: 'L’IA Gemini a renvoyé une erreur (' + res.status + ').' };
   }
   const cand = (corps.candidates || [])[0] || {};
   if (corps.promptFeedback?.blockReason || cand.finishReason === 'SAFETY' || cand.finishReason === 'PROHIBITED_CONTENT') return { erreur: 'ia_refus', message: 'L’IA a refusé cette demande.' };
   return { texte: (cand.content?.parts || []).map((x) => x.text || '').join(''), coupe: cand.finishReason === 'MAX_TOKENS',
-    usage: { entree: corps.usageMetadata?.promptTokenCount || 0, sortie: corps.usageMetadata?.candidatesTokenCount || 0, modele: corps.modelVersion || modele(env) } };
+    usage: { entree: corps.usageMetadata?.promptTokenCount || 0, sortie: corps.usageMetadata?.candidatesTokenCount || 0, modele: corps.modelVersion || nomModele } };
 }
 
 // Retourne { ok, doc, explication } ou { erreur, message } — jamais de réussite simulée.
