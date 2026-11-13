@@ -1,0 +1,39 @@
+name: Apercu prive Ma Creation - 24h
+on:
+  push:
+    branches: ['codex/ma-creation-apercu-24h-20261113']
+    paths: ['apps/vm-apercu-ma-creation/**', '.github/workflows/apercu-ma-creation-24h.yml']
+permissions:
+  contents: read
+concurrency:
+  group: apercu-ma-creation-24h
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: apps/vm-apercu-ma-creation
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Valider la protection et l'expiration
+        working-directory: apps/vm-apercu-ma-creation
+        run: node --test tests.mjs
+      - name: Publier le nouvel apercu prive
+        working-directory: apps/vm-apercu-ma-creation
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "$CLOUDFLARE_API_TOKEN" || -z "$CLOUDFLARE_ACCOUNT_ID" ]]; then
+            echo '::error::Acces Cloudflare absent du circuit de deploiement.'
+            exit 1
+          fi
+          npx --yes wrangler@4 deploy --config wrangler.toml

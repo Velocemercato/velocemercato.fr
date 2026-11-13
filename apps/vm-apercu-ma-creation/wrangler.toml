@@ -1,0 +1,15 @@
+name = "vm-apercu-ma-creation"
+main = "worker.mjs"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+[observability]
+enabled = false
+
+[[durable_objects.bindings]]
+name = "PREVIEWS"
+class_name = "Consultation"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Consultation"]
