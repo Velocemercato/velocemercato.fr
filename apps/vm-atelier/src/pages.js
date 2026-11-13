@@ -35,6 +35,7 @@ function rendre(root,doc){
  // Découpage en pages (recto/verso d'une carte, pages d'un flyer) avec le bloc « page ».
  var pages=[[]];blocs.forEach(function(b,ix){if(b&&b.t==='page')pages.push([]);else pages[pages.length-1].push([b,ix])});
  if(!blocs.length){var w0=E('div','max-width:720px;margin:auto;padding:22px 16px');root.appendChild(w0);w0.appendChild(E('p','opacity:.55;text-align:center;padding:90px 0'+(dim?';color:#fff':''),'Page vierge : le '+(dim?fmt:'site')+' apparaît ici.'));return}
+ pages=pages.filter(function(l,i){return l.length||i===0});
  pages.forEach(function(liste,np){
   var w=dim?E('div','container-type:inline-size;position:relative;width:100%;max-width:'+(fmt==='carte'?'520px':'460px')+';margin:0 auto 12px;aspect-ratio:'+dim[0]+'/'+dim[1]+';overflow:hidden;border-radius:8px;box-shadow:0 6px 24px #0008;background:'+bg+';color:'+tx+';font:'+(fmt==='carte'?'4.2':'3.6')+'cqw/1.4 system-ui,sans-serif;padding:'+(fmt==='carte'?'6cqw':'7cqw')+';display:flex;flex-direction:column;justify-content:center;gap:2cqw')
                :E('div','max-width:720px;margin:auto;padding:22px 16px');
@@ -48,7 +49,7 @@ function rendre(root,doc){
    if(im&&(pos==='gauche'||pos==='droite')){s.style.cssText+=';display:flex;gap:'+k(16,3)+';align-items:center;text-align:left';if(pos==='gauche'){s.appendChild(im);s.appendChild(txt)}else{s.appendChild(txt);s.appendChild(im)}}
    else{s.style.textAlign='center';if(im)s.appendChild(im);s.appendChild(txt)}}
   else if(b.t==='texte'){if(b.titre)s.appendChild(E('h2','margin:0 0 6px;color:'+c2,b.titre));s.appendChild(E('p','margin:0;white-space:pre-wrap',b.texte||''))}
-  else if(b.t==='image'){if(okImg(b.src)){var im2=E('img','width:100%;border-radius:14px');im2.src=b.src;im2.alt=b.legende||'';s.appendChild(im2)}if(b.legende)s.appendChild(E('p','margin:6px 0 0;opacity:.75;text-align:center;font-size:.9em',b.legende))}
+  else if(b.t==='image'){if(okImg(b.src)){var im2=E('img','width:100%;border-radius:14px;object-fit:contain;'+(dim?'max-height:'+(fmt==='carte'?'34':'60')+'cqw':''));im2.src=b.src;im2.alt=b.legende||'';s.appendChild(im2)}if(b.legende)s.appendChild(E('p','margin:6px 0 0;opacity:.75;text-align:center;font-size:.9em',b.legende))}
   else if(b.t==='galerie'){var g=E('div','display:grid;grid-template-columns:repeat(auto-fill,minmax('+k(150,22)+',1fr));gap:8px');(b.images||[]).forEach(function(u){if(okImg(u)){var x=E('img','width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px');x.src=u;x.alt='';g.appendChild(x)}});s.appendChild(g)}
   else if(b.t==='produits'){if(b.titre)s.appendChild(E('h2','margin:0 0 8px;color:'+c2,b.titre));(b.items||[]).forEach(function(p){var r=E('div','display:flex;justify-content:space-between;gap:10px;align-items:center;border:2px solid '+c1+';border-radius:12px;padding:'+k(12,2)+';margin:'+k(8,1)+' 0');r.appendChild(E('b','',p.nom||''));r.appendChild(E('span','color:'+c2+';font-weight:900',p.prix||''));s.appendChild(r)})}
   else if(b.t==='contact'){s.style.cssText+=';border-top:2px solid '+c1+';padding-top:'+k(12,2)+';text-align:center';s.appendChild(E('h2','margin:0 0 6px;color:'+c2,b.titre||'Contact'));
