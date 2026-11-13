@@ -160,15 +160,21 @@ rendre(el,{blocs:[]});boucle();`);
 // ---------- Consultation avec code à usage unique ----------
 export const pageVoir = page('Voir mon projet', `<div id="porte">${ENTETE('Consultation sécurisée')}
 <main style="max-width:520px;margin:auto;padding:16px"><div class="card"><h2 style="margin-top:0">🔑 Votre code</h2>
-<p class="muted">Ce code ne fonctionne <b>qu'une seule fois</b>. Dès que vous fermez ou rechargez la page, l'accès se termine ; demandez alors un nouveau code.</p>
-<input id="code" maxlength="40" autocomplete="off" placeholder="Code reçu" style="text-transform:uppercase"><button class="p" id="ok">Voir mon projet</button><p class="msg" id="msg" role="status"></p></div></main></div>
+<p class="muted">Entrez le code reçu puis appuyez sur « Ouvrir mon aperçu ». L'aperçu reste ouvert pendant une durée limitée ; vous pouvez actualiser la page pendant ce temps.</p>
+<input id="code" maxlength="40" autocomplete="off" placeholder="Code reçu" style="text-transform:uppercase"><button class="p" id="ok">Ouvrir mon aperçu</button><p class="msg" id="msg" role="status"></p></div></main></div>
 <div id="site" class="hide"></div>
-<div id="bandeau" class="hide" style="position:fixed;bottom:0;left:0;right:0;background:#000d;color:#fff;text-align:center;padding:7px;font:13px system-ui">Consultation unique : l'accès se termine à la fermeture de cette page.</div>`,
-`var $=function(i){return document.getElementById(i)};
+<div id="bandeau" class="hide" style="position:fixed;bottom:0;left:0;right:0;background:#000d;color:#fff;text-align:center;padding:7px;font:13px system-ui;display:flex;gap:10px;justify-content:center;align-items:center"><span id="reste"></span><button id="fermer" style="margin:0;padding:6px 10px;background:#1b2033;color:#fff;border-radius:8px">Fermer l’aperçu</button></div>`,
+`var $=function(i){return document.getElementById(i)},fin=0,tic=null;
+function afficher(j){$('porte').classList.add('hide');$('site').classList.remove('hide');$('bandeau').classList.remove('hide');$('bandeau').style.display='flex';document.title=j.nom||'Votre projet';rendre($('site'),j.doc);
+ fin=Date.parse(j.fin)||0;clearInterval(tic);tic=setInterval(function(){var s=Math.max(0,Math.round((fin-Date.now())/1000));$('reste').textContent='Aperçu disponible encore '+(s>=3600?Math.round(s/3600)+' h':s>=60?Math.round(s/60)+' min':s+' s');
+  if(!s){clearInterval(tic);$('site').classList.add('hide');$('bandeau').classList.add('hide');$('porte').classList.remove('hide');$('msg').textContent='L’aperçu est terminé. Demandez un nouveau code si besoin.'}},1000)}
+// Code dans l'adresse (#CODE) : simplement pré-rempli, jamais utilisé sans votre clic (les aperçus de liens ne le consomment pas).
+var h=location.hash.replace('#','').toUpperCase().replace(/[^A-Z0-9]/g,'');if(h.length>=12)$('code').value=h;
+api('voir/session').then(function(j){if(j.ok)afficher(j)}).catch(function(){});
 $('ok').onclick=function(){$('msg').textContent='…';api('voir/ouvrir',{code:$('code').value}).then(function(j){
- if(!j.ok){$('msg').textContent=j.error==='trop_de_tentatives'?'Trop d’essais, réessayez dans une heure.':'Code invalide, déjà utilisé ou expiré.';return}
- $('porte').classList.add('hide');$('site').classList.remove('hide');$('bandeau').classList.remove('hide');document.title=j.nom||'Votre projet';rendre($('site'),j.doc);
- window.addEventListener('pagehide',function(){navigator.sendBeacon('/api/voir/fermer')})})};`);
+ if(!j.ok){$('msg').textContent=j.error==='trop_de_tentatives'?'Trop d’essais, réessayez dans une heure.':'Code invalide, déjà utilisé, révoqué ou expiré.';return}
+ try{history.replaceState(null,'',location.pathname)}catch(e){}afficher(j)})};
+$('fermer').onclick=function(){fetch('/api/voir/fermer',{method:'POST'}).finally(function(){location.replace(location.pathname)})};`);
 
 // ---------- VM Studio · Atelier de Romain ----------
 const TYPES_BLOCS = { page: '📄 Nouvelle page / verso', titre: '🏷 Titre + photo', texte: '📝 Texte', image: '🖼 Image', galerie: '🧱 Galerie', produits: '🛒 Produits / tarifs', bouton: '🔘 Bouton', contact: '📞 Contact' };
@@ -191,8 +197,15 @@ export const pageAdmin = page('Atelier — VM', `${ENTETE('VM Studio · Atelier 
    <div id="iaProp" class="hide" style="border:1px dashed var(--gold);border-radius:10px;padding:10px"><b>Proposition de l’IA</b><p class="muted" id="iaExpl"></p><p class="muted">L’aperçu à droite montre la proposition (rien n’est encore enregistré).</p><button class="p" id="iaOui">✔ Appliquer</button><button class="r" id="iaNon">✕ Refuser</button></div></div>
   <div class="card"><b>💬 Retours du client</b> <span class="muted">(en direct depuis son lien)</span><div id="avisBox"><p class="muted">Aucun retour pour le moment.</p></div></div>
   <div class="card"><b>Partager</b><br>
-   <button class="p" id="bSalon">📱 Lien « salon » (en direct)</button><button class="p" id="bCode">🔑 Code à usage unique</button><button class="g" id="bNvSalon">♻️ Couper l'ancien lien salon</button><button class="r" id="bSuppr">Supprimer</button>
-   <div id="partage"></div></div>
+   <button class="p" id="bSalon">📱 Lien « salon » (en direct)</button><button class="p" id="bCode">🔑 Créer le lien client</button><button class="g" id="bNvSalon">♻️ Couper l'ancien lien salon</button><button class="r" id="bSuppr">Supprimer</button>
+   <div id="lienOpts" class="hide" style="border:1px dashed var(--line);border-radius:10px;padding:10px;margin-top:8px">
+    <div class="row"><div><label>Version montrée</label><select id="lVersion"><option value="figee">📌 Figée (pour validation)</option><option value="live">🔄 Toujours la dernière version</option></select></div>
+    <div><label>Utilisation</label><select id="lMode"><option value="unique">1 seule ouverture</option><option value="multi">Plusieurs ouvertures</option></select></div></div>
+    <div class="row"><div><label>Durée d’une consultation</label><select id="lMin"><option value="15">15 minutes</option><option value="60">1 heure</option><option value="1440">24 heures</option></select></div>
+    <div><label>Code valable</label><select id="lJours"><option value="1">1 jour</option><option value="7" selected>7 jours</option><option value="30">30 jours</option></select></div></div>
+    <label>Note (pour toi)</label><input id="lNote" maxlength="60" placeholder="Ex. : validation logo, version 2">
+    <button class="p" id="lCreer">Créer le lien</button></div>
+   <div id="partage"></div><div id="codesBox"></div></div>
   <div class="card"><b>Ajouter un bloc</b><br>${Object.entries(TYPES_BLOCS).map(([k, n]) => `<button class="g add" data-t="${k}">${n}</button>`).join('')}</div>
   <div id="blocs"></div>
  </div><div><div class="card" style="position:sticky;top:10px"><b>Ce que voit le client</b><div class="ecran" id="apercu" style="margin-top:8px"></div></div></div></div></div>
@@ -226,7 +239,7 @@ $('ongProjets').onclick=function(){vue('vProjets');etat()};$('ongCmd').onclick=f
 $('creer').onclick=function(){api('admin/creer',{nom:$('npNom').value,client:$('npClient').value}).then(function(j){if(j.ok){$('npNom').value='';$('npClient').value='';ouvrir(j.id)}})};
 var pile=[],propo=null,suiviAvis=null;
 function ouvrir(id){api('admin/lire?id='+encodeURIComponent(id)).then(function(p){if(p.error)return;cur=p;pile=[];propo=null;$('iaProp').classList.add('hide');$('annuler').disabled=true;$('eFormat').value=p.doc.format||'site';
- clearInterval(suiviAvis);avis();suiviAvis=setInterval(function(){if(!$('vEdit').classList.contains('hide'))avis()},3000);iaEtat();$('partage').replaceChildren();$('eNom').textContent=p.nom;$('eTitre').value=p.nom;
+ clearInterval(suiviAvis);avis();codes();suiviAvis=setInterval(function(){if(!$('vEdit').classList.contains('hide'))avis()},3000);iaEtat();$('partage').replaceChildren();$('eNom').textContent=p.nom;$('eTitre').value=p.nom;
  var t=p.doc.theme||{};$('tc1').value=t.c1||'#e52643';$('tc2').value=t.c2||'#f4cf55';$('tfond').value=t.fond||'#0b0c12';$('ttexte').value=t.texte||'#ffffff';vue('vEdit');dessiner()})}
 function sauver(){$('etat').textContent='…';clearTimeout(minuteur);minuteur=setTimeout(function(){api('admin/enregistrer',{id:cur.id,nom:$('eTitre').value,doc:cur.doc,base:cur.version}).then(function(j){
  if(j.ok){cur.version=j.v;$('etat').textContent='✔ enregistré (le client le voit)'}else $('etat').textContent=j.error==='projet_modifie'?'⚠ Projet modifié ailleurs : rouvre-le avant de continuer.':'⚠ '+(j.error||'erreur')})},500)}
@@ -274,6 +287,17 @@ function montrer(titre,valeur,texte){var P=$('partage');P.replaceChildren();P.ap
  var cp=E('button','','Copier le message');cp.className='g';cp.onclick=function(){navigator.clipboard&&navigator.clipboard.writeText(texte)};P.appendChild(cp);P.appendChild(E('p','',texte));P.lastChild.className='muted'}
 $('bSalon').onclick=function(){var u=DOM+'/salon/'+cur.salon;montrer('Lien à ouvrir sur le téléphone du client (il voit vos changements en direct) :',u,'Ouvre ce lien pour voir ton site se construire en direct : '+u)};
 $('bNvSalon').onclick=function(){if(confirm('Couper l’ancien lien salon ?'))api('admin/nouveauSalon',{id:cur.id}).then(function(){ouvrir(cur.id)})};
-$('bCode').onclick=function(){api('admin/code',{id:cur.id}).then(function(j){if(!j.ok)return;montrer('Code à usage unique (affiché une seule fois, valable 7 jours) :',j.code,'Ton projet est prêt : ouvre '+DOM+'/voir et entre le code '+j.code+' (il ne marche qu’une fois).')})};
+$('bCode').onclick=function(){$('lienOpts').classList.toggle('hide')};
+$('lCreer').onclick=function(){api('admin/code',{id:cur.id,figee:$('lVersion').value==='figee',mode:$('lMode').value,minutes:$('lMin').value,jours:$('lJours').value,libelle:$('lNote').value}).then(function(j){if(!j.ok)return;
+ var P=$('partage');P.replaceChildren();var msg='Ton aperçu est prêt : ouvre '+j.lien+' et entre le code '+j.code+'.';
+ P.appendChild(E('p','','Code (affiché une seule fois) · '+(j.mode==='unique'?'1 ouverture':'plusieurs ouvertures')+' · consultation '+(j.minutes>=1440?'24 h':j.minutes>=60?'1 h':j.minutes+' min')+' · valable jusqu’au '+new Date(j.expire).toLocaleDateString('fr-FR')));
+ var d=E('div','',j.code);d.className='code';P.appendChild(d);
+ [['📋 Copier le lien',j.lien],['🔑 Copier le code',j.code],['💬 Copier le message',msg]].forEach(function(x){var b=E('button','',x[0]);b.className='g';b.onclick=function(){navigator.clipboard&&navigator.clipboard.writeText(x[1]).then(function(){b.textContent='✔ Copié'})};P.appendChild(b)});
+ if(navigator.share){var sh=E('button','','📤 Partager');sh.className='p';sh.onclick=function(){navigator.share({title:'Ton aperçu VM Studio',text:msg}).catch(function(){})};P.appendChild(sh)}
+ $('lienOpts').classList.add('hide');codes()})};
+function codes(){if(!cur)return;api('admin/codes?id='+encodeURIComponent(cur.id)).then(function(j){var B=$('codesBox');B.replaceChildren();var L=j.codes||[];if(!L.length)return;B.appendChild(E('b','display:block;margin-top:10px','Liens clients créés'));
+ L.forEach(function(c){var ex=Date.parse(c.expire)<Date.now(),etat=c.revoque?'révoqué':ex?'expiré':(c.mode==='unique'&&c.utilise)?'ouvert le '+new Date(c.utilise).toLocaleString('fr-FR'):'actif'+(c.nb?' · '+c.nb+' ouverture(s)':'');
+  var r=E('div','display:flex;justify-content:space-between;gap:8px;align-items:center;border-bottom:1px dashed var(--line);padding:5px 0');r.appendChild(E('span','',(c.libelle?c.libelle+' · ':'')+(c.figee?'📌 figée':'🔄 en cours')+' · '+etat));
+  if(!c.revoque&&!ex){var rv=E('button','','Révoquer');rv.className='r';rv.onclick=function(){if(confirm('Révoquer ce lien ? Les consultations ouvertes se ferment.'))api('admin/code-revoquer',{id:cur.id,ref:c.ref}).then(codes)};r.appendChild(rv)}B.appendChild(r)})})}
 $('bSuppr').onclick=function(){if(confirm('Supprimer définitivement ce projet ?'))api('admin/supprimer',{id:cur.id}).then(function(){vue('vProjets');etat()})};
 etat();`);

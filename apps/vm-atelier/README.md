@@ -43,3 +43,18 @@ Tests : `node tests/ia.test.mjs` (21 cas, Claude et Gemini, réponses d'Anthropi
 - Le client voit **« 💳 Payer X € »** sur son lien de suivi ; après paiement, la page `/paiement/retour` **interroge Stripe** (payment_status `paid`) avant de passer la commande en « payée » (idempotent). Visiter la page sans payer ne valide rien.
 - Secret Cloudflare : `STRIPE_SECRET_KEY` (clé **de test** `sk_test_…` ou restreinte `rk_test_…`). Une clé réelle est **refusée** tant que la variable `STRIPE_REEL=oui` n'est pas ajoutée après l'accord écrit de Romain.
 - Tests : `tests/paiement.test.mjs` (10) et `tests/lot3.test.cjs` (9, faux Stripe local via `STRIPE_BASE_URL`).
+
+## Lot 2 — Lien client (« 🔑 Créer le lien client »)
+
+Depuis l'atelier, bouton **🔑 Créer le lien client** :
+- **Version** : *figée* (le client voit l'instantané du moment) ou *en cours* (il voit les modifications en direct).
+- **Ouvertures** : *1 seule* (le code est consommé par le premier appareil, un 2ᵉ navigateur est refusé) ou *plusieurs*.
+- **Durée de session** : 15 min, 1 h ou 24 h ; **validité** du code : 1, 7 ou 30 jours.
+- Copier le lien / le code / le message tout prêt, ou 📤 Partager (téléphone).
+- Liste des codes avec état (actif, utilisé, expiré, révoqué) et bouton **Révoquer** (ferme aussi les sessions ouvertes).
+
+Côté client (`/voir`) : session conservée au rechargement, compte à rebours, bouton « Fermer l'aperçu ».
+Les robots d'aperçu (HEAD/GET sans saisie) ne consomment pas le code ; anti-force brute sur les échecs seulement ;
+ouverture atomique (8 tentatives simultanées → 1 seule acceptée).
+
+Tests : `tests/lot2.test.cjs` (12 vérifications).

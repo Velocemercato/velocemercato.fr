@@ -68,12 +68,30 @@ export class Store extends DurableObject {
     `);
   }
   now() { return new Date().toISOString(); }
+  colonnesCodes() {
+    for (const c of ['mode TEXT', 'session_min INTEGER', 'figee TEXT', 'cree TEXT', 'nb INTEGER DEFAULT 0', 'libelle TEXT'])
+      try { this.sql.exec('ALTER TABLE codes ADD COLUMN ' + c); } catch (e) { /* déjà présente */ }
+    try { this.sql.exec('ALTER TABLE vues ADD COLUMN code TEXT'); } catch (e) { /* déjà présente */ }
+  }
+  docVue(code, projet) {
+    const c = this.rows('SELECT figee FROM codes WHERE hash=?', code)[0];
+    if (c && c.figee) return JSON.parse(c.figee);
+    const p = this.rows('SELECT doc FROM projets WHERE id=?', projet)[0];
+    return p ? JSON.parse(p.doc) : null;
+  }
   colonneProjet() {
     for (const c of ['projet TEXT', 'paiement_session TEXT', 'paiement_url TEXT', 'paye_le TEXT'])
       try { this.sql.exec('ALTER TABLE commandes ADD COLUMN ' + c); } catch (e) { /* déjà présente */ }
   }
   rows(q, ...a) { return [...this.sql.exec(q, ...a)]; }
   // Limite simple : n essais par clé et par heure.
+  // Anti force brute : seuls les ÉCHECS comptent (10 mauvais codes par heure et par IP).
+  bloque(cle, max) { const r = this.rows('SELECT n, depuis FROM essais WHERE cle=?', cle)[0]; return !!(r && Date.now() - Date.parse(r.depuis) <= 3600e3 && r.n >= max); }
+  echec(cle) {
+    const r = this.rows('SELECT n, depuis FROM essais WHERE cle=?', cle)[0];
+    if (!r || Date.now() - Date.parse(r.depuis) > 3600e3) this.sql.exec('INSERT OR REPLACE INTO essais(cle,n,depuis) VALUES(?,1,?)', cle, this.now());
+    else this.sql.exec('UPDATE essais SET n=n+1 WHERE cle=?', cle);
+  }
   limite(cle, max) {
     const r = this.rows('SELECT n, depuis FROM essais WHERE cle=?', cle)[0];
     if (!r || Date.now() - Date.parse(r.depuis) > 3600e3) { this.sql.exec('INSERT OR REPLACE INTO essais(cle,n,depuis) VALUES(?,1,?)', cle, this.now()); return false; }
@@ -96,17 +114,35 @@ export class Store extends DurableObject {
       }
       // --- Consultation à usage unique : consommation atomique du code, puis session courte.
       case 'ouvrir': {
-        if (this.limite('voir:' + a.ip, 10)) return json({ error: 'trop_de_tentatives' }, 429);
+        if (this.bloque('voir:' + a.ip, 10)) return json({ error: 'trop_de_tentatives' }, 429);
+        this.colonnesCodes();
+        // Échange atomique : un code « unique » ne s'ouvre qu'une fois (deux ouvertures simultanées → une seule session).
         const r = this.ctx.storage.transactionSync(() => {
-          const c = this.rows('SELECT projet, expire, utilise, revoque FROM codes WHERE hash=?', a.codeHash)[0];
-          if (!c || c.utilise || c.revoque || Date.parse(c.expire) < Date.now()) return null;
-          this.sql.exec('UPDATE codes SET utilise=? WHERE hash=? AND utilise IS NULL', this.now(), a.codeHash);
-          this.sql.exec('INSERT INTO vues(hash,projet,expire) VALUES(?,?,?)', a.vueHash, c.projet, new Date(Date.now() + VUE_HEURES * 3600e3).toISOString());
-          return c.projet;
+          const c = this.rows('SELECT projet, expire, utilise, revoque, mode, session_min FROM codes WHERE hash=?', a.codeHash)[0];
+          if (!c || c.revoque || Date.parse(c.expire) < Date.now()) return null;
+          if ((c.mode || 'unique') === 'unique') {
+            if (c.utilise) return null;
+            this.sql.exec('UPDATE codes SET utilise=?, nb=1 WHERE hash=? AND utilise IS NULL', this.now(), a.codeHash);
+          } else this.sql.exec('UPDATE codes SET nb=COALESCE(nb,0)+1, utilise=COALESCE(utilise,?) WHERE hash=?', this.now(), a.codeHash);
+          const fin = Math.min(Date.now() + (c.session_min || VUE_HEURES * 60) * 60e3, Date.parse(c.expire) + (c.session_min || 120) * 60e3);
+          this.sql.exec('INSERT INTO vues(hash,projet,expire,code) VALUES(?,?,?,?)', a.vueHash, c.projet, new Date(fin).toISOString(), a.codeHash);
+          return { projet: c.projet, fin };
         });
-        if (!r) return json({ error: 'code_invalide' }, 400);
-        const p = this.rows('SELECT doc, nom FROM projets WHERE id=?', r)[0];
-        return p ? json({ ok: true, nom: p.nom, doc: JSON.parse(p.doc) }) : json({ error: 'code_invalide' }, 400);
+        if (!r) { this.echec('voir:' + a.ip); return json({ error: 'code_invalide' }, 400); }
+        const p = this.rows('SELECT nom FROM projets WHERE id=?', r.projet)[0];
+        const doc = this.docVue(a.codeHash, r.projet);
+        return p && doc ? json({ ok: true, nom: p.nom, doc, fin: new Date(r.fin).toISOString(), duree: Math.round((r.fin - Date.now()) / 1000) }) : json({ error: 'code_invalide' }, 400);
+      }
+      // Session de consultation en cours (l'actualisation de la page fonctionne jusqu'à la fin de la session).
+      case 'vue': {
+        this.colonnesCodes();
+        const v = this.rows('SELECT projet, expire, code FROM vues WHERE hash=?', a.vueHash)[0];
+        if (!v || Date.parse(v.expire) < Date.now()) return json({ error: 'session_terminee' }, 410);
+        const c = v.code ? this.rows('SELECT revoque FROM codes WHERE hash=?', v.code)[0] : null;
+        if (c && c.revoque) return json({ error: 'session_terminee' }, 410);
+        const p = this.rows('SELECT nom FROM projets WHERE id=?', v.projet)[0];
+        const doc = this.docVue(v.code, v.projet);
+        return p && doc ? json({ ok: true, nom: p.nom, doc, fin: v.expire }) : json({ error: 'session_terminee' }, 410);
       }
       case 'fermer': this.sql.exec('DELETE FROM vues WHERE hash=?', a.vueHash); return json({ ok: true });
       // --- Retours du client depuis son lien salon (« non, je veux ça là »).
@@ -196,10 +232,24 @@ export class Store extends DurableObject {
       case 'nouveauSalon': // coupe l'ancien lien salon
         this.sql.exec('UPDATE projets SET salon=? WHERE id=?', jeton(24), a.id); return json({ ok: true });
       case 'code': {
-        if (!this.rows('SELECT 1 FROM projets WHERE id=?', a.id)[0]) return json({ error: 'introuvable' }, 404);
-        this.sql.exec('INSERT INTO codes(hash,projet,expire) VALUES(?,?,?)', a.codeHash, a.id, new Date(Date.now() + CODE_JOURS * 864e5).toISOString());
-        return json({ ok: true });
+        this.colonnesCodes();
+        const p = this.rows('SELECT doc FROM projets WHERE id=?', a.id)[0];
+        if (!p) return json({ error: 'introuvable' }, 404);
+        const jours = [1, 7, 30].includes(Number(a.jours)) ? Number(a.jours) : CODE_JOURS;
+        const min = [15, 60, 1440].includes(Number(a.minutes)) ? Number(a.minutes) : 15;
+        const mode = a.mode === 'multi' ? 'multi' : 'unique';
+        this.sql.exec('INSERT INTO codes(hash,projet,expire,mode,session_min,figee,cree,libelle) VALUES(?,?,?,?,?,?,?,?)', a.codeHash, a.id,
+          new Date(Date.now() + jours * 864e5).toISOString(), mode, min, a.figee ? p.doc : null, this.now(), net(a.libelle, 60));
+        return json({ ok: true, expire: new Date(Date.now() + jours * 864e5).toISOString(), mode, minutes: min });
       }
+      case 'codesListe':
+        this.colonnesCodes();
+        return json({ codes: this.rows("SELECT substr(hash,1,12) AS ref, expire, utilise, revoque, mode, session_min, (figee IS NOT NULL) AS figee, cree, nb, libelle FROM codes WHERE projet=? ORDER BY cree DESC LIMIT 30", a.id) });
+      case 'codeRevoquer':
+        this.colonnesCodes();
+        this.sql.exec('UPDATE codes SET revoque=1 WHERE projet=? AND substr(hash,1,12)=?', a.id, a.ref);
+        this.sql.exec('DELETE FROM vues WHERE code IN (SELECT hash FROM codes WHERE projet=? AND substr(hash,1,12)=?)', a.id, a.ref);
+        return json({ ok: true });
       case 'statut': {
         const ok = ['nouvelle', 'validee', 'payee', 'livree', 'annulee'];
         if (!ok.includes(a.statut)) return json({ error: 'statut_invalide' }, 400);
@@ -232,7 +282,7 @@ export default {
     const url = new URL(req.url), p = url.pathname, ip = req.headers.get('cf-connecting-ip') || 'inconnue';
     // L'adresse technique *.workers.dev redirige vers le domaine VM vérifié (mêmes chemins).
     if (url.hostname.endsWith('.workers.dev') && !env.AUTORISER_WORKERS_DEV) return Response.redirect(DOMAINE + p + url.search, 301);
-    if (req.method === 'GET') {
+    if (req.method === 'GET' || req.method === 'HEAD') { // HEAD (aperçus de liens, robots) : page servie, rien n'est consommé
       if (p === '/') return html(pageAccueil);
       if (p === '/studio') return html(pageStudio);
       if (p === '/voir') return html(pageVoir);
@@ -292,7 +342,13 @@ export default {
       const vue = jeton(32);
       const r = await appel(env, 'ouvrir', { ip, codeHash: await sha256('c:' + code), vueHash: await sha256('v:' + vue) });
       if (r.status !== 200) return r;
-      return new Response(r.body, { status: 200, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', 'set-cookie': cookie('vma_v', vue, VUE_HEURES * 3600) } });
+      const j = await r.json();
+      return json(j, 200, { 'set-cookie': cookie('vma_v', vue, Math.max(60, j.duree || 900)) });
+    }
+    if (p === '/api/voir/session' && req.method === 'GET') {
+      const v = lireCookie(req, 'vma_v');
+      if (!v) return json({ error: 'session_terminee' }, 410);
+      return appel(env, 'vue', { vueHash: await sha256('v:' + v) });
     }
     if (p === '/api/commande' && req.method === 'POST') {
       const c = corps.contact || {};
@@ -318,6 +374,7 @@ export default {
       if (op === 'etat' && req.method === 'GET') return appel(env, 'etat');
       if (op === 'lire' && req.method === 'GET') return appel(env, 'lire', { id: url.searchParams.get('id') });
       if (op === 'avis' && req.method === 'GET') return appel(env, 'avisListe', { id: url.searchParams.get('id') });
+      if (op === 'codes' && req.method === 'GET') return appel(env, 'codesListe', { id: url.searchParams.get('id') });
       if (op === 'ia-etat' && req.method === 'GET') {
         const e = await (await appel(env, 'iaEtat')).json();
         return json({ stripe: stripeConfigure(env) ? modeStripe(env) : null, configuree: iaConfiguree(env), fournisseur: fournisseur(env), modele: modele(env), plafond: Number(env.IA_MAX_JOUR) || 40, ...e });
@@ -325,11 +382,13 @@ export default {
       if (req.method !== 'POST') return json({ error: 'methode' }, 405);
       if (op === 'code') {
         const code = jeton(16);
-        const r = await appel(env, 'code', { id: corps.id, codeHash: await sha256('c:' + code) });
+        const r = await appel(env, 'code', { id: corps.id, codeHash: await sha256('c:' + code), jours: corps.jours, minutes: corps.minutes, mode: corps.mode, figee: !!corps.figee, libelle: corps.libelle });
         if (r.status !== 200) return r;
-        return json({ ok: true, code }); // montré une seule fois à Romain ; seul le condensat est stocké
+        const info = await r.json();
+        return json({ ok: true, code, lien: (env.DOMAINE_LIENS || DOMAINE) + '/voir', ...info }); // code montré une seule fois ; seul le condensat est stocké
       }
       if (op === 'avis-traite') return appel(env, 'avisTraite', { avis: corps.avis });
+      if (op === 'code-revoquer') return appel(env, 'codeRevoquer', { id: corps.id, ref: corps.ref });
       if (op === 'paiement') {
         const c = await (await appel(env, 'lireCommande', { id: corps.id })).json();
         if (c.error) return json(c, 404);

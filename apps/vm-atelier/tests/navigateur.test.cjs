@@ -41,7 +41,7 @@ const ok = (c, m) => { console.log((c ? 'OK   ' : 'ECHEC') + ' ' + m); if (!c) p
   ok(true, 'salon : le téléphone voit la modification en direct');
   await tel.waitForTimeout(0);
   // 4) Code à usage unique
-  await ad.click('#bCode'); await ad.waitForFunction(()=>/^[A-Z0-9]{16}$/.test((document.querySelector('#partage .code')||{}).textContent||'')); const code = await ad.textContent('#partage .code');
+  await ad.click('#bCode'); await ad.click('#lCreer'); await ad.waitForFunction(()=>/^[A-Z0-9]{16}$/.test((document.querySelector('#partage .code')||{}).textContent||'')); const code = await ad.textContent('#partage .code');
   const v1 = await br.newContext(); const vp = await v1.newPage(); vp.on('pageerror', e => errs.push('voir ' + e.message));
   await vp.goto(B + '/voir'); await vp.fill('#code', code); await vp.click('#ok');
   await vp.waitForSelector('#site:not(.hide)'); ok((await vp.textContent('#site')).includes('Bienvenue chez Léa'), 'code : projet affiché');
@@ -50,7 +50,7 @@ const ok = (c, m) => { console.log((c ? 'OK   ' : 'ECHEC') + ' ' + m); if (!c) p
   const v2 = await (await br.newContext()).newPage(); await v2.goto(B + '/voir'); await v2.fill('#code', code); await v2.click('#ok'); await v2.waitForTimeout(500);
   ok((await v2.textContent('#msg')).includes('déjà utilisé'), 'code : 2e utilisation refusée');
   // Course : 8 ouvertures simultanées d’un nouveau code → 1 seule réussite
-  await ad.click('#bCode'); await ad.waitForFunction(c=>{var t=(document.querySelector('#partage .code')||{}).textContent;return t&&t!==c},code); const c2 = await ad.textContent('#partage .code');
+  await ad.click('#bCode'); await ad.click('#lCreer'); await ad.waitForFunction(c=>{var t=(document.querySelector('#partage .code')||{}).textContent;return t&&t!==c},code); const c2 = await ad.textContent('#partage .code');
   const res = await v2.evaluate(c => Promise.all([...Array(8)].map(() => fetch('/api/voir/ouvrir', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ code: c }) }).then(r => r.status))), c2);
   ok(res.filter(s => s === 200).length === 1, 'code : 1 seule réussite sur 8 simultanées ' + res);
   // Sécurité
