@@ -98,10 +98,11 @@ function page(titre, corps, script, o = {}) {
     : '<meta name="robots" content="noindex">';
   return `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 ${meta}<title>${titre}</title><style>${CSS}</style></head><body>${corps}
-<script>(function(){'use strict';${RENDU}${script}})();</script></body></html>`;
+<script>(function(){'use strict';${RENDU}${script}})();
+fetch('/api/config').then(function(r){return r.json()}).then(function(c){if(c.paiement==='reel')[].forEach.call(document.querySelectorAll('[data-mode-test]'),function(e){e.remove()})}).catch(function(){});</script></body></html>`;
 }
-const ENTETE = (sous) => `<header class="vm"><h1>VM Studio <span class="test">MODE TEST</span></h1><span class="muted">${sous}</span></header>`;
-const PIED = `<p class="legal">VM Studio · Véloce Mercato — prototype en mode test : aucune commande n'est facturée automatiquement.</p>`;
+const ENTETE = (sous) => `<header class="vm"><h1>VM Studio <span class="test" data-mode-test>MODE TEST</span></h1><span class="muted">${sous}</span></header>`;
+const PIED = `<p class="legal">VM Studio · un projet VM Univers · Véloce Mercato · TVA non applicable (art. 293 B du CGI)<span data-mode-test> — mode test : aucun paiement réel n'est encaissé</span>.</p>`;
 
 // ---------- Accueil = page de présentation publique de VM Studio (indexée par Google) ----------
 const EXEMPLES = {
@@ -119,7 +120,7 @@ export const pageAccueil = page('VM Studio — site internet, carte de visite, f
  <section class="hero"><div>
   <p class="eyebrow">Création pour artisans, commerçants, associations</p>
   <h2>Votre site, votre carte de visite, votre flyer.<br><span>Vous le voyez se créer en direct.</span></h2>
-  <p>Composez-le vous-même en quelques minutes, voyez le prix avant d'envoyer, puis un créateur le peaufine avec vous en direct. Vous ne payez qu'une fois satisfait.</p>
+  <p>Composez-le vous-même en quelques minutes, voyez le prix avant d'envoyer, puis un créateur le peaufine avec vous en direct. 50 % au lancement, 50 % à la validation.</p>
   <a href="/studio"><button class="p gros">✨ Je crée maintenant — gratuit</button></a><a href="/voir"><button class="g gros">🔑 J'ai un code</button></a>
   <p class="muted">Sans engagement · Rien à payer pour essayer · Prix affiché avant l'envoi · <a href="https://velocemercato.fr/web-studio.html#modeles">Voir des exemples de sites</a></p>
  </div><div class="vitrine"><div class="ecran" id="exSite"></div><div class="ecran mini" id="exCarte"></div></div></section>
@@ -132,7 +133,7 @@ export const pageAccueil = page('VM Studio — site internet, carte de visite, f
   <li><b>Vous composez</b>Choisissez ce que vous voulez, ajoutez votre nom, vos photos, vos couleurs : l'aperçu se met à jour sous vos yeux.</li>
   <li><b>Vous vérifiez et envoyez</b>Vous voyez le résultat et le prix exact avant d'envoyer. C'est gratuit et sans engagement.</li>
   <li><b>On le peaufine ensemble</b>Vous recevez un lien : vous suivez les retouches en direct et touchez un élément pour demander une modification.</li>
-  <li><b>Vous validez</b>Paiement en ligne sécurisé, puis mise en ligne de votre site ou fichiers prêts à imprimer.</li>
+  <li><b>Vous validez</b>50 % d'acompte au lancement, 50 % à la validation finale, par paiement en ligne sécurisé. Puis mise en ligne de votre site ou fichiers prêts à imprimer.</li>
  </ol></section>
 
  <section class="atouts"><div class="card"><b>💶 Prix clair</b><p class="muted">Le total s'affiche pendant que vous composez. Aucune surprise.</p></div>
@@ -141,7 +142,7 @@ export const pageAccueil = page('VM Studio — site internet, carte de visite, f
   <div class="card"><b>📱 Fait pour mobile</b><p class="muted">Tout se fait depuis votre téléphone, en quelques minutes.</p></div></section>
 
  <section><h2>Questions fréquentes</h2>
-  <details><summary>Dois-je payer pour essayer ?</summary><p>Non. Vous composez et envoyez gratuitement. Vous ne payez qu'après validation de la version finale.</p></details>
+  <details><summary>Dois-je payer pour essayer ?</summary><p>Non. Vous composez et envoyez gratuitement. Une fois votre demande validée ensemble, vous réglez 50 % d'acompte pour lancer la création, puis 50 % à la validation de la version finale.</p></details>
   <details><summary>L'impression est-elle comprise ?</summary><p>Les cartes, flyers et affiches comprennent le design et un fichier prêt à imprimer, au bon format. L'impression se fait chez l'imprimeur de votre choix.</p></details>
   <details><summary>Je n'ai pas de photos ni de logo.</summary><p>Pas de souci : ajoutez l'option logo, ou laissez le créateur vous proposer une mise en page.</p></details>
   <details><summary>Puis-je demander des modifications ?</summary><p>Oui : depuis votre lien de suivi, touchez l'élément à changer et écrivez ce que vous voulez.</p></details>
@@ -186,7 +187,7 @@ export const pageStudio = page('Créer — VM Studio', `${ENTETE('Créez-le, voy
  </div>
  <div class="card hide" id="zOptV"><h2 style="margin-top:0">3. Options</h2>${casesVisuel}<p class="muted">Vous recevez le design et un fichier prêt à imprimer ou à publier, au bon format.</p></div>
  <div class="card"><h2 style="margin-top:0">4. Votre panier</h2><div id="lignes"></div><div class="total" id="total">0 €</div>
-  <p class="muted">Prix en euros, TVA non applicable (art. 293 B du CGI). Rien n'est payé maintenant : on vous recontacte pour valider, puis vous recevez un lien de paiement sécurisé.</p>
+  <p class="muted">Prix en euros, TVA non applicable (art. 293 B du CGI). Rien n'est payé maintenant. Après validation de votre demande : 50 % d'acompte au lancement, 50 % à la validation finale, par paiement sécurisé.</p>
  </div>
  <div class="card"><h2 style="margin-top:0">5. Vos coordonnées</h2>
   <label for="cnom">Nom et prénom</label><input id="cnom" maxlength="80" autocomplete="name">
@@ -201,7 +202,7 @@ export const pageStudio = page('Créer — VM Studio', `${ENTETE('Créez-le, voy
  <h2 id="vT" style="margin-top:0">Vérifiez avant d'envoyer</h2><p class="muted" id="vQuoi"></p>
  <div class="ecran" id="vApercu"></div>
  <div id="vLignes" style="margin-top:10px"></div><div class="total" id="vTotal"></div>
- <p class="muted">Après l'envoi, vous recevez un lien pour suivre les retouches en direct et demander des modifications. Rien n'est payé maintenant.</p>
+ <p class="muted">Après l'envoi, vous recevez un lien pour suivre les retouches en direct et demander des modifications. Rien n'est payé maintenant : 50 % d'acompte au lancement, 50 % à la validation finale.</p>
  <button class="p" id="vOk">✅ C'est bon, j'envoie</button><button class="g" id="vMod">✏️ Modifier</button>
 </div></div>${PIED}`,
 `var PRIX=${JSON.stringify(PRIX)};${devis.toString()}
@@ -241,7 +242,7 @@ function envoyer(){$('msg').textContent='Envoi…';api('commande',{config:cfg(),
  var E2={contact_incomplet:'Indiquez votre nom et un e-mail ou un téléphone.',conditions_non_acceptees:'Cochez la case pour accepter d’être recontacté.',trop_de_commandes:'Trop de demandes, réessayez plus tard.',site_trop_lourd:'Votre photo est trop lourde : choisissez une image plus petite.'};
  if(!j.ok){$('msg').textContent=E2[j.error]||'Erreur, réessayez.';return}
  $('msg').replaceChildren();$('msg').appendChild(E('div','','✅ Demande n° '+j.id+' envoyée ('+j.total+' €). '+NOMS[PROD].charAt(0).toUpperCase()+NOMS[PROD].slice(1)+' est sauvegardé(e) : le créateur le peaufine avec vous.'));
- if(j.lien){var a=E('a','display:block;margin-top:8px;font-weight:800','👉 Suivre ma création en direct');a.href=j.lien;a.target='_blank';$('msg').appendChild(a);$('msg').appendChild(E('small','display:block;color:#a9b0c4','Gardez ce lien : vous y verrez les corrections et pourrez demander des modifications. La version finale est livrée après paiement.'))}
+ if(j.lien){var a=E('a','display:block;margin-top:8px;font-weight:800','👉 Suivre ma création en direct');a.href=j.lien;a.target='_blank';$('msg').appendChild(a);$('msg').appendChild(E('small','display:block;color:#a9b0c4','Gardez ce lien : vous y verrez les corrections et pourrez demander des modifications. Paiement : 50 % d’acompte au lancement, 50 % à la validation finale.'))}
  $('msg').scrollIntoView({block:'center'})},function(){$('verif').classList.add('hide');$('msg').textContent='Connexion impossible, réessayez.'})}
 api('config').then(function(c){var t=[];if(c.tel)t.push('📞 '+c.tel);if(c.email)t.push('✉️ '+c.email);if(t.length)$('joindre').textContent='Une question avant de valider ? '+t.join(' · ')});
 var q=new URLSearchParams(location.search).get('p');choisir(PRIX.produits[q]?q:'site');`);
@@ -258,7 +259,7 @@ export const pageSalon = page('Votre site — en direct', `<div id="site"></div>
  <p id="fMsg" style="color:#f4cf55;min-height:1.2em;margin:6px 0 0"></p></div>`,
 `var tok=location.pathname.split('/').pop(),v=0,el=document.getElementById('site'),live=document.getElementById('live'),bloc=null,$=function(i){return document.getElementById(i)};
 function boucle(){fetch('/api/salon/'+tok+'?v='+v,{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){
- if(j.error){live.textContent='lien expiré';live.style.background='#a00';return}live.style.background='#0a0c';var py=$('payer');if(j.paiement){if(j.paiement.paye){py.textContent='✅ Payé';py.removeAttribute('href');py.classList.remove('hide')}else if(j.paiement.url&&/^https:\\/\\/checkout\\.stripe\\.com\\//.test(j.paiement.url)){py.textContent='💳 Payer '+j.paiement.total+' €';py.href=j.paiement.url;py.classList.remove('hide')}else py.classList.add('hide')}if(!j.same){v=j.v;document.title=j.nom||'Votre site';rendre(el,j.doc)}setTimeout(boucle,1500)})
+ if(j.error){live.textContent='lien expiré';live.style.background='#a00';return}live.style.background='#0a0c';var py=$('payer');if(j.paiement){if(j.paiement.paye){py.textContent='✅ Payé';py.removeAttribute('href');py.classList.remove('hide')}else if(j.paiement.url&&/^https:\\/\\/checkout\\.stripe\\.com\\//.test(j.paiement.url)){py.textContent=j.paiement.etape==='solde'?'💳 Payer le solde ('+j.paiement.montant+')':'💳 Payer l’acompte ('+j.paiement.montant+')';py.href=j.paiement.url;py.classList.remove('hide')}else if(j.paiement.acompte_paye){py.textContent='✅ Acompte payé';py.removeAttribute('href');py.classList.remove('hide')}else py.classList.add('hide')}if(!j.same){v=j.v;document.title=j.nom||'Votre site';rendre(el,j.doc)}setTimeout(boucle,1500)})
  .catch(function(){live.style.background='#a60c';setTimeout(boucle,4000)})}
 function ouvrirFeuille(n){bloc=n;$('fTitre').textContent=n==null?'Ta demande':'Ta demande pour l’élément n° '+(n+1);$('fMsg').textContent='';$('feuille').classList.remove('hide');$('fTxt').focus()}
 el.addEventListener('click',function(e){var s=e.target.closest('[data-bloc]');if(!s||e.target.closest('a'))return;e.preventDefault();
@@ -334,14 +335,17 @@ function etat(){api('admin/etat').then(function(s){if(s._s===401){$('login').cla
   var ct=k.contact||{};c.appendChild(E('div','',(ct.nom||'')+' · '+(ct.email||'')+' · '+(ct.tel||'')+(ct.projet?' · Projet : '+ct.projet:'')));
   if(ct.message)c.appendChild(E('p','white-space:pre-wrap',ct.message));
   ((k.config||{}).lignes||[]).forEach(function(l){var r=E('div');r.className='ligne';r.appendChild(E('span','',l[0]));r.appendChild(E('b','',l[1]+' €'));c.appendChild(r)});
-  var sel=E('select','width:auto;margin-top:8px');['nouvelle','validee','payee','livree','annulee'].forEach(function(x){var o=E('option','',x);o.value=x;if(x===k.statut)o.selected=true;sel.appendChild(o)});
+  var sel=E('select','width:auto;margin-top:8px');['nouvelle','validee','acompte','payee','livree','annulee'].forEach(function(x){var o=E('option','',x);o.value=x;if(x===k.statut)o.selected=true;sel.appendChild(o)});
   sel.onchange=function(){api('admin/statut',{id:k.id,statut:sel.value})};c.appendChild(sel);
   if(k.projet){var op=E('button','','✏️ Ouvrir son site');op.className='p';op.onclick=function(){ouvrir(k.projet)};c.appendChild(op)}
   var payee=k.statut==='payee'||k.statut==='livree';
-  if(payee)c.appendChild(E('p','color:#3ccf7a;font-weight:800','✅ Payée'+(k.paye_le?' le '+new Date(k.paye_le).toLocaleString('fr-FR'):'')));
-  else if(k.total>0){var pa=E('button','',k.paiement_url?'💳 Nouveau lien de paiement':'💳 Créer le lien de paiement');pa.className='p';var zone=E('div');
+  var demi=Math.round(k.total*100/2),solde=k.total*100-demi,eu=function(c){return (c/100).toFixed(2).replace('.',',').replace(',00','')+' €'};
+  if(k.acompte_le||k.statut==='acompte'||payee)c.appendChild(E('p','color:#3ccf7a;font-weight:800','✅ Acompte payé ('+eu(demi)+')'+(k.acompte_le?' le '+new Date(k.acompte_le).toLocaleString('fr-FR'):'')));
+  if(payee)c.appendChild(E('p','color:#3ccf7a;font-weight:800','✅ Payée en totalité'+(k.paye_le?' le '+new Date(k.paye_le).toLocaleString('fr-FR'):'')));
+  else if(k.total>0&&k.statut!=='annulee'){var et=k.statut==='acompte'?'solde':'acompte',lib=et==='acompte'?'d’acompte 50 % ('+eu(demi)+')':'du solde 50 % ('+eu(solde)+')';
+   var pa=E('button','',(k.paiement_url&&k.paiement_etape===et?'💳 Nouveau lien ':'💳 Créer le lien ')+lib);pa.className='p';var zone=E('div');
    pa.onclick=function(){zone.textContent='…';api('admin/paiement',{id:k.id}).then(function(j){zone.replaceChildren();if(!j.ok){zone.appendChild(E('p','color:#ffb3bf',j.message||j.error));return}
-    zone.appendChild(E('p','',(j.mode==='test'?'🧪 MODE TEST · ':'')+'Le client voit le bouton « Payer » sur son lien de suivi. Lien direct :'));var u=E('div','',j.url);u.className='code';zone.appendChild(u)})};
+    zone.appendChild(E('p','',(j.mode==='test'?'🧪 MODE TEST · ':'')+'Le client voit le bouton « Payer » sur son lien de suivi ('+(j.etape==='acompte'?'acompte':'solde')+' : '+j.montant+'). Lien direct :'));var u=E('div','',j.url);u.className='code';zone.appendChild(u)})};
    c.appendChild(pa);
    if(k.paiement_session){var vf=E('button','','🔄 Vérifier le paiement');vf.className='g';vf.onclick=function(){api('admin/paiement-verifier',{id:k.id}).then(function(j){if(j.paye)etat();else{zone.textContent='Pas encore payé.'}})};c.appendChild(vf)}
    c.appendChild(zone)}

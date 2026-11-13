@@ -1,12 +1,17 @@
 // Paiement Stripe (lot 3) sans appel réel : réponses de Stripe simulées.
-import { creerPaiement, verifierPaiement, modeStripe } from '../src/paiement.js';
+import { creerPaiement, verifierPaiement, modeStripe, montants, etapeAPayer } from '../src/paiement.js';
 const ok = (c, m) => { console.log((c ? 'OK   ' : 'ECHEC') + ' ' + m); if (!c) process.exitCode = 1; };
 const commande = { id: 'AB12CD34', contact: { email: 'lea@example.com' }, config: { lignes: [['Site vitrine (1 page)', 290], ['Pack 3 ans', 390]], total: 680 } };
 let envoi = null;
 const f = async (u, init) => { envoi = { u, init, form: new URLSearchParams(init.body || '') }; return new Response(JSON.stringify({ id: 'cs_test_1', url: 'https://checkout.stripe.com/c/pay/cs_test_1', livemode: false }), { status: 200 }); };
 let r = await creerPaiement({ STRIPE_SECRET_KEY: 'sk_test_x' }, commande, 'https://atelier.velocemercato.fr', f);
 ok(r.ok && r.url.startsWith('https://checkout.stripe.com/') && r.mode === 'test', 'session Checkout créée en mode test');
-ok(envoi.form.get('line_items[0][price_data][unit_amount]') === '29000' && envoi.form.get('line_items[1][price_data][unit_amount]') === '39000' && envoi.form.get('line_items[0][price_data][currency]') === 'eur', 'montants pris dans le devis serveur, en centimes (290 € + 390 €)');
+ok(envoi.form.get('line_items[0][price_data][unit_amount]') === '34000' && !envoi.form.get('line_items[1][price_data][unit_amount]') && envoi.form.get('metadata[etape]') === 'acompte' && /Acompte 50 %/.test(envoi.form.get('line_items[0][price_data][product_data][name]')), 'acompte : 50 % de 680 € = 340 € (une seule ligne « Acompte 50 % »)');
+r = await creerPaiement({ STRIPE_SECRET_KEY: 'sk_test_x' }, commande, 'https://atelier.velocemercato.fr', f, 'solde');
+ok(r.ok && envoi.form.get('line_items[0][price_data][unit_amount]') === '34000' && envoi.form.get('metadata[etape]') === 'solde', 'solde : les 340 € restants');
+const imp = montants({ config: { lignes: [['Carte', 29]] } }); ok(imp.acompte + imp.solde === 2900 && imp.acompte === 1450, 'montant impair : 14,50 € + 14,50 € = 29 € (pas un centime perdu)');
+const imp2 = montants({ config: { lignes: [['X', 0.03]] } }); ok(imp2.acompte + imp2.solde === 3, 'arrondi : acompte + solde = total exact');
+ok(etapeAPayer('nouvelle') === 'acompte' && etapeAPayer('acompte') === 'solde' && etapeAPayer('payee') === null && etapeAPayer('annulee') === null, 'étape à payer selon le statut');
 ok(envoi.form.get('success_url').startsWith('https://atelier.velocemercato.fr/paiement/retour?c=AB12CD34') && envoi.form.get('metadata[commande]') === 'AB12CD34', 'retour sur le domaine VM vérifié, commande en référence');
 ok(envoi.init.headers.Authorization === 'Bearer sk_test_x' && !envoi.init.body.includes('sk_test_x'), 'clé uniquement dans l’en-tête');
 r = await creerPaiement({}, commande, 'x'); ok(r.erreur === 'stripe_non_connecte', 'sans clé : « paiement à connecter »');
@@ -16,3 +21,4 @@ r = await creerPaiement({ STRIPE_SECRET_KEY: 'sk_test_x' }, { ...commande, confi
 const sess = (paid) => async () => new Response(JSON.stringify({ id: 'cs_test_1', status: paid ? 'complete' : 'open', payment_status: paid ? 'paid' : 'unpaid' }), { status: 200 });
 ok((await verifierPaiement({ STRIPE_SECRET_KEY: 'sk_test_x' }, 'cs_test_1', sess(true))).paye === true, 'paiement confirmé par Stripe côté serveur');
 ok((await verifierPaiement({ STRIPE_SECRET_KEY: 'sk_test_x' }, 'cs_test_1', sess(false))).paye === false, 'session non payée : pas confirmée');
+r = await creerPaiement({ STRIPE_SECRET_KEY: 'sk_live_x', STRIPE_REEL: 'oui' }, commande, 'https://atelier.velocemercato.fr', f); ok(r.ok, 'clé réelle acceptée avec l’accord écrit (STRIPE_REEL=oui)');
