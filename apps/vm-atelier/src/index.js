@@ -1,4 +1,4 @@
-// VM Atelier (mode test) — un Worker Cloudflare + un Durable Object (SQLite) :
+// VM Studio (mode test) — un Worker Cloudflare + un Durable Object (SQLite) :
 //  /studio      : le client compose son site, voit le prix monter en direct et envoie sa commande ;
 //  /salon/<jeton>: « mode salon » : le client voit sur son téléphone ce que Romain construit, en direct ;
 //  /voir        : consultation d'un projet avec un code à USAGE UNIQUE (accès perdu à la fermeture) ;
