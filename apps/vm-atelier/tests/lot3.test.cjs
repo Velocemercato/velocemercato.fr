@@ -6,7 +6,7 @@ const ok = (c, m) => { console.log((c ? 'OK   ' : 'ECHEC') + ' ' + m); if (!c) p
   const br = await chromium.launch(); const errs = [];
   const cl = await br.newPage({ viewport: { width: 390, height: 844 } }); cl.on('pageerror', e => errs.push(e.message));
   await cl.goto(B + '/studio'); await cl.fill('#nom', 'Garage Paulo'); await cl.fill('#cnom', 'Paulo'); await cl.fill('#cmail', 'paulo@example.com'); await cl.check('#cgv');
-  await cl.click('#envoyer'); await cl.waitForFunction(() => /envoyée/.test(document.getElementById('msg').textContent));
+  await cl.click('#envoyer'); await cl.click('#vOk'); await cl.waitForFunction(() => /envoyée/.test(document.getElementById('msg').textContent));
   const lien = (await cl.getAttribute('#msg a', 'href')).replace('https://atelier.velocemercato.fr', B);
   const ad = await br.newPage({ viewport: { width: 1300, height: 900 } }); ad.on('pageerror', e => errs.push(e.message));
   await ad.goto(B + '/admin'); await ad.fill('#tok', 'test-admin-123'); await ad.click('#entrer'); await ad.waitForSelector('#app:not(.hide)');

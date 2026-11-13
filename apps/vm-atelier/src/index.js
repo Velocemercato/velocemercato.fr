@@ -284,6 +284,8 @@ export default {
     if (url.hostname.endsWith('.workers.dev') && !env.AUTORISER_WORKERS_DEV) return Response.redirect(DOMAINE + p + url.search, 301);
     if (req.method === 'GET' || req.method === 'HEAD') { // HEAD (aperçus de liens, robots) : page servie, rien n'est consommé
       if (p === '/') return html(pageAccueil);
+      if (p === '/robots.txt') return new Response('User-agent: *\nAllow: /$\nDisallow: /\nSitemap: ' + DOMAINE + '/sitemap.xml\n', { headers: { 'content-type': 'text/plain; charset=utf-8', ...SEC } });
+      if (p === '/sitemap.xml') return new Response('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>' + DOMAINE + '/</loc></url></urlset>', { headers: { 'content-type': 'application/xml; charset=utf-8', ...SEC } });
       if (p === '/studio') return html(pageStudio);
       if (p === '/voir') return html(pageVoir);
       if (p === '/admin') return html(pageAdmin);
@@ -356,6 +358,7 @@ export default {
       if (!contact.nom || (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact.email) && contact.tel.replace(/\D/g, '').length < 9)) return json({ error: 'contact_incomplet' }, 400);
       if (!corps.cgv) return json({ error: 'conditions_non_acceptees' }, 400);
       const d = devis(corps.config); // total recalculé côté serveur
+      if (corps.doc && typeof corps.doc === 'object') corps.doc.format = d.format; // le format suit le produit choisi
       const docTexte = corps.doc ? docValide(corps.doc) : null; // site composé par le client (photos comprises, taille limitée)
       if (corps.doc && !docTexte) return json({ error: 'site_trop_lourd' }, 400);
       const r = await (await appel(env, 'commande', { ip, contact, config: d, total: d.total, doc: docTexte })).json();

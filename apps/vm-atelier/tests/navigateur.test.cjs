@@ -16,7 +16,7 @@ const ok = (c, m) => { console.log((c ? 'OK   ' : 'ECHEC') + ' ' + m); if (!c) p
   await cl.click('#envoyer'); await cl.waitForTimeout(400);
   ok((await cl.textContent('#msg')).includes('Indiquez'), 'refus si contact vide');
   await cl.fill('#cnom', 'Léa'); await cl.fill('#cmail', 'lea@example.com'); await cl.check('#cgv');
-  await cl.click('#envoyer'); await cl.waitForFunction(() => document.getElementById('msg').textContent.includes('✅'));
+  await cl.click('#envoyer'); await cl.click('#vOk'); await cl.waitForFunction(() => document.getElementById('msg').textContent.includes('✅'));
   ok((await cl.textContent('#msg')).includes('849 €'), 'commande enregistrée ' + await cl.textContent('#msg'));
   await cl.waitForTimeout(0);
   // Total falsifié côté client : recalculé par le serveur

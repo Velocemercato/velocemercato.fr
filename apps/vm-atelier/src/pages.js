@@ -17,7 +17,31 @@ button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;font-weight:
 .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.code{font:700 1.15rem ui-monospace,monospace;background:#000;border:1px dashed var(--gold);padding:10px;border-radius:9px;word-break:break-all}
 .ligne{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dashed var(--line);padding:5px 0}.total{font-size:1.5rem;font-weight:900;color:var(--gold);text-align:right}
 .ecran{border:1px solid var(--line);border-radius:14px;overflow:hidden;min-height:420px}
-.legal{color:var(--muted);font-size:.78rem;text-align:center;padding:14px}`;
+.legal{color:var(--muted);font-size:.78rem;text-align:center;padding:14px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.prods{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:8px}
+.prod{display:flex;flex-direction:column;align-items:flex-start;gap:2px;margin:0;text-align:left;background:#0b0d16;color:var(--txt);border:2px solid var(--line);font-weight:700;font-size:.88rem}
+.prod .ic{font-size:1.4rem}.prod small{color:var(--muted);font-weight:600}.prod[aria-pressed=true]{border-color:var(--gold);background:#1d1a0c}
+.aphead{display:flex;justify-content:space-between;align-items:center;gap:8px}.petit{padding:5px 10px;margin:0;font-size:.8rem}
+.studio .apv{align-self:start;position:sticky;top:10px}.studio .apv.grand #apercu{max-height:none}
+.studio #apercu{max-height:calc(100vh - 90px);overflow:auto}
+@media(max-width:860px){.studio .apv{order:-1;top:0;z-index:5;margin:0 -16px}.studio .apv .card{border-radius:0 0 14px 14px;margin:0;box-shadow:0 8px 20px #000a}
+ .studio #apercu{min-height:0;max-height:36vh}.studio .apv.grand #apercu{max-height:78vh}}
+.voile{position:fixed;inset:0;background:#000d;z-index:50;overflow:auto;padding:16px}.boite{max-width:760px;margin:auto;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+#vApercu{max-height:60vh;overflow:auto}
+.land{max-width:1100px;margin:auto;padding:0 16px}.land section{margin:34px 0}.land h2{font-size:1.5rem;margin:0 0 14px}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center;margin-top:20px!important}.hero h2{font-size:clamp(1.6rem,4.5vw,2.6rem);line-height:1.15}.hero h2 span{color:var(--gold)}
+.eyebrow{color:var(--red);font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.08em;margin:0 0 6px}.gros{padding:13px 18px;font-size:1.02rem}
+.vitrine{position:relative;padding-bottom:70px}.vitrine .ecran{min-height:0;max-height:300px}.vitrine .mini{min-height:0!important;position:absolute;right:-8px;bottom:0;width:52%;max-height:none;border:0;background:none!important;padding:0!important;overflow:visible}.vitrine .mini .vm-page{margin:0!important}
+.tuiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}.tuile{display:flex;flex-direction:column;gap:3px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;text-decoration:none;color:var(--txt)}
+.tuile:hover{border-color:var(--gold)}.tuile .ic{font-size:1.7rem}
+.exemples{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}.exemples .ecran{min-height:0;border:0;background:none!important;padding:0!important}.exemples .vm-page{max-width:380px!important}.exemples p{text-align:center}
+.etapes{counter-reset:e;list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.etapes li{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--muted)}
+.etapes li b{display:block;color:var(--txt);margin-bottom:4px}.etapes li b::before{counter-increment:e;content:counter(e);display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--gold);color:#111;margin-right:8px}
+.atouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.atouts .card{margin:0}
+.land details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px}.land summary{cursor:pointer;font-weight:700}
+.cta{text-align:center;background:linear-gradient(135deg,#2a0c14,#11131d);border:1px solid var(--line);border-radius:18px;padding:26px 16px}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.vitrine{margin-bottom:30px}.exemples{grid-template-columns:1fr}}`;
 
 // ---------- Rendu d'un projet (identique partout : studio, atelier, salon, consultation) ----------
 // Tout le texte passe par textContent ; liens https/mailto/tel seulement ; images https ou data:image.
@@ -37,8 +61,11 @@ function rendre(root,doc){
  if(!blocs.length){var w0=E('div','max-width:720px;margin:auto;padding:22px 16px');root.appendChild(w0);w0.appendChild(E('p','opacity:.55;text-align:center;padding:90px 0'+(dim?';color:#fff':''),'Page vierge : le '+(dim?fmt:'site')+' apparaît ici.'));return}
  pages=pages.filter(function(l,i){return l.length||i===0});
  pages.forEach(function(liste,np){
-  var w=dim?E('div','container-type:inline-size;position:relative;width:100%;max-width:'+(fmt==='carte'?'520px':'460px')+';margin:0 auto 12px;aspect-ratio:'+dim[0]+'/'+dim[1]+';overflow:hidden;border-radius:8px;box-shadow:0 6px 24px #0008;background:'+bg+';color:'+tx+';font:'+(fmt==='carte'?'4.2':'3.6')+'cqw/1.4 system-ui,sans-serif;padding:'+(fmt==='carte'?'6cqw':'7cqw')+';display:flex;flex-direction:column;justify-content:center;gap:2cqw')
+  // La page est le conteneur de mesure ; le contenu est dans un calque intérieur pour que les tailles en cqw
+  // se calculent sur la largeur du visuel (et non de l'écran).
+  var w=dim?E('div','container-type:inline-size;position:relative;width:100%;max-width:'+(fmt==='carte'?'520px':'460px')+';margin:0 auto 12px;aspect-ratio:'+dim[0]+'/'+dim[1]+';overflow:hidden;border-radius:8px;box-shadow:0 6px 24px #0008;background:'+bg+';color:'+tx)
                :E('div','max-width:720px;margin:auto;padding:22px 16px');
+  var cont=dim?E('div','position:absolute;inset:0;font:'+(fmt==='carte'?'4.2':'3.6')+'cqw/1.4 system-ui,sans-serif;padding:'+(fmt==='carte'?'6cqw':'7cqw')+';display:flex;flex-direction:column;justify-content:center;gap:2cqw'):w;if(dim)w.appendChild(cont);
   w.className='vm-page';if(dim&&pages.length>1)w.setAttribute('data-page',np===0?'Recto':'Page '+(np+1));
   root.appendChild(w);
   liste.forEach(function(p){var b=p[0],ix=p[1];if(!b||typeof b!=='object')return;var s=E('section','margin:0 0 '+k(22,2)+';position:relative');s.setAttribute('data-bloc',ix);
@@ -48,15 +75,15 @@ function rendre(root,doc){
    var im=null;if(okImg(b.image)){im=E('img','object-fit:cover;border-radius:16px;border:3px solid '+c2+';'+(pos==='gauche'||pos==='droite'?'width:40%;aspect-ratio:1':'width:100%;max-height:'+(dim?'45cqw':'340px')));im.src=b.image;im.alt=''}
    if(im&&(pos==='gauche'||pos==='droite')){s.style.cssText+=';display:flex;gap:'+k(16,3)+';align-items:center;text-align:left';if(pos==='gauche'){s.appendChild(im);s.appendChild(txt)}else{s.appendChild(txt);s.appendChild(im)}}
    else{s.style.textAlign='center';if(im)s.appendChild(im);s.appendChild(txt)}}
-  else if(b.t==='texte'){if(b.titre)s.appendChild(E('h2','margin:0 0 6px;color:'+c2,b.titre));s.appendChild(E('p','margin:0;white-space:pre-wrap',b.texte||''))}
+  else if(b.t==='texte'){if(b.titre)s.appendChild(E('h2','margin:0 0 6px;font-size:'+(dim?'1.2em':'1.5em')+';color:'+c2,b.titre));s.appendChild(E('p','margin:0;white-space:pre-wrap',b.texte||''))}
   else if(b.t==='image'){if(okImg(b.src)){var im2=E('img','width:100%;border-radius:14px;object-fit:contain;'+(dim?'max-height:'+(fmt==='carte'?'34':'60')+'cqw':''));im2.src=b.src;im2.alt=b.legende||'';s.appendChild(im2)}if(b.legende)s.appendChild(E('p','margin:6px 0 0;opacity:.75;text-align:center;font-size:.9em',b.legende))}
   else if(b.t==='galerie'){var g=E('div','display:grid;grid-template-columns:repeat(auto-fill,minmax('+k(150,22)+',1fr));gap:8px');(b.images||[]).forEach(function(u){if(okImg(u)){var x=E('img','width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px');x.src=u;x.alt='';g.appendChild(x)}});s.appendChild(g)}
   else if(b.t==='produits'){if(b.titre)s.appendChild(E('h2','margin:0 0 8px;color:'+c2,b.titre));(b.items||[]).forEach(function(p){var r=E('div','display:flex;justify-content:space-between;gap:10px;align-items:center;border:2px solid '+c1+';border-radius:12px;padding:'+k(12,2)+';margin:'+k(8,1)+' 0');r.appendChild(E('b','',p.nom||''));r.appendChild(E('span','color:'+c2+';font-weight:900',p.prix||''));s.appendChild(r)})}
-  else if(b.t==='contact'){s.style.cssText+=';border-top:2px solid '+c1+';padding-top:'+k(12,2)+';text-align:center';s.appendChild(E('h2','margin:0 0 6px;color:'+c2,b.titre||'Contact'));
+  else if(b.t==='contact'){s.style.cssText+=';border-top:2px solid '+c1+';padding-top:'+k(12,2)+';text-align:center';s.appendChild(E('h2','margin:0 0 6px;font-size:'+(dim?'1.2em':'1.5em')+';color:'+c2,b.titre||'Contact'));
    [['tel','tel:'],['email','mailto:']].forEach(function(q){var v=(b[q[0]]||'').trim();if(v){var a=E('a','display:block;color:'+tx,v);var h=q[1]+v.replace(/\\s/g,'');if(okLien(h))a.href=h;s.appendChild(a)}});
    if(b.adresse)s.appendChild(E('p','margin:6px 0 0;opacity:.8;white-space:pre-wrap',b.adresse))}
   else if(b.t==='bouton'){s.style.textAlign='center';var bt=E('a','display:inline-block;background:'+c1+';color:#fff;border-radius:12px;padding:'+k(12,2)+' '+k(20,3)+';text-decoration:none;font-weight:800',b.texte||'');if(okLien(b.lien)){bt.href=b.lien;bt.target='_blank';bt.rel='noopener'}s.appendChild(bt)}
-  w.appendChild(s)})})}
+  cont.appendChild(s)})})}
 // Impression / PDF au bon format (carte 85×55 mm, flyer A5, affiche A3…).
 function imprimer(doc,root){var dim=FORMATS[doc&&doc.format];var st=document.getElementById('vm-print')||document.head.appendChild(Object.assign(document.createElement('style'),{id:'vm-print'}));
  st.textContent='@media print{@page{'+(dim&&doc.format!=='post'&&doc.format!=='story'?'size:'+dim[0]+'mm '+dim[1]+'mm;':'')+'margin:0}body *{visibility:hidden}#'+root.id+',#'+root.id+' *{visibility:visible}#'+root.id+'{position:absolute;left:0;top:0;width:100%;padding:0!important;background:none!important}.vm-page{page-break-after:always;box-shadow:none!important;border-radius:0!important;max-width:none!important;margin:0!important}}';window.print()}
@@ -64,36 +91,92 @@ function reduirePhoto(f,max,cb){var r=new FileReader();r.onload=function(){var i
 function api(p,body){return fetch('/api/'+p,body?{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body),credentials:'same-origin'}:{credentials:'same-origin'}).then(function(r){return r.json().then(function(j){j._s=r.status;return j})})}
 `;
 
-function page(titre, corps, script) {
+function page(titre, corps, script, o = {}) {
+  const meta = o.index
+    ? `<meta name="robots" content="index,follow"><meta name="description" content="${o.description}"><link rel="canonical" href="https://atelier.velocemercato.fr/">
+<meta property="og:type" content="website"><meta property="og:title" content="${titre}"><meta property="og:description" content="${o.description}"><meta property="og:url" content="https://atelier.velocemercato.fr/"><meta property="og:locale" content="fr_FR">`
+    : '<meta name="robots" content="noindex">';
   return `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex"><title>${titre}</title><style>${CSS}</style></head><body>${corps}
+${meta}<title>${titre}</title><style>${CSS}</style></head><body>${corps}
 <script>(function(){'use strict';${RENDU}${script}})();</script></body></html>`;
 }
 const ENTETE = (sous) => `<header class="vm"><h1>VM Studio <span class="test">MODE TEST</span></h1><span class="muted">${sous}</span></header>`;
 const PIED = `<p class="legal">VM Studio · Véloce Mercato — prototype en mode test : aucune commande n'est facturée automatiquement.</p>`;
 
-// ---------- Accueil ----------
-export const pageAccueil = page('VM Studio', `${ENTETE('Création de sites')}
-<main style="max-width:700px;margin:auto;padding:16px">
- <div class="card"><h2 style="margin-top:0">🧩 Créer mon site</h2><p class="muted">Composez votre site, voyez le prix en direct, envoyez votre demande.</p><a href="/studio"><button class="p">Commencer</button></a></div>
- <div class="card"><h2 style="margin-top:0">🔑 Voir mon projet</h2><p class="muted">Vous avez reçu un code à usage unique ?</p><a href="/voir"><button class="g">Entrer mon code</button></a></div>
-</main>${PIED}`, '');
+// ---------- Accueil = page de présentation publique de VM Studio (indexée par Google) ----------
+const EXEMPLES = {
+  site: { theme: { c1: '#e52643', c2: '#f4cf55', fond: '#0b0c12', texte: '#ffffff' }, blocs: [{ t: 'titre', titre: 'Salon Léa', sous: 'Coiffure femme & homme', taille: 'grand' }, { t: 'bouton', texte: '📅 Prendre rendez-vous', lien: 'https://atelier.velocemercato.fr/studio' }, { t: 'texte', titre: 'Nos prestations', texte: 'Coupe, couleur, balayage, soins.' }] },
+  carte: { format: 'carte', theme: { c1: '#1f6feb', c2: '#f4cf55', fond: '#0d1424', texte: '#ffffff' }, blocs: [{ t: 'titre', titre: 'Garage Paulo', sous: 'Mécanique toutes marques' }, { t: 'contact', titre: 'Contact', tel: '06 00 00 00 00', email: 'contact@exemple.fr' }] },
+  flyer: { format: 'flyer', theme: { c1: '#e52643', c2: '#ffd166', fond: '#1a0b0b', texte: '#ffffff' }, blocs: [{ t: 'titre', titre: 'Pizzeria Marco', sous: 'Au feu de bois', taille: 'tres-grand' }, { t: 'texte', titre: 'Ce week-end', texte: '2 pizzas achetées = 1 dessert offert' }, { t: 'contact', titre: 'Commandez', tel: '05 00 00 00 00' }] },
+  post: { format: 'post', theme: { c1: '#3ccf7a', c2: '#f4cf55', fond: '#0b1a12', texte: '#ffffff' }, blocs: [{ t: 'titre', titre: 'Ouverture samedi !', sous: 'Épicerie fine Chez Nina', taille: 'grand' }, { t: 'texte', texte: 'Dégustation offerte de 10 h à 13 h' }] },
+};
+const prixMin = (k) => (k === 'site' ? Math.min(...Object.values(PRIX.types).map((t) => t.prix)) : PRIX.produits[k].prix);
+const tuilesAccueil = Object.entries(PRIX.produits).map(([k, p]) =>
+  `<a class="tuile" href="/studio?p=${k}"><span class="ic">${p.icone}</span><b>${p.nom.replace(' (design)', '')}</b><span class="muted">${k === 'site' ? 'à partir de ' : ''}${prixMin(k)} €</span></a>`).join('');
 
-// ---------- Studio client : configuration + prix en direct + commande ----------
+export const pageAccueil = page('VM Studio — site internet, carte de visite, flyer en direct', `<header class="vm"><h1>VM Studio</h1><span class="muted">par VM Univers · Véloce Mercato</span></header>
+<main class="land">
+ <section class="hero"><div>
+  <p class="eyebrow">Création pour artisans, commerçants, associations</p>
+  <h2>Votre site, votre carte de visite, votre flyer.<br><span>Vous le voyez se créer en direct.</span></h2>
+  <p>Composez-le vous-même en quelques minutes, voyez le prix avant d'envoyer, puis un créateur le peaufine avec vous en direct. Vous ne payez qu'une fois satisfait.</p>
+  <a href="/studio"><button class="p gros">✨ Je crée maintenant — gratuit</button></a><a href="/voir"><button class="g gros">🔑 J'ai un code</button></a>
+  <p class="muted">Sans engagement · Rien à payer pour essayer · Prix affiché avant l'envoi · <a href="https://velocemercato.fr/web-studio.html#modeles">Voir des exemples de sites</a></p>
+ </div><div class="vitrine"><div class="ecran" id="exSite"></div><div class="ecran mini" id="exCarte"></div></div></section>
+
+ <section><h2>Ce que vous pouvez créer</h2><div class="tuiles">${tuilesAccueil}</div></section>
+
+ <section class="exemples"><div><div class="ecran" id="exFlyer"></div><p class="muted">Flyer A5</p></div><div><div class="ecran" id="exPost"></div><p class="muted">Publication Instagram / Facebook</p></div></section>
+
+ <section><h2>Comment ça marche</h2><ol class="etapes">
+  <li><b>Vous composez</b>Choisissez ce que vous voulez, ajoutez votre nom, vos photos, vos couleurs : l'aperçu se met à jour sous vos yeux.</li>
+  <li><b>Vous vérifiez et envoyez</b>Vous voyez le résultat et le prix exact avant d'envoyer. C'est gratuit et sans engagement.</li>
+  <li><b>On le peaufine ensemble</b>Vous recevez un lien : vous suivez les retouches en direct et touchez un élément pour demander une modification.</li>
+  <li><b>Vous validez</b>Paiement en ligne sécurisé, puis mise en ligne de votre site ou fichiers prêts à imprimer.</li>
+ </ol></section>
+
+ <section class="atouts"><div class="card"><b>💶 Prix clair</b><p class="muted">Le total s'affiche pendant que vous composez. Aucune surprise.</p></div>
+  <div class="card"><b>🤝 Un vrai créateur</b><p class="muted">Pas un robot laissé seul : une personne corrige et conseille.</p></div>
+  <div class="card"><b>🔒 À votre nom</b><p class="muted">Votre nom de domaine est enregistré à votre nom. Pack 3 ans tout compris disponible.</p></div>
+  <div class="card"><b>📱 Fait pour mobile</b><p class="muted">Tout se fait depuis votre téléphone, en quelques minutes.</p></div></section>
+
+ <section><h2>Questions fréquentes</h2>
+  <details><summary>Dois-je payer pour essayer ?</summary><p>Non. Vous composez et envoyez gratuitement. Vous ne payez qu'après validation de la version finale.</p></details>
+  <details><summary>L'impression est-elle comprise ?</summary><p>Les cartes, flyers et affiches comprennent le design et un fichier prêt à imprimer, au bon format. L'impression se fait chez l'imprimeur de votre choix.</p></details>
+  <details><summary>Je n'ai pas de photos ni de logo.</summary><p>Pas de souci : ajoutez l'option logo, ou laissez le créateur vous proposer une mise en page.</p></details>
+  <details><summary>Puis-je demander des modifications ?</summary><p>Oui : depuis votre lien de suivi, touchez l'élément à changer et écrivez ce que vous voulez.</p></details>
+ </section>
+ <section class="cta"><h2>Prêt ? Ça prend 5 minutes.</h2><a href="/studio"><button class="p gros">✨ Je crée maintenant</button></a></section>
+</main><p class="legal">VM Studio · un projet VM Univers · SIRET 528 102 916 00012 · Prix en euros, TVA non applicable (art. 293 B du CGI)<br><a href="https://velocemercato.fr/web-studio.html">Nos démos et packs</a> · <a href="https://vmunivers.fr/">vmunivers.fr</a> · <a href="https://velocemercato.fr/mentions-legales.html">Mentions légales</a></p>`,
+`var EX=${JSON.stringify(EXEMPLES)};rendre(document.getElementById('exSite'),EX.site);rendre(document.getElementById('exCarte'),EX.carte);rendre(document.getElementById('exFlyer'),EX.flyer);rendre(document.getElementById('exPost'),EX.post);`,
+{ index: true, description: 'Créez votre site internet, carte de visite, flyer, affiche ou visuel réseaux en direct, voyez le prix avant d’envoyer, un créateur le peaufine avec vous. Gratuit pour essayer.' });
+
+// ---------- Studio client : choix du produit + aperçu en direct + vérification avant envoi ----------
 const cases = Object.entries(PRIX.options).map(([k, o]) =>
   `<label style="font-weight:400"><input type="checkbox" class="opt" value="${k}">${o.nom} <b>+${o.prix} €</b></label>`).join('');
+const casesVisuel = PRIX.optionsVisuel.map((k) =>
+  `<label style="font-weight:400"><input type="checkbox" class="optv" value="${k}">${PRIX.options[k].nom} <b>+${PRIX.options[k].prix} €</b></label>`).join('');
 const types = Object.entries(PRIX.types).map(([k, t]) => `<option value="${k}">${t.nom} — ${t.prix} €</option>`).join('');
+const tuilesStudio = Object.entries(PRIX.produits).map(([k, p]) =>
+  `<button type="button" class="prod" data-p="${k}" aria-pressed="${k === 'site'}"><span class="ic">${p.icone}</span>${p.nom.replace(' (design)', '')}<small>${k === 'site' ? 'dès ' : ''}${prixMin(k)} €</small></button>`).join('');
 
-export const pageStudio = page('Créer mon site — VM Studio', `${ENTETE('Votre site en quelques minutes')}
-<div class="grid"><div>
- <div class="card"><h2 style="margin-top:0">1. Votre site</h2>
+export const pageStudio = page('Créer — VM Studio', `${ENTETE('Créez-le, voyez-le en direct')}
+<div class="grid studio"><div>
+ <div class="card"><h2 style="margin-top:0">1. Que voulez-vous créer ?</h2><div class="prods" role="group" aria-label="Produit">${tuilesStudio}</div></div>
+ <div class="card"><h2 style="margin-top:0">2. Vos informations</h2>
   <label for="nom">Nom de votre activité</label><input id="nom" maxlength="60" placeholder="Ex. : Salon Léa Coiffure">
   <label for="slogan">Phrase d'accroche</label><input id="slogan" maxlength="120" placeholder="Ex. : Coiffure femme et homme à Limoges">
-  <label for="photo">Photo principale (facultatif)</label><input id="photo" type="file" accept="image/*">
+  <label for="photo" id="lphoto">Photo principale (facultatif)</label><input id="photo" type="file" accept="image/*">
+  <div id="zVisuel" class="hide">
+   <label for="vtexte">Texte (offre, horaires, services…)</label><textarea id="vtexte" rows="3" maxlength="400" placeholder="Ex. : Ouvert du mardi au samedi, 9 h – 19 h"></textarea>
+   <div class="row"><div><label for="vtel">Téléphone affiché</label><input id="vtel" maxlength="40" inputmode="tel"></div><div><label for="vmail">E-mail affiché</label><input id="vmail" maxlength="120" inputmode="email"></div></div>
+   <label for="vadr">Adresse affichée</label><input id="vadr" maxlength="120" placeholder="Ex. : 12 rue de la Paix, Limoges">
+   <label style="font-weight:400" id="lverso"><input type="checkbox" id="verso" checked>Recto-verso (coordonnées au verso)</label>
+  </div>
   <div class="row"><div><label for="c1">Couleur principale</label><input id="c1" type="color" value="#e52643"></div><div><label for="c2">Couleur d'accent</label><input id="c2" type="color" value="#f4cf55"></div></div>
   <div class="row"><div><label for="fond">Fond</label><input id="fond" type="color" value="#0b0c12"></div><div><label for="texte">Texte</label><input id="texte" type="color" value="#ffffff"></div></div>
  </div>
- <div class="card"><h2 style="margin-top:0">2. Formule et options</h2>
+ <div class="card" id="zSite"><h2 style="margin-top:0">3. Formule et options</h2>
   <label for="type">Formule</label><select id="type">${types}</select>
   <div class="row"><div><label for="pages">Pages en plus (+${PRIX.pageSup.prix} € chacune)</label><input id="pages" type="number" min="0" max="${PRIX.pageSup.max}" value="0"></div>
   <div><label for="langues">Langues en plus (+${PRIX.langue.prix} € chacune)</label><input id="langues" type="number" min="0" max="${PRIX.langue.max}" value="0"></div></div>
@@ -101,38 +184,67 @@ export const pageStudio = page('Créer mon site — VM Studio', `${ENTETE('Votre
   <label style="font-weight:400"><input type="checkbox" id="pack" checked>${PRIX.pack.nom} <b>+${PRIX.pack.prix} €</b></label>
   <p class="muted">Le pack 3 ans se paie en une fois. Le nom de domaine est enregistré au nom du client ; VM Studio s'occupe de tout pendant 3 ans.</p>
  </div>
- <div class="card"><h2 style="margin-top:0">3. Votre panier</h2><div id="lignes"></div><div class="total" id="total">0 €</div>
-  <p class="muted">Prix TTC indicatif. Rien n'est payé maintenant : on vous recontacte pour valider, puis vous recevez un lien de paiement sécurisé.</p>
+ <div class="card hide" id="zOptV"><h2 style="margin-top:0">3. Options</h2>${casesVisuel}<p class="muted">Vous recevez le design et un fichier prêt à imprimer ou à publier, au bon format.</p></div>
+ <div class="card"><h2 style="margin-top:0">4. Votre panier</h2><div id="lignes"></div><div class="total" id="total">0 €</div>
+  <p class="muted">Prix en euros, TVA non applicable (art. 293 B du CGI). Rien n'est payé maintenant : on vous recontacte pour valider, puis vous recevez un lien de paiement sécurisé.</p>
  </div>
- <div class="card"><h2 style="margin-top:0">4. Vos coordonnées</h2>
+ <div class="card"><h2 style="margin-top:0">5. Vos coordonnées</h2>
   <label for="cnom">Nom et prénom</label><input id="cnom" maxlength="80" autocomplete="name">
   <div class="row"><div><label for="cmail">E-mail</label><input id="cmail" type="email" maxlength="120" autocomplete="email"></div><div><label for="ctel">Téléphone</label><input id="ctel" type="tel" maxlength="40" autocomplete="tel"></div></div>
   <label for="cmsg">Votre demande (ce que vous voulez, vos idées)</label><textarea id="cmsg" rows="4" maxlength="1500"></textarea>
   <label style="font-weight:400"><input type="checkbox" id="cgv">J'accepte d'être recontacté au sujet de cette demande. Mes coordonnées ne servent qu'à ce projet.</label>
-  <button class="p" id="envoyer">Envoyer ma demande</button><p class="msg" id="msg" role="status"></p>
+  <button class="p" id="envoyer">👀 Vérifier avant d'envoyer</button><p class="msg" id="msg" role="status"></p>
   <p class="muted" id="joindre"></p>
  </div>
-</div><div><div class="card" style="position:sticky;top:10px"><b>Aperçu de votre site</b><div class="ecran" id="apercu" style="margin-top:8px"></div></div></div></div>${PIED}`,
+</div><div class="apv" id="apv"><div class="card"><div class="aphead"><b id="apTitre">Aperçu de votre site</b><button type="button" class="g petit" id="agr" aria-expanded="false">⤢ Agrandir</button></div><div class="ecran" id="apercu" style="margin-top:8px"></div></div></div></div>
+<div id="verif" class="voile hide" role="dialog" aria-modal="true" aria-labelledby="vT"><div class="boite">
+ <h2 id="vT" style="margin-top:0">Vérifiez avant d'envoyer</h2><p class="muted" id="vQuoi"></p>
+ <div class="ecran" id="vApercu"></div>
+ <div id="vLignes" style="margin-top:10px"></div><div class="total" id="vTotal"></div>
+ <p class="muted">Après l'envoi, vous recevez un lien pour suivre les retouches en direct et demander des modifications. Rien n'est payé maintenant.</p>
+ <button class="p" id="vOk">✅ C'est bon, j'envoie</button><button class="g" id="vMod">✏️ Modifier</button>
+</div></div>${PIED}`,
 `var PRIX=${JSON.stringify(PRIX)};${devis.toString()}
-var $=function(i){return document.getElementById(i)},photo='',DOCC=null;
-function cfg(){return{type:$('type').value,pages:$('pages').value,langues:$('langues').value,options:[].map.call(document.querySelectorAll('.opt:checked'),function(c){return c.value}),pack:$('pack').checked}}
-function maj(){var d=devis(cfg()),L=$('lignes');L.replaceChildren();d.lignes.forEach(function(l){var r=E('div');r.className='ligne';r.appendChild(E('span','',l[0]));r.appendChild(E('b','',l[1]+' €'));L.appendChild(r)});$('total').textContent=d.total+' €';
- var blocs=[{t:'titre',titre:$('nom').value||'Votre activité',sous:$('slogan').value,image:photo}];
+var $=function(i){return document.getElementById(i)},photo='',DOCC=null,PROD='site',DERNIER=null;
+var NOMS={site:'votre site',carte:'votre carte de visite',carte_relief:'votre carte de visite en relief',flyer:'votre flyer',affiche:'votre affiche',post:'votre publication',story:'votre story'};
+function cfg(){var sel=PROD==='site'?'.opt:checked':'.optv:checked';return{produit:PROD,type:$('type').value,pages:$('pages').value,langues:$('langues').value,options:[].map.call(document.querySelectorAll(sel),function(c){return c.value}),pack:$('pack').checked}}
+function choisir(k){if(!PRIX.produits[k])k='site';PROD=k;[].forEach.call(document.querySelectorAll('.prod'),function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-p')===k))});
+ var site=k==='site',carte=PRIX.produits[k].format==='carte';$('zSite').classList.toggle('hide',!site);$('zOptV').classList.toggle('hide',site);$('zVisuel').classList.toggle('hide',site);$('lverso').classList.toggle('hide',!carte);
+ $('lphoto').textContent=site?'Photo principale (facultatif)':'Photo ou logo (facultatif)';$('apTitre').textContent='Aperçu de '+NOMS[k];$('nom').placeholder=site?'Ex. : Salon Léa Coiffure':'Ex. : Garage Paulo';maj()}
+function docVisuel(fmt){var nom=$('nom').value||'Votre activité',t=$('vtexte').value.trim(),ct={t:'contact',titre:'Contact',tel:$('vtel').value||$('ctel').value,email:$('vmail').value||$('cmail').value,adresse:$('vadr').value},b=[];
+ if(fmt==='carte'){b.push({t:'titre',titre:nom,sous:$('slogan').value,image:photo,pos:photo?'gauche':''});if($('verso').checked){b.push({t:'page'});ct.titre=nom}if(t)b.push({t:'texte',texte:t});b.push(ct);return b}
+ b.push({t:'titre',titre:nom,sous:$('slogan').value,image:photo,taille:fmt==='affiche'||fmt==='story'?'tres-grand':'grand'});
+ if(t||fmt==='flyer'||fmt==='affiche')b.push({t:'texte',texte:t||'Votre message apparaîtra ici : offre, horaires, événement…'});
+ if(ct.tel||ct.email||ct.adresse)b.push(ct);return b}
+function maj(){var d=devis(cfg()),L=$('lignes');DERNIER=d;L.replaceChildren();d.lignes.forEach(function(l){var r=E('div');r.className='ligne';r.appendChild(E('span','',l[0]));r.appendChild(E('b','',l[1]+' €'));L.appendChild(r)});$('total').textContent=d.total+' €';
+ var blocs;if(d.produit==='site'){blocs=[{t:'titre',titre:$('nom').value||'Votre activité',sous:$('slogan').value,image:photo}];
  if(d.type==='rendezvous')blocs.push({t:'bouton',texte:'📅 Prendre rendez-vous',lien:'https://example.com'});
  if(d.type==='boutique')blocs.push({t:'produits',titre:'Boutique',items:[{nom:'Produit 1',prix:'29 €'},{nom:'Produit 2',prix:'49 €'}]});
  blocs.push({t:'texte',titre:'À propos',texte:'Votre présentation apparaîtra ici.'});
  if(d.pages)blocs.push({t:'texte',titre:'+ '+d.pages+' page(s)',texte:'Pages supplémentaires : services, galerie, tarifs…'});
- blocs.push({t:'contact',titre:'Contact',tel:$('ctel').value,email:$('cmail').value});
- DOCC={theme:{c1:$('c1').value,c2:$('c2').value,fond:$('fond').value,texte:$('texte').value},blocs:blocs};rendre($('apercu'),DOCC)}
+ blocs.push({t:'contact',titre:'Contact',tel:$('ctel').value,email:$('cmail').value})}else blocs=docVisuel(d.format);
+ DOCC={format:d.format,theme:{c1:$('c1').value,c2:$('c2').value,fond:$('fond').value,texte:$('texte').value},blocs:blocs};rendre($('apercu'),DOCC)}
 document.addEventListener('input',maj);document.addEventListener('change',maj);
+[].forEach.call(document.querySelectorAll('.prod'),function(b){b.onclick=function(){choisir(b.getAttribute('data-p'))}});
+$('agr').onclick=function(){var g=$('apv').classList.toggle('grand');this.setAttribute('aria-expanded',String(g));this.textContent=g?'⤡ Réduire':'⤢ Agrandir'};
 $('photo').onchange=function(){var f=this.files[0];if(f)reduirePhoto(f,1000,function(u){photo=u;maj()})};
-$('envoyer').onclick=function(){$('msg').textContent='Envoi…';maj();api('commande',{config:cfg(),cgv:$('cgv').checked,doc:DOCC,contact:{nom:$('cnom').value,email:$('cmail').value,tel:$('ctel').value,message:$('cmsg').value,projet:$('nom').value}}).then(function(j){
+function contactOk(){var m=$('cmail').value.trim(),t=$('ctel').value.replace(/\\D/g,'');return $('cnom').value.trim()&&(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(m)||t.length>=9)}
+function fermerVerif(){$('verif').classList.add('hide');$('envoyer').focus()}
+$('envoyer').onclick=function(){maj();if(!contactOk()){$('msg').textContent='Indiquez votre nom et un e-mail ou un téléphone.';return}if(!$('cgv').checked){$('msg').textContent='Cochez la case pour accepter d’être recontacté.';return}
+ $('msg').textContent='';$('vQuoi').textContent='Voici '+NOMS[PROD]+' tel que vous l’envoyez. Il sera ensuite peaufiné avec vous.';rendre($('vApercu'),DOCC);
+ var L=$('vLignes');L.replaceChildren();DERNIER.lignes.forEach(function(l){var r=E('div');r.className='ligne';r.appendChild(E('span','',l[0]));r.appendChild(E('b','',l[1]+' €'));L.appendChild(r)});$('vTotal').textContent='Total : '+DERNIER.total+' €';
+ $('verif').classList.remove('hide');$('vOk').disabled=false;$('vOk').focus()};
+$('vMod').onclick=fermerVerif;$('verif').addEventListener('keydown',function(e){if(e.key==='Escape')fermerVerif()});
+$('vOk').onclick=function(){$('vOk').disabled=true;envoyer()};
+function envoyer(){$('msg').textContent='Envoi…';api('commande',{config:cfg(),cgv:$('cgv').checked,doc:DOCC,contact:{nom:$('cnom').value,email:$('cmail').value,tel:$('ctel').value,message:$('cmsg').value,projet:($('nom').value||'')+(PROD==='site'?'':' · '+PRIX.produits[PROD].nom.replace(' (design)',''))}}).then(function(j){
+ $('verif').classList.add('hide');
  var E2={contact_incomplet:'Indiquez votre nom et un e-mail ou un téléphone.',conditions_non_acceptees:'Cochez la case pour accepter d’être recontacté.',trop_de_commandes:'Trop de demandes, réessayez plus tard.',site_trop_lourd:'Votre photo est trop lourde : choisissez une image plus petite.'};
  if(!j.ok){$('msg').textContent=E2[j.error]||'Erreur, réessayez.';return}
- $('msg').replaceChildren();$('msg').appendChild(E('div','','✅ Demande n° '+j.id+' envoyée ('+j.total+' €). Votre site est sauvegardé : le créateur le corrige avec vous.'));
- if(j.lien){var a=E('a','display:block;margin-top:8px;font-weight:800','👉 Suivre mon site en direct');a.href=j.lien;a.target='_blank';$('msg').appendChild(a);$('msg').appendChild(E('small','display:block;color:#a9b0c4','Gardez ce lien : vous y verrez les corrections et pourrez demander des modifications. Le site est validé et mis en ligne après paiement.'))}})};
+ $('msg').replaceChildren();$('msg').appendChild(E('div','','✅ Demande n° '+j.id+' envoyée ('+j.total+' €). '+NOMS[PROD].charAt(0).toUpperCase()+NOMS[PROD].slice(1)+' est sauvegardé(e) : le créateur le peaufine avec vous.'));
+ if(j.lien){var a=E('a','display:block;margin-top:8px;font-weight:800','👉 Suivre ma création en direct');a.href=j.lien;a.target='_blank';$('msg').appendChild(a);$('msg').appendChild(E('small','display:block;color:#a9b0c4','Gardez ce lien : vous y verrez les corrections et pourrez demander des modifications. La version finale est livrée après paiement.'))}
+ $('msg').scrollIntoView({block:'center'})},function(){$('verif').classList.add('hide');$('msg').textContent='Connexion impossible, réessayez.'})}
 api('config').then(function(c){var t=[];if(c.tel)t.push('📞 '+c.tel);if(c.email)t.push('✉️ '+c.email);if(t.length)$('joindre').textContent='Une question avant de valider ? '+t.join(' · ')});
-maj();`);
+var q=new URLSearchParams(location.search).get('p');choisir(PRIX.produits[q]?q:'site');`);
 
 // ---------- Mode salon : le client voit le site se construire en direct ----------
 export const pageSalon = page('Votre site — en direct', `<div id="site"></div>
