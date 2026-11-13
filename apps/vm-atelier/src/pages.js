@@ -54,11 +54,11 @@ function page(titre, corps, script) {
 <meta name="robots" content="noindex"><title>${titre}</title><style>${CSS}</style></head><body>${corps}
 <script>(function(){'use strict';${RENDU}${script}})();</script></body></html>`;
 }
-const ENTETE = (sous) => `<header class="vm"><h1>VM Atelier <span class="test">MODE TEST</span></h1><span class="muted">${sous}</span></header>`;
+const ENTETE = (sous) => `<header class="vm"><h1>VM Studio <span class="test">MODE TEST</span></h1><span class="muted">${sous}</span></header>`;
 const PIED = `<p class="legal">VM Studio · Véloce Mercato — prototype en mode test : aucune commande n'est facturée automatiquement.</p>`;
 
 // ---------- Accueil ----------
-export const pageAccueil = page('VM Atelier', `${ENTETE('Création de sites')}
+export const pageAccueil = page('VM Studio', `${ENTETE('Création de sites')}
 <main style="max-width:700px;margin:auto;padding:16px">
  <div class="card"><h2 style="margin-top:0">🧩 Créer mon site</h2><p class="muted">Composez votre site, voyez le prix en direct, envoyez votre demande.</p><a href="/studio"><button class="p">Commencer</button></a></div>
  <div class="card"><h2 style="margin-top:0">🔑 Voir mon projet</h2><p class="muted">Vous avez reçu un code à usage unique ?</p><a href="/voir"><button class="g">Entrer mon code</button></a></div>
@@ -69,7 +69,7 @@ const cases = Object.entries(PRIX.options).map(([k, o]) =>
   `<label style="font-weight:400"><input type="checkbox" class="opt" value="${k}">${o.nom} <b>+${o.prix} €</b></label>`).join('');
 const types = Object.entries(PRIX.types).map(([k, t]) => `<option value="${k}">${t.nom} — ${t.prix} €</option>`).join('');
 
-export const pageStudio = page('Créer mon site — VM Atelier', `${ENTETE('Votre site en quelques minutes')}
+export const pageStudio = page('Créer mon site — VM Studio', `${ENTETE('Votre site en quelques minutes')}
 <div class="grid"><div>
  <div class="card"><h2 style="margin-top:0">1. Votre site</h2>
   <label for="nom">Nom de votre activité</label><input id="nom" maxlength="60" placeholder="Ex. : Salon Léa Coiffure">
@@ -139,9 +139,9 @@ $('ok').onclick=function(){$('msg').textContent='…';api('voir/ouvrir',{code:$(
  $('porte').classList.add('hide');$('site').classList.remove('hide');$('bandeau').classList.remove('hide');document.title=j.nom||'Votre projet';rendre($('site'),j.doc);
  window.addEventListener('pagehide',function(){navigator.sendBeacon('/api/voir/fermer')})})};`);
 
-// ---------- Atelier de Romain ----------
+// ---------- VM Studio · Atelier de Romain ----------
 const TYPES_BLOCS = { titre: '🏷 Titre + photo', texte: '📝 Texte', image: '🖼 Image', galerie: '🧱 Galerie', produits: '🛒 Produits / tarifs', bouton: '🔘 Bouton', contact: '📞 Contact' };
-export const pageAdmin = page('Atelier — VM', `${ENTETE('Atelier de Romain')}
+export const pageAdmin = page('Atelier — VM', `${ENTETE('VM Studio · Atelier de Romain')}
 <div id="login" class="card" style="max-width:420px;margin:16px auto"><label for="tok">Code administrateur</label><input id="tok" type="password" autocomplete="off"><button class="p" id="entrer">Entrer</button><p class="msg" id="lmsg"></p></div>
 <div id="app" class="hide">
  <div style="padding:10px 16px"><button class="g" id="ongProjets">📁 Projets</button><button class="g" id="ongCmd">🧾 Commandes</button></div>

@@ -1,4 +1,4 @@
-# VM Atelier (mode test)
+# VM Studio (mode test)
 
 Deux outils dans un seul Worker Cloudflare, sans serveur à gérer :
 
