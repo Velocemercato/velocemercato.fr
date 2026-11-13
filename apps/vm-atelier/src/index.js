@@ -261,6 +261,23 @@ export default {
       if (v) await appel(env, 'fermer', { vueHash: await sha256('v:' + v) });
       return json({ ok: true }, 200, { 'set-cookie': cookie('vma_v', '', 0) });
     }
+    // Formulaire « Votre projet » de vmunivers.fr / velocemercato.fr : la demande arrive dans l'atelier (onglet Commandes).
+    if (p === '/api/demande') {
+      const o = req.headers.get('origin') || '';
+      const permis = /^https:\/\/(www\.)?(vmunivers\.fr|velocemercato\.fr)$/.test(o);
+      const cors = permis ? { 'access-control-allow-origin': o, 'access-control-allow-methods': 'POST', 'access-control-allow-headers': 'content-type, accept', vary: 'Origin' } : {};
+      if (req.method === 'OPTIONS') return new Response(null, { status: permis ? 204 : 403, headers: cors });
+      if (req.method !== 'POST' || !permis) return json({ success: false, error: 'origine_refusee' }, 403, cors);
+      const d = await req.json().catch(() => ({}));
+      if (d._honey) return json({ success: false }, 400, cors);
+      const contact = { nom: net(d.nom, 80), email: net(d.email, 120), tel: net(d.tel, 40),
+        message: net([d.besoin_principal && 'Besoin : ' + d.besoin_principal, d.ville && 'Ville : ' + d.ville, d.delai && 'Délai : ' + d.delai, d.projet].filter(Boolean).join('\n'), 1500),
+        projet: net(d.besoin_principal, 120), origine: o };
+      if (!contact.nom || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact.email)) return json({ success: false, error: 'contact_incomplet' }, 400, cors);
+      if (d.consentement !== 'oui') return json({ success: false, error: 'consentement' }, 400, cors);
+      const r = await (await appel(env, 'commande', { ip, contact, config: { lignes: [], total: 0, type: 'demande' }, total: 0 })).json();
+      return json({ success: !!r.ok, id: r.id }, r.ok ? 200 : 429, cors);
+    }
     if (req.method !== 'GET' && !memeOrigine(req)) return json({ error: 'origine_refusee' }, 403);
     const mav = p.match(/^\/api\/salon\/([A-Z0-9]{24})\/avis$/);
     if (req.method === 'POST' && mav) {
