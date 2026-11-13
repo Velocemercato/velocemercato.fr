@@ -36,7 +36,7 @@ def headlines(region):
             if title and target.scheme == 'https' and target.hostname in HOSTS:
                 articles.append({'title': title, 'url': href, 'source': source,
                                  'date': item.findtext('pubDate')})
-            if len(articles) >= 5:
+            if len(articles) >= 30:
                 break
         return region, articles
     except (OSError, ValueError, ElementTree.ParseError) as error:
