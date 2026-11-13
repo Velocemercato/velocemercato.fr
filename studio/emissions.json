@@ -1,5 +1,125 @@
 [
  {
+  "id": "gaming-edition-20261113-1800",
+  "univers": "gaming",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 18 h",
+  "titre": "La Pastille Gaming - Vendredi 13 novembre",
+  "accroche": "Xbox à 25 ans, GTA 6 bientôt : la Pastille Gaming démarre !",
+  "duree": 139,
+  "date": "2026-11-13T18:50+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "gaming-edition-20261113-1800.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-13T18:00:00+01:00",
+  "source_start": "2026-11-12T18:00:00+01:00",
+  "source_end": "2026-11-13T18:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-916dcd44e96197f156a462",
+    "titre": "Xbox fête ses 25 ans entre succès des franchises et crise des consoles",
+    "publishedAt": "2026-11-13T16:35:54Z",
+    "createdAt": "2026-11-13T16:38:24Z",
+    "references": [
+     {
+      "nom": "Next",
+      "url": "https://next.ink/267583/xbox-25-ans-et-une-crise-didentite/"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-99a4cf307fbbae5ec2f1f4",
+    "titre": "Environ 40 % des développeurs de jeux utiliseraient l'IA générative, selon le GDC",
+    "publishedAt": "2026-11-13T15:34:20Z",
+    "createdAt": "2026-11-13T15:45:43Z",
+    "references": [
+     {
+      "nom": "Eurogamer",
+      "url": "https://www.eurogamer.net/gdc-report-40-percent-developers-generative-ai"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-22587c21563ca57fc25af6",
+    "titre": "Le SBMM a-t-il nui à Call of Duty ? L'avis d'un ancien producteur d'Infinity Ward",
+    "publishedAt": "2026-11-13T14:33:52Z",
+    "createdAt": "2026-11-13T14:55:50Z",
+    "references": [
+     {
+      "nom": "Dexerto",
+      "url": "https://www.dexerto.fr/call-of-duty/sbmm-a-t-il-ruine-call-of-duty-ancien-developpeur-donne-son-avis-1664000/"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-2a1bc35660f37d82e93d75",
+    "titre": "Slay the Spire 2 : nouveau personnage et deux modes dans la bêta v0.113.0",
+    "publishedAt": "2026-11-13T13:12:00Z",
+    "createdAt": "2026-11-13T13:59:06Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/toujours-en-acces-anticipe-slay-the-spire-2-ajoute-un-nouveau-personnage-et-deux-nouveaux-modes-de-jeu-dans-sa-branche-beta-3050872960.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-b415244842e9355126575b",
+    "titre": "Wolfenstein 3 est en production chez MachineGames, selon Asha Sharma",
+    "publishedAt": "2026-11-13T12:19:50Z",
+    "createdAt": "2026-11-13T12:44:24Z",
+    "references": [
+     {
+      "nom": "Eurogamer",
+      "url": "https://www.eurogamer.net/wolfenstein-3-new-id-software-game-announced-xbox"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-fa02bc4692d76608725ce8",
+    "titre": "Paradox Interactive : Fredrik Wester cède sa place de PDG à Mattias Lilja",
+    "publishedAt": "2026-11-13T11:16:00Z",
+    "createdAt": "2026-11-13T11:45:30Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/paradox-interactive-crusader-kings-le-pdg-historique-demissionne-3050872947.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-fa690eff6737a0c1e19762",
+    "titre": "Fatal Fury : City of the Wolves accueille Laocorn Gaudeamus, antagoniste du film de 1994",
+    "publishedAt": "2026-11-13T10:03:00Z",
+    "createdAt": "2026-11-13T10:49:46Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/fatal-fury-city-of-the-wolves-exhume-son-film-d-animation-et-ramene-l-antagoniste-laocorn-3050872943.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-1c8690322df85f42853ac5",
+    "titre": "GTA 6 : Openreach surveille de près l'impact de la sortie sur les réseaux britanniques",
+    "publishedAt": "2026-11-13T09:42:40Z",
+    "createdAt": "2026-11-13T09:48:52Z",
+    "references": [
+     {
+      "nom": "Eurogamer",
+      "url": "https://www.eurogamer.net/gta-6-internet-uk-broadband-ofcom-openreach"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "actus-edition-20261113-1300",
   "univers": "actus",
   "format": "edition",
@@ -12390,28 +12510,5 @@
   "audio": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@bec03baccdd274525867a842bafde71a797e74b3/gaming-edition-20261023-1231.m4a",
   "page": "https://velocemercato.fr/studio/episodes/gaming-edition-20261023-1231.html",
   "poster": "/studio/episodes/posters/gaming-edition-20261023-1231.jpg"
- },
- {
-  "id": "actus-edition-20261023-1228",
-  "univers": "actus",
-  "format": "edition",
-  "moment": "midi",
-  "label": "Édition du midi",
-  "titre": "La Pastille Actus : le journal du midi du vendredi 23 octobre",
-  "accroche": "Fusillade dans les Yvelines, manifestations de samedi, Ukraine, Israël, Tibet : le point complet de midi.",
-  "duree": 436,
-  "date": "2026-10-23T12:28+02:00",
-  "publie": true,
-  "voix": [
-   "piper"
-  ],
-  "speech_rate": 1.12,
-  "fichier": "actus-edition-20261023-1228.mp4",
-  "media_sha": "d726dded755671388f97ea7c27b103d637351419",
-  "video": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@d726dded755671388f97ea7c27b103d637351419/actus-edition-20261023-1228.mp4",
-  "image": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@d726dded755671388f97ea7c27b103d637351419/actus-edition-20261023-1228.jpg",
-  "audio": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@d726dded755671388f97ea7c27b103d637351419/actus-edition-20261023-1228.m4a",
-  "page": "https://velocemercato.fr/studio/episodes/actus-edition-20261023-1228.html",
-  "poster": "/studio/episodes/posters/actus-edition-20261023-1228.jpg"
  }
 ]
