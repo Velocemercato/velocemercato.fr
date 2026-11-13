@@ -1,10 +1,10 @@
 # Audit du site pour Claude
 
-État mesuré le 2026-11-13T08:21:36.711026+01:00.
+État mesuré le 2026-11-13T11:05:04.188253+01:00.
 
 ## Périmètre et limites
 
-1343 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 1581 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
+1348 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 1593 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
 
 Un statut 404 ou 410 indique une URL introuvable. Les refus 401/403, les limites 429, les erreurs serveur et les délais dépassés demandent une vérification complémentaire. Le test ne valide pas le visionnage géographique des vidéos ni la véracité des articles. Les classements signalés par mots-clés doivent être relus avant déplacement.
 
@@ -18,7 +18,7 @@ Retirer les accès transversaux aux anciennes applications et leurs invitations 
 - Cibles internes absentes du dépôt, 76. Certaines peuvent être servies par Cloudflare, lire leur résultat HTTP avant correction.
 - Ancres à vérifier, 3120. Certaines sont gérées par JavaScript.
 - Articles à relire pour leur classement, 1.
-- Replays réellement publiés par genre, {"foot": 43, "actus": 31, "gaming": 16}.
+- Replays réellement publiés par genre, {"foot": 44, "actus": 30, "gaming": 16}.
 
 Le fichier JSON associé contient toutes les références, pages et lignes. Les chemins correspondent au commit indiqué dans ce rapport.
 
