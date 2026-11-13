@@ -1,5 +1,89 @@
 [
  {
+  "id": "foot-edition-20261113-0800",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "matin",
+  "label": "JT 08 h",
+  "titre": "La Pastille Foot : Édition du vendredi 13 novembre, 08 heures",
+  "accroche": "Bonjour à tous, on commence le JT express de La Pastille Foot.",
+  "duree": 144,
+  "date": "2026-11-13T08:44+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261113-0800.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-13T08:00:00+01:00",
+  "source_start": "2026-11-12T20:00:00+01:00",
+  "source_end": "2026-11-13T08:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-b72d1b1b940d241f38dd4f",
+    "titre": "Le Paris FC ouvert à un éventuel accueil au Parc des Princes",
+    "publishedAt": "2026-11-13T05:58:03Z",
+    "createdAt": "2026-11-13T06:23:02Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a8680724783601324834-le-paris-fc-pret-a-recuperer-le-parc-des-princes-si-le-psg-venait-a-le-quitter"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-d26cec14a581d452a9d024",
+    "titre": "Andy Robertson sur le point d'égaler Kenny Dalglish en sélections avec l'Écosse",
+    "publishedAt": "2026-11-12T07:19:57Z",
+    "createdAt": "2026-11-13T05:22:39Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cxe89dq16dp2o?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-162f05f1a5a2a510271179",
+    "titre": "Nations League : McConville et Atcheson, la charnière la plus solide du tournoi",
+    "publishedAt": "2026-11-12T08:17:52Z",
+    "createdAt": "2026-11-13T05:22:36Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/articles/cw24epvmq96lo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-e03e32d011fb55b7140839",
+    "titre": "National 1 : Nîmes leader après sa victoire sur Istres, Rumilly s'impose à Saint-Priest",
+    "publishedAt": "2026-11-12T09:12:08Z",
+    "createdAt": "2026-11-13T04:19:53Z",
+    "references": [
+     {
+      "nom": "Foot Amateur",
+      "url": "https://footamateur.ouest-france.fr/national-1-les-resultats-des-matchs-des-10-et-11-novembre/"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-0ed726893ca9ccf996d30a",
+    "titre": "Équipe de France : Mbappé veut l'axe, Dembélé menacé selon Lizarazu",
+    "publishedAt": "2026-11-12T13:00:00Z",
+    "createdAt": "2026-11-13T04:19:42Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/equipe-de-france/edf-sans-pitie-mbappe-veut-enterrer-dembele"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261112-2000",
   "univers": "foot",
   "format": "edition",
@@ -12147,28 +12231,5 @@
   "audio": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@341c751cbd7ef0446cd11994382b354e30da908b/gaming-edition-20261023-0901.m4a",
   "page": "https://velocemercato.fr/studio/episodes/gaming-edition-20261023-0901.html",
   "poster": "/studio/episodes/posters/gaming-edition-20261023-0901.jpg"
- },
- {
-  "id": "foot-edition-20261023-0853",
-  "univers": "foot",
-  "format": "edition",
-  "moment": "matin",
-  "label": "Édition du matin",
-  "titre": "La Pastille Foot : Ligue Europa, Lyon, Marseille et Maradona",
-  "accroche": "Bonjour à tous, on démarre tout de suite avec le journal du matin.",
-  "duree": 276,
-  "date": "2026-10-23T08:53+02:00",
-  "publie": true,
-  "voix": [
-   "piper"
-  ],
-  "speech_rate": 1.12,
-  "fichier": "foot-edition-20261023-0853.mp4",
-  "media_sha": "0f120fca89c2237b15a1771d87b031bec9a2d99a",
-  "video": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f120fca89c2237b15a1771d87b031bec9a2d99a/foot-edition-20261023-0853.mp4",
-  "image": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f120fca89c2237b15a1771d87b031bec9a2d99a/foot-edition-20261023-0853.jpg",
-  "audio": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f120fca89c2237b15a1771d87b031bec9a2d99a/foot-edition-20261023-0853.m4a",
-  "page": "https://velocemercato.fr/studio/episodes/foot-edition-20261023-0853.html",
-  "poster": "/studio/episodes/posters/foot-edition-20261023-0853.jpg"
  }
 ]
