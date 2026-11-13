@@ -331,6 +331,6 @@ window.vmMail=function(su,bo){var to='velocemercato.fr@gmail.com';location.href=
  document.body.appendChild(d);document.getElementById('vmMailX').onclick=function(){d.remove()};
  document.getElementById('vmMailCp').onclick=function(){var t='À : '+to+'\nObjet : '+su+'\n\n'+bo,b=this;function ok(){b.textContent='✅ Copié !'}if(navigator.clipboard)navigator.clipboard.writeText(t).then(ok,function(){prompt('Copie ce texte :',t)});else prompt('Copie ce texte :',t)}};
 })();
-</script></body>
+</script><script src="/assets/vm-rubrique.js" data-univers="actus" defer></script></body>
 </html>
 
