@@ -38,7 +38,8 @@
     const source = (Array.isArray(item?.sources) ? item.sources : []).find(row => safeLink(row?.url));
     const ownLink = key === 'foot' && /^[a-z0-9][a-z0-9-]{1,99}$/i.test(item?.id ?? '')
       ? site + '/a/' + item.id + '.html' : null;
-    return {title: item?.titre, source: source?.nom, date: item?.publishedAt, summary: item?.resume, url: ownLink || source?.url, original: source?.url};
+    return {title: item?.titre, source: source?.nom, date: item?.publishedAt, summary: item?.resume, url: ownLink || source?.url, original: source?.url,
+      championnat: item?.championnat, zone: item?.zone};
   }
 
   function formatRows(key, primary) {
@@ -67,8 +68,47 @@
     }));
   }
 
+  // Volet Foot : cartes illustrées comme « Derniers ajouts » du Multisport.
+  function footVisuel(item) {
+    const t = (String(item.championnat || '') + ' ' + String(item.zone || '') + ' ' + item.title).toUpperCase();
+    if (/BLEUS|EQUIPE DE FRANCE|ÉQUIPE DE FRANCE|NATIONS|SÉLECTION|SELECTION|ZIDANE/.test(t)) return ['vm-carte-international', '🇫🇷 BLEUS'];
+    if (/CHAMPIONS|EUROPA|CONFERENCE|LIGUE DES CHAMPIONS|C1|C3/.test(t)) return ['vm-carte-europe', '🏆 EUROPE'];
+    if (/MERCATO|TRANSFERT/.test(t)) return ['vm-carte-foot', '🔁 MERCATO'];
+    if (/LIGUE 1|LIGUE 2|PSG|OM\b|OL\b|LENS|LILLE|MONACO|NANTES|RENNES|NICE|FRANCE/.test(t)) return ['vm-carte-france', '⚽ LIGUE 1'];
+    return ['vm-carte-foot', '⚽ FOOT'];
+  }
+  function depuis(d) {
+    const t = Date.parse(d); if (!t) return '';
+    const m = Math.round((Date.now() - t) / 60000);
+    if (m < 60) return 'Il y a ' + Math.max(m, 1) + ' min';
+    const h = Math.round(m / 60);
+    return h < 24 ? 'Il y a ' + h + ' heure' + (h > 1 ? 's' : '') : dateFormat.format(new Date(t));
+  }
+  function renderCards(list, clean, limit) {
+    list.classList.add('vm-cards');
+    const entries = clean.slice(0, limit).map(item => {
+      const li = document.createElement('li');
+      const a = document.createElement('a'); a.href = safeLink(item.url); a.className = 'vm-card';
+      const [img, badge] = footVisuel(item);
+      const fig = document.createElement('span'); fig.className = 'vm-card-img';
+      const im = document.createElement('img'); im.src = '/img/vm-art/' + img + '.webp'; im.alt = ''; im.loading = 'lazy'; im.width = 120; im.height = 80;
+      const b = document.createElement('span'); b.className = 'vm-card-badge'; b.textContent = badge;
+      fig.append(im, b);
+      const txt = document.createElement('span'); txt.className = 'vm-card-txt';
+      const strong = document.createElement('b'); strong.textContent = item.title;
+      const small = document.createElement('small'); small.textContent = [depuis(item.date), item.source].filter(Boolean).join(' · ');
+      txt.append(strong, small);
+      const chev = document.createElement('span'); chev.className = 'vm-card-chev'; chev.textContent = '›'; chev.setAttribute('aria-hidden', 'true');
+      a.append(fig, txt, chev); li.append(a);
+      return li;
+    });
+    list.replaceChildren(...entries);
+    return entries.length;
+  }
+
   function renderList(list, rows, limit = VOLET_ARTICLES) {
     const clean = rows.filter(item => typeof item?.title === 'string' && item.title.trim() && safeLink(item.url));
+    if (list.closest('#rubrique-foot')) return renderCards(list, clean, limit);
     const entries = clean.slice(0, limit).map(item => {
       const li = document.createElement('li');
       const link = document.createElement('a');
