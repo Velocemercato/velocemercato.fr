@@ -67,6 +67,7 @@ export class Store extends DurableObject {
     `);
   }
   now() { return new Date().toISOString(); }
+  colonneProjet() { try { this.sql.exec('ALTER TABLE commandes ADD COLUMN projet TEXT'); } catch (e) { /* déjà présente */ } }
   rows(q, ...a) { return [...this.sql.exec(q, ...a)]; }
   // Limite simple : n essais par clé et par heure.
   limite(cle, max) {
@@ -133,13 +134,22 @@ export class Store extends DurableObject {
       case 'commande': {
         if (this.limite('cmd:' + a.ip, 5)) return json({ error: 'trop_de_commandes' }, 429);
         const id = crypto.randomUUID().slice(0, 8).toUpperCase();
-        this.sql.exec('INSERT INTO commandes(id,cree,contact,config,total) VALUES(?,?,?,?,?)', id, this.now(), JSON.stringify(a.contact), JSON.stringify(a.config), a.total);
-        return json({ ok: true, id, total: a.total });
+        this.colonneProjet();
+        // Le site composé par le client est sauvegardé comme projet : Romain le retrouve dans l'atelier,
+        // le corrige, et le client suit les corrections en direct avec son lien.
+        let projet = null, salon = null;
+        if (a.doc) {
+          projet = crypto.randomUUID(); salon = jeton(24); const t = this.now();
+          this.sql.exec('INSERT INTO projets(id,nom,client,doc,salon,cree,maj) VALUES(?,?,?,?,?,?,?)', projet,
+            net(a.contact.projet, 80) || ('Commande ' + id), net(a.contact.nom, 80), a.doc, salon, t, t);
+        }
+        this.sql.exec('INSERT INTO commandes(id,cree,contact,config,total,projet) VALUES(?,?,?,?,?,?)', id, this.now(), JSON.stringify(a.contact), JSON.stringify(a.config), a.total, projet);
+        return json({ ok: true, id, total: a.total, salon });
       }
       // --- Administration (déjà authentifiée par le Worker).
-      case 'etat': return json({
+      case 'etat': this.colonneProjet(); return json({
         projets: this.rows('SELECT id, nom, client, version, salon, maj FROM projets ORDER BY maj DESC LIMIT 200'),
-        commandes: this.rows('SELECT id, cree, contact, config, total, statut FROM commandes ORDER BY cree DESC LIMIT 200')
+        commandes: this.rows('SELECT id, cree, contact, config, total, statut, projet FROM commandes ORDER BY cree DESC LIMIT 200')
           .map((c) => ({ ...c, contact: JSON.parse(c.contact), config: JSON.parse(c.config) })),
       });
       case 'creer': {
@@ -246,7 +256,12 @@ export default {
       if (!contact.nom || (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact.email) && contact.tel.replace(/\D/g, '').length < 9)) return json({ error: 'contact_incomplet' }, 400);
       if (!corps.cgv) return json({ error: 'conditions_non_acceptees' }, 400);
       const d = devis(corps.config); // total recalculé côté serveur
-      return appel(env, 'commande', { ip, contact, config: d, total: d.total });
+      const docTexte = corps.doc ? docValide(corps.doc) : null; // site composé par le client (photos comprises, taille limitée)
+      if (corps.doc && !docTexte) return json({ error: 'site_trop_lourd' }, 400);
+      const r = await (await appel(env, 'commande', { ip, contact, config: d, total: d.total, doc: docTexte })).json();
+      if (r.salon) r.lien = (env.DOMAINE_LIENS || DOMAINE) + '/salon/' + r.salon;
+      delete r.salon;
+      return json(r, r.ok ? 200 : 429);
     }
     if (p === '/api/admin/login' && req.method === 'POST') {
       if (!env.ADMIN_TOKEN) return json({ error: 'admin_non_configure' }, 503);

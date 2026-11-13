@@ -114,7 +114,7 @@ export const pageStudio = page('Créer mon site — VM Studio', `${ENTETE('Votre
  </div>
 </div><div><div class="card" style="position:sticky;top:10px"><b>Aperçu de votre site</b><div class="ecran" id="apercu" style="margin-top:8px"></div></div></div></div>${PIED}`,
 `var PRIX=${JSON.stringify(PRIX)};${devis.toString()}
-var $=function(i){return document.getElementById(i)},photo='';
+var $=function(i){return document.getElementById(i)},photo='',DOCC=null;
 function cfg(){return{type:$('type').value,pages:$('pages').value,langues:$('langues').value,options:[].map.call(document.querySelectorAll('.opt:checked'),function(c){return c.value}),pack:$('pack').checked}}
 function maj(){var d=devis(cfg()),L=$('lignes');L.replaceChildren();d.lignes.forEach(function(l){var r=E('div');r.className='ligne';r.appendChild(E('span','',l[0]));r.appendChild(E('b','',l[1]+' €'));L.appendChild(r)});$('total').textContent=d.total+' €';
  var blocs=[{t:'titre',titre:$('nom').value||'Votre activité',sous:$('slogan').value,image:photo}];
@@ -123,12 +123,14 @@ function maj(){var d=devis(cfg()),L=$('lignes');L.replaceChildren();d.lignes.for
  blocs.push({t:'texte',titre:'À propos',texte:'Votre présentation apparaîtra ici.'});
  if(d.pages)blocs.push({t:'texte',titre:'+ '+d.pages+' page(s)',texte:'Pages supplémentaires : services, galerie, tarifs…'});
  blocs.push({t:'contact',titre:'Contact',tel:$('ctel').value,email:$('cmail').value});
- rendre($('apercu'),{theme:{c1:$('c1').value,c2:$('c2').value,fond:$('fond').value,texte:$('texte').value},blocs:blocs})}
+ DOCC={theme:{c1:$('c1').value,c2:$('c2').value,fond:$('fond').value,texte:$('texte').value},blocs:blocs};rendre($('apercu'),DOCC)}
 document.addEventListener('input',maj);document.addEventListener('change',maj);
 $('photo').onchange=function(){var f=this.files[0];if(f)reduirePhoto(f,1000,function(u){photo=u;maj()})};
-$('envoyer').onclick=function(){$('msg').textContent='Envoi…';api('commande',{config:cfg(),cgv:$('cgv').checked,contact:{nom:$('cnom').value,email:$('cmail').value,tel:$('ctel').value,message:$('cmsg').value,projet:$('nom').value}}).then(function(j){
- var E2={contact_incomplet:'Indiquez votre nom et un e-mail ou un téléphone.',conditions_non_acceptees:'Cochez la case pour accepter d’être recontacté.',trop_de_commandes:'Trop de demandes, réessayez plus tard.'};
- $('msg').textContent=j.ok?'✅ Demande n° '+j.id+' envoyée ('+j.total+' €). Nous vous recontactons très vite.':(E2[j.error]||'Erreur, réessayez.')})};
+$('envoyer').onclick=function(){$('msg').textContent='Envoi…';maj();api('commande',{config:cfg(),cgv:$('cgv').checked,doc:DOCC,contact:{nom:$('cnom').value,email:$('cmail').value,tel:$('ctel').value,message:$('cmsg').value,projet:$('nom').value}}).then(function(j){
+ var E2={contact_incomplet:'Indiquez votre nom et un e-mail ou un téléphone.',conditions_non_acceptees:'Cochez la case pour accepter d’être recontacté.',trop_de_commandes:'Trop de demandes, réessayez plus tard.',site_trop_lourd:'Votre photo est trop lourde : choisissez une image plus petite.'};
+ if(!j.ok){$('msg').textContent=E2[j.error]||'Erreur, réessayez.';return}
+ $('msg').replaceChildren();$('msg').appendChild(E('div','','✅ Demande n° '+j.id+' envoyée ('+j.total+' €). Votre site est sauvegardé : le créateur le corrige avec vous.'));
+ if(j.lien){var a=E('a','display:block;margin-top:8px;font-weight:800','👉 Suivre mon site en direct');a.href=j.lien;a.target='_blank';$('msg').appendChild(a);$('msg').appendChild(E('small','display:block;color:#a9b0c4','Gardez ce lien : vous y verrez les corrections et pourrez demander des modifications. Le site est validé et mis en ligne après paiement.'))}})};
 api('config').then(function(c){var t=[];if(c.tel)t.push('📞 '+c.tel);if(c.email)t.push('✉️ '+c.email);if(t.length)$('joindre').textContent='Une question avant de valider ? '+t.join(' · ')});
 maj();`);
 
@@ -208,7 +210,8 @@ function etat(){api('admin/etat').then(function(s){if(s._s===401){$('login').cla
   ((k.config||{}).lignes||[]).forEach(function(l){var r=E('div');r.className='ligne';r.appendChild(E('span','',l[0]));r.appendChild(E('b','',l[1]+' €'));c.appendChild(r)});
   var sel=E('select','width:auto;margin-top:8px');['nouvelle','validee','payee','livree','annulee'].forEach(function(x){var o=E('option','',x);o.value=x;if(x===k.statut)o.selected=true;sel.appendChild(o)});
   sel.onchange=function(){api('admin/statut',{id:k.id,statut:sel.value})};c.appendChild(sel);
-  var b=E('button','','➕ Créer le projet');b.className='g';b.onclick=function(){api('admin/creer',{nom:ct.projet||('Commande '+k.id),client:ct.nom}).then(function(j){if(j.ok)ouvrir(j.id)})};c.appendChild(b);C.appendChild(c)})})}
+  if(k.projet){var op=E('button','','✏️ Ouvrir son site');op.className='p';op.onclick=function(){ouvrir(k.projet)};c.appendChild(op)}
+  var b=E('button','',k.projet?'➕ Nouveau projet vierge':'➕ Créer le projet');b.className='g';b.onclick=function(){api('admin/creer',{nom:ct.projet||('Commande '+k.id),client:ct.nom}).then(function(j){if(j.ok)ouvrir(j.id)})};c.appendChild(b);C.appendChild(c)})})}
 $('entrer').onclick=function(){api('admin/login',{token:$('tok').value}).then(function(j){$('lmsg').textContent=j.ok?'':(j.error==='admin_non_configure'?'Le secret ADMIN_TOKEN n’est pas encore défini dans Cloudflare.':'Refusé.');if(j.ok){$('tok').value='';etat()}})};
 $('ongProjets').onclick=function(){vue('vProjets');etat()};$('ongCmd').onclick=function(){vue('vCmd');etat()};$('retour').onclick=function(){vue('vProjets');etat()};
 $('creer').onclick=function(){api('admin/creer',{nom:$('npNom').value,client:$('npClient').value}).then(function(j){if(j.ok){$('npNom').value='';$('npClient').value='';ouvrir(j.id)}})};
