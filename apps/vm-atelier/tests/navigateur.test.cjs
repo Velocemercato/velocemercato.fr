@@ -1,4 +1,5 @@
 // Test de bout en bout : lancer « npx wrangler dev --port 8787 » avec ADMIN_TOKEN=test-admin-123 dans .dev.vars, puis « node tests/navigateur.test.js ».
+// Attention : la limite anti-abus (10 essais de code par heure et par IP) est conservée entre deux lancements ; repartir d’un état local vide (.wrangler/state) avant de relancer.
 const { chromium } = require('playwright');
 const B = 'http://127.0.0.1:8787';
 const ok = (c, m) => { console.log((c ? 'OK   ' : 'ECHEC') + ' ' + m); if (!c) process.exitCode = 1; };
@@ -31,7 +32,7 @@ const ok = (c, m) => { console.log((c ? 'OK   ' : 'ECHEC') + ' ' + m); if (!c) p
   ok((await ad.textContent('#cmds')).includes('Léa'), 'commande visible dans l’atelier');
   await ad.click('#ongProjets'); await ad.fill('#npNom', 'Site Léa'); await ad.click('#creer'); await ad.waitForSelector('#vEdit:not(.hide)');
   // 3) Salon : lien ouvert sur un « téléphone »
-  await ad.click('#bSalon'); const lien = await ad.textContent('#partage .code');
+  await ad.click('#bSalon'); const lien = (await ad.textContent('#partage .code')).replace('https://atelier.velocemercato.fr', B);
   const tel = await br.newPage({ viewport: { width: 390, height: 800 } }); tel.on('pageerror', e => errs.push('salon ' + e.message));
   await tel.goto(lien); await tel.waitForTimeout(800);
   ok((await tel.textContent('#site')).includes('Page vierge'), 'salon : page vierge');

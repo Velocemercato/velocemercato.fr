@@ -7,7 +7,7 @@
 
 import { DurableObject } from 'cloudflare:workers';
 import { devis } from './prix.js';
-import { proposer, iaConfiguree } from './ia.js';
+import { proposer, iaConfiguree, fournisseur, modele } from './ia.js';
 import { pageStudio, pageSalon, pageVoir, pageAdmin, pageAccueil } from './pages.js';
 
 const CODE_JOURS = 7;        // validité d'un code de consultation non utilisé
@@ -191,6 +191,8 @@ async function estAdmin(req, env) {
   const c = lireCookie(req, 'vma_admin');
   return !!(c && env.ADMIN_TOKEN && egal(c, await sha256('admin:' + env.ADMIN_TOKEN)));
 }
+// Seul domaine VM vérifié pour les liens clients (salon, code unique) : jamais l'adresse technique workers.dev.
+const DOMAINE = 'https://atelier.velocemercato.fr';
 const SEC = { 'x-content-type-options': 'nosniff', 'referrer-policy': 'no-referrer' };
 function html(corps, cadre = false) {
   return new Response(corps, { headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store', ...SEC,
@@ -201,6 +203,8 @@ function html(corps, cadre = false) {
 export default {
   async fetch(req, env) {
     const url = new URL(req.url), p = url.pathname, ip = req.headers.get('cf-connecting-ip') || 'inconnue';
+    // L'adresse technique *.workers.dev redirige vers le domaine VM vérifié (mêmes chemins).
+    if (url.hostname.endsWith('.workers.dev') && !env.AUTORISER_WORKERS_DEV) return Response.redirect(DOMAINE + p + url.search, 301);
     if (req.method === 'GET') {
       if (p === '/') return html(pageAccueil);
       if (p === '/studio') return html(pageStudio);
@@ -211,7 +215,7 @@ export default {
     if (!p.startsWith('/api/')) return new Response('Introuvable', { status: 404 });
 
     // Lectures publiques.
-    if (req.method === 'GET' && p === '/api/config') return json({ email: net(env.CONTACT_EMAIL, 120), tel: net(env.CONTACT_TEL, 40) });
+    if (req.method === 'GET' && p === '/api/config') return json({ email: net(env.CONTACT_EMAIL, 120), tel: net(env.CONTACT_TEL, 40), domaine: env.DOMAINE_LIENS || DOMAINE });
     const ms = p.match(/^\/api\/salon\/([A-Z0-9]{24})$/);
     if (req.method === 'GET' && ms) return appel(env, 'salon', { salon: ms[1], v: url.searchParams.get('v') });
     // Fermeture d'une consultation (envoyée à la fermeture de la page, sans en-tête Origin parfois) : ne fait que supprimer sa propre session.
@@ -257,7 +261,7 @@ export default {
       if (op === 'avis' && req.method === 'GET') return appel(env, 'avisListe', { id: url.searchParams.get('id') });
       if (op === 'ia-etat' && req.method === 'GET') {
         const e = await (await appel(env, 'iaEtat')).json();
-        return json({ configuree: iaConfiguree(env), modele: env.ANTHROPIC_MODEL || 'claude-opus-5-5', plafond: Number(env.IA_MAX_JOUR) || 40, ...e });
+        return json({ configuree: iaConfiguree(env), fournisseur: fournisseur(env), modele: modele(env), plafond: Number(env.IA_MAX_JOUR) || 40, ...e });
       }
       if (req.method !== 'POST') return json({ error: 'methode' }, 405);
       if (op === 'code') {
@@ -270,7 +274,7 @@ export default {
       if (op === 'ia') {
         const consigne = net(corps.consigne, 1500);
         if (!consigne) return json({ error: 'consigne_vide' }, 400);
-        if (!iaConfiguree(env)) return json({ error: 'ia_non_connectee', message: 'IA à connecter : ajoute le secret ANTHROPIC_API_KEY sur vm-atelier dans Cloudflare.' }, 503);
+        if (!iaConfiguree(env)) return json({ error: 'ia_non_connectee', message: 'IA à connecter : ajoute le secret GEMINI_API_KEY (gratuit) ou ANTHROPIC_API_KEY sur vm-atelier dans Cloudflare.' }, 503);
         const proj = await (await appel(env, 'lire', { id: corps.id })).json();
         if (proj.error) return json(proj, 404);
         const res = await appel(env, 'iaReserver', { max: Number(env.IA_MAX_JOUR) || 40 });

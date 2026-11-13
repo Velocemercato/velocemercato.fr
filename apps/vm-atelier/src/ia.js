@@ -70,43 +70,98 @@ function remettrePhotos(doc, carte) {
   return doc;
 }
 
-export function iaConfiguree(env) { return !!(env.ANTHROPIC_API_KEY && String(env.ANTHROPIC_API_KEY).trim()); }
+const cle = (v) => !!(v && String(v).trim());
+// Fournisseur actif : IA_FOURNISSEUR (claude|gemini) si défini, sinon celui dont la clé est installée (Claude d'abord).
+export function fournisseur(env) {
+  const f = String(env.IA_FOURNISSEUR || '').toLowerCase();
+  if (f === 'gemini' && cle(env.GEMINI_API_KEY)) return 'gemini';
+  if (f === 'claude' && cle(env.ANTHROPIC_API_KEY)) return 'claude';
+  if (cle(env.ANTHROPIC_API_KEY)) return 'claude';
+  if (cle(env.GEMINI_API_KEY)) return 'gemini';
+  return null;
+}
+export function modele(env) {
+  return fournisseur(env) === 'gemini' ? (env.GEMINI_MODEL || 'gemini-flash-latest') : (env.ANTHROPIC_MODEL || 'claude-opus-5-5');
+}
+export function iaConfiguree(env) { return !!fournisseur(env); }
 
-// Retourne { ok, doc, explication } ou { erreur, message } — jamais de réussite simulée.
-export async function proposer(env, doc, consigne, options = {}) {
-  if (!iaConfiguree(env)) return { erreur: 'ia_non_connectee', message: 'IA à connecter : ajoute le secret ANTHROPIC_API_KEY sur vm-atelier dans Cloudflare.' };
-  const { leger, carte } = sansPhotos(doc);
-  const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, maxRetries: 0, timeout: Number(env.IA_DELAI_MS) || 90_000,
+const DELAI = (env) => Number(env.IA_DELAI_MS) || 90_000;
+const MSG_DELAI = 'L’IA a mis trop de temps. Rien n’a été modifié ; relance seulement si tu le souhaites.';
+const consigneUtilisateur = (leger, consigne) => 'Projet actuel :\n' + JSON.stringify(leger) + '\n\nConsigne : ' + String(consigne).slice(0, 1500);
+
+async function viaClaude(env, leger, consigne, options) {
+  const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, maxRetries: 0, timeout: DELAI(env),
     ...(env.ANTHROPIC_BASE_URL ? { baseURL: env.ANTHROPIC_BASE_URL } : {}), ...(options.fetch ? { fetch: options.fetch } : {}) });
   let r;
   try {
     r = await client.beta.messages.create({
-      model: env.ANTHROPIC_MODEL || 'claude-opus-5-5',
+      model: modele(env),
       max_tokens: 16000,
       betas: ['server-side-fallback-2026-07-01'],
       fallbacks: 'default',
       output_config: { effort: 'medium', format: betaZodOutputFormat(Proposition) },
       system: SYSTEME,
-      messages: [{ role: 'user', content: 'Projet actuel :\n' + JSON.stringify(leger) + '\n\nConsigne : ' + String(consigne).slice(0, 1500) }],
+      messages: [{ role: 'user', content: consigneUtilisateur(leger, consigne) }],
     });
   } catch (e) {
     if (e instanceof Anthropic.AuthenticationError || e instanceof Anthropic.PermissionDeniedError) return { erreur: 'ia_cle_invalide', message: 'La clé IA est refusée par Anthropic (invalide ou sans droits).' };
     if (e instanceof Anthropic.RateLimitError) return { erreur: 'ia_quota', message: 'Quota de l’IA atteint chez Anthropic. Réessaie plus tard.' };
-    if (e instanceof Anthropic.APIConnectionTimeoutError) return { erreur: 'ia_delai', message: 'L’IA a mis trop de temps. Rien n’a été modifié ; relance seulement si tu le souhaites (une relance est facturée).' };
+    if (e instanceof Anthropic.APIConnectionTimeoutError) return { erreur: 'ia_delai', message: MSG_DELAI };
     if (e instanceof Anthropic.APIConnectionError) return { erreur: 'ia_reseau', message: 'Connexion à l’IA impossible pour le moment.' };
     if (e instanceof Anthropic.APIError) return { erreur: 'ia_erreur', message: 'L’IA a renvoyé une erreur (' + (e.status || '?') + ').' };
     return { erreur: 'ia_erreur', message: 'Erreur inattendue pendant l’appel à l’IA : rien n’a été modifié.' };
   }
   if (r.stop_reason === 'refusal') return { erreur: 'ia_refus', message: 'L’IA a refusé cette demande.' };
+  return { texte: (r.content || []).filter((b) => b.type === 'text').map((b) => b.text).join(''), coupe: r.stop_reason === 'max_tokens',
+    usage: { entree: r.usage?.input_tokens || 0, sortie: r.usage?.output_tokens || 0, modele: r.model } };
+}
+
+// Gemini (Google AI Studio) : appel REST generateContent, réponse JSON. Offre gratuite avec limites.
+async function viaGemini(env, leger, consigne, options) {
+  const f = options.fetch || fetch;
+  const base = env.GEMINI_BASE_URL || 'https://generativelanguage.googleapis.com';
+  const ctrl = new AbortController(); const minuteur = setTimeout(() => ctrl.abort(), DELAI(env));
+  let res, corps;
+  try {
+    res = await f(base + '/v1beta/models/' + encodeURIComponent(modele(env)) + ':generateContent', {
+      method: 'POST', signal: ctrl.signal,
+      headers: { 'content-type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
+      body: JSON.stringify({
+        systemInstruction: { parts: [{ text: SYSTEME + '\nRéponds uniquement par un objet JSON {"explication": string, "doc": {"format", "theme", "blocs"}} conforme à la structure reçue.' }] },
+        contents: [{ role: 'user', parts: [{ text: consigneUtilisateur(leger, consigne) }] }],
+        generationConfig: { responseMimeType: 'application/json', maxOutputTokens: 16000 },
+      }),
+    });
+    corps = await res.json().catch(() => ({}));
+  } catch (e) {
+    if (e && e.name === 'AbortError') return { erreur: 'ia_delai', message: MSG_DELAI };
+    return { erreur: 'ia_reseau', message: 'Connexion à l’IA impossible pour le moment.' };
+  } finally { clearTimeout(minuteur); }
+  if (!res.ok) {
+    const raison = JSON.stringify(corps?.error || '');
+    if (res.status === 429) return { erreur: 'ia_quota', message: 'Quota gratuit Gemini atteint. Réessaie plus tard.' };
+    if (res.status === 401 || res.status === 403 || /API_KEY_INVALID|API key not valid/i.test(raison)) return { erreur: 'ia_cle_invalide', message: 'La clé Gemini est refusée par Google (invalide ou sans droits).' };
+    return { erreur: 'ia_erreur', message: 'L’IA Gemini a renvoyé une erreur (' + res.status + ').' };
+  }
+  const cand = (corps.candidates || [])[0] || {};
+  if (corps.promptFeedback?.blockReason || cand.finishReason === 'SAFETY' || cand.finishReason === 'PROHIBITED_CONTENT') return { erreur: 'ia_refus', message: 'L’IA a refusé cette demande.' };
+  return { texte: (cand.content?.parts || []).map((x) => x.text || '').join(''), coupe: cand.finishReason === 'MAX_TOKENS',
+    usage: { entree: corps.usageMetadata?.promptTokenCount || 0, sortie: corps.usageMetadata?.candidatesTokenCount || 0, modele: corps.modelVersion || modele(env) } };
+}
+
+// Retourne { ok, doc, explication } ou { erreur, message } — jamais de réussite simulée.
+export async function proposer(env, doc, consigne, options = {}) {
+  const four = fournisseur(env);
+  if (!four) return { erreur: 'ia_non_connectee', message: 'IA à connecter : ajoute le secret GEMINI_API_KEY (gratuit) ou ANTHROPIC_API_KEY sur vm-atelier dans Cloudflare.' };
+  const { leger, carte } = sansPhotos(doc);
+  const r = await (four === 'gemini' ? viaGemini : viaClaude)(env, leger, consigne, options);
+  if (r.erreur) return r;
   const invalide = { erreur: 'ia_reponse_invalide', message: 'Réponse de l’IA incomplète ou invalide : rien n’a été modifié.' };
-  if (r.stop_reason === 'max_tokens') return invalide;
-  const texte = (r.content || []).filter((b) => b.type === 'text').map((b) => b.text).join('');
-  let brut; try { brut = JSON.parse(texte); } catch { return invalide; }
+  if (r.coupe) return invalide;
+  let brut; try { brut = JSON.parse(String(r.texte).trim().replace(/^```(?:json)?\s*|\s*```$/g, '')); } catch { return invalide; }
   const v = Proposition.safeParse(brut);
   if (!v.success) return invalide;
-  const sortie = v.data;
-  return { ok: true, explication: sortie.explication, doc: remettrePhotos(sortie.doc, carte),
-    usage: { entree: r.usage?.input_tokens || 0, sortie: r.usage?.output_tokens || 0, modele: r.model } };
+  return { ok: true, explication: v.data.explication, doc: remettrePhotos(v.data.doc, carte), usage: { ...r.usage, fournisseur: four } };
 }
 
 export const _test = { sansPhotos, remettrePhotos, Proposition };

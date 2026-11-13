@@ -18,6 +18,8 @@ export const PRIX = {
     musique: { nom: 'Musique IA', prix: 29 },
     mascotte: { nom: 'Mascotte / personnage 3D', prix: 99 },
     video: { nom: 'Vidéo pub IA (30 s)', prix: 149 },
+    // Couvre le coût de l'IA (quelques centimes par demande) : c'est le client qui paie, pas Romain.
+    retouches_ia: { nom: 'Retouches en direct avec l’assistant IA (30 jours)', prix: 29 },
   },
   pack: { nom: 'Pack 3 ans : domaine + hébergement + maintenance', prix: 390 },
 };

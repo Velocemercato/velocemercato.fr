@@ -36,3 +36,23 @@ ok(r.erreur === 'ia_delai', 'délai dépassé : message clair, pas de relance au
 // Lien dangereux ou photo inventée par l'IA : retirés
 const d2 = _test.remettrePhotos({ format: 'site', theme: { c1: 'rouge' }, blocs: [{ t: 'bouton', texte: 'x', lien: 'javascript:alert(1)' }, { t: 'image', src: 'IMG_9' }] }, new Map());
 ok(!d2.blocs[0].lien && !d2.blocs[1].src && !d2.theme.c1, 'lien javascript:, photo inventée et couleur invalide retirés');
+
+// ---------- Gemini (Google AI Studio, offre gratuite) ----------
+const envG = { GEMINI_API_KEY: 'cle-gemini-test' };
+function gemini(status, corps) { return async (url, init) => { gemini.url = url; gemini.init = init; return new Response(JSON.stringify(corps), { status, headers: { 'content-type': 'application/json' } }); }; }
+const propG = { explication: 'Photo à gauche.', doc: { format: 'carte', theme: doc.theme, blocs: [{ t: 'titre', titre: 'Salon Léa', image: 'IMG_1', pos: 'gauche' }] } };
+r = await proposer(envG, doc, 'photo à gauche', { fetch: gemini(200, { candidates: [{ content: { parts: [{ text: JSON.stringify(propG) }] }, finishReason: 'STOP' }], usageMetadata: { promptTokenCount: 500, candidatesTokenCount: 120 }, modelVersion: 'gemini-flash-latest' }) });
+ok(r.ok && r.doc.blocs[0].pos === 'gauche' && r.doc.blocs[0].image === PHOTO && r.usage.fournisseur === 'gemini', 'Gemini : proposition valide, photo remise');
+ok(gemini.init.headers['x-goog-api-key'] === 'cle-gemini-test' && !gemini.url.includes('cle-gemini-test') && !gemini.init.body.includes('base64'), 'Gemini : clé dans l’en-tête (pas dans l’adresse), aucune photo envoyée');
+r = await proposer(envG, doc, 'x', { fetch: gemini(400, { error: { status: 'INVALID_ARGUMENT', message: 'API key not valid. API_KEY_INVALID' } }) });
+ok(r.erreur === 'ia_cle_invalide', 'Gemini : clé refusée');
+r = await proposer(envG, doc, 'x', { fetch: gemini(429, { error: { status: 'RESOURCE_EXHAUSTED' } }) });
+ok(r.erreur === 'ia_quota', 'Gemini : quota gratuit atteint');
+r = await proposer(envG, doc, 'x', { fetch: gemini(200, { promptFeedback: { blockReason: 'SAFETY' } }) });
+ok(r.erreur === 'ia_refus', 'Gemini : refus');
+r = await proposer(envG, doc, 'x', { fetch: gemini(200, { candidates: [{ content: { parts: [{ text: '{"explication":' }] }, finishReason: 'MAX_TOKENS' }] }) });
+ok(r.erreur === 'ia_reponse_invalide', 'Gemini : réponse coupée');
+r = await proposer({ ...envG, IA_DELAI_MS: 200 }, doc, 'x', { fetch: (u, init) => new Promise((_, rej) => init.signal.addEventListener('abort', () => rej(Object.assign(new Error('a'), { name: 'AbortError' })))) });
+ok(r.erreur === 'ia_delai', 'Gemini : délai dépassé');
+const { fournisseur } = await import('../src/ia.js');
+ok(fournisseur({ GEMINI_API_KEY: 'g', ANTHROPIC_API_KEY: 'a' }) === 'claude' && fournisseur({ GEMINI_API_KEY: 'g', ANTHROPIC_API_KEY: 'a', IA_FOURNISSEUR: 'gemini' }) === 'gemini' && fournisseur({}) === null, 'choix du fournisseur selon les clés installées');
