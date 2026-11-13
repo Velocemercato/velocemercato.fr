@@ -205,7 +205,7 @@ function etat(){api('admin/etat').then(function(s){if(s._s===401){$('login').cla
  var L=$('liste');L.replaceChildren();(s.projets||[]).forEach(function(p){var c=E('div');c.className='card';c.appendChild(E('b','',p.nom));c.appendChild(E('div','',(p.client?'Client : '+p.client+' · ':'')+'modifié le '+new Date(p.maj).toLocaleString('fr-FR')));c.lastChild.className='muted';
   var o=E('button','','✏️ Ouvrir');o.className='p';o.onclick=function(){ouvrir(p.id)};c.appendChild(o);L.appendChild(c)});
  var C=$('cmds');C.replaceChildren();if(!(s.commandes||[]).length)C.appendChild(E('p','','Aucune commande pour le moment.'));
- (s.commandes||[]).forEach(function(k){var c=E('div');c.className='card';c.appendChild(E('b','','N° '+k.id+' · '+k.total+' € · '+new Date(k.cree).toLocaleString('fr-FR')));
+ (s.commandes||[]).forEach(function(k){var c=E('div');c.className='card';var dem=k.config&&k.config.type==='demande';c.appendChild(E('b','',(dem?'📨 Demande de contact (vmunivers.fr) · ':'N° ')+k.id+(dem?'':' · '+k.total+' €')+' · '+new Date(k.cree).toLocaleString('fr-FR')));
   var ct=k.contact||{};c.appendChild(E('div','',(ct.nom||'')+' · '+(ct.email||'')+' · '+(ct.tel||'')+(ct.projet?' · Projet : '+ct.projet:'')));
   if(ct.message)c.appendChild(E('p','white-space:pre-wrap',ct.message));
   ((k.config||{}).lignes||[]).forEach(function(l){var r=E('div');r.className='ligne';r.appendChild(E('span','',l[0]));r.appendChild(E('b','',l[1]+' €'));c.appendChild(r)});
@@ -214,7 +214,7 @@ function etat(){api('admin/etat').then(function(s){if(s._s===401){$('login').cla
   if(k.projet){var op=E('button','','✏️ Ouvrir son site');op.className='p';op.onclick=function(){ouvrir(k.projet)};c.appendChild(op)}
   var payee=k.statut==='payee'||k.statut==='livree';
   if(payee)c.appendChild(E('p','color:#3ccf7a;font-weight:800','✅ Payée'+(k.paye_le?' le '+new Date(k.paye_le).toLocaleString('fr-FR'):'')));
-  else{var pa=E('button','',k.paiement_url?'💳 Nouveau lien de paiement':'💳 Créer le lien de paiement');pa.className='p';var zone=E('div');
+  else if(k.total>0){var pa=E('button','',k.paiement_url?'💳 Nouveau lien de paiement':'💳 Créer le lien de paiement');pa.className='p';var zone=E('div');
    pa.onclick=function(){zone.textContent='…';api('admin/paiement',{id:k.id}).then(function(j){zone.replaceChildren();if(!j.ok){zone.appendChild(E('p','color:#ffb3bf',j.message||j.error));return}
     zone.appendChild(E('p','',(j.mode==='test'?'🧪 MODE TEST · ':'')+'Le client voit le bouton « Payer » sur son lien de suivi. Lien direct :'));var u=E('div','',j.url);u.className='code';zone.appendChild(u)})};
    c.appendChild(pa);
