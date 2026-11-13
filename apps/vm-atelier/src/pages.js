@@ -26,25 +26,39 @@ function okLien(u){try{var x=new URL(u);return ['https:','mailto:','tel:'].index
 function okImg(u){return typeof u==='string'&&(/^data:image\\/(png|jpeg|webp|gif);base64,[A-Za-z0-9+\\/=]+$/.test(u)||/^https:\\/\\/[^\\s"'()]+$/.test(u))}
 function okCoul(c,d){return /^#[0-9a-f]{6}$/i.test(c||'')?c:d}
 function E(t,css,x){var e=document.createElement(t);if(css)e.style.cssText=css;if(x!=null)e.textContent=String(x);return e}
+var FORMATS={site:null,carte:[85,55],flyer:[148,210],affiche:[297,420],post:[1,1],story:[9,16]};
 function rendre(root,doc){
  doc=doc||{};var th=doc.theme||{},c1=okCoul(th.c1,'#e52643'),c2=okCoul(th.c2,'#f4cf55'),bg=okCoul(th.fond,'#0b0c12'),tx=okCoul(th.texte,'#ffffff');
- root.replaceChildren();root.style.cssText='background:'+bg+';color:'+tx+';font:16px/1.55 system-ui,sans-serif;min-height:100%';
- var w=E('div','max-width:720px;margin:auto;padding:22px 16px');root.appendChild(w);
+ var fmt=FORMATS[doc.format]?doc.format:'site',dim=FORMATS[fmt],U=dim?'cqw':'px',k=function(px,cq){return dim?cq+'cqw':px+'px'};
+ root.replaceChildren();root.style.cssText=dim?'background:#2a2d3a;padding:10px;min-height:100%':'background:'+bg+';color:'+tx+';font:16px/1.55 system-ui,sans-serif;min-height:100%';
  var blocs=Array.isArray(doc.blocs)?doc.blocs:[];
- if(!blocs.length){w.appendChild(E('p','opacity:.55;text-align:center;padding:90px 0','Page vierge : le site apparaît ici.'));return}
- blocs.forEach(function(b){if(!b||typeof b!=='object')return;var s=E('section','margin:0 0 22px');
-  if(b.t==='titre'){s.style.textAlign='center';if(okImg(b.image)){var i=E('img','width:100%;max-height:340px;object-fit:cover;border-radius:16px;border:3px solid '+c2);i.src=b.image;i.alt='';s.appendChild(i)}
-   s.appendChild(E('h1','margin:14px 0 4px;font-size:2rem;color:'+tx,b.titre||''));if(b.sous)s.appendChild(E('p','margin:0;opacity:.85',b.sous));
-   if(b.bouton&&okLien(b.lien)){var a=E('a','display:inline-block;margin-top:12px;background:'+c1+';color:#fff;border-radius:12px;padding:11px 18px;text-decoration:none;font-weight:800',b.bouton);a.href=b.lien;a.target='_blank';a.rel='noopener';s.appendChild(a)}}
+ // Découpage en pages (recto/verso d'une carte, pages d'un flyer) avec le bloc « page ».
+ var pages=[[]];blocs.forEach(function(b,ix){if(b&&b.t==='page')pages.push([]);else pages[pages.length-1].push([b,ix])});
+ if(!blocs.length){var w0=E('div','max-width:720px;margin:auto;padding:22px 16px');root.appendChild(w0);w0.appendChild(E('p','opacity:.55;text-align:center;padding:90px 0'+(dim?';color:#fff':''),'Page vierge : le '+(dim?fmt:'site')+' apparaît ici.'));return}
+ pages.forEach(function(liste,np){
+  var w=dim?E('div','container-type:inline-size;position:relative;width:100%;max-width:'+(fmt==='carte'?'520px':'460px')+';margin:0 auto 12px;aspect-ratio:'+dim[0]+'/'+dim[1]+';overflow:hidden;border-radius:8px;box-shadow:0 6px 24px #0008;background:'+bg+';color:'+tx+';font:'+(fmt==='carte'?'4.2':'3.6')+'cqw/1.4 system-ui,sans-serif;padding:'+(fmt==='carte'?'6cqw':'7cqw')+';display:flex;flex-direction:column;justify-content:center;gap:2cqw')
+               :E('div','max-width:720px;margin:auto;padding:22px 16px');
+  w.className='vm-page';if(dim&&pages.length>1)w.setAttribute('data-page',np===0?'Recto':'Page '+(np+1));
+  root.appendChild(w);
+  liste.forEach(function(p){var b=p[0],ix=p[1];if(!b||typeof b!=='object')return;var s=E('section','margin:0 0 '+k(22,2)+';position:relative');s.setAttribute('data-bloc',ix);
+  if(b.t==='titre'){var tz={normal:[32,9],grand:[44,12],'tres-grand':[58,16]}[b.taille]||[32,9],pos=b.pos;
+   var txt=E('div','flex:1;min-width:0');txt.appendChild(E('h1','margin:'+k(14,1.5)+' 0 '+k(4,1)+';font-size:'+k(tz[0],tz[1])+';line-height:1.1;color:'+tx,b.titre||''));if(b.sous)txt.appendChild(E('p','margin:0;opacity:.85',b.sous));
+   if(b.bouton&&okLien(b.lien)){var a=E('a','display:inline-block;margin-top:'+k(12,2)+';background:'+c1+';color:#fff;border-radius:12px;padding:'+k(11,1.5)+' '+k(18,3)+';text-decoration:none;font-weight:800',b.bouton);a.href=b.lien;a.target='_blank';a.rel='noopener';txt.appendChild(a)}
+   var im=null;if(okImg(b.image)){im=E('img','object-fit:cover;border-radius:16px;border:3px solid '+c2+';'+(pos==='gauche'||pos==='droite'?'width:40%;aspect-ratio:1':'width:100%;max-height:'+(dim?'45cqw':'340px')));im.src=b.image;im.alt=''}
+   if(im&&(pos==='gauche'||pos==='droite')){s.style.cssText+=';display:flex;gap:'+k(16,3)+';align-items:center;text-align:left';if(pos==='gauche'){s.appendChild(im);s.appendChild(txt)}else{s.appendChild(txt);s.appendChild(im)}}
+   else{s.style.textAlign='center';if(im)s.appendChild(im);s.appendChild(txt)}}
   else if(b.t==='texte'){if(b.titre)s.appendChild(E('h2','margin:0 0 6px;color:'+c2,b.titre));s.appendChild(E('p','margin:0;white-space:pre-wrap',b.texte||''))}
-  else if(b.t==='image'){if(okImg(b.src)){var im=E('img','width:100%;border-radius:14px');im.src=b.src;im.alt=b.legende||'';s.appendChild(im)}if(b.legende)s.appendChild(E('p','margin:6px 0 0;opacity:.75;text-align:center;font-size:.9rem',b.legende))}
-  else if(b.t==='galerie'){var g=E('div','display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px');(b.images||[]).forEach(function(u){if(okImg(u)){var x=E('img','width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px');x.src=u;x.alt='';g.appendChild(x)}});s.appendChild(g)}
-  else if(b.t==='produits'){if(b.titre)s.appendChild(E('h2','margin:0 0 8px;color:'+c2,b.titre));(b.items||[]).forEach(function(p){var r=E('div','display:flex;justify-content:space-between;gap:10px;align-items:center;border:2px solid '+c1+';border-radius:12px;padding:12px;margin:8px 0');r.appendChild(E('b','',p.nom||''));r.appendChild(E('span','color:'+c2+';font-weight:900',p.prix||''));s.appendChild(r)})}
-  else if(b.t==='contact'){s.style.cssText+='border-top:2px solid '+c1+';padding-top:12px;text-align:center';s.appendChild(E('h2','margin:0 0 6px;color:'+c2,b.titre||'Contact'));
-   [['tel','tel:'],['email','mailto:']].forEach(function(k){var v=(b[k[0]]||'').trim();if(v){var a=E('a','display:block;color:'+tx,v);var h=k[1]+v.replace(/\\s/g,'');if(okLien(h))a.href=h;s.appendChild(a)}});
+  else if(b.t==='image'){if(okImg(b.src)){var im2=E('img','width:100%;border-radius:14px');im2.src=b.src;im2.alt=b.legende||'';s.appendChild(im2)}if(b.legende)s.appendChild(E('p','margin:6px 0 0;opacity:.75;text-align:center;font-size:.9em',b.legende))}
+  else if(b.t==='galerie'){var g=E('div','display:grid;grid-template-columns:repeat(auto-fill,minmax('+k(150,22)+',1fr));gap:8px');(b.images||[]).forEach(function(u){if(okImg(u)){var x=E('img','width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px');x.src=u;x.alt='';g.appendChild(x)}});s.appendChild(g)}
+  else if(b.t==='produits'){if(b.titre)s.appendChild(E('h2','margin:0 0 8px;color:'+c2,b.titre));(b.items||[]).forEach(function(p){var r=E('div','display:flex;justify-content:space-between;gap:10px;align-items:center;border:2px solid '+c1+';border-radius:12px;padding:'+k(12,2)+';margin:'+k(8,1)+' 0');r.appendChild(E('b','',p.nom||''));r.appendChild(E('span','color:'+c2+';font-weight:900',p.prix||''));s.appendChild(r)})}
+  else if(b.t==='contact'){s.style.cssText+=';border-top:2px solid '+c1+';padding-top:'+k(12,2)+';text-align:center';s.appendChild(E('h2','margin:0 0 6px;color:'+c2,b.titre||'Contact'));
+   [['tel','tel:'],['email','mailto:']].forEach(function(q){var v=(b[q[0]]||'').trim();if(v){var a=E('a','display:block;color:'+tx,v);var h=q[1]+v.replace(/\\s/g,'');if(okLien(h))a.href=h;s.appendChild(a)}});
    if(b.adresse)s.appendChild(E('p','margin:6px 0 0;opacity:.8;white-space:pre-wrap',b.adresse))}
-  else if(b.t==='bouton'){s.style.textAlign='center';var bt=E('a','display:inline-block;background:'+c1+';color:#fff;border-radius:12px;padding:12px 20px;text-decoration:none;font-weight:800',b.texte||'');if(okLien(b.lien)){bt.href=b.lien;bt.target='_blank';bt.rel='noopener'}s.appendChild(bt)}
-  w.appendChild(s)})}
+  else if(b.t==='bouton'){s.style.textAlign='center';var bt=E('a','display:inline-block;background:'+c1+';color:#fff;border-radius:12px;padding:'+k(12,2)+' '+k(20,3)+';text-decoration:none;font-weight:800',b.texte||'');if(okLien(b.lien)){bt.href=b.lien;bt.target='_blank';bt.rel='noopener'}s.appendChild(bt)}
+  w.appendChild(s)})})}
+// Impression / PDF au bon format (carte 85×55 mm, flyer A5, affiche A3…).
+function imprimer(doc,root){var dim=FORMATS[doc&&doc.format];var st=document.getElementById('vm-print')||document.head.appendChild(Object.assign(document.createElement('style'),{id:'vm-print'}));
+ st.textContent='@media print{@page{'+(dim&&doc.format!=='post'&&doc.format!=='story'?'size:'+dim[0]+'mm '+dim[1]+'mm;':'')+'margin:0}body *{visibility:hidden}#'+root.id+',#'+root.id+' *{visibility:visible}#'+root.id+'{position:absolute;left:0;top:0;width:100%;padding:0!important;background:none!important}.vm-page{page-break-after:always;box-shadow:none!important;border-radius:0!important;max-width:none!important;margin:0!important}}';window.print()}
 function reduirePhoto(f,max,cb){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);cb(c.toDataURL('image/jpeg',0.8))};im.src=r.result};r.readAsDataURL(f)}
 function api(p,body){return fetch('/api/'+p,body?{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body),credentials:'same-origin'}:{credentials:'same-origin'}).then(function(r){return r.json().then(function(j){j._s=r.status;return j})})}
 `;
@@ -119,11 +133,24 @@ maj();`);
 
 // ---------- Mode salon : le client voit le site se construire en direct ----------
 export const pageSalon = page('Votre site — en direct', `<div id="site"></div>
-<div id="live" style="position:fixed;bottom:10px;right:10px;background:#000c;color:#fff;border-radius:999px;padding:5px 11px;font:700 12px system-ui">● en direct</div>`,
-`var tok=location.pathname.split('/').pop(),v=0,el=document.getElementById('site'),live=document.getElementById('live');
+<div id="live" style="position:fixed;top:10px;right:10px;background:#000c;color:#fff;border-radius:999px;padding:5px 11px;font:700 12px system-ui;z-index:5">● en direct</div>
+<button id="msgBtn" style="position:fixed;bottom:14px;right:14px;z-index:5;background:#f4cf55;color:#111;border:0;border-radius:999px;padding:12px 16px;font:800 15px system-ui;box-shadow:0 6px 20px #0008">💬 Demander une modif</button>
+<div id="feuille" class="hide" style="position:fixed;left:0;right:0;bottom:0;z-index:6;background:#11131d;color:#fff;border-top:2px solid #f4cf55;padding:14px;font:15px system-ui">
+ <b id="fTitre">Ta demande</b><p style="margin:4px 0 8px;color:#a9b0c4;font-size:13px">Astuce : touche un élément du site pour dire précisément lequel changer.</p>
+ <textarea id="fTxt" rows="3" maxlength="600" placeholder="Ex. : je veux la photo plus grande, le titre en rouge…" style="width:100%;background:#0b0d16;color:#fff;border:1px solid #2b3046;border-radius:9px;padding:9px;font:inherit"></textarea>
+ <button id="fEnv" style="background:#f4cf55;color:#111;border:0;border-radius:10px;padding:10px 14px;font-weight:800;margin-top:6px">Envoyer</button> <button id="fAnn" style="background:#1b2033;color:#fff;border:0;border-radius:10px;padding:10px 14px;margin-top:6px">Fermer</button>
+ <p id="fMsg" style="color:#f4cf55;min-height:1.2em;margin:6px 0 0"></p></div>`,
+`var tok=location.pathname.split('/').pop(),v=0,el=document.getElementById('site'),live=document.getElementById('live'),bloc=null,$=function(i){return document.getElementById(i)};
 function boucle(){fetch('/api/salon/'+tok+'?v='+v,{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){
  if(j.error){live.textContent='lien expiré';live.style.background='#a00';return}live.style.background='#0a0c';if(!j.same){v=j.v;document.title=j.nom||'Votre site';rendre(el,j.doc)}setTimeout(boucle,1500)})
  .catch(function(){live.style.background='#a60c';setTimeout(boucle,4000)})}
+function ouvrirFeuille(n){bloc=n;$('fTitre').textContent=n==null?'Ta demande':'Ta demande pour l’élément n° '+(n+1);$('fMsg').textContent='';$('feuille').classList.remove('hide');$('fTxt').focus()}
+el.addEventListener('click',function(e){var s=e.target.closest('[data-bloc]');if(!s||e.target.closest('a'))return;e.preventDefault();
+ [].forEach.call(el.querySelectorAll('[data-bloc]'),function(x){x.style.outline=''});s.style.outline='3px solid #f4cf55';ouvrirFeuille(Number(s.getAttribute('data-bloc')))});
+$('msgBtn').onclick=function(){ouvrirFeuille(null)};$('fAnn').onclick=function(){$('feuille').classList.add('hide')};
+$('fEnv').onclick=function(){var t=$('fTxt').value.trim();if(!t){$('fMsg').textContent='Écris ta demande.';return}
+ fetch('/api/salon/'+tok+'/avis',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({texte:t,bloc:bloc})}).then(function(r){return r.json()}).then(function(j){
+  $('fMsg').textContent=j.ok?'✅ Envoyé ! Le créateur le voit tout de suite.':(j.error==='trop_de_messages'?'Trop de messages, patiente un peu.':'Envoi impossible.');if(j.ok)$('fTxt').value=''})};
 rendre(el,{blocs:[]});boucle();`);
 
 // ---------- Consultation avec code à usage unique ----------
@@ -140,7 +167,7 @@ $('ok').onclick=function(){$('msg').textContent='…';api('voir/ouvrir',{code:$(
  window.addEventListener('pagehide',function(){navigator.sendBeacon('/api/voir/fermer')})})};`);
 
 // ---------- VM Studio · Atelier de Romain ----------
-const TYPES_BLOCS = { titre: '🏷 Titre + photo', texte: '📝 Texte', image: '🖼 Image', galerie: '🧱 Galerie', produits: '🛒 Produits / tarifs', bouton: '🔘 Bouton', contact: '📞 Contact' };
+const TYPES_BLOCS = { page: '📄 Nouvelle page / verso', titre: '🏷 Titre + photo', texte: '📝 Texte', image: '🖼 Image', galerie: '🧱 Galerie', produits: '🛒 Produits / tarifs', bouton: '🔘 Bouton', contact: '📞 Contact' };
 export const pageAdmin = page('Atelier — VM', `${ENTETE('VM Studio · Atelier de Romain')}
 <div id="login" class="card" style="max-width:420px;margin:16px auto"><label for="tok">Code administrateur</label><input id="tok" type="password" autocomplete="off"><button class="p" id="entrer">Entrer</button><p class="msg" id="lmsg"></p></div>
 <div id="app" class="hide">
@@ -150,8 +177,15 @@ export const pageAdmin = page('Atelier — VM', `${ENTETE('VM Studio · Atelier 
  <div id="vEdit" class="hide"><div class="grid"><div>
   <div class="card"><button class="g" id="retour">← Projets</button> <b id="eNom"></b> <span class="muted" id="etat"></span>
    <label for="eTitre">Nom du projet</label><input id="eTitre" maxlength="80">
+   <label for="eFormat">Format</label><select id="eFormat"><option value="site">🌐 Site / page web</option><option value="carte">💳 Carte de visite (85×55 mm, recto/verso)</option><option value="flyer">📄 Flyer A5</option><option value="affiche">🖼 Affiche A3</option><option value="post">📱 Post réseaux (carré)</option><option value="story">📲 Story / vidéo verticale (9:16)</option></select>
    <div class="row"><div><label>Couleur principale</label><input type="color" id="tc1"></div><div><label>Accent</label><input type="color" id="tc2"></div></div>
    <div class="row"><div><label>Fond</label><input type="color" id="tfond"></div><div><label>Texte</label><input type="color" id="ttexte"></div></div></div>
+  <div class="card" id="iaCard"><b>🤖 Assistant IA</b> <span class="muted" id="iaEtat"></span>
+   <textarea id="iaTxt" rows="2" maxlength="1500" placeholder="Ex. : mets la photo à gauche et agrandis le titre"></textarea>
+   <button class="p" id="iaGo">✨ Proposer</button><button class="g" id="annuler" disabled>↶ Annuler</button><button class="g" id="bPrint">🖨 Imprimer / PDF</button>
+   <p class="msg" id="iaMsg" role="status"></p>
+   <div id="iaProp" class="hide" style="border:1px dashed var(--gold);border-radius:10px;padding:10px"><b>Proposition de l’IA</b><p class="muted" id="iaExpl"></p><p class="muted">L’aperçu à droite montre la proposition (rien n’est encore enregistré).</p><button class="p" id="iaOui">✔ Appliquer</button><button class="r" id="iaNon">✕ Refuser</button></div></div>
+  <div class="card"><b>💬 Retours du client</b> <span class="muted">(en direct depuis son lien)</span><div id="avisBox"><p class="muted">Aucun retour pour le moment.</p></div></div>
   <div class="card"><b>Partager</b><br>
    <button class="p" id="bSalon">📱 Lien « salon » (en direct)</button><button class="p" id="bCode">🔑 Code à usage unique</button><button class="g" id="bNvSalon">♻️ Couper l'ancien lien salon</button><button class="r" id="bSuppr">Supprimer</button>
    <div id="partage"></div></div>
@@ -176,20 +210,44 @@ function etat(){api('admin/etat').then(function(s){if(s._s===401){$('login').cla
 $('entrer').onclick=function(){api('admin/login',{token:$('tok').value}).then(function(j){$('lmsg').textContent=j.ok?'':(j.error==='admin_non_configure'?'Le secret ADMIN_TOKEN n’est pas encore défini dans Cloudflare.':'Refusé.');if(j.ok){$('tok').value='';etat()}})};
 $('ongProjets').onclick=function(){vue('vProjets');etat()};$('ongCmd').onclick=function(){vue('vCmd');etat()};$('retour').onclick=function(){vue('vProjets');etat()};
 $('creer').onclick=function(){api('admin/creer',{nom:$('npNom').value,client:$('npClient').value}).then(function(j){if(j.ok){$('npNom').value='';$('npClient').value='';ouvrir(j.id)}})};
-function ouvrir(id){api('admin/lire?id='+encodeURIComponent(id)).then(function(p){if(p.error)return;cur=p;$('partage').replaceChildren();$('eNom').textContent=p.nom;$('eTitre').value=p.nom;
+var pile=[],propo=null,suiviAvis=null;
+function ouvrir(id){api('admin/lire?id='+encodeURIComponent(id)).then(function(p){if(p.error)return;cur=p;pile=[];propo=null;$('iaProp').classList.add('hide');$('annuler').disabled=true;$('eFormat').value=p.doc.format||'site';
+ clearInterval(suiviAvis);avis();suiviAvis=setInterval(function(){if(!$('vEdit').classList.contains('hide'))avis()},3000);iaEtat();$('partage').replaceChildren();$('eNom').textContent=p.nom;$('eTitre').value=p.nom;
  var t=p.doc.theme||{};$('tc1').value=t.c1||'#e52643';$('tc2').value=t.c2||'#f4cf55';$('tfond').value=t.fond||'#0b0c12';$('ttexte').value=t.texte||'#ffffff';vue('vEdit');dessiner()})}
-function sauver(){$('etat').textContent='…';clearTimeout(minuteur);minuteur=setTimeout(function(){api('admin/enregistrer',{id:cur.id,nom:$('eTitre').value,doc:cur.doc}).then(function(j){$('etat').textContent=j.ok?'✔ enregistré (le client le voit)':'⚠ '+(j.error||'erreur')})},500)}
+function sauver(){$('etat').textContent='…';clearTimeout(minuteur);minuteur=setTimeout(function(){api('admin/enregistrer',{id:cur.id,nom:$('eTitre').value,doc:cur.doc,base:cur.version}).then(function(j){
+ if(j.ok){cur.version=j.v;$('etat').textContent='✔ enregistré (le client le voit)'}else $('etat').textContent=j.error==='projet_modifie'?'⚠ Projet modifié ailleurs : rouvre-le avant de continuer.':'⚠ '+(j.error||'erreur')})},500)}
+function memoriser(){pile.push(JSON.stringify(cur.doc));if(pile.length>30)pile.shift();$('annuler').disabled=false}
+$('annuler').onclick=function(){if(!pile.length)return;cur.doc=JSON.parse(pile.pop());$('annuler').disabled=!pile.length;$('eFormat').value=cur.doc.format||'site';dessiner();sauver()};
+$('eFormat').onchange=function(){memoriser();cur.doc.format=$('eFormat').value;rendre($('apercu'),cur.doc);sauver()};
+$('bPrint').onclick=function(){imprimer(propo||cur.doc,$('apercu'))};
+function iaEtat(){api('admin/ia-etat').then(function(e){if(e._s!==200)return;$('iaEtat').textContent=e.configuree?('· '+e.modele+' · '+e.utilises+'/'+e.plafond+' aujourd’hui'):'· IA à connecter (secret ANTHROPIC_API_KEY)';$('iaGo').disabled=!e.configuree})}
+$('iaGo').onclick=function(){var c=$('iaTxt').value.trim();if(!c){$('iaMsg').textContent='Écris ce que tu veux changer.';return}
+ $('iaGo').disabled=true;$('iaMsg').textContent='⏳ L’IA prépare une proposition… (jusqu’à 1 minute)';
+ api('admin/ia',{id:cur.id,consigne:c}).then(function(j){$('iaGo').disabled=false;iaEtat();
+  if(!j.ok){$('iaMsg').textContent='⚠ '+(j.message||j.error||'erreur');return}
+  if(j.base!==cur.version){$('iaMsg').textContent='⚠ Le projet a changé pendant la demande : relance la demande.';return}
+  propo=j.doc;$('iaMsg').textContent='';$('iaExpl').textContent=j.explication||'';$('iaProp').classList.remove('hide');rendre($('apercu'),propo)})
+ .catch(function(){$('iaGo').disabled=false;$('iaMsg').textContent='⚠ Pas de réponse : rien n’a été modifié.'})};
+$('iaOui').onclick=function(){if(!propo)return;memoriser();cur.doc=propo;propo=null;$('iaProp').classList.add('hide');$('eFormat').value=cur.doc.format||'site';$('iaTxt').value='';dessiner();sauver();$('iaMsg').textContent='✔ Appliqué (↶ Annuler pour revenir en arrière).'};
+$('iaNon').onclick=function(){propo=null;$('iaProp').classList.add('hide');rendre($('apercu'),cur.doc);$('iaMsg').textContent='Proposition refusée.'};
+function avis(){if(!cur)return;api('admin/avis?id='+encodeURIComponent(cur.id)).then(function(j){var B=$('avisBox');var L=(j.avis||[]).filter(function(a){return !a.traite});B.replaceChildren();
+ if(!L.length){B.appendChild(E('p','','Aucun retour en attente.'));B.lastChild.className='muted';return}
+ L.forEach(function(a){var c=E('div','border-left:3px solid var(--gold);padding:6px 10px;margin:8px 0');c.appendChild(E('b','',(a.bloc!=null?'Bloc '+(a.bloc+1)+' · ':'')+new Date(a.cree).toLocaleTimeString('fr-FR')));c.appendChild(E('p','margin:4px 0',a.texte));
+  var ia=E('button','','🤖 Demander à l’IA');ia.className='g';ia.onclick=function(){$('iaTxt').value=(a.bloc!=null?'Bloc '+(a.bloc+1)+' : ':'')+a.texte;$('iaTxt').focus()};
+  var ok=E('button','','✔ Fait');ok.className='g';ok.onclick=function(){api('admin/avis-traite',{avis:a.id}).then(avis)};c.appendChild(ia);c.appendChild(ok);B.appendChild(c)})})}
 ['tc1','tc2','tfond','ttexte'].forEach(function(i){$(i).oninput=function(){cur.doc.theme={c1:$('tc1').value,c2:$('tc2').value,fond:$('tfond').value,texte:$('ttexte').value};rendre($('apercu'),cur.doc);sauver()}});
 $('eTitre').oninput=sauver;
-[].forEach.call(document.querySelectorAll('.add'),function(b){b.onclick=function(){var t=b.getAttribute('data-t'),n={t:t};
+[].forEach.call(document.querySelectorAll('.add'),function(b){b.onclick=function(){memoriser();var t=b.getAttribute('data-t'),n={t:t};
  if(t==='produits')n.items=[{nom:'',prix:''}];if(t==='galerie')n.images=[];cur.doc.blocs.push(n);dessiner();sauver()}});
 function champ(parent,lab,b,k,long){var l=E('label','',lab);var i=long?E('textarea'):E('input');if(long)i.rows=3;i.value=b[k]||'';i.oninput=function(){b[k]=i.value;rendre($('apercu'),cur.doc);sauver()};parent.appendChild(l);parent.appendChild(i)}
+function choix(parent,lab,b,k,opts){var l=E('label','',lab),sel=E('select');opts.forEach(function(o){var op=E('option','',o[1]);op.value=o[0];if((b[k]||opts[0][0])===o[0])op.selected=true;sel.appendChild(op)});sel.onchange=function(){memoriser();b[k]=sel.value;rendre($('apercu'),cur.doc);sauver()};parent.appendChild(l);parent.appendChild(sel)}
 function photo(parent,lab,cb){var l=E('label','',lab),i=E('input');i.type='file';i.accept='image/*';if(lab.indexOf('Galerie')>=0)i.multiple=true;
  i.onchange=function(){[].forEach.call(i.files,function(f){reduirePhoto(f,1200,function(u){cb(u);dessiner();sauver()})})};parent.appendChild(l);parent.appendChild(i)}
 function dessiner(){var B=$('blocs');B.replaceChildren();cur.doc.blocs.forEach(function(b,ix){var c=E('div');c.className='card';var h=E('div','display:flex;justify-content:space-between;align-items:center');h.appendChild(E('b','',TB[b.t]||b.t));
  var outils=E('span');[['↑',-1],['↓',1]].forEach(function(m){var x=E('button','',m[0]);x.className='g';x.onclick=function(){var j=ix+m[1];if(j<0||j>=cur.doc.blocs.length)return;var a=cur.doc.blocs;a.splice(j,0,a.splice(ix,1)[0]);dessiner();sauver()};outils.appendChild(x)});
- var del=E('button','','✕');del.className='r';del.onclick=function(){cur.doc.blocs.splice(ix,1);dessiner();sauver()};outils.appendChild(del);h.appendChild(outils);c.appendChild(h);
- if(b.t==='titre'){champ(c,'Titre',b,'titre');champ(c,'Sous-titre',b,'sous');photo(c,'Photo',function(u){b.image=u});champ(c,'Texte du bouton (facultatif)',b,'bouton');champ(c,'Lien du bouton (https://…)',b,'lien')}
+ var del=E('button','','✕');del.className='r';del.onclick=function(){memoriser();cur.doc.blocs.splice(ix,1);dessiner();sauver()};outils.appendChild(del);h.appendChild(outils);c.appendChild(h);
+ if(b.t==='page')c.appendChild(E('p','','Ce qui suit est sur une nouvelle page (verso de la carte, page 2 du flyer…).'));
+ if(b.t==='titre'){choix(c,'Position de la photo',b,'pos',[['haut','En haut'],['gauche','À gauche'],['droite','À droite']]);choix(c,'Taille du titre',b,'taille',[['normal','Normal'],['grand','Grand'],['tres-grand','Très grand']]);champ(c,'Titre',b,'titre');champ(c,'Sous-titre',b,'sous');photo(c,'Photo',function(u){b.image=u});champ(c,'Texte du bouton (facultatif)',b,'bouton');champ(c,'Lien du bouton (https://…)',b,'lien')}
  if(b.t==='texte'){champ(c,'Titre',b,'titre');champ(c,'Texte',b,'texte',true)}
  if(b.t==='image'){photo(c,'Image',function(u){b.src=u});champ(c,'Légende',b,'legende')}
  if(b.t==='galerie'){photo(c,'Galerie (plusieurs photos)',function(u){b.images=(b.images||[]).concat([u]).slice(0,24)});c.appendChild(E('p','',(b.images||[]).length+' photo(s)'));var vg=E('button','','Vider la galerie');vg.className='g';vg.onclick=function(){b.images=[];dessiner();sauver()};c.appendChild(vg)}

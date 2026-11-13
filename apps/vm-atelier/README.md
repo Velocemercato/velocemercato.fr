@@ -22,3 +22,13 @@ Codes à usage unique : seul le condensat SHA-256 est stocké, consommation atom
 
 ## Limites honnêtes
 Une capture d'écran reste toujours possible. Les créations IA (logo, voix, vidéo, musique, 3D) sont vendues comme options mais réalisées à part pour l'instant.
+
+## Lot 1 — Assistant IA, formats print et retours client (13/11/2026)
+
+- **Assistant IA** (`src/ia.js`) : Romain écrit une consigne (« photo à gauche, titre plus grand »). L'IA (Claude, SDK officiel `@anthropic-ai/sdk`, sortie JSON validée par Zod) renvoie une **proposition** : elle s'affiche dans l'aperçu de Romain seulement, puis **Appliquer** / **Refuser** / **↶ Annuler**. Les photos ne sont jamais envoyées à l'IA (repères IMG_1…). Plafond d'appels par jour (`IA_MAX_JOUR`, 40 par défaut), journal sans secret, pas de relance automatique.
+- **Réglages Cloudflare** (saisis par Romain) : secret `ANTHROPIC_API_KEY` (obligatoire), variables facultatives `ANTHROPIC_MODEL` (défaut `claude-opus-5-5`) et `IA_MAX_JOUR`. Sans clé : « IA à connecter », aucune réussite simulée.
+- **Formats** : site, carte de visite 85×55 mm (recto/verso), flyer A5, affiche A3, post carré, story 9:16. Le bloc « 📄 Nouvelle page / verso » sépare les pages. Bouton **🖨 Imprimer / PDF** au bon format.
+- **Retours client en direct** : sur son lien « salon », le client touche un élément et écrit sa demande. Romain la reçoit dans l'atelier en 3 s maximum et peut l'envoyer à l'IA en un clic.
+- **Version** : un enregistrement fait sur une version périmée est refusé (409 `projet_modifie`).
+
+Tests : `node tests/ia.test.mjs` (13 cas, réponses d'Anthropic simulées, aucun appel payant) et `node tests/lot1.test.cjs` (13 vérifications navigateur, Romain + client simultanés, avec une fausse IA locale via `ANTHROPIC_BASE_URL`).
