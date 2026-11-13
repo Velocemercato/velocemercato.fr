@@ -1,65 +1,80 @@
 {
- "id": "2026-11-12-08",
- "date": "2026-11-12T08:44:40+01:00",
+ "id": "2026-11-13-08",
+ "date": "2026-11-13T08:44:01+01:00",
  "questions": [
   {
-   "q": "Selon la brève, quel entraîneur les États-Unis auraient-ils identifié comme cible prioritaire pour succéder à Pochettino ?",
+   "q": "Où évolue actuellement le Paris FC selon la brève ?",
    "choix": [
-    "Pep Guardiola",
-    "Thomas Tuchel",
-    "Luis Enrique",
-    "Carlo Ancelotti"
-   ],
-   "bonne": 0,
-   "explication": "La brève indique que la Fédération américaine aurait identifié Pep Guardiola comme cible prioritaire.",
-   "source": {
-    "titre": "Les États-Unis voudraient Pep Guardiola pour succéder à Mauricio Pochettino",
-    "id": "rss-v2-5954cbe840d98d3c19a1c7"
-   }
-  },
-  {
-   "q": "Quel joueur a ouvert le score lors du match Fos - Lucciana en National 2 ?",
-   "choix": [
-    "Degert",
-    "Rbaiti",
-    "Diakhité",
-    "Fatm"
-   ],
-   "bonne": 2,
-   "explication": "Diakhité a ouvert le score à la 8e minute, selon la brève.",
-   "source": {
-    "titre": "National 2 : Fos s'impose 3-1 face à Lucciana et remonte au classement",
-    "id": "rss-v2-1f20af642e2d52cbb99453"
-   }
-  },
-  {
-   "q": "Combien de buts Fos a-t-il inscrits face à Lucciana, selon la brève ?",
-   "choix": [
-    "2",
-    "3",
-    "4",
-    "5"
+    "Au Parc des Princes",
+    "Au stade Jean-Bouin",
+    "Au stade de Charléty",
+    "Au stade Ernest-Wallon"
    ],
    "bonne": 1,
-   "explication": "Fos s'est imposé 3 buts à 1 face à Lucciana.",
+   "explication": "La brève indique que le Paris FC évolue au stade Jean-Bouin, où il affiche une affluence proche de sa capacité.",
    "source": {
-    "titre": "National 2 : Fos s'impose 3-1 face à Lucciana et remonte au classement",
-    "id": "rss-v2-1f20af642e2d52cbb99453"
+    "titre": "Le Paris FC ouvert à un éventuel accueil au Parc des Princes",
+    "id": "rss-v2-b72d1b1b940d241f38dd4f"
    }
   },
   {
-   "q": "Quel centre de formation a produit Jacquet, Doué et Camavinga, selon franceinfo ?",
+   "q": "Quelle est la capacité du stade Jean-Bouin mentionnée dans la brève ?",
    "choix": [
-    "Le Stade Rennais",
-    "L'Olympique lyonnais",
-    "Le FC Nantes",
-    "Le LOSC Lille"
+    "15 000 places",
+    "19 600 places",
+    "20 000 places",
+    "24 000 places"
    ],
-   "bonne": 0,
-   "explication": "Jacquet, Doué, Dembélé et Camavinga ont été formés au centre de formation du Stade Rennais.",
+   "bonne": 1,
+   "explication": "La brève précise que le stade Jean-Bouin a une capacité de 19 600 places.",
    "source": {
-    "titre": "Pourquoi tant de joueurs des Bleus ont-ils grandi au Stade Rennais ?",
-    "id": "rss-v2-23f961a1b39dc6255d42d0"
+    "titre": "Le Paris FC ouvert à un éventuel accueil au Parc des Princes",
+    "id": "rss-v2-b72d1b1b940d241f38dd4f"
+   }
+  },
+  {
+   "q": "Contre quelle équipe Nîmes Olympique s'est-il imposé 3-0 ?",
+   "choix": [
+    "Bourges FC",
+    "Hyères",
+    "Istres FC",
+    "Canet-Roussillon FC"
+   ],
+   "bonne": 2,
+   "explication": "Nîmes Olympique a battu Istres FC 3-0 et reste leader du groupe C de National 1.",
+   "source": {
+    "titre": "National 1 : Nîmes leader après sa victoire sur Istres, Rumilly s'impose à Saint-Priest",
+    "id": "rss-v2-e03e32d011fb55b7140839"
+   }
+  },
+  {
+   "q": "Quel est le score du match entre le Racing Club de France Football et le FC Dieppe ?",
+   "choix": [
+    "0-0",
+    "1-1",
+    "2-2",
+    "2-1"
+   ],
+   "bonne": 1,
+   "explication": "Le FC Dieppe et le Racing Club de France Football ont fait match nul 1-1.",
+   "source": {
+    "titre": "National 1 : Nîmes leader après sa victoire sur Istres, Rumilly s'impose à Saint-Priest",
+    "id": "rss-v2-e03e32d011fb55b7140839"
+   }
+  },
+  {
+   "q": "Quel est l'âge de Ruairi McConville selon la brève ?",
+   "choix": [
+    "19 ans",
+    "21 ans",
+    "23 ans",
+    "25 ans"
+   ],
+   "bonne": 1,
+   "explication": "La brève présente Ruairi McConville comme un défenseur de 21 ans.",
+   "source": {
+    "titre": "Nations League : McConville et Atcheson, la charnière la plus solide du tournoi",
+    "id": "rss-v2-162f05f1a5a2a510271179"
    }
   }
  ]
