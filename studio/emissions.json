@@ -1,5 +1,113 @@
 [
  {
+  "id": "foot-edition-20261113-1200",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "midi",
+  "label": "JT 12 h",
+  "titre": "La Pastille Foot : édition du vendredi 13 novembre, 12 heures",
+  "accroche": "Midi pile, la Pastille Foot fait le tour de l'actu avec six brèves choisies.",
+  "duree": 154,
+  "date": "2026-11-13T12:36+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261113-1200.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-13T12:00:00+01:00",
+  "source_start": "2026-11-13T08:00:00+01:00",
+  "source_end": "2026-11-13T12:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-145a44045c177562b211cf",
+    "titre": "Mateta face à son ancien avocat : un litige financier de 540.000 euros",
+    "publishedAt": "2026-11-13T10:13:21Z",
+    "createdAt": "2026-11-13T10:40:00Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/une-dette-de-540-000-euros-le-bras-de-fer-entre-jean-philippe-mateta-et-son-ancien-avocat_AV-202611130435.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-308f160a594ab514dd14e7",
+    "titre": "EdF : Dugarry réclame des explications de Zidane sur son choix à droite",
+    "publishedAt": "2026-11-13T10:30:00Z",
+    "createdAt": "2026-11-13T10:39:56Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/equipe-de-france/edf-dugarry-commence-a-lacher-zidane"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-734abe0151ef30572a6ca0",
+    "titre": "Ligue 1 : tensions entre Antoine Arnault et Nasser Al-Khelaïfi, selon L'Équipe",
+    "publishedAt": "2026-11-13T08:19:00Z",
+    "createdAt": "2026-11-13T09:40:44Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a8568365193826064333-ligue-1-les-relations-se-tendent-entre-antoine-arnault-et-nasser-al-khelaifi"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-eacfe90cf0beac2d43aad0",
+    "titre": "David Beckham intégrera le Temple de la renommée du football américain",
+    "publishedAt": "2026-11-13T08:22:34Z",
+    "createdAt": "2026-11-13T09:40:41Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cmx295q05l7eo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-8b7273be0b4aaf34ba97cd",
+    "titre": "L'OM contacte l'agent de Santiago Hezze, milieu de l'Olympiakos valorisé 14 M€",
+    "publishedAt": "2026-11-13T08:30:00Z",
+    "createdAt": "2026-11-13T08:42:40Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/marseille/lom-contacte-lagent-dun-argentin-a-14-me"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-fca605d0a9b9801082ec7a",
+    "titre": "Lassine Sinayoko, en vedette au Paris FC, attire déjà l'intérêt de clubs anglais",
+    "publishedAt": "2026-11-13T08:35:00Z",
+    "createdAt": "2026-11-13T08:42:34Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/coupe-d-afrique-des-nations/pourquoi-lassine-sinayoko-tube-du-debut-de-saison-est-devenu-une-star-sur-le-tard_AV-202611130037.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-d07130a21cd743c00ce98a",
+    "titre": "Équipe de France : Dayot Upamecano quitte le rassemblement pour raison personnelle",
+    "publishedAt": "2026-11-13T06:29:43Z",
+    "createdAt": "2026-11-13T07:48:30Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/equipe-de-france/equipe-de-france-dayot-upamecano-quitte-le-rassemblement-pour-raison-personnelle_AV-202611130205.html"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261113-0800",
   "univers": "foot",
   "format": "edition",
@@ -12208,28 +12316,5 @@
   "audio": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@f1d1b875c11235a8e10aaaa74ad583b52fb7d151/foot-edition-20261023-1224.m4a",
   "page": "https://velocemercato.fr/studio/episodes/foot-edition-20261023-1224.html",
   "poster": "/studio/episodes/posters/foot-edition-20261023-1224.jpg"
- },
- {
-  "id": "gaming-edition-20261023-0901",
-  "univers": "gaming",
-  "format": "edition",
-  "moment": "matin",
-  "label": "Édition du matin",
-  "titre": "La Pastille Gaming : le journal du vendredi 23 octobre",
-  "accroche": "Le journal du matin de La Pastille Gaming, une émission générée par IA.",
-  "duree": 226,
-  "date": "2026-10-23T09:01+02:00",
-  "publie": true,
-  "voix": [
-   "piper"
-  ],
-  "speech_rate": 1.12,
-  "fichier": "gaming-edition-20261023-0901.mp4",
-  "media_sha": "341c751cbd7ef0446cd11994382b354e30da908b",
-  "video": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@341c751cbd7ef0446cd11994382b354e30da908b/gaming-edition-20261023-0901.mp4",
-  "image": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@341c751cbd7ef0446cd11994382b354e30da908b/gaming-edition-20261023-0901.jpg",
-  "audio": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@341c751cbd7ef0446cd11994382b354e30da908b/gaming-edition-20261023-0901.m4a",
-  "page": "https://velocemercato.fr/studio/episodes/gaming-edition-20261023-0901.html",
-  "poster": "/studio/episodes/posters/gaming-edition-20261023-0901.jpg"
  }
 ]
