@@ -69,3 +69,12 @@ Tests : `tests/lot2.test.cjs` (12 vérifications).
 - Prix des visuels dans `src/prix.js` (`PRIX.produits`) ; options possibles : logo, retouches IA. Le serveur recalcule le
   total et impose le format du produit.
 - Tests : `tests/visuels.test.cjs` (21 vérifications, dont 24 affichages 320/390/768/1300 px sans débordement).
+
+## Paiement en deux fois (50 / 50) et passage en réel
+
+- Statuts : `nouvelle` → **`acompte`** (50 % payés) → `payee` (solde payé) → `livree`.
+- Dans l'atelier (onglet Commandes) : « 💳 Créer le lien d'acompte 50 % », puis après paiement « 💳 Créer le lien du solde 50 % ».
+  Le client voit « Payer l'acompte (X €) » puis « Payer le solde (Y €) » sur son lien de suivi. Acompte + solde = total exact au centime.
+- `STRIPE_REEL = "oui"` (wrangler.toml) : accord écrit de Romain du 13/11/2026. Le réel démarre **seulement** quand le secret
+  `STRIPE_SECRET_KEY` contient une clé live (`sk_live_…`) ; le bandeau « MODE TEST » disparaît alors tout seul.
+- Tests : `tests/lot3.test.cjs` (13), `tests/paiement.test.mjs` (15).

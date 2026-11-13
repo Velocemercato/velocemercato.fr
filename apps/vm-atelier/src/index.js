@@ -3,12 +3,12 @@
 //  /salon/<jeton>: « mode salon » : le client voit sur son téléphone ce que Romain construit, en direct ;
 //  /voir        : consultation d'un projet avec un code à USAGE UNIQUE (accès perdu à la fermeture) ;
 //  /admin       : l'atelier de Romain (protégé par le secret ADMIN_TOKEN défini dans Cloudflare).
-// Aucun paiement n'est encaissé ici : Romain valide la commande puis envoie un lien de paiement Stripe.
+// Paiement en deux fois via Stripe : 50 % d'acompte au lancement, 50 % de solde à la validation finale (liens créés par Romain).
 
 import { DurableObject } from 'cloudflare:workers';
 import { devis } from './prix.js';
 import { proposer, iaConfiguree, fournisseur, modele } from './ia.js';
-import { creerPaiement, verifierPaiement, stripeConfigure, modeStripe } from './paiement.js';
+import { creerPaiement, verifierPaiement, stripeConfigure, modeStripe, montants, etapeAPayer, euros } from './paiement.js';
 import { pageStudio, pageSalon, pageVoir, pageAdmin, pageAccueil } from './pages.js';
 
 const CODE_JOURS = 7;        // validité d'un code de consultation non utilisé
@@ -80,7 +80,7 @@ export class Store extends DurableObject {
     return p ? JSON.parse(p.doc) : null;
   }
   colonneProjet() {
-    for (const c of ['projet TEXT', 'paiement_session TEXT', 'paiement_url TEXT', 'paye_le TEXT'])
+    for (const c of ['projet TEXT', 'paiement_session TEXT', 'paiement_url TEXT', 'paye_le TEXT', 'paiement_etape TEXT', 'acompte_le TEXT'])
       try { this.sql.exec('ALTER TABLE commandes ADD COLUMN ' + c); } catch (e) { /* déjà présente */ }
   }
   rows(q, ...a) { return [...this.sql.exec(q, ...a)]; }
@@ -107,8 +107,14 @@ export class Store extends DurableObject {
         if (!p) return json({ error: 'lien_invalide' }, 404);
         this.colonneProjet();
         const pid = this.rows('SELECT id FROM projets WHERE salon=?', a.salon)[0].id;
-        const cmd = this.rows('SELECT id, total, statut, paiement_url FROM commandes WHERE projet=? ORDER BY cree DESC LIMIT 1', pid)[0];
-        const paiement = cmd ? { commande: cmd.id, total: cmd.total, paye: cmd.statut === 'payee' || cmd.statut === 'livree', url: cmd.statut === 'payee' || cmd.statut === 'livree' ? null : cmd.paiement_url } : null;
+        const cmd = this.rows('SELECT id, total, statut, config, paiement_url, paiement_etape FROM commandes WHERE projet=? ORDER BY cree DESC LIMIT 1', pid)[0];
+        let paiement = null;
+        if (cmd) {
+          const et = etapeAPayer(cmd.statut), m = montants({ config: JSON.parse(cmd.config) });
+          paiement = { commande: cmd.id, total: cmd.total, paye: cmd.statut === 'payee' || cmd.statut === 'livree', acompte_paye: cmd.statut === 'acompte',
+            etape: et, montant: et ? euros(et === 'acompte' ? m.acompte : m.solde) : null,
+            url: et && cmd.paiement_etape === et ? cmd.paiement_url : null };
+        }
         if (Number(a.v) === p.version) return json({ v: p.version, same: true, paiement });
         return json({ v: p.version, nom: p.nom, doc: JSON.parse(p.doc), paiement });
       }
@@ -161,9 +167,12 @@ export class Store extends DurableObject {
         return c ? json({ ...c, contact: JSON.parse(c.contact), config: JSON.parse(c.config) }) : json({ error: 'introuvable' }, 404);
       }
       case 'paiementEnregistrer':
-        this.colonneProjet(); this.sql.exec('UPDATE commandes SET paiement_session=?, paiement_url=? WHERE id=?', a.session, a.url, a.id); return json({ ok: true });
+        this.colonneProjet(); this.sql.exec('UPDATE commandes SET paiement_session=?, paiement_url=?, paiement_etape=? WHERE id=?', a.session, a.url, a.etape, a.id); return json({ ok: true });
       case 'marquerPayee': // idempotent : un paiement confirmé deux fois ne change rien
-        this.colonneProjet(); this.sql.exec("UPDATE commandes SET statut='payee', paye_le=? WHERE id=? AND statut IN ('nouvelle','validee')", this.now(), a.id); return json({ ok: true });
+        this.colonneProjet();
+        if (a.etape === 'solde') this.sql.exec("UPDATE commandes SET statut='payee', paye_le=?, paiement_url=NULL WHERE id=? AND statut='acompte'", this.now(), a.id);
+        else this.sql.exec("UPDATE commandes SET statut='acompte', acompte_le=?, paiement_url=NULL WHERE id=? AND statut IN ('nouvelle','validee')", this.now(), a.id);
+        return json({ ok: true });
       case 'avisListe': return json({ avis: this.rows('SELECT id, bloc, texte, cree, traite FROM avis WHERE projet=? ORDER BY cree DESC LIMIT 50', a.id) });
       case 'avisTraite': this.sql.exec('UPDATE avis SET traite=1 WHERE id=?', a.avis); return json({ ok: true });
       // --- Plafond quotidien d'appels IA (réservation atomique avant l'appel payant).
@@ -202,7 +211,7 @@ export class Store extends DurableObject {
       // --- Administration (déjà authentifiée par le Worker).
       case 'etat': this.colonneProjet(); return json({
         projets: this.rows('SELECT id, nom, client, version, salon, maj FROM projets ORDER BY maj DESC LIMIT 200'),
-        commandes: this.rows('SELECT id, cree, contact, config, total, statut, projet, paiement_session, paiement_url, paye_le FROM commandes ORDER BY cree DESC LIMIT 200')
+        commandes: this.rows('SELECT id, cree, contact, config, total, statut, projet, paiement_session, paiement_url, paiement_etape, paye_le, acompte_le FROM commandes ORDER BY cree DESC LIMIT 200')
           .map((c) => ({ ...c, contact: JSON.parse(c.contact), config: JSON.parse(c.config) })),
       });
       case 'creer': {
@@ -251,7 +260,7 @@ export class Store extends DurableObject {
         this.sql.exec('DELETE FROM vues WHERE code IN (SELECT hash FROM codes WHERE projet=? AND substr(hash,1,12)=?)', a.id, a.ref);
         return json({ ok: true });
       case 'statut': {
-        const ok = ['nouvelle', 'validee', 'payee', 'livree', 'annulee'];
+        const ok = ['nouvelle', 'validee', 'acompte', 'payee', 'livree', 'annulee'];
         if (!ok.includes(a.statut)) return json({ error: 'statut_invalide' }, 400);
         this.sql.exec('UPDATE commandes SET statut=? WHERE id=?', a.statut, a.id); return json({ ok: true });
       }
@@ -293,18 +302,23 @@ export default {
       if (p === '/paiement/retour') {
         const id = net(url.searchParams.get('c'), 20);
         const c = await (await appel(env, 'lireCommande', { id })).json();
-        let paye = false;
-        if (!c.error && c.paiement_session) { const v = await verifierPaiement(env, c.paiement_session); paye = v.paye; if (paye) await appel(env, 'marquerPayee', { id }); }
-        if (!c.error && (c.statut === 'payee' || c.statut === 'livree')) paye = true;
-        const titre = paye ? '✅ Paiement reçu, merci !' : (url.searchParams.get('annule') ? 'Paiement annulé' : 'Paiement non confirmé');
-        const texte = paye ? 'Votre commande n° ' + (c.id || '') + ' est payée. Le créateur finalise votre site et le met en ligne.' : 'Aucun montant n’a été débité. Vous pouvez réessayer depuis votre lien de suivi.';
+        let paye = false, etape = c.paiement_etape || 'acompte';
+        if (!c.error && c.paiement_session) { const v = await verifierPaiement(env, c.paiement_session); paye = v.paye; if (paye) await appel(env, 'marquerPayee', { id, etape }); }
+        if (!c.error && (c.statut === 'payee' || c.statut === 'livree')) { paye = true; etape = 'solde'; }
+        else if (!c.error && c.statut === 'acompte' && etape === 'acompte') paye = true;
+        const m = c.error ? null : montants(c);
+        const titre = paye ? (etape === 'acompte' ? '✅ Acompte reçu, merci !' : '✅ Paiement reçu, merci !') : (url.searchParams.get('annule') ? 'Paiement annulé' : 'Paiement non confirmé');
+        const texte = paye ? (etape === 'acompte'
+          ? 'L’acompte de votre commande n° ' + c.id + ' est payé. Le créateur réalise votre projet avec vous ; le solde (' + euros(m.solde) + ') sera demandé à la validation finale.'
+          : 'Votre commande n° ' + c.id + ' est entièrement payée. Le créateur finalise et vous livre votre projet.')
+          : 'Aucun montant n’a été débité. Vous pouvez réessayer depuis votre lien de suivi.';
         return html('<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Paiement — VM Studio</title></head><body style="margin:0;background:#07080d;color:#f3f4f8;font:17px/1.5 system-ui;display:grid;place-items:center;min-height:100vh"><main style="max-width:520px;padding:24px;text-align:center"><h1>' + titre + '</h1><p>' + texte + '</p></main></body></html>');
       }
     }
     if (!p.startsWith('/api/')) return new Response('Introuvable', { status: 404 });
 
     // Lectures publiques.
-    if (req.method === 'GET' && p === '/api/config') return json({ email: net(env.CONTACT_EMAIL, 120), tel: net(env.CONTACT_TEL, 40), domaine: env.DOMAINE_LIENS || DOMAINE });
+    if (req.method === 'GET' && p === '/api/config') return json({ email: net(env.CONTACT_EMAIL, 120), tel: net(env.CONTACT_TEL, 40), domaine: env.DOMAINE_LIENS || DOMAINE, paiement: modeStripe(env) === 'reel' && env.STRIPE_REEL === 'oui' ? 'reel' : 'test' });
     const ms = p.match(/^\/api\/salon\/([A-Z0-9]{24})$/);
     if (req.method === 'GET' && ms) return appel(env, 'salon', { salon: ms[1], v: url.searchParams.get('v') });
     // Fermeture d'une consultation (envoyée à la fermeture de la page, sans en-tête Origin parfois) : ne fait que supprimer sa propre session.
@@ -395,18 +409,19 @@ export default {
       if (op === 'paiement') {
         const c = await (await appel(env, 'lireCommande', { id: corps.id })).json();
         if (c.error) return json(c, 404);
-        if (c.statut === 'payee' || c.statut === 'livree') return json({ error: 'deja_payee', message: 'Commande déjà payée.' }, 409);
-        const r = await creerPaiement(env, c, env.DOMAINE_LIENS || DOMAINE);
+        const etape = etapeAPayer(c.statut);
+        if (!etape) return json({ error: 'deja_payee', message: c.statut === 'annulee' ? 'Commande annulée.' : 'Commande déjà payée.' }, 409);
+        const r = await creerPaiement(env, c, env.DOMAINE_LIENS || DOMAINE, undefined, etape);
         if (!r.ok) return json({ error: r.erreur, message: r.message }, r.erreur === 'stripe_non_connecte' ? 503 : 400);
-        await appel(env, 'paiementEnregistrer', { id: c.id, session: r.session, url: r.url });
-        return json({ ok: true, url: r.url, mode: r.mode });
+        await appel(env, 'paiementEnregistrer', { id: c.id, session: r.session, url: r.url, etape });
+        return json({ ok: true, url: r.url, mode: r.mode, etape, montant: euros(r.montant) });
       }
       if (op === 'paiement-verifier') {
         const c = await (await appel(env, 'lireCommande', { id: corps.id })).json();
         if (c.error || !c.paiement_session) return json({ paye: false });
         const v = await verifierPaiement(env, c.paiement_session);
-        if (v.paye) await appel(env, 'marquerPayee', { id: c.id });
-        return json({ paye: v.paye });
+        if (v.paye) await appel(env, 'marquerPayee', { id: c.id, etape: c.paiement_etape || 'acompte' });
+        return json({ paye: v.paye, etape: c.paiement_etape || 'acompte' });
       }
       if (op === 'ia') {
         const consigne = net(corps.consigne, 1500);

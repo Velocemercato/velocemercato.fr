@@ -7,6 +7,9 @@ workers_dev = true
 [vars]
 CONTACT_EMAIL = ""
 CONTACT_TEL = ""
+# Accord écrit de Romain (13/11/2026 : « tu peux valider Stripe ») : l'encaissement réel est autorisé
+# dès que le secret STRIPE_SECRET_KEY contient une clé live (sk_live_…). Avec une clé de test, rien ne change.
+STRIPE_REEL = "oui"
 
 [[durable_objects.bindings]]
 name = "STORE"
