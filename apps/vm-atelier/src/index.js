@@ -8,6 +8,7 @@
 import { DurableObject } from 'cloudflare:workers';
 import { devis } from './prix.js';
 import { proposer, iaConfiguree, fournisseur, modele } from './ia.js';
+import { creerPaiement, verifierPaiement, stripeConfigure, modeStripe } from './paiement.js';
 import { pageStudio, pageSalon, pageVoir, pageAdmin, pageAccueil } from './pages.js';
 
 const CODE_JOURS = 7;        // validité d'un code de consultation non utilisé
@@ -67,7 +68,10 @@ export class Store extends DurableObject {
     `);
   }
   now() { return new Date().toISOString(); }
-  colonneProjet() { try { this.sql.exec('ALTER TABLE commandes ADD COLUMN projet TEXT'); } catch (e) { /* déjà présente */ } }
+  colonneProjet() {
+    for (const c of ['projet TEXT', 'paiement_session TEXT', 'paiement_url TEXT', 'paye_le TEXT'])
+      try { this.sql.exec('ALTER TABLE commandes ADD COLUMN ' + c); } catch (e) { /* déjà présente */ }
+  }
   rows(q, ...a) { return [...this.sql.exec(q, ...a)]; }
   // Limite simple : n essais par clé et par heure.
   limite(cle, max) {
@@ -83,8 +87,12 @@ export class Store extends DurableObject {
       case 'salon': {
         const p = this.rows('SELECT doc, version, nom FROM projets WHERE salon=?', a.salon)[0];
         if (!p) return json({ error: 'lien_invalide' }, 404);
-        if (Number(a.v) === p.version) return json({ v: p.version, same: true });
-        return json({ v: p.version, nom: p.nom, doc: JSON.parse(p.doc) });
+        this.colonneProjet();
+        const pid = this.rows('SELECT id FROM projets WHERE salon=?', a.salon)[0].id;
+        const cmd = this.rows('SELECT id, total, statut, paiement_url FROM commandes WHERE projet=? ORDER BY cree DESC LIMIT 1', pid)[0];
+        const paiement = cmd ? { commande: cmd.id, total: cmd.total, paye: cmd.statut === 'payee' || cmd.statut === 'livree', url: cmd.statut === 'payee' || cmd.statut === 'livree' ? null : cmd.paiement_url } : null;
+        if (Number(a.v) === p.version) return json({ v: p.version, same: true, paiement });
+        return json({ v: p.version, nom: p.nom, doc: JSON.parse(p.doc), paiement });
       }
       // --- Consultation à usage unique : consommation atomique du code, puis session courte.
       case 'ouvrir': {
@@ -111,6 +119,15 @@ export class Store extends DurableObject {
         this.sql.exec('INSERT INTO avis(id,projet,bloc,texte,cree) VALUES(?,?,?,?,?)', crypto.randomUUID(), p.id, bloc, texte, this.now());
         return json({ ok: true });
       }
+      case 'lireCommande': {
+        this.colonneProjet();
+        const c = this.rows('SELECT * FROM commandes WHERE id=?', a.id)[0];
+        return c ? json({ ...c, contact: JSON.parse(c.contact), config: JSON.parse(c.config) }) : json({ error: 'introuvable' }, 404);
+      }
+      case 'paiementEnregistrer':
+        this.colonneProjet(); this.sql.exec('UPDATE commandes SET paiement_session=?, paiement_url=? WHERE id=?', a.session, a.url, a.id); return json({ ok: true });
+      case 'marquerPayee': // idempotent : un paiement confirmé deux fois ne change rien
+        this.colonneProjet(); this.sql.exec("UPDATE commandes SET statut='payee', paye_le=? WHERE id=? AND statut IN ('nouvelle','validee')", this.now(), a.id); return json({ ok: true });
       case 'avisListe': return json({ avis: this.rows('SELECT id, bloc, texte, cree, traite FROM avis WHERE projet=? ORDER BY cree DESC LIMIT 50', a.id) });
       case 'avisTraite': this.sql.exec('UPDATE avis SET traite=1 WHERE id=?', a.avis); return json({ ok: true });
       // --- Plafond quotidien d'appels IA (réservation atomique avant l'appel payant).
@@ -149,7 +166,7 @@ export class Store extends DurableObject {
       // --- Administration (déjà authentifiée par le Worker).
       case 'etat': this.colonneProjet(); return json({
         projets: this.rows('SELECT id, nom, client, version, salon, maj FROM projets ORDER BY maj DESC LIMIT 200'),
-        commandes: this.rows('SELECT id, cree, contact, config, total, statut, projet FROM commandes ORDER BY cree DESC LIMIT 200')
+        commandes: this.rows('SELECT id, cree, contact, config, total, statut, projet, paiement_session, paiement_url, paye_le FROM commandes ORDER BY cree DESC LIMIT 200')
           .map((c) => ({ ...c, contact: JSON.parse(c.contact), config: JSON.parse(c.config) })),
       });
       case 'creer': {
@@ -221,6 +238,16 @@ export default {
       if (p === '/voir') return html(pageVoir);
       if (p === '/admin') return html(pageAdmin);
       if (/^\/salon\/[A-Z0-9]{24}$/.test(p)) return html(pageSalon, true);
+      if (p === '/paiement/retour') {
+        const id = net(url.searchParams.get('c'), 20);
+        const c = await (await appel(env, 'lireCommande', { id })).json();
+        let paye = false;
+        if (!c.error && c.paiement_session) { const v = await verifierPaiement(env, c.paiement_session); paye = v.paye; if (paye) await appel(env, 'marquerPayee', { id }); }
+        if (!c.error && (c.statut === 'payee' || c.statut === 'livree')) paye = true;
+        const titre = paye ? '✅ Paiement reçu, merci !' : (url.searchParams.get('annule') ? 'Paiement annulé' : 'Paiement non confirmé');
+        const texte = paye ? 'Votre commande n° ' + (c.id || '') + ' est payée. Le créateur finalise votre site et le met en ligne.' : 'Aucun montant n’a été débité. Vous pouvez réessayer depuis votre lien de suivi.';
+        return html('<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Paiement — VM Studio</title></head><body style="margin:0;background:#07080d;color:#f3f4f8;font:17px/1.5 system-ui;display:grid;place-items:center;min-height:100vh"><main style="max-width:520px;padding:24px;text-align:center"><h1>' + titre + '</h1><p>' + texte + '</p></main></body></html>');
+      }
     }
     if (!p.startsWith('/api/')) return new Response('Introuvable', { status: 404 });
 
@@ -276,7 +303,7 @@ export default {
       if (op === 'avis' && req.method === 'GET') return appel(env, 'avisListe', { id: url.searchParams.get('id') });
       if (op === 'ia-etat' && req.method === 'GET') {
         const e = await (await appel(env, 'iaEtat')).json();
-        return json({ configuree: iaConfiguree(env), fournisseur: fournisseur(env), modele: modele(env), plafond: Number(env.IA_MAX_JOUR) || 40, ...e });
+        return json({ stripe: stripeConfigure(env) ? modeStripe(env) : null, configuree: iaConfiguree(env), fournisseur: fournisseur(env), modele: modele(env), plafond: Number(env.IA_MAX_JOUR) || 40, ...e });
       }
       if (req.method !== 'POST') return json({ error: 'methode' }, 405);
       if (op === 'code') {
@@ -286,6 +313,22 @@ export default {
         return json({ ok: true, code }); // montré une seule fois à Romain ; seul le condensat est stocké
       }
       if (op === 'avis-traite') return appel(env, 'avisTraite', { avis: corps.avis });
+      if (op === 'paiement') {
+        const c = await (await appel(env, 'lireCommande', { id: corps.id })).json();
+        if (c.error) return json(c, 404);
+        if (c.statut === 'payee' || c.statut === 'livree') return json({ error: 'deja_payee', message: 'Commande déjà payée.' }, 409);
+        const r = await creerPaiement(env, c, env.DOMAINE_LIENS || DOMAINE);
+        if (!r.ok) return json({ error: r.erreur, message: r.message }, r.erreur === 'stripe_non_connecte' ? 503 : 400);
+        await appel(env, 'paiementEnregistrer', { id: c.id, session: r.session, url: r.url });
+        return json({ ok: true, url: r.url, mode: r.mode });
+      }
+      if (op === 'paiement-verifier') {
+        const c = await (await appel(env, 'lireCommande', { id: corps.id })).json();
+        if (c.error || !c.paiement_session) return json({ paye: false });
+        const v = await verifierPaiement(env, c.paiement_session);
+        if (v.paye) await appel(env, 'marquerPayee', { id: c.id });
+        return json({ paye: v.paye });
+      }
       if (op === 'ia') {
         const consigne = net(corps.consigne, 1500);
         if (!consigne) return json({ error: 'consigne_vide' }, 400);

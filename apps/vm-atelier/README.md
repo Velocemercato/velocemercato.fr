@@ -37,3 +37,9 @@ Tests : `node tests/ia.test.mjs` (21 cas, Claude et Gemini, réponses d'Anthropi
 - **Deux fournisseurs d'IA** : Claude (`ANTHROPIC_API_KEY`) ou **Gemini, offre gratuite de Google AI Studio** (`GEMINI_API_KEY`, modèle `GEMINI_MODEL`, défaut `gemini-flash-latest`). `IA_FOURNISSEUR=claude|gemini` force le choix ; sinon Claude s'il est configuré, puis Gemini.
 - **Liens clients sur le domaine VM vérifié uniquement** : `https://atelier.velocemercato.fr` (salon, code unique). L'adresse technique `*.workers.dev` redirige en 301 vers ce domaine.
 - **Option payante pour le client** : « Retouches en direct avec l'assistant IA (30 jours) », 29 €, pour que le coût de l'IA soit couvert par le client.
+
+## Lot 3 — Paiement Stripe (mode test)
+- Atelier → Commandes → **💳 Créer le lien de paiement** : session Stripe Checkout créée côté serveur avec les lignes et prix du devis enregistré (centimes entiers ; aucun montant venant du navigateur).
+- Le client voit **« 💳 Payer X € »** sur son lien de suivi ; après paiement, la page `/paiement/retour` **interroge Stripe** (payment_status `paid`) avant de passer la commande en « payée » (idempotent). Visiter la page sans payer ne valide rien.
+- Secret Cloudflare : `STRIPE_SECRET_KEY` (clé **de test** `sk_test_…` ou restreinte `rk_test_…`). Une clé réelle est **refusée** tant que la variable `STRIPE_REEL=oui` n'est pas ajoutée après l'accord écrit de Romain.
+- Tests : `tests/paiement.test.mjs` (10) et `tests/lot3.test.cjs` (9, faux Stripe local via `STRIPE_BASE_URL`).

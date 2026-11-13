@@ -137,6 +137,7 @@ maj();`);
 // ---------- Mode salon : le client voit le site se construire en direct ----------
 export const pageSalon = page('Votre site — en direct', `<div id="site"></div>
 <div id="live" style="position:fixed;top:10px;right:10px;background:#000c;color:#fff;border-radius:999px;padding:5px 11px;font:700 12px system-ui;z-index:5">● en direct</div>
+<a id="payer" class="hide" style="position:fixed;bottom:14px;left:14px;z-index:5;background:#3ccf7a;color:#06210f;border-radius:999px;padding:12px 16px;font:900 15px system-ui;text-decoration:none;box-shadow:0 6px 20px #0008"></a>
 <button id="msgBtn" style="position:fixed;bottom:14px;right:14px;z-index:5;background:#f4cf55;color:#111;border:0;border-radius:999px;padding:12px 16px;font:800 15px system-ui;box-shadow:0 6px 20px #0008">💬 Demander une modif</button>
 <div id="feuille" class="hide" style="position:fixed;left:0;right:0;bottom:0;z-index:6;background:#11131d;color:#fff;border-top:2px solid #f4cf55;padding:14px;font:15px system-ui">
  <b id="fTitre">Ta demande</b><p style="margin:4px 0 8px;color:#a9b0c4;font-size:13px">Astuce : touche un élément du site pour dire précisément lequel changer.</p>
@@ -145,7 +146,7 @@ export const pageSalon = page('Votre site — en direct', `<div id="site"></div>
  <p id="fMsg" style="color:#f4cf55;min-height:1.2em;margin:6px 0 0"></p></div>`,
 `var tok=location.pathname.split('/').pop(),v=0,el=document.getElementById('site'),live=document.getElementById('live'),bloc=null,$=function(i){return document.getElementById(i)};
 function boucle(){fetch('/api/salon/'+tok+'?v='+v,{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){
- if(j.error){live.textContent='lien expiré';live.style.background='#a00';return}live.style.background='#0a0c';if(!j.same){v=j.v;document.title=j.nom||'Votre site';rendre(el,j.doc)}setTimeout(boucle,1500)})
+ if(j.error){live.textContent='lien expiré';live.style.background='#a00';return}live.style.background='#0a0c';var py=$('payer');if(j.paiement){if(j.paiement.paye){py.textContent='✅ Payé';py.removeAttribute('href');py.classList.remove('hide')}else if(j.paiement.url&&/^https:\\/\\/checkout\\.stripe\\.com\\//.test(j.paiement.url)){py.textContent='💳 Payer '+j.paiement.total+' €';py.href=j.paiement.url;py.classList.remove('hide')}else py.classList.add('hide')}if(!j.same){v=j.v;document.title=j.nom||'Votre site';rendre(el,j.doc)}setTimeout(boucle,1500)})
  .catch(function(){live.style.background='#a60c';setTimeout(boucle,4000)})}
 function ouvrirFeuille(n){bloc=n;$('fTitre').textContent=n==null?'Ta demande':'Ta demande pour l’élément n° '+(n+1);$('fMsg').textContent='';$('feuille').classList.remove('hide');$('fTxt').focus()}
 el.addEventListener('click',function(e){var s=e.target.closest('[data-bloc]');if(!s||e.target.closest('a'))return;e.preventDefault();
@@ -211,6 +212,14 @@ function etat(){api('admin/etat').then(function(s){if(s._s===401){$('login').cla
   var sel=E('select','width:auto;margin-top:8px');['nouvelle','validee','payee','livree','annulee'].forEach(function(x){var o=E('option','',x);o.value=x;if(x===k.statut)o.selected=true;sel.appendChild(o)});
   sel.onchange=function(){api('admin/statut',{id:k.id,statut:sel.value})};c.appendChild(sel);
   if(k.projet){var op=E('button','','✏️ Ouvrir son site');op.className='p';op.onclick=function(){ouvrir(k.projet)};c.appendChild(op)}
+  var payee=k.statut==='payee'||k.statut==='livree';
+  if(payee)c.appendChild(E('p','color:#3ccf7a;font-weight:800','✅ Payée'+(k.paye_le?' le '+new Date(k.paye_le).toLocaleString('fr-FR'):'')));
+  else{var pa=E('button','',k.paiement_url?'💳 Nouveau lien de paiement':'💳 Créer le lien de paiement');pa.className='p';var zone=E('div');
+   pa.onclick=function(){zone.textContent='…';api('admin/paiement',{id:k.id}).then(function(j){zone.replaceChildren();if(!j.ok){zone.appendChild(E('p','color:#ffb3bf',j.message||j.error));return}
+    zone.appendChild(E('p','',(j.mode==='test'?'🧪 MODE TEST · ':'')+'Le client voit le bouton « Payer » sur son lien de suivi. Lien direct :'));var u=E('div','',j.url);u.className='code';zone.appendChild(u)})};
+   c.appendChild(pa);
+   if(k.paiement_session){var vf=E('button','','🔄 Vérifier le paiement');vf.className='g';vf.onclick=function(){api('admin/paiement-verifier',{id:k.id}).then(function(j){if(j.paye)etat();else{zone.textContent='Pas encore payé.'}})};c.appendChild(vf)}
+   c.appendChild(zone)}
   var b=E('button','',k.projet?'➕ Nouveau projet vierge':'➕ Créer le projet');b.className='g';b.onclick=function(){api('admin/creer',{nom:ct.projet||('Commande '+k.id),client:ct.nom}).then(function(j){if(j.ok)ouvrir(j.id)})};c.appendChild(b);C.appendChild(c)})})}
 $('entrer').onclick=function(){api('admin/login',{token:$('tok').value}).then(function(j){$('lmsg').textContent=j.ok?'':(j.error==='admin_non_configure'?'Le secret ADMIN_TOKEN n’est pas encore défini dans Cloudflare.':'Refusé.');if(j.ok){$('tok').value='';etat()}})};
 $('ongProjets').onclick=function(){vue('vProjets');etat()};$('ongCmd').onclick=function(){vue('vCmd');etat()};$('retour').onclick=function(){vue('vProjets');etat()};
