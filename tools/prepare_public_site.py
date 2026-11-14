@@ -96,8 +96,48 @@ def _prepare_affiches(root):
     page.write_text(source.replace(placeholder, galerie), encoding="utf-8")
 
 
+
+def _prepare_bilan_veille(root):
+    """Bilan rédigé, daté et strictement borné au lendemain des rencontres."""
+    page = root / "conseils/index.html"
+    source_file = root / "conseils/resultats.json"
+    if not page.is_file():
+        return
+    source = page.read_text(encoding="utf-8")
+    marker = "<!-- VM_BILAN_VEILLE -->"
+    if marker not in source:
+        raise ValueError("Emplacement de bilan manquant")
+    data = json.loads(source_file.read_text(encoding="utf-8")) if source_file.exists() else {}
+    paris = dt.timezone(dt.timedelta(hours=1))
+    aujourdhui = dt.datetime.now(dt.timezone.utc).astimezone(paris).date()
+    veille = (aujourdhui - dt.timedelta(days=1)).isoformat()
+    billets = []
+    for item in data.get("bilans", []) if isinstance(data, dict) else []:
+        if not isinstance(item, dict) or item.get("date") != veille:
+            continue
+        if len(billets) >= 3:
+            break
+        title = escape(str(item.get("titre", "Bilan du jour précédent")))
+        statut = escape(str(item.get("statut", "En cours de vérification")))
+        score = escape(str(item.get("score_confirme_par_capture", "")))
+        note = escape(str(item.get("note", "")))
+        missing = escape(str(item.get("autre_selection", "")))
+        cote = escape(str(item.get("cote_annoncee", "")))
+        billets.append(
+            '<article class="card bd-bilan"><span class="bd-etiquette">Bilan de la veille</span>'
+            + '<h2>' + title + '</h2><p><strong>' + statut + '</strong></p>'
+            + ('<p class="bd-score">' + score + '</p>' if score else '')
+            + ('<p>Cote annoncée : ' + cote + '</p>' if cote else '')
+            + ('<p>' + missing + '</p>' if missing else '')
+            + '<p class="bd-note">' + note + '</p>'
+            + '<p class="bd-note">Résultats non garantis · 18+ · Jouer comporte des risques.</p></article>'
+        )
+    source = source.replace(marker, ''.join(billets))
+    page.write_text(source, encoding="utf-8")
+
 def prepare(root):
     _prepare_affiches(root)
+    _prepare_bilan_veille(root)
     count = 0
     for path in sorted(root.rglob('*.html')):
         if any(part in {'.github', 'tests', 'tools', 'docs'} for part in path.relative_to(root).parts):
