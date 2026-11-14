@@ -1,5 +1,101 @@
 [
  {
+  "id": "foot-edition-20261114-0800",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "matin",
+  "label": "JT 08 h",
+  "titre": "La Pastille Foot - Journal du samedi 14 novembre, 08 heures",
+  "accroche": "Bonjour à tous, c'est parti pour La Pastille Foot, avec l'IA aux commandes.",
+  "duree": 141,
+  "date": "2026-11-14T09:00+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261114-0800.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-14T08:00:00+01:00",
+  "source_start": "2026-11-13T20:00:00+01:00",
+  "source_end": "2026-11-14T08:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-60d11dcbc79e386f5dca7b",
+    "titre": "Le Maroc écrase le Niger 5-1, doublé d'Hakimi en éliminatoires de la CAN 2027",
+    "publishedAt": "2026-11-13T22:05:03Z",
+    "createdAt": "2026-11-14T06:22:12Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a1020760531155136646-le-maroc-ecrase-le-niger-avec-un-double-dhakimi"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-83fef35c10c909c1424f39",
+    "titre": "L'Argentine s'incline face à l'Uruguay, premier match sans Messi",
+    "publishedAt": "2026-11-14T06:08:11Z",
+    "createdAt": "2026-11-14T06:22:08Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/l-argentine-s-incline-pour-la-premiere-post-messi-avec-un-but-contre-son-camp-de-balerdi_AV-202611140115.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-7dab032d03830dee4b1671",
+    "titre": "Des joueuses de Roubaix-Wervicq logent dans une résidence seniors à Tourcoing",
+    "publishedAt": "2026-11-13T10:45:02Z",
+    "createdAt": "2026-11-14T05:29:37Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/foot/quand-des-footballeuses-de-roubaix-wervicq-vivent-dans-une-residence-seniors_8280791.html#xtor=RSS-3-%5Bsports%2Ffoot%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-58f53a1d6010fe18090413",
+    "titre": "Collins regrette son absence face à Israël avec l'Irlande",
+    "publishedAt": "2026-11-13T12:26:18Z",
+    "createdAt": "2026-11-14T05:29:34Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cq7821vdgrevo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-44d3303dc47f26b52d567f",
+    "titre": "Jordan Alexandrenne, du gardien de but au défenseur central de Béthune",
+    "publishedAt": "2026-11-13T14:26:58Z",
+    "createdAt": "2026-11-14T04:37:32Z",
+    "references": [
+     {
+      "nom": "Foot Amateur",
+      "url": "https://footamateur.ouest-france.fr/des-gants-a-la-defense-la-trajectoire-singuliere-de-jordan-alexandrenne-avant-bethune-nancy/"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-cf6914d310187d7f9f288d",
+    "titre": "Paris FC : Naples s'intéresserait à Patrick Zabi, selon la Gazzetta dello Sport",
+    "publishedAt": "2026-11-13T16:05:00Z",
+    "createdAt": "2026-11-14T04:37:24Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a8557523222185456306-paris-fc-un-cador-europeen-piste-patrick-zabi-la-magie"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261113-2000",
   "univers": "foot",
   "format": "edition",
@@ -12679,29 +12775,5 @@
   "audio": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@570dc5eadeb92ebc8e9685e2eeda4b22ab613393/gaming-edition-20261023-1357.m4a",
   "page": "https://velocemercato.fr/studio/episodes/gaming-edition-20261023-1357.html",
   "poster": "/studio/episodes/posters/gaming-edition-20261023-1357.jpg"
- },
- {
-  "id": "actus-edition-20261023-1355",
-  "univers": "actus",
-  "format": "edition",
-  "moment": "midi",
-  "label": "Édition du midi",
-  "titre": "La Pastille Actus : 23 octobre, le JT du midi",
-  "accroche": "Le JT express de midi, six brèves, trois minutes, c'est parti.",
-  "duree": 171,
-  "date": "2026-10-23T13:55+02:00",
-  "publie": true,
-  "voix": [
-   "piper"
-  ],
-  "speech_rate": 1.12,
-  "fichier": "actus-edition-20261023-1355.mp4",
-  "editorial_revision": "court-v1",
-  "media_sha": "df6a37f73d79421fbaa23508413b8538f8a35632",
-  "video": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@df6a37f73d79421fbaa23508413b8538f8a35632/actus-edition-20261023-1355.mp4",
-  "image": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@df6a37f73d79421fbaa23508413b8538f8a35632/actus-edition-20261023-1355.jpg",
-  "audio": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@df6a37f73d79421fbaa23508413b8538f8a35632/actus-edition-20261023-1355.m4a",
-  "page": "https://velocemercato.fr/studio/episodes/actus-edition-20261023-1355.html",
-  "poster": "/studio/episodes/posters/actus-edition-20261023-1355.jpg"
  }
 ]
