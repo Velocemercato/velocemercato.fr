@@ -1,5 +1,24 @@
 [
  {
+  "id": "actus-edition-20261114-1300",
+  "date": "2026-11-14",
+  "moment": "midi",
+  "universes": [
+   "actus"
+  ],
+  "date_publication": "2026-11-14T12:22:58+00:00",
+  "titre": "VM Actus — JT 13 h — 14/11/2026",
+  "plateformes": {
+   "youtube": {
+    "url": "https://www.youtube.com/watch?v=NclXBnpuJSU",
+    "status": "published"
+   }
+  },
+  "edition_at": "2026-11-14T13:00:00+01:00",
+  "source_start": "2026-11-13T19:00:00+01:00",
+  "source_end": "2026-11-14T13:00:00+01:00"
+ },
+ {
   "id": "foot-edition-20261114-1200",
   "date": "2026-11-14",
   "moment": "midi",
@@ -1689,24 +1708,5 @@
   "edition_at": "2026-10-25T18:00:00+01:00",
   "source_start": "2026-10-25T10:00:00+01:00",
   "source_end": "2026-10-25T18:00:00+01:00"
- },
- {
-  "id": "actus-edition-20261025-1300",
-  "date": "2026-10-25",
-  "moment": "midi",
-  "universes": [
-   "actus"
-  ],
-  "date_publication": "2026-10-25T12:37:00+00:00",
-  "titre": "VM Actus — JT 13 h — 25/10/2026",
-  "plateformes": {
-   "youtube": {
-    "url": "https://www.youtube.com/watch?v=xnys-s_jRDw",
-    "status": "published"
-   }
-  },
-  "edition_at": "2026-10-25T13:00:00+01:00",
-  "source_start": "2026-10-25T07:00:00+01:00",
-  "source_end": "2026-10-25T13:00:00+01:00"
  }
 ]
