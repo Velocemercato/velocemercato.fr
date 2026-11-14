@@ -553,9 +553,9 @@
    "sport": "basket",
    "dom": "Rockets",
    "ext": "Jazz",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    123,
+    125,
     118
    ]
   },
@@ -579,10 +579,10 @@
    "sport": "basket",
    "dom": "Spurs",
    "ext": "Warriors",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
-    63,
-    33
+    82,
+    47
    ]
   },
   {
@@ -592,10 +592,10 @@
    "sport": "basket",
    "dom": "Kings",
    "ext": "Trail Blazers",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
-    48,
-    55
+    53,
+    64
    ]
   },
   {
@@ -620,8 +620,8 @@
    "ext": "Thunder",
    "statut": "IN_PLAY",
    "score": [
-    27,
-    24
+    43,
+    36
    ]
   },
   {
@@ -1574,6 +1574,6 @@
    ]
   }
  ],
- "maj": "2026-11-14T04:05:33Z",
- "verifie": "2026-11-14T04:05:33Z"
+ "maj": "2026-11-14T04:22:23Z",
+ "verifie": "2026-11-14T04:22:23Z"
 }
