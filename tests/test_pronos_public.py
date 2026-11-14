@@ -133,6 +133,26 @@ class PronosPublicTests(unittest.TestCase):
             self.assertNotIn("VIP interdit", section_affiches_publiques(root, self.NOW))
             self.assertNotIn("Image publique", render(root, self.NOW + dt.timedelta(days=2)))
 
+    def test_only_first_six_selections_image_hides_combined_odds_banner(self):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            (root / "pronos/affiches").mkdir(parents=True)
+            (root / "pronos/affiches/2026-11-14-six-selections.jpg").write_bytes(b"test")
+            (root / "pronos/affiches/2026-11-14-combine-multisport.jpg").write_bytes(b"test")
+            (root / "pronos/affiches-public.json").write_text(json.dumps({
+                "actif": True, "debut": "2026-11-01T00:00:00Z",
+                "expire": "2026-11-02T00:00:00Z",
+                "affiches": [
+                    {"titre": "6 conseils", "fichier": "2026-11-14-six-selections.jpg"},
+                    {"titre": "Combiné conservé", "fichier": "2026-11-14-combine-multisport.jpg"}
+                ]
+            }), encoding="utf-8")
+            gallery = section_affiches_publiques(root, self.NOW)
+            self.assertIn("aspect-ratio:1024 / 1320", gallery)
+            self.assertEqual(gallery.count("aspect-ratio:1024 / 1320"), 1)
+            self.assertIn("2026-11-14-combine-multisport.jpg", gallery)
+            self.assertIn("Combiné conservé", gallery)
+
     def test_archive_extraction_for_public_gallery(self):
         import zipfile
         from tools.prepare_public_site import _prepare_affiches
