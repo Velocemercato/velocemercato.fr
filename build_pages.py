@@ -95,7 +95,7 @@ footer{{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 
 </div>
 </article>
 {related}
-<div class="tools"><a class="btn red" href="/foot/#videos">🎬 Les vidéos de buts</a><a class="btn" href="/">← Toutes les brèves</a></div>
+<div class="tools"><a class="btn red" href="/foot/">⚽ Toute l’actu foot</a><a class="btn" href="/scores/">📊 Résultats en direct</a><a class="btn" href="/a/">🗂️ Toutes les brèves</a></div>
 </main>
 <footer><a href="/mentions-legales.html">Mentions légales</a> · <a href="/archives.html">Archives</a></footer>
 <script>
@@ -259,10 +259,28 @@ def main():
              f'  <url><loc>{SITE}/pro-auto/</loc></url>',
              f'  <url><loc>{SITE}/actus/</loc><changefreq>hourly</changefreq></url>',
              f'  <url><loc>{SITE}/pronos/</loc><changefreq>hourly</changefreq></url>']
+    # Rubriques principales absentes jusqu'ici (la rubrique Foot n'était même pas listée).
+    for extra in ('/foot/', '/scores/', '/region/', '/vm-gaming/', '/notifications/'):
+        if Path(extra.strip('/'), 'index.html').exists():
+            lines.append(f'  <url><loc>{SITE}{extra}</loc><changefreq>hourly</changefreq></url>')
+    # TOUTES les brèves conservées et indexables (et pas seulement celles du fil du moment).
+    toutes = {u: d for u, d in urls}
+    for dd, n, _ in archive:
+        toutes.setdefault(f'{SITE}/a/{n}', dd)
     lines += [f'  <url><loc>{html.escape(u)}</loc>' + (f'<lastmod>{html.escape(d[:10])}</lastmod>' if d else '') + '</url>'
-              for u, d in urls]
+              for u, d in sorted(toutes.items(), key=lambda x: x[1], reverse=True)]
     lines.append('</urlset>')
     Path('sitemap.xml').write_text('\n'.join(lines) + '\n', encoding='utf-8')
+    # Sitemap Google News : brèves publiées depuis moins de 48 h (format exigé par Google News).
+    limite = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=48)).isoformat()
+    recentes = [(u, d, t) for d, n, t in archive for u in [f'{SITE}/a/{n}'] if d and d >= limite][:1000]
+    news = ['<?xml version="1.0" encoding="UTF-8"?>',
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">']
+    news += [f'  <url><loc>{html.escape(u)}</loc><news:news><news:publication><news:name>Véloce Mercato</news:name>'
+             f'<news:language>fr</news:language></news:publication><news:publication_date>{html.escape(d)}</news:publication_date>'
+             f'<news:title>{t}</news:title></news:news></url>' for u, d, t in recentes]
+    news.append('</urlset>')
+    Path('sitemap-news.xml').write_text('\n'.join(news) + '\n', encoding='utf-8')
     # Une sélection statique de brèves sourcées reste visible sur l'accueil
     # même quand le chargement du fil JavaScript échoue.
     from tools.home_news_static import update_index
