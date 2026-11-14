@@ -61,6 +61,7 @@ class RemoveNavigation(HTMLParser):
 
 def _prepare_affiches(root):
     """Extraire uniquement les PNG attendus et injecter la galerie côté déploiement."""
+    sys.path.insert(0, str(root))
     from tools.pronos_public import section_affiches_publiques
     config_path = root / "pronos/affiches-public.json"
     archive_path = root / "pronos/affiches/affiches-veloce-14-novembre-2026.zip"
