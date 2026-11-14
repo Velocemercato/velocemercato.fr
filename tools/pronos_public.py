@@ -292,7 +292,7 @@ def render(root=ROOT, now=None):
         raise ValueError("Horodatage sans fuseau")
     local = now.astimezone(PARIS)
     updated = local.strftime("%d/%m/%Y à %H:%M (Paris)")
-    content = section_affiches_publiques(root, now) + section_acces(root) + section_selection(root, now) + section_news(root, now) + section_agenda(root, now) + section_videos(root, now)
+    content = section_acces(root) + section_selection(root, now) + section_news(root, now) + section_agenda(root, now) + section_videos(root, now)
     return """<!doctype html>
 <html lang="fr" data-vmt="pronos"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
