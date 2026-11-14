@@ -75,16 +75,18 @@ def _prepare_affiches(root):
     with zipfile.ZipFile(archive_path) as archive:
         members = {info.filename: info for info in archive.infolist()}
         for name in expected:
-            if not re.fullmatch(r"[a-z0-9-]+\.png", name):
+            if not re.fullmatch(r"[a-z0-9-]+\.jpg", name):
                 raise ValueError("Nom d'affiche invalide")
-            info = members.get(name)
+            # L'archive fournie contient des JPEG qui portent, par erreur, le suffixe PNG.
+            source_name = name[:-4] + ".png"
+            info = members.get(source_name)
             if info is None or info.file_size > 3_500_000:
-                raise ValueError("PNG attendu manquant ou trop volumineux")
-            data_bytes = archive.read(name)
-            if not data_bytes.startswith(b"\x89PNG\r\n\x1a\n"):
-                raise ValueError("Format PNG invalide")
-            target = root / "pronos/affiches" / name
-            target.write_bytes(data_bytes)
+                raise ValueError("Image attendue manquante ou trop volumineuse")
+            data_bytes = archive.read(source_name)
+            if not data_bytes.startswith(b"\xff\xd8\xff"):
+                raise ValueError("Format JPEG invalide")
+            (root / "pronos/affiches" / name).write_bytes(data_bytes)
+
     galerie = section_affiches_publiques(root, dt.datetime.now(dt.timezone.utc))
     if galerie:
         source = page.read_text(encoding="utf-8")
