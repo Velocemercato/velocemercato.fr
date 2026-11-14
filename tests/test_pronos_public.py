@@ -113,6 +113,25 @@ class PronosPublicTests(unittest.TestCase):
             (root / "pronos/acces.json").write_text(json.dumps({"actif": False, "email": "vm@example.org"}), encoding="utf-8")
             self.assertNotIn('id="acces-vip"', render(root, self.NOW))
 
+    def test_affiches_only_when_images_exist_and_window_active(self):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            (root / "pronos" / "affiches").mkdir(parents=True)
+            payload = {
+                "actif": True, "debut": "2026-11-01T00:00:00Z",
+                "expire": "2026-11-02T00:00:00Z",
+                "affiches": [{"titre": "Image publique", "fichier": "affiche-test.png"},
+                             {"titre": "VIP interdit", "fichier": "../vip.png"}],
+            }
+            (root / "pronos/affiches-public.json").write_text(json.dumps(payload), encoding="utf-8")
+            self.assertNotIn("Image publique", render(root, self.NOW))
+            (root / "pronos/affiches/affiche-test.png").write_bytes(b"test")
+            rendered = render(root, self.NOW)
+            self.assertIn("Image publique", rendered)
+            self.assertIn("/pronos/affiches/affiche-test.png", rendered)
+            self.assertNotIn("VIP interdit", rendered)
+            self.assertNotIn("Image publique", render(root, self.NOW + dt.timedelta(days=2)))
+
     def test_build_idempotent(self):
         with tempfile.TemporaryDirectory() as name:
             root = Path(name)
