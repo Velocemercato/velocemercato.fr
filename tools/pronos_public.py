@@ -224,12 +224,17 @@ def section_affiches_publiques(root, now):
         if not (Path(root) / "pronos" / "affiches" / name).is_file():
             continue
         title = e(row.get("titre") or "Affiche")
+        image = (f'<img src="/pronos/affiches/{e(name)}" alt="{title}" loading="lazy" '
+                 'style="width:100%;height:auto;display:block">')
+        if name == '2026-11-14-six-selections.jpg':
+            # Vue raccourcie sans le bandeau bas « cote totale 12,46 ».
+            # L'original archivé est conservé, aucune autre affiche n'est modifiée.
+            image = ('<div style="width:100%;aspect-ratio:1024 / 1320;overflow:hidden">'
+                     + image + '</div>')
         images.append(
             '<figure style="margin:0;background:#071126;border:1px solid #f4cf55;'
             'border-radius:12px;overflow:hidden">'
-            f'<img src="/pronos/affiches/{e(name)}" alt="{title}" loading="lazy" '
-            'style="width:100%;height:auto;display:block">'
-            f'<figcaption style="padding:10px">{title}</figcaption></figure>'
+            + image + f'<figcaption style="padding:10px">{title}</figcaption></figure>'
         )
     if not images:
         return ""
