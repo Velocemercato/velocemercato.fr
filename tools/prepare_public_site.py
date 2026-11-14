@@ -80,7 +80,7 @@ def _prepare_affiches(root):
             if info is None or info.file_size > 3_500_000:
                 raise ValueError("PNG attendu manquant ou trop volumineux")
             data_bytes = archive.read(name)
-            if not data_bytes.startswith(b"\\x89PNG\\r\\n\\x1a\\n"):
+            if not data_bytes.startswith(b"\x89PNG\r\n\x1a\n"):
                 raise ValueError("Format PNG invalide")
             target = root / "pronos/affiches" / name
             target.write_bytes(data_bytes)
