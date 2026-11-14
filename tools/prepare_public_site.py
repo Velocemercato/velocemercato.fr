@@ -124,6 +124,14 @@ def _prepare_bilan_veille(root):
         note = escape(str(item.get("note", "")))
         missing = escape(str(item.get("autre_selection", "")))
         cote = escape(str(item.get("cote_annoncee", "")))
+        sources = item.get("sources", [])
+        liens = []
+        for src in sources if isinstance(sources, list) else []:
+            if not isinstance(src, dict):
+                continue
+            url = str(src.get("url", ""))
+            if url.startswith("https://www.uefa.com/") or url.startswith("https://www.teamfrancebasket.fr/"):
+                liens.append('<a href="' + escape(url, quote=True) + '" target="_blank" rel="noopener noreferrer">' + escape(str(src.get("nom", "Source"))) + '</a>')
         billets.append(
             '<article class="card bd-bilan" data-bilan-jour="' + aujourdhui.isoformat() + '" hidden><span class="bd-etiquette">Bilan de la veille</span>'
             + '<h2>' + title + '</h2><p><strong>' + statut + '</strong></p>'
@@ -131,7 +139,8 @@ def _prepare_bilan_veille(root):
             + ('<p>Cote annoncée : ' + cote + '</p>' if cote else '')
             + ('<p>' + missing + '</p>' if missing else '')
             + '<p class="bd-note">' + note + '</p>'
-            + '<p class="bd-note">Résultats non garantis · 18+ · Jouer comporte des risques.</p></article>'
+            + ('<p class="bd-note">Sources : ' + ' · '.join(liens) + '</p>' if liens else '')
+            + '<p class="bd-note">Les pronostics ne garantissent aucun gain futur · 18+ · Jouer comporte des risques.</p></article>'
         )
     source = source.replace(marker, ''.join(billets) + (
         '<script>(function(){try{var p=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Paris",'
