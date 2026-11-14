@@ -1,0 +1,42 @@
+name: VM Gaming - validation des metas et du dossier GTA VI
+on:
+  pull_request:
+    paths:
+      - 'vm-gaming/meta/**'
+      - 'vm-gaming/gta-vi/**'
+      - 'vm-gaming/index.html'
+      - '.github/workflows/tests-vm-gaming-meta.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'vm-gaming/meta/**'
+      - 'vm-gaming/gta-vi/**'
+      - 'vm-gaming/index.html'
+      - '.github/workflows/tests-vm-gaming-meta.yml'
+permissions:
+  contents: read
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntaxe JavaScript et validation de contenu
+        run: |
+          node --check vm-gaming/meta/data.js
+          node --check vm-gaming/meta/app.js
+          python - <<'PY'
+          from pathlib import Path
+          page = Path('vm-gaming/gta-vi/index.html').read_text()
+          gaming = Path('vm-gaming/index.html').read_text()
+          meta = Path('vm-gaming/meta/data.js').read_text()
+          assert '/vm-gaming/gta-vi/' in gaming
+          assert '19 NOVEMBRE 2026' in page
+          assert page.count('SOURCE OFFICIELLE ROCKSTAR') == 5
+          assert all(x in meta for x in ('Cronen Osprey','WZ.55 Striga','VEL 46','KG-7 Vulcan','MK 24','B36A4','SGX'))
+          assert 'date:\'13.11.2026\'' in meta
+          print('VM Gaming : vérification terminée')
+          PY
