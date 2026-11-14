@@ -1,7 +1,7 @@
 name: VM Multisport — Actualités de la semaine (liens sourcés)
 on:
   schedule:
-    - cron: '8-59/10 * * * *'
+    - cron: '8 */2 * * *'  # toutes les 2 h : limite le nombre de commits (risque de blocage GitHub)
   workflow_dispatch:
   push:
     branches: [main]
