@@ -144,7 +144,7 @@ class PronosPublicTests(unittest.TestCase):
                       "affiches": [{"fichier": "jour-test.png", "titre": "Test"}]}
             (root / "pronos/affiches-public.json").write_text(json.dumps(config))
             with zipfile.ZipFile(root / "pronos/affiches/affiches-veloce-14-novembre-2026.zip", "w") as z:
-                z.writestr("jour-test.png", b"\\x89PNG\\r\\n\\x1a\\n" + b"data")
+                z.writestr("jour-test.png", b"\x89PNG\r\n\x1a\n" + b"data")
             _prepare_affiches(root)
             self.assertTrue((root / "pronos/affiches/jour-test.png").exists())
             self.assertNotIn("affiches-du-jour", (root / "pronos/index.html").read_text())
