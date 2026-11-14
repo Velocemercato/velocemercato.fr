@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from tools.pronos_public import build, recent_articles, render, section_agenda, safe_url, PARIS
+from tools.pronos_public import build, recent_articles, render, section_agenda, section_affiches_publiques, safe_url, PARIS
 
 
 class PronosPublicTests(unittest.TestCase):
@@ -127,9 +127,10 @@ class PronosPublicTests(unittest.TestCase):
             self.assertNotIn("Image publique", render(root, self.NOW))
             (root / "pronos/affiches/affiche-test.jpg").write_bytes(b"test")
             rendered = render(root, self.NOW)
-            self.assertIn("Image publique", rendered)
-            self.assertIn("/pronos/affiches/affiche-test.jpg", rendered)
-            self.assertNotIn("VIP interdit", rendered)
+            self.assertNotIn("Image publique", rendered)
+            self.assertIn("Image publique", section_affiches_publiques(root, self.NOW))
+            self.assertIn("/pronos/affiches/affiche-test.jpg", section_affiches_publiques(root, self.NOW))
+            self.assertNotIn("VIP interdit", section_affiches_publiques(root, self.NOW))
             self.assertNotIn("Image publique", render(root, self.NOW + dt.timedelta(days=2)))
 
     def test_archive_extraction_for_public_gallery(self):
@@ -139,6 +140,8 @@ class PronosPublicTests(unittest.TestCase):
             root = Path(name)
             (root / "pronos/affiches").mkdir(parents=True)
             (root / "pronos/index.html").write_text("<html><main>News</main></html>")
+            (root / "conseils").mkdir(parents=True)
+            (root / "conseils/index.html").write_text("<html><main><!-- VM_AFFICHES_DU_JOUR --></main></html>")
             config = {"actif": True, "debut": "2026-11-01T00:00:00Z",
                       "expire": "2026-11-02T00:00:00Z",
                       "affiches": [{"fichier": "jour-test.jpg", "titre": "Test"}]}
@@ -148,6 +151,7 @@ class PronosPublicTests(unittest.TestCase):
             _prepare_affiches(root)
             self.assertTrue((root / "pronos/affiches/jour-test.jpg").exists())
             self.assertNotIn("affiches-du-jour", (root / "pronos/index.html").read_text())
+            self.assertNotIn("VM_AFFICHES_DU_JOUR", (root / "conseils/index.html").read_text())
 
     def test_build_idempotent(self):
         with tempfile.TemporaryDirectory() as name:
