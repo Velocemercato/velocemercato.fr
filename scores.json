@@ -477,8 +477,8 @@
    "ext": "Knicks",
    "statut": "IN_PLAY",
    "score": [
-    46,
-    38
+    51,
+    41
    ]
   },
   {
@@ -488,7 +488,7 @@
    "sport": "basket",
    "dom": "Magic",
    "ext": "Bucks",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     52,
     36
@@ -527,10 +527,10 @@
    "sport": "basket",
    "dom": "Bulls",
    "ext": "Hawks",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -540,10 +540,10 @@
    "sport": "basket",
    "dom": "Pelicans",
    "ext": "Grizzlies",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -1574,6 +1574,6 @@
    ]
   }
  ],
- "maj": "2026-11-14T01:07:03Z",
- "verifie": "2026-11-14T01:07:03Z"
+ "maj": "2026-11-14T01:11:01Z",
+ "verifie": "2026-11-14T01:11:01Z"
 }
