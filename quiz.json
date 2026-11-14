@@ -1,80 +1,80 @@
 {
- "id": "2026-11-13-08",
- "date": "2026-11-13T08:44:01+01:00",
+ "id": "2026-11-14-08",
+ "date": "2026-11-14T08:30:41+01:00",
  "questions": [
   {
-   "q": "Où évolue actuellement le Paris FC selon la brève ?",
+   "q": "Contre quelle équipe l'Argentine s'est-elle inclinée 2 à 1 lors de son premier match sans Messi ?",
    "choix": [
-    "Au Parc des Princes",
-    "Au stade Jean-Bouin",
-    "Au stade de Charléty",
-    "Au stade Ernest-Wallon"
+    "Le Costa Rica",
+    "L'Uruguay",
+    "Le Brésil",
+    "Le Chili"
    ],
    "bonne": 1,
-   "explication": "La brève indique que le Paris FC évolue au stade Jean-Bouin, où il affiche une affluence proche de sa capacité.",
+   "explication": "Selon RMC Sport, l'Argentine s'est inclinée 2 à 1 face à l'Uruguay lors d'un match amical.",
    "source": {
-    "titre": "Le Paris FC ouvert à un éventuel accueil au Parc des Princes",
-    "id": "rss-v2-b72d1b1b940d241f38dd4f"
+    "titre": "L'Argentine s'incline face à l'Uruguay, premier match sans Messi",
+    "id": "rss-v2-83fef35c10c909c1424f39"
    }
   },
   {
-   "q": "Quelle est la capacité du stade Jean-Bouin mentionnée dans la brève ?",
+   "q": "Combien de buts le Maroc a-t-il inscrits contre le Niger lors des éliminatoires de la CAN 2027 ?",
    "choix": [
-    "15 000 places",
-    "19 600 places",
-    "20 000 places",
-    "24 000 places"
-   ],
-   "bonne": 1,
-   "explication": "La brève précise que le stade Jean-Bouin a une capacité de 19 600 places.",
-   "source": {
-    "titre": "Le Paris FC ouvert à un éventuel accueil au Parc des Princes",
-    "id": "rss-v2-b72d1b1b940d241f38dd4f"
-   }
-  },
-  {
-   "q": "Contre quelle équipe Nîmes Olympique s'est-il imposé 3-0 ?",
-   "choix": [
-    "Bourges FC",
-    "Hyères",
-    "Istres FC",
-    "Canet-Roussillon FC"
+    "3",
+    "4",
+    "5",
+    "6"
    ],
    "bonne": 2,
-   "explication": "Nîmes Olympique a battu Istres FC 3-0 et reste leader du groupe C de National 1.",
+   "explication": "Selon Foot Mercato, le Maroc a largement dominé le Niger sur le score de 5-1.",
    "source": {
-    "titre": "National 1 : Nîmes leader après sa victoire sur Istres, Rumilly s'impose à Saint-Priest",
-    "id": "rss-v2-e03e32d011fb55b7140839"
+    "titre": "Le Maroc écrase le Niger 5-1, doublé d'Hakimi en éliminatoires de la CAN 2027",
+    "id": "rss-v2-60d11dcbc79e386f5dca7b"
    }
   },
   {
-   "q": "Quel est le score du match entre le Racing Club de France Football et le FC Dieppe ?",
+   "q": "Quel est le montant du transfert de Patrick Zabi depuis Reims vers le Paris FC ?",
    "choix": [
-    "0-0",
-    "1-1",
-    "2-2",
-    "2-1"
+    "15 millions d'euros",
+    "20 millions d'euros",
+    "25 millions d'euros",
+    "30 millions d'euros"
    ],
-   "bonne": 1,
-   "explication": "Le FC Dieppe et le Racing Club de France Football ont fait match nul 1-1.",
+   "bonne": 2,
+   "explication": "Arrivé de Reims cet été pour 25 millions d'euros, Zabi est un milieu ivoirien du Paris FC.",
    "source": {
-    "titre": "National 1 : Nîmes leader après sa victoire sur Istres, Rumilly s'impose à Saint-Priest",
-    "id": "rss-v2-e03e32d011fb55b7140839"
+    "titre": "Paris FC : Naples s'intéresserait à Patrick Zabi, selon la Gazzetta dello Sport",
+    "id": "rss-v2-cf6914d310187d7f9f288d"
    }
   },
   {
-   "q": "Quel est l'âge de Ruairi McConville selon la brève ?",
+   "q": "Dans quel championnat régional évolue le Stade Béthunois ?",
    "choix": [
-    "19 ans",
-    "21 ans",
-    "23 ans",
-    "25 ans"
+    "Régional 2",
+    "Régional 1",
+    "National 3",
+    "National 2"
    ],
    "bonne": 1,
-   "explication": "La brève présente Ruairi McConville comme un défenseur de 21 ans.",
+   "explication": "Selon Foot Amateur, le Stade Béthunois évolue en Régional 1 et affronte Nancy en Coupe de France.",
    "source": {
-    "titre": "Nations League : McConville et Atcheson, la charnière la plus solide du tournoi",
-    "id": "rss-v2-162f05f1a5a2a510271179"
+    "titre": "Jordan Alexandrenne, du gardien de but au défenseur central de Béthune",
+    "id": "rss-v2-44d3303dc47f26b52d567f"
+   }
+  },
+  {
+   "q": "Quelle est la place occupée par la République d'Irlande dans son groupe de Ligue des nations ?",
+   "choix": [
+    "Première",
+    "Deuxième",
+    "Troisième",
+    "Quatrième"
+   ],
+   "bonne": 2,
+   "explication": "Selon BBC Sport, les Irlandais occupent la troisième place du groupe B3.",
+   "source": {
+    "titre": "Collins regrette son absence face à Israël avec l'Irlande",
+    "id": "rss-v2-58f53a1d6010fe18090413"
    }
   }
  ]
