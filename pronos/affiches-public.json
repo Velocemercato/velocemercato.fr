@@ -1,7 +1,16 @@
 {
-  "_note": "Les trois affiches historiques du 14/11 ont été retirées de l'affichage public à la demande du propriétaire. Aucun fichier source supprimé. Le ticket Cholet a été initialement désigné VIP ; ne pas publier ses choix depuis un dépôt public sans autorisation de déclassification et vérification de l'horaire.",
-  "actif": false,
+  "_note": "14/11/2026 : conserver les deux affiches football/NBA. Retirer uniquement l'affiche rugby/football ; le combiné public Géorgie-Hongrie / Cholet figure en encart HTML sur /conseils/. Les affiches restent datées et expirent à minuit. Aucune suppression de média.",
+  "actif": true,
   "debut": "2026-11-14T00:00:00+01:00",
   "expire": "2026-11-15T00:00:00+01:00",
-  "affiches": []
+  "affiches": [
+    {
+      "titre": "Six conseils — football et NBA (à consulter individuellement)",
+      "fichier": "2026-11-14-six-selections.jpg"
+    },
+    {
+      "titre": "Combiné multisport — football et NBA",
+      "fichier": "2026-11-14-combine-multisport.jpg"
+    }
+  ]
 }
