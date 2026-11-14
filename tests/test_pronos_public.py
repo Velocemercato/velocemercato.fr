@@ -132,6 +132,23 @@ class PronosPublicTests(unittest.TestCase):
             self.assertNotIn("VIP interdit", rendered)
             self.assertNotIn("Image publique", render(root, self.NOW + dt.timedelta(days=2)))
 
+    def test_archive_extraction_for_public_gallery(self):
+        import zipfile
+        from tools.prepare_public_site import _prepare_affiches
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            (root / "pronos/affiches").mkdir(parents=True)
+            (root / "pronos/index.html").write_text("<html><main>News</main></html>")
+            config = {"actif": True, "debut": "2026-11-01T00:00:00Z",
+                      "expire": "2026-11-02T00:00:00Z",
+                      "affiches": [{"fichier": "jour-test.png", "titre": "Test"}]}
+            (root / "pronos/affiches-public.json").write_text(json.dumps(config))
+            with zipfile.ZipFile(root / "pronos/affiches/affiches-veloce-14-novembre-2026.zip", "w") as z:
+                z.writestr("jour-test.png", b"\\x89PNG\\r\\n\\x1a\\n" + b"data")
+            _prepare_affiches(root)
+            self.assertTrue((root / "pronos/affiches/jour-test.png").exists())
+            self.assertNotIn("affiches-du-jour", (root / "pronos/index.html").read_text())
+
     def test_build_idempotent(self):
         with tempfile.TemporaryDirectory() as name:
             root = Path(name)
