@@ -60,12 +60,12 @@ class RemoveNavigation(HTMLParser):
 
 
 def _prepare_affiches(root):
-    """Extraire uniquement les PNG attendus et injecter la galerie côté déploiement."""
+    """Extraire les affiches et les afficher dans l’espace Conseils uniquement."""
     sys.path.insert(0, str(root))
     from tools.pronos_public import section_affiches_publiques
     config_path = root / "pronos/affiches-public.json"
     archive_path = root / "pronos/affiches/affiches-veloce-14-novembre-2026.zip"
-    page = root / "pronos/index.html"
+    page = root / "conseils/index.html"
     if not (config_path.is_file() and archive_path.is_file() and page.is_file()):
         return
     data = json.loads(config_path.read_text(encoding="utf-8"))
@@ -88,10 +88,12 @@ def _prepare_affiches(root):
             (root / "pronos/affiches" / name).write_bytes(data_bytes)
 
     galerie = section_affiches_publiques(root, dt.datetime.now(dt.timezone.utc))
-    if galerie:
-        source = page.read_text(encoding="utf-8")
-        if 'id="affiches-du-jour"' not in source:
-            page.write_text(source.replace("<main>", "<main>" + galerie, 1), encoding="utf-8")
+    source = page.read_text(encoding="utf-8")
+    placeholder = "<!-- VM_AFFICHES_DU_JOUR -->"
+    if placeholder not in source:
+        raise ValueError("Emplacement de galerie manquant dans conseils/index.html")
+    # Les images n'apparaissent jamais dans la rubrique d'actualités générale.
+    page.write_text(source.replace(placeholder, galerie), encoding="utf-8")
 
 
 def prepare(root):
