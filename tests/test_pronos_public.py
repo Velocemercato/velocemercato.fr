@@ -120,15 +120,15 @@ class PronosPublicTests(unittest.TestCase):
             payload = {
                 "actif": True, "debut": "2026-11-01T00:00:00Z",
                 "expire": "2026-11-02T00:00:00Z",
-                "affiches": [{"titre": "Image publique", "fichier": "affiche-test.png"},
+                "affiches": [{"titre": "Image publique", "fichier": "affiche-test.jpg"},
                              {"titre": "VIP interdit", "fichier": "../vip.png"}],
             }
             (root / "pronos/affiches-public.json").write_text(json.dumps(payload), encoding="utf-8")
             self.assertNotIn("Image publique", render(root, self.NOW))
-            (root / "pronos/affiches/affiche-test.png").write_bytes(b"test")
+            (root / "pronos/affiches/affiche-test.jpg").write_bytes(b"test")
             rendered = render(root, self.NOW)
             self.assertIn("Image publique", rendered)
-            self.assertIn("/pronos/affiches/affiche-test.png", rendered)
+            self.assertIn("/pronos/affiches/affiche-test.jpg", rendered)
             self.assertNotIn("VIP interdit", rendered)
             self.assertNotIn("Image publique", render(root, self.NOW + dt.timedelta(days=2)))
 
@@ -141,12 +141,12 @@ class PronosPublicTests(unittest.TestCase):
             (root / "pronos/index.html").write_text("<html><main>News</main></html>")
             config = {"actif": True, "debut": "2026-11-01T00:00:00Z",
                       "expire": "2026-11-02T00:00:00Z",
-                      "affiches": [{"fichier": "jour-test.png", "titre": "Test"}]}
+                      "affiches": [{"fichier": "jour-test.jpg", "titre": "Test"}]}
             (root / "pronos/affiches-public.json").write_text(json.dumps(config))
             with zipfile.ZipFile(root / "pronos/affiches/affiches-veloce-14-novembre-2026.zip", "w") as z:
-                z.writestr("jour-test.png", b"\x89PNG\r\n\x1a\n" + b"data")
+                z.writestr("jour-test.png", b"\xff\xd8\xff" + b"data")
             _prepare_affiches(root)
-            self.assertTrue((root / "pronos/affiches/jour-test.png").exists())
+            self.assertTrue((root / "pronos/affiches/jour-test.jpg").exists())
             self.assertNotIn("affiches-du-jour", (root / "pronos/index.html").read_text())
 
     def test_build_idempotent(self):
