@@ -436,7 +436,7 @@
    "sport": "foot",
    "dom": "Argentine",
    "ext": "Uruguay",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
     0,
     0
@@ -462,10 +462,10 @@
    "sport": "foot",
    "dom": "Équateur",
    "ext": "Costa Rica",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -488,10 +488,10 @@
    "sport": "basket",
    "dom": "Magic",
    "ext": "Bucks",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -1574,6 +1574,6 @@
    ]
   }
  ],
- "maj": "2026-11-14T00:07:16Z",
- "verifie": "2026-11-14T00:07:16Z"
+ "maj": "2026-11-14T00:11:13Z",
+ "verifie": "2026-11-14T00:11:13Z"
 }
