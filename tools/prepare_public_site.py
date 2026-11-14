@@ -74,7 +74,7 @@ def _prepare_affiches(root):
     with zipfile.ZipFile(archive_path) as archive:
         members = {info.filename: info for info in archive.infolist()}
         for name in expected:
-            if not re.fullmatch(r"[a-z0-9-]+\\.png", name):
+            if not re.fullmatch(r"[a-z0-9-]+\.png", name):
                 raise ValueError("Nom d'affiche invalide")
             info = members.get(name)
             if info is None or info.file_size > 3_500_000:
