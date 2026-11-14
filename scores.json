@@ -620,8 +620,8 @@
    "ext": "Thunder",
    "statut": "IN_PLAY",
    "score": [
-    82,
-    85
+    85,
+    88
    ]
   },
   {
@@ -1067,19 +1067,6 @@
    ]
   },
   {
-   "id": "espn-401906463",
-   "date": "2026-11-15T03:00Z",
-   "comp": "Match amical international",
-   "sport": "foot",
-   "dom": "Nouvelle-Zélande",
-   "ext": "Inde",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
    "id": "espn-401892719",
    "date": "2026-11-15T03:00Z",
    "comp": "NHL",
@@ -1099,6 +1086,19 @@
    "sport": "hockey",
    "dom": "Kings",
    "ext": "Flames",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "espn-401906463",
+   "date": "2026-11-15T03:10Z",
+   "comp": "Match amical international",
+   "sport": "foot",
+   "dom": "Nouvelle-Zélande",
+   "ext": "Inde",
    "statut": "TIMED",
    "score": [
     null,
@@ -1587,6 +1587,6 @@
    ]
   }
  ],
- "maj": "2026-11-14T05:27:49Z",
- "verifie": "2026-11-14T05:27:49Z"
+ "maj": "2026-11-14T05:31:46Z",
+ "verifie": "2026-11-14T05:31:46Z"
 }
