@@ -7,6 +7,7 @@ from html import escape
 import sys
 import datetime as dt
 import zipfile
+from zoneinfo import ZoneInfo
 
 REMOVE_CLASSES = {'vmbar', 'vmtop', 'vm-volets', 'vm-duo', 'vm-essentiel', 'promo-manga'}
 VOID = {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
@@ -96,8 +97,56 @@ def _prepare_affiches(root):
     page.write_text(source.replace(placeholder, galerie), encoding="utf-8")
 
 
+
+def _prepare_bilan_veille(root):
+    """Bilan rédigé, daté et strictement borné au lendemain des rencontres."""
+    page = root / "conseils/index.html"
+    source_file = root / "conseils/resultats.json"
+    if not page.is_file():
+        return
+    source = page.read_text(encoding="utf-8")
+    marker = "<!-- VM_BILAN_VEILLE -->"
+    if marker not in source:
+        raise ValueError("Emplacement de bilan manquant")
+    data = json.loads(source_file.read_text(encoding="utf-8")) if source_file.exists() else {}
+    paris = ZoneInfo('Europe/Paris')
+    aujourdhui = dt.datetime.now(dt.timezone.utc).astimezone(paris).date()
+    veille = (aujourdhui - dt.timedelta(days=1)).isoformat()
+    billets = []
+    for item in data.get("bilans", []) if isinstance(data, dict) else []:
+        if not isinstance(item, dict) or item.get("date") != veille:
+            continue
+        if len(billets) >= 3:
+            break
+        title = escape(str(item.get("titre", "Bilan du jour précédent")))
+        statut = escape(str(item.get("statut", "En cours de vérification")))
+        score = escape(str(item.get("score_confirme_par_capture", "")))
+        note = escape(str(item.get("note", "")))
+        missing = escape(str(item.get("autre_selection", "")))
+        cote = escape(str(item.get("cote_annoncee", "")))
+        billets.append(
+            '<article class="card bd-bilan" data-bilan-jour="' + aujourdhui.isoformat() + '" hidden><span class="bd-etiquette">Bilan de la veille</span>'
+            + '<h2>' + title + '</h2><p><strong>' + statut + '</strong></p>'
+            + ('<p class="bd-score">' + score + '</p>' if score else '')
+            + ('<p>Cote annoncée : ' + cote + '</p>' if cote else '')
+            + ('<p>' + missing + '</p>' if missing else '')
+            + '<p class="bd-note">' + note + '</p>'
+            + '<p class="bd-note">Résultats non garantis · 18+ · Jouer comporte des risques.</p></article>'
+        )
+    source = source.replace(marker, ''.join(billets) + (
+        '<script>(function(){try{var p=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Paris",'
+        'year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());'
+        'var o={};for(var i=0;i<p.length;i++)o[p[i].type]=p[i].value;'
+        'var today=o.year+"-"+o.month+"-"+o.day;'
+        'document.querySelectorAll("[data-bilan-jour]").forEach(function(n){'
+        'n.hidden=(n.getAttribute("data-bilan-jour")!==today)});'
+        '}catch(e){}})();</script>' if billets else ''
+    ))
+    page.write_text(source, encoding="utf-8")
+
 def prepare(root):
     _prepare_affiches(root)
+    _prepare_bilan_veille(root)
     count = 0
     for path in sorted(root.rglob('*.html')):
         if any(part in {'.github', 'tests', 'tools', 'docs'} for part in path.relative_to(root).parts):
