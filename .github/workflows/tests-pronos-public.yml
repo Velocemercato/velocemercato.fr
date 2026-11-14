@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'tools/pronos_public.py'
+      - 'tools/prepare_public_site.py'
       - 'tools/pronos_programme.py'
       - 'build_pages.py'
       - 'pronos/index.html'
@@ -28,6 +29,6 @@ jobs:
           python-version: '3.12'
       - name: Tests hors ligne sans jeton ni appel Meta
         run: |
-          python -m py_compile tools/pronos_public.py tools/pronos_programme.py build_pages.py
+          python -m py_compile tools/pronos_public.py tools/prepare_public_site.py tools/pronos_programme.py build_pages.py
           python -m unittest discover -s tests -p 'test_pronos_public.py' -v
           python -m unittest discover -s tests -p 'test_pronos_programme.py' -v

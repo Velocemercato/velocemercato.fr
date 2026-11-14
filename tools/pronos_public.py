@@ -205,6 +205,45 @@ def section_une_selection(root, now, path, anchor, title, humain):
             'Ni conseil, ni promesse de gain.<br>' + e(RISK) + ' · Les jeux d’argent sont interdits aux mineurs.</p></section>')
 
 
+
+def section_affiches_publiques(root, now):
+    """Galerie temporaire : seulement des images publiques réellement présentes."""
+    data = load(root, "pronos/affiches-public.json", {})
+    if not isinstance(data, dict) or data.get("actif") is not True:
+        return ""
+    debut, fin = parsed(data.get("debut")), parsed(data.get("expire"))
+    if debut is None or fin is None or not debut <= now < fin:
+        return ""
+    images = []
+    for row in data.get("affiches", [])[:4]:
+        if not isinstance(row, dict):
+            continue
+        name = str(row.get("fichier") or "")
+        if not re.fullmatch(r"[a-z0-9-]+\.png", name):
+            continue
+        if not (Path(root) / "pronos" / "affiches" / name).is_file():
+            continue
+        title = e(row.get("titre") or "Affiche")
+        images.append(
+            '<figure style="margin:0;background:#071126;border:1px solid #f4cf55;'
+            'border-radius:12px;overflow:hidden">'
+            f'<img src="/pronos/affiches/{e(name)}" alt="{title}" loading="lazy" '
+            'style="width:100%;height:auto;display:block">'
+            f'<figcaption style="padding:10px">{title}</figcaption></figure>'
+        )
+    if not images:
+        return ""
+    return ('<section class="panel" id="affiches-du-jour" style="border:2px solid #f4cf55">'
+            '<h2>🖼️ Affiches publiques du jour</h2>'
+            '<p>Documents fournis par la rédaction VM. Cotes indicatives non vérifiées en temps réel. '
+            'Les probabilités implicites des affiches ne sont pas des chances réelles garanties.</p>'
+            '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));'
+            'gap:16px">' + "".join(images) + '</div>'
+            '<p class="risk">18+ · Aucun gain garanti · '
+            + e(RISK) + '</p></section>')
+
+
+
 def section_acces(root):
     """Encadré « Accès VIP » : un simple lien email (aucune donnée collectée par le site)."""
     from urllib.parse import quote
@@ -253,7 +292,7 @@ def render(root=ROOT, now=None):
         raise ValueError("Horodatage sans fuseau")
     local = now.astimezone(PARIS)
     updated = local.strftime("%d/%m/%Y à %H:%M (Paris)")
-    content = section_acces(root) + section_selection(root, now) + section_news(root, now) + section_agenda(root, now) + section_videos(root, now)
+    content = section_affiches_publiques(root, now) + section_acces(root) + section_selection(root, now) + section_news(root, now) + section_agenda(root, now) + section_videos(root, now)
     return """<!doctype html>
 <html lang="fr" data-vmt="pronos"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
