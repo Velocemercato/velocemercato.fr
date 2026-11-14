@@ -5,6 +5,8 @@ import re
 import json
 from html import escape
 import sys
+import datetime as dt
+import zipfile
 
 REMOVE_CLASSES = {'vmbar', 'vmtop', 'vm-volets', 'vm-duo', 'vm-essentiel', 'promo-manga'}
 VOID = {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
@@ -57,7 +59,40 @@ class RemoveNavigation(HTMLParser):
             self.output.append('<!' + text + '>')
 
 
+def _prepare_affiches(root):
+    """Extraire uniquement les PNG attendus et injecter la galerie côté déploiement."""
+    from tools.pronos_public import section_affiches_publiques
+    config_path = root / "pronos/affiches-public.json"
+    archive_path = root / "pronos/affiches/affiches-veloce-14-novembre-2026.zip"
+    page = root / "pronos/index.html"
+    if not (config_path.is_file() and archive_path.is_file() and page.is_file()):
+        return
+    data = json.loads(config_path.read_text(encoding="utf-8"))
+    expected = {str(row["fichier"]) for row in data.get("affiches", []) if isinstance(row, dict) and "fichier" in row}
+    if not expected or len(expected) > 4:
+        return
+    with zipfile.ZipFile(archive_path) as archive:
+        members = {info.filename: info for info in archive.infolist()}
+        for name in expected:
+            if not re.fullmatch(r"[a-z0-9-]+\\.png", name):
+                raise ValueError("Nom d'affiche invalide")
+            info = members.get(name)
+            if info is None or info.file_size > 3_500_000:
+                raise ValueError("PNG attendu manquant ou trop volumineux")
+            data_bytes = archive.read(name)
+            if not data_bytes.startswith(b"\\x89PNG\\r\\n\\x1a\\n"):
+                raise ValueError("Format PNG invalide")
+            target = root / "pronos/affiches" / name
+            target.write_bytes(data_bytes)
+    galerie = section_affiches_publiques(root, dt.datetime.now(dt.timezone.utc))
+    if galerie:
+        source = page.read_text(encoding="utf-8")
+        if 'id="affiches-du-jour"' not in source:
+            page.write_text(source.replace("<main>", "<main>" + galerie, 1), encoding="utf-8")
+
+
 def prepare(root):
+    _prepare_affiches(root)
     count = 0
     for path in sorted(root.rglob('*.html')):
         if any(part in {'.github', 'tests', 'tools', 'docs'} for part in path.relative_to(root).parts):
