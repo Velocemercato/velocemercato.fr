@@ -7,6 +7,7 @@ from html import escape
 import sys
 import datetime as dt
 import zipfile
+from zoneinfo import ZoneInfo
 
 REMOVE_CLASSES = {'vmbar', 'vmtop', 'vm-volets', 'vm-duo', 'vm-essentiel', 'promo-manga'}
 VOID = {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
@@ -108,7 +109,7 @@ def _prepare_bilan_veille(root):
     if marker not in source:
         raise ValueError("Emplacement de bilan manquant")
     data = json.loads(source_file.read_text(encoding="utf-8")) if source_file.exists() else {}
-    paris = dt.timezone(dt.timedelta(hours=1))
+    paris = ZoneInfo('Europe/Paris')
     aujourdhui = dt.datetime.now(dt.timezone.utc).astimezone(paris).date()
     veille = (aujourdhui - dt.timedelta(days=1)).isoformat()
     billets = []
@@ -124,7 +125,7 @@ def _prepare_bilan_veille(root):
         missing = escape(str(item.get("autre_selection", "")))
         cote = escape(str(item.get("cote_annoncee", "")))
         billets.append(
-            '<article class="card bd-bilan"><span class="bd-etiquette">Bilan de la veille</span>'
+            '<article class="card bd-bilan" data-bilan-jour="' + aujourdhui.isoformat() + '" hidden><span class="bd-etiquette">Bilan de la veille</span>'
             + '<h2>' + title + '</h2><p><strong>' + statut + '</strong></p>'
             + ('<p class="bd-score">' + score + '</p>' if score else '')
             + ('<p>Cote annoncée : ' + cote + '</p>' if cote else '')
@@ -132,7 +133,15 @@ def _prepare_bilan_veille(root):
             + '<p class="bd-note">' + note + '</p>'
             + '<p class="bd-note">Résultats non garantis · 18+ · Jouer comporte des risques.</p></article>'
         )
-    source = source.replace(marker, ''.join(billets))
+    source = source.replace(marker, ''.join(billets) + (
+        '<script>(function(){try{var p=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Paris",'
+        'year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());'
+        'var o={};for(var i=0;i<p.length;i++)o[p[i].type]=p[i].value;'
+        'var today=o.year+"-"+o.month+"-"+o.day;'
+        'document.querySelectorAll("[data-bilan-jour]").forEach(function(n){'
+        'n.hidden=(n.getAttribute("data-bilan-jour")!==today)});'
+        '}catch(e){}})();</script>' if billets else ''
+    ))
     page.write_text(source, encoding="utf-8")
 
 def prepare(root):
