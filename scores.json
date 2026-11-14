@@ -800,7 +800,7 @@
    "sport": "foot",
    "dom": "Autriche",
    "ext": "Rep Ireland",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     0,
     0
@@ -813,7 +813,7 @@
    "sport": "foot",
    "dom": "N Ireland",
    "ext": "Ukraine",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     0,
     0
@@ -826,7 +826,7 @@
    "sport": "foot",
    "dom": "Portugal",
    "ext": "Danemark",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     0,
     1
@@ -839,7 +839,7 @@
    "sport": "foot",
    "dom": "Roumanie",
    "ext": "Pologne",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     0,
     0
@@ -852,7 +852,7 @@
    "sport": "foot",
    "dom": "Suède",
    "ext": "Bosnia-Herz",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     3,
     0
@@ -865,10 +865,10 @@
    "sport": "hockey",
    "dom": "Blackhawks",
    "ext": "Jets",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -1587,6 +1587,6 @@
    ]
   }
  ],
- "maj": "2026-11-14T20:32:26Z",
- "verifie": "2026-11-14T20:32:26Z"
+ "maj": "2026-11-14T20:36:22Z",
+ "verifie": "2026-11-14T20:36:22Z"
 }
