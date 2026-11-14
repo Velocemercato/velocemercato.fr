@@ -1,5 +1,77 @@
 [
  {
+  "id": "gaming-edition-20261114-1800",
+  "univers": "gaming",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 18 h",
+  "titre": "La Pastille Gaming - JT du 14 novembre",
+  "accroche": "Palworld, GTA 6, Half-Life 2 et Sonic au menu ce soir !",
+  "duree": 115,
+  "date": "2026-11-14T18:00+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "gaming-edition-20261114-1800.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-14T18:00:00+01:00",
+  "source_start": "2026-11-13T18:00:00+01:00",
+  "source_end": "2026-11-14T18:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-63f874f0211db7f7380946",
+    "titre": "Palworld : Pocketpair accorde un congé à ses employés pour GTA 6",
+    "publishedAt": "2026-11-14T16:20:00Z",
+    "createdAt": "2026-11-14T16:48:54Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/les-developpeurs-de-palworld-auront-droit-a-un-conge-pour-jouer-a-gta-6-3050872968.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-fc62d5f82d4e2cd2882c2f",
+    "titre": "Du code source de Half-Life 2 : Episode 3 a fuité en ligne",
+    "publishedAt": "2026-11-14T12:21:00Z",
+    "createdAt": "2026-11-14T12:40:14Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/presque-20-ans-plus-tard-le-code-source-de-half-life-2-episode-3-vient-de-fuiter-3050872909.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-8372d46aea38831c01e2a5",
+    "titre": "Magic: The Gathering : la série animée Planeswalker arrivera sur Netflix en 2027",
+    "publishedAt": "2026-11-14T10:39:50Z",
+    "createdAt": "2026-11-14T11:09:14Z",
+    "references": [
+     {
+      "nom": "Eurogamer",
+      "url": "https://www.eurogamer.net/magic-the-gathering-planeswalker-netflix-animated-series-2027"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-4890bd9dad7d4920c2b221",
+    "titre": "Sonic Spinball : un spin-off développé en neuf mois pour Noël 1993",
+    "publishedAt": "2026-11-14T05:00:00Z",
+    "createdAt": "2026-11-14T05:27:23Z",
+    "references": [
+     {
+      "nom": "Gamekult",
+      "url": "https://www.gamekult.com/actualite/sonic-spinball-un-premier-spin-off-frustrant-pondu-en-9-mois-pour-noel-1993-3050872863.html"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "actus-edition-20261114-1300",
   "univers": "actus",
   "format": "edition",
@@ -12747,121 +12819,6 @@
      {
       "nom": "franceinfo",
       "url": "https://www.franceinfo.fr/societe/manifestations/les-effectifs-de-police-sont-a-bout-selon-le-syndicat-des-commissaires-de-la-police-nationale_8250724.html#xtor=RSS-3-%5Bgeneral%5D"
-     }
-    ]
-   }
-  ],
-  "diffusion": "youtube"
- },
- {
-  "id": "gaming-edition-20261023-1800",
-  "univers": "gaming",
-  "format": "edition",
-  "moment": "soir",
-  "label": "JT 18 h",
-  "titre": "La Pastille Gaming, édition du vendredi 23 octobre",
-  "accroche": "Cinéma, mobiles, studios menacés et Miyamoto à l'honneur, c'est parti.",
-  "duree": 138,
-  "date": "2026-10-23T18:37+02:00",
-  "publie": false,
-  "voix": [
-   "piper"
-  ],
-  "speech_rate": 1.12,
-  "fichier": "gaming-edition-20261023-1800.mp4",
-  "editorial_revision": "court-v1",
-  "edition_at": "2026-10-23T18:00:00+02:00",
-  "source_start": "2026-10-23T10:00:00+02:00",
-  "source_end": "2026-10-23T18:00:00+02:00",
-  "sources": [
-   {
-    "id": "rss-v2-2fc915734cf9ad14b06121",
-    "titre": "Samurai Shodown va aussi avoir son adaptation au cinéma",
-    "publishedAt": "2026-10-23T12:02:00Z",
-    "createdAt": "2026-10-23T14:24:47Z",
-    "references": [
-     {
-      "nom": "Gamekult",
-      "url": "https://www.gamekult.com/actualite/apres-mortal-kombat-et-street-fighter-samurai-shodown-aura-aussi-son-adaptation-au-cinema-3050872572.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-840e3bed00931ccc4bfb1e",
-    "titre": "Dispatch arrive sur mobiles le 9 décembre, avec un DLC storyboards",
-    "publishedAt": "2026-10-23T13:03:00Z",
-    "createdAt": "2026-10-23T13:51:18Z",
-    "references": [
-     {
-      "nom": "Gamekult",
-      "url": "https://www.gamekult.com/actualite/dispatch-les-super-heros-s-envolent-sur-mobiles-les-storyboards-jouables-en-dlc-3050872574.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-76c2b5c11bf40cc01f066e",
-    "titre": "Selon Gamekult, Xbox envisagerait la fermeture d'Arkane Lyon",
-    "publishedAt": "2026-10-23T12:29:00Z",
-    "createdAt": "2026-10-23T12:53:45Z",
-    "references": [
-     {
-      "nom": "Gamekult",
-      "url": "https://www.gamekult.com/actualite/xbox-aurait-decide-de-fermer-arkane-les-employes-tirent-la-sonnette-d-alarme-3050872579.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-fd179815da6f853cf189fc",
-    "titre": "Romancing SaGa 2 : Revenge of the Seven dépasse le million de ventes",
-    "publishedAt": "2026-10-23T11:16:00Z",
-    "references": [
-     {
-      "nom": "Gamekult",
-      "url": "https://www.gamekult.com/actualite/figurez-vous-que-la-serie-saga-n-a-jamais-ete-aussi-populaire-grace-au-remake-de-romancing-saga-2-3050872570.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-72e06498821ca6f3343cd3",
-    "titre": "Lazare's Sacrifice : un jeu de cartes narratif sous la Révolution française",
-    "publishedAt": "2026-10-23T10:43:00Z",
-    "references": [
-     {
-      "nom": "Gamekult",
-      "url": "https://www.gamekult.com/actualite/lazare-s-sacrifice-le-createur-du-gwent-revient-avec-un-jeu-de-cartes-a-la-revolution-francaise-3050872575.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-946300c54e3cb9ad2e5910",
-    "titre": "Katana Zero : le DLC gratuit toujours en chantier, sans date de sortie",
-    "publishedAt": "2026-10-23T10:24:00Z",
-    "references": [
-     {
-      "nom": "Gamekult",
-      "url": "https://www.gamekult.com/actualite/katana-zero-le-dlc-n-est-pas-mort-il-fait-maintenant-la-taille-d-un-jeu-complet-3050872573.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-93f1a3663359eeb8f68c5d",
-    "titre": "Shigeru Miyamoto, premier créateur de jeux vidéo à recevoir l'Ordre de la Culture au Japon",
-    "publishedAt": "2026-10-23T08:16:00Z",
-    "references": [
-     {
-      "nom": "Gamekult",
-      "url": "https://www.gamekult.com/actualite/au-japon-shigery-miyamoto-est-le-premier-acteur-de-l-industrie-du-jeu-video-a-recevoir-le-prestigieux-ordre-de-la-culture-3050872569.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-efa7c5aec51ead4b878da9",
-    "titre": "Octopath Traveler 0 : une mise à jour gratuite prévue vers décembre 2026",
-    "publishedAt": "2026-10-23T08:03:00Z",
-    "references": [
-     {
-      "nom": "Gamekult",
-      "url": "https://www.gamekult.com/actualite/octopath-traveler-0-s-apprete-a-recevoir-du-nouveau-contenu-un-nouveau-monstre-dans-l-arene-de-nouveaux-personnages-des-decembre-3050872568.html"
      }
     ]
    }
