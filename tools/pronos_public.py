@@ -219,7 +219,7 @@ def section_affiches_publiques(root, now):
         if not isinstance(row, dict):
             continue
         name = str(row.get("fichier") or "")
-        if not re.fullmatch(r"[a-z0-9-]+\\.png", name):
+        if not re.fullmatch(r"[a-z0-9-]+\.png", name):
             continue
         if not (Path(root) / "pronos" / "affiches" / name).is_file():
             continue
