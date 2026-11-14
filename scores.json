@@ -1,19 +1,6 @@
 {
  "matchs": [
   {
-   "id": "espn-401873052",
-   "date": "2026-11-13T01:15Z",
-   "comp": "NFL",
-   "sport": "nfl",
-   "dom": "Giants",
-   "ext": "Commanders",
-   "statut": "FINISHED",
-   "score": [
-    21,
-    24
-   ]
-  },
-  {
    "id": "espn-401916338",
    "date": "2026-11-13T12:00Z",
    "comp": "Match amical international",
@@ -735,7 +722,7 @@
    "sport": "foot",
    "dom": "Géorgie",
    "ext": "Hongrie",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     0,
     0
@@ -748,7 +735,7 @@
    "sport": "foot",
    "dom": "Norvège",
    "ext": "Pays de Galles",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     0,
     0
@@ -1572,21 +1559,8 @@
     null,
     null
    ]
-  },
-  {
-   "id": "espn-401873065",
-   "date": "2026-11-17T01:15Z",
-   "comp": "NFL",
-   "sport": "nfl",
-   "dom": "Ravens",
-   "ext": "Chargers",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
   }
  ],
- "maj": "2026-11-14T17:11:30Z",
- "verifie": "2026-11-14T17:42:38Z"
+ "maj": "2026-11-14T17:50:42Z",
+ "verifie": "2026-11-14T17:50:42Z"
 }
