@@ -1,10 +1,10 @@
 # Audit du site pour Claude
 
-État mesuré le 2026-11-13T18:56:42.994162+01:00.
+État mesuré le 2026-11-14T06:27:45.298899+01:00.
 
 ## Périmètre et limites
 
-1364 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 1634 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
+1390 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 1624 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
 
 Un statut 404 ou 410 indique une URL introuvable. Les refus 401/403, les limites 429, les erreurs serveur et les délais dépassés demandent une vérification complémentaire. Le test ne valide pas le visionnage géographique des vidéos ni la véracité des articles. Les classements signalés par mots-clés doivent être relus avant déplacement.
 
@@ -17,8 +17,8 @@ Retirer les accès transversaux aux anciennes applications et leurs invitations 
 - Liens confirmés introuvables en HTTP, 11.
 - Cibles internes absentes du dépôt, 76. Certaines peuvent être servies par Cloudflare, lire leur résultat HTTP avant correction.
 - Ancres à vérifier, 3120. Certaines sont gérées par JavaScript.
-- Articles à relire pour leur classement, 1.
-- Replays réellement publiés par genre, {"gaming": 17, "actus": 30, "foot": 43}.
+- Articles à relire pour leur classement, 0.
+- Replays réellement publiés par genre, {"foot": 43, "gaming": 17, "actus": 30}.
 
 Le fichier JSON associé contient toutes les références, pages et lignes. Les chemins correspondent au commit indiqué dans ce rapport.
 
@@ -38,7 +38,6 @@ Le fichier JSON associé contient toutes les références, pages et lignes. Les 
 
 ## Articles à relire
 
-- articles.json — rss-v2-162f05f1a5a2a510271179 — Nations League : McConville et Atcheson, la charnière la plus solide du tournoi — À relire, aucun indice net de la rubrique dans la brève
 
 ## Corrections déjà apportées dans cette reprise
 
