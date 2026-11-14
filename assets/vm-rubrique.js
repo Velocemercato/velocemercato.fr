@@ -28,10 +28,16 @@
     if (mien.some(function (r) { return r.test(p); })) return false;
     return RACINES.some(function (r) { return r.test(p); });
   }
+  // Un élément est « fini » quand le navigateur a lu sa balise fermante : lui ou un parent a déjà un suivant.
+  function fini(e) { for (; e && e !== document.documentElement; e = e.parentNode) if (e.nextSibling) return true; return document.readyState !== 'loading'; }
+  var vus = typeof WeakSet === 'function' ? new WeakSet() : null;
   function nettoyer() {
     if (!UNIVERS[ici]) return;
     // 1) Groupes de navigation majoritairement tournés vers d'autres univers.
     document.querySelectorAll('nav, header nav, section, aside, .vu-strip, [class*="portal"], [class*="ribbon"]').forEach(function (g) {
+      if (vus && vus.has(g)) return;
+      if (!fini(g)) return; // encore en cours de lecture : on attend d'avoir tous ses liens
+      if (vus) vus.add(g);
       if (g.closest('article,[data-vm-garder],#vm-live-ticker') || g.querySelector('article')) return;
       var liens = [].slice.call(g.querySelectorAll('a[href]'));
       if (liens.length < 2) return;
@@ -55,8 +61,17 @@
     };
     document.body.appendChild(b);
   }
-  function go() { nettoyer(); retour(); }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
+  function go() { if (vus) vus = new WeakSet(); nettoyer(); retour(); }
+  // Chargé dans <head> : on masque les blocs au fur et à mesure de la lecture de la page, AVANT le premier
+  // affichage (sinon la page « saute » quand ils disparaissent : mauvais score CLS de Google).
+  if (document.readyState === 'loading' && typeof MutationObserver === 'function') {
+    var prevu = false, mo = new MutationObserver(function () {
+      if (prevu) return; prevu = true;
+      Promise.resolve().then(function () { prevu = false; nettoyer(); });
+    });
+    mo.observe(document.documentElement, { childList: true, subtree: true });
+    document.addEventListener('DOMContentLoaded', function () { mo.disconnect(); go(); });
+  } else if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
   // Certains blocs sont ajoutés après coup par d'autres scripts.
   setTimeout(nettoyer, 1500); setTimeout(nettoyer, 4000);
 })();
