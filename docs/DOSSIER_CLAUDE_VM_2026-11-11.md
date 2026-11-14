@@ -1,6 +1,6 @@
 # Dossier Claude — Véloce Mercato, site et réseaux
 
-État établi le 2026-11-14T06:27+01:00.
+État établi le 2026-11-14T08:04+01:00.
 
 Ce dossier remplace les anciennes consignes de restauration intégrale et les anciennes cadences. Il décrit le travail autorisé par Romain dans cette conversation. Les accès et conversations de ChatGPT ne sont pas automatiquement accessibles dans Claude.
 
@@ -35,10 +35,10 @@ Sur vmunivers.fr, Romain a demandé : première case à gauche Facebook https://
 
 | Destination | Nombre relevé dans les reçus de cette reprise |
 |---|---|
-| Véloce Mercato · facebook | 70 |
-| Véloce Mercato · instagram | 69 |
-| VM Actus et Pronos · facebook | 70 |
-| VM Univers · facebook | 66 |
+| Véloce Mercato · facebook | 72 |
+| Véloce Mercato · instagram | 71 |
+| VM Actus et Pronos · facebook | 72 |
+| VM Univers · facebook | 68 |
 | VM Univers · instagram | 14 |
 
 Ces nombres comptent les identifiants uniques avec confirmation et URL publique. Un statut programmé, envoi ou workflow réussi ne suffit pas. Les reçus détaillés sont dans studio/editorial-status.json et dans le kit https://velocemercato.fr/studio/kit-automatique.html.
@@ -103,11 +103,11 @@ Pour Multisport, les flux français validés Sports.fr et Le Monde Sport sont ra
 
 ## Audit des pages, liens et classements
 
-- Pages HTML examinées : 1390.
-- URL interrogées : 1624.
+- Pages HTML examinées : 1394.
+- URL interrogées : 1633.
 - HTTP 404/410 confirmés : 11.
 - Cibles internes absentes du dépôt : 76.
-- Liens protégés/non vérifiables automatiquement : 608.
+- Liens protégés/non vérifiables automatiquement : 596.
 - Ancres à relire : 3120. Certaines existent seulement après chargement JavaScript.
 - Classements à relire : 0.
 
@@ -115,7 +115,7 @@ Le détail exhaustif des contrôles effectués, avec fichiers et lignes, est dan
 
 ## Vidéos, référence musicale et reste à faire
 
-Le dernier rendu répertorie 3 nouveaux flashes, bloc 2026-11-13T20:00:00+01:00. Lire studio/teasers.json pour les URLs réelles.
+Le dernier rendu répertorie 3 nouveaux flashes, bloc 2026-11-14T09:00:00+01:00. Lire studio/teasers.json pour les URLs réelles.
 
 Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, paroles originales proposées, format de livraison, accès CapCut non vérifié, chant encore à produire et dixième clip promotionnel non programmé. Les neuf créneaux TikTok ne constituent pas neuf confirmations de publication.
 
@@ -160,6 +160,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Infantino visé par une plainte aux États-Unis pour emploi illégal d'une employée de maison — https://www.facebook.com/122106465861520366/posts/122110457073520366
 - meta/facebook — Italie-France (3-1) : la presse italienne épingle Raymond Domenech après ses critiques — https://www.facebook.com/122106465861520366/posts/122110763853520366
 - meta/facebook — Italie-France : Cherki frustré après la défaite des Bleus face à la Squadra — https://www.facebook.com/122106465861520366/posts/122110572741520366
+- meta/facebook — L'Argentine s'incline face à l'Uruguay, premier match sans Messi — https://www.facebook.com/122106465861520366/posts/122110891401520366
 - meta/facebook — La F1 maintient Qatar et Abu Dhabi, Imola écarté comme solution de repli - F1 news — https://www.facebook.com/122106465861520366/posts/122110029855520366
 - meta/facebook — La numéro 2 mondiale Aryna Sabalenka prend la porte dès la phase de groupes du Masters WTA après sa défaite face à Elina Svitolina - franceinfo — https://www.facebook.com/122106465861520366/posts/122110834731520366
 - meta/facebook — Le Bayern refuse de céder Jonathan Tah au Barça lors du mercato — https://www.facebook.com/122106465861520366/posts/122110029765520366
@@ -187,6 +188,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — OM : Adidas prépare déjà ses futurs maillots, des fuites font surface — https://www.facebook.com/122106465861520366/posts/122110274829520366
 - meta/facebook — PL : Roberto De Zerbi élu entraîneur du mois de octobre avec Tottenham — https://www.facebook.com/122106465861520366/posts/122110734423520366
 - meta/facebook — Palmowski décroche un baquet financé en Formula Regional pour 2027 - F1 news — https://www.facebook.com/122106465861520366/posts/122110782873520366
+- meta/facebook — Paris FC : Naples s'intéresserait à Patrick Zabi, selon la Gazzetta dello Sport — https://www.facebook.com/122106465861520366/posts/122110884141520366
 - meta/facebook — Pickford face à la concurrence de Trafford chez les Three Lions — https://www.facebook.com/122106465861520366/posts/122110106493520366
 - meta/facebook — Pourquoi tant de joueurs des Bleus ont-ils grandi au Stade Rennais ? — https://www.facebook.com/122106465861520366/posts/122110357455520366
 - meta/facebook — Prestianni : Rui Costa se dit optimiste sur une prolongation à Benfica — https://www.facebook.com/122106465861520366/posts/122110826655520366
@@ -227,6 +229,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Héroïques ! Les Bleus réalisent l’exploit face à l’Afrique du Sud ! - Top 14 — https://www.instagram.com/p/DfszyyumGd4/
 - meta/instagram — Italie-France (3-1) : la presse italienne épingle Raymond Domenech après ses critiques — https://www.instagram.com/p/DfsOtSyj7pv/
 - meta/instagram — Italie-France : Cherki frustré après la défaite des Bleus face à la Squadra — https://www.instagram.com/p/Dfqk1VDDaPJ/
+- meta/instagram — L'Argentine s'incline face à l'Uruguay, premier match sans Messi — https://www.instagram.com/p/DftnrJil_aM/
 - meta/instagram — L'OM contacte l'agent de Santiago Hezze, milieu de l'Olympiakos valorisé 14 M€ — https://www.instagram.com/p/Dfrb3oilNdX/
 - meta/instagram — La F1 maintient Qatar et Abu Dhabi, Imola écarté comme solution de repli - F1 news — https://www.instagram.com/p/DflPqlLG3xP/
 - meta/instagram — La FIA retire l’accréditation de McEvoy, la Society of Editors conteste - F1 news — https://www.instagram.com/p/DftPgEnCfL-/
@@ -254,6 +257,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Nouvelle-Zélande à la Coupe du monde de rugby 2023 : actualités, matches en direct, joueurs, compositions, calendriers et résultats des All Blacks. - Rugbyrama — https://www.instagram.com/p/DflPhYjFIeR/
 - meta/instagram — OM : Adidas prépare déjà ses futurs maillots, des fuites font surface — https://www.instagram.com/p/DfnUE6nF5Uf/
 - meta/instagram — Palmer engagé avec l'Angleterre, assure Morgan Rogers — https://www.instagram.com/p/Dfqq3fAjbf0/
+- meta/instagram — Paris FC : Naples s'intéresserait à Patrick Zabi, selon la Gazzetta dello Sport — https://www.instagram.com/p/DfthePBDc8J/
 - meta/instagram — Pickford face à la concurrence de Trafford chez les Three Lions — https://www.instagram.com/p/Dfl-V3NFylt/
 - meta/instagram — Pirelli travaille la montée en température de ses intermédiaires pour 2027 - F1 news — https://www.instagram.com/p/Dfnep96mAHU/
 - meta/instagram — Prestianni : Rui Costa se dit optimiste sur une prolongation à Benfica — https://www.instagram.com/p/DftJ30NiTVV/
@@ -326,6 +330,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Sabalenka - Svitolina, WTA Finals, Masters (Indian Wells), Groupe 2, match en direct le 13-11-2026 - L'Équipe — https://www.facebook.com/1757379583055094/posts/1772785828181136
 - meta_pronos/facebook — Seahawks-Raiders : l’avant-match de la Week 10 | DAZN News Belgique - DAZN — https://www.facebook.com/1757379583055094/posts/1772952991497753
 - meta_pronos/facebook — Sepang dément l’hypothèse d’une ouverture de saison F1 en 2027 - F1 news — https://www.facebook.com/1757379583055094/posts/1771179308341788
+- meta_pronos/facebook — Sonic Spinball : un spin-off développé en neuf mois pour Noël 1993 — https://www.facebook.com/1757379583055094/posts/1773733248086394
 - meta_pronos/facebook — Soudan du Sud : Amnesty dénonce l'inaction des autorités et de l'ONU avant un massacre — https://www.facebook.com/1757379583055094/posts/1771338654992520
 - meta_pronos/facebook — The Elder Scrolls 6 : Bethesda ne prévoit pas de nouvelles sur Sentinel avant un long moment — https://www.facebook.com/1757379583055094/posts/1770975431695509
 - meta_pronos/facebook — Transferts Grenoble : Plusieurs joueurs convoités en Top 14 - Rugby Scope — https://www.facebook.com/1757379583055094/posts/1772557571537295
@@ -333,6 +338,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Trump, Xi et Poutine doivent se rencontrer jeudi en Chine, selon la Maison Blanche — https://www.facebook.com/1757379583055094/posts/1773590001434052
 - meta_pronos/facebook — Ukraine : des coupures d'électricité prolongées face aux frappes russes sur le réseau — https://www.facebook.com/1757379583055094/posts/1771227678336951
 - meta_pronos/facebook — Ukraine : à Lozova, des déplacés traumatisés par l'évacuation du Donetsk — https://www.facebook.com/1757379583055094/posts/1773465318113187
+- meta_pronos/facebook — Une exposition au MAD rend hommage au créateur de mode Yohan Serfaty — https://www.facebook.com/1757379583055094/posts/1773681684758217
 - meta_pronos/facebook — Une nouvelle allure pour les gobelets du Centre Bell | Canadiens de Montréal - NHL.com — https://www.facebook.com/1757379583055094/posts/1771020791690973
 - meta_pronos/facebook — Woodman évoque son départ de Bromley dans le podcast 72+ de la EFL — https://www.facebook.com/1757379583055094/posts/1769606088499110
 - meta_pronos/facebook — XV de France : Julien Marchand forfait de dernière minute, Peato Mauvaka titulaire - Rugby Scope — https://www.facebook.com/1757379583055094/posts/1773325711460481
@@ -358,7 +364,9 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_univers/facebook — Découvre VM Sport & randonnée — https://www.facebook.com/122098313661535169/posts/122107746195535169
 - meta_univers/facebook — Découvre VM Studio — https://www.facebook.com/122098313661535169/posts/122107745307535169
 - meta_univers/facebook — Focus sur AlloLivre — https://www.facebook.com/122098313661535169/posts/122109442845535169
+- meta_univers/facebook — Focus sur VM Actus — https://www.facebook.com/122098313661535169/posts/122109477039535169
 - meta_univers/facebook — Focus sur VM Emploi — https://www.facebook.com/122098313661535169/posts/122109427719535169
+- meta_univers/facebook — Focus sur VM Studio — https://www.facebook.com/122098313661535169/posts/122109464049535169
 - meta_univers/facebook — Le saviez-vous ? Notre projet AlloLivre — https://www.facebook.com/122098313661535169/posts/122109099279535169
 - meta_univers/facebook — Le saviez-vous ? Notre projet La Pastille TV — https://www.facebook.com/122098313661535169/posts/122109213795535169
 - meta_univers/facebook — Le saviez-vous ? Notre projet Pépite FC — https://www.facebook.com/122098313661535169/posts/122109394557535169
