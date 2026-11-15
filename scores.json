@@ -621,7 +621,7 @@
    "statut": "IN_PLAY",
    "score": [
     23,
-    33
+    40
    ]
   },
   {
@@ -657,7 +657,7 @@
    "sport": "nfl",
    "dom": "Jets",
    "ext": "Bills",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     12,
     31
@@ -725,7 +725,7 @@
    "statut": "IN_PLAY",
    "score": [
     0,
-    2
+    3
    ]
   },
   {
@@ -735,10 +735,10 @@
    "sport": "basket",
    "dom": "Suns",
    "ext": "Lakers",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -1327,6 +1327,6 @@
    ]
   }
  ],
- "maj": "2026-11-15T21:07:07Z",
- "verifie": "2026-11-15T21:07:07Z"
+ "maj": "2026-11-15T21:11:04Z",
+ "verifie": "2026-11-15T21:11:04Z"
 }
