@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261115-1900",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 19 h",
+  "titre": "La Pastille Actus - Édition du dimanche 15 novembre, 19 heures",
+  "accroche": "Bonsoir, voici les brèves importantes du jour, avec le recul nécessaire.",
+  "duree": 142,
+  "date": "2026-11-15T19:44+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261115-1900.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-15T19:00:00+01:00",
+  "source_start": "2026-11-15T13:00:00+01:00",
+  "source_end": "2026-11-15T19:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-56034539207cacb3e6745c",
+    "titre": "Des centaines de milliers de Tchèques manifestent contre la réforme des médias publics",
+    "publishedAt": "2026-11-15T17:04:49Z",
+    "createdAt": "2026-11-15T17:14:39Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/europe/les-tcheques-manifestent-en-masse-contre-la-reforme-du-financement-des-medias-publics_8283761.html#xtor=RSS-3-%5Beconomie%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-dfccafd8809d55021de0f9",
+    "titre": "L'Estonie fermera ses postes-frontières avec la Russie à partir du 1er décembre",
+    "publishedAt": "2026-11-15T17:12:20Z",
+    "createdAt": "2026-11-15T17:14:32Z",
+    "references": [
+     {
+      "nom": "France 24",
+      "url": "https://www.france24.com/fr/europe/20261115-estonie-accuse-russie-tentative-sabotage-et-d%C3%A9cide-de-fermer-fronti%C3%A8re"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-0c5b067462f2602eb0b7fa",
+    "titre": "« Dans Gaza », documentaire sur des reporters palestiniens de l'AFP, primé à Montréal",
+    "publishedAt": "2026-11-15T15:43:50Z",
+    "createdAt": "2026-11-15T16:15:12Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/15/dans-gaza-le-documentaire-sur-le-travail-des-reporters-palestiniens-de-lafp-distingue-au-c"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-262ed63b6b10c711a7b0e5",
+    "titre": "Une centaine de personnes à une marche blanche à Cergy en hommage à Pengo Bossio Wangi",
+    "publishedAt": "2026-11-15T16:02:15Z",
+    "createdAt": "2026-11-15T16:15:05Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/faits-divers/terrorisme/attentat-raciste-a-trappes/une-centaine-de-personnes-reunies-pour-une-marche-blanche-en-hommage-a-pengo-bossio-wangi-tue-dans-l-attaque-raciste-de-trappes_8283689.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-7dc3c09da8b7152164a48c",
+    "titre": "Le lycée Nelson-Mandela de Nantes rouvre ses portes, partiellement incendié lors du mouvement lycéen",
+    "publishedAt": "2026-11-15T15:11:34Z",
+    "createdAt": "2026-11-15T15:16:48Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/education/blocage-des-lycees/le-ministre-de-l-education-nationale-se-rend-a-nantes-lundi-pour-la-reouverture-du-lycee-nelson-mandela-en-partie-incendie-le-1er-octobre_8283644.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-f0174cb5dd6bba827715f2",
+    "titre": "Vin : les enchères de Beaune limitées par une récolte réduite en Bourgogne",
+    "publishedAt": "2026-11-15T15:12:44Z",
+    "createdAt": "2026-11-15T15:16:45Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/15/vin-en-bourgogne-les-encheres-de-beaune-rattrapees-par-le-dereglement-climatique"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-9e0f965ddf33b913a27671",
+    "titre": "Un passager ivre armé d'un couteau maîtrisé sur un vol Reykjavik-Milan",
+    "publishedAt": "2026-11-15T14:05:51Z",
+    "createdAt": "2026-11-15T14:23:11Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/15/un-passager-ivre-arme-dun-couteau-maitrise-sur-un-vol-reykjavik-milan"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-f39234f4c5c2bcba71170e",
+    "titre": "L'Iran affirme que deux pétroliers ont heurté des mines dans le détroit d'Ormuz",
+    "publishedAt": "2026-11-15T14:07:37Z",
+    "createdAt": "2026-11-15T14:23:08Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/iran/crise-dans-le-detroit-d-ormuz/l-iran-fait-etat-de-deux-petroliers-en-feu-dans-le-detroit-d-ormuz_8283602.html#xtor=RSS-3-%5Bmonde%5D"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "gaming-edition-20261115-1800",
   "univers": "gaming",
   "format": "edition",
@@ -12687,126 +12807,6 @@
      {
       "nom": "Ouest-France",
       "url": "https://www.ouest-france.fr/route-du-rhum/route-du-rhum-pourvu-quelle-ny-aille-pas-quand-louis-bodin-guidait-florence-arthaud-vers-la-victoire-en-1990-de324662-c231-11f1-a107-88e926908e5f?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu"
-     }
-    ]
-   }
-  ],
-  "diffusion": "youtube"
- },
- {
-  "id": "foot-edition-20261024-1200",
-  "univers": "foot",
-  "format": "edition",
-  "moment": "midi",
-  "label": "JT 12 h",
-  "titre": "La Pastille Foot : le JT du midi",
-  "accroche": "Le foot, c'est tous les jours, c'est midi, c'est La Pastille !",
-  "duree": 141,
-  "date": "2026-10-24T12:52+02:00",
-  "publie": false,
-  "voix": [
-   "piper"
-  ],
-  "speech_rate": 1.12,
-  "fichier": "foot-edition-20261024-1200.mp4",
-  "editorial_revision": "court-v1",
-  "edition_at": "2026-10-24T12:00:00+02:00",
-  "source_start": "2026-10-24T08:00:00+02:00",
-  "source_end": "2026-10-24T12:00:00+02:00",
-  "sources": [
-   {
-    "id": "rss-v2-0f9cbd4718164242465777",
-    "titre": "OM : le match face au Havre maintenu à 17h15, selon RMC Sport",
-    "publishedAt": "2026-10-24T08:59:15Z",
-    "createdAt": "2026-10-24T09:59:00Z",
-    "references": [
-     {
-      "nom": "RMC Sport",
-      "url": "https://rmcsport.bfmtv.com/football/clubs/olympique-marseille/direct-om-suivez-la-conference-de-presse-de-bruno-genesio-et-toutes-les-infos-avant-le-match-face-au-havre_LN-202610240181.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-7077eeb6673b35091b7f52",
-    "titre": "Aston Villa : Ibrahim Mbaye s'impose peu à peu avec une passe décisive contre le Viking",
-    "publishedAt": "2026-10-24T09:56:52Z",
-    "createdAt": "2026-10-24T09:58:53Z",
-    "references": [
-     {
-      "nom": "RMC Sport",
-      "url": "https://rmcsport.bfmtv.com/football/premier-league/aston-villa-en-angleterre-l-ancien-parisien-ibrahim-mbaye-imprime-sa-marque_AV-202610240209.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-baea5e20ed5f198bacf659",
-    "titre": "Saint-Étienne - Nantes : pas de supporters nantais, Poirier regrette",
-    "publishedAt": "2026-10-24T07:00:00Z",
-    "createdAt": "2026-10-24T08:59:48Z",
-    "references": [
-     {
-      "nom": "Foot01",
-      "url": "https://www.foot01.com/nantes/nantes-arrive-furieux-a-saint-etienne"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-8f7370023724ce61470735",
-    "titre": "Liga : DAZN et Disney+ remplacent beIN Sports, selon L'Équipe",
-    "publishedAt": "2026-10-24T08:42:38Z",
-    "createdAt": "2026-10-24T08:59:32Z",
-    "references": [
-     {
-      "nom": "Foot Mercato",
-      "url": "https://www.footmercato.net/a4522881480701862280-droits-tv-comment-dazn-et-disney-ont-arrache-la-liga-a-bein-sports"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-c8dba110580b0f938d1c1f",
-    "titre": "Neymar situe l'apogée de sa carrière à ses débuts au PSG en 2017",
-    "publishedAt": "2026-10-24T06:27:00Z",
-    "createdAt": "2026-10-24T08:27:19Z",
-    "references": [
-     {
-      "nom": "Foot Mercato",
-      "url": "https://www.footmercato.net/a9105424229373999237-neymar-jr-revele-le-prime-de-sa-carriere"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-eebad0a0e6f6a35b7a5bff",
-    "titre": "Ronald Araujo appelle à parler de santé mentale après sa pause",
-    "publishedAt": "2026-10-24T06:28:01Z",
-    "createdAt": "2026-10-24T08:27:17Z",
-    "references": [
-     {
-      "nom": "RMC Sport",
-      "url": "https://rmcsport.bfmtv.com/football/premier-league/il-faut-parler-des-choses-et-s-ouvrir-sur-ce-qu-on-traverse-ronald-araujo-appelle-a-s-exprimer-sur-la-sante-mentale_AV-202610240113.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-6819972ff563dfeaa1c375",
-    "titre": "La FFF condamne l'agression du président de la Jeunesse Sportive de Bondy",
-    "publishedAt": "2026-10-24T07:41:31Z",
-    "createdAt": "2026-10-24T07:58:31Z",
-    "references": [
-     {
-      "nom": "Foot Amateur",
-      "url": "https://footamateur.ouest-france.fr/la-fff-reagit-apres-lagression-du-president-de-la-jeunesse-sportive-de-bondy/"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-cc7f856a5424c49d7e63eb",
-    "titre": "Emmanuel Latte Lath revient sur son parcours, de Côte d'Ivoire à Union Berlin",
-    "publishedAt": "2026-10-24T07:51:35Z",
-    "createdAt": "2026-10-24T07:58:27Z",
-    "references": [
-     {
-      "nom": "BBC Sport",
-      "url": "https://www.bbc.co.uk/sport/football/articles/cqrkyl1gp4leo?at_medium=RSS&at_campaign=rss"
      }
     ]
    }
