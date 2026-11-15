@@ -269,8 +269,8 @@
    "ext": "Nuggets",
    "statut": "IN_PLAY",
    "score": [
-    82,
-    95
+    87,
+    98
    ]
   },
   {
@@ -387,7 +387,7 @@
    "statut": "IN_PLAY",
    "score": [
     86,
-    69
+    72
    ]
   },
   {
@@ -399,8 +399,8 @@
    "ext": "Pistons",
    "statut": "IN_PLAY",
    "score": [
-    51,
-    47
+    53,
+    49
    ]
   },
   {
@@ -410,10 +410,10 @@
    "sport": "basket",
    "dom": "Grizzlies",
    "ext": "Nets",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
-    64,
-    52
+    71,
+    54
    ]
   },
   {
@@ -423,7 +423,7 @@
    "sport": "basket",
    "dom": "Timberwolves",
    "ext": "Bulls",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     45,
     58
@@ -449,6 +449,19 @@
    "sport": "hockey",
    "dom": "Mammoth",
    "ext": "Sharks",
+   "statut": "IN_PLAY",
+   "score": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "espn-401906463",
+   "date": "2026-11-15T03:00Z",
+   "comp": "Match amical international",
+   "sport": "foot",
+   "dom": "Nouvelle-Zélande",
+   "ext": "Inde",
    "statut": "TIMED",
    "score": [
     null,
@@ -475,19 +488,6 @@
    "sport": "hockey",
    "dom": "Kings",
    "ext": "Flames",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": "espn-401906463",
-   "date": "2026-11-15T03:10Z",
-   "comp": "Match amical international",
-   "sport": "foot",
-   "dom": "Nouvelle-Zélande",
-   "ext": "Inde",
    "statut": "TIMED",
    "score": [
     null,
@@ -1327,6 +1327,6 @@
    ]
   }
  ],
- "maj": "2026-11-15T02:05:21Z",
- "verifie": "2026-11-15T02:05:21Z"
+ "maj": "2026-11-15T02:09:18Z",
+ "verifie": "2026-11-15T02:09:18Z"
 }
