@@ -16,6 +16,7 @@ a{color:#fff}
 .vip{border:2px solid #f5cf69}
 .bd-bilan{position:relative;overflow:hidden;background:linear-gradient(125deg,#37070b,#0a1533 68%,#070808);border:3px solid #ffca37;box-shadow:7px 8px 0 #b01024,0 0 24px #e4163155}
 .bd-bilan h2{font-size:clamp(1.65rem,5vw,2.7rem);font-style:italic;font-weight:1000;text-transform:uppercase;letter-spacing:.03em;text-shadow:3px 3px 0 #b01024}
+.bd-bilan h3{font-size:clamp(1.4rem,4vw,2.1rem);font-style:italic;font-weight:900;text-transform:uppercase;line-height:1.2;color:#f5cf69;text-shadow:2px 2px 0 #b01024}
 .bd-bilan .bd-etiquette{display:inline-block;background:#ffcf46;color:#100b09;font-weight:1000;text-transform:uppercase;border:2px solid #fdf3b8;transform:rotate(-1deg);padding:5px 12px}
 .bd-bilan .bd-score{font-size:clamp(1.4rem,5vw,2.4rem);font-weight:1000;color:#b4ff70}
 .bd-bilan .bd-note{font-size:.85rem;color:#d4d4d4}
@@ -28,6 +29,7 @@ footer{font-size:.85rem;color:#c1c5cd}
 <h1>❤️🖤 CONSEILS DU JOUR</h1>
 <p>Un espace à part, accessible depuis le pouf de l'accueil.</p></header>
 <main>
+<nav aria-label="Conseils et résultats"><a href="#historique-resultats">📚 Historique transparent</a> · <a href="#edition-vip-20261115">👑 Édition du jour</a> · <a href="#vip">Demander le VIP</a></nav>
 <section class="card warning" aria-label="Information importante">
 <strong>18 ans et plus uniquement — interdit aux mineurs.</strong>
 <p>Les cotes évoluent et aucun résultat n'est garanti. Jouer comporte des risques : endettement, isolement, dépendance.
@@ -41,6 +43,15 @@ Joueurs Info Service : 09 74 75 13 13. Cette mention ne constitue pas une vérif
 </section>
 <script>(function(){try{const p=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const d=Object.fromEntries(p.map(x=>[x.type,x.value]));if(d.year+'-'+d.month+'-'+d.day==='2026-11-14')document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('#info-exceptionnelle-20261114,#combine-cholet-20261114').forEach(x=>x.hidden=false)});}catch(e){}})();</script>
 <!-- VM_BILAN_VEILLE -->
+<section class="card vip" id="edition-vip-20261115" hidden>
+  <span class="bd-etiquette">DIMANCHE 15 NOVEMBRE 2026</span>
+  <h2>👑 Les 3 conseils du jour sont prêts — VIP uniquement</h2>
+  <p>La rédaction annonce trois conseils pour aujourd’hui : le conseil « Safe » VIP, le combiné VIP et le Fun VIP. Aucun nouveau conseil n’est proposé en public dans cette édition.</p>
+  <p>Pour les recevoir, demande à rejoindre le VIP : la transmission reste personnelle et privée par WhatsApp. Les rencontres et les analyses VIP ne sont pas dévoilées ici.</p>
+  <p><a class="action" href="#vip">Demander les informations VIP</a></p>
+  <p class="muted">« Safe » est le nom de l’édition, sans garantie de résultat. Conseils prêts annoncés par la rédaction ; cette page ne contient pas les tickets privés.</p>
+</section>
+<script>(function(){try{const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const d=Object.fromEntries(parts.map(x=>[x.type,x.value]));const section=document.getElementById('edition-vip-20261115');if(section)section.hidden=d.year+'-'+d.month+'-'+d.day!=='2026-11-15';}catch(e){}})();</script>
 <!-- VM_AFFICHES_DU_JOUR -->
 <section class="card bd-bilan" id="combine-cholet-20261114" hidden aria-label="Combiné partagé exceptionnellement en public le 14 novembre">
   <span class="bd-etiquette">14 NOV. · PARTAGE PUBLIC EXCEPTIONNEL</span>
@@ -62,3 +73,4 @@ Joueurs Info Service : 09 74 75 13 13. Cette mention ne constitue pas une vérif
 <p><a href="/">Retour aux actualités de Véloce Mercato</a> · <a href="/studio.html#tv">Regarder La Pastille TV</a></p></section>
 </main><footer>VÉLOCE MERCATO · Conseil sportif, aucun gain promis · Réservé aux adultes</footer>
 </body></html>
+

@@ -8,6 +8,7 @@ import sys
 import datetime as dt
 import zipfile
 from zoneinfo import ZoneInfo
+from urllib.parse import urlparse
 
 REMOVE_CLASSES = {'vmbar', 'vmtop', 'vm-volets', 'vm-duo', 'vm-essentiel', 'promo-manga'}
 VOID = {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
@@ -99,7 +100,7 @@ def _prepare_affiches(root):
 
 
 def _prepare_bilan_veille(root):
-    """Bilan rédigé, daté et strictement borné au lendemain des rencontres."""
+    """Conserver tous les bilans passés, y compris le tout premier résultat."""
     page = root / "conseils/index.html"
     source_file = root / "conseils/resultats.json"
     if not page.is_file():
@@ -109,49 +110,56 @@ def _prepare_bilan_veille(root):
     if marker not in source:
         raise ValueError("Emplacement de bilan manquant")
     data = json.loads(source_file.read_text(encoding="utf-8")) if source_file.exists() else {}
-    paris = ZoneInfo('Europe/Paris')
-    aujourdhui = dt.datetime.now(dt.timezone.utc).astimezone(paris).date()
-    veille = (aujourdhui - dt.timedelta(days=1)).isoformat()
-    billets = []
+    today = dt.datetime.now(dt.timezone.utc).astimezone(ZoneInfo("Europe/Paris")).date()
+    records = []
     for item in data.get("bilans", []) if isinstance(data, dict) else []:
-        if not isinstance(item, dict) or item.get("date") != veille:
+        if not isinstance(item, dict):
             continue
-        if len(billets) >= 3:
-            break
-        title = escape(str(item.get("titre", "Bilan du jour précédent")))
-        statut = escape(str(item.get("statut", "En cours de vérification")))
-        score = escape(str(item.get("score_confirme_par_capture", "")))
-        note = escape(str(item.get("note", "")))
-        missing = escape(str(item.get("autre_selection", "")))
-        cote = escape(str(item.get("cote_annoncee", "")))
+        try:
+            day = dt.date.fromisoformat(str(item.get("date", "")))
+        except ValueError:
+            continue
+        if day < today:
+            records.append((day, item))
+    records.sort(key=lambda pair: pair[0], reverse=True)
+    cards = []
+    source_hosts = {"www.uefa.com", "www.teamfrancebasket.fr", "www.bebasket.fr",
+                    "www.estrepublicain.fr", "www.nba.com", "www.nhl.com"}
+    for day, item in records:
+        title = escape(str(item.get("titre", "Bilan du jour")))
+        status = escape(str(item.get("statut", "En cours de vérification")))
+        scope = "VIP" if item.get("type") == "vip" else "Public"
+        links = []
         sources = item.get("sources", [])
-        liens = []
-        for src in sources if isinstance(sources, list) else []:
-            if not isinstance(src, dict):
+        for entry in sources if isinstance(sources, list) else []:
+            if not isinstance(entry, dict):
                 continue
-            url = str(src.get("url", ""))
-            if url.startswith("https://www.uefa.com/") or url.startswith("https://www.teamfrancebasket.fr/"):
-                liens.append('<a href="' + escape(url, quote=True) + '" target="_blank" rel="noopener noreferrer">' + escape(str(src.get("nom", "Source"))) + '</a>')
-        billets.append(
-            '<article class="card bd-bilan" data-bilan-jour="' + aujourdhui.isoformat() + '" hidden><span class="bd-etiquette">Bilan de la veille</span>'
-            + '<h2>' + title + '</h2><p><strong>' + statut + '</strong></p>'
-            + ('<p class="bd-score">' + score + '</p>' if score else '')
-            + ('<p>Cote annoncée : ' + cote + '</p>' if cote else '')
-            + ('<p>' + missing + '</p>' if missing else '')
-            + '<p class="bd-note">' + note + '</p>'
-            + ('<p class="bd-note">Sources : ' + ' · '.join(liens) + '</p>' if liens else '')
-            + '<p class="bd-note">Les pronostics ne garantissent aucun gain futur · 18+ · Jouer comporte des risques.</p></article>'
+            url = str(entry.get("url", ""))
+            parsed = urlparse(url)
+            if parsed.scheme == "https" and parsed.hostname in source_hosts and not parsed.username and not parsed.password:
+                links.append('<a href="' + escape(url, quote=True) + '" target="_blank" rel="noopener noreferrer">' + escape(str(entry.get("nom", "Source"))) + '</a>')
+        content = []
+        for key, cls in (("score_confirme_par_capture", "bd-score"), ("autre_selection", ""), ("note", "bd-note")):
+            value = str(item.get(key, ""))
+            if value:
+                content.append('<p class="' + cls + '">' + escape(value).replace("\n", "<br>") + '</p>')
+        cards.append(
+            '<article class="card bd-bilan" data-bilan-date="' + day.isoformat() + '">'
+            + '<span class="bd-etiquette">' + day.strftime("%d/%m/%Y") + ' · ' + scope + '</span>'
+            + '<h3>' + title + '</h3><p><strong>' + status + '</strong></p>'
+            + ''.join(content)
+            + ('<p class="bd-note">Sources : ' + ' · '.join(links) + '</p>' if links else '')
+            + '<p class="bd-note">Résultats passés, sans garantie pour la suite · 18+ · Jouer comporte des risques.</p></article>'
         )
-    source = source.replace(marker, ''.join(billets) + (
-        '<script>(function(){try{var p=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Paris",'
-        'year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());'
-        'var o={};for(var i=0;i<p.length;i++)o[p[i].type]=p[i].value;'
-        'var today=o.year+"-"+o.month+"-"+o.day;'
-        'document.querySelectorAll("[data-bilan-jour]").forEach(function(n){'
-        'n.hidden=(n.getAttribute("data-bilan-jour")!==today)});'
-        '}catch(e){}})();</script>' if billets else ''
-    ))
-    page.write_text(source, encoding="utf-8")
+    section = (
+        '<section id="historique-resultats" aria-labelledby="titre-historique">'
+        + '<h2 id="titre-historique">📚 Historique transparent des conseils</h2>'
+        + '<p>Réussites et échecs restent visibles, du plus récent au plus ancien. '
+        + 'Le premier bilan est conservé. Public et VIP sont comptés séparément ; '
+        + 'les sélections VIP restent privées. Les ratios portent sur des conseils complets, pas sur chaque match.</p>'
+        + ''.join(cards) + '</section>'
+    ) if cards else ''
+    page.write_text(source.replace(marker, section), encoding="utf-8")
 
 def prepare(root):
     _prepare_affiches(root)
@@ -197,3 +205,4 @@ def prepare(root):
 
 if __name__ == '__main__':
     prepare(Path(sys.argv[1]).resolve())
+
