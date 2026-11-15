@@ -28,12 +28,21 @@ footer{font-size:.85rem;color:#c1c5cd}
 .results-fold>summary{cursor:pointer;padding:20px;color:#f5cf69;font-weight:900;font-size:clamp(1.15rem,4vw,1.6rem);background:linear-gradient(120deg,#350712,#101e3e)}
 .results-fold>summary span{display:block;margin:6px 0 0 24px;font-size:.85rem;font-weight:500;color:#e6e8f1}
 .results-fold>summary:focus-visible{outline:3px solid #fff;outline-offset:-5px}
-.results-content{padding:18px}.results-content>.bd-bilan{box-shadow:4px 5px 0 #b01024;margin-right:5px}
+.results-content{padding:14px;max-height:min(65vh,640px);overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable}
+.results-intro{font-size:.9rem;color:#d5d9e7;margin:0 0 12px}
+.results-month,.results-day{border:1px solid #675629;border-radius:10px;margin:9px 0;background:#111729;overflow:hidden}
+.results-month>summary,.results-day>summary,.results-evidence>summary{cursor:pointer;padding:13px;font-weight:800;color:#f5cf69;min-height:46px}
+.results-month>summary span{float:right;font-size:.8rem;font-weight:500;color:#ccd2e4;margin-left:8px}
+.results-month-content{padding:0 10px 8px}.results-day>summary{font-size:.95rem;color:#fff}.results-day>summary span{display:block;font-size:.83rem;font-weight:500;color:#ccd2e4;margin:5px 0 0 17px}
+.results-day-content{padding:0 10px 10px}.results-day-content .bd-bilan{box-shadow:none;margin:8px 0;border-width:1px;padding:15px;border-radius:10px}
+.results-content .bd-bilan h3{font-size:1.2rem;margin:15px 0}.results-content .bd-score{font-size:1.05rem}.results-content .bd-etiquette{font-size:.8rem;transform:none}
+.results-evidence{border:1px solid #675629;border-radius:9px;margin:12px 0;background:#080d1a}.results-evidence>summary{font-size:.9rem}
+.results-month>summary:focus-visible,.results-day>summary:focus-visible,.results-evidence>summary:focus-visible{outline:2px solid #fff;outline-offset:-3px}
 .result-captures{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px;margin:20px 0}
 .result-captures figure{margin:0;min-width:0;border:1px solid #d1b25e;border-radius:12px;overflow:hidden;background:#07090d;scroll-margin-top:15px}
-.result-captures figure>a{display:block;background:#fff}.result-captures img{display:block;width:100%;height:auto;max-height:520px;object-fit:contain}
+.result-captures figure>a{display:block;background:#fff}.result-captures img{display:block;width:100%;height:auto;max-height:280px;object-fit:contain}
 .result-captures figcaption{padding:12px;font-size:.88rem;line-height:1.5;color:#eee}.result-captures figcaption a{display:inline-block;margin-top:8px;color:#f5cf69;font-weight:800;min-height:36px}
-@media(max-width:560px){.results-content{padding:12px}.results-content>.bd-bilan{padding:14px}.result-captures{grid-template-columns:1fr}.result-captures img{max-height:none}}
+@media(max-width:560px){.results-content{padding:10px;max-height:60vh}.results-month>summary span{float:none;display:block;margin:5px 0 0 17px}.results-day-content{padding:0 7px 7px}.result-captures{grid-template-columns:1fr;margin:10px}.result-captures img{max-height:320px}}
 </style></head><body>
 <header><a href="/" aria-label="Retour à l'accueil de Véloce Mercato">← VÉLOCE MERCATO</a>
 <h1>❤️🖤 CONSEILS DU JOUR</h1>
@@ -53,7 +62,7 @@ Joueurs Info Service : 09 74 75 13 13. Cette mention ne constitue pas une vérif
 </section>
 <script>(function(){try{const p=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const d=Object.fromEntries(p.map(x=>[x.type,x.value]));if(d.year+'-'+d.month+'-'+d.day==='2026-11-14')document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('#info-exceptionnelle-20261114,#combine-cholet-20261114').forEach(x=>x.hidden=false)});}catch(e){}})();</script>
 <!-- VM_BILAN_VEILLE -->
-<script>(function(){function openResults(){var h=location.hash;if(h==='#historique-resultats'||h.indexOf('#preuve-')===0){var d=document.getElementById('historique-resultats');if(d)d.open=true;}}document.addEventListener('click',function(e){var a=e.target.closest('a[href="#historique-resultats"]');if(a){var d=document.getElementById('historique-resultats');if(d)d.open=true;}});window.addEventListener('hashchange',openResults);openResults();})();</script>
+<script>(function(){function openResults(){var h=location.hash;if(h==='#historique-resultats'||h.indexOf('#preuve-')===0||h.indexOf('#resultats-')===0){var node=document.getElementById(h.slice(1));while(node){if(node.tagName==='DETAILS')node.open=true;node=node.parentElement;}}}document.addEventListener('click',function(e){var a=e.target.closest('a[href="#historique-resultats"]');if(a){var d=document.getElementById('historique-resultats');if(d)d.open=true;}});window.addEventListener('hashchange',openResults);openResults();})();</script>
 <section class="card vip" id="edition-vip-20261115" hidden>
   <span class="bd-etiquette">DIMANCHE 15 NOVEMBRE 2026</span>
   <h2>👑 Les 3 conseils du jour sont prêts — VIP uniquement</h2>

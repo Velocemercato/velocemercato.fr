@@ -123,6 +123,9 @@ def _prepare_bilan_veille(root):
             records.append((day, item))
     records.sort(key=lambda pair: pair[0], reverse=True)
     cards = []
+    days = {}
+    month_names = ('janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+                   'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre')
     source_hosts = {"www.uefa.com", "www.teamfrancebasket.fr", "www.bebasket.fr",
                     "www.estrepublicain.fr", "www.nba.com", "www.nhl.com"}
     for day, item in records:
@@ -167,25 +170,43 @@ def _prepare_bilan_veille(root):
                 + '<img src="' + url + '" width="' + str(width) + '" height="' + str(height) + '" loading="lazy" decoding="async" alt="' + caption + '"></a>'
                 + '<figcaption>' + caption + '<br><a href="' + url + '" target="_blank" rel="noopener noreferrer">Agrandir l’original ↗</a></figcaption></figure>'
             )
-        cards.append(
+        card = (
             '<article class="card bd-bilan" data-bilan-date="' + day.isoformat() + '">'
             + '<span class="bd-etiquette">' + day.strftime("%d/%m/%Y") + ' · ' + scope + '</span>'
             + '<h3>' + title + '</h3><p><strong>' + status + '</strong></p>'
-            + ('<div class="result-captures">' + ''.join(figures) + '</div>' if figures else '')
+            + ('<details class="results-evidence"><summary>🖼️ ' + ('Voir les ' + str(len(figures)) + ' captures originales' if len(figures) > 1 else 'Voir la capture originale') + '</summary><div class="result-captures">' + ''.join(figures) + '</div></details>' if figures else '')
             + ''.join(content)
             + ('<p class="bd-note">Sources : ' + ' · '.join(links) + '</p>' if links else '')
             + '<p class="bd-note">Résultats passés, sans garantie pour la suite · 18+ · Jouer comporte des risques.</p></article>'
         )
+        days.setdefault(day, []).append((scope, status, card))
+    months = {}
+    for day, entries in days.items():
+        label = str(day.day) + ' ' + month_names[day.month - 1]
+        summaries = []
+        for scope, status, _ in entries:
+            ratio = re.match(r"(\d+) conseils? réussis? sur (\d+)", status)
+            short = ratio.group(1) + '/' + ratio.group(2) if ratio else status.split(' — ')[0]
+            summaries.append(scope + ' : ' + short)
+        overview = ' · '.join(summaries)
+        day_html = (
+            '<details class="results-day" name="vm-results-day" id="resultats-' + day.isoformat() + '">'
+            + '<summary><strong>' + label + '</strong><span>' + overview + '</span></summary>'
+            + '<div class="results-day-content">' + ''.join(card for _, _, card in entries) + '</div></details>'
+        )
+        months.setdefault((day.year, day.month), []).append(day_html)
+    for (year, month), entries in months.items():
+        label = month_names[month - 1].capitalize() + ' ' + str(year)
+        cards.append(
+            '<details class="results-month" name="vm-results-month"><summary>' + label
+            + '<span>' + str(len(entries)) + (' journées archivées' if len(entries) > 1 else ' journée archivée') + '</span></summary>'
+            + '<div class="results-month-content">' + ''.join(entries) + '</div></details>'
+        )
     section = (
         '<details id="historique-resultats" class="results-fold">'
-        + '<summary>🔞 Résultats transparents · 18+ <span>Voir les captures des 13 et 14 novembre</span></summary>'
-        + '<div class="results-content"><h2 id="titre-historique">📚 Les résultats, images à l’appui</h2>'
-        + '<p>Réussites et échecs restent visibles, du plus récent au plus ancien. '
-        + 'Le premier bilan est conservé. Public et VIP sont comptés séparément ; '
-        + 'les conseils VIP à venir restent privés. Les ratios portent sur des conseils complets, pas sur chaque match.</p>'
-        + '<p class="muted">Captures originales transmises par la rédaction après les rencontres. '
-        + 'Clique sur une image pour la lire en grand. L’affiche du 13 novembre est l’annonce d’origine, pas une capture de résultat. '
-        + 'Les conseils du jour restent séparés de ces archives.</p>'
+        + '<summary>🔞 Résultats transparents · 18+ <span>Réussites et échecs · Captures originales · Archives par mois</span></summary>'
+        + '<div class="results-content"><p class="results-intro">Choisis un mois, puis une date. '
+        + 'Les images s’ouvrent uniquement à la demande. Le premier bilan et les échecs sont conservés.</p>'
         + ''.join(cards) + '</div></details>'
     ) if cards else ''
     page.write_text(source.replace(marker, section), encoding="utf-8")
