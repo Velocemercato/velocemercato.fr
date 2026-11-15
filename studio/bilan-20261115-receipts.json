@@ -20,13 +20,15 @@
     {
       "account": "112294796981981",
       "network": "facebook",
-      "status": "programme",
+      "status": "refuse_sans_relance",
       "metricool_id": 428946686,
       "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7762102&openWithPostUuid=-1300459666389646462",
       "publicationDate": {
         "dateTime": "2026-11-15T15:39:00",
         "timezone": "Europe/Paris"
-      }
+      },
+      "metricool_status": "ERROR",
+      "detail": "You have reached your Metricool account limit."
     },
     {
       "account": "veloce.mercato",
@@ -38,13 +40,15 @@
     {
       "account": "vmunivers.fr",
       "network": "instagram",
-      "status": "programme",
+      "status": "en_cours_a_verifier",
       "metricool_id": 428947562,
       "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7762102&openWithPostUuid=-1877202695814821655",
       "publicationDate": {
         "dateTime": "2026-11-15T15:40:00",
         "timezone": "Europe/Paris"
-      }
+      },
+      "metricool_status": "PUBLISHING",
+      "detail": "publishing"
     }
   ]
 }
