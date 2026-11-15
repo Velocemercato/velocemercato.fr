@@ -267,7 +267,7 @@
    "sport": "basket",
    "dom": "Pelicans",
    "ext": "Nuggets",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     51,
     56
@@ -283,7 +283,7 @@
    "statut": "IN_PLAY",
    "score": [
     0,
-    2
+    3
    ]
   },
   {
@@ -374,7 +374,7 @@
    "statut": "IN_PLAY",
    "score": [
     0,
-    2
+    3
    ]
   },
   {
@@ -386,8 +386,8 @@
    "ext": "Mavericks",
    "statut": "IN_PLAY",
    "score": [
-    33,
-    33
+    41,
+    37
    ]
   },
   {
@@ -397,10 +397,10 @@
    "sport": "basket",
    "dom": "Heat",
    "ext": "Pistons",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    5,
+    5
    ]
   },
   {
@@ -410,10 +410,10 @@
    "sport": "basket",
    "dom": "Grizzlies",
    "ext": "Nets",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    5,
+    7
    ]
   },
   {
@@ -423,10 +423,10 @@
    "sport": "basket",
    "dom": "Timberwolves",
    "ext": "Bulls",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    4,
+    4
    ]
   },
   {
@@ -1327,6 +1327,6 @@
    ]
   }
  ],
- "maj": "2026-11-15T01:10:01Z",
- "verifie": "2026-11-15T01:10:01Z"
+ "maj": "2026-11-15T01:13:57Z",
+ "verifie": "2026-11-15T01:13:57Z"
 }
