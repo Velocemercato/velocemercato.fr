@@ -612,19 +612,6 @@
    ]
   },
   {
-   "id": "espn-401873060",
-   "date": "2026-11-15T18:00Z",
-   "comp": "NFL",
-   "sport": "nfl",
-   "dom": "Packers",
-   "ext": "Vikings",
-   "statut": "IN_PLAY",
-   "score": [
-    10,
-    30
-   ]
-  },
-  {
    "id": "espn-401873057",
    "date": "2026-11-15T18:00Z",
    "comp": "NFL",
@@ -674,6 +661,19 @@
    "score": [
     12,
     31
+   ]
+  },
+  {
+   "id": "espn-401873060",
+   "date": "2026-11-15T18:00Z",
+   "comp": "NFL",
+   "sport": "nfl",
+   "dom": "Packers",
+   "ext": "Vikings",
+   "statut": "FINISHED",
+   "score": [
+    10,
+    30
    ]
   },
   {
@@ -1327,6 +1327,6 @@
    ]
   }
  ],
- "maj": "2026-11-15T20:58:36Z",
- "verifie": "2026-11-15T20:58:36Z"
+ "maj": "2026-11-15T21:02:31Z",
+ "verifie": "2026-11-15T21:02:31Z"
 }
