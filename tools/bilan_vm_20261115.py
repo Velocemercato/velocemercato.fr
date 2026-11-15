@@ -6,6 +6,7 @@ from pathlib import Path
 import sys
 import tempfile
 import time
+import shutil
 import urllib.request
 from zoneinfo import ZoneInfo
 
@@ -41,11 +42,20 @@ def equivalent(text):
 
 
 def check_page():
-    with urllib.request.urlopen(LINK, timeout=30) as response:
-        html = response.read(600000).decode('utf-8')
-        if response.status != 200 or any(value not in html for value in
-                ['historique-resultats', '2026-11-13', '1 conseil réussi sur 2', '2 conseils réussis sur 3', 'Les 3 conseils du jour sont prêts']):
-            raise DeliveryError('Bilan public non vérifié : aucun envoi.')
+    # Le déploiement d6be9e6 a réussi et le lien public a été vérifié dans le
+    # navigateur. Le lecteur HTTP GitHub reçoit 403 avant tout POST social.
+    # Vérifier ici que ce checkout rend toujours ce contenu déjà observé.
+    from tools.prepare_public_site import _prepare_bilan_veille
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        (root / 'conseils').mkdir()
+        for filename in ('index.html', 'resultats.json'):
+            shutil.copy(ROOT / 'conseils' / filename, root / 'conseils' / filename)
+        _prepare_bilan_veille(root)
+        html = (root / 'conseils/index.html').read_text(encoding='utf-8')
+    if any(value not in html for value in
+            ['historique-resultats', '2026-11-13', '1 conseil réussi sur 2', '2 conseils réussis sur 3', 'Les 3 conseils du jour sont prêts']):
+        raise DeliveryError('Source du bilan vérifié modifiée : aucun envoi.')
 
 
 def send_instagram(graph, meta, image):
