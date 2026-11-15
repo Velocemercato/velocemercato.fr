@@ -257,7 +257,7 @@
    "statut": "IN_PLAY",
    "score": [
     92,
-    108
+    111
    ]
   },
   {
@@ -293,7 +293,7 @@
    "sport": "nfl",
    "dom": "Cowboys",
    "ext": "49ers",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
     16,
     17
@@ -308,8 +308,8 @@
    "ext": "Hornets",
    "statut": "IN_PLAY",
    "score": [
-    57,
-    67
+    61,
+    70
    ]
   },
   {
@@ -332,10 +332,10 @@
    "sport": "basket",
    "dom": "Celtics",
    "ext": "Mavericks",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    5,
+    0
    ]
   },
   {
@@ -345,10 +345,10 @@
    "sport": "basket",
    "dom": "Raptors",
    "ext": "Knicks",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    2,
+    0
    ]
   },
   {
@@ -1665,6 +1665,6 @@
    ]
   }
  ],
- "maj": "2026-11-15T23:09:23Z",
- "verifie": "2026-11-15T23:09:23Z"
+ "maj": "2026-11-15T23:13:18Z",
+ "verifie": "2026-11-15T23:13:18Z"
 }
