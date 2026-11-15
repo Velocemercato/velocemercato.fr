@@ -96,7 +96,8 @@ def run(state, graph, image_factory):
             if any(equivalent(text) for text in current_posts(graph, meta, network)):
                 output.append({'target': label, 'status': 'equivalent_existant_aucun_envoi'})
                 continue
-            if any(isinstance(value, dict) and equivalent(value.get('title', '')) for value in done.values()):
+            if any(previous_key.startswith('editorial/' + network + '/') and isinstance(value, dict)
+                   and equivalent(value.get('title', '')) for previous_key, value in done.items()):
                 output.append({'target': label, 'status': 'recu_existant_ou_ambigu_aucun_envoi'})
                 continue
             if network == 'facebook':
