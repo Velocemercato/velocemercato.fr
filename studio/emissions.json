@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261115-1300",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "midi",
+  "label": "JT 13 h",
+  "titre": "La Pastille Actus - Édition du dimanche 15 novembre, 13 heures",
+  "accroche": "Carburant, Ukraine, Gaza, Portugal : l'essentiel de l'actu de ce midi.",
+  "duree": 150,
+  "date": "2026-11-15T13:02+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261115-1300.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-15T13:00:00+01:00",
+  "source_start": "2026-11-14T19:00:00+01:00",
+  "source_end": "2026-11-15T13:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-f7255abf074a11ee8f7743",
+    "titre": "États-Unis : les voitures hybrides gagnent du terrain avec la hausse du prix de l'essence",
+    "publishedAt": "2026-11-15T10:56:46Z",
+    "createdAt": "2026-11-15T11:16:00Z",
+    "references": [
+     {
+      "nom": "RFI",
+      "url": "https://www.rfi.fr/fr/am%C3%A9riques/20261115-%C3%A9tats-unis-les-ventes-de-voitures-hybrides-relanc%C3%A9es-par-la-hausse-des-prix-du-carburant"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-f751b219f91092c010cdbb",
+    "titre": "Présidentielle : l'entourage de Macron met en garde contre une baisse de l'aide à l'Ukraine",
+    "publishedAt": "2026-11-15T11:05:50Z",
+    "createdAt": "2026-11-15T11:15:54Z",
+    "references": [
+     {
+      "nom": "20 Minutes",
+      "url": "https://www.20minutes.fr/politique/4262942-20261115-presidentielle-pen-isolera-france-si-cesse-soutenir-ukraine-met-garde-entourage-macron?at_medium=display&at_campaign=149"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-152d5ee31220ea66ca75d6",
+    "titre": "« Inside Gaza », documentaire sur les reporters de l'AFP, primé à Cinemania",
+    "publishedAt": "2026-11-15T10:12:27Z",
+    "createdAt": "2026-11-15T10:20:25Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/culture/cinema/inside-gaza-de-la-realisatrice-helene-lam-trong-prix-du-meilleur-documentaire-au-festival-cinemania_8283296.html#xtor=RSS-3-%5Bculture%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-2dffe2d407eb0b432f1797",
+    "titre": "Au Portugal, des milliers de personnes manifestent contre la crise du logement",
+    "publishedAt": "2026-11-15T10:13:04Z",
+    "createdAt": "2026-11-15T10:20:22Z",
+    "references": [
+     {
+      "nom": "RFI",
+      "url": "https://www.rfi.fr/fr/europe/20261115-des-milliers-de-portugais-manifestent-contre-la-crise-du-logement-et-la-vie-ch%C3%A8re"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-31173c73b1f3e2a7698c0e",
+    "titre": "Hausse des bas salaires de la fonction publique : un coût d'un milliard d'euros, selon David Amiel",
+    "publishedAt": "2026-11-15T08:49:24Z",
+    "createdAt": "2026-11-15T09:21:02Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/pouvoir-achat/il-y-aura-bien-une-hausse-des-points-pour-les-plus-bas-salaires-de-la-fonction-publique-confirme-le-ministre-david-amiel_8283254.html#xtor=RSS-3-%5Bpolitique%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-76ac40b17b496a8e7c8ccc",
+    "titre": "Aux Canaries, 1 488 migrants arrivés en une journée, un record à El Hierro",
+    "publishedAt": "2026-11-15T08:53:59Z",
+    "createdAt": "2026-11-15T09:20:49Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/15/aux-canaries-une-journee-record-de-migration-a-el-hierro"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-30ea566242450ee91829fa",
+    "titre": "Louis Vuitton expose \"La Valise\", une série photographique de Bruno Aveillan à Paris",
+    "publishedAt": "2026-11-15T08:00:21Z",
+    "createdAt": "2026-11-15T08:09:01Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/culture/arts-expos/photographie/louis-vuitton-presente-l-exposition-photographique-la-valise-de-bruno-aveillan-dans-son-viseur-un-objet-intemporel-au-c-ur-de-treize-ans-de-voyage_8269346.html#xtor=RSS-3-%5Bculture%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-978447088288017324c329",
+    "titre": "Présidentielle 2027 : Teddy Riner se dit « ni de droite ni de gauche »",
+    "publishedAt": "2026-11-15T08:00:42Z",
+    "createdAt": "2026-11-15T08:08:58Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/elections/presidentielle-2027-je-ne-suis-pas-un-macroniste-affirme-teddy-riner_8283248.html#xtor=RSS-3-%5Bpolitique%5D"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261115-1200",
   "univers": "foot",
   "format": "edition",
@@ -12627,126 +12747,6 @@
      {
       "nom": "Gamekult",
       "url": "https://www.gamekult.com/actualite/menotte-un-joueur-pro-de-dota-2-force-de-jouer-devant-la-police-pour-prouver-son-innocence-3050872500.html"
-     }
-    ]
-   }
-  ],
-  "diffusion": "youtube"
- },
- {
-  "id": "foot-edition-20261024-0800",
-  "univers": "foot",
-  "format": "edition",
-  "moment": "matin",
-  "label": "JT 08 h",
-  "titre": "La Pastille Foot - Édition du samedi 24 octobre, 08h00",
-  "accroche": "Bonjour à tous, on démarre tout de suite avec le plus important.",
-  "duree": 154,
-  "date": "2026-10-24T08:09+02:00",
-  "publie": false,
-  "voix": [
-   "piper"
-  ],
-  "speech_rate": 1.12,
-  "fichier": "foot-edition-20261024-0800.mp4",
-  "editorial_revision": "court-v1",
-  "edition_at": "2026-10-24T08:00:00+02:00",
-  "source_start": "2026-10-23T23:00:00+02:00",
-  "source_end": "2026-10-24T08:00:00+02:00",
-  "sources": [
-   {
-    "id": "rss-v2-aac7da64446dca1cb8e601",
-    "titre": "Lewandowski estime que les jeunes stars auront du mal à durer au sommet",
-    "publishedAt": "2026-10-24T05:51:52Z",
-    "createdAt": "2026-10-24T05:57:04Z",
-    "references": [
-     {
-      "nom": "RMC Sport",
-      "url": "https://rmcsport.bfmtv.com/football/robert-lewandowski_DN-202108310562.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-d34c0b7be89ce420ff8643",
-    "titre": "Lewandowski met en garde la nouvelle génération sur la longévité au sommet",
-    "publishedAt": "2026-10-24T05:51:52Z",
-    "createdAt": "2026-10-24T05:57:02Z",
-    "references": [
-     {
-      "nom": "RMC Sport",
-      "url": "https://rmcsport.bfmtv.com/football/major-league-soccer/il-sera-impossible-de-rester-au-sommet-aussi-longtemps-lewandowski-previent-la-nouvelle-generation_AV-202610240102.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-5c46374b530da7f2c54ad5",
-    "titre": "ASSE-Nantes : l'affiche de Ligue 2 de la 10e journée ce samedi soir",
-    "publishedAt": "2026-10-24T04:20:00Z",
-    "createdAt": "2026-10-24T04:57:20Z",
-    "references": [
-     {
-      "nom": "Foot National",
-      "url": "https://www.foot-national.com/actus/asse-nantes-a-quelle-heure-et-sur-quelle-chaine-suivre-ce-classique-du-football-francais-comptant-pour-la-10eme-journee-de-ligue-2-959797"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-0d7e5facf9979d49afcabf",
-    "titre": "Sochaux - Annecy : le FC Sochaux-Montbéliard accueille Annecy ce vendredi",
-    "publishedAt": "2026-10-23T04:50:00Z",
-    "createdAt": "2026-10-24T04:04:42Z",
-    "references": [
-     {
-      "nom": "Foot National",
-      "url": "https://www.foot-national.com/actus/sochaux-annecy-a-quelle-heure-et-sur-quelle-chaine-suivre-cette-affiche-de-milieu-de-tableau-de-ligue-2-959782"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-7c3d7099fc139b7089a276",
-    "titre": "Newcastle en crise : Jaissle sous pression après un début de saison décevant",
-    "publishedAt": "2026-10-23T06:37:20Z",
-    "createdAt": "2026-10-24T03:29:51Z",
-    "references": [
-     {
-      "nom": "BBC Sport",
-      "url": "https://www.bbc.co.uk/sport/football/articles/c60qkpe0e54qo?at_medium=RSS&at_campaign=rss"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-b26f01f18a3171ff624f7f",
-    "titre": "Infantino reçoit le soutien de la confédération asiatique pour sa réélection",
-    "publishedAt": "2026-10-23T06:48:46Z",
-    "createdAt": "2026-10-24T02:59:57Z",
-    "references": [
-     {
-      "nom": "BBC Sport",
-      "url": "https://www.bbc.co.uk/sport/football/articles/c3x2wpyg18j7o?at_medium=RSS&at_campaign=rss"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-95c3e7ded2d13c11ab07fa",
-    "titre": "Ligue 1 : OM-Le Havre maintenu à 17h15, pas de report",
-    "publishedAt": "2026-10-23T07:57:40Z",
-    "createdAt": "2026-10-24T02:59:50Z",
-    "references": [
-     {
-      "nom": "RMC Sport",
-      "url": "https://rmcsport.bfmtv.com/football/ligue-1/ligue-1-pas-de-report-pour-om-le-havre-le-match-maintenu-a-son-horaire-initial_AV-202610230326.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-aa31118371b92cad64487f",
-    "titre": "Burnley : une saison de cauchemar, de la Premier League à la crise de Turf Moor",
-    "publishedAt": "2026-10-23T09:24:10Z",
-    "createdAt": "2026-10-24T02:03:58Z",
-    "references": [
-     {
-      "nom": "BBC Sport",
-      "url": "https://www.bbc.co.uk/sport/football/articles/c6qxnzyx77vqo?at_medium=RSS&at_campaign=rss"
      }
     ]
    }
