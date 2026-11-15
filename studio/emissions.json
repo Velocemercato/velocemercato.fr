@@ -1,5 +1,125 @@
 [
  {
+  "id": "foot-edition-20261115-2000",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 20 h",
+  "titre": "La Pastille Foot - Dimanche 15 novembre, 20 heures",
+  "accroche": "Ce soir, Mbappé est de retour et les Bleus jouent gros.",
+  "duree": 138,
+  "date": "2026-11-15T20:29+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261115-2000.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-15T20:00:00+01:00",
+  "source_start": "2026-11-15T12:00:00+01:00",
+  "source_end": "2026-11-15T20:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-cf413421e03dbff0ffadcc",
+    "titre": "Mario Frick nommé entraîneur d'Aberdeen, en remplacement de Stephen Robinson",
+    "publishedAt": "2026-11-15T18:27:08Z",
+    "createdAt": "2026-11-15T18:46:03Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cqrmgz9ypvwko?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-af61fcb0fef1b1823ac231",
+    "titre": "France-Turquie : Mbappé de retour dans le onze, enjeu qualification pour les quarts de Ligue des nations",
+    "publishedAt": "2026-11-15T18:43:25Z",
+    "createdAt": "2026-11-15T18:46:00Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/foot/ligue-des-nations/direct-france-turquie-les-bleus-visent-la-qualification-pour-les-quarts-de-finale-suivez-le-dernier-match-de-phase-de-poules-de-ligue-des-nations_8282633.html#xtor=RSS-3-%5Bsports%2Ffoot%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-cef5663ccb40b4645c299e",
+    "titre": "Murs autour des terrains : la Premier League, l'EFL et la WSL revoient leurs périmètres",
+    "publishedAt": "2026-11-15T13:49:17Z",
+    "createdAt": "2026-11-15T18:00:35Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/c5y4jn2zw3yno?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-a64a48dc451b87aa288a05",
+    "titre": "Andy Diouf a quitté le PSG en 2015 pour des raisons familiales",
+    "publishedAt": "2026-11-15T17:52:45Z",
+    "createdAt": "2026-11-15T18:00:24Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a6797476274469002553-pourquoi-andy-diouf-nest-pas-reste-au-psg"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-6b5ccfcf76e4457a51db28",
+    "titre": "Les Bleuets U20 renversent le Danemark 3-2 à Clairefontaine",
+    "publishedAt": "2026-11-15T15:49:07Z",
+    "createdAt": "2026-11-15T17:22:18Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a8544469449924974281-succes-renversant-de-lequipe-de-france-u20-face-au-danemark"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-4e95e886e3680337a22d95",
+    "titre": "Alan Ruschel, survivant du crash de Chapecoense, prend sa retraite après une montée en Serie A",
+    "publishedAt": "2026-11-15T17:10:24Z",
+    "createdAt": "2026-11-15T17:22:13Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/ckp8017p1e3go?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-0a1a8dc797c0bc80b11ff1",
+    "titre": "Hongrie-Irlande du Nord : Belfast vise la victoire en Ligue des nations",
+    "publishedAt": "2026-11-15T16:04:45Z",
+    "createdAt": "2026-11-15T16:40:44Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cm1ew79gnxnxo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-e0aff7306c2d74effa3713",
+    "titre": "Brésil : Romario réclame le départ immédiat d'Ancelotti après la défaite face au Japon",
+    "publishedAt": "2026-11-15T16:30:00Z",
+    "createdAt": "2026-11-15T16:40:41Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/foot-mondial/ancelotti-deja-vire-une-star-exige-sa-tete"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "actus-edition-20261115-1900",
   "univers": "actus",
   "format": "edition",
@@ -12687,126 +12807,6 @@
      {
       "nom": "Gamekult",
       "url": "https://www.gamekult.com/actualite/marvel-ultimate-alliance-c-etait-avengers-doomsday-avant-le-mcu-101-3050866110.html"
-     }
-    ]
-   }
-  ],
-  "diffusion": "youtube"
- },
- {
-  "id": "actus-edition-20261024-1300",
-  "univers": "actus",
-  "format": "edition",
-  "moment": "midi",
-  "label": "JT 13 h",
-  "titre": "La Pastille Actus : édition du samedi 24 octobre, 13 heures",
-  "accroche": "Les brèves importantes de ce samedi, avec le recul de nos personnages.",
-  "duree": 142,
-  "date": "2026-10-24T13:07+02:00",
-  "publie": false,
-  "voix": [
-   "piper"
-  ],
-  "speech_rate": 1.12,
-  "fichier": "actus-edition-20261024-1300.mp4",
-  "editorial_revision": "court-v1",
-  "edition_at": "2026-10-24T13:00:00+02:00",
-  "source_start": "2026-10-24T07:00:00+02:00",
-  "source_end": "2026-10-24T13:00:00+02:00",
-  "sources": [
-   {
-    "id": "rss-v2-d098078c10eba02dc57d2e",
-    "titre": "Hospitalisé, Vincent Kompany est « dans un état stable », absent du banc plusieurs semaines",
-    "publishedAt": "2026-10-24T10:18:47Z",
-    "createdAt": "2026-10-24T10:31:40Z",
-    "references": [
-     {
-      "nom": "franceinfo",
-      "url": "https://www.franceinfo.fr/sports/foot/bayern-munich/hospitalise-l-entraineur-du-bayern-munich-vincent-kompany-est-dans-un-etat-stable-et-sera-absent-du-banc-plusieurs-semaines_8252152.html#xtor=RSS-3-[lestitres]"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-3b7401f007b7ce86974977",
-    "titre": "Bernard Lavilliers sort \"Rite Cruel\", son 24e album studio à 80 ans",
-    "publishedAt": "2026-10-24T08:05:09Z",
-    "createdAt": "2026-10-24T09:32:23Z",
-    "references": [
-     {
-      "nom": "franceinfo",
-      "url": "https://www.franceinfo.fr/culture/musique/dans-son-nouvel-album-rite-cruel-bernard-lavilliers-continue-a-voyager-et-a-s-engager_8250862.html#xtor=RSS-3-%5Bgeneral%5D"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-3cd61d2d8b32a23e7a4b40",
-    "titre": "Jeux vidéo : \"Call of Duty : Modern Warfare 4\" sort avec une campagne en Corée du Sud",
-    "publishedAt": "2026-10-24T08:38:58Z",
-    "createdAt": "2026-10-24T09:03:57Z",
-    "references": [
-     {
-      "nom": "franceinfo",
-      "url": "https://www.franceinfo.fr/culture/jeux-video/jeux-video-trois-choses-a-savoir-sur-call-of-duty-modern-warfare-4_8250295.html#xtor=RSS-3-%5Bgeneral%5D"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-41fb7b70b5c25cc0ad3519",
-    "titre": "Serbie : législatives anticipées dimanche, les étudiants redoutent la fraude",
-    "publishedAt": "2026-10-24T08:29:43Z",
-    "createdAt": "2026-10-24T08:32:59Z",
-    "references": [
-     {
-      "nom": "RFI",
-      "url": "https://www.rfi.fr/fr/podcasts/reportage-international/20261024-l%C3%A9gislatives-anticip%C3%A9es-en-serbie-les-%C3%A9tudiants-redoutent-la-fraude-%C3%A9lectorale-et-se-pr%C3%A9parent-aux-contr%C3%B4les"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-760e50566ce083f09a805d",
-    "titre": "Veoza : un traitement contre les bouffées de chaleur de la ménopause sous surveillance en France",
-    "publishedAt": "2026-10-24T08:00:18Z",
-    "createdAt": "2026-10-24T08:04:16Z",
-    "references": [
-     {
-      "nom": "Ouest-France",
-      "url": "https://sante.ouest-france.fr/menopause/comment-fonctionne-le-veoza-ce-nouveau-medicament-contre-les-symptomes-de-la-menopause-qui-nest-pas-sans-risque-752bca62-cb9b-11f1-ad87-e24a1a2986e9?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-f98e687490cef54504fae7",
-    "titre": "Enquête sur l'attaque de Trappes : la mère du suspect placée en garde à vue",
-    "publishedAt": "2026-10-24T06:44:45Z",
-    "createdAt": "2026-10-24T07:17:34Z",
-    "references": [
-     {
-      "nom": "franceinfo",
-      "url": "https://www.franceinfo.fr/faits-divers/terrorisme/attentat-raciste-a-trappes/direct-la-seconde-personne-placee-en-garde-a-vue-dans-l-enquete-sur-l-attentat-terroriste-raciste-dans-les-yvelines-est-la-mere-du-suspect_8251939.html#xtor=RSS-3-[lestitres]"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-f4b3065de03efd9296d98a",
-    "titre": "Incendie du Kehlsteinhaus, ancienne résidence d'Hitler en Bavière : un suspect placé en garde à vue",
-    "publishedAt": "2026-10-24T05:57:44Z",
-    "createdAt": "2026-10-24T06:37:34Z",
-    "references": [
-     {
-      "nom": "franceinfo",
-      "url": "https://www.franceinfo.fr/monde/europe/allemagne/la-residence-de-villegiature-d-adolphe-hitler-le-nid-d-aigle-incendiee-en-baviere-un-suspect-arrete_8251921.html#xtor=RSS-3-[lestitres]"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-7114e1d12f129e7912059f",
-    "titre": "Route du Rhum 1990 : Louis Bodin raconte son rôle de routeur auprès de Florence Arthaud",
-    "publishedAt": "2026-10-24T06:01:03Z",
-    "createdAt": "2026-10-24T06:02:16Z",
-    "references": [
-     {
-      "nom": "Ouest-France",
-      "url": "https://www.ouest-france.fr/route-du-rhum/route-du-rhum-pourvu-quelle-ny-aille-pas-quand-louis-bodin-guidait-florence-arthaud-vers-la-victoire-en-1990-de324662-c231-11f1-a107-88e926908e5f?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu"
      }
     ]
    }
