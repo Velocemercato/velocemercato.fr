@@ -40,15 +40,16 @@
     {
       "account": "vmunivers.fr",
       "network": "instagram",
-      "status": "en_cours_a_verifier",
+      "status": "refuse_sans_relance",
       "metricool_id": 428947562,
       "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7762102&openWithPostUuid=-1877202695814821655",
       "publicationDate": {
         "dateTime": "2026-11-15T15:40:00",
         "timezone": "Europe/Paris"
       },
-      "metricool_status": "PUBLISHING",
-      "detail": "publishing"
+      "metricool_status": "ERROR",
+      "detail": "You have reached your Metricool account limit."
     }
-  ]
+  ],
+  "updated_at": "2026-11-15T15:41:00+01:00"
 }
