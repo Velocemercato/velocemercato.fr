@@ -24,12 +24,22 @@ a{color:#fff}
 .action{display:inline-block;padding:12px 18px;background:#168c55;color:#fff;border-radius:10px;text-decoration:none;font-weight:800}
 .muted{color:#c1c5cd}.warning{border-left:4px solid #f5cf69;padding:10px 14px;background:#29210e}
 footer{font-size:.85rem;color:#c1c5cd}
+.results-fold{margin:24px 0;border:2px solid #f5cf69;border-radius:16px;background:#0d111e;overflow:hidden;scroll-margin-top:16px}
+.results-fold>summary{cursor:pointer;padding:20px;color:#f5cf69;font-weight:900;font-size:clamp(1.15rem,4vw,1.6rem);background:linear-gradient(120deg,#350712,#101e3e)}
+.results-fold>summary span{display:block;margin:6px 0 0 24px;font-size:.85rem;font-weight:500;color:#e6e8f1}
+.results-fold>summary:focus-visible{outline:3px solid #fff;outline-offset:-5px}
+.results-content{padding:18px}.results-content>.bd-bilan{box-shadow:4px 5px 0 #b01024;margin-right:5px}
+.result-captures{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px;margin:20px 0}
+.result-captures figure{margin:0;min-width:0;border:1px solid #d1b25e;border-radius:12px;overflow:hidden;background:#07090d;scroll-margin-top:15px}
+.result-captures figure>a{display:block;background:#fff}.result-captures img{display:block;width:100%;height:auto;max-height:520px;object-fit:contain}
+.result-captures figcaption{padding:12px;font-size:.88rem;line-height:1.5;color:#eee}.result-captures figcaption a{display:inline-block;margin-top:8px;color:#f5cf69;font-weight:800;min-height:36px}
+@media(max-width:560px){.results-content{padding:12px}.results-content>.bd-bilan{padding:14px}.result-captures{grid-template-columns:1fr}.result-captures img{max-height:none}}
 </style></head><body>
 <header><a href="/" aria-label="Retour à l'accueil de Véloce Mercato">← VÉLOCE MERCATO</a>
 <h1>❤️🖤 CONSEILS DU JOUR</h1>
 <p>Un espace à part, accessible depuis le pouf de l'accueil.</p></header>
 <main>
-<nav aria-label="Conseils et résultats"><a href="#historique-resultats">📚 Historique transparent</a> · <a href="#edition-vip-20261115">👑 Édition du jour</a> · <a href="#vip">Demander le VIP</a></nav>
+<nav aria-label="Conseils et résultats"><a href="#historique-resultats">🔞 Résultats transparents · 18+</a> · <a href="#edition-vip-20261115">👑 Édition du jour</a> · <a href="#vip">Demander le VIP</a></nav>
 <section class="card warning" aria-label="Information importante">
 <strong>18 ans et plus uniquement — interdit aux mineurs.</strong>
 <p>Les cotes évoluent et aucun résultat n'est garanti. Jouer comporte des risques : endettement, isolement, dépendance.
@@ -43,6 +53,7 @@ Joueurs Info Service : 09 74 75 13 13. Cette mention ne constitue pas une vérif
 </section>
 <script>(function(){try{const p=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const d=Object.fromEntries(p.map(x=>[x.type,x.value]));if(d.year+'-'+d.month+'-'+d.day==='2026-11-14')document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('#info-exceptionnelle-20261114,#combine-cholet-20261114').forEach(x=>x.hidden=false)});}catch(e){}})();</script>
 <!-- VM_BILAN_VEILLE -->
+<script>(function(){function openResults(){var h=location.hash;if(h==='#historique-resultats'||h.indexOf('#preuve-')===0){var d=document.getElementById('historique-resultats');if(d)d.open=true;}}document.addEventListener('click',function(e){var a=e.target.closest('a[href="#historique-resultats"]');if(a){var d=document.getElementById('historique-resultats');if(d)d.open=true;}});window.addEventListener('hashchange',openResults);openResults();})();</script>
 <section class="card vip" id="edition-vip-20261115" hidden>
   <span class="bd-etiquette">DIMANCHE 15 NOVEMBRE 2026</span>
   <h2>👑 Les 3 conseils du jour sont prêts — VIP uniquement</h2>
@@ -65,7 +76,7 @@ Joueurs Info Service : 09 74 75 13 13. Cette mention ne constitue pas une vérif
 </section>
 
 <section class="card vip" id="vip"><h2>👑 Conseils VIP : transmission privée par WhatsApp</h2>
-<p>Les contenus publics sont occasionnels. Les autres conseils quotidiens restent privés : seul le responsable VÉLOCE TEAM les détient et peut les transmettre personnellement par message WhatsApp sur demande. Aucun envoi automatique et aucune publication VIP sur le site.</p>
+<p>Les contenus publics sont occasionnels. Les autres conseils quotidiens restent privés : seul le responsable VÉLOCE TEAM les détient et peut les transmettre personnellement par message WhatsApp sur demande. Aucun envoi automatique. Seules les captures de résultats passés sont archivées dans le volet 18+ ; les conseils VIP à venir ne sont pas publiés en clair sur le site.</p>
 <p><a class="action" href="https://wa.me/33666929472" target="_blank" rel="noopener noreferrer">💬 Demander les informations VIP par WhatsApp</a></p>
 <p class="muted">Ne communique aucune donnée bancaire dans le message. Si tu acceptes de recevoir des actualités, tu peux arrêter à tout moment.</p></section>
 <section class="card"><h2>📰 Actualités et La Pastille TV</h2>

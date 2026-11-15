@@ -143,21 +143,50 @@ def _prepare_bilan_veille(root):
             value = str(item.get(key, ""))
             if value:
                 content.append('<p class="' + cls + '">' + escape(value).replace("\n", "<br>") + '</p>')
+        figures = []
+        captures = item.get("captures", [])
+        for image in captures if isinstance(captures, list) else []:
+            if not isinstance(image, dict):
+                continue
+            filename = str(image.get("fichier", ""))
+            if not re.fullmatch(r"[a-z0-9-]+\.jpg", filename):
+                raise ValueError("Nom de capture de résultat invalide")
+            image_path = root / "conseils/preuves" / filename
+            if not image_path.is_file() or not image_path.read_bytes().startswith(b"\xff\xd8\xff"):
+                raise ValueError("Capture originale de résultat manquante : " + filename)
+            url = "/conseils/preuves/" + filename
+            caption = escape(str(image.get("legende", "Capture fournie par la rédaction")))
+            identifier = str(image.get("id", ""))
+            if not re.fullmatch(r"[a-z0-9-]+", identifier):
+                raise ValueError("Identifiant de capture invalide")
+            width, height = int(image.get("largeur", 0)), int(image.get("hauteur", 0))
+            if not (1 <= width <= 10000 and 1 <= height <= 10000):
+                raise ValueError("Dimensions de capture invalides")
+            figures.append(
+                '<figure id="' + identifier + '"><a href="' + url + '" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir la capture originale : ' + caption + '">'
+                + '<img src="' + url + '" width="' + str(width) + '" height="' + str(height) + '" loading="lazy" decoding="async" alt="' + caption + '"></a>'
+                + '<figcaption>' + caption + '<br><a href="' + url + '" target="_blank" rel="noopener noreferrer">Agrandir l’original ↗</a></figcaption></figure>'
+            )
         cards.append(
             '<article class="card bd-bilan" data-bilan-date="' + day.isoformat() + '">'
             + '<span class="bd-etiquette">' + day.strftime("%d/%m/%Y") + ' · ' + scope + '</span>'
             + '<h3>' + title + '</h3><p><strong>' + status + '</strong></p>'
+            + ('<div class="result-captures">' + ''.join(figures) + '</div>' if figures else '')
             + ''.join(content)
             + ('<p class="bd-note">Sources : ' + ' · '.join(links) + '</p>' if links else '')
             + '<p class="bd-note">Résultats passés, sans garantie pour la suite · 18+ · Jouer comporte des risques.</p></article>'
         )
     section = (
-        '<section id="historique-resultats" aria-labelledby="titre-historique">'
-        + '<h2 id="titre-historique">📚 Historique transparent des conseils</h2>'
+        '<details id="historique-resultats" class="results-fold">'
+        + '<summary>🔞 Résultats transparents · 18+ <span>Voir les captures des 13 et 14 novembre</span></summary>'
+        + '<div class="results-content"><h2 id="titre-historique">📚 Les résultats, images à l’appui</h2>'
         + '<p>Réussites et échecs restent visibles, du plus récent au plus ancien. '
         + 'Le premier bilan est conservé. Public et VIP sont comptés séparément ; '
-        + 'les sélections VIP restent privées. Les ratios portent sur des conseils complets, pas sur chaque match.</p>'
-        + ''.join(cards) + '</section>'
+        + 'les conseils VIP à venir restent privés. Les ratios portent sur des conseils complets, pas sur chaque match.</p>'
+        + '<p class="muted">Captures originales transmises par la rédaction après les rencontres. '
+        + 'Clique sur une image pour la lire en grand. L’affiche du 13 novembre est l’annonce d’origine, pas une capture de résultat. '
+        + 'Les conseils du jour restent séparés de ces archives.</p>'
+        + ''.join(cards) + '</div></details>'
     ) if cards else ''
     page.write_text(source.replace(marker, section), encoding="utf-8")
 
