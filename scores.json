@@ -748,7 +748,7 @@
    "sport": "nfl",
    "dom": "Raiders",
    "ext": "Seahawks",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     10,
     7
@@ -777,7 +777,7 @@
    "statut": "IN_PLAY",
    "score": [
     10,
-    7
+    10
    ]
   },
   {
@@ -789,7 +789,7 @@
    "ext": "Hornets",
    "statut": "IN_PLAY",
    "score": [
-    35,
+    37,
     32
    ]
   },
@@ -802,8 +802,8 @@
    "ext": "Spurs",
    "statut": "IN_PLAY",
    "score": [
-    8,
-    8
+    16,
+    14
    ]
   },
   {
@@ -1327,6 +1327,6 @@
    ]
   }
  ],
- "maj": "2026-11-15T22:18:07Z",
- "verifie": "2026-11-15T22:18:07Z"
+ "maj": "2026-11-15T22:22:03Z",
+ "verifie": "2026-11-15T22:22:03Z"
 }
