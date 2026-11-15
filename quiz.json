@@ -1,80 +1,65 @@
 {
- "id": "2026-11-14-08",
- "date": "2026-11-14T08:30:41+01:00",
+ "id": "2026-11-15-08",
+ "date": "2026-11-15T08:33:59+01:00",
  "questions": [
   {
-   "q": "Contre quelle équipe l'Argentine s'est-elle inclinée 2 à 1 lors de son premier match sans Messi ?",
+   "q": "Quel trophée Unai Simon a-t-il reçu lors de la cérémonie du Ballon d'Or ?",
    "choix": [
-    "Le Costa Rica",
-    "L'Uruguay",
-    "Le Brésil",
-    "Le Chili"
+    "Le trophée Yashin",
+    "Le Gant d'or",
+    "Le trophée Lev Yashin d'honneur",
+    "Le Ballon d'argent"
+   ],
+   "bonne": 0,
+   "explication": "Selon BBC Sport, Unai Simon a reçu le trophée Yashin de meilleur gardien du monde lors de la cérémonie à Londres.",
+   "source": {
+    "titre": "Unai Simon sacré meilleur gardien du monde, un profil discret qui séduit",
+    "id": "rss-v2-a4401e7410a36d8b166a8b"
+   }
+  },
+  {
+   "q": "Qui a marqué le but de la victoire de Chelsea contre Manchester City 1-0 ?",
+   "choix": [
+    "Khadija Shaw",
+    "Sandy Baltimore",
+    "Melvine Malard",
+    "Veerle Buurman"
    ],
    "bonne": 1,
-   "explication": "Selon RMC Sport, l'Argentine s'est inclinée 2 à 1 face à l'Uruguay lors d'un match amical.",
+   "explication": "Selon BBC Sport, Sandy Baltimore a marqué avant la pause dans le choc de WSL remporté par Chelsea.",
    "source": {
-    "titre": "L'Argentine s'incline face à l'Uruguay, premier match sans Messi",
-    "id": "rss-v2-83fef35c10c909c1424f39"
+    "titre": "Chelsea bat Manchester City 1-0 et prend la tête de la WSL",
+    "id": "rss-v2-4984384a0e7524ed215fbb"
    }
   },
   {
-   "q": "Combien de buts le Maroc a-t-il inscrits contre le Niger lors des éliminatoires de la CAN 2027 ?",
+   "q": "Combien de matchs toutes compétitions confondues dure la série sans défaite de Manchester United ?",
    "choix": [
-    "3",
-    "4",
-    "5",
-    "6"
+    "8 matchs",
+    "10 matchs",
+    "12 matchs",
+    "15 matchs"
    ],
    "bonne": 2,
-   "explication": "Selon Foot Mercato, le Maroc a largement dominé le Niger sur le score de 5-1.",
+   "explication": "Après sa victoire 2-0 face à Crystal Palace, Manchester United prolonge une série sans défaite de 12 matchs.",
    "source": {
-    "titre": "Le Maroc écrase le Niger 5-1, doublé d'Hakimi en éliminatoires de la CAN 2027",
-    "id": "rss-v2-60d11dcbc79e386f5dca7b"
+    "titre": "Maya Le Tissier décisive, Manchester United bat Crystal Palace 2-0 en WSL",
+    "id": "rss-v2-85e50e4504c195a3214efb"
    }
   },
   {
-   "q": "Quel est le montant du transfert de Patrick Zabi depuis Reims vers le Paris FC ?",
+   "q": "Quel attaquant de la Roja a rejoint le camp de Las Rozas avant le match contre l'Angleterre ?",
    "choix": [
-    "15 millions d'euros",
-    "20 millions d'euros",
-    "25 millions d'euros",
-    "30 millions d'euros"
-   ],
-   "bonne": 2,
-   "explication": "Arrivé de Reims cet été pour 25 millions d'euros, Zabi est un milieu ivoirien du Paris FC.",
-   "source": {
-    "titre": "Paris FC : Naples s'intéresserait à Patrick Zabi, selon la Gazzetta dello Sport",
-    "id": "rss-v2-cf6914d310187d7f9f288d"
-   }
-  },
-  {
-   "q": "Dans quel championnat régional évolue le Stade Béthunois ?",
-   "choix": [
-    "Régional 2",
-    "Régional 1",
-    "National 3",
-    "National 2"
+    "Álvaro Morata",
+    "Mikel Oyarzabal",
+    "Nico Williams",
+    "Ferran Torres"
    ],
    "bonne": 1,
-   "explication": "Selon Foot Amateur, le Stade Béthunois évolue en Régional 1 et affronte Nancy en Coupe de France.",
+   "explication": "Selon Foot Mercato, Lamine Yamal et Mikel Oyarzabal ont tous deux rejoint le camp de base de Las Rozas.",
    "source": {
-    "titre": "Jordan Alexandrenne, du gardien de but au défenseur central de Béthune",
-    "id": "rss-v2-44d3303dc47f26b52d567f"
-   }
-  },
-  {
-   "q": "Quelle est la place occupée par la République d'Irlande dans son groupe de Ligue des nations ?",
-   "choix": [
-    "Première",
-    "Deuxième",
-    "Troisième",
-    "Quatrième"
-   ],
-   "bonne": 2,
-   "explication": "Selon BBC Sport, les Irlandais occupent la troisième place du groupe B3.",
-   "source": {
-    "titre": "Collins regrette son absence face à Israël avec l'Irlande",
-    "id": "rss-v2-58f53a1d6010fe18090413"
+    "titre": "Espagne : Yamal et Oyarzabal de retour avant Angleterre",
+    "id": "rss-v2-13e41a2f51afd032c84ad9"
    }
   }
  ]
