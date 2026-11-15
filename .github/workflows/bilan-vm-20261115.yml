@@ -1,0 +1,34 @@
+name: VM - Bilan unique du 15 novembre 2026
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/bilan-vm-20261115.yml', 'tools/bilan_vm_20261115.py']
+permissions:
+  contents: write
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+jobs:
+  bilan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet 'cryptography==50.0.0' pillow
+      - name: Ouvrir les accusés existants sans changer les identifiants
+        run: |
+          set -euo pipefail
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "https://github.com/$GITHUB_REPOSITORY.git" "$RUNNER_TEMP/vm-broadcast-state"
+          test -s "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+      - name: Envoyer le bilan unique et relever les liens confirmés
+        run: |
+          python -m py_compile tools/bilan_vm_20261115.py
+          python tools/bilan_vm_20261115.py "$RUNNER_TEMP/vm-broadcast-state/state.enc"
