@@ -1,0 +1,37 @@
+name: VM - Trois JT manga gratuits du 16 novembre
+on:
+  push:
+    branches: [main]
+    paths: ['.github/vm-jt-manga-free-20261116.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet requests 'cryptography==50.0.0' pillow
+      - name: Ouvrir les connexions et reçus existants
+        run: |
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "https://github.com/$GITHUB_REPOSITORY.git" "$RUNNER_TEMP/vm-broadcast-state"
+          test -s "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+      - name: Publier les trois éditions examinées sur les cinq comptes
+        run: python vm-manga-2026/jt-free-20261116/publish.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: VM-trois-JT-publications-${{ github.run_id }}
+          retention-days: 30
+          if-no-files-found: ignore
+          path: vm-manga-2026/jt-free-20261116/publication-results.json

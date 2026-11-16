@@ -1,0 +1,491 @@
+{
+  "actus": {
+    "asset_id": "089b27955f034257b9b0269ff0faf3f2",
+    "media_url": "https://resource2.heygen.ai/video/089b27955f034257b9b0269ff0faf3f2/original.mp4",
+    "verification": {
+      "edition": "actus",
+      "file": "/workspace/scratch/497da0d398ad/vm-project/vm-manga-2026/jt-free-20261116/actus/VM-JT-Actus-2026-11-16.mp4",
+      "duration_seconds": 607.133333,
+      "sha256": "a1f36078791446e38983a1de4adf391b23a3da44d4a7e233d09dfa5247b2b38a",
+      "size_bytes": 16606146,
+      "video": "H.264 720x1280 25 fps",
+      "audio": "AAC 48kHz stereo",
+      "peak_dbfs": -3.5,
+      "full_decode": "passed",
+      "cast": "Heineguez, Pablo, Black, Scorpions",
+      "format": "Portraits manga illustrés, voix de synthèse, sous-titres synchronisés",
+      "visual_review": "Representative frames reviewed; illustration, no lip sync",
+      "audio_review": "Technical decode and peak measurements only; no claim of human listening"
+    },
+    "scenes": [
+      {
+        "speaker": "Heineguez",
+        "voice": "fr-FR-HenriNeural",
+        "portrait": "heineguez",
+        "chapter": "LE JT ACTUS",
+        "duration": 39.744,
+        "sources": [
+          "edition"
+        ]
+      },
+      {
+        "speaker": "Pablo",
+        "voice": "fr-BE-GerardNeural",
+        "portrait": "pablo",
+        "chapter": "UKRAINE : UNE DÉCISION EUROPÉENNE",
+        "duration": 52.656,
+        "sources": [
+          "ukraine_payment"
+        ]
+      },
+      {
+        "speaker": "Black",
+        "voice": "fr-FR-RemyMultilingualNeural",
+        "portrait": "black",
+        "chapter": "À QUOI SERT LA FACILITÉ ?",
+        "duration": 50.16,
+        "sources": [
+          "ukraine_facility"
+        ]
+      },
+      {
+        "speaker": "Scorpions",
+        "voice": "fr-CH-FabriceNeural",
+        "portrait": "scorpions",
+        "chapter": "LIRE UNE ANNONCE FINANCIÈRE",
+        "duration": 52.992,
+        "sources": [
+          "editorial_budget"
+        ]
+      },
+      {
+        "speaker": "Heineguez",
+        "voice": "fr-FR-HenriNeural",
+        "portrait": "heineguez",
+        "chapter": "COP31 : LES NÉGOCIATIONS CONTINUENT",
+        "duration": 32.352,
+        "sources": [
+          "cop_draft"
+        ]
+      },
+      {
+        "speaker": "Black",
+        "voice": "fr-FR-RemyMultilingualNeural",
+        "portrait": "black",
+        "chapter": "CLIMAT : LE FINANCEMENT DE L'ADAPTATION",
+        "duration": 46.92,
+        "sources": [
+          "cop_finance"
+        ]
+      },
+      {
+        "speaker": "Pablo",
+        "voice": "fr-BE-GerardNeural",
+        "portrait": "pablo",
+        "chapter": "LES VILLES EN PREMIÈRE LIGNE",
+        "duration": 50.52,
+        "sources": [
+          "cop_cities",
+          "unep_cities",
+          "unep_program"
+        ]
+      },
+      {
+        "speaker": "Scorpions",
+        "voice": "fr-CH-FabriceNeural",
+        "portrait": "scorpions",
+        "chapter": "DU PLAN À LA RÉALISATION",
+        "duration": 49.32,
+        "sources": [
+          "editorial_climate"
+        ]
+      },
+      {
+        "speaker": "Heineguez",
+        "voice": "fr-FR-HenriNeural",
+        "portrait": "heineguez",
+        "chapter": "ASIE DU SUD-EST : APPEL AU DIALOGUE",
+        "duration": 37.56,
+        "sources": [
+          "asean"
+        ]
+      },
+      {
+        "speaker": "Pablo",
+        "voice": "fr-BE-GerardNeural",
+        "portrait": "pablo",
+        "chapter": "CAP-VERT : RÉSULTATS PROVISOIRES",
+        "duration": 32.544,
+        "sources": [
+          "cape_verde"
+        ]
+      },
+      {
+        "speaker": "Black",
+        "voice": "fr-FR-RemyMultilingualNeural",
+        "portrait": "black",
+        "chapter": "FRANCOPHONIE : UNE TRANSITION",
+        "duration": 32.208,
+        "sources": [
+          "francophonie_ap"
+        ]
+      },
+      {
+        "speaker": "Scorpions",
+        "voice": "fr-CH-FabriceNeural",
+        "portrait": "scorpions",
+        "chapter": "ÉDUCATION ET PARTICIPATION",
+        "duration": 42.024,
+        "sources": [
+          "un_forum"
+        ]
+      },
+      {
+        "speaker": "Black",
+        "voice": "fr-FR-RemyMultilingualNeural",
+        "portrait": "black",
+        "chapter": "L'AGENDA EUROPÉEN",
+        "duration": 44.304,
+        "sources": [
+          "eu_agenda"
+        ]
+      },
+      {
+        "speaker": "Heineguez",
+        "voice": "fr-FR-HenriNeural",
+        "portrait": "heineguez",
+        "chapter": "LE MOT DE LA FIN",
+        "duration": 43.728,
+        "sources": [
+          "edition"
+        ]
+      }
+    ]
+  },
+  "sport": {
+    "asset_id": "95b8f810b2bc4474af676d5faafbc1e7",
+    "media_url": "https://resource2.heygen.ai/video/95b8f810b2bc4474af676d5faafbc1e7/original.mp4",
+    "verification": {
+      "edition": "sport",
+      "file": "/workspace/scratch/497da0d398ad/vm-project/vm-manga-2026/jt-free-20261116/sport/VM-JT-Sport-2026-11-16.mp4",
+      "duration_seconds": 605.381333,
+      "sha256": "d3e5bb3ac8b527fd1a6500a6f71385cef47d62f9821d5620bc19a5fd47546e92",
+      "size_bytes": 16393901,
+      "video": "H.264 720x1280 25 fps",
+      "audio": "AAC 48kHz stereo",
+      "peak_dbfs": -3.9,
+      "full_decode": "passed",
+      "cast": "Heineguez, Pablo, Black, Scorpions",
+      "format": "Portraits manga illustrés, voix de synthèse, sous-titres synchronisés",
+      "visual_review": "Representative frames reviewed; illustration, no lip sync",
+      "audio_review": "Technical decode and peak measurements only; no claim of human listening"
+    },
+    "scenes": [
+      {
+        "speaker": "Heineguez",
+        "voice": "fr-FR-HenriNeural",
+        "portrait": "heineguez",
+        "chapter": "LE JT SPORT",
+        "duration": 38.232,
+        "sources": [
+          "edition"
+        ]
+      },
+      {
+        "speaker": "Pablo",
+        "voice": "fr-BE-GerardNeural",
+        "portrait": "pablo",
+        "chapter": "FRANCE 2–1 TURQUIE",
+        "duration": 49.08,
+        "sources": [
+          "fff_match"
+        ]
+      },
+      {
+        "speaker": "Black",
+        "voice": "fr-FR-RemyMultilingualNeural",
+        "portrait": "black",
+        "chapter": "LE REGARD DE ZIDANE",
+        "duration": 47.16,
+        "sources": [
+          "fff_zidane"
+        ]
+      },
+      {
+        "speaker": "Scorpions",
+        "voice": "fr-CH-FabriceNeural",
+        "portrait": "scorpions",
+        "chapter": "LE TABLEAU TACTIQUE",
+        "duration": 47.448,
+        "sources": [
+          "editorial_pressing"
+        ]
+      },
+      {
+        "speaker": "Heineguez",
+        "voice": "fr-FR-HenriNeural",
+        "portrait": "heineguez",
+        "chapter": "LIGUE DES NATIONS : AGENDA",
+        "duration": 41.208,
+        "sources": [
+          "uefa_calendar"
+        ]
+      },
+      {
+        "speaker": "Black",
+        "voice": "fr-FR-RemyMultilingualNeural",
+        "portrait": "black",
+        "chapter": "RUGBY : LA FRANCE TROISIÈME",
+        "duration": 43.8,
+        "sources": [
+          "rugby_result"
+        ]
+      },
+      {
+        "speaker": "Scorpions",
+        "voice": "fr-CH-FabriceNeural",
+        "portrait": "scorpions",
+        "chapter": "COMPRENDRE LE CLASSEMENT",
+        "duration": 43.248,
+        "sources": [
+          "rugby_rules"
+        ]
+      },
+      {
+        "speaker": "Pablo",
+        "voice": "fr-BE-GerardNeural",
+        "portrait": "pablo",
+        "chapter": "TURIN : ALCARAZ DÉMARRE FORT",
+        "duration": 50.352,
+        "sources": [
+          "atp_result"
+        ]
+      },
+      {
+        "speaker": "Black",
+        "voice": "fr-FR-RemyMultilingualNeural",
+        "portrait": "black",
+        "chapter": "TENNIS : LE SCORE ET LE MATCH",
+        "duration": 44.4,
+        "sources": [
+          "editorial_tennis"
+        ]
+      },
+      {
+        "speaker": "Heineguez",
+        "voice": "fr-FR-HenriNeural",
+        "portrait": "heineguez",
+        "chapter": "LES RENDEZ-VOUS DE TURIN",
+        "duration": 40.896,
+        "sources": [
+          "atp_schedule"
+        ]
+      },
+      {
+        "speaker": "Scorpions",
+        "voice": "fr-CH-FabriceNeural",
+        "portrait": "scorpions",
+        "chapter": "ANDREEVA SACRÉE",
+        "duration": 42.6,
+        "sources": [
+          "wta_final",
+          "wta_season"
+        ]
+      },
+      {
+        "speaker": "Pablo",
+        "voice": "fr-BE-GerardNeural",
+        "portrait": "pablo",
+        "chapter": "POULES ET ÉLIMINATION DIRECTE",
+        "duration": 45.312,
+        "sources": [
+          "wta_format"
+        ]
+      },
+      {
+        "speaker": "Black",
+        "voice": "fr-FR-RemyMultilingualNeural",
+        "portrait": "black",
+        "chapter": "LE TOUR DES PARQUETS ET PATINOIRES",
+        "duration": 31.512,
+        "sources": [
+          "nhl_result",
+          "nhl_next",
+          "nhl_community",
+          "nba"
+        ]
+      },
+      {
+        "speaker": "Heineguez",
+        "voice": "fr-FR-HenriNeural",
+        "portrait": "heineguez",
+        "chapter": "LE MOT DE LA FIN",
+        "duration": 40.08,
+        "sources": [
+          "edition"
+        ]
+      }
+    ]
+  },
+  "gaming": {
+    "asset_id": "760423b7aa544b2fb30e1c88260c99a0",
+    "media_url": "https://resource2.heygen.ai/video/760423b7aa544b2fb30e1c88260c99a0/original.mp4",
+    "verification": {
+      "edition": "gaming",
+      "file": "/workspace/scratch/497da0d398ad/vm-project/vm-manga-2026/jt-free-20261116/gaming/VM-JT-Gaming-2026-11-16.mp4",
+      "duration_seconds": 601.869333,
+      "sha256": "26ffc147b64c060b471cb274a08c200e3000466c46f7a50628e020394db1a885",
+      "size_bytes": 16285646,
+      "video": "H.264 720x1280 25 fps",
+      "audio": "AAC 48kHz stereo",
+      "peak_dbfs": -4.0,
+      "full_decode": "passed",
+      "cast": "Heineguez, Pablo, Black, Scorpions",
+      "format": "Portraits manga illustrés, voix de synthèse, sous-titres synchronisés",
+      "visual_review": "Representative frames reviewed; illustration, no lip sync",
+      "audio_review": "Technical decode and peak measurements only; no claim of human listening"
+    },
+    "scenes": [
+      {
+        "speaker": "Heineguez",
+        "voice": "fr-FR-HenriNeural",
+        "portrait": "heineguez",
+        "chapter": "LE JT GAMING",
+        "duration": 34.872,
+        "sources": [
+          "edition"
+        ]
+      },
+      {
+        "speaker": "Pablo",
+        "voice": "fr-BE-GerardNeural",
+        "portrait": "pablo",
+        "chapter": "GTA VI : LE RENDEZ-VOUS ANNONCÉ",
+        "duration": 44.976,
+        "sources": [
+          "gta"
+        ]
+      },
+      {
+        "speaker": "Black",
+        "voice": "fr-FR-RemyMultilingualNeural",
+        "portrait": "black",
+        "chapter": "PRÉCHARGER N'EST PAS JOUER",
+        "duration": 46.728,
+        "sources": [
+          "editorial_preload"
+        ]
+      },
+      {
+        "speaker": "Scorpions",
+        "voice": "fr-CH-FabriceNeural",
+        "portrait": "scorpions",
+        "chapter": "XBOX : VINGT-CINQ ANS",
+        "duration": 40.032,
+        "sources": [
+          "xbox_recap"
+        ]
+      },
+      {
+        "speaker": "Pablo",
+        "voice": "fr-BE-GerardNeural",
+        "portrait": "pablo",
+        "chapter": "LES CLASSIQUES XBOX SUR PC",
+        "duration": 48.888,
+        "sources": [
+          "xbox_classics"
+        ]
+      },
+      {
+        "speaker": "Black",
+        "voice": "fr-FR-RemyMultilingualNeural",
+        "portrait": "black",
+        "chapter": "XBOX PLAYBACK : VOTRE PARCOURS",
+        "duration": 45.504,
+        "sources": [
+          "xbox_playback"
+        ]
+      },
+      {
+        "speaker": "Scorpions",
+        "voice": "fr-CH-FabriceNeural",
+        "portrait": "scorpions",
+        "chapter": "HALO : FIREFIGHT CET HIVER",
+        "duration": 41.592,
+        "sources": [
+          "halo"
+        ]
+      },
+      {
+        "speaker": "Heineguez",
+        "voice": "fr-FR-HenriNeural",
+        "portrait": "heineguez",
+        "chapter": "DOOM ET WOLFENSTEIN",
+        "duration": 48.504,
+        "sources": [
+          "bethesda"
+        ]
+      },
+      {
+        "speaker": "Pablo",
+        "voice": "fr-BE-GerardNeural",
+        "portrait": "pablo",
+        "chapter": "PLAYSTATION PLUS : LE CATALOGUE",
+        "duration": 50.544,
+        "sources": [
+          "psplus"
+        ]
+      },
+      {
+        "speaker": "Black",
+        "voice": "fr-FR-RemyMultilingualNeural",
+        "portrait": "black",
+        "chapter": "DREAMLIGHT VALLEY PREND LE LARGE",
+        "duration": 45.816,
+        "sources": [
+          "dreamlight_patch"
+        ]
+      },
+      {
+        "speaker": "Scorpions",
+        "voice": "fr-CH-FabriceNeural",
+        "portrait": "scorpions",
+        "chapter": "EXTENSION : BIEN LIRE LES ÉDITIONS",
+        "duration": 45.456,
+        "sources": [
+          "dreamlight_editions"
+        ]
+      },
+      {
+        "speaker": "Heineguez",
+        "voice": "fr-FR-HenriNeural",
+        "portrait": "heineguez",
+        "chapter": "NINTENDO : UNE OFFRE AU JAPON",
+        "duration": 47.208,
+        "sources": [
+          "nintendo"
+        ]
+      },
+      {
+        "speaker": "Pablo",
+        "voice": "fr-BE-GerardNeural",
+        "portrait": "pablo",
+        "chapter": "LE COIN DU JOUEUR : CHOISIR SON RYTHME",
+        "duration": 25.488,
+        "sources": [
+          "editorial_gaming"
+        ]
+      },
+      {
+        "speaker": "Heineguez",
+        "voice": "fr-FR-HenriNeural",
+        "portrait": "heineguez",
+        "chapter": "LE MOT DE LA FIN",
+        "duration": 36.168,
+        "sources": [
+          "edition"
+        ]
+      }
+    ]
+  }
+}
