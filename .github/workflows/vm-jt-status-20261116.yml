@@ -2,7 +2,7 @@ name: VM - Contrôle des trois JT en lecture seule
 on:
   push:
     branches: [main]
-    paths: ['.github/workflows/vm-jt-status-20261116.yml']
+    paths: ['.github/workflows/vm-jt-status-20261116.yml', 'vm-manga-2026/jt-free-20261116/status.py']
   workflow_dispatch:
 permissions:
   contents: read
