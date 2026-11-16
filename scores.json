@@ -345,10 +345,10 @@
    "sport": "basket",
    "dom": "Raptors",
    "ext": "Knicks",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     108,
-    111
+    112
    ]
   },
   {
@@ -360,8 +360,8 @@
    "ext": "Rockets",
    "statut": "IN_PLAY",
    "score": [
-    83,
-    112
+    110,
+    143
    ]
   },
   {
@@ -373,7 +373,7 @@
    "ext": "Oilers",
    "statut": "IN_PLAY",
    "score": [
-    0,
+    2,
     3
    ]
   },
@@ -386,8 +386,8 @@
    "ext": "Hawks",
    "statut": "IN_PLAY",
    "score": [
-    51,
-    44
+    58,
+    64
    ]
   },
   {
@@ -399,8 +399,8 @@
    "ext": "Panthers",
    "statut": "IN_PLAY",
    "score": [
-    0,
-    0
+    1,
+    1
    ]
   },
   {
@@ -425,7 +425,7 @@
    "ext": "Steelers",
    "statut": "IN_PLAY",
    "score": [
-    3,
+    17,
     0
    ]
   },
@@ -436,10 +436,10 @@
    "sport": "basket",
    "dom": "Kings",
    "ext": "Thunder",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    11,
+    25
    ]
   },
   {
@@ -449,10 +449,10 @@
    "sport": "hockey",
    "dom": "Golden Knights",
    "ext": "Canucks",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    2
    ]
   },
   {
@@ -462,10 +462,10 @@
    "sport": "hockey",
    "dom": "Sharks",
    "ext": "Predators",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -1665,6 +1665,6 @@
    ]
   }
  ],
- "maj": "2026-11-16T01:56:34Z",
- "verifie": "2026-11-16T01:56:34Z"
+ "maj": "2026-11-16T02:28:23Z",
+ "verifie": "2026-11-16T02:28:23Z"
 }
