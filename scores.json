@@ -371,7 +371,7 @@
    "sport": "hockey",
    "dom": "Flyers",
    "ext": "Oilers",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     2,
     5
@@ -384,10 +384,10 @@
    "sport": "basket",
    "dom": "Bucks",
    "ext": "Hawks",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    97,
-    104
+    106,
+    113
    ]
   },
   {
@@ -410,9 +410,9 @@
    "sport": "hockey",
    "dom": "Ducks",
    "ext": "Flames",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    4,
+    6,
     1
    ]
   },
@@ -425,7 +425,7 @@
    "ext": "Steelers",
    "statut": "IN_PLAY",
    "score": [
-    24,
+    31,
     3
    ]
   },
@@ -436,10 +436,10 @@
    "sport": "basket",
    "dom": "Kings",
    "ext": "Thunder",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
-    50,
-    62
+    67,
+    78
    ]
   },
   {
@@ -451,8 +451,8 @@
    "ext": "Canucks",
    "statut": "IN_PLAY",
    "score": [
-    1,
-    3
+    2,
+    4
    ]
   },
   {
@@ -465,7 +465,7 @@
    "statut": "IN_PLAY",
    "score": [
     3,
-    0
+    1
    ]
   },
   {
@@ -1665,6 +1665,6 @@
    ]
   }
  ],
- "maj": "2026-11-16T03:11:56Z",
- "verifie": "2026-11-16T03:11:56Z"
+ "maj": "2026-11-16T03:36:39Z",
+ "verifie": "2026-11-16T03:36:39Z"
 }
