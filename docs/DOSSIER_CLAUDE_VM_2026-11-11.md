@@ -1,6 +1,6 @@
 # Dossier Claude — Véloce Mercato, site et réseaux
 
-État établi le 2026-11-15T18:44+01:00.
+État établi le 2026-11-16T06:54+01:00.
 
 Ce dossier remplace les anciennes consignes de restauration intégrale et les anciennes cadences. Il décrit le travail autorisé par Romain dans cette conversation. Les accès et conversations de ChatGPT ne sont pas automatiquement accessibles dans Claude.
 
@@ -35,9 +35,9 @@ Sur vmunivers.fr, Romain a demandé : première case à gauche Facebook https://
 
 | Destination | Nombre relevé dans les reçus de cette reprise |
 |---|---|
-| Véloce Mercato · facebook | 121 |
-| Véloce Mercato · instagram | 120 |
-| VM Actus et Pronos · facebook | 120 |
+| Véloce Mercato · facebook | 134 |
+| Véloce Mercato · instagram | 133 |
+| VM Actus et Pronos · facebook | 133 |
 | VM Univers · facebook | 97 |
 | VM Univers · instagram | 14 |
 
@@ -103,12 +103,12 @@ Pour Multisport, les flux français validés Sports.fr et Le Monde Sport sont ra
 
 ## Audit des pages, liens et classements
 
-- Pages HTML examinées : 1469.
-- URL interrogées : 1739.
+- Pages HTML examinées : 1491.
+- URL interrogées : 1728.
 - HTTP 404/410 confirmés : 11.
 - Cibles internes absentes du dépôt : 76.
-- Liens protégés/non vérifiables automatiquement : 576.
-- Ancres à relire : 3121. Certaines existent seulement après chargement JavaScript.
+- Liens protégés/non vérifiables automatiquement : 580.
+- Ancres à relire : 3120. Certaines existent seulement après chargement JavaScript.
 - Classements à relire : 0.
 
 Le détail exhaustif des contrôles effectués, avec fichiers et lignes, est dans docs/AUDIT_CLAUDE_2026-11-11.json et son résumé Markdown. Un refus 403/429 ne prouve pas un lien mort. Cet audit ne certifie pas tous les faits d’actualité, la disponibilité géographique des vidéos, les paiements ou les espaces authentifiés.
@@ -142,6 +142,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Appel d’Audi sur Monza : audience le 25 novembre pour le dossier Tsunoda - F1 news — https://www.facebook.com/122106465861520366/posts/122110575537520366
 - meta/facebook — Arsenal pourrait devoir débourser 66 M£ pour Antonio Nusa — https://www.facebook.com/122106465861520366/posts/122111080695520366
 - meta/facebook — Aston Villa Women veut retrouver son identité avant le derby contre Birmingham — https://www.facebook.com/122106465861520366/posts/122111171439520366
+- meta/facebook — Bagarre générale et cinq cartons rouges lors d'un match amical New York Red Bulls - Club América — https://www.facebook.com/122106465861520366/posts/122111301153520366
 - meta/facebook — Biathlon : Vetle Christiansen gagne le sprint de Geilo, Emilien Claude 5e - ski-nordique.net — https://www.facebook.com/122106465861520366/posts/122111022957520366
 - meta/facebook — Blessé au genou, Kawhi Leonard sera encore absent au moins une semaine avec les Toronto Raptors - L'Équipe — https://www.facebook.com/122106465861520366/posts/122110128243520366
 - meta/facebook — Bob Boone, champion des World Series et membre de la première famille de l’histoire de la MLB à compter 3 générations de joueurs, est mort à 78 - Mezha.net — https://www.facebook.com/122106465861520366/posts/122110029345520366
@@ -158,10 +159,13 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — DNCG : encadrement de la masse salariale pour Nîmes et Rouen — https://www.facebook.com/122106465861520366/posts/122110066125520366
 - meta/facebook — Devlin offre à l'Irlande du Nord une victoire décisive contre l'Ukraine — https://www.facebook.com/122106465861520366/posts/122111127723520366
 - meta/facebook — Donnarumma en difficulté avec Manchester City, une erreur contre la France — https://www.facebook.com/122106465861520366/posts/122110716303520366
+- meta/facebook — Douzième victoire consécutive pour les San Antonio Spurs, Victor Wembanyama tenu à 26 points et malmené par Mo Bamba - L'Équipe — https://www.facebook.com/122106465861520366/posts/122111424663520366
 - meta/facebook — Doué : le PSG négocie une prolongation, sans accord pour l'instant — https://www.facebook.com/122106465861520366/posts/122111046621520366
 - meta/facebook — Ducks : Un premier match pour Troy Terry cette saison - NHL.com — https://www.facebook.com/122106465861520366/posts/122110297641520366
 - meta/facebook — Décès d'Ilann Vermis : ses parents créent une association contre la violence et attendent toujours la FFF — https://www.facebook.com/122106465861520366/posts/122111210289520366
 - meta/facebook — Elina Svitolina surclasse Linda Noskova et rejoint Mirra Andreeva en finale des Finales WTA - L'Équipe — https://www.facebook.com/122106465861520366/posts/122111110575520366
+- meta/facebook — Endrick accusé d'avoir bousculé l'arbitre lors de Brésil-Japon — https://www.facebook.com/122106465861520366/posts/122111442609520366
+- meta/facebook — England s'impose 3-2 face à l'Espagne en Ligue des nations, Spain mettait fin à sa série — https://www.facebook.com/122106465861520366/posts/122111456667520366
 - meta/facebook — Espagne-Angleterre : Tuchel veut rappeler les protocoles antiracistes à ses joueurs — https://www.facebook.com/122106465861520366/posts/122110981959520366
 - meta/facebook — F1 : Williams change ses plans à Las Vegas et fait confiance à Victor Martins - Sports Auto Moto — https://www.facebook.com/122106465861520366/posts/122110876017520366
 - meta/facebook — F1 Academy : Budapest rejoint le calendrier 2027, finale à Las Vegas - f1news.fr — https://www.facebook.com/122106465861520366/posts/122110029429520366
@@ -171,6 +175,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Folarin Balogun revient sur son faux départ de Monaco vers Everton — https://www.facebook.com/122106465861520366/posts/122111037693520366
 - meta/facebook — Forfait de Mbappé : Zidane doit innover en attaque face à l'Italie — https://www.facebook.com/122106465861520366/posts/122110345869520366
 - meta/facebook — Fornaroli termine ses essais McLaren à Jerez, avec un premier roulage en intermédiaires - F1 news — https://www.facebook.com/122106465861520366/posts/122110599387520366
+- meta/facebook — France-Turquie : Mbappé de retour dans le onze, enjeu qualification pour les quarts de Ligue des nations — https://www.facebook.com/122106465861520366/posts/122111287551520366
 - meta/facebook — Fritz - Musetti, ATP 250, Stockholm, Demi-finales, match en direct le 13-11-2026 - L'Équipe — https://www.facebook.com/122106465861520366/posts/122110744551520366
 - meta/facebook — Fritz - Norrie, ATP 250, Stockholm, Deuxième tour : 2-0, match terminé - L'Équipe — https://www.facebook.com/122106465861520366/posts/122110316919520366
 - meta/facebook — Glentoran : Duncan Ferguson décroche sa première victoire comme entraîneur — https://www.facebook.com/122106465861520366/posts/122110817949520366
@@ -179,9 +184,11 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Italie-France (3-1) : la presse italienne épingle Raymond Domenech après ses critiques — https://www.facebook.com/122106465861520366/posts/122110763853520366
 - meta/facebook — Italie-France : Cherki frustré après la défaite des Bleus face à la Squadra — https://www.facebook.com/122106465861520366/posts/122110572741520366
 - meta/facebook — Jean-Christophe Bahebeck, ancien espoir du PSG, entraîne désormais les U10 de Persan — https://www.facebook.com/122106465861520366/posts/122111065455520366
+- meta/facebook — Jorge Viegas ouvre la porte à une évolution du règlement MotoGP après l’affaire Yamaha - Itransports — https://www.facebook.com/122106465861520366/posts/122111337369520366
 - meta/facebook — L'Argentine s'incline face à l'Uruguay, premier match sans Messi — https://www.facebook.com/122106465861520366/posts/122110891401520366
 - meta/facebook — L'Australie délocalise son match contre la Jordanie au Qatar — https://www.facebook.com/122106465861520366/posts/122110919343520366
 - meta/facebook — La F1 maintient Qatar et Abu Dhabi, Imola écarté comme solution de repli - F1 news — https://www.facebook.com/122106465861520366/posts/122110029855520366
+- meta/facebook — La Russe Mirra Andreeva sacrée à 19 ans au Masters WTA après sa victoire en finale face à l'Ukrainienne Elina Svitolina - franceinfo — https://www.facebook.com/122106465861520366/posts/122111373675520366
 - meta/facebook — La nuit des Français en NBA : Rudy Gobert dans le dur, Zaccharie Risacher redescend - L'Équipe — https://www.facebook.com/122106465861520366/posts/122111180685520366
 - meta/facebook — La numéro 2 mondiale Aryna Sabalenka prend la porte dès la phase de groupes du Masters WTA après sa défaite face à Elina Svitolina - franceinfo — https://www.facebook.com/122106465861520366/posts/122110834731520366
 - meta/facebook — Le Bayern refuse de céder Jonathan Tah au Barça lors du mercato — https://www.facebook.com/122106465861520366/posts/122110029765520366
@@ -197,6 +204,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Les États-Unis voudraient Pep Guardiola pour succéder à Mauricio Pochettino — https://www.facebook.com/122106465861520366/posts/122110369617520366
 - meta/facebook — Ligue des Champions (F) : le PSG s’incline 2-1 face au Bayern au Parc — https://www.facebook.com/122106465861520366/posts/122110029627520366
 - meta/facebook — Ligue des Nations : les Pays-Bas écrasent la Grèce 7-0, l'Allemagne s'impose en Serbie — https://www.facebook.com/122106465861520366/posts/122110806051520366
+- meta/facebook — Mario Frick nommé entraîneur d'Aberdeen, en remplacement de Stephen Robinson — https://www.facebook.com/122106465861520366/posts/122111295285520366
 - meta/facebook — Match interrompu après la blessure grave d'un défenseur de Hendon — https://www.facebook.com/122106465861520366/posts/122111234817520366
 - meta/facebook — Maya Le Tissier décisive, Manchester United bat Crystal Palace 2-0 en WSL — https://www.facebook.com/122106465861520366/posts/122111155497520366
 - meta/facebook — Melville pionnier, De Villiers le plus capé… Ces Sud-Africains ayant marqué l’histoire des Bleus - Top 14 — https://www.facebook.com/122106465861520366/posts/122110392165520366
@@ -204,7 +212,9 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Mirra Andreeva domine Jessica Pegula et se qualifie pour la finale des Finales WTA - L'Équipe — https://www.facebook.com/122106465861520366/posts/122111133423520366
 - meta/facebook — MotoGP BREAKING NEWS : Ducati a déjà la tête en 2027 ! Marquez et Acosta attendus pour un grand rendez-vous en rouge à Madonna di Campiglio - Paddock GP — https://www.facebook.com/122106465861520366/posts/122110480683520366
 - meta/facebook — MotoGP BREAKING NEWS : Yamaha refuse de courir au Qatar, la FIM désavoue Dorna… et présente la facture - Paddock GP — https://www.facebook.com/122106465861520366/posts/122110775685520366
+- meta/facebook — MotoGP, Vu sur Instagram - Dani Pedrosa relève un défi extrême sur un lac gelé avec la RC16 - Paddock GP — https://www.facebook.com/122106465861520366/posts/122111318097520366
 - meta/facebook — MotoGP, Vu sur Instagram - Furieux, Jorge Lorenzo dénonce des propos sur Valentino Rossi qui lui ont été faussement attribués - Paddock GP — https://www.facebook.com/122106465861520366/posts/122110791651520366
+- meta/facebook — NFL : Un arbitre va diriger deux matchs... le même jour ! : Sports - Orange - Sports - Orange — https://www.facebook.com/122106465861520366/posts/122111331075520366
 - meta/facebook — NFL Munich : le retour aux racines d’Amon-Ra St. Brown - DAZN — https://www.facebook.com/122106465861520366/posts/122110436877520366
 - meta/facebook — NHL Global Series 2026 résultats : les deux buts de Sebastian Aho permettent à Carolina de l'emporter sur Seattle - DAZN — https://www.facebook.com/122106465861520366/posts/122110589313520366
 - meta/facebook — Naples intéressé par Tylel Tati, défenseur de Nantes — https://www.facebook.com/122106465861520366/posts/122110055565520366
@@ -234,6 +244,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Ronaldinho, 46 ans, rechausse les crampons pour un match officiel en Italie — https://www.facebook.com/122106465861520366/posts/122111258925520366
 - meta/facebook — Rune - Bergs, ATP 250, Stockholm, Premier tour : 2-0, match terminé - L'Équipe — https://www.facebook.com/122106465861520366/posts/122110029663520366
 - meta/facebook — Sabalenka - Svitolina, WTA Finals, Masters (Indian Wells), Groupe 2, match en direct le 13-11-2026 - L'Équipe — https://www.facebook.com/122106465861520366/posts/122110725393520366
+- meta/facebook — Svitolina - Andreeva, WTA Finals, Masters (Indian Wells), Finale : 0-2, match terminé - L'Équipe — https://www.facebook.com/122106465861520366/posts/122111407077520366
 - meta/facebook — Svitolina - Andreeva, WTA Finals, Masters (Indian Wells), Finale, match en direct le 15-11-2026 - L'Équipe — https://www.facebook.com/122106465861520366/posts/122111220207520366
 - meta/facebook — Tabilo - Tirante, ATP 250, Stockholm, Demi-finales, match en direct le 13-11-2026 - L'Équipe — https://www.facebook.com/122106465861520366/posts/122110674099520366
 - meta/facebook — Tenerife : Cervera juge la suspension d'Owono de 12 matchs « un peu légère » — https://www.facebook.com/122106465861520366/posts/122111059665520366
@@ -247,14 +258,17 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — White défendu par Rice après les sifflets à Wembley — https://www.facebook.com/122106465861520366/posts/122111086485520366
 - meta/facebook — Woodman évoque son départ de Bromley dans le podcast 72+ de la EFL — https://www.facebook.com/122106465861520366/posts/122110029381520366
 - meta/facebook — XV de France : comment William Servat a aidé Kalvin Gourgues à se libérer - Rugby Scope — https://www.facebook.com/122106465861520366/posts/122110417503520366
+- meta/facebook — XV de France. Jelonch de retour dans le groupe avant l’Argentine, Jalibert est bien là, première pour Avogadro - Sud Ouest — https://www.facebook.com/122106465861520366/posts/122111279073520366
 - meta/facebook — Yannick Cahuzac pourrait rejoindre le staff de Franck Haise au Stade Rennais — https://www.facebook.com/122106465861520366/posts/122111252931520366
 - meta/facebook — Écosse : McTominay révèle un choc électrique au cœur avant la Coupe du monde 2026 — https://www.facebook.com/122106465861520366/posts/122110038891520366
 - meta/facebook — Équipe de France : Dayot Upamecano quitte le rassemblement pour raison personnelle — https://www.facebook.com/122106465861520366/posts/122110651749520366
 - meta/facebook — Équipe de France : Ibrahima Konaté de retour, lancé avec le Real Madrid — https://www.facebook.com/122106465861520366/posts/122110290489520366
 - meta/facebook — Équipe de France : Lucas Da Cunha savoure ses débuts avec les Bleus — https://www.facebook.com/122106465861520366/posts/122111147811520366
 - meta/facebook — Équipe de France : Mbappé veut l'axe, Dembélé menacé selon Lizarazu — https://www.facebook.com/122106465861520366/posts/122110610721520366
+- meta/facebook — Équipe de France : la FFF donne des nouvelles de Mike Maignan — https://www.facebook.com/122106465861520366/posts/122111412933520366
 - meta/instagram — ATP 250 Stockholm : dates, programme, prize money, diffusion TV… tout savoir sur l’édition 2026 - Univers Tennis — https://www.instagram.com/p/DftExy-FeCD/
 - meta/instagram — ATP Finals : dates, joueurs, programme, prize money, diffusion TV… tout savoir sur l’édition 2026 - Univers Tennis — https://www.instagram.com/p/DfvOPrbF5Cw/
+- meta/instagram — Aidan Hutchinson s'est blessé avec les Lions en célébrant un sack sur Drake Maye en NFL - L'Équipe — https://www.instagram.com/p/DfxZwndGm6X/
 - meta/instagram — Alan Ruschel, survivant du crash de Chapecoense, prend sa retraite après une montée en Serie A — https://www.instagram.com/p/DfxVqwyDGe_/
 - meta/instagram — Alperen Sengun dans l'histoire des Rockets avec 43 points, Shai Gilgeous-Alexander échoue malgré ses 40 points - L'Équipe — https://www.instagram.com/p/Dft9_ORkyPt/
 - meta/instagram — Andreeva - Muchova, WTA Finals, Masters (Indian Wells), Groupe 2, match en direct le 13-11-2026 - L'Équipe — https://www.instagram.com/p/Dfr8hlQFySs/
@@ -278,11 +292,14 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — DIRECT. Pegula - Noskova, WTA Finals, Masters (Indian Wells), Groupe 1 : 7-6, 4-6, 5-5 en direct - L'Équipe — https://www.instagram.com/p/Dfqf4AQlwe9/
 - meta/instagram — DNCG : encadrement de la masse salariale pour Nîmes et Rouen — https://www.instagram.com/p/DfmEqXRmAX2/
 - meta/instagram — Devlin offre à l'Irlande du Nord une victoire décisive contre l'Ukraine — https://www.instagram.com/p/Dfvdxr9Fz5A/
+- meta/instagram — Douzième victoire consécutive pour les San Antonio Spurs, Victor Wembanyama tenu à 26 points et malmené par Mo Bamba - L'Équipe — https://www.instagram.com/p/DfyN74MjGBR/
 - meta/instagram — Doué : le PSG négocie une prolongation, sans accord pour l'instant — https://www.instagram.com/p/DfvB1Pcl9qR/
 - meta/instagram — Ducks : Un premier match pour Troy Terry cette saison - NHL.com — https://www.instagram.com/p/DfnwFajFnOW/
 - meta/instagram — EdF : Dugarry réclame des explications de Zidane sur son choix à droite — https://www.instagram.com/p/DfriInUm-Dd/
 - meta/instagram — Elina Svitolina surclasse Linda Noskova et rejoint Mirra Andreeva en finale des Finales WTA - L'Équipe — https://www.instagram.com/p/DfvlZgpl5Ok/
+- meta/instagram — Endrick accusé d'avoir bousculé l'arbitre lors de Brésil-Japon — https://www.instagram.com/p/DfyTyvGFo0O/
 - meta/instagram — Espagne-Angleterre : Tuchel veut rappeler les protocoles antiracistes à ses joueurs — https://www.instagram.com/p/DfuVuc1j6Wf/
+- meta/instagram — Espagne-Angleterre : la Roja se retrouve à 11 contre 10 après un penalty — https://www.instagram.com/p/Dfxwc6aDPIW/
 - meta/instagram — F1 : Williams change ses plans à Las Vegas et fait confiance à Victor Martins - Sports Auto Moto — https://www.instagram.com/p/Dftb27ll9cA/
 - meta/instagram — F1 : la Formule 1 renonce à son plan B pour les dernières courses de 2026 - Sports Auto Moto — https://www.instagram.com/p/DfluiRsGmoH/
 - meta/instagram — F1 Academy : Budapest rejoint le calendrier 2027, finale à Las Vegas - f1news.fr — https://www.instagram.com/p/DflPcSelKK7/
@@ -290,6 +307,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Fabian Ruiz rêve de terminer sa carrière au Betis, son club formateur — https://www.instagram.com/p/DfuK-9yoEQa/
 - meta/instagram — Folarin Balogun revient sur son faux départ de Monaco vers Everton — https://www.instagram.com/p/DfuwCCPlNdE/
 - meta/instagram — Forfait de Mbappé : Zidane doit innover en attaque face à l'Italie — https://www.instagram.com/p/DfoTJRjidJM/
+- meta/instagram — France-Turquie : Mbappé de retour dans le onze, enjeu qualification pour les quarts de Ligue des nations — https://www.instagram.com/p/DfxfKTJF0Ed/
 - meta/instagram — Fritz - Musetti, ATP 250, Stockholm, Demi-finales, match en direct le 13-11-2026 - L'Équipe — https://www.instagram.com/p/DfsCnwQD5w4/
 - meta/instagram — Fritz - Norrie, ATP 250, Stockholm, Deuxième tour : 2-0, match terminé - L'Équipe — https://www.instagram.com/p/DfoL4EalGEj/
 - meta/instagram — Glentoran : Duncan Ferguson décroche sa première victoire comme entraîneur — https://www.instagram.com/p/Dfs34iZDEgV/
@@ -300,10 +318,13 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Italie-France (3-1) : la presse italienne épingle Raymond Domenech après ses critiques — https://www.instagram.com/p/DfsOtSyj7pv/
 - meta/instagram — Italie-France : Cherki frustré après la défaite des Bleus face à la Squadra — https://www.instagram.com/p/Dfqk1VDDaPJ/
 - meta/instagram — Jean-Christophe Bahebeck, ancien espoir du PSG, entraîne désormais les U10 de Persan — https://www.instagram.com/p/DfvF96bF1wT/
+- meta/instagram — Jorge Viegas ouvre la porte à une évolution du règlement MotoGP après l’affaire Yamaha - Itransports — https://www.instagram.com/p/DfxoFKiktkS/
+- meta/instagram — L'Angleterre bat l'Espagne 3-2 et met fin à sa série de 44 matchs sans défaite — https://www.instagram.com/p/Dfx95GgjA6Z/
 - meta/instagram — L'Argentine s'incline face à l'Uruguay, premier match sans Messi — https://www.instagram.com/p/DftnrJil_aM/
 - meta/instagram — L'OM contacte l'agent de Santiago Hezze, milieu de l'Olympiakos valorisé 14 M€ — https://www.instagram.com/p/Dfrb3oilNdX/
 - meta/instagram — La F1 maintient Qatar et Abu Dhabi, Imola écarté comme solution de repli - F1 news — https://www.instagram.com/p/DflPqlLG3xP/
 - meta/instagram — La FIA retire l’accréditation de McEvoy, la Society of Editors conteste - F1 news — https://www.instagram.com/p/DftPgEnCfL-/
+- meta/instagram — La Russe Mirra Andreeva sacrée à 19 ans au Masters WTA après sa victoire en finale face à l'Ukrainienne Elina Svitolina - franceinfo — https://www.instagram.com/p/Dfx5Z_jF_AL/
 - meta/instagram — La nuit des Français en NBA : Rudy Gobert dans le dur, Zaccharie Risacher redescend - L'Équipe — https://www.instagram.com/p/DfwcKTwFwX3/
 - meta/instagram — La numéro 2 mondiale Aryna Sabalenka prend la porte dès la phase de groupes du Masters WTA après sa défaite face à Elina Svitolina - franceinfo — https://www.instagram.com/p/Dfs-MVQl-YC/
 - meta/instagram — Lassine Sinayoko, en vedette au Paris FC, attire déjà l'intérêt de clubs anglais — https://www.instagram.com/p/DfrVFHzl90k/
@@ -322,12 +343,15 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Ligue des Champions (F) : le PSG s’incline 2-1 face au Bayern au Parc — https://www.instagram.com/p/DflPn0nm9HT/
 - meta/instagram — Ligue des Nations : les Pays-Bas écrasent la Grèce 7-0, l'Allemagne s'impose en Serbie — https://www.instagram.com/p/Dfsq5h1GMnD/
 - meta/instagram — MIN@MTL : Ce que vous devez savoir | Canadiens de Montréal - NHL.com — https://www.instagram.com/p/DflnpJwjQP9/
+- meta/instagram — Man Utd cible Bassey, Collins et Mazraoui, Milan veut Endrick — https://www.instagram.com/p/Dfx1FZGj_S5/
 - meta/instagram — Marco Lucchinelli révèle le seul défaut de Casey Stoner en tant que champion MotoGP - Motorcycle Sports — https://www.instagram.com/p/DfwqpIoF003/
+- meta/instagram — Mario Frick nommé entraîneur d'Aberdeen, en remplacement de Stephen Robinson — https://www.instagram.com/p/Dfxj3siCcHG/
 - meta/instagram — Materazzi revient sur le coup de tête de Zidane en lien avec la mort de Jesus de Miguel — https://www.instagram.com/p/DfpELmOlHhK/
 - meta/instagram — Mercato : Arsenal s'intéresse à Endrick, Newcastle et Sunderland suivent Dion Beljo — https://www.instagram.com/p/DflPZyYFPC5/
 - meta/instagram — Mirra Andreeva domine Jessica Pegula et se qualifie pour la finale des Finales WTA - L'Équipe — https://www.instagram.com/p/DfvsPrljtdz/
 - meta/instagram — MotoGP : Yamaha condamnée à payer ses rivaux après le Qatar … Mais qui a menacé de sanctions sportives inexistantes - Paddock GP — https://www.instagram.com/p/Dfu4zl5jFAm/
 - meta/instagram — MotoGP BREAKING NEWS : Yamaha refuse de courir au Qatar, la FIM désavoue Dorna… et présente la facture - Paddock GP — https://www.instagram.com/p/DfsUWZfDWRW/
+- meta/instagram — MotoGP, Vu sur Instagram - Dani Pedrosa relève un défi extrême sur un lac gelé avec la RC16 - Paddock GP — https://www.instagram.com/p/Dfxsf1bF-vU/
 - meta/instagram — NBA : au moins deux semaines d’absence pour Stephen Curry - Le Figaro — https://www.instagram.com/p/DfqYt-1l9QD/
 - meta/instagram — National 1 : Nîmes leader après sa victoire sur Istres, Rumilly s'impose à Saint-Priest — https://www.instagram.com/p/Dfq4kRRF-oL/
 - meta/instagram — National 2 : Nicolas Jeannesson réélu à la tête de C'Chartres Football — https://www.instagram.com/p/Dfl1NpVDfS0/
@@ -339,6 +363,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Palmer engagé avec l'Angleterre, assure Morgan Rogers — https://www.instagram.com/p/Dfqq3fAjbf0/
 - meta/instagram — Paris FC : Naples s'intéresserait à Patrick Zabi, selon la Gazzetta dello Sport — https://www.instagram.com/p/DfthePBDc8J/
 - meta/instagram — Pickford face à la concurrence de Trafford chez les Three Lions — https://www.instagram.com/p/Dfl-V3NFylt/
+- meta/instagram — Pirelli : pneus les plus tendres à Las Vegas, les plus durs au Qatar - F1 news — https://www.instagram.com/p/DfybB2lFzvj/
 - meta/instagram — Pirelli travaille la montée en température de ses intermédiaires pour 2027 - F1 news — https://www.instagram.com/p/Dfnep96mAHU/
 - meta/instagram — Pochettino face à Bruno Fernandes, son premier casse-tête à Manchester United — https://www.instagram.com/p/Dfwhox-l1fa/
 - meta/instagram — Portugal : Bernardo Silva forfait pour le match contre le Pays de Galles — https://www.instagram.com/p/DfwvTdElxlT/
@@ -353,6 +378,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Serbie : crise institutionnelle et résultats en berne pour les Aigles Blancs — https://www.instagram.com/p/Dfsf6BTF6Wv/
 - meta/instagram — Ski alpin - Coupe du monde de Levi 2026 - Résultats - ski-nordique.net — https://www.instagram.com/p/DfxIqn5Gg2N/
 - meta/instagram — Ski, biathlon et snowboard. Top podiums bleus : Clément Noël ouvre le compteur à Levi - Le Dauphiné Libéré — https://www.instagram.com/p/DfxM_bxFyfb/
+- meta/instagram — Svitolina - Andreeva, WTA Finals, Masters (Indian Wells), Finale : 0-2, match terminé - L'Équipe — https://www.instagram.com/p/DfyDxgviQ0U/
 - meta/instagram — Svitolina - Andreeva, WTA Finals, Masters (Indian Wells), Finale, match en direct le 15-11-2026 - L'Équipe — https://www.instagram.com/p/DfwmY3jF8P2/
 - meta/instagram — Svitolina - Sabalenka, WTA Finals, Masters (Indian Wells), Groupe 2 : 1-2, match terminé - L'Équipe — https://www.instagram.com/p/DftzxAMnWlR/
 - meta/instagram — Tenerife : Cervera juge la suspension d'Owono de 12 matchs « un peu légère » — https://www.instagram.com/p/Dfu0LZblbdm/
@@ -374,11 +400,13 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Équipe de France : Lucas Da Cunha savoure ses débuts avec les Bleus — https://www.instagram.com/p/DfwDGSQjWFk/
 - meta/instagram — Équipe de France : Mbappé veut l'axe, Dembélé menacé selon Lizarazu — https://www.instagram.com/p/DfqxzT5F5vm/
 - meta_pronos/facebook — "Fatherland" et "La Bola Negra" en tête des nominations aux European Film Awards — https://www.facebook.com/1757379583055094/posts/1774624561330596
+- meta_pronos/facebook — 45 « enfants de la Creuse » de retour à La Réunion, selon Ouest-France — https://www.facebook.com/1757379583055094/posts/1775801157879603
 - meta_pronos/facebook — ATP 250 Stockholm : dates, programme, prize money, diffusion TV… tout savoir sur l’édition 2026 - Univers Tennis — https://www.facebook.com/1757379583055094/posts/1774599284666457
 - meta_pronos/facebook — ATP Finals 2026 : Arthur Fils fera sa première apparition au Masters de fin d'année — https://www.facebook.com/1757379583055094/posts/1769936028466116
 - meta_pronos/facebook — ATP Finals : dates, joueurs, programme, prize money, diffusion TV… tout savoir sur l’édition 2026 - Univers Tennis — https://www.facebook.com/1757379583055094/posts/1774810871311965
 - meta_pronos/facebook — Affaire Epstein : un rapport du Congrès américain dénonce des « défaillances institutionnelles » — https://www.facebook.com/1757379583055094/posts/1769605958499123
 - meta_pronos/facebook — Affaire Mbappé : comment Pékin fait pression sur les marques en Chine — https://www.facebook.com/1757379583055094/posts/1774569044669481
+- meta_pronos/facebook — Aidan Hutchinson s'est blessé avec les Lions en célébrant un sack sur Drake Maye en NFL - L'Équipe — https://www.facebook.com/1757379583055094/posts/1775686597891059
 - meta_pronos/facebook — Allemagne : Brajan Gruda inscrit un but lors de sa première sélection contre la Serbie — https://www.facebook.com/1757379583055094/posts/1773541664772219
 - meta_pronos/facebook — Andreeva - Muchova, WTA Finals, Masters (Indian Wells), Groupe 2, match en direct le 13-11-2026 - L'Équipe — https://www.facebook.com/1757379583055094/posts/1772844108175308
 - meta_pronos/facebook — Andreeva - Shnaider, WTA Finals, Masters (Indian Wells), Groupe 2 : 2-0, match terminé - L'Équipe — https://www.facebook.com/1757379583055094/posts/1773295121463540
@@ -406,6 +434,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Ducks : Un premier match pour Troy Terry cette saison - NHL.com — https://www.facebook.com/1757379583055094/posts/1770841135042272
 - meta_pronos/facebook — EdF : Dugarry réclame des explications de Zidane sur son choix à droite — https://www.facebook.com/1757379583055094/posts/1772654964860889
 - meta_pronos/facebook — Elina Svitolina surclasse Linda Noskova et rejoint Mirra Andreeva en finale des Finales WTA - L'Équipe — https://www.facebook.com/1757379583055094/posts/1774858081307244
+- meta_pronos/facebook — Endrick accusé d'avoir bousculé l'arbitre lors de Brésil-Japon — https://www.facebook.com/1757379583055094/posts/1776196651173387
 - meta_pronos/facebook — Europe : vers un encadrement des loot boxes et des monnaies virtuelles dans les jeux — https://www.facebook.com/1757379583055094/posts/1772269141566138
 - meta_pronos/facebook — F1 Academy : Budapest rejoint le calendrier 2027, finale à Las Vegas - f1news.fr — https://www.facebook.com/1757379583055094/posts/1769605735165812
 - meta_pronos/facebook — Fibre Excellence : la liquidation judiciaire de l'usine de Saint-Gaudens définitivement prononcée — https://www.facebook.com/1757379583055094/posts/1771281104998275
@@ -421,6 +450,10 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Indonésie : la jeunesse de nouveau dans la rue contre la politique du gouvernement — https://www.facebook.com/1757379583055094/posts/1769606181832434
 - meta_pronos/facebook — Isère : des pales d'éoliennes recyclées en tables de ping-pong par Néolien — https://www.facebook.com/1757379583055094/posts/1774984367961282
 - meta_pronos/facebook — Jean-Michel Jarre fête les 50 ans d'Oxygène avec une version remasterisée — https://www.facebook.com/1757379583055094/posts/1774120698047649
+- meta_pronos/facebook — Jordanie : un ressortissant israélien arrêté après être entré à la nage dans ses eaux — https://www.facebook.com/1757379583055094/posts/1775927017867017
+- meta_pronos/facebook — Jorge Viegas ouvre la porte à une évolution du règlement MotoGP après l’affaire Yamaha - Itransports — https://www.facebook.com/1757379583055094/posts/1775731131219939
+- meta_pronos/facebook — Joy Sorman sur les traces de l'artiste Irène Gérard dans « La Vie brute » — https://www.facebook.com/1757379583055094/posts/1776144874511898
+- meta_pronos/facebook — L'Angleterre bat l'Espagne 3-2 et met fin à sa série de 44 matchs sans défaite — https://www.facebook.com/1757379583055094/posts/1775966107863108
 - meta_pronos/facebook — L'Estonie fermera ses postes-frontières avec la Russie à partir du 1er décembre — https://www.facebook.com/1757379583055094/posts/1775649174561468
 - meta_pronos/facebook — L'Iran affirme que deux pétroliers ont heurté des mines dans le détroit d'Ormuz — https://www.facebook.com/1757379583055094/posts/1775485601244492
 - meta_pronos/facebook — L'Italie inflige une amende de 805 millions d'euros à Meta pour accès aux photos — https://www.facebook.com/1757379583055094/posts/1774413471351705
@@ -445,7 +478,9 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Marvel 1943 : Rise of Hydra n'est pas annulé, selon Gamekult — https://www.facebook.com/1757379583055094/posts/1771444778315241
 - meta_pronos/facebook — Match interrompu après la blessure grave d'un défenseur de Hendon — https://www.facebook.com/1757379583055094/posts/1775437784582607
 - meta_pronos/facebook — Mercato : Arsenal s'intéresse à Endrick, Newcastle et Sunderland suivent Dion Beljo — https://www.facebook.com/1757379583055094/posts/1769605231832529
+- meta_pronos/facebook — Meta Quest : les achats intégrés dépassent les ventes de jeux payants — https://www.facebook.com/1757379583055094/posts/1775894537870265
 - meta_pronos/facebook — Mobilisation contre la vie chère : des mesures antiterroristes visant des manifestants dénoncées — https://www.facebook.com/1757379583055094/posts/1772408638218855
+- meta_pronos/facebook — MotoGP, Vu sur Instagram - Dani Pedrosa relève un défi extrême sur un lac gelé avec la RC16 - Paddock GP — https://www.facebook.com/1757379583055094/posts/1775859794540406
 - meta_pronos/facebook — Noskova - Svitolina, WTA Finals, Masters (Indian Wells), Demi-finales, match en direct le 14-11-2026 - L'Équipe — https://www.facebook.com/1757379583055094/posts/1774508251342227
 - meta_pronos/facebook — Nouvelle-Zélande à la Coupe du monde de rugby 2023 : actualités, matches en direct, joueurs, compositions, calendriers et résultats des All Blacks. - Rugbyrama — https://www.facebook.com/1757379583055094/posts/1769649931828059
 - meta_pronos/facebook — Palmowski décroche un baquet financé en Formula Regional pour 2027 - F1 news — https://www.facebook.com/1757379583055094/posts/1773160278143691
@@ -459,7 +494,9 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Pologne : Varsovie accueille la Marche de l'indépendance dans un climat tendu — https://www.facebook.com/1757379583055094/posts/1769605378499181
 - meta_pronos/facebook — Pourquoi tant de joueurs des Bleus ont-ils grandi au Stade Rennais ? — https://www.facebook.com/1757379583055094/posts/1771118881681164
 - meta_pronos/facebook — Prestianni : Rui Costa se dit optimiste sur une prolongation à Benfica — https://www.facebook.com/1757379583055094/posts/1773417618117957
+- meta_pronos/facebook — Présidentielle 2027 : David Lisnard, crédité de 8 à 10 %, se dit prêt à une primaire — https://www.facebook.com/1757379583055094/posts/1776092341183818
 - meta_pronos/facebook — Présidentielle 2027 : Teddy Riner se dit « ni de droite ni de gauche » — https://www.facebook.com/1757379583055094/posts/1775077507951968
+- meta_pronos/facebook — Présidentielle 2027 : les Restos du Coeur appellent à des "solutions structurelles" contre la pauvreté — https://www.facebook.com/1757379583055094/posts/1775829917876727
 - meta_pronos/facebook — Présidentielle : l'entourage de Macron met en garde contre une baisse de l'aide à l'Ukraine — https://www.facebook.com/1757379583055094/posts/1775289571264095
 - meta_pronos/facebook — Rune - Bergs, ATP 250, Stockholm, Premier tour : 2-0, match terminé - L'Équipe — https://www.facebook.com/1757379583055094/posts/1769683108491408
 - meta_pronos/facebook — Sabalenka - Svitolina, WTA Finals, Masters (Indian Wells), Groupe 2, match en direct le 13-11-2026 - L'Équipe — https://www.facebook.com/1757379583055094/posts/1772785828181136
@@ -477,6 +514,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Trump, Xi et Poutine doivent se rencontrer jeudi en Chine, selon la Maison Blanche — https://www.facebook.com/1757379583055094/posts/1773590001434052
 - meta_pronos/facebook — Ukraine : des coupures d'électricité prolongées face aux frappes russes sur le réseau — https://www.facebook.com/1757379583055094/posts/1771227678336951
 - meta_pronos/facebook — Ukraine : à Lozova, des déplacés traumatisés par l'évacuation du Donetsk — https://www.facebook.com/1757379583055094/posts/1773465318113187
+- meta_pronos/facebook — Un mod Torrent ajoute pluie 3D et orages à Cyberpunk 2077 — https://www.facebook.com/1757379583055094/posts/1775764984549887
 - meta_pronos/facebook — Un pétrolier soupçonné d'appartenir à la flotte fantôme russe arraisonné en Méditerranée — https://www.facebook.com/1757379583055094/posts/1775387004587685
 - meta_pronos/facebook — Unai Simon sacré meilleur gardien du monde, un profil discret qui séduit — https://www.facebook.com/1757379583055094/posts/1775038031289249
 - meta_pronos/facebook — Une centaine de personnes à une marche blanche à Cergy en hommage à Pengo Bossio Wangi — https://www.facebook.com/1757379583055094/posts/1775612487898470
@@ -493,6 +531,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — À Bordeaux, un sapin de Noël naturel de retour place Pey-Berland — https://www.facebook.com/1757379583055094/posts/1773013148158404
 - meta_pronos/facebook — Éliminatoires CAN 2027 : le Gabon et le Burkina Faso gagnent, la Tunisie battue par la Libye — https://www.facebook.com/1757379583055094/posts/1773110071482045
 - meta_pronos/facebook — Équipe de France : Mbappé déclare forfait contre l’Italie en Ligue des nations — https://www.facebook.com/1757379583055094/posts/1770896008370118
+- meta_pronos/facebook — Équipe de France : la FFF donne des nouvelles de Mike Maignan — https://www.facebook.com/1757379583055094/posts/1776006574525728
 - meta_univers/facebook — Découvre AlloLivre — https://www.facebook.com/122098313661535169/posts/122107745265535169
 - meta_univers/facebook — Découvre La Pastille TV — https://www.facebook.com/122098313661535169/posts/122107745547535169
 - meta_univers/facebook — Découvre Pépite FC — https://www.facebook.com/122098313661535169/posts/122107844757535169
