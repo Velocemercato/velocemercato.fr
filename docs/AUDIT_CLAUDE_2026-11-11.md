@@ -1,10 +1,10 @@
 # Audit du site pour Claude
 
-État mesuré le 2026-11-16T09:51:00.109752+01:00.
+État mesuré le 2026-11-16T20:34:08.756705+01:00.
 
 ## Périmètre et limites
 
-1493 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 1733 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
+1497 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 1742 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
 
 Un statut 404 ou 410 indique une URL introuvable. Les refus 401/403, les limites 429, les erreurs serveur et les délais dépassés demandent une vérification complémentaire. Le test ne valide pas le visionnage géographique des vidéos ni la véracité des articles. Les classements signalés par mots-clés doivent être relus avant déplacement.
 
@@ -16,8 +16,8 @@ Retirer les accès transversaux aux anciennes applications et leurs invitations 
 
 - Liens confirmés introuvables en HTTP, 11.
 - Cibles internes absentes du dépôt, 76. Certaines peuvent être servies par Cloudflare, lire leur résultat HTTP avant correction.
-- Ancres à vérifier, 3121. Certaines sont gérées par JavaScript.
-- Articles à relire pour leur classement, 0.
+- Ancres à vérifier, 3123. Certaines sont gérées par JavaScript.
+- Articles à relire pour leur classement, 1.
 - Replays réellement publiés par genre, {"foot": 45, "actus": 30, "gaming": 15}.
 
 Le fichier JSON associé contient toutes les références, pages et lignes. Les chemins correspondent au commit indiqué dans ce rapport.
@@ -38,6 +38,7 @@ Le fichier JSON associé contient toutes les références, pages et lignes. Les 
 
 ## Articles à relire
 
+- articles.json — rss-v2-06034a820db9941170e748 — Romelu Lukaku annonce la fin de sa carrière internationale avec la Belgique — À relire, aucun indice net de la rubrique dans la brève
 
 ## Corrections déjà apportées dans cette reprise
 
