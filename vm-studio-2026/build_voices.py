@@ -3,6 +3,10 @@ import os, sys, json, wave, re, subprocess
 from pathlib import Path
 ROOT=Path(os.environ.get('VM_WORKSPACE_ROOT', Path(__file__).resolve().parents[1]))
 sys.path.insert(0,str(ROOT/'tts-runtime'))
+os.environ['ORT_DISABLE_TELEMETRY']='1'
+import onnxruntime
+# Synthèse locale : désactiver la télémétrie avant toute session de modèle.
+onnxruntime.disable_telemetry_events()
 from piper import PiperVoice, SynthesisConfig
 BASE=ROOT/'vm-studio-2026'; OUT=BASE/'audio'; OUT.mkdir(parents=True,exist_ok=True)
 pack=json.loads((BASE/'scriptpack.json').read_text())

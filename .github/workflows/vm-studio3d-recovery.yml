@@ -1,0 +1,77 @@
+name: VM - Reprise et livraison du studio 3D
+on:
+  push:
+    branches: [main]
+    paths: ['.github/vm-studio3d-recovery.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+jobs:
+  delivery:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      ORT_DISABLE_TELEMETRY: '1'
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - id: request
+        name: Vérifier la demande ponctuelle
+        run: |
+          python - <<'PY'
+          import json,os,datetime
+          from zoneinfo import ZoneInfo
+          request=json.load(open('.github/vm-studio3d-recovery.json'))
+          assert request['id']=='vm-jt3d-2026-11-16-v1'
+          assert request['mode'] in ('build','publish')
+          assert datetime.datetime.now(ZoneInfo('Europe/Paris')).date().isoformat()=='2026-11-16'
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('mode='+request['mode']+'\n')
+          PY
+      - name: Installer les outils
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+          python -m pip install --quiet -r vm-studio-2026/requirements.txt
+          python vm-studio-2026/test_publication.py
+      - if: steps.request.outputs.mode == 'build'
+        name: Reconstruire les trois montages depuis les sept plans conservés
+        run: |
+          python vm-studio-2026/recover_delivery.py prepare
+          python vm-studio-2026/build_voices.py
+          python vm-studio-2026/build_music.py
+          python vm-studio-2026/edit_programmes.py
+          python vm-studio-2026/recover_delivery.py save-media
+      - if: steps.request.outputs.mode == 'publish'
+        name: Télécharger et revérifier uniquement les médias examinés
+        run: python vm-studio-2026/recover_delivery.py download-reviewed
+      - if: steps.request.outputs.mode == 'publish'
+        name: Publier sur les destinations VM déjà autorisées
+        env:
+          VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+          VM_AUTO_YOUTUBE: ${{ vars.VM_AUTO_YOUTUBE }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          YOUTUBE_CHANNEL_ID: ${{ secrets.YOUTUBE_CHANNEL_ID }}
+        run: |
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "https://github.com/$GITHUB_REPOSITORY.git" "$RUNNER_TEMP/vm-broadcast-state"
+          test -s "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+          python vm-studio-2026/publish_direct.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: VM-studio3D-livraison-${{ github.run_id }}
+          retention-days: 30
+          if-no-files-found: ignore
+          path: |
+            output/
+            vm-studio-2026/publication-results.json
+            vm-studio-2026/voice-manifest.json
+            vm-studio-2026/edit/*/titres.ass
+            vm-studio-2026/edit/*/timeline.json
