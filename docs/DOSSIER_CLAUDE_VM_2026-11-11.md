@@ -1,6 +1,6 @@
 # Dossier Claude — Véloce Mercato, site et réseaux
 
-État établi le 2026-11-16T06:54+01:00.
+État établi le 2026-11-16T09:51+01:00.
 
 Ce dossier remplace les anciennes consignes de restauration intégrale et les anciennes cadences. Il décrit le travail autorisé par Romain dans cette conversation. Les accès et conversations de ChatGPT ne sont pas automatiquement accessibles dans Claude.
 
@@ -35,9 +35,9 @@ Sur vmunivers.fr, Romain a demandé : première case à gauche Facebook https://
 
 | Destination | Nombre relevé dans les reçus de cette reprise |
 |---|---|
-| Véloce Mercato · facebook | 134 |
-| Véloce Mercato · instagram | 133 |
-| VM Actus et Pronos · facebook | 133 |
+| Véloce Mercato · facebook | 135 |
+| Véloce Mercato · instagram | 134 |
+| VM Actus et Pronos · facebook | 134 |
 | VM Univers · facebook | 97 |
 | VM Univers · instagram | 14 |
 
@@ -103,12 +103,12 @@ Pour Multisport, les flux français validés Sports.fr et Le Monde Sport sont ra
 
 ## Audit des pages, liens et classements
 
-- Pages HTML examinées : 1491.
-- URL interrogées : 1728.
+- Pages HTML examinées : 1493.
+- URL interrogées : 1733.
 - HTTP 404/410 confirmés : 11.
 - Cibles internes absentes du dépôt : 76.
-- Liens protégés/non vérifiables automatiquement : 580.
-- Ancres à relire : 3120. Certaines existent seulement après chargement JavaScript.
+- Liens protégés/non vérifiables automatiquement : 586.
+- Ancres à relire : 3121. Certaines existent seulement après chargement JavaScript.
 - Classements à relire : 0.
 
 Le détail exhaustif des contrôles effectués, avec fichiers et lignes, est dans docs/AUDIT_CLAUDE_2026-11-11.json et son résumé Markdown. Un refus 403/429 ne prouve pas un lien mort. Cet audit ne certifie pas tous les faits d’actualité, la disponibilité géographique des vidéos, les paiements ou les espaces authentifiés.
@@ -168,6 +168,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — England s'impose 3-2 face à l'Espagne en Ligue des nations, Spain mettait fin à sa série — https://www.facebook.com/122106465861520366/posts/122111456667520366
 - meta/facebook — Espagne-Angleterre : Tuchel veut rappeler les protocoles antiracistes à ses joueurs — https://www.facebook.com/122106465861520366/posts/122110981959520366
 - meta/facebook — F1 : Williams change ses plans à Las Vegas et fait confiance à Victor Martins - Sports Auto Moto — https://www.facebook.com/122106465861520366/posts/122110876017520366
+- meta/facebook — F1 : le Qatar et Abu Dhabi sous pression après les attaques au Bahreïn - horizonf1.fr — https://www.facebook.com/122106465861520366/posts/122111483841520366
 - meta/facebook — F1 Academy : Budapest rejoint le calendrier 2027, finale à Las Vegas - f1news.fr — https://www.facebook.com/122106465861520366/posts/122110029429520366
 - meta/facebook — FC Barcelone : un projet de niches funéraires au Camp Nou pour les supporters — https://www.facebook.com/122106465861520366/posts/122110325613520366
 - meta/facebook — Fabian Ruiz rêve de terminer sa carrière au Betis, son club formateur — https://www.facebook.com/122106465861520366/posts/122110951245520366
@@ -302,6 +303,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Espagne-Angleterre : la Roja se retrouve à 11 contre 10 après un penalty — https://www.instagram.com/p/Dfxwc6aDPIW/
 - meta/instagram — F1 : Williams change ses plans à Las Vegas et fait confiance à Victor Martins - Sports Auto Moto — https://www.instagram.com/p/Dftb27ll9cA/
 - meta/instagram — F1 : la Formule 1 renonce à son plan B pour les dernières courses de 2026 - Sports Auto Moto — https://www.instagram.com/p/DfluiRsGmoH/
+- meta/instagram — F1 : le Qatar et Abu Dhabi sous pression après les attaques au Bahreïn - horizonf1.fr — https://www.instagram.com/p/DfytfGNlb-B/
 - meta/instagram — F1 Academy : Budapest rejoint le calendrier 2027, finale à Las Vegas - f1news.fr — https://www.instagram.com/p/DflPcSelKK7/
 - meta/instagram — FC Barcelone : un projet de niches funéraires au Camp Nou pour les supporters — https://www.instagram.com/p/Dfn5JAPFIov/
 - meta/instagram — Fabian Ruiz rêve de terminer sa carrière au Betis, son club formateur — https://www.instagram.com/p/DfuK-9yoEQa/
@@ -508,6 +510,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Sur TikTok, des astuces pour supporter le froid face à la hausse des prix — https://www.facebook.com/1757379583055094/posts/1774541734672212
 - meta_pronos/facebook — Svitolina - Andreeva, WTA Finals, Masters (Indian Wells), Finale, match en direct le 15-11-2026 - L'Équipe — https://www.facebook.com/1757379583055094/posts/1775218054604580
 - meta_pronos/facebook — Svitolina - Sabalenka, WTA Finals, Masters (Indian Wells), Groupe 2 : 1-2, match terminé - L'Équipe — https://www.facebook.com/1757379583055094/posts/1773817284744657
+- meta_pronos/facebook — Thaïlande : un incendie fait 11 morts sur l’île de Phuket — https://www.facebook.com/1757379583055094/posts/1776357221157330
 - meta_pronos/facebook — The Elder Scrolls 6 : Bethesda ne prévoit pas de nouvelles sur Sentinel avant un long moment — https://www.facebook.com/1757379583055094/posts/1770975431695509
 - meta_pronos/facebook — Transferts Grenoble : Plusieurs joueurs convoités en Top 14 - Rugby Scope — https://www.facebook.com/1757379583055094/posts/1772557571537295
 - meta_pronos/facebook — Trappes : Fabien Roussel dénonce les violences visant les élus après l'attentat raciste — https://www.facebook.com/1757379583055094/posts/1771386628321056
