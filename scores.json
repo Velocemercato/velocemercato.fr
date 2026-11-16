@@ -295,7 +295,7 @@
    "ext": "49ers",
    "statut": "IN_PLAY",
    "score": [
-    25,
+    31,
     38
    ]
   },
@@ -321,8 +321,8 @@
    "ext": "Spurs",
    "statut": "IN_PLAY",
    "score": [
-    100,
-    100
+    102,
+    104
    ]
   },
   {
@@ -332,9 +332,9 @@
    "sport": "basket",
    "dom": "Celtics",
    "ext": "Mavericks",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
-    67,
+    70,
     37
    ]
   },
@@ -345,10 +345,10 @@
    "sport": "basket",
    "dom": "Raptors",
    "ext": "Knicks",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
     43,
-    45
+    47
    ]
   },
   {
@@ -360,8 +360,8 @@
    "ext": "Rockets",
    "statut": "IN_PLAY",
    "score": [
-    0,
-    0
+    11,
+    7
    ]
   },
   {
@@ -1665,6 +1665,6 @@
    ]
   }
  ],
- "maj": "2026-11-16T00:12:36Z",
- "verifie": "2026-11-16T00:12:36Z"
+ "maj": "2026-11-16T00:16:46Z",
+ "verifie": "2026-11-16T00:16:46Z"
 }
