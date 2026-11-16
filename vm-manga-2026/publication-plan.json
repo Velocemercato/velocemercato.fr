@@ -1,0 +1,53 @@
+{
+  "status": "requested_not_scheduled",
+  "timezone": "Europe/Paris",
+  "duration_seconds": 600,
+  "slots": {
+    "actus": [
+      "07:00",
+      "12:00",
+      "19:30"
+    ],
+    "sport": [
+      "08:00",
+      "13:00",
+      "20:30"
+    ],
+    "gaming": [
+      "09:00",
+      "15:00",
+      "22:00"
+    ]
+  },
+  "morning_midday_mapping": "assistant assumption communicated to user",
+  "facebook_pages": [
+    {
+      "name": "VeloceMercato",
+      "id": "1384363904759072"
+    },
+    {
+      "name": "VMunivers.fr",
+      "id": "1349998758205153"
+    },
+    {
+      "name": "VM actus et pronos",
+      "id": "112294796981981"
+    }
+  ],
+  "instagram_accounts": [
+    "veloce.mercato",
+    "vmunivers.fr"
+  ],
+  "requirements": [
+    "correct casting",
+    "current verified reporting",
+    "finished animated MP4",
+    "voice and subtitle checks",
+    "verified account routing",
+    "idempotent publication receipts"
+  ],
+  "editorial_automation": "Automation_013fb20c3a6c8191984e4f4ada141eaf",
+  "editorial_automation_is_publication_schedule": false,
+  "scheduled_post_ids": [],
+  "publication_receipts": []
+}

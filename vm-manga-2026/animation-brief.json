@@ -1,0 +1,61 @@
+{
+  "revision": "2026-11-16-heineguez-scorpions",
+  "status": "cast_reference_created_long_videos_not_rendered",
+  "style": "manga_2d_drawn",
+  "reference": "assets/plateau-manga-heineguez-scorpions.png",
+  "cast": [
+    {
+      "name": "Heineguez",
+      "role": "main_presenter",
+      "appearance": "brown hair, gold jacket, center seat",
+      "appearance_status": "confirmed_by_user"
+    },
+    {
+      "name": "Pablo",
+      "appearance": "bald, round glasses, cream blazer"
+    },
+    {
+      "name": "Black",
+      "appearance": "navy blazer"
+    },
+    {
+      "name": "Scorpions",
+      "appearance": "elderly man, silver hair and moustache, teal blazer"
+    },
+    {
+      "name": "VM",
+      "role": "robot_mascot"
+    }
+  ],
+  "removed_character": "La créatrice",
+  "animation_required": [
+    "audio-driven lip sync",
+    "natural blinking",
+    "restrained gestures",
+    "stable news desk",
+    "speaking character in frame"
+  ],
+  "formats": [
+    {
+      "name": "actus",
+      "duration_target": 600,
+      "aspect": "16:9"
+    },
+    {
+      "name": "sport",
+      "duration_target": 600,
+      "aspect": "16:9"
+    },
+    {
+      "name": "gaming",
+      "duration_target": 600,
+      "aspect": "16:9"
+    }
+  ],
+  "audio": "Distinct natural French voices; no pitch shifting or time stretching",
+  "blocked_from_publication": [
+    "f0af1c73366f47a0b028a2de15fd7d39"
+  ],
+  "legacy_audio": "Existing scriptpack, audio and voice-manifest belong to previous casting and mixed-topic formats; not approved for these three editions",
+  "delivery_warning": "No finished 10-minute manga edition or confirmed publication in this revision"
+}

@@ -1,0 +1,37 @@
+name: VM - Minute manga gratuite validée
+on:
+  push:
+    branches: [main]
+    paths: ['.github/vm-manga-free-release.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet requests 'cryptography==50.0.0' pillow
+      - name: Ouvrir les connexions et reçus existants
+        run: |
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "https://github.com/$GITHUB_REPOSITORY.git" "$RUNNER_TEMP/vm-broadcast-state"
+          test -s "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+      - name: Publier uniquement la minute manga examinée
+        run: python vm-manga-2026/free-release/publish.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: VM-manga-publication-${{ github.run_id }}
+          retention-days: 30
+          if-no-files-found: ignore
+          path: vm-manga-2026/free-release/publication-results.json
