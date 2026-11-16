@@ -332,10 +332,10 @@
    "sport": "basket",
    "dom": "Celtics",
    "ext": "Mavericks",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    126,
-    90
+    131,
+    94
    ]
   },
   {
@@ -347,8 +347,8 @@
    "ext": "Knicks",
    "statut": "IN_PLAY",
    "score": [
-    74,
-    67
+    84,
+    75
    ]
   },
   {
@@ -358,10 +358,10 @@
    "sport": "basket",
    "dom": "Wizards",
    "ext": "Rockets",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
-    50,
-    70
+    54,
+    73
    ]
   },
   {
@@ -374,7 +374,7 @@
    "statut": "IN_PLAY",
    "score": [
     0,
-    1
+    2
    ]
   },
   {
@@ -384,10 +384,10 @@
    "sport": "basket",
    "dom": "Bucks",
    "ext": "Hawks",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    3,
+    2
    ]
   },
   {
@@ -397,10 +397,10 @@
    "sport": "hockey",
    "dom": "Stars",
    "ext": "Panthers",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -410,10 +410,10 @@
    "sport": "hockey",
    "dom": "Ducks",
    "ext": "Flames",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    1,
+    0
    ]
   },
   {
@@ -1665,6 +1665,6 @@
    ]
   }
  ],
- "maj": "2026-11-16T00:59:47Z",
- "verifie": "2026-11-16T00:59:47Z"
+ "maj": "2026-11-16T01:13:01Z",
+ "verifie": "2026-11-16T01:13:01Z"
 }
