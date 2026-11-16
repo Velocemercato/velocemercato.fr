@@ -1,0 +1,36 @@
+name: VM - Retirer les anciennes vidéos 3D rejetées
+on:
+  push:
+    branches: [main]
+    paths: ['vm-manga-2026/remove-old-20261116/request.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+jobs:
+  remove:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+      META_USER_TOKEN: ${{ secrets.META_USER_TOKEN }}
+      YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+      YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+      YOUTUBE_CHANNEL_ID: ${{ secrets.YOUTUBE_CHANNEL_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet requests 'cryptography==50.0.0' pillow
+      - run: git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "https://github.com/$GITHUB_REPOSITORY.git" "$RUNNER_TEMP/vm-broadcast-state"
+      - run: python vm-manga-2026/remove-old-20261116/remove.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: VM-old-3D-removal-${{ github.run_id }}
+          path: vm-manga-2026/remove-old-20261116/results.json
