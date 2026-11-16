@@ -267,7 +267,7 @@
    "sport": "nfl",
    "dom": "Raiders",
    "ext": "Seahawks",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     13,
     21
@@ -321,8 +321,8 @@
    "ext": "Spurs",
    "statut": "IN_PLAY",
    "score": [
-    89,
-    85
+    96,
+    92
    ]
   },
   {
@@ -332,10 +332,10 @@
    "sport": "basket",
    "dom": "Celtics",
    "ext": "Mavericks",
-   "statut": "IN_PLAY",
+   "statut": "PAUSED",
    "score": [
-    62,
-    35
+    67,
+    37
    ]
   },
   {
@@ -347,8 +347,8 @@
    "ext": "Knicks",
    "statut": "IN_PLAY",
    "score": [
-    28,
-    38
+    38,
+    36
    ]
   },
   {
@@ -1665,6 +1665,6 @@
    ]
   }
  ],
- "maj": "2026-11-15T23:56:47Z",
- "verifie": "2026-11-15T23:56:47Z"
+ "maj": "2026-11-16T00:00:45Z",
+ "verifie": "2026-11-16T00:00:45Z"
 }
