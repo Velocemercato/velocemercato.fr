@@ -101,7 +101,83 @@
           "hauteur": 1536
         }
       ]
+    },
+    {
+      "date": "2026-11-15",
+      "type": "public",
+      "titre": "Bilan public du 15 novembre",
+      "statut": "1 conseil réussi sur 1 · 0 échec",
+      "score_confirme_par_capture": "✅ Combiné public · cote annoncée 2,10 · réussi",
+      "autre_selection": "⚽ Croatie 2–1 Tchéquie · victoire Croatie en 90 minutes confirmée\n🏀 Le Mans 109–93 ASVEL · victoire Le Mans confirmée",
+      "cote_annoncee": "2,10",
+      "note": "Un conseil combiné réussi, composé de deux sélections gagnantes : ce bilan compte 1 conseil, pas 2 conseils distincts. Scores vérifiés le 16 novembre 2026 auprès de l’UEFA et de Team France Basket, recoupés avec les résultats Betclic Élite. L’annonce originale et la capture du ticket affiché gagnant sont conservées ; les résultats sont établis par les sources citées. Les bilans antérieurs et les échecs restent archivés.",
+      "sources": [
+        {
+          "nom": "UEFA — Croatie 2–1 Tchéquie, 15 novembre",
+          "url": "https://www.uefa.com/uefanationsleague/news/02a2-1fea7079900a-801b2c5f6c9e-1000--2026-27-uefa-nations-league-league-phase-fixtures-by-team/"
+        },
+        {
+          "nom": "Team France Basket — Le Mans 109–93 ASVEL",
+          "url": "https://www.teamfrancebasket.com/game/874058"
+        }
+      ],
+      "captures": [
+        {
+          "fichier": "2026-11-15-public-annonce-210.jpg",
+          "id": "preuve-public-20261115",
+          "legende": "Annonce originale du combiné public du 15 novembre · cote affichée 2,10. Les deux résultats sont confirmés dans les sources ; cette capture n’est pas un ticket réglé.",
+          "largeur": 1536,
+          "hauteur": 1455
+        },
+        {
+          "fichier": "2026-11-15-public-regle-210.jpg",
+          "id": "preuve-public-regle-20261115",
+          "legende": "Capture du ticket public à 2,10 affiché gagnant. Il est aussi présenté dans le bilan VIP ; il ne constitue pas deux conseils distincts dans un bilan global.",
+          "largeur": 1229,
+          "hauteur": 1536
+        }
+      ]
+    },
+    {
+      "date": "2026-11-15",
+      "type": "vip",
+      "titre": "Bilan des trois tickets présentés en VIP — 15 novembre",
+      "statut": "3 conseils réussis sur 3 · 0 échec",
+      "score_confirme_par_capture": "✅ Ticket à 2,10 · commun avec le public\n✅ France – Turquie, score exact 2–1 en direct · cote affichée 8,25\n✅ Combiné à 2,19 · trois sélections confirmées",
+      "autre_selection": "🏉 Écosse 15–12 Australie : victoire Écosse en 80 minutes\n⚽ France 2–1 Turquie, 0–0 à la pause : France gagne la deuxième mi-temps 2–1\n⚽ Belgique 4–1 Italie : Italie marque au moins un but",
+      "cote_annoncee": "2,10 · 8,25 · 2,19",
+      "note": "Bilan des trois tickets présentés dans les captures de la rédaction : tous sont affichés gagnants et leurs conditions sportives sont confirmées par les sources citées. Le ticket à 2,10 est le même que le conseil public : il ne doit pas être compté deux fois dans un total global. La capture à 2,19 porte une date de ticket du 14 novembre pour des rencontres disputées le 15 ; elle est rangée au 15. Le ticket à 8,25 est explicitement un pari en direct, pas un conseil d’avant-match. Ces captures ne permettent pas à elles seules de certifier l’horaire de leur diffusion initiale aux abonnés ni l’exhaustivité de leurs conseils. Les résultats passés ne garantissent pas les suivants.",
+      "sources": [
+        {
+          "nom": "UEFA — France 2–1 Turquie et Belgique 4–1 Italie",
+          "url": "https://www.uefa.com/uefanationsleague/news/02a2-1fea7079900a-801b2c5f6c9e-1000--2026-27-uefa-nations-league-league-phase-fixtures-by-team/"
+        },
+        {
+          "nom": "Scottish Rugby — Écosse 15–12 Australie",
+          "url": "https://scottishrugby.org/news-and-features/match-report-scotland-15-12-australia/"
+        },
+        {
+          "nom": "beIN SPORTS — France–Turquie, chronologie des buts",
+          "url": "https://www.beinsports.com/fr-fr/football/ligue-des-nations/france-vs-turquie-2026-11-15"
+        }
+      ],
+      "captures": [
+        {
+          "fichier": "2026-11-15-vip-live-825.jpg",
+          "id": "preuve-vip-live-20261115",
+          "legende": "Ticket en direct France–Turquie, score exact 2–1 · cote affichée 8,25 · affiché gagnant. Il ne s’agit pas d’un pari d’avant-match.",
+          "largeur": 1395,
+          "hauteur": 1536
+        },
+        {
+          "fichier": "2026-11-15-vip-combine-219.jpg",
+          "id": "preuve-vip-combine-20261115",
+          "legende": "Ticket à 2,19 affiché gagnant · matchs du 15 novembre. La capture porte une date de ticket du 14 novembre.",
+          "largeur": 970,
+          "hauteur": 1536
+        }
+      ]
     }
   ],
-  "_mise_a_jour": "2026-11-15 · Historique conservé ; bilans public et VIP présentés séparément, sans taux de réussite global."
+  "_mise_a_jour": "2026-11-16 · Bilans des tickets du 15 novembre et captures ajoutés ; ticket public/VIP commun identifié, historique et échecs conservés."
 }

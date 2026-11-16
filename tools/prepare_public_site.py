@@ -126,7 +126,7 @@ def _prepare_bilan_veille(root):
     days = {}
     month_names = ('janvier', 'février', 'mars', 'avril', 'mai', 'juin',
                    'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre')
-    source_hosts = {"www.uefa.com", "www.teamfrancebasket.fr", "www.bebasket.fr",
+    source_hosts = {"www.uefa.com", "www.teamfrancebasket.fr", "www.teamfrancebasket.com", "scottishrugby.org", "www.beinsports.com", "www.bebasket.fr",
                     "www.estrepublicain.fr", "www.nba.com", "www.nhl.com"}
     for day, item in records:
         title = escape(str(item.get("titre", "Bilan du jour")))
