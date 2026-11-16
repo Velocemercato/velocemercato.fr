@@ -32,7 +32,7 @@ class PublicationTests(unittest.TestCase):
         self.mod.ROOT=self.root;self.mod.BASE=self.base
         self.mod.facebook_file=lambda meta,*args:(self.calls.append(('facebook',meta['page_id'])) or 'fb-post-'+str(len(self.calls)))
         req={'publish':True,'id':'vm-jt3d-2026-11-16-v1'};(self.base/'diffusion.json').write_text(json.dumps(req))
-        media={'reel':{'url':'https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@'+'a'*40+'/VM-Reel-3D-16-novembre-2026.mp4','sha256':'a'*64},'jt':{'sha256':'b'*64}}
+        media={'reel':{'url':'https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@'+'a'*40+'/VM-Reel-3D-16-novembre-2026.mp4','sha256':'a'*64},'jt':{'sha256':'b'*64},'pastille':{'sha256':'c'*64}}
         (self.base/'published-media.json').write_text(json.dumps(media));(self.base/'scriptpack.json').write_text('{"sources":[]}')
         FakeState.data={'tokens':{k:{'page_id':v,'page_token':'test-only',**({'ig_id':'ig-main' if k=='meta' else 'ig-univers'} if k!='meta_pronos' else {})} for k,v in self.mod.PAGES.items()}}
         self.oldenv={k:os.environ.get(k) for k in ('RUNNER_TEMP','VM_AUTO_YOUTUBE')};os.environ['RUNNER_TEMP']=self.tmp.name;os.environ['VM_AUTO_YOUTUBE']='true'
@@ -48,7 +48,7 @@ class PublicationTests(unittest.TestCase):
         with contextlib.redirect_stdout(io.StringIO()):self.mod.run()
     def test_routage_exact_et_reexecution_sans_doublon(self):
         self.run_silently()
-        self.assertEqual(len([x for x in self.calls if x[0]=='facebook']),6)
+        self.assertEqual(len([x for x in self.calls if x[0]=='facebook']),9)
         self.assertEqual([x[1] for x in self.calls if x[0]=='instagram'],['1384363904759072','1349998758205153'])
         self.assertEqual(len([x for x in self.calls if x[0]=='youtube']),1)
         before=list(self.calls);self.run_silently();self.assertEqual(self.calls,before)

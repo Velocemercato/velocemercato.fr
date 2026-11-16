@@ -52,8 +52,21 @@ def run():
     sources='Sources :\nhttps://www.fff.fr/article/17785-au-rendez-vous-des-quarts.html\nhttps://www.nhl.com/canucks/news/canucks-go-all-in-for-6-3-win-over-vegas-golden-knights\nhttps://www.rockstargames.com/VI'
     caption=('🎬 Le nouveau studio VM ouvre ses portes !\nVM Pronos, Pablo, Black, Scorpion et notre créatrice présentent le journal du 16 novembre.\n'
              'Au programme : les Bleus en quarts, les résultats de la nuit et le rendez-vous gaming de la semaine.\n\n'+credits+'\n\n'+sources+'\n\n#VeloceMercato #VMUnivers #ActualiteSportive #Animation3D')
-    # Le Reel sur les cinq comptes ; le journal complet sur les trois pages.
-    for fmt in ('reel','jt'):
+    # Le Reel sur les cinq comptes ; la pastille et le journal sur les trois pages.
+    filenames={
+        'reel':'VM-Reel-3D-16-novembre-2026.mp4',
+        'pastille':'VM-Pastille-3D-16-novembre-2026.mp4',
+        'jt':'VM-Journal-3D-16-novembre-2026.mp4',
+    }
+    descriptions={
+        'reel':caption,
+        'jt':caption.replace('🎬 Le nouveau studio VM ouvre ses portes !','🎬 Le journal VM en intégralité — 10 minutes'),
+        'pastille':('🎬 La pastille VM — Les Bleus en quarts, en 2 min 30\n'
+            'France–Turquie, le tirage de vendredi et le calendrier de la Ligue des Nations : VM Pronos et la team font le point. Édition du 16 novembre 2026.\n\n'
+            +credits+'\n\nSources :\nhttps://www.fff.fr/article/17785-au-rendez-vous-des-quarts.html\n'
+            'https://www.uefa.com/uefanationsleague/draws/\n\n#VeloceMercato #EquipeDeFrance #LigueDesNations #Animation3D'),
+    }
+    for fmt in ('reel','pastille','jt'):
         for account,pageid in PAGES.items():
             meta=state.data.get('tokens',{}).get(account,{})
             destinations=['facebook']+(['instagram'] if fmt=='reel' and account in ('meta','meta_univers') else [])
@@ -72,9 +85,9 @@ def run():
                         expected={'meta':'veloce.mercato','meta_univers':'vmunivers.fr'}[account]
                         if ident.get('username')!=expected:raise DeliveryError('Identité Instagram différente du compte autorisé.')
                     save(key,'envoi',media_sha256=media[fmt]['sha256'])
-                    description=caption if fmt=='reel' else caption.replace('🎬 Le nouveau studio VM ouvre ses portes !','🎬 Le journal VM en intégralité — 10 minutes')
+                    description=descriptions[fmt]
                     if network=='facebook':
-                        filename='VM-Reel-3D-16-novembre-2026.mp4' if fmt=='reel' else 'VM-Journal-3D-16-novembre-2026.mp4'
+                        filename=filenames[fmt]
                         ident=facebook_file(meta,ROOT/'output'/filename,description)
                         if not ident:raise DeliveryError('Identifiant vidéo Facebook absent.')
                         save(key,'traitement',id=str(ident))
