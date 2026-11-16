@@ -50,4 +50,18 @@ pas répété automatiquement. Les jetons restent dans l’état chiffré exista
 
 Deux tests hors réseau couvrent les quinze destinations, la protection contre
 les doublons et l’absence de nouvel envoi après une réponse incertaine.
-Les confirmations réelles seront consignées dans publication-results.json.
+Les quinze confirmations réelles sont conservées dans publication-results.json.
+
+## Publications
+
+Les 15 publications ont été confirmées le 16 novembre 2026. Le dernier contrôle a abouti à 20 h 38, heure de Paris.
+
+| Compte | Actus · 10 min 07 | Sport · 10 min 05 | Gaming · 10 min 02 |
+|---|---|---|---|
+| Facebook · VeloceMercato | [Voir](https://www.facebook.com/reel/1094681160197529/) | [Voir](https://www.facebook.com/reel/1470937031839541/) | [Voir](https://www.facebook.com/reel/2184827615762017/) |
+| Facebook · VMunivers | [Voir](https://www.facebook.com/reel/1530488685567560/) | [Voir](https://www.facebook.com/reel/1454241309466274/) | [Voir](https://www.facebook.com/reel/4814386852163113/) |
+| Facebook · VM actuspronos | [Voir](https://www.facebook.com/reel/1934537214620661/) | [Voir](https://www.facebook.com/reel/2330848407676795/) | [Voir](https://www.facebook.com/reel/2995374254170669/) |
+| Instagram · @veloce.mercato | [Voir](https://www.instagram.com/reel/Df0FUL8EpCC/) | [Voir](https://www.instagram.com/reel/Df0GCzIjoqj/) | [Voir](https://www.instagram.com/reel/Df0G9CUD-rw/) |
+| Instagram · @vmunivers.fr | [Voir](https://www.instagram.com/reel/Df0FssAnEL6/) | [Voir](https://www.instagram.com/reel/Df0GkSxj4__/) | [Voir](https://www.instagram.com/reel/Df0HV3CCZru/) |
+
+[Exécution de publication réussie](https://github.com/Velocemercato/velocemercato.fr/actions/runs/43937200715) · [Reçus](publication-results.json).
