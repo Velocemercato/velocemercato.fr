@@ -1,0 +1,55 @@
+name: VM - Nouveau studio 3D ponctuel
+on:
+  push:
+    branches: [main]
+    paths: ['.github/vm-studio3d-request.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+jobs:
+  studio:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+      VM_AUTO_YOUTUBE: ${{ vars.VM_AUTO_YOUTUBE }}
+      YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+      YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+      YOUTUBE_CHANNEL_ID: ${{ secrets.YOUTUBE_CHANNEL_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Installer les outils de contrôle et de diffusion
+        run: |
+          python -m pip install --quiet 'cryptography==50.0.0' pillow requests
+          command -v ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
+      - name: Récupérer uniquement les trois vidéos déjà contrôlées
+        run: |
+          python -m py_compile vm-studio-2026/publish_direct.py vm-studio-2026/production_assets.py
+          python vm-studio-2026/test_publication.py
+          python vm-studio-2026/production_assets.py --download-masters
+      - name: Vérifier les durées et le décodage des fichiers exacts
+        run: python vm-studio-2026/production_assets.py --validate
+      - name: Ouvrir uniquement l'état chiffré existant
+        run: |
+          set -euo pipefail
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "https://github.com/$GITHUB_REPOSITORY.git" "$RUNNER_TEMP/vm-broadcast-state"
+          test -s "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+          cp .github/vm-studio3d-request.json vm-studio-2026/diffusion.json
+      - name: Publier directement sur les comptes autorisés, sans Metricool
+        run: python vm-studio-2026/publish_direct.py
+      - name: Conserver les confirmations sans données privées
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: VM-studio-3D-confirmations-2026-11-16
+          retention-days: 30
+          if-no-files-found: ignore
+          path: vm-studio-2026/publication-results.json
