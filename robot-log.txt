@@ -1,32 +1,32 @@
-Passage du 2026-11-17 04:00 UTC (schedule)
-Nettoyage : 0 breves vides retirees, 6 gardees.
+Passage du 2026-11-17 13:11 UTC (schedule)
+Nettoyage : 0 breves vides retirees, 0 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 6 articles conservés et 6 flashs existants.
-RSS Foot National / NATIONAL : 2 actualités récentes.
-RSS Foot National / NATIONAL : 0 actualités récentes.
-RSS Foot National / LIGUE_1 : 4 actualités récentes.
-RSS Foot National / LIGUE_2 : 7 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 0 actualités récentes.
-RSS RMC Sport / LIGUE_1 : 0 actualités récentes.
+Départ : 0 articles conservés et 0 flashs existants.
+RSS Foot National / LIGUE_1 : 10 actualités récentes.
+RSS Foot National / NATIONAL : 1 actualités récentes.
+RSS Foot National / NATIONAL : 4 actualités récentes.
+RSS Foot National / LIGUE_2 : 5 actualités récentes.
 RSS RMC Sport / FRANCE : 30 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 0 actualités récentes.
+RSS RMC Sport / LIGUE_1 : 1 actualités récentes.
 RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 37 actualités récentes.
-RSS BBC Sport / FEMININ : 11 actualités récentes.
-RSS RMC Sport / BLEUS : 14 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 2 actualités récentes.
-RSS Foot01 / FRANCE : 42 actualités récentes.
-RSS franceinfo / FRANCE : 9 actualités récentes.
-RSS The Guardian / ETRANGER : 1 actualités récentes.
-RSS Foot Amateur / NATIONAL : 10 actualités récentes.
-RSS Foot Amateur / NATIONAL : 2 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 40 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 3 actualités récentes.
+RSS RMC Sport / BLEUS : 8 actualités récentes.
+RSS Foot01 / FRANCE : 43 actualités récentes.
+RSS BBC Sport / FEMININ : 7 actualités récentes.
+RSS Foot Amateur / NATIONAL : 7 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS Foot Amateur / NATIONAL : 1 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS franceinfo / FRANCE : 7 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-216 titres collectés, 103 nouveaux liens, quota 2.
+212 titres collectés, 163 nouveaux liens, quota 2.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-ARRÊT : API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch7qFbE7XaHqieGHGVgnP"}
+ARRÊT : API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch8ZF28B5E5wSNVkS1Fde"}
 Bilan : 
 Aucune brève de qualité suffisante ; fichiers JSON inchangés.
 Traceback (most recent call last):
@@ -70,43 +70,43 @@ Traceback (most recent call last):
             ^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 272, in call_claude
     raise FatalAPIError(f'API Claude HTTP {exc.code} : vérifier clé, crédit ou quota. {detail[:250]}') from exc
-FatalAPIError: API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch7qFbE7XaHqieGHGVgnP"}
+FatalAPIError: API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch8ZF28B5E5wSNVkS1Fde"}
 RQ Pronos : page d'actualités publiques actualisée.
 Accueil VM : actualités inchangées.
-Pages : 6 brèves avec leur propre page, sitemap à jour.
+Pages : 0 brèves avec leur propre page, sitemap à jour.
 Agenda : 48 matchs enregistrés.
-Ligue 1 : 15 vidéos lues, 1 vidéos de buts gardées.
+Ligue 1 : 15 vidéos lues, 2 vidéos de buts gardées.
 Ligue 2 : 0 vidéos lues, 0 vidéos de buts gardées.
 FFF : 15 vidéos lues, 6 vidéos de buts gardées.
 UEFA : 15 vidéos lues, 3 vidéos de buts gardées.
 Premier League : 15 vidéos lues, 2 vidéos de buts gardées.
-LaLiga : 15 vidéos lues, 3 vidéos de buts gardées.
+LaLiga : 15 vidéos lues, 1 vidéos de buts gardées.
 Serie A : 15 vidéos lues, 6 vidéos de buts gardées.
-Bundesliga : 15 vidéos lues, 3 vidéos de buts gardées.
-Vidéos publiées : 0.
-Fil express : 
-macommune.info  : 24 titres
-L'Est Républicain territoire-de-belfort : 13 titres
-L'Est Républicain www.estrepublicain.fr : 1 titres
+Bundesliga : 15 vidéos lues, 2 vidéos de buts gardées.
+Vidéos publiées : 2.
+Fil express : actus 200, gaming 120, foot 127
+L'Est Républicain haute-saone : 20 titres
+L'Est Républicain territoire-de-belfort : 15 titres
+macommune.info  : 25 titres
+L'Est Républicain www.estrepublicain.fr : 3 titres
 L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
-L'Est Républicain haute-saone : 17 titres
-VM Belfort : 0 titres
-Auvergne-Rhône-Alpes : 79 titres
-::warning::Bourgogne-Franche-Comté : flux muet (HTTPError)
-Bretagne : 60 titres
-::warning::Centre-Val de Loire : flux muet (HTTPError)
-Corse : 8 titres
-::warning::Grand Est : flux muet (HTTPError)
-::warning::Hauts-de-France : flux muet (HTTPError)
+VM Belfort : 29 titres
+Auvergne-Rhône-Alpes : 81 titres
+Bourgogne-Franche-Comté : 50 titres
+Bretagne : 56 titres
+Centre-Val de Loire : 18 titres
+Corse : 7 titres
+Grand Est : 69 titres
+Hauts-de-France : 29 titres
 Île-de-France : 34 titres
 Normandie : 11 titres
-::warning::Nouvelle-Aquitaine : flux muet (HTTPError)
-::warning::Occitanie : flux muet (HTTPError)
-::warning::Pays de la Loire : flux muet (HTTPError)
-::warning::Provence-Alpes-Côte d'Azur : flux muet (HTTPError)
-::warning::Outre-mer : flux muet (HTTPError)
+Nouvelle-Aquitaine : 33 titres
+Occitanie : 86 titres
+Pays de la Loire : 88 titres
+Provence-Alpes-Côte d'Azur : 44 titres
+Outre-mer : 33 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 18 titres
 Foot National : 15 titres
-Foot amateur :  — 0 titres
+Foot amateur : ARA 1, BFC 1, BRE 1, COR 2, CVL 6, FR 1, GES 1, NOR 1, OCC 1, PDL 2 — 17 titres
