@@ -1,32 +1,32 @@
-Passage du 2026-11-17 13:11 UTC (schedule)
+Passage du 2026-11-17 21:49 UTC (schedule)
 Nettoyage : 0 breves vides retirees, 0 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
 Départ : 0 articles conservés et 0 flashs existants.
 RSS Foot National / LIGUE_1 : 10 actualités récentes.
-RSS Foot National / NATIONAL : 1 actualités récentes.
-RSS Foot National / NATIONAL : 4 actualités récentes.
-RSS Foot National / LIGUE_2 : 5 actualités récentes.
-RSS RMC Sport / FRANCE : 30 actualités récentes.
+RSS Foot National / NATIONAL : 2 actualités récentes.
+RSS Foot National / LIGUE_2 : 6 actualités récentes.
+RSS Foot National / NATIONAL : 5 actualités récentes.
 RSS RMC Sport / INTERNATIONAL : 0 actualités récentes.
 RSS RMC Sport / LIGUE_1 : 1 actualités récentes.
+RSS RMC Sport / FRANCE : 30 actualités récentes.
 RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 40 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 3 actualités récentes.
-RSS RMC Sport / BLEUS : 8 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 2 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 36 actualités récentes.
+RSS RMC Sport / BLEUS : 6 actualités récentes.
+RSS BBC Sport / FEMININ : 6 actualités récentes.
 RSS Foot01 / FRANCE : 43 actualités récentes.
-RSS BBC Sport / FEMININ : 7 actualités récentes.
-RSS Foot Amateur / NATIONAL : 7 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
 RSS Foot Amateur / NATIONAL : 1 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS Foot Amateur / NATIONAL : 5 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
 RSS franceinfo / FRANCE : 7 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-212 titres collectés, 163 nouveaux liens, quota 2.
+205 titres collectés, 157 nouveaux liens, quota 2.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-ARRÊT : API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch8ZF28B5E5wSNVkS1Fde"}
+ARRÊT : API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch9EpETnwq8FTM8nEGLav"}
 Bilan : 
 Aucune brève de qualité suffisante ; fichiers JSON inchangés.
 Traceback (most recent call last):
@@ -70,7 +70,7 @@ Traceback (most recent call last):
             ^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 272, in call_claude
     raise FatalAPIError(f'API Claude HTTP {exc.code} : vérifier clé, crédit ou quota. {detail[:250]}') from exc
-FatalAPIError: API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch8ZF28B5E5wSNVkS1Fde"}
+FatalAPIError: API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch9EpETnwq8FTM8nEGLav"}
 RQ Pronos : page d'actualités publiques actualisée.
 Accueil VM : actualités inchangées.
 Pages : 0 brèves avec leur propre page, sitemap à jour.
@@ -78,35 +78,35 @@ Agenda : 48 matchs enregistrés.
 Ligue 1 : 15 vidéos lues, 2 vidéos de buts gardées.
 Ligue 2 : 0 vidéos lues, 0 vidéos de buts gardées.
 FFF : 15 vidéos lues, 6 vidéos de buts gardées.
-UEFA : 15 vidéos lues, 3 vidéos de buts gardées.
-Premier League : 15 vidéos lues, 2 vidéos de buts gardées.
-LaLiga : 15 vidéos lues, 1 vidéos de buts gardées.
-Serie A : 15 vidéos lues, 6 vidéos de buts gardées.
+UEFA : 15 vidéos lues, 4 vidéos de buts gardées.
+Premier League : 15 vidéos lues, 1 vidéos de buts gardées.
+LaLiga : 15 vidéos lues, 2 vidéos de buts gardées.
+Serie A : 15 vidéos lues, 5 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 2 vidéos de buts gardées.
-Vidéos publiées : 2.
-Fil express : actus 200, gaming 120, foot 127
+Vidéos publiées : 6.
+Fil express : actus 200, foot 200, gaming 120
 L'Est Républicain haute-saone : 20 titres
-L'Est Républicain territoire-de-belfort : 15 titres
+L'Est Républicain territoire-de-belfort : 18 titres
+L'Est Républicain edition-belfort-hericourt-montbeliard : 19 titres
+L'Est Républicain www.estrepublicain.fr : 2 titres
 macommune.info  : 25 titres
-L'Est Républicain www.estrepublicain.fr : 3 titres
-L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
-VM Belfort : 29 titres
+VM Belfort : 46 titres
 Auvergne-Rhône-Alpes : 81 titres
-Bourgogne-Franche-Comté : 50 titres
-Bretagne : 56 titres
-Centre-Val de Loire : 18 titres
-Corse : 7 titres
-Grand Est : 69 titres
-Hauts-de-France : 29 titres
+Bourgogne-Franche-Comté : 52 titres
+Bretagne : 55 titres
+Centre-Val de Loire : 19 titres
+Corse : 8 titres
+Grand Est : 68 titres
+Hauts-de-France : 28 titres
 Île-de-France : 34 titres
-Normandie : 11 titres
-Nouvelle-Aquitaine : 33 titres
-Occitanie : 86 titres
-Pays de la Loire : 88 titres
+Normandie : 16 titres
+Nouvelle-Aquitaine : 34 titres
+Occitanie : 88 titres
+Pays de la Loire : 91 titres
 Provence-Alpes-Côte d'Azur : 44 titres
 Outre-mer : 33 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
-Foot National : 18 titres
+Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : ARA 1, BFC 1, BRE 1, COR 2, CVL 6, FR 1, GES 1, NOR 1, OCC 1, PDL 2 — 17 titres
+Foot amateur : ARA 3, BFC 3, BRE 2, COR 4, CVL 16, FR 1, GES 1, NOR 10, OCC 1, PDL 8 — 49 titres
