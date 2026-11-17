@@ -1,6 +1,6 @@
 # Dossier Claude — Véloce Mercato, site et réseaux
 
-État établi le 2026-11-17T06:36+01:00.
+État établi le 2026-11-17T16:56+01:00.
 
 Ce dossier remplace les anciennes consignes de restauration intégrale et les anciennes cadences. Il décrit le travail autorisé par Romain dans cette conversation. Les accès et conversations de ChatGPT ne sont pas automatiquement accessibles dans Claude.
 
@@ -104,10 +104,10 @@ Pour Multisport, les flux français validés Sports.fr et Le Monde Sport sont ra
 ## Audit des pages, liens et classements
 
 - Pages HTML examinées : 1497.
-- URL interrogées : 1731.
+- URL interrogées : 1730.
 - HTTP 404/410 confirmés : 11.
 - Cibles internes absentes du dépôt : 76.
-- Liens protégés/non vérifiables automatiquement : 667.
+- Liens protégés/non vérifiables automatiquement : 627.
 - Ancres à relire : 3122. Certaines existent seulement après chargement JavaScript.
 - Classements à relire : 0.
 
