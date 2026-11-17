@@ -1,10 +1,10 @@
 # Audit du site pour Claude
 
-État mesuré le 2026-11-17T16:56:40.573863+01:00.
+État mesuré le 2026-11-18T00:52:00.600605+01:00.
 
 ## Périmètre et limites
 
-1497 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 1730 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
+1498 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 1731 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
 
 Un statut 404 ou 410 indique une URL introuvable. Les refus 401/403, les limites 429, les erreurs serveur et les délais dépassés demandent une vérification complémentaire. Le test ne valide pas le visionnage géographique des vidéos ni la véracité des articles. Les classements signalés par mots-clés doivent être relus avant déplacement.
 

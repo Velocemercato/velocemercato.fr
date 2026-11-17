@@ -1,6 +1,6 @@
 # Dossier Claude — Véloce Mercato, site et réseaux
 
-État établi le 2026-11-17T16:56+01:00.
+État établi le 2026-11-18T00:52+01:00.
 
 Ce dossier remplace les anciennes consignes de restauration intégrale et les anciennes cadences. Il décrit le travail autorisé par Romain dans cette conversation. Les accès et conversations de ChatGPT ne sont pas automatiquement accessibles dans Claude.
 
@@ -35,9 +35,9 @@ Sur vmunivers.fr, Romain a demandé : première case à gauche Facebook https://
 
 | Destination | Nombre relevé dans les reçus de cette reprise |
 |---|---|
-| Véloce Mercato · facebook | 139 |
-| Véloce Mercato · instagram | 138 |
-| VM Actus et Pronos · facebook | 137 |
+| Véloce Mercato · facebook | 141 |
+| Véloce Mercato · instagram | 140 |
+| VM Actus et Pronos · facebook | 139 |
 | VM Univers · facebook | 98 |
 | VM Univers · instagram | 14 |
 
@@ -103,11 +103,11 @@ Pour Multisport, les flux français validés Sports.fr et Le Monde Sport sont ra
 
 ## Audit des pages, liens et classements
 
-- Pages HTML examinées : 1497.
-- URL interrogées : 1730.
+- Pages HTML examinées : 1498.
+- URL interrogées : 1731.
 - HTTP 404/410 confirmés : 11.
 - Cibles internes absentes du dépôt : 76.
-- Liens protégés/non vérifiables automatiquement : 627.
+- Liens protégés/non vérifiables automatiquement : 616.
 - Ancres à relire : 3122. Certaines existent seulement après chargement JavaScript.
 - Classements à relire : 0.
 
@@ -149,6 +149,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Blessé au genou, Kawhi Leonard sera encore absent au moins une semaine avec les Toronto Raptors - L'Équipe — https://www.facebook.com/122106465861520366/posts/122110128243520366
 - meta/facebook — Bob Boone, champion des World Series et membre de la première famille de l’histoire de la MLB à compter 3 générations de joueurs, est mort à 78 - Mezha.net — https://www.facebook.com/122106465861520366/posts/122110029345520366
 - meta/facebook — Brésil : Romario réclame le départ immédiat d'Ancelotti après la défaite face au Japon — https://www.facebook.com/122106465861520366/posts/122111269935520366
+- meta/facebook — Calendrier UCI 2027 : Le Tour des Canaries, la première course européenne, est annulé - DirectVelo — https://www.facebook.com/122106465861520366/posts/122111957673520366
 - meta/facebook — Calendrier World Tour 2027 : toutes les dates des courses cyclistes - TotalVelo - Toute l'actualité cyclisme — https://www.facebook.com/122106465861520366/posts/122111119647520366
 - meta/facebook — Chelsea : les retrouvailles entre Malard et Bompastor résolvent le problème d'attaquante — https://www.facebook.com/122106465861520366/posts/122110911507520366
 - meta/facebook — Chelsea bat Manchester City 1-0 et prend la tête de la WSL — https://www.facebook.com/122106465861520366/posts/122111140341520366
@@ -248,6 +249,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Ronaldinho, 46 ans, rechausse les crampons pour un match officiel en Italie — https://www.facebook.com/122106465861520366/posts/122111258925520366
 - meta/facebook — Rune - Bergs, ATP 250, Stockholm, Premier tour : 2-0, match terminé - L'Équipe — https://www.facebook.com/122106465861520366/posts/122110029663520366
 - meta/facebook — Sabalenka - Svitolina, WTA Finals, Masters (Indian Wells), Groupe 2, match en direct le 13-11-2026 - L'Équipe — https://www.facebook.com/122106465861520366/posts/122110725393520366
+- meta/facebook — Sports d'hiver : le hockey roi, le biathlon 6e, le combiné nordique humilié au classement de popularité - ski-nordique.net — https://www.facebook.com/122106465861520366/posts/122111981931520366
 - meta/facebook — Svitolina - Andreeva, WTA Finals, Masters (Indian Wells), Finale : 0-2, match terminé - L'Équipe — https://www.facebook.com/122106465861520366/posts/122111407077520366
 - meta/facebook — Svitolina - Andreeva, WTA Finals, Masters (Indian Wells), Finale, match en direct le 15-11-2026 - L'Équipe — https://www.facebook.com/122106465861520366/posts/122111220207520366
 - meta/facebook — Tabilo - Tirante, ATP 250, Stockholm, Demi-finales, match en direct le 13-11-2026 - L'Équipe — https://www.facebook.com/122106465861520366/posts/122110674099520366
@@ -286,6 +288,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Biathlon : Vetle Christiansen gagne le sprint de Geilo, Emilien Claude 5e - ski-nordique.net — https://www.instagram.com/p/Dfun7ExCRVj/
 - meta/instagram — Bob Boone, champion des World Series et membre de la première famille de l’histoire de la MLB à compter 3 générations de joueurs, est mort à 78 - Mezha.net — https://www.instagram.com/p/DflPWi-FMD_/
 - meta/instagram — Brésil : Romario réclame le départ immédiat d'Ancelotti après la défaite face au Japon — https://www.instagram.com/p/DfxRt9LiWHX/
+- meta/instagram — Calendrier UCI 2027 : Le Tour des Canaries, la première course européenne, est annulé - DirectVelo — https://www.instagram.com/p/Df2t9UOl1Gv/
 - meta/instagram — Calendrier World Tour 2027 : toutes les dates des courses cyclistes - TotalVelo - Toute l'actualité cyclisme — https://www.instagram.com/p/DftV41loVXK/
 - meta/instagram — Chelsea bat Manchester City 1-0 et prend la tête de la WSL — https://www.instagram.com/p/DfwJSrrD5Ul/
 - meta/instagram — Christophe Gleizes détenu depuis 500 jours en Algérie : le cri de son frère Maxime — https://www.instagram.com/p/DfmLIeGDV0U/
@@ -387,6 +390,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Serbie : crise institutionnelle et résultats en berne pour les Aigles Blancs — https://www.instagram.com/p/Dfsf6BTF6Wv/
 - meta/instagram — Ski alpin - Coupe du monde de Levi 2026 - Résultats - ski-nordique.net — https://www.instagram.com/p/DfxIqn5Gg2N/
 - meta/instagram — Ski, biathlon et snowboard. Top podiums bleus : Clément Noël ouvre le compteur à Levi - Le Dauphiné Libéré — https://www.instagram.com/p/DfxM_bxFyfb/
+- meta/instagram — Sports d'hiver : le hockey roi, le biathlon 6e, le combiné nordique humilié au classement de popularité - ski-nordique.net — https://www.instagram.com/p/Df2-31oF-20/
 - meta/instagram — Svitolina - Andreeva, WTA Finals, Masters (Indian Wells), Finale : 0-2, match terminé - L'Équipe — https://www.instagram.com/p/DfyDxgviQ0U/
 - meta/instagram — Svitolina - Andreeva, WTA Finals, Masters (Indian Wells), Finale, match en direct le 15-11-2026 - L'Équipe — https://www.instagram.com/p/DfwmY3jF8P2/
 - meta/instagram — Svitolina - Sabalenka, WTA Finals, Masters (Indian Wells), Groupe 2 : 1-2, match terminé - L'Équipe — https://www.instagram.com/p/DftzxAMnWlR/
@@ -432,6 +436,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Black Forest Games devient indépendant et lance Third Signal — https://www.facebook.com/1757379583055094/posts/1770937858365933
 - meta_pronos/facebook — Bob Boone, champion des World Series et membre de la première famille de l’histoire de la MLB à compter 3 générations de joueurs, est mort à 78 - Mezha.net — https://www.facebook.com/1757379583055094/posts/1769605048499214
 - meta_pronos/facebook — Brésil : le TSE inflige une amende de 7,5 millions de réais à Meta pour traitement inégal — https://www.facebook.com/1757379583055094/posts/1769778108481908
+- meta_pronos/facebook — Calendrier UCI 2027 : Le Tour des Canaries, la première course européenne, est annulé - DirectVelo — https://www.facebook.com/1757379583055094/posts/1778659934260392
 - meta_pronos/facebook — Christian Cousins, ancien enfant acteur de « Côte Ouest », est mort à 43 ans — https://www.facebook.com/1757379583055094/posts/1773850348074684
 - meta_pronos/facebook — Christophe Gleizes détenu depuis 500 jours en Algérie : le cri de son frère Maxime — https://www.facebook.com/1757379583055094/posts/1770024758457243
 - meta_pronos/facebook — Craig Houston, scénariste de Treyarch et figure de Zombies, quitte le studio après près de 20 ans — https://www.facebook.com/1757379583055094/posts/1775567091236343
@@ -501,6 +506,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Paris Photo 2026 : la foire du Grand Palais célèbre le bicentenaire de la photographie — https://www.facebook.com/1757379583055094/posts/1772361404890245
 - meta_pronos/facebook — Paul Seixas vise le Tour de France à très long terme, après une saison 2026 remarquée — https://www.facebook.com/1757379583055094/posts/1773885764737809
 - meta_pronos/facebook — Philadelphie : une course de 16 km en hommage aux 50 ans de Rocky — https://www.facebook.com/1757379583055094/posts/1774712244655161
+- meta_pronos/facebook — Philippe Diallo officialise sa candidature à la présidence de la Fifa — https://www.facebook.com/1757379583055094/posts/1778765447583174
 - meta_pronos/facebook — Pirelli travaille la montée en température de ses intermédiaires pour 2027 - F1 news — https://www.facebook.com/1757379583055094/posts/1770732515053134
 - meta_pronos/facebook — PlayStation abandonne le jeu-service Fairgames de Haven Studios — https://www.facebook.com/1757379583055094/posts/1769591448500574
 - meta_pronos/facebook — Pologne : Varsovie accueille la Marche de l'indépendance dans un climat tendu — https://www.facebook.com/1757379583055094/posts/1769605378499181

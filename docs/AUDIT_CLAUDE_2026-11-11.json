@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-17T16:56:40.573863+01:00",
-  "commit": "65f8e5484173fba151b5e095ce92564a6d9f1787",
-  "html_pages": 1497,
-  "live_urls_checked": 1730,
+  "generated_at": "2026-11-18T00:52:00.600605+01:00",
+  "commit": "1e3e0942b3d6b2d4e0b8ad95e83fe88d131e2525",
+  "html_pages": 1498,
+  "live_urls_checked": 1731,
   "local_targets_absent": [
     {
       "file": "a/rss-v2-bbb701c167e3becab2e807.html",
@@ -19745,58 +19745,6 @@
       ]
     },
     {
-      "url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f120fca89c2237b15a1771d87b031bec9a2d99a/foot-edition-20261023-0853.mp4",
-      "status": "non_teste",
-      "reason": "TimeoutError",
-      "references": [
-        {
-          "file": "studio/episodes/foot-edition-20261023-0853.html",
-          "line": 20,
-          "href": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f120fca89c2237b15a1771d87b031bec9a2d99a/foot-edition-20261023-0853.mp4",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/actus-edition-20261021-1321.mp4",
-      "status": "non_teste",
-      "reason": "TimeoutError",
-      "references": [
-        {
-          "file": "studio/episodes/actus-edition-20261021-1321.html",
-          "line": 20,
-          "href": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/actus-edition-20261021-1321.mp4",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/gaming-debat-20261020-1915.mp4",
-      "status": "non_teste",
-      "reason": "TimeoutError",
-      "references": [
-        {
-          "file": "studio/episodes/gaming-debat-20261020-1915.html",
-          "line": 20,
-          "href": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/gaming-debat-20261020-1915.mp4",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@f1d1b875c11235a8e10aaaa74ad583b52fb7d151/foot-edition-20261023-1224.mp4",
-      "status": "non_teste",
-      "reason": "TimeoutError",
-      "references": [
-        {
-          "file": "studio/episodes/foot-edition-20261023-1224.html",
-          "line": 20,
-          "href": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@f1d1b875c11235a8e10aaaa74ad583b52fb7d151/foot-edition-20261023-1224.mp4",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://doubs-territoire-de-belfort.fff.fr/competitions/",
       "status": 403,
       "references": [
@@ -20525,6 +20473,42 @@
           "file": "foot-amateur/france/index.html",
           "line": 1,
           "href": "https://www.fff.fr/",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.foot01.com/espagne/les-preuves-dun-arbitrage-pro-real-ont-fuite",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-d85c94ab5d023f8d9153e0.html",
+          "line": 92,
+          "href": "https://www.foot01.com/espagne/les-preuves-dun-arbitrage-pro-real-ont-fuite",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.foot01.com/europa-league/el-rennes-olympiakos-avance-au-4-novembre-a-16h30",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-91a7ad6a99472bf6d1ee45.html",
+          "line": 91,
+          "href": "https://www.foot01.com/europa-league/el-rennes-olympiakos-avance-au-4-novembre-a-16h30",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.foot01.com/foot-europeen/les-cheveux-de-guendouzi-a-lorigine-dune-bagarre",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-1be75259544db29aa20fd5.html",
+          "line": 91,
+          "href": "https://www.foot01.com/foot-europeen/les-cheveux-de-guendouzi-a-lorigine-dune-bagarre",
           "tag": "a"
         }
       ]
@@ -22678,18 +22662,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a1114724942337422310-liga-un-dispositif-xxl-prevu-pour-barca-real-madrid",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-bc0f2ac7c71b40e512ad38.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a1114724942337422310-liga-un-dispositif-xxl-prevu-pour-barca-real-madrid",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a1149539451582414537-naples-le-superbe-retourne-de-zambo-anguissa-contre-las-rome",
       "status": 429,
       "references": [
@@ -22697,42 +22669,6 @@
           "file": "a/rss-v2-ad8a3cab47a3f183ce133c.html",
           "line": 91,
           "href": "https://www.footmercato.net/a1149539451582414537-naples-le-superbe-retourne-de-zambo-anguissa-contre-las-rome",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a116447762082117927-ligue-des-champions-du-tres-beau-monde-pour-psg-fc-barcelone",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-24f27ef77669614855ffff.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a116447762082117927-ligue-des-champions-du-tres-beau-monde-pour-psg-fc-barcelone",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a1191079283731788602-bresil-la-reponse-dancelotti-sur-le-temps-de-jeu-destevao-et-endrick",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-96510744040b321fb39185.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a1191079283731788602-bresil-la-reponse-dancelotti-sur-le-temps-de-jeu-destevao-et-endrick",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a1211974314118428507-ballon-dor-cristiano-ronaldo-devrait-etre-absent-mais",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-d3a7507728d7940eda4bb5.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a1211974314118428507-ballon-dor-cristiano-ronaldo-devrait-etre-absent-mais",
           "tag": "a"
         }
       ]
@@ -22750,6 +22686,18 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a1261463177579675143-serie-a-la-lazio-renverse-cagliari-et-prend-seul-la-tete-frosinone-etonne-encore-contre-le-torino",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-69a507d7ba29f66fc29f5a.html",
+          "line": 91,
+          "href": "https://www.footmercato.net/a1261463177579675143-serie-a-la-lazio-renverse-cagliari-et-prend-seul-la-tete-frosinone-etonne-encore-contre-le-torino",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a1281778510978519162-les-26-nommes-pour-le-onze-de-lannee-fifpro-avec-messi-et-cristiano-ronaldo",
       "status": 429,
       "references": [
@@ -22757,18 +22705,6 @@
           "file": "a/rss-v2-66a21b6dcde0c03f64efaf.html",
           "line": 92,
           "href": "https://www.footmercato.net/a1281778510978519162-les-26-nommes-pour-le-onze-de-lannee-fifpro-avec-messi-et-cristiano-ronaldo",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a1292159833816511541-espagne-carvajal-envoie-un-message-a-luis-de-la-fuente",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-a71079447a093189f2dec4.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a1292159833816511541-espagne-carvajal-envoie-un-message-a-luis-de-la-fuente",
           "tag": "a"
         }
       ]
@@ -22786,13 +22722,13 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a1310427758985065633-le-bayer-leverkusen-commence-a-simpatienter-avec-afonso-moreira",
+      "url": "https://www.footmercato.net/a1310652447805937412-barca-la-premier-league-est-prete-a-lacher-100-meur-pour-fermin-lopez",
       "status": 429,
       "references": [
         {
-          "file": "a/rss-v2-c1bb89c46f4372996e051f.html",
+          "file": "a/rss-v2-0b9944dba523267d45dfc6.html",
           "line": 92,
-          "href": "https://www.footmercato.net/a1310427758985065633-le-bayer-leverkusen-commence-a-simpatienter-avec-afonso-moreira",
+          "href": "https://www.footmercato.net/a1310652447805937412-barca-la-premier-league-est-prete-a-lacher-100-meur-pour-fermin-lopez",
           "tag": "a"
         }
       ]
@@ -22858,18 +22794,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a1424362237517419547-liverpool-pourquoi-un-ancien-du-psg-imagine-mbappe-rejoindre-les-reds",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-d45549546b4c68ea6713a1.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a1424362237517419547-liverpool-pourquoi-un-ancien-du-psg-imagine-mbappe-rejoindre-les-reds",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a1464994253631632863-come-tres-bonne-nouvelle-pour-maxence-caqueret-en-ligue-des-champions",
       "status": 429,
       "references": [
@@ -22889,6 +22813,18 @@
           "file": "a/rss-v2-5a353dcac19d2c4298288b.html",
           "line": 91,
           "href": "https://www.footmercato.net/a1486154445610674758-coupe-du-monde-2026-un-selectionneur-suspendu-par-la-fifa",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a1551626544341342004-chelsea-opere-de-la-machoire-emiliano-martinez-absent-au-moins-40-jours",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-71284afed2244ba8652afc.html",
+          "line": 91,
+          "href": "https://www.footmercato.net/a1551626544341342004-chelsea-opere-de-la-machoire-emiliano-martinez-absent-au-moins-40-jours",
           "tag": "a"
         }
       ]
@@ -22918,25 +22854,13 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a1630854547364104967-mercato-las-monaco-sest-positionnee-pour-accueillir-un-indesirable-du-fc-barcelone",
+      "url": "https://www.footmercato.net/a1698645563346140990-moi-ca-ne-me-fait-pas-peur-zinedine-zidane-sattend-a-une-reaction-face-a-la-turquie",
       "status": 429,
       "references": [
         {
-          "file": "a/rss-v2-efe6768d677cc6a4183d2a.html",
+          "file": "a/rss-v2-c2fa3a9181dafe129a14ad.html",
           "line": 92,
-          "href": "https://www.footmercato.net/a1630854547364104967-mercato-las-monaco-sest-positionnee-pour-accueillir-un-indesirable-du-fc-barcelone",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a1691971398896656842-qualifs-can-la-tunisie-sombre-face-a-la-libye-bouanga-regale-avec-le-gabon",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-13735489f8a76017333cb5.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a1691971398896656842-qualifs-can-la-tunisie-sombre-face-a-la-libye-bouanga-regale-avec-le-gabon",
+          "href": "https://www.footmercato.net/a1698645563346140990-moi-ca-ne-me-fait-pas-peur-zinedine-zidane-sattend-a-une-reaction-face-a-la-turquie",
           "tag": "a"
         }
       ]
@@ -22961,18 +22885,6 @@
           "file": "a/rss-v2-0139ceacee75cb0f548da7.html",
           "line": 91,
           "href": "https://www.footmercato.net/a1721439946515561767-ligue-1-la-programmation-de-la-13e-a-la-18e-journee",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a1739361356714683696-un-argentin-de-18-ans-meurt-apres-un-degagement-en-pleine-tete",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-ea5169774bab9168eec305.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a1739361356714683696-un-argentin-de-18-ans-meurt-apres-un-degagement-en-pleine-tete",
           "tag": "a"
         }
       ]
@@ -23074,6 +22986,18 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a1850672741779008557-bayern-munich-fin-de-carriere-redoutee-pour-manuel-neuer",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-52588fcc963c22713a6bde.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a1850672741779008557-bayern-munich-fin-de-carriere-redoutee-pour-manuel-neuer",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a1883696281009272298-barca-la-reaction-a-chaud-de-pedri-apres-la-defaite-face-au-real-madrid",
       "status": 429,
       "references": [
@@ -23122,18 +23046,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a1950646757583924877-auxerre-romain-faivre-regrette-son-parcours",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-b1c4264fab6fecca7bc888.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a1950646757583924877-auxerre-romain-faivre-regrette-son-parcours",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a1953462594370719004-equipe-de-france-espoirs-dehmaine-tabibou-appele-pour-remplacer-senny-mayulu",
       "status": 429,
       "references": [
@@ -23170,18 +23082,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a1994364150232432501-nice-jonathan-clauss-vise-encore-lequipe-de-france",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-08cbfa83fcda0b68749626.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a1994364150232432501-nice-jonathan-clauss-vise-encore-lequipe-de-france",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a2012737313997033543-la-ligue-1-bat-un-record-inattendu",
       "status": 429,
       "references": [
@@ -23189,18 +23089,6 @@
           "file": "a/rss-v2-d659b0a11746123ab8ba7d.html",
           "line": 91,
           "href": "https://www.footmercato.net/a2012737313997033543-la-ligue-1-bat-un-record-inattendu",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a2016325100168618763-mercato-renato-sanches-je-veux-faire-un-retour-en-force",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-8854cf9b6cd4c2f6ba935f.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a2016325100168618763-mercato-renato-sanches-je-veux-faire-un-retour-en-force",
           "tag": "a"
         }
       ]
@@ -23254,30 +23142,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a2091545393951881427-le-bayern-perd-saibari-et-gnabry-sur-blessure",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-d9bcdac5996e47cd326f96.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a2091545393951881427-le-bayern-perd-saibari-et-gnabry-sur-blessure",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a2095575113780800547-serie-a-lucas-da-cunha-offre-la-victoire-a-come-face-a-venise",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-c8cc4e810f8666422d0f32.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a2095575113780800547-serie-a-lucas-da-cunha-offre-la-victoire-a-come-face-a-venise",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a2153440379710795252-une-nouvelle-emission-avec-nasri-benatia-et-acherchour-va-voir-le-jour",
       "status": 429,
       "references": [
@@ -23297,6 +23161,18 @@
           "file": "a/rss-v2-b71de48254630649d0834c.html",
           "line": 92,
           "href": "https://www.footmercato.net/a2186780020710230929-qualifs-can-2027-legypte-ecrase-le-malawi-le-mali-renverse-le-rwanda",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a2233132831885122919-le-dictateur-est-arrive-kylian-mbappe-vanne-par-un-enfant-a-lentrainement-des-bleus",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-aea874f5cf1fc9c04f2c0e.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a2233132831885122919-le-dictateur-est-arrive-kylian-mbappe-vanne-par-un-enfant-a-lentrainement-des-bleus",
           "tag": "a"
         }
       ]
@@ -23374,6 +23250,18 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a2396904617699317537-psg-barca-les-mots-forts-de-pedri-sur-dembele-et-vitinha",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-1d3c2dcc4286234a219bbb.html",
+          "line": 91,
+          "href": "https://www.footmercato.net/a2396904617699317537-psg-barca-les-mots-forts-de-pedri-sur-dembele-et-vitinha",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a2435375719982510491-ligue-des-champions-marquinhos-et-kvaratskhelia-se-blessent-a-leur-tour",
       "status": 429,
       "references": [
@@ -23417,6 +23305,30 @@
           "file": "a/rss-v2-8e3d35fa34f597a9c55bca.html",
           "line": 92,
           "href": "https://www.footmercato.net/a2473620081461327431-bundesliga-dortmund-et-le-bayern-assurent-leipzig-et-nkunku-cartonnent",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a2484127957861444626-mu-michael-carrick-vire-mercredi",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-8a81247ebacd2f2bcbd0af.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a2484127957861444626-mu-michael-carrick-vire-mercredi",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a2533333249219412186-bayern-munich-pas-de-retraite-anticipee-pour-manuel-neuer",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-5e41f3cb661ec2f424f690.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a2533333249219412186-bayern-munich-pas-de-retraite-anticipee-pour-manuel-neuer",
           "tag": "a"
         }
       ]
@@ -23494,6 +23406,18 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a2713029883601857779-bresil-les-deux-buts-phenomenaux-de-vinicius-junior-contre-le-japon",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-95b82857769503f4383819.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a2713029883601857779-bresil-les-deux-buts-phenomenaux-de-vinicius-junior-contre-le-japon",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a2720787112248095947-ligue-1-annonce-un-nouvel-accord-de-distribution",
       "status": 429,
       "references": [
@@ -23542,18 +23466,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a2783703052378946903-laustralie-delocalise-son-match-contre-la-jordanie-au-qatar",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-a7bd6923b5fc36a9db4b34.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a2783703052378946903-laustralie-delocalise-son-match-contre-la-jordanie-au-qatar",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a2812691256519070877-la-supercoupe-despagne-va-chambouler-le-calendrier-de-la-liga",
       "status": 429,
       "references": [
@@ -23590,6 +23502,18 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a2864853972855162880-ligue-des-nations-les-pays-bas-collent-un-7-0-humiliant-a-la-grece-lallemagne-domine-la-serbie",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-2176f953b01fa98c4f4fbe.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a2864853972855162880-ligue-des-nations-les-pays-bas-collent-un-7-0-humiliant-a-la-grece-lallemagne-domine-la-serbie",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a2874327931771520238-psg-barca-pedri-souhaite-le-pire-a-ferran-torres",
       "status": 429,
       "references": [
@@ -23609,6 +23533,30 @@
           "file": "a/rss-v2-6c3bd325400dedd7c3adf2.html",
           "line": 91,
           "href": "https://www.footmercato.net/a2911742088530325192-ol-julien-duranville-decu-apres-la-defaite-contre-le-psg",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a2924909689575013179-endrick-a-agresse-un-arbitre",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-575d3db41ba30159895ca9.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a2924909689575013179-endrick-a-agresse-un-arbitre",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a2966252364781555458-la-sortie-forte-de-mehdi-benatia-sur-la-finale-de-la-can-2025",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-d9047e8e7f2afbfdc07440.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a2966252364781555458-la-sortie-forte-de-mehdi-benatia-sur-la-finale-de-la-can-2025",
           "tag": "a"
         }
       ]
@@ -23650,30 +23598,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a3022771939119141356-cisse-doumbia-kayode-ahanor-la-revolution-multiculturelle-est-enfin-en-marche-dans-litalie-de-giorgia-meloni",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-b6d356d0ce98467f156936.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a3022771939119141356-cisse-doumbia-kayode-ahanor-la-revolution-multiculturelle-est-enfin-en-marche-dans-litalie-de-giorgia-meloni",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a3038582507760804402-bundesliga-dortmund-simpose-contre-francfort-et-reprend-la-1ere-place",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-1ab9cbac158fef91e41add.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a3038582507760804402-bundesliga-dortmund-simpose-contre-francfort-et-reprend-la-1ere-place",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a3064659907814547471-clasico-tchouameni-konate-mbappe-camavinga-les-bleus-ont-regale",
       "status": 429,
       "references": [
@@ -23705,6 +23629,18 @@
           "file": "a/rss-v2-32615ca94a9b29c058786f.html",
           "line": 91,
           "href": "https://www.footmercato.net/a3090185021202758993-man-united-carrick-egalise-un-triste-record-de-1986",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a3091496419452922309-fff-philippe-diallo-reagit-a-la-polemique-sur-kylian-mbappe-et-la-chine",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-54fc3f6fc87770618fb82d.html",
+          "line": 91,
+          "href": "https://www.footmercato.net/a3091496419452922309-fff-philippe-diallo-reagit-a-la-polemique-sur-kylian-mbappe-et-la-chine",
           "tag": "a"
         }
       ]
@@ -23746,18 +23682,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a3279047909565218792-equipe-de-france-lucas-da-cunha-est-aux-anges",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-b79a3726ec3f23d611ac7f.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a3279047909565218792-equipe-de-france-lucas-da-cunha-est-aux-anges",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a3280675525760560353-italie-enorme-forfait-de-derniere-minute",
       "status": 429,
       "references": [
@@ -23777,6 +23701,18 @@
           "file": "a/rss-v2-a0994d21896142f0a1aecb.html",
           "line": 91,
           "href": "https://www.footmercato.net/a3325196645920651061-psg-les-joueurs-ont-fete-halloween",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a3332427180063853501-le-rescape-de-crans-montana-tahirys-dos-santos-rebondit-a-thionville",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-3ae13c47ffa33bc6dc6521.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a3332427180063853501-le-rescape-de-crans-montana-tahirys-dos-santos-rebondit-a-thionville",
           "tag": "a"
         }
       ]
@@ -23837,18 +23773,6 @@
           "file": "a/rss-v2-b62446cab707f86737cc9b.html",
           "line": 91,
           "href": "https://www.footmercato.net/a3416578078994373629-ligue-europa-lol-sanctionne-par-luefa",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a3436388507296650127-mu-le-fils-de-wayne-rooney-affole-langleterre-avec-un-quadruple",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-779f86c9b8bf35a94128a0.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a3436388507296650127-mu-le-fils-de-wayne-rooney-affole-langleterre-avec-un-quadruple",
           "tag": "a"
         }
       ]
@@ -23938,6 +23862,30 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a3660450145498057631-allemagne-le-rush-impressionnant-de-brajan-gruda-pour-sa-premiere-selection",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-dc9da77f17800bd2af5095.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a3660450145498057631-allemagne-le-rush-impressionnant-de-brajan-gruda-pour-sa-premiere-selection",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a3667971486133809749-fc-barcelone-marc-bernal-se-paie-le-psg-et-le-real-madrid",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-ea7b697050ed12a0169d44.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a3667971486133809749-fc-barcelone-marc-bernal-se-paie-le-psg-et-le-real-madrid",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a3668015721139071187-real-madrid-xabi-alonso-en-remet-une-couche-sur-son-depart",
       "status": 429,
       "references": [
@@ -24010,18 +23958,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a3783129378442998952-spl-abderrazzak-hamedallah-devient-le-joueur-plus-decisif-de-lhistoire-du-championnat",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-8cb87d88284ecdce4060ef.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a3783129378442998952-spl-abderrazzak-hamedallah-devient-le-joueur-plus-decisif-de-lhistoire-du-championnat",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a3803963511565405194-golden-boy-2026-honest-ahanor-elu-meilleur-joueur-italien-de-lannee",
       "status": 429,
       "references": [
@@ -24070,13 +24006,13 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a4031976071871631833-r1-bordeaux-gagne-encore-et-remonte-a-la-2e-place",
+      "url": "https://www.footmercato.net/a39538800508453214-serie-a-linter-fait-tomber-come-de-son-petit-nuage",
       "status": 429,
       "references": [
         {
-          "file": "a/rss-v2-1bd43c226e4f25a8a8058b.html",
+          "file": "a/rss-v2-c4d306702b898d03135738.html",
           "line": 92,
-          "href": "https://www.footmercato.net/a4031976071871631833-r1-bordeaux-gagne-encore-et-remonte-a-la-2e-place",
+          "href": "https://www.footmercato.net/a39538800508453214-serie-a-linter-fait-tomber-come-de-son-petit-nuage",
           "tag": "a"
         }
       ]
@@ -24130,13 +24066,25 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a4174013574252471641-messi-aurait-du-etre-top-3-la-declaration-lunaire-dun-journaliste-argentin",
+      "url": "https://www.footmercato.net/a4121992482490085513-ce-qui-doit-arriver-arrivera-michael-carrick-sans-garanties-sur-son-avenir-a-manchester-united",
       "status": 429,
       "references": [
         {
-          "file": "a/rss-v2-65485cf450d12482dedb8f.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a4174013574252471641-messi-aurait-du-etre-top-3-la-declaration-lunaire-dun-journaliste-argentin",
+          "file": "a/rss-v2-ccb05c26077aaa924526fb.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a4121992482490085513-ce-qui-doit-arriver-arrivera-michael-carrick-sans-garanties-sur-son-avenir-a-manchester-united",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a4163429041220750959-real-madrid-zidane-milite-pour-un-rafael-nadal-a-un-poste-haut-place",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-df447dbca9aa7fef0f19fd.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a4163429041220750959-real-madrid-zidane-milite-pour-un-rafael-nadal-a-un-poste-haut-place",
           "tag": "a"
         }
       ]
@@ -24154,13 +24102,13 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a417938270778971667-le-psg-annonce-un-partenariat-avec-bentley-motors",
+      "url": "https://www.footmercato.net/a4178082216289912167-ballon-dor-2026-le-real-madrid-met-fin-a-son-boycott",
       "status": 429,
       "references": [
         {
-          "file": "a/rss-v2-8a0abe9bcabd19efc0e243.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a417938270778971667-le-psg-annonce-un-partenariat-avec-bentley-motors",
+          "file": "a/rss-v2-f30fe3a8697023fc9af87f.html",
+          "line": 91,
+          "href": "https://www.footmercato.net/a4178082216289912167-ballon-dor-2026-le-real-madrid-met-fin-a-son-boycott",
           "tag": "a"
         }
       ]
@@ -24250,18 +24198,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a4289522979988018210-manchester-city-un-dirigeant-est-pret-a-demissionner-en-cas-dingerence-politique",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-ee669cfe303a8724d9e072.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a4289522979988018210-manchester-city-un-dirigeant-est-pret-a-demissionner-en-cas-dingerence-politique",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a4298385813026344248-ligue-1-les-capitaines-de-brest-et-de-nice-porteront-un-brassard-en-hommage-a-eric-roy",
       "status": 429,
       "references": [
@@ -24298,6 +24234,18 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a4316563101598932051-equipe-de-france-eli-junior-kroupi-appele-pour-remplacer-marcus-thuram",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-80702b33b77b7f86832b5a.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a4316563101598932051-equipe-de-france-eli-junior-kroupi-appele-pour-remplacer-marcus-thuram",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a4321007222797250272-eredivisie-hadj-moussa-permet-a-feyenoord-daccrocher-le-nul-face-au-psv",
       "status": 429,
       "references": [
@@ -24305,30 +24253,6 @@
           "file": "a/rss-v2-62c6022f3af7f6fd398a76.html",
           "line": 91,
           "href": "https://www.footmercato.net/a4321007222797250272-eredivisie-hadj-moussa-permet-a-feyenoord-daccrocher-le-nul-face-au-psv",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a4331370387079108445-tottenham-wilson-odobert-de-retour-a-lentrainement-apres-neuf-mois-dabsence",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-ef9944a08bc886772d102c.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a4331370387079108445-tottenham-wilson-odobert-de-retour-a-lentrainement-apres-neuf-mois-dabsence",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a4350712023002503913-la-presse-anglaise-commence-a-douter-de-bradley-barcola",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-f714f5491aea972fe587d8.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a4350712023002503913-la-presse-anglaise-commence-a-douter-de-bradley-barcola",
           "tag": "a"
         }
       ]
@@ -24454,6 +24378,18 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a4591666739255625390-pl-roberto-de-zerbi-elu-entraineur-du-mois",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-774dc292e0710f4f34933d.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a4591666739255625390-pl-roberto-de-zerbi-elu-entraineur-du-mois",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a4611791455061879008-psg-nasser-al-khelaifi-a-fait-son-choix-entre-le-ballon-dor-et-le-match-face-a-lol",
       "status": 429,
       "references": [
@@ -24461,18 +24397,6 @@
           "file": "a/rss-v2-f91c2a4689442ba7ccd49c.html",
           "line": 91,
           "href": "https://www.footmercato.net/a4611791455061879008-psg-nasser-al-khelaifi-a-fait-son-choix-entre-le-ballon-dor-et-le-match-face-a-lol",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a4624895523193337631-mort-de-jesus-de-miguel-le-superbe-geste-de-tenerife-a-sa-fille",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-56f7f12e31ceddaadfde23.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a4624895523193337631-mort-de-jesus-de-miguel-le-superbe-geste-de-tenerife-a-sa-fille",
           "tag": "a"
         }
       ]
@@ -24514,18 +24438,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a4685588535052359115-jeremy-mathieu-est-tres-proche-de-bruno-fernandes",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-fdd8e12e8a24fc6f12cb09.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a4685588535052359115-jeremy-mathieu-est-tres-proche-de-bruno-fernandes",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a4702438284941442020-man-city-le-coup-franc-decisif-de-rayan-cherki-contre-brighton",
       "status": 429,
       "references": [
@@ -24550,13 +24462,13 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a4719481532320566405-le-gros-derapage-de-sergio-conceicao-sur-larabie-saoudite",
+      "url": "https://www.footmercato.net/a4710333713567167578-om-les-images-du-sixieme-but-de-gouiri-cette-saison",
       "status": 429,
       "references": [
         {
-          "file": "a/rss-v2-7844788d1b3b733cf9fd68.html",
+          "file": "a/rss-v2-0cded9c8848f707691daf2.html",
           "line": 91,
-          "href": "https://www.footmercato.net/a4719481532320566405-le-gros-derapage-de-sergio-conceicao-sur-larabie-saoudite",
+          "href": "https://www.footmercato.net/a4710333713567167578-om-les-images-du-sixieme-but-de-gouiri-cette-saison",
           "tag": "a"
         }
       ]
@@ -24658,30 +24570,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a4936111112120560644-ac-milan-la-prolongation-dadrien-rabiot-est-sur-la-table",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-c3f6193ca3ac7ea6309729.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a4936111112120560644-ac-milan-la-prolongation-dadrien-rabiot-est-sur-la-table",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a495606523238409723-linter-milan-bientot-rachete-par-le-qatar",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-ecfd0e5853a0e1f7ddd44b.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a495606523238409723-linter-milan-bientot-rachete-par-le-qatar",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a4984663428334374228-torino-zakaria-aboukhlal-victime-dinsultes-racistes",
       "status": 429,
       "references": [
@@ -24706,6 +24594,18 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a5031855192698142118-le-classement-des-top-buteurs-europeens",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-8a694090cc7531a6ae15d2.html",
+          "line": 91,
+          "href": "https://www.footmercato.net/a5031855192698142118-le-classement-des-top-buteurs-europeens",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a5039843482892692326-real-madrid-la-police-et-la-croix-rouge-ont-interrompu-la-rencontre-face-au-racing-santander",
       "status": 429,
       "references": [
@@ -24713,18 +24613,6 @@
           "file": "a/rss-v2-cb2b0198d4163c75e26a53.html",
           "line": 91,
           "href": "https://www.footmercato.net/a5039843482892692326-real-madrid-la-police-et-la-croix-rouge-ont-interrompu-la-rencontre-face-au-racing-santander",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a5074911768585994304-besiktas-dusan-vlahovic-reprend-le-celebre-why-always-me-de-mario-balotelli",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-12b897564dc50ec172922a.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a5074911768585994304-besiktas-dusan-vlahovic-reprend-le-celebre-why-always-me-de-mario-balotelli",
           "tag": "a"
         }
       ]
@@ -24797,6 +24685,18 @@
           "file": "a/rss-v2-5b51355bf24e591d1fa1f1.html",
           "line": 91,
           "href": "https://www.footmercato.net/a5180218696367553992-om-le-vestiaire-a-refuse-un-nouveau-sacrifice-financier",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a5247965766985378976-fc-barcelone-des-supporters-decedes-vont-pouvoir-reposer-au-camp-nou",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-0bb48e2f5a2faee7e82fc3.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a5247965766985378976-fc-barcelone-des-supporters-decedes-vont-pouvoir-reposer-au-camp-nou",
           "tag": "a"
         }
       ]
@@ -24934,6 +24834,18 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a5474493572492551133-amical-les-bleuets-sinclinent-aussi-contre-litalie",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-1b18a32a19414678b4fc94.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a5474493572492551133-amical-les-bleuets-sinclinent-aussi-contre-litalie",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a5481883712510330866-de-son-transfert-avorte-a-100-meur-a-sa-renaissance-en-serie-b-lincroyable-retour-en-force-dandrea-belotti",
       "status": 429,
       "references": [
@@ -24994,18 +24906,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a5534693544661442175-aston-villa-unai-emery-explique-pourquoi-il-a-quitte-le-terrain",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-535410f150602ec6d5a5d2.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a5534693544661442175-aston-villa-unai-emery-explique-pourquoi-il-a-quitte-le-terrain",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a5541281380054695052-ac-milan-christian-pulisic-prolonge-jusquen-2031",
       "status": 429,
       "references": [
@@ -25042,6 +24942,18 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a5603168180659951635-portugal-gros-coup-dur-pour-jorge-jesus-avant-le-prochain-rassemblement",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-e8769808ccfc414c239967.html",
+          "line": 91,
+          "href": "https://www.footmercato.net/a5603168180659951635-portugal-gros-coup-dur-pour-jorge-jesus-avant-le-prochain-rassemblement",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a5609576731427066681-je-jouais-a-la-playstation-et-ne-regardais-pas-lheure-isaak-toure-devoile-ses-erreurs-de-jeunesse",
       "status": 429,
       "references": [
@@ -25061,6 +24973,18 @@
           "file": "a/rss-v2-e18af6d6202c43da148237.html",
           "line": 92,
           "href": "https://www.footmercato.net/a5628800781498936677-cdf-7e-tour-versailles-sort-une-equipe-de-ligue-2",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a5643292698899972645-come-cesc-fabregas-reconnait-la-superiorite-totale-de-linter-milan",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-806b8e035aa6908abf7b49.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a5643292698899972645-come-cesc-fabregas-reconnait-la-superiorite-totale-de-linter-milan",
           "tag": "a"
         }
       ]
@@ -25138,18 +25062,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a5793092106268715145-ligue-2-montpellier-samuse-a-annecy-et-met-la-pression-sur-lasse",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-7dd09f4278358ffba62cf6.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a5793092106268715145-ligue-2-montpellier-samuse-a-annecy-et-met-la-pression-sur-lasse",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a5798716834500134810-psg-fc-barcelone-comment-dro-fernandez-a-terriblement-fait-souffrir-hansi-flick",
       "status": 429,
       "references": [
@@ -25169,18 +25081,6 @@
           "file": "a/rss-v2-62fdaf69363fa516a3615e.html",
           "line": 92,
           "href": "https://www.footmercato.net/a5847273862313348699-villarreal-georges-mikautadze-reagit-a-linteret-du-barca",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a5865212888382374582-equipe-de-france-jacquet-donne-deja-rendez-vous-a-lespagne",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-d77d8e298eb07e02d4aca5.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a5865212888382374582-equipe-de-france-jacquet-donne-deja-rendez-vous-a-lespagne",
           "tag": "a"
         }
       ]
@@ -25282,6 +25182,18 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a6194443928046295454-deux-titis-du-psg-en-discussion-pour-prolonger",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-69f05c6b27fa9d479910f7.html",
+          "line": 91,
+          "href": "https://www.footmercato.net/a6194443928046295454-deux-titis-du-psg-en-discussion-pour-prolonger",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a6240046133101389451-fc-porto-11-victoires-en-11-matches-le-debut-de-saison-totalement-fou-des-dragons",
       "status": 429,
       "references": [
@@ -25378,18 +25290,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a6311586491861812663-vladimir-petkovic-a-une-touche-apres-sa-fin-chaotique-en-algerie",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-4cdfd5b06975106b470c3c.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a6311586491861812663-vladimir-petkovic-a-une-touche-apres-sa-fin-chaotique-en-algerie",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a6318652176379889967-un-ancien-coach-de-premier-league-et-liga-opere-apres-un-avc",
       "status": 429,
       "references": [
@@ -25474,37 +25374,13 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a6564666243019139-de-la-n2-a-la-saudi-pro-league-en-un-an-laventure-folle-de-julien-domingues-devenu-pro-a-29-ans",
+      "url": "https://www.footmercato.net/a6590713293302894607-luka-elsner-vire-de-lausanne-sport",
       "status": 429,
       "references": [
         {
-          "file": "a/rss-v2-dddff3dedbfa452a545644.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a6564666243019139-de-la-n2-a-la-saudi-pro-league-en-un-an-laventure-folle-de-julien-domingues-devenu-pro-a-29-ans",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a6567603658933884376-le-barca-repond-a-mu-pour-fermin-lopez",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-61ace3f8dbd80f34e45130.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a6567603658933884376-le-barca-repond-a-mu-pour-fermin-lopez",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a6580338005246811519-arkema-premiere-ligue-ol-lyonnes-ecrase-le-psg",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-b09819accb967bf9f45eb9.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a6580338005246811519-arkema-premiere-ligue-ol-lyonnes-ecrase-le-psg",
+          "file": "a/rss-v2-a6d0ab201198ea3fd6edba.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a6590713293302894607-luka-elsner-vire-de-lausanne-sport",
           "tag": "a"
         }
       ]
@@ -25522,18 +25398,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a6607444929986508260-psg-la-nouvelle-blessure-de-nuno-mendes-fait-jaser",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-3cbeb83ca5e390a56c08c7.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a6607444929986508260-psg-la-nouvelle-blessure-de-nuno-mendes-fait-jaser",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a663154226263600394-ac-milan-goncalo-ramos-sest-blesse-serieusement-a-lentrainement",
       "status": 429,
       "references": [
@@ -25541,18 +25405,6 @@
           "file": "a/rss-v2-cdac4716a8ae96fa214c1d.html",
           "line": 91,
           "href": "https://www.footmercato.net/a663154226263600394-ac-milan-goncalo-ramos-sest-blesse-serieusement-a-lentrainement",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a6637828490857396068-qualifs-can-la-rd-congo-assure-le-ghana-fait-le-travail",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-8d9e8f85e67cbeca89c744.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a6637828490857396068-qualifs-can-la-rd-congo-assure-le-ghana-fait-le-travail",
           "tag": "a"
         }
       ]
@@ -25690,18 +25542,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a6891166051684152039-lille-ce-soir-on-na-pas-le-niveau-il-faut-etre-honnete-le-terrible-constat-de-benjamin-andre",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-55d47291ac8e40db896dcd.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a6891166051684152039-lille-ce-soir-on-na-pas-le-niveau-il-faut-etre-honnete-le-terrible-constat-de-benjamin-andre",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a6963225520359252266-lac-milan-perd-rabiot-et-moreira-sur-blessure",
       "status": 429,
       "references": [
@@ -25762,6 +25602,30 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a7175285350275715712-om-bruno-genesio-peut-etre-tres-inquiet-pour-le-mercato-hivernal",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-e20871cf64516685205e44.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a7175285350275715712-om-bruno-genesio-peut-etre-tres-inquiet-pour-le-mercato-hivernal",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a7179870526308036135-dejan-kulusevski-tacle-tottenham-apres-ses-526-jours-dabsence",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-b3be9df12f90206bb8863b.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a7179870526308036135-dejan-kulusevski-tacle-tottenham-apres-ses-526-jours-dabsence",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a7195974362113356245-serie-a-las-roma-ecrase-sassuolo-et-revient-a-un-point-de-la-1ere-place",
       "status": 429,
       "references": [
@@ -25781,18 +25645,6 @@
           "file": "a/rss-v2-76e27e199db124b151cfcb.html",
           "line": 92,
           "href": "https://www.footmercato.net/a7224742475321435974-choupo-moting-envisage-un-retour-en-bundesliga",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a7231766918853547918-auxerre-cameron-archer-le-nouveau-serial-buteur-qui-fait-oublier-sinayoko",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-e6ce4a102b0441668f2219.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a7231766918853547918-auxerre-cameron-archer-le-nouveau-serial-buteur-qui-fait-oublier-sinayoko",
           "tag": "a"
         }
       ]
@@ -25882,18 +25734,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a7481617257824285896-un-club-confirme-des-discussions-avec-sergio-ramos",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-6c3755228224215d315dbc.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a7481617257824285896-un-club-confirme-des-discussions-avec-sergio-ramos",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a7490399375898238588-barcelone-prolongation-de-raphinha-imminente",
       "status": 429,
       "references": [
@@ -25925,18 +25765,6 @@
           "file": "a/rss-v2-b8d17a6e625c6f34d5a79b.html",
           "line": 92,
           "href": "https://www.footmercato.net/a7527438859560664308-robert-sanchez-victime-dun-terrible-accident-de-voiture",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a7536076034908621512-polemique-mbappe-en-chine-dugarry-il-y-a-des-gens-qui-nont-pas-assume-leurs-responsabilites",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-e02e0a24f43cf6ec323188.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a7536076034908621512-polemique-mbappe-en-chine-dugarry-il-y-a-des-gens-qui-nont-pas-assume-leurs-responsabilites",
           "tag": "a"
         }
       ]
@@ -26050,18 +25878,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a7690946377025965627-ligue-des-champions-f-le-psg-sincline-a-domicile-face-au-bayern",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-26f4ed0fc70e38f1b903f1.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a7690946377025965627-ligue-des-champions-f-le-psg-sincline-a-domicile-face-au-bayern",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a7719465033787615115-ballon-dor-luis-de-la-fuente-elu-meilleur-entraineur",
       "status": 429,
       "references": [
@@ -26086,6 +25902,18 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a7770723768905724692-atletico-alex-baena-revele-les-tensions-du-vestiaire-apres-le-feuilleton-julian-alvarez",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-a78d77e0e30545fe970c4c.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a7770723768905724692-atletico-alex-baena-revele-les-tensions-du-vestiaire-apres-le-feuilleton-julian-alvarez",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a7794924435394487737-equipe-de-france-le-staff-de-zinedine-zidane-connait-deja-de-grandes-tensions",
       "status": 429,
       "references": [
@@ -26093,6 +25921,42 @@
           "file": "a/rss-v2-f42a20348dafd1f083444f.html",
           "line": 92,
           "href": "https://www.footmercato.net/a7794924435394487737-equipe-de-france-le-staff-de-zinedine-zidane-connait-deja-de-grandes-tensions",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a7803564415882205784-bayern-la-reponse-tres-floue-de-max-eberl-sur-la-clause-dupamecano",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-881b584c82c1379842d0fa.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a7803564415882205784-bayern-la-reponse-tres-floue-de-max-eberl-sur-la-clause-dupamecano",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a7810346094607947741-trabzonspor-andre-onana-victime-dun-violent-accident-de-la-route-en-turquie",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-b465275cb543962bab66be.html",
+          "line": 91,
+          "href": "https://www.footmercato.net/a7810346094607947741-trabzonspor-andre-onana-victime-dun-violent-accident-de-la-route-en-turquie",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a7832188685756045218-flavien-tait-naurait-jamais-pu-jouer-pour-lom",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-2fc42cf58dad6546e4ccee.html",
+          "line": 91,
+          "href": "https://www.footmercato.net/a7832188685756045218-flavien-tait-naurait-jamais-pu-jouer-pour-lom",
           "tag": "a"
         }
       ]
@@ -26158,13 +26022,13 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a7896684621722428811-spl-le-nouveau-triple-de-cristiano-ronaldo-avec-al-nassr",
+      "url": "https://www.footmercato.net/a789024201037762294-l1-lincroyable-statistique-du-psg-apres-10-journees",
       "status": 429,
       "references": [
         {
-          "file": "a/rss-v2-25773acb89cf367310f27b.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a7896684621722428811-spl-le-nouveau-triple-de-cristiano-ronaldo-avec-al-nassr",
+          "file": "a/rss-v2-cb20b3a8597abc55427bb2.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a789024201037762294-l1-lincroyable-statistique-du-psg-apres-10-journees",
           "tag": "a"
         }
       ]
@@ -26201,6 +26065,18 @@
           "file": "a/rss-v2-453bb3a2421d13fb31f38c.html",
           "line": 92,
           "href": "https://www.footmercato.net/a7947522570967997496-loffre-radicale-de-dazn-pour-regarder-le-choc-entre-latletico-et-le-barca",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a7965348507510505245-lens-umtiti-on-disait-que-le-directeur-sportif-etait-exceptionnel-cest-parce-quil-avait-de-la-reussite",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-6dbd59cb85d4514f745cf9.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a7965348507510505245-lens-umtiti-on-disait-que-le-directeur-sportif-etait-exceptionnel-cest-parce-quil-avait-de-la-reussite",
           "tag": "a"
         }
       ]
@@ -26266,18 +26142,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a8043117301729527534-psg-warren-zaire-emery-evoque-la-rivalite-avec-le-paris-fc",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-9ae39f9a533124c0e0d97c.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a8043117301729527534-psg-warren-zaire-emery-evoque-la-rivalite-avec-le-paris-fc",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a8055309894930081901-pape-gueye-affiche-ses-ambitions-pour-le-ballon-dor-africain",
       "status": 429,
       "references": [
@@ -26314,6 +26178,18 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a8081370386039135384-le-bayern-recale-sechement-le-barca-pour-lun-de-ses-cadres",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-9e4aba6648c98b5b314c6e.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a8081370386039135384-le-bayern-recale-sechement-le-barca-pour-lun-de-ses-cadres",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a8100405535269571440-real-madrid-jose-mourinho-fait-mieux-que-guardiola-ancelotti-et-zidane",
       "status": 429,
       "references": [
@@ -26338,18 +26214,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a8172869082148544675-nico-williams-revele-avoir-refuse-une-offre-du-psg",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-a21a60e4f410728e27f720.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a8172869082148544675-nico-williams-revele-avoir-refuse-une-offre-du-psg",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a8173047468459899972-chelsea-joao-pedro-forfait-de-derniere-minute-contre-tottenham",
       "status": 429,
       "references": [
@@ -26357,6 +26221,18 @@
           "file": "a/rss-v2-a24d3ad921fb720ff0db58.html",
           "line": 91,
           "href": "https://www.footmercato.net/a8173047468459899972-chelsea-joao-pedro-forfait-de-derniere-minute-contre-tottenham",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a8185129415602638951-lallemagne-pousse-deja-pour-olise-ballon-dor-estevao-a-completement-disparu",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-5969ee5dc369ddea8b9195.html",
+          "line": 91,
+          "href": "https://www.footmercato.net/a8185129415602638951-lallemagne-pousse-deja-pour-olise-ballon-dor-estevao-a-completement-disparu",
           "tag": "a"
         }
       ]
@@ -26405,18 +26281,6 @@
           "file": "a/rss-v2-1d2cb9fd055de54c89903c.html",
           "line": 91,
           "href": "https://www.footmercato.net/a8312458213742340869-serie-a-la-lazio-de-gattuso-humilie-la-juventus-a-turin",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a8349055141270077606-bordeaux-poursuit-son-sans-faute-en-regional-1",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-3c7767c963950bfc538b3d.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a8349055141270077606-bordeaux-poursuit-son-sans-faute-en-regional-1",
           "tag": "a"
         }
       ]
@@ -26506,18 +26370,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a8409068848854488504-fc-barcelone-hansi-flick-veut-briser-la-malediction-atletico-de-madrid",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-4fadd0d47065a06b8746d0.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a8409068848854488504-fc-barcelone-hansi-flick-veut-briser-la-malediction-atletico-de-madrid",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a8423193571623881636-mercato-ibrahim-maza-a-pris-une-grosse-decision-pour-son-avenir",
       "status": 429,
       "references": [
@@ -26590,18 +26442,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a8616720903541357796-le-parallele-troublant-de-marco-materazzi-entre-le-coup-de-tete-de-zidane-et-la-mort-de-jesus-de-miguel",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-2de10dc3a578c1b0e0e70c.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a8616720903541357796-le-parallele-troublant-de-marco-materazzi-entre-le-coup-de-tete-de-zidane-et-la-mort-de-jesus-de-miguel",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a8618955536774724372-bodo-glimt-viking-fc-comment-le-football-norvegien-cartonne-en-europe",
       "status": 429,
       "references": [
@@ -26650,6 +26490,18 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a8680724783601324834-le-paris-fc-pret-a-recuperer-le-parc-des-princes-si-le-psg-venait-a-le-quitter",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-b72d1b1b940d241f38dd4f.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a8680724783601324834-le-paris-fc-pret-a-recuperer-le-parc-des-princes-si-le-psg-venait-a-le-quitter",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a8709900221030473052-la-rumeur-psg-cause-un-gros-casse-tete-a-benfica-pour-gianluca-prestianni",
       "status": 429,
       "references": [
@@ -26657,6 +26509,18 @@
           "file": "a/rss-v2-de2613939d346d53d2088c.html",
           "line": 92,
           "href": "https://www.footmercato.net/a8709900221030473052-la-rumeur-psg-cause-un-gros-casse-tete-a-benfica-pour-gianluca-prestianni",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a8736840803839766497-barca-la-date-de-retour-de-rodri-enfin-connue",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-5ffe3e1ee05564d178deb7.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a8736840803839766497-barca-la-date-de-retour-de-rodri-enfin-connue",
           "tag": "a"
         }
       ]
@@ -26686,13 +26550,13 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a8759808435608961129-ilyes-hamache-cartonne-avec-cambuur",
+      "url": "https://www.footmercato.net/a8750941422328460738-qualifications-can-2027-lalgerie-simpose-dans-la-douleur-face-au-togo-et-conforte-sa-premiere-place",
       "status": 429,
       "references": [
         {
-          "file": "a/rss-v2-7af014028f3de6c3d23115.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a8759808435608961129-ilyes-hamache-cartonne-avec-cambuur",
+          "file": "a/rss-v2-b11d7117262b78679c042f.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a8750941422328460738-qualifications-can-2027-lalgerie-simpose-dans-la-douleur-face-au-togo-et-conforte-sa-premiere-place",
           "tag": "a"
         }
       ]
@@ -26710,30 +26574,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a8825851922216507154-le-rc-lens-feminin-battu-7-1-par-lol-lyonnes",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-def70a30613459017d2207.html",
-          "line": 92,
-          "href": "https://www.footmercato.net/a8825851922216507154-le-rc-lens-feminin-battu-7-1-par-lol-lyonnes",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.footmercato.net/a8836549129938792950-ligue-2-lasse-simpose-face-au-red-star-et-conforte-sa-place-de-leader",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-7c0c9a2ee2a093d85d5a16.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a8836549129938792950-ligue-2-lasse-simpose-face-au-red-star-et-conforte-sa-place-de-leader",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a8876706530313092430-ballon-dor-kylian-mbappe-savait-quil-allait-enerver-les-francais",
       "status": 429,
       "references": [
@@ -26746,6 +26586,18 @@
       ]
     },
     {
+      "url": "https://www.footmercato.net/a8877717117212985475-la-ligue-1-fait-face-a-une-grande-menace-apres-le-week-end-de-chaos-en-france",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-b65d8ddd22a2f3225cb116.html",
+          "line": 91,
+          "href": "https://www.footmercato.net/a8877717117212985475-la-ligue-1-fait-face-a-une-grande-menace-apres-le-week-end-de-chaos-en-france",
+          "tag": "a"
+        }
+      ]
+    },
+    {
       "url": "https://www.footmercato.net/a8880768751551762238-amical-la-france-u19-massacre-la-norvege-6-0",
       "status": 429,
       "references": [
@@ -26753,6 +26605,18 @@
           "file": "a/rss-v2-fb27a23ffe52bd2c8d191c.html",
           "line": 92,
           "href": "https://www.footmercato.net/a8880768751551762238-amical-la-france-u19-massacre-la-norvege-6-0",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a8921467595380147644-angleterre-thomas-tuchel-et-sa-relation-en-dents-de-scie-avec-jude-bellingham",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-2fea79940a48754e76b2e1.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a8921467595380147644-angleterre-thomas-tuchel-et-sa-relation-en-dents-de-scie-avec-jude-bellingham",
           "tag": "a"
         }
       ]
@@ -26806,18 +26670,6 @@
       ]
     },
     {
-      "url": "https://www.footmercato.net/a902703162796052163-om-le-groupe-face-a-angers-toujours-sans-hojbjerg",
-      "status": 429,
-      "references": [
-        {
-          "file": "a/rss-v2-017efb053b5fb387e0d5e4.html",
-          "line": 91,
-          "href": "https://www.footmercato.net/a902703162796052163-om-le-groupe-face-a-angers-toujours-sans-hojbjerg",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.footmercato.net/a9051373171242140826-serie-a-thuram-sauve-linter-contre-la-fiorentina-dans-une-fin-de-match-ahurissante",
       "status": 429,
       "references": [
@@ -26849,6 +26701,18 @@
           "file": "a/rss-v2-c8dba110580b0f938d1c1f.html",
           "line": 91,
           "href": "https://www.footmercato.net/a9105424229373999237-neymar-jr-revele-le-prime-de-sa-carriere",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.footmercato.net/a9172371155066059583-latletico-de-madrid-prepare-un-transfert-surprise-cet-hiver",
+      "status": 429,
+      "references": [
+        {
+          "file": "a/rss-v2-e0a01e12f2045bc9fe92fe.html",
+          "line": 92,
+          "href": "https://www.footmercato.net/a9172371155066059583-latletico-de-madrid-prepare-un-transfert-surprise-cet-hiver",
           "tag": "a"
         }
       ]
@@ -27535,8 +27399,8 @@
   "server_failures": [],
   "classification_to_review": [],
   "feed_counts": {
-    "articles.json": 0,
-    "vm-gaming/news.json": 0
+    "articles.json": 1,
+    "vm-gaming/news.json": 1
   },
   "replay_by_genre": {
     "foot": 45,
@@ -27603,8 +27467,8 @@
     },
     {
       "url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f120fca89c2237b15a1771d87b031bec9a2d99a/foot-edition-20261023-0853.mp4",
-      "status": "non_teste",
-      "reason": "TimeoutError",
+      "status": 206,
+      "final_url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@0f120fca89c2237b15a1771d87b031bec9a2d99a/foot-edition-20261023-0853.mp4",
       "references": [
         {
           "file": "studio/episodes/foot-edition-20261023-0853.html",
@@ -27733,8 +27597,8 @@
     },
     {
       "url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/actus-edition-20261021-1321.mp4",
-      "status": "non_teste",
-      "reason": "TimeoutError",
+      "status": 206,
+      "final_url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/actus-edition-20261021-1321.mp4",
       "references": [
         {
           "file": "studio/episodes/actus-edition-20261021-1321.html",
@@ -27798,8 +27662,8 @@
     },
     {
       "url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/gaming-debat-20261020-1915.mp4",
-      "status": "non_teste",
-      "reason": "TimeoutError",
+      "status": 206,
+      "final_url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@73986bfd608cc6fad70562abd9bb57ec9db91758/gaming-debat-20261020-1915.mp4",
       "references": [
         {
           "file": "studio/episodes/gaming-debat-20261020-1915.html",
@@ -27902,8 +27766,8 @@
     },
     {
       "url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@f1d1b875c11235a8e10aaaa74ad583b52fb7d151/foot-edition-20261023-1224.mp4",
-      "status": "non_teste",
-      "reason": "TimeoutError",
+      "status": 206,
+      "final_url": "https://cdn.jsdelivr.net/gh/Velocemercato/velocemercato.fr@f1d1b875c11235a8e10aaaa74ad583b52fb7d151/foot-edition-20261023-1224.mp4",
       "references": [
         {
           "file": "studio/episodes/foot-edition-20261023-1224.html",
@@ -29303,6 +29167,12 @@
         },
         {
           "file": "a/rss-v2-56f79e4d2f7eb9be34be49.html",
+          "line": 95,
+          "href": "https://discord.gg/JEgfrUtJaX",
+          "tag": "a"
+        },
+        {
+          "file": "a/rss-v2-5f3baafdbc1968792a672d.html",
           "line": 95,
           "href": "https://discord.gg/JEgfrUtJaX",
           "tag": "a"
@@ -42944,6 +42814,12 @@
           "tag": "a"
         },
         {
+          "file": "a/rss-v2-5f3baafdbc1968792a672d.html",
+          "line": 82,
+          "href": "https://vmunivers.fr/",
+          "tag": "a"
+        },
+        {
           "file": "a/rss-v2-1d6266172d77aa30532682.html",
           "line": 81,
           "href": "https://vmunivers.fr/",
@@ -54090,7 +53966,7 @@
     },
     {
       "url": "https://www.bienici.com/recherche?q=%C3%8Ele-de-France",
-      "status": 200,
+      "status": 206,
       "final_url": "https://www.bienici.com/recherche?q=%C3%8Ele-de-France",
       "references": [
         {
@@ -54129,7 +54005,7 @@
     },
     {
       "url": "https://www.bienici.com/recherche?q=Bretagne",
-      "status": 200,
+      "status": 206,
       "final_url": "https://www.bienici.com/recherche?q=Bretagne",
       "references": [
         {
@@ -54480,7 +54356,7 @@
     {
       "url": "https://www.facebook.com/share/19wkqvg6Em/",
       "status": 200,
-      "final_url": "https://www.facebook.com/people/Veloce-Mercato/61584725345167/?rdid=bzM6MgXrMeuPd767&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19wkqvg6Em%2F",
+      "final_url": "https://www.facebook.com/people/Veloce-Mercato/61584725345167/?rdid=JfCH0iQBpg27DM8z&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19wkqvg6Em%2F",
       "references": [
         {
           "file": "index.html",
@@ -54493,7 +54369,7 @@
     {
       "url": "https://www.facebook.com/share/1DUSALoBzG/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=PRiAnzVlkcRnZcFl",
+      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=v9KgKw5oYAY5jHbj",
       "references": [
         {
           "file": "foot/index.html",
@@ -54524,7 +54400,7 @@
     {
       "url": "https://www.facebook.com/share/1DzrG1EFTp/",
       "status": 200,
-      "final_url": "https://www.facebook.com/VMunivers.fr?rdid=rKqmzF0YmahDKRlA&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1DzrG1EFTp%2F",
+      "final_url": "https://www.facebook.com/VMunivers.fr?rdid=BcGCxIjrNjQLYp1E&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1DzrG1EFTp%2F",
       "references": [
         {
           "file": "index.html",
@@ -54549,7 +54425,7 @@
     {
       "url": "https://www.facebook.com/share/1E6nH6RZzX/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr?rdid=ERKrrqiQXNSjnCk3&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1E6nH6RZzX%2F",
+      "final_url": "https://www.facebook.com/velocemercato.fr?rdid=0w2ygOhaXO3CGz8m&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1E6nH6RZzX%2F",
       "references": [
         {
           "file": "pronos/index.html",
@@ -54562,7 +54438,7 @@
     {
       "url": "https://www.facebook.com/share/1EiGutypix/",
       "status": 200,
-      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=SbWCWXqNT9Uiy2rX",
+      "final_url": "https://www.facebook.com/velocemercato.fr/?rdid=kLBl93VWe18mBO4K",
       "references": [
         {
           "file": "studio.html",
@@ -55098,7 +54974,7 @@
     },
     {
       "url": "https://www.foot-national.com/actus/dunkerque-metz-a-quelle-heure-et-sur-quelle-chaine-suivre-ce-match-de-la-10eme-journee-de-ligue-2-959750",
-      "status": 206,
+      "status": 200,
       "final_url": "https://www.foot-national.com/actus/dunkerque-metz-a-quelle-heure-et-sur-quelle-chaine-suivre-ce-match-de-la-10eme-journee-de-ligue-2-959750",
       "references": [
         {
@@ -55202,7 +55078,7 @@
     },
     {
       "url": "https://www.foot-national.com/actus/ligue-1-les-arbitres-de-la-huitieme-journee-959697",
-      "status": 200,
+      "status": 206,
       "final_url": "https://www.foot-national.com/actus/ligue-1-les-arbitres-de-la-huitieme-journee-959697",
       "references": [
         {
@@ -55280,7 +55156,7 @@
     },
     {
       "url": "https://www.foot-national.com/actus/lol-renverse-nice-en-quatre-minutes-et-se-place-premier-du-peloton-de-tete-959306",
-      "status": 200,
+      "status": 206,
       "final_url": "https://www.foot-national.com/actus/lol-renverse-nice-en-quatre-minutes-et-se-place-premier-du-peloton-de-tete-959306",
       "references": [
         {
@@ -55332,7 +55208,7 @@
     },
     {
       "url": "https://www.foot-national.com/actus/national-1-contre-dieppe-chambly-sest-offert-un-vrai-succes-renversant-959149",
-      "status": 206,
+      "status": 200,
       "final_url": "https://www.foot-national.com/actus/national-1-contre-dieppe-chambly-sest-offert-un-vrai-succes-renversant-959149",
       "references": [
         {
@@ -55358,7 +55234,7 @@
     },
     {
       "url": "https://www.foot-national.com/actus/national-1-le-racing-cff-va-retrouver-son-stade-yves-du-manoir-a-colombes-cette-saison-960159",
-      "status": 206,
+      "status": 200,
       "final_url": "https://www.foot-national.com/actus/national-1-le-racing-cff-va-retrouver-son-stade-yves-du-manoir-a-colombes-cette-saison-960159",
       "references": [
         {
@@ -55410,7 +55286,7 @@
     },
     {
       "url": "https://www.foot-national.com/actus/national-1-un-club-en-grande-difficulte-officialise-son-nouvel-entraineur-963207",
-      "status": 200,
+      "status": 206,
       "final_url": "https://www.foot-national.com/actus/national-1-un-club-en-grande-difficulte-officialise-son-nouvel-entraineur-963207",
       "references": [
         {
@@ -55436,7 +55312,7 @@
     },
     {
       "url": "https://www.foot-national.com/actus/national-1-un-match-reporte-a-la-derniere-minute-a-cause-dune-panne-sur-lautoroute-959099",
-      "status": 206,
+      "status": 200,
       "final_url": "https://www.foot-national.com/actus/national-1-un-match-reporte-a-la-derniere-minute-a-cause-dune-panne-sur-lautoroute-959099",
       "references": [
         {
@@ -55449,7 +55325,7 @@
     },
     {
       "url": "https://www.foot-national.com/actus/national-2-10-2-un-club-soffre-le-succes-de-la-decennie-ce-week-end-959261",
-      "status": 200,
+      "status": 206,
       "final_url": "https://www.foot-national.com/actus/national-2-10-2-un-club-soffre-le-succes-de-la-decennie-ce-week-end-959261",
       "references": [
         {
@@ -55514,7 +55390,7 @@
     },
     {
       "url": "https://www.foot-national.com/actus/national-2-des-joueurs-font-la-greve-de-lentrainement-le-club-implique-sort-du-silence-963590",
-      "status": 200,
+      "status": 206,
       "final_url": "https://www.foot-national.com/actus/national-2-des-joueurs-font-la-greve-de-lentrainement-le-club-implique-sort-du-silence-963590",
       "references": [
         {
@@ -55605,7 +55481,7 @@
     },
     {
       "url": "https://www.foot-national.com/actus/national-2-tous-les-resultats-de-la-cinquieme-journee-et-les-classements-2-959051",
-      "status": 206,
+      "status": 200,
       "final_url": "https://www.foot-national.com/actus/national-2-tous-les-resultats-de-la-cinquieme-journee-et-les-classements-2-959051",
       "references": [
         {
@@ -55774,7 +55650,7 @@
     },
     {
       "url": "https://www.foot-national.com/actus/sochaux-annecy-a-quelle-heure-et-sur-quelle-chaine-suivre-cette-affiche-de-milieu-de-tableau-de-ligue-2-959782",
-      "status": 206,
+      "status": 200,
       "final_url": "https://www.foot-national.com/actus/sochaux-annecy-a-quelle-heure-et-sur-quelle-chaine-suivre-cette-affiche-de-milieu-de-tableau-de-ligue-2-959782",
       "references": [
         {
@@ -55800,7 +55676,7 @@
     },
     {
       "url": "https://www.foot-national.com/mercato/dunkerque-frederic-taquin-priorite-de-lusld-pour-remplacer-sanchez-961545",
-      "status": 206,
+      "status": 200,
       "final_url": "https://www.foot-national.com/mercato/dunkerque-frederic-taquin-priorite-de-lusld-pour-remplacer-sanchez-961545",
       "references": [
         {
@@ -55813,7 +55689,7 @@
     },
     {
       "url": "https://www.foot-national.com/mercato/info-foot-national-creteil-sactive-pour-recruter-un-defenseur-961925",
-      "status": 206,
+      "status": 200,
       "final_url": "https://www.foot-national.com/mercato/info-foot-national-creteil-sactive-pour-recruter-un-defenseur-961925",
       "references": [
         {
@@ -55852,7 +55728,7 @@
     },
     {
       "url": "https://www.foot-national.com/mercato/national-2-le-gfc-ajaccio-et-chamalieres-officialisent-une-nouvelle-recrue-959462",
-      "status": 206,
+      "status": 200,
       "final_url": "https://www.foot-national.com/mercato/national-2-le-gfc-ajaccio-et-chamalieres-officialisent-une-nouvelle-recrue-959462",
       "references": [
         {
@@ -56177,8 +56053,7 @@
     },
     {
       "url": "https://www.foot01.com/espagne/les-preuves-dun-arbitrage-pro-real-ont-fuite",
-      "status": 200,
-      "final_url": "https://www.foot01.com/espagne/les-preuves-dun-arbitrage-pro-real-ont-fuite",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-d85c94ab5d023f8d9153e0.html",
@@ -56190,8 +56065,7 @@
     },
     {
       "url": "https://www.foot01.com/europa-league/el-rennes-olympiakos-avance-au-4-novembre-a-16h30",
-      "status": 200,
-      "final_url": "https://www.foot01.com/europa-league/el-rennes-olympiakos-avance-au-4-novembre-a-16h30",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-91a7ad6a99472bf6d1ee45.html",
@@ -56203,8 +56077,7 @@
     },
     {
       "url": "https://www.foot01.com/foot-europeen/les-cheveux-de-guendouzi-a-lorigine-dune-bagarre",
-      "status": 200,
-      "final_url": "https://www.foot01.com/foot-europeen/les-cheveux-de-guendouzi-a-lorigine-dune-bagarre",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-1be75259544db29aa20fd5.html",
@@ -58377,7 +58250,7 @@
     },
     {
       "url": "https://www.footmercato.net/a1020760531155136646-le-maroc-ecrase-le-niger-avec-un-double-dhakimi",
-      "status": 206,
+      "status": 200,
       "final_url": "https://www.footmercato.net/a1020760531155136646-le-maroc-ecrase-le-niger-avec-un-double-dhakimi",
       "references": [
         {
@@ -58390,7 +58263,8 @@
     },
     {
       "url": "https://www.footmercato.net/a1114724942337422310-liga-un-dispositif-xxl-prevu-pour-barca-real-madrid",
-      "status": 429,
+      "status": 200,
+      "final_url": "https://www.footmercato.net/a1114724942337422310-liga-un-dispositif-xxl-prevu-pour-barca-real-madrid",
       "references": [
         {
           "file": "a/rss-v2-bc0f2ac7c71b40e512ad38.html",
@@ -58414,7 +58288,8 @@
     },
     {
       "url": "https://www.footmercato.net/a116447762082117927-ligue-des-champions-du-tres-beau-monde-pour-psg-fc-barcelone",
-      "status": 429,
+      "status": 200,
+      "final_url": "https://www.footmercato.net/a116447762082117927-ligue-des-champions-du-tres-beau-monde-pour-psg-fc-barcelone",
       "references": [
         {
           "file": "a/rss-v2-24f27ef77669614855ffff.html",
@@ -58426,7 +58301,8 @@
     },
     {
       "url": "https://www.footmercato.net/a1191079283731788602-bresil-la-reponse-dancelotti-sur-le-temps-de-jeu-destevao-et-endrick",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a1191079283731788602-bresil-la-reponse-dancelotti-sur-le-temps-de-jeu-destevao-et-endrick",
       "references": [
         {
           "file": "a/rss-v2-96510744040b321fb39185.html",
@@ -58438,7 +58314,8 @@
     },
     {
       "url": "https://www.footmercato.net/a1211974314118428507-ballon-dor-cristiano-ronaldo-devrait-etre-absent-mais",
-      "status": 429,
+      "status": 200,
+      "final_url": "https://www.footmercato.net/a1211974314118428507-ballon-dor-cristiano-ronaldo-devrait-etre-absent-mais",
       "references": [
         {
           "file": "a/rss-v2-d3a7507728d7940eda4bb5.html",
@@ -58462,8 +58339,7 @@
     },
     {
       "url": "https://www.footmercato.net/a1261463177579675143-serie-a-la-lazio-renverse-cagliari-et-prend-seul-la-tete-frosinone-etonne-encore-contre-le-torino",
-      "status": 200,
-      "final_url": "https://www.footmercato.net/a1261463177579675143-serie-a-la-lazio-renverse-cagliari-et-prend-seul-la-tete-frosinone-etonne-encore-contre-le-torino",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-69a507d7ba29f66fc29f5a.html",
@@ -58500,7 +58376,8 @@
     },
     {
       "url": "https://www.footmercato.net/a1292159833816511541-espagne-carvajal-envoie-un-message-a-luis-de-la-fuente",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a1292159833816511541-espagne-carvajal-envoie-un-message-a-luis-de-la-fuente",
       "references": [
         {
           "file": "a/rss-v2-a71079447a093189f2dec4.html",
@@ -58524,7 +58401,8 @@
     },
     {
       "url": "https://www.footmercato.net/a1310427758985065633-le-bayer-leverkusen-commence-a-simpatienter-avec-afonso-moreira",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a1310427758985065633-le-bayer-leverkusen-commence-a-simpatienter-avec-afonso-moreira",
       "references": [
         {
           "file": "a/rss-v2-c1bb89c46f4372996e051f.html",
@@ -58536,8 +58414,7 @@
     },
     {
       "url": "https://www.footmercato.net/a1310652447805937412-barca-la-premier-league-est-prete-a-lacher-100-meur-pour-fermin-lopez",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a1310652447805937412-barca-la-premier-league-est-prete-a-lacher-100-meur-pour-fermin-lopez",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-0b9944dba523267d45dfc6.html",
@@ -58609,7 +58486,8 @@
     },
     {
       "url": "https://www.footmercato.net/a1424362237517419547-liverpool-pourquoi-un-ancien-du-psg-imagine-mbappe-rejoindre-les-reds",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a1424362237517419547-liverpool-pourquoi-un-ancien-du-psg-imagine-mbappe-rejoindre-les-reds",
       "references": [
         {
           "file": "a/rss-v2-d45549546b4c68ea6713a1.html",
@@ -58645,8 +58523,7 @@
     },
     {
       "url": "https://www.footmercato.net/a1551626544341342004-chelsea-opere-de-la-machoire-emiliano-martinez-absent-au-moins-40-jours",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a1551626544341342004-chelsea-opere-de-la-machoire-emiliano-martinez-absent-au-moins-40-jours",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-71284afed2244ba8652afc.html",
@@ -58682,7 +58559,8 @@
     },
     {
       "url": "https://www.footmercato.net/a1630854547364104967-mercato-las-monaco-sest-positionnee-pour-accueillir-un-indesirable-du-fc-barcelone",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a1630854547364104967-mercato-las-monaco-sest-positionnee-pour-accueillir-un-indesirable-du-fc-barcelone",
       "references": [
         {
           "file": "a/rss-v2-efe6768d677cc6a4183d2a.html",
@@ -58694,7 +58572,8 @@
     },
     {
       "url": "https://www.footmercato.net/a1691971398896656842-qualifs-can-la-tunisie-sombre-face-a-la-libye-bouanga-regale-avec-le-gabon",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a1691971398896656842-qualifs-can-la-tunisie-sombre-face-a-la-libye-bouanga-regale-avec-le-gabon",
       "references": [
         {
           "file": "a/rss-v2-13735489f8a76017333cb5.html",
@@ -58706,8 +58585,7 @@
     },
     {
       "url": "https://www.footmercato.net/a1698645563346140990-moi-ca-ne-me-fait-pas-peur-zinedine-zidane-sattend-a-une-reaction-face-a-la-turquie",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a1698645563346140990-moi-ca-ne-me-fait-pas-peur-zinedine-zidane-sattend-a-une-reaction-face-a-la-turquie",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-c2fa3a9181dafe129a14ad.html",
@@ -58743,7 +58621,8 @@
     },
     {
       "url": "https://www.footmercato.net/a1739361356714683696-un-argentin-de-18-ans-meurt-apres-un-degagement-en-pleine-tete",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a1739361356714683696-un-argentin-de-18-ans-meurt-apres-un-degagement-en-pleine-tete",
       "references": [
         {
           "file": "a/rss-v2-ea5169774bab9168eec305.html",
@@ -58851,8 +58730,7 @@
     },
     {
       "url": "https://www.footmercato.net/a1850672741779008557-bayern-munich-fin-de-carriere-redoutee-pour-manuel-neuer",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a1850672741779008557-bayern-munich-fin-de-carriere-redoutee-pour-manuel-neuer",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-52588fcc963c22713a6bde.html",
@@ -58912,7 +58790,8 @@
     },
     {
       "url": "https://www.footmercato.net/a1950646757583924877-auxerre-romain-faivre-regrette-son-parcours",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a1950646757583924877-auxerre-romain-faivre-regrette-son-parcours",
       "references": [
         {
           "file": "a/rss-v2-b1c4264fab6fecca7bc888.html",
@@ -58960,7 +58839,8 @@
     },
     {
       "url": "https://www.footmercato.net/a1994364150232432501-nice-jonathan-clauss-vise-encore-lequipe-de-france",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a1994364150232432501-nice-jonathan-clauss-vise-encore-lequipe-de-france",
       "references": [
         {
           "file": "a/rss-v2-08cbfa83fcda0b68749626.html",
@@ -58984,7 +58864,8 @@
     },
     {
       "url": "https://www.footmercato.net/a2016325100168618763-mercato-renato-sanches-je-veux-faire-un-retour-en-force",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a2016325100168618763-mercato-renato-sanches-je-veux-faire-un-retour-en-force",
       "references": [
         {
           "file": "a/rss-v2-8854cf9b6cd4c2f6ba935f.html",
@@ -59044,7 +58925,8 @@
     },
     {
       "url": "https://www.footmercato.net/a2091545393951881427-le-bayern-perd-saibari-et-gnabry-sur-blessure",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a2091545393951881427-le-bayern-perd-saibari-et-gnabry-sur-blessure",
       "references": [
         {
           "file": "a/rss-v2-d9bcdac5996e47cd326f96.html",
@@ -59056,7 +58938,8 @@
     },
     {
       "url": "https://www.footmercato.net/a2095575113780800547-serie-a-lucas-da-cunha-offre-la-victoire-a-come-face-a-venise",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a2095575113780800547-serie-a-lucas-da-cunha-offre-la-victoire-a-come-face-a-venise",
       "references": [
         {
           "file": "a/rss-v2-c8cc4e810f8666422d0f32.html",
@@ -59105,8 +58988,7 @@
     },
     {
       "url": "https://www.footmercato.net/a2233132831885122919-le-dictateur-est-arrive-kylian-mbappe-vanne-par-un-enfant-a-lentrainement-des-bleus",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a2233132831885122919-le-dictateur-est-arrive-kylian-mbappe-vanne-par-un-enfant-a-lentrainement-des-bleus",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-aea874f5cf1fc9c04f2c0e.html",
@@ -59203,8 +59085,7 @@
     },
     {
       "url": "https://www.footmercato.net/a2396904617699317537-psg-barca-les-mots-forts-de-pedri-sur-dembele-et-vitinha",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a2396904617699317537-psg-barca-les-mots-forts-de-pedri-sur-dembele-et-vitinha",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-1d3c2dcc4286234a219bbb.html",
@@ -59264,8 +59145,7 @@
     },
     {
       "url": "https://www.footmercato.net/a2484127957861444626-mu-michael-carrick-vire-mercredi",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a2484127957861444626-mu-michael-carrick-vire-mercredi",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-8a81247ebacd2f2bcbd0af.html",
@@ -59277,8 +59157,7 @@
     },
     {
       "url": "https://www.footmercato.net/a2533333249219412186-bayern-munich-pas-de-retraite-anticipee-pour-manuel-neuer",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a2533333249219412186-bayern-munich-pas-de-retraite-anticipee-pour-manuel-neuer",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-5e41f3cb661ec2f424f690.html",
@@ -59362,8 +59241,7 @@
     },
     {
       "url": "https://www.footmercato.net/a2713029883601857779-bresil-les-deux-buts-phenomenaux-de-vinicius-junior-contre-le-japon",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a2713029883601857779-bresil-les-deux-buts-phenomenaux-de-vinicius-junior-contre-le-japon",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-95b82857769503f4383819.html",
@@ -59423,7 +59301,8 @@
     },
     {
       "url": "https://www.footmercato.net/a2783703052378946903-laustralie-delocalise-son-match-contre-la-jordanie-au-qatar",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a2783703052378946903-laustralie-delocalise-son-match-contre-la-jordanie-au-qatar",
       "references": [
         {
           "file": "a/rss-v2-a7bd6923b5fc36a9db4b34.html",
@@ -59471,8 +59350,7 @@
     },
     {
       "url": "https://www.footmercato.net/a2864853972855162880-ligue-des-nations-les-pays-bas-collent-un-7-0-humiliant-a-la-grece-lallemagne-domine-la-serbie",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a2864853972855162880-ligue-des-nations-les-pays-bas-collent-un-7-0-humiliant-a-la-grece-lallemagne-domine-la-serbie",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-2176f953b01fa98c4f4fbe.html",
@@ -59508,8 +59386,7 @@
     },
     {
       "url": "https://www.footmercato.net/a2924909689575013179-endrick-a-agresse-un-arbitre",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a2924909689575013179-endrick-a-agresse-un-arbitre",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-575d3db41ba30159895ca9.html",
@@ -59534,8 +59411,7 @@
     },
     {
       "url": "https://www.footmercato.net/a2966252364781555458-la-sortie-forte-de-mehdi-benatia-sur-la-finale-de-la-can-2025",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a2966252364781555458-la-sortie-forte-de-mehdi-benatia-sur-la-finale-de-la-can-2025",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-d9047e8e7f2afbfdc07440.html",
@@ -59583,7 +59459,8 @@
     },
     {
       "url": "https://www.footmercato.net/a3022771939119141356-cisse-doumbia-kayode-ahanor-la-revolution-multiculturelle-est-enfin-en-marche-dans-litalie-de-giorgia-meloni",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a3022771939119141356-cisse-doumbia-kayode-ahanor-la-revolution-multiculturelle-est-enfin-en-marche-dans-litalie-de-giorgia-meloni",
       "references": [
         {
           "file": "a/rss-v2-b6d356d0ce98467f156936.html",
@@ -59595,7 +59472,8 @@
     },
     {
       "url": "https://www.footmercato.net/a3038582507760804402-bundesliga-dortmund-simpose-contre-francfort-et-reprend-la-1ere-place",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a3038582507760804402-bundesliga-dortmund-simpose-contre-francfort-et-reprend-la-1ere-place",
       "references": [
         {
           "file": "a/rss-v2-1ab9cbac158fef91e41add.html",
@@ -59643,8 +59521,7 @@
     },
     {
       "url": "https://www.footmercato.net/a3091496419452922309-fff-philippe-diallo-reagit-a-la-polemique-sur-kylian-mbappe-et-la-chine",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a3091496419452922309-fff-philippe-diallo-reagit-a-la-polemique-sur-kylian-mbappe-et-la-chine",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-54fc3f6fc87770618fb82d.html",
@@ -59692,7 +59569,8 @@
     },
     {
       "url": "https://www.footmercato.net/a3279047909565218792-equipe-de-france-lucas-da-cunha-est-aux-anges",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a3279047909565218792-equipe-de-france-lucas-da-cunha-est-aux-anges",
       "references": [
         {
           "file": "a/rss-v2-b79a3726ec3f23d611ac7f.html",
@@ -59728,8 +59606,7 @@
     },
     {
       "url": "https://www.footmercato.net/a3332427180063853501-le-rescape-de-crans-montana-tahirys-dos-santos-rebondit-a-thionville",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a3332427180063853501-le-rescape-de-crans-montana-tahirys-dos-santos-rebondit-a-thionville",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-3ae13c47ffa33bc6dc6521.html",
@@ -59827,7 +59704,8 @@
     },
     {
       "url": "https://www.footmercato.net/a3436388507296650127-mu-le-fils-de-wayne-rooney-affole-langleterre-avec-un-quadruple",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a3436388507296650127-mu-le-fils-de-wayne-rooney-affole-langleterre-avec-un-quadruple",
       "references": [
         {
           "file": "a/rss-v2-779f86c9b8bf35a94128a0.html",
@@ -59923,8 +59801,7 @@
     },
     {
       "url": "https://www.footmercato.net/a3660450145498057631-allemagne-le-rush-impressionnant-de-brajan-gruda-pour-sa-premiere-selection",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a3660450145498057631-allemagne-le-rush-impressionnant-de-brajan-gruda-pour-sa-premiere-selection",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-dc9da77f17800bd2af5095.html",
@@ -59936,8 +59813,7 @@
     },
     {
       "url": "https://www.footmercato.net/a3667971486133809749-fc-barcelone-marc-bernal-se-paie-le-psg-et-le-real-madrid",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a3667971486133809749-fc-barcelone-marc-bernal-se-paie-le-psg-et-le-real-madrid",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-ea7b697050ed12a0169d44.html",
@@ -60021,7 +59897,8 @@
     },
     {
       "url": "https://www.footmercato.net/a3783129378442998952-spl-abderrazzak-hamedallah-devient-le-joueur-plus-decisif-de-lhistoire-du-championnat",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a3783129378442998952-spl-abderrazzak-hamedallah-devient-le-joueur-plus-decisif-de-lhistoire-du-championnat",
       "references": [
         {
           "file": "a/rss-v2-8cb87d88284ecdce4060ef.html",
@@ -60081,8 +59958,7 @@
     },
     {
       "url": "https://www.footmercato.net/a39538800508453214-serie-a-linter-fait-tomber-come-de-son-petit-nuage",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a39538800508453214-serie-a-linter-fait-tomber-come-de-son-petit-nuage",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-c4d306702b898d03135738.html",
@@ -60094,7 +59970,8 @@
     },
     {
       "url": "https://www.footmercato.net/a4031976071871631833-r1-bordeaux-gagne-encore-et-remonte-a-la-2e-place",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a4031976071871631833-r1-bordeaux-gagne-encore-et-remonte-a-la-2e-place",
       "references": [
         {
           "file": "a/rss-v2-1bd43c226e4f25a8a8058b.html",
@@ -60154,8 +60031,7 @@
     },
     {
       "url": "https://www.footmercato.net/a4121992482490085513-ce-qui-doit-arriver-arrivera-michael-carrick-sans-garanties-sur-son-avenir-a-manchester-united",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a4121992482490085513-ce-qui-doit-arriver-arrivera-michael-carrick-sans-garanties-sur-son-avenir-a-manchester-united",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-ccb05c26077aaa924526fb.html",
@@ -60167,8 +60043,7 @@
     },
     {
       "url": "https://www.footmercato.net/a4163429041220750959-real-madrid-zidane-milite-pour-un-rafael-nadal-a-un-poste-haut-place",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a4163429041220750959-real-madrid-zidane-milite-pour-un-rafael-nadal-a-un-poste-haut-place",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-df447dbca9aa7fef0f19fd.html",
@@ -60180,7 +60055,8 @@
     },
     {
       "url": "https://www.footmercato.net/a4174013574252471641-messi-aurait-du-etre-top-3-la-declaration-lunaire-dun-journaliste-argentin",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a4174013574252471641-messi-aurait-du-etre-top-3-la-declaration-lunaire-dun-journaliste-argentin",
       "references": [
         {
           "file": "a/rss-v2-65485cf450d12482dedb8f.html",
@@ -60204,8 +60080,7 @@
     },
     {
       "url": "https://www.footmercato.net/a4178082216289912167-ballon-dor-2026-le-real-madrid-met-fin-a-son-boycott",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a4178082216289912167-ballon-dor-2026-le-real-madrid-met-fin-a-son-boycott",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-f30fe3a8697023fc9af87f.html",
@@ -60217,7 +60092,8 @@
     },
     {
       "url": "https://www.footmercato.net/a417938270778971667-le-psg-annonce-un-partenariat-avec-bentley-motors",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a417938270778971667-le-psg-annonce-un-partenariat-avec-bentley-motors",
       "references": [
         {
           "file": "a/rss-v2-8a0abe9bcabd19efc0e243.html",
@@ -60313,7 +60189,8 @@
     },
     {
       "url": "https://www.footmercato.net/a4289522979988018210-manchester-city-un-dirigeant-est-pret-a-demissionner-en-cas-dingerence-politique",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a4289522979988018210-manchester-city-un-dirigeant-est-pret-a-demissionner-en-cas-dingerence-politique",
       "references": [
         {
           "file": "a/rss-v2-ee669cfe303a8724d9e072.html",
@@ -60361,8 +60238,7 @@
     },
     {
       "url": "https://www.footmercato.net/a4316563101598932051-equipe-de-france-eli-junior-kroupi-appele-pour-remplacer-marcus-thuram",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a4316563101598932051-equipe-de-france-eli-junior-kroupi-appele-pour-remplacer-marcus-thuram",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-80702b33b77b7f86832b5a.html",
@@ -60386,7 +60262,8 @@
     },
     {
       "url": "https://www.footmercato.net/a4331370387079108445-tottenham-wilson-odobert-de-retour-a-lentrainement-apres-neuf-mois-dabsence",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a4331370387079108445-tottenham-wilson-odobert-de-retour-a-lentrainement-apres-neuf-mois-dabsence",
       "references": [
         {
           "file": "a/rss-v2-ef9944a08bc886772d102c.html",
@@ -60398,7 +60275,8 @@
     },
     {
       "url": "https://www.footmercato.net/a4350712023002503913-la-presse-anglaise-commence-a-douter-de-bradley-barcola",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a4350712023002503913-la-presse-anglaise-commence-a-douter-de-bradley-barcola",
       "references": [
         {
           "file": "a/rss-v2-f714f5491aea972fe587d8.html",
@@ -60530,8 +60408,7 @@
     },
     {
       "url": "https://www.footmercato.net/a4591666739255625390-pl-roberto-de-zerbi-elu-entraineur-du-mois",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a4591666739255625390-pl-roberto-de-zerbi-elu-entraineur-du-mois",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-774dc292e0710f4f34933d.html",
@@ -60555,7 +60432,8 @@
     },
     {
       "url": "https://www.footmercato.net/a4624895523193337631-mort-de-jesus-de-miguel-le-superbe-geste-de-tenerife-a-sa-fille",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a4624895523193337631-mort-de-jesus-de-miguel-le-superbe-geste-de-tenerife-a-sa-fille",
       "references": [
         {
           "file": "a/rss-v2-56f7f12e31ceddaadfde23.html",
@@ -60603,7 +60481,8 @@
     },
     {
       "url": "https://www.footmercato.net/a4685588535052359115-jeremy-mathieu-est-tres-proche-de-bruno-fernandes",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a4685588535052359115-jeremy-mathieu-est-tres-proche-de-bruno-fernandes",
       "references": [
         {
           "file": "a/rss-v2-fdd8e12e8a24fc6f12cb09.html",
@@ -60639,8 +60518,7 @@
     },
     {
       "url": "https://www.footmercato.net/a4710333713567167578-om-les-images-du-sixieme-but-de-gouiri-cette-saison",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a4710333713567167578-om-les-images-du-sixieme-but-de-gouiri-cette-saison",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-0cded9c8848f707691daf2.html",
@@ -60652,7 +60530,8 @@
     },
     {
       "url": "https://www.footmercato.net/a4719481532320566405-le-gros-derapage-de-sergio-conceicao-sur-larabie-saoudite",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a4719481532320566405-le-gros-derapage-de-sergio-conceicao-sur-larabie-saoudite",
       "references": [
         {
           "file": "a/rss-v2-7844788d1b3b733cf9fd68.html",
@@ -60760,7 +60639,8 @@
     },
     {
       "url": "https://www.footmercato.net/a4936111112120560644-ac-milan-la-prolongation-dadrien-rabiot-est-sur-la-table",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a4936111112120560644-ac-milan-la-prolongation-dadrien-rabiot-est-sur-la-table",
       "references": [
         {
           "file": "a/rss-v2-c3f6193ca3ac7ea6309729.html",
@@ -60772,7 +60652,8 @@
     },
     {
       "url": "https://www.footmercato.net/a495606523238409723-linter-milan-bientot-rachete-par-le-qatar",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a495606523238409723-linter-milan-bientot-rachete-par-le-qatar",
       "references": [
         {
           "file": "a/rss-v2-ecfd0e5853a0e1f7ddd44b.html",
@@ -60808,8 +60689,7 @@
     },
     {
       "url": "https://www.footmercato.net/a5031855192698142118-le-classement-des-top-buteurs-europeens",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a5031855192698142118-le-classement-des-top-buteurs-europeens",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-8a694090cc7531a6ae15d2.html",
@@ -60833,7 +60713,8 @@
     },
     {
       "url": "https://www.footmercato.net/a5074911768585994304-besiktas-dusan-vlahovic-reprend-le-celebre-why-always-me-de-mario-balotelli",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a5074911768585994304-besiktas-dusan-vlahovic-reprend-le-celebre-why-always-me-de-mario-balotelli",
       "references": [
         {
           "file": "a/rss-v2-12b897564dc50ec172922a.html",
@@ -60917,8 +60798,7 @@
     },
     {
       "url": "https://www.footmercato.net/a5247965766985378976-fc-barcelone-des-supporters-decedes-vont-pouvoir-reposer-au-camp-nou",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a5247965766985378976-fc-barcelone-des-supporters-decedes-vont-pouvoir-reposer-au-camp-nou",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-0bb48e2f5a2faee7e82fc3.html",
@@ -61062,8 +60942,7 @@
     },
     {
       "url": "https://www.footmercato.net/a5474493572492551133-amical-les-bleuets-sinclinent-aussi-contre-litalie",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a5474493572492551133-amical-les-bleuets-sinclinent-aussi-contre-litalie",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-1b18a32a19414678b4fc94.html",
@@ -61148,7 +61027,8 @@
     },
     {
       "url": "https://www.footmercato.net/a5534693544661442175-aston-villa-unai-emery-explique-pourquoi-il-a-quitte-le-terrain",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a5534693544661442175-aston-villa-unai-emery-explique-pourquoi-il-a-quitte-le-terrain",
       "references": [
         {
           "file": "a/rss-v2-535410f150602ec6d5a5d2.html",
@@ -61196,8 +61076,7 @@
     },
     {
       "url": "https://www.footmercato.net/a5603168180659951635-portugal-gros-coup-dur-pour-jorge-jesus-avant-le-prochain-rassemblement",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a5603168180659951635-portugal-gros-coup-dur-pour-jorge-jesus-avant-le-prochain-rassemblement",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-e8769808ccfc414c239967.html",
@@ -61233,8 +61112,7 @@
     },
     {
       "url": "https://www.footmercato.net/a5643292698899972645-come-cesc-fabregas-reconnait-la-superiorite-totale-de-linter-milan",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a5643292698899972645-come-cesc-fabregas-reconnait-la-superiorite-totale-de-linter-milan",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-806b8e035aa6908abf7b49.html",
@@ -61318,7 +61196,8 @@
     },
     {
       "url": "https://www.footmercato.net/a5793092106268715145-ligue-2-montpellier-samuse-a-annecy-et-met-la-pression-sur-lasse",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a5793092106268715145-ligue-2-montpellier-samuse-a-annecy-et-met-la-pression-sur-lasse",
       "references": [
         {
           "file": "a/rss-v2-7dd09f4278358ffba62cf6.html",
@@ -61354,7 +61233,8 @@
     },
     {
       "url": "https://www.footmercato.net/a5865212888382374582-equipe-de-france-jacquet-donne-deja-rendez-vous-a-lespagne",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a5865212888382374582-equipe-de-france-jacquet-donne-deja-rendez-vous-a-lespagne",
       "references": [
         {
           "file": "a/rss-v2-d77d8e298eb07e02d4aca5.html",
@@ -61488,8 +61368,7 @@
     },
     {
       "url": "https://www.footmercato.net/a6194443928046295454-deux-titis-du-psg-en-discussion-pour-prolonger",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a6194443928046295454-deux-titis-du-psg-en-discussion-pour-prolonger",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-69f05c6b27fa9d479910f7.html",
@@ -61610,7 +61489,8 @@
     },
     {
       "url": "https://www.footmercato.net/a6311586491861812663-vladimir-petkovic-a-une-touche-apres-sa-fin-chaotique-en-algerie",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a6311586491861812663-vladimir-petkovic-a-une-touche-apres-sa-fin-chaotique-en-algerie",
       "references": [
         {
           "file": "a/rss-v2-4cdfd5b06975106b470c3c.html",
@@ -61706,7 +61586,8 @@
     },
     {
       "url": "https://www.footmercato.net/a6564666243019139-de-la-n2-a-la-saudi-pro-league-en-un-an-laventure-folle-de-julien-domingues-devenu-pro-a-29-ans",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a6564666243019139-de-la-n2-a-la-saudi-pro-league-en-un-an-laventure-folle-de-julien-domingues-devenu-pro-a-29-ans",
       "references": [
         {
           "file": "a/rss-v2-dddff3dedbfa452a545644.html",
@@ -61718,7 +61599,8 @@
     },
     {
       "url": "https://www.footmercato.net/a6567603658933884376-le-barca-repond-a-mu-pour-fermin-lopez",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a6567603658933884376-le-barca-repond-a-mu-pour-fermin-lopez",
       "references": [
         {
           "file": "a/rss-v2-61ace3f8dbd80f34e45130.html",
@@ -61730,7 +61612,8 @@
     },
     {
       "url": "https://www.footmercato.net/a6580338005246811519-arkema-premiere-ligue-ol-lyonnes-ecrase-le-psg",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a6580338005246811519-arkema-premiere-ligue-ol-lyonnes-ecrase-le-psg",
       "references": [
         {
           "file": "a/rss-v2-b09819accb967bf9f45eb9.html",
@@ -61755,8 +61638,7 @@
     },
     {
       "url": "https://www.footmercato.net/a6590713293302894607-luka-elsner-vire-de-lausanne-sport",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a6590713293302894607-luka-elsner-vire-de-lausanne-sport",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-a6d0ab201198ea3fd6edba.html",
@@ -61780,7 +61662,8 @@
     },
     {
       "url": "https://www.footmercato.net/a6607444929986508260-psg-la-nouvelle-blessure-de-nuno-mendes-fait-jaser",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a6607444929986508260-psg-la-nouvelle-blessure-de-nuno-mendes-fait-jaser",
       "references": [
         {
           "file": "a/rss-v2-3cbeb83ca5e390a56c08c7.html",
@@ -61817,7 +61700,8 @@
     },
     {
       "url": "https://www.footmercato.net/a6637828490857396068-qualifs-can-la-rd-congo-assure-le-ghana-fait-le-travail",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a6637828490857396068-qualifs-can-la-rd-congo-assure-le-ghana-fait-le-travail",
       "references": [
         {
           "file": "a/rss-v2-8d9e8f85e67cbeca89c744.html",
@@ -61961,7 +61845,8 @@
     },
     {
       "url": "https://www.footmercato.net/a6891166051684152039-lille-ce-soir-on-na-pas-le-niveau-il-faut-etre-honnete-le-terrible-constat-de-benjamin-andre",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a6891166051684152039-lille-ce-soir-on-na-pas-le-niveau-il-faut-etre-honnete-le-terrible-constat-de-benjamin-andre",
       "references": [
         {
           "file": "a/rss-v2-55d47291ac8e40db896dcd.html",
@@ -62033,8 +61918,7 @@
     },
     {
       "url": "https://www.footmercato.net/a7175285350275715712-om-bruno-genesio-peut-etre-tres-inquiet-pour-le-mercato-hivernal",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a7175285350275715712-om-bruno-genesio-peut-etre-tres-inquiet-pour-le-mercato-hivernal",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-e20871cf64516685205e44.html",
@@ -62046,8 +61930,7 @@
     },
     {
       "url": "https://www.footmercato.net/a7179870526308036135-dejan-kulusevski-tacle-tottenham-apres-ses-526-jours-dabsence",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a7179870526308036135-dejan-kulusevski-tacle-tottenham-apres-ses-526-jours-dabsence",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-b3be9df12f90206bb8863b.html",
@@ -62083,7 +61966,8 @@
     },
     {
       "url": "https://www.footmercato.net/a7231766918853547918-auxerre-cameron-archer-le-nouveau-serial-buteur-qui-fait-oublier-sinayoko",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a7231766918853547918-auxerre-cameron-archer-le-nouveau-serial-buteur-qui-fait-oublier-sinayoko",
       "references": [
         {
           "file": "a/rss-v2-e6ce4a102b0441668f2219.html",
@@ -62205,7 +62089,8 @@
     },
     {
       "url": "https://www.footmercato.net/a7481617257824285896-un-club-confirme-des-discussions-avec-sergio-ramos",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a7481617257824285896-un-club-confirme-des-discussions-avec-sergio-ramos",
       "references": [
         {
           "file": "a/rss-v2-6c3755228224215d315dbc.html",
@@ -62253,7 +62138,8 @@
     },
     {
       "url": "https://www.footmercato.net/a7536076034908621512-polemique-mbappe-en-chine-dugarry-il-y-a-des-gens-qui-nont-pas-assume-leurs-responsabilites",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a7536076034908621512-polemique-mbappe-en-chine-dugarry-il-y-a-des-gens-qui-nont-pas-assume-leurs-responsabilites",
       "references": [
         {
           "file": "a/rss-v2-e02e0a24f43cf6ec323188.html",
@@ -62373,7 +62259,8 @@
     },
     {
       "url": "https://www.footmercato.net/a7690946377025965627-ligue-des-champions-f-le-psg-sincline-a-domicile-face-au-bayern",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a7690946377025965627-ligue-des-champions-f-le-psg-sincline-a-domicile-face-au-bayern",
       "references": [
         {
           "file": "a/rss-v2-26f4ed0fc70e38f1b903f1.html",
@@ -62409,8 +62296,7 @@
     },
     {
       "url": "https://www.footmercato.net/a7770723768905724692-atletico-alex-baena-revele-les-tensions-du-vestiaire-apres-le-feuilleton-julian-alvarez",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a7770723768905724692-atletico-alex-baena-revele-les-tensions-du-vestiaire-apres-le-feuilleton-julian-alvarez",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-a78d77e0e30545fe970c4c.html",
@@ -62434,8 +62320,7 @@
     },
     {
       "url": "https://www.footmercato.net/a7803564415882205784-bayern-la-reponse-tres-floue-de-max-eberl-sur-la-clause-dupamecano",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a7803564415882205784-bayern-la-reponse-tres-floue-de-max-eberl-sur-la-clause-dupamecano",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-881b584c82c1379842d0fa.html",
@@ -62447,8 +62332,7 @@
     },
     {
       "url": "https://www.footmercato.net/a7810346094607947741-trabzonspor-andre-onana-victime-dun-violent-accident-de-la-route-en-turquie",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a7810346094607947741-trabzonspor-andre-onana-victime-dun-violent-accident-de-la-route-en-turquie",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-b465275cb543962bab66be.html",
@@ -62460,8 +62344,7 @@
     },
     {
       "url": "https://www.footmercato.net/a7832188685756045218-flavien-tait-naurait-jamais-pu-jouer-pour-lom",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a7832188685756045218-flavien-tait-naurait-jamais-pu-jouer-pour-lom",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-2fc42cf58dad6546e4ccee.html",
@@ -62533,8 +62416,7 @@
     },
     {
       "url": "https://www.footmercato.net/a789024201037762294-l1-lincroyable-statistique-du-psg-apres-10-journees",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a789024201037762294-l1-lincroyable-statistique-du-psg-apres-10-journees",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-cb20b3a8597abc55427bb2.html",
@@ -62546,7 +62428,8 @@
     },
     {
       "url": "https://www.footmercato.net/a7896684621722428811-spl-le-nouveau-triple-de-cristiano-ronaldo-avec-al-nassr",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a7896684621722428811-spl-le-nouveau-triple-de-cristiano-ronaldo-avec-al-nassr",
       "references": [
         {
           "file": "a/rss-v2-25773acb89cf367310f27b.html",
@@ -62594,8 +62477,7 @@
     },
     {
       "url": "https://www.footmercato.net/a7965348507510505245-lens-umtiti-on-disait-que-le-directeur-sportif-etait-exceptionnel-cest-parce-quil-avait-de-la-reussite",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a7965348507510505245-lens-umtiti-on-disait-que-le-directeur-sportif-etait-exceptionnel-cest-parce-quil-avait-de-la-reussite",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-6dbd59cb85d4514f745cf9.html",
@@ -62667,7 +62549,8 @@
     },
     {
       "url": "https://www.footmercato.net/a8043117301729527534-psg-warren-zaire-emery-evoque-la-rivalite-avec-le-paris-fc",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a8043117301729527534-psg-warren-zaire-emery-evoque-la-rivalite-avec-le-paris-fc",
       "references": [
         {
           "file": "a/rss-v2-9ae39f9a533124c0e0d97c.html",
@@ -62715,8 +62598,7 @@
     },
     {
       "url": "https://www.footmercato.net/a8081370386039135384-le-bayern-recale-sechement-le-barca-pour-lun-de-ses-cadres",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a8081370386039135384-le-bayern-recale-sechement-le-barca-pour-lun-de-ses-cadres",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-9e4aba6648c98b5b314c6e.html",
@@ -62752,7 +62634,8 @@
     },
     {
       "url": "https://www.footmercato.net/a8172869082148544675-nico-williams-revele-avoir-refuse-une-offre-du-psg",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a8172869082148544675-nico-williams-revele-avoir-refuse-une-offre-du-psg",
       "references": [
         {
           "file": "a/rss-v2-a21a60e4f410728e27f720.html",
@@ -62776,8 +62659,7 @@
     },
     {
       "url": "https://www.footmercato.net/a8185129415602638951-lallemagne-pousse-deja-pour-olise-ballon-dor-estevao-a-completement-disparu",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a8185129415602638951-lallemagne-pousse-deja-pour-olise-ballon-dor-estevao-a-completement-disparu",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-5969ee5dc369ddea8b9195.html",
@@ -62850,7 +62732,8 @@
     },
     {
       "url": "https://www.footmercato.net/a8349055141270077606-bordeaux-poursuit-son-sans-faute-en-regional-1",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a8349055141270077606-bordeaux-poursuit-son-sans-faute-en-regional-1",
       "references": [
         {
           "file": "a/rss-v2-3c7767c963950bfc538b3d.html",
@@ -62946,7 +62829,8 @@
     },
     {
       "url": "https://www.footmercato.net/a8409068848854488504-fc-barcelone-hansi-flick-veut-briser-la-malediction-atletico-de-madrid",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a8409068848854488504-fc-barcelone-hansi-flick-veut-briser-la-malediction-atletico-de-madrid",
       "references": [
         {
           "file": "a/rss-v2-4fadd0d47065a06b8746d0.html",
@@ -63030,7 +62914,8 @@
     },
     {
       "url": "https://www.footmercato.net/a8616720903541357796-le-parallele-troublant-de-marco-materazzi-entre-le-coup-de-tete-de-zidane-et-la-mort-de-jesus-de-miguel",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a8616720903541357796-le-parallele-troublant-de-marco-materazzi-entre-le-coup-de-tete-de-zidane-et-la-mort-de-jesus-de-miguel",
       "references": [
         {
           "file": "a/rss-v2-2de10dc3a578c1b0e0e70c.html",
@@ -63090,8 +62975,7 @@
     },
     {
       "url": "https://www.footmercato.net/a8680724783601324834-le-paris-fc-pret-a-recuperer-le-parc-des-princes-si-le-psg-venait-a-le-quitter",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a8680724783601324834-le-paris-fc-pret-a-recuperer-le-parc-des-princes-si-le-psg-venait-a-le-quitter",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-b72d1b1b940d241f38dd4f.html",
@@ -63115,8 +62999,7 @@
     },
     {
       "url": "https://www.footmercato.net/a8736840803839766497-barca-la-date-de-retour-de-rodri-enfin-connue",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a8736840803839766497-barca-la-date-de-retour-de-rodri-enfin-connue",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-5ffe3e1ee05564d178deb7.html",
@@ -63152,8 +63035,7 @@
     },
     {
       "url": "https://www.footmercato.net/a8750941422328460738-qualifications-can-2027-lalgerie-simpose-dans-la-douleur-face-au-togo-et-conforte-sa-premiere-place",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a8750941422328460738-qualifications-can-2027-lalgerie-simpose-dans-la-douleur-face-au-togo-et-conforte-sa-premiere-place",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-b11d7117262b78679c042f.html",
@@ -63165,7 +63047,8 @@
     },
     {
       "url": "https://www.footmercato.net/a8759808435608961129-ilyes-hamache-cartonne-avec-cambuur",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a8759808435608961129-ilyes-hamache-cartonne-avec-cambuur",
       "references": [
         {
           "file": "a/rss-v2-7af014028f3de6c3d23115.html",
@@ -63189,7 +63072,8 @@
     },
     {
       "url": "https://www.footmercato.net/a8825851922216507154-le-rc-lens-feminin-battu-7-1-par-lol-lyonnes",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a8825851922216507154-le-rc-lens-feminin-battu-7-1-par-lol-lyonnes",
       "references": [
         {
           "file": "a/rss-v2-def70a30613459017d2207.html",
@@ -63201,7 +63085,8 @@
     },
     {
       "url": "https://www.footmercato.net/a8836549129938792950-ligue-2-lasse-simpose-face-au-red-star-et-conforte-sa-place-de-leader",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a8836549129938792950-ligue-2-lasse-simpose-face-au-red-star-et-conforte-sa-place-de-leader",
       "references": [
         {
           "file": "a/rss-v2-7c0c9a2ee2a093d85d5a16.html",
@@ -63238,8 +63123,7 @@
     },
     {
       "url": "https://www.footmercato.net/a8877717117212985475-la-ligue-1-fait-face-a-une-grande-menace-apres-le-week-end-de-chaos-en-france",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a8877717117212985475-la-ligue-1-fait-face-a-une-grande-menace-apres-le-week-end-de-chaos-en-france",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-b65d8ddd22a2f3225cb116.html",
@@ -63263,8 +63147,7 @@
     },
     {
       "url": "https://www.footmercato.net/a8921467595380147644-angleterre-thomas-tuchel-et-sa-relation-en-dents-de-scie-avec-jude-bellingham",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a8921467595380147644-angleterre-thomas-tuchel-et-sa-relation-en-dents-de-scie-avec-jude-bellingham",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-2fea79940a48754e76b2e1.html",
@@ -63337,7 +63220,8 @@
     },
     {
       "url": "https://www.footmercato.net/a902703162796052163-om-le-groupe-face-a-angers-toujours-sans-hojbjerg",
-      "status": 429,
+      "status": 206,
+      "final_url": "https://www.footmercato.net/a902703162796052163-om-le-groupe-face-a-angers-toujours-sans-hojbjerg",
       "references": [
         {
           "file": "a/rss-v2-017efb053b5fb387e0d5e4.html",
@@ -63411,8 +63295,7 @@
     },
     {
       "url": "https://www.footmercato.net/a9172371155066059583-latletico-de-madrid-prepare-un-transfert-surprise-cet-hiver",
-      "status": 206,
-      "final_url": "https://www.footmercato.net/a9172371155066059583-latletico-de-madrid-prepare-un-transfert-surprise-cet-hiver",
+      "status": 429,
       "references": [
         {
           "file": "a/rss-v2-e0a01e12f2045bc9fe92fe.html",
@@ -63518,6 +63401,18 @@
           "line": 91,
           "href": "https://www.franceinfo.fr/culture/musique/le-rappeur-french-montana-et-la-chanteuse-jorja-smith-se-produiront-a-la-ceremonie-du-ballon-d-or_8252395.html#xtor=RSS-3-%5Bgeneral%5D",
           "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/moins-de-taxes-plus-d-aides-quelles-sont-les-attentes-de-la-classe-moyenne_8287202.html#xtor=RSS-3-%5Beconomie%5D",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/replay-jt/france-2/20-heures/moins-de-taxes-plus-d-aides-quelles-sont-les-attentes-de-la-classe-moyenne_8287202.html#xtor=RSS-3-%5Beconomie%5D",
+      "references": [
+        {
+          "file": "actus/news.json",
+          "id": "rss-v2-cafa46fdeb6a2fc648c82d",
+          "title": "Classe moyenne : ce qu’en attendent les Français à l’approche de la présidentielle"
         }
       ]
     },
@@ -63782,6 +63677,31 @@
       ]
     },
     {
+      "url": "https://www.franceinfo.fr/sports/foot/philippe-diallo/je-n-etais-pas-initialement-candidat-philippe-diallo-officialise-sa-candidature-a-la-presidence-de-la-fifa_8287235.html",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/sports/foot/philippe-diallo/je-n-etais-pas-initialement-candidat-philippe-diallo-officialise-sa-candidature-a-la-presidence-de-la-fifa_8287235.html",
+      "references": [
+        {
+          "file": "a/rss-v2-5f3baafdbc1968792a672d.html",
+          "line": 92,
+          "href": "https://www.franceinfo.fr/sports/foot/philippe-diallo/je-n-etais-pas-initialement-candidat-philippe-diallo-officialise-sa-candidature-a-la-presidence-de-la-fifa_8287235.html#xtor=RSS-3-%5Bsports%2Ffoot%5D",
+          "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.franceinfo.fr/sports/foot/philippe-diallo/je-n-etais-pas-initialement-candidat-philippe-diallo-officialise-sa-candidature-a-la-presidence-de-la-fifa_8287235.html#xtor=RSS-3-%5Bsports%2Ffoot%5D",
+      "status": 200,
+      "final_url": "https://www.franceinfo.fr/sports/foot/philippe-diallo/je-n-etais-pas-initialement-candidat-philippe-diallo-officialise-sa-candidature-a-la-presidence-de-la-fifa_8287235.html#xtor=RSS-3-%5Bsports%2Ffoot%5D",
+      "references": [
+        {
+          "file": "articles.json",
+          "id": "rss-v2-5f3baafdbc1968792a672d",
+          "title": "Philippe Diallo officialise sa candidature à la présidence de la Fifa"
+        }
+      ]
+    },
+    {
       "url": "https://www.franceinfo.fr/sports/foot/quand-des-footballeuses-de-roubaix-wervicq-vivent-dans-une-residence-seniors_8280791.html",
       "status": 200,
       "final_url": "https://www.franceinfo.fr/sports/foot/quand-des-footballeuses-de-roubaix-wervicq-vivent-dans-une-residence-seniors_8280791.html",
@@ -63817,6 +63737,18 @@
           "line": 947,
           "href": "https://www.gamekult.com/",
           "tag": "a"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gamekult.com/actualite/juste-avant-notre-verdict-sur-gta-6-retour-sur-gta-3-le-jeu-qui-a-tout-change-101-3050843845.html",
+      "status": 200,
+      "final_url": "https://www.gamekult.com/actualite/juste-avant-notre-verdict-sur-gta-6-retour-sur-gta-3-le-jeu-qui-a-tout-change-101-3050843845.html",
+      "references": [
+        {
+          "file": "vm-gaming/news.json",
+          "id": "rss-v2-741fdb2278d7d141e959a4",
+          "title": "GTA III, le jeu qui a tout changé : retour sur son lancement en 2001"
         }
       ]
     },
@@ -67516,19 +67448,6 @@
       ]
     },
     {
-      "url": "https://www.youtube.com/watch?v=Y8nDTPoXz3E",
-      "status": 200,
-      "final_url": "https://www.youtube.com/watch?v=Y8nDTPoXz3E",
-      "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 48,
-          "href": "https://www.youtube.com/watch?v=Y8nDTPoXz3E",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.youtube.com/watch?v=YK26147Avj4",
       "status": 200,
       "final_url": "https://www.youtube.com/watch?v=YK26147Avj4",
@@ -67744,19 +67663,6 @@
       ]
     },
     {
-      "url": "https://www.youtube.com/watch?v=gigjHERG3Fc",
-      "status": 200,
-      "final_url": "https://www.youtube.com/watch?v=gigjHERG3Fc",
-      "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 47,
-          "href": "https://www.youtube.com/watch?v=gigjHERG3Fc",
-          "tag": "a"
-        }
-      ]
-    },
-    {
       "url": "https://www.youtube.com/watch?v=iG71sFBxkpM",
       "status": 200,
       "final_url": "https://www.youtube.com/watch?v=iG71sFBxkpM",
@@ -67822,19 +67728,6 @@
           "file": "mangas/episodes/dragon-ball-01.html",
           "line": 6,
           "href": "https://www.youtube.com/watch?v=jKpvMDi-kYw",
-          "tag": "a"
-        }
-      ]
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=k7USYVnB86E",
-      "status": 200,
-      "final_url": "https://www.youtube.com/watch?v=k7USYVnB86E",
-      "references": [
-        {
-          "file": "pronos/index.html",
-          "line": 46,
-          "href": "https://www.youtube.com/watch?v=k7USYVnB86E",
           "tag": "a"
         }
       ]
