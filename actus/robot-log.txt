@@ -1,23 +1,23 @@
-Passage actus du 2026-11-17 02:36 UTC (schedule, main)
-Départ : 4 articles conservés et 4 flashs existants.
-RSS franceinfo / POLITIQUE : 17 actualités récentes.
-RSS franceinfo / ECONOMIE : 19 actualités récentes.
+Passage actus du 2026-11-17 11:42 UTC (schedule, main)
+Départ : 0 articles conservés et 0 flashs existants.
+RSS franceinfo / POLITIQUE : 19 actualités récentes.
+RSS franceinfo / ECONOMIE : 20 actualités récentes.
 RSS franceinfo / FRANCE : 29 actualités récentes.
 RSS franceinfo / INTERNATIONAL : 20 actualités récentes.
-RSS 20 Minutes / FRANCE : 26 actualités récentes.
-RSS franceinfo / SANTE : 7 actualités récentes.
-RSS France 24 / INTERNATIONAL : 23 actualités récentes.
-RSS franceinfo / CULTURE : 19 actualités récentes.
-RSS RFI / INTERNATIONAL : 22 actualités récentes.
-RSS The Guardian / INTERNATIONAL : 2 actualités récentes.
-RSS franceinfo / TECH : 7 actualités récentes.
-RSS Euronews / INTERNATIONAL : 45 actualités récentes.
-RSS BBC News / INTERNATIONAL : 4 actualités récentes.
+RSS franceinfo / TECH : 12 actualités récentes.
+RSS RFI / INTERNATIONAL : 24 actualités récentes.
+RSS France 24 / INTERNATIONAL : 20 actualités récentes.
+RSS franceinfo / CULTURE : 20 actualités récentes.
+RSS 20 Minutes / FRANCE : 22 actualités récentes.
+RSS The Guardian / INTERNATIONAL : 3 actualités récentes.
 RSS Ouest-France / REGIONS : 10 actualités récentes.
-250 titres collectés, 191 nouveaux liens, quota 2.
+RSS Euronews / INTERNATIONAL : 45 actualités récentes.
+RSS BBC News / INTERNATIONAL : 5 actualités récentes.
+RSS franceinfo / SANTE : 7 actualités récentes.
+256 titres collectés, 237 nouveaux liens, quota 2.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-ARRÊT : API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch7iqqzVMfYyrUo3mbjLU"}
+ARRÊT : API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch8SUqWXpVW8qnSzx3Hro"}
 Bilan : 
 Aucune brève de qualité suffisante ; fichiers JSON inchangés.
 Traceback (most recent call last):
@@ -61,19 +61,19 @@ Traceback (most recent call last):
             ^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 272, in call_claude
     raise FatalAPIError(f'API Claude HTTP {exc.code} : vérifier clé, crédit ou quota. {detail[:250]}') from exc
-update_news.FatalAPIError: API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch7iqqzVMfYyrUo3mbjLU"}
+update_news.FatalAPIError: API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch8SUqWXpVW8qnSzx3Hro"}
 --- Papiers Sans Galère ---
 Départ : 0 articles conservés et 0 flashs existants.
-RSS franceinfo / RETRAITE : 2 actualités récentes.
-RSS franceinfo / JUSTICE : 20 actualités récentes.
-RSS franceinfo / TRAVAIL : 19 actualités récentes.
-RSS franceinfo / AUTRE : 19 actualités récentes.
-RSS franceinfo / LOGEMENT : 8 actualités récentes.
 RSS franceinfo / IMPOTS : 4 actualités récentes.
-72 titres collectés, 28 nouveaux liens, quota 1.
+RSS franceinfo / AUTRE : 20 actualités récentes.
+RSS franceinfo / JUSTICE : 20 actualités récentes.
+RSS franceinfo / LOGEMENT : 8 actualités récentes.
+RSS franceinfo / TRAVAIL : 19 actualités récentes.
+RSS franceinfo / RETRAITE : 4 actualités récentes.
+75 titres collectés, 38 nouveaux liens, quota 1.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-ARRÊT : API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch7ir7vCTNupkMmEufoXC"}
+ARRÊT : API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch8SVCYpWUHoHV6dtcEAN"}
 Bilan : 
 Aucune brève de qualité suffisante ; fichiers JSON inchangés.
 Traceback (most recent call last):
@@ -117,4 +117,4 @@ Traceback (most recent call last):
             ^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 272, in call_claude
     raise FatalAPIError(f'API Claude HTTP {exc.code} : vérifier clé, crédit ou quota. {detail[:250]}') from exc
-update_news.FatalAPIError: API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch7ir7vCTNupkMmEufoXC"}
+update_news.FatalAPIError: API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch8SVCYpWUHoHV6dtcEAN"}
