@@ -1,0 +1,101 @@
+name: VM - Reprise verifiee du 17 novembre
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/vm-reprise-20261117.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+jobs:
+  reprise:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+      VM_TEST: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet trafilatura requests pillow 'cryptography==50.0.0'
+      - name: Actualiser et enregistrer le foot
+        run: |
+          set -euo pipefail
+          python update_news.py
+          python build_pages.py
+          git add articles.json flash.json ignores.json a/ sitemap.xml
+          python tools/save_news_bundle.py --message 'Reprise foot apres remplacement de cle'
+      - name: Actualiser et enregistrer les actus
+        run: |
+          set -euo pipefail
+          python update_actus.py
+          git add actus/news.json actus/flash.json actus/ignores.json
+          python tools/save_news_bundle.py --message 'Reprise actualites apres remplacement de cle'
+      - name: Actualiser et enregistrer le gaming
+        run: |
+          set -euo pipefail
+          python update_gaming.py
+          git add vm-gaming/news.json vm-gaming/flash.json vm-gaming/ignores.json
+          python tools/save_news_bundle.py --message 'Reprise gaming apres remplacement de cle'
+      - name: Ouvrir le registre existant sans afficher les connexions
+        run: |
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "https://github.com/$GITHUB_REPOSITORY.git" "$RUNNER_TEMP/vm-broadcast-state"
+          test -s "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+      - name: Reprendre les publications avec les protections anti-doublons
+        run: python tools/editorial_vm.py --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+      - name: Enregistrer le bilan public
+        if: always()
+        run: |
+          if test -f studio/editorial-status.json; then
+            git add studio/editorial-status.json
+            python tools/save_news_bundle.py --message 'Bilan de reprise des publications du 17 novembre'
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: VM-reprise-20261117-${{ github.run_id }}
+          path: studio/editorial-status.json
+          retention-days: 30
+  deploy:
+    needs: reprise
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    concurrency:
+      group: velocemercato-cloudflare
+      cancel-in-progress: false
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Publier la version courante de Velocemercato
+        run: |
+          set -euo pipefail
+          test -n "$CLOUDFLARE_API_TOKEN"
+          test -n "$CLOUDFLARE_ACCOUNT_ID"
+          live_sha=$(git rev-parse HEAD)
+          mkdir "$RUNNER_TEMP/vm-site"
+          git archive HEAD | tar -x -C "$RUNNER_TEMP/vm-site"
+          python tools/prepare_public_site.py "$RUNNER_TEMP/vm-site"
+          echo "$live_sha" > "$RUNNER_TEMP/vm-site/version.txt"
+          npx --yes wrangler@4 pages deploy "$RUNNER_TEMP/vm-site" --project-name velocemercato --branch main --commit-hash "$live_sha"
+          for i in $(seq 1 12); do
+            online=$(curl -fsSL --max-time 15 "https://velocemercato.fr/version.txt?r=$RANDOM" | head -c 40 || true)
+            if test "$online" = "$live_sha"; then echo "Version publique confirmee : $live_sha"; exit 0; fi
+            sleep 10
+          done
+          echo "::error::La version du domaine n'est pas encore confirmee."
+          exit 1
