@@ -1,18 +1,18 @@
-Passage gaming du 2026-11-17 03:44 UTC (schedule, main)
-Départ : 4 articles conservés et 4 flashs existants.
-RSS Jeuxvideo.com / GAMING : 19 actualités récentes.
-RSS Eurogamer / GAMING : 13 actualités récentes.
-RSS Dexerto / GAMING : 9 actualités récentes.
-RSS Gamekult / GAMING : 20 actualités récentes.
-RSS JV France / GAMING : 3 actualités récentes.
-RSS Les Numériques / GAMING : 2 actualités récentes.
-RSS Tom’s Hardware / GAMING : 2 actualités récentes.
-RSS GamerGen / GAMING : 7 actualités récentes.
-RSS Next / GAMING : 2 actualités récentes.
-77 titres collectés, 39 nouveaux liens, quota 1.
+Passage gaming du 2026-11-17 12:33 UTC (schedule, main)
+Départ : 0 articles conservés et 0 flashs existants.
+RSS Eurogamer / GAMING : 19 actualités récentes.
+RSS Dexerto / GAMING : 12 actualités récentes.
+RSS Jeuxvideo.com / GAMING : 20 actualités récentes.
+RSS Gamekult / GAMING : 23 actualités récentes.
+RSS JV France / GAMING : 2 actualités récentes.
+RSS Tom’s Hardware / GAMING : 3 actualités récentes.
+RSS GamerGen / GAMING : 6 actualités récentes.
+RSS Les Numériques / GAMING : 3 actualités récentes.
+RSS Next / GAMING : 4 actualités récentes.
+92 titres collectés, 71 nouveaux liens, quota 1.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-ARRÊT : API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch7p58S9QnA8MPovwjgee"}
+ARRÊT : API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch8WMPSuArQWYsqwubKe6"}
 Bilan : 
 Aucune brève de qualité suffisante ; fichiers JSON inchangés.
 Traceback (most recent call last):
@@ -56,4 +56,4 @@ Traceback (most recent call last):
             ^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 272, in call_claude
     raise FatalAPIError(f'API Claude HTTP {exc.code} : vérifier clé, crédit ou quota. {detail[:250]}') from exc
-update_news.FatalAPIError: API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch7p58S9QnA8MPovwjgee"}
+update_news.FatalAPIError: API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch8WMPSuArQWYsqwubKe6"}
