@@ -75,16 +75,4 @@ jobs:
         if: always() && steps.validate.outcome == 'success'
         run: |
           git add actus/regions-accueil.json actus/news.json actus/flash.json actus/robot-log.txt psg/news.json psg/flash.json actus/ignores.json psg/ignores.json $(ls actus/deja-publies.json psg/deja-publies.json 2>/dev/null)
-          if git diff --cached --quiet; then
-            echo 'Rien de nouveau.'
-          else
-            git config user.name 'github-actions[bot]'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git commit -m 'Update general news'
-            if git pull --rebase origin "${{ github.ref_name }}" && git push origin "HEAD:${{ github.ref_name }}"; then
-              echo 'Publié.'
-            else
-              git rebase --abort 2>/dev/null || true
-              echo "::warning::Un autre passage a publié en même temps ; nouvel essai au prochain passage."
-            fi
-          fi
+          python tools/save_news_bundle.py --message "Update general news"
