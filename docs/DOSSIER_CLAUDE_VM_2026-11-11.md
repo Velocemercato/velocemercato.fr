@@ -1,6 +1,6 @@
 # Dossier Claude — Véloce Mercato, site et réseaux
 
-État établi le 2026-11-18T14:25+01:00.
+État établi le 2026-11-18T16:35+01:00.
 
 Ce dossier remplace les anciennes consignes de restauration intégrale et les anciennes cadences. Il décrit le travail autorisé par Romain dans cette conversation. Les accès et conversations de ChatGPT ne sont pas automatiquement accessibles dans Claude.
 
@@ -35,9 +35,9 @@ Sur vmunivers.fr, Romain a demandé : première case à gauche Facebook https://
 
 | Destination | Nombre relevé dans les reçus de cette reprise |
 |---|---|
-| Véloce Mercato · facebook | 143 |
-| Véloce Mercato · instagram | 142 |
-| VM Actus et Pronos · facebook | 141 |
+| Véloce Mercato · facebook | 146 |
+| Véloce Mercato · instagram | 145 |
+| VM Actus et Pronos · facebook | 144 |
 | VM Univers · facebook | 98 |
 | VM Univers · instagram | 14 |
 
@@ -103,11 +103,11 @@ Pour Multisport, les flux français validés Sports.fr et Le Monde Sport sont ra
 
 ## Audit des pages, liens et classements
 
-- Pages HTML examinées : 1502.
-- URL interrogées : 1736.
+- Pages HTML examinées : 1504.
+- URL interrogées : 1740.
 - HTTP 404/410 confirmés : 11.
 - Cibles internes absentes du dépôt : 76.
-- Liens protégés/non vérifiables automatiquement : 617.
+- Liens protégés/non vérifiables automatiquement : 522.
 - Ancres à relire : 3123. Certaines existent seulement après chargement JavaScript.
 - Classements à relire : 0.
 
@@ -155,6 +155,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Chelsea : les retrouvailles entre Malard et Bompastor résolvent le problème d'attaquante — https://www.facebook.com/122106465861520366/posts/122110911507520366
 - meta/facebook — Chelsea bat Manchester City 1-0 et prend la tête de la WSL — https://www.facebook.com/122106465861520366/posts/122111140341520366
 - meta/facebook — Christophe Gleizes : une rencontre de soutien au pied de la Tour Eiffel réunit des personnalités — https://www.facebook.com/122106465861520366/posts/122110334295520366
+- meta/facebook — Congo : Claude Le Roy annonce sa démission après la défaite face aux Comores — https://www.facebook.com/122106465861520366/posts/122112160293520366
 - meta/facebook — Cyclisme. Anthony Ravard : « Être sur le Tour de France en 2032, mais je ne dis pas si c’est le Tour hommes ou femmes - maville.com — https://www.facebook.com/122106465861520366/posts/122110045671520366
 - meta/facebook — Cyclo-cross UCI de Gernelle : Classements - DirectVelo — https://www.facebook.com/122106465861520366/posts/122111031969520366
 - meta/facebook — Côte d'Ivoire : Yan Diomandé filmé en train de distribuer de l'argent à de jeunes supporters — https://www.facebook.com/122106465861520366/posts/122110405695520366
@@ -216,6 +217,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Maya Le Tissier décisive, Manchester United bat Crystal Palace 2-0 en WSL — https://www.facebook.com/122106465861520366/posts/122111155497520366
 - meta/facebook — Melville pionnier, De Villiers le plus capé… Ces Sud-Africains ayant marqué l’histoire des Bleus - Top 14 — https://www.facebook.com/122106465861520366/posts/122110392165520366
 - meta/facebook — Mercato : Arsenal s'intéresse à Endrick, Newcastle et Sunderland suivent Dion Beljo — https://www.facebook.com/122106465861520366/posts/122110028151520366
+- meta/facebook — Minnesota Wild 7-3 Nashville Predators : Une entame décisive fait la différence en NHL - Sofascore — https://www.facebook.com/122106465861520366/posts/122112162555520366
 - meta/facebook — Mirra Andreeva domine Jessica Pegula et se qualifie pour la finale des Finales WTA - L'Équipe — https://www.facebook.com/122106465861520366/posts/122111133423520366
 - meta/facebook — MotoGP BREAKING NEWS : Ducati a déjà la tête en 2027 ! Marquez et Acosta attendus pour un grand rendez-vous en rouge à Madonna di Campiglio - Paddock GP — https://www.facebook.com/122106465861520366/posts/122110480683520366
 - meta/facebook — MotoGP BREAKING NEWS : Yamaha refuse de courir au Qatar, la FIM désavoue Dorna… et présente la facture - Paddock GP — https://www.facebook.com/122106465861520366/posts/122110775685520366
@@ -233,6 +235,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — OL : Tyler Morton serait opéré et absent longue durée — https://www.facebook.com/122106465861520366/posts/122111053035520366
 - meta/facebook — OM : Adidas prépare déjà ses futurs maillots, des fuites font surface — https://www.facebook.com/122106465861520366/posts/122110274829520366
 - meta/facebook — OM : Benoît Payan critique la gestion de Frank McCourt à distance — https://www.facebook.com/122106465861520366/posts/122111228055520366
+- meta/facebook — Obligation de soins et procès en mars 2027 : les trois Espoirs du Stade Rochelais fixés - Rugby Scope — https://www.facebook.com/122106465861520366/posts/122112159183520366
 - meta/facebook — Orphé Mbina, rescapé du paludisme, buteur en Ligue des champions avec le Sabah FC — https://www.facebook.com/122106465861520366/posts/122111009625520366
 - meta/facebook — PL : Roberto De Zerbi élu entraîneur du mois de octobre avec Tottenham — https://www.facebook.com/122106465861520366/posts/122110734423520366
 - meta/facebook — PSG : plusieurs jeunes Parisiens appelés en sélections de jeunes en novembre — https://www.facebook.com/122106465861520366/posts/122111016165520366
@@ -295,6 +298,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Calendrier World Tour 2027 : toutes les dates des courses cyclistes - TotalVelo - Toute l'actualité cyclisme — https://www.instagram.com/p/DftV41loVXK/
 - meta/instagram — Chelsea bat Manchester City 1-0 et prend la tête de la WSL — https://www.instagram.com/p/DfwJSrrD5Ul/
 - meta/instagram — Christophe Gleizes détenu depuis 500 jours en Algérie : le cri de son frère Maxime — https://www.instagram.com/p/DfmLIeGDV0U/
+- meta/instagram — Congo : Claude Le Roy annonce sa démission après la défaite face aux Comores — https://www.instagram.com/p/Df4zUf6CfXI/
 - meta/instagram — Cyclisme - XDS pourrait quitter Astana dès 2027 : un coup dur pour l'équipe de Vinokourov - TotalVelo - Toute l'actualité cyclisme — https://www.instagram.com/p/Dfw01KGIEjk/
 - meta/instagram — Cyclisme : 30 histoires de légendes, le livre de Cédric Leroy - Velo-Club — https://www.instagram.com/p/DfoaNCIFx9m/
 - meta/instagram — Cyclisme. Anthony Ravard : « Être sur le Tour de France en 2032, mais je ne dis pas si c’est le Tour hommes ou femmes - maville.com — https://www.instagram.com/p/DflVeMsF-xD/
@@ -331,6 +335,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Islanders : Barzal jouera un premier match samedi - NHL.com — https://www.instagram.com/p/Dfv9PICF0aA/
 - meta/instagram — Italie-France (3-1) : la presse italienne épingle Raymond Domenech après ses critiques — https://www.instagram.com/p/DfsOtSyj7pv/
 - meta/instagram — Italie-France : Cherki frustré après la défaite des Bleus face à la Squadra — https://www.instagram.com/p/Dfqk1VDDaPJ/
+- meta/instagram — Jade Jacquet prolonge avec Williams et ART pour la F1 Academy 2027 - F1 news — https://www.instagram.com/p/Df40KZSGHYK/
 - meta/instagram — Jean-Christophe Bahebeck, ancien espoir du PSG, entraîne désormais les U10 de Persan — https://www.instagram.com/p/DfvF96bF1wT/
 - meta/instagram — Jorge Viegas ouvre la porte à une évolution du règlement MotoGP après l’affaire Yamaha - Itransports — https://www.instagram.com/p/DfxoFKiktkS/
 - meta/instagram — L'Angleterre bat l'Espagne 3-2 et met fin à sa série de 44 matchs sans défaite — https://www.instagram.com/p/Dfx95GgjA6Z/
@@ -372,6 +377,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — National 2 : Nicolas Jeannesson réélu à la tête de C'Chartres Football — https://www.instagram.com/p/Dfl1NpVDfS0/
 - meta/instagram — Noskova - Svitolina, WTA Finals, Masters (Indian Wells), Demi-finales, match en direct le 14-11-2026 - L'Équipe — https://www.instagram.com/p/Dfu9bZrmL4p/
 - meta/instagram — Nouvelle-Zélande à la Coupe du monde de rugby 2023 : actualités, matches en direct, joueurs, compositions, calendriers et résultats des All Blacks. - Rugbyrama — https://www.instagram.com/p/DflPhYjFIeR/
+- meta/instagram — OL : Michael Gerlinger ouvre la porte à des arrivées en janvier — https://www.instagram.com/p/Df41T42Fy-y/
 - meta/instagram — OM : Adidas prépare déjà ses futurs maillots, des fuites font surface — https://www.instagram.com/p/DfnUE6nF5Uf/
 - meta/instagram — OM : Benoît Payan critique la gestion de Frank McCourt à distance — https://www.instagram.com/p/Dfw6TRMl6Zv/
 - meta/instagram — Orphé Mbina, rescapé du paludisme, buteur en Ligue des champions avec le Sabah FC — https://www.instagram.com/p/DfujowDj71N/
@@ -463,6 +469,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Formule 1 : un circuit historique prêt à remplacer Djeddah dès 2027 en cas d'annulation - Sports Auto Moto — https://www.facebook.com/1757379583055094/posts/1774072941385758
 - meta_pronos/facebook — Francophonie : Kinshasa prêt à retirer sa candidate à la tête de l'OIF — https://www.facebook.com/1757379583055094/posts/1774273498032369
 - meta_pronos/facebook — Fritz - Musetti, ATP 250, Stockholm, Demi-finales, match en direct le 13-11-2026 - L'Équipe — https://www.facebook.com/1757379583055094/posts/1772893048170414
+- meta_pronos/facebook — GTA 6 : la Nouvelle-Zélande joue la carte du tourisme pour les joueurs en avance — https://www.facebook.com/1757379583055094/posts/1779519897507729
 - meta_pronos/facebook — GTA III, le jeu qui a tout changé : retour sur son lancement en 2001 — https://www.facebook.com/1757379583055094/posts/1778908870902165
 - meta_pronos/facebook — Glentoran : Duncan Ferguson décroche sa première victoire comme entraîneur — https://www.facebook.com/1757379583055094/posts/1773376074788778
 - meta_pronos/facebook — Gérard Depardieu renonce à son procès en appel pour agressions sexuelles — https://www.facebook.com/1757379583055094/posts/1771608041632248
@@ -499,6 +506,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Magic: The Gathering : la série animée Planeswalker arrivera sur Netflix en 2027 — https://www.facebook.com/1757379583055094/posts/1773981224728263
 - meta_pronos/facebook — Mali : des civils frappés par un drone au marché de Nampala, selon RFI — https://www.facebook.com/1757379583055094/posts/1773638631429189
 - meta_pronos/facebook — Marvel 1943 : Rise of Hydra n'est pas annulé, selon Gamekult — https://www.facebook.com/1757379583055094/posts/1771444778315241
+- meta_pronos/facebook — Masculinisme : sept hommes jugés à Paris pour des messages haineux sur Telegram — https://www.facebook.com/1757379583055094/posts/1779535357506183
 - meta_pronos/facebook — Match interrompu après la blessure grave d'un défenseur de Hendon — https://www.facebook.com/1757379583055094/posts/1775437784582607
 - meta_pronos/facebook — Mercato : Arsenal s'intéresse à Endrick, Newcastle et Sunderland suivent Dion Beljo — https://www.facebook.com/1757379583055094/posts/1769605231832529
 - meta_pronos/facebook — Meta Quest : les achats intégrés dépassent les ventes de jeux payants — https://www.facebook.com/1757379583055094/posts/1775894537870265
@@ -506,6 +514,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — MotoGP, Vu sur Instagram - Dani Pedrosa relève un défi extrême sur un lac gelé avec la RC16 - Paddock GP — https://www.facebook.com/1757379583055094/posts/1775859794540406
 - meta_pronos/facebook — Noskova - Svitolina, WTA Finals, Masters (Indian Wells), Demi-finales, match en direct le 14-11-2026 - L'Équipe — https://www.facebook.com/1757379583055094/posts/1774508251342227
 - meta_pronos/facebook — Nouvelle-Zélande à la Coupe du monde de rugby 2023 : actualités, matches en direct, joueurs, compositions, calendriers et résultats des All Blacks. - Rugbyrama — https://www.facebook.com/1757379583055094/posts/1769649931828059
+- meta_pronos/facebook — Obligation de soins et procès en mars 2027 : les trois Espoirs du Stade Rochelais fixés - Rugby Scope — https://www.facebook.com/1757379583055094/posts/1779526740840378
 - meta_pronos/facebook — Palmowski décroche un baquet financé en Formula Regional pour 2027 - F1 news — https://www.facebook.com/1757379583055094/posts/1773160278143691
 - meta_pronos/facebook — Palworld : Pocketpair accorde un congé à ses employés pour GTA 6 — https://www.facebook.com/1757379583055094/posts/1774374114688974
 - meta_pronos/facebook — Panne de Microsoft 365 et d'Outlook touchant des dizaines de milliers d'utilisateurs — https://www.facebook.com/1757379583055094/posts/1772137764912609
