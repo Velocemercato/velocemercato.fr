@@ -43,6 +43,19 @@ export default {
   async scheduled(event, env, ctx) { ctx.waitUntil(tic(env, new Date(event.scheduledTime))); },
   async fetch(req, env) {
     const now = new Date();
+    // Diagnostic : /?diag=1 lance une fois le robot de publication et affiche la réponse exacte de GitHub.
+    if (new URL(req.url).searchParams.get('diag') === '1') {
+      if (!env.GITHUB_TOKEN) return new Response('GITHUB_TOKEN absent', { status: 500 });
+      const base = env.GITHUB_API || 'https://api.github.com';
+      const r = await fetch(`${base}/repos/${env.DEPOT}/actions/workflows/editorial-vm.yml/dispatches`, {
+        method: 'POST',
+        headers: { Authorization: 'Bearer ' + env.GITHUB_TOKEN, Accept: 'application/vnd.github+json', 'User-Agent': 'vm-horloge', 'X-GitHub-Api-Version': '2022-11-28', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ref: 'main' }),
+      });
+      const texte = (await r.text()).slice(0, 300);
+      const sens = { 204: '✅ OK : GitHub accepte, le robot de publication est lancé.', 401: '❌ Jeton refusé (mal copié ou expiré).', 403: '❌ Jeton sans la permission « Actions : Read and write ».', 404: '❌ Jeton sans accès au dépôt velocemercato.fr (Repository access).', 422: '❌ Paramètres refusés par GitHub.' }[r.status] || 'Réponse inattendue';
+      return new Response(`Statut GitHub : ${r.status}\n${sens}\n${texte}`, { headers: { 'content-type': 'text/plain; charset=utf-8' } });
+    }
     return new Response(JSON.stringify({ ok: true, jeton_present: !!env.GITHUB_TOKEN, prochain_tic: aLancer(new Date(Math.ceil(now / 6e5) * 6e5)).map((x) => x[0]) }, null, 2),
       { headers: { 'content-type': 'application/json; charset=utf-8' } });
   },
