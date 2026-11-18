@@ -1,38 +1,29 @@
-Passage actus du 2026-11-18 17:30 UTC (workflow_dispatch, main)
-Départ : 10 articles conservés et 10 flashs existants.
+Passage actus du 2026-11-18 18:00 UTC (workflow_dispatch, main)
+Départ : 12 articles conservés et 12 flashs existants.
+RSS franceinfo / ECONOMIE : 20 actualités récentes.
+RSS franceinfo / FRANCE : 29 actualités récentes.
+RSS franceinfo / SANTE : 7 actualités récentes.
 RSS franceinfo / POLITIQUE : 19 actualités récentes.
-RSS franceinfo / SANTE : 6 actualités récentes.
-RSS franceinfo / FRANCE : 28 actualités récentes.
+RSS franceinfo / CULTURE : 20 actualités récentes.
+RSS France 24 / INTERNATIONAL : 24 actualités récentes.
+RSS franceinfo / TECH : 10 actualités récentes.
+RSS RFI / INTERNATIONAL : 23 actualités récentes.
 RSS franceinfo / INTERNATIONAL : 20 actualités récentes.
 RSS 20 Minutes / FRANCE : 24 actualités récentes.
-RSS franceinfo / CULTURE : 20 actualités récentes.
-RSS inaccessible France 24 : HTTPError - HTTP Error 403: Forbidden
-RSS franceinfo / ECONOMIE : 20 actualités récentes.
-RSS franceinfo / TECH : 10 actualités récentes.
-RSS Ouest-France / REGIONS : 10 actualités récentes.
-RSS RFI / INTERNATIONAL : 23 actualités récentes.
 RSS BBC News / INTERNATIONAL : 13 actualités récentes.
 RSS Euronews / INTERNATIONAL : 45 actualités récentes.
 RSS The Guardian / INTERNATIONAL : 2 actualités récentes.
-240 titres collectés, 209 nouveaux liens, quota 2.
-/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
-  warnings.warn(
-Brève prête : franceinfo - La peluche du loup d'Intermarché ne sera pas disponible pour Noël
-Brève prête : franceinfo - Modération des réseaux sociaux : un centre européen désavoue 74% des décisions examinées
-Bilan : brèves_rédigées=2, non_pertinent=2, source_inaccessible_ou_trop_courte=2
-Publié : 2 brèves (total 12). Flash : 12.
---- Papiers Sans Galère ---
-Départ : 4 articles conservés et 4 flashs existants.
-RSS franceinfo / RETRAITE : 8 actualités récentes.
-RSS franceinfo / LOGEMENT : 13 actualités récentes.
-RSS franceinfo / TRAVAIL : 19 actualités récentes.
-RSS franceinfo / AUTRE : 20 actualités récentes.
-RSS franceinfo / IMPOTS : 3 actualités récentes.
-RSS franceinfo / JUSTICE : 20 actualités récentes.
-83 titres collectés, 49 nouveaux liens, quota 1.
+RSS Ouest-France / REGIONS : 10 actualités récentes.
+266 titres collectés, 215 nouveaux liens, quota 2.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
 Brève ignorée (franceinfo) : ValueError - Résumé IA incomplet ou trop long : non publié
-Brève prête : franceinfo - Budget 2027 : la croissance de 1% jugée « à risque », de nouvelles économies possibles
-Bilan : brèves_rédigées=1, non_pertinent=2, rejet_lecture_ou_ia=1
-Publié : 1 brèves (total 5). Flash : 5.
+Brève ignorée (20 Minutes) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève prête : franceinfo - Le Sénat adopte en première lecture le budget de la Sécurité sociale pour 2027
+Brève ignorée (Euronews) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève prête : Euronews - L'UE prépare un nouveau paquet de sanctions contre la Russie, selon Euronews
+Bilan : brèves_rédigées=2, non_pertinent=1, rejet_lecture_ou_ia=3, source_inaccessible_ou_trop_courte=7, sujet_deja_traite=2
+Publié : 2 brèves (total 14). Flash : 14.
+--- Papiers Sans Galère ---
+Départ : 5 articles conservés et 5 flashs existants.
+Limite de 6 brèves par jour atteinte, aucune nouvelle publication.
