@@ -1,10 +1,10 @@
 # Audit du site pour Claude
 
-État mesuré le 2026-11-18T16:35:39.760776+01:00.
+État mesuré le 2026-11-19T00:24:49.914240+01:00.
 
 ## Périmètre et limites
 
-1504 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 1740 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
+1551 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 1837 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
 
 Un statut 404 ou 410 indique une URL introuvable. Les refus 401/403, les limites 429, les erreurs serveur et les délais dépassés demandent une vérification complémentaire. Le test ne valide pas le visionnage géographique des vidéos ni la véracité des articles. Les classements signalés par mots-clés doivent être relus avant déplacement.
 
@@ -14,10 +14,10 @@ Retirer les accès transversaux aux anciennes applications et leurs invitations 
 
 ## Résultats
 
-- Liens confirmés introuvables en HTTP, 11.
+- Liens confirmés introuvables en HTTP, 12.
 - Cibles internes absentes du dépôt, 76. Certaines peuvent être servies par Cloudflare, lire leur résultat HTTP avant correction.
 - Ancres à vérifier, 3123. Certaines sont gérées par JavaScript.
-- Articles à relire pour leur classement, 0.
+- Articles à relire pour leur classement, 1.
 - Replays réellement publiés par genre, {"foot": 45, "actus": 30, "gaming": 15}.
 
 Le fichier JSON associé contient toutes les références, pages et lignes. Les chemins correspondent au commit indiqué dans ce rapport.
@@ -35,9 +35,11 @@ Le fichier JSON associé contient toutes les références, pages et lignes. Les 
 - https://velocemercato.fr/a/rss-v2-be40daf45e2ddae12fdf85.html — HTTP 404 — a/rss-v2-874b393dbb6477e67fd0b1.html ligne 98, a/rss-v2-085acfe06814508bb43ac8.html ligne 98, a/rss-v2-6dbd59cb85d4514f745cf9.html ligne 98, a/rss-v2-152c9d56a991307afd9761.html ligne 98, a/rss-v2-f6b6af0c2c170ed5c07372.html ligne 98, a/rss-v2-1ab5f194879d8575932335.html ligne 98
 - https://velocemercato.fr/a/rss-v2-d35d05b8dc173e17198673.html — HTTP 404 — a/rss-v2-50b89266996a4a99045a00.html ligne 98
 - https://velocemercato.fr/a/rss-v2-eb6dfe25fa63d6afffd5a5.html — HTTP 404 — a/rss-v2-601c30dead8041c6f17800.html ligne 98, a/rss-v2-729602c30edab266638523.html ligne 98, a/rss-v2-8cbee2801d8e889ee256c3.html ligne 98, a/rss-v2-32c1cf9bc59edfdf838d25.html ligne 98, a/rss-v2-92403cd6641532d005bdf2.html ligne 98, a/rss-v2-b65c9934943d806d9f1e07.html ligne 98
+- https://www.bbc.co.uk/sounds/play/p0phk7vv?at_medium=RSS&at_campaign=rss — HTTP 404 — a/rss-v2-9867cda669795253a23231.html ligne 91
 
 ## Articles à relire
 
+- articles.json — rss-v2-4e84d4d733a3767f58b114 — Ivan Toney échoue dans sa demande de report de son procès pour agression — À relire, aucun indice net de la rubrique dans la brève
 
 ## Corrections déjà apportées dans cette reprise
 
