@@ -1,0 +1,15 @@
+import { aLancer, tic } from './src/index.js';
+const ok = (c, m) => { console.log((c ? 'OK   ' : 'ECHEC') + ' ' + m); if (!c) process.exitCode = 1; };
+const at = (h, m) => new Date(Date.UTC(2026, 10, 18, h, m, 3));
+const noms = (h, m) => aLancer(at(h, m)).map((x) => x[0]);
+ok(noms(3, 50).join() === 'editorial-vm.yml,deployer-accueil-cloudflare.yml', '3 h 50 UTC : publications + déploiement');
+ok(noms(10, 0).includes('actualites.yml') && noms(10, 0).includes('actus.yml') && noms(10, 0).includes('multisport-flux.yml') && noms(10, 0).includes('publier-meta.yml'), '10 h 00 UTC : brèves, actus, multisport, pastilles');
+ok(noms(10, 10).includes('deployer-accueil-cloudflare.yml') && noms(10, 10).includes('gaming.yml'), '10 h 10 : déploiement après les brèves + gaming');
+ok(!noms(23, 0).includes('publier-meta.yml'), 'pas de pastilles la nuit');
+let total = 0; for (let h = 0; h < 24; h++) for (let m = 0; m < 60; m += 10) total += noms(h, m).length;
+ok(total < 450, 'lancements par jour : ' + total);
+const appels = []; const f = async (u, o) => { appels.push([u, JSON.parse(o.body), o.headers.Authorization]); return { status: 204 }; };
+const r = await tic({ GITHUB_TOKEN: 'jeton-factice', DEPOT: 'Velocemercato/velocemercato.fr' }, at(10, 0), f);
+ok(r.every((x) => x.statut === 204) && appels.some(([u, b]) => u.endsWith('/actualites.yml/dispatches') && b.inputs.test === 'false' && b.ref === 'main'), 'appel GitHub correct (actualites en mode réel, branche main)');
+ok(appels.every(([u]) => u.startsWith('https://api.github.com/repos/Velocemercato/velocemercato.fr/actions/workflows/')), 'uniquement le dépôt velocemercato.fr');
+ok((await tic({ DEPOT: 'x' }, at(10, 0), f))[0].erreur, 'sans jeton : rien n’est lancé');
