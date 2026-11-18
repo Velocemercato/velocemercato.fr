@@ -1,62 +1,23 @@
-Passage gaming du 2026-11-17 21:19 UTC (schedule, main)
-Départ : 0 articles conservés et 0 flashs existants.
+Passage gaming du 2026-11-18 03:00 UTC (schedule, main)
+Départ : 1 articles conservés et 1 flashs existants.
 RSS Eurogamer / GAMING : 22 actualités récentes.
 RSS Jeuxvideo.com / GAMING : 19 actualités récentes.
 RSS Dexerto / GAMING : 18 actualités récentes.
 RSS Gamekult / GAMING : 25 actualités récentes.
 RSS JV France / GAMING : 3 actualités récentes.
-RSS Les Numériques / GAMING : 3 actualités récentes.
+RSS inaccessible GamerGen : HTTPError - HTTP Error 503: Service Unavailable
 RSS Tom’s Hardware / GAMING : 3 actualités récentes.
-RSS GamerGen / GAMING : 1 actualités récentes.
+RSS Les Numériques / GAMING : 5 actualités récentes.
 RSS Next / GAMING : 5 actualités récentes.
-99 titres collectés, 81 nouveaux liens, quota 1.
+100 titres collectés, 81 nouveaux liens, quota 1.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
 Claude indisponible (Jeuxvideo.com) : HTTP 403
 Claude indisponible (Jeuxvideo.com) : HTTP 403
 Claude indisponible (Jeuxvideo.com) : HTTP 403
-ARRÊT : API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch9CTMtTBNoRLJ9vV9nyS"}
-Bilan : rejet_lecture_ou_ia=3
+Claude indisponible (Jeuxvideo.com) : HTTP 403
+Claude indisponible (Jeuxvideo.com) : HTTP 403
+Claude indisponible (Jeuxvideo.com) : HTTP 403
+Trop de rejets IA dans ce passage : arrêt pour limiter le coût.
+Bilan : non_pertinent=3, rejet_lecture_ou_ia=6
 Aucune brève de qualité suffisante ; fichiers JSON inchangés.
-Traceback (most recent call last):
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 259, in call_claude
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 215, in urlopen
-    return opener.open(url, data, timeout)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 521, in open
-    response = meth(req, response)
-               ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 630, in http_response
-    response = self.parent.error(
-               ^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 559, in error
-    return self._call_chain(*args)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 492, in _call_chain
-    result = func(*args)
-             ^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 639, in http_error_default
-    raise HTTPError(req.full_url, code, msg, hdrs, fp)
-urllib.error.HTTPError: HTTP Error 401: Unauthorized
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_gaming.py", line 112, in <module>
-    robot.main()
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 529, in main
-    raise fatal_error
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 474, in main
-    title, resume, texte, meta = summarize(post, material)
-                                 ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_gaming.py", line 99, in summarize_gaming
-    return robot.summarize_with(system, user, post)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 312, in summarize_with
-    reply = call_claude(system, user)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 272, in call_claude
-    raise FatalAPIError(f'API Claude HTTP {exc.code} : vérifier clé, crédit ou quota. {detail[:250]}') from exc
-update_news.FatalAPIError: API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch9CTMtTBNoRLJ9vV9nyS"}
