@@ -1,5 +1,125 @@
 [
  {
+  "id": "foot-edition-20261118-2000",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 20 h",
+  "titre": "La Pastille Foot : JT du soir, 18 novembre",
+  "accroche": "Mercato, racisme au Groupama, Joan García : le tour de l'actu foot.",
+  "duree": 151,
+  "date": "2026-11-18T20:38+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261118-2000.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-18T20:00:00+01:00",
+  "source_start": "2026-11-18T12:00:00+01:00",
+  "source_end": "2026-11-18T20:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-32fc57457199afd557b776",
+    "titre": "Mercato : l'OL assure ne pas être contraint de vendre cet hiver, selon Foot01",
+    "publishedAt": "2026-11-18T14:30:00Z",
+    "createdAt": "2026-11-18T18:41:13Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/marseille/des-recrues-en-attente-lom-supplie-la-dncg"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-b898998aaffe7a2fd7bac8",
+    "titre": "LOSC : Ethan Mbappé s'impose et s'invite en équipe de France Espoirs",
+    "publishedAt": "2026-11-18T16:07:30Z",
+    "createdAt": "2026-11-18T18:41:09Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a7056476904288963188-losc-equipe-de-france-espoirs-ethan-mbappe-continue-de-bluffer-son-monde"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-99b902cb03e4c402e7aa96",
+    "titre": "Le CIES classe Joan García, gardien du Barça, comme le portier le plus valorisé au monde",
+    "publishedAt": "2026-11-18T14:50:00Z",
+    "createdAt": "2026-11-18T18:21:19Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a2314880502547052428-le-cies-devoile-les-gardiens-les-plus-chers-du-monde"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-0c79546bbfab37c3caffd4",
+    "titre": "OL : Loïs Openda écarte les rumeurs de départ avec une publication sur les réseaux",
+    "publishedAt": "2026-11-18T16:21:05Z",
+    "createdAt": "2026-11-18T18:21:06Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a3959452580761634492-ol-lois-openda-repond-aux-rumeurs-de-depart"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-71138b7d7944bba788271c",
+    "titre": "L'OL condamne fermement les faits de racisme et de violence autour du Groupama Stadium",
+    "publishedAt": "2026-11-18T17:01:29Z",
+    "createdAt": "2026-11-18T18:01:09Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a3595163184488081937-limmense-coup-de-gueule-de-lol-contre-ses-problemes-de-racisme"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-fee8409ef23126e1ecd431",
+    "titre": "Rooney évoque ses difficultés psychologiques, Duff salue une prise de parole importante",
+    "publishedAt": "2026-11-18T17:52:23Z",
+    "createdAt": "2026-11-18T18:01:05Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cvrlgke13e9go?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-a95f09c6411b1624946a6d",
+    "titre": "James McPake s'installe à Dubaï et se lance dans la formation de jeunes joueurs",
+    "publishedAt": "2026-11-18T17:06:29Z",
+    "createdAt": "2026-11-18T17:41:20Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/c6j9m1ygw427o?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-089ab352ba2230b0b5c637",
+    "titre": "OL : Michele Kang répond à Jean-Michel Aulas après le départ de Paulo Fonseca",
+    "publishedAt": "2026-11-18T17:27:50Z",
+    "createdAt": "2026-11-18T17:41:15Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a7114639271421630773-ol-michele-kang-repond-a-jean-michel-aulas"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261115-2000",
   "univers": "foot",
   "format": "edition",
@@ -12747,66 +12867,6 @@
      {
       "nom": "France 24",
       "url": "https://www.france24.com/fr/vid%C3%A9o/20261024-trappes-un-mort-et-cinq-bless%C3%A9s-dans-une-attaque-macron-d%C3%A9nonce-un-acte-terroriste-et-raciste"
-     }
-    ]
-   }
-  ],
-  "diffusion": "youtube"
- },
- {
-  "id": "gaming-edition-20261024-1800",
-  "univers": "gaming",
-  "format": "edition",
-  "moment": "soir",
-  "label": "JT 18 h",
-  "titre": "La Pastille Gaming : Screamer, PlayStation Store, Marvel Ultimate Alliance",
-  "accroche": "Bonsoir à tous, direction les jeux vidéo.",
-  "duree": 99,
-  "date": "2026-10-24T18:08+02:00",
-  "publie": false,
-  "voix": [
-   "piper"
-  ],
-  "speech_rate": 1.12,
-  "fichier": "gaming-edition-20261024-1800.mp4",
-  "editorial_revision": "court-v1",
-  "edition_at": "2026-10-24T18:00:00+02:00",
-  "source_start": "2026-10-24T10:00:00+02:00",
-  "source_end": "2026-10-24T18:00:00+02:00",
-  "sources": [
-   {
-    "id": "rss-v2-a56fe6d6e3ee034482c173",
-    "titre": "Screamer : un mode mono-joystick ajouté pour le drift, selon Gamekult",
-    "publishedAt": "2026-10-24T15:27:00Z",
-    "createdAt": "2026-10-24T15:42:11Z",
-    "references": [
-     {
-      "nom": "Gamekult",
-      "url": "https://www.gamekult.com/actualite/screamer-est-l-un-des-meilleurs-jeux-de-course-de-l-annee-mais-son-gameplay-en-rebutait-certains-le-voila-desormais-plus-accessible-3050872542.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-5af9e7be848299fadf34bd",
-    "titre": "Une association néerlandaise réclame 435 millions d'euros à Sony pour les prix du PlayStation Store",
-    "publishedAt": "2026-10-24T11:38:00Z",
-    "createdAt": "2026-10-24T11:41:41Z",
-    "references": [
-     {
-      "nom": "Gamekult",
-      "url": "https://www.gamekult.com/actualite/le-jeu-video-risque-de-devenir-inabordable-ils-reclament-435-millions-d-euros-a-playstation-3050872531.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-9cc565e413f61cabe2be0d",
-    "titre": "Il y a 20 ans sortait Marvel : Ultimate Alliance, un hack 'n slash culte",
-    "publishedAt": "2026-10-24T07:00:00Z",
-    "createdAt": "2026-10-24T08:10:27Z",
-    "references": [
-     {
-      "nom": "Gamekult",
-      "url": "https://www.gamekult.com/actualite/marvel-ultimate-alliance-c-etait-avengers-doomsday-avant-le-mcu-101-3050866110.html"
      }
     ]
    }
