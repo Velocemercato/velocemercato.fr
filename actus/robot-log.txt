@@ -1,120 +1,42 @@
-Passage actus du 2026-11-17 20:46 UTC (schedule, main)
-Départ : 0 articles conservés et 0 flashs existants.
-RSS franceinfo / SANTE : 10 actualités récentes.
-RSS franceinfo / POLITIQUE : 19 actualités récentes.
-RSS franceinfo / FRANCE : 26 actualités récentes.
-RSS franceinfo / CULTURE : 19 actualités récentes.
+Passage actus du 2026-11-18 02:50 UTC (schedule, main)
+Départ : 1 articles conservés et 1 flashs existants.
+RSS franceinfo / FRANCE : 27 actualités récentes.
 RSS franceinfo / ECONOMIE : 20 actualités récentes.
-RSS franceinfo / INTERNATIONAL : 20 actualités récentes.
-RSS France 24 / INTERNATIONAL : 23 actualités récentes.
+RSS franceinfo / SANTE : 9 actualités récentes.
+RSS franceinfo / POLITIQUE : 19 actualités récentes.
 RSS 20 Minutes / FRANCE : 27 actualités récentes.
-RSS RFI / INTERNATIONAL : 21 actualités récentes.
+RSS France 24 / INTERNATIONAL : 22 actualités récentes.
+RSS RFI / INTERNATIONAL : 22 actualités récentes.
+RSS franceinfo / INTERNATIONAL : 20 actualités récentes.
+RSS franceinfo / CULTURE : 18 actualités récentes.
+RSS BBC News / INTERNATIONAL : 10 actualités récentes.
 RSS Euronews / INTERNATIONAL : 45 actualités récentes.
-RSS The Guardian / INTERNATIONAL : 1 actualités récentes.
-RSS BBC News / INTERNATIONAL : 11 actualités récentes.
-RSS franceinfo / TECH : 14 actualités récentes.
+RSS franceinfo / TECH : 16 actualités récentes.
 RSS Ouest-France / REGIONS : 10 actualités récentes.
-266 titres collectés, 248 nouveaux liens, quota 2.
+RSS The Guardian / INTERNATIONAL : 1 actualités récentes.
+266 titres collectés, 243 nouveaux liens, quota 2.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-ARRÊT : API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch9A1RptYBr9jJUpATaDK"}
-Bilan : source_inaccessible_ou_trop_courte=1
-Aucune brève de qualité suffisante ; fichiers JSON inchangés.
-Traceback (most recent call last):
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 259, in call_claude
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 215, in urlopen
-    return opener.open(url, data, timeout)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 521, in open
-    response = meth(req, response)
-               ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 630, in http_response
-    response = self.parent.error(
-               ^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 559, in error
-    return self._call_chain(*args)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 492, in _call_chain
-    result = func(*args)
-             ^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 639, in http_error_default
-    raise HTTPError(req.full_url, code, msg, hdrs, fp)
-urllib.error.HTTPError: HTTP Error 401: Unauthorized
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_actus.py", line 97, in <module>
-    robot.main()
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 529, in main
-    raise fatal_error
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 474, in main
-    title, resume, texte, meta = summarize(post, material)
-                                 ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_actus.py", line 83, in summarize_actus
-    return robot.summarize_with(system, user, post)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 312, in summarize_with
-    reply = call_claude(system, user)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 272, in call_claude
-    raise FatalAPIError(f'API Claude HTTP {exc.code} : vérifier clé, crédit ou quota. {detail[:250]}') from exc
-update_news.FatalAPIError: API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch9A1RptYBr9jJUpATaDK"}
+Brève prête : France 24 - Haïti : des milliers de manifestants soutiennent les soldats salvadoriens contre les gangs
+Brève ignorée (20 Minutes) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève ignorée (20 Minutes) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève prête : 20 Minutes - Nvidia ferme la porte à un retour de Jensen Huang à sa direction
+Bilan : brèves_rédigées=2, rejet_lecture_ou_ia=2, source_inaccessible_ou_trop_courte=4
+Publié : 2 brèves (total 3). Flash : 3.
 --- Papiers Sans Galère ---
 Départ : 0 articles conservés et 0 flashs existants.
+RSS franceinfo / LOGEMENT : 11 actualités récentes.
 RSS franceinfo / JUSTICE : 18 actualités récentes.
 RSS franceinfo / AUTRE : 20 actualités récentes.
 RSS franceinfo / IMPOTS : 4 actualités récentes.
+RSS franceinfo / RETRAITE : 6 actualités récentes.
 RSS franceinfo / TRAVAIL : 19 actualités récentes.
-RSS franceinfo / LOGEMENT : 10 actualités récentes.
-RSS franceinfo / RETRAITE : 5 actualités récentes.
-76 titres collectés, 46 nouveaux liens, quota 1.
+78 titres collectés, 49 nouveaux liens, quota 1.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-ARRÊT : API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch9A1gYRNcCnrHBroc5p7"}
-Bilan : 
-Aucune brève de qualité suffisante ; fichiers JSON inchangés.
-Traceback (most recent call last):
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 259, in call_claude
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 215, in urlopen
-    return opener.open(url, data, timeout)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 521, in open
-    response = meth(req, response)
-               ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 630, in http_response
-    response = self.parent.error(
-               ^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 559, in error
-    return self._call_chain(*args)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 492, in _call_chain
-    result = func(*args)
-             ^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 639, in http_error_default
-    raise HTTPError(req.full_url, code, msg, hdrs, fp)
-urllib.error.HTTPError: HTTP Error 401: Unauthorized
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_demarches.py", line 74, in <module>
-    robot.main()
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 529, in main
-    raise fatal_error
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 474, in main
-    title, resume, texte, meta = summarize(post, material)
-                                 ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_demarches.py", line 60, in summarize_demarches
-    return robot.summarize_with(system, user, post)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 312, in summarize_with
-    reply = call_claude(system, user)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 272, in call_claude
-    raise FatalAPIError(f'API Claude HTTP {exc.code} : vérifier clé, crédit ou quota. {detail[:250]}') from exc
-update_news.FatalAPIError: API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch9A1gYRNcCnrHBroc5p7"}
+Brève ignorée (franceinfo) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève ignorée (franceinfo) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève ignorée (franceinfo) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève prête : franceinfo - Classe moyenne : moins d’impôts et des aides revues, selon des Français interrogés
+Bilan : brèves_rédigées=1, non_pertinent=3, rejet_lecture_ou_ia=3
+Publié : 1 brèves (total 1). Flash : 1.
