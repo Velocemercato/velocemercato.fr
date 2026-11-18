@@ -1,6 +1,6 @@
 # Dossier Claude — Véloce Mercato, site et réseaux
 
-État établi le 2026-11-18T00:52+01:00.
+État établi le 2026-11-18T14:25+01:00.
 
 Ce dossier remplace les anciennes consignes de restauration intégrale et les anciennes cadences. Il décrit le travail autorisé par Romain dans cette conversation. Les accès et conversations de ChatGPT ne sont pas automatiquement accessibles dans Claude.
 
@@ -35,9 +35,9 @@ Sur vmunivers.fr, Romain a demandé : première case à gauche Facebook https://
 
 | Destination | Nombre relevé dans les reçus de cette reprise |
 |---|---|
-| Véloce Mercato · facebook | 141 |
-| Véloce Mercato · instagram | 140 |
-| VM Actus et Pronos · facebook | 139 |
+| Véloce Mercato · facebook | 143 |
+| Véloce Mercato · instagram | 142 |
+| VM Actus et Pronos · facebook | 141 |
 | VM Univers · facebook | 98 |
 | VM Univers · instagram | 14 |
 
@@ -103,12 +103,12 @@ Pour Multisport, les flux français validés Sports.fr et Le Monde Sport sont ra
 
 ## Audit des pages, liens et classements
 
-- Pages HTML examinées : 1498.
-- URL interrogées : 1731.
+- Pages HTML examinées : 1502.
+- URL interrogées : 1736.
 - HTTP 404/410 confirmés : 11.
 - Cibles internes absentes du dépôt : 76.
-- Liens protégés/non vérifiables automatiquement : 616.
-- Ancres à relire : 3122. Certaines existent seulement après chargement JavaScript.
+- Liens protégés/non vérifiables automatiquement : 617.
+- Ancres à relire : 3123. Certaines existent seulement après chargement JavaScript.
 - Classements à relire : 0.
 
 Le détail exhaustif des contrôles effectués, avec fichiers et lignes, est dans docs/AUDIT_CLAUDE_2026-11-11.json et son résumé Markdown. Un refus 403/429 ne prouve pas un lien mort. Cet audit ne certifie pas tous les faits d’actualité, la disponibilité géographique des vidéos, les paiements ou les espaces authentifiés.
@@ -143,6 +143,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Argentine : Abel Nunez, 18 ans, meurt après un choc à la tête sur le terrain — https://www.facebook.com/122106465861520366/posts/122111664597520366
 - meta/facebook — Arsenal pourrait devoir débourser 66 M£ pour Antonio Nusa — https://www.facebook.com/122106465861520366/posts/122111080695520366
 - meta/facebook — Aston Villa Women veut retrouver son identité avant le derby contre Birmingham — https://www.facebook.com/122106465861520366/posts/122111171439520366
+- meta/facebook — Audi prolonge Felbermayr pour une troisième saison en F1 Academy - F1 news — https://www.facebook.com/122106465861520366/posts/122112025407520366
 - meta/facebook — Bagarre générale et cinq cartons rouges lors d'un match amical New York Red Bulls - Club América — https://www.facebook.com/122106465861520366/posts/122111301153520366
 - meta/facebook — Bengals-Steelers : Burrow et Chase écrasent les Steelers (38-18) - DAZN — https://www.facebook.com/122106465861520366/posts/122111514411520366
 - meta/facebook — Biathlon : Vetle Christiansen gagne le sprint de Geilo, Emilien Claude 5e - ski-nordique.net — https://www.facebook.com/122106465861520366/posts/122111022957520366
@@ -188,6 +189,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Infantino visé par une plainte aux États-Unis pour emploi illégal d'une employée de maison — https://www.facebook.com/122106465861520366/posts/122110457073520366
 - meta/facebook — Italie-France (3-1) : la presse italienne épingle Raymond Domenech après ses critiques — https://www.facebook.com/122106465861520366/posts/122110763853520366
 - meta/facebook — Italie-France : Cherki frustré après la défaite des Bleus face à la Squadra — https://www.facebook.com/122106465861520366/posts/122110572741520366
+- meta/facebook — Jade Jacquet prolonge avec Williams et ART pour la F1 Academy 2027 - F1 news — https://www.facebook.com/122106465861520366/posts/122112094449520366
 - meta/facebook — Jean-Christophe Bahebeck, ancien espoir du PSG, entraîne désormais les U10 de Persan — https://www.facebook.com/122106465861520366/posts/122111065455520366
 - meta/facebook — Jorge Viegas ouvre la porte à une évolution du règlement MotoGP après l’affaire Yamaha - Itransports — https://www.facebook.com/122106465861520366/posts/122111337369520366
 - meta/facebook — L'Argentine s'incline face à l'Uruguay, premier match sans Messi — https://www.facebook.com/122106465861520366/posts/122110891401520366
@@ -283,6 +285,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Appel d’Audi sur Monza : audience le 25 novembre pour le dossier Tsunoda - F1 news — https://www.instagram.com/p/DfqWLf9lwYI/
 - meta/instagram — Argentine : Abel Nunez, 18 ans, meurt après un choc à la tête sur le terrain — https://www.instagram.com/p/Df0IXiLl0HJ/
 - meta/instagram — Arkema (F) : le PSG s'impose 2-0 face à l'OM dans le Classique — https://www.instagram.com/p/Dfvx9qjlD3e/
+- meta/instagram — Audi prolonge Felbermayr pour une troisième saison en F1 Academy - F1 news — https://www.instagram.com/p/Df3X0XLl2HV/
 - meta/instagram — Bengals-Steelers : Burrow et Chase écrasent les Steelers (38-18) - DAZN — https://www.instagram.com/p/DfzA27aDafa/
 - meta/instagram — Biathlon - Bessans 2026 : Tous les résultats - www.ski-nordique.net — https://www.instagram.com/p/Dfw_gaJGFSo/
 - meta/instagram — Biathlon : Vetle Christiansen gagne le sprint de Geilo, Emilien Claude 5e - ski-nordique.net — https://www.instagram.com/p/Dfun7ExCRVj/
@@ -332,6 +335,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Jorge Viegas ouvre la porte à une évolution du règlement MotoGP après l’affaire Yamaha - Itransports — https://www.instagram.com/p/DfxoFKiktkS/
 - meta/instagram — L'Angleterre bat l'Espagne 3-2 et met fin à sa série de 44 matchs sans défaite — https://www.instagram.com/p/Dfx95GgjA6Z/
 - meta/instagram — L'Argentine s'incline face à l'Uruguay, premier match sans Messi — https://www.instagram.com/p/DftnrJil_aM/
+- meta/instagram — L'Irlande du Nord accède à l'élite de la Ligue des nations après un nul à Budapest — https://www.instagram.com/p/Df4MBWFF84U/
 - meta/instagram — L'OM contacte l'agent de Santiago Hezze, milieu de l'Olympiakos valorisé 14 M€ — https://www.instagram.com/p/Dfrb3oilNdX/
 - meta/instagram — La F1 maintient Qatar et Abu Dhabi, Imola écarté comme solution de repli - F1 news — https://www.instagram.com/p/DflPqlLG3xP/
 - meta/instagram — La FIA retire l’accréditation de McEvoy, la Society of Editors conteste - F1 news — https://www.instagram.com/p/DftPgEnCfL-/
@@ -459,12 +463,14 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Formule 1 : un circuit historique prêt à remplacer Djeddah dès 2027 en cas d'annulation - Sports Auto Moto — https://www.facebook.com/1757379583055094/posts/1774072941385758
 - meta_pronos/facebook — Francophonie : Kinshasa prêt à retirer sa candidate à la tête de l'OIF — https://www.facebook.com/1757379583055094/posts/1774273498032369
 - meta_pronos/facebook — Fritz - Musetti, ATP 250, Stockholm, Demi-finales, match en direct le 13-11-2026 - L'Équipe — https://www.facebook.com/1757379583055094/posts/1772893048170414
+- meta_pronos/facebook — GTA III, le jeu qui a tout changé : retour sur son lancement en 2001 — https://www.facebook.com/1757379583055094/posts/1778908870902165
 - meta_pronos/facebook — Glentoran : Duncan Ferguson décroche sa première victoire comme entraîneur — https://www.facebook.com/1757379583055094/posts/1773376074788778
 - meta_pronos/facebook — Gérard Depardieu renonce à son procès en appel pour agressions sexuelles — https://www.facebook.com/1757379583055094/posts/1771608041632248
 - meta_pronos/facebook — Halo, le premier épisode vu comme un manifeste du FPS et de la Xbox — https://www.facebook.com/1757379583055094/posts/1775252324601153
 - meta_pronos/facebook — Iker Lecuona se note 9 après une bonne séance d’apprentissage au MotoGP du Qatar - Motorcycle Sports — https://www.facebook.com/1757379583055094/posts/1773948944731491
 - meta_pronos/facebook — Indonésie : la jeunesse de nouveau dans la rue contre la politique du gouvernement — https://www.facebook.com/1757379583055094/posts/1769606181832434
 - meta_pronos/facebook — Isère : des pales d'éoliennes recyclées en tables de ping-pong par Néolien — https://www.facebook.com/1757379583055094/posts/1774984367961282
+- meta_pronos/facebook — Jade Jacquet prolonge avec Williams et ART pour la F1 Academy 2027 - F1 news — https://www.facebook.com/1757379583055094/posts/1779221330870919
 - meta_pronos/facebook — Jean-Michel Jarre fête les 50 ans d'Oxygène avec une version remasterisée — https://www.facebook.com/1757379583055094/posts/1774120698047649
 - meta_pronos/facebook — Jean-Philippe Tanguy (RN) dénonce « 30 ans de mensonges » sur les retraites — https://www.facebook.com/1757379583055094/posts/1777244387735280
 - meta_pronos/facebook — Jordanie : un ressortissant israélien arrêté après être entré à la nage dans ses eaux — https://www.facebook.com/1757379583055094/posts/1775927017867017
