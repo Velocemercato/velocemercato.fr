@@ -1,0 +1,14 @@
+name = "vm-horloge"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+# GitHub ne lance plus les tâches programmées qu'environ 3 fois par jour sur ce compte :
+# cette horloge Cloudflare (fiable à la minute) déclenche elle-même les robots via « workflow_dispatch ».
+# Secret requis (à ajouter par Romain dans Cloudflare) : GITHUB_TOKEN = jeton GitHub « fine-grained »,
+# dépôt velocemercato.fr uniquement, permission Actions : Read and write.
+[triggers]
+crons = ["*/10 * * * *"]
+
+[vars]
+DEPOT = "Velocemercato/velocemercato.fr"
