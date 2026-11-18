@@ -1,80 +1,39 @@
-Passage du 2026-11-17 21:49 UTC (schedule)
-Nettoyage : 0 breves vides retirees, 0 gardees.
+Passage du 2026-11-18 03:37 UTC (schedule)
+Nettoyage : 0 breves vides retirees, 1 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 0 articles conservés et 0 flashs existants.
-RSS Foot National / LIGUE_1 : 10 actualités récentes.
+Départ : 1 articles conservés et 1 flashs existants.
+RSS Foot National / LIGUE_1 : 9 actualités récentes.
+RSS Foot National / LIGUE_2 : 4 actualités récentes.
 RSS Foot National / NATIONAL : 2 actualités récentes.
-RSS Foot National / LIGUE_2 : 6 actualités récentes.
-RSS Foot National / NATIONAL : 5 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 0 actualités récentes.
-RSS RMC Sport / LIGUE_1 : 1 actualités récentes.
 RSS RMC Sport / FRANCE : 30 actualités récentes.
-RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 2 actualités récentes.
+RSS Foot National / NATIONAL : 5 actualités récentes.
+RSS RMC Sport / LIGUE_1 : 1 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 36 actualités récentes.
-RSS RMC Sport / BLEUS : 6 actualités récentes.
-RSS BBC Sport / FEMININ : 6 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 0 actualités récentes.
+RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 1 actualités récentes.
+RSS BBC Sport / FEMININ : 3 actualités récentes.
+RSS franceinfo / FRANCE : 5 actualités récentes.
+RSS RMC Sport / BLEUS : 9 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS Foot Amateur / NATIONAL : 4 actualités récentes.
 RSS Foot01 / FRANCE : 43 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
 RSS Foot Amateur / NATIONAL : 1 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS Foot Amateur / NATIONAL : 5 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS franceinfo / FRANCE : 7 actualités récentes.
-205 titres collectés, 157 nouveaux liens, quota 2.
+198 titres collectés, 138 nouveaux liens, quota 2.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-ARRÊT : API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch9EpETnwq8FTM8nEGLav"}
-Bilan : 
-Aucune brève de qualité suffisante ; fichiers JSON inchangés.
-Traceback (most recent call last):
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 259, in call_claude
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 215, in urlopen
-    return opener.open(url, data, timeout)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 521, in open
-    response = meth(req, response)
-               ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 630, in http_response
-    response = self.parent.error(
-               ^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 559, in error
-    return self._call_chain(*args)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 492, in _call_chain
-    result = func(*args)
-             ^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/urllib/request.py", line 639, in http_error_default
-    raise HTTPError(req.full_url, code, msg, hdrs, fp)
-urllib.error.HTTPError: HTTP Error 401: Unauthorized
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 560, in <module>
-    main()
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 529, in main
-    raise fatal_error
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 474, in main
-    title, resume, texte, meta = summarize(post, material)
-                                 ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 307, in summarize
-    return summarize_with(system, user, post)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 312, in summarize_with
-    reply = call_claude(system, user)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 272, in call_claude
-    raise FatalAPIError(f'API Claude HTTP {exc.code} : vérifier clé, crédit ou quota. {detail[:250]}') from exc
-FatalAPIError: API Claude HTTP 401 : vérifier clé, crédit ou quota. {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011Ch9EpETnwq8FTM8nEGLav"}
+Brève prête : BBC Sport - L'Irlande du Nord accède à l'élite de la Ligue des nations après un nul à Budapest
+Brève prête : Foot Mercato - Eli Junior Kroupi lié au PSG et au FC Barcelone selon une rumeur
+Bilan : brèves_rédigées=2, sujet_deja_traite=2
+Publié : 2 brèves (total 3). Flash : 3.
 RQ Pronos : page d'actualités publiques actualisée.
-Accueil VM : actualités inchangées.
-Pages : 0 brèves avec leur propre page, sitemap à jour.
-Agenda : 48 matchs enregistrés.
+Accueil VM : actualités sourcées visibles en HTML, mises à jour.
+Pages : 3 brèves avec leur propre page, sitemap à jour.
+Agenda : 57 matchs enregistrés.
 Ligue 1 : 15 vidéos lues, 2 vidéos de buts gardées.
 Ligue 2 : 0 vidéos lues, 0 vidéos de buts gardées.
 FFF : 15 vidéos lues, 6 vidéos de buts gardées.
@@ -85,28 +44,28 @@ Serie A : 15 vidéos lues, 5 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 2 vidéos de buts gardées.
 Vidéos publiées : 6.
 Fil express : actus 200, foot 200, gaming 120
+macommune.info  : 25 titres
 L'Est Républicain haute-saone : 20 titres
 L'Est Républicain territoire-de-belfort : 18 titres
-L'Est Républicain edition-belfort-hericourt-montbeliard : 19 titres
 L'Est Républicain www.estrepublicain.fr : 2 titres
-macommune.info  : 25 titres
+L'Est Républicain edition-belfort-hericourt-montbeliard : 19 titres
 VM Belfort : 46 titres
-Auvergne-Rhône-Alpes : 81 titres
-Bourgogne-Franche-Comté : 52 titres
-Bretagne : 55 titres
+Auvergne-Rhône-Alpes : 80 titres
+Bourgogne-Franche-Comté : 48 titres
+Bretagne : 52 titres
 Centre-Val de Loire : 19 titres
-Corse : 8 titres
-Grand Est : 68 titres
-Hauts-de-France : 28 titres
+Corse : 9 titres
+Grand Est : 66 titres
+Hauts-de-France : 29 titres
 Île-de-France : 34 titres
-Normandie : 16 titres
+Normandie : 15 titres
 Nouvelle-Aquitaine : 34 titres
-Occitanie : 88 titres
-Pays de la Loire : 91 titres
+Occitanie : 87 titres
+Pays de la Loire : 89 titres
 Provence-Alpes-Côte d'Azur : 44 titres
 Outre-mer : 33 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : ARA 3, BFC 3, BRE 2, COR 4, CVL 16, FR 1, GES 1, NOR 10, OCC 1, PDL 8 — 49 titres
+Foot amateur : ARA 1, BFC 3, BRE 2, COR 6, CVL 17, FR 1, GES 1, NOR 9, OCC 1, PDL 8 — 49 titres
