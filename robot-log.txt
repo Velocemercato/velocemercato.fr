@@ -1,11 +1,37 @@
-Passage du 2026-11-19 19:27 UTC (schedule)
+Passage du 2026-11-19 19:40 UTC (workflow_dispatch)
 Nettoyage : 0 breves vides retirees, 51 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
 Départ : 51 articles conservés et 42 flashs existants.
-Limite de 48 brèves par jour atteinte, aucune nouvelle publication.
+RSS Foot National / LIGUE_2 : 7 actualités récentes.
+RSS Foot National / NATIONAL : 3 actualités récentes.
+RSS Foot National / NATIONAL : 6 actualités récentes.
+RSS RMC Sport / FRANCE : 30 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 0 actualités récentes.
+RSS RMC Sport / LIGUE_1 : 15 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 36 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 2 actualités récentes.
+RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
+RSS BBC Sport / FEMININ : 7 actualités récentes.
+RSS RMC Sport / BLEUS : 4 actualités récentes.
+RSS franceinfo / FRANCE : 3 actualités récentes.
+RSS Foot Amateur / NATIONAL : 4 actualités récentes.
+RSS Foot Amateur / NATIONAL : 6 actualités récentes.
+RSS The Guardian / ETRANGER : 1 actualités récentes.
+RSS Foot01 / FRANCE : 44 actualités récentes.
+RSS The Guardian / ETRANGER : 1 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS Foot National / LIGUE_1 : 10 actualités récentes.
+224 titres collectés, 50 nouveaux liens, quota 1.
+/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
+  warnings.warn(
+Brève prête : Foot Mercato - Harry Kane admire Karim Benzema, qu'il juge proche de lui dans son jeu
+Bilan : brèves_rédigées=1, source_inaccessible_ou_trop_courte=1
+Publié : 1 brèves (total 52). Flash : 43.
 RQ Pronos : page d'actualités publiques actualisée.
-Accueil VM : actualités inchangées.
-Pages : 51 brèves avec leur propre page, sitemap à jour.
+Accueil VM : actualités sourcées visibles en HTML, mises à jour.
+Pages : 52 brèves avec leur propre page, sitemap à jour.
 Agenda : 66 matchs enregistrés.
 Ligue 1 : 15 vidéos lues, 2 vidéos de buts gardées.
 Ligue 2 : 0 vidéos lues, 0 vidéos de buts gardées.
@@ -16,29 +42,29 @@ LaLiga : 15 vidéos lues, 3 vidéos de buts gardées.
 Serie A : 15 vidéos lues, 5 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 2 vidéos de buts gardées.
 Vidéos publiées : 3.
-Fil express : actus 200, gaming 120, foot 198
+Fil express : actus 200, foot 199, gaming 120
 macommune.info  : 25 titres
 L'Est Républicain territoire-de-belfort : 14 titres
-L'Est Républicain www.estrepublicain.fr : 2 titres
 L'Est Républicain haute-saone : 20 titres
 L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
+L'Est Républicain www.estrepublicain.fr : 2 titres
 VM Belfort : 45 titres
-Auvergne-Rhône-Alpes : 60 titres
-Bourgogne-Franche-Comté : 49 titres
-Bretagne : 42 titres
-Centre-Val de Loire : 17 titres
-Corse : 9 titres
-Grand Est : 28 titres
-Hauts-de-France : 30 titres
-Île-de-France : 34 titres
-Normandie : 11 titres
-Nouvelle-Aquitaine : 34 titres
-Occitanie : 49 titres
-Pays de la Loire : 72 titres
-Provence-Alpes-Côte d'Azur : 44 titres
-Outre-mer : 33 titres
+::warning::Auvergne-Rhône-Alpes : flux muet (HTTPError)
+::warning::Bourgogne-Franche-Comté : flux muet (HTTPError)
+::warning::Bretagne : flux muet (HTTPError)
+::warning::Centre-Val de Loire : flux muet (HTTPError)
+::warning::Corse : flux muet (HTTPError)
+::warning::Grand Est : flux muet (HTTPError)
+::warning::Hauts-de-France : flux muet (HTTPError)
+::warning::Île-de-France : flux muet (HTTPError)
+::warning::Normandie : flux muet (HTTPError)
+::warning::Nouvelle-Aquitaine : flux muet (HTTPError)
+::warning::Occitanie : flux muet (HTTPError)
+::warning::Pays de la Loire : flux muet (HTTPError)
+::warning::Provence-Alpes-Côte d'Azur : flux muet (HTTPError)
+::warning::Outre-mer : flux muet (HTTPError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : ARA 1, BFC 1, BRE 5, COR 5, CVL 15, GES 1, HDF 1, NOR 8, OCC 1 — 38 titres
+Aucun flux joignable : fichier inchangé.
