@@ -1,5 +1,24 @@
 [
  {
+  "id": "actus-edition-20261119-1900",
+  "date": "2026-11-19",
+  "moment": "soir",
+  "universes": [
+   "actus"
+  ],
+  "date_publication": "2026-11-19T18:45:33+00:00",
+  "titre": "VM Actus — JT 19 h — 19/11/2026",
+  "plateformes": {
+   "youtube": {
+    "url": "https://www.youtube.com/watch?v=m5VYwq5YzHU",
+    "status": "published"
+   }
+  },
+  "edition_at": "2026-11-19T19:00:00+01:00",
+  "source_start": "2026-11-19T13:00:00+01:00",
+  "source_end": "2026-11-19T19:00:00+01:00"
+ },
+ {
   "id": "foot-edition-20261119-0800",
   "date": "2026-11-19",
   "moment": "matin",
@@ -1686,24 +1705,5 @@
   "edition_at": "2026-10-27T19:00:00+01:00",
   "source_start": "2026-10-27T13:00:00+01:00",
   "source_end": "2026-10-27T19:00:00+01:00"
- },
- {
-  "id": "gaming-edition-20261027-1800",
-  "date": "2026-10-27",
-  "moment": "soir",
-  "universes": [
-   "gaming"
-  ],
-  "date_publication": "2026-10-27T17:50:25+00:00",
-  "titre": "VM Gaming — JT 18 h — 27/10/2026",
-  "plateformes": {
-   "youtube": {
-    "url": "https://www.youtube.com/watch?v=peIaeya4kew",
-    "status": "published"
-   }
-  },
-  "edition_at": "2026-10-27T18:00:00+01:00",
-  "source_start": "2026-10-26T18:00:00+01:00",
-  "source_end": "2026-10-27T18:00:00+01:00"
  }
 ]
