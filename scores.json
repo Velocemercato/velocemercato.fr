@@ -612,224 +612,16 @@
    ]
   },
   {
-   "id": "espn-401892728",
-   "date": "2026-11-18T00:00Z",
-   "comp": "NHL",
-   "sport": "hockey",
-   "dom": "Bruins",
-   "ext": "Kings",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    3
-   ]
-  },
-  {
-   "id": "espn-401892730",
-   "date": "2026-11-18T00:00Z",
-   "comp": "NHL",
-   "sport": "hockey",
-   "dom": "Panthers",
-   "ext": "Oilers",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    5
-   ]
-  },
-  {
-   "id": "espn-401892731",
-   "date": "2026-11-18T00:00Z",
-   "comp": "NHL",
-   "sport": "hockey",
-   "dom": "Islanders",
-   "ext": "Blue Jackets",
-   "statut": "FINISHED",
-   "score": [
-    5,
-    1
-   ]
-  },
-  {
-   "id": "espn-401892732",
-   "date": "2026-11-18T00:00Z",
-   "comp": "NHL",
-   "sport": "hockey",
-   "dom": "Flyers",
-   "ext": "Sabres",
-   "statut": "FINISHED",
-   "score": [
-    4,
-    3
-   ]
-  },
-  {
-   "id": "espn-401892736",
-   "date": "2026-11-18T00:00Z",
-   "comp": "NHL",
-   "sport": "hockey",
-   "dom": "Jets",
-   "ext": "Senators",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    2
-   ]
-  },
-  {
-   "id": "espn-401910002",
-   "date": "2026-11-18T00:30Z",
-   "comp": "NBA",
-   "sport": "basket",
-   "dom": "Raptors",
-   "ext": "Knicks",
-   "statut": "FINISHED",
-   "score": [
-    102,
-    111
-   ]
-  },
-  {
-   "id": "espn-401892729",
-   "date": "2026-11-18T00:30Z",
-   "comp": "NHL",
-   "sport": "hockey",
-   "dom": "Lightning",
-   "ext": "Capitals",
-   "statut": "FINISHED",
-   "score": [
-    5,
-    2
-   ]
-  },
-  {
-   "id": "espn-401892733",
-   "date": "2026-11-18T00:30Z",
-   "comp": "NHL",
-   "sport": "hockey",
-   "dom": "Blackhawks",
-   "ext": "Maple Leafs",
-   "statut": "FINISHED",
-   "score": [
-    6,
-    3
-   ]
-  },
-  {
-   "id": "espn-401910003",
-   "date": "2026-11-18T01:00Z",
-   "comp": "NBA",
-   "sport": "basket",
-   "dom": "Timberwolves",
-   "ext": "Trail Blazers",
-   "statut": "FINISHED",
-   "score": [
-    106,
-    105
-   ]
-  },
-  {
-   "id": "espn-401910004",
-   "date": "2026-11-18T01:00Z",
-   "comp": "NBA",
-   "sport": "basket",
-   "dom": "Spurs",
-   "ext": "Pistons",
-   "statut": "FINISHED",
-   "score": [
-    93,
-    105
-   ]
-  },
-  {
-   "id": "espn-401892734",
-   "date": "2026-11-18T01:00Z",
-   "comp": "NHL",
-   "sport": "hockey",
-   "dom": "Blues",
-   "ext": "Ducks",
-   "statut": "FINISHED",
-   "score": [
-    8,
-    6
-   ]
-  },
-  {
-   "id": "espn-401892735",
-   "date": "2026-11-18T01:00Z",
-   "comp": "NHL",
-   "sport": "hockey",
-   "dom": "Wild",
-   "ext": "Predators",
-   "statut": "FINISHED",
-   "score": [
-    7,
-    3
-   ]
-  },
-  {
-   "id": "espn-401892737",
-   "date": "2026-11-18T03:00Z",
-   "comp": "NHL",
-   "sport": "hockey",
-   "dom": "Golden Knights",
-   "ext": "Stars",
-   "statut": "FINISHED",
-   "score": [
-    3,
-    4
-   ]
-  },
-  {
-   "id": "espn-401892738",
-   "date": "2026-11-18T03:00Z",
-   "comp": "NHL",
-   "sport": "hockey",
-   "dom": "Sharks",
-   "ext": "Flames",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    5
-   ]
-  },
-  {
-   "id": "espn-401910006",
-   "date": "2026-11-18T03:30Z",
-   "comp": "NBA",
-   "sport": "basket",
-   "dom": "Clippers",
-   "ext": "Jazz",
-   "statut": "FINISHED",
-   "score": [
-    107,
-    132
-   ]
-  },
-  {
-   "id": "espn-401910005",
-   "date": "2026-11-18T04:00Z",
-   "comp": "NBA",
-   "sport": "basket",
-   "dom": "Lakers",
-   "ext": "Hornets",
-   "statut": "FINISHED",
-   "score": [
-    118,
-    114
-   ]
-  },
-  {
    "id": "espn-401910007",
    "date": "2026-11-19T00:00Z",
    "comp": "NBA",
    "sport": "basket",
    "dom": "Cavaliers",
    "ext": "Grizzlies",
-   "statut": "TIMED",
+   "statut": "PAUSED",
    "score": [
-    null,
-    null
+    72,
+    71
    ]
   },
   {
@@ -839,10 +631,10 @@
    "sport": "basket",
    "dom": "Pacers",
    "ext": "Rockets",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    56,
+    72
    ]
   },
   {
@@ -852,10 +644,10 @@
    "sport": "basket",
    "dom": "Heat",
    "ext": "Bucks",
-   "statut": "TIMED",
+   "statut": "PAUSED",
    "score": [
-    null,
-    null
+    74,
+    48
    ]
   },
   {
@@ -865,10 +657,10 @@
    "sport": "basket",
    "dom": "Magic",
    "ext": "76ers",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    73,
+    64
    ]
   },
   {
@@ -878,10 +670,10 @@
    "sport": "basket",
    "dom": "Nets",
    "ext": "Bulls",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    42,
+    67
    ]
   },
   {
@@ -891,10 +683,10 @@
    "sport": "basket",
    "dom": "Raptors",
    "ext": "Wizards",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    42,
+    48
    ]
   },
   {
@@ -904,10 +696,10 @@
    "sport": "hockey",
    "dom": "Red Wings",
    "ext": "Bruins",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    1,
+    0
    ]
   },
   {
@@ -917,10 +709,10 @@
    "sport": "hockey",
    "dom": "Devils",
    "ext": "Canadiens",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    2,
+    2
    ]
   },
   {
@@ -930,10 +722,10 @@
    "sport": "basket",
    "dom": "Pelicans",
    "ext": "Pistons",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    21,
+    18
    ]
   },
   {
@@ -943,10 +735,10 @@
    "sport": "basket",
    "dom": "Thunder",
    "ext": "Hawks",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    22,
+    28
    ]
   },
   {
@@ -956,10 +748,10 @@
    "sport": "basket",
    "dom": "Mavericks",
    "ext": "Warriors",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    27,
+    12
    ]
   },
   {
@@ -1236,6 +1028,123 @@
    ]
   },
   {
+   "id": "espn-401909305",
+   "date": "2026-11-21T00:00Z",
+   "comp": "NBA",
+   "sport": "basket",
+   "dom": "Hawks",
+   "ext": "Hornets",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "espn-401909306",
+   "date": "2026-11-21T00:30Z",
+   "comp": "NBA",
+   "sport": "basket",
+   "dom": "Nets",
+   "ext": "Magic",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "espn-401909307",
+   "date": "2026-11-21T00:30Z",
+   "comp": "NBA",
+   "sport": "basket",
+   "dom": "Cavaliers",
+   "ext": "Pacers",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "espn-401909308",
+   "date": "2026-11-21T00:30Z",
+   "comp": "NBA",
+   "sport": "basket",
+   "dom": "Pistons",
+   "ext": "Raptors",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "espn-401909309",
+   "date": "2026-11-21T01:00Z",
+   "comp": "NBA",
+   "sport": "basket",
+   "dom": "Bulls",
+   "ext": "Wizards",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "espn-401909310",
+   "date": "2026-11-21T01:00Z",
+   "comp": "NBA",
+   "sport": "basket",
+   "dom": "Thunder",
+   "ext": "Pelicans",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "espn-401909311",
+   "date": "2026-11-21T02:30Z",
+   "comp": "NBA",
+   "sport": "basket",
+   "dom": "Jazz",
+   "ext": "Suns",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "espn-401909312",
+   "date": "2026-11-21T03:00Z",
+   "comp": "NBA",
+   "sport": "basket",
+   "dom": "Nuggets",
+   "ext": "Rockets",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "espn-401909313",
+   "date": "2026-11-21T03:00Z",
+   "comp": "NBA",
+   "sport": "basket",
+   "dom": "Lakers",
+   "ext": "Kings",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
    "id": "espn-401873070",
    "date": "2026-11-22T18:00Z",
    "comp": "NFL",
@@ -1392,6 +1301,6 @@
    ]
   }
  ],
- "maj": "2026-11-18T11:42:13Z",
- "verifie": "2026-11-18T20:08:55Z"
+ "maj": "2026-11-19T01:30:31Z",
+ "verifie": "2026-11-19T01:30:31Z"
 }
