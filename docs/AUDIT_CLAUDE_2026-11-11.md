@@ -1,10 +1,10 @@
 # Audit du site pour Claude
 
-État mesuré le 2026-11-19T00:24:49.914240+01:00.
+État mesuré le 2026-11-19T14:51:49.650263+01:00.
 
 ## Périmètre et limites
 
-1551 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 1837 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
+1619 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 1895 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
 
 Un statut 404 ou 410 indique une URL introuvable. Les refus 401/403, les limites 429, les erreurs serveur et les délais dépassés demandent une vérification complémentaire. Le test ne valide pas le visionnage géographique des vidéos ni la véracité des articles. Les classements signalés par mots-clés doivent être relus avant déplacement.
 
@@ -17,8 +17,8 @@ Retirer les accès transversaux aux anciennes applications et leurs invitations 
 - Liens confirmés introuvables en HTTP, 12.
 - Cibles internes absentes du dépôt, 76. Certaines peuvent être servies par Cloudflare, lire leur résultat HTTP avant correction.
 - Ancres à vérifier, 3123. Certaines sont gérées par JavaScript.
-- Articles à relire pour leur classement, 1.
-- Replays réellement publiés par genre, {"foot": 45, "actus": 30, "gaming": 15}.
+- Articles à relire pour leur classement, 0.
+- Replays réellement publiés par genre, {"foot": 46, "actus": 29, "gaming": 15}.
 
 Le fichier JSON associé contient toutes les références, pages et lignes. Les chemins correspondent au commit indiqué dans ce rapport.
 
@@ -39,7 +39,6 @@ Le fichier JSON associé contient toutes les références, pages et lignes. Les 
 
 ## Articles à relire
 
-- articles.json — rss-v2-4e84d4d733a3767f58b114 — Ivan Toney échoue dans sa demande de report de son procès pour agression — À relire, aucun indice net de la rubrique dans la brève
 
 ## Corrections déjà apportées dans cette reprise
 
