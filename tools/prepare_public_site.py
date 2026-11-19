@@ -211,7 +211,40 @@ def _prepare_bilan_veille(root):
     ) if cards else ''
     page.write_text(source.replace(marker, section), encoding="utf-8")
 
+LIMITE_PAGES = 25 * 1024 * 1024  # Cloudflare Pages refuse tout fichier plus gros.
+
+
+def _alleger_editorial_status(root):
+    """Retire de l'historique publié les listes « confirmed » répétées.
+
+    La liste du haut garde déjà les 500 dernières publications confirmées ;
+    les 300 copies de l'historique la dupliquaient et faisaient dépasser 25 Mo.
+    Le fichier du dépôt n'est pas modifié, seule la copie publiée est allégée.
+    """
+    path = root/'studio/editorial-status.json'
+    if not path.exists():
+        return
+    try:
+        data = json.loads(path.read_text(encoding='utf-8'))
+    except ValueError:
+        return
+    if isinstance(data, dict) and isinstance(data.get('history'), list):
+        data['history'] = [{k: v for k, v in event.items() if k != 'confirmed'}
+                           for event in data['history'] if isinstance(event, dict)]
+        path.write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
+
+
+def _retirer_fichiers_trop_gros(root):
+    """Dernier filet : un fichier de plus de 25 Mo bloquerait toute la mise en ligne."""
+    for path in sorted(root.rglob('*')):
+        if path.is_file() and path.stat().st_size > LIMITE_PAGES:
+            print(f'Attention : {path.relative_to(root)} dépasse 25 Mo, retiré de la copie publiée.')
+            path.unlink()
+
+
 def prepare(root):
+    _alleger_editorial_status(root)
+    _retirer_fichiers_trop_gros(root)
     _prepare_affiches(root)
     _prepare_bilan_veille(root)
     count = 0
