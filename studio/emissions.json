@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261119-1900",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 19 h",
+  "titre": "La Pastille Actus : l'essentiel du 19 novembre 2026",
+  "accroche": "Vigilance orange, Comté d'or et cyberattaque : le JT du soir.",
+  "duree": 170,
+  "date": "2026-11-19T19:42+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261119-1900.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-19T19:00:00+01:00",
+  "source_start": "2026-11-19T13:00:00+01:00",
+  "source_end": "2026-11-19T19:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-8f74282d4c8eb044f3a769",
+    "titre": "Liban : l'armée se dit « déterminée » à appliquer le monopole des armes par l'État",
+    "publishedAt": "2026-11-19T17:21:00Z",
+    "createdAt": "2026-11-19T17:31:05Z",
+    "references": [
+     {
+      "nom": "RFI",
+      "url": "https://www.rfi.fr/fr/moyen-orient/20261119-l-arm%C3%A9e-libanaise-se-dit-d%C3%A9termin%C3%A9e-%C3%A0-d%C3%A9sarmer-le-hezbollah"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-01df8e5bfa825020686d95",
+    "titre": "La Manche et le Calvados en vigilance orange pluie-inondation dès jeudi soir",
+    "publishedAt": "2026-11-19T16:56:37Z",
+    "createdAt": "2026-11-19T17:01:24Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/environnement/meteo/la-manche-et-le-calvados-places-a-leur-tour-en-vigilance-orange-pluie-inondation-a-partir-de-jeudi-soir-huit-departements-en-alerte-au-total_8290205.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-6ddfded683922e6d1ab2fd",
+    "titre": "Au MWC26 de Doha, la GSMA appelle à partager les bénéfices de la connectivité et de l'IA",
+    "publishedAt": "2026-11-19T16:00:04Z",
+    "createdAt": "2026-11-19T16:01:16Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/19/mwc26-doha-inaugure-lere-iq-portee-par-connectivite-et-inclusion"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-25f40d32aa02393adcb6fc",
+    "titre": "Cherbourg-en-Cotentin met en vente bâtiments et cave municipale pour renflouer ses finances",
+    "publishedAt": "2026-11-19T15:13:01Z",
+    "createdAt": "2026-11-19T15:31:16Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/replay-jt/france-2/13-heures/cherbourg-des-batiments-municipaux-a-vendre-pour-renflouer-les-caisses_8290178.html#xtor=RSS-3-%5Beconomie%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-f095a3481e098f5215662f",
+    "titre": "Congés maladie : jusqu'à 810 milliards d'euros de coût annuel pour l'UE, selon un rapport",
+    "publishedAt": "2026-11-19T14:45:26Z",
+    "createdAt": "2026-11-19T15:01:18Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/19/les-conges-maladie-coutent-jusqua-810-milliards-deuros-par-an-a-lue"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-5e2a894256b94a19d7b099",
+    "titre": "Danemark : la Première ministre rejette le « grand remplacement » lors d'un podcast",
+    "publishedAt": "2026-11-19T13:41:29Z",
+    "createdAt": "2026-11-19T14:01:13Z",
+    "references": [
+     {
+      "nom": "RFI",
+      "url": "https://www.rfi.fr/fr/europe/20261119-danemark-la-premi%C3%A8re-ministre-reprend-%C3%A0-son-compte-la-th%C3%A8se-raciste-du-grand-remplacement"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-0a2cffb13710dfca41ae4c",
+    "titre": "Un Comté affiné 24 mois désigné meilleur fromage du monde 2026",
+    "publishedAt": "2026-11-19T13:15:10Z",
+    "createdAt": "2026-11-19T13:31:08Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/19/un-comte-jurassien-sacre-meilleur-fromage-du-monde-aux-world-cheese-awards-2026"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-efc9da9a8d569f865ab133",
+    "titre": "La Commission européenne dit avoir subi une cyberattaque assistée par IA en octobre",
+    "publishedAt": "2026-11-19T12:59:15Z",
+    "createdAt": "2026-11-19T13:01:12Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/europe/union-europeenne/la-commission-europeenne-annonce-avoir-ete-la-cible-d-une-cyberattaque-assistee-par-l-intelligence-artificielle-en-octobre_8289959.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261119-0800",
   "univers": "foot",
   "format": "edition",
@@ -12747,126 +12867,6 @@
      {
       "nom": "BBC Sport",
       "url": "https://www.bbc.co.uk/sport/football/articles/cm4gv830j73do?at_medium=RSS&at_campaign=rss"
-     }
-    ]
-   }
-  ],
-  "diffusion": "youtube"
- },
- {
-  "id": "foot-edition-20261024-2000",
-  "univers": "foot",
-  "format": "edition",
-  "moment": "soir",
-  "label": "JT 20 h",
-  "titre": "La Pastille Foot - Samedi 24 octobre, 20 heures",
-  "accroche": "Le JT foot du soir, quatre brèves, zéro blabla.",
-  "duree": 117,
-  "date": "2026-10-24T20:05+02:00",
-  "publie": false,
-  "voix": [
-   "piper"
-  ],
-  "speech_rate": 1.12,
-  "fichier": "foot-edition-20261024-2000.mp4",
-  "editorial_revision": "court-v1",
-  "edition_at": "2026-10-24T20:00:00+02:00",
-  "source_start": "2026-10-24T12:00:00+02:00",
-  "source_end": "2026-10-24T20:00:00+02:00",
-  "sources": [
-   {
-    "id": "rss-v2-90487a84fe8e9a7db76dc3",
-    "titre": "Ho réclame plus de moyens pour les arbitres de WSL après le derby perdu par Tottenham",
-    "publishedAt": "2026-10-24T16:27:59Z",
-    "createdAt": "2026-10-24T17:51:55Z",
-    "references": [
-     {
-      "nom": "BBC Sport",
-      "url": "https://www.bbc.co.uk/sport/football/articles/cmd7q47dd0e7o?at_medium=RSS&at_campaign=rss"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-30d5aac9096f93543e072d",
-    "titre": "Swansea battu 5-0 par QPR, Matos reconnaît ses responsabilités",
-    "publishedAt": "2026-10-24T17:25:18Z",
-    "createdAt": "2026-10-24T17:51:48Z",
-    "references": [
-     {
-      "nom": "BBC Sport",
-      "url": "https://www.bbc.co.uk/sport/football/articles/c6g7xvk35p94o?at_medium=RSS&at_campaign=rss"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-cb90d8a34341c36044064c",
-    "titre": "Jackson, de Chelsea à Villa : un début fracassant en Premier League",
-    "publishedAt": "2026-10-24T16:58:27Z",
-    "createdAt": "2026-10-24T17:20:32Z",
-    "references": [
-     {
-      "nom": "BBC Sport",
-      "url": "https://www.bbc.co.uk/sport/football/articles/c6p9gkdzzpnro?at_medium=RSS&at_campaign=rss"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-01f7f9bf4b509ea35ea6ff",
-    "titre": "Virginie Sainsily ferme son compte X après des insultes en ligne",
-    "publishedAt": "2026-10-24T17:00:00Z",
-    "createdAt": "2026-10-24T17:20:29Z",
-    "references": [
-     {
-      "nom": "Foot01",
-      "url": "https://www.foot01.com/tv/lequipe-du-soir-virginie-sainsily-craque-face-aux-insultes"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-f8195f466102021a343e51",
-    "titre": "Coupe de France : les résultats du 6e tour en Pays de la Loire",
-    "publishedAt": "2026-10-24T16:35:06Z",
-    "createdAt": "2026-10-24T16:56:36Z",
-    "references": [
-     {
-      "nom": "Foot Amateur",
-      "url": "https://footamateur.ouest-france.fr/coupe-de-france-les-resultats-du-sixieme-tour-en-pays-de-la-loire-2026/"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-ad8a3cab47a3f183ce133c",
-    "titre": "Naples : le superbe retourné d'Anguissa ouvre le score contre l'AS Rome",
-    "publishedAt": "2026-10-24T16:44:35Z",
-    "createdAt": "2026-10-24T16:56:32Z",
-    "references": [
-     {
-      "nom": "Foot Mercato",
-      "url": "https://www.footmercato.net/a1149539451582414537-naples-le-superbe-retourne-de-zambo-anguissa-contre-las-rome"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-eb08640439af173c577d3a",
-    "titre": "OM : Genesio aurait sanctionné Maupay et Gomes après la défaite à Graz",
-    "publishedAt": "2026-10-24T15:30:00Z",
-    "createdAt": "2026-10-24T16:20:51Z",
-    "references": [
-     {
-      "nom": "Foot01",
-      "url": "https://www.foot01.com/marseille/om-maupay-et-gomes-sanctionnes-par-genesio"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-35003ab52d9707ff7568fc",
-    "titre": "Jorja Smith et French Montana se produiront à la cérémonie du Ballon d'or à Londres",
-    "publishedAt": "2026-10-24T16:08:50Z",
-    "createdAt": "2026-10-24T16:20:38Z",
-    "references": [
-     {
-      "nom": "franceinfo",
-      "url": "https://www.franceinfo.fr/culture/musique/le-rappeur-french-montana-et-la-chanteuse-jorja-smith-se-produiront-a-la-ceremonie-du-ballon-d-or_8252395.html#xtor=RSS-3-%5Bgeneral%5D"
      }
     ]
    }
