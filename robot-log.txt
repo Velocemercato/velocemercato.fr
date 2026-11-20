@@ -1,36 +1,10 @@
-Passage du 2026-11-20 21:40 UTC (workflow_dispatch)
-Nettoyage : 0 breves vides retirees, 49 gardees.
+Passage du 2026-11-20 22:00 UTC (workflow_dispatch)
+Nettoyage : 0 breves vides retirees, 50 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 49 articles conservés et 45 flashs existants.
-RSS Foot National / LIGUE_1 : 8 actualités récentes.
-RSS Foot National / NATIONAL : 10 actualités récentes.
-RSS Foot National / LIGUE_2 : 19 actualités récentes.
-RSS RMC Sport / FRANCE : 30 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 0 actualités récentes.
-RSS RMC Sport / LIGUE_1 : 15 actualités récentes.
-RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 34 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 2 actualités récentes.
-RSS Foot01 / FRANCE : 41 actualités récentes.
-RSS Foot Amateur / NATIONAL : 1 actualités récentes.
-RSS RMC Sport / BLEUS : 2 actualités récentes.
-RSS BBC Sport / FEMININ : 4 actualités récentes.
-RSS The Guardian / ETRANGER : 3 actualités récentes.
-RSS The Guardian / ETRANGER : 2 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS franceinfo / FRANCE : 4 actualités récentes.
-RSS Foot National / NATIONAL : 1 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS Foot Amateur / NATIONAL : 4 actualités récentes.
-225 titres collectés, 68 nouveaux liens, quota 1.
-/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
-  warnings.warn(
-Brève prête : RMC Sport - Red Star - Pau : match interrompu par une panne d'éclairage au stade Bauer
-Bilan : brèves_rédigées=1
-Publié : 1 brèves (total 50). Flash : 45.
+Départ : 50 articles conservés et 45 flashs existants.
+Limite de 48 brèves par jour atteinte, aucune nouvelle publication.
 RQ Pronos : page d'actualités publiques actualisée.
-Accueil VM : actualités sourcées visibles en HTML, mises à jour.
+Accueil VM : actualités inchangées.
 Pages : 50 brèves avec leur propre page, sitemap à jour.
 Agenda : 66 matchs enregistrés.
 Ligue 1 : 15 vidéos lues, 2 vidéos de buts gardées.
@@ -40,31 +14,31 @@ UEFA : 15 vidéos lues, 4 vidéos de buts gardées.
 Premier League : 15 vidéos lues, 1 vidéos de buts gardées.
 LaLiga : 15 vidéos lues, 2 vidéos de buts gardées.
 Serie A : 15 vidéos lues, 5 vidéos de buts gardées.
-Bundesliga : 15 vidéos lues, 2 vidéos de buts gardées.
-Vidéos publiées : 6.
-Fil express : foot 200, actus 200, gaming 120
+Bundesliga : 15 vidéos lues, 3 vidéos de buts gardées.
+Vidéos publiées : 7.
+Fil express : actus 200, foot 200, gaming 120
 macommune.info  : 25 titres
-L'Est Républicain edition-belfort-hericourt-montbeliard : 19 titres
-L'Est Républicain www.estrepublicain.fr : 2 titres
 L'Est Républicain haute-saone : 19 titres
+L'Est Républicain edition-belfort-hericourt-montbeliard : 19 titres
 L'Est Républicain territoire-de-belfort : 12 titres
+L'Est Républicain www.estrepublicain.fr : 2 titres
 VM Belfort : 46 titres
 Auvergne-Rhône-Alpes : 54 titres
-Bourgogne-Franche-Comté : 33 titres
-Bretagne : 44 titres
-Centre-Val de Loire : 21 titres
+Bourgogne-Franche-Comté : 32 titres
+Bretagne : 83 titres
+Centre-Val de Loire : 20 titres
 Corse : 13 titres
-Grand Est : 20 titres
+::warning::Grand Est : flux muet (HTTPError)
 Hauts-de-France : 28 titres
-Île-de-France : 34 titres
-Normandie : 11 titres
-Nouvelle-Aquitaine : 34 titres
-Occitanie : 56 titres
-Pays de la Loire : 70 titres
-Provence-Alpes-Côte d'Azur : 83 titres
+::warning::Île-de-France : flux muet (HTTPError)
+::warning::Normandie : flux muet (HTTPError)
+::warning::Nouvelle-Aquitaine : flux muet (HTTPError)
+::warning::Occitanie : flux muet (HTTPError)
+::warning::Pays de la Loire : flux muet (HTTPError)
+::warning::Provence-Alpes-Côte d'Azur : flux muet (HTTPError)
 Outre-mer : 33 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : BFC 1, BRE 5, COR 6, CVL 20, GES 1, NOR 4, OCC 5, PDL 5 — 47 titres
+Foot amateur : BFC 1, BRE 5, COR 6, CVL 19 — 31 titres
