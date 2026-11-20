@@ -1,5 +1,5 @@
 {
-  "maj": "2026-11-20T19:01:27Z",
+  "maj": "2026-11-20T19:21:39Z",
   "regions": {
     "ARA": "Auvergne-Rhône-Alpes",
     "BFC": "Bourgogne-Franche-Comté",
@@ -17,6 +17,14 @@
     "OM": "Outre-mer"
   },
   "titres": [
+    {
+      "l": "OCC",
+      "n": "AMATEUR",
+      "t": "Football : Rodez ouvre le score à Guingamp, suivez le match en direct",
+      "u": "https://news.google.com/rss/articles/CBMilwJBVV95cUxPVUZZdi10WExEZ2ViUDhpWkRiTm00eXRzVmFJb0R6cHg0U0g0NDYtTG5hQzJWUEg0ME9zOU1tVFRxWjNVUXRDOFphTDNfSEhUaGkxU0VfSmViczNFeVFEeHFFTU5kc19ab2dZNy1oeTFQZDRQbklPMWNsRjlDczU2R2pKZEhMa3kwWUFZQS1tZjNhSEFYdlFkOG5Pd3ZlaHFqcmxYdC1qb3Z2TDdIVFFjZmpNQ1YtRzUxQlhaeEtzcVVIa09JT0R3UDR4S25MNjZzdS1pOUUzQVFRQk9IMjBYLUV2Q0g4Z2N4MjFEMFVNTVd0cGotUmZBWkRvQVpIZTFWVE1uSkVxWGF6YlZ5S0ZwSFEtVTJPZjA?oc=5",
+      "s": "Centre Presse Aveyron",
+      "d": "2026-11-20T18:53:00Z"
+    },
     {
       "l": "CVL",
       "n": "AMATEUR",
@@ -48,6 +56,14 @@
       "u": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOT0IzTENGOUVkbjR2dVJKdnpmVl9xdDBZQWdkanh1bHJqQjdFdEl2NGlabTVKWDMzN1hZNGg1ZGRjNEJ0YWhvbm9IUGxjRkozOFVZRnRtODg2V3ZLQ1g0NUhpUkdzdTJjUEdlbHZIWTcwS0Q5d3dha2Yyc1RkVV9mZ2taeGlyVlhGcVpZSi1vUHNBOXItaHhSLVNZWlNlYTNWU3h3YlJDbEtMcmJzTWkwQW0ycEtXZw?oc=5",
       "s": "Vosges Matin",
       "d": "2026-11-20T17:05:30Z"
+    },
+    {
+      "l": "COR",
+      "n": "COUPE",
+      "t": "Un derby en R1 et le BCV Laon en Coupe de France, le programme sportif du week-end dans l’Aisne",
+      "u": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOZEgtd25Oa1hvMXBlT3pwQUNFZ1dDM2trQnhVaUg0LUtCZEsxLUVJV1NXX2hpbE5UaElaeHpMc1NacnBUU01LSXExVTNnRW9uaW5Rd0x2SnRmU1BUakNYaXItNXAwLWFsMmVEeDROTGVEVmZPYl9vU3dESEN0VUhSZEpuMkxZMHBTZWd6amc1YUhuODRsZmV0WEQ2aE5KX3gtRHR5S2xHUlBMcWZLNDZZYzZNbVBoSHF5ZzY3eGlxNVdXSkNjNGhzNE9B?oc=5",
+      "s": "L'Union",
+      "d": "2026-11-20T17:00:00Z"
     },
     {
       "l": "CVL",
@@ -138,12 +154,28 @@
       "d": "2026-11-20T14:43:14Z"
     },
     {
-      "l": "NOR",
-      "n": "DISTRICT",
-      "t": "Football : les Districts du Calvados, de la Manche et de l’Orne reportent les rencontres prévues ce week-end",
-      "u": "https://news.google.com/rss/articles/CBMiowJBVV95cUxQaHc1NXMxc1hoQV80cC1NdXBDU1ExOFlPWTR0TTZ1VktMNllnZnpob3pXX0lmVUpLaTlUbnBMcmdnMFEwcWJUYU9OdDlrZk5lclQ5aG1rSW5LREJuTlRnSkpBVVBqc0pVek45Z3dUNm1RS1dBdzhIdkVFYXlfeWpfOEQ5U3hrOEhEb3hvR2Nsem43ZVd1bTYyTWo1eUhFcUhTWWVTU0dNZEJaazJXRW13NXVPOHJxM05HOTg1ZGRfdUxPWE4tOUxwTUQ4bHRDaEhGUHV1TmRBQmROMFhJS2hDS2hpMS0tV3luZ3JCQTdkSEVkZDQxUElvdkZqemU5Y29GT2ppNWFodDhva1Z1WG9iYW94cHp4N0d1X2lkOGJVRy1Ta1k?oc=5",
-      "s": "Ouest-France",
-      "d": "2026-11-20T14:34:03Z"
+      "l": "PDL",
+      "n": "COUPE",
+      "t": "Coupe de France de foot : comment assister au match du huitième tour entre le FC Nantes et Nueil-les-Aubiers",
+      "u": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxQdTZuVXdMZWlsUmZxZGNjSnc3dWcyaW5YZFdLSWpXQnlvc2tRNnZZc1VKekdQMmt6TmZ2ZTY2MVl4UzdDYXNZN3VkQWlfV1hEdFZaRUd2SzJaenNFVkZjZjUtN0V6bXFNZnN6Z3Y2d2E3U1JpSzhETmdEanFYeW4tMVJ3T0R3ZWhVNHpQSFpRcmpqaXNWajlYUzhDODhKNWQ0cldqV0hydWpQTEhLbmVqTWZ0V01NYW5lNWN2N1NLUnk4UDZQS1JaT19GNUxkbVU1ZFkteWlFQWlUbWU5T2k1cUhmMWRhQnFsbWJVVHNuUzhWek80OU5TYzFJUko2a01fa3RuX2JDOUo?oc=5",
+      "s": "ici.fr",
+      "d": "2026-11-20T14:39:58Z"
+    },
+    {
+      "l": "PDL",
+      "n": "COUPE",
+      "t": "Coupe de France : face à Nantes, Nueillaubiers s’organise pour faire vibrer la Beaujoire",
+      "u": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxNN0UyQy1xWTA2VTFlU2NLaVo2SXEzOFQxS3BQRmRQREdxc1haM0UxM2c5ZllDV256a19mTVNsY0E3YUlLODBJeXVPSEx5UlBQQ0JGblBLSFpsQkxDbTcwQXRIeHVQR2d6SUZBSWxIWEcxVmxxLXhWc2RpSTJCYTZBU3RvNHk3Uk8tZHIzNUNkaGhyM3dfVDhOTnU1ZkRJZU5vd1VHUkJ0OUlvTGdSTWR2QUV4aHlaMTY4RUFWQmgtdk1URl9saERjUjZSQjlfQnVncVpXVWJRZGVMUTh6XzF5Vm9xMW1tdkpodTVOMnJOTTFtTm04M2t3RkZoR2dkMDA?oc=5",
+      "s": "lanouvellerepublique.fr",
+      "d": "2026-11-20T14:35:10Z"
+    },
+    {
+      "l": "COR",
+      "n": "NATIONAL",
+      "t": "Football : la rencontre OSQ - SC Bastia (B) reportée en National 2",
+      "u": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOQ2MtWlRNekJCb0lnOXcxd3U3bmZYT3JyZFBXWjE2ZHo4MlBXdi1FQVFZc3E3RjI5Q2I5aXhHaGF0dndveTdwM01GNUN4WW1zN1hFMkZLdEZ5NGN0eE8tSnlUUXhlVHN6ZmNaWHluTnVXakRIcVJlajZTNUxlQlJxaHJIeW5uUUdyNC1EbExzREtKVXowaUNQQ056Q21IWE15dDJobGVhdlM4RlYwWnNGTExPLVdtZmZEMkhUYmpsOVU?oc=5",
+      "s": "L'Aisne nouvelle",
+      "d": "2026-11-20T14:33:36Z"
     },
     {
       "l": "CVL",
@@ -186,6 +218,22 @@
       "d": "2026-11-20T13:14:00Z"
     },
     {
+      "l": "NOR",
+      "n": "AMATEUR",
+      "t": "Football – Ligue 3 : Melvin Borne, le latéral gauche du FC Rouen, a l’avenir devant lui",
+      "u": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPY3A0YUU4ZjJlTjF1akFCN1l0OU5oNF9OLVVLaU4zMU9nS3BkQzlubVY3MUdvV21GVkVrRmhXM2Fkb29IM2JhZHZsTUpycFZVMkVTbGlIVnd3azFvdVQ2SHJ1ZWVlRHNlRUE1VDNGSmxlSzhsMFJGVXA5eF9IZkxVSllubmJ5S2VIU0FZblVvNlc0TkdfcmVVejQ2QXk2S1J2Y296SjZ1YlBiM0ZHQ3diS3RmNW43QlRGU2NTN25YNTkwMnR1d3hxYzFXaWhORWNRZENB?oc=5",
+      "s": "Paris Normandie",
+      "d": "2026-11-20T13:09:43Z"
+    },
+    {
+      "l": "COR",
+      "n": "AMATEUR",
+      "t": "TUTTI FOOT | Le FC Toga en plateau et Julien Romain joueur de l'AS Porto-Vecchio en visio",
+      "u": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBKQkJtRGpTWWoxaFlDSmhjN2JENGREOG9xMlIxRXhrS2Y2T2RaeGpPeWJhdWprRlphVmN6UFZuU0R2UTRSZ1lGRDA1OVBYQk1NNThVM0syZC1vc3BScktGMGFmdHFUSU9x?oc=5",
+      "s": "a corsica tv",
+      "d": "2026-11-20T12:22:49Z"
+    },
+    {
       "l": "CVL",
       "n": "REGIONAL",
       "t": "Régional 1 : Auch Foot veut résilier son abonnement aux matchs nuls pour la venue de Narbonne",
@@ -200,6 +248,22 @@
       "u": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQZEtfV0Z5RDQ2dVNOWHN3ZWF6aXYzcm91bUpvcWVfSEFoN0pMcW51dmlZNUx6b2dmTHBLLWwwRTNRZ3V4MzZ6VWdLQnU3eGZzZThPendzdlVQbFdtVURTVlg3dXVFXzNRNVZva3h2NUdTR0Q4ZHhTZGNsVzRiTEdvdUs5TVR5NFhuS2M4aldNS1JDdEdFeHNyd2NYb1JpMEtvSy04YnFqTzh4SkYtR3c?oc=5",
       "s": "LIGUE DE FOOTBALL DE NORMANDIE",
       "d": "2026-11-20T11:18:12Z"
+    },
+    {
+      "l": "PDL",
+      "n": "AMATEUR",
+      "t": "Formation Arbitres-Clubs : 8 candidats formés à l’ASPTT Le Mans",
+      "u": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQS2huazdmOVUta0tMTU1YYlJqMjVscU5HbUxFV1B6c0lSR2xKdk9va28zelY4Y3RpTUZ5YzdkSFJ6R1RVN2lFdzFNZkF5MERyX2JUSEV3X1hXNDZPTkVUZUtrZVN0VUFFZHdjZWxZaXF4TXlINHlCVlFKZjBCMlQteXRzdkV3T2pzVkhITnJ3aFBhWXJ6?oc=5",
+      "s": "District de la Sarthe",
+      "d": "2026-11-20T09:42:58Z"
+    },
+    {
+      "l": "PDL",
+      "n": "COUPE",
+      "t": "Coupe de France féminine : Pau veut faire douter La Roche-sur-Yon",
+      "u": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOSV9VdUZCU3QxX3pLMkgwdGdxQVZ4QTgzb0laamdyOE5IajJ5YWlRMkoyQkNHSWRfeGpMWnRnbmx3M1E3SjA5djk4c1J1R0pYS2ZQbEZSZlFvOGFvNmlTQVRXWUNHSk5fdk42WU9GZThOaUlnOHZIN2I5Q0d1eEZ5SU1GcXlQTV9wOTFEaXZwRXZZVDIwQzlJcTI0UXdSd2E1UXNTMEFPcy0temVPVG9YVVJpZE5QUHdwWWJzY3pVRHdHTjNxcXctNHl3?oc=5",
+      "s": "La République des Pyrénées",
+      "d": "2026-11-20T08:43:00Z"
     },
     {
       "l": "BRE",
@@ -264,6 +328,14 @@
       "u": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQYjZCMDYwanlucndfMVZJbXJCamVzbXF5RFhiekpSVmFNQVZyWkYzOGNyQTBTbjFVX0JJSVA0SkZWR0h4dGZfazdyODJQRzQxcS1EamVubENsWENiTmF2X1JweE9iem9ERWhmQ0FleWFDZGZwdzBKYjl2SnVGd1Bsc0xsUU50MjJ4bVhvRDZGUlJUZDBPZ1ZQazFzT2QwS2w0ZnI3RTRBNDRESERITTE0MGhab3NwZmJUc1IzUXAtbUcxaEhMTk9yb21uZ2J6MVYtWDAxOHZxTWpXMlBKdVVVYXVR?oc=5",
       "s": "maville.com",
       "d": "2026-11-20T07:04:00Z"
+    },
+    {
+      "l": "PDL",
+      "n": "AMATEUR",
+      "t": "Coupe U18F Nike : « La volonté de progresser »",
+      "u": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5DVEhqWklzRC1JV3VrckFHaEdqTWtLQ0N0bDMtalU3LUktUHl3Z2hkN3JpMkM0Y0FlaTJaX2J4OXR6ME5xOElHc1NFVUxPSlZpMVJrN1dmdW12MnBKTDJLNERhd0ljOFM1TURrSUREOTNDQTRFQ1lV?oc=5",
+      "s": "LIGUE DE FOOTBALL DES PAYS DE LA LOIRE",
+      "d": "2026-11-20T05:54:09Z"
     },
     {
       "l": "CVL",
