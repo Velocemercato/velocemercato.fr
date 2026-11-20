@@ -1,25 +1,26 @@
-Passage actus du 2026-11-20 15:30 UTC (workflow_dispatch, main)
-Départ : 28 articles conservés et 25 flashs existants.
-RSS franceinfo / SANTE : 7 actualités récentes.
-RSS franceinfo / ECONOMIE : 20 actualités récentes.
-RSS franceinfo / FRANCE : 28 actualités récentes.
-RSS franceinfo / CULTURE : 16 actualités récentes.
-RSS France 24 / INTERNATIONAL : 23 actualités récentes.
-RSS franceinfo / INTERNATIONAL : 20 actualités récentes.
-RSS 20 Minutes / FRANCE : 24 actualités récentes.
-RSS RFI / INTERNATIONAL : 23 actualités récentes.
+Passage actus du 2026-11-20 16:00 UTC (workflow_dispatch, main)
+Départ : 29 articles conservés et 26 flashs existants.
 RSS franceinfo / POLITIQUE : 20 actualités récentes.
-RSS BBC News / INTERNATIONAL : 7 actualités récentes.
-RSS franceinfo / TECH : 12 actualités récentes.
-RSS Ouest-France / REGIONS : 10 actualités récentes.
-RSS Euronews / INTERNATIONAL : 45 actualités récentes.
+RSS franceinfo / FRANCE : 28 actualités récentes.
+RSS franceinfo / SANTE : 6 actualités récentes.
+RSS franceinfo / ECONOMIE : 20 actualités récentes.
+RSS franceinfo / INTERNATIONAL : 20 actualités récentes.
+RSS inaccessible France 24 : HTTPError - HTTP Error 403: Forbidden
+RSS franceinfo / CULTURE : 14 actualités récentes.
 RSS The Guardian / INTERNATIONAL : 2 actualités récentes.
-257 titres collectés, 189 nouveaux liens, quota 1.
+RSS 20 Minutes / FRANCE : 24 actualités récentes.
+RSS Euronews / INTERNATIONAL : 45 actualités récentes.
+RSS franceinfo / TECH : 13 actualités récentes.
+RSS RFI / INTERNATIONAL : 23 actualités récentes.
+RSS Ouest-France / REGIONS : 10 actualités récentes.
+RSS BBC News / INTERNATIONAL : 7 actualités récentes.
+232 titres collectés, 169 nouveaux liens, quota 1.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-Brève prête : Euronews - Farage accuse Burnham de trahir le Brexit avant un sommet UE-Royaume-Uni
-Bilan : brèves_rédigées=1
-Publié : 1 brèves (total 29). Flash : 26.
+Brève ignorée (franceinfo) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève prête : franceinfo - La maison à la porte bleue de « Coup de foudre à Notting Hill » est à vendre
+Bilan : brèves_rédigées=1, rejet_lecture_ou_ia=1, source_inaccessible_ou_trop_courte=8
+Publié : 1 brèves (total 30). Flash : 27.
 --- Papiers Sans Galère ---
 Départ : 6 articles conservés et 5 flashs existants.
 Limite de 6 brèves par jour atteinte, aucune nouvelle publication.
