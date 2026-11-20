@@ -1,32 +1,32 @@
-Passage du 2026-11-20 04:40 UTC (workflow_dispatch)
+Passage du 2026-11-20 05:00 UTC (workflow_dispatch)
 Nettoyage : 0 breves vides retirees, 2 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
 Départ : 2 articles conservés et 0 flashs existants.
+RSS Foot National / NATIONAL : 4 actualités récentes.
 RSS Foot National / LIGUE_1 : 9 actualités récentes.
-RSS Foot National / LIGUE_2 : 7 actualités récentes.
-RSS Foot National / NATIONAL : 1 actualités récentes.
-RSS RMC Sport / LIGUE_1 : 12 actualités récentes.
+RSS Foot National / LIGUE_2 : 8 actualités récentes.
 RSS RMC Sport / FRANCE : 30 actualités récentes.
+RSS RMC Sport / LIGUE_1 : 12 actualités récentes.
 RSS RMC Sport / INTERNATIONAL : 0 actualités récentes.
 RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 34 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 1 actualités récentes.
-RSS BBC Sport / FEMININ : 7 actualités récentes.
-RSS RMC Sport / BLEUS : 2 actualités récentes.
-RSS Foot01 / FRANCE : 42 actualités récentes.
 RSS Foot Amateur / NATIONAL : 5 actualités récentes.
+RSS RMC Sport / BLEUS : 2 actualités récentes.
+RSS BBC Sport / FEMININ : 7 actualités récentes.
 RSS Foot Amateur / NATIONAL : 3 actualités récentes.
 RSS The Guardian / ETRANGER : 1 actualités récentes.
-RSS The Guardian / ETRANGER : 1 actualités récentes.
 RSS franceinfo / FRANCE : 3 actualités récentes.
+RSS The Guardian / ETRANGER : 1 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS Foot National / NATIONAL : 4 actualités récentes.
-207 titres collectés, 19 nouveaux liens, quota 2.
+RSS Foot National / NATIONAL : 1 actualités récentes.
+RSS Foot01 / FRANCE : 42 actualités récentes.
+208 titres collectés, 20 nouveaux liens, quota 2.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-Bilan : source_inaccessible_ou_trop_courte=8, sujet_deja_traite=11
+Bilan : source_inaccessible_ou_trop_courte=9, sujet_deja_traite=11
 Aucune brève de qualité suffisante ; fichiers JSON inchangés.
 RQ Pronos : page d'actualités publiques actualisée.
 Accueil VM : actualités inchangées.
@@ -41,29 +41,29 @@ LaLiga : 15 vidéos lues, 2 vidéos de buts gardées.
 Serie A : 15 vidéos lues, 5 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 2 vidéos de buts gardées.
 Vidéos publiées : 0.
-Fil express : actus 5, foot 2
+Fil express : actus 19, gaming 1, foot 4
 macommune.info  : 25 titres
-L'Est Républicain www.estrepublicain.fr : 2 titres
-L'Est Républicain haute-saone : 20 titres
 L'Est Républicain territoire-de-belfort : 14 titres
 L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
+L'Est Républicain www.estrepublicain.fr : 2 titres
+L'Est Républicain haute-saone : 20 titres
 VM Belfort : 0 titres
-Auvergne-Rhône-Alpes : 59 titres
+::warning::Auvergne-Rhône-Alpes : flux muet (HTTPError)
 Bourgogne-Franche-Comté : 42 titres
-Bretagne : 40 titres
+::warning::Bretagne : flux muet (HTTPError)
 Centre-Val de Loire : 19 titres
 Corse : 12 titres
 Grand Est : 29 titres
 Hauts-de-France : 28 titres
 Île-de-France : 34 titres
-Normandie : 23 titres
+Normandie : 11 titres
 Nouvelle-Aquitaine : 34 titres
-Occitanie : 49 titres
+::warning::Occitanie : flux muet (HTTPError)
 Pays de la Loire : 69 titres
 Provence-Alpes-Côte d'Azur : 44 titres
-Outre-mer : 33 titres
+Outre-mer : 76 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : CVL 1, OCC 1 — 2 titres
+Foot amateur : CVL 1 — 1 titres
