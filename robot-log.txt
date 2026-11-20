@@ -1,36 +1,10 @@
-Passage du 2026-11-20 18:40 UTC (workflow_dispatch)
-Nettoyage : 0 breves vides retirees, 43 gardees.
+Passage du 2026-11-20 19:00 UTC (workflow_dispatch)
+Nettoyage : 0 breves vides retirees, 44 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 43 articles conservés et 40 flashs existants.
-RSS Foot National / LIGUE_2 : 18 actualités récentes.
-RSS Foot National / NATIONAL : 7 actualités récentes.
-RSS Foot National / LIGUE_1 : 8 actualités récentes.
-RSS Foot National / NATIONAL : 1 actualités récentes.
-RSS RMC Sport / FRANCE : 30 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 0 actualités récentes.
-RSS RMC Sport / LIGUE_1 : 16 actualités récentes.
-RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 35 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 2 actualités récentes.
-RSS BBC Sport / FEMININ : 4 actualités récentes.
-RSS RMC Sport / BLEUS : 3 actualités récentes.
-RSS Foot01 / FRANCE : 41 actualités récentes.
-RSS Foot Amateur / NATIONAL : 1 actualités récentes.
-RSS Foot Amateur / NATIONAL : 5 actualités récentes.
-RSS The Guardian / ETRANGER : 1 actualités récentes.
-RSS The Guardian / ETRANGER : 2 actualités récentes.
-RSS franceinfo / FRANCE : 4 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-223 titres collectés, 54 nouveaux liens, quota 1.
-/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
-  warnings.warn(
-Brève prête : Foot Mercato - Senny Mayulu raconte sa première sélection en équipe de France et son échange avec Zidane
-Bilan : brèves_rédigées=1
-Publié : 1 brèves (total 44). Flash : 41.
+Départ : 44 articles conservés et 41 flashs existants.
+Limite de 48 brèves par jour atteinte, aucune nouvelle publication.
 RQ Pronos : page d'actualités publiques actualisée.
-Accueil VM : actualités sourcées visibles en HTML, mises à jour.
+Accueil VM : actualités inchangées.
 Pages : 44 brèves avec leur propre page, sitemap à jour.
 Agenda : 66 matchs enregistrés.
 Ligue 1 : 15 vidéos lues, 2 vidéos de buts gardées.
@@ -44,27 +18,27 @@ Bundesliga : 15 vidéos lues, 2 vidéos de buts gardées.
 Vidéos publiées : 5.
 Fil express : actus 200, foot 200, gaming 120
 macommune.info  : 25 titres
-L'Est Républicain territoire-de-belfort : 12 titres
-L'Est Républicain haute-saone : 18 titres
+Flux muet L'Est Républicain (https://www.estrepublicain.fr/haute-saone/rss) : RemoteDisconnected
 L'Est Républicain edition-belfort-hericourt-montbeliard : 19 titres
+L'Est Républicain territoire-de-belfort : 12 titres
 L'Est Républicain www.estrepublicain.fr : 2 titres
-VM Belfort : 41 titres
+VM Belfort : 35 titres
 Auvergne-Rhône-Alpes : 55 titres
-Bourgogne-Franche-Comté : 35 titres
-Bretagne : 43 titres
-Centre-Val de Loire : 21 titres
-Corse : 15 titres
+Bourgogne-Franche-Comté : 36 titres
+Bretagne : 42 titres
+Centre-Val de Loire : 22 titres
+::warning::Corse : flux muet (HTTPError)
 Grand Est : 17 titres
 Hauts-de-France : 28 titres
 Île-de-France : 34 titres
-Normandie : 12 titres
-Nouvelle-Aquitaine : 33 titres
+Normandie : 11 titres
+::warning::Nouvelle-Aquitaine : flux muet (HTTPError)
 Occitanie : 55 titres
-Pays de la Loire : 70 titres
-Provence-Alpes-Côte d'Azur : 43 titres
+::warning::Pays de la Loire : flux muet (HTTPError)
+Provence-Alpes-Côte d'Azur : 83 titres
 Outre-mer : 33 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : BFC 1, BRE 4, COR 4, CVL 17, NOR 6, OCC 4, PDL 5 — 41 titres
+Foot amateur : BFC 1, BRE 4, CVL 19, NOR 5, OCC 4 — 33 titres
