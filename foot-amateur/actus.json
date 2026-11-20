@@ -1,5 +1,5 @@
 {
-  "maj": "2026-11-20T17:55:34Z",
+  "maj": "2026-11-20T18:01:27Z",
   "regions": {
     "ARA": "Auvergne-Rhône-Alpes",
     "BFC": "Bourgogne-Franche-Comté",
@@ -17,6 +17,14 @@
     "OM": "Outre-mer"
   },
   "titres": [
+    {
+      "l": "NOR",
+      "n": "COUPE",
+      "t": "Football : après la déception liée à l’élimination de la Coupe de France, Vire doit repartir de l’avant dès ce week-end",
+      "u": "https://news.google.com/rss/articles/CBMihgJBVV95cUxQcHdmOUtKalZIS0tQYnFMbmRySGdpbzQ1anZuUjdVd2JMUnZwUERPcDZBeFlfN1ZndmZ6WFhPRVJBR3VMNjg2U0x0bFI0SlBnTmNEYld2OWRTTERxbFd2UGx2U29veGFrQVZXbVpnbkpUUUd6bXJncnUzZUVDRlRveF94T2JHQUkzNEVBOVdXc1NuZFFIZEtiREZkN1VBVjBWenQ2enRGYTZmMGNxV0ZrYTBRQmhpMlVLLWVIbWNfUFh5al9kV2xveC1IOGJaMmk2MXVrVUJkNnBIakRITWh6alZKbGlxX1RVcFVIM1ZxVktUbEo0UVlSNC1vRWhUVlQ4bW9nem5R?oc=5",
+      "s": "Actu.fr",
+      "d": "2026-11-20T17:56:01Z"
+    },
     {
       "l": "CVL",
       "n": "REGIONAL",
@@ -51,14 +59,6 @@
     },
     {
       "l": "NOR",
-      "n": "DISTRICT",
-      "t": "Intempéries : le district de la football de la Manche reporte les matchs départementaux du week-end",
-      "u": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPdGpDMHQ0VHpBbUpEUmk4RjhwcjF1T3g1ODZjdTZHZGIxVVJHblRIN01ERXdpbEV0QXI0LVA2WXdOZS16c2YwSF9KZU9qemdEUTM0Mzh4SVo4NlRUREk5OGJ5ZFk1M1hXbXZhLXI1R2ROeXVjQ1p2RGRZRmtoeWJBTWROY0ttNTJBRGNPUE5QeU8wRjFKY1RQWVFhOE5wUVVJc3FKMUYwTzh5MXotYi1VOEZLZXdKNEc4VHNTVElYT3RycDI4dnViX09COVNnYWZBVkxjRFV3Z3pRMnNn?oc=5",
-      "s": "ici.fr",
-      "d": "2026-11-20T16:14:45Z"
-    },
-    {
-      "l": "NOR",
       "n": "COUPE",
       "t": "Coupe de France : les filles de la Saint-Pauloise se préparent à affronter Quevilly Rouen en Normandie ce samedi",
       "u": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNZWQ5UlZmbGhCb3RXWU9sODhOaVZBSGoydUdhbkllSUpFNGpsVXpxSkdNUWg3dmw2SmRmVG5DM0RRTUpQcDdyMVR3M1phejA4SF94cTVXeTNKeXBCQ01IUXJjclgwTnBiU2hocVh3bmFnWXhJMmZhb19fTmVpZm5hbTlPQUJmOFpuQ2tPaUhTaGpBVkZ2TWtPWHFXbTlWTE05TEdUNW9Jd3NFaWg4bDJVLWhrOHhENThWVzZpX0dhXzB2OFAtbjRHU2g3ZGNHa3RBNGlsUDhESG1RRE11YlNUOHh2RVRhbUZEc0V6bGNXdXVBUQ?oc=5",
@@ -72,14 +72,6 @@
       "u": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOZHlRQjFteGs2dU16blU4Wm1YT1d2aUtnMnJIWWVDenpmTlFwNlM3SnhOUC01ZW9WOVR5ekRaZV9KZENjY21hU0dYNHpDOVpPOExTeXBQVEZGMWNxSmZhdVZHWnZMUkdrQ1hwV2FiMFFSQ294UTczV2pLeUN1WFB1Y1prbmMxMXNHMmpONWFYc3NqQ2NleXNEdE1PZGRZREdkWDI4TjdiTXd5RW9YU0RxNzdCZzVmcVFaLWtn?oc=5",
       "s": "lanouvellerepublique.fr",
       "d": "2026-11-20T15:41:00Z"
-    },
-    {
-      "l": "OCC",
-      "n": "COUPE",
-      "t": "Coupe de France : l'AS Puissalicon Magalas qui jouera à Béziers a \"basculé dans le monde des grands\"",
-      "u": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPZ3NGdHcyendGNzlPeTk5N0F6UXhVamZaYjNhOGhneWV6cGNwNkJNd1FHR1hiVTQwY1VjZHhKclBWZ3Y4SlR3eHoxekhkbkRMYUhuUS1jYkJsMmpSOVh5TkdGRGQxLXJ6OF9DWjdlNl9zb0VIZVBoUFlFVmYyV1ZDZndsQkRTVllhdW1wa1lBMFFWWjNydi1ubG9xNGd0TzlEU2JzU21QdkhQb3MtbURuX2s5LTM3TF9Idl9TSWdMTVJpNi1fcjJDRmlmRWxfTEpRRW45SWRaV3FoRnNa?oc=5",
-      "s": "Midi Libre",
-      "d": "2026-11-20T15:38:00Z"
     },
     {
       "l": "NOR",
@@ -104,14 +96,6 @@
       "u": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPV2dhS3MtZUVEcGJzQ3plQTl5S0dRcDRDem9DV3pmT3IxYVpvVVNQVDBIMzhMOENQVjBocjNrem44cVI0UEFQUVB0OHRKU0hsQXJrZjNkd1hFZ3dLWWtzcHBFa0lZdUU0WklIcEs1N0dxVzhSTjhkOURCT0o0SDBGV0RmTTBNNVNrUE9JeHhHQmF5cUV3Qk5uZWdtMUlQYmVGaXNMRUVaSWNJcXN6bkdXakhSNzI1STNnQU12RUJIUkxHVzBYRUQ3NVdIM09yM1BLVTZUalRsT1k?oc=5",
       "s": "Actu.fr",
       "d": "2026-11-20T14:50:18Z"
-    },
-    {
-      "l": "OCC",
-      "n": "COUPE",
-      "t": "Coupe de France : les billets pour Mende-Montpellier en vente dès le 23 novembre",
-      "u": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQbW5VR1F5Ym92OUZEX0pTVXBjYVZITFFhYUdpNmgyOTJNSjJXZ054ei1vSmdXbGQtMzJDTE5GVDFRbkkxTFNuRjNxcEhzbnhidUprVzhZUkZpRDBTSWVfblNjeGhkSmtvSVJONllQQzVLY0s4ZTBpSjR5ckVUOXVCRDhKdUI2U0hqR040S0xXdU1xakdJNTFvZS03cHI2bVZfb2xXdlB2S0ZnVnJiOTFPSXNpN1VJUzhWaF9wbEp3aTdyQkRrWUwyUFF1dw?oc=5",
-      "s": "ici.fr",
-      "d": "2026-11-20T14:43:14Z"
     },
     {
       "l": "PDL",
@@ -152,14 +136,6 @@
       "u": "https://news.google.com/rss/articles/CBMijgJBVV95cUxQa05Kal9rWHJySWRYVC10Wm5iZElOSUdOT2ZpVVZ6Sm1jbjhtbGd1dGNEQ0hucEhMXzZJdHQ4VXdGb1ZYbThkaGZFTFZSUG9lNENVZERtbFRNUGR6MEk2S1dPM2ZEb0FmYTRpVGdFdkYyTmdVbzJ4cnNDUEZ2MG9WN1JDWDVBNnBtMnhWNDdlbzRCd0oxODdhX2FBbERBbzgzYjRWZVJ1ckw3U0FNN3hJalEwbjB6N2dxVVQ1Qzl6bmFNN2N1WDdPQ3lKWUVENWdSRkF1ZkhtN1djN0RkV2I0Qko5TGdELXRFaEt0RllUbV9Lcy1yZl9IanlEbmhXNi1TbUM0TWF1bmhDaEtpTHc?oc=5",
       "s": "lanouvellerepublique.fr",
       "d": "2026-11-20T14:17:33Z"
-    },
-    {
-      "l": "OCC",
-      "n": "COUPE",
-      "t": "En Avant Guingamp : après l'humiliation en Coupe de France à Lannion, ce match contre Rodez devient crucial",
-      "u": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxNVTItTVFnRFFRcXp2SjhjbVRmT284SEwzSlRZQURGLW9KaDJORWRPMFpZelVhY3lGbmQ5R1c4M3dWd2VOcEpIS2lsdU9RVVV4d2g4TUh4RlFBVzFzMThrMEtQVXBwcGJrbEF5VWZnOGRLN0xjSEdVVHlybjBlTlN3cXdFeXpqTldlQW1wckZUenJpTmswSlJLTWY5Wllhd1pzQTNTOWFheHRHSGtoWEJlTjJadEV0Zlh5bzMzaEp5cDhEZFB3bmpLTGFobFFqa2x1aFN3aUV0dGN5bmxVTHlJQ1NjVmZ2MmxQb1JXdkpn?oc=5",
-      "s": "Actu.fr",
-      "d": "2026-11-20T14:10:34Z"
     },
     {
       "l": "CVL",
