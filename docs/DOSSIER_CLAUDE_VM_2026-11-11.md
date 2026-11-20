@@ -1,6 +1,6 @@
 # Dossier Claude — Véloce Mercato, site et réseaux
 
-État établi le 2026-11-20T14:34+01:00.
+État établi le 2026-11-20T16:24+01:00.
 
 Ce dossier remplace les anciennes consignes de restauration intégrale et les anciennes cadences. Il décrit le travail autorisé par Romain dans cette conversation. Les accès et conversations de ChatGPT ne sont pas automatiquement accessibles dans Claude.
 
@@ -35,11 +35,11 @@ Sur vmunivers.fr, Romain a demandé : première case à gauche Facebook https://
 
 | Destination | Nombre relevé dans les reçus de cette reprise |
 |---|---|
-| Véloce Mercato · facebook | 400 |
-| Véloce Mercato · instagram | 319 |
-| VM Actus et Pronos · facebook | 417 |
-| VM Univers · facebook | 98 |
-| VM Univers · instagram | 14 |
+| Véloce Mercato · facebook | 409 |
+| Véloce Mercato · instagram | 325 |
+| VM Actus et Pronos · facebook | 422 |
+| VM Univers · facebook | 88 |
+| VM Univers · instagram | 4 |
 
 Ces nombres comptent les identifiants uniques avec confirmation et URL publique. Un statut programmé, envoi ou workflow réussi ne suffit pas. Les reçus détaillés sont dans studio/editorial-status.json et dans le kit https://velocemercato.fr/studio/kit-automatique.html.
 
@@ -103,11 +103,11 @@ Pour Multisport, les flux français validés Sports.fr et Le Monde Sport sont ra
 
 ## Audit des pages, liens et classements
 
-- Pages HTML examinées : 1697.
-- URL interrogées : 1968.
+- Pages HTML examinées : 1704.
+- URL interrogées : 1979.
 - HTTP 404/410 confirmés : 12.
 - Cibles internes absentes du dépôt : 76.
-- Liens protégés/non vérifiables automatiquement : 679.
+- Liens protégés/non vérifiables automatiquement : 758.
 - Ancres à relire : 3123. Certaines existent seulement après chargement JavaScript.
 - Classements à relire : 1.
 
@@ -137,6 +137,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — ATP 250 Stockholm : dates, programme, prize money, diffusion TV… tout savoir sur l’édition 2026 - Univers Tennis — https://www.facebook.com/122106465861520366/posts/122110843281520366
 - meta/facebook — ATP Finals : dates, joueurs, programme, prize money, diffusion TV… tout savoir sur l’édition 2026 - Univers Tennis — https://www.facebook.com/122106465861520366/posts/122111092059520366
 - meta/facebook — Abdellah Ouazane, 17 ans, devient le plus jeune buteur de l'histoire du Maroc — https://www.facebook.com/122106465861520366/posts/122112171153520366
+- meta/facebook — Aberdeen, Celtic, Rangers : les enjeux de la reprise de la Premiership écossaise — https://www.facebook.com/122106465861520366/posts/122112710451520366
 - meta/facebook — Absente depuis 2021, l'Étoile d'Or revient au calendrier UCI en 2027, la veille de Paris- Tours - DirectVelo — https://www.facebook.com/122106465861520366/posts/122112527787520366
 - meta/facebook — Acosta accepte le défi de Ducati contre Marquez alors que des allégations de favoritisme médiatique émergent avant le face-à-face pour le titre à Portimão - Motorcycle Sports — https://www.facebook.com/122106465861520366/posts/122112205467520366
 - meta/facebook — Affaire Leclerc - La FIA ferait bien de balayer devant sa porte avant de faire la leçon à la presse - f1news.fr — https://www.facebook.com/122106465861520366/posts/122112479913520366
@@ -158,6 +159,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Arsenal : Raya, Timber et Hincapié sur le point de prolonger, selon la presse — https://www.facebook.com/122106465861520366/posts/122112215031520366
 - meta/facebook — Arsenal pourrait devoir débourser 66 M£ pour Antonio Nusa — https://www.facebook.com/122106465861520366/posts/122111080695520366
 - meta/facebook — Arsenal réclamerait 80 à 90 M€ pour Martin Zubimendi, selon Foot Mercato — https://www.facebook.com/122106465861520366/posts/122112635889520366
+- meta/facebook — Arteta met en garde ses joueurs sur les fuites de compos via le Fantasy Premier League — https://www.facebook.com/122106465861520366/posts/122112717963520366
 - meta/facebook — Aston Villa Women veut retrouver son identité avant le derby contre Birmingham — https://www.facebook.com/122106465861520366/posts/122111171439520366
 - meta/facebook — Au Grand Prix de Las Vegas, les jeux sont faits pour les titres, mais pas pour le dauphin - Flashscore.fr — https://www.facebook.com/122106465861520366/posts/122112271041520366
 - meta/facebook — Audi prolonge Felbermayr pour une troisième saison en F1 Academy - F1 news — https://www.facebook.com/122106465861520366/posts/122112025407520366
@@ -187,6 +189,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Carlos Checa explique pourquoi Razgatlioglu est monté trop tôt en MotoGP - Motorcycle Sports — https://www.facebook.com/122106465861520366/posts/122112210969520366
 - meta/facebook — Carlos Sainz, Liam Lawson et Nico Hülkenberg soutiennent le retour des moteurs V8 en F1 en 2030, mais appellent à la prudence - Motorcycle Sports — https://www.facebook.com/122106465861520366/posts/122112429687520366
 - meta/facebook — Championnat des Nations : toutes les compositions d’équipes - Rugby Scope — https://www.facebook.com/122106465861520366/posts/122112481101520366
+- meta/facebook — Chelsea : Estêvão peine à trouver du temps de jeu sous Xabi Alonso — https://www.facebook.com/122106465861520366/posts/122112700671520366
 - meta/facebook — Chelsea : les retrouvailles entre Malard et Bompastor résolvent le problème d'attaquante — https://www.facebook.com/122106465861520366/posts/122110911507520366
 - meta/facebook — Chelsea bat Manchester City 1-0 et prend la tête de la WSL — https://www.facebook.com/122106465861520366/posts/122111140341520366
 - meta/facebook — Chris Sutton pronostique les matchs de Premier League, Lauren Price et l'Arsenal — https://www.facebook.com/122106465861520366/posts/122112561693520366
@@ -197,7 +200,9 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Compo du XV de France : Matthieu Jalibert retrouve le 10, Anthony Jelonch attaque en 8 et Louis Bielle-Biarrey est bien là pour défier l'Argentine - L'Équipe — https://www.facebook.com/122106465861520366/posts/122112392367520366
 - meta/facebook — Congo : Claude Le Roy annonce sa démission après la défaite face aux Comores — https://www.facebook.com/122106465861520366/posts/122112160293520366
 - meta/facebook — Coupe de France : la polémique sur les recettes refait surface après le septième tour — https://www.facebook.com/122106465861520366/posts/122112396375520366
+- meta/facebook — Craig McLeish critique la gouvernance du football écossais et les réformes de la SFA — https://www.facebook.com/122106465861520366/posts/122112714315520366
 - meta/facebook — Crawford prendra le volant d’Alonso à Las Vegas, une première à domicile - F1 news — https://www.facebook.com/122106465861520366/posts/122112249999520366
+- meta/facebook — Cyclisme : Paul Seixas va rencontrer le pape Léon XIV au Vatican lundi - Le Figaro — https://www.facebook.com/122106465861520366/posts/122112712515520366
 - meta/facebook — Cyclisme TV 2027 : chaînes, streaming, Eurosport et prix - Velo 101 — https://www.facebook.com/122106465861520366/posts/122112353241520366
 - meta/facebook — Cyclisme. Anthony Ravard : « Être sur le Tour de France en 2032, mais je ne dis pas si c’est le Tour hommes ou femmes - maville.com — https://www.facebook.com/122106465861520366/posts/122110045671520366
 - meta/facebook — Cyclo-cross UCI de Gernelle : Classements - DirectVelo — https://www.facebook.com/122106465861520366/posts/122111031969520366
@@ -229,6 +234,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — F1 : Williams change ses plans à Las Vegas et fait confiance à Victor Martins - Sports Auto Moto — https://www.facebook.com/122106465861520366/posts/122110876017520366
 - meta/facebook — F1 : le Qatar et Abu Dhabi sous pression après les attaques au Bahreïn - horizonf1.fr — https://www.facebook.com/122106465861520366/posts/122111483841520366
 - meta/facebook — F1 : le programme du GP de Las Vegas 2026 - Les Voitures — https://www.facebook.com/122106465861520366/posts/122112366933520366
+- meta/facebook — F1 : une contrainte supplémentaire attend les équipes au Grand Prix du Qatar - Sports Auto Moto — https://www.facebook.com/122106465861520366/posts/122112716151520366
 - meta/facebook — F1 Academy : Budapest rejoint le calendrier 2027, finale à Las Vegas - f1news.fr — https://www.facebook.com/122106465861520366/posts/122110029429520366
 - meta/facebook — F1 – BREAKING NEWS – Cadillac garde Bottas : Herta attendra, Ocon peut oublier ! - Paddock GP — https://www.facebook.com/122106465861520366/posts/122112338517520366
 - meta/facebook — FC Barcelone : Hamza Abdelkarim peu utilisé cette saison, selon Foot Mercato — https://www.facebook.com/122106465861520366/posts/122112547839520366
@@ -313,6 +319,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — La numéro 2 mondiale Aryna Sabalenka prend la porte dès la phase de groupes du Masters WTA après sa défaite face à Elina Svitolina - franceinfo — https://www.facebook.com/122106465861520366/posts/122110834731520366
 - meta/facebook — Lance Stroll face à un 14e abandon record en F1 avec Aston Martin - Motorcycle Sports — https://www.facebook.com/122106465861520366/posts/122112499311520366
 - meta/facebook — Las Vegas : pourquoi Williams doit choisir où dépenser son énergie - F1 news — https://www.facebook.com/122106465861520366/posts/122112247527520366
+- meta/facebook — Las Vegas — EL2 : Russell prend la tête sur une piste humide - F1 news — https://www.facebook.com/122106465861520366/posts/122112708327520366
 - meta/facebook — LdC (F) : Lyon s'impose à Arsenal (0-2) et valide sa qualification pour les quarts — https://www.facebook.com/122106465861520366/posts/122112532599520366
 - meta/facebook — LdC (F) : le Paris FC s'impose 2-1 face à Køge, premier succès dans la compétition — https://www.facebook.com/122106465861520366/posts/122112556365520366
 - meta/facebook — Le Bayern refuse de céder Jonathan Tah au Barça lors du mercato — https://www.facebook.com/122106465861520366/posts/122110029765520366
@@ -335,6 +342,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Leonardo Balerdi critiqué en Argentine après la défaite face à l’Uruguay — https://www.facebook.com/122106465861520366/posts/122110959669520366
 - meta/facebook — Les Blazers surclassent le Thunder, les Knicks déroulent, Giannis Antetokounmpo porte le Heat - L'Équipe — https://www.facebook.com/122106465861520366/posts/122110116987520366
 - meta/facebook — Les Français Albano Olivetti et Théo Arribagé se qualifient pour les demi-finales du Masters ATP après leur victoire face à la meilleure paire mondiale - franceinfo — https://www.facebook.com/122106465861520366/posts/122112463491520366
+- meta/facebook — Les Matchs Pro D2 en Direct - Rugbyrama — https://www.facebook.com/122106465861520366/posts/122112703491520366
 - meta/facebook — Les Spurs de San Antonio étrillent les Warriors pour une 11ᵉ victoire d'affilée - Flashscore.fr — https://www.facebook.com/122106465861520366/posts/122110900785520366
 - meta/facebook — Les États-Unis renoncent à la Coupe du monde U17 au Qatar — https://www.facebook.com/122106465861520366/posts/122110379505520366
 - meta/facebook — Les États-Unis voudraient Pep Guardiola pour succéder à Mauricio Pochettino — https://www.facebook.com/122106465861520366/posts/122110369617520366
@@ -361,7 +369,6 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Maverick Vinales ouvert à un rôle de remplaçant en MotoGP pour prolonger sa carrière après son départ de Tech3 - Motorcycle Sports — https://www.facebook.com/122106465861520366/posts/122112558069520366
 - meta/facebook — Maya Le Tissier décisive, Manchester United bat Crystal Palace 2-0 en WSL — https://www.facebook.com/122106465861520366/posts/122111155497520366
 - meta/facebook — Melville pionnier, De Villiers le plus capé… Ces Sud-Africains ayant marqué l’histoire des Bleus - Top 14 — https://www.facebook.com/122106465861520366/posts/122110392165520366
-- meta/facebook — Mercato : Arsenal s'intéresse à Endrick, Newcastle et Sunderland suivent Dion Beljo — https://www.facebook.com/122106465861520366/posts/122110028151520366
 - meta/facebook — Mercato : Nico Paz aurait préféré rester à Côme plutôt que revenir au Real Madrid — https://www.facebook.com/122106465861520366/posts/122112313587520366
 - meta/facebook — Messi en conflit avec la fédération argentine, selon Foot01 — https://www.facebook.com/122106465861520366/posts/122112361143520366
 - meta/facebook — Mikey Moore veut échanger son maillot avec Harry Kane face au Bayern — https://www.facebook.com/122106465861520366/posts/122112627807520366
@@ -410,6 +417,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — OM : Bruno Genesio a longtemps mal pris son surnom « Pep Genesio » — https://www.facebook.com/122106465861520366/posts/122112340503520366
 - meta/facebook — OM : Daniel Riolo doute d'un mercato d'hiver généreux malgré la bonne série — https://www.facebook.com/122106465861520366/posts/122112342753520366
 - meta/facebook — OM : Jérôme Rothen pousse à vendre Hojbjerg si la Fiorentina ou la Juventus se manifestent — https://www.facebook.com/122106465861520366/posts/122112290919520366
+- meta/facebook — OM : Marseille conditionne un éventuel recrutement d'Anguissa au départ d'Hojbjerg — https://www.facebook.com/122106465861520366/posts/122112706701520366
 - meta/facebook — OM : Sergio Camello (Rayo Vallecano) ciblé à coût réduit, libre en juin 2027 — https://www.facebook.com/122106465861520366/posts/122112383883520366
 - meta/facebook — Obligation de soins et procès en mars 2027 : les trois Espoirs du Stade Rochelais fixés - Rugby Scope — https://www.facebook.com/122106465861520366/posts/122112159183520366
 - meta/facebook — Ocon pourrait rebondir chez Aston Martin, avec un essai dès Abu Dhabi - F1 news — https://www.facebook.com/122106465861520366/posts/122112415137520366
@@ -492,6 +500,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — UFC 334 - Ciryl Gane vs Josh Hokit : Tous les résultats - Arts Martiaux Mixtes - Actu MMA — https://www.facebook.com/122106465861520366/posts/122112643185520366
 - meta/facebook — UFC 334 - Ciryl Gane vs Josh Hokit : Tous les résultats - Arts Martiaux Mixtes - ActuMMA — https://www.facebook.com/122106465861520366/posts/122111097861520366
 - meta/facebook — UFC 334 – Gane vs. Hokit : regarder ce face à face gratuitement et en direct - technplay.com — https://www.facebook.com/122106465861520366/posts/122111076405520366
+- meta/facebook — Ultra-trail du Mont-Blanc : un départ mercredi pour la course reine, programme modifié en raison des mondiaux de cyclisme, tout savoir sur l'édition 2027 - France 3 Régions — https://www.facebook.com/122106465861520366/posts/122112720387520366
 - meta/facebook — Un joueur équatorien suspendu huit ans pour avoir lancé une pierre sur un arbitre assistant — https://www.facebook.com/122106465861520366/posts/122112428079520366
 - meta/facebook — Unai Simon sacré meilleur gardien du monde, un profil discret qui séduit — https://www.facebook.com/122106465861520366/posts/122111164233520366
 - meta/facebook — Une nouvelle allure pour les gobelets du Centre Bell | Canadiens de Montréal - NHL.com — https://www.facebook.com/122106465861520366/posts/122110309569520366
@@ -554,6 +563,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Arne Slot, ancien entraîneur de Liverpool, prend du recul depuis son limogeage — https://www.instagram.com/p/Df8Nn7Tk6VG/
 - meta/instagram — Arsenal : Raya, Timber et Hincapié sur le point de prolonger, selon la presse — https://www.instagram.com/p/Df6NaqtmkfY/
 - meta/instagram — Arsenal réclamerait 80 à 90 M€ pour Martin Zubimendi, selon Foot Mercato — https://www.instagram.com/p/Df9O0GmF1wq/
+- meta/instagram — Arteta met en garde ses joueurs sur les fuites de compos via le Fantasy Premier League — https://www.instagram.com/p/Df97dUblUaH/
 - meta/instagram — Audi prolonge Felbermayr pour une troisième saison en F1 Academy - F1 news — https://www.instagram.com/p/Df3X0XLl2HV/
 - meta/instagram — Axel Gnapi évolue en Russie à Fakel Voronej après un parcours en France et au Kosovo — https://www.instagram.com/p/Df7usezl_IL/
 - meta/instagram — Barcelone intéressé par Lisandro Martinez, Liverpool observe Gustavo Varela — https://www.instagram.com/p/Df8ewbmF8sq/
@@ -575,14 +585,17 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Calendrier World Tour 2027 : toutes les dates des courses cyclistes - TotalVelo - Toute l'actualité cyclisme — https://www.instagram.com/p/DftV41loVXK/
 - meta/instagram — Carla Ward proche de prolonger avec la République d'Irlande avant le barrage contre la Pologne — https://www.instagram.com/p/Df6VbcMl9HS/
 - meta/instagram — Carlos Checa explique pourquoi Razgatlioglu est monté trop tôt en MotoGP - Motorcycle Sports — https://www.instagram.com/p/Df5dXSwjGH0/
+- meta/instagram — Chelsea : Estêvão peine à trouver du temps de jeu sous Xabi Alonso — https://www.instagram.com/p/Df90lrIl7Na/
 - meta/instagram — Chelsea bat Manchester City 1-0 et prend la tête de la WSL — https://www.instagram.com/p/DfwJSrrD5Ul/
 - meta/instagram — Christophe Gleizes détenu depuis 500 jours en Algérie : le cri de son frère Maxime — https://www.instagram.com/p/DfmLIeGDV0U/
 - meta/instagram — Clauss, toujours candidat en équipe de France malgré la concurrence — https://www.instagram.com/p/Df5UOWrE7sX/
 - meta/instagram — Clermont : retournement de situation pour Brock James qui ne reviendra pas - Rugby Scope — https://www.instagram.com/p/Df7A658mquv/
 - meta/instagram — Congo : Claude Le Roy annonce sa démission après la défaite face aux Comores — https://www.instagram.com/p/Df4zUf6CfXI/
+- meta/instagram — Craig McLeish critique la gouvernance du football écossais et les réformes de la SFA — https://www.instagram.com/p/Df94B79iTCq/
 - meta/instagram — Crawford prendra le volant d’Alonso à Las Vegas, une première à domicile - F1 news — https://www.instagram.com/p/Df5x8o6CZUa/
 - meta/instagram — Cyclisme - XDS pourrait quitter Astana dès 2027 : un coup dur pour l'équipe de Vinokourov - TotalVelo - Toute l'actualité cyclisme — https://www.instagram.com/p/Dfw01KGIEjk/
 - meta/instagram — Cyclisme : 30 histoires de légendes, le livre de Cédric Leroy - Velo-Club — https://www.instagram.com/p/DfoaNCIFx9m/
+- meta/instagram — Cyclisme : Paul Seixas va rencontrer le pape Léon XIV au Vatican lundi - Le Figaro — https://www.instagram.com/p/Df96X_BoUbk/
 - meta/instagram — Cyclisme TV 2027 : chaînes, streaming, Eurosport et prix - Velo 101 — https://www.instagram.com/p/Df69fm8F5QD/
 - meta/instagram — Cyclisme. Anthony Ravard : « Être sur le Tour de France en 2032, mais je ne dis pas si c’est le Tour hommes ou femmes - maville.com — https://www.instagram.com/p/DflVeMsF-xD/
 - meta/instagram — Cyclo-cross UCI de Gernelle : Classements - DirectVelo — https://www.instagram.com/p/DfusSC-lKMx/
@@ -678,6 +691,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — La nuit des Français en NBA : Rudy Gobert dans le dur, Zaccharie Risacher redescend - L'Équipe — https://www.instagram.com/p/DfwcKTwFwX3/
 - meta/instagram — La numéro 2 mondiale Aryna Sabalenka prend la porte dès la phase de groupes du Masters WTA après sa défaite face à Elina Svitolina - franceinfo — https://www.instagram.com/p/Dfs-MVQl-YC/
 - meta/instagram — Las Vegas : pourquoi Williams doit choisir où dépenser son énergie - F1 news — https://www.instagram.com/p/Df6GjObFoh7/
+- meta/instagram — Las Vegas — EL2 : Russell prend la tête sur une piste humide - F1 news — https://www.instagram.com/p/Df925NBEus-/
 - meta/instagram — Lassine Sinayoko, en vedette au Paris FC, attire déjà l'intérêt de clubs anglais — https://www.instagram.com/p/DfrVFHzl90k/
 - meta/instagram — LdC (F) : Lyon s'impose à Arsenal (0-2) et valide sa qualification pour les quarts — https://www.instagram.com/p/Df8iMddiaq3/
 - meta/instagram — LdC : PSG-Rome classé à haut risque, parcage visiteur réduit — https://www.instagram.com/p/Dfr3KFBF7HA/
@@ -690,6 +704,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Le Real Madrid officialise la prolongation d'Aurélien Tchouameni jusqu'en 2032 — https://www.instagram.com/p/Df7Ff3uDDvn/
 - meta/instagram — Le Top Instagram MotoGP de la semaine : Márquez fête son podium, Martín et Bezzecchi hilares, Lorenzo de retour dans le paddock... (2 au 8 novembre) - Paddock GP — https://www.instagram.com/p/DfnqaLZjgb0/
 - meta/instagram — Le Tour de France, un "objectif à très long terme" assure Paul Seixas - franceinfo — https://www.instagram.com/p/Dft4nCDAbRg/
+- meta/instagram — Le XV des joueurs argentins du TOP 14 | Top 14 - Site Officiel - Top 14 — https://www.instagram.com/p/Df9zc2Ql_ZI/
 - meta/instagram — Le champion NBA Josh Hart nouvel investisseur au Napoli Basket, futur membre de l'Euroligue - L'Équipe — https://www.instagram.com/p/DfsJR5jDDu0/
 - meta/instagram — Le football algérien en deuil après la mort de l'arbitre Youcef Gamouh — https://www.instagram.com/p/Df8KKK5jMrI/
 - meta/instagram — Leicester et Brentford U21 qualifiés pour les huitièmes du Jersey Mike's Trophy — https://www.instagram.com/p/DflPkBElFlE/
@@ -860,9 +875,10 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — ATP 250 Stockholm : dates, programme, prize money, diffusion TV… tout savoir sur l’édition 2026 - Univers Tennis — https://www.facebook.com/1757379583055094/posts/1774599284666457
 - meta_pronos/facebook — ATP Finals 2026 : Arthur Fils fera sa première apparition au Masters de fin d'année — https://www.facebook.com/1757379583055094/posts/1769936028466116
 - meta_pronos/facebook — ATP Finals : dates, joueurs, programme, prize money, diffusion TV… tout savoir sur l’édition 2026 - Univers Tennis — https://www.facebook.com/1757379583055094/posts/1774810871311965
+- meta_pronos/facebook — Aberdeen, Celtic, Rangers : les enjeux de la reprise de la Premiership écossaise — https://www.facebook.com/1757379583055094/posts/1781788387280880
 - meta_pronos/facebook — Absente depuis 2021, l'Étoile d'Or revient au calendrier UCI en 2027, la veille de Paris- Tours - DirectVelo — https://www.facebook.com/1757379583055094/posts/1781063460686706
+- meta_pronos/facebook — Accord UE-Royaume-Uni : vers un allègement des contrôles en mer d'Irlande — https://www.facebook.com/1757379583055094/posts/1781744923951893
 - meta_pronos/facebook — Accusations de complicité de personnels de l'Education nationale dans des violences lycéennes : ce que disent les faits — https://www.facebook.com/1757379583055094/posts/1780211307438588
-- meta_pronos/facebook — Affaire Epstein : un rapport du Congrès américain dénonce des « défaillances institutionnelles » — https://www.facebook.com/1757379583055094/posts/1769605958499123
 - meta_pronos/facebook — Affaire Leclerc - La FIA ferait bien de balayer devant sa porte avant de faire la leçon à la presse - f1news.fr — https://www.facebook.com/1757379583055094/posts/1780981077361611
 - meta_pronos/facebook — Affaire Mbappé : comment Pékin fait pression sur les marques en Chine — https://www.facebook.com/1757379583055094/posts/1774569044669481
 - meta_pronos/facebook — Agnelli et Chiellini investissent 20 M$ dans MatchWornShirt, spécialiste des maillots portés — https://www.facebook.com/1757379583055094/posts/1780896797370039
@@ -881,6 +897,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Ardèche : un commerçant de 55 ans tué à l'arme blanche à Largentière — https://www.facebook.com/1757379583055094/posts/1773209518138767
 - meta_pronos/facebook — Arne Slot, ancien entraîneur de Liverpool, prend du recul depuis son limogeage — https://www.facebook.com/1757379583055094/posts/1780702014056184
 - meta_pronos/facebook — Arsenal réclamerait 80 à 90 M€ pour Martin Zubimendi, selon Foot Mercato — https://www.facebook.com/1757379583055094/posts/1781459803980405
+- meta_pronos/facebook — Arteta met en garde ses joueurs sur les fuites de compos via le Fantasy Premier League — https://www.facebook.com/1757379583055094/posts/1781836960609356
 - meta_pronos/facebook — Asie centrale et Chine : hausse des plafonds de vols aériens entre les pays — https://www.facebook.com/1757379583055094/posts/1769977358461983
 - meta_pronos/facebook — Au MWC26 de Doha, la GSMA appelle à partager les bénéfices de la connectivité et de l'IA — https://www.facebook.com/1757379583055094/posts/1780692430723809
 - meta_pronos/facebook — Au Pérou, le pape Léon XIV appelle à surmonter les divisions du passé — https://www.facebook.com/1757379583055094/posts/1771069508352768
@@ -921,10 +938,12 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Corée du Sud : des lunettes connectées à l'IA inquiètent avant l'examen d'entrée à l'université — https://www.facebook.com/1757379583055094/posts/1780095637450155
 - meta_pronos/facebook — Covid-19 : la circulation du virus repart à la hausse, impact hospitalier encore faible — https://www.facebook.com/1757379583055094/posts/1781248864001499
 - meta_pronos/facebook — Craig Houston, scénariste de Treyarch et figure de Zombies, quitte le studio après près de 20 ans — https://www.facebook.com/1757379583055094/posts/1775567091236343
+- meta_pronos/facebook — Craig McLeish critique la gouvernance du football écossais et les réformes de la SFA — https://www.facebook.com/1757379583055094/posts/1781827603943625
 - meta_pronos/facebook — Crawford prendra le volant d’Alonso à Las Vegas, une première à domicile - F1 news — https://www.facebook.com/1757379583055094/posts/1779928994133486
 - meta_pronos/facebook — Crystal Dynamics annonce la suppression de 8 postes supplémentaires — https://www.facebook.com/1757379583055094/posts/1780065294119856
 - meta_pronos/facebook — Crédit à la consommation : de nouvelles règles entrent en vigueur vendredi — https://www.facebook.com/1757379583055094/posts/1781579277301791
 - meta_pronos/facebook — Cybersécurité : 200 millions d'euros pour l'intelligence artificielle face aux cyberattaques — https://www.facebook.com/1757379583055094/posts/1781109097348809
+- meta_pronos/facebook — Cyclisme : Paul Seixas va rencontrer le pape Léon XIV au Vatican lundi - Le Figaro — https://www.facebook.com/1757379583055094/posts/1781807847278934
 - meta_pronos/facebook — Cyclo-cross UCI de Gernelle : Classements - DirectVelo — https://www.facebook.com/1757379583055094/posts/1774340704692315
 - meta_pronos/facebook — DJ Snake annonce un concert au château de Chambord le 25 juin 2027 — https://www.facebook.com/1757379583055094/posts/1781354813990904
 - meta_pronos/facebook — DNCG : encadrement de la masse salariale pour Nîmes et Rouen — https://www.facebook.com/1757379583055094/posts/1769823808477338
@@ -952,7 +971,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Endrick accusé d'avoir bousculé l'arbitre lors de Brésil-Japon — https://www.facebook.com/1757379583055094/posts/1776196651173387
 - meta_pronos/facebook — Espagne : les conservateurs en tête des sondages avant les législatives du 29 novembre — https://www.facebook.com/1757379583055094/posts/1781623247297394
 - meta_pronos/facebook — Europe : vers un encadrement des loot boxes et des monnaies virtuelles dans les jeux — https://www.facebook.com/1757379583055094/posts/1772269141566138
-- meta_pronos/facebook — F1 Academy : Budapest rejoint le calendrier 2027, finale à Las Vegas - f1news.fr — https://www.facebook.com/1757379583055094/posts/1769605735165812
+- meta_pronos/facebook — F1 : une contrainte supplémentaire attend les équipes au Grand Prix du Qatar - Sports Auto Moto — https://www.facebook.com/1757379583055094/posts/1781818210611231
 - meta_pronos/facebook — FPL journée 11 : Jackson, Liverpool, suspensions et calendrier chargé selon BBC Sport — https://www.facebook.com/1757379583055094/posts/1781419577317761
 - meta_pronos/facebook — Fabio Di Giannantonio clarifie ses critiques sur la conduite de course de Marc Marquez après le clash lors du Sprint du Qatar - Motorcycle Sports — https://www.facebook.com/1757379583055094/posts/1781219370671115
 - meta_pronos/facebook — Fan de Liverpool acquitté après le retrait de Semenyo de la procédure — https://www.facebook.com/1757379583055094/posts/1781633050629747
@@ -1010,7 +1029,6 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Hunger Games : Lever de soleil sur la moisson, la fin expliquée — https://www.facebook.com/1757379583055094/posts/1779761844150201
 - meta_pronos/facebook — Iker Lecuona rejoint Rossi et Marquez dans le club exclusif des usines Ducati et Honda en MotoGP - Motorcycle Sports — https://www.facebook.com/1757379583055094/posts/1781134690679583
 - meta_pronos/facebook — Iker Lecuona se note 9 après une bonne séance d’apprentissage au MotoGP du Qatar - Motorcycle Sports — https://www.facebook.com/1757379583055094/posts/1773948944731491
-- meta_pronos/facebook — Indonésie : la jeunesse de nouveau dans la rue contre la politique du gouvernement — https://www.facebook.com/1757379583055094/posts/1769606181832434
 - meta_pronos/facebook — Insomniac Games : les débuts oubliés de Disruptor, premier jeu du studio en 1996 — https://www.facebook.com/1757379583055094/posts/1781286270664425
 - meta_pronos/facebook — Intempéries : de nombreux matchs reportés les 21 et 22 novembre 2026 — https://www.facebook.com/1757379583055094/posts/1781684370624615
 - meta_pronos/facebook — Issiaka Touré, de retour en forme à Aubagne, retenu chez les Espoirs — https://www.facebook.com/1757379583055094/posts/1780123630780689
@@ -1049,8 +1067,10 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — La Géorgie et les États-Unis intenables, le Portugal en souffrance... Découvrez tous les résultats du week-end - Rugbyrama — https://www.facebook.com/1757379583055094/posts/1781026674023718
 - meta_pronos/facebook — La Hongrie prête à lever son veto sur les derniers chapitres de l'Ukraine — https://www.facebook.com/1757379583055094/posts/1781427160650336
 - meta_pronos/facebook — La Manche et le Calvados en vigilance orange pluie-inondation dès jeudi soir — https://www.facebook.com/1757379583055094/posts/1780739320719120
+- meta_pronos/facebook — La Norvège achète des crédits carbone à l’Indonésie et au Maroc — https://www.facebook.com/1757379583055094/posts/1781778210615231
 - meta_pronos/facebook — La Tunisie devient le deuxième producteur mondial d'huile d'olive — https://www.facebook.com/1757379583055094/posts/1781070804019305
 - meta_pronos/facebook — La peluche du loup d'Intermarché ne sera pas disponible pour Noël — https://www.facebook.com/1757379583055094/posts/1779664320826620
+- meta_pronos/facebook — Las Vegas — EL2 : Russell prend la tête sur une piste humide - F1 news — https://www.facebook.com/1757379583055094/posts/1781798057279913
 - meta_pronos/facebook — LdC (F) : Lyon s'impose à Arsenal (0-2) et valide sa qualification pour les quarts — https://www.facebook.com/1757379583055094/posts/1781196607340058
 - meta_pronos/facebook — Le Défenseur des droits pointe une déshumanisation des liens entre élèves et institution scolaire — https://www.facebook.com/1757379583055094/posts/1779719564154429
 - meta_pronos/facebook — Le PS s'oppose à la candidature de David Lisnard à la tête de l'AMF — https://www.facebook.com/1757379583055094/posts/1769605135165872
@@ -1059,6 +1079,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Le Real Madrid officialise la prolongation d'Aurélien Tchouameni jusqu'en 2032 — https://www.facebook.com/1757379583055094/posts/1780467160746336
 - meta_pronos/facebook — Le Sénat adopte en première lecture le budget de la Sécurité sociale pour 2027 — https://www.facebook.com/1757379583055094/posts/1779681230824929
 - meta_pronos/facebook — Le Top Instagram MotoGP de la semaine : Márquez fête son podium, Martín et Bezzecchi hilares, Lorenzo de retour dans le paddock... (2 au 8 novembre) - Paddock GP — https://www.facebook.com/1757379583055094/posts/1770802778379441
+- meta_pronos/facebook — Le XV des joueurs argentins du TOP 14 | Top 14 - Site Officiel - Top 14 — https://www.facebook.com/1757379583055094/posts/1781767243949661
 - meta_pronos/facebook — Le daraxonrasib, traitement contre le cancer du pancréas, autorisé par l’Agence européenne du médicament — https://www.facebook.com/1757379583055094/posts/1781597057300013
 - meta_pronos/facebook — Le dîner à 18h gagne du terrain en France, selon franceinfo — https://www.facebook.com/1757379583055094/posts/1780412817418437
 - meta_pronos/facebook — Le fisc utilise l'IA pour repérer les abris de jardin non déclarés — https://www.facebook.com/1757379583055094/posts/1771539741639078
@@ -1139,7 +1160,6 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Philadelphie : une course de 16 km en hommage aux 50 ans de Rocky — https://www.facebook.com/1757379583055094/posts/1774712244655161
 - meta_pronos/facebook — Philippe Diallo officialise sa candidature à la présidence de la Fifa — https://www.facebook.com/1757379583055094/posts/1778765447583174
 - meta_pronos/facebook — Pirelli travaille la montée en température de ses intermédiaires pour 2027 - F1 news — https://www.facebook.com/1757379583055094/posts/1770732515053134
-- meta_pronos/facebook — PlayStation abandonne le jeu-service Fairgames de Haven Studios — https://www.facebook.com/1757379583055094/posts/1769591448500574
 - meta_pronos/facebook — Pologne : Varsovie accueille la Marche de l'indépendance dans un climat tendu — https://www.facebook.com/1757379583055094/posts/1769605378499181
 - meta_pronos/facebook — Pourquoi tant de joueurs des Bleus ont-ils grandi au Stade Rennais ? — https://www.facebook.com/1757379583055094/posts/1771118881681164
 - meta_pronos/facebook — Prestianni : Rui Costa se dit optimiste sur une prolongation à Benfica — https://www.facebook.com/1757379583055094/posts/1773417618117957
@@ -1207,6 +1227,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Tolisso critique le départ de Paulo Fonseca vers le Sporting CP — https://www.facebook.com/1757379583055094/posts/1780903630702689
 - meta_pronos/facebook — Top 14 : Pau domine le classement des JIFF, Toulon et Montpellier à la limite - Rugby Scope — https://www.facebook.com/1757379583055094/posts/1780179050775147
 - meta_pronos/facebook — Top 14. Le troisième ligne international Anthony Jelonch prolonge jusqu’en 2030 avec le Stade Toulousain - Ouest-France — https://www.facebook.com/1757379583055094/posts/1780958024030583
+- meta_pronos/facebook — Total War: Warhammer 40,000 découpe la campagne en mini-campagnes par système stellaire — https://www.facebook.com/1757379583055094/posts/1781756870617365
 - meta_pronos/facebook — Transferts Grenoble : Plusieurs joueurs convoités en Top 14 - Rugby Scope — https://www.facebook.com/1757379583055094/posts/1772557571537295
 - meta_pronos/facebook — Trappes : Fabien Roussel dénonce les violences visant les élus après l'attentat raciste — https://www.facebook.com/1757379583055094/posts/1771386628321056
 - meta_pronos/facebook — Trois anciennes compagnes de jihadistes condamnées à Paris pour avoir rejoint l'EI en Syrie — https://www.facebook.com/1757379583055094/posts/1779882984138087
@@ -1242,7 +1263,6 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Watch Dogs 2 : un jeu qui flirte avec la politique sans trop la brusquer — https://www.facebook.com/1757379583055094/posts/1774941611298891
 - meta_pronos/facebook — WoW Forever : Blizzard suspend des joueurs ayant exploité un bug de gold à Blackmaw Hold — https://www.facebook.com/1757379583055094/posts/1780102897449429
 - meta_pronos/facebook — Wolff défend une F1 exclusive face à l’intérêt de BYD et Geely - F1 news — https://www.facebook.com/1757379583055094/posts/1779895007470218
-- meta_pronos/facebook — Woodman évoque son départ de Bromley dans le podcast 72+ de la EFL — https://www.facebook.com/1757379583055094/posts/1769606088499110
 - meta_pronos/facebook — Wu-Tang Clan, Phil Collins et Billy Idol intronisés au Rock and Roll Hall of Fame — https://www.facebook.com/1757379583055094/posts/1775334277926291
 - meta_pronos/facebook — XV de France : Julien Marchand forfait de dernière minute, Peato Mauvaka titulaire - Rugby Scope — https://www.facebook.com/1757379583055094/posts/1773325711460481
 - meta_pronos/facebook — XV de France : l'Argentine sort l'artillerie lourde pour le duel face aux Bleus - Quinze Mondial — https://www.facebook.com/1757379583055094/posts/1780776977382021
@@ -1268,22 +1288,12 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Équipe de France : Mbappé déclare forfait contre l’Italie en Ligue des nations — https://www.facebook.com/1757379583055094/posts/1770896008370118
 - meta_pronos/facebook — Équipe de France : la FFF donne des nouvelles de Mike Maignan — https://www.facebook.com/1757379583055094/posts/1776006574525728
 - meta_pronos/facebook — États-Unis : des démocrates demandent la conservation de documents sur la famille Trump et l'affaire Epstein — https://www.facebook.com/1757379583055094/posts/1779969677462751
-- meta_univers/facebook — Découvre AlloLivre — https://www.facebook.com/122098313661535169/posts/122107745265535169
-- meta_univers/facebook — Découvre La Pastille TV — https://www.facebook.com/122098313661535169/posts/122107745547535169
 - meta_univers/facebook — Découvre Pépite FC — https://www.facebook.com/122098313661535169/posts/122107844757535169
-- meta_univers/facebook — Découvre VM Actus — https://www.facebook.com/122098313661535169/posts/122107745373535169
 - meta_univers/facebook — Découvre VM Belfort — https://www.facebook.com/122098313661535169/posts/122107825557535169
-- meta_univers/facebook — Découvre VM CV — https://www.facebook.com/122098313661535169/posts/122107745733535169
 - meta_univers/facebook — Découvre VM Emploi — https://www.facebook.com/122098313661535169/posts/122108326677535169
-- meta_univers/facebook — Découvre VM Gaming — https://www.facebook.com/122098313661535169/posts/122107745451535169
-- meta_univers/facebook — Découvre VM Météo & Découverte — https://www.facebook.com/122098313661535169/posts/122107746051535169
 - meta_univers/facebook — Découvre VM Pro Local — https://www.facebook.com/122098313661535169/posts/122107786449535169
 - meta_univers/facebook — Découvre VM Produits locaux — https://www.facebook.com/122098313661535169/posts/122107806243535169
 - meta_univers/facebook — Découvre VM Radio — https://www.facebook.com/122098313661535169/posts/122107872087535169
-- meta_univers/facebook — Découvre VM Recettes — https://www.facebook.com/122098313661535169/posts/122107745979535169
-- meta_univers/facebook — Découvre VM Shop — https://www.facebook.com/122098313661535169/posts/122107745889535169
-- meta_univers/facebook — Découvre VM Sport & randonnée — https://www.facebook.com/122098313661535169/posts/122107746195535169
-- meta_univers/facebook — Découvre VM Studio — https://www.facebook.com/122098313661535169/posts/122107745307535169
 - meta_univers/facebook — Focus sur AlloLivre — https://www.facebook.com/122098313661535169/posts/122109442845535169
 - meta_univers/facebook — Focus sur La Pastille TV — https://www.facebook.com/122098313661535169/posts/122109535881535169
 - meta_univers/facebook — Focus sur Pépite FC — https://www.facebook.com/122098313661535169/posts/122109704085535169
@@ -1366,17 +1376,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_univers/facebook — À retrouver dans notre univers VM Shop — https://www.facebook.com/122098313661535169/posts/122108376777535169
 - meta_univers/facebook — À retrouver dans notre univers VM Sport & randonnée — https://www.facebook.com/122098313661535169/posts/122108422851535169
 - meta_univers/facebook — À retrouver dans notre univers VM Studio — https://www.facebook.com/122098313661535169/posts/122107951359535169
-- meta_univers/instagram — Découvre AlloLivre — https://www.instagram.com/p/DflOoUbCd6Y/
-- meta_univers/instagram — Découvre La Pastille TV — https://www.instagram.com/p/DflOyFpiWwe/
 - meta_univers/instagram — Découvre Pépite FC — https://www.instagram.com/p/Dflnut6lD20/
-- meta_univers/instagram — Découvre VM Actus — https://www.instagram.com/p/DflOtPXiVxY/
 - meta_univers/instagram — Découvre VM Belfort — https://www.instagram.com/p/DflgxLxFxCu/
-- meta_univers/instagram — Découvre VM CV — https://www.instagram.com/p/DflOzz5iSsu/
-- meta_univers/instagram — Découvre VM Gaming — https://www.instagram.com/p/DflOvp_iQ4G/
-- meta_univers/instagram — Découvre VM Météo & Découverte — https://www.instagram.com/p/DflO6tRkajm/
 - meta_univers/instagram — Découvre VM Pro Local — https://www.instagram.com/p/DflVkKdl_Vo/
 - meta_univers/instagram — Découvre VM Produits locaux — https://www.instagram.com/p/DflasS9lwRv/
-- meta_univers/instagram — Découvre VM Recettes — https://www.instagram.com/p/DflO4AKiQWR/
-- meta_univers/instagram — Découvre VM Shop — https://www.instagram.com/p/DflO1q7iVBZ/
-- meta_univers/instagram — Découvre VM Sport & randonnée — https://www.instagram.com/p/DflO8s1iXqq/
-- meta_univers/instagram — Découvre VM Studio — https://www.instagram.com/p/DflOq1Zif-X/
