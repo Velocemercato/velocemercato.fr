@@ -1,37 +1,38 @@
-Passage actus du 2026-11-20 06:30 UTC (workflow_dispatch, main)
-Départ : 10 articles conservés et 7 flashs existants.
-RSS franceinfo / POLITIQUE : 20 actualités récentes.
-RSS franceinfo / SANTE : 9 actualités récentes.
-RSS franceinfo / TECH : 16 actualités récentes.
-RSS 20 Minutes / FRANCE : 21 actualités récentes.
-RSS France 24 / INTERNATIONAL : 24 actualités récentes.
+Passage actus du 2026-11-20 07:00 UTC (workflow_dispatch, main)
+Départ : 12 articles conservés et 9 flashs existants.
 RSS franceinfo / FRANCE : 28 actualités récentes.
-RSS RFI / INTERNATIONAL : 23 actualités récentes.
-RSS The Guardian / INTERNATIONAL : 0 actualités récentes.
-RSS franceinfo / ECONOMIE : 18 actualités récentes.
-RSS Ouest-France / REGIONS : 10 actualités récentes.
-RSS BBC News / INTERNATIONAL : 2 actualités récentes.
-RSS Euronews / INTERNATIONAL : 45 actualités récentes.
+RSS franceinfo / ECONOMIE : 19 actualités récentes.
+RSS franceinfo / CULTURE : 19 actualités récentes.
+RSS franceinfo / POLITIQUE : 20 actualités récentes.
+RSS 20 Minutes / FRANCE : 22 actualités récentes.
 RSS franceinfo / INTERNATIONAL : 20 actualités récentes.
-RSS franceinfo / CULTURE : 20 actualités récentes.
-256 titres collectés, 145 nouveaux liens, quota 2.
+RSS France 24 / INTERNATIONAL : 23 actualités récentes.
+RSS The Guardian / INTERNATIONAL : 0 actualités récentes.
+RSS RFI / INTERNATIONAL : 23 actualités récentes.
+RSS franceinfo / TECH : 17 actualités récentes.
+RSS BBC News / INTERNATIONAL : 1 actualités récentes.
+RSS Ouest-France / REGIONS : 10 actualités récentes.
+RSS franceinfo / SANTE : 9 actualités récentes.
+RSS Euronews / INTERNATIONAL : 45 actualités récentes.
+256 titres collectés, 140 nouveaux liens, quota 2.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-Brève ignorée (Euronews) : ValueError - Résumé IA incomplet ou trop long : non publié
-Brève prête : franceinfo - DJ Snake annonce un concert au château de Chambord le 25 juin 2027
-Brève prête : franceinfo - Trois morts à Kiev après de nouvelles frappes russes, selon l'administration militaire
-Bilan : brèves_rédigées=2, rejet_lecture_ou_ia=1, source_inaccessible_ou_trop_courte=6
-Publié : 2 brèves (total 12). Flash : 9.
+Brève prête : RFI - Précarité étudiante : 26 % des étudiants jugés précaires selon une enquête
+Brève prête : franceinfo - Crédit à la consommation : de nouvelles règles entrent en vigueur vendredi
+Bilan : brèves_rédigées=2, source_inaccessible_ou_trop_courte=3
+Publié : 2 brèves (total 14). Flash : 11.
 --- Papiers Sans Galère ---
 Départ : 2 articles conservés et 1 flashs existants.
-RSS franceinfo / IMPOTS : 1 actualités récentes.
-RSS franceinfo / JUSTICE : 17 actualités récentes.
-RSS franceinfo / RETRAITE : 10 actualités récentes.
 RSS franceinfo / LOGEMENT : 17 actualités récentes.
-RSS franceinfo / AUTRE : 18 actualités récentes.
+RSS franceinfo / AUTRE : 19 actualités récentes.
+RSS franceinfo / JUSTICE : 17 actualités récentes.
 RSS franceinfo / TRAVAIL : 19 actualités récentes.
-82 titres collectés, 1 nouveaux liens, quota 1.
+RSS franceinfo / RETRAITE : 10 actualités récentes.
+RSS franceinfo / IMPOTS : 2 actualités récentes.
+84 titres collectés, 4 nouveaux liens, quota 1.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-Bilan : source_inaccessible_ou_trop_courte=1
-Aucune brève de qualité suffisante ; fichiers JSON inchangés.
+Brève ignorée (franceinfo) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève prête : franceinfo - Crédit à la consommation : vérification de solvabilité obligatoire dès le 20 novembre
+Bilan : brèves_rédigées=1, rejet_lecture_ou_ia=1
+Publié : 1 brèves (total 3). Flash : 2.
