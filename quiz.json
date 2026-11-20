@@ -1,50 +1,80 @@
 {
- "id": "2026-11-19-16",
- "date": "2026-11-19T16:55:36+01:00",
+ "id": "2026-11-20-16",
+ "date": "2026-11-20T16:38:57+01:00",
  "questions": [
   {
-   "q": "Combien de buts Sergio Camello a-t-il marqués en 11 journées de Liga ?",
+   "q": "Combien de buts Yaya Fofana a-t-il inscrits en 12 matchs de Ligue 2 cette saison ?",
    "choix": [
-    "7 buts",
-    "5 buts",
-    "9 buts",
-    "11 buts"
+    "6",
+    "10",
+    "14",
+    "18"
    ],
-   "bonne": 0,
-   "explication": "La brève précise que l'attaquant du Rayo Vallecano compte 7 buts en 11 journées de Liga.",
+   "bonne": 1,
+   "explication": "Selon Foot Mercato, Fofana totalise 10 buts et 2 passes décisives en 12 rencontres avec Reims.",
    "source": {
-    "titre": "OM : Sergio Camello (Rayo Vallecano) ciblé à coût réduit, libre en juin 2027",
-    "id": "rss-v2-f7a2cf3b8f83d1dc292c22"
+    "titre": "Reims : Tottenham aurait envoyé des émissaires pour observer Yaya Fofana",
+    "id": "rss-v2-6980ddb9999daf4bffdd8d"
    }
   },
   {
-   "q": "Quel est le score de la victoire de Santos à Coritiba lors de la 35e journée ?",
+   "q": "Quel entraîneur de Premiership a fait ses débuts sur le banc d'Aberdeen face à Kilmarnock ?",
    "choix": [
-    "1-0",
+    "Stephen Robinson",
+    "Mario Frick",
+    "Craig McLeish",
+    "Craig Mulholland"
+   ],
+   "bonne": 1,
+   "explication": "BBC Sport indique que Mario Frick fait ses débuts sur le banc des Dons, en remplacement de Stephen Robinson.",
+   "source": {
+    "titre": "Aberdeen, Celtic, Rangers : les enjeux de la reprise de la Premiership écossaise",
+    "id": "rss-v2-97addebc449c06020d4f3d"
+   }
+  },
+  {
+   "q": "Combien de titres de champion Roy Coyle a-t-il remportés pendant sa carrière d'entraîneur ?",
+   "choix": [
+    "8",
+    "11",
+    "13",
+    "15"
+   ],
+   "bonne": 2,
+   "explication": "Selon BBC Sport, Roy Coyle a remporté 13 titres de champion en 32 ans de carrière d'entraîneur.",
+   "source": {
+    "titre": "Décès de Roy Coyle, le manager le plus titré de l'histoire de l'Irish League",
+    "id": "rss-v2-7723ac9bc51314d865f96b"
+   }
+  },
+  {
+   "q": "Quel est le total de buts d'Estêvão avec le Brésil à la mi-novembre ?",
+   "choix": [
+    "3",
+    "5",
+    "7",
+    "9"
+   ],
+   "bonne": 2,
+   "explication": "Foot Mercato précise qu'Estêvão compte 16 sélections et 7 buts avec le Brésil.",
+   "source": {
+    "titre": "Chelsea : Estêvão peine à trouver du temps de jeu sous Xabi Alonso",
+    "id": "rss-v2-01cf2721e9ad4d72e25b4e"
+   }
+  },
+  {
+   "q": "Quel était le score de la victoire de Manchester United face à l'AS Rome en Ligue des champions ?",
+   "choix": [
     "2-1",
-    "0-0",
-    "3-0"
+    "3-2",
+    "3-1",
+    "4-2"
    ],
-   "bonne": 0,
-   "explication": "La brève indique que Santos s'est imposé 1-0 sur la pelouse de Coritiba lors de la 35e journée du championnat brésilien.",
+   "bonne": 1,
+   "explication": "Selon Foot Mercato, United a remporté la rencontre 3-2 face à l'AS Rome.",
    "source": {
-    "titre": "Santos : Neymar s'en prend aux supporters de Coritiba après la victoire",
-    "id": "rss-v2-ddfcc1e8164bf2bffe3982"
-   }
-  },
-  {
-   "q": "Combien de sélections Ever Banega compte-t-il avec l'Argentine ?",
-   "choix": [
-    "65 sélections",
-    "38 sélections",
-    "7 sélections",
-    "3 sélections"
-   ],
-   "bonne": 0,
-   "explication": "La brève indique que Banega compte 65 sélections avec l'Argentine, sans qu'il soit question des autres chiffres proposés.",
-   "source": {
-    "titre": "Ever Banega annonce sa retraite à 38 ans",
-    "id": "rss-v2-9936e3e383f1a0220d96fd"
+    "titre": "MU : quatre supporters interdits de stade, dont un pour trois ans",
+    "id": "rss-v2-82ed8024a7ade79a8b77e7"
    }
   }
  ]
