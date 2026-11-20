@@ -1,36 +1,10 @@
-Passage du 2026-11-20 15:40 UTC (workflow_dispatch)
-Nettoyage : 0 breves vides retirees, 37 gardees.
+Passage du 2026-11-20 16:00 UTC (workflow_dispatch)
+Nettoyage : 0 breves vides retirees, 38 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 37 articles conservés et 34 flashs existants.
-RSS Foot National / LIGUE_1 : 8 actualités récentes.
-RSS Foot National / LIGUE_2 : 16 actualités récentes.
-RSS Foot National / NATIONAL : 1 actualités récentes.
-RSS Foot National / NATIONAL : 7 actualités récentes.
-RSS RMC Sport / FRANCE : 30 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 0 actualités récentes.
-RSS RMC Sport / LIGUE_1 : 14 actualités récentes.
-RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 36 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 2 actualités récentes.
-RSS BBC Sport / FEMININ : 3 actualités récentes.
-RSS RMC Sport / BLEUS : 3 actualités récentes.
-RSS Foot01 / FRANCE : 41 actualités récentes.
-RSS Foot Amateur / NATIONAL : 7 actualités récentes.
-RSS Foot Amateur / NATIONAL : 3 actualités récentes.
-RSS The Guardian / ETRANGER : 2 actualités récentes.
-RSS The Guardian / ETRANGER : 1 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS franceinfo / FRANCE : 4 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-223 titres collectés, 33 nouveaux liens, quota 1.
-/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
-  warnings.warn(
-Brève prête : BBC Sport - Chelsea : Joao Pedro, l'absence qui pèse dans le jeu des Blues
-Bilan : brèves_rédigées=1, source_inaccessible_ou_trop_courte=1
-Publié : 1 brèves (total 38). Flash : 35.
+Départ : 38 articles conservés et 35 flashs existants.
+Limite de 48 brèves par jour atteinte, aucune nouvelle publication.
 RQ Pronos : page d'actualités publiques actualisée.
-Accueil VM : actualités sourcées visibles en HTML, mises à jour.
+Accueil VM : actualités inchangées.
 Pages : 38 brèves avec leur propre page, sitemap à jour.
 Agenda : 66 matchs enregistrés.
 Ligue 1 : 15 vidéos lues, 2 vidéos de buts gardées.
@@ -42,29 +16,29 @@ LaLiga : 15 vidéos lues, 3 vidéos de buts gardées.
 Serie A : 15 vidéos lues, 5 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 2 vidéos de buts gardées.
 Vidéos publiées : 4.
-Fil express : actus 200, gaming 120, foot 174
+Fil express : actus 200, gaming 120, foot 179
 macommune.info  : 25 titres
 L'Est Républicain haute-saone : 16 titres
-L'Est Républicain territoire-de-belfort : 14 titres
+L'Est Républicain territoire-de-belfort : 13 titres
 L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
 L'Est Républicain www.estrepublicain.fr : 2 titres
-VM Belfort : 35 titres
+VM Belfort : 36 titres
 Auvergne-Rhône-Alpes : 54 titres
-Bourgogne-Franche-Comté : 36 titres
-Bretagne : 42 titres
-Centre-Val de Loire : 17 titres
-Corse : 11 titres
-Grand Est : 21 titres
-Hauts-de-France : 27 titres
+Bourgogne-Franche-Comté : 87 titres
+Bretagne : 83 titres
+Centre-Val de Loire : 18 titres
+Corse : 10 titres
+Grand Est : 22 titres
+::warning::Hauts-de-France : flux muet (HTTPError)
 Île-de-France : 34 titres
-Normandie : 10 titres
-Nouvelle-Aquitaine : 34 titres
-Occitanie : 51 titres
+Normandie : 11 titres
+Nouvelle-Aquitaine : 74 titres
+Occitanie : 52 titres
 ::warning::Pays de la Loire : flux muet (HTTPError)
-Provence-Alpes-Côte d'Azur : 82 titres
-Outre-mer : 33 titres
+Provence-Alpes-Côte d'Azur : 45 titres
+::warning::Outre-mer : flux muet (HTTPError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : BRE 3, COR 2, CVL 11, NOR 5, OCC 3 — 24 titres
+Foot amateur : BRE 3, COR 2, CVL 12, NOR 6, OCC 3 — 26 titres
