@@ -670,10 +670,10 @@
    "sport": "basket",
    "dom": "Hawks",
    "ext": "Hornets",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    0
    ]
   },
   {
@@ -807,19 +807,6 @@
    ]
   },
   {
-   "id": 558528,
-   "date": "2026-11-21T14:00:00Z",
-   "comp": "Serie A",
-   "sport": "foot",
-   "dom": "Lazio",
-   "ext": "Lecce",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
    "id": 558525,
    "date": "2026-11-21T14:00:00Z",
    "comp": "Serie A",
@@ -833,38 +820,12 @@
    ]
   },
   {
-   "id": 565860,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
+   "id": 558528,
+   "date": "2026-11-21T14:00:00Z",
+   "comp": "Serie A",
    "sport": "foot",
-   "dom": "Elversberg",
-   "ext": "Freiburg",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 565862,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
-   "sport": "foot",
-   "dom": "M'gladbach",
-   "ext": "Dortmund",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 565858,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
-   "sport": "foot",
-   "dom": "Union Berlin",
-   "ext": "RB Leipzig",
+   "dom": "Lazio",
+   "ext": "Lecce",
    "statut": "TIMED",
    "score": [
     null,
@@ -898,12 +859,12 @@
    ]
   },
   {
-   "id": 560647,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
+   "id": 565858,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
    "sport": "foot",
-   "dom": "Bournemouth",
-   "ext": "Nottingham",
+   "dom": "Union Berlin",
+   "ext": "RB Leipzig",
    "statut": "TIMED",
    "score": [
     null,
@@ -911,12 +872,25 @@
    ]
   },
   {
-   "id": 560650,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
+   "id": 565860,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
    "sport": "foot",
-   "dom": "Coventry City",
-   "ext": "Crystal Palace",
+   "dom": "Elversberg",
+   "ext": "Freiburg",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 565862,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "M'gladbach",
+   "ext": "Dortmund",
    "statut": "TIMED",
    "score": [
     null,
@@ -956,6 +930,32 @@
    "sport": "foot",
    "dom": "Chelsea",
    "ext": "Leeds United",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 560647,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Bournemouth",
+   "ext": "Nottingham",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 560650,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Coventry City",
+   "ext": "Crystal Palace",
    "statut": "TIMED",
    "score": [
     null,
@@ -1067,25 +1067,12 @@
    ]
   },
   {
-   "id": 559623,
+   "id": 559624,
    "date": "2026-11-21T19:45:00Z",
    "comp": "Ligue 1",
    "sport": "foot",
-   "dom": "RC Lens",
-   "ext": "Toulouse",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 559627,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "Strasbourg",
-   "ext": "Brest",
+   "dom": "Lille",
+   "ext": "Olympique Lyon",
    "statut": "TIMED",
    "score": [
     null,
@@ -1106,12 +1093,25 @@
    ]
   },
   {
-   "id": 559624,
+   "id": 559623,
    "date": "2026-11-21T19:45:00Z",
    "comp": "Ligue 1",
    "sport": "foot",
-   "dom": "Lille",
-   "ext": "Olympique Lyon",
+   "dom": "RC Lens",
+   "ext": "Toulouse",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 559627,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Strasbourg",
+   "ext": "Brest",
    "statut": "TIMED",
    "score": [
     null,
@@ -1691,6 +1691,6 @@
    ]
   }
  ],
- "maj": "2026-11-21T00:06:49Z",
- "verifie": "2026-11-21T00:06:49Z"
+ "maj": "2026-11-21T00:10:46Z",
+ "verifie": "2026-11-21T00:10:46Z"
 }
