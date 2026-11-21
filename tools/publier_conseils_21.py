@@ -2,9 +2,7 @@
 import datetime as dt
 import os
 import sys
-import time
 from pathlib import Path
-from urllib.request import Request, urlopen
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from tools.diffuser_jt import DeliveryError, State, git_save
@@ -21,19 +19,7 @@ TEXT = (
 )
 KEY = "conseils-2026-11-21"
 
-def wait_for_site():
-    for _ in range(18):
-        try:
-            with urlopen(Request(IMAGE, method="HEAD"), timeout=10) as response:
-                if response.headers.get_content_type() == "image/jpeg":
-                    return
-        except OSError:
-            pass
-        time.sleep(10)
-    raise DeliveryError("Visuel public indisponible au moment de la diffusion.")
-
 def publish(state, graph):
-    wait_for_site()
     receipts = state.data.setdefault("conseils_publications", {})
     errors = 0
     for account in ("meta", "meta_pronos", "meta_univers"):
