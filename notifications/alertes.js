@@ -4,7 +4,7 @@ const TOP={buts:['⚽ BUT !','/scores/'],foot:['⚽ Foot','/#feed-title'],actus:
 const empty=()=>({enabled:false,topics:Object.fromEntries(Object.keys(TOP).map(k=>[k,false])),seen:{}});
 function read(){try{const s=JSON.parse(localStorage.getItem(KEY)||'null');return s?.topics&&s?.seen?s:empty()}catch{return empty()}}
 function save(s){try{localStorage.setItem(KEY,JSON.stringify(s))}catch{}}
-function osSync(ask){const s=read();if(!window.OneSignalDeferred)return;OneSignalDeferred.push(async O=>{try{if(ask&&s.enabled)await O.Notifications.requestPermission();const t={};for(const k of Object.keys(TOP))t[k]=s.enabled&&s.topics[k]?'1':'0';await O.User.addTags(t)}catch{}})}
+function osSync(){const s=read();if(!window.OneSignalDeferred)return;OneSignalDeferred.push(async O=>{try{const t={};for(const k of Object.keys(TOP))t[k]=s.enabled&&s.topics[k]?'1':'0';await O.User.addTags(t)}catch{}})}
 async function get(path){const r=await fetch(path+'?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error(path);return r}
 function mk(k,id,t,u){return {k,id:String(id),title:String(t).slice(0,160),url:u,label:TOP[k][0]}}
 async function latest(){const a=Object.fromEntries(Object.keys(TOP).map(k=>[k,[]]));
@@ -33,13 +33,21 @@ async function goals(pop){const s=read();if(!s.enabled||!s.topics.buts)return;le
  s.goals=next;save(s)}
 async function check(pop){await goals(pop);const s=read();if(!s.enabled)return;try{const a=await latest();let dirty=false;for(const k of Object.keys(TOP)){if(!s.topics[k]||!a[k].length)continue;const now=a[k][0],old=s.seen[k];if(old!==now.id){s.seen[k]=now.id;dirty=true;if(old&&pop&&a[k].some(x=>x.id===old))await notify(now)}}if(dirty)save(s);if(document.body.classList.contains('vm-alerts-page'))draw(a)}catch{}}
 function start(){if(document.body.classList.contains('vm-alerts-page')){
-const status=document.getElementById('vm-alert-status');const initial=read();status.textContent=initial.enabled?'Alertes activées lorsque le site est ouvert.':'Alertes désactivées.';
-for(const k of Object.keys(TOP)){const c=document.querySelector('[data-topic="'+k+'"]');c.checked=!!initial.topics[k];c.addEventListener('change',()=>{const s=read();s.topics[k]=c.checked;save(s);osSync(false);status.textContent='Choix enregistré sur cet appareil.'})}
-document.getElementById('vm-alert-enable').addEventListener('click',async()=>{const s=read();if(!Object.values(s.topics).some(Boolean)){status.textContent='Choisis au moins un thème.';return} s.enabled=true;save(s);osSync(true);if('Notification'in window&&window.isSecureContext&&Notification.permission==='default')try{await Notification.requestPermission()}catch{}const a=await latest().catch(()=>null);if(a){for(const k of Object.keys(TOP))if(s.topics[k]&&a[k].length)s.seen[k]=a[k][0].id;save(s);draw(a)}status.textContent='Alertes activées pendant la visite. Pas encore de push lorsque le navigateur est fermé.'});
-document.getElementById('vm-alert-disable').addEventListener('click',()=>{const s=read();s.enabled=false;save(s);osSync(false);status.textContent='Alertes désactivées.'});
+const status=document.getElementById('vm-alert-status');
+function describe(){
+ if(!read().enabled)return 'Alertes désactivées.';
+ if(!('Notification' in window))return 'Alertes à l’écran actives. Sur iPhone, ajoute Véloce Mercato à l’écran d’accueil depuis Safari, puis ouvre cette page depuis l’icône.';
+ if(Notification.permission==='denied')return 'Alertes à l’écran actives. Les notifications de l’appareil sont bloquées. Autorise-les dans les paramètres du site ou de ton téléphone, puis réessaie.';
+ if(Notification.permission==='granted')return 'Notifications autorisées. Les alertes pendant la visite sont actives.';
+ return 'Alertes à l’écran actives. Autorise les notifications si le navigateur te le propose.';
+}
+const initial=read();status.textContent=describe();
+for(const k of Object.keys(TOP)){const c=document.querySelector('[data-topic="'+k+'"]');c.checked=!!initial.topics[k];c.addEventListener('change',()=>{const s=read();s.topics[k]=c.checked;save(s);osSync();status.textContent='Choix enregistré sur cet appareil.'})}
+document.getElementById('vm-alert-enable').addEventListener('click',async()=>{const s=read();if(!Object.values(s.topics).some(Boolean)){status.textContent='Choisis au moins un thème.';return} s.enabled=true;save(s);if('Notification'in window&&window.isSecureContext&&Notification.permission==='default')try{await Notification.requestPermission()}catch{}osSync();status.textContent=describe();const a=await latest().catch(()=>null);if(a){const current=read();if(!current.enabled)return;for(const k of Object.keys(TOP))if(current.topics[k]&&a[k].length)current.seen[k]=a[k][0].id;save(current);draw(a)}});
+document.getElementById('vm-alert-disable').addEventListener('click',()=>{const s=read();s.enabled=false;save(s);osSync();status.textContent='Alertes désactivées.'});
 document.getElementById('vm-alert-refresh').addEventListener('click',async()=>{try{draw(await latest());status.textContent='Nouveautés actualisées.'}catch{status.textContent='Flux temporairement indisponible.'}});
 latest().then(draw).catch(()=>{});
-}else{const a=document.createElement('a');a.className='vm-alert-fab';a.href='/notifications/';a.textContent='🔔 Mes alertes';a.setAttribute('aria-label','Choisir mes alertes');document.body.append(a)}
+}else if(!document.querySelector('.vm-mobile-access a[href="/notifications/"]')){const a=document.createElement('a');a.className='vm-alert-fab';a.href='/notifications/';a.textContent='🔔 Mes alertes';a.setAttribute('aria-label','Choisir mes alertes');document.body.append(a)}
 if(read().enabled){sw().catch(()=>{});check(false);setInterval(()=>{if(!document.hidden)check(true)},180000);setInterval(()=>{if(!document.hidden)goals(true)},60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)check(true)})}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
 })();
