@@ -1,5 +1,125 @@
 [
  {
+  "id": "foot-edition-20261121-2000",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 20 h",
+  "titre": "La Pastille Foot - Samedi 21 novembre, 20 heures",
+  "accroche": "Nice-PSG, Chelsea, Liverpool : c'est parti pour La Pastille Foot.",
+  "duree": 150,
+  "date": "2026-11-21T20:51+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261121-2000.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-21T20:00:00+01:00",
+  "source_start": "2026-11-21T12:00:00+01:00",
+  "source_end": "2026-11-21T20:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-5570efe4c10ebebc07b05c",
+    "titre": "Penalty contre Chelsea : la décision de l'arbitre Michael Oliver expliquée",
+    "publishedAt": "2026-11-21T18:30:22Z",
+    "createdAt": "2026-11-21T18:40:59Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/c50md981n277o?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-bc1c95250810ddab517f91",
+    "titre": "Lamine Camara : Liverpool prépare une offre de 70 M€ à Monaco",
+    "publishedAt": "2026-11-21T18:00:00Z",
+    "createdAt": "2026-11-21T18:21:05Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/monaco/un-club-paye-70-me-monaco-dit-adieu-a-camara"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-d7ce086c7314990a82f779",
+    "titre": "Real Madrid-Celta Vigo : Mbappé et les Merengues reprennent la Liga ce samedi",
+    "publishedAt": "2026-11-21T16:44:00Z",
+    "createdAt": "2026-11-21T18:00:57Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/liga/direct-real-madrid-celta-vigo-suivez-le-match-de-la-13e-journee-de-liga-avec-kylian-mbappe-en-live_LS-202611210356.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-09ef91c0d29c2f116c5cd6",
+    "titre": "Brighton : Luka Vušković, la recrue à 55 M€ qui s'impose en Premier League",
+    "publishedAt": "2026-11-21T17:01:39Z",
+    "createdAt": "2026-11-21T17:21:04Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a8968622564718406949-brighton-luka-vuskovic-le-defenseur-a-100-meur-que-tottenham-ne-pouvait-plus-garder"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-1dc531bc0298258c8f3a85",
+    "titre": "Nice-PSG : Désiré Doué se blesse gravement au genou après avoir marqué",
+    "publishedAt": "2026-11-21T17:07:07Z",
+    "createdAt": "2026-11-21T17:21:01Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/ligue-1/la-terrible-image-du-match-nice-psg-apres-sa-celebration-protege-dents-desire-doue-se-blesse-gravement-au-genou_AV-202611210381.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-3bdd8dd33bd51bac853a4e",
+    "titre": "Serie A : la Lazio s'impose 3-0 contre Lecce, Côme bat Cagliari 2-0",
+    "publishedAt": "2026-11-21T16:02:56Z",
+    "createdAt": "2026-11-21T17:01:08Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a2028005901415641430-serie-a-la-lazio-poursuit-son-sans-faute-da-cunha-fait-briller-come"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-bddd822700920a8a82cc73",
+    "titre": "Premier League : Chelsea s'effondre face à Leeds, Tottenham s'impose",
+    "publishedAt": "2026-11-21T16:59:45Z",
+    "createdAt": "2026-11-21T17:01:00Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a8606713308250283931-pl-chelsea-chute-lourdement-contre-leeds-tottenham-se-relance"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-117673122947f9c861b56d",
+    "titre": "Bundesliga : Dortmund prend la tête, Leverkusen écrase Paderborn avec un doublé de Moreira",
+    "publishedAt": "2026-11-21T16:26:31Z",
+    "createdAt": "2026-11-21T16:41:03Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a6731838693697031258-bundesliga-dortmund-nouveau-leader-fribourg-et-leipzig-enchainent-leverkusen-etrille-paderborn-avec-un-double-de-moreira"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "actus-edition-20261121-1300",
   "univers": "actus",
   "format": "edition",
@@ -12795,54 +12915,6 @@
      {
       "nom": "Foot National",
       "url": "https://www.foot-national.com/actus/foot-amateur-3-000-jeunes-licencies-invites-a-un-match-de-la-8e-journee-de-ligue-1-960316"
-     }
-    ]
-   }
-  ],
-  "diffusion": "youtube"
- },
- {
-  "id": "gaming-edition-20261025-1000",
-  "univers": "gaming",
-  "format": "edition",
-  "moment": "matin",
-  "label": "JT 10 h",
-  "titre": "La Pastille Gaming - 25 octobre, 10 heures",
-  "accroche": "Bonjour à tous, on commence avec un mod qui fait parler le PC.",
-  "duree": 84,
-  "date": "2026-10-25T10:09+01:00",
-  "publie": false,
-  "voix": [
-   "piper"
-  ],
-  "speech_rate": 1.12,
-  "fichier": "gaming-edition-20261025-1000.mp4",
-  "editorial_revision": "court-v1",
-  "edition_at": "2026-10-25T10:00:00+01:00",
-  "source_start": "2026-10-25T00:00:00+02:00",
-  "source_end": "2026-10-25T10:00:00+01:00",
-  "sources": [
-   {
-    "id": "rss-v2-123e219c8f05c726d0e66b",
-    "titre": "Oblivion Remastered : un mod créé avec l'aide de l'IA améliore les performances sur PC",
-    "publishedAt": "2026-10-25T08:15:00Z",
-    "createdAt": "2026-10-25T08:44:05Z",
-    "references": [
-     {
-      "nom": "Gamekult",
-      "url": "https://www.gamekult.com/actualite/oblivion-remastered-optimise-par-mod-entierement-fait-par-ia-3050872545.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-118db8656d4448793bf0e4",
-    "titre": "Wonder Boy in Monster World : le successeur de The Dragon's Trap joue la carte de la sécurité",
-    "publishedAt": "2026-10-25T05:00:00Z",
-    "createdAt": "2026-10-25T05:12:43Z",
-    "references": [
-     {
-      "nom": "Gamekult",
-      "url": "https://www.gamekult.com/actualite/successeur-de-the-dragon-s-trap-wonder-boy-in-monster-world-a-joue-la-securite-et-l-histoire-l-a-un-peu-oublie-3050872548.html"
      }
     ]
    }
