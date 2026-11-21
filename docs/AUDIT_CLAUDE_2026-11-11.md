@@ -1,10 +1,10 @@
 # Audit du site pour Claude
 
-État mesuré le 2026-11-21T15:36:26.590450+01:00.
+État mesuré le 2026-11-21T23:12:43.817643+01:00.
 
 ## Périmètre et limites
 
-1766 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 2037 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
+1791 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 2079 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
 
 Un statut 404 ou 410 indique une URL introuvable. Les refus 401/403, les limites 429, les erreurs serveur et les délais dépassés demandent une vérification complémentaire. Le test ne valide pas le visionnage géographique des vidéos ni la véracité des articles. Les classements signalés par mots-clés doivent être relus avant déplacement.
 
@@ -17,7 +17,7 @@ Retirer les accès transversaux aux anciennes applications et leurs invitations 
 - Liens confirmés introuvables en HTTP, 12.
 - Cibles internes absentes du dépôt, 76. Certaines peuvent être servies par Cloudflare, lire leur résultat HTTP avant correction.
 - Ancres à vérifier, 3123. Certaines sont gérées par JavaScript.
-- Articles à relire pour leur classement, 1.
+- Articles à relire pour leur classement, 2.
 - Replays réellement publiés par genre, {"foot": 47, "actus": 29, "gaming": 14}.
 
 Le fichier JSON associé contient toutes les références, pages et lignes. Les chemins correspondent au commit indiqué dans ce rapport.
@@ -39,6 +39,7 @@ Le fichier JSON associé contient toutes les références, pages et lignes. Les 
 
 ## Articles à relire
 
+- articles.json — rss-v2-7eb4698b60e746a88a2d49 — Monaco-Auxerre : Faivre ouvre le score pour l'AJA sur une frappe puissante — À relire, aucun indice net de la rubrique dans la brève
 - articles.json — rss-v2-d229402152bc33744fbb2a — CAN 2025 : Mendy raconte comment il a déstabilisé Brahim Diaz avant sa panenka ratée — À relire, aucun indice net de la rubrique dans la brève
 
 ## Corrections déjà apportées dans cette reprise
