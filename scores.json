@@ -673,7 +673,7 @@
    "statut": "IN_PLAY",
    "score": [
     11,
-    5
+    7
    ]
   },
   {
@@ -833,12 +833,12 @@
    ]
   },
   {
-   "id": 565857,
+   "id": 565865,
    "date": "2026-11-21T14:30:00Z",
    "comp": "Bundesliga",
    "sport": "foot",
-   "dom": "Leverkusen",
-   "ext": "SC Paderborn",
+   "dom": "Frankfurt",
+   "ext": "Hoffenheim",
    "statut": "TIMED",
    "score": [
     null,
@@ -846,12 +846,12 @@
    ]
   },
   {
-   "id": 565865,
+   "id": 565857,
    "date": "2026-11-21T14:30:00Z",
    "comp": "Bundesliga",
    "sport": "foot",
-   "dom": "Frankfurt",
-   "ext": "Hoffenheim",
+   "dom": "Leverkusen",
+   "ext": "SC Paderborn",
    "statut": "TIMED",
    "score": [
     null,
@@ -898,6 +898,19 @@
    ]
   },
   {
+   "id": 560644,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Aston Villa",
+   "ext": "Sunderland",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
    "id": 560648,
    "date": "2026-11-21T15:00:00Z",
    "comp": "Premier League",
@@ -917,19 +930,6 @@
    "sport": "foot",
    "dom": "Chelsea",
    "ext": "Leeds United",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 560644,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Aston Villa",
-   "ext": "Sunderland",
    "statut": "TIMED",
    "score": [
     null,
@@ -1080,19 +1080,6 @@
    ]
   },
   {
-   "id": 559627,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "Strasbourg",
-   "ext": "Brest",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
    "id": 559621,
    "date": "2026-11-21T19:45:00Z",
    "comp": "Ligue 1",
@@ -1112,6 +1099,19 @@
    "sport": "foot",
    "dom": "RC Lens",
    "ext": "Toulouse",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 559627,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Strasbourg",
+   "ext": "Brest",
    "statut": "TIMED",
    "score": [
     null,
@@ -1691,6 +1691,6 @@
    ]
   }
  ],
- "maj": "2026-11-21T00:14:43Z",
- "verifie": "2026-11-21T00:14:43Z"
+ "maj": "2026-11-21T00:18:41Z",
+ "verifie": "2026-11-21T00:18:41Z"
 }
