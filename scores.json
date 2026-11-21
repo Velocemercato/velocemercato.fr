@@ -833,19 +833,6 @@
    ]
   },
   {
-   "id": 565860,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
-   "sport": "foot",
-   "dom": "Elversberg",
-   "ext": "Freiburg",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    1
-   ]
-  },
-  {
    "id": 565862,
    "date": "2026-11-21T14:30:00Z",
    "comp": "Bundesliga",
@@ -869,6 +856,19 @@
    "score": [
     1,
     5
+   ]
+  },
+  {
+   "id": 565860,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "Elversberg",
+   "ext": "Freiburg",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    1
    ]
   },
   {
@@ -898,19 +898,6 @@
    ]
   },
   {
-   "id": 560647,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Bournemouth",
-   "ext": "Nottingham",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
-   ]
-  },
-  {
    "id": 560650,
    "date": "2026-11-21T15:00:00Z",
    "comp": "Premier League",
@@ -924,15 +911,15 @@
    ]
   },
   {
-   "id": 560644,
+   "id": 560647,
    "date": "2026-11-21T15:00:00Z",
    "comp": "Premier League",
    "sport": "foot",
-   "dom": "Aston Villa",
-   "ext": "Sunderland",
+   "dom": "Bournemouth",
+   "ext": "Nottingham",
    "statut": "FINISHED",
    "score": [
-    0,
+    2,
     0
    ]
   },
@@ -960,6 +947,19 @@
    "score": [
     1,
     4
+   ]
+  },
+  {
+   "id": 560644,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Aston Villa",
+   "ext": "Sunderland",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    0
    ]
   },
   {
@@ -1067,19 +1067,6 @@
    ]
   },
   {
-   "id": 559623,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "RC Lens",
-   "ext": "Toulouse",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
    "id": 559627,
    "date": "2026-11-21T19:45:00Z",
    "comp": "Ligue 1",
@@ -1099,6 +1086,19 @@
    "sport": "foot",
    "dom": "Monaco",
    "ext": "Auxerre",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 559623,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "RC Lens",
+   "ext": "Toulouse",
    "statut": "TIMED",
    "score": [
     null,
@@ -1691,6 +1691,6 @@
    ]
   }
  ],
- "maj": "2026-11-21T17:46:57Z",
- "verifie": "2026-11-21T17:46:57Z"
+ "maj": "2026-11-21T17:50:52Z",
+ "verifie": "2026-11-21T17:50:52Z"
 }
