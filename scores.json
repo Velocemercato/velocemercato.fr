@@ -672,8 +672,8 @@
    "ext": "Hornets",
    "statut": "IN_PLAY",
    "score": [
-    0,
-    0
+    11,
+    5
    ]
   },
   {
@@ -833,6 +833,19 @@
    ]
   },
   {
+   "id": 565857,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "Leverkusen",
+   "ext": "SC Paderborn",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
    "id": 565865,
    "date": "2026-11-21T14:30:00Z",
    "comp": "Bundesliga",
@@ -846,12 +859,12 @@
    ]
   },
   {
-   "id": 565857,
+   "id": 565862,
    "date": "2026-11-21T14:30:00Z",
    "comp": "Bundesliga",
    "sport": "foot",
-   "dom": "Leverkusen",
-   "ext": "SC Paderborn",
+   "dom": "M'gladbach",
+   "ext": "Dortmund",
    "statut": "TIMED",
    "score": [
     null,
@@ -885,32 +898,6 @@
    ]
   },
   {
-   "id": 565862,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
-   "sport": "foot",
-   "dom": "M'gladbach",
-   "ext": "Dortmund",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 560644,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Aston Villa",
-   "ext": "Sunderland",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
    "id": 560648,
    "date": "2026-11-21T15:00:00Z",
    "comp": "Premier League",
@@ -937,12 +924,12 @@
    ]
   },
   {
-   "id": 560647,
+   "id": 560644,
    "date": "2026-11-21T15:00:00Z",
    "comp": "Premier League",
    "sport": "foot",
-   "dom": "Bournemouth",
-   "ext": "Nottingham",
+   "dom": "Aston Villa",
+   "ext": "Sunderland",
    "statut": "TIMED",
    "score": [
     null,
@@ -956,6 +943,19 @@
    "sport": "foot",
    "dom": "Coventry City",
    "ext": "Crystal Palace",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 560647,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Bournemouth",
+   "ext": "Nottingham",
    "statut": "TIMED",
    "score": [
     null,
@@ -1080,6 +1080,19 @@
    ]
   },
   {
+   "id": 559627,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Strasbourg",
+   "ext": "Brest",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
    "id": 559621,
    "date": "2026-11-21T19:45:00Z",
    "comp": "Ligue 1",
@@ -1099,19 +1112,6 @@
    "sport": "foot",
    "dom": "RC Lens",
    "ext": "Toulouse",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 559627,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "Strasbourg",
-   "ext": "Brest",
    "statut": "TIMED",
    "score": [
     null,
@@ -1691,6 +1691,6 @@
    ]
   }
  ],
- "maj": "2026-11-21T00:10:46Z",
- "verifie": "2026-11-21T00:10:46Z"
+ "maj": "2026-11-21T00:14:43Z",
+ "verifie": "2026-11-21T00:14:43Z"
 }
