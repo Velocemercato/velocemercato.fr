@@ -859,6 +859,19 @@
    ]
   },
   {
+   "id": 565860,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "Elversberg",
+   "ext": "Freiburg",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    1
+   ]
+  },
+  {
    "id": 565862,
    "date": "2026-11-21T14:30:00Z",
    "comp": "Bundesliga",
@@ -882,32 +895,6 @@
    "score": [
     1,
     5
-   ]
-  },
-  {
-   "id": 565860,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
-   "sport": "foot",
-   "dom": "Elversberg",
-   "ext": "Freiburg",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": 560642,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Chelsea",
-   "ext": "Leeds United",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    4
    ]
   },
   {
@@ -937,16 +924,16 @@
    ]
   },
   {
-   "id": 560650,
+   "id": 560642,
    "date": "2026-11-21T15:00:00Z",
    "comp": "Premier League",
    "sport": "foot",
-   "dom": "Coventry City",
-   "ext": "Crystal Palace",
+   "dom": "Chelsea",
+   "ext": "Leeds United",
    "statut": "FINISHED",
    "score": [
-    3,
-    2
+    1,
+    4
    ]
   },
   {
@@ -960,6 +947,19 @@
    "score": [
     2,
     0
+   ]
+  },
+  {
+   "id": 560650,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Coventry City",
+   "ext": "Crystal Palace",
+   "statut": "FINISHED",
+   "score": [
+    3,
+    2
    ]
   },
   {
@@ -1080,19 +1080,6 @@
    ]
   },
   {
-   "id": 559621,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "Monaco",
-   "ext": "Auxerre",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
    "id": 559623,
    "date": "2026-11-21T19:45:00Z",
    "comp": "Ligue 1",
@@ -1112,6 +1099,19 @@
    "sport": "foot",
    "dom": "Strasbourg",
    "ext": "Brest",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 559621,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Monaco",
+   "ext": "Auxerre",
    "statut": "TIMED",
    "score": [
     null,
@@ -1691,6 +1691,6 @@
    ]
   }
  ],
- "maj": "2026-11-21T17:27:19Z",
- "verifie": "2026-11-21T17:27:19Z"
+ "maj": "2026-11-21T17:31:14Z",
+ "verifie": "2026-11-21T17:31:14Z"
 }
