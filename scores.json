@@ -807,6 +807,19 @@
    ]
   },
   {
+   "id": 558525,
+   "date": "2026-11-21T14:00:00Z",
+   "comp": "Serie A",
+   "sport": "foot",
+   "dom": "Como 1907",
+   "ext": "Cagliari",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    0
+   ]
+  },
+  {
    "id": 558528,
    "date": "2026-11-21T14:00:00Z",
    "comp": "Serie A",
@@ -820,15 +833,28 @@
    ]
   },
   {
-   "id": 558525,
-   "date": "2026-11-21T14:00:00Z",
-   "comp": "Serie A",
+   "id": 565857,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
    "sport": "foot",
-   "dom": "Como 1907",
-   "ext": "Cagliari",
+   "dom": "Leverkusen",
+   "ext": "SC Paderborn",
    "statut": "FINISHED",
    "score": [
-    2,
+    4,
+    0
+   ]
+  },
+  {
+   "id": 565865,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "Frankfurt",
+   "ext": "Hoffenheim",
+   "statut": "FINISHED",
+   "score": [
+    1,
     0
    ]
   },
@@ -872,28 +898,41 @@
    ]
   },
   {
-   "id": 565857,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
+   "id": 560642,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
    "sport": "foot",
-   "dom": "Leverkusen",
-   "ext": "SC Paderborn",
+   "dom": "Chelsea",
+   "ext": "Leeds United",
    "statut": "FINISHED",
    "score": [
-    4,
+    1,
+    4
+   ]
+  },
+  {
+   "id": 560644,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Aston Villa",
+   "ext": "Sunderland",
+   "statut": "FINISHED",
+   "score": [
+    0,
     0
    ]
   },
   {
-   "id": 565865,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
+   "id": 560648,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
    "sport": "foot",
-   "dom": "Frankfurt",
-   "ext": "Hoffenheim",
+   "dom": "Tottenham",
+   "ext": "Ipswich Town",
    "statut": "FINISHED",
    "score": [
-    1,
+    2,
     0
    ]
   },
@@ -924,45 +963,6 @@
    ]
   },
   {
-   "id": 560648,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Tottenham",
-   "ext": "Ipswich Town",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
-   ]
-  },
-  {
-   "id": 560642,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Chelsea",
-   "ext": "Leeds United",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    4
-   ]
-  },
-  {
-   "id": 560644,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Aston Villa",
-   "ext": "Sunderland",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    0
-   ]
-  },
-  {
    "id": 564751,
    "date": "2026-11-21T15:15:00Z",
    "comp": "Liga",
@@ -982,10 +982,10 @@
    "sport": "foot",
    "dom": "Nice",
    "ext": "PSG",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    1,
-    2
+    2,
+    3
    ]
   },
   {
@@ -995,10 +995,10 @@
    "sport": "foot",
    "dom": "Parma",
    "ext": "Roma",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    0,
-    1
+    1,
+    5
    ]
   },
   {
@@ -1008,7 +1008,7 @@
    "sport": "foot",
    "dom": "Schalke",
    "ext": "Stuttgart",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     0,
     0
@@ -1021,10 +1021,10 @@
    "sport": "foot",
    "dom": "Sevilla FC",
    "ext": "Real Betis",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    0,
-    0
+    1,
+    1
    ]
   },
   {
@@ -1034,10 +1034,10 @@
    "sport": "foot",
    "dom": "Newcastle",
    "ext": "Arsenal",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    0,
-    0
+    2,
+    2
    ]
   },
   {
@@ -1047,10 +1047,10 @@
    "sport": "basket",
    "dom": "76ers",
    "ext": "Bucks",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    132,
+    129
    ]
   },
   {
@@ -1060,49 +1060,10 @@
    "sport": "hockey",
    "dom": "Hurricanes",
    "ext": "Oilers",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 559627,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "Strasbourg",
-   "ext": "Brest",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 559621,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "Monaco",
-   "ext": "Auxerre",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 559623,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "RC Lens",
-   "ext": "Toulouse",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
+    7,
+    4
    ]
   },
   {
@@ -1112,10 +1073,49 @@
    "sport": "foot",
    "dom": "Lille",
    "ext": "Olympique Lyon",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    0,
+    1
+   ]
+  },
+  {
+   "id": 559627,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Strasbourg",
+   "ext": "Brest",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": 559621,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Monaco",
+   "ext": "Auxerre",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    1
+   ]
+  },
+  {
+   "id": 559623,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "RC Lens",
+   "ext": "Toulouse",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    1
    ]
   },
   {
@@ -1125,10 +1125,10 @@
    "sport": "foot",
    "dom": "Napoli",
    "ext": "Torino",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    1,
+    0
    ]
   },
   {
@@ -1138,10 +1138,10 @@
    "sport": "foot",
    "dom": "Real Madrid",
    "ext": "Celta",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    2,
+    1
    ]
   },
   {
@@ -1151,10 +1151,10 @@
    "sport": "hockey",
    "dom": "Flames",
    "ext": "Blackhawks",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    2,
+    3
    ]
   },
   {
@@ -1691,6 +1691,6 @@
    ]
   }
  ],
- "maj": "2026-11-21T17:50:52Z",
- "verifie": "2026-11-21T17:50:52Z"
+ "maj": "2026-11-21T22:11:34Z",
+ "verifie": "2026-11-21T22:11:34Z"
 }
