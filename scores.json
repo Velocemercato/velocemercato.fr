@@ -807,6 +807,19 @@
    ]
   },
   {
+   "id": 558525,
+   "date": "2026-11-21T14:00:00Z",
+   "comp": "Serie A",
+   "sport": "foot",
+   "dom": "Como 1907",
+   "ext": "Cagliari",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    0
+   ]
+  },
+  {
    "id": 558528,
    "date": "2026-11-21T14:00:00Z",
    "comp": "Serie A",
@@ -820,15 +833,28 @@
    ]
   },
   {
-   "id": 558525,
-   "date": "2026-11-21T14:00:00Z",
-   "comp": "Serie A",
+   "id": 565865,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
    "sport": "foot",
-   "dom": "Como 1907",
-   "ext": "Cagliari",
+   "dom": "Frankfurt",
+   "ext": "Hoffenheim",
    "statut": "FINISHED",
    "score": [
-    2,
+    1,
+    0
+   ]
+  },
+  {
+   "id": 565857,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "Leverkusen",
+   "ext": "SC Paderborn",
+   "statut": "FINISHED",
+   "score": [
+    4,
     0
    ]
   },
@@ -872,58 +898,6 @@
    ]
   },
   {
-   "id": 565865,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
-   "sport": "foot",
-   "dom": "Frankfurt",
-   "ext": "Hoffenheim",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    0
-   ]
-  },
-  {
-   "id": 565857,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
-   "sport": "foot",
-   "dom": "Leverkusen",
-   "ext": "SC Paderborn",
-   "statut": "FINISHED",
-   "score": [
-    4,
-    0
-   ]
-  },
-  {
-   "id": 560647,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Bournemouth",
-   "ext": "Nottingham",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
-   ]
-  },
-  {
-   "id": 560650,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Coventry City",
-   "ext": "Crystal Palace",
-   "statut": "FINISHED",
-   "score": [
-    3,
-    2
-   ]
-  },
-  {
    "id": 560644,
    "date": "2026-11-21T15:00:00Z",
    "comp": "Premier League",
@@ -960,6 +934,32 @@
    "score": [
     1,
     4
+   ]
+  },
+  {
+   "id": 560647,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Bournemouth",
+   "ext": "Nottingham",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    0
+   ]
+  },
+  {
+   "id": 560650,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Coventry City",
+   "ext": "Crystal Palace",
+   "statut": "FINISHED",
+   "score": [
+    3,
+    2
    ]
   },
   {
@@ -1067,6 +1067,19 @@
    ]
   },
   {
+   "id": 559624,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Lille",
+   "ext": "Olympique Lyon",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
    "id": 559623,
    "date": "2026-11-21T19:45:00Z",
    "comp": "Ligue 1",
@@ -1099,19 +1112,6 @@
    "sport": "foot",
    "dom": "Monaco",
    "ext": "Auxerre",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 559624,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "Lille",
-   "ext": "Olympique Lyon",
    "statut": "TIMED",
    "score": [
     null,
@@ -1691,6 +1691,6 @@
    ]
   }
  ],
- "maj": "2026-11-21T17:15:36Z",
- "verifie": "2026-11-21T17:15:36Z"
+ "maj": "2026-11-21T17:23:25Z",
+ "verifie": "2026-11-21T17:23:25Z"
 }
