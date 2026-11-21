@@ -1,10 +1,9 @@
 name: VM - Publications editoriales centralisees
 on:
-  push:
-    branches: [main]
-    paths: ['.github/workflows/editorial-vm.yml', 'tools/editorial_vm.py']
   schedule:
-    - cron: '*/5 * * * *'
+    # Créneaux 08 h, 12 h, 18 h et 20 h Paris, avec les deux décalages UTC.
+    # Le script contrôle le créneau local et bloque un nouvel envoi après accusé.
+    - cron: '7,22,37 6-7,10-11,16-19 * * *'
   workflow_dispatch:
 permissions:
   contents: write
@@ -35,15 +34,8 @@ jobs:
           state_dir="$RUNNER_TEMP/vm-broadcast-state"
           git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "$repo_url" "$state_dir"
           test -f "$state_dir/state.enc"
-      - name: Publier le lot demande ou verifier les creneaux
-        env:
-          INITIAL_BATCH: ${{ github.event_name == 'push' && 'yes' || 'no' }}
-        run: |
-          if [ "$INITIAL_BATCH" = yes ]; then
-            python tools/editorial_vm.py --state "$RUNNER_TEMP/vm-broadcast-state/state.enc" --burst
-          else
-            python tools/editorial_vm.py --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
-          fi
+      - name: Verifier les creneaux et publier au plus un contenu par compte
+        run: python tools/editorial_vm.py --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
       - name: Enregistrer uniquement le bilan public
         if: always()
         run: |

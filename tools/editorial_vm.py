@@ -27,6 +27,14 @@ TARGETS = {
 }
 ROTATIONS = {'meta': ('foot', 'multisport'),
              'meta_pronos': ('actus', 'gaming', 'multisport', 'actus', 'foot')}
+SCHEDULE = {
+    ('meta', 'facebook'): (8, 12, 20),
+    ('meta', 'instagram'): (12, 20),
+    ('meta_pronos', 'facebook'): (12, 20),
+    ('meta_univers', 'facebook'): (18,),
+    ('meta_univers', 'instagram'): (18,),
+}
+SLOT_CLOSE_MINUTE = 50
 ANGLES = ('Découvre', 'À retrouver dans notre univers', 'Un projet VM à explorer',
           'Le saviez-vous ? Notre projet', 'Focus sur', 'La sélection VM :')
 
@@ -45,9 +53,9 @@ def ledger(state, account):
 
 def slot_key(now, account, network):
     local = now.astimezone(PARIS)
-    minutes = 60 if account == 'meta_univers' and network == 'facebook' else (10 if network == 'facebook' else 15)
-    # Le décalage UTC de l'heure locale distingue les deux heures du changement d'heure.
-    local = local.replace(minute=(local.minute // minutes) * minutes, second=0, microsecond=0)
+    if local.hour not in SCHEDULE.get((account, network), ()) or local.minute >= SLOT_CLOSE_MINUTE:
+        return None
+    local = local.replace(minute=0, second=0, microsecond=0)
     return 'editorial/slot/' + network + '/' + local.isoformat()
 
 
@@ -61,9 +69,10 @@ def known(done, network, universe, row):
         ('post/' + universe + '/' + ident if network == 'facebook' else '__never__')))
 
 
-def select_news(root, now, done, account, network, seen, offset=0):
+def select_news(root, now, done, account, network, seen):
     genres = ROTATIONS[account]
-    cycle = int(now.timestamp() // (600 if network == 'facebook' else 900)) + offset
+    local = now.astimezone(PARIS)
+    cycle = local.date().toordinal() + SCHEDULE[(account, network)].index(local.hour)
     genres = genres[cycle % len(genres):] + genres[:cycle % len(genres)]
     for universe in dict.fromkeys(genres):
         excluded = dict(done)
@@ -96,13 +105,13 @@ def projects(root):
     return out
 
 
-def select_project(root, now, done, network, seen, offset=0):
+def select_project(root, now, done, network, seen):
     choices = projects(root)
     if not choices:
         return None
     local = now.astimezone(PARIS)
     for step in range(len(choices) * len(ANGLES)):
-        index = local.hour + offset + step
+        index = local.date().toordinal() + step
         item = choices[index % len(choices)]
         angle = ANGLES[(index // len(choices)) % len(ANGLES)]
         title = angle + ' ' + item['name']
@@ -171,112 +180,94 @@ def confirm(graph, meta, network, ident):
     return url
 
 
-def publish_target(state, graph, account, network, root=ROOT, now=None, count=1,
-                   burst=False, card=instagram_card, project_card=instagram_projet_card):
+def publish_target(state, graph, account, network, root=ROOT, now=None,
+                   card=instagram_card, project_card=instagram_projet_card):
     now = now or dt.datetime.now(UTC)
+    slot = slot_key(now, account, network)
+    if slot is None:
+        return {'status': 'hors_creneau', 'posts': []}
+    done = ledger(state, account)
+    if slot in done:
+        return {'status': 'creneau_deja_traite', 'posts': []}
     meta = state.data.get('tokens', {}).get(account) or {}
     who = identity(graph, meta, account, network)
     seen = current_posts(graph, meta, network)
-    done = ledger(state, account)
-    slot = slot_key(now, account, network)
-    if not burst and slot in done:
-        return {'status': 'creneau_deja_traite', 'posts': [], 'identity': who}
-    room = instagram_room(graph, meta) if network == 'instagram' else count
-    state.data['editorial/active/' + account] = True
-    state.save()
-    sent = []
-    for index in range(min(count, room)):
-        choice = (select_project(root, now, done, network, seen, index) if account == 'meta_univers'
-                  else select_news(root, now, done, account, network, seen, index))
-        if not choice:
-            break
-        universe, row, source = choice
-        key = f'editorial/{network}/{universe}/{row["id"]}'
-        title_key = f'editorial/{network}/titre/{fingerprint(row["titre"])}'
-        def mark(status, **extra):
-            receipt = {'status': status, 'at': now.isoformat(), 'title': row['titre'], **extra}
-            done[key] = receipt
-            done[title_key] = receipt
-            done[slot] = receipt
-            state.save()
-        if universe == 'projet':
-            item = row['project']
-            caption = f'✨ {row["titre"]}\n\n{item["pitch"]}\n\n👉 {item["url"]}\nTous nos projets : https://vmunivers.fr/\n\n#VMUnivers #Projets #VeloceMercato'
-            link = item['url']
-        else:
-            conf = UNIVERS[universe]
-            caption = f'{conf["emoji"]} {clean(row["titre"], 200)}\n\n{clean(row["resume"], 550)}\n\nSource : {clean(source["nom"], 70)}\n👉 https://{conf["site"]}\n\n{conf["tags"]}'
-            link = source['url'] if universe == 'multisport' else article_url(universe, row['id'])
-        # Image créée avant de réserver l'envoi : un échec de rendu n'est pas un post tenté.
-        image = None
-        if network == 'instagram':
-            image = (project_card(item['name'], item['icon'], item['pitch']) if universe == 'projet'
-                     else card(universe, row, source))
-        mark('envoi')
-        try:
-            if network == 'facebook':
-                ident = str(graph.call('POST', meta['page_id'] + '/feed',
-                                      {'message': caption, 'link': link, 'access_token': meta['page_token']}).get('id') or '')
-            else:
-                ident = str(instagram_image(graph, meta, image, caption) or '')
-            mark('envoye_a_verifier', id=ident)
-            url = confirm(graph, meta, network, ident)
-            mark('publie_confirme', id=ident, url=url)
-            sent.append({'title': row['titre'], 'section': universe, 'id': ident, 'url': url})
-            seen.append(normal(caption))
-            print(f'::notice::{TARGETS[account][1]} / {network} : {url}')
-        except Exception:
-            # Même une erreur de transport peut survenir après publication effective : ne pas relancer.
-            mark('a_verifier_sans_renvoi')
-            return {'status': 'envoi_a_verifier', 'posts': sent, 'identity': who}
-    return {'status': 'publie' if sent else ('quota_atteint' if not room else 'aucun_contenu_inedit'),
-            'posts': sent, 'identity': who}
+    if network == 'instagram' and not instagram_room(graph, meta):
+        return {'status': 'quota_atteint', 'posts': [], 'identity': who}
+    choice = (select_project(root, now, done, network, seen) if account == 'meta_univers'
+              else select_news(root, now, done, account, network, seen))
+    if not choice:
+        return {'status': 'aucun_contenu_inedit', 'posts': [], 'identity': who}
+    universe, row, source = choice
+    key = f'editorial/{network}/{universe}/{row["id"]}'
+    title_key = f'editorial/{network}/titre/{fingerprint(row["titre"])}'
 
-
-def run(state, graph, root=ROOT, now=None, burst=False):
-    now = now or dt.datetime.now(UTC)
-    ensure_meta_targets(state)
-    result = {'updated_at': now.isoformat(), 'mode': 'rattrapage_10' if burst else 'programme',
-              'targets': {}, 'unconnected': ['Troisième compte Instagram : identité et connexion absentes.']}
-    batch = 'editorial/lot-demarre-2026-11-11'
-    # Une correction peut reprendre les seules destinations incomplètes du même lot.
-    # Les envois ambigus comptent comme tentés ; aucun contenu déjà tenté n'est renvoyé.
-    if burst and not state.data.get(batch):
-        state.data[batch] = {'at': now.isoformat()}
+    def mark(status, **extra):
+        receipt = {'status': status, 'at': now.isoformat(), 'title': row['titre'], **extra}
+        done[key] = receipt
+        done[title_key] = receipt
+        done[slot] = receipt
         state.save()
-    for account in TARGETS:
-        for network in ('facebook', 'instagram'):
-            if account == 'meta_pronos' and network == 'instagram':
-                continue
-            count = 1
-            if burst:
-                started = state.data[batch]['at']
-                attempted = sum(1 for key, value in ledger(state, account).items()
-                                if key.startswith('editorial/' + network + '/')
-                                and not key.startswith('editorial/' + network + '/titre/')
-                                and isinstance(value, dict) and value.get('at', '') >= started)
-                count = max(0, 10 - attempted)
-                if not count:
-                    result['targets'][account + '/' + network] = {'status': 'lot_deja_traite', 'posts': []}
-                    continue
-            try:
-                result['targets'][account + '/' + network] = publish_target(
-                    state, graph, account, network, root, now, count, burst=burst)
-            except Exception as error:
-                # Motif lisible (messages fixes ou erreur Meta), sans jeton ni URL signée.
-                detail = re.sub(r'EA[A-Za-z0-9]{20,}|access_token=[^&\s]+', '[masqué]', str(error))[:240]
-                result['targets'][account + '/' + network] = {'status': 'bloque', 'reason': type(error).__name__,
-                                                              'detail': detail, 'posts': []}
+
+    if universe == 'projet':
+        item = row['project']
+        caption = f'✨ {row["titre"]}\n\n{item["pitch"]}\n\n👉 {item["url"]}\nTous nos projets : https://vmunivers.fr/\n\n#VMUnivers #Projets #VeloceMercato'
+        link = item['url']
+    else:
+        conf = UNIVERS[universe]
+        link = source['url'] if universe == 'multisport' else article_url(universe, row['id'])
+        caption = f'{conf["emoji"]} {clean(row["titre"], 200)}\n\n{clean(row["resume"], 550)}\n\nSource : {clean(source["nom"], 70)}\n👉 {link}\n\n{conf["tags"]}'
+    # Un rendu qui échoue n'est pas un envoi tenté.
+    image = None
+    if network == 'instagram':
+        image = (project_card(item['name'], item['icon'], item['pitch']) if universe == 'projet'
+                 else card(universe, row, source))
+    state.data['editorial/active/' + account] = True
+    mark('envoi')
+    try:
+        if network == 'facebook':
+            ident = str(graph.call('POST', meta['page_id'] + '/feed',
+                                  {'message': caption, 'link': link, 'access_token': meta['page_token']}).get('id') or '')
+        else:
+            ident = str(instagram_image(graph, meta, image, caption) or '')
+        mark('envoye_a_verifier', id=ident)
+        url = confirm(graph, meta, network, ident)
+        mark('publie_confirme', id=ident, url=url)
+    except Exception:
+        # Une erreur de transport peut survenir après publication effective.
+        mark('a_verifier_sans_renvoi')
+        return {'status': 'envoi_a_verifier', 'posts': [], 'identity': who}
+    print(f'::notice::{TARGETS[account][1]} / {network} : {url}')
+    return {'status': 'publie', 'identity': who,
+            'posts': [{'title': row['titre'], 'section': universe, 'id': ident, 'url': url}]}
+
+
+def run(state, graph, root=ROOT, now=None):
+    now = now or dt.datetime.now(UTC)
+    result = {'updated_at': now.isoformat(), 'mode': 'programme',
+              'targets': {}, 'unconnected': ['Troisième compte Instagram : identité et connexion absentes.']}
+    targets = [(account, network) for account, network in SCHEDULE if slot_key(now, account, network)]
+    if not targets:
+        return result
+    ensure_meta_targets(state)
+    for account, network in targets:
+        try:
+            result['targets'][account + '/' + network] = publish_target(state, graph, account, network, root, now)
+        except Exception as error:
+            detail = re.sub(r'EA[A-Za-z0-9]{20,}|access_token=[^&\s]+', '[masqué]', str(error))[:240]
+            result['targets'][account + '/' + network] = {'status': 'bloque', 'reason': type(error).__name__,
+                                                          'detail': detail, 'posts': []}
     return result
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--state', type=Path, required=True)
-    parser.add_argument('--burst', action='store_true')
+    # Une exécution déjà planifiée peut encore transmettre cet ancien argument.
+    parser.add_argument('--burst', action='store_true', help=argparse.SUPPRESS)
     args = parser.parse_args()
     state = State(args.state, os.getenv('VM_DIFFUSION_STATE_KEY', ''), lambda: git_save(args.state))
-    result = run(state, Graph(), burst=args.burst)
+    result = run(state, Graph())
     confirmed = []
     for account in TARGETS:
         for key, receipt in ledger(state, account).items():

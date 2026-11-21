@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from tools import editorial_vm as mod
 
-NOW = dt.datetime(2026, 11, 11, 9, 5, tzinfo=dt.timezone.utc)
+NOW = dt.datetime(2026, 11, 11, 11, 5, tzinfo=dt.timezone.utc)
 
 
 class State:
@@ -90,11 +90,33 @@ class EditorialTests(unittest.TestCase):
         self.state.data['meta'] = {}
         result = mod.publish_target(self.state, graph, 'meta', 'facebook', self.root, NOW + dt.timedelta(days=2))
         self.assertEqual(result['posts'], [])
-    def test_slots_use_requested_periods(self):
-        for account, network, interval in [('meta','facebook',10),('meta','instagram',15),('meta_univers','facebook',60)]:
-            t = NOW.replace(minute=0)
-            self.assertEqual(mod.slot_key(t,account,network),mod.slot_key(t+dt.timedelta(minutes=interval-1),account,network))
-            self.assertNotEqual(mod.slot_key(t,account,network),mod.slot_key(t+dt.timedelta(minutes=interval),account,network))
+    def test_daily_slots_are_bounded_in_both_time_zones(self):
+        expected = {
+            ('meta', 'facebook'): (8, 12, 20),
+            ('meta', 'instagram'): (12, 20),
+            ('meta_pronos', 'facebook'): (12, 20),
+            ('meta_univers', 'facebook'): (18,),
+            ('meta_univers', 'instagram'): (18,),
+        }
+        for month in (7, 11):
+            midnight = dt.datetime(2026, month, 11, tzinfo=mod.PARIS)
+            for account, network in expected:
+                keys = {mod.slot_key(midnight + dt.timedelta(minutes=minute), account, network)
+                        for minute in range(1440)} - {None}
+                self.assertEqual(len(keys), len(expected[account, network]))
+                for hour in expected[account, network]:
+                    start = midnight.replace(hour=hour)
+                    self.assertIn(mod.slot_key(start, account, network), keys)
+                    self.assertEqual(mod.slot_key(start, account, network),
+                                     mod.slot_key(start.replace(minute=49), account, network))
+                    self.assertIsNone(mod.slot_key(start.replace(minute=50), account, network))
+
+    def test_outside_slot_no_state_or_graph_access(self):
+        midnight = NOW.replace(hour=1)
+        self.assertEqual(mod.run(self.state, None, self.root, midnight)['targets'], {})
+        self.assertEqual(mod.publish_target(self.state, None, 'meta', 'facebook', self.root, midnight)['status'],
+                         'hors_creneau')
+        self.assertEqual(self.state.saves, 0)
     def test_multisport_filters_string_pattern_without_failing(self):
         import sys
         from types import SimpleNamespace
