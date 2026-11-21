@@ -254,11 +254,11 @@
     .vm-replay { margin:.7rem 0; padding:.7rem; border:1px solid #b39560; border-radius:.7rem; }
     .vm-replay summary { cursor:pointer; color:#ffe5a3; font-weight:750; }
   
-    /* La scène verticale (photo de référence) partout : sur grand écran, elle reste au format
-       téléphone, centrée, avec le décor flouté autour, au lieu d'être coupée sur les côtés. */
+    /* La scène portrait occupe toute la largeur sur téléphone en portrait. Le décor
+       flouté accompagne la scène quand la fenêtre est en paysage ou assez large. */
     .zone-logo--paysage { display: none !important; }
     .zone-logo--portrait { display: block !important; }
-    @media (min-aspect-ratio: 10/16) {
+    @media (min-width: 768px) and (min-aspect-ratio: 10/16), (orientation: landscape) {
       html { background: #100b09; }
       body {
         min-height: 100dvh;
@@ -271,7 +271,7 @@
       }
       main {
         z-index: 1;
-        width: min(100vw, calc(100dvh * 9 / 16));
+        width: min(100%, max(260px, calc((100dvh - 162px) * 9 / 16)));
         margin: 0 auto;
         box-shadow: 0 0 60px #000c, 0 0 0 1px #d7ab6455;
       }
@@ -295,7 +295,6 @@
     main { padding-bottom:max(4px,env(safe-area-inset-bottom)); }
     .bouton-vitrine svg { pointer-events:all; overflow:visible; }
     .bouton-vitrine:hover circle, .bouton-vitrine:focus-visible circle { stroke:#fff1bd; stroke-width:2.5; }
-    @media (min-aspect-ratio:10/16) { main { width:min(100vw,calc((100dvh - 162px) * 9/16)); min-width:260px; } }
 
     /* Volets : fond « team Véloce » (mascottes VM) au lieu du noir, articles sur cartes claires. */
     .espace-accueil {
