@@ -1,32 +1,32 @@
-Passage du 2026-11-21 05:40 UTC (workflow_dispatch)
+Passage du 2026-11-21 06:00 UTC (workflow_dispatch)
 Nettoyage : 0 breves vides retirees, 74 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
 Départ : 74 articles conservés et 45 flashs existants.
-RSS Foot Amateur / NATIONAL : 1 actualités récentes.
 RSS Foot National / NATIONAL : 8 actualités récentes.
 RSS Foot National / NATIONAL : 0 actualités récentes.
 RSS Foot National / LIGUE_1 : 6 actualités récentes.
 RSS Foot National / LIGUE_2 : 18 actualités récentes.
 RSS RMC Sport / INTERNATIONAL : 0 actualités récentes.
-RSS RMC Sport / LIGUE_1 : 12 actualités récentes.
-RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 34 actualités récentes.
 RSS RMC Sport / FRANCE : 22 actualités récentes.
+RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
+RSS RMC Sport / LIGUE_1 : 10 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 34 actualités récentes.
+RSS BBC Sport / FEMININ : 2 actualités récentes.
 RSS RMC Sport / BLEUS : 3 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 2 actualités récentes.
 RSS Foot01 / FRANCE : 41 actualités récentes.
-RSS BBC Sport / FEMININ : 2 actualités récentes.
+RSS franceinfo / FRANCE : 2 actualités récentes.
+RSS Foot Amateur / NATIONAL : 1 actualités récentes.
 RSS The Guardian / ETRANGER : 3 actualités récentes.
 RSS The Guardian / ETRANGER : 2 actualités récentes.
 RSS Foot Amateur / NATIONAL : 3 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS franceinfo / FRANCE : 2 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
-204 titres collectés, 27 nouveaux liens, quota 2.
+202 titres collectés, 27 nouveaux liens, quota 2.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-Bilan : source_inaccessible_ou_trop_courte=21, sujet_deja_traite=6
+Bilan : non_pertinent=1, source_inaccessible_ou_trop_courte=21, sujet_deja_traite=5
 Aucune brève de qualité suffisante ; fichiers JSON inchangés.
 RQ Pronos : page d'actualités publiques actualisée.
 Accueil VM : actualités inchangées.
@@ -41,28 +41,27 @@ LaLiga : 15 vidéos lues, 3 vidéos de buts gardées.
 Serie A : 15 vidéos lues, 5 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 3 vidéos de buts gardées.
 Vidéos publiées : 0.
-Flux muet L'Est Républicain : RemoteDisconnected
-Fil express : actus 31, foot 10, gaming 1
-Flux muet L'Est Républicain (https://www.estrepublicain.fr/rss) : RemoteDisconnected
+Fil express : actus 52, gaming 2, foot 11
 L'Est Républicain haute-saone : 18 titres
-L'Est Républicain edition-belfort-hericourt-montbeliard : 19 titres
 L'Est Républicain territoire-de-belfort : 11 titres
+L'Est Républicain edition-belfort-hericourt-montbeliard : 19 titres
 macommune.info  : 25 titres
-VM Belfort : 7 titres
-Auvergne-Rhône-Alpes : 55 titres
-Bourgogne-Franche-Comté : 34 titres
-Bretagne : 46 titres
-Centre-Val de Loire : 19 titres
+L'Est Républicain www.estrepublicain.fr : 5 titres
+VM Belfort : 9 titres
+::warning::Auvergne-Rhône-Alpes : flux muet (HTTPError)
+Bourgogne-Franche-Comté : 35 titres
+Bretagne : 45 titres
+Centre-Val de Loire : 20 titres
 Corse : 13 titres
 Grand Est : 22 titres
 Hauts-de-France : 27 titres
-Île-de-France : 34 titres
+Île-de-France : 78 titres
 Normandie : 12 titres
 Nouvelle-Aquitaine : 34 titres
-Occitanie : 56 titres
-Pays de la Loire : 68 titres
+Occitanie : 57 titres
+Pays de la Loire : 67 titres
 Provence-Alpes-Côte d'Azur : 42 titres
-Outre-mer : 77 titres
+Outre-mer : 34 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
