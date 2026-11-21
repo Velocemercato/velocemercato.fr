@@ -1,10 +1,10 @@
 # Audit du site pour Claude
 
-État mesuré le 2026-11-21T00:06:10.786346+01:00.
+État mesuré le 2026-11-21T13:59:53.716606+01:00.
 
 ## Périmètre et limites
 
-1719 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 2010 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
+1763 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 2030 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
 
 Un statut 404 ou 410 indique une URL introuvable. Les refus 401/403, les limites 429, les erreurs serveur et les délais dépassés demandent une vérification complémentaire. Le test ne valide pas le visionnage géographique des vidéos ni la véracité des articles. Les classements signalés par mots-clés doivent être relus avant déplacement.
 
@@ -39,7 +39,7 @@ Le fichier JSON associé contient toutes les références, pages et lignes. Les 
 
 ## Articles à relire
 
-- vm-gaming/news.json — rss-v2-9a9e45d910f45ce1828217 — AMD Zen 6 : les Ryzen de bureau pourraient être repoussés à l'été 2027 — À relire, aucun indice net de la rubrique dans la brève
+- articles.json — rss-v2-d229402152bc33744fbb2a — CAN 2025 : Mendy raconte comment il a déstabilisé Brahim Diaz avant sa panenka ratée — À relire, aucun indice net de la rubrique dans la brève
 
 ## Corrections déjà apportées dans cette reprise
 
