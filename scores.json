@@ -807,19 +807,6 @@
    ]
   },
   {
-   "id": 558525,
-   "date": "2026-11-21T14:00:00Z",
-   "comp": "Serie A",
-   "sport": "foot",
-   "dom": "Como 1907",
-   "ext": "Cagliari",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
-   ]
-  },
-  {
    "id": 558528,
    "date": "2026-11-21T14:00:00Z",
    "comp": "Serie A",
@@ -833,29 +820,29 @@
    ]
   },
   {
-   "id": 565857,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
+   "id": 558525,
+   "date": "2026-11-21T14:00:00Z",
+   "comp": "Serie A",
    "sport": "foot",
-   "dom": "Leverkusen",
-   "ext": "SC Paderborn",
+   "dom": "Como 1907",
+   "ext": "Cagliari",
    "statut": "FINISHED",
    "score": [
-    4,
+    2,
     0
    ]
   },
   {
-   "id": 565865,
+   "id": 565860,
    "date": "2026-11-21T14:30:00Z",
    "comp": "Bundesliga",
    "sport": "foot",
-   "dom": "Frankfurt",
-   "ext": "Hoffenheim",
+   "dom": "Elversberg",
+   "ext": "Freiburg",
    "statut": "FINISHED",
    "score": [
-    1,
-    0
+    0,
+    1
    ]
   },
   {
@@ -885,29 +872,55 @@
    ]
   },
   {
-   "id": 565860,
+   "id": 565857,
    "date": "2026-11-21T14:30:00Z",
    "comp": "Bundesliga",
    "sport": "foot",
-   "dom": "Elversberg",
-   "ext": "Freiburg",
+   "dom": "Leverkusen",
+   "ext": "SC Paderborn",
    "statut": "FINISHED",
    "score": [
-    0,
-    1
+    4,
+    0
    ]
   },
   {
-   "id": 560642,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
+   "id": 565865,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
    "sport": "foot",
-   "dom": "Chelsea",
-   "ext": "Leeds United",
+   "dom": "Frankfurt",
+   "ext": "Hoffenheim",
    "statut": "FINISHED",
    "score": [
     1,
-    4
+    0
+   ]
+  },
+  {
+   "id": 560647,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Bournemouth",
+   "ext": "Nottingham",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    0
+   ]
+  },
+  {
+   "id": 560650,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Coventry City",
+   "ext": "Crystal Palace",
+   "statut": "FINISHED",
+   "score": [
+    3,
+    2
    ]
   },
   {
@@ -937,29 +950,16 @@
    ]
   },
   {
-   "id": 560650,
+   "id": 560642,
    "date": "2026-11-21T15:00:00Z",
    "comp": "Premier League",
    "sport": "foot",
-   "dom": "Coventry City",
-   "ext": "Crystal Palace",
+   "dom": "Chelsea",
+   "ext": "Leeds United",
    "statut": "FINISHED",
    "score": [
-    3,
-    2
-   ]
-  },
-  {
-   "id": 560647,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Bournemouth",
-   "ext": "Nottingham",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
+    1,
+    4
    ]
   },
   {
@@ -998,7 +998,7 @@
    "statut": "IN_PLAY",
    "score": [
     0,
-    0
+    1
    ]
   },
   {
@@ -1067,12 +1067,25 @@
    ]
   },
   {
-   "id": 559624,
+   "id": 559623,
    "date": "2026-11-21T19:45:00Z",
    "comp": "Ligue 1",
    "sport": "foot",
-   "dom": "Lille",
-   "ext": "Olympique Lyon",
+   "dom": "RC Lens",
+   "ext": "Toulouse",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 559627,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Strasbourg",
+   "ext": "Brest",
    "statut": "TIMED",
    "score": [
     null,
@@ -1093,25 +1106,12 @@
    ]
   },
   {
-   "id": 559623,
+   "id": 559624,
    "date": "2026-11-21T19:45:00Z",
    "comp": "Ligue 1",
    "sport": "foot",
-   "dom": "RC Lens",
-   "ext": "Toulouse",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 559627,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "Strasbourg",
-   "ext": "Brest",
+   "dom": "Lille",
+   "ext": "Olympique Lyon",
    "statut": "TIMED",
    "score": [
     null,
@@ -1691,6 +1691,6 @@
    ]
   }
  ],
- "maj": "2026-11-21T17:43:01Z",
- "verifie": "2026-11-21T17:43:01Z"
+ "maj": "2026-11-21T17:46:57Z",
+ "verifie": "2026-11-21T17:46:57Z"
 }
