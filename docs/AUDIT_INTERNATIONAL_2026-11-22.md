@@ -151,3 +151,23 @@ Le run GitHub Actions `45073604943` du 22 novembre 2026 pour `Déployer VM Studi
 - Wrangler a confirmé le déploiement de la version `vm-atelier` à 100 %.
 
 C'est un bon signal opérationnel pour VM Studio. Cela ne remplace pas un test utilisateur complet du formulaire de création, de la réception d'une demande réelle ni un paiement réel. Le paiement testé dans le pipeline est en mode test.
+
+
+## 13. VM Multisport — contrôle du flux et séparation du Foot
+
+Le flux `multisport/actualites.json` consulté le 23 novembre contient 54 articles répartis dans 11 disciplines :
+- NBA : 9
+- NFL : 2
+- F1 : 11
+- MotoGP : 11
+- Tennis : 5
+- Rugby : 7
+- NHL : 2
+- MMA : 1
+- Ski : 6
+- Cyclisme : 0
+- MLB : 0
+
+Aucun contenu Foot n'est présent dans ces catégories. Les articles observés comportent une source et une URL, avec des dates récentes au 22 novembre. Le workflow de mise à jour des liens multisport a terminé avec succès le 22 novembre.
+
+**Conclusion :** la séparation Foot / Multisport est visible dans les données du dépôt et fonctionne dans le flux consulté. Les disciplines sans article ne doivent pas être remplies artificiellement : il faut attendre une actualité valable ou améliorer la couverture des sources.
