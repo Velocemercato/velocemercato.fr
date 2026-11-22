@@ -80,6 +80,7 @@ def past_event(title,year=None):
 def relevant(sport,title):
  return (sport in RELEVANCE and not re.search(GAMING_CONTENT,title,re.IGNORECASE)
          and not re.search(FOOTBALL_CONTENT,title,re.IGNORECASE)
+         and not (sport != 'nfl' and re.search(r'\\bfootball\\b',title,re.IGNORECASE))
          and not re.search(HUB_PAGE,title,re.IGNORECASE) and not past_event(title)
          and bool(re.search(RELEVANCE[sport],title,re.IGNORECASE))
          and not bool(re.search(NEGATIVE.get(sport,r'(?!)'),title,re.IGNORECASE)))
