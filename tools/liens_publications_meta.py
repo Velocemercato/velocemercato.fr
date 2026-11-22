@@ -71,6 +71,22 @@ def derniere_publication(state, graph, account, network):
     return None
 
 
+def page_facebook(state, graph, account):
+    meta = state.data.get("tokens", {}).get(account) or {}
+    ident = identity(graph, meta, account, "facebook")["id"]
+    profil = graph.call("GET", ident, {
+        "fields": "id,name,username,link,is_published",
+        "access_token": meta["page_token"],
+    })
+    lien = urlsplit(profil.get("link") or "")
+    if (str(profil.get("id")) != ident or lien.scheme != "https"
+            or lien.netloc not in ("www.facebook.com", "facebook.com", "m.facebook.com")
+            or lien.username or lien.password or profil.get("is_published") is False):
+        return None
+    return {"url": lien.geturl(), "nom": str(profil.get("name") or ""),
+            "username": str(profil.get("username") or ""), "id": ident}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--state", type=Path, required=True)
@@ -81,12 +97,23 @@ def main():
     liens = json.loads(SORTIE.read_text(encoding="utf-8"))
     for account, network in DESTINATIONS:
         cle = account + "/" + network
+        page = (liens.get(cle) or {}).get("page")
+        if network == "facebook":
+            try:
+                page = page_facebook(state, graph, account) or page
+            except DeliveryError:
+                pass
+            if page:
+                liens.setdefault(cle, {})["page"] = page
+                print(cle + " : PAGE CONFIRMEE " + json.dumps(page, ensure_ascii=False))
         try:
             row = derniere_publication(state, graph, account, network)
         except DeliveryError:
             print(cle + " : contrôle Meta indisponible, lien actuel conservé.")
             continue
         if row:
+            if page:
+                row["page"] = page
             liens[cle] = row
             print(cle + " : " + row["rubrique"] + " · " + row["date"] + " · " + row["url"])
         else:
