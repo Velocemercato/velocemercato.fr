@@ -40,9 +40,15 @@ jobs:
         run: |
           git add assets/reseaux-publications.json
           git diff --cached --quiet && exit 0
-          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m "Actualiser les liens des actus Meta"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Actualiser les liens des actus Meta"
           for i in 1 2 3; do
-            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            if ! git pull --rebase origin main; then
+              git rebase --abort
+              exit 1
+            fi
+            git push origin HEAD:main && exit 0
             sleep 2
           done
           exit 1
