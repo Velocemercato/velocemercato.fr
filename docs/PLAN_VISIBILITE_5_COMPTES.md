@@ -163,4 +163,4 @@ Le fichier `tests/test_editorial_vm.py` reçoit des assertions supplémentaires 
 Ces tests ne publient rien. Ils servent à éviter qu'une évolution future ne mélange les comptes ou n'ajoute une destination non retenue. Le workflow `editorial-vm.yml` exécute déjà cette suite de tests avant chaque tentative de diffusion.
 
 
-Un workflow de test de revue `.github/workflows/test-editorial-meta.yml` a également été ajouté dans cette branche. Il lance uniquement les tests unitaires sur les pull requests qui touchent au moteur Meta, aux filtres multisport ou à ces tests. Il ne dispose d'aucun secret Meta et ne peut pas publier.
+Le workflow de tests Meta déjà présent sur `main` (`.github/workflows/tests-meta.yml`) est étendu dans cette branche pour exécuter aussi `test_editorial_vm.py` et compiler `editorial_vm.py` lors des pull requests ciblant ces fichiers. Il conserve des permissions de lecture seules, n'utilise aucun secret Meta et ne peut pas publier. Le workflow de test redondant créé au début de la revue a été retiré.
