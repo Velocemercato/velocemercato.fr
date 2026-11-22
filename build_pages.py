@@ -260,7 +260,7 @@ def main():
              f'  <url><loc>{SITE}/actus/</loc><changefreq>hourly</changefreq></url>',
              f'  <url><loc>{SITE}/pronos/</loc><changefreq>hourly</changefreq></url>']
     # Rubriques principales absentes jusqu'ici (la rubrique Foot n'était même pas listée).
-    for path in (Path('en/index.html'), Path('en/le-mans-back-in-ligue-1/index.html')):
+    for path in (Path('en/index.html'), *sorted(Path('en').glob('*/index.html'))):
         if path.is_file():
             lines.append(f'  <url><loc>{SITE}/{path.parent.as_posix()}/</loc></url>')
     for extra in ('/foot/', '/scores/', '/region/', '/vm-gaming/', '/notifications/', '/mentions-legales.html', '/politique-de-confidentialite.html'):

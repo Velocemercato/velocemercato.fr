@@ -338,6 +338,30 @@ def _liens_publications_meta(root, html):
     return re.sub(r'<a\b[^>]*\bdata-publication-meta="([^"]+)"[^>]*>', ajouter, html)
 
 
+RELATED_BLOCK = re.compile(r'(<h2>À lire aussi</h2>\s*)?<div class="rel">(.*?)</div>', re.DOTALL)
+RELATED_LINK = re.compile(r'<a href="(/a/[A-Za-z0-9_-]+\.html)"[^>]*>.*?</a>', re.DOTALL)
+
+
+def nettoyer_articles_associes(text, routes):
+    """Masquer les références historiques aux articles qui ne sont plus publiés."""
+    total = 0
+
+    def filtrer(bloc):
+        nonlocal total
+
+        def garder(lien):
+            nonlocal total
+            if lien[1] in routes:
+                return lien[0]
+            total += 1
+            return ""
+
+        contenu = RELATED_LINK.sub(garder, bloc[2])
+        return (bloc[1] or "") + '<div class="rel">' + contenu + '</div>' if contenu.strip() else ""
+
+    return RELATED_BLOCK.sub(filtrer, text), total
+
+
 def prepare(root):
     _alleger_editorial_status(root)
     _retirer_fichiers_trop_gros(root)
@@ -345,12 +369,16 @@ def prepare(root):
     _prepare_bilan_veille(root)
     from tools.reseaux_bureau import preparer_fils_bureau
     preparer_fils_bureau(root)
-    count = 0
+    count = liens_retires = 0
+    articles = {"/a/" + p.name for p in (root / "a").glob("*.html") if p.is_file()}
     for path in sorted(root.rglob('*.html')):
         relative = path.relative_to(root)
         if relative.parts[0] == 'en' or any(part in {'.github', 'tests', 'tools', 'docs'} for part in relative.parts):
             continue
         text = path.read_text(encoding='utf-8')
+        if relative.parts[0] == 'a' and 'class="rel"' in text:
+            text, retires = nettoyer_articles_associes(text, articles)
+            liens_retires += retires
         if path == root/'index.html':
             text = _liens_publications_meta(root, text)
         if path == root/'foot/index.html':
