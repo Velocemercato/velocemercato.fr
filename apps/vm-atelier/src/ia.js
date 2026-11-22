@@ -5,6 +5,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { betaZodOutputFormat } from '@anthropic-ai/sdk/helpers/beta/zod';
 import { z } from 'zod';
+import { DIRECTIONS } from './creation.js';
 
 const TYPES = ['titre', 'texte', 'image', 'galerie', 'produits', 'bouton', 'contact', 'page'];
 const FORMATS = ['site', 'carte', 'flyer', 'affiche', 'post', 'story'];
@@ -23,6 +24,7 @@ const Proposition = z.object({
   explication: z.string().max(400),
   doc: z.object({
     format: z.enum(FORMATS),
+    style: z.enum(['editorial', 'contraste', 'atelier']).optional(),
     theme: z.object({ c1: z.string().max(7), c2: z.string().max(7), fond: z.string().max(7), texte: z.string().max(7) }),
     blocs: z.array(Bloc).max(60),
   }),
@@ -34,6 +36,7 @@ Règles :
 - Ne change que ce que la consigne demande ; garde tout le reste à l'identique (textes, ordre, couleurs).
 - Les photos sont représentées par des repères IMG_1, IMG_2… : tu peux les déplacer entre blocs, jamais en inventer.
 - Position d'une photo dans un bloc « titre » : champ pos (haut, gauche, droite). Taille du titre : champ taille (normal, grand, tres-grand).
+- Le champ style est facultatif pour un site : editorial (classique), contraste (Dynamique), atelier (clair). Garde le style actuel s’il n’est pas demandé de le modifier.
 - Couleurs au format #rrggbb. Liens : https://, mailto: ou tel: uniquement.
 - Le bloc « page » sépare les pages (recto / verso d'une carte, pages d'un flyer).
 - N'invente ni prix, ni numéro de téléphone, ni adresse, ni avis client : laisse vide si l'information manque.
@@ -54,7 +57,7 @@ function sansPhotos(doc) {
     if (Array.isArray(c.images)) c.images = c.images.map(repere);
     return c;
   });
-  return { leger: { format: FORMATS.includes(doc?.format) ? doc.format : 'site', theme: doc?.theme || {}, blocs }, carte };
+  return { leger: { format: FORMATS.includes(doc?.format) ? doc.format : 'site', theme: doc?.theme || {}, ...(Object.hasOwn(DIRECTIONS, doc?.style) ? { style: doc.style } : {}), blocs }, carte };
 }
 function remettrePhotos(doc, carte) {
   const vrai = (v) => (typeof v === 'string' && carte.has(v) ? carte.get(v) : undefined);
@@ -97,11 +100,11 @@ async function viaClaude(env, leger, consigne, options) {
   try {
     r = await client.beta.messages.create({
       model: modele(env),
-      max_tokens: 16000,
+      max_tokens: options.public ? 5000 : 16000,
       betas: ['server-side-fallback-2026-07-01'],
       fallbacks: 'default',
       output_config: { effort: 'medium', format: betaZodOutputFormat(Proposition) },
-      system: SYSTEME,
+      system: options.systeme || SYSTEME,
       messages: [{ role: 'user', content: consigneUtilisateur(leger, consigne) }],
     });
   } catch (e) {
@@ -124,7 +127,7 @@ async function viaGemini(env, leger, consigne, options) {
   let r;
   for (const m of modeles) {
     r = await unAppelGemini(env, leger, consigne, options, m);
-    if (r.statut !== 503 && r.statut !== 500) break;
+    if (options.public || r.statut !== 503 && r.statut !== 500) break;
   }
   if (r.statut === 503 || r.statut === 500) return { erreur: 'ia_surcharge', message: 'Les serveurs Gemini de Google sont saturés en ce moment. Réessaie dans une minute (rien n’a été modifié).' };
   return r;
@@ -139,9 +142,9 @@ async function unAppelGemini(env, leger, consigne, options, nomModele) {
       method: 'POST', signal: ctrl.signal,
       headers: { 'content-type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
       body: JSON.stringify({
-        systemInstruction: { parts: [{ text: SYSTEME + '\nRéponds uniquement par un objet JSON {"explication": string, "doc": {"format", "theme", "blocs"}} conforme à la structure reçue.' }] },
+        systemInstruction: { parts: [{ text: (options.systeme || SYSTEME) + '\nRéponds uniquement par un objet JSON {"explication": string, "doc": {"format", "style", "theme", "blocs"}} conforme à la structure reçue.' }] },
         contents: [{ role: 'user', parts: [{ text: consigneUtilisateur(leger, consigne) }] }],
-        generationConfig: { responseMimeType: 'application/json', maxOutputTokens: 16000 },
+        generationConfig: { responseMimeType: 'application/json', maxOutputTokens: options.public ? 5000 : 16000 },
       }),
     });
     corps = await res.json().catch(() => ({}));
@@ -173,6 +176,7 @@ export async function proposer(env, doc, consigne, options = {}) {
   let brut; try { brut = JSON.parse(String(r.texte).trim().replace(/^```(?:json)?\s*|\s*```$/g, '')); } catch { return invalide; }
   const v = Proposition.safeParse(brut);
   if (!v.success) return invalide;
+  if (leger.style && v.data.doc.format === 'site' && !v.data.doc.style) v.data.doc.style = leger.style;
   return { ok: true, explication: v.data.explication, doc: remettrePhotos(v.data.doc, carte), usage: { ...r.usage, fournisseur: four } };
 }
 

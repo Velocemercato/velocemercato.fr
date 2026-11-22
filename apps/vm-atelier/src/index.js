@@ -1,3 +1,4 @@
+import { briefStudio } from './creation-service.js';
 // VM Studio (mode test) — un Worker Cloudflare + un Durable Object (SQLite) :
 //  /studio      : le client compose son site, voit le prix monter en direct et envoie sa commande ;
 //  /salon/<jeton>: « mode salon » : le client voit sur son téléphone ce que Romain construit, en direct ;
@@ -13,6 +14,7 @@ import { pageStudio, pageSalon, pageVoir, pageAdmin, pageAccueil } from './pages
 
 const CODE_JOURS = 7;        // validité d'un code de consultation non utilisé
 const VUE_HEURES = 2;        // durée maximale d'une consultation ouverte
+const BRIEF_MAX = 45000;
 const DOC_MAX = 1_500_000;   // taille maximale d'un projet (photos comprises)
 const enc = new TextEncoder();
 
@@ -185,6 +187,17 @@ export class Store extends DurableObject {
         });
         return ok ? json({ ok: true }) : json({ error: 'ia_plafond' }, 429);
       }
+      case 'studioReserver': {
+        const jour = this.now().slice(0, 10), publicJour = 'studio:' + jour;
+        const ok = this.ctx.storage.transactionSync(() => {
+          const publicN = this.rows('SELECT n FROM ia_jour WHERE jour=?', publicJour)[0]?.n || 0;
+          const totalN = this.rows('SELECT n FROM ia_jour WHERE jour=?', jour)[0]?.n || 0;
+          if (publicN >= a.publicMax || totalN >= a.max || this.limite('studio:' + a.ipHash, 3)) return false;
+          for (const cle of [jour, publicJour]) this.sql.exec('INSERT INTO ia_jour(jour,n) VALUES(?,1) ON CONFLICT(jour) DO UPDATE SET n=n+1', cle);
+          return true;
+        });
+        return ok ? json({ ok: true }) : json({ error: 'studio_quota' }, 429);
+      }
       case 'iaJournal':
         this.sql.exec('INSERT INTO ia_journal(cree,projet,resultat,entree,sortie,modele) VALUES(?,?,?,?,?,?)', this.now(), a.id || null, net(a.resultat, 40), a.entree || 0, a.sortie || 0, net(a.modele, 60));
         return json({ ok: true });
@@ -349,6 +362,35 @@ export default {
     if (req.method === 'POST' && mav) {
       const c = await req.json().catch(() => ({}));
       return appel(env, 'avisAjouter', { salon: mav[1], ip, texte: c.texte, bloc: c.bloc });
+    }
+    if (p === '/api/studio/proposer' && req.method === 'POST') {
+      if (!iaConfiguree(env)) return json({ error: 'studio_indisponible', message: 'La création sur mesure est indisponible. Vous pouvez partir d’une maquette et la modifier.' }, 503);
+      const r = req.body?.getReader();
+      const dec = new TextDecoder();
+      let brut = '', taille = 0, data;
+      if (!r) return json({ error: 'brief_invalide' }, 400);
+      try {
+        for (;;) {
+          const { done, value } = await r.read();
+          if (done) break;
+          taille += value.length;
+          if (taille > BRIEF_MAX) { await r.cancel(); return json({ error: 'brief_trop_long', message: 'Raccourcissez le texte du projet puis réessayez.' }, 413); }
+          brut += dec.decode(value, { stream: true });
+        }
+        data = JSON.parse(brut + dec.decode());
+      } catch { return json({ error: 'brief_invalide' }, 400); }
+      const brief = typeof data?.brief === 'string' ? net(data.brief, 1500) : '';
+      if (brief.length < 8) return json({ error: 'brief_invalide', message: 'Décrivez votre projet en quelques mots.' }, 400);
+      const max = Math.max(1, Number(env.IA_MAX_JOUR) || 40);
+      const publicMax = Math.min(max, Math.max(1, Number(env.STUDIO_MAX_JOUR) || 6));
+      const res = await appel(env, 'studioReserver', { ipHash: await sha256('studio:' + ip), max, publicMax });
+      if (res.status !== 200) return json({ error: 'studio_quota', message: 'La création sur mesure a atteint sa limite. Vous pouvez continuer à modifier votre maquette.' }, 429);
+      let resultat;
+      try { resultat = await briefStudio(env, data.projet, brief); }
+      catch { resultat = { erreur: 'studio_erreur' }; }
+      await appel(env, 'iaJournal', { resultat: resultat.ok ? 'studio_proposition' : resultat.erreur, entree: resultat.usage?.entree, sortie: resultat.usage?.sortie, modele: resultat.usage?.modele });
+      if (!resultat.ok) return json({ error: 'studio_indisponible', message: 'L’aperçu sur mesure n’a pas abouti. Réessayez avec un brief plus précis ou utilisez une maquette de départ.' }, 502);
+      return json({ ok: true, doc: resultat.doc, explication: resultat.explication });
     }
     const corps = req.method === 'POST' ? await req.json().catch(() => ({})) : {};
 

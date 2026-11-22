@@ -1,0 +1,62 @@
+name: Déployer VM Studio sur Cloudflare
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['apps/vm-atelier/**', '.github/workflows/deployer-vm-atelier.yml']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: vm-atelier-cloudflare
+  cancel-in-progress: false
+
+jobs:
+  atelier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: apps/vm-atelier
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      WRANGLER_SEND_METRICS: 'false'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Installer et vérifier
+        run: |
+          npm ci
+          node --test tests/creation.test.mjs tests/ia.test.mjs tests/paiement.test.mjs
+      - name: Publier une nouvelle version sans toucher au domaine ni aux déclencheurs
+        shell: bash
+        run: |
+          set -euo pipefail
+          studio_url=https://atelier.velocemercato.fr
+          test -n "$CLOUDFLARE_API_TOKEN" && test -n "$CLOUDFLARE_ACCOUNT_ID" || {
+            echo "::error::Accès Cloudflare de déploiement manquants."
+            exit 1
+          }
+          before=$(curl -fsS "$studio_url/api/config")
+          npx --no-install wrangler versions upload --strict --keep-vars --message "VM Studio ${GITHUB_SHA}" | tee "$RUNNER_TEMP/vm-atelier-upload"
+          version=$(awk '/(Worker|Current) Version ID: / {print $NF}' "$RUNNER_TEMP/vm-atelier-upload" | tail -n1)
+          [[ "$version" =~ ^[a-f0-9-]{36}$ ]] || { echo 'Identifiant de version absent.'; exit 1; }
+          npx --no-install wrangler versions deploy "$version@100%" --yes --message "VM Studio ${GITHUB_SHA}"
+          for tentative in 1 2 3 4 5 6; do
+            if curl -fsS "$studio_url/studio?build=$GITHUB_SHA" -o "$RUNNER_TEMP/studio.html" &&
+              grep -q 'id="compositionTitre"' "$RUNNER_TEMP/studio.html"; then
+              after=$(curl -fsS "$studio_url/api/config")
+              node -e 'const a=JSON.parse(process.argv[1]); const b=JSON.parse(process.argv[2]); for(const k of ["paiement","domaine","email","tel"]) if(a[k]!==b[k]) throw new Error("Configuration inattendue : "+k)' "$before" "$after"
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "::error::Le domaine de production n'affiche pas la nouvelle interface."
+          exit 1

@@ -1,7 +1,9 @@
 import { PRIX, devis } from './prix.js';
+import { DIRECTIONS, EXEMPLES_SITE } from './creation.js';
+import { CREATION_STYLE, FORMULAIRE_CREATION, RENDU_CREATION, SCRIPT_CREATION } from './creation-ui.js';
 
 // ---------- Styles communs de l'interface VM ----------
-const CSS = `:root{--bg:#07080d;--card:#11131d;--line:#2b3046;--txt:#f3f4f8;--muted:#a9b0c4;--gold:#f4cf55;--red:#e52643;--ok:#3ccf7a}
+const CSS = `[hidden]{display:none!important}:root{--bg:#07080d;--card:#11131d;--line:#2b3046;--txt:#f3f4f8;--muted:#a9b0c4;--gold:#f4cf55;--red:#e52643;--ok:#3ccf7a}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
 header.vm{padding:14px 16px;border-bottom:2px solid var(--red);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
 header.vm h1{margin:0;font-size:1.25rem}.test{background:var(--gold);color:#111;border-radius:999px;padding:2px 9px;font-weight:800;font-size:.72rem}
@@ -56,6 +58,7 @@ function rendre(root,doc){
  var fmt=FORMATS[doc.format]?doc.format:'site',dim=FORMATS[fmt],U=dim?'cqw':'px',k=function(px,cq){return dim?cq+'cqw':px+'px'};
  root.replaceChildren();root.style.cssText=dim?'background:#2a2d3a;padding:10px;min-height:100%':'background:'+bg+';color:'+tx+';font:16px/1.55 system-ui,sans-serif;min-height:100%';
  var blocs=Array.isArray(doc.blocs)?doc.blocs:[];
+ if(!dim&&['editorial','contraste','atelier'].includes(doc.style)&&blocs.length){dessinerSite(root,doc,c1,bg,tx);return}
  // Découpage en pages (recto/verso d'une carte, pages d'un flyer) avec le bloc « page ».
  var pages=[[]];blocs.forEach(function(b,ix){if(b&&b.t==='page')pages.push([]);else pages[pages.length-1].push([b,ix])});
  if(!blocs.length){var w0=E('div','max-width:720px;margin:auto;padding:22px 16px');root.appendChild(w0);w0.appendChild(E('p','opacity:.55;text-align:center;padding:90px 0'+(dim?';color:#fff':''),'Page vierge : le '+(dim?fmt:'site')+' apparaît ici.'));return}
@@ -87,7 +90,7 @@ function rendre(root,doc){
 // Impression / PDF au bon format (carte 85×55 mm, flyer A5, affiche A3…).
 function imprimer(doc,root){var dim=FORMATS[doc&&doc.format];var st=document.getElementById('vm-print')||document.head.appendChild(Object.assign(document.createElement('style'),{id:'vm-print'}));
  st.textContent='@media print{@page{'+(dim&&doc.format!=='post'&&doc.format!=='story'?'size:'+dim[0]+'mm '+dim[1]+'mm;':'')+'margin:0}body *{visibility:hidden}#'+root.id+',#'+root.id+' *{visibility:visible}#'+root.id+'{position:absolute;left:0;top:0;width:100%;padding:0!important;background:none!important}.vm-page{page-break-after:always;box-shadow:none!important;border-radius:0!important;max-width:none!important;margin:0!important}}';window.print()}
-function reduirePhoto(f,max,cb){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);cb(c.toDataURL('image/jpeg',0.8))};im.src=r.result};r.readAsDataURL(f)}
+function reduirePhoto(f,max,cb){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);cb(c.toDataURL('image/jpeg',0.8))};im.onerror=function(){cb(null)};im.src=r.result};r.onerror=function(){cb(null)};r.readAsDataURL(f)}
 function api(p,body){return fetch('/api/'+p,body?{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body),credentials:'same-origin'}:{credentials:'same-origin'}).then(function(r){return r.json().then(function(j){j._s=r.status;return j})})}
 `;
 
@@ -97,8 +100,8 @@ function page(titre, corps, script, o = {}) {
 <meta property="og:type" content="website"><meta property="og:title" content="${titre}"><meta property="og:description" content="${o.description}"><meta property="og:url" content="https://atelier.velocemercato.fr/"><meta property="og:locale" content="fr_FR"><meta property="og:image" content="https://velocemercato.fr/media/promos/vm-studio-lancement-1080.jpg"><meta property="og:image:width" content="1080"><meta property="og:image:height" content="1080"><meta name="twitter:card" content="summary_large_image">`
     : '<meta name="robots" content="noindex">';
   return `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-${meta}<title>${titre}</title><style>${CSS}</style></head><body>${corps}
-<script>(function(){'use strict';${RENDU}${script}})();
+${meta}<title>${titre}</title><style>${CSS}${CREATION_STYLE}</style></head><body>${corps}
+<script>(function(){'use strict';${RENDU}${RENDU_CREATION}${script}})();
 fetch('/api/config').then(function(r){return r.json()}).then(function(c){if(c.paiement==='reel')[].forEach.call(document.querySelectorAll('[data-mode-test]'),function(e){e.remove()})}).catch(function(){});</script></body></html>`;
 }
 const ENTETE = (sous) => `<header class="vm"><h1>VM Studio <span class="test" data-mode-test>MODE TEST</span></h1><span class="muted">${sous}</span></header>`;
@@ -163,6 +166,7 @@ const tuilesStudio = Object.entries(PRIX.produits).map(([k, p]) =>
 
 export const pageStudio = page('Créer — VM Studio', `${ENTETE('Créez-le, voyez-le en direct')}
 <div class="grid studio"><div>
+ ${FORMULAIRE_CREATION}
  <div class="card"><h2 style="margin-top:0">1. Que voulez-vous créer ?</h2><div class="prods" role="group" aria-label="Produit">${tuilesStudio}</div></div>
  <div class="card"><h2 style="margin-top:0">2. Vos informations</h2>
   <label for="nom">Nom de votre activité</label><input id="nom" maxlength="60" placeholder="Ex. : Salon Léa Coiffure">
@@ -197,7 +201,7 @@ export const pageStudio = page('Créer — VM Studio', `${ENTETE('Créez-le, voy
   <button class="p" id="envoyer">👀 Vérifier avant d'envoyer</button><p class="msg" id="msg" role="status"></p>
   <p class="muted" id="joindre"></p>
  </div>
-</div><div class="apv" id="apv"><div class="card"><div class="aphead"><b id="apTitre">Aperçu de votre site</b><button type="button" class="g petit" id="agr" aria-expanded="false">⤢ Agrandir</button></div><div class="ecran" id="apercu" style="margin-top:8px"></div></div></div></div>
+</div><div class="apv" id="apv"><div class="card"><div class="aphead"><b id="apTitre">Aperçu de votre site</b><button type="button" class="g petit" id="agr" aria-expanded="false">⤢ Agrandir</button></div><div class="preview-tools"><button type="button" class="g petit" id="mobileApercu" aria-pressed="false">Aperçu mobile</button></div><div class="ecran" id="apercu" style="margin-top:8px"></div></div></div></div>
 <div id="verif" class="voile hide" role="dialog" aria-modal="true" aria-labelledby="vT"><div class="boite">
  <h2 id="vT" style="margin-top:0">Vérifiez avant d'envoyer</h2><p class="muted" id="vQuoi"></p>
  <div class="ecran" id="vApercu"></div>
@@ -207,10 +211,11 @@ export const pageStudio = page('Créer — VM Studio', `${ENTETE('Créez-le, voy
 </div></div>${PIED}`,
 `var PRIX=${JSON.stringify(PRIX)};${devis.toString()}
 var $=function(i){return document.getElementById(i)},photo='',DOCC=null,PROD='site',DERNIER=null;
+var DIRECTIONS=${JSON.stringify(DIRECTIONS)},EXEMPLES_SITE=${JSON.stringify(EXEMPLES_SITE)};
 var NOMS={site:'votre site',carte:'votre carte de visite',carte_relief:'votre carte de visite en relief',flyer:'votre flyer',affiche:'votre affiche',post:'votre publication',story:'votre story'};
 function cfg(){var sel=PROD==='site'?'.opt:checked':'.optv:checked';return{produit:PROD,type:$('type').value,pages:$('pages').value,langues:$('langues').value,options:[].map.call(document.querySelectorAll(sel),function(c){return c.value}),pack:$('pack').checked}}
 function choisir(k){if(!PRIX.produits[k])k='site';PROD=k;[].forEach.call(document.querySelectorAll('.prod'),function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-p')===k))});
- var site=k==='site',carte=PRIX.produits[k].format==='carte';$('zSite').classList.toggle('hide',!site);$('zOptV').classList.toggle('hide',site);$('zVisuel').classList.toggle('hide',site);$('lverso').classList.toggle('hide',!carte);
+ var site=k==='site';$('composition').classList.toggle('hide',!site);$('mobileApercu').classList.toggle('hide',!site);var carte=PRIX.produits[k].format==='carte';$('zSite').classList.toggle('hide',!site);$('zOptV').classList.toggle('hide',site);$('zVisuel').classList.toggle('hide',site);$('lverso').classList.toggle('hide',!carte);
  $('lphoto').textContent=site?'Photo principale (facultatif)':'Photo ou logo (facultatif)';$('apTitre').textContent='Aperçu de '+NOMS[k];$('nom').placeholder=site?'Ex. : Salon Léa Coiffure':'Ex. : Garage Paulo';maj()}
 function docVisuel(fmt){var nom=$('nom').value||'Votre activité',t=$('vtexte').value.trim(),ct={t:'contact',titre:'Contact',tel:$('vtel').value||$('ctel').value,email:$('vmail').value||$('cmail').value,adresse:$('vadr').value},b=[];
  if(fmt==='carte'){b.push({t:'titre',titre:nom,sous:$('slogan').value,image:photo,pos:photo?'gauche':''});if($('verso').checked){b.push({t:'page'});ct.titre=nom}if(t)b.push({t:'texte',texte:t});b.push(ct);return b}
@@ -218,17 +223,17 @@ function docVisuel(fmt){var nom=$('nom').value||'Votre activité',t=$('vtexte').
  if(t||fmt==='flyer'||fmt==='affiche')b.push({t:'texte',texte:t||'Votre message apparaîtra ici : offre, horaires, événement…'});
  if(ct.tel||ct.email||ct.adresse)b.push(ct);return b}
 function maj(){var d=devis(cfg()),L=$('lignes');DERNIER=d;L.replaceChildren();d.lignes.forEach(function(l){var r=E('div');r.className='ligne';r.appendChild(E('span','',l[0]));r.appendChild(E('b','',l[1]+' €'));L.appendChild(r)});$('total').textContent=d.total+' €';
- var blocs;if(d.produit==='site'){blocs=[{t:'titre',titre:$('nom').value||'Votre activité',sous:$('slogan').value,image:photo}];
- if(d.type==='rendezvous')blocs.push({t:'bouton',texte:'📅 Prendre rendez-vous',lien:'https://example.com'});
- if(d.type==='boutique')blocs.push({t:'produits',titre:'Boutique',items:[{nom:'Produit 1',prix:'29 €'},{nom:'Produit 2',prix:'49 €'}]});
+ var blocs;if(d.produit==='site'&&maquette){blocs=contenuSite()}else if(d.produit==='site'){blocs=[{t:'titre',titre:$('nom').value||'Votre activité',sous:$('slogan').value,image:photo}];
+ if(d.type==='rendezvous')blocs.push({t:'bouton',texte:'📅 Prendre rendez-vous',lien:''});
+ if(d.type==='boutique')blocs.push({t:'produits',titre:'Boutique',items:[]});
  blocs.push({t:'texte',titre:'À propos',texte:'Votre présentation apparaîtra ici.'});
  if(d.pages)blocs.push({t:'texte',titre:'+ '+d.pages+' page(s)',texte:'Pages supplémentaires : services, galerie, tarifs…'});
  blocs.push({t:'contact',titre:'Contact',tel:$('ctel').value,email:$('cmail').value})}else blocs=docVisuel(d.format);
- DOCC={format:d.format,theme:{c1:$('c1').value,c2:$('c2').value,fond:$('fond').value,texte:$('texte').value},blocs:blocs};rendre($('apercu'),DOCC)}
+ DOCC={format:d.format,theme:{c1:$('c1').value,c2:$('c2').value,fond:$('fond').value,texte:$('texte').value},blocs:blocs};if(d.produit==='site'&&maquette)DOCC.style=maquette.style;rendre($('apercu'),DOCC)}
 document.addEventListener('input',maj);document.addEventListener('change',maj);
 [].forEach.call(document.querySelectorAll('.prod'),function(b){b.onclick=function(){choisir(b.getAttribute('data-p'))}});
 $('agr').onclick=function(){var g=$('apv').classList.toggle('grand');this.setAttribute('aria-expanded',String(g));this.textContent=g?'⤡ Réduire':'⤢ Agrandir'};
-$('photo').onchange=function(){var f=this.files[0];if(f)reduirePhoto(f,1000,function(u){photo=u;maj()})};
+$('photo').onchange=function(){var f=this.files[0];if(f)reduirePhoto(f,1000,function(u){if(u){photo=u;maj()}})};
 function contactOk(){var m=$('cmail').value.trim(),t=$('ctel').value.replace(/\\D/g,'');return $('cnom').value.trim()&&(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(m)||t.length>=9)}
 function fermerVerif(){$('verif').classList.add('hide');$('envoyer').focus()}
 $('envoyer').onclick=function(){maj();if(!contactOk()){$('msg').textContent='Indiquez votre nom et un e-mail ou un téléphone.';return}if(!$('cgv').checked){$('msg').textContent='Cochez la case pour accepter d’être recontacté.';return}
@@ -245,6 +250,7 @@ function envoyer(){$('msg').textContent='Envoi…';api('commande',{config:cfg(),
  if(j.lien){var a=E('a','display:block;margin-top:8px;font-weight:800','👉 Suivre ma création en direct');a.href=j.lien;a.target='_blank';$('msg').appendChild(a);$('msg').appendChild(E('small','display:block;color:#a9b0c4','Gardez ce lien : vous y verrez les corrections et pourrez demander des modifications. Paiement : 50 % d’acompte au lancement, 50 % à la validation finale.'))}
  $('msg').scrollIntoView({block:'center'})},function(){$('verif').classList.add('hide');$('msg').textContent='Connexion impossible, réessayez.'})}
 api('config').then(function(c){var t=[];if(c.tel)t.push('📞 '+c.tel);if(c.email)t.push('✉️ '+c.email);if(t.length)$('joindre').textContent='Une question avant de valider ? '+t.join(' · ')});
+${SCRIPT_CREATION}
 var q=new URLSearchParams(location.search).get('p');choisir(PRIX.produits[q]?q:'site');`);
 
 // ---------- Mode salon : le client voit le site se construire en direct ----------
@@ -255,8 +261,8 @@ export const pageSalon = page('Votre site — en direct', `<div id="site"></div>
 <div id="feuille" class="hide" style="position:fixed;left:0;right:0;bottom:0;z-index:6;background:#11131d;color:#fff;border-top:2px solid #f4cf55;padding:14px;font:15px system-ui">
  <b id="fTitre">Ta demande</b><p style="margin:4px 0 8px;color:#a9b0c4;font-size:13px">Astuce : touche un élément du site pour dire précisément lequel changer.</p>
  <textarea id="fTxt" rows="3" maxlength="600" placeholder="Ex. : je veux la photo plus grande, le titre en rouge…" style="width:100%;background:#0b0d16;color:#fff;border:1px solid #2b3046;border-radius:9px;padding:9px;font:inherit"></textarea>
- <button id="fEnv" style="background:#f4cf55;color:#111;border:0;border-radius:10px;padding:10px 14px;font-weight:800;margin-top:6px">Envoyer</button> <button id="fAnn" style="background:#1b2033;color:#fff;border:0;border-radius:10px;padding:10px 14px;margin-top:6px">Fermer</button>
- <p id="fMsg" style="color:#f4cf55;min-height:1.2em;margin:6px 0 0"></p></div>`,
+ <button id="fEnv" style="background:#f4cf55;color:#111;border:0;border-radius:10px;padding:10px 14px;font-weight:800;margin-top:6px">Envoyer</button> <button type="button" id="fDicter" aria-pressed="false" style="background:#1b2033;color:#fff;border:0;border-radius:10px;padding:10px 14px;margin-top:6px">Dicter</button> <button id="fAnn" style="background:#1b2033;color:#fff;border:0;border-radius:10px;padding:10px 14px;margin-top:6px">Fermer</button>
+ <p id="fMsg" role="status" style="color:#f4cf55;min-height:1.2em;margin:6px 0 0"></p></div>`,
 `var tok=location.pathname.split('/').pop(),v=0,el=document.getElementById('site'),live=document.getElementById('live'),bloc=null,$=function(i){return document.getElementById(i)};
 function boucle(){fetch('/api/salon/'+tok+'?v='+v,{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){
  if(j.error){live.textContent='lien expiré';live.style.background='#a00';return}live.style.background='#0a0c';var py=$('payer');if(j.paiement){if(j.paiement.paye){py.textContent='✅ Payé';py.removeAttribute('href');py.classList.remove('hide')}else if(j.paiement.url&&/^https:\\/\\/checkout\\.stripe\\.com\\//.test(j.paiement.url)){py.textContent=j.paiement.etape==='solde'?'💳 Payer le solde ('+j.paiement.montant+')':'💳 Payer l’acompte ('+j.paiement.montant+')';py.href=j.paiement.url;py.classList.remove('hide')}else if(j.paiement.acompte_paye){py.textContent='✅ Acompte payé';py.removeAttribute('href');py.classList.remove('hide')}else py.classList.add('hide')}if(!j.same){v=j.v;document.title=j.nom||'Votre site';rendre(el,j.doc)}setTimeout(boucle,1500)})
@@ -268,7 +274,7 @@ $('msgBtn').onclick=function(){ouvrirFeuille(null)};$('fAnn').onclick=function()
 $('fEnv').onclick=function(){var t=$('fTxt').value.trim();if(!t){$('fMsg').textContent='Écris ta demande.';return}
  fetch('/api/salon/'+tok+'/avis',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({texte:t,bloc:bloc})}).then(function(r){return r.json()}).then(function(j){
   $('fMsg').textContent=j.ok?'✅ Envoyé ! Le créateur le voit tout de suite.':(j.error==='trop_de_messages'?'Trop de messages, patiente un peu.':'Envoi impossible.');if(j.ok)$('fTxt').value=''})};
-rendre(el,{blocs:[]});boucle();`);
+activerDictee($('fTxt'),$('fDicter'),$('fMsg'));rendre(el,{blocs:[]});boucle();`);
 
 // ---------- Consultation avec code à usage unique ----------
 export const pageVoir = page('Voir mon projet', `<div id="porte">${ENTETE('Consultation sécurisée')}

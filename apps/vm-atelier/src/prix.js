@@ -22,16 +22,16 @@ export const PRIX = {
   pageSup: { nom: 'Page supplémentaire', prix: 60, max: 10 },
   langue: { nom: 'Langue supplémentaire', prix: 90, max: 3 },
   options: {
-    logo: { nom: 'Logo créé par IA', prix: 49 },
+    logo: { nom: 'Création de logo', prix: 49 },
     carte: { nom: 'Carte de visite (design)', prix: 29 },
     carte_relief: { nom: 'Carte de visite en relief (design)', prix: 59 },
     flyer: { nom: 'Flyer ou affiche', prix: 39 },
-    voix: { nom: 'Voix off IA', prix: 39 },
-    musique: { nom: 'Musique IA', prix: 29 },
+    voix: { nom: 'Voix off', prix: 39 },
+    musique: { nom: 'Musique personnalisée', prix: 29 },
     mascotte: { nom: 'Mascotte / personnage 3D', prix: 99 },
-    video: { nom: 'Vidéo pub IA (30 s)', prix: 149 },
+    video: { nom: 'Vidéo publicitaire (30 s)', prix: 149 },
     // Couvre le coût de l'IA (quelques centimes par demande) : c'est le client qui paie, pas Romain.
-    retouches_ia: { nom: 'Retouches en direct avec l’assistant IA (30 jours)', prix: 29 },
+    retouches_ia: { nom: 'Retouches en direct (30 jours)', prix: 29 },
   },
   pack: { nom: 'Pack 3 ans : domaine + hébergement + maintenance', prix: 390 },
 };

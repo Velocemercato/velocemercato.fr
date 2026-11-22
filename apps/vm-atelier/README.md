@@ -78,3 +78,9 @@ Tests : `tests/lot2.test.cjs` (12 vérifications).
 - `STRIPE_REEL = "oui"` (wrangler.toml) : accord écrit de Romain du 13/11/2026. Le réel démarre **seulement** quand le secret
   `STRIPE_SECRET_KEY` contient une clé live (`sk_live_…`) ; le bandeau « MODE TEST » disparaît alors tout seul.
 - Tests : `tests/lot3.test.cjs` (13), `tests/paiement.test.mjs` (15).
+
+## Création sur mesure dans le studio client
+
+Le formulaire de /studio utilise le service de création déjà configuré dans le Worker, sans exposer son fournisseur. Le client peut tester une maquette, choisir une direction graphique, ajouter des images, réordonner les sections et retoucher sa version en écrivant ou en dictant. La dictée passe par le navigateur et le texte reste éditable avant l’envoi. Les photos et les coordonnées saisies dans le studio sont exclues de l’appel au fournisseur. Les coordonnées destinées au site sont séparées de celles du devis.
+
+Le plafond public par défaut est de 6 appels par jour (`STUDIO_MAX_JOUR`) et de 3 par heure par adresse, dans la limite du plafond total `IA_MAX_JOUR`. Les maquettes et les modifications manuelles fonctionnent sans clé. Le suivi de la commande, le projet dans l’atelier et les demandes du salon continuent à utiliser les routes existantes.
