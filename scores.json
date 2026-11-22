@@ -651,6 +651,19 @@
    ]
   },
   {
+   "id": 558528,
+   "date": "2026-11-21T14:00:00Z",
+   "comp": "Serie A",
+   "sport": "foot",
+   "dom": "Lazio",
+   "ext": "Lecce",
+   "statut": "FINISHED",
+   "score": [
+    3,
+    0
+   ]
+  },
+  {
    "id": 558525,
    "date": "2026-11-21T14:00:00Z",
    "comp": "Serie A",
@@ -664,15 +677,28 @@
    ]
   },
   {
-   "id": 558528,
-   "date": "2026-11-21T14:00:00Z",
-   "comp": "Serie A",
+   "id": 565858,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
    "sport": "foot",
-   "dom": "Lazio",
-   "ext": "Lecce",
+   "dom": "Union Berlin",
+   "ext": "RB Leipzig",
    "statut": "FINISHED",
    "score": [
-    3,
+    1,
+    5
+   ]
+  },
+  {
+   "id": 565865,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "Frankfurt",
+   "ext": "Hoffenheim",
+   "statut": "FINISHED",
+   "score": [
+    1,
     0
    ]
   },
@@ -716,58 +742,6 @@
    ]
   },
   {
-   "id": 565858,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
-   "sport": "foot",
-   "dom": "Union Berlin",
-   "ext": "RB Leipzig",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    5
-   ]
-  },
-  {
-   "id": 565865,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
-   "sport": "foot",
-   "dom": "Frankfurt",
-   "ext": "Hoffenheim",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    0
-   ]
-  },
-  {
-   "id": 560650,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Coventry City",
-   "ext": "Crystal Palace",
-   "statut": "FINISHED",
-   "score": [
-    3,
-    2
-   ]
-  },
-  {
-   "id": 560647,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Bournemouth",
-   "ext": "Nottingham",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
-   ]
-  },
-  {
    "id": 560644,
    "date": "2026-11-21T15:00:00Z",
    "comp": "Premier League",
@@ -800,6 +774,32 @@
    "sport": "foot",
    "dom": "Tottenham",
    "ext": "Ipswich Town",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    0
+   ]
+  },
+  {
+   "id": 560650,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Coventry City",
+   "ext": "Crystal Palace",
+   "statut": "FINISHED",
+   "score": [
+    3,
+    2
+   ]
+  },
+  {
+   "id": 560647,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Bournemouth",
+   "ext": "Nottingham",
    "statut": "FINISHED",
    "score": [
     2,
@@ -911,32 +911,6 @@
    ]
   },
   {
-   "id": 559627,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "Strasbourg",
-   "ext": "Brest",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": 559623,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "RC Lens",
-   "ext": "Toulouse",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    1
-   ]
-  },
-  {
    "id": 559621,
    "date": "2026-11-21T19:45:00Z",
    "comp": "Ligue 1",
@@ -959,6 +933,32 @@
    "statut": "FINISHED",
    "score": [
     0,
+    1
+   ]
+  },
+  {
+   "id": 559627,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Strasbourg",
+   "ext": "Brest",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": 559623,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "RC Lens",
+   "ext": "Toulouse",
+   "statut": "FINISHED",
+   "score": [
+    1,
     1
    ]
   },
@@ -1275,12 +1275,12 @@
    ]
   },
   {
-   "id": 558522,
+   "id": 558524,
    "date": "2026-11-22T14:00:00Z",
    "comp": "Serie A",
    "sport": "foot",
-   "dom": "Bologna",
-   "ext": "Udinese",
+   "dom": "Sassuolo",
+   "ext": "Genoa",
    "statut": "TIMED",
    "score": [
     null,
@@ -1288,12 +1288,12 @@
    ]
   },
   {
-   "id": 558524,
+   "id": 558522,
    "date": "2026-11-22T14:00:00Z",
    "comp": "Serie A",
    "sport": "foot",
-   "dom": "Sassuolo",
-   "ext": "Genoa",
+   "dom": "Bologna",
+   "ext": "Udinese",
    "statut": "TIMED",
    "score": [
     null,
@@ -1964,6 +1964,6 @@
    ]
   }
  ],
- "maj": "2026-11-22T09:57:37Z",
- "verifie": "2026-11-22T09:57:37Z"
+ "maj": "2026-11-22T10:01:33Z",
+ "verifie": "2026-11-22T10:01:33Z"
 }
