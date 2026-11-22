@@ -113,7 +113,9 @@ class EditorialTests(unittest.TestCase):
 
     def test_outside_slot_no_state_or_graph_access(self):
         midnight = NOW.replace(hour=1)
-        self.assertEqual(mod.run(self.state, None, self.root, midnight)['targets'], {})
+        result = mod.run(self.state, None, self.root, midnight)
+        self.assertEqual(result['targets'], {})
+        self.assertEqual(result['unconnected'], [])
         self.assertEqual(mod.publish_target(self.state, None, 'meta', 'facebook', self.root, midnight)['status'],
                          'hors_creneau')
         self.assertEqual(self.state.saves, 0)
