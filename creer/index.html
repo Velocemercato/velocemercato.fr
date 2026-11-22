@@ -41,7 +41,7 @@
       <label for="photo">Photo principale</label><input id="photo" type="file" accept="image/jpeg,image/png,image/webp,image/avif">
       <button type="button" id="remove-photo" hidden>Retirer la photo</button>
       <details><summary>Ajouter, écrire ou déplacer les rubriques</summary><div id="section-editor"></div><button type="button" id="add-section">Ajouter une rubrique</button></details>
-      <div class="actions"><button type="button" id="undo" disabled>Annuler la dernière action</button><button type="button" id="download">Télécharger mon brouillon</button><label class="button" for="restore">Importer un brouillon</label><input class="visually-hidden" type="file" id="restore" accept="application/json,.json"></div>
+      <div class="actions"><button type="button" id="undo" disabled>Annuler la dernière action</button><button type="button" id="new-draft">Nouveau brouillon</button><button type="button" id="download">Télécharger mon brouillon</button><label class="button" for="restore">Importer un brouillon</label><input class="visually-hidden" type="file" id="restore" accept="application/json,.json"></div>
       <p class="save" id="save-note">Le brouillon est enregistré sur cet appareil.</p>
     </div>
     <div class="preview-column">
@@ -51,7 +51,7 @@
     </div>
   </section>
   <section class="handoff" id="transmission" aria-labelledby="send-title">
-    <div><h2 id="send-title">On passe à la suite ?</h2><p>Envoie ton projet à l’atelier pour validation. Notre équipe reprend ta demande et te recontacte avant tout engagement.</p><a href="https://vmunivers.fr/professionnels/">Voir les prestations et les tarifs</a></div>
+    <div><h2 id="send-title">On passe à la suite ?</h2><p>Envoyez votre projet à l’atelier pour validation. Notre équipe reprend votre demande et vous recontacte avant tout engagement.</p><a href="https://vmunivers.fr/professionnels/">Voir les prestations et les tarifs</a></div>
     <form id="send-form">
       <label for="client-name">Votre nom</label><input id="client-name" autocomplete="name" maxlength="80" required>
       <label for="client-email">Votre e-mail</label><input type="email" id="client-email" autocomplete="email" maxlength="120" required>

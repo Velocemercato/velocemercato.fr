@@ -196,6 +196,16 @@ $('undo').onclick = () => {
   refresh();
   status('Version précédente rétablie.');
 };
+$('new-draft').onclick = () => {
+  pendingPhoto++;
+  remember();
+  draft = structuredClone(defaults);
+  activeSection = -1;
+  $('instructions').value = '';
+  refresh();
+  status('Nouveau brouillon ouvert. Vous pouvez revenir au précédent avec Annuler.');
+  $('instructions').focus();
+};
 $('phone').onclick = () => {
   const phone = $('preview').classList.toggle('mobile');
   $('phone').setAttribute('aria-pressed', String(phone));
@@ -354,6 +364,50 @@ function draftSummary() {
   ];
   return details.filter(Boolean).join('\n').slice(0, 1280);
 }
+async function shareDraft() {
+  if (!('CompressionStream' in window)) return '';
+  const prefix = location.origin + '/creer/#maquette=';
+  for (const withPhoto of draft.photo ? [true, false] : [false]) {
+    if (withPhoto && draft.photo.length > 2200) continue;
+    const json = JSON.stringify({ ...draft, version: 1, photo: withPhoto ? draft.photo : '', notes: '' });
+    const compressed = await new Response(new Blob([json]).stream().pipeThrough(new CompressionStream('gzip'))).arrayBuffer();
+    if (compressed.byteLength > 760) continue;
+    const encoded = btoa(String.fromCharCode(...new Uint8Array(compressed))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    return { url: prefix + encoded, withPhoto };
+  }
+  return '';
+}
+async function offerSharedDraft() {
+  const token = location.hash.match(/^#maquette=([A-Za-z0-9_-]{1,1100})$/)?.[1];
+  if (!token || !('DecompressionStream' in window)) return;
+  try {
+    const bytes = Uint8Array.from(atob(token.replace(/-/g, '+').replace(/_/g, '/')), c => c.charCodeAt(0));
+    const reader = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip')).getReader();
+    const decoder = new TextDecoder();
+    let json = '', size = 0;
+    for (;;) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      size += value.byteLength;
+      if (size > 16000) { await reader.cancel(); return; }
+      json += decoder.decode(value, { stream: true });
+    }
+    const raw = JSON.parse(json + decoder.decode());
+    if (raw.version !== 1 || !Array.isArray(raw.sections)) return;
+    const incoming = validate(raw);
+    document.getElementById('creation').scrollIntoView();
+    status('Une maquette partagée est prête à être ouverte.');
+    const open = element('button', 'Ouvrir la maquette');
+    open.type = 'button';
+    open.onclick = () => {
+      pendingPhoto++; remember(); draft = incoming; activeSection = -1; refresh();
+      window.history.replaceState(null, '', location.pathname + location.search + '#creation');
+      status('Maquette partagée ouverte.');
+    };
+    $('feedback').append(' ', open);
+    open.focus({ preventScroll: true });
+  } catch { status('Ce lien de maquette est illisible. Essayez d’importer le fichier du projet.'); }
+}
 async function request(path, body) {
   const response = await fetch(studioHost + path, {
     method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
@@ -375,12 +429,21 @@ $('send-form').onsubmit = async event => {
   try {
     const capability = await fetch(studioHost + '/api/studio/transmission', { cache: 'no-store' }).then(r => r.ok && r.json()).catch(() => null);
     const full = capability?.version === 1;
+    let previewLink = '';
+    if (!full) {
+      previewLink = await shareDraft().catch(() => '');
+      if (previewLink) {
+        const caption = 'Maquette à ouvrir : ' + previewLink.url + '\n';
+        contact.projet = caption + contact.projet.slice(0, 1320 - caption.length);
+      }
+    }
     const { response, result } = await request(full ? '/api/studio/transmission' : '/api/demande', full ? { ...contact, draft } : contact);
     if (!response.ok || !result.success || !result.id) throw Error();
     received = true;
     statusLine.textContent = full
       ? 'Maquette reçue par VM Studio. Référence ' + result.id + '.'
-      : 'Demande reçue par VM Studio. Référence ' + result.id + '. Téléchargez votre fichier complet pour le joindre lors de nos échanges.';
+      : 'Demande reçue par VM Studio. Référence ' + result.id + '.' + (previewLink ? ' Un lien de reprise est inclus.' : '') +
+         ((!previewLink || (draft.photo && !previewLink.withPhoto)) ? ' Téléchargez le brouillon complet pour le joindre lors de nos échanges.' : '');
     if (full && typeof result.lien === 'string' && result.lien.startsWith(studioHost + '/salon/')) {
       const link = element('a', 'Ouvrir mon suivi');
       link.href = result.lien;
@@ -397,3 +460,4 @@ $('send-form').onsubmit = async event => {
   } finally { button.disabled = received; }
 };
 refresh();
+offerSharedDraft();
