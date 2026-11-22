@@ -75,3 +75,14 @@ Aucun chiffre d'audience, partenariat, accord de marque ou résultat commercial 
 ## 7. Décision de sécurité
 
 Cette branche ne contient que le présent rapport. Elle n'altère pas `main` et ne déclenche pas de déploiement du site. Toute correction de code sera proposée dans une branche distincte, testée, puis soumise à validation avant fusion.
+
+
+## 8. Contrôle Metricool — instantané du 22 novembre 2026
+
+Une lecture non destructive de Metricool a identifié une seule marque accessible, libellée `velocemercato`, avec fuseau `Europe/Paris`. Les connexions mélangent plusieurs univers : site web `vmunivers.fr`, Instagram et Threads `vmunivers.fr`, TikTok `velocemercato`, chaîne YouTube Véloce Mercato et Twitch. Cette configuration ne permet pas de considérer les statistiques agrégées comme un kit média fiable pour l'un ou l'autre site.
+
+Aucune publication planifiée n'a été retournée pour cette marque entre le 22 et le 25 novembre 2026. Cela concerne le calendrier Metricool interrogé, pas nécessairement d'autres systèmes de publication.
+
+Les métriques disponibles sont partielles et hétérogènes selon les réseaux. Elles ne doivent pas être additionnées entre plateformes ni présentées comme audience globale. Les valeurs brutes ne sont pas utilisées comme preuve d'audience commerciale.
+
+**Action recommandée :** créer ou sélectionner des marques Metricool distinctes pour VM Univers et Véloce Mercato, rattacher chaque réseau au bon projet, vérifier les permissions, puis établir un tableau de bord séparé. Avant toute programmation, confirmer les contenus, les médias et le calendrier éditorial. Aucune publication n'a été créée ou envoyée pendant cet audit.
