@@ -245,6 +245,10 @@ class EditorialTests(unittest.TestCase):
                          seen_extra=None):
             received[account + '/' + network] = set(seen_extra or ())
             if account == 'meta' and network == 'facebook':
+                state.data.setdefault('meta', {})['editorial/facebook/foot/uncertain'] = {
+                    'status': 'a_verifier_sans_renvoi', 'at': NOW.isoformat(),
+                    'title': 'Publication au retour incertain',
+                }
                 return {'status': 'publie', 'posts': [{'title': 'Nouvelle brève distincte'}]}
             return {'status': 'aucun_contenu_inedit', 'posts': []}
 
@@ -253,6 +257,7 @@ class EditorialTests(unittest.TestCase):
 
         seen_by_pronos = received['meta_pronos/facebook']
         self.assertIn(mod.normal('Déjà publié sur Véloce Mercato'), seen_by_pronos)
+        self.assertIn(mod.normal('Publication au retour incertain'), seen_by_pronos)
         self.assertIn(mod.normal('Nouvelle brève distincte'), seen_by_pronos)
 
 
