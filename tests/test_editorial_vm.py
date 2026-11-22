@@ -117,6 +117,27 @@ class EditorialTests(unittest.TestCase):
         self.assertEqual(mod.publish_target(self.state, None, 'meta', 'facebook', self.root, midnight)['status'],
                          'hors_creneau')
         self.assertEqual(self.state.saves, 0)
+    def test_status_history_does_not_duplicate_confirmed_receipts(self):
+        post = {'target': 'meta/facebook', 'id': '123_456', 'url': 'https://www.facebook.com/123/posts/456'}
+        previous = {
+            'updated_at': '2026-11-22T18:00:00Z',
+            'mode': 'programme',
+            'targets': {'meta/facebook': {'status': 'publie', 'posts': [post]}},
+            'confirmed': [post] * 500,
+            'history': [
+                {'updated_at': f'2026-11-{day:02d}T18:00:00Z',
+                 'targets': {'meta/facebook': {'status': 'publie'}},
+                 'confirmed': [post] * 500}
+                for day in range(1, 32)
+            ],
+        }
+        history = mod.compact_status_history(previous, limit=30)
+        self.assertEqual(len(history), 30)
+        self.assertNotIn('confirmed', history[0])
+        self.assertNotIn('history', history[0])
+        self.assertEqual(history[0]['targets']['meta/facebook']['status'], 'publie')
+        self.assertNotIn('confirmed', history[-1])
+
     def test_multisport_filters_string_pattern_without_failing(self):
         import sys
         from types import SimpleNamespace
