@@ -37,7 +37,8 @@ jobs:
           for i in $(seq 1 24); do
             if curl -fsS --max-time 15 https://velocemercato.fr/conseils/ -o "$RUNNER_TEMP/conseils.html" &&
               grep -q 'id="resultats-2026-11-21"' "$RUNNER_TEMP/conseils.html" &&
-              curl -fsS --max-time 15 -I https://velocemercato.fr/conseils/preuves/2026-11-21-bilan-vm.jpg > /dev/null; then
+              curl -fsS --max-time 15 https://velocemercato.fr/conseils/preuves/2026-11-21-bilan-vm.jpg -o "$RUNNER_TEMP/bilan.jpg" &&
+              python -c 'from pathlib import Path; import sys; assert Path(sys.argv[1]).read_bytes().startswith(bytes.fromhex("ffd8ff"))' "$RUNNER_TEMP/bilan.jpg"; then
               exit 0
             fi
             sleep 8

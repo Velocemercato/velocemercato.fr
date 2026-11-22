@@ -4,7 +4,6 @@ import json
 import os
 from pathlib import Path
 import sys
-import urllib.request
 from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -35,15 +34,6 @@ ANNONCE = """Vous voulez une édition gratuite en public ce soir ? Dites-le en c
 CONTACT = """📌 Bilan complet et demande d’accès au VIP gratuit : velocemercato.fr/conseils/
 
 18+ · Jouer comporte des risques. Joueurs Info Service : 09 74 75 13 13."""
-
-
-def verification_site():
-    with urllib.request.urlopen(IMAGE, timeout=15) as response:
-        if response.headers.get_content_type() != "image/jpeg" or response.read(3) != b"\xff\xd8\xff":
-            raise DeliveryError("Affiche du bilan non disponible.")
-    with urllib.request.urlopen(LINK.split("#")[0], timeout=15) as response:
-        if b'id="resultats-2026-11-21"' not in response.read(950_000):
-            raise DeliveryError("Bilan du site non disponible.")
 
 
 def texte(now):
@@ -102,7 +92,6 @@ def publier(state, graph, account, network):
 
 def main():
     path = Path(sys.argv[1])
-    verification_site()
     state = State(path, os.environ.get("VM_DIFFUSION_STATE_KEY", ""), lambda: git_save(path))
     ensure_meta_targets(state)
     graph = Graph()
