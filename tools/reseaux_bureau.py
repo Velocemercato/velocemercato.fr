@@ -85,7 +85,6 @@ def carte(titre, date, etiquette, lien, texte_lien, post=""):
 def preparer_fils_bureau(root):
     confirmees = lire(root / "studio/editorial-status.json", {}).get("confirmed", [])
     export = lire(root / "assets/reseaux-publications.json", {})
-    locaux = lire(root / "belfort/actus.json", {}).get("titres", [])
     index = index_articles(root)
     for slug, (nom, compte, intro, rubrique) in FILS.items():
         cartes = []
@@ -104,23 +103,12 @@ def preparer_fils_bureau(root):
                 break
         derniere = export.get(compte, {})
         lien_recent = derniere.get("url", "")
+        titre_recent = derniere.get("titre") or "Lire la dernière publication sur Facebook"
         chapeau = ('<p class="recent"><a href="' + escape(lien_recent, quote=True)
-                   + '" target="_blank" rel="noopener noreferrer">Lire la dernière publication sur Facebook ↗</a>'
+                   + '" target="_blank" rel="noopener noreferrer">' + escape(titre_recent) + ' ↗</a>'
                    + '<span>' + escape(date_paris(derniere.get("date"))) + '</span></p>') if facebook(lien_recent) else ""
         if not cartes and not chapeau:
             cartes.append('<p class="note">Aucune publication de la rédaction vérifiée pour le moment.</p>')
-        local = ""
-        if slug == "vm-univers":
-            cartes_locales = []
-            for row in locaux[:5]:
-                url = urlparse(row.get("u", ""))
-                if url.scheme == "https" and url.hostname and not url.username and not url.password:
-                    cartes_locales.append(carte(row.get("t", ""), date_paris(row.get("d")), row.get("s") or "VM Belfort",
-                                                url.geturl(), "Lire l’article source"))
-            if cartes_locales:
-                local = ('<section><h2>Dernières actus VM Belfort</h2>'
-                         '<p class="note">Actualités du site, indépendamment de la diffusion sur Facebook.</p>'
-                         + '<div class="cartes">' + "".join(cartes_locales) + '</div></section>')
         navigation = "".join(
             '<a href="/reseaux/' + autre + '/"' + (' aria-current="page"' if autre == slug else '') + '>'
             + escape(config[0]) + '</a>' for autre, config in FILS.items())
@@ -134,7 +122,7 @@ def preparer_fils_bureau(root):
             + '<a href="' + PAGES_FACEBOOK[slug] + '" target="_blank" rel="noopener noreferrer">Page Facebook officielle ↗</a>'
             + '<a href="/">Retour au bureau</a></div></header>'
             + '<section><h2>Articles publiés par la rédaction</h2>' + chapeau + '<div class="cartes">' + "".join(cartes)
-            + '</div></section>' + local + '</main></body></html>'
+            + '</div></section></main></body></html>'
         )
         destination = root / "reseaux" / slug / "index.html"
         destination.parent.mkdir(parents=True, exist_ok=True)
