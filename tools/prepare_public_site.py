@@ -286,6 +286,32 @@ def _retirer_fichiers_trop_gros(root):
             path.unlink()
 
 
+def _liens_publications_meta(root, html):
+    source = root / "assets/reseaux-publications.json"
+    if not source.is_file():
+        return html
+    liens = json.loads(source.read_text(encoding="utf-8"))
+
+    def ajouter(m):
+        balise, cible = m[0], m[1]
+        actif = liens.get(cible, {})
+        url = actif.get("url", "")
+        adresse = urlparse(url)
+        if adresse.scheme != "https" or adresse.username or adresse.password:
+            return balise
+        if cible.endswith("/facebook"):
+            valide = adresse.netloc in ("www.facebook.com", "m.facebook.com") and re.fullmatch(
+                r"/[^/]+/(?:posts|videos)/[^/]+/?|/reel/[0-9]+/?", adresse.path)
+        else:
+            valide = adresse.netloc == "www.instagram.com" and re.fullmatch(r"/(?:p|reel|tv)/[a-zA-Z0-9_-]+/?", adresse.path)
+        if not valide:
+            return balise
+        nouveau = escape(url, quote=True)
+        return re.sub(r'href="[^"]+"', lambda _: 'href="' + nouveau + '"', balise, count=1)
+
+    return re.sub(r'<a\b[^>]*\bdata-publication-meta="([^"]+)"[^>]*>', ajouter, html)
+
+
 def prepare(root):
     _alleger_editorial_status(root)
     _retirer_fichiers_trop_gros(root)
@@ -297,6 +323,8 @@ def prepare(root):
         if relative.parts[0] == 'en' or any(part in {'.github', 'tests', 'tools', 'docs'} for part in relative.parts):
             continue
         text = path.read_text(encoding='utf-8')
+        if path == root/'index.html':
+            text = _liens_publications_meta(root, text)
         if path == root/'foot/index.html':
             articles = json.loads((root/'articles.json').read_text(encoding='utf-8'))
             rows = sorted((a for a in articles if isinstance(a, dict) and a.get('titre') and a.get('id')),

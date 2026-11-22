@@ -1,0 +1,48 @@
+name: VM - Actualiser les liens directs vers les actus Meta
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/liens_publications_meta.py'
+      - '.github/workflows/liens-actus-meta.yml'
+  schedule:
+    - cron: '12,42 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vm-liens-directs-meta
+  cancel-in-progress: false
+
+jobs:
+  liens:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Lire les accusés de Meta
+        run: |
+          python -m py_compile tools/liens_publications_meta.py
+          python -m pip install --quiet 'cryptography==50.0.0'
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "https://github.com/$GITHUB_REPOSITORY.git" "$RUNNER_TEMP/vm-broadcast-state"
+          python tools/liens_publications_meta.py --state "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+      - name: Enregistrer les permaliens publics
+        run: |
+          git add assets/reseaux-publications.json
+          git diff --cached --quiet && exit 0
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m "Actualiser les liens des actus Meta"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 2
+          done
+          exit 1
