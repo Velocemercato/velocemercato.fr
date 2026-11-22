@@ -147,3 +147,14 @@ Les abonnés ne sont ni des vues ni de la portée. Ne jamais additionner les pla
 
 ### Priorité de croissance
 VM Actus & Pronos peut servir de relais de découverte vers les articles Véloce Mercato, à condition de publier un angle communautaire adapté et un lien clair, sans copier-coller systématique. VM Univers doit rester la vitrine des projets et services, avec des publications commerciales distinctes. Mesurer ensuite portée, interactions, clics et abonnés gagnés sur 7 et 28 jours.
+
+
+## Contrôle technique ajouté — branche de revue du 23 novembre
+
+Le fichier `tests/test_editorial_vm.py` reçoit des assertions supplémentaires :
+- identifiants exacts des trois Pages Facebook ;
+- identités attendues des deux comptes Instagram ;
+- créneaux configurés des cinq destinations ;
+- absence de cible Instagram pour VM Actus & Pronos.
+
+Ces tests ne publient rien. Ils servent à éviter qu'une évolution future ne mélange les comptes ou n'ajoute une destination non retenue. Le workflow `editorial-vm.yml` exécute déjà cette suite de tests avant chaque tentative de diffusion.
