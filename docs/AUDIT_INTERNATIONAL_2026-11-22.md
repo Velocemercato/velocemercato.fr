@@ -102,3 +102,42 @@ La fraîcheur des 50 brèves est satisfaisante dans le dépôt consulté. Le ris
 
 ### Vérification technique complémentaire
 Le workflow reconstruit les pages d'articles et le sitemap après la collecte. La collecte conserve des identifiants basés sur l'URL source, élimine les URL déjà publiées et utilise une comparaison de titres pour limiter les sujets similaires. Cette protection existe déjà dans le code : ne pas réécrire une seconde déduplication sans tests ciblés.
+
+
+## 10. Contrôle réel des publications Facebook / Instagram
+
+Le code et les accusés publics confirment qu'une chaîne de publication Meta existe déjà : elle cible précisément trois Pages Facebook et deux comptes Instagram. Il ne faut donc pas repartir de zéro ni réinstaller un outil de programmation tiers.
+
+### Comptes et créneaux déclarés dans le code
+- Facebook Véloce Mercato : 08 h, 12 h, 20 h.
+- Instagram @veloce.mercato : 12 h, 20 h.
+- Facebook VM Actus & Pronos : 12 h, 20 h.
+- Facebook VM Univers : 08 h, 12 h, 18 h.
+- Instagram @vmunivers.fr : 18 h.
+
+Le workflow `editorial-vm.yml` vérifie les confirmations, l'identité des comptes et les anti-doublons avant l'envoi. Le code refuse de publier si l'identité d'un compte ne correspond pas à la destination prévue.
+
+### Derniers permaliens présents dans le journal public consulté
+- Facebook Véloce Mercato : publication confirmée le 22 novembre 2026 vers 20 h, heure de Paris.
+- Facebook VM Actus & Pronos : publication confirmée le 22 novembre vers 20 h.
+- Instagram @veloce.mercato : publication confirmée le 22 novembre vers 20 h.
+- Facebook VM Univers : publication confirmée le 22 novembre vers 17 h 31.
+- Instagram @vmunivers.fr : dernier permalien journalisé le 11 novembre 2026 vers 4 h 25.
+
+**Point prioritaire :** le compte Instagram VM Univers paraît en retard de diffusion par rapport aux quatre autres. Il faut diagnostiquer la connexion, les créneaux, le quota et le journal d'accusés avant de tenter un nouvel envoi.
+
+Le workflow séparé `tiktok-metricool.yml` est uniquement déclenchable manuellement et son mode déclaré est `essai`. Il ne fait pas partie du périmètre retenu de trois Pages Facebook et deux comptes Instagram. Aucun usage de Metricool n'est nécessaire pour le plan des cinq comptes.
+
+## 11. Incident de déploiement Cloudflare — preuve par les logs GitHub Actions
+
+Le run GitHub Actions `45079938522` du 22 novembre 2026, workflow `Publier Véloce Mercato sur Cloudflare`, a échoué à l'étape de publication :
+- la préparation du site a terminé et a annoncé 1 857 pages préparées ;
+- Wrangler a reconnu un Account API Token et le compte Cloudflare associé ;
+- l'appel au projet Pages `velocemercato` a échoué avec `Authentication error [code: 10000]` ;
+- le contrôle du domaine a été ignoré après cet échec.
+
+Le diagnostic le plus probable est un jeton dont les permissions ou le périmètre de compte ne permettent pas le déploiement Pages. La documentation Cloudflare demande le droit **Account → Cloudflare Pages → Edit** (ou `Pages Write` dans la nomenclature API) pour créer un déploiement. Sources officielles : https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/ et https://developers.cloudflare.com/pages/configuration/api/.
+
+**Correction à faire côté Cloudflare/GitHub :** créer ou corriger un jeton dédié avec Cloudflare Pages Edit sur le compte qui héberge le projet, puis remplacer le secret GitHub `CLOUDFLARE_API_TOKEN` sans jamais le communiquer dans une conversation. Vérifier que `CLOUDFLARE_ACCOUNT_ID` désigne le même compte. Rejouer ensuite le déploiement et contrôler `version.txt` et le domaine. Ne pas modifier DNS pour résoudre un problème de permission API.
+
+Les exécutions du workflow Pages de VM Univers du 22 novembre ont, elles, terminé avec succès dans les runs consultés. Cela confirme le pipeline GitHub de VM Univers, pas nécessairement toutes les routes du site en production.
