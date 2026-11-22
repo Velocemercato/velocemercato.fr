@@ -131,5 +131,36 @@ class EditorialTests(unittest.TestCase):
         self.assertEqual(choice[1]['id'],'nba-test-2')
 
 
+    def test_all_five_targets_have_distinct_expected_identity_and_schedule(self):
+        expected = {
+            'meta': ('1384363904759072', 'veloce.mercato'),
+            'meta_pronos': ('112294796981981', None),
+            'meta_univers': ('1349998758205153', 'vmunivers.fr'),
+        }
+        self.assertEqual({k: (v[0], v[2]) for k, v in mod.TARGETS.items()}, expected)
+        self.assertEqual(mod.SCHEDULE, {
+            ('meta', 'facebook'): (8, 12, 20),
+            ('meta', 'instagram'): (12, 20),
+            ('meta_pronos', 'facebook'): (12, 20),
+            ('meta_univers', 'facebook'): (8, 12, 18),
+            ('meta_univers', 'instagram'): (18,),
+        })
+
+    def test_pronos_never_has_instagram_target(self):
+        self.assertNotIn(('meta_pronos', 'instagram'), mod.SCHEDULE)
+        self.assertIsNone(mod.TARGETS['meta_pronos'][2])
+
+    def test_each_expected_destination_requires_its_own_page_token(self):
+        for account, (page_id, _, username) in mod.TARGETS.items():
+            meta = {'page_id': page_id, 'page_token': 'test-token'}
+            if username:
+                meta['ig_id'] = '123'
+            self.assertEqual(str(meta['page_id']), page_id)
+            self.assertTrue(meta['page_token'])
+            if username:
+                self.assertTrue(meta['ig_id'])
+            else:
+                self.assertNotIn('ig_id', meta)
+
 if __name__ == '__main__':
     unittest.main()
