@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: Velocemercato/vmunivers
-          ref: 893541a4a6beb409ae01ec1860c27755fb4df030
+          ref: e2d30bd29eb09f121d08ae473ee6b2a3525ba031
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
@@ -33,13 +33,13 @@ jobs:
           test -n "$CLOUDFLARE_ACCOUNT_ID"
           mkdir "$RUNNER_TEMP/vmunivers-site"
           git archive HEAD | tar -x -C "$RUNNER_TEMP/vmunivers-site"
-          echo '893541a4a6beb409ae01ec1860c27755fb4df030' > "$RUNNER_TEMP/vmunivers-site/version.txt"
-          npx --yes wrangler@4 pages deploy "$RUNNER_TEMP/vmunivers-site" --project-name vmunivers --branch main --commit-hash '893541a4a6beb409ae01ec1860c27755fb4df030'
+          echo 'e2d30bd29eb09f121d08ae473ee6b2a3525ba031' > "$RUNNER_TEMP/vmunivers-site/version.txt"
+          npx --yes wrangler@4 pages deploy "$RUNNER_TEMP/vmunivers-site" --project-name vmunivers --branch main --commit-hash 'e2d30bd29eb09f121d08ae473ee6b2a3525ba031'
       - name: Controler le domaine
         run: |
           for i in $(seq 1 12); do
             version=$(curl -fsSL --max-time 15 "https://vmunivers.fr/version.txt?r=$RANDOM" 2>/dev/null | head -c 40 || true)
-            test "$version" = '893541a4a6beb409ae01ec1860c27755fb4df030' && { echo 'Version VM Univers publiée.'; exit 0; }
+            test "$version" = 'e2d30bd29eb09f121d08ae473ee6b2a3525ba031' && { echo 'Version VM Univers publiée.'; exit 0; }
             sleep 10
           done
           echo '::error::Version non confirmee sur vmunivers.fr.'
