@@ -55,6 +55,19 @@ NEGATIVE={
  'f1': r'parfum|montre de luxe|jeu vidéo',
  'motogp': r'jeu vidéo|moto électrique.*prix',
 }
+# Garde-fou éditorial : aucune actualité de football association dans les disciplines multisport.
+# Le football américain NFL reste autorisé ; les marqueurs de clubs/compétitions de foot sont exclus.
+FOOTBALL_CONTENT = (
+ r'\\b(?:Ligue\\s+[12]|National\\s+[12]|mercato|soccer|'
+ r'football(?!(?:\\s+|-)?am[ée]ricain)|'
+ r'Paris Saint-Germain|PSG|Olympique de Marseille|\\bOM\\b|'
+ r'Olympique Lyonnais|\\bLOSC\\b|\\bASSE\\b|Saint[ -]Étienne|'
+ r'RC Lens|Racing Club de Lens|FC Nantes|Stade Rennais|'
+ r'OGC Nice|Stade Brestois|AJ Auxerre|Le Havre AC|'
+ r'Girondins de Bordeaux|Football Club de Metz)'
+)
+
+
 GAMING_CONTENT = '\\b(?:gta(?:\\s*(?:vi|[56]))?|grand theft auto|playstation|xbox|nintendo|fortnite|minecraft|roblox|esports?|e-sports?|nba\\s*2k\\w*|madden|ea\\s*(?:sports\\s*)?fc|fifa\\s*2[0-9]|jeux? vid[eé]o|gaming|steam|ubisoft|activision|call of duty)\\b'
 
 # Pages « hub » permanentes ou événements passés repris par un RSS avec une date récente
@@ -67,6 +80,7 @@ def past_event(title,year=None):
  return bool(years) and max(years)<year-1
 def relevant(sport,title):
  return (sport in RELEVANCE and not re.search(GAMING_CONTENT,title,re.IGNORECASE)
+         and not re.search(FOOTBALL_CONTENT,title,re.IGNORECASE)
          and not re.search(HUB_PAGE,title,re.IGNORECASE) and not past_event(title)
          and bool(re.search(RELEVANCE[sport],title,re.IGNORECASE))
          and not bool(re.search(NEGATIVE.get(sport,r'(?!)'),title,re.IGNORECASE)))
