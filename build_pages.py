@@ -260,7 +260,7 @@ def main():
              f'  <url><loc>{SITE}/actus/</loc><changefreq>hourly</changefreq></url>',
              f'  <url><loc>{SITE}/pronos/</loc><changefreq>hourly</changefreq></url>']
     # Rubriques principales absentes jusqu'ici (la rubrique Foot n'était même pas listée).
-    for extra in ('/foot/', '/scores/', '/region/', '/vm-gaming/', '/notifications/', '/mentions-legales.html', '/politique-de-confidentialite.html'):
+    for extra in ('/en/', '/foot/', '/scores/', '/region/', '/vm-gaming/', '/notifications/', '/mentions-legales.html', '/politique-de-confidentialite.html'):
         if Path(extra.strip('/'), 'index.html').exists() or (extra.endswith('.html') and Path(extra.strip('/')).exists()):
             lines.append(f'  <url><loc>{SITE}{extra}</loc><changefreq>hourly</changefreq></url>')
     # TOUTES les brèves conservées et indexables (et pas seulement celles du fil du moment).
