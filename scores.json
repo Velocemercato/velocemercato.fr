@@ -651,19 +651,6 @@
    ]
   },
   {
-   "id": 558528,
-   "date": "2026-11-21T14:00:00Z",
-   "comp": "Serie A",
-   "sport": "foot",
-   "dom": "Lazio",
-   "ext": "Lecce",
-   "statut": "FINISHED",
-   "score": [
-    3,
-    0
-   ]
-  },
-  {
    "id": 558525,
    "date": "2026-11-21T14:00:00Z",
    "comp": "Serie A",
@@ -677,29 +664,29 @@
    ]
   },
   {
-   "id": 565858,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
+   "id": 558528,
+   "date": "2026-11-21T14:00:00Z",
+   "comp": "Serie A",
    "sport": "foot",
-   "dom": "Union Berlin",
-   "ext": "RB Leipzig",
+   "dom": "Lazio",
+   "ext": "Lecce",
    "statut": "FINISHED",
    "score": [
-    1,
-    5
+    3,
+    0
    ]
   },
   {
-   "id": 565865,
+   "id": 565860,
    "date": "2026-11-21T14:30:00Z",
    "comp": "Bundesliga",
    "sport": "foot",
-   "dom": "Frankfurt",
-   "ext": "Hoffenheim",
+   "dom": "Elversberg",
+   "ext": "Freiburg",
    "statut": "FINISHED",
    "score": [
-    1,
-    0
+    0,
+    1
    ]
   },
   {
@@ -729,55 +716,29 @@
    ]
   },
   {
-   "id": 565860,
+   "id": 565865,
    "date": "2026-11-21T14:30:00Z",
    "comp": "Bundesliga",
    "sport": "foot",
-   "dom": "Elversberg",
-   "ext": "Freiburg",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": 560644,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Aston Villa",
-   "ext": "Sunderland",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    0
-   ]
-  },
-  {
-   "id": 560642,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Chelsea",
-   "ext": "Leeds United",
+   "dom": "Frankfurt",
+   "ext": "Hoffenheim",
    "statut": "FINISHED",
    "score": [
     1,
-    4
+    0
    ]
   },
   {
-   "id": 560648,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
+   "id": 565858,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
    "sport": "foot",
-   "dom": "Tottenham",
-   "ext": "Ipswich Town",
+   "dom": "Union Berlin",
+   "ext": "RB Leipzig",
    "statut": "FINISHED",
    "score": [
-    2,
-    0
+    1,
+    5
    ]
   },
   {
@@ -804,6 +765,45 @@
    "score": [
     2,
     0
+   ]
+  },
+  {
+   "id": 560648,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Tottenham",
+   "ext": "Ipswich Town",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    0
+   ]
+  },
+  {
+   "id": 560644,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Aston Villa",
+   "ext": "Sunderland",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": 560642,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Chelsea",
+   "ext": "Leeds United",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    4
    ]
   },
   {
@@ -911,32 +911,6 @@
    ]
   },
   {
-   "id": 559621,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "Monaco",
-   "ext": "Auxerre",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    1
-   ]
-  },
-  {
-   "id": 559624,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "Lille",
-   "ext": "Olympique Lyon",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    1
-   ]
-  },
-  {
    "id": 559627,
    "date": "2026-11-21T19:45:00Z",
    "comp": "Ligue 1",
@@ -959,6 +933,32 @@
    "statut": "FINISHED",
    "score": [
     1,
+    1
+   ]
+  },
+  {
+   "id": 559621,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Monaco",
+   "ext": "Auxerre",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    1
+   ]
+  },
+  {
+   "id": 559624,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Lille",
+   "ext": "Olympique Lyon",
+   "statut": "FINISHED",
+   "score": [
+    0,
     1
    ]
   },
@@ -1964,6 +1964,6 @@
    ]
   }
  ],
- "maj": "2026-11-22T10:01:33Z",
- "verifie": "2026-11-22T10:01:33Z"
+ "maj": "2026-11-22T10:09:25Z",
+ "verifie": "2026-11-22T10:09:25Z"
 }
