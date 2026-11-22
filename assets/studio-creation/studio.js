@@ -518,4 +518,5 @@ $('send-form').onsubmit = async event => {
 };
 refresh();
 offerSharedDraft();
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(() => {});
 
