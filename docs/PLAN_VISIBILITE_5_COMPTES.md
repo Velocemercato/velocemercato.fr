@@ -109,10 +109,13 @@ Médias, création de sites et communication : bienvenue chez VM Univers.
 Vous avez une idée à concrétiser ? Découvrez nos projets et contactez VM Studio depuis le lien du profil.
 #VMUnivers #VMStudio #CreationDeSite #Communication
 
-## État d'automatisation
-Le dépôt contient déjà un workflow qui prépare des déclinaisons de contenus et un kit social. Cela ne prouve pas qu'une publication réelle est envoyée sur Facebook ou Instagram. Avant d'activer un envoi automatique, connecter les cinq comptes exacts avec des autorisations officielles, vérifier les identités et faire un premier test contrôlé.
+## État d'automatisation — moteur Meta direct existant
 
-**Décision :** ne pas publier via Metricool. Ne pas déclencher d'envoi public depuis un accès non vérifié. Le présent document constitue le plan éditorial commun et les premiers textes de lancement.
+Le dépôt contient déjà un moteur de publication Meta direct, `tools/editorial_vm.py`, planifié par `.github/workflows/editorial-vm.yml`. Il cible précisément les cinq destinations et leurs créneaux indiqués plus haut. Avant chaque passage, le workflow lance les tests, vérifie l'identité exacte de la Page ou du compte Instagram, contrôle le quota Instagram et utilise les accusés chiffrés pour éviter les doublons et les renvois après une erreur incertaine.
+
+Un relevé Graph en lecture seule antérieur a retrouvé des publications réelles sur les cinq destinations, mais le registre public des permaliens était en retard pour @vmunivers.fr. L'issue #258 suit la synchronisation du registre et le diagnostic du résumé éditorial. Cela ne constitue pas une preuve que chaque créneau actuel est passé ni que les cinq comptes ont tous publié aujourd'hui.
+
+**Décision :** ne pas utiliser Metricool. Ne pas créer un deuxième moteur concurrent et ne pas déclencher d'envoi manuel sans contrôler les accusés, le créneau et les contenus disponibles. La priorité est de fiabiliser les preuves et le rapport du moteur déjà en place.
 
 
 ## Textes de lancement
