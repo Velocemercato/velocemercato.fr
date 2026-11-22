@@ -1,0 +1,48 @@
+name: VM - Bilan éditorial du 21 novembre
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/bilan-vm-20261121.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Préparer la diffusion
+        run: |
+          python -m py_compile tools/publier_bilan_20261121.py
+          python -m pip install --quiet 'cryptography==50.0.0' pillow
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "https://github.com/$GITHUB_REPOSITORY.git" "$RUNNER_TEMP/vm-broadcast-state"
+          test -s "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+      - name: Vérifier la publication du site
+        shell: bash
+        run: |
+          for i in $(seq 1 24); do
+            if curl -fsS --max-time 15 https://velocemercato.fr/conseils/ -o "$RUNNER_TEMP/conseils.html" &&
+              grep -q 'id="resultats-2026-11-21"' "$RUNNER_TEMP/conseils.html" &&
+              curl -fsS --max-time 15 -I https://velocemercato.fr/conseils/preuves/2026-11-21-bilan-vm.jpg > /dev/null; then
+              exit 0
+            fi
+            sleep 8
+          done
+          echo "::error::Le bilan et son affiche doivent être visibles sur le site avant publication."
+          exit 1
+      - name: Publier et vérifier les destinations
+        run: python tools/publier_bilan_20261121.py "$RUNNER_TEMP/vm-broadcast-state/state.enc"
