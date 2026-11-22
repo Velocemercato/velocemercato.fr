@@ -1,10 +1,10 @@
 # Audit du site pour Claude
 
-État mesuré le 2026-11-22T15:30:52.662686+01:00.
+État mesuré le 2026-11-22T23:28:39.287848+01:00.
 
 ## Périmètre et limites
 
-1828 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 2098 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
+1857 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 2157 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
 
 Un statut 404 ou 410 indique une URL introuvable. Les refus 401/403, les limites 429, les erreurs serveur et les délais dépassés demandent une vérification complémentaire. Le test ne valide pas le visionnage géographique des vidéos ni la véracité des articles. Les classements signalés par mots-clés doivent être relus avant déplacement.
 
@@ -14,9 +14,9 @@ Retirer les accès transversaux aux anciennes applications et leurs invitations 
 
 ## Résultats
 
-- Liens confirmés introuvables en HTTP, 12.
-- Cibles internes absentes du dépôt, 76. Certaines peuvent être servies par Cloudflare, lire leur résultat HTTP avant correction.
-- Ancres à vérifier, 57. Certaines sont gérées par JavaScript.
+- Liens confirmés introuvables en HTTP, 14.
+- Cibles internes absentes du dépôt, 86. Certaines peuvent être servies par Cloudflare, lire leur résultat HTTP avant correction.
+- Ancres à vérifier, 60. Certaines sont gérées par JavaScript.
 - Articles à relire pour leur classement, 0.
 - Replays réellement publiés par genre, {"foot": 47, "actus": 29, "gaming": 14}.
 
@@ -24,6 +24,8 @@ Le fichier JSON associé contient toutes les références, pages et lignes. Les 
 
 ## Liens introuvables
 
+- https://embed.radiofrance.fr/fip/player?id_station=7 — HTTP 404 — vm-radio/index.html ligne 31
+- https://embed.radiofrance.fr/franceinfo/player?id_station=2 — HTTP 404 — vm-radio/index.html ligne 30
 - https://velocemercato.fr/a/rss-v2-0fe323c23f7a612ca6c326.html — HTTP 404 — a/rss-v2-65cd3432c413223448c834.html ligne 98
 - https://velocemercato.fr/a/rss-v2-15cc0d0c1fb945e13acd04.html — HTTP 404 — a/rss-v2-6ab3de48dc62885beb0171.html ligne 98, a/rss-v2-0e56b6523267e7888732b1.html ligne 98, a/rss-v2-66cd7ed54591009030f93b.html ligne 98, a/rss-v2-a743813a8606f84a2f669b.html ligne 98
 - https://velocemercato.fr/a/rss-v2-380707bcad068798301a11.html — HTTP 404 — a/rss-v2-e1d41ac5a71fabc8bdbdc5.html ligne 98, a/rss-v2-c8fa11a66a1d4139905c49.html ligne 98, a/rss-v2-f6167c62a059f48c78c4b8.html ligne 98
