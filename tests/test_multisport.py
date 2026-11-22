@@ -42,4 +42,12 @@ assert mod.relevant('ski','Ski alpin : slalom de Coupe du monde')
 assert 'france' in mod.rubriques('f1','F1 : Pierre Gasly décroche une pole')
 assert 'europe' in mod.rubriques('f1','F1 : Grand Prix de Monza')
 assert 'feminin' in mod.rubriques('nba','WNBA : les femmes du basket')
+
+# Le football association ne doit jamais contaminer les rubriques NBA/F1/tennis/etc.
+assert not mod.relevant('nba', 'NBA : le PSG prépare son mercato en Ligue 1')
+assert not mod.relevant('f1', 'F1 : l\'Olympique de Marseille annonce son mercato')
+assert not mod.relevant('tennis', 'ATP : Mbappé et le PSG au cœur du mercato')
+# La NFL reste bien une discipline multisport autorisée.
+assert mod.relevant('nfl', 'NFL : les Chiefs préparent le Super Bowl de football américain')
+assert not mod.relevant('nfl', 'Football : le PSG prépare la Ligue 1')
 print('OK: 11 sports, foot conservé, rubriques, titres vérifiés, moteur ski.')
