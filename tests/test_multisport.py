@@ -9,10 +9,16 @@ home=read("index.html")
 portal=read("multisport/index.html")
 js=read("multisport/univers.js")
 sports=("nba","nfl","f1","motogp","tennis","rugby","cyclisme","nhl","mlb","mma","ski")
-assert 'id="feed-title"' in home
-assert 'id="pastille-tv"' in home
-assert 'href="/multisport/"' in home
-assert 'href="/mangas/"' in home
+# Accueil actuel : scène interactive et dialogues de rubriques (pas l'ancien flux inline).
+assert 'data-rubrique="foot"' in home
+assert 'data-rubrique="multisport"' in home
+assert 'data-rubrique="pastille"' in home
+assert 'data-rubrique="manga"' in home
+assert 'id="rubrique-foot"' in home
+assert 'id="rubrique-multisport"' in home
+assert 'href="https://velocemercato.fr/multisport/"' in home
+assert 'href="https://velocemercato.fr/mangas/"' in home
+assert 'href="https://velocemercato.fr/studio.html#tv"' in home
 assert 'data-mode="portal"' in portal
 for sport in sports:
  assert f'data-sport="{sport}"' in portal, sport
@@ -27,7 +33,8 @@ for sport in sports:
  assert f"{sport}:" in js or f"{sport}:" in js
 assert 'textContent' in js
 assert "/multisport/actualites.json" in js
-assert "/fil.json" in js
+assert "/studio/diffusions.json" in js
+assert "/fil.json" not in js  # Le flux multisport ne mélange pas le fil football général.
 assert "status==='published'" in js
 assert '7*86400000' in js
 data=json.loads(read("multisport/actualites.json"))
@@ -42,4 +49,13 @@ assert mod.relevant('ski','Ski alpin : slalom de Coupe du monde')
 assert 'france' in mod.rubriques('f1','F1 : Pierre Gasly décroche une pole')
 assert 'europe' in mod.rubriques('f1','F1 : Grand Prix de Monza')
 assert 'feminin' in mod.rubriques('nba','WNBA : les femmes du basket')
+
+# Le football association ne doit jamais contaminer les rubriques NBA/F1/tennis/etc.
+assert not mod.relevant('nba', 'NBA : le PSG prépare son mercato en Ligue 1')
+assert not mod.relevant('f1', 'F1 : l\'Olympique de Marseille annonce son mercato')
+assert not mod.relevant('tennis', 'ATP : Mbappé et le PSG au cœur du mercato')
+# La NFL reste bien une discipline multisport autorisée.
+assert mod.relevant('nfl', 'NFL : les Chiefs préparent le Super Bowl de football américain')
+assert not mod.relevant('nba', 'NBA : une nouveauté du football américain')
+assert not mod.relevant('nfl', 'Football : le PSG prépare la Ligue 1')
 print('OK: 11 sports, foot conservé, rubriques, titres vérifiés, moteur ski.')
