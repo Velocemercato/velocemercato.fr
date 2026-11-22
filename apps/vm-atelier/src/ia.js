@@ -24,7 +24,7 @@ const Proposition = z.object({
   explication: z.string().max(400),
   doc: z.object({
     format: z.enum(FORMATS),
-    style: z.enum(['editorial', 'contraste', 'atelier']).optional(),
+    style: z.enum(['editorial', 'contraste', 'atelier', 'manga', 'dimension']).optional(),
     theme: z.object({ c1: z.string().max(7), c2: z.string().max(7), fond: z.string().max(7), texte: z.string().max(7) }),
     blocs: z.array(Bloc).max(60),
   }),
@@ -181,3 +181,4 @@ export async function proposer(env, doc, consigne, options = {}) {
 }
 
 export const _test = { sansPhotos, remettrePhotos, Proposition };
+

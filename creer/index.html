@@ -8,11 +8,12 @@
 <link rel="canonical" href="https://velocemercato.fr/creer/">
 <title>Créez votre projet · VM Studio</title>
 <link rel="stylesheet" href="/assets/studio-creation/studio.css">
-<script src="/assets/studio-creation/studio.js?v=20261122-brouillon" type="module"></script>
+<script src="/assets/studio-creation/studio.js?v=20261122-composition" type="module"></script>
 </head>
 <body>
-<header class="top"><a class="brand" href="https://vmunivers.fr/professionnels/">VM <strong>Studio</strong></a><nav aria-label="Navigation"><a href="#creation">Créer</a><a href="#transmission">Envoyer mon projet</a></nav></header>
+<header class="top"><a class="brand" href="/web-studio.html">VM <strong>Studio</strong></a><nav aria-label="Navigation"><a href="/">Accueil</a><a href="/web-studio.html">Prestations</a><a href="#creation">Créer</a><a href="#transmission">Envoyer mon projet</a></nav></header>
 <main>
+  <nav class="mobile-workflow" aria-label="Étapes de création"><a href="#creation">Modifier</a><a href="#preview-panel">Voir l’aperçu</a><a href="#transmission">Envoyer</a></nav>
   <section class="intro">
     <div><h1>Imaginez votre site.<br><em>Voyez-le prendre forme.</em></h1>
       <p>Décrivez votre projet, testez une ambiance et ajoutez vos photos. Revenez modifier votre brouillon quand vous voulez. Quand il vous convient, transmettez-le à VM Studio pour qu’on le finalise ensemble.</p>
@@ -27,7 +28,8 @@
       <label for="instructions">Décrivez ou dictez votre projet</label>
       <textarea id="instructions" rows="4" maxlength="1200" placeholder="Mon activité s’appelle Maison Nova. Ajoute une rubrique Services et une page Contact. Je veux une ambiance manga et un titre en orange."></textarea>
       <div class="actions"><button type="button" id="apply" class="primary">Appliquer à l’aperçu</button><button type="button" id="dictate" aria-pressed="false">🎙 Dicter</button><button type="button" id="listen" hidden>Écouter la réponse</button></div>
-      <p id="feedback" class="feedback" role="status">Vous pouvez modifier le nom, l’ambiance, les couleurs et les rubriques.</p>
+      <p id="feedback" class="feedback" role="status">Décrivez votre activité et les pages souhaitées. Vous pourrez retoucher le résultat, revenir en arrière et conserver votre brouillon.</p>
+      <p class="preview-note">Votre brief est transmis à notre service de création automatisée. Les photos et vos coordonnées du formulaire ne sont pas incluses dans cet appel.</p>
       <fieldset><legend>Ambiance visuelle</legend>
         <div class="themes">
           <button type="button" data-theme="editorial" aria-pressed="false"><span aria-hidden="true"></span>Éditorial</button>
@@ -36,6 +38,7 @@
           <button type="button" data-theme="dimension" aria-pressed="false"><span aria-hidden="true"></span>Relief animé</button>
         </div>
       </fieldset>
+      <details><summary>Partir d’un modèle personnalisable</summary><div class="actions"><button type="button" data-starter="artisan">Artisan et services</button><button type="button" data-starter="restaurant">Restaurant</button><button type="button" data-starter="createur">Créateur et portfolio</button></div><p>Ces modèles contiennent des textes de départ à remplacer par vos propres informations.</p></details>
       <div class="fields"><div><label for="project-name">Nom affiché</label><input id="project-name" maxlength="80" autocomplete="off"></div><div><label for="accent">Couleur principale</label><input id="accent" type="color"></div></div>
       <label for="tagline">Accroche</label><input id="tagline" maxlength="150" autocomplete="off">
       <label for="photo">Photo principale</label><input id="photo" type="file" accept="image/jpeg,image/png,image/webp,image/avif">
@@ -44,7 +47,7 @@
       <div class="actions"><button type="button" id="undo" disabled>Annuler la dernière action</button><button type="button" id="new-draft">Nouveau brouillon</button><button type="button" id="download">Télécharger mon brouillon</button><label class="button" for="restore">Importer un brouillon</label><input class="visually-hidden" type="file" id="restore" accept="application/json,.json"></div>
       <p class="save" id="save-note">Le brouillon est enregistré sur cet appareil.</p>
     </div>
-    <div class="preview-column">
+    <div class="preview-column" id="preview-panel" tabindex="-1">
       <div class="preview-bar"><strong>Aperçu en direct</strong><button type="button" id="phone" aria-pressed="false">Format mobile</button></div>
       <div id="preview" aria-label="Aperçu de votre projet"></div>
       <p class="preview-note">La maquette montre le rendu et la navigation. Les fonctions métier et la 3D sur mesure se définissent avec VM Studio.</p>
@@ -66,3 +69,4 @@
 <footer><a href="https://vmunivers.fr/">VM Univers</a><a href="https://velocemercato.fr/mentions-legales.html">Mentions légales</a></footer>
 </body>
 </html>
+

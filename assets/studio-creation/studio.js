@@ -30,7 +30,7 @@ function validate(raw) {
     accent: color.test(raw.accent) ? raw.accent : themeStyles[theme].accent,
     photo: validPhoto(raw.photo) ? raw.photo : '',
     sections: Array.isArray(raw.sections) ? raw.sections.slice(0, 10).filter(Boolean).map(section =>
-      ({ title: short(section.title, 80), text: short(section.text, 360) })) : structuredClone(defaults.sections)
+      ({ title: short(section.title, 80), text: short(section.text, 1600) })) : structuredClone(defaults.sections)
   };
 }
 let draft = structuredClone(defaults);
@@ -124,7 +124,7 @@ function sectionEditor() {
   $('section-editor').replaceChildren();
   draft.sections.forEach((section, index) => {
     const group = element('div', '', 'section-edit');
-    for (const [key, label, limit, tag] of [['title', 'Titre', 80, 'input'], ['text', 'Texte', 360, 'textarea']]) {
+    for (const [key, label, limit, tag] of [['title', 'Titre', 80, 'input'], ['text', 'Texte', 1600, 'textarea']]) {
       const field = element(tag);
       field.maxLength = limit;
       if (tag === 'textarea') field.rows = 2;
@@ -173,6 +173,16 @@ function chooseTheme(value) {
   draft.theme = value;
   draft.accent = themeStyles[value].accent;
 }
+const starters = {
+ artisan: { name: 'Votre atelier', tagline: 'Un savoir-faire à découvrir près de chez vous.', theme: 'workshop', sections: [{ title: 'Nos prestations', text: 'Présentez vos trois prestations principales et leurs particularités.' }, { title: 'Notre savoir-faire', text: 'Racontez votre approche, vos matériaux et votre façon de travailler.' }, { title: 'Réalisations', text: 'Ajoutez vos références et les projets que vous souhaitez présenter.' }, { title: 'Contact et horaires', text: 'Indiquez comment vous joindre et vos horaires.' }] },
+ restaurant: { name: 'Votre table', tagline: 'Une cuisine et un lieu à découvrir.', theme: 'editorial', sections: [{ title: 'La carte', text: 'Présentez vos plats, boissons et tarifs.' }, { title: 'Notre maison', text: 'Racontez votre cuisine et votre accueil.' }, { title: 'Réserver', text: 'Ajoutez votre téléphone ou votre lien de réservation.' }, { title: 'Nous trouver', text: 'Précisez votre adresse, vos horaires et les accès.' }] },
+ createur: { name: 'Votre univers', tagline: 'Des créations qui ont une personnalité.', theme: 'manga', sections: [{ title: 'Créations', text: 'Présentez une sélection de vos projets.' }, { title: 'À propos', text: 'Votre démarche et ce qui rend votre univers unique.' }, { title: 'Collaborations', text: 'Expliquez les projets que vous souhaitez réaliser.' }, { title: 'Contact', text: 'Indiquez votre moyen de contact professionnel.' }] }
+};
+document.querySelectorAll('[data-starter]').forEach(button => {
+ button.onclick = () => { remember(); const example = starters[button.dataset.starter]; if (!example) return;
+ draft = validate({ ...draft, ...structuredClone(example), accent: themeStyles[example.theme].accent });
+ creationRevision++; activeSection = -1; refresh(); status('Maquette de départ chargée. Remplacez les textes par vos informations, ou décrivez vos retouches.'); };
+});
 updateInput('project-name', 'name');
 updateInput('project-type', 'type');
 updateInput('tagline', 'tagline');
@@ -281,16 +291,48 @@ function apply(text) {
   draft.notes = [draft.notes, text].filter(Boolean).join('\n').slice(-1200);
   return changes;
 }
-$('apply').onclick = () => {
+let creationRevision = 0;
+document.addEventListener('input', () => creationRevision++);
+document.addEventListener('click', event => { if (event.target.closest('[data-theme],#undo,#new-draft,#add-section,.section-edit button')) creationRevision++; });
+function creationDocument() {
+  const style = themeStyles[draft.theme];
+  return { format: 'site', style: draft.theme === 'workshop' ? 'atelier' : draft.theme,
+    theme: { c1: draft.accent, c2: draft.accent, fond: style.background, texte: style.ink },
+    blocs: [{ t: 'titre', titre: draft.name, sous: draft.tagline }, ...draft.sections.map(s => ({ t: 'texte', titre: s.title, texte: s.text }))] };
+}
+function applyDocument(doc) {
+  if (!doc || !Array.isArray(doc.blocs)) throw Error('Réponse incomplète');
+  const hero = doc.blocs.find(b => b.t === 'titre');
+  if (!hero) throw Error('En-tête absent');
+  const themes = { atelier: 'workshop', contraste: 'manga', editorial: 'editorial', manga: 'manga', dimension: 'dimension' };
+  const next = validate({ ...draft, name: hero.titre, tagline: hero.sous, theme: themes[doc.style] || draft.theme,
+    accent: doc.theme?.c1, sections: doc.blocs.filter(b => b.t !== 'titre').map(b => ({ title: b.titre || '',
+      text: b.t === 'produits' ? (b.items || []).map(p => p.nom + (p.prix ? ' · ' + p.prix : '')).join('\n') : b.texte || '' })) });
+  remember(); draft = next;
+}
+$('apply').onclick = async () => {
   const text = $('instructions').value.trim();
   if (!text) { status('Écrivez ou dictez une consigne pour commencer.'); $('instructions').focus(); return; }
-  remember();
-  const changes = apply(text);
-  activeSection = -1;
-  refresh();
-  $('instructions').value = '';
-  status(changes.length ? 'Aperçu mis à jour · ' + changes.join(', ') + '. Vous pouvez détailler la demande dans les rubriques.'
-    : 'Consigne gardée pour l’atelier. Vous pouvez poursuivre avec les réglages et les rubriques de la maquette.');
+  const button = $('apply'), revision = creationRevision;
+  button.disabled = true; button.setAttribute('aria-busy', 'true'); status('Composition de votre aperçu…');
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 100000);
+  try {
+    const response = await fetch(studioHost + '/api/studio/proposer', { method: 'POST', signal: controller.signal,
+      headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ brief: text, projet: draft.name ? creationDocument() : null }) });
+    const result = await response.json();
+    if (revision !== creationRevision) { status('Vous avez modifié la maquette pendant la création. Votre version est conservée : relancez votre consigne.'); return; }
+    if (!response.ok || !result.ok) throw Error(result.message || 'Le service de création est momentanément indisponible.');
+    applyDocument(result.doc); activeSection = -1; refresh();
+    if ($('instructions').value.trim() === text) $('instructions').value = '';
+    status(result.explication || 'Votre aperçu est prêt. Continuez à le modifier ou envoyez-le pour validation.');
+  } catch (error) {
+    if (revision !== creationRevision) { status('Votre version a changé et reste conservée. Relancez la consigne.'); return; }
+    remember(); const changes = apply(text); activeSection = -1; refresh();
+    status((error.name === 'AbortError' ? 'La création prend trop de temps.' : error.message) + (changes.length
+      ? ' Réglages simples appliqués : ' + changes.join(', ') + '. Votre consigne reste disponible.'
+      : ' Votre brouillon et votre consigne sont conservés. Vous pouvez utiliser une maquette de départ.'));
+  } finally { clearTimeout(timer); button.disabled = false; button.removeAttribute('aria-busy'); }
 };
 const recognizer = window.SpeechRecognition || window.webkitSpeechRecognition;
 let activeRecognition;
@@ -461,3 +503,4 @@ $('send-form').onsubmit = async event => {
 };
 refresh();
 offerSharedDraft();
+

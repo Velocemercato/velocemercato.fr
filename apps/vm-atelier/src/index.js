@@ -67,7 +67,7 @@ function docMaquetteTransmise(raw) {
     /^data:image\/(jpeg|png|webp);base64,[a-z0-9+/]+=*$/i.test(raw.photo) ? raw.photo : '';
   const blocs = [{ t: 'titre', titre, sous: net(raw.tagline, 150), image }];
   for (const row of raw.sections.slice(0, 10)) {
-    const titre = net(row?.title, 80), texte = net(row?.text, 360);
+    const titre = net(row?.title, 80), texte = net(row?.text, 1600);
     if (titre || texte) blocs.push({ t: 'texte', titre, texte });
   }
   const projet = { format: 'site', style: ambiance === 'workshop' ? 'atelier' : ambiance,
@@ -416,40 +416,45 @@ export default {
       const r = await (await appel(env, 'commande', { ip, contact, config: { lignes: [], total: 0, type: 'demande' }, total: 0 })).json();
       return json({ success: !!r.ok, id: r.id }, r.ok ? 200 : 429, cors);
     }
-    if (req.method !== 'GET' && !memeOrigine(req)) return json({ error: 'origine_refusee' }, 403);
+    const creationOrigin = req.headers.get('origin') || '';
+    const creationTrusted = memeOrigine(req) || /^https:\/\/(www\.)?(vmunivers\.fr|velocemercato\.fr)$/.test(creationOrigin);
+    if (p === '/api/studio/proposer' && req.method === 'OPTIONS') return new Response(null, { status: creationTrusted ? 204 : 403, headers: creationTrusted ? { 'access-control-allow-origin': creationOrigin, 'access-control-allow-methods': 'POST', 'access-control-allow-headers': 'content-type', vary: 'Origin' } : {} });
+    if (req.method !== 'GET' && !memeOrigine(req) && !(p === '/api/studio/proposer' && creationTrusted)) return json({ error: 'origine_refusee' }, 403);
     const mav = p.match(/^\/api\/salon\/([A-Z0-9]{24})\/avis$/);
     if (req.method === 'POST' && mav) {
       const c = await req.json().catch(() => ({}));
       return appel(env, 'avisAjouter', { salon: mav[1], ip, texte: c.texte, bloc: c.bloc });
     }
     if (p === '/api/studio/proposer' && req.method === 'POST') {
-      if (!iaConfiguree(env)) return json({ error: 'studio_indisponible', message: 'La création sur mesure est indisponible. Vous pouvez partir d’une maquette et la modifier.' }, 503);
+      const creationHeaders = creationOrigin ? { 'access-control-allow-origin': creationOrigin, vary: 'Origin' } : {};
+      const creationJson = (data, status = 200) => json(data, status, creationHeaders);
+      if (!iaConfiguree(env)) return creationJson({ error: 'studio_indisponible', message: 'La création sur mesure est indisponible. Vous pouvez partir d’une maquette et la modifier.' }, 503);
       const r = req.body?.getReader();
       const dec = new TextDecoder();
       let brut = '', taille = 0, data;
-      if (!r) return json({ error: 'brief_invalide' }, 400);
+      if (!r) return creationJson({ error: 'brief_invalide' }, 400);
       try {
         for (;;) {
           const { done, value } = await r.read();
           if (done) break;
           taille += value.length;
-          if (taille > BRIEF_MAX) { await r.cancel(); return json({ error: 'brief_trop_long', message: 'Raccourcissez le texte du projet puis réessayez.' }, 413); }
+          if (taille > BRIEF_MAX) { await r.cancel(); return creationJson({ error: 'brief_trop_long', message: 'Raccourcissez le texte du projet puis réessayez.' }, 413); }
           brut += dec.decode(value, { stream: true });
         }
         data = JSON.parse(brut + dec.decode());
-      } catch { return json({ error: 'brief_invalide' }, 400); }
+      } catch { return creationJson({ error: 'brief_invalide' }, 400); }
       const brief = typeof data?.brief === 'string' ? net(data.brief, 1500) : '';
-      if (brief.length < 8) return json({ error: 'brief_invalide', message: 'Décrivez votre projet en quelques mots.' }, 400);
+      if (brief.length < 8) return creationJson({ error: 'brief_invalide', message: 'Décrivez votre projet en quelques mots.' }, 400);
       const max = Math.max(1, Number(env.IA_MAX_JOUR) || 40);
       const publicMax = Math.min(max, Math.max(1, Number(env.STUDIO_MAX_JOUR) || 6));
       const res = await appel(env, 'studioReserver', { ipHash: await sha256('studio:' + ip), max, publicMax });
-      if (res.status !== 200) return json({ error: 'studio_quota', message: 'La création sur mesure a atteint sa limite. Vous pouvez continuer à modifier votre maquette.' }, 429);
+      if (res.status !== 200) return creationJson({ error: 'studio_quota', message: 'La création sur mesure a atteint sa limite. Vous pouvez continuer à modifier votre maquette.' }, 429);
       let resultat;
       try { resultat = await briefStudio(env, data.projet, brief); }
       catch { resultat = { erreur: 'studio_erreur' }; }
       await appel(env, 'iaJournal', { resultat: resultat.ok ? 'studio_proposition' : resultat.erreur, entree: resultat.usage?.entree, sortie: resultat.usage?.sortie, modele: resultat.usage?.modele });
-      if (!resultat.ok) return json({ error: 'studio_indisponible', message: 'L’aperçu sur mesure n’a pas abouti. Réessayez avec un brief plus précis ou utilisez une maquette de départ.' }, 502);
-      return json({ ok: true, doc: resultat.doc, explication: resultat.explication });
+      if (!resultat.ok) return creationJson({ error: 'studio_indisponible', message: 'L’aperçu sur mesure n’a pas abouti. Réessayez avec un brief plus précis ou utilisez une maquette de départ.' }, 502);
+      return creationJson({ ok: true, doc: resultat.doc, explication: resultat.explication });
     }
     const corps = req.method === 'POST' ? await req.json().catch(() => ({})) : {};
 
@@ -543,3 +548,4 @@ export default {
     return json({ error: 'introuvable' }, 404);
   },
 };
+
