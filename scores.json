@@ -677,19 +677,6 @@
    ]
   },
   {
-   "id": 565860,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
-   "sport": "foot",
-   "dom": "Elversberg",
-   "ext": "Freiburg",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    1
-   ]
-  },
-  {
    "id": 565862,
    "date": "2026-11-21T14:30:00Z",
    "comp": "Bundesliga",
@@ -713,6 +700,19 @@
    "score": [
     4,
     0
+   ]
+  },
+  {
+   "id": 565860,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "Elversberg",
+   "ext": "Freiburg",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    1
    ]
   },
   {
@@ -742,6 +742,19 @@
    ]
   },
   {
+   "id": 560650,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Coventry City",
+   "ext": "Crystal Palace",
+   "statut": "FINISHED",
+   "score": [
+    3,
+    2
+   ]
+  },
+  {
    "id": 560647,
    "date": "2026-11-21T15:00:00Z",
    "comp": "Premier League",
@@ -755,16 +768,16 @@
    ]
   },
   {
-   "id": 560650,
+   "id": 560644,
    "date": "2026-11-21T15:00:00Z",
    "comp": "Premier League",
    "sport": "foot",
-   "dom": "Coventry City",
-   "ext": "Crystal Palace",
+   "dom": "Aston Villa",
+   "ext": "Sunderland",
    "statut": "FINISHED",
    "score": [
-    3,
-    2
+    0,
+    0
    ]
   },
   {
@@ -790,19 +803,6 @@
    "statut": "FINISHED",
    "score": [
     2,
-    0
-   ]
-  },
-  {
-   "id": 560644,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Aston Villa",
-   "ext": "Sunderland",
-   "statut": "FINISHED",
-   "score": [
-    0,
     0
    ]
   },
@@ -1037,7 +1037,7 @@
    "statut": "IN_PLAY",
    "score": [
     6,
-    4
+    5
    ]
   },
   {
@@ -1050,7 +1050,7 @@
    "statut": "IN_PLAY",
    "score": [
     3,
-    2
+    4
    ]
   },
   {
@@ -1060,7 +1060,7 @@
    "sport": "hockey",
    "dom": "Canadiens",
    "ext": "Flyers",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     3,
     4
@@ -1101,7 +1101,7 @@
    "ext": "Devils",
    "statut": "IN_PLAY",
    "score": [
-    8,
+    9,
     6
    ]
   },
@@ -1128,7 +1128,7 @@
    "statut": "IN_PLAY",
    "score": [
     94,
-    86
+    91
    ]
   },
   {
@@ -1140,8 +1140,8 @@
    "ext": "Clippers",
    "statut": "IN_PLAY",
    "score": [
-    60,
-    57
+    63,
+    65
    ]
   },
   {
@@ -1153,7 +1153,7 @@
    "ext": "Grizzlies",
    "statut": "IN_PLAY",
    "score": [
-    74,
+    76,
     60
    ]
   },
@@ -1166,8 +1166,8 @@
    "ext": "Pelicans",
    "statut": "IN_PLAY",
    "score": [
-    72,
-    52
+    75,
+    58
    ]
   },
   {
@@ -1275,12 +1275,12 @@
    ]
   },
   {
-   "id": 558522,
+   "id": 558524,
    "date": "2026-11-22T14:00:00Z",
    "comp": "Serie A",
    "sport": "foot",
-   "dom": "Bologna",
-   "ext": "Udinese",
+   "dom": "Sassuolo",
+   "ext": "Genoa",
    "statut": "TIMED",
    "score": [
     null,
@@ -1288,12 +1288,12 @@
    ]
   },
   {
-   "id": 558524,
+   "id": 558522,
    "date": "2026-11-22T14:00:00Z",
    "comp": "Serie A",
    "sport": "foot",
-   "dom": "Sassuolo",
-   "ext": "Genoa",
+   "dom": "Bologna",
+   "ext": "Udinese",
    "statut": "TIMED",
    "score": [
     null,
@@ -1964,6 +1964,6 @@
    ]
   }
  ],
- "maj": "2026-11-22T02:39:00Z",
- "verifie": "2026-11-22T02:39:00Z"
+ "maj": "2026-11-22T02:42:57Z",
+ "verifie": "2026-11-22T02:42:57Z"
 }
