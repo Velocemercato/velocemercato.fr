@@ -244,8 +244,10 @@ def publish_target(state, graph, account, network, root=ROOT, now=None,
 
 def run(state, graph, root=ROOT, now=None):
     now = now or dt.datetime.now(UTC)
+    # Scope validé : trois Pages Facebook et deux comptes Instagram.
+    # Aucun troisième Instagram n'est attendu ni signalé comme manquant.
     result = {'updated_at': now.isoformat(), 'mode': 'programme',
-              'targets': {}, 'unconnected': ['Troisième compte Instagram : identité et connexion absentes.']}
+              'targets': {}, 'unconnected': []}
     targets = [(account, network) for account, network in SCHEDULE if slot_key(now, account, network)]
     if not targets:
         return result
