@@ -100,7 +100,7 @@ def _prepare_affiches(root):
 
 
 
-def _cumul_conseils(records):
+def _tickets_cumul(records):
     uniques, publics, dates = {}, set(), set()
     for day, item in records:
         for ticket in item.get("tickets_chiffres", []):
@@ -114,6 +114,32 @@ def _cumul_conseils(records):
             dates.add(day)
             if item.get("type") == "public":
                 publics.add(ident)
+    return uniques, publics, dates
+
+
+def _rendement(tickets):
+    gagnes = [cote for cote, reussi, _ in tickets if reussi]
+    return Decimal(sum(gagnes)) / len(tickets) - 100, len(gagnes)
+
+
+def _resume_public_conseils(records):
+    uniques, publics, _ = _tickets_cumul(records)
+    if not publics:
+        return ""
+    tickets = [uniques[i] for i in publics]
+    taux, gagnes = _rendement(tickets)
+    classe = " negatif" if taux < 0 else " positif" if taux > 0 else ""
+    valeur = (format(taux, "+.2f") if taux else "0,00").replace(".", ",")
+    return ('<section class="card resume-public-conseils" id="rendement-public" aria-labelledby="rendement-public-titre">'
+            '<div><h2 id="rendement-public-titre">Rendement des conseils publics</h2>'
+            f'<strong class="taux-public{classe}">{valeur} %</strong>'
+            f'<p>{gagnes} sur {len(tickets)} conseils validés · Une même mise simulée par ticket.</p>'
+            '<p class="muted">Calcul sur les tickets publics réglés et documentés. Les conseils en cours restent hors du calcul.</p></div>'
+            '<a href="#analyse-resultats">Voir le détail du bilan ↗</a></section>')
+
+
+def _cumul_conseils(records):
+    uniques, publics, dates = _tickets_cumul(records)
     if not uniques:
         return ""
     lignes = []
@@ -125,10 +151,9 @@ def _cumul_conseils(records):
         if not tickets:
             continue
         nombre = len(tickets)
-        gagnes = [cote for cote, reussi, _ in tickets if reussi]
-        pourcentage = Decimal(sum(gagnes)) / nombre - 100
+        pourcentage, gagnes = _rendement(tickets)
         affichage = format(pourcentage, "+.2f").replace(".", ",")
-        lignes.append(f'<div><dt>{titre}</dt><dd><strong>{affichage} %</strong><span>{len(gagnes)} sur {nombre} validés</span></dd></div>')
+        lignes.append(f'<div><dt>{titre}</dt><dd><strong>{affichage} %</strong><span>{gagnes} sur {nombre} validés</span></dd></div>')
     debut, fin = min(dates), max(dates)
     couverture = f'{len(dates)} journées documentées du {debut:%d/%m/%Y} au {fin:%d/%m/%Y}.'
     return ('<section id="analyse-resultats" aria-labelledby="analyse-resultats-titre">'
@@ -253,6 +278,7 @@ def _prepare_bilan_veille(root):
         + 'Les images s’ouvrent uniquement à la demande. Le premier bilan et les échecs sont conservés.</p>'
         + _cumul_conseils(records) + ''.join(cards) + '</div></details>'
     ) if cards else ''
+    source = source.replace("<!-- VM_RENDEMENT_PUBLIC -->", _resume_public_conseils(records))
     page.write_text(source.replace(marker, section), encoding="utf-8")
 
 LIMITE_PAGES = 25 * 1024 * 1024  # Cloudflare Pages refuse tout fichier plus gros.
@@ -317,6 +343,8 @@ def prepare(root):
     _retirer_fichiers_trop_gros(root)
     _prepare_affiches(root)
     _prepare_bilan_veille(root)
+    from tools.reseaux_bureau import preparer_fils_bureau
+    preparer_fils_bureau(root)
     count = 0
     for path in sorted(root.rglob('*.html')):
         relative = path.relative_to(root)
