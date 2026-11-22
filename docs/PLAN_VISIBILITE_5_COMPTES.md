@@ -110,3 +110,24 @@ Vous avez une idée à concrétiser ? Découvrez nos projets et contactez VM Stu
 Le dépôt contient déjà un workflow qui prépare des déclinaisons de contenus et un kit social. Cela ne prouve pas qu'une publication réelle est envoyée sur Facebook ou Instagram. Avant d'activer un envoi automatique, connecter les cinq comptes exacts avec des autorisations officielles, vérifier les identités et faire un premier test contrôlé.
 
 **Décision :** ne pas publier via Metricool. Ne pas déclencher d'envoi public depuis un accès non vérifié. Le présent document constitue le plan éditorial commun et les premiers textes de lancement.
+
+
+## Automatisation Meta déjà présente — vérifiée dans le dépôt et les journaux
+
+Le projet dispose déjà d'un moteur de publication Meta qui cible les cinq comptes ci-dessus. Il utilise la branche privée chiffrée `broadcast-state`, des accusés de publication et des contrôles d'identité avant d'envoyer. Les horaires codés sont :
+- Véloce Mercato Facebook : 08 h / 12 h / 20 h.
+- @veloce.mercato Instagram : 12 h / 20 h.
+- VM Actus & Pronos Facebook : 12 h / 20 h.
+- VM Univers Facebook : 08 h / 12 h / 18 h.
+- @vmunivers.fr Instagram : 18 h.
+
+Les journaux de permaliens consultés montrent des publications récentes sur quatre comptes le 22 novembre. Le dernier lien journalisé pour @vmunivers.fr remonte au 11 novembre : c'est la première anomalie à traiter. Ne pas créer une deuxième chaîne de publication concurrente ; réparer et surveiller celle qui existe.
+
+Le workflow TikTok Metricool est uniquement manuel et en mode essai dans le dépôt. Il est hors périmètre. Ne pas le déclencher.
+
+## Prochaine action opérationnelle
+1. Examiner les derniers statuts détaillés de chaque compte dans les accusés chiffrés, sans jamais exposer les jetons.
+2. Diagnostiquer uniquement @vmunivers.fr : association Instagram Business, quota Meta, identité attendue, dernier statut d'envoi.
+3. Réaliser un envoi test seulement après confirmation que le contenu est adapté à VM Univers et que l'identité est correcte.
+4. Surveiller le prochain créneau et vérifier le permalien public avant de déclarer le compte rétabli.
+5. Garder les trois pages Facebook et les deux comptes Instagram comme seules destinations du dispositif.
