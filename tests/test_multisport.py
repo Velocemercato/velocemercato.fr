@@ -56,5 +56,6 @@ assert not mod.relevant('f1', 'F1 : l\'Olympique de Marseille annonce son mercat
 assert not mod.relevant('tennis', 'ATP : Mbappé et le PSG au cœur du mercato')
 # La NFL reste bien une discipline multisport autorisée.
 assert mod.relevant('nfl', 'NFL : les Chiefs préparent le Super Bowl de football américain')
+assert not mod.relevant('nba', 'NBA : une nouveauté du football américain')
 assert not mod.relevant('nfl', 'Football : le PSG prépare la Ligue 1')
 print('OK: 11 sports, foot conservé, rubriques, titres vérifiés, moteur ski.')
