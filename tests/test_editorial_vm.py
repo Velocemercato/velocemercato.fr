@@ -151,16 +151,54 @@ class EditorialTests(unittest.TestCase):
         self.assertIsNone(mod.TARGETS['meta_pronos'][2])
 
     def test_each_expected_destination_requires_its_own_page_token(self):
-        for account, (page_id, _, username) in mod.TARGETS.items():
-            meta = {'page_id': page_id, 'page_token': 'test-token'}
-            if username:
-                meta['ig_id'] = '123'
-            self.assertEqual(str(meta['page_id']), page_id)
-            self.assertTrue(meta['page_token'])
-            if username:
-                self.assertTrue(meta['ig_id'])
-            else:
-                self.assertNotIn('ig_id', meta)
+        class IdentityGraph:
+            def call(self, method, path, params):
+                pages = {value[0] for value in mod.TARGETS.values()}
+                if path in pages:
+                    account = next(k for k, value in mod.TARGETS.items() if value[0] == path)
+                    return {'id': path, 'name': mod.TARGETS[account][1]}
+                instagram = {
+                    'ig-meta': 'veloce.mercato',
+                    'ig-meta_univers': 'vmunivers.fr',
+                }
+                if path in instagram:
+                    return {'id': path, 'username': instagram[path]}
+                raise AssertionError('Destination inconnue : ' + str(path))
+
+        graph = IdentityGraph()
+        state = State()
+        state.data['tokens'] = {
+            'meta': {'page_id': '1384363904759072', 'page_token': 'fb-main',
+                     'ig_id': 'ig-meta'},
+            'meta_univers': {'page_id': '1349998758205153', 'page_token': 'fb-univers',
+                             'ig_id': 'ig-meta_univers'},
+            'meta_pronos': {'page_id': '112294796981981', 'page_token': 'fb-pronos'},
+        }
+        mod.ensure_meta_targets(state)
+        destinations = (
+            ('meta', 'facebook'), ('meta', 'instagram'),
+            ('meta_univers', 'facebook'), ('meta_univers', 'instagram'),
+            ('meta_pronos', 'facebook'),
+        )
+        for account, network in destinations:
+            proof = mod.identity(graph, state.data['tokens'][account], account, network)
+            self.assertTrue(proof['id'])
+        self.assertNotIn('ig_id', state.data['tokens']['meta_pronos'])
+
+    def test_editorial_refuses_duplicate_page_or_instagram_on_pronos(self):
+        state = State()
+        state.data['tokens'] = {
+            'meta': {'page_id': '1384363904759072', 'page_token': 'one'},
+            'meta_pronos': {'page_id': '1384363904759072', 'page_token': 'two'},
+        }
+        with self.assertRaises(mod.DeliveryError):
+            mod.ensure_meta_targets(state)
+        state.data['tokens'] = {
+            'meta_pronos': {'page_id': '112294796981981', 'page_token': 'two', 'ig_id': 'forbidden'},
+        }
+        with self.assertRaises(mod.DeliveryError):
+            mod.ensure_meta_targets(state)
+
 
 if __name__ == '__main__':
     unittest.main()
