@@ -55,7 +55,7 @@ Le dépôt contient déjà un moteur de publication direct Meta, avec des créne
 
 Cela représente jusqu'à 11 créneaux par jour sur les cinq comptes. **Ne pas ajouter de publications manuelles par-dessus ce calendrier sans consulter les accusés et les résultats.** Une fréquence élevée ne garantit pas plus de portée : la priorité est d'éviter les répétitions, de maintenir une qualité éditoriale et de mesurer les interactions par compte.
 
-Le prochain chantier n'est pas d'augmenter le volume : c'est de rétablir le compte Instagram VM Univers, dont le dernier permalien journalisé remonte au 11 novembre, puis de vérifier les résultats sur 7 et 28 jours.
+Le rapport Meta en lecture seule du 22 novembre confirme des publications récentes sur les cinq destinations, y compris deux publications Instagram VM Univers. Le lien du 11 novembre venait d'un journal public obsolète, pas de l'activité réelle du compte. Le chantier prioritaire est donc de resynchroniser le registre des permaliens et de comprendre pourquoi les créneaux éditoriaux VM Univers (8 h, 12 h, 18 h) ne sont pas confirmés dans le bilan, alors que d'autres publications apparaissent.
 
 ## Règles de publication et de vérification
 1. Actualité sportive : vérifier la date, l'équipe, le joueur, la compétition et au moins une source fiable avant publication.
