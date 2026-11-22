@@ -677,6 +677,19 @@
    ]
   },
   {
+   "id": 565862,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "M'gladbach",
+   "ext": "Dortmund",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    1
+   ]
+  },
+  {
    "id": 565857,
    "date": "2026-11-21T14:30:00Z",
    "comp": "Bundesliga",
@@ -696,19 +709,6 @@
    "sport": "foot",
    "dom": "Elversberg",
    "ext": "Freiburg",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": 565862,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
-   "sport": "foot",
-   "dom": "M'gladbach",
-   "ext": "Dortmund",
    "statut": "FINISHED",
    "score": [
     0,
@@ -742,6 +742,19 @@
    ]
   },
   {
+   "id": 560650,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Coventry City",
+   "ext": "Crystal Palace",
+   "statut": "FINISHED",
+   "score": [
+    3,
+    2
+   ]
+  },
+  {
    "id": 560647,
    "date": "2026-11-21T15:00:00Z",
    "comp": "Premier League",
@@ -755,16 +768,16 @@
    ]
   },
   {
-   "id": 560650,
+   "id": 560644,
    "date": "2026-11-21T15:00:00Z",
    "comp": "Premier League",
    "sport": "foot",
-   "dom": "Coventry City",
-   "ext": "Crystal Palace",
+   "dom": "Aston Villa",
+   "ext": "Sunderland",
    "statut": "FINISHED",
    "score": [
-    3,
-    2
+    0,
+    0
    ]
   },
   {
@@ -790,19 +803,6 @@
    "statut": "FINISHED",
    "score": [
     2,
-    0
-   ]
-  },
-  {
-   "id": 560644,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Aston Villa",
-   "ext": "Sunderland",
-   "statut": "FINISHED",
-   "score": [
-    0,
     0
    ]
   },
@@ -911,19 +911,6 @@
    ]
   },
   {
-   "id": 559623,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "RC Lens",
-   "ext": "Toulouse",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    1
-   ]
-  },
-  {
    "id": 559627,
    "date": "2026-11-21T19:45:00Z",
    "comp": "Ligue 1",
@@ -937,15 +924,15 @@
    ]
   },
   {
-   "id": 559624,
+   "id": 559623,
    "date": "2026-11-21T19:45:00Z",
    "comp": "Ligue 1",
    "sport": "foot",
-   "dom": "Lille",
-   "ext": "Olympique Lyon",
+   "dom": "RC Lens",
+   "ext": "Toulouse",
    "statut": "FINISHED",
    "score": [
-    0,
+    1,
     1
    ]
   },
@@ -959,6 +946,19 @@
    "statut": "FINISHED",
    "score": [
     1,
+    1
+   ]
+  },
+  {
+   "id": 559624,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Lille",
+   "ext": "Olympique Lyon",
+   "statut": "FINISHED",
+   "score": [
+    0,
     1
    ]
   },
@@ -1361,7 +1361,7 @@
    "ext": "Man United",
    "statut": "IN_PLAY",
    "score": [
-    3,
+    4,
     0
    ]
   },
@@ -1964,6 +1964,6 @@
    ]
   }
  ],
- "maj": "2026-11-22T18:17:14Z",
- "verifie": "2026-11-22T18:17:14Z"
+ "maj": "2026-11-22T18:21:12Z",
+ "verifie": "2026-11-22T18:21:12Z"
 }
