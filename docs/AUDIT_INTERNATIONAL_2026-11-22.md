@@ -141,3 +141,13 @@ Le diagnostic le plus probable est un jeton dont les permissions ou le périmèt
 **Correction à faire côté Cloudflare/GitHub :** créer ou corriger un jeton dédié avec Cloudflare Pages Edit sur le compte qui héberge le projet, puis remplacer le secret GitHub `CLOUDFLARE_API_TOKEN` sans jamais le communiquer dans une conversation. Vérifier que `CLOUDFLARE_ACCOUNT_ID` désigne le même compte. Rejouer ensuite le déploiement et contrôler `version.txt` et le domaine. Ne pas modifier DNS pour résoudre un problème de permission API.
 
 Les exécutions du workflow Pages de VM Univers du 22 novembre ont, elles, terminé avec succès dans les runs consultés. Cela confirme le pipeline GitHub de VM Univers, pas nécessairement toutes les routes du site en production.
+
+
+## 12. VM Studio — dernier déploiement vérifié
+
+Le run GitHub Actions `45073604943` du 22 novembre 2026 pour `Déployer VM Studio sur Cloudflare` est terminé avec succès.
+- Les tests Node.js de création, IA, paiement, transmission et suivi ont réussi : 7 tests recensés dans le journal.
+- Le contrôle de `https://atelier.velocemercato.fr/api/config` et le contrôle CORS de suivi ont été exécutés.
+- Wrangler a confirmé le déploiement de la version `vm-atelier` à 100 %.
+
+C'est un bon signal opérationnel pour VM Studio. Cela ne remplace pas un test utilisateur complet du formulaire de création, de la réception d'une demande réelle ni un paiement réel. Le paiement testé dans le pipeline est en mode test.
