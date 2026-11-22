@@ -284,6 +284,9 @@ def run(state, graph, root=ROOT, now=None):
             item = publish_target(state, graph, account, network, root, now, seen_extra=extra)
             result['targets'][account + '/' + network] = item
             if network == 'facebook' and account in ('meta', 'meta_pronos'):
+                # Relire le registre après chaque tentative : un envoi incertain
+                # doit aussi bloquer le même sujet sur l'autre Page.
+                fb_seen.update(recent_facebook_titles(state, now))
                 for post in item.get('posts', []):
                     title = normal(post.get('title'))
                     if title:
