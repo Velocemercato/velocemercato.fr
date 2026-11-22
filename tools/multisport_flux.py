@@ -58,15 +58,14 @@ NEGATIVE={
 # Garde-fou éditorial : aucune actualité de football association dans les disciplines multisport.
 # Le football américain NFL reste autorisé ; les marqueurs de clubs/compétitions de foot sont exclus.
 FOOTBALL_CONTENT = (
- r'\\b(?:Ligue\\s+[12]|National\\s+[12]|mercato|soccer|'
- r'football(?!(?:\\s+|-)?am[ée]ricain)|'
- r'Paris Saint-Germain|PSG|Olympique de Marseille|\\bOM\\b|'
- r'Olympique Lyonnais|\\bLOSC\\b|\\bASSE\\b|Saint[ -]Étienne|'
+ r'\b(?:Ligue\s+[12]|National\s+[12]|mercato|soccer|'
+ r'football(?!(?:\s+|-)?am[ée]ricain)|'
+ r'Paris Saint-Germain|PSG|Olympique de Marseille|\bOM\b|'
+ r'Olympique Lyonnais|\bLOSC\b|\bASSE\b|Saint[ -]Étienne|'
  r'RC Lens|Racing Club de Lens|FC Nantes|Stade Rennais|'
  r'OGC Nice|Stade Brestois|AJ Auxerre|Le Havre AC|'
  r'Girondins de Bordeaux|Football Club de Metz)'
 )
-
 
 GAMING_CONTENT = '\\b(?:gta(?:\\s*(?:vi|[56]))?|grand theft auto|playstation|xbox|nintendo|fortnite|minecraft|roblox|esports?|e-sports?|nba\\s*2k\\w*|madden|ea\\s*(?:sports\\s*)?fc|fifa\\s*2[0-9]|jeux? vid[eé]o|gaming|steam|ubisoft|activision|call of duty)\\b'
 
