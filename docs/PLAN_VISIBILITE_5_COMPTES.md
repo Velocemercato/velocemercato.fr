@@ -164,3 +164,16 @@ Ces tests ne publient rien. Ils servent à éviter qu'une évolution future ne m
 
 
 Le workflow de tests Meta déjà présent sur `main` (`.github/workflows/tests-meta.yml`) est étendu dans cette branche pour exécuter aussi `test_editorial_vm.py` et compiler `editorial_vm.py` lors des pull requests ciblant ces fichiers. Il conserve des permissions de lecture seules, n'utilise aucun secret Meta et ne peut pas publier. Le workflow de test redondant créé au début de la revue a été retiré.
+
+
+## Anti-doublons entre les deux Pages Facebook — correctif proposé
+
+La lecture de l'historique Meta chiffré a montré des mêmes titres publiés sur **Véloce Mercato** et **VM Actus & Pronos** à quelques minutes d'intervalle (par exemple des sujets des Finales ATP et du MotoGP du 21–22 novembre). Les anti-doublons existants empêchaient les répétitions sur chaque compte séparément, mais ne partageaient pas encore la liste des sujets entre ces deux Pages.
+
+Dans cette branche, `tools/editorial_vm.py` reçoit un contrôle complémentaire :
+- les titres Facebook déjà confirmés aujourd'hui sur les deux Pages sont partagés au moteur de sélection ;
+- les envois incertains sont aussi réservés jusqu'à vérification, pour éviter de republier un même sujet après un timeout ;
+- lorsqu'un post est confirmé plus tôt dans le même passage, son titre est ajouté avant le traitement de l'autre Page ;
+- le filtrage reste limité aux deux Pages Facebook. Les Instagram gardent leur propre historique et le compte VM Univers continue à publier uniquement les projets.
+
+Deux tests couvrent l'historique du jour et la propagation d'un envoi incertain entre les Pages. Aucun ancien post n'est supprimé ou modifié. Ce correctif reste dans la PR #256 ; il ne prendra effet qu'après réconciliation, tests et fusion.
