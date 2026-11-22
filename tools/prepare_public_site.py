@@ -147,6 +147,9 @@ def _prepare_bilan_veille(root):
             if value:
                 content.append('<p class="' + cls + '">' + escape(value).replace("\n", "<br>") + '</p>')
         figures = []
+        affiche = item.get("support_visuel") == "affiche"
+        etiquette_image = "l’affiche du bilan" if affiche else "la capture originale"
+        texte_agrandir = "Agrandir l’affiche ↗" if affiche else "Agrandir l’original ↗"
         captures = item.get("captures", [])
         for image in captures if isinstance(captures, list) else []:
             if not isinstance(image, dict):
@@ -166,15 +169,15 @@ def _prepare_bilan_veille(root):
             if not (1 <= width <= 10000 and 1 <= height <= 10000):
                 raise ValueError("Dimensions de capture invalides")
             figures.append(
-                '<figure id="' + identifier + '"><a href="' + url + '" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir la capture originale : ' + caption + '">'
+                '<figure id="' + identifier + '"><a href="' + url + '" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir ' + etiquette_image + ' : ' + caption + '">'
                 + '<img src="' + url + '" width="' + str(width) + '" height="' + str(height) + '" loading="lazy" decoding="async" alt="' + caption + '"></a>'
-                + '<figcaption>' + caption + '<br><a href="' + url + '" target="_blank" rel="noopener noreferrer">Agrandir l’original ↗</a></figcaption></figure>'
+                + '<figcaption>' + caption + '<br><a href="' + url + '" target="_blank" rel="noopener noreferrer">' + texte_agrandir + '</a></figcaption></figure>'
             )
         card = (
             '<article class="card bd-bilan" data-bilan-date="' + day.isoformat() + '">'
             + '<span class="bd-etiquette">' + day.strftime("%d/%m/%Y") + ' · ' + scope + '</span>'
             + '<h3>' + title + '</h3><p><strong>' + status + '</strong></p>'
-            + ('<details class="results-evidence"><summary>🖼️ ' + ('Voir les ' + str(len(figures)) + ' captures originales' if len(figures) > 1 else 'Voir la capture originale') + '</summary><div class="result-captures">' + ''.join(figures) + '</div></details>' if figures else '')
+            + ('<details class="results-evidence"><summary>🖼️ ' + ('Voir les ' + str(len(figures)) + ' captures originales' if len(figures) > 1 else 'Voir ' + etiquette_image) + '</summary><div class="result-captures">' + ''.join(figures) + '</div></details>' if figures else '')
             + ''.join(content)
             + ('<p class="bd-note">Sources : ' + ' · '.join(links) + '</p>' if links else '')
             + '<p class="bd-note">Résultats passés, sans garantie pour la suite · 18+ · Jouer comporte des risques.</p></article>'
