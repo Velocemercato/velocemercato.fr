@@ -183,3 +183,18 @@ Le sitemap consulté contient maintenant **1 711 URL uniques**, sans doublon et 
 Un échantillon complémentaire de rubriques (Foot, Multisport, Actus, Belfort, Gaming, Mangas, Foot amateur, Région, Pronos, Emploi, Publicité, VM Pro, Radio et VM Studio) possède des titres et canonicals cohérents.
 
 **Anomalie corrigée en proposition :** `/scores/` figure dans le sitemap mais ne déclarait ni canonical ni balises Open Graph/Twitter. La correction est isolée dans la PR #260, sans changement de fonctionnement des scores.
+
+
+## 15. État des automatisations éditoriales — exécutions du 22 novembre
+
+Les exécutions GitHub Actions consultées sur la période du 22 novembre au début du 23 novembre affichent des conclusions réussies pour les workflows suivants :
+- Véloce Mercato — Actualités : 6 exécutions réussies.
+- VM Actus — Actualités : 5.
+- VM Gaming — Actualités : 4.
+- VM Multisport — flux hebdomadaire : 1.
+- VM Flashes originaux pour les réseaux : 1.
+- Kit réseaux des JT : 1.
+- Shorts YouTube des JT : 1.
+- RQ Pronos — publications après test confirmé : 16.
+
+Les événements mélangent des déclenchements planifiés, manuels et déclenchés par d'autres workflows. Une conclusion GitHub `success` prouve que le workflow s'est terminé sans erreur bloquante, pas qu'un post a été publié sur chaque compte ni qu'une vidéo a été vue. Les accusés publics restent la preuve de publication.
