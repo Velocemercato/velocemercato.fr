@@ -11,6 +11,9 @@ const defaults = {
 };
 const studioHost = 'https://atelier.velocemercato.fr';
 const storageKey = 'vm-studio-brouillon-v1';
+const suiviKey = 'vm-studio-suivi-prive-v1';
+let suivi = null;
+try { suivi = JSON.parse(localStorage.getItem(suiviKey)); } catch {}
 const history = [];
 const short = (value, length) => typeof value === 'string' ? value.slice(0, length) : '';
 const color = /^#[0-9a-f]{6}$/i;
@@ -223,6 +226,7 @@ $('undo').onclick = () => {
 $('new-draft').onclick = () => {
   pendingPhoto++;
   remember();
+  resetSuivi();
   draft = structuredClone(defaults);
   activeSection = -1;
   $('instructions').value = '';
@@ -406,7 +410,7 @@ $('restore').onchange = async () => {
     const raw = JSON.parse(await file.text());
     if (raw?.version !== 1 || !Array.isArray(raw.sections)) throw Error();
     const next = validate(raw);
-    pendingPhoto++; remember(); draft = next; activeSection = -1; refresh();
+    pendingPhoto++; remember(); resetSuivi(); draft = next; activeSection = -1; refresh();
     status('Brouillon restauré.');
   } catch { status('Ce fichier ne peut pas être ouvert. Sélectionnez un brouillon exporté par VM Studio.'); }
 };
@@ -457,7 +461,7 @@ async function offerSharedDraft() {
     const open = element('button', 'Ouvrir la maquette');
     open.type = 'button';
     open.onclick = () => {
-      pendingPhoto++; remember(); draft = incoming; activeSection = -1; refresh();
+      pendingPhoto++; remember(); resetSuivi(); draft = incoming; activeSection = -1; refresh();
       window.history.replaceState(null, '', location.pathname + location.search + '#creation');
       status('Maquette partagée ouverte.');
     };
@@ -471,10 +475,73 @@ async function request(path, body) {
   });
   return { response, result: await response.json().catch(() => ({})) };
 }
+function afficherSuivi() {
+  const link = $('studio-help');
+  const url = suivi?.lien;
+  link.hidden = typeof url !== 'string' || !url.startsWith(studioHost + '/salon/');
+  if (!link.hidden) link.href = url;
+  else link.removeAttribute('href');
+  $('share-with-studio').hidden = !!suivi?.envoye;
+  $('share-with-studio').textContent = link.hidden ? 'Démarrer le suivi privé' : 'Partager mes dernières modifications';
+}
+function memoriserSuivi() {
+  try {
+    localStorage.setItem(storageKey, JSON.stringify(draft));
+    if (suivi) localStorage.setItem(suiviKey, JSON.stringify(suivi));
+    else localStorage.removeItem(suiviKey);
+  } catch {}
+}
+function resetSuivi() {
+  suivi = null;
+  try { localStorage.removeItem(suiviKey); } catch {}
+  $('follow-status').textContent = '';
+  afficherSuivi();
+}
+$('project-follow').addEventListener('toggle', async event => {
+  if (!event.currentTarget.open || suivi?.lien) return;
+  const button = $('share-with-studio'), line = $('follow-status');
+  if (button.disabled) return;
+  button.disabled = true;
+  line.textContent = 'Vérification du service…';
+  try {
+    const response = await fetch(studioHost + '/api/studio/suivi', { cache: 'no-store' });
+    const capability = response.ok ? await response.json() : null;
+    if (capability?.version !== 1) throw Error();
+    line.textContent = '';
+  } catch {
+    line.textContent = 'Suivi privé momentanément indisponible. Vous pouvez créer votre maquette et transmettre votre demande en bas de la page.';
+  } finally { button.disabled = false; }
+});
+$('share-with-studio').onclick = async () => {
+  const button = $('share-with-studio'), line = $('follow-status');
+  if (button.disabled || $('send-button').disabled) return;
+  suivi ||= { cle: crypto.randomUUID(), version: null };
+  const projet = suivi;
+  memoriserSuivi();
+  button.disabled = true;
+  line.textContent = 'Partage en cours…';
+  try {
+    const { response, result } = await request('/api/studio/suivi', { partager: true, cle: projet.cle, base: projet.version, draft: { ...draft, notes: '' } });
+    if (suivi !== projet) return;
+    if (response.status === 409) {
+      line.textContent = 'L’atelier a modifié ce projet. Ouvrez votre suivi pour lui envoyer vos changements.';
+      return;
+    }
+    if (!response.ok || !result.ok) throw Error();
+    Object.assign(projet, { version: result.version, lien: result.lien });
+    memoriserSuivi();
+    afficherSuivi();
+    line.textContent = 'Votre brouillon est visible dans l’atelier privé.';
+  } catch {
+    if (suivi === projet) line.textContent = 'Partage indisponible. Votre brouillon est conservé sur cet appareil.';
+  } finally { button.disabled = false; }
+};
 $('send-form').onsubmit = async event => {
   event.preventDefault();
   const statusLine = $('send-status'), button = $('send-button');
-  if (button.disabled) return;
+  if (button.disabled || $('share-with-studio').disabled) return;
+  const projet = suivi;
+  const brouillon = draft;
   const contact = {
     nom: $('client-name').value.trim(), email: $('client-email').value.trim(), consentement: $('consent').checked ? 'oui' : '',
     besoin_principal: draft.type === 'app' ? 'Application web personnalisée' : 'Site internet personnalisé',
@@ -494,7 +561,13 @@ $('send-form').onsubmit = async event => {
         contact.projet = caption + contact.projet.slice(0, 1320 - caption.length);
       }
     }
-    const { response, result } = await request(full ? '/api/studio/transmission' : '/api/demande', full ? { ...contact, draft } : contact);
+    const suiviTransmis = projet?.version ? { suivi: projet.cle, base: projet.version } : {};
+    const { response, result } = await request(full ? '/api/studio/transmission' : '/api/demande',
+      full ? { ...contact, ...suiviTransmis, draft: brouillon } : contact);
+    if (result.error === 'projet_modifie') {
+      statusLine.textContent = 'L’atelier a modifié ce projet. Utilisez le lien de suivi pour lui signaler vos dernières demandes.';
+      return;
+    }
     if (!response.ok || !result.success || !result.id) throw Error();
     received = true;
     statusLine.textContent = full
@@ -502,6 +575,11 @@ $('send-form').onsubmit = async event => {
       : 'Demande reçue par VM Studio. Référence ' + result.id + '.' + (previewLink ? ' Un lien de reprise est inclus.' : '') +
          ((!previewLink || (draft.photo && !previewLink.withPhoto)) ? ' Téléchargez le brouillon complet pour le joindre lors de nos échanges.' : '');
     if (full && typeof result.lien === 'string' && result.lien.startsWith(studioHost + '/salon/')) {
+      if (suivi === projet) {
+        suivi = { ...projet, lien: result.lien, envoye: true };
+        memoriserSuivi();
+        afficherSuivi();
+      }
       const link = element('a', 'Ouvrir mon suivi');
       link.href = result.lien;
       statusLine.append(' ', link);
@@ -517,6 +595,7 @@ $('send-form').onsubmit = async event => {
   } finally { button.disabled = received; }
 };
 refresh();
+afficherSuivi();
 offerSharedDraft();
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(() => {});
 

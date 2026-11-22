@@ -12,7 +12,7 @@
 <link rel="canonical" href="https://velocemercato.fr/creer/">
 <title>Créez votre projet · VM Studio</title>
 <link rel="stylesheet" href="/assets/studio-creation/studio.css?v=20261122-v3">
-<script src="/assets/studio-creation/studio.js?v=20261122-v3" type="module"></script>
+<script src="/assets/studio-creation/studio.js?v=20261122-suivi" type="module"></script>
 </head>
 <body>
 <header class="top"><a class="brand" href="/web-studio.html">VM <strong>Studio</strong></a><nav aria-label="Navigation"><a href="/">Accueil</a><a href="/web-studio.html">Prestations</a><a href="#creation">Créer</a><a href="#transmission">Envoyer mon projet</a></nav></header>
@@ -29,6 +29,12 @@
     <div class="tools">
       <h2 id="create-title">Votre maquette</h2>
       <div class="field"><label for="project-type">Qu’allez-vous créer ?</label><select id="project-type"><option value="site">Un site internet</option><option value="app">Une application web</option></select></div>
+      <details id="project-follow">
+        <summary>Commencer avec un suivi privé</summary>
+        <p>VM Studio pourra voir la copie que vous partagez. Votre lien privé permet de suivre les retouches et de demander de l’aide. Utilisez uniquement les textes et images que vous avez le droit de partager.</p>
+        <div class="actions"><button type="button" id="share-with-studio">Démarrer le suivi privé</button><a id="studio-help" hidden target="_blank" rel="noopener noreferrer">Ouvrir le suivi et demander de l’aide</a></div>
+        <p id="follow-status" class="feedback" role="status"></p>
+      </details>
       <label for="instructions">Décrivez ou dictez votre projet</label>
       <textarea id="instructions" rows="4" maxlength="1200" placeholder="Mon activité s’appelle Maison Nova. Ajoute une rubrique Services et une page Contact. Je veux une ambiance manga et un titre en orange."></textarea>
       <div class="actions"><button type="button" id="apply" class="primary">Appliquer à l’aperçu</button><button type="button" id="dictate" aria-pressed="false">🎙 Dicter</button><button type="button" id="listen" hidden>Écouter la réponse</button></div>

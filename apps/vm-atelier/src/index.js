@@ -17,6 +17,7 @@ const VUE_HEURES = 2;        // durée maximale d'une consultation ouverte
 const BRIEF_MAX = 45000;
 const DOC_MAX = 1_500_000;   // taille maximale d'un projet (photos comprises)
 const enc = new TextEncoder();
+const SUIVI_CLE = /^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/;
 
 async function sha256(s) {
   const d = await crypto.subtle.digest('SHA-256', enc.encode(s));
@@ -108,6 +109,9 @@ export class Store extends DurableObject {
       CREATE TABLE IF NOT EXISTS ia_jour(jour TEXT PRIMARY KEY, n INTEGER NOT NULL);
       CREATE TABLE IF NOT EXISTS ia_journal(cree TEXT NOT NULL, projet TEXT, resultat TEXT NOT NULL, entree INTEGER, sortie INTEGER, modele TEXT);
       CREATE TABLE IF NOT EXISTS avis(id TEXT PRIMARY KEY, projet TEXT NOT NULL, bloc INTEGER, texte TEXT NOT NULL, cree TEXT NOT NULL, traite INTEGER NOT NULL DEFAULT 0);
+      CREATE TABLE IF NOT EXISTS suivis(hash TEXT PRIMARY KEY, projet TEXT NOT NULL UNIQUE, revue TEXT NOT NULL DEFAULT 'a_verifier');
+      CREATE TABLE IF NOT EXISTS activite(id TEXT PRIMARY KEY, projet TEXT, commande TEXT, type TEXT NOT NULL,
+        cree TEXT NOT NULL, lue INTEGER NOT NULL DEFAULT 0, mail TEXT NOT NULL DEFAULT 'en_attente');
     `);
   }
   now() { return new Date().toISOString(); }
@@ -127,6 +131,39 @@ export class Store extends DurableObject {
       try { this.sql.exec('ALTER TABLE commandes ADD COLUMN ' + c); } catch (e) { /* déjà présente */ }
   }
   rows(q, ...a) { return [...this.sql.exec(q, ...a)]; }
+  lienActivite(projet, commande) {
+    const lien = new URL('/admin', DOMAINE);
+    if (projet) lien.searchParams.set('projet', projet);
+    else if (commande) lien.searchParams.set('commande', commande);
+    return lien.href;
+  }
+  activite(type, projet = null, commande = null) {
+    const id = crypto.randomUUID();
+    this.sql.exec('INSERT INTO activite(id,projet,commande,type,cree) VALUES(?,?,?,?,?)', id, projet, commande, type, this.now());
+    return id;
+  }
+  notifier(id, type, projet, commande) {
+    const { STUDIO_EMAIL, STUDIO_MAIL_FROM, STUDIO_MAIL_TO } = this.env;
+    if (!STUDIO_EMAIL || !STUDIO_MAIL_FROM || !STUDIO_MAIL_TO) {
+      this.sql.exec("UPDATE activite SET mail='non_configure' WHERE id=?", id);
+      return;
+    }
+    if (this.limite('courriels-studio', 30)) {
+      this.sql.exec("UPDATE activite SET mail='limite' WHERE id=?", id);
+      return;
+    }
+    const sujet = { debut: 'Nouveau brouillon partagé', aide: 'Message de suivi', commande: 'Nouvelle demande' }[type];
+    const lien = this.lienActivite(projet, commande);
+    this.ctx.waitUntil((async () => {
+      try {
+        await STUDIO_EMAIL.send({ from: STUDIO_MAIL_FROM, to: STUDIO_MAIL_TO,
+          subject: 'VM Studio · ' + sujet, text: sujet + ' dans ton atelier privé.\n\n' + lien });
+        this.sql.exec("UPDATE activite SET mail='transmis' WHERE id=?", id);
+      } catch {
+        this.sql.exec("UPDATE activite SET mail='echec' WHERE id=?", id);
+      }
+    })());
+  }
   // Limite simple : n essais par clé et par heure.
   // Anti force brute : seuls les ÉCHECS comptent (10 mauvais codes par heure et par IP).
   bloque(cle, max) { const r = this.rows('SELECT n, depuis FROM essais WHERE cle=?', cle)[0]; return !!(r && Date.now() - Date.parse(r.depuis) <= 3600e3 && r.n >= max); }
@@ -146,11 +183,10 @@ export class Store extends DurableObject {
     switch (op) {
       // --- Mode salon : lecture seule par jeton secret, avec numéro de version pour ne rien renvoyer si rien n'a changé.
       case 'salon': {
-        const p = this.rows('SELECT doc, version, nom FROM projets WHERE salon=?', a.salon)[0];
+        const p = this.rows("SELECT p.id,p.doc,p.version,p.nom FROM projets p LEFT JOIN suivis s ON s.projet=p.id WHERE p.salon=? AND COALESCE(s.revue,'')!='refuse'", a.salon)[0];
         if (!p) return json({ error: 'lien_invalide' }, 404);
         this.colonneProjet();
-        const pid = this.rows('SELECT id FROM projets WHERE salon=?', a.salon)[0].id;
-        const cmd = this.rows('SELECT id, total, statut, config, paiement_url, paiement_etape FROM commandes WHERE projet=? ORDER BY cree DESC LIMIT 1', pid)[0];
+        const cmd = this.rows('SELECT id, total, statut, config, paiement_url, paiement_etape FROM commandes WHERE projet=? ORDER BY cree DESC LIMIT 1', p.id)[0];
         let paiement = null;
         if (cmd) {
           const et = etapeAPayer(cmd.statut), m = montants({ config: JSON.parse(cmd.config) });
@@ -196,12 +232,16 @@ export class Store extends DurableObject {
       case 'fermer': this.sql.exec('DELETE FROM vues WHERE hash=?', a.vueHash); return json({ ok: true });
       // --- Retours du client depuis son lien salon (« non, je veux ça là »).
       case 'avisAjouter': {
-        const p = this.rows('SELECT id FROM projets WHERE salon=?', a.salon)[0];
+        const p = this.rows("SELECT p.id FROM projets p LEFT JOIN suivis s ON s.projet=p.id WHERE p.salon=? AND COALESCE(s.revue,'')!='refuse'", a.salon)[0];
         if (!p) return json({ error: 'lien_invalide' }, 404);
-        if (this.limite('avis:' + a.ip, 30)) return json({ error: 'trop_de_messages' }, 429);
+        if (this.limite('avis:' + a.ip, 10) || this.limite('avis-projet:' + p.id, 10)) return json({ error: 'trop_de_messages' }, 429);
         const texte = net(a.texte, 600); if (!texte) return json({ error: 'message_vide' }, 400);
         const bloc = Number.isInteger(a.bloc) && a.bloc >= 0 && a.bloc < 100 ? a.bloc : null;
-        this.sql.exec('INSERT INTO avis(id,projet,bloc,texte,cree) VALUES(?,?,?,?,?)', crypto.randomUUID(), p.id, bloc, texte, this.now());
+        const evenement = this.ctx.storage.transactionSync(() => {
+          this.sql.exec('INSERT INTO avis(id,projet,bloc,texte,cree) VALUES(?,?,?,?,?)', crypto.randomUUID(), p.id, bloc, texte, this.now());
+          return this.activite('aide', p.id);
+        });
+        this.notifier(evenement, 'aide', p.id);
         return json({ ok: true });
       }
       case 'lireCommande': {
@@ -247,6 +287,33 @@ export class Store extends DurableObject {
         return json({ utilises: r ? r.n : 0, journal: this.rows('SELECT cree, resultat, entree, sortie, modele FROM ia_journal ORDER BY cree DESC LIMIT 10') });
       }
       // --- Commande du studio client.
+      case 'suivi': {
+        const ancien = this.rows(`SELECT p.id,p.version,p.salon,s.revue FROM suivis s JOIN projets p ON p.id=s.projet
+          WHERE s.hash=?`, a.hash)[0];
+        if (ancien) {
+          if (ancien.revue === 'refuse') return json({ error: 'suivi_refuse' }, 403);
+          this.colonneProjet();
+          if (this.rows('SELECT id FROM commandes WHERE projet=? LIMIT 1', ancien.id).length) return json({ error: 'projet_modifie' }, 409);
+          if (a.base == null && ancien.version === 1) return json({ ok: true, version: 1, salon: ancien.salon });
+          if (a.base !== ancien.version) return json({ error: 'projet_modifie' }, 409);
+          if (this.limite('suivi-maj:' + ancien.id, 20)) return json({ error: 'suivi_limite' }, 429);
+          this.ctx.storage.transactionSync(() => {
+            this.sql.exec('UPDATE projets SET doc=?, nom=?, maj=?, version=version+1 WHERE id=?', a.doc, a.nom, this.now(), ancien.id);
+            this.sql.exec("UPDATE suivis SET revue='a_verifier' WHERE projet=?", ancien.id);
+          });
+          return json({ ok: true, version: ancien.version + 1, salon: ancien.salon });
+        }
+        if (a.base != null) return json({ error: 'suivi_introuvable' }, 404);
+        if (this.limite('suivi:' + a.ipHash, 4)) return json({ error: 'suivi_limite' }, 429);
+        const id = crypto.randomUUID(), salon = jeton(24), t = this.now();
+        const evenement = this.ctx.storage.transactionSync(() => {
+          this.sql.exec('INSERT INTO projets(id,nom,doc,salon,cree,maj) VALUES(?,?,?,?,?,?)', id, a.nom, a.doc, salon, t, t);
+          this.sql.exec('INSERT INTO suivis(hash,projet) VALUES(?,?)', a.hash, id);
+          return this.activite('debut', id);
+        });
+        this.notifier(evenement, 'debut', id);
+        return json({ ok: true, version: 1, salon });
+      }
       case 'commande': {
         if (this.limite('cmd:' + a.ip, 5)) return json({ error: 'trop_de_commandes' }, 429);
         const id = crypto.randomUUID().slice(0, 8).toUpperCase();
@@ -254,15 +321,56 @@ export class Store extends DurableObject {
         // Le site composé par le client est sauvegardé comme projet : Romain le retrouve dans l'atelier,
         // le corrige, et le client suit les corrections en direct avec son lien.
         let projet = null, salon = null;
-        if (a.doc) {
-          projet = crypto.randomUUID(); salon = jeton(24); const t = this.now();
-          this.sql.exec('INSERT INTO projets(id,nom,client,doc,salon,cree,maj) VALUES(?,?,?,?,?,?,?)', projet,
-            net(a.contact.projet, 80) || ('Commande ' + id), net(a.contact.nom, 80), a.doc, salon, t, t);
+        if (a.suivi) {
+          const suivi = this.rows(`SELECT p.id,p.salon,p.version,s.revue FROM suivis s JOIN projets p ON p.id=s.projet
+            WHERE s.hash=?`, a.suivi)[0];
+          if (!suivi || suivi.revue === 'refuse') return json({ error: 'suivi_indisponible' }, 409);
+          const existante = this.rows('SELECT id,total FROM commandes WHERE projet=? ORDER BY cree DESC LIMIT 1', suivi.id)[0];
+          if (existante) return json({ ok: true, ...existante, salon: suivi.salon });
+          if (a.base !== suivi.version) return json({ error: 'projet_modifie' }, 409);
+          projet = suivi.id;
+          salon = suivi.salon;
         }
-        this.sql.exec('INSERT INTO commandes(id,cree,contact,config,total,projet) VALUES(?,?,?,?,?,?)', id, this.now(), JSON.stringify(a.contact), JSON.stringify(a.config), a.total, projet);
+        const evenement = this.ctx.storage.transactionSync(() => {
+          if (a.doc && !projet) {
+            projet = crypto.randomUUID(); salon = jeton(24); const t = this.now();
+            this.sql.exec('INSERT INTO projets(id,nom,client,doc,salon,cree,maj) VALUES(?,?,?,?,?,?,?)', projet,
+              net(a.contact.projet, 80) || ('Commande ' + id), net(a.contact.nom, 80), a.doc, salon, t, t);
+          }
+          if (a.suivi) {
+            this.sql.exec('UPDATE projets SET client=?,doc=?,nom=?,version=version+1,maj=? WHERE id=?',
+              net(a.contact.nom, 80), a.doc, net(a.contact.projet, 80) || 'Projet VM Studio', this.now(), projet);
+            this.sql.exec("UPDATE suivis SET revue='a_verifier' WHERE projet=?", projet);
+          }
+          this.sql.exec('INSERT INTO commandes(id,cree,contact,config,total,projet) VALUES(?,?,?,?,?,?)', id, this.now(), JSON.stringify(a.contact), JSON.stringify(a.config), a.total, projet);
+          return this.activite('commande', projet, id);
+        });
+        this.notifier(evenement, 'commande', projet, id);
         return json({ ok: true, id, total: a.total, salon });
       }
       // --- Administration (déjà authentifiée par le Worker).
+      case 'activiteListe': return json({
+        nonLues: this.rows('SELECT count(*) AS n FROM activite WHERE lue=0')[0].n,
+        activites: this.rows(`SELECT a.id,a.projet,a.commande,a.type,a.cree,a.lue,a.mail,p.nom AS nom
+          FROM activite a LEFT JOIN projets p ON a.projet=p.id ORDER BY a.lue,a.cree DESC LIMIT 100`)
+          .map((r) => ({ ...r, lien: this.lienActivite(r.projet, r.commande) })),
+      });
+      case 'activiteLire':
+        this.sql.exec('UPDATE activite SET lue=1 WHERE id=?', a.id); return json({ ok: true });
+      case 'revue': {
+        if (!['a_verifier', 'accepte', 'refuse'].includes(a.revue)) return json({ error: 'statut_invalide' }, 400);
+        const suivi = this.rows('SELECT revue FROM suivis WHERE projet=?', a.id)[0];
+        if (!suivi) return json({ error: 'introuvable' }, 404);
+        this.ctx.storage.transactionSync(() => {
+          this.sql.exec('UPDATE suivis SET revue=? WHERE projet=?', a.revue, a.id);
+          if (a.revue === 'refuse') {
+            this.sql.exec('UPDATE projets SET salon=? WHERE id=?', jeton(24), a.id);
+            this.sql.exec('UPDATE codes SET revoque=1 WHERE projet=?', a.id);
+            this.sql.exec('DELETE FROM vues WHERE projet=?', a.id);
+          }
+        });
+        return json({ ok: true });
+      }
       case 'etat': this.colonneProjet(); return json({
         projets: this.rows('SELECT id, nom, client, version, salon, maj FROM projets ORDER BY maj DESC LIMIT 200'),
         commandes: this.rows('SELECT id, cree, contact, config, total, statut, projet, paiement_session, paiement_url, paiement_etape, paye_le, acompte_le FROM commandes ORDER BY cree DESC LIMIT 200')
@@ -275,7 +383,7 @@ export class Store extends DurableObject {
         return json({ ok: true, id });
       }
       case 'lire': {
-        const p = this.rows('SELECT id, nom, client, doc, version, salon FROM projets WHERE id=?', a.id)[0];
+        const p = this.rows('SELECT p.id,p.nom,p.client,p.doc,p.version,p.salon,s.revue FROM projets p LEFT JOIN suivis s ON s.projet=p.id WHERE p.id=?', a.id)[0];
         return p ? json({ ...p, doc: JSON.parse(p.doc) }) : json({ error: 'introuvable' }, 404);
       }
       case 'enregistrer': {
@@ -290,13 +398,16 @@ export class Store extends DurableObject {
         return v ? json({ ok: true, v: v.version }) : json({ error: 'introuvable' }, 404);
       }
       case 'supprimer':
+        this.sql.exec('DELETE FROM suivis WHERE projet=?', a.id);
+        this.sql.exec('DELETE FROM activite WHERE projet=?', a.id);
+        this.sql.exec('DELETE FROM avis WHERE projet=?', a.id);
         this.sql.exec('DELETE FROM projets WHERE id=?', a.id); this.sql.exec('UPDATE codes SET revoque=1 WHERE projet=?', a.id);
         this.sql.exec('DELETE FROM vues WHERE projet=?', a.id); return json({ ok: true });
       case 'nouveauSalon': // coupe l'ancien lien salon
         this.sql.exec('UPDATE projets SET salon=? WHERE id=?', jeton(24), a.id); return json({ ok: true });
       case 'code': {
         this.colonnesCodes();
-        const p = this.rows('SELECT doc FROM projets WHERE id=?', a.id)[0];
+        const p = this.rows("SELECT p.doc FROM projets p LEFT JOIN suivis s ON s.projet=p.id WHERE p.id=? AND COALESCE(s.revue,'')!='refuse'", a.id)[0];
         if (!p) return json({ error: 'introuvable' }, 404);
         const jours = [1, 7, 30].includes(Number(a.jours)) ? Number(a.jours) : CODE_JOURS;
         const min = [15, 60, 1440].includes(Number(a.minutes)) ? Number(a.minutes) : 15;
@@ -381,6 +492,32 @@ export default {
       if (v) await appel(env, 'fermer', { vueHash: await sha256('v:' + v) });
       return json({ ok: true }, 200, { 'set-cookie': cookie('vma_v', '', 0) });
     }
+    if (p === '/api/studio/suivi') {
+      const origin = req.headers.get('origin') || '';
+      const permis = /^https:\/\/(www\.)?(vmunivers\.fr|velocemercato\.fr)$/.test(origin) || origin === DOMAINE;
+      const cors = permis ? { 'access-control-allow-origin': origin, 'access-control-allow-methods': 'GET, POST, OPTIONS',
+        'access-control-allow-headers': 'content-type', vary: 'Origin' } : { vary: 'Origin' };
+      if (req.method === 'OPTIONS') return new Response(null, { status: permis ? 204 : 403, headers: cors });
+      if (req.method === 'GET') return json({ version: 1 }, 200, cors);
+      if (!permis || req.method !== 'POST') return json({ error: 'origine_refusee' }, 403, cors);
+      const d = await lireBriefTransmis(req);
+      if (!d || d.partager !== true || typeof d.cle !== 'string' || !SUIVI_CLE.test(d.cle) ||
+          (d.base != null && (!Number.isSafeInteger(d.base) || d.base < 1))) return json({ error: 'suivi_invalide' }, 400, cors);
+      const doc = d.draft ? docMaquetteTransmise(d.draft) : memeOrigine(req) ? d.doc : null;
+      const docTexte = docValide(doc);
+      if (!docTexte || !doc.blocs.every(b => b && typeof b === 'object' && !Array.isArray(b)
+        && ['titre','texte','page','image','galerie','produits','contact','bouton'].includes(b.t)
+        && (b.t !== 'produits' || (Array.isArray(b.items) && b.items.every(i => i && typeof i === 'object')))
+        && (b.t !== 'galerie' || Array.isArray(b.images))
+        && (b.t !== 'contact' || [b.email,b.tel].every(v => v == null || typeof v === 'string'))) ||
+          !['site','carte','flyer','affiche','post','story'].includes(doc.format)) return json({ error: 'projet_invalide' }, 400, cors);
+      const nom = net(doc.blocs.find(b => b.t === 'titre')?.titre, 80) || 'Brouillon VM Studio';
+      const r = await appel(env, 'suivi', { nom, doc: docTexte, hash: await sha256('suivi:' + d.cle),
+        base: d.base ?? null, ipHash: await sha256('suivi-ip:' + ip) });
+      const j = await r.json();
+      if (!j.ok) return json(j, r.status, cors);
+      return json({ ok: true, version: j.version, lien: (env.DOMAINE_LIENS || DOMAINE) + '/salon/' + j.salon }, 200, cors);
+    }
     // Formulaire « Votre projet » de vmunivers.fr / velocemercato.fr : la demande arrive dans l'atelier (onglet Commandes).
     if (p === '/api/studio/transmission') {
       const origin = req.headers.get('origin') || '';
@@ -398,8 +535,8 @@ export default {
       if (!doc) return json({ success: false }, 400, cors);
       const contact = { nom, email, message: net(payload.projet, 1500), projet: doc.blocs[0].titre, origine: origin };
       const r = await (await appel(env, 'commande', { ip, contact, config: { lignes: [], total: 0, type: 'demande', maquette: true },
-        total: 0, doc: docValide(doc) })).json();
-      if (!r.ok || !r.salon) return json({ success: false }, 429, cors);
+        total: 0, doc: docValide(doc), base: payload.base, suivi: typeof payload.suivi === 'string' && SUIVI_CLE.test(payload.suivi) ? await sha256('suivi:' + payload.suivi) : null })).json();
+      if (!r.ok || !r.salon) return json({ success: false, error: r.error }, ['suivi_indisponible', 'projet_modifie'].includes(r.error) ? 409 : 429, cors);
       return json({ success: true, id: r.id, lien: (env.DOMAINE_LIENS || DOMAINE) + '/salon/' + r.salon }, 200, cors);
     }
     if (p === '/api/demande') {
@@ -483,10 +620,13 @@ export default {
       if (corps.doc && typeof corps.doc === 'object') corps.doc.format = d.format; // le format suit le produit choisi
       const docTexte = corps.doc ? docValide(corps.doc) : null; // site composé par le client (photos comprises, taille limitée)
       if (corps.doc && !docTexte) return json({ error: 'site_trop_lourd' }, 400);
-      const r = await (await appel(env, 'commande', { ip, contact, config: d, total: d.total, doc: docTexte })).json();
+      const suivi = typeof corps.suivi === 'string' && SUIVI_CLE.test(corps.suivi) ? await sha256('suivi:' + corps.suivi) : null;
+      if (suivi && !docTexte) return json({ error: 'projet_invalide' }, 400);
+      const resultat = await appel(env, 'commande', { ip, contact, config: d, total: d.total, doc: docTexte, suivi, base: corps.base });
+      const r = await resultat.json();
       if (r.salon) r.lien = (env.DOMAINE_LIENS || DOMAINE) + '/salon/' + r.salon;
       delete r.salon;
-      return json(r, r.ok ? 200 : 429);
+      return json(r, resultat.status);
     }
     if (p === '/api/admin/login' && req.method === 'POST') {
       if (!env.ADMIN_TOKEN) return json({ error: 'admin_non_configure' }, 503);
@@ -496,6 +636,7 @@ export default {
     if (p.startsWith('/api/admin/')) {
       if (!(await estAdmin(req, env))) return json({ error: 'admin_requis' }, 401);
       const op = p.slice('/api/admin/'.length);
+      if (op === 'activite' && req.method === 'GET') return appel(env, 'activiteListe');
       if (op === 'etat' && req.method === 'GET') return appel(env, 'etat');
       if (op === 'lire' && req.method === 'GET') return appel(env, 'lire', { id: url.searchParams.get('id') });
       if (op === 'avis' && req.method === 'GET') return appel(env, 'avisListe', { id: url.searchParams.get('id') });
@@ -505,6 +646,8 @@ export default {
         return json({ stripe: stripeConfigure(env) ? modeStripe(env) : null, configuree: iaConfiguree(env), fournisseur: fournisseur(env), modele: modele(env), plafond: Number(env.IA_MAX_JOUR) || 40, ...e });
       }
       if (req.method !== 'POST') return json({ error: 'methode' }, 405);
+      if (op === 'activite-lire') return appel(env, 'activiteLire', { id: corps.id });
+      if (op === 'revue') return appel(env, 'revue', { id: corps.id, revue: corps.revue });
       if (op === 'code') {
         const code = jeton(16);
         const r = await appel(env, 'code', { id: corps.id, codeHash: await sha256('c:' + code), jours: corps.jours, minutes: corps.minutes, mode: corps.mode, figee: !!corps.figee, libelle: corps.libelle });

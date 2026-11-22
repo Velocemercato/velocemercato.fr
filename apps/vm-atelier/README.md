@@ -84,3 +84,19 @@ Tests : `tests/lot2.test.cjs` (12 vérifications).
 Le formulaire de /studio utilise le service de création déjà configuré dans le Worker, sans exposer son fournisseur. Le client peut tester une maquette, choisir une direction graphique, ajouter des images, réordonner les sections et retoucher sa version en écrivant ou en dictant. La dictée passe par le navigateur et le texte reste éditable avant l’envoi. Les photos et les coordonnées saisies dans le studio sont exclues de l’appel au fournisseur. Les coordonnées destinées au site sont séparées de celles du devis.
 
 Le plafond public par défaut est de 6 appels par jour (`STUDIO_MAX_JOUR`) et de 3 par heure par adresse, dans la limite du plafond total `IA_MAX_JOUR`. Les maquettes et les modifications manuelles fonctionnent sans clé. Le suivi de la commande, le projet dans l’atelier et les demandes du salon continuent à utiliser les routes existantes.
+
+## Suivi privé des brouillons
+
+Le client choisit « Démarrer le suivi privé » sur `/studio` ou sur `velocemercato.fr/creer/`. Le premier partage crée une fiche dans l’atelier et une notification. Une maquette reste privée. Les copies suivantes et la validation s’appuient sur le numéro de version pour préserver les retouches concurrentes. Le lien salon permet au client de suivre les changements et d’envoyer ses demandes d’aide.
+
+Dans `/admin`, l’onglet Notifications regroupe les premiers partages, messages et demandes. Le code administrateur protège la fiche ouverte par chaque lien d’alerte. Le contrôle de contenu permet de marquer un dossier accepté ou de le refuser, ce qui ferme les liens de consultation existants. Accepter un dossier ne déclenche aucune publication.
+
+### Activer les e-mails
+
+1. Dans le compte Cloudflare qui héberge `vm-atelier`, configurer un expéditeur dans Email Service et vérifier la boîte destinataire.
+2. Renseigner `STUDIO_MAIL_FROM`, `STUDIO_MAIL_TO` et la liaison `STUDIO_EMAIL` à destinataire fixe dans `wrangler.toml`, puis déployer. Le courriel contient un lien d’administration, sans photo, contenu client ni lien salon.
+3. Partager un brouillon de test puis envoyer un message depuis son salon. Vérifier deux notifications dans l’atelier et leur arrivée effective en boîte de réception. L’atelier indique l’état de chaque envoi et reste utilisable sans e-mail.
+
+### Rétablir le déploiement Cloudflare
+
+En cas de « No access to the specified service », ouvrir le Worker existant `vm-atelier` et vérifier son compte propriétaire. Dans GitHub Actions, utiliser `CLOUDFLARE_ATELIER_ACCOUNT_ID` pour ce compte et `CLOUDFLARE_ATELIER_API_TOKEN` pour un jeton avec le droit Workers Scripts: Edit sur ce compte. Déposer le jeton dans les secrets de GitHub, puis relancer « Déployer VM Studio sur Cloudflare ». Le déploiement reprend le Worker existant avec sa liaison `STORE`. Vérifier que la commande de contrôle renvoie HTTP 204 pour l’origine de Véloce Mercato et que la configuration existante reste identique.

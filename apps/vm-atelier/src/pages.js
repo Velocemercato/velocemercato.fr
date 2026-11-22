@@ -193,6 +193,12 @@ export const pageStudio = page('Créer — VM Studio', `${ENTETE('Créez-le, voy
  <div class="card"><h2 style="margin-top:0">4. Votre panier</h2><div id="lignes"></div><div class="total" id="total">0 €</div>
   <p class="muted">Prix en euros, TVA non applicable (art. 293 B du CGI). Rien n'est payé maintenant. Après validation de votre demande : 50 % d'acompte au lancement, 50 % à la validation finale, par paiement sécurisé.</p>
  </div>
+ <details class="card"><summary>Partager mon brouillon avec l’atelier</summary>
+  <p>VM Studio pourra voir la copie que vous partagez. Votre lien privé permet de suivre les retouches et de demander de l’aide. Utilisez uniquement les textes et images que vous avez le droit de partager.</p>
+  <button class="g" type="button" id="partagerBrouillon">Démarrer le suivi privé</button>
+  <a id="lienBrouillon" class="hide" target="_blank" rel="noopener noreferrer">Ouvrir le suivi et demander de l’aide</a>
+  <p id="msgBrouillon" role="status"></p>
+ </details>
  <div class="card"><h2 style="margin-top:0">5. Vos coordonnées</h2>
   <label for="cnom">Nom et prénom</label><input id="cnom" maxlength="80" autocomplete="name">
   <div class="row"><div><label for="cmail">E-mail</label><input id="cmail" type="email" maxlength="120" autocomplete="email"></div><div><label for="ctel">Téléphone</label><input id="ctel" type="tel" maxlength="40" autocomplete="tel"></div></div>
@@ -211,6 +217,7 @@ export const pageStudio = page('Créer — VM Studio', `${ENTETE('Créez-le, voy
 </div></div>${PIED}`,
 `var PRIX=${JSON.stringify(PRIX)};${devis.toString()}
 var $=function(i){return document.getElementById(i)},photo='',DOCC=null,PROD='site',DERNIER=null;
+var suivi=null;
 var DIRECTIONS=${JSON.stringify(DIRECTIONS)},EXEMPLES_SITE=${JSON.stringify(EXEMPLES_SITE)};
 var NOMS={site:'votre site',carte:'votre carte de visite',carte_relief:'votre carte de visite en relief',flyer:'votre flyer',affiche:'votre affiche',post:'votre publication',story:'votre story'};
 function cfg(){var sel=PROD==='site'?'.opt:checked':'.optv:checked';return{produit:PROD,type:$('type').value,pages:$('pages').value,langues:$('langues').value,options:[].map.call(document.querySelectorAll(sel),function(c){return c.value}),pack:$('pack').checked}}
@@ -236,16 +243,32 @@ $('agr').onclick=function(){var g=$('apv').classList.toggle('grand');this.setAtt
 $('photo').onchange=function(){var f=this.files[0];if(f)reduirePhoto(f,1000,function(u){if(u){photo=u;maj()}})};
 function contactOk(){var m=$('cmail').value.trim(),t=$('ctel').value.replace(/\\D/g,'');return $('cnom').value.trim()&&(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(m)||t.length>=9)}
 function fermerVerif(){$('verif').classList.add('hide');$('envoyer').focus()}
-$('envoyer').onclick=function(){maj();if(!contactOk()){$('msg').textContent='Indiquez votre nom et un e-mail ou un téléphone.';return}if(!$('cgv').checked){$('msg').textContent='Cochez la case pour accepter d’être recontacté.';return}
+$('partagerBrouillon').onclick=async function(){
+ var b=this,msg=$('msgBrouillon');
+ if(b.disabled)return;
+ if(!suivi)suivi={cle:crypto.randomUUID(),version:null};
+ maj();b.disabled=true;msg.textContent='Partage en cours…';
+ try{
+  var j=await api('studio/suivi',{partager:true,cle:suivi.cle,base:suivi.version,doc:DOCC});
+  if(!j.ok){msg.textContent=j.error==='projet_modifie'?'L’atelier a modifié ce projet. Signalez vos changements dans le suivi.':'Partage indisponible. Réessayez dans un instant.';return}
+  suivi.version=j.version;
+  var a=$('lienBrouillon');a.href=j.lien;a.classList.remove('hide');
+  msg.textContent='Votre brouillon est visible dans l’atelier privé.';
+  b.textContent='Partager mes dernières modifications';
+ }catch{msg.textContent='Connexion impossible. Réessayez dans un instant.'}
+ finally{b.disabled=false}
+};
+$('envoyer').onclick=function(){if($('partagerBrouillon').disabled)return;maj();if(!contactOk()){$('msg').textContent='Indiquez votre nom et un e-mail ou un téléphone.';return}if(!$('cgv').checked){$('msg').textContent='Cochez la case pour accepter d’être recontacté.';return}
  $('msg').textContent='';$('vQuoi').textContent='Voici '+NOMS[PROD]+' tel que vous l’envoyez. Il sera ensuite peaufiné avec vous.';rendre($('vApercu'),DOCC);
  var L=$('vLignes');L.replaceChildren();DERNIER.lignes.forEach(function(l){var r=E('div');r.className='ligne';r.appendChild(E('span','',l[0]));r.appendChild(E('b','',l[1]+' €'));L.appendChild(r)});$('vTotal').textContent='Total : '+DERNIER.total+' €';
  $('verif').classList.remove('hide');$('vOk').disabled=false;$('vOk').focus()};
 $('vMod').onclick=fermerVerif;$('verif').addEventListener('keydown',function(e){if(e.key==='Escape')fermerVerif()});
 $('vOk').onclick=function(){$('vOk').disabled=true;envoyer()};
-function envoyer(){$('msg').textContent='Envoi…';api('commande',{config:cfg(),cgv:$('cgv').checked,doc:DOCC,contact:{nom:$('cnom').value,email:$('cmail').value,tel:$('ctel').value,message:$('cmsg').value,projet:($('nom').value||'')+(PROD==='site'?'':' · '+PRIX.produits[PROD].nom.replace(' (design)',''))}}).then(function(j){
+function envoyer(){$('msg').textContent='Envoi…';api('commande',{config:cfg(),cgv:$('cgv').checked,doc:DOCC,suivi:suivi&&suivi.version?suivi.cle:null,base:suivi?.version,contact:{nom:$('cnom').value,email:$('cmail').value,tel:$('ctel').value,message:$('cmsg').value,projet:($('nom').value||'')+(PROD==='site'?'':' · '+PRIX.produits[PROD].nom.replace(' (design)',''))}}).then(function(j){
  $('verif').classList.add('hide');
  var E2={contact_incomplet:'Indiquez votre nom et un e-mail ou un téléphone.',conditions_non_acceptees:'Cochez la case pour accepter d’être recontacté.',trop_de_commandes:'Trop de demandes, réessayez plus tard.',site_trop_lourd:'Votre photo est trop lourde : choisissez une image plus petite.'};
- if(!j.ok){$('msg').textContent=E2[j.error]||'Erreur, réessayez.';return}
+ if(!j.ok){$('msg').textContent=j.error==='projet_modifie'?'L’atelier a modifié ce projet. Signalez vos changements dans le suivi.':E2[j.error]||'Erreur, réessayez.';return}
+ $('partagerBrouillon').disabled=true;
  $('msg').replaceChildren();$('msg').appendChild(E('div','','✅ Demande n° '+j.id+' envoyée ('+j.total+' €). '+NOMS[PROD].charAt(0).toUpperCase()+NOMS[PROD].slice(1)+' est sauvegardé(e) : le créateur le peaufine avec vous.'));
  if(j.lien){var a=E('a','display:block;margin-top:8px;font-weight:800','👉 Suivre ma création en direct');a.href=j.lien;a.target='_blank';$('msg').appendChild(a);$('msg').appendChild(E('small','display:block;color:#a9b0c4','Gardez ce lien : vous y verrez les corrections et pourrez demander des modifications. Paiement : 50 % d’acompte au lancement, 50 % à la validation finale.'))}
  $('msg').scrollIntoView({block:'center'})},function(){$('verif').classList.add('hide');$('msg').textContent='Connexion impossible, réessayez.'})}
@@ -272,8 +295,10 @@ el.addEventListener('click',function(e){var s=e.target.closest('[data-bloc]');if
  [].forEach.call(el.querySelectorAll('[data-bloc]'),function(x){x.style.outline=''});s.style.outline='3px solid #f4cf55';ouvrirFeuille(Number(s.getAttribute('data-bloc')))});
 $('msgBtn').onclick=function(){ouvrirFeuille(null)};$('fAnn').onclick=function(){$('feuille').classList.add('hide')};
 $('fEnv').onclick=function(){var t=$('fTxt').value.trim();if(!t){$('fMsg').textContent='Écris ta demande.';return}
+ $('fEnv').disabled=true;
  fetch('/api/salon/'+tok+'/avis',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({texte:t,bloc:bloc})}).then(function(r){return r.json()}).then(function(j){
-  $('fMsg').textContent=j.ok?'✅ Envoyé ! Le créateur le voit tout de suite.':(j.error==='trop_de_messages'?'Trop de messages, patiente un peu.':'Envoi impossible.');if(j.ok)$('fTxt').value=''})};
+  $('fMsg').textContent=j.ok?'✅ Message reçu par l’atelier.':(j.error==='trop_de_messages'?'Trop de messages, patiente un peu.':'Envoi impossible.');if(j.ok)$('fTxt').value=''
+ }).catch(function(){$('fMsg').textContent='Connexion impossible. Ton message est conservé.'}).finally(function(){$('fEnv').disabled=false})};
 activerDictee($('fTxt'),$('fDicter'),$('fMsg'));rendre(el,{blocs:[]});boucle();`);
 
 // ---------- Consultation avec code à usage unique ----------
@@ -300,12 +325,18 @@ const TYPES_BLOCS = { page: '📄 Nouvelle page / verso', titre: '🏷 Titre + p
 export const pageAdmin = page('Atelier — VM', `${ENTETE('VM Studio · Atelier de Romain')}
 <div id="login" class="card" style="max-width:420px;margin:16px auto"><label for="tok">Code administrateur</label><input id="tok" type="password" autocomplete="off"><button class="p" id="entrer">Entrer</button><p class="msg" id="lmsg"></p></div>
 <div id="app" class="hide">
- <div style="padding:10px 16px"><button class="g" id="ongProjets">📁 Projets</button><button class="g" id="ongCmd">🧾 Commandes</button></div>
+ <div style="padding:10px 16px"><button class="g" id="ongProjets">📁 Projets</button><button class="g" id="ongCmd">🧾 Commandes</button><button class="g" id="ongActivite">Notifications</button></div>
  <div id="vProjets" style="padding:0 16px"><div class="card"><div class="row"><input id="npNom" placeholder="Nom du projet" maxlength="80"><input id="npClient" placeholder="Client" maxlength="80"></div><button class="p" id="creer">+ Nouveau projet (page vierge)</button></div><div id="liste"></div></div>
  <div id="vCmd" class="hide" style="padding:0 16px"><div id="cmds"></div></div>
+ <div id="vActivite" class="hide" style="padding:0 16px"><h2>Notifications de l’atelier</h2><div id="activites"></div></div>
  <div id="vEdit" class="hide"><div class="grid"><div>
   <div class="card"><button class="g" id="retour">← Projets</button> <b id="eNom"></b> <span class="muted" id="etat"></span>
    <label for="eTitre">Nom du projet</label><input id="eTitre" maxlength="80">
+   <div id="revueBox" class="hide">
+    <label for="revueProjet">Vérification du contenu</label>
+    <select id="revueProjet"><option value="a_verifier">À vérifier</option><option value="accepte">Accepté pour la suite</option><option value="refuse">Refuser et fermer les accès</option></select>
+    <p class="muted" id="revueMsg" role="status">Cette décision concerne le suivi privé du projet.</p>
+   </div>
    <label for="eFormat">Format</label><select id="eFormat"><option value="site">🌐 Site / page web</option><option value="carte">💳 Carte de visite (85×55 mm, recto/verso)</option><option value="flyer">📄 Flyer A5</option><option value="affiche">🖼 Affiche A3</option><option value="post">📱 Post réseaux (carré)</option><option value="story">📲 Story / vidéo verticale (9:16)</option></select>
    <div class="row"><div><label>Couleur principale</label><input type="color" id="tc1"></div><div><label>Accent</label><input type="color" id="tc2"></div></div>
    <div class="row"><div><label>Fond</label><input type="color" id="tfond"></div><div><label>Texte</label><input type="color" id="ttexte"></div></div></div>
@@ -331,9 +362,36 @@ export const pageAdmin = page('Atelier — VM', `${ENTETE('VM Studio · Atelier 
 </div>`,
 `var DOM='https://atelier.velocemercato.fr';api('config').then(function(c){if(c&&/^https:\\/\\/[a-z0-9.-]+\\.(velocemercato|vmunivers)\\.fr$/.test(c.domaine||''))DOM=c.domaine});
 var $=function(i){return document.getElementById(i)},cur=null,minuteur=null,TB=${JSON.stringify(TYPES_BLOCS)};
-function vue(n){['vProjets','vCmd','vEdit'].forEach(function(x){$(x).classList.toggle('hide',x!==n)})}
+var cible=new URLSearchParams(location.search);
+function vue(n){['vProjets','vCmd','vEdit','vActivite'].forEach(function(x){$(x).classList.toggle('hide',x!==n)})}
+function notifications(){
+ if($('app').classList.contains('hide'))return;
+ api('admin/activite').then(function(j){
+  if(j._s!==200)return;
+  $('ongActivite').textContent='Notifications'+(j.nonLues?' ('+j.nonLues+')':'');
+  if($('vActivite').classList.contains('hide'))return;
+  var box=$('activites');
+  if(box.contains(document.activeElement))return;
+  box.replaceChildren();
+  if(!j.activites.length){box.appendChild(E('p','','Aucune notification pour le moment.'));return}
+  var titres={debut:'Brouillon partagé',aide:'Demande d’aide',commande:'Nouvelle demande'};
+  var mails={non_configure:'E-mail non configuré',en_attente:'E-mail en attente',transmis:'E-mail transmis',echec:'Échec de l’e-mail',limite:'Limite d’envoi e-mail atteinte'};
+  j.activites.forEach(function(a){
+   var card=E('article');card.className='card';
+   card.appendChild(E('b','',titres[a.type]+(a.nom?' · '+a.nom:'')));
+   card.appendChild(E('p','',new Date(a.cree).toLocaleString('fr-FR',{timeZone:'Europe/Paris'})+' · '+(mails[a.mail]||'')+(a.lue?'':' · Non lu')));
+   var ouvrirLien=E('a','','Ouvrir');ouvrirLien.href=a.lien;card.appendChild(ouvrirLien);
+   if(!a.lue){var lu=E('button','','Marquer comme lu');lu.className='g';lu.onclick=function(){
+    api('admin/activite-lire',{id:a.id}).then(function(r){if(r.ok){lu.blur();notifications()}});
+   };card.appendChild(lu)}
+   box.appendChild(card);
+  });
+ }).catch(function(){});
+}
 function etat(){api('admin/etat').then(function(s){if(s._s===401){$('login').classList.remove('hide');$('app').classList.add('hide');return}
+ if(s._s!==200)return;
  $('login').classList.add('hide');$('app').classList.remove('hide');
+ notifications();
  var L=$('liste');L.replaceChildren();(s.projets||[]).forEach(function(p){var c=E('div');c.className='card';c.appendChild(E('b','',p.nom));c.appendChild(E('div','',(p.client?'Client : '+p.client+' · ':'')+'modifié le '+new Date(p.maj).toLocaleString('fr-FR')));c.lastChild.className='muted';
   var o=E('button','','✏️ Ouvrir');o.className='p';o.onclick=function(){ouvrir(p.id)};c.appendChild(o);L.appendChild(c)});
  var C=$('cmds');C.replaceChildren();if(!(s.commandes||[]).length)C.appendChild(E('p','','Aucune commande pour le moment.'));
@@ -355,14 +413,35 @@ function etat(){api('admin/etat').then(function(s){if(s._s===401){$('login').cla
    c.appendChild(pa);
    if(k.paiement_session){var vf=E('button','','🔄 Vérifier le paiement');vf.className='g';vf.onclick=function(){api('admin/paiement-verifier',{id:k.id}).then(function(j){if(j.paye)etat();else{zone.textContent='Pas encore payé.'}})};c.appendChild(vf)}
    c.appendChild(zone)}
-  var b=E('button','',k.projet?'➕ Nouveau projet vierge':'➕ Créer le projet');b.className='g';b.onclick=function(){api('admin/creer',{nom:ct.projet||('Commande '+k.id),client:ct.nom}).then(function(j){if(j.ok)ouvrir(j.id)})};c.appendChild(b);C.appendChild(c)})})}
+  var b=E('button','',k.projet?'➕ Nouveau projet vierge':'➕ Créer le projet');b.className='g';b.onclick=function(){api('admin/creer',{nom:ct.projet||('Commande '+k.id),client:ct.nom}).then(function(j){if(j.ok)ouvrir(j.id)})};c.appendChild(b);c.id='commande-'+k.id;C.appendChild(c)});
+ if(cible){var id=cible.get('projet'),cmd=cible.get('commande');cible=null;
+  if(id)ouvrir(id);else if(cmd){vue('vCmd');var carteCommande=$('commande-'+cmd);if(carteCommande)carteCommande.scrollIntoView({block:'center'})}
+ }
+})}
 $('entrer').onclick=function(){api('admin/login',{token:$('tok').value}).then(function(j){$('lmsg').textContent=j.ok?'':(j.error==='admin_non_configure'?'Le secret ADMIN_TOKEN n’est pas encore défini dans Cloudflare.':'Refusé.');if(j.ok){$('tok').value='';etat()}})};
 $('ongProjets').onclick=function(){vue('vProjets');etat()};$('ongCmd').onclick=function(){vue('vCmd');etat()};$('retour').onclick=function(){vue('vProjets');etat()};
+$('ongActivite').onclick=function(){vue('vActivite');notifications()};
+setInterval(function(){if(!document.hidden)notifications()},15000);
 $('creer').onclick=function(){api('admin/creer',{nom:$('npNom').value,client:$('npClient').value}).then(function(j){if(j.ok){$('npNom').value='';$('npClient').value='';ouvrir(j.id)}})};
 var pile=[],propo=null,suiviAvis=null;
 function ouvrir(id){api('admin/lire?id='+encodeURIComponent(id)).then(function(p){if(p.error)return;cur=p;pile=[];propo=null;$('iaProp').classList.add('hide');$('annuler').disabled=true;$('eFormat').value=p.doc.format||'site';
+ $('revueBox').classList.toggle('hide',!p.revue);$('revueProjet').value=p.revue||'a_verifier';$('revueMsg').textContent='Cette décision concerne le suivi privé du projet.';
  clearInterval(suiviAvis);avis();codes();suiviAvis=setInterval(function(){if(!$('vEdit').classList.contains('hide'))avis()},3000);iaEtat();$('partage').replaceChildren();$('eNom').textContent=p.nom;$('eTitre').value=p.nom;
  var t=p.doc.theme||{};$('tc1').value=t.c1||'#e52643';$('tc2').value=t.c2||'#f4cf55';$('tfond').value=t.fond||'#0b0c12';$('ttexte').value=t.texte||'#ffffff';vue('vEdit');dessiner()})}
+$('revueProjet').onchange=async function(){
+ var select=this,projet=cur,choix=select.value;
+ select.disabled=true;
+ try {
+  var j=await api('admin/revue',{id:projet.id,revue:choix});
+  if(!j.ok)throw Error();
+  if(cur!==projet)return;
+  projet.revue=choix;
+  if(choix==='refuse'){$('partage').replaceChildren();codes()}
+  $('revueMsg').textContent=choix==='refuse'?'Dossier refusé. Les accès client sont fermés.':'Décision enregistrée.';
+ }catch{
+  if(cur===projet){select.value=projet.revue;$('revueMsg').textContent='La décision n’a pas été enregistrée.'}
+ }finally{select.disabled=false}
+};
 function sauver(){$('etat').textContent='…';clearTimeout(minuteur);minuteur=setTimeout(function(){api('admin/enregistrer',{id:cur.id,nom:$('eTitre').value,doc:cur.doc,base:cur.version}).then(function(j){
  if(j.ok){cur.version=j.v;$('etat').textContent='✔ enregistré (le client le voit)'}else $('etat').textContent=j.error==='projet_modifie'?'⚠ Projet modifié ailleurs : rouvre-le avant de continuer.':'⚠ '+(j.error||'erreur')})},500)}
 function memoriser(){pile.push(JSON.stringify(cur.doc));if(pile.length>30)pile.shift();$('annuler').disabled=false}

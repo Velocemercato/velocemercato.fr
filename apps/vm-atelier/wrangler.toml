@@ -7,6 +7,9 @@ workers_dev = true
 [vars]
 # CONTACT_EMAIL = ""
 # CONTACT_TEL = ""
+# Alertes privées, une fois les deux adresses vérifiées dans le compte Cloudflare.
+# STUDIO_MAIL_FROM = "notifications@velocemercato.fr"
+# STUDIO_MAIL_TO = "vminvest.fr@gmail.com"
 # Accord écrit de Romain (13/11/2026 : « tu peux valider Stripe ») : l'encaissement réel est autorisé
 # dès que le secret STRIPE_SECRET_KEY contient une clé live (sk_live_…). Avec une clé de test, rien ne change.
 STRIPE_REEL = "oui"
@@ -18,3 +21,8 @@ class_name = "Store"
 [[migrations]]
 tag = "v1"
 new_sqlite_classes = ["Store"]
+
+# À activer avec les deux variables ci-dessus après la configuration Email Service.
+# [[send_email]]
+# name = "STUDIO_EMAIL"
+# destination_address = "vminvest.fr@gmail.com"
