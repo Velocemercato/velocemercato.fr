@@ -1,0 +1,42 @@
+name: VM - Guide Sochaux et présentation de VM Studio
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/lancement-edition-sochaux.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+
+jobs:
+  diffusion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Tester le circuit éditorial
+        run: |
+          python -m py_compile tools/lancer_sochaux_et_studio.py
+          python -m pip install --quiet 'cryptography==50.0.0' pillow
+          python -m unittest discover -s tests -p test_editorial_vm.py -v
+      - name: Vérifier les deux pages publiques
+        run: |
+          curl -fsS --max-time 15 https://velocemercato.fr/en/fc-sochaux-guide/ -o "$RUNNER_TEMP/sochaux.html"
+          grep -q 'France’s factory club' "$RUNNER_TEMP/sochaux.html"
+          curl -fsS --max-time 15 https://vmunivers.fr/professionnels/ -o "$RUNNER_TEMP/studio.html"
+          grep -qi 'VM Studio' "$RUNNER_TEMP/studio.html"
+      - name: Publier sur les deux pages et vérifier les liens
+        run: |
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "https://github.com/$GITHUB_REPOSITORY.git" "$RUNNER_TEMP/vm-broadcast-state"
+          test -s "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+          python tools/lancer_sochaux_et_studio.py "$RUNNER_TEMP/vm-broadcast-state/state.enc"

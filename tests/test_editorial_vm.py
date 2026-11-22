@@ -95,7 +95,7 @@ class EditorialTests(unittest.TestCase):
             ('meta', 'facebook'): (8, 12, 20),
             ('meta', 'instagram'): (12, 20),
             ('meta_pronos', 'facebook'): (12, 20),
-            ('meta_univers', 'facebook'): (18,),
+            ('meta_univers', 'facebook'): (8, 12, 18),
             ('meta_univers', 'instagram'): (18,),
         }
         for month in (7, 11):

@@ -952,9 +952,8 @@ def main():
         print('Facebook/Instagram : publication automatique non activée (VM_AUTO_META). Rien n’est publié.')
         return
     failed = bool(annonce_studio(state, Graph()))
-    for account in ('meta', 'meta_univers'):
-        if state.data.get('tokens', {}).get(account):
-            failed |= bool(publish(state, Graph(), force=args.article or None if account == 'meta' else None, account=account))
+    if state.data.get('tokens', {}).get('meta'):
+        failed |= bool(publish(state, Graph(), force=args.article or None, account='meta'))
     if failed:
         sys.exit(1)
 

@@ -10,8 +10,13 @@ from zoneinfo import ZoneInfo
 PARIS = ZoneInfo("Europe/Paris")
 FILS = {
     "veloce-mercato": ("Véloce Mercato", "meta/facebook", "Football, mercato et multisport", "/foot/"),
-    "vm-univers": ("VM Univers", "meta_univers/facebook", "Actualités locales et projets VM", "/belfort/"),
+    "vm-univers": ("VM Univers", "meta_univers/facebook", "Les réalisations et services de VM Univers", "https://vmunivers.fr/professionnels/"),
     "vm-actus-pronos": ("VM Actus et Pronos", "meta_pronos/facebook", "Actualité, gaming et sport", "/actus/"),
+}
+PAGES_FACEBOOK = {
+    "veloce-mercato": "https://www.facebook.com/velocemercato.fr/",
+    "vm-univers": "https://www.facebook.com/VMunivers.fr/",
+    "vm-actus-pronos": "https://www.facebook.com/Veloce.mercato.actus/"
 }
 SOURCES = {
     "foot": ("articles.json", "/a/"),
@@ -100,10 +105,10 @@ def preparer_fils_bureau(root):
         derniere = export.get(compte, {})
         lien_recent = derniere.get("url", "")
         chapeau = ('<p class="recent"><a href="' + escape(lien_recent, quote=True)
-                   + '" target="_blank" rel="noopener noreferrer">Ouvrir la dernière publication Facebook confirmée ↗</a>'
+                   + '" target="_blank" rel="noopener noreferrer">Lire la dernière publication sur Facebook ↗</a>'
                    + '<span>' + escape(date_paris(derniere.get("date"))) + '</span></p>') if facebook(lien_recent) else ""
-        if not cartes:
-            cartes.append('<p class="note">Les publications Facebook confirmées de ce compte restent accessibles depuis le lien ci-dessus.</p>')
+        if not cartes and not chapeau:
+            cartes.append('<p class="note">Aucune publication de la rédaction vérifiée pour le moment.</p>')
         local = ""
         if slug == "vm-univers":
             cartes_locales = []
@@ -123,9 +128,12 @@ def preparer_fils_bureau(root):
             '<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
             + '<title>' + escape(nom) + ' · Dernières publications</title>'
             + '<link rel="stylesheet" href="/assets/reseaux-bureau.css"></head><body><main>'
-            + '<nav aria-label="Fils du bureau">' + navigation + '</nav><header><p class="meta">Les fils du bureau</p><h1>'
-            + escape(nom) + '</h1><p>' + escape(intro) + '</p><a href="' + rubrique + '">Lire les actus sur le site</a></header>'
-            + '<section><h2>Publications Facebook confirmées</h2>' + chapeau + '<div class="cartes">' + "".join(cartes)
+            + '<nav aria-label="Fils du bureau">' + navigation + '</nav><header><p class="meta">Publications de la rédaction</p><h1>'
+            + escape(nom) + '</h1><p>' + escape(intro) + '</p><div class="actions">'
+            + '<a href="' + rubrique + '">Découvrir la rubrique</a>'
+            + '<a href="' + PAGES_FACEBOOK[slug] + '" target="_blank" rel="noopener noreferrer">Page Facebook officielle ↗</a>'
+            + '<a href="/">Retour au bureau</a></div></header>'
+            + '<section><h2>Articles publiés par la rédaction</h2>' + chapeau + '<div class="cartes">' + "".join(cartes)
             + '</div></section>' + local + '</main></body></html>'
         )
         destination = root / "reseaux" / slug / "index.html"
