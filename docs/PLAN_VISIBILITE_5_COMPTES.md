@@ -137,3 +137,18 @@ Le workflow TikTok Metricool est uniquement manuel et en mode essai dans le dép
 3. Réaliser un envoi test seulement après confirmation que le contenu est adapté à VM Univers et que l'identité est correcte.
 4. Surveiller le prochain créneau et vérifier le permalien public avant de déclarer le compte rétabli.
 5. Garder les trois pages Facebook et les deux comptes Instagram comme seules destinations du dispositif.
+
+
+## Baseline d'audience Meta — instantané du 22 novembre (Graph API)
+
+Les abonnés retournés par Graph, compte par compte :
+- Facebook VM Actus & Pronos : **1 590**.
+- Facebook VM Univers : **52**.
+- Facebook Véloce Mercato : **14**.
+- Instagram @veloce.mercato : **6**.
+- Instagram @vmunivers.fr : **1**.
+
+Ce sont des abonnés, pas des vues ni de la portée. Ne jamais les additionner pour annoncer une audience unique et ne pas les utiliser seuls comme kit média.
+
+### Priorité de croissance
+VM Actus & Pronos est aujourd'hui la communauté la plus importante. Elle peut servir de relais de découverte vers les articles Véloce Mercato, à condition de publier un angle communautaire adapté et un lien clair, sans copier-coller systématique. VM Univers doit rester la vitrine des projets et services, avec des publications commerciales distinctes. Mesurer ensuite portée, interactions, clics et abonnés gagnés sur 7 et 28 jours.
