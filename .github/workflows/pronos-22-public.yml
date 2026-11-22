@@ -1,0 +1,46 @@
+name: VM - Annonce des conseils publics du 22 novembre
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/pronos-22-public.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vm-diffusion-longue
+  cancel-in-progress: false
+
+jobs:
+  partager:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VM_DIFFUSION_STATE_KEY: ${{ secrets.VM_DIFFUSION_STATE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Préparer le partage des liens
+        run: |
+          python -m py_compile tools/pronos_20261122_annonce.py
+          python -m pip install --quiet 'cryptography==50.0.0'
+          git -c credential.helper='!gh auth git-credential' clone --quiet --depth 1 --branch broadcast-state "https://github.com/$GITHUB_REPOSITORY.git" "$RUNNER_TEMP/vm-broadcast-state"
+          test -s "$RUNNER_TEMP/vm-broadcast-state/state.enc"
+      - name: Confirmer la mise en ligne des quatre fiches
+        shell: bash
+        run: |
+          for i in $(seq 1 30); do
+            if curl -fsS --max-time 12 https://velocemercato.fr/conseils/ -o "$RUNNER_TEMP/conseils.html" &&
+              grep -q 'id="conseils-2026-11-22"' "$RUNNER_TEMP/conseils.html" &&
+              test "$(grep -c 'data-fermeture="2026-11-22T' "$RUNNER_TEMP/conseils.html")" -eq 4; then
+              exit 0
+            fi
+            sleep 7
+          done
+          exit 1
+      - name: Publier l’annonce puis vérifier chaque lien
+        run: python tools/pronos_20261122_annonce.py "$RUNNER_TEMP/vm-broadcast-state/state.enc"
