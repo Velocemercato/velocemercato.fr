@@ -1,0 +1,32 @@
+name: VM - Tests de synchronisation des liens Meta sans publication
+
+on:
+  push:
+    paths:
+      - 'tools/liens_publications_meta.py'
+      - 'tests/test_liens_publications_meta.py'
+      - '.github/workflows/tests-meta-link-registry.yml'
+  pull_request:
+    paths:
+      - 'tools/liens_publications_meta.py'
+      - 'tests/test_liens_publications_meta.py'
+      - '.github/workflows/tests-meta-link-registry.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Installer les dépendances
+        run: python -m pip install --quiet 'cryptography==50.0.0' pillow
+      - name: Vérifier la syntaxe
+        run: python -m py_compile tools/liens_publications_meta.py
+      - name: Tester les permaliens Meta sans POST ni suppression
+        run: python -m unittest discover -s tests -p 'test_liens_publications_meta.py' -v
