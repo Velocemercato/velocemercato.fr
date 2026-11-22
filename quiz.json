@@ -1,80 +1,50 @@
 {
- "id": "2026-11-21-15",
- "date": "2026-11-21T15:49:32+01:00",
+ "id": "2026-11-22-15",
+ "date": "2026-11-22T15:45:17+01:00",
  "questions": [
   {
-   "q": "Quel joueur a signé une volée somptueuse pour sauver un point à Manchester City face à Fulham ?",
+   "q": "Combien de buts Kolo Muani et la Juventus ont-ils marqués contre Venise en quatre minutes de la 53e à la 71e minute ?",
    "choix": [
-    "Elliot Anderson",
-    "Rodrigo Muniz",
-    "Sander Berge",
-    "Oscar Bobb"
-   ],
-   "bonne": 0,
-   "explication": "Selon BBC Sport, Elliot Anderson a signé une volée superbe en seconde période qui a permis à City de prendre un point.",
-   "source": {
-    "titre": "Manchester City - Fulham : Anderson sauve un point d'une volée somptueuse",
-    "id": "rss-v2-6416367cb398b3c9282b28"
-   }
-  },
-  {
-   "q": "Quel est le montant estimé du transfert de Yan Diomandé au Real Madrid, hors bonus ?",
-   "choix": [
-    "20 millions d'euros",
-    "39 millions d'euros",
-    "86 millions d'euros",
-    "125 millions d'euros"
-   ],
-   "bonne": 3,
-   "explication": "Selon RMC Sport, il aurait rejoint le Real Madrid pour un montant estimé à 125 millions d'euros hors bonus.",
-   "source": {
-    "titre": "Yan Diomandé, de Leganés au Real Madrid en moins de deux ans selon RMC Sport",
-    "id": "rss-v2-a0ca045d03ae44004aae84"
-   }
-  },
-  {
-   "q": "Quel est le nouveau nom de l'entraîneur de Cestas qui remplace Vincent Bourhis ?",
-   "choix": [
-    "Philippe Ollier",
-    "Arnaud Cormier",
-    "Valérien Ismaël",
-    "Franck Haise"
-   ],
-   "bonne": 0,
-   "explication": "Selon Foot National, les Girondins ont officialisé l'arrivée de Philippe Ollier, 53 ans, pour remplacer Vincent Bourhis.",
-   "source": {
-    "titre": "National 2 : Cestas change d'entraîneur, Philippe Ollier remplace Vincent Bourhis",
-    "id": "rss-v2-f719ccaae464a7f5634b47"
-   }
-  },
-  {
-   "q": "Combien de matchs toutes compétitions confondues Folarin Balogun a-t-il disputés cette saison à Monaco ?",
-   "choix": [
-    "3 matchs",
-    "7 matchs",
-    "10 matchs",
-    "14 matchs"
+    "Trois buts",
+    "Quatre buts",
+    "Deux buts",
+    "Cinq buts"
    ],
    "bonne": 1,
-   "explication": "Selon Foot Mercato, Balogun n'a disputé que 7 matchs toutes compétitions confondues, avec un but.",
+   "explication": "La brève indique qu'il y a eu quatre buts en 18 minutes, avec la réalisation de Kolo Muani à la 71e minute.",
    "source": {
-    "titre": "AS Monaco : Filipe Luis répond aux propos de Folarin Balogun",
-    "id": "rss-v2-cb9039c35ef403ffa6582e"
+    "titre": "Serie A : la Juventus écrase Venise 4-0, Kolo Muani buteur sur penalty",
+    "id": "rss-v2-a1388d11223cf8088d42d7"
    }
   },
   {
-   "q": "Quel est le nombre de victoires consécutives toutes compétitions confondues du PSG avant le match à Nice ?",
+   "q": "Quel est le score de la victoire du PSG à Nice dans la brève sur Ligue1+ ?",
    "choix": [
-    "5 victoires",
-    "8 victoires",
-    "11 victoires",
-    "15 victoires"
+    "2-0",
+    "1-0",
+    "2-3",
+    "3-1"
    ],
    "bonne": 2,
-   "explication": "Selon RMC Sport, le PSG affiche une série de 11 victoires consécutives toutes compétitions confondues.",
+   "explication": "La brève indique que la rencontre entre Nice et le PSG a été remportée 2-3 par le PSG.",
    "source": {
-    "titre": "Nice-PSG : Marquinhos et Dembélé de retour dans le groupe parisien",
-    "id": "rss-v2-76a6cdc6652c7a080e02dd"
+    "titre": "Ligue1+ : une caméra dans le vestiaire niçois jugée peu convaincante",
+    "id": "rss-v2-2f2cc5c4ea22fb0c6f19fa"
+   }
+  },
+  {
+   "q": "Quel est le score de la défaite de Watford à Bramall Lane, qui a précédé le limogeage d'Alessio Dionisi ?",
+   "choix": [
+    "2-0",
+    "1-4",
+    "4-0",
+    "0-4"
+   ],
+   "bonne": 2,
+   "explication": "La brève indique que Watford a subi une lourde défaite 4-0 à Bramall Lane face à Sheffield United.",
+   "source": {
+    "titre": "Watford limoge Alessio Dionisi après 18 matches",
+    "id": "rss-v2-ace4e55a54c96c6baafe99"
    }
   }
  ]
