@@ -213,3 +213,6 @@ La conclusion précédente sur un Instagram VM Univers inactif était donc trop 
 - Le rapport était strictement en lecture seule : **zéro publication et zéro suppression**.
 
 L'issue #258 a été corrigée pour suivre la synchronisation du registre public, et non une prétendue inactivité du compte Instagram.
+
+
+Le workflow `.github/workflows/liens-actus-meta.yml` prévoit un lancement toutes les 30 minutes (`12,42 * * * *`) et doit actualiser `assets/reseaux-publications.json`. Aucun run de ce workflow n'a été retrouvé dans la fenêtre d'exécutions du 22 novembre consultée, alors que le relevé Meta en lecture seule a bien fonctionné. Il faut vérifier son état dans GitHub Actions (activé/désactivé) ; la correction de code seule ne suffira pas si le workflow est désactivé.
