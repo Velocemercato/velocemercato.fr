@@ -171,3 +171,15 @@ Le flux `multisport/actualites.json` consulté le 23 novembre contient 54 articl
 Aucun contenu Foot n'est présent dans ces catégories. Les articles observés comportent une source et une URL, avec des dates récentes au 22 novembre. Le workflow de mise à jour des liens multisport a terminé avec succès le 22 novembre.
 
 **Conclusion :** la séparation Foot / Multisport est visible dans les données du dépôt et fonctionne dans le flux consulté. Les disciplines sans article ne doivent pas être remplies artificiellement : il faut attendre une actualité valable ou améliorer la couverture des sources.
+
+
+## 14. Contrôle complet du sitemap — 23 novembre 2026
+
+Le sitemap consulté contient maintenant **1 711 URL uniques**, sans doublon et sans hôte extérieur à `velocemercato.fr` :
+- 1 666 pages d'articles `/a/rss-v2-…`.
+- 45 autres pages et rubriques.
+- 1 673 URL comportent une date `lastmod`, entre le 15 octobre et le 22 novembre 2026 ; 38 n'en ont pas.
+
+Un échantillon complémentaire de rubriques (Foot, Multisport, Actus, Belfort, Gaming, Mangas, Foot amateur, Région, Pronos, Emploi, Publicité, VM Pro, Radio et VM Studio) possède des titres et canonicals cohérents.
+
+**Anomalie corrigée en proposition :** `/scores/` figure dans le sitemap mais ne déclarait ni canonical ni balises Open Graph/Twitter. La correction est isolée dans la PR #260, sans changement de fonctionnement des scores.
