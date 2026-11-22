@@ -1,4 +1,5 @@
 name: VM - Bilan éditorial du 21 novembre
+# Les tentatives déjà enregistrées sont vérifiées en lecture avant tout nouvel envoi.
 on:
   push:
     branches: [main]

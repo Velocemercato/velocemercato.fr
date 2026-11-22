@@ -49,11 +49,32 @@ def envoyer_instagram(graph, meta, caption):
     return send_instagram(graph, meta, IMAGE)
 
 
+def confirmer_instagram_en_attente(state, graph, account, receipt):
+    meta = state.data.get("tokens", {}).get(account) or {}
+    identity(graph, meta, account, "instagram")
+    data = graph.call("GET", str(meta["ig_id"]) + "/media",
+                      {"fields": "id,caption,timestamp", "limit": 25, "access_token": meta["page_token"]}).get("data")
+    if not isinstance(data, list):
+        raise DeliveryError("Historique Instagram non vérifiable.")
+    messages = [p for p in data if normal(TITLE) in normal(p.get("caption") or "")
+                and "20,25" in (p.get("caption") or "")]
+    if len(messages) != 1 or not str(messages[0].get("id") or "").isdigit():
+        return receipt
+    ident = str(messages[0]["id"])
+    url = confirm(graph, meta, "instagram", ident)
+    receipt.update(status="publie_confirme", id=ident, url=url)
+    state.save()
+    return receipt
+
+
 def publier(state, graph, account, network):
     key = "editorial/" + network + "/bilan/2026-11-21"
     done = ledger(state, account)
     if key in done:
-        return done[key]
+        receipt = done[key]
+        if network == "instagram" and receipt.get("status") in ("envoi", "envoye_a_verifier", "a_verifier_sans_renvoi"):
+            return confirmer_instagram_en_attente(state, graph, account, receipt)
+        return receipt
     meta = state.data.get("tokens", {}).get(account) or {}
     who = identity(graph, meta, account, network)
     if any(normal(TITLE) in item for item in current_posts(graph, meta, network)):
