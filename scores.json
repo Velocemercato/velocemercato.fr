@@ -677,6 +677,19 @@
    ]
   },
   {
+   "id": 565860,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "Elversberg",
+   "ext": "Freiburg",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    1
+   ]
+  },
+  {
    "id": 565862,
    "date": "2026-11-21T14:30:00Z",
    "comp": "Bundesliga",
@@ -700,19 +713,6 @@
    "score": [
     4,
     0
-   ]
-  },
-  {
-   "id": 565860,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
-   "sport": "foot",
-   "dom": "Elversberg",
-   "ext": "Freiburg",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    1
    ]
   },
   {
@@ -742,19 +742,6 @@
    ]
   },
   {
-   "id": 560650,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Coventry City",
-   "ext": "Crystal Palace",
-   "statut": "FINISHED",
-   "score": [
-    3,
-    2
-   ]
-  },
-  {
    "id": 560647,
    "date": "2026-11-21T15:00:00Z",
    "comp": "Premier League",
@@ -768,16 +755,16 @@
    ]
   },
   {
-   "id": 560644,
+   "id": 560650,
    "date": "2026-11-21T15:00:00Z",
    "comp": "Premier League",
    "sport": "foot",
-   "dom": "Aston Villa",
-   "ext": "Sunderland",
+   "dom": "Coventry City",
+   "ext": "Crystal Palace",
    "statut": "FINISHED",
    "score": [
-    0,
-    0
+    3,
+    2
    ]
   },
   {
@@ -803,6 +790,19 @@
    "statut": "FINISHED",
    "score": [
     2,
+    0
+   ]
+  },
+  {
+   "id": 560644,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Aston Villa",
+   "ext": "Sunderland",
+   "statut": "FINISHED",
+   "score": [
+    0,
     0
    ]
   },
@@ -937,19 +937,6 @@
    ]
   },
   {
-   "id": 559621,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "Monaco",
-   "ext": "Auxerre",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    1
-   ]
-  },
-  {
    "id": 559624,
    "date": "2026-11-21T19:45:00Z",
    "comp": "Ligue 1",
@@ -959,6 +946,19 @@
    "statut": "FINISHED",
    "score": [
     0,
+    1
+   ]
+  },
+  {
+   "id": 559621,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Monaco",
+   "ext": "Auxerre",
+   "statut": "FINISHED",
+   "score": [
+    1,
     1
    ]
   },
@@ -1275,12 +1275,12 @@
    ]
   },
   {
-   "id": 558524,
+   "id": 558522,
    "date": "2026-11-22T14:00:00Z",
    "comp": "Serie A",
    "sport": "foot",
-   "dom": "Sassuolo",
-   "ext": "Genoa",
+   "dom": "Bologna",
+   "ext": "Udinese",
    "statut": "TIMED",
    "score": [
     null,
@@ -1288,12 +1288,12 @@
    ]
   },
   {
-   "id": 558522,
+   "id": 558524,
    "date": "2026-11-22T14:00:00Z",
    "comp": "Serie A",
    "sport": "foot",
-   "dom": "Bologna",
-   "ext": "Udinese",
+   "dom": "Sassuolo",
+   "ext": "Genoa",
    "statut": "TIMED",
    "score": [
     null,
@@ -1964,6 +1964,6 @@
    ]
   }
  ],
- "maj": "2026-11-22T10:25:11Z",
- "verifie": "2026-11-22T10:25:11Z"
+ "maj": "2026-11-22T10:33:02Z",
+ "verifie": "2026-11-22T10:33:02Z"
 }
