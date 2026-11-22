@@ -177,3 +177,15 @@ Dans cette branche, `tools/editorial_vm.py` reçoit un contrôle complémentaire
 - le filtrage reste limité aux deux Pages Facebook. Les Instagram gardent leur propre historique et le compte VM Univers continue à publier uniquement les projets.
 
 Deux tests couvrent l'historique du jour et la propagation d'un envoi incertain entre les Pages. Aucun ancien post n'est supprimé ou modifié. Ce correctif reste dans la PR #256 ; il ne prendra effet qu'après réconciliation, tests et fusion.
+
+
+## État réel des comptes — relevé Meta du 22 novembre 2026
+
+Le registre chiffré des accusés, consulté en lecture seule, contient des permaliens confirmés sur les **cinq destinations** le 22 novembre :
+- Facebook Véloce Mercato : dernier post confirmé observé à 20 h 00, heure de Paris ;
+- Instagram @veloce.mercato : 20 h 00 ;
+- Facebook VM Actus & Pronos : 20 h 00 ;
+- Facebook VM Univers : 17 h 31 ;
+- Instagram @vmunivers.fr : 16 h 31.
+
+Ce relevé confirme que les cinq comptes sont effectivement actifs dans le circuit Meta. Il ne prouve pas que chaque créneau de chaque jour a été exécuté ni que les publications ont toutes été visibles à un visiteur déconnecté. Les heures sont celles des derniers permaliens confirmés trouvés dans le registre, pas des statistiques d'audience.
