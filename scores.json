@@ -651,19 +651,6 @@
    ]
   },
   {
-   "id": 558528,
-   "date": "2026-11-21T14:00:00Z",
-   "comp": "Serie A",
-   "sport": "foot",
-   "dom": "Lazio",
-   "ext": "Lecce",
-   "statut": "FINISHED",
-   "score": [
-    3,
-    0
-   ]
-  },
-  {
    "id": 558525,
    "date": "2026-11-21T14:00:00Z",
    "comp": "Serie A",
@@ -677,29 +664,16 @@
    ]
   },
   {
-   "id": 565865,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
+   "id": 558528,
+   "date": "2026-11-21T14:00:00Z",
+   "comp": "Serie A",
    "sport": "foot",
-   "dom": "Frankfurt",
-   "ext": "Hoffenheim",
+   "dom": "Lazio",
+   "ext": "Lecce",
    "statut": "FINISHED",
    "score": [
-    1,
+    3,
     0
-   ]
-  },
-  {
-   "id": 565858,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
-   "sport": "foot",
-   "dom": "Union Berlin",
-   "ext": "RB Leipzig",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    5
    ]
   },
   {
@@ -742,6 +716,71 @@
    ]
   },
   {
+   "id": 565858,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "Union Berlin",
+   "ext": "RB Leipzig",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    5
+   ]
+  },
+  {
+   "id": 565865,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "Frankfurt",
+   "ext": "Hoffenheim",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    0
+   ]
+  },
+  {
+   "id": 560647,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Bournemouth",
+   "ext": "Nottingham",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    0
+   ]
+  },
+  {
+   "id": 560650,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Coventry City",
+   "ext": "Crystal Palace",
+   "statut": "FINISHED",
+   "score": [
+    3,
+    2
+   ]
+  },
+  {
+   "id": 560642,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Chelsea",
+   "ext": "Leeds United",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    4
+   ]
+  },
+  {
    "id": 560648,
    "date": "2026-11-21T15:00:00Z",
    "comp": "Premier League",
@@ -764,45 +803,6 @@
    "statut": "FINISHED",
    "score": [
     0,
-    0
-   ]
-  },
-  {
-   "id": 560642,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Chelsea",
-   "ext": "Leeds United",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    4
-   ]
-  },
-  {
-   "id": 560650,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Coventry City",
-   "ext": "Crystal Palace",
-   "statut": "FINISHED",
-   "score": [
-    3,
-    2
-   ]
-  },
-  {
-   "id": 560647,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Bournemouth",
-   "ext": "Nottingham",
-   "statut": "FINISHED",
-   "score": [
-    2,
     0
    ]
   },
@@ -911,32 +911,6 @@
    ]
   },
   {
-   "id": 559621,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "Monaco",
-   "ext": "Auxerre",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    1
-   ]
-  },
-  {
-   "id": 559624,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "Lille",
-   "ext": "Olympique Lyon",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    1
-   ]
-  },
-  {
    "id": 559627,
    "date": "2026-11-21T19:45:00Z",
    "comp": "Ligue 1",
@@ -959,6 +933,32 @@
    "statut": "FINISHED",
    "score": [
     1,
+    1
+   ]
+  },
+  {
+   "id": 559621,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Monaco",
+   "ext": "Auxerre",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    1
+   ]
+  },
+  {
+   "id": 559624,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Lille",
+   "ext": "Olympique Lyon",
+   "statut": "FINISHED",
+   "score": [
+    0,
     1
    ]
   },
@@ -1063,7 +1063,7 @@
    "statut": "IN_PLAY",
    "score": [
     3,
-    3
+    4
    ]
   },
   {
@@ -1102,7 +1102,7 @@
    "statut": "IN_PLAY",
    "score": [
     8,
-    5
+    6
    ]
   },
   {
@@ -1128,7 +1128,7 @@
    "statut": "IN_PLAY",
    "score": [
     94,
-    84
+    86
    ]
   },
   {
@@ -1140,8 +1140,8 @@
    "ext": "Clippers",
    "statut": "IN_PLAY",
    "score": [
-    58,
-    49
+    60,
+    57
    ]
   },
   {
@@ -1166,8 +1166,8 @@
    "ext": "Pelicans",
    "statut": "IN_PLAY",
    "score": [
-    69,
-    48
+    72,
+    52
    ]
   },
   {
@@ -1275,12 +1275,12 @@
    ]
   },
   {
-   "id": 558524,
+   "id": 558522,
    "date": "2026-11-22T14:00:00Z",
    "comp": "Serie A",
    "sport": "foot",
-   "dom": "Sassuolo",
-   "ext": "Genoa",
+   "dom": "Bologna",
+   "ext": "Udinese",
    "statut": "TIMED",
    "score": [
     null,
@@ -1288,12 +1288,12 @@
    ]
   },
   {
-   "id": 558522,
+   "id": 558524,
    "date": "2026-11-22T14:00:00Z",
    "comp": "Serie A",
    "sport": "foot",
-   "dom": "Bologna",
-   "ext": "Udinese",
+   "dom": "Sassuolo",
+   "ext": "Genoa",
    "statut": "TIMED",
    "score": [
     null,
@@ -1964,6 +1964,6 @@
    ]
   }
  ],
- "maj": "2026-11-22T02:35:03Z",
- "verifie": "2026-11-22T02:35:03Z"
+ "maj": "2026-11-22T02:39:00Z",
+ "verifie": "2026-11-22T02:39:00Z"
 }
