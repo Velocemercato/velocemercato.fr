@@ -56,9 +56,65 @@ def recents(state, account, network):
                    "date": date_receipt(raw), "rubrique": rubrique}
 
 
+def date_graph(value):
+    try:
+        stamp = dt.datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+        return stamp if stamp.tzinfo else dt.datetime.min.replace(tzinfo=dt.timezone.utc)
+    except (ValueError, TypeError):
+        return dt.datetime.min.replace(tzinfo=dt.timezone.utc)
+
+
+def derniere_publication_graph(state, graph, account, network):
+    """Lit le dernier post réellement publié sur Meta, même s'il vient d'un ancien circuit."""
+    meta = state.data.get("tokens", {}).get(account) or {}
+    who = identity(graph, meta, account, network)
+    token = meta["page_token"]
+    if network == "facebook":
+        response = graph.call("GET", who["id"] + "/published_posts", {
+            "fields": "id,created_time,from{id},permalink_url",
+            "limit": 20, "access_token": token,
+        })
+        rows = response.get("data")
+        date_field = "created_time"
+    else:
+        response = graph.call("GET", who["id"] + "/media", {
+            "fields": "id,timestamp,permalink,media_type",
+            "limit": 20, "access_token": token,
+        })
+        rows = response.get("data")
+        date_field = "timestamp"
+    if not isinstance(rows, list):
+        raise DeliveryError("Historique Meta incomplet : aucun remplacement du lien actuel.")
+    known = {row["id"]: row["rubrique"] for row in recents(state, account, network)}
+    ordered = sorted(rows, key=lambda row: date_graph(row.get(date_field)), reverse=True)
+    for item in ordered:
+        stamp = date_graph(item.get(date_field))
+        ident = str(item.get("id") or "")
+        if stamp == dt.datetime.min.replace(tzinfo=dt.timezone.utc):
+            continue
+        if network == "facebook" and not re.fullmatch(re.escape(who["id"]) + r"_[0-9]+", ident):
+            continue
+        if network == "instagram" and not ident.isdecimal():
+            continue
+        try:
+            url = confirm(graph, meta, network, ident)
+        except DeliveryError:
+            continue
+        if publication(url, network):
+            return {"url": url, "date": stamp.isoformat(),
+                    "rubrique": known.get(ident, "meta")}
+    return None
+
+
 def derniere_publication(state, graph, account, network):
     meta = state.data.get("tokens", {}).get(account) or {}
-    identity(graph, meta, account, network)
+    graph_error = None
+    try:
+        latest = derniere_publication_graph(state, graph, account, network)
+        if latest:
+            return latest
+    except DeliveryError as error:
+        graph_error = error
     for entree in sorted(recents(state, account, network), key=lambda row: row["date"], reverse=True)[:6]:
         if not entree["id"]:
             continue
@@ -68,6 +124,8 @@ def derniere_publication(state, graph, account, network):
             continue
         if publication(url, network):
             return {"url": url, "date": entree["date"].isoformat(), "rubrique": entree["rubrique"]}
+    if graph_error:
+        raise graph_error
     return None
 
 
