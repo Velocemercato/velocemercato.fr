@@ -86,3 +86,19 @@ Aucune publication planifiée n'a été retournée pour cette marque entre le 22
 Les métriques disponibles sont partielles et hétérogènes selon les réseaux. Elles ne doivent pas être additionnées entre plateformes ni présentées comme audience globale. Les valeurs brutes ne sont pas utilisées comme preuve d'audience commerciale.
 
 **Action recommandée :** créer ou sélectionner des marques Metricool distinctes pour VM Univers et Véloce Mercato, rattacher chaque réseau au bon projet, vérifier les permissions, puis établir un tableau de bord séparé. Avant toute programmation, confirmer les contenus, les médias et le calendrier éditorial. Aucune publication n'a été créée ou envoyée pendant cet audit.
+
+
+## 9. Contrôle approfondi des articles — dépôt consulté le 23 novembre 2026
+
+- `articles.json` contient 50 brèves au moment du contrôle.
+- Les dates `publishedAt` vont du 22 novembre 2026 à 05:12 UTC au 22 novembre 2026 à 22:04 UTC : le lot présent dans le dépôt est donc récent à cet instant.
+- Répartition des sources dans ce lot : Foot Mercato 20, BBC Sport 13, Foot01 6, RMC Sport 5, Foot National 4, Foot Amateur 2.
+- Huit pages d'articles ont été contrôlées par échantillonnage. Elles disposent d'un titre, d'une description, d'un canonical propre, d'un H1 et d'une attribution de source. Le volume extrait se situe autour de 277 à 332 mots selon la page.
+- Aucun titre strictement identique n'a été détecté parmi les 50 articles. Deux articles autour du même match Inter–Atalanta ont toutefois des angles distincts (résultat du match et triplé de Pio Esposito) : cela mérite une vigilance éditoriale pour éviter les pages trop proches, sans suppression automatique.
+- Les pages indiquent explicitement qu'une brève a été rédigée avec l'aide d'une IA à partir de la source citée. C'est une bonne pratique de transparence, mais la qualité et la valeur ajoutée doivent rester prioritaires.
+
+### Diagnostic
+La fraîcheur des 50 brèves est satisfaisante dans le dépôt consulté. Le risque principal n'est donc pas un manque de fréquence de publication : c'est de s'assurer que chaque brève apporte un angle propre, vérifiable et utile, et que le volume du sitemap (1 709 URL) reste proportionné à la qualité des pages réellement indexables.
+
+### Vérification technique complémentaire
+Le workflow reconstruit les pages d'articles et le sitemap après la collecte. La collecte conserve des identifiants basés sur l'URL source, élimine les URL déjà publiées et utilise une comparaison de titres pour limiter les sujets similaires. Cette protection existe déjà dans le code : ne pas réécrire une seconde déduplication sans tests ciblés.
