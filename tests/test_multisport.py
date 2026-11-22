@@ -33,7 +33,8 @@ for sport in sports:
  assert f"{sport}:" in js or f"{sport}:" in js
 assert 'textContent' in js
 assert "/multisport/actualites.json" in js
-assert "/fil.json" in js
+assert "/studio/diffusions.json" in js
+assert "/fil.json" not in js  # Le flux multisport ne mélange pas le fil football général.
 assert "status==='published'" in js
 assert '7*86400000' in js
 data=json.loads(read("multisport/actualites.json"))
