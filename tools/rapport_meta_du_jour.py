@@ -212,6 +212,19 @@ def editorial_slots(state_data, account, network, now):
     return " · ".join(observed)
 
 
+def summary_rows(state_data, observations, local):
+    for account, network in SCHEDULE:
+        label = "Facebook" if network == "facebook" else "Instagram"
+        observed = observations.get((account, network), {})
+        followers = observed.get("followers", "—")
+        posts = observed.get("posts")
+        count = len(posts) if posts is not None else "indisponible"
+        last = max(posts, default=None) if posts is not None else None
+        link = f"[{last[0]:%H h %M}]({last[2]})" if last else "—"
+        slots = editorial_slots(state_data, account, network, local)
+        yield f"{label} · {PAGE_NAMES[account]}", followers, count, link, slots
+
+
 def format_summary(state_data, observations, now):
     local = now.astimezone(PARIS)
     lines = [
@@ -222,16 +235,8 @@ def format_summary(state_data, observations, now):
         "| Compte | Abonnés | Publications observées | Dernier lien Meta | Créneaux du programme éditorial |",
         "|---|---:|---:|---|---|",
     ]
-    for account, network in SCHEDULE:
-        label = "Facebook" if network == "facebook" else "Instagram"
-        observed = observations.get((account, network), {})
-        followers = observed.get("followers", "—")
-        posts = observed.get("posts")
-        count = len(posts) if posts is not None else "indisponible"
-        last = max(posts, default=None) if posts is not None else None
-        link = f"[{last[0]:%H h %M}]({last[2]})" if last else "—"
-        slots = editorial_slots(state_data, account, network, local)
-        lines.append(f"| {label} · {PAGE_NAMES[account]} | {followers} | {count} | {link} | {slots} |")
+    for name, followers, count, link, slots in summary_rows(state_data, observations, local):
+        lines.append(f"| {name} | {followers} | {count} | {link} | {slots} |")
     lines += ["", "Les publications observées incluent aussi les sorties manuelles et les autres programmes.",
               "Un créneau sans confirmation peut manquer de contenu inédit ou avoir rencontré un blocage. "
               "Les liens attestent une réponse de Meta. La portée et les clics se consultent dans les statistiques des comptes.", ""]
@@ -289,9 +294,12 @@ def main():
                       "), ne pas déclarer de publication confirmée")
     print("::notice::AUDIT TERMINE, liens confirmés observés=" + str(count) +
           ", ZERO suppression, ZERO diffusion.")
+    now = dt.datetime.now(PARIS)
+    for name, followers, count, _, slots in summary_rows(state.data, observations, now):
+        print(f"::notice title=Suivi VM::{name} · abonnés {followers} · publications {count} · {slots}")
     if summary := os.getenv("GITHUB_STEP_SUMMARY"):
         with Path(summary).open("a", encoding="utf-8") as handle:
-            handle.write(format_summary(state.data, observations, dt.datetime.now(dt.timezone.utc)))
+            handle.write(format_summary(state.data, observations, now))
 
 
 if __name__ == "__main__":
