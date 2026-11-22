@@ -198,3 +198,18 @@ Les exécutions GitHub Actions consultées sur la période du 22 novembre au dé
 - RQ Pronos — publications après test confirmé : 16.
 
 Les événements mélangent des déclenchements planifiés, manuels et déclenchés par d'autres workflows. Une conclusion GitHub `success` prouve que le workflow s'est terminé sans erreur bloquante, pas qu'un post a été publié sur chaque compte ni qu'une vidéo a été vue. Les accusés publics restent la preuve de publication.
+
+
+## 16. Correction — rapport Meta en lecture seule du 22 novembre
+
+Un contrôle Graph Meta en lecture seule a ensuite retrouvé **24 liens de publications confirmés** sur les cinq destinations. Les identités des trois Pages Facebook et des deux comptes Instagram sont confirmées. Le compte Instagram VM Univers a bien deux publications récentes dans les données Meta, dont un Reel du 22 novembre.
+
+La conclusion précédente sur un Instagram VM Univers inactif était donc trop forte : le 11 novembre était la date du dernier lien dans `assets/reseaux-publications.json`, et non la dernière publication réelle sur Meta.
+
+### Diagnostic corrigé
+- Les cinq comptes sont connectés et des publications réelles sont confirmées.
+- Le registre public `assets/reseaux-publications.json` est en retard sur Meta et doit être resynchronisé à partir des permaliens réellement confirmés.
+- Les créneaux éditoriaux VM Univers attendus (Facebook 08 h / 12 h / 18 h et Instagram 18 h) ne sont pas confirmés dans le bilan, même si des publications existent à d'autres heures. Il faut comprendre le décalage des créneaux sans déclencher de doublons.
+- Le rapport était strictement en lecture seule : **zéro publication et zéro suppression**.
+
+L'issue #258 a été corrigée pour suivre la synchronisation du registre public, et non une prétendue inactivité du compte Instagram.
