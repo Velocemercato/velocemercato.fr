@@ -677,6 +677,19 @@
    ]
   },
   {
+   "id": 565860,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "Elversberg",
+   "ext": "Freiburg",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    1
+   ]
+  },
+  {
    "id": 565862,
    "date": "2026-11-21T14:30:00Z",
    "comp": "Bundesliga",
@@ -700,19 +713,6 @@
    "score": [
     4,
     0
-   ]
-  },
-  {
-   "id": 565860,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
-   "sport": "foot",
-   "dom": "Elversberg",
-   "ext": "Freiburg",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    1
    ]
   },
   {
@@ -742,19 +742,6 @@
    ]
   },
   {
-   "id": 560650,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Coventry City",
-   "ext": "Crystal Palace",
-   "statut": "FINISHED",
-   "score": [
-    3,
-    2
-   ]
-  },
-  {
    "id": 560647,
    "date": "2026-11-21T15:00:00Z",
    "comp": "Premier League",
@@ -768,16 +755,16 @@
    ]
   },
   {
-   "id": 560644,
+   "id": 560650,
    "date": "2026-11-21T15:00:00Z",
    "comp": "Premier League",
    "sport": "foot",
-   "dom": "Aston Villa",
-   "ext": "Sunderland",
+   "dom": "Coventry City",
+   "ext": "Crystal Palace",
    "statut": "FINISHED",
    "score": [
-    0,
-    0
+    3,
+    2
    ]
   },
   {
@@ -803,6 +790,19 @@
    "statut": "FINISHED",
    "score": [
     2,
+    0
+   ]
+  },
+  {
+   "id": 560644,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Aston Villa",
+   "ext": "Sunderland",
+   "statut": "FINISHED",
+   "score": [
+    0,
     0
    ]
   },
@@ -1346,9 +1346,9 @@
    "sport": "foot",
    "dom": "Bremen",
    "ext": "HSV",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    3,
+    4,
     0
    ]
   },
@@ -1359,7 +1359,7 @@
    "sport": "foot",
    "dom": "Liverpool",
    "ext": "Man United",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     4,
     0
@@ -1372,9 +1372,9 @@
    "sport": "foot",
    "dom": "Milan",
    "ext": "Frosinone",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    3,
+    5,
     1
    ]
   },
@@ -1385,7 +1385,7 @@
    "sport": "foot",
    "dom": "Osasuna",
    "ext": "Málaga",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     1,
     0
@@ -1398,10 +1398,10 @@
    "sport": "hockey",
    "dom": "Rangers",
    "ext": "Hurricanes",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    1,
-    1
+    2,
+    5
    ]
   },
   {
@@ -1411,10 +1411,10 @@
    "sport": "nfl",
    "dom": "Bills",
    "ext": "Dolphins",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    3,
-    0
+    26,
+    9
    ]
   },
   {
@@ -1424,10 +1424,10 @@
    "sport": "nfl",
    "dom": "Bears",
    "ext": "Saints",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    3,
-    0
+    21,
+    13
    ]
   },
   {
@@ -1437,10 +1437,10 @@
    "sport": "nfl",
    "dom": "Cowboys",
    "ext": "Titans",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    6,
-    0
+    51,
+    30
    ]
   },
   {
@@ -1450,10 +1450,10 @@
    "sport": "nfl",
    "dom": "Lions",
    "ext": "Buccaneers",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    0,
-    0
+    31,
+    21
    ]
   },
   {
@@ -1463,10 +1463,10 @@
    "sport": "nfl",
    "dom": "Chiefs",
    "ext": "Cardinals",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    7,
-    0
+    34,
+    7
    ]
   },
   {
@@ -1476,10 +1476,10 @@
    "sport": "nfl",
    "dom": "Eagles",
    "ext": "Steelers",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    3,
-    0
+    19,
+    16
    ]
   },
   {
@@ -1489,10 +1489,10 @@
    "sport": "nfl",
    "dom": "Panthers",
    "ext": "Ravens",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    0,
-    9
+    35,
+    33
    ]
   },
   {
@@ -1502,10 +1502,10 @@
    "sport": "foot",
    "dom": "Marseille",
    "ext": "Le Mans",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    2,
+    3
    ]
   },
   {
@@ -1515,10 +1515,10 @@
    "sport": "foot",
    "dom": "Atalanta",
    "ext": "Inter",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    4,
+    4
    ]
   },
   {
@@ -1528,10 +1528,10 @@
    "sport": "foot",
    "dom": "Getafe",
    "ext": "Atleti",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    0,
+    3
    ]
   },
   {
@@ -1541,10 +1541,10 @@
    "sport": "basket",
    "dom": "Hawks",
    "ext": "Pistons",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    101,
+    92
    ]
   },
   {
@@ -1554,10 +1554,10 @@
    "sport": "nfl",
    "dom": "Chargers",
    "ext": "Jets",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    10,
+    17
    ]
   },
   {
@@ -1567,10 +1567,10 @@
    "sport": "nfl",
    "dom": "Broncos",
    "ext": "Raiders",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    17,
+    10
    ]
   },
   {
@@ -1580,10 +1580,10 @@
    "sport": "nfl",
    "dom": "Giants",
    "ext": "Jaguars",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    17,
+    6
    ]
   },
   {
@@ -1593,10 +1593,10 @@
    "sport": "hockey",
    "dom": "Lightning",
    "ext": "Sabres",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    1,
+    1
    ]
   },
   {
@@ -1964,6 +1964,6 @@
    ]
   }
  ],
- "maj": "2026-11-22T18:21:12Z",
- "verifie": "2026-11-22T18:21:12Z"
+ "maj": "2026-11-22T22:49:26Z",
+ "verifie": "2026-11-22T22:49:26Z"
 }
