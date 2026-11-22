@@ -202,5 +202,60 @@ class EditorialTests(unittest.TestCase):
             mod.ensure_meta_targets(state)
 
 
+    def test_facebook_pages_share_same_day_duplicate_guard(self):
+        state = State()
+        yesterday = NOW - dt.timedelta(days=1)
+        state.data['meta'] = {
+            'editorial/facebook/foot/recent': {
+                'status': 'publie_confirme', 'at': NOW.isoformat(),
+                'title': 'Une même brève publiée sur la page principale',
+            },
+            'editorial/facebook/actus/uncertain': {
+                'status': 'a_verifier_sans_renvoi', 'at': NOW.isoformat(),
+                'title': 'Une publication dont le retour Meta est incertain',
+            },
+            'editorial/facebook/foot/old': {
+                'status': 'publie_confirme', 'at': yesterday.isoformat(),
+                'title': 'Une ancienne brève',
+            },
+            'editorial/instagram/foot/ig': {
+                'status': 'publie_confirme', 'at': NOW.isoformat(),
+                'title': 'Une brève Instagram seulement',
+            },
+        }
+        seen = mod.recent_facebook_titles(state, NOW)
+        self.assertEqual(seen, {
+            mod.normal('Une même brève publiée sur la page principale'),
+            mod.normal('Une publication dont le retour Meta est incertain'),
+        })
+
+    def test_run_passes_recent_facebook_titles_to_other_page(self):
+        from unittest.mock import patch
+        state = State()
+        state.data['meta'] = {
+            'editorial/facebook/foot/old': {
+                'status': 'publie_confirme', 'at': NOW.isoformat(),
+                'title': 'Déjà publié sur Véloce Mercato',
+            },
+        }
+        received = {}
+
+        def fake_publish(state, graph, account, network, root=mod.ROOT, now=None,
+                         card=mod.instagram_card, project_card=mod.instagram_projet_card,
+                         seen_extra=None):
+            received[account + '/' + network] = set(seen_extra or ())
+            if account == 'meta' and network == 'facebook':
+                return {'status': 'publie', 'posts': [{'title': 'Nouvelle brève distincte'}]}
+            return {'status': 'aucun_contenu_inedit', 'posts': []}
+
+        with patch.object(mod, 'ensure_meta_targets'), patch.object(mod, 'publish_target', side_effect=fake_publish):
+            mod.run(state, object(), self.root, NOW)
+
+        seen_by_pronos = received['meta_pronos/facebook']
+        self.assertIn(mod.normal('Déjà publié sur Véloce Mercato'), seen_by_pronos)
+        self.assertIn(mod.normal('Nouvelle brève distincte'), seen_by_pronos)
+
+
+
 if __name__ == '__main__':
     unittest.main()
