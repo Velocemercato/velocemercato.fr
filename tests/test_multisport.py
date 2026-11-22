@@ -9,10 +9,16 @@ home=read("index.html")
 portal=read("multisport/index.html")
 js=read("multisport/univers.js")
 sports=("nba","nfl","f1","motogp","tennis","rugby","cyclisme","nhl","mlb","mma","ski")
-assert 'id="feed-title"' in home
-assert 'id="pastille-tv"' in home
-assert 'href="/multisport/"' in home
-assert 'href="/mangas/"' in home
+# Accueil actuel : scène interactive et dialogues de rubriques (pas l'ancien flux inline).
+assert 'data-rubrique="foot"' in home
+assert 'data-rubrique="multisport"' in home
+assert 'data-rubrique="pastille"' in home
+assert 'data-rubrique="manga"' in home
+assert 'id="rubrique-foot"' in home
+assert 'id="rubrique-multisport"' in home
+assert 'href="https://velocemercato.fr/multisport/"' in home
+assert 'href="https://velocemercato.fr/mangas/"' in home
+assert 'href="https://velocemercato.fr/studio.html#tv"' in home
 assert 'data-mode="portal"' in portal
 for sport in sports:
  assert f'data-sport="{sport}"' in portal, sport
