@@ -677,19 +677,6 @@
    ]
   },
   {
-   "id": 565862,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
-   "sport": "foot",
-   "dom": "M'gladbach",
-   "ext": "Dortmund",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    1
-   ]
-  },
-  {
    "id": 565857,
    "date": "2026-11-21T14:30:00Z",
    "comp": "Bundesliga",
@@ -709,6 +696,19 @@
    "sport": "foot",
    "dom": "Elversberg",
    "ext": "Freiburg",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": 565862,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "M'gladbach",
+   "ext": "Dortmund",
    "statut": "FINISHED",
    "score": [
     0,
@@ -911,19 +911,6 @@
    ]
   },
   {
-   "id": 559627,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "Strasbourg",
-   "ext": "Brest",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    1
-   ]
-  },
-  {
    "id": 559623,
    "date": "2026-11-21T19:45:00Z",
    "comp": "Ligue 1",
@@ -933,6 +920,19 @@
    "statut": "FINISHED",
    "score": [
     1,
+    1
+   ]
+  },
+  {
+   "id": 559627,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Strasbourg",
+   "ext": "Brest",
+   "statut": "FINISHED",
+   "score": [
+    0,
     1
    ]
   },
@@ -1333,7 +1333,7 @@
    "sport": "foot",
    "dom": "Lorient",
    "ext": "Stade Rennais",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     1,
     1
@@ -1374,7 +1374,7 @@
    "ext": "Frosinone",
    "statut": "IN_PLAY",
    "score": [
-    2,
+    3,
     1
    ]
   },
@@ -1439,7 +1439,7 @@
    "ext": "Titans",
    "statut": "IN_PLAY",
    "score": [
-    0,
+    6,
     0
    ]
   },
@@ -1492,7 +1492,7 @@
    "statut": "IN_PLAY",
    "score": [
     0,
-    2
+    9
    ]
   },
   {
@@ -1964,6 +1964,6 @@
    ]
   }
  ],
- "maj": "2026-11-22T18:13:17Z",
- "verifie": "2026-11-22T18:13:17Z"
+ "maj": "2026-11-22T18:17:14Z",
+ "verifie": "2026-11-22T18:17:14Z"
 }
