@@ -14,6 +14,9 @@ const storageKey = 'vm-studio-brouillon-v1';
 const history = [];
 const short = (value, length) => typeof value === 'string' ? value.slice(0, length) : '';
 const color = /^#[0-9a-f]{6}$/i;
+function safeURL(value) {
+  try { const u = new URL(value); return ['https:', 'mailto:', 'tel:'].includes(u.protocol) && !u.username && !u.password ? u.href : ''; } catch { return ''; }
+}
 const validPhoto = value => typeof value === 'string' && value.length < 850000 && /^data:image\/(?:jpeg|png|webp);base64,[a-z0-9+/]+=*$/i.test(value);
 const element = (tag, text, className) => {
   const node = document.createElement(tag);
@@ -28,6 +31,7 @@ function validate(raw) {
     name: short(raw.name, 80), tagline: short(raw.tagline, 150), notes: short(raw.notes, 1200),
     theme, type: raw.type === 'app' ? 'app' : 'site',
     accent: color.test(raw.accent) ? raw.accent : themeStyles[theme].accent,
+    button: short(raw.button, 60), link: safeURL(raw.link),
     photo: validPhoto(raw.photo) ? raw.photo : '',
     sections: Array.isArray(raw.sections) ? raw.sections.slice(0, 10).filter(Boolean).map(section =>
       ({ title: short(section.title, 80), text: short(section.text, 1600) })) : structuredClone(defaults.sections)
@@ -101,6 +105,12 @@ function preview() {
     const copy = element('div');
     copy.append(element('h3', draft.name || (draft.type === 'app' ? 'Votre application' : 'Votre activité')));
     if (draft.tagline) copy.append(element('p', draft.tagline));
+    if (draft.button) {
+      const call = element(draft.link ? 'a' : 'button', draft.button, 'primary');
+      if (draft.link) { call.href = draft.link; call.target = '_blank'; call.rel = 'noopener noreferrer'; }
+      else { call.type = 'button'; call.onclick = () => { activeSection = draft.sections.length - 1; preview(); }; }
+      copy.append(call);
+    }
     hero.append(copy);
     if (draft.photo) {
       const img = element('img');
@@ -162,6 +172,8 @@ function refresh(sync = true) {
     $('project-type').value = draft.type;
     $('tagline').value = draft.tagline;
     $('accent').value = draft.accent;
+    $('button-label').value = draft.button || '';
+    $('button-link').value = draft.link || '';
     sectionEditor();
   }
   document.querySelectorAll('[data-theme]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.theme === draft.theme)));
@@ -187,6 +199,8 @@ updateInput('project-name', 'name');
 updateInput('project-type', 'type');
 updateInput('tagline', 'tagline');
 updateInput('accent', 'accent');
+updateInput('button-label', 'button');
+updateInput('button-link', 'link', value => { draft.link = safeURL(value); });
 document.querySelectorAll('[data-theme]').forEach(button => {
   button.onclick = () => { remember(); chooseTheme(button.dataset.theme); refresh(); };
 });
@@ -298,14 +312,14 @@ function creationDocument() {
   const style = themeStyles[draft.theme];
   return { format: 'site', style: draft.theme === 'workshop' ? 'atelier' : draft.theme,
     theme: { c1: draft.accent, c2: draft.accent, fond: style.background, texte: style.ink },
-    blocs: [{ t: 'titre', titre: draft.name, sous: draft.tagline }, ...draft.sections.map(s => ({ t: 'texte', titre: s.title, texte: s.text }))] };
+    blocs: [{ t: 'titre', titre: draft.name, sous: draft.tagline, bouton: draft.button || '', lien: draft.link || '' }, ...draft.sections.map(s => ({ t: 'texte', titre: s.title, texte: s.text }))] };
 }
 function applyDocument(doc) {
   if (!doc || !Array.isArray(doc.blocs)) throw Error('Réponse incomplète');
   const hero = doc.blocs.find(b => b.t === 'titre');
   if (!hero) throw Error('En-tête absent');
   const themes = { atelier: 'workshop', contraste: 'manga', editorial: 'editorial', manga: 'manga', dimension: 'dimension' };
-  const next = validate({ ...draft, name: hero.titre, tagline: hero.sous, theme: themes[doc.style] || draft.theme,
+  const next = validate({ ...draft, name: hero.titre, tagline: hero.sous, button: hero.bouton, link: hero.lien, theme: themes[doc.style] || draft.theme,
     accent: doc.theme?.c1, sections: doc.blocs.filter(b => b.t !== 'titre').map(b => ({ title: b.titre || '',
       text: b.t === 'produits' ? (b.items || []).map(p => p.nom + (p.prix ? ' · ' + p.prix : '')).join('\n') : b.texte || '' })) });
   remember(); draft = next;
@@ -329,7 +343,8 @@ $('apply').onclick = async () => {
   } catch (error) {
     if (revision !== creationRevision) { status('Votre version a changé et reste conservée. Relancez la consigne.'); return; }
     remember(); const changes = apply(text); activeSection = -1; refresh();
-    status((error.name === 'AbortError' ? 'La création prend trop de temps.' : error.message) + (changes.length
+    const message = error.name === 'AbortError' ? 'La création prend trop de temps.' : /fetch|network|json|load/i.test(error.message) ? 'Le service de création est momentanément indisponible.' : error.message;
+    status(message + (changes.length
       ? ' Réglages simples appliqués : ' + changes.join(', ') + '. Votre consigne reste disponible.'
       : ' Votre brouillon et votre consigne sont conservés. Vous pouvez utiliser une maquette de départ.'));
   } finally { clearTimeout(timer); button.disabled = false; button.removeAttribute('aria-busy'); }

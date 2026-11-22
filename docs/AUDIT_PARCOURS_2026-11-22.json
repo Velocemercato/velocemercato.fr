@@ -1,0 +1,405 @@
+{
+  "checkedAt": "2026-11-22T20:49:03.321Z",
+  "scope": "Pages liées depuis les accueils ; contrôles HTTP et HTML. Ne certifie pas les paiements, notifications et services tiers.",
+  "results": [
+    {
+      "origin": "https://velocemercato.fr",
+      "checked": 29,
+      "rows": [
+        {
+          "url": "https://velocemercato.fr/",
+          "status": 200,
+          "final": "https://velocemercato.fr/",
+          "bytes": 174085,
+          "title": "Véloce Mercato — Actu foot, mercato et scores en direct",
+          "duplicateIds": [],
+          "missingAnchors": [
+            "feed-title",
+            "pastille-tv",
+            "agenda",
+            "quiz",
+            "flash-title",
+            "reseaux"
+          ],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/actus/",
+          "status": 200,
+          "final": "https://velocemercato.fr/actus/",
+          "bytes": 47325,
+          "title": "VM Actus du jour – L'essentiel de l'actualité, en bref",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/belfort/",
+          "status": 200,
+          "final": "https://velocemercato.fr/belfort/",
+          "bytes": 21251,
+          "title": "VM Belfort – l'actu de Belfort, Montbéliard et Haute-Saône",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/conseils/",
+          "status": 200,
+          "final": "https://velocemercato.fr/conseils/",
+          "bytes": 45617,
+          "title": "Conseils du jour — VÉLOCE TEAM",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/creer/",
+          "status": 200,
+          "final": "https://velocemercato.fr/creer/",
+          "bytes": 9080,
+          "title": "Créez votre projet · VM Studio",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/en/",
+          "status": 200,
+          "final": "https://velocemercato.fr/en/",
+          "bytes": 7391,
+          "title": "Véloce Mercato | French football, transfers and live scores",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/en/fc-sochaux-guide/",
+          "status": 200,
+          "final": "https://velocemercato.fr/en/fc-sochaux-guide/",
+          "bytes": 6865,
+          "title": "FC Sochaux-Montbéliard explained | Véloce Mercato",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/foot-amateur/",
+          "status": 200,
+          "final": "https://velocemercato.fr/foot-amateur/",
+          "bytes": 26537,
+          "title": "VM Foot amateur – N2, N3, Régional, District et Coupe de France près de chez toi | Véloce Mercato",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/foot/",
+          "status": 200,
+          "final": "https://velocemercato.fr/foot/",
+          "bytes": 158610,
+          "title": "Véloce Mercato – Toute l'actualité du football et du mercato",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/mangas/",
+          "status": 200,
+          "final": "https://velocemercato.fr/mangas/",
+          "bytes": 53364,
+          "title": "VM MANGAS — Les dessins animés cultes de notre enfance | Véloce Mercato",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/mangas/catalogue/",
+          "status": 200,
+          "final": "https://velocemercato.fr/mangas/catalogue/",
+          "bytes": 46672,
+          "title": "Catalogue VM Mangas — explorer les classiques",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/manifest.webmanifest",
+          "status": 200,
+          "final": "https://velocemercato.fr/manifest.webmanifest",
+          "bytes": 1545,
+          "title": "",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/multisport/",
+          "status": 200,
+          "final": "https://velocemercato.fr/multisport/",
+          "bytes": 16220,
+          "title": "VM Multisport : choisis ton sport | Véloce Mercato",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/notifications/",
+          "status": 200,
+          "final": "https://velocemercato.fr/notifications/",
+          "bytes": 8651,
+          "title": "Mes alertes — Foot, NBA, NFL, F1, MotoGP, gaming et mangas",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/pronos/",
+          "status": 200,
+          "final": "https://velocemercato.fr/pronos/",
+          "bytes": 22834,
+          "title": "VM Actus &amp; Pronos — Actualités et agenda sportif",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/region/",
+          "status": 200,
+          "final": "https://velocemercato.fr/region/",
+          "bytes": 8217,
+          "title": "VM Région — l'actu de ta région et de ta ville",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/reportages/loic-tanzi",
+          "status": 200,
+          "final": "https://velocemercato.fr/reportages/loic-tanzi",
+          "bytes": 11271,
+          "title": "Loïc Tanzi : du terrain aux plateaux télé | Grand reportage Véloce Mercato",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/reseaux/veloce-mercato/",
+          "status": 200,
+          "final": "https://velocemercato.fr/reseaux/veloce-mercato/",
+          "bytes": 5159,
+          "title": "Véloce Mercato · Dernières publications",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/reseaux/vm-actus-pronos/",
+          "status": 200,
+          "final": "https://velocemercato.fr/reseaux/vm-actus-pronos/",
+          "bytes": 5210,
+          "title": "VM Actus et Pronos · Dernières publications",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/reseaux/vm-univers/",
+          "status": 200,
+          "final": "https://velocemercato.fr/reseaux/vm-univers/",
+          "bytes": 3224,
+          "title": "VM Univers · Dernières publications",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/scores/",
+          "status": 200,
+          "final": "https://velocemercato.fr/scores/",
+          "bytes": 16350,
+          "title": "VM Scores · Foot en direct",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/series/",
+          "status": 200,
+          "final": "https://velocemercato.fr/series/",
+          "bytes": 26349,
+          "title": "VM Séries de mon enfance | Véloce Mercato",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/services/",
+          "status": 200,
+          "final": "https://velocemercato.fr/services/",
+          "bytes": 9093,
+          "title": "VM Services — les bonnes adresses près de chez toi",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/soutenir",
+          "status": 200,
+          "final": "https://velocemercato.fr/soutenir",
+          "bytes": 21521,
+          "title": "Soutenir Véloce Mercato – contributions et transparence",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/studio",
+          "status": 200,
+          "final": "https://velocemercato.fr/studio",
+          "bytes": 41600,
+          "title": "VM Studio – La BD et les chroniqueurs de Véloce Mercato",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/vm-gaming/",
+          "status": 200,
+          "final": "https://velocemercato.fr/vm-gaming/",
+          "bytes": 58040,
+          "title": "VM GAMING — Trouve des potes pour jouer",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/vm-musique/",
+          "status": 200,
+          "final": "https://velocemercato.fr/vm-musique/",
+          "bytes": 4809,
+          "title": "VM Musique · Écoute et découvertes",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/vm-radio/",
+          "status": 200,
+          "final": "https://velocemercato.fr/vm-radio/",
+          "bytes": 5075,
+          "title": "VM Radio · Directs multisports",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://velocemercato.fr/web-studio",
+          "status": 200,
+          "final": "https://velocemercato.fr/web-studio",
+          "bytes": 47450,
+          "title": "VM Studio · Sites internet, gérance, photo & vidéo pour les commerces",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        }
+      ]
+    },
+    {
+      "origin": "https://vmunivers.fr",
+      "checked": 9,
+      "rows": [
+        {
+          "url": "https://vmunivers.fr/",
+          "status": 200,
+          "final": "https://vmunivers.fr/",
+          "bytes": 74608,
+          "title": "VM Univers — projets, création de sites & communication",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://vmunivers.fr/?theme=quotidien",
+          "status": 200,
+          "final": "https://vmunivers.fr/?theme=quotidien",
+          "bytes": 74608,
+          "title": "VM Univers — projets, création de sites & communication",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://vmunivers.fr/connect/",
+          "status": 200,
+          "final": "https://vmunivers.fr/connect/",
+          "bytes": 10746,
+          "title": "VM Connect — le local, les liens, les projets",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://vmunivers.fr/decouvrir",
+          "status": 200,
+          "final": "https://vmunivers.fr/decouvrir",
+          "bytes": 11539,
+          "title": "Les projets en images — VM Univers",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://vmunivers.fr/en/",
+          "status": 200,
+          "final": "https://vmunivers.fr/en/",
+          "bytes": 6237,
+          "title": "VM Univers | Independent media, websites and digital tools",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://vmunivers.fr/kit-du-jour",
+          "status": 200,
+          "final": "https://vmunivers.fr/kit-du-jour",
+          "bytes": 7234,
+          "title": "Kit réseaux du jour · VM",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://vmunivers.fr/manifest.webmanifest",
+          "status": 200,
+          "final": "https://vmunivers.fr/manifest.webmanifest",
+          "bytes": 663,
+          "title": "",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://vmunivers.fr/meteo/",
+          "status": 200,
+          "final": "https://vmunivers.fr/meteo/",
+          "bytes": 9099,
+          "title": "VM Météo &amp; Découverte — météo France, Europe, monde et lieux à visiter",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        },
+        {
+          "url": "https://vmunivers.fr/professionnels/",
+          "status": 200,
+          "final": "https://vmunivers.fr/professionnels/",
+          "bytes": 18912,
+          "title": "Sites internet, cartes de visite & publicité — VM Univers",
+          "duplicateIds": [],
+          "missingAnchors": [],
+          "imagesWithoutAlt": 0
+        }
+      ]
+    }
+  ]
+}

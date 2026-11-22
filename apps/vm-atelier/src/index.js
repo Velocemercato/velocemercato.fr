@@ -65,7 +65,9 @@ function docMaquetteTransmise(raw) {
   const titre = net(raw.name, 80) || (raw.type === 'app' ? 'Application web' : 'Site internet');
   const image = typeof raw.photo === 'string' && raw.photo.length < 850000 &&
     /^data:image\/(jpeg|png|webp);base64,[a-z0-9+/]+=*$/i.test(raw.photo) ? raw.photo : '';
-  const blocs = [{ t: 'titre', titre, sous: net(raw.tagline, 150), image }];
+  let lien = '';
+  try { const u = new URL(raw.link); if (['https:', 'mailto:', 'tel:'].includes(u.protocol) && !u.username && !u.password) lien = u.href.slice(0,500); } catch {}
+  const blocs = [{ t: 'titre', titre, sous: net(raw.tagline, 150), image, bouton: net(raw.button, 60), lien }];
   for (const row of raw.sections.slice(0, 10)) {
     const titre = net(row?.title, 80), texte = net(row?.text, 1600);
     if (titre || texte) blocs.push({ t: 'texte', titre, texte });
