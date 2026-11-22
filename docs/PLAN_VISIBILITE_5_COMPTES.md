@@ -45,14 +45,17 @@ Rôle : vitrine premium et commerciale.
 - Stories pour présenter un service, une réalisation et inviter à demander un devis.
 - Pas de mélange avec les pronostics sportifs.
 
-## Cadence de départ — à ajuster avec les résultats
-- Facebook Véloce Mercato : 2 publications par jour maximum, plus commentaires utiles sous les posts.
-- Facebook VM Actus & Pronos : 1 à 2 publications par jour, privilégier les questions et débats.
-- Facebook VM Univers : 1 publication par jour en semaine, 3 à 5 par semaine si le contenu manque.
-- Instagram Véloce Mercato : 1 Reel ou carrousel par jour, 3 à 5 Stories utiles.
-- Instagram VM Univers : 4 publications/Reels par semaine et Stories les jours de publication.
+## Cadence réellement configurée dans le moteur Meta
+Le dépôt contient déjà un moteur de publication direct Meta, avec des créneaux précis :
+- Facebook Véloce Mercato : 08 h / 12 h / 20 h.
+- Instagram @veloce.mercato : 12 h / 20 h.
+- Facebook VM Actus & Pronos : 12 h / 20 h.
+- Facebook VM Univers : 08 h / 12 h / 18 h.
+- Instagram @vmunivers.fr : 18 h.
 
-Ne pas remplir les créneaux avec du contenu faible. La priorité est la régularité, la valeur et les conversations réelles.
+Cela représente jusqu'à 11 créneaux par jour sur les cinq comptes. **Ne pas ajouter de publications manuelles par-dessus ce calendrier sans consulter les accusés et les résultats.** Une fréquence élevée ne garantit pas plus de portée : la priorité est d'éviter les répétitions, de maintenir une qualité éditoriale et de mesurer les interactions par compte.
+
+Le prochain chantier n'est pas d'augmenter le volume : c'est de rétablir le compte Instagram VM Univers, dont le dernier permalien journalisé remonte au 11 novembre, puis de vérifier les résultats sur 7 et 28 jours.
 
 ## Règles de publication et de vérification
 1. Actualité sportive : vérifier la date, l'équipe, le joueur, la compétition et au moins une source fiable avant publication.
@@ -111,6 +114,9 @@ Le dépôt contient déjà un workflow qui prépare des déclinaisons de contenu
 
 **Décision :** ne pas publier via Metricool. Ne pas déclencher d'envoi public depuis un accès non vérifié. Le présent document constitue le plan éditorial commun et les premiers textes de lancement.
 
+
+## Textes de lancement
+Les cinq textes ci-dessous sont des propositions éditoriales réutilisables. Ils ne doivent pas être publiés tels quels en doublon avec le calendrier automatique ; les adapter à une campagne ou à une date précise.
 
 ## Automatisation Meta déjà présente — vérifiée dans le dépôt et les journaux
 
