@@ -34,7 +34,8 @@ function linkFor(row){const url=target(row);if(!url)return '/multisport/';return
 function external(a,url){a.href=url;const u=new URL(url,location.origin);if(u.origin!==location.origin){a.target='_blank';a.rel='noopener noreferrer'}}
 function allNews(data,foot){
  let out=[];if(mode==='portal'){
-  if(foot?.titres)out.push(...foot.titres.filter(x=>x.k==='foot'&&x.t&&x.u&&x.d).slice(0,12).map(x=>({sport:'foot',title:x.t,url:x.u,date:x.d,source:x.s||'Presse sportive',tags:['international']})));
+  // Le portail Multisport garde le football dans son accès dédié :
+  // les titres foot ne sont jamais mélangés au fil des autres disciplines.
   for(const [sport,items]of Object.entries(data?.sports||{})){if(!(sport in configs))continue;
    out.push(...items.slice(0,7).map(x=>({sport,title:x.titre,url:x.url,date:x.date,source:x.source,tags:x.rubriques||['international']})));
   }
