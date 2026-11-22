@@ -216,3 +216,12 @@ L'issue #258 a été corrigée pour suivre la synchronisation du registre public
 
 
 Le workflow `.github/workflows/liens-actus-meta.yml` prévoit un lancement toutes les 30 minutes (`12,42 * * * *`) et doit actualiser `assets/reseaux-publications.json`. Aucun run de ce workflow n'a été retrouvé dans la fenêtre d'exécutions du 22 novembre consultée, alors que le relevé Meta en lecture seule a bien fonctionné. Il faut vérifier son état dans GitHub Actions (activé/désactivé) ; la correction de code seule ne suffira pas si le workflow est désactivé.
+
+
+## Rectification du relevé Meta — 23 novembre 2026
+
+Le fichier `studio/editorial-status.json` n'est pas vide. La lecture via l'API de contenu classique renvoie zéro octet pour ce fichier très volumineux, mais son blob GitHub a bien été récupéré et décodé : il contient un objet JSON valide, un horodatage de mise à jour au 22 novembre à 23:20 UTC et jusqu'à 500 publications confirmées. Le statut `targets: {}` observé correspond à une exécution hors créneau, et non à une panne du moteur.
+
+Le champ `unconnected` contient en revanche un ancien avertissement erroné indiquant qu'un troisième compte Instagram serait absent, alors que le périmètre convenu comporte exactement deux Instagram. Le correctif correspondant est proposé dans la PR #264.
+
+Cette rectification remplace toute interprétation antérieure selon laquelle le fichier de bilan serait vide. Le registre public des permaliens peut rester en retard sur les accusés Meta chiffrés ; c'est un problème distinct de la présence des données dans le bilan.
