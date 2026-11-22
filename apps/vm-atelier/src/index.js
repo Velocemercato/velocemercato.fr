@@ -52,6 +52,45 @@ function docValide(doc) {
   return s.length <= DOC_MAX ? s : null;
 }
 
+const MAQUETTES = {
+  editorial: ['#d9a67d', '#291d1e', '#fff1da'],
+  workshop: ['#355bb7', '#edf2ff', '#18243c'],
+  manga: ['#ff763b', '#23203b', '#fff5e8'],
+  dimension: ['#c1a2ff', '#221934', '#fff2ff']
+};
+function docMaquetteTransmise(raw) {
+  if (!raw || typeof raw !== 'object' || !Array.isArray(raw.sections)) return null;
+  const ambiance = Object.hasOwn(MAQUETTES, raw.theme) ? raw.theme : 'editorial';
+  const [accent, fond, texte] = MAQUETTES[ambiance];
+  const titre = net(raw.name, 80) || (raw.type === 'app' ? 'Application web' : 'Site internet');
+  const image = typeof raw.photo === 'string' && raw.photo.length < 850000 &&
+    /^data:image\/(jpeg|png|webp);base64,[a-z0-9+/]+=*$/i.test(raw.photo) ? raw.photo : '';
+  const blocs = [{ t: 'titre', titre, sous: net(raw.tagline, 150), image }];
+  for (const row of raw.sections.slice(0, 10)) {
+    const titre = net(row?.title, 80), texte = net(row?.text, 360);
+    if (titre || texte) blocs.push({ t: 'texte', titre, texte });
+  }
+  const projet = { format: 'site', style: ambiance === 'workshop' ? 'atelier' : ambiance,
+    theme: { c1: /^#[0-9a-f]{6}$/i.test(raw.accent) ? raw.accent : accent, c2: accent, fond, texte },
+    blocs, typeMaquette: raw.type === 'app' ? 'app' : 'site' };
+  return docValide(projet) ? projet : null;
+}
+async function lireBriefTransmis(req) {
+  const reader = req.body?.getReader();
+  if (!reader) return null;
+  const decoder = new TextDecoder();
+  let text = '', length = 0;
+  try {
+    for (;;) {
+      const { value, done } = await reader.read();
+      if (done) return JSON.parse(text + decoder.decode());
+      length += value.byteLength;
+      if (length > 950000) { await reader.cancel(); return null; }
+      text += decoder.decode(value, { stream: true });
+    }
+  } catch { return null; }
+}
+
 export class Store extends DurableObject {
   constructor(ctx, env) {
     super(ctx, env);
@@ -341,6 +380,26 @@ export default {
       return json({ ok: true }, 200, { 'set-cookie': cookie('vma_v', '', 0) });
     }
     // Formulaire « Votre projet » de vmunivers.fr / velocemercato.fr : la demande arrive dans l'atelier (onglet Commandes).
+    if (p === '/api/studio/transmission') {
+      const origin = req.headers.get('origin') || '';
+      const trusted = /^https:\/\/(www\.)?(vmunivers\.fr|velocemercato\.fr)$/.test(origin) || origin === DOMAINE;
+      const cors = { 'access-control-allow-origin': trusted ? origin : DOMAINE,
+        'access-control-allow-methods': 'GET, POST', 'access-control-allow-headers': 'content-type', vary: 'Origin' };
+      if (req.method === 'OPTIONS') return new Response(null, { status: trusted ? 204 : 403, headers: cors });
+      if (req.method === 'GET') return json({ version: 1 }, 200, cors);
+      if (!trusted || req.method !== 'POST') return json({ success: false }, 403, cors);
+      const payload = await lireBriefTransmis(req);
+      if (!payload || payload._honey || payload.consentement !== 'oui') return json({ success: false }, 400, cors);
+      const nom = net(payload.nom, 80), email = net(payload.email, 120);
+      if (!nom || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ success: false }, 400, cors);
+      const doc = docMaquetteTransmise(payload.draft);
+      if (!doc) return json({ success: false }, 400, cors);
+      const contact = { nom, email, message: net(payload.projet, 1500), projet: doc.blocs[0].titre, origine: origin };
+      const r = await (await appel(env, 'commande', { ip, contact, config: { lignes: [], total: 0, type: 'demande', maquette: true },
+        total: 0, doc: docValide(doc) })).json();
+      if (!r.ok || !r.salon) return json({ success: false }, 429, cors);
+      return json({ success: true, id: r.id, lien: (env.DOMAINE_LIENS || DOMAINE) + '/salon/' + r.salon }, 200, cors);
+    }
     if (p === '/api/demande') {
       const o = req.headers.get('origin') || '';
       const permis = /^https:\/\/(www\.)?(vmunivers\.fr|velocemercato\.fr)$/.test(o);

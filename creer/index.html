@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#15111e">
+<meta name="description" content="Créez le brouillon de votre site ou application web avec VM Studio. Personnalisez votre maquette, puis envoyez votre projet à notre atelier.">
+<link rel="canonical" href="https://velocemercato.fr/creer/">
+<title>Créez votre projet · VM Studio</title>
+<link rel="stylesheet" href="/assets/studio-creation/studio.css">
+<script src="/assets/studio-creation/studio.js" type="module"></script>
+</head>
+<body>
+<header class="top"><a class="brand" href="https://vmunivers.fr/professionnels/">VM <strong>Studio</strong></a><nav aria-label="Navigation"><a href="#creation">Créer</a><a href="#transmission">Envoyer mon projet</a></nav></header>
+<main>
+  <section class="intro">
+    <div><h1>Imaginez votre site.<br><em>Voyez-le prendre forme.</em></h1>
+      <p>Décrivez votre projet, testez une ambiance et ajoutez vos photos. Revenez modifier votre brouillon quand vous voulez. Quand il vous convient, transmettez-le à VM Studio pour qu’on le finalise ensemble.</p>
+      <a class="primary" href="#creation">Commencer ma maquette <span aria-hidden="true">↓</span></a>
+    </div>
+    <figure><img src="/assets/pro/veloce-apercu.webp" width="1200" height="750" alt="Bureau interactif de Véloce Mercato, réalisation VM Studio" fetchpriority="high"><figcaption>Une réalisation VM Studio · Véloce Mercato</figcaption></figure>
+  </section>
+  <section class="editor" id="creation" aria-labelledby="create-title">
+    <div class="tools">
+      <h2 id="create-title">Votre maquette</h2>
+      <div class="field"><label for="project-type">Qu’allez-vous créer ?</label><select id="project-type"><option value="site">Un site internet</option><option value="app">Une application web</option></select></div>
+      <label for="instructions">Décrivez ou dictez votre projet</label>
+      <textarea id="instructions" rows="4" maxlength="1200" placeholder="Mon activité s’appelle Maison Nova. Ajoute une rubrique Services et une page Contact. Je veux une ambiance manga et un titre en orange."></textarea>
+      <div class="actions"><button type="button" id="apply" class="primary">Appliquer à l’aperçu</button><button type="button" id="dictate" aria-pressed="false">🎙 Dicter</button><button type="button" id="listen" hidden>Écouter la réponse</button></div>
+      <p id="feedback" class="feedback" role="status">Vous pouvez modifier le nom, l’ambiance, les couleurs et les rubriques.</p>
+      <fieldset><legend>Ambiance visuelle</legend>
+        <div class="themes">
+          <button type="button" data-theme="editorial" aria-pressed="false"><span aria-hidden="true"></span>Éditorial</button>
+          <button type="button" data-theme="workshop" aria-pressed="false"><span aria-hidden="true"></span>Atelier clair</button>
+          <button type="button" data-theme="manga" aria-pressed="false"><span aria-hidden="true"></span>Manga original</button>
+          <button type="button" data-theme="dimension" aria-pressed="false"><span aria-hidden="true"></span>Relief animé</button>
+        </div>
+      </fieldset>
+      <div class="fields"><div><label for="project-name">Nom affiché</label><input id="project-name" maxlength="80" autocomplete="off"></div><div><label for="accent">Couleur principale</label><input id="accent" type="color"></div></div>
+      <label for="tagline">Accroche</label><input id="tagline" maxlength="150" autocomplete="off">
+      <label for="photo">Photo principale</label><input id="photo" type="file" accept="image/jpeg,image/png,image/webp,image/avif">
+      <button type="button" id="remove-photo" hidden>Retirer la photo</button>
+      <details><summary>Ajouter, écrire ou déplacer les rubriques</summary><div id="section-editor"></div><button type="button" id="add-section">Ajouter une rubrique</button></details>
+      <div class="actions"><button type="button" id="undo" disabled>Annuler la dernière action</button><button type="button" id="download">Télécharger mon brouillon</button><label class="button" for="restore">Importer un brouillon</label><input class="visually-hidden" type="file" id="restore" accept="application/json,.json"></div>
+      <p class="save" id="save-note">Le brouillon est enregistré sur cet appareil.</p>
+    </div>
+    <div class="preview-column">
+      <div class="preview-bar"><strong>Aperçu en direct</strong><button type="button" id="phone" aria-pressed="false">Format mobile</button></div>
+      <div id="preview" aria-label="Aperçu de votre projet"></div>
+      <p class="preview-note">La maquette montre le rendu et la navigation. Les fonctions métier et la 3D sur mesure se définissent avec VM Studio.</p>
+    </div>
+  </section>
+  <section class="handoff" id="transmission" aria-labelledby="send-title">
+    <div><h2 id="send-title">On passe à la suite ?</h2><p>Envoie ton projet à l’atelier pour validation. Notre équipe reprend ta demande et te recontacte avant tout engagement.</p><a href="https://vmunivers.fr/professionnels/">Voir les prestations et les tarifs</a></div>
+    <form id="send-form">
+      <label for="client-name">Votre nom</label><input id="client-name" autocomplete="name" maxlength="80" required>
+      <label for="client-email">Votre e-mail</label><input type="email" id="client-email" autocomplete="email" maxlength="120" required>
+      <label for="remaining">Ce que vous souhaitez nous confier</label><textarea id="remaining" rows="3" maxlength="600" placeholder="Par exemple : connecter les rendez-vous, créer un personnage 3D ou retravailler le logo."></textarea>
+      <div class="visually-hidden" aria-hidden="true"><label for="website-extra">Laisser vide</label><input type="text" id="website-extra" tabindex="-1" autocomplete="off"></div>
+      <label class="consent"><input type="checkbox" id="consent" required> J’accepte que VM Studio utilise ces coordonnées pour me répondre.</label>
+      <button class="primary" type="submit" id="send-button">Envoyer pour validation</button>
+      <p id="send-status" class="feedback" role="status"></p>
+    </form>
+  </section>
+</main>
+<footer><a href="https://vmunivers.fr/">VM Univers</a><a href="https://velocemercato.fr/mentions-legales.html">Mentions légales</a></footer>
+</body>
+</html>

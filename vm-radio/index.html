@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#131022">
+<meta name="description" content="L’agenda des directs sportifs à écouter, les radios et le lecteur VM Radio Multisport.">
+<link rel="canonical" href="https://velocemercato.fr/vm-radio/">
+<link rel="stylesheet" href="/assets/vm-audio/audio.css">
+<script src="/assets/vm-audio/audio.js" type="module"></script>
+<title>VM Radio · Directs multisports</title>
+</head>
+<body>
+<header><a class="logo" href="https://vmunivers.fr/">VM <b>Univers</b></a><nav aria-label="Audio VM"><a href="/vm-radio/" aria-current="page">VM Radio</a><a href="/vm-musique/">VM Musique</a><a href="/multisport/">Multisport</a></nav></header>
+<main>
+  <section class="hero">
+    <div><h1>VM Radio<br><em>Multisport</em></h1><p>Retrouvez les matchs dont le commentaire audio a été annoncé, avec l’horaire de Paris et le lien pour écouter.</p><a class="action" href="#directs">Voir les directs sportifs <span aria-hidden="true">↓</span></a></div>
+    <figure><img src="/img/vm-art/vm-multisport-hero-768.webp" width="768" height="512" alt="Illustration de l’univers multisport Véloce Mercato"></figure>
+  </section>
+  <section id="directs" aria-labelledby="direct-title">
+    <div class="section-head"><h2 id="direct-title">Matchs à écouter</h2><div><label for="sport-filter">Sport</label> <select id="sport-filter"><option value="">Tous les sports</option></select></div></div>
+    <p id="schedule-status" role="status">Chargement des directs confirmés…</p>
+    <div class="grid" id="schedule"></div>
+    <noscript><p>Activez JavaScript pour consulter l’agenda. Les liens des radios restent disponibles ci-dessous.</p></noscript>
+  </section>
+  <section aria-labelledby="stations-title">
+    <h2 id="stations-title">Radios à ouvrir</h2>
+    <div class="grid cards">
+      <article><p>SPORT & DÉBATS</p><h3>RMC</h3><a href="https://rmc.bfmtv.com/mediaplayer/live-audio/" target="_blank" rel="noopener noreferrer">Écouter chez RMC ↗</a></article>
+      <article><p>FRANCHE-COMTÉ</p><h3>ici Belfort-Montbéliard</h3><a href="https://play.radioplayer.org/fr/live/MjUwfjQx" target="_blank" rel="noopener noreferrer">Ouvrir dans Radioplayer ↗</a></article>
+      <article><p>ACTUALITÉ</p><h3>franceinfo</h3><a href="https://embed.radiofrance.fr/franceinfo/player?id_station=2" target="_blank" rel="noopener noreferrer">Ouvrir le lecteur officiel ↗</a></article>
+      <article><p>MUSIQUE</p><h3>FIP</h3><a href="https://embed.radiofrance.fr/fip/player?id_station=7" target="_blank" rel="noopener noreferrer">Ouvrir le lecteur officiel ↗</a></article>
+    </div>
+  </section>
+  <section class="listen" aria-labelledby="channel-title">
+    <div><h2 id="channel-title">Le canal VM</h2><p>Un enchaînement des premiers instrumentaux VM Musique. Lancez le lecteur quand vous voulez.</p></div>
+    <div><button type="button" class="action" data-play="0" data-loop>Démarrer le canal</button><p class="track" id="track-name" role="status"></p><audio controls preload="none" aria-label="Lecteur du canal musical VM" hidden></audio></div>
+  </section>
+</main>
+<footer><a href="/vm-musique/">VM Musique</a><a href="https://vmunivers.fr/">VM Univers</a><a href="/mentions-legales.html">Mentions légales</a></footer>
+</body></html>

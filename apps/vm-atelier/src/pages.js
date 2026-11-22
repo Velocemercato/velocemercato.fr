@@ -58,7 +58,7 @@ function rendre(root,doc){
  var fmt=FORMATS[doc.format]?doc.format:'site',dim=FORMATS[fmt],U=dim?'cqw':'px',k=function(px,cq){return dim?cq+'cqw':px+'px'};
  root.replaceChildren();root.style.cssText=dim?'background:#2a2d3a;padding:10px;min-height:100%':'background:'+bg+';color:'+tx+';font:16px/1.55 system-ui,sans-serif;min-height:100%';
  var blocs=Array.isArray(doc.blocs)?doc.blocs:[];
- if(!dim&&['editorial','contraste','atelier'].includes(doc.style)&&blocs.length){dessinerSite(root,doc,c1,bg,tx);return}
+ if(!dim&&['editorial','contraste','atelier','manga','dimension'].includes(doc.style)&&blocs.length){dessinerSite(root,doc,c1,bg,tx);return}
  // Découpage en pages (recto/verso d'une carte, pages d'un flyer) avec le bloc « page ».
  var pages=[[]];blocs.forEach(function(b,ix){if(b&&b.t==='page')pages.push([]);else pages[pages.length-1].push([b,ix])});
  if(!blocs.length){var w0=E('div','max-width:720px;margin:auto;padding:22px 16px');root.appendChild(w0);w0.appendChild(E('p','opacity:.55;text-align:center;padding:90px 0'+(dim?';color:#fff':''),'Page vierge : le '+(dim?fmt:'site')+' apparaît ici.'));return}
