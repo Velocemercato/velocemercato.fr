@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.diffuser_jt import State, DeliveryError
 from tools.publier_meta import Graph, ensure_meta_targets
+from tools.editorial_vm import SCHEDULE, SLOT_CLOSE_MINUTE
 
 PARIS = ZoneInfo("Europe/Paris")
 DAY = dt.datetime.now(PARIS).date()
@@ -23,6 +24,11 @@ PAGE_IDS = {
     "meta": "1384363904759072",
     "meta_univers": "1349998758205153",
     "meta_pronos": "112294796981981",
+}
+PAGE_NAMES = {
+    "meta": "Véloce Mercato",
+    "meta_univers": "VM Univers",
+    "meta_pronos": "VM Actus et Pronos",
 }
 
 
@@ -103,7 +109,7 @@ def graph_instagram(graph, account, data):
         return []
     ig = str(data.get("ig_id") or "")
     if not ig.isdecimal():
-        return []
+        raise DeliveryError("Compte Instagram non connecté")
     token = data.get("page_token")
     result = graph.call("GET", ig + "/media", {
         "fields": "id,timestamp,permalink,media_type",
@@ -127,6 +133,7 @@ def graph_instagram(graph, account, data):
 def diagnostic_page(graph, account, data):
     """Identité de la Page et visibilite declarée par Graph, sans envoi."""
     page_id = PAGE_IDS[account]
+    followers = {}
     try:
         page = graph.call("GET", page_id, {
             "fields": "id,name,link", "access_token": data["page_token"],
@@ -143,18 +150,22 @@ def diagnostic_page(graph, account, data):
     # Audience réelle (lecture seule), appel séparé : un champ refusé n'empêche pas le reste du relevé.
     try:
         audience = graph.call("GET", page_id, {"fields": "followers_count,fan_count", "access_token": data["page_token"]})
-        print("::notice::AUDIENCE FB " + account + " abonnés=" + str(int(audience.get("followers_count") or 0))
-              + " mentions_j_aime=" + str(int(audience.get("fan_count") or 0)))
+        if type(audience.get("followers_count")) is int:
+            followers["facebook"] = audience["followers_count"]
+            print("::notice::AUDIENCE FB " + account + " abonnés=" + str(followers["facebook"]))
     except (DeliveryError, ValueError, TypeError):
         print("::warning::AUDIENCE FB " + account + " : nombre d'abonnés non communiqué par Graph")
     ig = str(data.get("ig_id") or "")
     if account != "meta_pronos" and ig.isdecimal():
         try:
             profil = graph.call("GET", ig, {"fields": "username,followers_count", "access_token": data["page_token"]})
-            print("::notice::AUDIENCE IG " + account + " @" + re.sub(r"[^A-Za-z0-9._]", "", str(profil.get("username") or ""))[:40]
-                  + " abonnés=" + str(int(profil.get("followers_count") or 0)))
+            if type(profil.get("followers_count")) is int:
+                followers["instagram"] = profil["followers_count"]
+                print("::notice::AUDIENCE IG " + account + " @" + re.sub(r"[^A-Za-z0-9._]", "", str(profil.get("username") or ""))[:40]
+                      + " abonnés=" + str(followers["instagram"]))
         except (DeliveryError, ValueError, TypeError):
             print("::warning::AUDIENCE IG " + account + " : nombre d'abonnés non communiqué par Graph")
+    return followers
 
 
 def diagnostic_posts(graph, account, data, rows):
@@ -178,12 +189,62 @@ def diagnostic_posts(graph, account, data, rows):
                   " : vérification de détail indisponible; ne pas conclure PUBLIC")
 
 
+def editorial_slots(state_data, account, network, now):
+    scope = "meta" if account == "meta" else account + "_accuses"
+    receipts = state_data.get(scope) or {}
+    observed = []
+    for hour in SCHEDULE[(account, network)]:
+        start = now.replace(hour=hour, minute=0, second=0, microsecond=0)
+        end = start.replace(minute=SLOT_CLOSE_MINUTE)
+        receipt = receipts.get(f"editorial/slot/{network}/{start.isoformat()}") or {}
+        status = receipt.get("status") if isinstance(receipt, dict) else None
+        if status == "publie_confirme":
+            label = "confirmé"
+        elif status in {"envoi", "envoye_a_verifier", "a_verifier_sans_renvoi"}:
+            label = "à vérifier"
+        elif now < start:
+            label = "à venir"
+        elif now < end:
+            label = "ouvert"
+        else:
+            label = "sans confirmation"
+        observed.append(f"{hour} h {label}")
+    return " · ".join(observed)
+
+
+def format_summary(state_data, observations, now):
+    local = now.astimezone(PARIS)
+    lines = [
+        "## Suivi des cinq comptes VM",
+        "",
+        f"Relevé du {local:%d/%m/%Y à %H h %M}, heure de Paris. Les publications sont comptées depuis minuit.",
+        "",
+        "| Compte | Abonnés | Publications observées | Dernier lien Meta | Créneaux du programme éditorial |",
+        "|---|---:|---:|---|---|",
+    ]
+    for account, network in SCHEDULE:
+        label = "Facebook" if network == "facebook" else "Instagram"
+        observed = observations.get((account, network), {})
+        followers = observed.get("followers", "—")
+        posts = observed.get("posts")
+        count = len(posts) if posts is not None else "indisponible"
+        last = max(posts, default=None) if posts is not None else None
+        link = f"[{last[0]:%H h %M}]({last[2]})" if last else "—"
+        slots = editorial_slots(state_data, account, network, local)
+        lines.append(f"| {label} · {PAGE_NAMES[account]} | {followers} | {count} | {link} | {slots} |")
+    lines += ["", "Les publications observées incluent aussi les sorties manuelles et les autres programmes.",
+              "Un créneau sans confirmation peut manquer de contenu inédit ou avoir rencontré un blocage. "
+              "Les liens attestent une réponse de Meta. La portée et les clics se consultent dans les statistiques des comptes.", ""]
+    return "\n".join(lines)
+
+
 def main():
     folder = Path(os.environ["RUNNER_TEMP"]) / "vm-broadcast-state"
     state = State(folder / "state.enc", os.getenv("VM_DIFFUSION_STATE_KEY", ""))
     ensure_meta_targets(state)  # Même contrôle de sécurité que le correctif.
     graph = Graph()
     count = 0
+    observations = {}
     print("::notice::AUDIT PUBLICATIONS REELLES " + DAY.isoformat() + ", LECTURE SEULE")
     for account in ("meta", "meta_univers", "meta_pronos"):
         data = (state.data.get("tokens") or {}).get(account) or {}
@@ -202,13 +263,17 @@ def main():
                   " ; contrôle interrompu pour cette Page, aucune publication")
             continue
         print("::notice::ACCES " + account + " : identité confirmée en lecture")
-        diagnostic_page(graph, account, data)
-        for label, retrieve in (("FB", graph_page), ("IG", graph_instagram)):
+        followers = diagnostic_page(graph, account, data)
+        for label, network, retrieve in (("FB", "facebook", graph_page), ("IG", "instagram", graph_instagram)):
             if label == "IG" and account == "meta_pronos":
                 print("::notice::IG meta_pronos : INTERDIT, aucune requête Instagram")
                 continue
+            observed = observations.setdefault((account, network), {})
+            if network in followers:
+                observed["followers"] = followers[network]
             try:
                 items = retrieve(graph, account, data)
+                observed["posts"] = items
                 print("::notice::COMPTE " + label + " " + account +
                       " POSTS_CONFIRME_REPERTOIRES=" + str(len(items)))
                 if label == "FB":
@@ -224,6 +289,9 @@ def main():
                       "), ne pas déclarer de publication confirmée")
     print("::notice::AUDIT TERMINE, liens confirmés observés=" + str(count) +
           ", ZERO suppression, ZERO diffusion.")
+    if summary := os.getenv("GITHUB_STEP_SUMMARY"):
+        with Path(summary).open("a", encoding="utf-8") as handle:
+            handle.write(format_summary(state.data, observations, dt.datetime.now(dt.timezone.utc)))
 
 
 if __name__ == "__main__":

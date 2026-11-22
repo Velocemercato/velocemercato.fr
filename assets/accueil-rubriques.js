@@ -3,6 +3,7 @@
   const VOLET_ARTICLES = 20;
   const site = 'https://velocemercato.fr';
   const refreshInterval = 10 * 60_000;
+  const footWindow = 48 * 60 * 60_000;
   const feeds = {
     foot: ['/articles.json'],
     multisport: ['/multisport/actualites.json'],
@@ -42,6 +43,14 @@
       championnat: item?.championnat, zone: item?.zone};
   }
 
+  function recentFoot(rows) {
+    const now = Date.now();
+    return rows.filter(row => {
+      const time = Date.parse(row.date);
+      return time >= now - footWindow && time <= now;
+    });
+  }
+
   function formatRows(key, primary) {
     if (key === 'multisport') {
       return Object.entries(primary?.sports ?? {}).flatMap(([sport, items]) =>
@@ -58,8 +67,8 @@
         .map(item => ({title: item.titre, date: item.date_publication, source: 'La Pastille TV',
           url: item.plateformes.youtube.url, genres: item.universes}));
     }
-    return (Array.isArray(primary) ? primary : []).slice(0, VOLET_ARTICLES)
-      .map(item => fromArticle(item, key));
+    const rows = (Array.isArray(primary) ? primary : []).map(item => fromArticle(item, key));
+    return (key === 'foot' ? recentFoot(rows) : rows).slice(0, VOLET_ARTICLES);
   }
 
   function formatRegion(local) {
@@ -240,7 +249,8 @@
         render(panel, key, rows);
         status.textContent = 'Dernières informations disponibles';
       } else {
-        status.textContent = 'Aucun nouveau contenu dans ce flux.';
+        if (key === 'foot') render(panel, key, []);
+        status.textContent = key === 'foot' ? 'Aucun article dans les dernières 48 heures.' : 'Aucun nouveau contenu dans ce flux.';
       }
     } catch {
       if (!panel.open || version !== expectedVersion) return;
@@ -257,7 +267,11 @@
     clearInterval(timer);
     const expectedVersion = ++version;
     const saved = snapshots[key] ?? [];
-    render(panel, key, key === 'multisport' ? saved.filter(row => window.VM_Multisport?.isRelevant(String(row.theme ?? '').toLowerCase(), row.title)) : saved);
+    const initialRows = key === 'multisport'
+      ? saved.filter(row => window.VM_Multisport?.isRelevant(String(row.theme ?? '').toLowerCase(), row.title))
+      : key === 'foot' ? recentFoot(saved) : saved;
+    render(panel, key, initialRows);
+    if (key === 'foot') panel.querySelector('.etat-rubrique').textContent = 'Chargement des dernières actualités…';
     if (key === 'actus' && belfortList && !belfortList.children.length) {
       renderList(belfortList, snapshots.belfort ?? []);
       updateRegion();
