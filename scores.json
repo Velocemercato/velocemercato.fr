@@ -651,6 +651,19 @@
    ]
   },
   {
+   "id": 558525,
+   "date": "2026-11-21T14:00:00Z",
+   "comp": "Serie A",
+   "sport": "foot",
+   "dom": "Como 1907",
+   "ext": "Cagliari",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    0
+   ]
+  },
+  {
    "id": 558528,
    "date": "2026-11-21T14:00:00Z",
    "comp": "Serie A",
@@ -664,16 +677,42 @@
    ]
   },
   {
-   "id": 558525,
-   "date": "2026-11-21T14:00:00Z",
-   "comp": "Serie A",
+   "id": 565862,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
    "sport": "foot",
-   "dom": "Como 1907",
-   "ext": "Cagliari",
+   "dom": "M'gladbach",
+   "ext": "Dortmund",
    "statut": "FINISHED",
    "score": [
-    2,
+    0,
+    1
+   ]
+  },
+  {
+   "id": 565857,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "Leverkusen",
+   "ext": "SC Paderborn",
+   "statut": "FINISHED",
+   "score": [
+    4,
     0
+   ]
+  },
+  {
+   "id": 565860,
+   "date": "2026-11-21T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "Elversberg",
+   "ext": "Freiburg",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    1
    ]
   },
   {
@@ -703,42 +742,29 @@
    ]
   },
   {
-   "id": 565860,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
+   "id": 560647,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
    "sport": "foot",
-   "dom": "Elversberg",
-   "ext": "Freiburg",
+   "dom": "Bournemouth",
+   "ext": "Nottingham",
    "statut": "FINISHED",
    "score": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": 565862,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
-   "sport": "foot",
-   "dom": "M'gladbach",
-   "ext": "Dortmund",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": 565857,
-   "date": "2026-11-21T14:30:00Z",
-   "comp": "Bundesliga",
-   "sport": "foot",
-   "dom": "Leverkusen",
-   "ext": "SC Paderborn",
-   "statut": "FINISHED",
-   "score": [
-    4,
+    2,
     0
+   ]
+  },
+  {
+   "id": 560650,
+   "date": "2026-11-21T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Coventry City",
+   "ext": "Crystal Palace",
+   "statut": "FINISHED",
+   "score": [
+    3,
+    2
    ]
   },
   {
@@ -778,32 +804,6 @@
    "score": [
     0,
     0
-   ]
-  },
-  {
-   "id": 560647,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Bournemouth",
-   "ext": "Nottingham",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
-   ]
-  },
-  {
-   "id": 560650,
-   "date": "2026-11-21T15:00:00Z",
-   "comp": "Premier League",
-   "sport": "foot",
-   "dom": "Coventry City",
-   "ext": "Crystal Palace",
-   "statut": "FINISHED",
-   "score": [
-    3,
-    2
    ]
   },
   {
@@ -911,12 +911,25 @@
    ]
   },
   {
-   "id": 559621,
+   "id": 559627,
    "date": "2026-11-21T19:45:00Z",
    "comp": "Ligue 1",
    "sport": "foot",
-   "dom": "Monaco",
-   "ext": "Auxerre",
+   "dom": "Strasbourg",
+   "ext": "Brest",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": 559623,
+   "date": "2026-11-21T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "RC Lens",
+   "ext": "Toulouse",
    "statut": "FINISHED",
    "score": [
     1,
@@ -937,25 +950,12 @@
    ]
   },
   {
-   "id": 559627,
+   "id": 559621,
    "date": "2026-11-21T19:45:00Z",
    "comp": "Ligue 1",
    "sport": "foot",
-   "dom": "Strasbourg",
-   "ext": "Brest",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": 559623,
-   "date": "2026-11-21T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "RC Lens",
-   "ext": "Toulouse",
+   "dom": "Monaco",
+   "ext": "Auxerre",
    "statut": "FINISHED",
    "score": [
     1,
@@ -1348,7 +1348,7 @@
    "ext": "HSV",
    "statut": "IN_PLAY",
    "score": [
-    2,
+    3,
     0
    ]
   },
@@ -1372,7 +1372,7 @@
    "sport": "foot",
    "dom": "Milan",
    "ext": "Frosinone",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
     2,
     1
@@ -1465,7 +1465,7 @@
    "ext": "Cardinals",
    "statut": "IN_PLAY",
    "score": [
-    0,
+    7,
     0
    ]
   },
@@ -1478,7 +1478,7 @@
    "ext": "Steelers",
    "statut": "IN_PLAY",
    "score": [
-    0,
+    3,
     0
    ]
   },
@@ -1492,7 +1492,7 @@
    "statut": "IN_PLAY",
    "score": [
     0,
-    0
+    2
    ]
   },
   {
@@ -1964,6 +1964,6 @@
    ]
   }
  ],
- "maj": "2026-11-22T18:09:21Z",
- "verifie": "2026-11-22T18:09:21Z"
+ "maj": "2026-11-22T18:13:17Z",
+ "verifie": "2026-11-22T18:13:17Z"
 }
