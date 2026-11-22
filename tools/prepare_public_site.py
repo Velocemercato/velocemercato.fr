@@ -249,7 +249,8 @@ def prepare(root):
     _prepare_bilan_veille(root)
     count = 0
     for path in sorted(root.rglob('*.html')):
-        if any(part in {'.github', 'tests', 'tools', 'docs'} for part in path.relative_to(root).parts):
+        relative = path.relative_to(root)
+        if relative.parts[0] == 'en' or any(part in {'.github', 'tests', 'tools', 'docs'} for part in relative.parts):
             continue
         text = path.read_text(encoding='utf-8')
         if path == root/'foot/index.html':
