@@ -158,3 +158,6 @@ Le fichier `tests/test_editorial_vm.py` reçoit des assertions supplémentaires 
 - absence de cible Instagram pour VM Actus & Pronos.
 
 Ces tests ne publient rien. Ils servent à éviter qu'une évolution future ne mélange les comptes ou n'ajoute une destination non retenue. Le workflow `editorial-vm.yml` exécute déjà cette suite de tests avant chaque tentative de diffusion.
+
+
+Un workflow de test de revue `.github/workflows/test-editorial-meta.yml` a également été ajouté dans cette branche. Il lance uniquement les tests unitaires sur les pull requests qui touchent au moteur Meta, aux filtres multisport ou à ces tests. Il ne dispose d'aucun secret Meta et ne peut pas publier.
