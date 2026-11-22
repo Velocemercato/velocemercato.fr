@@ -260,6 +260,28 @@ def run(state, graph, root=ROOT, now=None):
     return result
 
 
+def compact_status_history(previous, limit=30):
+    """Garde un historique lisible sans recopier les 500 reçus dans chaque entrée."""
+    fields = ('updated_at', 'mode', 'targets', 'unconnected')
+    if not isinstance(previous, dict):
+        return []
+    rows = []
+
+    def compact(entry):
+        if not isinstance(entry, dict):
+            return None
+        return {key: entry[key] for key in fields if key in entry}
+
+    current = compact(previous)
+    if current:
+        rows.append(current)
+    for entry in previous.get('history', []):
+        item = compact(entry)
+        if item:
+            rows.append(item)
+    return rows[:limit]
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--state', type=Path, required=True)
@@ -284,7 +306,7 @@ def main():
     path.parent.mkdir(exist_ok=True)
     if path.exists():
         previous = json.loads(path.read_text())
-        result['history'] = ([{k: v for k, v in previous.items() if k != 'history'}] + previous.get('history', []))[:300]
+        result['history'] = compact_status_history(previous, limit=30)
     path.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
     posts = sum(len(item.get('posts', [])) for item in result.get('targets', {}).values())
     print(f'Bilan : {posts} publications confirmées. Les autres statuts sont dans studio/editorial-status.json.')
