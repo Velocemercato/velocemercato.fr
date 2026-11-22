@@ -6,6 +6,7 @@ import json
 from html import escape
 import sys
 import datetime as dt
+from decimal import Decimal
 import zipfile
 from zoneinfo import ZoneInfo
 from urllib.parse import urlparse
@@ -97,6 +98,46 @@ def _prepare_affiches(root):
     # Les images n'apparaissent jamais dans la rubrique d'actualités générale.
     page.write_text(source.replace(placeholder, galerie), encoding="utf-8")
 
+
+
+def _cumul_conseils(records):
+    uniques, publics, dates = {}, set(), set()
+    for day, item in records:
+        for ticket in item.get("tickets_chiffres", []):
+            ident, cote, reussi = ticket["id"], ticket["cote_centiemes"], ticket["reussi"]
+            valeur = (cote, reussi, ticket.get("direct", False))
+            if type(cote) is not int or cote < 100 or type(reussi) is not bool:
+                raise ValueError("Cote ou résultat invalide dans le bilan chiffré.")
+            if ident in uniques and uniques[ident] != valeur:
+                raise ValueError("Résultats divergents pour le même ticket.")
+            uniques[ident] = valeur
+            dates.add(day)
+            if item.get("type") == "public":
+                publics.add(ident)
+    if not uniques:
+        return ""
+    lignes = []
+    for titre, tickets in (
+        ("Conseils publics", [uniques[i] for i in publics]),
+        ("Public et VIP, doublons retirés", list(uniques.values())),
+        ("Public et VIP, hors pari en direct", [t for t in uniques.values() if not t[2]]),
+    ):
+        if not tickets:
+            continue
+        nombre = len(tickets)
+        gagnes = [cote for cote, reussi, _ in tickets if reussi]
+        pourcentage = Decimal(sum(gagnes)) / nombre - 100
+        affichage = format(pourcentage, "+.2f").replace(".", ",")
+        lignes.append(f'<div><dt>{titre}</dt><dd><strong>{affichage} %</strong><span>{len(gagnes)} sur {nombre} validés</span></dd></div>')
+    debut, fin = min(dates), max(dates)
+    couverture = f'{len(dates)} journées documentées du {debut:%d/%m/%Y} au {fin:%d/%m/%Y}.'
+    return ('<section id="analyse-resultats" aria-labelledby="analyse-resultats-titre">'
+            '<h3 id="analyse-resultats-titre">Bilan cumulé à mise égale</h3><p>' + couverture + '</p>'
+            '<dl class="results-yield">' + ''.join(lignes) + '</dl>'
+            '<p>Une unité par ticket et un seul décompte pour chaque ticket partagé en public et en VIP. '
+            'Le rendement théorique correspond au total des retours, mises incluses, moins les unités jouées, divisé par les unités jouées. '
+            'Le pari en direct à 8,25 augmente sensiblement le cumul. Les journées sans bilan chiffré restent hors de ce calcul.</p>'
+            '</section>')
 
 
 def _prepare_bilan_veille(root):
@@ -210,7 +251,7 @@ def _prepare_bilan_veille(root):
         + '<summary>🔞 Résultats transparents · 18+ <span>Réussites et échecs · Captures originales · Archives par mois</span></summary>'
         + '<div class="results-content"><p class="results-intro">Choisis un mois, puis une date. '
         + 'Les images s’ouvrent uniquement à la demande. Le premier bilan et les échecs sont conservés.</p>'
-        + ''.join(cards) + '</div></details>'
+        + _cumul_conseils(records) + ''.join(cards) + '</div></details>'
     ) if cards else ''
     page.write_text(source.replace(marker, section), encoding="utf-8")
 

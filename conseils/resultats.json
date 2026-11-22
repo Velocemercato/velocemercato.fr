@@ -28,6 +28,13 @@
           "largeur": 1229,
           "hauteur": 1536
         }
+      ],
+      "tickets_chiffres": [
+        {
+          "id": "20261113-public-200",
+          "cote_centiemes": 200,
+          "reussi": true
+        }
       ]
     },
     {
@@ -68,6 +75,18 @@
           "largeur": 864,
           "hauteur": 1536
         }
+      ],
+      "tickets_chiffres": [
+        {
+          "id": "20261114-safe-203",
+          "cote_centiemes": 203,
+          "reussi": true
+        },
+        {
+          "id": "20261114-public-1299",
+          "cote_centiemes": 1299,
+          "reussi": false
+        }
       ]
     },
     {
@@ -99,6 +118,23 @@
           "legende": "Fun VIP à 447,11 · perdu. Ticket daté du 15 novembre, rattaché à l’édition du 14 jouée dans la nuit du 14 au 15.",
           "largeur": 854,
           "hauteur": 1536
+        }
+      ],
+      "tickets_chiffres": [
+        {
+          "id": "20261114-safe-203",
+          "cote_centiemes": 203,
+          "reussi": true
+        },
+        {
+          "id": "20261114-vip-631",
+          "cote_centiemes": 631,
+          "reussi": true
+        },
+        {
+          "id": "20261114-vip-44711",
+          "cote_centiemes": 44711,
+          "reussi": false
         }
       ]
     },
@@ -135,6 +171,13 @@
           "legende": "Capture du ticket public à 2,10 affiché gagnant. Il est aussi présenté dans le bilan VIP ; il ne constitue pas deux conseils distincts dans un bilan global.",
           "largeur": 1229,
           "hauteur": 1536
+        }
+      ],
+      "tickets_chiffres": [
+        {
+          "id": "20261115-210",
+          "cote_centiemes": 210,
+          "reussi": true
         }
       ]
     },
@@ -176,6 +219,24 @@
           "largeur": 970,
           "hauteur": 1536
         }
+      ],
+      "tickets_chiffres": [
+        {
+          "id": "20261115-210",
+          "cote_centiemes": 210,
+          "reussi": true
+        },
+        {
+          "id": "20261115-vip-825",
+          "cote_centiemes": 825,
+          "reussi": true,
+          "direct": true
+        },
+        {
+          "id": "20261115-vip-219",
+          "cote_centiemes": 219,
+          "reussi": true
+        }
       ]
     },
     {
@@ -196,7 +257,29 @@
           "hauteur": 1125
         }
       ],
-      "support_visuel": "affiche"
+      "support_visuel": "affiche",
+      "tickets_chiffres": [
+        {
+          "id": "20261121-206",
+          "cote_centiemes": 206,
+          "reussi": true
+        },
+        {
+          "id": "20261121-275",
+          "cote_centiemes": 275,
+          "reussi": true
+        },
+        {
+          "id": "20261121-228",
+          "cote_centiemes": 228,
+          "reussi": false
+        },
+        {
+          "id": "20261121-235",
+          "cote_centiemes": 235,
+          "reussi": false
+        }
+      ]
     }
   ],
   "_mise_a_jour": "2026-11-16 · Bilans des tickets du 15 novembre et captures ajoutés ; ticket public/VIP commun identifié, historique et échecs conservés."

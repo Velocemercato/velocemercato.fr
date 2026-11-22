@@ -44,6 +44,7 @@ footer{font-size:.85rem;color:#c1c5cd}
 .result-captures figure>a{display:block;background:#fff}.result-captures img{display:block;width:100%;height:auto;max-height:280px;object-fit:contain}
 .result-captures figcaption{padding:12px;font-size:.88rem;line-height:1.5;color:#eee}.result-captures figcaption a{display:inline-block;margin-top:8px;color:#f5cf69;font-weight:800;min-height:36px}
 @media(max-width:560px){.results-content{padding:10px;max-height:60vh}.results-month>summary span{float:none;display:block;margin:5px 0 0 17px}.results-day-content{padding:0 7px 7px}.result-captures{grid-template-columns:1fr;margin:10px}.result-captures img{max-height:320px}}
+.results-yield{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,165px),1fr));gap:10px;margin:.8rem 0}.results-yield div{border:1px solid #705c37;border-radius:10px;padding:10px;background:#110f0c}.results-yield dt{color:#e2d7bc;font-size:.88rem}.results-yield dd{margin:2px 0 0;display:grid;gap:3px}.results-yield strong{color:#f5cf69;font-size:1.3rem}.results-yield span{font-size:.83rem}
 </style></head><body>
 <header><a href="/" aria-label="Retour à l'accueil de Véloce Mercato">← VÉLOCE MERCATO</a>
 <h1>❤️🖤 CONSEILS DU JOUR</h1>
@@ -53,6 +54,7 @@ footer{font-size:.85rem;color:#c1c5cd}
 <section class="card vip" id="edition-2026-11-22" hidden>
   <h2>Une édition gratuite en public ce soir&nbsp;?</h2>
   <p>Dites-nous avant 18 h (heure de Paris) si vous souhaitez une édition publique. Si vous êtes nombreux à la demander, l’équipe la partagera en public. Vous pouvez aussi <a href="#vip">demander l’accès gratuit au VIP</a>.</p>
+  <p><a href="#analyse-resultats">Toutes les analyses et les bilans sont sur cette page</a>.</p>
 </section>
 <script>(function(){var parts=new Intl.DateTimeFormat('fr-FR',{timeZone:'Europe/Paris',day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',hourCycle:'h23'}).formatToParts(new Date());var p=Object.fromEntries(parts.map(function(x){return [x.type,x.value]}));document.getElementById('edition-2026-11-22').hidden=!(p.year==='2026'&&p.month==='11'&&p.day==='22'&&Number(p.hour)<18)})();</script>
 <section class="card" id="conseils-2026-11-21" aria-labelledby="conseils-2026-11-21-titre">
@@ -66,7 +68,7 @@ footer{font-size:.85rem;color:#c1c5cd}
 <p>Pour les prochaines analyses et les lives du groupe, <a href="#vip">inscris-toi au VIP gratuit à vie</a>.</p>
 <p class="muted">18+ · Jouer comporte des risques. Les cotes peuvent évoluer.</p>
 </section>
-<nav aria-label="Conseils et résultats"><a href="#historique-resultats">🔞 Résultats transparents · 18+</a> · <a href="#resultats-2026-11-21">📊 Bilan du 21 novembre</a> · <a href="#semaine-privee-20261116">👑 Conseils privés de la semaine</a> · <a href="#vip">Demander le VIP</a></nav>
+<nav aria-label="Conseils et résultats"><a href="#historique-resultats">🔞 Résultats transparents · 18+</a> · <a href="#resultats-2026-11-21">📊 Bilan du 21 novembre</a> · <a href="#analyse-resultats">Analyses et bilan cumulé</a> · <a href="#semaine-privee-20261116">👑 Conseils privés de la semaine</a> · <a href="#vip">Demander le VIP</a></nav>
 <section class="card warning" aria-label="Information importante">
 <strong>18 ans et plus uniquement — interdit aux mineurs.</strong>
 <p>Les cotes évoluent et aucun résultat n'est garanti. Jouer comporte des risques : endettement, isolement, dépendance.
@@ -90,7 +92,7 @@ Joueurs Info Service : 09 74 75 13 13. Cette mention ne constitue pas une vérif
 </section>
 <script>(function(){try{var p=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());var d=Object.fromEntries(p.map(x=>[x.type,x.value]));var day=d.year+'-'+d.month+'-'+d.day;document.getElementById('semaine-privee-20261116').hidden=day<'2026-11-16'||day>'2026-11-21';}catch(e){}})();</script>
 <!-- VM_BILAN_VEILLE -->
-<script>(function(){function openResults(){var h=location.hash;if(h==='#historique-resultats'||h.indexOf('#preuve-')===0||h.indexOf('#resultats-')===0){var node=document.getElementById(h.slice(1));while(node){if(node.tagName==='DETAILS')node.open=true;node=node.parentElement;}}}document.addEventListener('click',function(e){var a=e.target.closest('a[href="#historique-resultats"]');if(a){var d=document.getElementById('historique-resultats');if(d)d.open=true;}});window.addEventListener('hashchange',openResults);openResults();})();</script>
+<script>(function(){function openResults(){var h=location.hash;if((h==='#historique-resultats'||h==='#analyse-resultats')||h.indexOf('#preuve-')===0||h.indexOf('#resultats-')===0){var node=document.getElementById(h.slice(1));while(node){if(node.tagName==='DETAILS')node.open=true;node=node.parentElement;}}}document.addEventListener('click',function(e){var a=e.target.closest('a[href="#historique-resultats"]');if(a){var d=document.getElementById('historique-resultats');if(d)d.open=true;}});window.addEventListener('hashchange',openResults);openResults();})();</script>
 <section class="card bd-bilan" id="conseil-public-20261115" hidden aria-label="Conseil public du 15 novembre 2026">
   <span class="bd-etiquette">DIMANCHE 15 NOVEMBRE 2026 · PUBLIC</span>
   <h2>🎁 Le combiné public du jour · cote affichée 2,10</h2>
