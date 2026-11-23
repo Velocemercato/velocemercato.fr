@@ -1,4 +1,4 @@
-Passage du 2026-11-23 08:00 UTC (workflow_dispatch)
+Passage du 2026-11-23 08:20 UTC (workflow_dispatch)
 Nettoyage : 0 breves vides retirees, 56 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
   File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 288
@@ -32,22 +32,22 @@ Traceback (most recent call last):
     'Style simple, énergique, accessible. Le lecteur doit comprendre le sujet sur Véloce Mercato sans devoir ouvrir le média source. Si la matière factuelle est insuffisante pour un article développé, réponds uniquement {"ignorer": true} plutôt que d'inventer ou de répéter. '
                                                                                                                                                                                                                                                                                    ^
 SyntaxError: unterminated string literal (detected at line 288)
-Auvergne-Rhône-Alpes : 52 titres
-Bourgogne-Franche-Comté : 36 titres
+Auvergne-Rhône-Alpes : 51 titres
+::warning::Bourgogne-Franche-Comté : flux muet (HTTPError)
 Bretagne : 54 titres
-Centre-Val de Loire : 20 titres
+::warning::Centre-Val de Loire : flux muet (HTTPError)
 Corse : 11 titres
 Grand Est : 28 titres
 Hauts-de-France : 28 titres
 Île-de-France : 34 titres
 Normandie : 18 titres
-::warning::Nouvelle-Aquitaine : flux muet (HTTPError)
+Nouvelle-Aquitaine : 33 titres
 Occitanie : 54 titres
-Pays de la Loire : 73 titres
+Pays de la Loire : 74 titres
 Provence-Alpes-Côte d'Azur : 44 titres
 Outre-mer : 33 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 16 titres
 Foot National : 15 titres
-Foot amateur : ARA 1, BFC 1, BRE 1, CVL 3, GES 1, NOR 1, PAC 1, PDL 2 — 11 titres
+Foot amateur : ARA 1, BRE 1, GES 2, NOR 1, PAC 1, PDL 2 — 8 titres

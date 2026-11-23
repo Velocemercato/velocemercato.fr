@@ -1,5 +1,5 @@
 {
-  "maj": "2026-11-23T08:01:16Z",
+  "maj": "2026-11-23T08:21:16Z",
   "regions": {
     "ARA": "Auvergne-Rhône-Alpes",
     "BFC": "Bourgogne-Franche-Comté",
@@ -26,28 +26,12 @@
       "d": "2026-11-23T07:21:00Z"
     },
     {
-      "l": "BFC",
+      "l": "GES",
       "n": "COUPE",
       "t": "Football - Coupe de France féminine. Fin de parcours pour le Dijon UC, éliminé par Colmar",
       "u": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNbko1YXBBU1BuTGdlWm4zTXJzSzI1LXFFMnN6LU1Kak1MVlkxNnM0ei03NmpJaFdELTVRZjdPcFhuRkhab0lhSG1lVWpMNFdUN3hRaEFKdGNOdXR0VDNVdl9WeElWQ2RoYlNKQW90SElqbS0zUVRtOXQ4YW1PZXpuOS1R?oc=5",
       "s": "Le Bien Public",
       "d": "2026-11-23T07:05:21Z"
-    },
-    {
-      "l": "CVL",
-      "n": "COUPE",
-      "t": "Ligue 3 : l’US Orléans doit confirmer face à Thionville après son exploit en Coupe de France",
-      "u": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPakZJMUs3alhiSWFEX2Nwc0tyTzh2LXRzRmZmdWFsMEJJLWFMZXRMY0FlOHhBVk5FQ1BocDNqSFM4UVFmRGhPa0djcVBESnBhRk5SeVZJb2RndkN2TFlrakhQSTZGMHZaMVlTeGQ0cTZUdEtyTjFnRGljSDhGVnEyclRtMmQxV21IRkRRWVlxWXZWV3gzeFNxQkVkVmJxNVhaemNQcnMtd0JBNUhCNTJvckFReUpxNW02LTRGLWhURU4wal9FZnBXMnRLa2I2aUU1TmpyNnl4eTJ2aW9j?oc=5",
-      "s": "La République du Centre",
-      "d": "2026-11-23T07:00:00Z"
-    },
-    {
-      "l": "CVL",
-      "n": "COUPE",
-      "t": "Coupe de France féminine (1er tour fédéral) : les résultats des clubs franciliens",
-      "u": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPRG1CZVdoeXNsUy14MV9Za3BidVNHRjNzbW0xY3RPdElpODZxRUZCYnFRdTJSdnhoaEF6UmMzVk1iaFE4bXNVWTZhdXNlSExRX1ZaSWJ6OVN3WGNneHBKVDFiYUhpQWExVFBlZ3ZyM2g3M2xGZ2Z2eUw0c2tNQ2ltbDZUSmNaX09peTk3V2p2YVVheFFMQmhFWDZDS3dkQzgyNWVVNVRFMW01eERmM2xKOEtQYTNNNEd3ZXJHQ1RjTW4?oc=5",
-      "s": "mesinfos",
-      "d": "2026-11-23T06:56:00Z"
     },
     {
       "l": "BRE",
@@ -64,14 +48,6 @@
       "u": "https://news.google.com/rss/articles/CBMiqgJBVV95cUxNYnZPWWpYMDNOeGtWbzBpaWZKVHl1QzJqdy04c2o5MXhlSkcwNFprT3dkYWNOc2YtbGpLNldNYmhaamZqVVRIVllEVGlnVGtEZUhfWWpHcVgtd3hTa1dmWDI5NUt2eU5fR3N4ZVlrTVAzemVrRkJZbnRNMEFQUzU5aFRvSVVVVlA1amRGT0hZSmNmdHF2WVUwalotZUgzSVVUQkRyWFZMQS1COG9ibm9GRi0xbVdlOV80TVlDWE5HVkM5T1pGc2tIU0JaWDMzcUk0YmxoQWlQTjhubTJPbUo4TlpWbng0X3NpcGZzc3RVOXlZY3ltNEcwV2llZDAtMXctZ3hpNmVkbmlKRTNFanhlS3RPSmlnRDBjNXZ1QkctSGZXRWoxeDNLdHd3?oc=5",
       "s": "Ouest-France",
       "d": "2026-11-23T06:17:03Z"
-    },
-    {
-      "l": "CVL",
-      "n": "AMATEUR",
-      "t": "\"Il y a des choses qu'on doit encore corriger et c'est normal\" : l'US Orléans football joue ce lundi face à Thionville",
-      "u": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxPRFJCRWdwMWFERE4tTmZ2a0xzbnpmbjFrUEpITGxkOERFYVNMTnJIMkZrSW5XeHk2VjUtS1l6eTRHMnBaMElqN1VUZFRhWHUteUF4SkdiWElKM1Zoak5fei16eW1HZ2JEQkR4MHlNR3lzVW83TUVNbmJGZzhiSXJ1YUxJZWlkdGJxeUJNM3EzWEU0Z2didjh0WlA0TWJabVQzQ0ZFTy0zeG14QWlWbHlXeW1fNHE5YTYwM01VRXptYnNBRGw0d04wNE1RSEliTUhmbGh6V0V1eWlrZjRwLUhlOUptRmdlOGkxX0h3a3hiMXNrWHJoUEZuQVZkbVRvV0hiYnMtRUUwempwNUE?oc=5",
-      "s": "ici.fr",
-      "d": "2026-11-23T05:40:00Z"
     },
     {
       "l": "PAC",
