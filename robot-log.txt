@@ -1,4 +1,4 @@
-Passage du 2026-11-23 07:20 UTC (workflow_dispatch)
+Passage du 2026-11-23 07:40 UTC (workflow_dispatch)
 Nettoyage : 0 breves vides retirees, 56 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
   File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 288
@@ -9,7 +9,7 @@ RQ Pronos : page d'actualités publiques actualisée.
 Accueil VM : actualités inchangées.
 Pages : 56 brèves avec leur propre page, sitemap à jour.
 Agenda : 108 matchs enregistrés.
-Ligue 1 : 15 vidéos lues, 9 vidéos de buts gardées.
+Ligue 1 : 15 vidéos lues, 8 vidéos de buts gardées.
 Ligue 2 : 0 vidéos lues, 0 vidéos de buts gardées.
 FFF : 15 vidéos lues, 6 vidéos de buts gardées.
 UEFA : 15 vidéos lues, 2 vidéos de buts gardées.
@@ -34,20 +34,20 @@ Traceback (most recent call last):
 SyntaxError: unterminated string literal (detected at line 288)
 Auvergne-Rhône-Alpes : 52 titres
 Bourgogne-Franche-Comté : 36 titres
-Bretagne : 53 titres
+Bretagne : 54 titres
 Centre-Val de Loire : 18 titres
 Corse : 11 titres
-::warning::Grand Est : flux muet (HTTPError)
+Grand Est : 29 titres
 Hauts-de-France : 28 titres
 Île-de-France : 34 titres
 Normandie : 19 titres
-Nouvelle-Aquitaine : 73 titres
+Nouvelle-Aquitaine : 33 titres
 Occitanie : 54 titres
-::warning::Pays de la Loire : flux muet (HTTPError)
-Provence-Alpes-Côte d'Azur : 44 titres
+Pays de la Loire : 73 titres
+Provence-Alpes-Côte d'Azur : 83 titres
 Outre-mer : 33 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 16 titres
 Foot National : 15 titres
-Foot amateur : ARA 1, BFC 1, BRE 1, CVL 3, PAC 1 — 7 titres
+Foot amateur : ARA 1, BFC 1, BRE 1, CVL 3, GES 1, NOR 1, PAC 1, PDL 2 — 11 titres
