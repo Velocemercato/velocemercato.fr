@@ -285,7 +285,7 @@ def summarize(post, material):
         'N’invente RIEN : pas de score, montant, date, citation, équipe, blessure ou transfert non présent. '
         'N’affirme JAMAIS qu’une rumeur est officielle ; utilise le conditionnel si nécessaire. '
         'Fais comprendre QUI, QUOI, et les 2 à 4 éléments de contexte vraiment utiles. '
-        'Style simple, énergique, accessible. Le lecteur doit comprendre le sujet sur Véloce Mercato sans devoir ouvrir le média source. Si la matière factuelle est insuffisante pour un article développé, réponds uniquement {"ignorer": true} plutôt que d'inventer ou de répéter. '
+        'Style simple, énergique, accessible. Le lecteur doit comprendre le sujet sur Véloce Mercato sans devoir ouvrir le média source. Si la matière factuelle est insuffisante pour un article développé, réponds uniquement {"ignorer": true} plutôt que d’inventer ou de répéter. '
         'Format strictement JSON (sans bloc markdown), avec les clés titre, resume, texte, categorie, championnat, officiel. '
         'categorie : MERCATO (transferts, prêts, prolongations, rumeurs), MATCHS (avant-match, résultat, analyse d’un match) ou ACTUALITES (le reste). '
         'championnat : LIGUE_1, LIGUE_2, NATIONAL (National, N2, N3, amateur français), FEMININ (tout football féminin), '
