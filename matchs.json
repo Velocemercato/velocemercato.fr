@@ -84,18 +84,6 @@
   ]
  },
  {
-  "id": 565858,
-  "date": "2026-11-21T14:30:00Z",
-  "competition": "Bundesliga",
-  "domicile": "Union Berlin",
-  "exterieur": "RB Leipzig",
-  "statut": "FINISHED",
-  "score": [
-   1,
-   5
-  ]
- },
- {
   "id": 565865,
   "date": "2026-11-21T14:30:00Z",
   "competition": "Bundesliga",
@@ -105,6 +93,18 @@
   "score": [
    1,
    0
+  ]
+ },
+ {
+  "id": 565858,
+  "date": "2026-11-21T14:30:00Z",
+  "competition": "Bundesliga",
+  "domicile": "Union Berlin",
+  "exterieur": "RB Leipzig",
+  "statut": "FINISHED",
+  "score": [
+   1,
+   5
   ]
  },
  {
@@ -948,11 +948,11 @@
   ]
  },
  {
-  "id": 564759,
+  "id": 565870,
   "date": "2026-11-28T17:30:00Z",
-  "competition": "Liga",
-  "domicile": "Elche",
-  "exterieur": "Atleti",
+  "competition": "Bundesliga",
+  "domicile": "Stuttgart",
+  "exterieur": "Frankfurt",
   "statut": "TIMED",
   "score": [
    null,
@@ -960,11 +960,11 @@
   ]
  },
  {
-  "id": 565870,
+  "id": 564759,
   "date": "2026-11-28T17:30:00Z",
-  "competition": "Bundesliga",
-  "domicile": "Stuttgart",
-  "exterieur": "Frankfurt",
+  "competition": "Liga",
+  "domicile": "Elche",
+  "exterieur": "Atleti",
   "statut": "TIMED",
   "score": [
    null,
