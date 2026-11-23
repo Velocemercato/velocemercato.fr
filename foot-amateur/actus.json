@@ -1,5 +1,5 @@
 {
-  "maj": "2026-11-23T09:01:15Z",
+  "maj": "2026-11-23T09:21:24Z",
   "regions": {
     "ARA": "Auvergne-Rhône-Alpes",
     "BFC": "Bourgogne-Franche-Comté",
@@ -17,6 +17,14 @@
     "OM": "Outre-mer"
   },
   "titres": [
+    {
+      "l": "ARA",
+      "n": "COUPE",
+      "t": "Coupe de France : ASSE-FCVB avancé à 19 h, les Caladois attendus à Geoffroy-Guichard",
+      "u": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQbFF3cTFoTl9DTTgwa0U1VEZhVVU0SEkxMU9hdEZNLTlqaTV2bVRwVUZ0cHJBeDdzSDBRZ051T3o3SC00bGFyNFZjUUU0ZnY1RGZULWNKVTNYNXg0M2RpN08wblFEWmdQYWdDWGhJYjVNNVhILTVGT2tRZ0M2NzZRZVpiZDIyOC16UUVXM2xwVnVLcnp1a0oyUU92NGZENjFPR3hTQ3NZaHQ0a25WR3lRVGlsQ1JxVjkxUHlOZQ?oc=5",
+      "s": "Lyon Foot",
+      "d": "2026-11-23T09:00:00Z"
+    },
     {
       "l": "OM",
       "n": "COUPE",
@@ -42,28 +50,12 @@
       "d": "2026-11-23T07:21:00Z"
     },
     {
-      "l": "BFC",
+      "l": "GES",
       "n": "COUPE",
       "t": "Football - Coupe de France féminine. Fin de parcours pour le Dijon UC, éliminé par Colmar",
       "u": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNbko1YXBBU1BuTGdlWm4zTXJzSzI1LXFFMnN6LU1Kak1MVlkxNnM0ei03NmpJaFdELTVRZjdPcFhuRkhab0lhSG1lVWpMNFdUN3hRaEFKdGNOdXR0VDNVdl9WeElWQ2RoYlNKQW90SElqbS0zUVRtOXQ4YW1PZXpuOS1R?oc=5",
       "s": "Le Bien Public",
       "d": "2026-11-23T07:05:21Z"
-    },
-    {
-      "l": "CVL",
-      "n": "COUPE",
-      "t": "Ligue 3 : l’US Orléans doit confirmer face à Thionville après son exploit en Coupe de France",
-      "u": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPakZJMUs3alhiSWFEX2Nwc0tyTzh2LXRzRmZmdWFsMEJJLWFMZXRMY0FlOHhBVk5FQ1BocDNqSFM4UVFmRGhPa0djcVBESnBhRk5SeVZJb2RndkN2TFlrakhQSTZGMHZaMVlTeGQ0cTZUdEtyTjFnRGljSDhGVnEyclRtMmQxV21IRkRRWVlxWXZWV3gzeFNxQkVkVmJxNVhaemNQcnMtd0JBNUhCNTJvckFReUpxNW02LTRGLWhURU4wal9FZnBXMnRLa2I2aUU1TmpyNnl4eTJ2aW9j?oc=5",
-      "s": "La République du Centre",
-      "d": "2026-11-23T07:00:00Z"
-    },
-    {
-      "l": "CVL",
-      "n": "COUPE",
-      "t": "Coupe de France féminine (1er tour fédéral) : les résultats des clubs franciliens",
-      "u": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPRG1CZVdoeXNsUy14MV9Za3BidVNHRjNzbW0xY3RPdElpODZxRUZCYnFRdTJSdnhoaEF6UmMzVk1iaFE4bXNVWTZhdXNlSExRX1ZaSWJ6OVN3WGNneHBKVDFiYUhpQWExVFBlZ3ZyM2g3M2xGZ2Z2eUw0c2tNQ2ltbDZUSmNaX09peTk3V2p2YVVheFFMQmhFWDZDS3dkQzgyNWVVNVRFMW01eERmM2xKOEtQYTNNNEd3ZXJHQ1RjTW4?oc=5",
-      "s": "mesinfos",
-      "d": "2026-11-23T06:56:00Z"
     },
     {
       "l": "BRE",
@@ -82,14 +74,6 @@
       "d": "2026-11-23T06:17:03Z"
     },
     {
-      "l": "CVL",
-      "n": "AMATEUR",
-      "t": "\"Il y a des choses qu'on doit encore corriger et c'est normal\" : l'US Orléans football joue ce lundi face à Thionville",
-      "u": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxPRFJCRWdwMWFERE4tTmZ2a0xzbnpmbjFrUEpITGxkOERFYVNMTnJIMkZrSW5XeHk2VjUtS1l6eTRHMnBaMElqN1VUZFRhWHUteUF4SkdiWElKM1Zoak5fei16eW1HZ2JEQkR4MHlNR3lzVW83TUVNbmJGZzhiSXJ1YUxJZWlkdGJxeUJNM3EzWEU0Z2didjh0WlA0TWJabVQzQ0ZFTy0zeG14QWlWbHlXeW1fNHE5YTYwM01VRXptYnNBRGw0d04wNE1RSEliTUhmbGh6V0V1eWlrZjRwLUhlOUptRmdlOGkxX0h3a3hiMXNrWHJoUEZuQVZkbVRvV0hiYnMtRUUwempwNUE?oc=5",
-      "s": "ici.fr",
-      "d": "2026-11-23T05:40:00Z"
-    },
-    {
       "l": "PAC",
       "n": "COUPE",
       "t": "Ce club ne brille pas qu’en Coupe de France ! Renversant, le Riviera FC conforte sa 4e place en National 2 en battant Rousset",
@@ -106,7 +90,7 @@
       "d": "2026-11-23T05:07:17Z"
     },
     {
-      "l": "CVL",
+      "l": "GES",
       "n": "COUPE",
       "t": "Football. Coupe de France féminine : le FC Metz au bout du suspense",
       "u": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNT2hwLUk5LU43YlFXVDhNTDRFT0RIRV9aX1Vmc05lY2RsTW9GOXY0ZXZsSkpSTGNfQXRoYUQ0OEZ6bUpwUXhNRkhfMHN1ekptNWdiU0dTQV9KVC1mczM0ZzdVSTUwZHRGQ3BjZ09HcDZjY2lGSnY1NWM5UE5BR3U3TmpaSnlkMkVRMUE?oc=5",
