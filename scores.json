@@ -677,19 +677,6 @@
    ]
   },
   {
-   "id": 558522,
-   "date": "2026-11-22T14:00:00Z",
-   "comp": "Serie A",
-   "sport": "foot",
-   "dom": "Bologna",
-   "ext": "Udinese",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    1
-   ]
-  },
-  {
    "id": 558524,
    "date": "2026-11-22T14:00:00Z",
    "comp": "Serie A",
@@ -700,6 +687,19 @@
    "score": [
     0,
     2
+   ]
+  },
+  {
+   "id": 558522,
+   "date": "2026-11-22T14:00:00Z",
+   "comp": "Serie A",
+   "sport": "foot",
+   "dom": "Bologna",
+   "ext": "Udinese",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    1
    ]
   },
   {
@@ -1086,9 +1086,9 @@
    "sport": "basket",
    "dom": "Knicks",
    "ext": "Pacers",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    112,
+    113,
     106
    ]
   },
@@ -1128,7 +1128,7 @@
    "statut": "IN_PLAY",
    "score": [
     83,
-    81
+    86
    ]
   },
   {
@@ -1457,6 +1457,6 @@
    ]
   }
  ],
- "maj": "2026-11-23T03:35:32Z",
- "verifie": "2026-11-23T03:35:32Z"
+ "maj": "2026-11-23T03:39:27Z",
+ "verifie": "2026-11-23T03:39:27Z"
 }
