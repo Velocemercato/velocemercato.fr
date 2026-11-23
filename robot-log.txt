@@ -1,34 +1,10 @@
-Passage du 2026-11-23 00:20 UTC (workflow_dispatch)
-Nettoyage : 0 breves vides retirees, 55 gardees.
+Passage du 2026-11-23 00:40 UTC (workflow_dispatch)
+Nettoyage : 0 breves vides retirees, 56 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 55 articles conservés et 45 flashs existants.
-RSS Foot National / LIGUE_1 : 14 actualités récentes.
-RSS Foot National / NATIONAL : 13 actualités récentes.
-RSS Foot National / LIGUE_2 : 8 actualités récentes.
-RSS Foot National / NATIONAL : 11 actualités récentes.
-RSS RMC Sport / FRANCE : 30 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 0 actualités récentes.
-RSS RMC Sport / LIGUE_1 : 29 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 3 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 45 actualités récentes.
-RSS Foot01 / FRANCE : 44 actualités récentes.
-RSS RMC Sport / BLEUS : 1 actualités récentes.
-RSS BBC Sport / FEMININ : 13 actualités récentes.
-RSS The Guardian / ETRANGER : 1 actualités récentes.
-RSS franceinfo / FRANCE : 6 actualités récentes.
-RSS Foot Amateur / NATIONAL : 10 actualités récentes.
-RSS Foot Amateur / NATIONAL : 6 actualités récentes.
-RSS The Guardian / ETRANGER : 1 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS inaccessible Foot Mercato : HTTPError - HTTP Error 429: Too Many Requests
-235 titres collectés, 45 nouveaux liens, quota 2.
-/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
-  warnings.warn(
-Brève prête : RMC Sport - Nicolas Pépé opéré des yeux : la rumeur liée à l'éclipse solaire démentie
-Bilan : brèves_rédigées=1, source_inaccessible_ou_trop_courte=15, sujet_deja_traite=14
-Publié : 1 brèves (total 56). Flash : 45.
+  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 288
+    'Style simple, énergique, accessible. Le lecteur doit comprendre le sujet sur Véloce Mercato sans devoir ouvrir le média source. Si la matière factuelle est insuffisante pour un article développé, réponds uniquement {"ignorer": true} plutôt que d'inventer ou de répéter. '
+                                                                                                                                                                                                                                                                                   ^
+SyntaxError: unterminated string literal (detected at line 288)
 RQ Pronos : page d'actualités publiques actualisée.
 Accueil VM : actualités inchangées.
 Pages : 56 brèves avec leur propre page, sitemap à jour.
@@ -42,25 +18,31 @@ LaLiga : 15 vidéos lues, 5 vidéos de buts gardées.
 Serie A : 15 vidéos lues, 6 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 12 vidéos de buts gardées.
 Vidéos publiées : 38.
-Flux muet Foot Mercato : HTTPError
-Fil express : actus 200, gaming 103, foot 200
-macommune.info  : 24 titres
-L'Est Républicain haute-saone : 20 titres
-L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
-L'Est Républicain www.estrepublicain.fr : 3 titres
-L'Est Républicain territoire-de-belfort : 10 titres
-VM Belfort : 32 titres
-Auvergne-Rhône-Alpes : 50 titres
+Traceback (most recent call last):
+  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_fil.py", line 15, in <module>
+    import update_news as robot
+  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 288
+    'Style simple, énergique, accessible. Le lecteur doit comprendre le sujet sur Véloce Mercato sans devoir ouvrir le média source. Si la matière factuelle est insuffisante pour un article développé, réponds uniquement {"ignorer": true} plutôt que d'inventer ou de répéter. '
+                                                                                                                                                                                                                                                                                   ^
+SyntaxError: unterminated string literal (detected at line 288)
+Traceback (most recent call last):
+  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_region.py", line 14, in <module>
+    import update_news as robot
+  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 288
+    'Style simple, énergique, accessible. Le lecteur doit comprendre le sujet sur Véloce Mercato sans devoir ouvrir le média source. Si la matière factuelle est insuffisante pour un article développé, réponds uniquement {"ignorer": true} plutôt que d'inventer ou de répéter. '
+                                                                                                                                                                                                                                                                                   ^
+SyntaxError: unterminated string literal (detected at line 288)
+::warning::Auvergne-Rhône-Alpes : flux muet (HTTPError)
 Bourgogne-Franche-Comté : 35 titres
 Bretagne : 54 titres
 Centre-Val de Loire : 18 titres
 Corse : 11 titres
 Grand Est : 27 titres
-Hauts-de-France : 29 titres
-Île-de-France : 34 titres
+Hauts-de-France : 30 titres
+Île-de-France : 78 titres
 Normandie : 20 titres
 Nouvelle-Aquitaine : 33 titres
-Occitanie : 53 titres
+Occitanie : 91 titres
 Pays de la Loire : 72 titres
 Provence-Alpes-Côte d'Azur : 46 titres
 Outre-mer : 34 titres
@@ -68,4 +50,4 @@ Outre-mer : 34 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 16 titres
 Foot National : 15 titres
-Foot amateur : ARA 4, BRE 19, COR 11, CVL 14, FR 6, GES 1, NAQ 1, NOR 7, OCC 2, PAC 5, PDL 3 — 73 titres
+Foot amateur : BRE 19, COR 11, CVL 16, FR 6, GES 1, NAQ 1, NOR 7, OCC 2, PAC 5, PDL 3 — 71 titres
