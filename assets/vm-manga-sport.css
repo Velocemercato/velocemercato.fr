@@ -1,0 +1,16 @@
+/* VM Manga Sport — identité originale, sans personnages de franchise. */
+:root{--vm-bleu:#113bb6;--vm-bleu-nuit:#080f35;--vm-or:#ffd548;--vm-rouge:#ef304d}
+body{background-image:radial-gradient(ellipse at 15% 0%,#1940a95e,transparent 40%),radial-gradient(ellipse at 90% 35%,#b71f4252,transparent 36%),linear-gradient(150deg,#060d2b,#0c1435 55%,#090b1b)!important;background-attachment:fixed}
+header,header.top, .topbar{border-bottom:3px solid var(--vm-or)!important}
+h1,h2,h3{letter-spacing:-.025em}
+h1,h2{font-style:italic;text-shadow:2px 3px 0 #07102a}
+article,.card,.tile{transition:transform .2s ease,box-shadow .2s ease}
+article:hover,.card:hover,.tile:hover{box-shadow:0 10px 25px #0008,4px 4px 0 #ffd54855}
+a:focus-visible,button:focus-visible{outline:3px solid var(--vm-or)!important;outline-offset:3px}
+.vm-manga-banner{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(115deg,#08143e 0%,#174ac4 52%,#b91f45 100%);color:white;border-bottom:5px solid #ffd548;padding:22px clamp(15px,4vw,52px);display:flex;align-items:center;gap:20px;justify-content:space-between;min-height:145px}
+.vm-manga-banner:before{content:"";position:absolute;inset:-50%;z-index:-1;opacity:.22;background:repeating-conic-gradient(from 0deg at 65% 50%,transparent 0deg 8deg,#fff 9deg 10deg,transparent 11deg 18deg)}
+.vm-manga-banner strong{display:block;font:italic 900 clamp(26px,5vw,57px)/1 'Barlow Condensed',Impact,sans-serif;text-shadow:4px 5px 0 #060e2e;letter-spacing:-.025em}
+.vm-manga-banner p{font:700 clamp(15px,2vw,23px)/1.25 system-ui,sans-serif;margin:10px 0 0;max-width:760px}
+.vm-manga-banner .vm-emblem{flex:none;display:grid;place-items:center;width:100px;height:100px;transform:rotate(-9deg);border:5px solid #07112e;box-shadow:7px 7px 0 #ffd548;background:#fff;color:#113bb6;font:italic 900 35px Impact,sans-serif}
+@media(max-width:580px){.vm-manga-banner{min-height:125px}.vm-manga-banner .vm-emblem{width:62px;height:62px;font-size:24px}.vm-manga-banner p{font-size:14px}}
+@media(prefers-reduced-motion:reduce){article,.card,.tile{transition:none}}

@@ -78,8 +78,8 @@ figure{{margin:0 0 16px}}figure img{{display:block;width:100%;height:auto;border
 footer{{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 16px 34px}}footer a{{color:var(--gold)}}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Barlow+Condensed:ital,wght@0,700;1,800&display=swap"><link rel="stylesheet" href="/assets/vm-theme.css">
-</head>
-<body>
+<link rel="stylesheet" href="/assets/vm-manga-sport.css?v=20261123">\n</head>
+<body><section class="vm-manga-banner" aria-label="Véloce Mercato"><div><strong>VM — LE FOOT EN MODE MANGA !</strong><p>Les faits, le contexte et notre analyse, à lire ici.</p></div><div class="vm-emblem" aria-hidden="true">VM</div></section>
 <header><a class="logo" href="/">VÉLOCE <b>MERCATO</b></a><nav><a href="/">Brèves</a><a href="/foot/#videos">Vidéos</a><a href="/archives.html">Rechercher</a><a class="don" href="/soutenir.html">💛 Soutenir</a></nav></header>
 <main>
 <article>
