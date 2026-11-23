@@ -1,4 +1,4 @@
-Passage du 2026-11-23 01:40 UTC (workflow_dispatch)
+Passage du 2026-11-23 02:00 UTC (workflow_dispatch)
 Nettoyage : 0 breves vides retirees, 56 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
   File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 288
@@ -17,7 +17,7 @@ Premier League : 15 vidéos lues, 2 vidéos de buts gardées.
 LaLiga : 15 vidéos lues, 5 vidéos de buts gardées.
 Serie A : 15 vidéos lues, 6 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 12 vidéos de buts gardées.
-Vidéos publiées : 38.
+Vidéos publiées : 39.
 Traceback (most recent call last):
   File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_fil.py", line 15, in <module>
     import update_news as robot
@@ -33,21 +33,21 @@ Traceback (most recent call last):
                                                                                                                                                                                                                                                                                    ^
 SyntaxError: unterminated string literal (detected at line 288)
 Auvergne-Rhône-Alpes : 50 titres
-Bourgogne-Franche-Comté : 35 titres
+Bourgogne-Franche-Comté : 88 titres
 Bretagne : 54 titres
-Centre-Val de Loire : 17 titres
+Centre-Val de Loire : 16 titres
 Corse : 11 titres
-Grand Est : 26 titres
-Hauts-de-France : 96 titres
+::warning::Grand Est : flux muet (HTTPError)
+Hauts-de-France : 29 titres
 Île-de-France : 34 titres
 Normandie : 20 titres
 Nouvelle-Aquitaine : 33 titres
-Occitanie : 53 titres
-Pays de la Loire : 72 titres
+Occitanie : 91 titres
+::warning::Pays de la Loire : flux muet (HTTPError)
 Provence-Alpes-Côte d'Azur : 44 titres
-Outre-mer : 34 titres
+Outre-mer : 77 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 16 titres
 Foot National : 15 titres
-Foot amateur : ARA 4, BRE 19, COR 11, CVL 14, FR 6, GES 1, NAQ 1, NOR 7, OCC 2, PAC 5, PDL 3 — 73 titres
+Foot amateur : ARA 4, BRE 19, COR 11, CVL 13, FR 6, NAQ 1, NOR 6, OCC 2, PAC 5 — 67 titres
