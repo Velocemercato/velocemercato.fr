@@ -1,16 +1,37 @@
-Passage actus du 2026-11-23 22:00 UTC (workflow_dispatch, main)
-Traceback (most recent call last):
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_actus.py", line 12, in <module>
-    import update_news as robot
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 288
-    'Style simple, énergique, accessible. Le lecteur doit comprendre le sujet sur Véloce Mercato sans devoir ouvrir le média source. Si la matière factuelle est insuffisante pour un article développé, réponds uniquement {"ignorer": true} plutôt que d'inventer ou de répéter. '
-                                                                                                                                                                                                                                                                                   ^
-SyntaxError: unterminated string literal (detected at line 288)
+Passage actus du 2026-11-23 22:30 UTC (workflow_dispatch, main)
+Départ : 0 articles conservés et 0 flashs existants.
+RSS franceinfo / SANTE : 4 actualités récentes.
+RSS franceinfo / CULTURE : 17 actualités récentes.
+RSS franceinfo / POLITIQUE : 20 actualités récentes.
+RSS franceinfo / ECONOMIE : 20 actualités récentes.
+RSS franceinfo / FRANCE : 27 actualités récentes.
+RSS 20 Minutes / FRANCE : 26 actualités récentes.
+RSS France 24 / INTERNATIONAL : 23 actualités récentes.
+RSS franceinfo / TECH : 16 actualités récentes.
+RSS franceinfo / INTERNATIONAL : 20 actualités récentes.
+RSS The Guardian / INTERNATIONAL : 4 actualités récentes.
+RSS Euronews / INTERNATIONAL : 45 actualités récentes.
+RSS BBC News / INTERNATIONAL : 6 actualités récentes.
+RSS RFI / INTERNATIONAL : 23 actualités récentes.
+RSS Ouest-France / REGIONS : 10 actualités récentes.
+261 titres collectés, 225 nouveaux liens, quota 2.
+/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
+  warnings.warn(
+Brève prête : franceinfo - Six députés LFI vont porter plainte pour des menaces de mort anonymes
+Brève prête : RFI - La France va constituer des stocks stratégiques de minerais critiques
+Bilan : brèves_rédigées=2, source_inaccessible_ou_trop_courte=1, sujet_deja_traite=2
+Publié : 2 brèves (total 2). Flash : 2.
 --- Papiers Sans Galère ---
-Traceback (most recent call last):
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_demarches.py", line 12, in <module>
-    import update_news as robot
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 288
-    'Style simple, énergique, accessible. Le lecteur doit comprendre le sujet sur Véloce Mercato sans devoir ouvrir le média source. Si la matière factuelle est insuffisante pour un article développé, réponds uniquement {"ignorer": true} plutôt que d'inventer ou de répéter. '
-                                                                                                                                                                                                                                                                                   ^
-SyntaxError: unterminated string literal (detected at line 288)
+Départ : 0 articles conservés et 0 flashs existants.
+RSS franceinfo / TRAVAIL : 20 actualités récentes.
+RSS franceinfo / JUSTICE : 20 actualités récentes.
+RSS franceinfo / IMPOTS : 3 actualités récentes.
+RSS franceinfo / AUTRE : 20 actualités récentes.
+RSS franceinfo / LOGEMENT : 19 actualités récentes.
+RSS franceinfo / RETRAITE : 13 actualités récentes.
+95 titres collectés, 42 nouveaux liens, quota 1.
+/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
+  warnings.warn(
+Assez de sujets refusés dans ce passage : arrêt pour limiter le coût.
+Bilan : non_pertinent=4
+Aucune brève de qualité suffisante ; fichiers JSON inchangés.
