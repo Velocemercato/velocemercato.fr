@@ -1,4 +1,4 @@
-Passage du 2026-11-23 18:40 UTC (workflow_dispatch)
+Passage du 2026-11-23 19:00 UTC (workflow_dispatch)
 Nettoyage : 0 breves vides retirees, 0 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
   File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 288
@@ -32,22 +32,22 @@ Traceback (most recent call last):
     'Style simple, énergique, accessible. Le lecteur doit comprendre le sujet sur Véloce Mercato sans devoir ouvrir le média source. Si la matière factuelle est insuffisante pour un article développé, réponds uniquement {"ignorer": true} plutôt que d'inventer ou de répéter. '
                                                                                                                                                                                                                                                                                    ^
 SyntaxError: unterminated string literal (detected at line 288)
-Auvergne-Rhône-Alpes : 56 titres
-Bourgogne-Franche-Comté : 35 titres
+Auvergne-Rhône-Alpes : 57 titres
+Bourgogne-Franche-Comté : 90 titres
 Bretagne : 56 titres
-Centre-Val de Loire : 14 titres
+Centre-Val de Loire : 13 titres
 ::warning::Corse : flux muet (HTTPError)
 Grand Est : 30 titres
 Hauts-de-France : 26 titres
 ::warning::Île-de-France : flux muet (HTTPError)
 Normandie : 9 titres
-Nouvelle-Aquitaine : 73 titres
-Occitanie : 59 titres
-Pays de la Loire : 70 titres
-Provence-Alpes-Côte d'Azur : 43 titres
+::warning::Nouvelle-Aquitaine : flux muet (HTTPError)
+Occitanie : 58 titres
+Pays de la Loire : 71 titres
+Provence-Alpes-Côte d'Azur : 82 titres
 Outre-mer : 34 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : ARA 4, BFC 4, BRE 4, CVL 5, GES 3, NOR 5, OCC 5, OM 1, PAC 1, PDL 4 — 36 titres
+Foot amateur : ARA 5, BFC 2, BRE 4, CVL 6, GES 2, NOR 5, OCC 5, OM 1, PAC 1, PDL 4 — 35 titres
