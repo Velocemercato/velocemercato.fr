@@ -1,4 +1,4 @@
-Passage du 2026-11-23 14:00 UTC (workflow_dispatch)
+Passage du 2026-11-23 14:20 UTC (workflow_dispatch)
 Nettoyage : 0 breves vides retirees, 0 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
   File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 288
@@ -15,7 +15,7 @@ FFF : 15 vidéos lues, 6 vidéos de buts gardées.
 UEFA : 15 vidéos lues, 2 vidéos de buts gardées.
 Premier League : 15 vidéos lues, 2 vidéos de buts gardées.
 LaLiga : 15 vidéos lues, 5 vidéos de buts gardées.
-Serie A : 15 vidéos lues, 5 vidéos de buts gardées.
+Serie A : 15 vidéos lues, 4 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 12 vidéos de buts gardées.
 Vidéos publiées : 0.
 Traceback (most recent call last):
@@ -32,8 +32,8 @@ Traceback (most recent call last):
     'Style simple, énergique, accessible. Le lecteur doit comprendre le sujet sur Véloce Mercato sans devoir ouvrir le média source. Si la matière factuelle est insuffisante pour un article développé, réponds uniquement {"ignorer": true} plutôt que d'inventer ou de répéter. '
                                                                                                                                                                                                                                                                                    ^
 SyntaxError: unterminated string literal (detected at line 288)
-Auvergne-Rhône-Alpes : 54 titres
-Bourgogne-Franche-Comté : 35 titres
+Auvergne-Rhône-Alpes : 83 titres
+Bourgogne-Franche-Comté : 34 titres
 Bretagne : 57 titres
 Centre-Val de Loire : 17 titres
 Corse : 13 titres
@@ -41,13 +41,13 @@ Corse : 13 titres
 Hauts-de-France : 28 titres
 Île-de-France : 34 titres
 Normandie : 15 titres
-Nouvelle-Aquitaine : 34 titres
+Nouvelle-Aquitaine : 33 titres
 Occitanie : 57 titres
-Pays de la Loire : 72 titres
-::warning::Provence-Alpes-Côte d'Azur : flux muet (HTTPError)
+Pays de la Loire : 97 titres
+Provence-Alpes-Côte d'Azur : 44 titres
 Outre-mer : 34 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : ARA 4, BFC 2, BRE 3, COR 3, CVL 3, NOR 3, OCC 2, OM 1, PDL 2 — 23 titres
+Foot amateur : ARA 4, BFC 2, BRE 3, COR 3, CVL 3, NOR 3, OCC 2, OM 1, PAC 1, PDL 3 — 25 titres
