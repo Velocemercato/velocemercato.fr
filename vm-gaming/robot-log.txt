@@ -1,23 +1,8 @@
-Passage gaming du 2026-11-23 00:10 UTC (workflow_dispatch, main)
-Départ : 10 articles conservés et 9 flashs existants.
-RSS Eurogamer / GAMING : 9 actualités récentes.
-RSS Jeuxvideo.com / GAMING : 17 actualités récentes.
-RSS Dexerto / GAMING : 8 actualités récentes.
-RSS Gamekult / GAMING : 12 actualités récentes.
-RSS Les Numériques / GAMING : 2 actualités récentes.
-RSS JV France / GAMING : 9 actualités récentes.
-RSS Tom’s Hardware / GAMING : 0 actualités récentes.
-RSS GamerGen / GAMING : 4 actualités récentes.
-RSS Next / GAMING : 0 actualités récentes.
-61 titres collectés, 7 nouveaux liens, quota 1.
-/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
-  warnings.warn(
-Claude indisponible (Jeuxvideo.com) : HTTP 403
-Claude indisponible (Jeuxvideo.com) : HTTP 403
-Claude indisponible (Jeuxvideo.com) : HTTP 403
-Claude indisponible (Jeuxvideo.com) : HTTP 403
-Claude indisponible (Jeuxvideo.com) : HTTP 403
-Claude indisponible (Jeuxvideo.com) : HTTP 403
-Trop de rejets IA dans ce passage : arrêt pour limiter le coût.
-Bilan : rejet_lecture_ou_ia=6
-Aucune brève de qualité suffisante ; fichiers JSON inchangés.
+Passage gaming du 2026-11-23 00:40 UTC (workflow_dispatch, main)
+Traceback (most recent call last):
+  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_gaming.py", line 13, in <module>
+    import update_news as robot
+  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 288
+    'Style simple, énergique, accessible. Le lecteur doit comprendre le sujet sur Véloce Mercato sans devoir ouvrir le média source. Si la matière factuelle est insuffisante pour un article développé, réponds uniquement {"ignorer": true} plutôt que d'inventer ou de répéter. '
+                                                                                                                                                                                                                                                                                   ^
+SyntaxError: unterminated string literal (detected at line 288)
