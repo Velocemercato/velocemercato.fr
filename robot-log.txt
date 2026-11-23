@@ -1,4 +1,4 @@
-Passage du 2026-11-23 15:20 UTC (workflow_dispatch)
+Passage du 2026-11-23 15:40 UTC (workflow_dispatch)
 Nettoyage : 0 breves vides retirees, 0 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
   File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 288
@@ -33,16 +33,16 @@ Traceback (most recent call last):
                                                                                                                                                                                                                                                                                    ^
 SyntaxError: unterminated string literal (detected at line 288)
 Auvergne-Rhône-Alpes : 53 titres
-::warning::Bourgogne-Franche-Comté : flux muet (HTTPError)
+Bourgogne-Franche-Comté : 36 titres
 Bretagne : 58 titres
-Centre-Val de Loire : 18 titres
+Centre-Val de Loire : 19 titres
 Corse : 13 titres
-Grand Est : 30 titres
-Hauts-de-France : 28 titres
+Grand Est : 29 titres
+Hauts-de-France : 27 titres
 Île-de-France : 34 titres
-Normandie : 14 titres
+Normandie : 13 titres
 Nouvelle-Aquitaine : 33 titres
-Occitanie : 57 titres
+Occitanie : 92 titres
 Pays de la Loire : 71 titres
 Provence-Alpes-Côte d'Azur : 43 titres
 Outre-mer : 34 titres
@@ -50,4 +50,4 @@ Outre-mer : 34 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : ARA 3, BRE 3, COR 3, CVL 4, GES 4, NOR 5, OCC 2, OM 1, PAC 1, PDL 2 — 28 titres
+Foot amateur : ARA 3, BFC 3, BRE 3, COR 3, CVL 5, GES 2, NOR 5, OCC 4, OM 1, PAC 1, PDL 2 — 32 titres
