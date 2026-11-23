@@ -1,16 +1,16 @@
-Passage actus du 2026-11-23 00:30 UTC (workflow_dispatch, main)
-Départ : 45 articles conservés et 39 flashs existants.
-Limite de 36 brèves par jour atteinte, aucune nouvelle publication.
+Passage actus du 2026-11-23 01:00 UTC (workflow_dispatch, main)
+Traceback (most recent call last):
+  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_actus.py", line 12, in <module>
+    import update_news as robot
+  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 288
+    'Style simple, énergique, accessible. Le lecteur doit comprendre le sujet sur Véloce Mercato sans devoir ouvrir le média source. Si la matière factuelle est insuffisante pour un article développé, réponds uniquement {"ignorer": true} plutôt que d'inventer ou de répéter. '
+                                                                                                                                                                                                                                                                                   ^
+SyntaxError: unterminated string literal (detected at line 288)
 --- Papiers Sans Galère ---
-Départ : 3 articles conservés et 3 flashs existants.
-RSS franceinfo / IMPOTS : 2 actualités récentes.
-RSS franceinfo / TRAVAIL : 20 actualités récentes.
-RSS franceinfo / LOGEMENT : 20 actualités récentes.
-RSS franceinfo / JUSTICE : 20 actualités récentes.
-RSS franceinfo / RETRAITE : 12 actualités récentes.
-RSS franceinfo / AUTRE : 20 actualités récentes.
-94 titres collectés, 1 nouveaux liens, quota 1.
-/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
-  warnings.warn(
-Bilan : source_inaccessible_ou_trop_courte=1
-Aucune brève de qualité suffisante ; fichiers JSON inchangés.
+Traceback (most recent call last):
+  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_demarches.py", line 12, in <module>
+    import update_news as robot
+  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 288
+    'Style simple, énergique, accessible. Le lecteur doit comprendre le sujet sur Véloce Mercato sans devoir ouvrir le média source. Si la matière factuelle est insuffisante pour un article développé, réponds uniquement {"ignorer": true} plutôt que d'inventer ou de répéter. '
+                                                                                                                                                                                                                                                                                   ^
+SyntaxError: unterminated string literal (detected at line 288)
