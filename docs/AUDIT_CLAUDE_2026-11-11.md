@@ -1,6 +1,6 @@
 # Audit du site pour Claude
 
-État mesuré le 2026-11-23T16:19:38.967062+01:00.
+État mesuré le 2026-11-23T19:00:06.686677+01:00.
 
 ## Périmètre et limites
 
