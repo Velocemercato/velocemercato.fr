@@ -1,13 +1,39 @@
-Passage du 2026-11-23 22:00 UTC (workflow_dispatch)
+Passage du 2026-11-23 22:20 UTC (workflow_dispatch)
 Nettoyage : 0 breves vides retirees, 0 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 288
-    'Style simple, énergique, accessible. Le lecteur doit comprendre le sujet sur Véloce Mercato sans devoir ouvrir le média source. Si la matière factuelle est insuffisante pour un article développé, réponds uniquement {"ignorer": true} plutôt que d'inventer ou de répéter. '
-                                                                                                                                                                                                                                                                                   ^
-SyntaxError: unterminated string literal (detected at line 288)
+Départ : 0 articles conservés et 0 flashs existants.
+RSS Foot National / NATIONAL : 11 actualités récentes.
+RSS Foot National / NATIONAL : 9 actualités récentes.
+RSS Foot National / LIGUE_2 : 8 actualités récentes.
+RSS Foot Amateur / NATIONAL : 1 actualités récentes.
+RSS RMC Sport / FRANCE : 30 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 4 actualités récentes.
+RSS RMC Sport / LIGUE_1 : 23 actualités récentes.
+RSS Foot Mercato / INTERNATIONAL : 44 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 42 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 6 actualités récentes.
+RSS Foot01 / FRANCE : 43 actualités récentes.
+RSS RMC Sport / BLEUS : 0 actualités récentes.
+RSS BBC Sport / FEMININ : 14 actualités récentes.
+RSS Foot Amateur / NATIONAL : 7 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS franceinfo / FRANCE : 5 actualités récentes.
+RSS Foot National / LIGUE_1 : 13 actualités récentes.
+260 titres collectés, 125 nouveaux liens, quota 2.
+/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
+  warnings.warn(
+Brève prête : Foot Mercato - Ligue 2 : Dunkerque s'impose 3-2 à Sochaux, qui enchaîne une 5e défaite
+Brève ignorée (BBC Sport) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève prête : Foot Mercato - Lennart Karl (Bayern Munich) : « Je ne suis pas quelqu’un de très intelligent »
+Bilan : brèves_rédigées=2, non_pertinent=2, rejet_lecture_ou_ia=1, sujet_deja_traite=1
+Publié : 2 brèves (total 2). Flash : 2.
 RQ Pronos : page d'actualités publiques actualisée.
-Accueil VM : actualités inchangées.
-Pages : 0 brèves avec leur propre page, sitemap à jour.
+Accueil VM : actualités sourcées visibles en HTML, mises à jour.
+Pages : 2 brèves avec leur propre page, sitemap à jour.
 Agenda : 108 matchs enregistrés.
 Ligue 1 : 15 vidéos lues, 7 vidéos de buts gardées.
 Ligue 2 : 0 vidéos lues, 0 vidéos de buts gardées.
@@ -17,37 +43,30 @@ Premier League : 15 vidéos lues, 2 vidéos de buts gardées.
 LaLiga : 15 vidéos lues, 6 vidéos de buts gardées.
 Serie A : 15 vidéos lues, 3 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 10 vidéos de buts gardées.
-Vidéos publiées : 4.
-Traceback (most recent call last):
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_fil.py", line 15, in <module>
-    import update_news as robot
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 288
-    'Style simple, énergique, accessible. Le lecteur doit comprendre le sujet sur Véloce Mercato sans devoir ouvrir le média source. Si la matière factuelle est insuffisante pour un article développé, réponds uniquement {"ignorer": true} plutôt que d'inventer ou de répéter. '
-                                                                                                                                                                                                                                                                                   ^
-SyntaxError: unterminated string literal (detected at line 288)
-Traceback (most recent call last):
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_region.py", line 14, in <module>
-    import update_news as robot
-  File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 288
-    'Style simple, énergique, accessible. Le lecteur doit comprendre le sujet sur Véloce Mercato sans devoir ouvrir le média source. Si la matière factuelle est insuffisante pour un article développé, réponds uniquement {"ignorer": true} plutôt que d'inventer ou de répéter. '
-                                                                                                                                                                                                                                                                                   ^
-SyntaxError: unterminated string literal (detected at line 288)
+Vidéos publiées : 5.
+Fil express : actus 200, foot 200, gaming 120
+macommune.info  : 23 titres
+L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
+L'Est Républicain www.estrepublicain.fr : 3 titres
+L'Est Républicain territoire-de-belfort : 11 titres
+L'Est Républicain haute-saone : 16 titres
+VM Belfort : 46 titres
 Auvergne-Rhône-Alpes : 83 titres
 Bourgogne-Franche-Comté : 34 titres
 Bretagne : 83 titres
 Centre-Val de Loire : 7 titres
 Corse : 9 titres
 Grand Est : 30 titres
-Hauts-de-France : 96 titres
-Île-de-France : 78 titres
-::warning::Normandie : flux muet (HTTPError)
-Nouvelle-Aquitaine : 73 titres
-Occitanie : 56 titres
-::warning::Pays de la Loire : flux muet (HTTPError)
+Hauts-de-France : 26 titres
+Île-de-France : 34 titres
+Normandie : 18 titres
+Nouvelle-Aquitaine : 32 titres
+Occitanie : 91 titres
+Pays de la Loire : 73 titres
 Provence-Alpes-Côte d'Azur : 42 titres
 Outre-mer : 77 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : ARA 6, BFC 4, BRE 4, COR 9, CVL 6, GES 2, NOR 2, OCC 5, OM 1, PAC 1 — 40 titres
+Foot amateur : ARA 6, BFC 4, BRE 4, COR 9, CVL 6, GES 2, NOR 13, OCC 4, OM 1, PAC 1, PDL 3 — 53 titres
