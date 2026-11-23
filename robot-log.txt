@@ -1,4 +1,4 @@
-Passage du 2026-11-23 07:40 UTC (workflow_dispatch)
+Passage du 2026-11-23 08:00 UTC (workflow_dispatch)
 Nettoyage : 0 breves vides retirees, 56 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
   File "/home/runner/work/velocemercato.fr/velocemercato.fr/update_news.py", line 288
@@ -35,16 +35,16 @@ SyntaxError: unterminated string literal (detected at line 288)
 Auvergne-Rhône-Alpes : 52 titres
 Bourgogne-Franche-Comté : 36 titres
 Bretagne : 54 titres
-Centre-Val de Loire : 18 titres
+Centre-Val de Loire : 20 titres
 Corse : 11 titres
-Grand Est : 29 titres
+Grand Est : 28 titres
 Hauts-de-France : 28 titres
 Île-de-France : 34 titres
-Normandie : 19 titres
-Nouvelle-Aquitaine : 33 titres
+Normandie : 18 titres
+::warning::Nouvelle-Aquitaine : flux muet (HTTPError)
 Occitanie : 54 titres
 Pays de la Loire : 73 titres
-Provence-Alpes-Côte d'Azur : 83 titres
+Provence-Alpes-Côte d'Azur : 44 titres
 Outre-mer : 33 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
