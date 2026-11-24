@@ -1,36 +1,8 @@
-Passage du 2026-11-24 18:40 UTC (workflow_dispatch)
-Nettoyage : 0 breves vides retirees, 62 gardees.
+Passage du 2026-11-24 19:00 UTC (workflow_dispatch)
+Nettoyage : 0 breves vides retirees, 63 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 62 articles conservés et 40 flashs existants.
-RSS Foot National / NATIONAL : 10 actualités récentes.
-RSS Foot National / LIGUE_2 : 12 actualités récentes.
-RSS Foot National / NATIONAL : 7 actualités récentes.
-RSS RMC Sport / FRANCE : 29 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 12 actualités récentes.
-RSS RMC Sport / LIGUE_1 : 10 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 38 actualités récentes.
-RSS Foot Mercato / INTERNATIONAL : 43 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 4 actualités récentes.
-RSS BBC Sport / FEMININ : 9 actualités récentes.
-RSS RMC Sport / BLEUS : 2 actualités récentes.
-RSS Foot Amateur / NATIONAL : 4 actualités récentes.
-RSS Foot01 / FRANCE : 43 actualités récentes.
-RSS Foot Amateur / NATIONAL : 8 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 1 actualités récentes.
-RSS franceinfo / FRANCE : 6 actualités récentes.
-RSS Foot National / LIGUE_1 : 8 actualités récentes.
-246 titres collectés, 42 nouveaux liens, quota 1.
-/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
-  warnings.warn(
-Brève ignorée (Foot National) : ValueError - Résumé IA incomplet ou trop long : non publié
-Brève ignorée (Foot Mercato) : ValueError - Résumé IA incomplet ou trop long : non publié
-Brève prête : The Guardian - La Copa América 2028 se jouera aux États-Unis avec six équipes de la Concacaf
-Bilan : brèves_rédigées=1, non_pertinent=3, rejet_lecture_ou_ia=2, sujet_deja_traite=3
-Publié : 1 brèves (total 63). Flash : 41.
+Départ : 63 articles conservés et 41 flashs existants.
+Limite de 48 brèves par jour atteinte, aucune nouvelle publication.
 RQ Pronos : page d'actualités publiques actualisée.
 Accueil VM : actualités inchangées.
 Pages : 63 brèves avec leur propre page, sitemap à jour.
@@ -51,22 +23,22 @@ L'Est Républicain haute-saone : 14 titres
 L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
 L'Est Républicain www.estrepublicain.fr : 4 titres
 VM Belfort : 38 titres
-Auvergne-Rhône-Alpes : 83 titres
+Auvergne-Rhône-Alpes : 62 titres
 Bourgogne-Franche-Comté : 35 titres
 Bretagne : 65 titres
-Centre-Val de Loire : 17 titres
+Centre-Val de Loire : 18 titres
 Corse : 6 titres
-Grand Est : 29 titres
+Grand Est : 84 titres
 Hauts-de-France : 96 titres
-Île-de-France : 78 titres
-Normandie : 22 titres
-Nouvelle-Aquitaine : 73 titres
-Occitanie : 61 titres
+::warning::Île-de-France : flux muet (HTTPError)
+Normandie : 10 titres
+Nouvelle-Aquitaine : 32 titres
+Occitanie : 92 titres
 Pays de la Loire : 80 titres
-Provence-Alpes-Côte d'Azur : 40 titres
+Provence-Alpes-Côte d'Azur : 79 titres
 Outre-mer : 77 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : ARA 2, BFC 1, BRE 4, COR 4, CVL 15, FR 1, GES 1, NAQ 1, NOR 10, PDL 4 — 43 titres
+Foot amateur : ARA 2, BFC 1, BRE 4, COR 4, CVL 17, FR 1, GES 1, NAQ 1, NOR 3, PDL 3 — 37 titres
