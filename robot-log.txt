@@ -1,11 +1,37 @@
-Passage du 2026-11-24 17:20 UTC (workflow_dispatch)
+Passage du 2026-11-24 17:40 UTC (workflow_dispatch)
 Nettoyage : 0 breves vides retirees, 60 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
 Départ : 60 articles conservés et 38 flashs existants.
-Limite de 48 brèves par jour atteinte, aucune nouvelle publication.
+RSS Foot Amateur / NATIONAL : 3 actualités récentes.
+RSS Foot National / LIGUE_2 : 12 actualités récentes.
+RSS Foot National / NATIONAL : 7 actualités récentes.
+RSS Foot National / LIGUE_1 : 7 actualités récentes.
+RSS Foot National / NATIONAL : 10 actualités récentes.
+RSS RMC Sport / LIGUE_1 : 10 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 12 actualités récentes.
+RSS RMC Sport / FRANCE : 27 actualités récentes.
+RSS Foot Mercato / INTERNATIONAL : 42 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 39 actualités récentes.
+RSS RMC Sport / BLEUS : 2 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 5 actualités récentes.
+RSS BBC Sport / FEMININ : 9 actualités récentes.
+RSS Foot01 / FRANCE : 43 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS franceinfo / FRANCE : 6 actualités récentes.
+RSS Foot Amateur / NATIONAL : 7 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 1 actualités récentes.
+242 titres collectés, 41 nouveaux liens, quota 1.
+/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
+  warnings.warn(
+Brève prête : Foot01 - Tagliafico : River Plate et l'Independiente visent le défenseur de l'OL
+Bilan : brèves_rédigées=1, sujet_deja_traite=2
+Publié : 1 brèves (total 61). Flash : 39.
 RQ Pronos : page d'actualités publiques actualisée.
-Accueil VM : actualités inchangées.
-Pages : 60 brèves avec leur propre page, sitemap à jour.
+Accueil VM : actualités sourcées visibles en HTML, mises à jour.
+Pages : 61 brèves avec leur propre page, sitemap à jour.
 Agenda : 85 matchs enregistrés.
 Ligue 1 : 15 vidéos lues, 4 vidéos de buts gardées.
 Ligue 2 : 0 vidéos lues, 0 vidéos de buts gardées.
@@ -13,32 +39,32 @@ FFF : 15 vidéos lues, 2 vidéos de buts gardées.
 UEFA : 15 vidéos lues, 3 vidéos de buts gardées.
 Premier League : 15 vidéos lues, 3 vidéos de buts gardées.
 LaLiga : 15 vidéos lues, 5 vidéos de buts gardées.
-Serie A : 15 vidéos lues, 6 vidéos de buts gardées.
+Serie A : 15 vidéos lues, 7 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 10 vidéos de buts gardées.
-Vidéos publiées : 9.
-Fil express : foot 192, actus 200, gaming 120
+Vidéos publiées : 10.
+Fil express : foot 198, actus 200, gaming 120
+Flux muet L'Est Républicain (https://www.estrepublicain.fr/territoire-de-belfort/rss) : RemoteDisconnected
 macommune.info  : 25 titres
-L'Est Républicain territoire-de-belfort : 11 titres
-L'Est Républicain haute-saone : 14 titres
+L'Est Républicain haute-saone : 15 titres
 L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
-L'Est Républicain www.estrepublicain.fr : 6 titres
-VM Belfort : 36 titres
-Auvergne-Rhône-Alpes : 83 titres
-Bourgogne-Franche-Comté : 88 titres
-::warning::Bretagne : flux muet (HTTPError)
-Centre-Val de Loire : 18 titres
+L'Est Républicain www.estrepublicain.fr : 7 titres
+VM Belfort : 38 titres
+Auvergne-Rhône-Alpes : 62 titres
+Bourgogne-Franche-Comté : 35 titres
+Bretagne : 64 titres
+Centre-Val de Loire : 19 titres
 Corse : 7 titres
-Grand Est : 84 titres
+Grand Est : 29 titres
 Hauts-de-France : 96 titres
 Île-de-France : 78 titres
-Normandie : 22 titres
-Nouvelle-Aquitaine : 32 titres
-Occitanie : 59 titres
+Normandie : 16 titres
+Nouvelle-Aquitaine : 73 titres
+Occitanie : 92 titres
 Pays de la Loire : 96 titres
 Provence-Alpes-Côte d'Azur : 79 titres
-Outre-mer : 34 titres
+Outre-mer : 77 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : BFC 1, COR 4, CVL 17, FR 1, GES 1, NOR 12, PDL 3 — 39 titres
+Foot amateur : ARA 1, BFC 1, BRE 3, COR 4, CVL 18, FR 1, GES 1, NOR 9, PDL 3 — 41 titres
