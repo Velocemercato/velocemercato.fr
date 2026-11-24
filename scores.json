@@ -1041,6 +1041,19 @@
    ]
   },
   {
+   "id": 575396,
+   "date": "2026-11-24T17:45:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Bodø/Glimt",
+   "ext": "LASK",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    0
+   ]
+  },
+  {
    "id": 575395,
    "date": "2026-11-24T17:45:00Z",
    "comp": "Ligue des champions",
@@ -1054,16 +1067,42 @@
    ]
   },
   {
-   "id": 575396,
-   "date": "2026-11-24T17:45:00Z",
+   "id": 575400,
+   "date": "2026-11-24T20:00:00Z",
    "comp": "Ligue des champions",
    "sport": "foot",
-   "dom": "Bodø/Glimt",
-   "ext": "LASK",
-   "statut": "FINISHED",
+   "dom": "Feyenoord",
+   "ext": "Porto",
+   "statut": "IN_PLAY",
+   "score": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": 575402,
+   "date": "2026-11-24T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "RB Leipzig",
+   "ext": "RC Lens",
+   "statut": "IN_PLAY",
+   "score": [
+    2,
+    1
+   ]
+  },
+  {
+   "id": 575398,
+   "date": "2026-11-24T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Man City",
+   "ext": "Napoli",
+   "statut": "IN_PLAY",
    "score": [
     1,
-    0
+    2
    ]
   },
   {
@@ -1115,45 +1154,6 @@
    "statut": "IN_PLAY",
    "score": [
     1,
-    1
-   ]
-  },
-  {
-   "id": 575402,
-   "date": "2026-11-24T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "RB Leipzig",
-   "ext": "RC Lens",
-   "statut": "IN_PLAY",
-   "score": [
-    2,
-    1
-   ]
-  },
-  {
-   "id": 575398,
-   "date": "2026-11-24T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Man City",
-   "ext": "Napoli",
-   "statut": "IN_PLAY",
-   "score": [
-    1,
-    1
-   ]
-  },
-  {
-   "id": 575400,
-   "date": "2026-11-24T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Feyenoord",
-   "ext": "Porto",
-   "statut": "IN_PLAY",
-   "score": [
-    0,
     1
    ]
   },
@@ -1522,6 +1522,6 @@
    ]
   }
  ],
- "maj": "2026-11-24T21:35:29Z",
- "verifie": "2026-11-24T21:35:29Z"
+ "maj": "2026-11-24T21:39:23Z",
+ "verifie": "2026-11-24T21:39:23Z"
 }
