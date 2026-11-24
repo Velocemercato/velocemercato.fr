@@ -1,50 +1,80 @@
 {
- "id": "2026-11-22-15",
- "date": "2026-11-22T15:45:17+01:00",
+ "id": "2026-11-24-18",
+ "date": "2026-11-24T18:59:58+01:00",
  "questions": [
   {
-   "q": "Combien de buts Kolo Muani et la Juventus ont-ils marqués contre Venise en quatre minutes de la 53e à la 71e minute ?",
+   "q": "Quel est le montant de la vente de Nicolas Tagliafico à l'OL en juillet 2022 ?",
    "choix": [
-    "Trois buts",
-    "Quatre buts",
+    "4 millions d'euros",
+    "7 millions d'euros",
+    "12 millions d'euros",
+    "40 millions d'euros"
+   ],
+   "bonne": 0,
+   "explication": "La brève indique que Tagliafico est arrivé à l'OL en juillet 2022 pour 4 millions d'euros depuis l'Ajax Amsterdam.",
+   "source": {
+    "titre": "Tagliafico : River Plate et l'Independiente visent le défenseur de l'OL",
+    "id": "rss-v2-fa4825899762800a64d9fc"
+   }
+  },
+  {
+   "q": "Quel est le prix de Luis Diaz, ailier du Bayern Munich, cité par Foot01 dans la liste du PSG ?",
+   "choix": [
+    "70 millions d'euros",
+    "45 millions d'euros",
+    "125 millions d'euros",
+    "60 millions d'euros"
+   ],
+   "bonne": 0,
+   "explication": "La brève indique que Luis Diaz est estimé à 70 millions d'euros, tandis que la clause d'Ez Abde est de 60 millions.",
+   "source": {
+    "titre": "Mercato PSG : Luis Campos aurait coché huit noms pour renforcer l'attaque en janvier",
+    "id": "rss-v2-25044f0d7c813d80370c17"
+   }
+  },
+  {
+   "q": "Quelle est la nouvelle équipe de Leny Yoro qu'il devait affronter après l'annulation de son carton rouge ?",
+   "choix": [
+    "Brentford",
+    "Lisbonne",
+    "Liverpool",
+    "Chelsea"
+   ],
+   "bonne": 0,
+   "explication": "La FA a confirmé que Yoro serait disponible pour la réception de Brentford à Old Trafford, samedi.",
+   "source": {
+    "titre": "Leny Yoro blanchi : son carton rouge à Anfield annulé par la FA",
+    "id": "rss-v2-a3fc56d54406bc752bbffd"
+   }
+  },
+  {
+   "q": "Quel est le score de la finale de la CAN 2025 remportée par le Sénégal face au Maroc ?",
+   "choix": [
+    "1-0 après prolongation",
+    "3-0",
+    "2-2 aux tirs au but",
+    "0-1"
+   ],
+   "bonne": 0,
+   "explication": "La brève précise que le Sénégal avait battu le Maroc 1-0 après prolongation, avant que le TAS ne confirme le résultat.",
+   "source": {
+    "titre": "Le Sénégal redevient champion d'Afrique 2025 après une décision du TAS",
+    "id": "rss-v2-411964e286edd27cba07dc"
+   }
+  },
+  {
+   "q": "Combien de buts Florian Wirtz a-t-il inscrits lors de sa première saison à Liverpool ?",
+   "choix": [
+    "Sept buts",
     "Deux buts",
-    "Cinq buts"
+    "Douze buts",
+    "Huit buts"
    ],
-   "bonne": 1,
-   "explication": "La brève indique qu'il y a eu quatre buts en 18 minutes, avec la réalisation de Kolo Muani à la 71e minute.",
+   "bonne": 0,
+   "explication": "La brève indique que sa première saison s'est conclue avec sept buts et huit passes décisives en 49 rencontres.",
    "source": {
-    "titre": "Serie A : la Juventus écrase Venise 4-0, Kolo Muani buteur sur penalty",
-    "id": "rss-v2-a1388d11223cf8088d42d7"
-   }
-  },
-  {
-   "q": "Quel est le score de la victoire du PSG à Nice dans la brève sur Ligue1+ ?",
-   "choix": [
-    "2-0",
-    "1-0",
-    "2-3",
-    "3-1"
-   ],
-   "bonne": 2,
-   "explication": "La brève indique que la rencontre entre Nice et le PSG a été remportée 2-3 par le PSG.",
-   "source": {
-    "titre": "Ligue1+ : une caméra dans le vestiaire niçois jugée peu convaincante",
-    "id": "rss-v2-2f2cc5c4ea22fb0c6f19fa"
-   }
-  },
-  {
-   "q": "Quel est le score de la défaite de Watford à Bramall Lane, qui a précédé le limogeage d'Alessio Dionisi ?",
-   "choix": [
-    "2-0",
-    "1-4",
-    "4-0",
-    "0-4"
-   ],
-   "bonne": 2,
-   "explication": "La brève indique que Watford a subi une lourde défaite 4-0 à Bramall Lane face à Sheffield United.",
-   "source": {
-    "titre": "Watford limoge Alessio Dionisi après 18 matches",
-    "id": "rss-v2-ace4e55a54c96c6baafe99"
+    "titre": "Liverpool : Florian Wirtz retrouve son influence après une première saison difficile",
+    "id": "rss-v2-16853f88432bee122e6e6e"
    }
   }
  ]
