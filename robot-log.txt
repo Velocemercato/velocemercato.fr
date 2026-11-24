@@ -1,11 +1,37 @@
-Passage du 2026-11-24 21:00 UTC (workflow_dispatch)
+Passage du 2026-11-24 21:20 UTC (workflow_dispatch)
 Nettoyage : 0 breves vides retirees, 67 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
 Départ : 67 articles conservés et 45 flashs existants.
-Limite de 48 brèves par jour atteinte, aucune nouvelle publication.
+RSS Foot National / NATIONAL : 10 actualités récentes.
+RSS Foot National / LIGUE_1 : 7 actualités récentes.
+RSS Foot National / LIGUE_2 : 13 actualités récentes.
+RSS Foot National / NATIONAL : 5 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 17 actualités récentes.
+RSS RMC Sport / FRANCE : 29 actualités récentes.
+RSS RMC Sport / LIGUE_1 : 9 actualités récentes.
+RSS Foot Mercato / INTERNATIONAL : 42 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 34 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 5 actualités récentes.
+RSS RMC Sport / BLEUS : 2 actualités récentes.
+RSS Foot01 / FRANCE : 43 actualités récentes.
+RSS BBC Sport / FEMININ : 7 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS Foot Amateur / NATIONAL : 4 actualités récentes.
+RSS Foot Amateur / NATIONAL : 8 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 1 actualités récentes.
+RSS franceinfo / FRANCE : 6 actualités récentes.
+242 titres collectés, 44 nouveaux liens, quota 1.
+/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
+  warnings.warn(
+Brève prête : BBC Sport - Oxford United élimine Tottenham U21 et se qualifie pour les huitièmes de la EFL Trophy
+Bilan : brèves_rédigées=1, sujet_deja_traite=2
+Publié : 1 brèves (total 68). Flash : 45.
 RQ Pronos : page d'actualités publiques actualisée.
-Accueil VM : actualités inchangées.
-Pages : 67 brèves avec leur propre page, sitemap à jour.
+Accueil VM : actualités sourcées visibles en HTML, mises à jour.
+Pages : 68 brèves avec leur propre page, sitemap à jour.
 Agenda : 85 matchs enregistrés.
 Ligue 1 : 15 vidéos lues, 3 vidéos de buts gardées.
 Ligue 2 : 0 vidéos lues, 0 vidéos de buts gardées.
@@ -16,29 +42,29 @@ LaLiga : 15 vidéos lues, 5 vidéos de buts gardées.
 Serie A : 15 vidéos lues, 7 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 10 vidéos de buts gardées.
 Vidéos publiées : 10.
-Fil express : actus 200, foot 200, gaming 120
+Fil express : foot 200, actus 200, gaming 120
 macommune.info  : 25 titres
 L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
-L'Est Républicain territoire-de-belfort : 11 titres
 L'Est Républicain haute-saone : 14 titres
 L'Est Républicain www.estrepublicain.fr : 3 titres
+L'Est Républicain territoire-de-belfort : 11 titres
 VM Belfort : 39 titres
 Auvergne-Rhône-Alpes : 83 titres
-::warning::Bourgogne-Franche-Comté : flux muet (HTTPError)
+Bourgogne-Franche-Comté : 36 titres
 Bretagne : 62 titres
 Centre-Val de Loire : 19 titres
 Corse : 5 titres
-Grand Est : 85 titres
-Hauts-de-France : 27 titres
+Grand Est : 30 titres
+Hauts-de-France : 96 titres
 Île-de-France : 78 titres
 Normandie : 7 titres
 Nouvelle-Aquitaine : 73 titres
-Occitanie : 92 titres
-::warning::Pays de la Loire : flux muet (HTTPError)
-Provence-Alpes-Côte d'Azur : 41 titres
+Occitanie : 61 titres
+Pays de la Loire : 96 titres
+Provence-Alpes-Côte d'Azur : 43 titres
 Outre-mer : 34 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : ARA 2, BRE 4, COR 3, CVL 18, FR 1, GES 3, NAQ 1, NOR 3, OCC 1 — 36 titres
+Foot amateur : ARA 2, BFC 1, BRE 4, COR 3, CVL 18, FR 1, GES 2, NAQ 1, NOR 3, PDL 4 — 39 titres
