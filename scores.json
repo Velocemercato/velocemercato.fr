@@ -815,8 +815,8 @@
    "ext": "Grizzlies",
    "statut": "IN_PLAY",
    "score": [
-    78,
-    84
+    82,
+    89
    ]
   },
   {
@@ -828,8 +828,8 @@
    "ext": "Trail Blazers",
    "statut": "IN_PLAY",
    "score": [
-    87,
-    96
+    92,
+    101
    ]
   },
   {
@@ -854,8 +854,8 @@
    "ext": "Thunder",
    "statut": "IN_PLAY",
    "score": [
-    59,
-    51
+    70,
+    58
    ]
   },
   {
@@ -865,7 +865,7 @@
    "sport": "basket",
    "dom": "Raptors",
    "ext": "Bucks",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
     53,
     49
@@ -920,7 +920,7 @@
    "statut": "IN_PLAY",
    "score": [
     2,
-    0
+    1
    ]
   },
   {
@@ -945,8 +945,8 @@
    "ext": "Cavaliers",
    "statut": "IN_PLAY",
    "score": [
-    41,
-    34
+    49,
+    38
    ]
   },
   {
@@ -959,7 +959,7 @@
    "statut": "IN_PLAY",
    "score": [
     47,
-    43
+    48
    ]
   },
   {
@@ -984,8 +984,8 @@
    "ext": "Clippers",
    "statut": "IN_PLAY",
    "score": [
-    12,
-    8
+    14,
+    11
    ]
   },
   {
@@ -1106,19 +1106,6 @@
    ]
   },
   {
-   "id": 575399,
-   "date": "2026-11-24T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Arsenal",
-   "ext": "Dortmund",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
    "id": 575401,
    "date": "2026-11-24T20:00:00Z",
    "comp": "Ligue des champions",
@@ -1151,6 +1138,19 @@
    "sport": "foot",
    "dom": "Como 1907",
    "ext": "PAE AEK",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 575399,
+   "date": "2026-11-24T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Arsenal",
+   "ext": "Dortmund",
    "statut": "TIMED",
    "score": [
     null,
@@ -1522,6 +1522,6 @@
    ]
   }
  ],
- "maj": "2026-11-24T01:49:33Z",
- "verifie": "2026-11-24T01:49:33Z"
+ "maj": "2026-11-24T01:53:28Z",
+ "verifie": "2026-11-24T01:53:28Z"
 }
