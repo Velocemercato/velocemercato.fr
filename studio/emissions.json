@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261124-1900",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 19 h",
+  "titre": "La Pastille Actus : Stellantis Sochaux, Sanofi-Insmed et la présidentielle 2027",
+  "accroche": "Stellantis, Sanofi, Mayotte et la présidentielle : le JT de 19 heures.",
+  "duree": 162,
+  "date": "2026-11-24T19:01+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261124-1900.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-24T19:00:00+01:00",
+  "source_start": "2026-11-24T13:00:00+01:00",
+  "source_end": "2026-11-24T19:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-040ab7a3254f08e1739775",
+    "titre": "Stellantis arrête l'équipe de nuit de son usine de Sochaux dès janvier 2027",
+    "publishedAt": "2026-11-24T17:29:03Z",
+    "createdAt": "2026-11-24T17:31:33Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/automobile/l-usine-stellantis-de-sochaux-arrete-l-activite-de-son-equipe-de-nuit-a-partir-de-janvier-2027-500-emplois-sont-concernes_8298177.html#xtor=RSS-3-%5Beconomie%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-5c6bc4e013872ab9717e40",
+    "titre": "Mayotte : Estelle Youssouffa interpelle Laurent Nuñez sur les effectifs de sécurité",
+    "publishedAt": "2026-11-24T16:51:29Z",
+    "createdAt": "2026-11-24T17:01:19Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://la1ere.franceinfo.fr/mayotte/mayotte-appelle-au-secours-encore-et-encore-estelle-youssouffa-interpelle-le-ministre-de-l-interieur-a-l-assemblee-nationale-1761155.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-49a9e9bb70b87ec35c8d2e",
+    "titre": "L’UTMB World Series annonce une nouvelle course dans la baie du Mont-Saint-Michel",
+    "publishedAt": "2026-11-24T16:00:29Z",
+    "createdAt": "2026-11-24T16:01:29Z",
+    "references": [
+     {
+      "nom": "Ouest-France",
+      "url": "https://www.ouest-france.fr/sport/running/trail/utmb/running-lutmb-world-series-devoile-sa-nouvelle-course-en-france-dans-un-lieu-inedit-50a41a3a-e7ea-11f1-86c1-70195b4d2e52?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-c03128d8c121b862149ce4",
+    "titre": "Sanofi rachète l’américain Insmed pour 41 milliards de dollars",
+    "publishedAt": "2026-11-24T15:29:56Z",
+    "createdAt": "2026-11-24T15:31:25Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/24/sanofi-rachete-lamericain-insmed-specialiste-des-maladies-pulmonaires-pour-41-milliards-de"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-1da995994a45b9c6de10c3",
+    "titre": "Présidentielle 2027 : le Congrès des maires, lieu clé pour la collecte des parrainages",
+    "publishedAt": "2026-11-24T14:53:36Z",
+    "createdAt": "2026-11-24T15:01:22Z",
+    "references": [
+     {
+      "nom": "RFI",
+      "url": "https://www.rfi.fr/fr/france/20261124-pr%C3%A9sidentielle-2027-le-congr%C3%A8s-des-maires-de-france-march%C3%A9-aux-parrainages-des-candidats"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-c434bf27534dca535f1005",
+    "titre": "A Gaza, le responsable de la sécurité intérieure du Hamas tué dans une frappe israélienne",
+    "publishedAt": "2026-11-24T13:55:27Z",
+    "createdAt": "2026-11-24T14:01:35Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/iran/guerre-entre-les-etats-unis-israel-et-l-iran/a-gaza-le-responsable-de-la-securite-interieure-du-hamas-tue-par-une-frappe-israelienne_8297706.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-67a743b2eae10bc23888f3",
+    "titre": "Istanbul : des images d'un grand félin déclenchent une recherche, qui conclut à un autre animal",
+    "publishedAt": "2026-11-24T13:26:45Z",
+    "createdAt": "2026-11-24T13:31:23Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/video/2026/11/24/istanbul-des-images-semblant-montrer-un-grand-felin-declenchent-une-vaste-operation-de-rec"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-bd7dca816c2be37011fd0d",
+    "titre": "Nicolas Sarkozy et Carla Bruni renvoyés en procès dans l'affaire Takieddine",
+    "publishedAt": "2026-11-24T12:49:57Z",
+    "createdAt": "2026-11-24T13:01:12Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/justice/nicolas-sarkozy-et-carla-bruni-sont-renvoyes-en-proces-dans-l-affaire-de-la-fausse-retractation-de-ziad-takieddine-notamment-pour-association-de-malfaiteurs_8297655.html#xtor=RSS-3-%5Bpolitique%5D"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261122-2000",
   "univers": "foot",
   "format": "edition",
@@ -12795,126 +12915,6 @@
      {
       "nom": "Gamekult",
       "url": "https://www.gamekult.com/actualite/voila-pourquoi-batman-arkham-origins-est-toujours-le-meilleur-episode-de-la-franchise-101-3050866091.html"
-     }
-    ]
-   }
-  ],
-  "diffusion": "youtube"
- },
- {
-  "id": "actus-edition-20261025-1300",
-  "univers": "actus",
-  "format": "edition",
-  "moment": "midi",
-  "label": "JT 13 h",
-  "titre": "La Pastille Actus - Journal de midi, dimanche 25 octobre 2026",
-  "accroche": "Bonjour à tous, voici les actus du midi, générées par IA.",
-  "duree": 148,
-  "date": "2026-10-25T13:34+01:00",
-  "publie": false,
-  "voix": [
-   "piper"
-  ],
-  "speech_rate": 1.12,
-  "fichier": "actus-edition-20261025-1300.mp4",
-  "editorial_revision": "court-v1",
-  "edition_at": "2026-10-25T13:00:00+01:00",
-  "source_start": "2026-10-25T07:00:00+01:00",
-  "source_end": "2026-10-25T13:00:00+01:00",
-  "sources": [
-   {
-    "id": "rss-v2-f0304dba20ecb922a38e1a",
-    "titre": "Au Pérou, des fossiles marins aident à comprendre le changement climatique",
-    "publishedAt": "2026-10-25T11:10:06Z",
-    "createdAt": "2026-10-25T11:31:30Z",
-    "references": [
-     {
-      "nom": "RFI",
-      "url": "https://www.rfi.fr/fr/am%C3%A9riques/20261025-les-fossiles-du-p%C3%A9rou-pour-comprendre-le-changement-climatique"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-0c846a7e742aadf840489d",
-    "titre": "L'Arabie saoudite dit avoir intercepté dix missiles houthis tirés vers le sud du pays",
-    "publishedAt": "2026-10-25T10:24:28Z",
-    "createdAt": "2026-10-25T10:31:26Z",
-    "references": [
-     {
-      "nom": "franceinfo",
-      "url": "https://www.franceinfo.fr/monde/proche-orient/tensions-entre-l-arabie-saoudite-et-l-iran/l-arabie-saoudite-dit-avoir-intercepte-dix-missiles-lances-par-les-houthis-vers-le-sud-du-pays_8252926.html#xtor=RSS-3-%5Bgeneral%5D"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-2f848dbc234c19da60fd8d",
-    "titre": "Dijon : une jeune femme tuée, le suspect, son frère, est recherché",
-    "publishedAt": "2026-10-25T09:36:57Z",
-    "createdAt": "2026-10-25T10:02:53Z",
-    "references": [
-     {
-      "nom": "franceinfo",
-      "url": "https://france3-regions.franceinfo.fr/bourgogne-franche-comte/cote-d-or/dijon/il-tue-sa-s-ur-et-tente-de-s-en-prendre-a-sa-mere-meurtre-dans-ce-quartier-de-dijon-le-suspect-en-fuite-3438837.html#xtor=RSS-3-[lestitres]"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-ba79e417f54295479a5166",
-    "titre": "Trappes : la garde à vue du suspect suspendue pour une observation psychiatrique",
-    "publishedAt": "2026-10-25T09:21:14Z",
-    "createdAt": "2026-10-25T09:32:46Z",
-    "references": [
-     {
-      "nom": "franceinfo",
-      "url": "https://www.franceinfo.fr/faits-divers/terrorisme/attentat-raciste-a-trappes/la-garde-a-vue-du-suspect-de-l-attentat-raciste-a-trappes-suspendue-le-temps-d-une-periode-d-observation-psychiatrique-susceptible-de-durer-48-heures-annonce-le-parquet-antiterroriste_8252896.html#xtor=RSS-3-[lestitres]"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-2ad038698b52063b46b998",
-    "titre": "Manifestations du 24 octobre : mobilisation en baisse, affrontements en fin de journée",
-    "publishedAt": "2026-10-25T08:09:23Z",
-    "createdAt": "2026-10-25T08:32:42Z",
-    "references": [
-     {
-      "nom": "franceinfo",
-      "url": "https://www.franceinfo.fr/societe/manifestations/mobilisation-en-baisse-pres-de-1-000-interpellations-deux-blesses-graves-ce-qu-il-faut-retenir-de-cette-nouvelle-journee-de-manifestation-contre-la-vie-chere-partout-en-france_8252476.html#xtor=RSS-3-[lestitres]"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-f99d2ad7dcbb3000cec113",
-    "titre": "Oreilles en « chou-fleur » : une mode dans le MMA aux risques médicaux",
-    "publishedAt": "2026-10-25T08:00:03Z",
-    "createdAt": "2026-10-25T08:04:30Z",
-    "references": [
-     {
-      "nom": "franceinfo",
-      "url": "https://www.franceinfo.fr/replay-radio/c-est-ma-sante/la-mode-dangereuse-des-oreilles-en-chou-fleur_8211626.html#xtor=RSS-3-%5Bgeneral%5D"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-fa8b8f77b491fbfd275c2b",
-    "titre": "Amsterdam interdit la publicité pour la viande et les énergies fossiles",
-    "publishedAt": "2026-10-25T07:02:08Z",
-    "createdAt": "2026-10-25T07:19:27Z",
-    "references": [
-     {
-      "nom": "Euronews",
-      "url": "https://fr.euronews.com/2026/10/25/leurope-doit-elle-interdire-la-pub-pour-la-viande-une-psychologue-du-climat-repond"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-7cbb3787ff5dd70f37ad31",
-    "titre": "Israël : un documentaire de France 5 donne la parole aux Israéliens critiques de Nétanyahou avant les législatives",
-    "publishedAt": "2026-10-25T06:02:17Z",
-    "createdAt": "2026-10-25T06:38:37Z",
-    "references": [
-     {
-      "nom": "franceinfo",
-      "url": "https://www.franceinfo.fr/monde/israel/videos-ni-pardon-ni-excuses-avant-des-elections-cruciales-pour-benyamin-netanyahou-un-documentaire-donne-la-parole-aux-israeliens-qui-le-tiennent-en-partie-responsable-du-7-octobre_8219710.html#xtor=RSS-3-[lestitres]"
      }
     ]
    }
