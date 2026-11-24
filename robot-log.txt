@@ -1,4 +1,4 @@
-Passage du 2026-11-24 20:43 UTC (schedule)
+Passage du 2026-11-24 21:00 UTC (workflow_dispatch)
 Nettoyage : 0 breves vides retirees, 67 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
 Départ : 67 articles conservés et 45 flashs existants.
@@ -16,29 +16,29 @@ LaLiga : 15 vidéos lues, 5 vidéos de buts gardées.
 Serie A : 15 vidéos lues, 7 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 10 vidéos de buts gardées.
 Vidéos publiées : 10.
-Fil express : foot 200, actus 200, gaming 120
-L'Est Républicain haute-saone : 14 titres
+Fil express : actus 200, foot 200, gaming 120
+macommune.info  : 25 titres
 L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
 L'Est Républicain territoire-de-belfort : 11 titres
+L'Est Républicain haute-saone : 14 titres
 L'Est Républicain www.estrepublicain.fr : 3 titres
-macommune.info  : 25 titres
 VM Belfort : 39 titres
-Auvergne-Rhône-Alpes : 60 titres
-Bourgogne-Franche-Comté : 88 titres
-Bretagne : 85 titres
+Auvergne-Rhône-Alpes : 83 titres
+::warning::Bourgogne-Franche-Comté : flux muet (HTTPError)
+Bretagne : 62 titres
 Centre-Val de Loire : 19 titres
 Corse : 5 titres
-Grand Est : 84 titres
+Grand Est : 85 titres
 Hauts-de-France : 27 titres
 Île-de-France : 78 titres
-Normandie : 8 titres
-Nouvelle-Aquitaine : 32 titres
+Normandie : 7 titres
+Nouvelle-Aquitaine : 73 titres
 Occitanie : 92 titres
-Pays de la Loire : 96 titres
+::warning::Pays de la Loire : flux muet (HTTPError)
 Provence-Alpes-Côte d'Azur : 41 titres
 Outre-mer : 34 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : ARA 2, BFC 1, BRE 4, COR 3, CVL 18, FR 1, GES 2, NAQ 1, NOR 3, OCC 1, PDL 4 — 40 titres
+Foot amateur : ARA 2, BRE 4, COR 3, CVL 18, FR 1, GES 3, NAQ 1, NOR 3, OCC 1 — 36 titres
