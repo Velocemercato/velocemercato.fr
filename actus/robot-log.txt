@@ -1,33 +1,17 @@
-Passage actus du 2026-11-24 12:00 UTC (workflow_dispatch, main)
-Départ : 20 articles conservés et 17 flashs existants.
-RSS franceinfo / SANTE : 10 actualités récentes.
-RSS franceinfo / POLITIQUE : 19 actualités récentes.
-RSS franceinfo / ECONOMIE : 19 actualités récentes.
-RSS franceinfo / CULTURE : 19 actualités récentes.
-RSS franceinfo / FRANCE : 30 actualités récentes.
-RSS franceinfo / INTERNATIONAL : 20 actualités récentes.
-RSS franceinfo / TECH : 18 actualités récentes.
-RSS RFI / INTERNATIONAL : 24 actualités récentes.
-RSS France 24 / INTERNATIONAL : 22 actualités récentes.
-RSS 20 Minutes / FRANCE : 24 actualités récentes.
-RSS Euronews / INTERNATIONAL : 45 actualités récentes.
-RSS BBC News / INTERNATIONAL : 7 actualités récentes.
-RSS The Guardian / INTERNATIONAL : 1 actualités récentes.
-RSS Ouest-France / REGIONS : 10 actualités récentes.
-268 titres collectés, 180 nouveaux liens, quota 1.
-Brève prête : Ouest-France - Procès à Paris de Sakina Ait Zouine, veuve de Romain Letellier, pour terrorisme
-Bilan : brèves_rédigées=1, source_inaccessible_ou_trop_courte=1
-Publié : 1 brèves (total 21). Flash : 18.
+Passage actus du 2026-11-24 12:30 UTC (workflow_dispatch, main)
+Départ : 21 articles conservés et 18 flashs existants.
+Limite de 36 brèves par jour atteinte, aucune nouvelle publication.
 --- Papiers Sans Galère ---
 Départ : 8 articles conservés et 3 flashs existants.
-RSS franceinfo / JUSTICE : 20 actualités récentes.
 RSS franceinfo / LOGEMENT : 19 actualités récentes.
-RSS franceinfo / AUTRE : 19 actualités récentes.
+RSS franceinfo / AUTRE : 20 actualités récentes.
 RSS franceinfo / IMPOTS : 3 actualités récentes.
+RSS franceinfo / JUSTICE : 20 actualités récentes.
 RSS franceinfo / TRAVAIL : 20 actualités récentes.
 RSS franceinfo / RETRAITE : 14 actualités récentes.
-95 titres collectés, 1 nouveaux liens, quota 1.
+96 titres collectés, 3 nouveaux liens, quota 1.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-Bilan : non_pertinent=1
+Brève ignorée (franceinfo) : ValueError - Résumé IA incomplet ou trop long : non publié
+Bilan : non_pertinent=2, rejet_lecture_ou_ia=1
 Aucune brève de qualité suffisante ; fichiers JSON inchangés.
