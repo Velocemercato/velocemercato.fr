@@ -813,9 +813,9 @@
    "sport": "basket",
    "dom": "Hornets",
    "ext": "Grizzlies",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
-    60,
+    62,
     62
    ]
   },
@@ -854,8 +854,8 @@
    "ext": "Thunder",
    "statut": "IN_PLAY",
    "score": [
-    37,
-    33
+    43,
+    38
    ]
   },
   {
@@ -867,8 +867,8 @@
    "ext": "Bucks",
    "statut": "IN_PLAY",
    "score": [
-    33,
-    34
+    38,
+    37
    ]
   },
   {
@@ -880,8 +880,8 @@
    "ext": "Nets",
    "statut": "IN_PLAY",
    "score": [
-    50,
-    42
+    52,
+    47
    ]
   },
   {
@@ -946,7 +946,7 @@
    "statut": "IN_PLAY",
    "score": [
     10,
-    11
+    13
    ]
   },
   {
@@ -958,8 +958,8 @@
    "ext": "Suns",
    "statut": "IN_PLAY",
    "score": [
-    10,
-    10
+    12,
+    12
    ]
   },
   {
@@ -1119,6 +1119,19 @@
    ]
   },
   {
+   "id": 575400,
+   "date": "2026-11-24T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Feyenoord",
+   "ext": "Porto",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
    "id": 575402,
    "date": "2026-11-24T20:00:00Z",
    "comp": "Ligue des champions",
@@ -1138,19 +1151,6 @@
    "sport": "foot",
    "dom": "Man City",
    "ext": "Napoli",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 575400,
-   "date": "2026-11-24T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Feyenoord",
-   "ext": "Porto",
    "statut": "TIMED",
    "score": [
     null,
@@ -1522,6 +1522,6 @@
    ]
   }
  ],
- "maj": "2026-11-24T01:18:09Z",
- "verifie": "2026-11-24T01:18:09Z"
+ "maj": "2026-11-24T01:22:06Z",
+ "verifie": "2026-11-24T01:22:06Z"
 }
