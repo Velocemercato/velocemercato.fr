@@ -1,18 +1,22 @@
-Passage gaming du 2026-11-24 02:10 UTC (workflow_dispatch, main)
-Départ : 7 articles conservés et 7 flashs existants.
-RSS Eurogamer / GAMING : 15 actualités récentes.
-RSS Jeuxvideo.com / GAMING : 19 actualités récentes.
+Passage gaming du 2026-11-24 02:40 UTC (workflow_dispatch, main)
+Départ : 8 articles conservés et 8 flashs existants.
 RSS Dexerto / GAMING : 10 actualités récentes.
+RSS Jeuxvideo.com / GAMING : 19 actualités récentes.
 RSS Gamekult / GAMING : 19 actualités récentes.
+RSS JV France / GAMING : 9 actualités récentes.
+RSS Eurogamer / GAMING : 14 actualités récentes.
 RSS GamerGen / GAMING : 5 actualités récentes.
 RSS Tom’s Hardware / GAMING : 0 actualités récentes.
 RSS Les Numériques / GAMING : 4 actualités récentes.
 RSS Next / GAMING : 2 actualités récentes.
-RSS inaccessible JV France : URLError - <urlopen error _ssl.c:994: The handshake operation timed out>
-74 titres collectés, 32 nouveaux liens, quota 1.
+82 titres collectés, 28 nouveaux liens, quota 1.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-Brève ignorée (Dexerto) : ValueError - Résumé IA incomplet ou trop long : non publié
-Brève prête : Dexerto - GTA 6 : une mise à jour corrige la météo et plusieurs bugs majeurs
-Bilan : brèves_rédigées=1, non_pertinent=3, rejet_lecture_ou_ia=1, sujet_deja_traite=5
-Publié : 1 brèves (total 8). Flash : 8.
+Claude indisponible (Jeuxvideo.com) : HTTP 403
+Claude indisponible (Jeuxvideo.com) : HTTP 403
+Claude indisponible (Jeuxvideo.com) : HTTP 403
+Claude indisponible (Jeuxvideo.com) : HTTP 403
+Brève ignorée (Gamekult) : ValueError - Résumé IA incomplet ou trop long : non publié
+Assez de sujets refusés dans ce passage : arrêt pour limiter le coût.
+Bilan : non_pertinent=4, rejet_lecture_ou_ia=5, sujet_deja_traite=4
+Aucune brève de qualité suffisante ; fichiers JSON inchangés.
