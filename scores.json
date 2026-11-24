@@ -813,10 +813,10 @@
    "sport": "basket",
    "dom": "Hornets",
    "ext": "Grizzlies",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    85,
-    94
+    111,
+    117
    ]
   },
   {
@@ -826,10 +826,10 @@
    "sport": "basket",
    "dom": "76ers",
    "ext": "Trail Blazers",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    94,
-    109
+    111,
+    128
    ]
   },
   {
@@ -839,7 +839,7 @@
    "sport": "hockey",
    "dom": "Devils",
    "ext": "Blue Jackets",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     3,
     2
@@ -852,10 +852,10 @@
    "sport": "basket",
    "dom": "Pacers",
    "ext": "Thunder",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    70,
-    60
+    125,
+    120
    ]
   },
   {
@@ -865,10 +865,10 @@
    "sport": "basket",
    "dom": "Raptors",
    "ext": "Bucks",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    56,
-    55
+    111,
+    116
    ]
   },
   {
@@ -878,10 +878,10 @@
    "sport": "basket",
    "dom": "Timberwolves",
    "ext": "Nets",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    76,
-    67
+    142,
+    116
    ]
   },
   {
@@ -891,10 +891,10 @@
    "sport": "hockey",
    "dom": "Canadiens",
    "ext": "Kings",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     1,
-    1
+    2
    ]
   },
   {
@@ -904,10 +904,10 @@
    "sport": "hockey",
    "dom": "Senators",
    "ext": "Flames",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     2,
-    0
+    1
    ]
   },
   {
@@ -917,10 +917,10 @@
    "sport": "hockey",
    "dom": "Islanders",
    "ext": "Maple Leafs",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     2,
-    1
+    4
    ]
   },
   {
@@ -930,9 +930,9 @@
    "sport": "hockey",
    "dom": "Jets",
    "ext": "Mammoth",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    3,
+    4,
     2
    ]
   },
@@ -943,10 +943,10 @@
    "sport": "basket",
    "dom": "Bulls",
    "ext": "Cavaliers",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    56,
-    38
+    122,
+    108
    ]
   },
   {
@@ -956,10 +956,10 @@
    "sport": "basket",
    "dom": "Pelicans",
    "ext": "Suns",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    49,
-    52
+    119,
+    123
    ]
   },
   {
@@ -969,10 +969,10 @@
    "sport": "nfl",
    "dom": "Commanders",
    "ext": "Bengals",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    0,
-    0
+    22,
+    20
    ]
   },
   {
@@ -982,10 +982,10 @@
    "sport": "basket",
    "dom": "Rockets",
    "ext": "Clippers",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    18,
-    13
+    116,
+    104
    ]
   },
   {
@@ -995,10 +995,10 @@
    "sport": "hockey",
    "dom": "Kraken",
    "ext": "Ducks",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    3,
+    2
    ]
   },
   {
@@ -1008,10 +1008,10 @@
    "sport": "basket",
    "dom": "Lakers",
    "ext": "Jazz",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    109,
+    94
    ]
   },
   {
@@ -1021,10 +1021,10 @@
    "sport": "basket",
    "dom": "Kings",
    "ext": "Spurs",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    107,
+    123
    ]
   },
   {
@@ -1034,10 +1034,10 @@
    "sport": "hockey",
    "dom": "Sharks",
    "ext": "Wild",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    2,
+    5
    ]
   },
   {
@@ -1106,6 +1106,19 @@
    ]
   },
   {
+   "id": 575401,
+   "date": "2026-11-24T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Sl. Bratislava",
+   "ext": "Real Betis",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
    "id": 575397,
    "date": "2026-11-24T20:00:00Z",
    "comp": "Ligue des champions",
@@ -1138,19 +1151,6 @@
    "sport": "foot",
    "dom": "Arsenal",
    "ext": "Dortmund",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 575401,
-   "date": "2026-11-24T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Sl. Bratislava",
-   "ext": "Real Betis",
    "statut": "TIMED",
    "score": [
     null,
@@ -1522,6 +1522,6 @@
    ]
   }
  ],
- "maj": "2026-11-24T01:57:22Z",
- "verifie": "2026-11-24T01:57:22Z"
+ "maj": "2026-11-24T11:02:33Z",
+ "verifie": "2026-11-24T11:02:33Z"
 }
