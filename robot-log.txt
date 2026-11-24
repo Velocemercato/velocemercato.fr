@@ -1,36 +1,10 @@
-Passage du 2026-11-24 20:00 UTC (workflow_dispatch)
-Nettoyage : 0 breves vides retirees, 65 gardees.
+Passage du 2026-11-24 20:20 UTC (workflow_dispatch)
+Nettoyage : 0 breves vides retirees, 66 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 65 articles conservés et 43 flashs existants.
-RSS Foot National / NATIONAL : 10 actualités récentes.
-RSS Foot National / LIGUE_2 : 13 actualités récentes.
-RSS Foot National / NATIONAL : 5 actualités récentes.
-RSS Foot National / LIGUE_1 : 7 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 13 actualités récentes.
-RSS RMC Sport / LIGUE_1 : 9 actualités récentes.
-RSS RMC Sport / FRANCE : 29 actualités récentes.
-RSS Foot Mercato / INTERNATIONAL : 41 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 37 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 5 actualités récentes.
-RSS RMC Sport / BLEUS : 2 actualités récentes.
-RSS BBC Sport / FEMININ : 8 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS franceinfo / FRANCE : 6 actualités récentes.
-RSS Foot01 / FRANCE : 43 actualités récentes.
-RSS Foot Amateur / NATIONAL : 4 actualités récentes.
-RSS Foot Amateur / NATIONAL : 8 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 1 actualités récentes.
-241 titres collectés, 37 nouveaux liens, quota 1.
-/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
-  warnings.warn(
-Brève prête : Foot01 - OM : Frank McCourt va investir 70 M€ dans un nouveau centre d'entraînement à Trets
-Bilan : brèves_rédigées=1
-Publié : 1 brèves (total 66). Flash : 44.
+Départ : 66 articles conservés et 44 flashs existants.
+Limite de 48 brèves par jour atteinte, aucune nouvelle publication.
 RQ Pronos : page d'actualités publiques actualisée.
-Accueil VM : actualités sourcées visibles en HTML, mises à jour.
+Accueil VM : actualités inchangées.
 Pages : 66 brèves avec leur propre page, sitemap à jour.
 Agenda : 85 matchs enregistrés.
 Ligue 1 : 15 vidéos lues, 3 vidéos de buts gardées.
@@ -43,28 +17,28 @@ Serie A : 15 vidéos lues, 7 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 10 vidéos de buts gardées.
 Vidéos publiées : 10.
 Fil express : actus 200, foot 200, gaming 120
+macommune.info  : 25 titres
+L'Est Républicain territoire-de-belfort : 11 titres
 L'Est Républicain haute-saone : 14 titres
 L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
-macommune.info  : 25 titres
-L'Est Républicain www.estrepublicain.fr : 4 titres
-L'Est Républicain territoire-de-belfort : 11 titres
+L'Est Républicain www.estrepublicain.fr : 3 titres
 VM Belfort : 39 titres
-::warning::Auvergne-Rhône-Alpes : flux muet (HTTPError)
-Bourgogne-Franche-Comté : 88 titres
-Bretagne : 64 titres
-Centre-Val de Loire : 19 titres
+Auvergne-Rhône-Alpes : 83 titres
+Bourgogne-Franche-Comté : 34 titres
+Bretagne : 85 titres
+Centre-Val de Loire : 18 titres
 Corse : 5 titres
-Grand Est : 84 titres
-Hauts-de-France : 96 titres
+Grand Est : 30 titres
+::warning::Hauts-de-France : flux muet (HTTPError)
 Île-de-France : 78 titres
-Normandie : 8 titres
-Nouvelle-Aquitaine : 73 titres
-Occitanie : 61 titres
+Normandie : 7 titres
+Nouvelle-Aquitaine : 32 titres
+Occitanie : 92 titres
 Pays de la Loire : 96 titres
-Provence-Alpes-Côte d'Azur : 79 titres
+Provence-Alpes-Côte d'Azur : 41 titres
 Outre-mer : 77 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : BFC 1, BRE 4, COR 3, CVL 18, FR 1, GES 2, NAQ 1, NOR 3, OCC 1, PDL 4 — 38 titres
+Foot amateur : ARA 2, BFC 1, BRE 4, COR 3, CVL 17, FR 1, GES 2, NAQ 1, NOR 3, OCC 1, PDL 4 — 39 titres
