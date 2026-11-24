@@ -815,8 +815,8 @@
    "ext": "Grizzlies",
    "statut": "IN_PLAY",
    "score": [
-    67,
-    67
+    70,
+    69
    ]
   },
   {
@@ -828,8 +828,8 @@
    "ext": "Trail Blazers",
    "statut": "IN_PLAY",
    "score": [
-    70,
-    71
+    76,
+    78
    ]
   },
   {
@@ -854,8 +854,8 @@
    "ext": "Thunder",
    "statut": "IN_PLAY",
    "score": [
-    47,
-    46
+    56,
+    48
    ]
   },
   {
@@ -867,8 +867,8 @@
    "ext": "Bucks",
    "statut": "IN_PLAY",
    "score": [
-    43,
-    41
+    45,
+    42
    ]
   },
   {
@@ -880,8 +880,8 @@
    "ext": "Nets",
    "statut": "IN_PLAY",
    "score": [
-    60,
-    53
+    64,
+    58
    ]
   },
   {
@@ -945,8 +945,8 @@
    "ext": "Cavaliers",
    "statut": "IN_PLAY",
    "score": [
-    16,
-    20
+    22,
+    22
    ]
   },
   {
@@ -958,8 +958,8 @@
    "ext": "Suns",
    "statut": "IN_PLAY",
    "score": [
-    16,
-    22
+    26,
+    25
    ]
   },
   {
@@ -1119,6 +1119,19 @@
    ]
   },
   {
+   "id": 575400,
+   "date": "2026-11-24T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Feyenoord",
+   "ext": "Porto",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
    "id": 575402,
    "date": "2026-11-24T20:00:00Z",
    "comp": "Ligue des champions",
@@ -1138,19 +1151,6 @@
    "sport": "foot",
    "dom": "Man City",
    "ext": "Napoli",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 575400,
-   "date": "2026-11-24T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Feyenoord",
-   "ext": "Porto",
    "statut": "TIMED",
    "score": [
     null,
@@ -1522,6 +1522,6 @@
    ]
   }
  ],
- "maj": "2026-11-24T01:29:58Z",
- "verifie": "2026-11-24T01:29:58Z"
+ "maj": "2026-11-24T01:33:53Z",
+ "verifie": "2026-11-24T01:33:53Z"
 }
