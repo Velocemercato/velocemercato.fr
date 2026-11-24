@@ -1,36 +1,10 @@
-Passage du 2026-11-24 12:40 UTC (workflow_dispatch)
-Nettoyage : 0 breves vides retirees, 50 gardees.
+Passage du 2026-11-24 13:00 UTC (workflow_dispatch)
+Nettoyage : 0 breves vides retirees, 51 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 50 articles conservés et 28 flashs existants.
-RSS Foot National / LIGUE_2 : 10 actualités récentes.
-RSS Foot National / NATIONAL : 8 actualités récentes.
-RSS Foot National / NATIONAL : 5 actualités récentes.
-RSS Foot National / LIGUE_1 : 7 actualités récentes.
-RSS RMC Sport / FRANCE : 23 actualités récentes.
-RSS RMC Sport / LIGUE_1 : 10 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 9 actualités récentes.
-RSS Foot Mercato / INTERNATIONAL : 44 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 37 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 5 actualités récentes.
-RSS BBC Sport / FEMININ : 9 actualités récentes.
-RSS RMC Sport / BLEUS : 2 actualités récentes.
-RSS Foot01 / FRANCE : 43 actualités récentes.
-RSS franceinfo / FRANCE : 4 actualités récentes.
-RSS Foot Amateur / NATIONAL : 7 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS Foot Amateur / NATIONAL : 2 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-225 titres collectés, 33 nouveaux liens, quota 1.
-/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
-  warnings.warn(
-Brève prête : BBC Sport - Chelmsford City : le capitaine Cav Miley blessé après une chute dans un terrier de blairea
-Bilan : brèves_rédigées=1
-Publié : 1 brèves (total 51). Flash : 29.
+Départ : 51 articles conservés et 29 flashs existants.
+Limite de 48 brèves par jour atteinte, aucune nouvelle publication.
 RQ Pronos : page d'actualités publiques actualisée.
-Accueil VM : actualités sourcées visibles en HTML, mises à jour.
+Accueil VM : actualités inchangées.
 Pages : 51 brèves avec leur propre page, sitemap à jour.
 Agenda : 85 matchs enregistrés.
 Ligue 1 : 15 vidéos lues, 6 vidéos de buts gardées.
@@ -42,29 +16,29 @@ LaLiga : 15 vidéos lues, 5 vidéos de buts gardées.
 Serie A : 15 vidéos lues, 6 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 10 vidéos de buts gardées.
 Vidéos publiées : 6.
-Fil express : foot 126, actus 200, gaming 116
+Fil express : actus 200, foot 132, gaming 119
 macommune.info  : 25 titres
 L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
 L'Est Républicain haute-saone : 13 titres
 L'Est Républicain territoire-de-belfort : 12 titres
 L'Est Républicain www.estrepublicain.fr : 2 titres
-VM Belfort : 23 titres
-Auvergne-Rhône-Alpes : 83 titres
+VM Belfort : 24 titres
+::warning::Auvergne-Rhône-Alpes : flux muet (HTTPError)
 Bourgogne-Franche-Comté : 88 titres
-Bretagne : 65 titres
+Bretagne : 66 titres
 Centre-Val de Loire : 11 titres
 Corse : 7 titres
-Grand Est : 29 titres
+Grand Est : 84 titres
 Hauts-de-France : 96 titres
 Île-de-France : 78 titres
-Normandie : 14 titres
+::warning::Normandie : flux muet (HTTPError)
 Nouvelle-Aquitaine : 33 titres
 Occitanie : 58 titres
-Pays de la Loire : 96 titres
-Provence-Alpes-Côte d'Azur : 80 titres
-Outre-mer : 77 titres
+Pays de la Loire : 79 titres
+Provence-Alpes-Côte d'Azur : 79 titres
+Outre-mer : 33 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : BRE 2, COR 1, CVL 6, FR 1, NOR 2, PDL 3 — 15 titres
+Foot amateur : BRE 2, COR 1, CVL 6, FR 1, PDL 4 — 14 titres
