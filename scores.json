@@ -816,7 +816,7 @@
    "statut": "IN_PLAY",
    "score": [
     72,
-    74
+    77
    ]
   },
   {
@@ -828,8 +828,8 @@
    "ext": "Trail Blazers",
    "statut": "IN_PLAY",
    "score": [
-    82,
-    84
+    84,
+    88
    ]
   },
   {
@@ -945,8 +945,8 @@
    "ext": "Cavaliers",
    "statut": "IN_PLAY",
    "score": [
-    27,
-    30
+    37,
+    32
    ]
   },
   {
@@ -958,8 +958,8 @@
    "ext": "Suns",
    "statut": "IN_PLAY",
    "score": [
-    39,
-    36
+    42,
+    38
    ]
   },
   {
@@ -984,8 +984,8 @@
    "ext": "Clippers",
    "statut": "IN_PLAY",
    "score": [
-    2,
-    2
+    5,
+    4
    ]
   },
   {
@@ -1067,6 +1067,19 @@
    ]
   },
   {
+   "id": 575401,
+   "date": "2026-11-24T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Sl. Bratislava",
+   "ext": "Real Betis",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
    "id": 575397,
    "date": "2026-11-24T20:00:00Z",
    "comp": "Ligue des champions",
@@ -1099,19 +1112,6 @@
    "sport": "foot",
    "dom": "Arsenal",
    "ext": "Dortmund",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 575401,
-   "date": "2026-11-24T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Sl. Bratislava",
-   "ext": "Real Betis",
    "statut": "TIMED",
    "score": [
     null,
@@ -1522,6 +1522,6 @@
    ]
   }
  ],
- "maj": "2026-11-24T01:41:43Z",
- "verifie": "2026-11-24T01:41:43Z"
+ "maj": "2026-11-24T01:45:38Z",
+ "verifie": "2026-11-24T01:45:38Z"
 }
