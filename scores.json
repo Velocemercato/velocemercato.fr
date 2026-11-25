@@ -781,19 +781,6 @@
    ]
   },
   {
-   "id": 575396,
-   "date": "2026-11-24T17:45:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Bodø/Glimt",
-   "ext": "LASK",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    0
-   ]
-  },
-  {
    "id": 575395,
    "date": "2026-11-24T17:45:00Z",
    "comp": "Ligue des champions",
@@ -807,55 +794,16 @@
    ]
   },
   {
-   "id": 575402,
-   "date": "2026-11-24T20:00:00Z",
+   "id": 575396,
+   "date": "2026-11-24T17:45:00Z",
    "comp": "Ligue des champions",
    "sport": "foot",
-   "dom": "RB Leipzig",
-   "ext": "RC Lens",
+   "dom": "Bodø/Glimt",
+   "ext": "LASK",
    "statut": "FINISHED",
-   "score": [
-    3,
-    1
-   ]
-  },
-  {
-   "id": 575398,
-   "date": "2026-11-24T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Man City",
-   "ext": "Napoli",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    2
-   ]
-  },
-  {
-   "id": 575400,
-   "date": "2026-11-24T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Feyenoord",
-   "ext": "Porto",
-   "statut": "IN_PLAY",
    "score": [
     1,
-    1
-   ]
-  },
-  {
-   "id": 575401,
-   "date": "2026-11-24T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Sl. Bratislava",
-   "ext": "Real Betis",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    2
+    0
    ]
   },
   {
@@ -892,6 +840,58 @@
    "dom": "Arsenal",
    "ext": "Dortmund",
    "statut": "FINISHED",
+   "score": [
+    1,
+    1
+   ]
+  },
+  {
+   "id": 575401,
+   "date": "2026-11-24T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Sl. Bratislava",
+   "ext": "Real Betis",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": 575402,
+   "date": "2026-11-24T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "RB Leipzig",
+   "ext": "RC Lens",
+   "statut": "FINISHED",
+   "score": [
+    3,
+    1
+   ]
+  },
+  {
+   "id": 575398,
+   "date": "2026-11-24T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Man City",
+   "ext": "Napoli",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    2
+   ]
+  },
+  {
+   "id": 575400,
+   "date": "2026-11-24T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Feyenoord",
+   "ext": "Porto",
+   "statut": "IN_PLAY",
    "score": [
     1,
     1
@@ -943,23 +943,10 @@
    "sport": "basket",
    "dom": "Nuggets",
    "ext": "Mavericks",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
-    39,
-    58
-   ]
-  },
-  {
-   "id": 575404,
-   "date": "2026-11-25T17:45:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Sabah FK",
-   "ext": "Barça",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
+    44,
+    60
    ]
   },
   {
@@ -976,12 +963,12 @@
    ]
   },
   {
-   "id": 575410,
-   "date": "2026-11-25T20:00:00Z",
+   "id": 575404,
+   "date": "2026-11-25T17:45:00Z",
    "comp": "Ligue des champions",
    "sport": "foot",
-   "dom": "Lille",
-   "ext": "Bayern",
+   "dom": "Sabah FK",
+   "ext": "Barça",
    "statut": "TIMED",
    "score": [
     null,
@@ -989,12 +976,38 @@
    ]
   },
   {
-   "id": 575406,
+   "id": 575407,
    "date": "2026-11-25T20:00:00Z",
    "comp": "Ligue des champions",
    "sport": "foot",
-   "dom": "Inter",
-   "ext": "Stuttgart",
+   "dom": "Atleti",
+   "ext": "Viking",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 575409,
+   "date": "2026-11-25T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Club Brugge",
+   "ext": "Liverpool",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 575411,
+   "date": "2026-11-25T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Sporting CP",
+   "ext": "Man United",
    "statut": "TIMED",
    "score": [
     null,
@@ -1028,12 +1041,12 @@
    ]
   },
   {
-   "id": 575411,
+   "id": 575410,
    "date": "2026-11-25T20:00:00Z",
    "comp": "Ligue des champions",
    "sport": "foot",
-   "dom": "Sporting CP",
-   "ext": "Man United",
+   "dom": "Lille",
+   "ext": "Bayern",
    "statut": "TIMED",
    "score": [
     null,
@@ -1041,25 +1054,12 @@
    ]
   },
   {
-   "id": 575407,
+   "id": 575406,
    "date": "2026-11-25T20:00:00Z",
    "comp": "Ligue des champions",
    "sport": "foot",
-   "dom": "Atleti",
-   "ext": "Viking",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 575409,
-   "date": "2026-11-25T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Club Brugge",
-   "ext": "Liverpool",
+   "dom": "Inter",
+   "ext": "Stuttgart",
    "statut": "TIMED",
    "score": [
     null,
@@ -1418,6 +1418,6 @@
    ]
   }
  ],
- "maj": "2026-11-25T04:24:44Z",
- "verifie": "2026-11-25T04:24:44Z"
+ "maj": "2026-11-25T04:28:39Z",
+ "verifie": "2026-11-25T04:28:39Z"
 }
