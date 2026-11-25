@@ -113,7 +113,9 @@ class EditorialTests(unittest.TestCase):
 
     def test_outside_slot_no_state_or_graph_access(self):
         midnight = NOW.replace(hour=1)
-        self.assertEqual(mod.run(self.state, None, self.root, midnight)['targets'], {})
+        result = mod.run(self.state, None, self.root, midnight)
+        self.assertEqual(result['targets'], {})
+        self.assertEqual(result['unconnected'], [])
         self.assertEqual(mod.publish_target(self.state, None, 'meta', 'facebook', self.root, midnight)['status'],
                          'hors_creneau')
         self.assertEqual(self.state.saves, 0)
@@ -129,6 +131,135 @@ class EditorialTests(unittest.TestCase):
         with patch.dict(sys.modules, {'tools.multisport_flux':SimpleNamespace(GAMING_CONTENT=r'\b(?:gta|gaming)\b')}):
             choice = mod.select_news(self.root,NOW,done,'meta','facebook',[])
         self.assertEqual(choice[1]['id'],'nba-test-2')
+
+
+    def test_all_five_targets_have_distinct_expected_identity_and_schedule(self):
+        expected = {
+            'meta': ('1384363904759072', 'veloce.mercato'),
+            'meta_pronos': ('112294796981981', None),
+            'meta_univers': ('1349998758205153', 'vmunivers.fr'),
+        }
+        self.assertEqual({k: (v[0], v[2]) for k, v in mod.TARGETS.items()}, expected)
+        self.assertEqual(mod.SCHEDULE, {
+            ('meta', 'facebook'): (8, 12, 20),
+            ('meta', 'instagram'): (12, 20),
+            ('meta_pronos', 'facebook'): (12, 20),
+            ('meta_univers', 'facebook'): (8, 12, 18),
+            ('meta_univers', 'instagram'): (18,),
+        })
+
+    def test_pronos_never_has_instagram_target(self):
+        self.assertNotIn(('meta_pronos', 'instagram'), mod.SCHEDULE)
+        self.assertIsNone(mod.TARGETS['meta_pronos'][2])
+
+    def test_each_expected_destination_requires_its_own_page_token(self):
+        class IdentityGraph:
+            def call(self, method, path, params):
+                pages = {value[0] for value in mod.TARGETS.values()}
+                if path in pages:
+                    account = next(k for k, value in mod.TARGETS.items() if value[0] == path)
+                    return {'id': path, 'name': mod.TARGETS[account][1]}
+                instagram = {
+                    'ig-meta': 'veloce.mercato',
+                    'ig-meta_univers': 'vmunivers.fr',
+                }
+                if path in instagram:
+                    return {'id': path, 'username': instagram[path]}
+                raise AssertionError('Destination inconnue : ' + str(path))
+
+        graph = IdentityGraph()
+        state = State()
+        state.data['tokens'] = {
+            'meta': {'page_id': '1384363904759072', 'page_token': 'fb-main',
+                     'ig_id': 'ig-meta'},
+            'meta_univers': {'page_id': '1349998758205153', 'page_token': 'fb-univers',
+                             'ig_id': 'ig-meta_univers'},
+            'meta_pronos': {'page_id': '112294796981981', 'page_token': 'fb-pronos'},
+        }
+        mod.ensure_meta_targets(state)
+        destinations = (
+            ('meta', 'facebook'), ('meta', 'instagram'),
+            ('meta_univers', 'facebook'), ('meta_univers', 'instagram'),
+            ('meta_pronos', 'facebook'),
+        )
+        for account, network in destinations:
+            proof = mod.identity(graph, state.data['tokens'][account], account, network)
+            self.assertTrue(proof['id'])
+        self.assertNotIn('ig_id', state.data['tokens']['meta_pronos'])
+
+    def test_editorial_refuses_duplicate_page_or_instagram_on_pronos(self):
+        state = State()
+        state.data['tokens'] = {
+            'meta': {'page_id': '1384363904759072', 'page_token': 'one'},
+            'meta_pronos': {'page_id': '1384363904759072', 'page_token': 'two'},
+        }
+        with self.assertRaises(mod.DeliveryError):
+            mod.ensure_meta_targets(state)
+        state.data['tokens'] = {
+            'meta_pronos': {'page_id': '112294796981981', 'page_token': 'two', 'ig_id': 'forbidden'},
+        }
+        with self.assertRaises(mod.DeliveryError):
+            mod.ensure_meta_targets(state)
+
+
+    def test_facebook_pages_share_same_day_duplicate_guard(self):
+        state = State()
+        yesterday = NOW - dt.timedelta(days=1)
+        state.data['meta'] = {
+            'editorial/facebook/foot/recent': {
+                'status': 'publie_confirme', 'at': NOW.isoformat(),
+                'title': 'Une même brève publiée sur la page principale',
+            },
+            'editorial/facebook/actus/uncertain': {
+                'status': 'a_verifier_sans_renvoi', 'at': NOW.isoformat(),
+                'title': 'Une publication dont le retour Meta est incertain',
+            },
+            'editorial/facebook/foot/old': {
+                'status': 'publie_confirme', 'at': yesterday.isoformat(),
+                'title': 'Une ancienne brève',
+            },
+            'editorial/instagram/foot/ig': {
+                'status': 'publie_confirme', 'at': NOW.isoformat(),
+                'title': 'Une brève Instagram seulement',
+            },
+        }
+        seen = mod.recent_facebook_titles(state, NOW)
+        self.assertEqual(seen, {
+            mod.normal('Une même brève publiée sur la page principale'),
+            mod.normal('Une publication dont le retour Meta est incertain'),
+        })
+
+    def test_run_passes_recent_facebook_titles_to_other_page(self):
+        from unittest.mock import patch
+        state = State()
+        state.data['meta'] = {
+            'editorial/facebook/foot/old': {
+                'status': 'publie_confirme', 'at': NOW.isoformat(),
+                'title': 'Déjà publié sur Véloce Mercato',
+            },
+        }
+        received = {}
+
+        def fake_publish(state, graph, account, network, root=mod.ROOT, now=None,
+                         card=mod.instagram_card, project_card=mod.instagram_projet_card,
+                         seen_extra=None):
+            received[account + '/' + network] = set(seen_extra or ())
+            if account == 'meta' and network == 'facebook':
+                state.data.setdefault('meta', {})['editorial/facebook/foot/uncertain'] = {
+                    'status': 'a_verifier_sans_renvoi', 'at': NOW.isoformat(),
+                    'title': 'Publication au retour incertain',
+                }
+                return {'status': 'publie', 'posts': [{'title': 'Nouvelle brève distincte'}]}
+            return {'status': 'aucun_contenu_inedit', 'posts': []}
+
+        with patch.object(mod, 'ensure_meta_targets'), patch.object(mod, 'publish_target', side_effect=fake_publish):
+            mod.run(state, object(), self.root, NOW)
+
+        seen_by_pronos = received['meta_pronos/facebook']
+        self.assertIn(mod.normal('Déjà publié sur Véloce Mercato'), seen_by_pronos)
+        self.assertIn(mod.normal('Publication au retour incertain'), seen_by_pronos)
+        self.assertIn(mod.normal('Nouvelle brève distincte'), seen_by_pronos)
+
 
 
 if __name__ == '__main__':
