@@ -1,10 +1,10 @@
 # Audit du site pour Claude
 
-État mesuré le 2026-11-25T15:55:08.384292+01:00.
+État mesuré le 2026-11-25T18:09:21.167639+01:00.
 
 ## Périmètre et limites
 
-2004 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 2288 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
+2010 pages HTML inventoriées. Toutes leurs cibles internes sont contrôlées dans le dépôt. 2299 URL uniques issues des liens externes, des cibles internes absentes et des sources des articles sont interrogées en HTTP.
 
 Un statut 404 ou 410 indique une URL introuvable. Les refus 401/403, les limites 429, les erreurs serveur et les délais dépassés demandent une vérification complémentaire. Le test ne valide pas le visionnage géographique des vidéos ni la véracité des articles. Les classements signalés par mots-clés doivent être relus avant déplacement.
 
@@ -27,16 +27,16 @@ Le fichier JSON associé contient toutes les références, pages et lignes. Les 
 - https://embed.radiofrance.fr/fip/player?id_station=7 — HTTP 404 — vm-radio/index.html ligne 31
 - https://embed.radiofrance.fr/franceinfo/player?id_station=2 — HTTP 404 — vm-radio/index.html ligne 30
 - https://velocemercato.fr/a/rss-v2-0fe323c23f7a612ca6c326.html — HTTP 404 — a/rss-v2-65cd3432c413223448c834.html ligne 98
-- https://velocemercato.fr/a/rss-v2-15cc0d0c1fb945e13acd04.html — HTTP 404 — a/rss-v2-6ab3de48dc62885beb0171.html ligne 98, a/rss-v2-66cd7ed54591009030f93b.html ligne 98, a/rss-v2-0e56b6523267e7888732b1.html ligne 98, a/rss-v2-a743813a8606f84a2f669b.html ligne 98
-- https://velocemercato.fr/a/rss-v2-380707bcad068798301a11.html — HTTP 404 — a/rss-v2-c8fa11a66a1d4139905c49.html ligne 98, a/rss-v2-f6167c62a059f48c78c4b8.html ligne 98, a/rss-v2-e1d41ac5a71fabc8bdbdc5.html ligne 98
+- https://velocemercato.fr/a/rss-v2-15cc0d0c1fb945e13acd04.html — HTTP 404 — a/rss-v2-6ab3de48dc62885beb0171.html ligne 98, a/rss-v2-0e56b6523267e7888732b1.html ligne 98, a/rss-v2-66cd7ed54591009030f93b.html ligne 98, a/rss-v2-a743813a8606f84a2f669b.html ligne 98
+- https://velocemercato.fr/a/rss-v2-380707bcad068798301a11.html — HTTP 404 — a/rss-v2-e1d41ac5a71fabc8bdbdc5.html ligne 98, a/rss-v2-c8fa11a66a1d4139905c49.html ligne 98, a/rss-v2-f6167c62a059f48c78c4b8.html ligne 98
 - https://velocemercato.fr/a/rss-v2-3d83d83e0a726382cf996f.html — HTTP 404 — a/rss-v2-65cd3432c413223448c834.html ligne 98
-- https://velocemercato.fr/a/rss-v2-587df4721e1335551ef209.html — HTTP 404 — a/rss-v2-b65c9934943d806d9f1e07.html ligne 98, a/rss-v2-8646e7ce0963c32f39b1c4.html ligne 98, a/rss-v2-2ce2d9fab9ff0b8a423f0d.html ligne 98, a/rss-v2-92403cd6641532d005bdf2.html ligne 98, a/rss-v2-32c1cf9bc59edfdf838d25.html ligne 98, a/rss-v2-800049823dcd3f491efd0a.html ligne 98
-- https://velocemercato.fr/a/rss-v2-61ccacd34ff367c1df1757.html — HTTP 404 — a/rss-v2-f906a43aa7939d2654e241.html ligne 98, a/rss-v2-766a655299e667b214a29f.html ligne 98, a/rss-v2-0bb48e2f5a2faee7e82fc3.html ligne 98, a/rss-v2-bbb701c167e3becab2e807.html ligne 98
-- https://velocemercato.fr/a/rss-v2-810130c2ef3b3da48fb47f.html — HTTP 404 — a/rss-v2-b65c9934943d806d9f1e07.html ligne 98, a/rss-v2-8646e7ce0963c32f39b1c4.html ligne 98, a/rss-v2-2ce2d9fab9ff0b8a423f0d.html ligne 98, a/rss-v2-92403cd6641532d005bdf2.html ligne 98, a/rss-v2-32c1cf9bc59edfdf838d25.html ligne 98, a/rss-v2-800049823dcd3f491efd0a.html ligne 98
-- https://velocemercato.fr/a/rss-v2-841da3198387c4bdf91a03.html — HTTP 404 — a/rss-v2-1252c0be11fe03ddab891d.html ligne 98, a/rss-v2-e141cfb3bdbb9780ad7959.html ligne 98, a/rss-v2-7c81de61dd2de44c21eaa9.html ligne 98, a/rss-v2-4b1444d2ece96ff3ec6149.html ligne 98, a/rss-v2-bcd7c0c57e2919025383b0.html ligne 98, a/rss-v2-bc7566ccf219a65c687066.html ligne 98
-- https://velocemercato.fr/a/rss-v2-be40daf45e2ddae12fdf85.html — HTTP 404 — a/rss-v2-ac4c29696df906c79462d1.html ligne 98, a/rss-v2-e6c865520eebb34fd34d74.html ligne 98, a/rss-v2-6dbd59cb85d4514f745cf9.html ligne 98, a/rss-v2-1ab5f194879d8575932335.html ligne 98, a/rss-v2-f6b6af0c2c170ed5c07372.html ligne 98, a/rss-v2-874b393dbb6477e67fd0b1.html ligne 98
+- https://velocemercato.fr/a/rss-v2-587df4721e1335551ef209.html — HTTP 404 — a/rss-v2-52588fcc963c22713a6bde.html ligne 98, a/rss-v2-32c1cf9bc59edfdf838d25.html ligne 98, a/rss-v2-800049823dcd3f491efd0a.html ligne 98, a/rss-v2-8646e7ce0963c32f39b1c4.html ligne 98, a/rss-v2-8cbee2801d8e889ee256c3.html ligne 98, a/rss-v2-b65c9934943d806d9f1e07.html ligne 98
+- https://velocemercato.fr/a/rss-v2-61ccacd34ff367c1df1757.html — HTTP 404 — a/rss-v2-766a655299e667b214a29f.html ligne 98, a/rss-v2-f906a43aa7939d2654e241.html ligne 98, a/rss-v2-0bb48e2f5a2faee7e82fc3.html ligne 98, a/rss-v2-bbb701c167e3becab2e807.html ligne 98
+- https://velocemercato.fr/a/rss-v2-810130c2ef3b3da48fb47f.html — HTTP 404 — a/rss-v2-52588fcc963c22713a6bde.html ligne 98, a/rss-v2-32c1cf9bc59edfdf838d25.html ligne 98, a/rss-v2-800049823dcd3f491efd0a.html ligne 98, a/rss-v2-8646e7ce0963c32f39b1c4.html ligne 98, a/rss-v2-8cbee2801d8e889ee256c3.html ligne 98, a/rss-v2-b65c9934943d806d9f1e07.html ligne 98
+- https://velocemercato.fr/a/rss-v2-841da3198387c4bdf91a03.html — HTTP 404 — a/rss-v2-bc7566ccf219a65c687066.html ligne 98, a/rss-v2-7c81de61dd2de44c21eaa9.html ligne 98, a/rss-v2-bcd7c0c57e2919025383b0.html ligne 98, a/rss-v2-4b1444d2ece96ff3ec6149.html ligne 98, a/rss-v2-1252c0be11fe03ddab891d.html ligne 98, a/rss-v2-e141cfb3bdbb9780ad7959.html ligne 98
+- https://velocemercato.fr/a/rss-v2-be40daf45e2ddae12fdf85.html — HTTP 404 — a/rss-v2-6dbd59cb85d4514f745cf9.html ligne 98, a/rss-v2-152c9d56a991307afd9761.html ligne 98, a/rss-v2-ac4c29696df906c79462d1.html ligne 98, a/rss-v2-1ab5f194879d8575932335.html ligne 98, a/rss-v2-874b393dbb6477e67fd0b1.html ligne 98, a/rss-v2-085acfe06814508bb43ac8.html ligne 98
 - https://velocemercato.fr/a/rss-v2-d35d05b8dc173e17198673.html — HTTP 404 — a/rss-v2-50b89266996a4a99045a00.html ligne 98
-- https://velocemercato.fr/a/rss-v2-eb6dfe25fa63d6afffd5a5.html — HTTP 404 — a/rss-v2-b65c9934943d806d9f1e07.html ligne 98, a/rss-v2-8646e7ce0963c32f39b1c4.html ligne 98, a/rss-v2-2ce2d9fab9ff0b8a423f0d.html ligne 98, a/rss-v2-92403cd6641532d005bdf2.html ligne 98, a/rss-v2-32c1cf9bc59edfdf838d25.html ligne 98, a/rss-v2-800049823dcd3f491efd0a.html ligne 98
+- https://velocemercato.fr/a/rss-v2-eb6dfe25fa63d6afffd5a5.html — HTTP 404 — a/rss-v2-52588fcc963c22713a6bde.html ligne 98, a/rss-v2-32c1cf9bc59edfdf838d25.html ligne 98, a/rss-v2-800049823dcd3f491efd0a.html ligne 98, a/rss-v2-8646e7ce0963c32f39b1c4.html ligne 98, a/rss-v2-8cbee2801d8e889ee256c3.html ligne 98, a/rss-v2-b65c9934943d806d9f1e07.html ligne 98
 - https://www.bbc.co.uk/sounds/play/p0phk7vv?at_medium=RSS&at_campaign=rss — HTTP 404 — a/rss-v2-9867cda669795253a23231.html ligne 91
 
 ## Articles à relire
