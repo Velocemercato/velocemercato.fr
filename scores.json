@@ -612,19 +612,6 @@
    ]
   },
   {
-   "id": 575404,
-   "date": "2026-11-25T17:45:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Sabah FK",
-   "ext": "Barça",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    4
-   ]
-  },
-  {
    "id": 575405,
    "date": "2026-11-25T17:45:00Z",
    "comp": "Ligue des champions",
@@ -638,16 +625,55 @@
    ]
   },
   {
-   "id": 575412,
+   "id": 575404,
+   "date": "2026-11-25T17:45:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Sabah FK",
+   "ext": "Barça",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    4
+   ]
+  },
+  {
+   "id": 575409,
    "date": "2026-11-25T20:00:00Z",
    "comp": "Ligue des champions",
    "sport": "foot",
-   "dom": "Shaktar",
-   "ext": "Fenerbahçe",
+   "dom": "Club Brugge",
+   "ext": "Liverpool",
    "statut": "FINISHED",
    "score": [
     0,
-    1
+    3
+   ]
+  },
+  {
+   "id": 575411,
+   "date": "2026-11-25T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Sporting CP",
+   "ext": "Man United",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    2
+   ]
+  },
+  {
+   "id": 575407,
+   "date": "2026-11-25T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Atleti",
+   "ext": "Viking",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    0
    ]
   },
   {
@@ -690,42 +716,16 @@
    ]
   },
   {
-   "id": 575407,
+   "id": 575412,
    "date": "2026-11-25T20:00:00Z",
    "comp": "Ligue des champions",
    "sport": "foot",
-   "dom": "Atleti",
-   "ext": "Viking",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
-   ]
-  },
-  {
-   "id": 575409,
-   "date": "2026-11-25T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Club Brugge",
-   "ext": "Liverpool",
+   "dom": "Shaktar",
+   "ext": "Fenerbahçe",
    "statut": "FINISHED",
    "score": [
     0,
-    3
-   ]
-  },
-  {
-   "id": 575411,
-   "date": "2026-11-25T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Sporting CP",
-   "ext": "Man United",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    2
+    1
    ]
   },
   {
@@ -737,7 +737,7 @@
    "ext": "Heat",
    "statut": "IN_PLAY",
    "score": [
-    63,
+    70,
     56
    ]
   },
@@ -1574,6 +1574,6 @@
    ]
   }
  ],
- "maj": "2026-11-25T23:30:50Z",
- "verifie": "2026-11-25T23:30:50Z"
+ "maj": "2026-11-25T23:34:45Z",
+ "verifie": "2026-11-25T23:34:45Z"
 }
