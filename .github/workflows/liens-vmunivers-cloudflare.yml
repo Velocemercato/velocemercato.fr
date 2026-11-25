@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths: ['.github/workflows/liens-vmunivers-cloudflare.yml']
   workflow_dispatch:
+  schedule:
+    - cron: '7,37 * * * *'
 permissions:
   contents: read
 concurrency:
@@ -25,10 +27,21 @@ jobs:
           persist-credentials: false
       - name: Identifier la révision source
         run: echo "VM_UNIVERS_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+      - name: Comparer la version publique
+        id: check
+        run: |
+          version=$(curl -fsSL --max-time 15 "https://vmunivers.fr/version.txt?r=$GITHUB_RUN_ID" 2>/dev/null | head -c 40 || true)
+          if [ "$version" = "$VM_UNIVERS_SHA" ]; then
+            echo 'deploy=no' >> "$GITHUB_OUTPUT"
+          else
+            echo 'deploy=yes' >> "$GITHUB_OUTPUT"
+          fi
       - uses: actions/setup-node@v4
+        if: steps.check.outputs.deploy == 'yes'
         with:
           node-version: '22'
       - name: Publier la révision vérifiée
+        if: steps.check.outputs.deploy == 'yes'
         run: |
           set -euo pipefail
           test -n "$CLOUDFLARE_API_TOKEN"
