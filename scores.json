@@ -638,19 +638,6 @@
    ]
   },
   {
-   "id": 575401,
-   "date": "2026-11-24T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Sl. Bratislava",
-   "ext": "Real Betis",
-   "statut": "FINISHED",
-   "score": [
-    0,
-    2
-   ]
-  },
-  {
    "id": 575397,
    "date": "2026-11-24T20:00:00Z",
    "comp": "Ligue des champions",
@@ -690,16 +677,16 @@
    ]
   },
   {
-   "id": 575400,
+   "id": 575401,
    "date": "2026-11-24T20:00:00Z",
    "comp": "Ligue des champions",
    "sport": "foot",
-   "dom": "Feyenoord",
-   "ext": "Porto",
+   "dom": "Sl. Bratislava",
+   "ext": "Real Betis",
    "statut": "FINISHED",
    "score": [
     0,
-    1
+    2
    ]
   },
   {
@@ -726,6 +713,19 @@
    "score": [
     2,
     2
+   ]
+  },
+  {
+   "id": 575400,
+   "date": "2026-11-24T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Feyenoord",
+   "ext": "Porto",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    1
    ]
   },
   {
@@ -846,19 +846,6 @@
    ]
   },
   {
-   "id": 575410,
-   "date": "2026-11-25T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Lille",
-   "ext": "Bayern",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    1
-   ]
-  },
-  {
    "id": 575406,
    "date": "2026-11-25T20:00:00Z",
    "comp": "Ligue des champions",
@@ -898,16 +885,29 @@
    ]
   },
   {
+   "id": 575410,
+   "date": "2026-11-25T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Lille",
+   "ext": "Bayern",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    1
+   ]
+  },
+  {
    "id": "espn-401909317",
    "date": "2026-11-25T22:00Z",
    "comp": "NBA",
    "sport": "basket",
    "dom": "76ers",
    "ext": "Heat",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    2,
+    8
    ]
   },
   {
@@ -1405,6 +1405,6 @@
    ]
   }
  ],
- "maj": "2026-11-25T22:12:33Z",
- "verifie": "2026-11-25T22:12:33Z"
+ "maj": "2026-11-25T22:16:28Z",
+ "verifie": "2026-11-25T22:16:28Z"
 }
