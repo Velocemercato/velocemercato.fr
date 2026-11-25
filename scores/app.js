@@ -28,8 +28,8 @@ async function load(){
   const [live,agenda]=await Promise.all([(get('https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/scores-live/scores.json').then(function(d){return d||get('/scores.json')})),get('/matchs.json')]);
   loaded=true;
   const map=new Map();
-  for(const m of (Array.isArray(agenda)?agenda:[]))map.set(String(m.id),{id:String(m.id),date:m.date,sport:m.sport||'foot',comp:m.competition,home:m.domicile,away:m.exterieur,statut:m.statut,score:m.score||[null,null]});
-  for(const m of (Array.isArray(live?.matchs)?live.matchs:[]))map.set(String(m.id),{id:String(m.id),date:m.date,sport:m.sport||'foot',comp:m.comp,home:m.dom,away:m.ext,statut:m.statut,score:m.score||[null,null]});
+  for(const m of (Array.isArray(agenda)?agenda:[]).filter(m=>m&&m.id!=null))map.set(String(m.id),{id:String(m.id),date:m.date,sport:m.sport||'foot',comp:m.competition,home:m.domicile,away:m.exterieur,statut:m.statut,score:m.score||[null,null]});
+  for(const m of (Array.isArray(live?.matchs)?live.matchs:[]).filter(m=>m&&m.id!=null))map.set(String(m.id),{id:String(m.id),date:m.date,sport:m.sport||'foot',comp:m.comp,home:m.dom,away:m.ext,statut:m.statut,score:m.score||[null,null]});
   if(!map.size&&DATA.length){DATA=freshRows(DATA,null);$('maj').textContent='Source momentanément indisponible : derniers scores connus affichés.';render();return}
   const rows=freshRows([...map.values()].filter(m=>Number.isFinite(Date.parse(m.date))&&typeof m.home==='string'&&typeof m.away==='string'),live&&(live.verifie||live.maj)).sort((a,b)=>String(a.date).localeCompare(String(b.date))||String(a.comp).localeCompare(String(b.comp)));
   if(!first)alerts(rows);first=false;
@@ -37,7 +37,7 @@ async function load(){
   var VER=live&&(live.verifie||live.maj),FR={dateStyle:'short',timeStyle:'short',timeZone:'Europe/Paris'};
   var vieux=!Number.isFinite(Date.parse(VER))||Date.now()-Date.parse(VER)>40*60000||Date.parse(VER)>Date.now()+60000;
   $('maj').textContent=(rows.length?'Sources football-data.org / ESPN':'Aucun match des championnats suivis aujourd’hui (trêve ou jour sans match).')+
-    (VER?' · vérifié le '+new Date(VER).toLocaleString('fr-FR',FR):'')+(vieux?' · ⚠ données anciennes, robot en retard':' · actualisation automatique chaque minute.');
+    (Number.isFinite(Date.parse(VER))?' · vérifié le '+new Date(VER).toLocaleString('fr-FR',FR):'')+(vieux?' · ⚠ données anciennes, robot en retard':' · actualisation automatique chaque minute.');
   renderComps();render();
 }
 function alerts(rows){
@@ -47,11 +47,11 @@ function alerts(rows){
     if($('alertEnd').checked&&o.statut!=='FINISHED'&&x.statut==='FINISHED')notify('🏁 Terminé',tag+' · '+x.comp)}
 }
 function saveFav(){try{localStorage.setItem('vm-scores-fav',JSON.stringify(favorites))}catch{toast('La sauvegarde locale est indisponible sur cet appareil.')}}
-function day(x){return DAYFMT.format(new Date(x.date))}
+function day(x){return Number.isFinite(Date.parse(x.date))?DAYFMT.format(new Date(x.date)):''}
 function renderComps(){$('sports').innerHTML=COMPS.map(c=>'<button type="button" data-sport="'+esc(c[0])+'"'+(c[0]===comp?' class="active"':'')+'><span>'+c[1]+'</span>'+esc(c[2])+'<small>'+DATA.filter(d=>(c[0]==='all'||d.comp===c[0])&&day(d)===$('date').value).length+'</small></button>').join('')}
 function render(){
   document.querySelectorAll('[data-sport]').forEach(b=>b.classList.toggle('active',b.dataset.sport===comp));
-  const q=$('search').value.toLocaleLowerCase('fr'),d=$('date').value;
+  const q=$('search').value.toLocaleLowerCase('fr'),d=$('date').value||today();
   const rows=DATA.filter(x=>day(x)===d&&(comp==='all'||x.comp===comp)&&(filter==='all'||state(x.statut)===filter)&&(!onlyFav||favorites.includes(x.id))&&[x.home,x.away,x.comp].join(' ').toLocaleLowerCase('fr').includes(q));
   $('favCount').textContent=favorites.length;$('favoriteFilter').style.color=onlyFav?'#b2ef83':'';
   $('count').textContent=rows.length+' match'+(rows.length>1?'s':'')+' · '+LONG.format(new Date(d+'T12:00:00'));
