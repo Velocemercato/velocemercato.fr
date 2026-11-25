@@ -28,9 +28,9 @@ async function load(){
   const [live,agenda]=await Promise.all([(get('https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/scores-live/scores.json').then(function(d){return d||get('/scores.json')})),get('/matchs.json')]);
   loaded=true;
   const map=new Map();
-  for(const m of (Array.isArray(agenda)?agenda:[]).filter(m=>m&&m.id!=null))map.set(String(m.id),{id:String(m.id),date:m.date,sport:m.sport||'foot',comp:m.competition,home:m.domicile,away:m.exterieur,statut:m.statut,score:m.score||[null,null]});
-  for(const m of (Array.isArray(live?.matchs)?live.matchs:[]).filter(m=>m&&m.id!=null))map.set(String(m.id),{id:String(m.id),date:m.date,sport:m.sport||'foot',comp:m.comp,home:m.dom,away:m.ext,statut:m.statut,score:m.score||[null,null]});
-  if(!map.size&&DATA.length){DATA=freshRows(DATA,null);$('maj').textContent='Source momentanément indisponible : derniers scores connus affichés.';render();return}
+  for(const m of (Array.isArray(agenda)?agenda:[]).filter(m=>m&&m.id!=null))map.set(String(m.id),{id:String(m.id),date:m.date,sport:m.sport||'foot',comp:m.competition,home:m.domicile,away:m.exterieur,statut:m.statut,score:Array.isArray(m.score)?m.score:[null,null]});
+  for(const m of (Array.isArray(live?.matchs)?live.matchs:[]).filter(m=>m&&m.id!=null))map.set(String(m.id),{id:String(m.id),date:m.date,sport:m.sport||'foot',comp:m.comp,home:m.dom,away:m.ext,statut:m.statut,score:Array.isArray(m.score)?m.score:[null,null]});
+  if(!map.size&&DATA.length&&(!Array.isArray(agenda)||!Array.isArray(live?.matchs))){DATA=freshRows(DATA,null);$('maj').textContent='Source momentanément indisponible : derniers scores connus affichés.';render();return}
   const rows=freshRows([...map.values()].filter(m=>Number.isFinite(Date.parse(m.date))&&typeof m.home==='string'&&typeof m.away==='string'),live&&(live.verifie||live.maj)).sort((a,b)=>String(a.date).localeCompare(String(b.date))||String(a.comp).localeCompare(String(b.comp)));
   if(!first)alerts(rows);first=false;
   prev=Object.fromEntries(rows.map(x=>[x.id,x]));DATA=rows;MAJ=live&&live.maj;
@@ -41,9 +41,9 @@ async function load(){
   renderComps();render();
 }
 function alerts(rows){
-  for(const x of rows){if(!favorites.includes(x.id)||x.statut==='UNAVAILABLE')continue;const o=prev[x.id];if(!o)continue;const s=x.score||[],so=o.score||[];const tag=x.home+' '+(s[0]??0)+'-'+(s[1]??0)+' '+x.away;
+  for(const x of rows){if(!favorites.includes(x.id)||x.statut==='UNAVAILABLE')continue;const o=prev[x.id];if(!o||o.statut==='UNAVAILABLE')continue;const s=x.score||[],so=o.score||[];const tag=x.home+' '+(s[0]??0)+'-'+(s[1]??0)+' '+x.away;
     if($('alertStart').checked&&state(o.statut)==='scheduled'&&state(x.statut)==='live')notify('🟢 Coup d’envoi',x.home+' – '+x.away+' · '+x.comp);
-    else if($('alertScore').checked&&s[0]!=null&&so[0]!=null&&(s[0]+s[1])>(so[0]+so[1]))notify('⚽ But !',tag+' · '+x.comp);
+    else if($('alertScore').checked&&[...s.slice(0,2),...so.slice(0,2)].length===4&&[...s.slice(0,2),...so.slice(0,2)].every(Number.isFinite)&&(s[0]+s[1])>(so[0]+so[1]))notify('⚽ But !',tag+' · '+x.comp);
     if($('alertEnd').checked&&o.statut!=='FINISHED'&&x.statut==='FINISHED')notify('🏁 Terminé',tag+' · '+x.comp)}
 }
 function saveFav(){try{localStorage.setItem('vm-scores-fav',JSON.stringify(favorites))}catch{toast('La sauvegarde locale est indisponible sur cet appareil.')}}
