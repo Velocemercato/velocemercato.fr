@@ -674,18 +674,20 @@ fetch('/prono.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.
 var $=function(i){return document.getElementById(i)};
 function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 var HM=new Intl.DateTimeFormat('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Paris'}),DAY=new Intl.DateTimeFormat('fr-FR',{weekday:'short',timeZone:'Europe/Paris'});
-function load(){fetch('/scores.json?v='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){
+function load(){fetch('https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/scores-live/scores.json?v='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(function(r){if(!r.ok)throw Error('source');return r.json()}).catch(function(){return fetch('/scores.json?v='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(function(r){return r.ok?r.json():null})}).then(function(j){
+ var checked=Date.parse(j&&(j.verifie||j.maj)),now=Date.now(),age=now-checked,fresh=Number.isFinite(checked)&&age>=-60000&&age<=40*60000;
+ if(j&&j.matchs)j.matchs=j.matchs.map(function(m){var start=Date.parse(m.date);return ['IN_PLAY','PAUSED'].indexOf(m.statut)>=0&&(!fresh||!Number.isFinite(start)||now-start>8*3600000||start>now+60000)?Object.assign({},m,{statut:'UNAVAILABLE'}):m});
  var ms=((j&&j.matchs)||[]).filter(function(m){return m.comp==='Ligue 1'||m.comp==='Ligue des champions'});if(!ms.length)return;
  var live=ms.filter(function(m){return m.statut==='IN_PLAY'||m.statut==='PAUSED'});
  var order=live.concat(ms.filter(function(m){return live.indexOf(m)<0}).sort(function(a,b){var fa=a.statut==='FINISHED',fb=b.statut==='FINISHED';if(fa!==fb)return fa?1:-1;return String(a.date).localeCompare(String(b.date))}));
  $('liveRow').innerHTML=order.map(function(m){var on=m.statut==='IN_PLAY'||m.statut==='PAUSED',fin=m.statut==='FINISHED',d=new Date(m.date),sc=m.score||[];
-  var st=on?(m.statut==='PAUSED'?'● Mi-temps':'● En direct'):fin?'Terminé · '+DAY.format(d):(m.statut==='POSTPONED'?'Reporté':DAY.format(d)+' · '+HM.format(d));
+  var st=m.statut==='UNAVAILABLE'?'Statut indisponible':on?(m.statut==='PAUSED'?'● Mi-temps':'● En direct'):fin?'Terminé · '+DAY.format(d):(m.statut==='POSTPONED'?'Reporté':DAY.format(d)+' · '+HM.format(d));
   var show=on||fin;return '<div class="lm'+(on?' on':'')+'"><div class="c">'+esc(m.comp)+'</div><div class="t"><span>'+esc(m.dom)+'</span><b>'+(show?esc(sc[0]):'')+'</b></div><div class="t"><span>'+esc(m.ext)+'</span><b>'+(show?esc(sc[1]):'')+'</b></div><div class="s">'+st+'</div></div>'}).join('');
- var TK=order.filter(function(m){return m.statut!=='SCHEDULED'&&m.statut!=='POSTPONED'}).map(function(m){var on=m.statut==='IN_PLAY'||m.statut==='PAUSED',fin=m.statut==='FINISHED',sc=m.score||[],d=new Date(m.date);
+ var TK=order.filter(function(m){return m.statut!=='SCHEDULED'&&m.statut!=='POSTPONED'&&m.statut!=='UNAVAILABLE'}).map(function(m){var on=m.statut==='IN_PLAY'||m.statut==='PAUSED',fin=m.statut==='FINISHED',sc=m.score||[],d=new Date(m.date);
   var mid=(on||fin)?' '+esc(sc[0])+'-'+esc(sc[1])+' ':' – ';var tag=on?(m.statut==='PAUSED'?'⏸ MT':'🔴 LIVE'):fin?'🏁 FIN':'⏰ '+HM.format(d);
   return '<span class="'+(on?'on':'')+'"><b class="c">'+(m.comp==='Ligue 1'?'L1':'LDC')+'</b>'+tag+' · '+esc(m.dom)+mid+esc(m.ext)+'</span>'}).join('');
  if(TK){$('sRun').innerHTML=TK;$('sTicker').hidden=false;}
- $('liveMaj').textContent=j.maj?'Source football-data.org · mis à jour à '+HM.format(new Date(j.maj)):'';$('live').hidden=false;
+ $('liveMaj').textContent=(Number.isFinite(checked)?'Source football-data.org / ESPN · vérifié le '+new Date(checked).toLocaleString('fr-FR',{timeZone:'Europe/Paris'}):'Source indisponible')+(fresh?'':' · direct indisponible');$('live').hidden=false;
 }).catch(function(){});}
 load();setInterval(load,60000);
 })();
