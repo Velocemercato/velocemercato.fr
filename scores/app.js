@@ -1,7 +1,7 @@
 /* VM Scores · foot en direct.
    Données réelles : /scores.json (direct, ~2 min) et /matchs.json (agenda de la semaine), source football-data.org.
    Rien n'est inventé : si la source ne répond pas, la page le dit. */
-const COMPS=[['all','⚽','Toutes'],['Ligue 1','🇫🇷','Ligue 1'],['Ligue des champions','⭐','Ligue des champions'],['Premier League','🏴','Premier League'],['Liga','🇪🇸','Liga'],['Serie A','🇮🇹','Serie A'],['Bundesliga','🇩🇪','Bundesliga']];
+const COMPS=[['all','⚽','Toutes'],['Ligue 1','🇫🇷','Ligue 1'],['Ligue des champions','⭐','Ligue des champions'],['Premier League','🏴','Premier League'],['Liga','🇪🇸','Liga'],['Serie A','🇮🇹','Serie A'],['Bundesliga','🇩🇪','Bundesliga'],['NBA','🏀','NBA'],['NHL','🏒','NHL'],['NFL','🏈','NFL']];
 const $=id=>document.getElementById(id);
 const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const DAYFMT=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris',year:'numeric',month:'2-digit',day:'2-digit'});
@@ -11,8 +11,8 @@ let comp='all',filter='all',onlyFav=false,toastTimer,DATA=[],MAJ=null,first=true
 let favorites=[];try{const s=JSON.parse(localStorage.getItem('vm-scores-fav')||'[]');favorites=Array.isArray(s)?s.map(String).slice(0,200):[]}catch{}
 const today=()=>DAYFMT.format(new Date());$('date').value=today();
 function toast(t){$('toast').textContent=t;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').textContent='',5000)}
-function state(s){if(s==='UNAVAILABLE')return 'unavailable';return s==='IN_PLAY'||s==='PAUSED'?'live':s==='FINISHED'?'finished':'scheduled'}
-function label(x){if(x.statut==='UNAVAILABLE')return 'Direct indisponible';if(x.statut==='PAUSED')return 'Mi-temps';if(x.statut==='IN_PLAY')return 'En direct';if(x.statut==='FINISHED')return 'Terminé';if(x.statut==='POSTPONED')return 'Reporté';if(x.statut==='SUSPENDED')return 'Suspendu';if(x.statut==='CANCELLED')return 'Annulé';return HM.format(new Date(x.date))}
+function state(s){if(['UNAVAILABLE','POSTPONED','SUSPENDED','CANCELLED'].includes(s))return 'unavailable';return s==='IN_PLAY'||s==='PAUSED'?'live':s==='FINISHED'?'finished':'scheduled'}
+function label(x){if(x.statut==='UNAVAILABLE')return 'Statut indisponible';if(x.statut==='PAUSED')return 'Mi-temps';if(x.statut==='IN_PLAY')return 'En direct';if(x.statut==='FINISHED')return 'Terminé';if(x.statut==='POSTPONED')return 'Reporté';if(x.statut==='SUSPENDED')return 'Suspendu';if(x.statut==='CANCELLED')return 'Annulé';return HM.format(new Date(x.date))}
 async function get(url){try{const r=await fetch(url+'?t='+Math.floor(Date.now()/60000),{cache:'no-store'});return r.ok?await r.json():null}catch{return null}}
 function freshRows(rows, timestamp, now=Date.now()) {
   const checked=Date.parse(timestamp), age=now-checked;
@@ -20,14 +20,15 @@ function freshRows(rows, timestamp, now=Date.now()) {
   return rows.map(m=>{
     const start=Date.parse(m.date), active=['IN_PLAY','PAUSED'].includes(m.statut);
     const plausible=Number.isFinite(start)&&start<=now+60000&&now-start<=8*3600000;
-    return active&&(!fresh||!plausible)?{...m,statut:'UNAVAILABLE'}:m;
+    const overdue=['SCHEDULED','TIMED'].includes(m.statut)&&Number.isFinite(start)&&now-start>15*60000;
+    return (active&&(!fresh||!plausible)||overdue)?{...m,statut:'UNAVAILABLE'}:m;
   });
 }
 async function load(){
   const [live,agenda]=await Promise.all([(get('https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/scores-live/scores.json').then(function(d){return d||get('/scores.json')})),get('/matchs.json')]);
   const map=new Map();
-  for(const m of (Array.isArray(agenda)?agenda:[]))map.set(String(m.id),{id:String(m.id),date:m.date,comp:m.competition,home:m.domicile,away:m.exterieur,statut:m.statut,score:m.score||[null,null]});
-  for(const m of ((live&&live.matchs)||[]))map.set(String(m.id),{id:String(m.id),date:m.date,comp:m.comp,home:m.dom,away:m.ext,statut:m.statut,score:m.score||[null,null]});
+  for(const m of (Array.isArray(agenda)?agenda:[]))map.set(String(m.id),{id:String(m.id),date:m.date,sport:m.sport||'foot',comp:m.competition,home:m.domicile,away:m.exterieur,statut:m.statut,score:m.score||[null,null]});
+  for(const m of ((live&&live.matchs)||[]))map.set(String(m.id),{id:String(m.id),date:m.date,sport:m.sport||'foot',comp:m.comp,home:m.dom,away:m.ext,statut:m.statut,score:m.score||[null,null]});
   if(!map.size&&DATA.length){DATA=freshRows(DATA,null);$('maj').textContent='Source momentanément indisponible : derniers scores connus affichés.';render();return}
   const rows=freshRows([...map.values()],live&&(live.verifie||live.maj)).sort((a,b)=>String(a.date).localeCompare(String(b.date))||String(a.comp).localeCompare(String(b.comp)));
   if(!first)alerts(rows);first=false;
@@ -56,7 +57,7 @@ function render(){
   $('sportName').textContent=(COMPS.find(x=>x[0]===comp)||COMPS[0])[2].toUpperCase();
   let html='',last='';
   for(const x of rows){const st=state(x.statut),show=st!=='scheduled',fav=favorites.includes(x.id);
-    if(x.comp!==last){html+='<div class="league"><span>'+esc(x.comp)+'</span><small>Football</small></div>';last=x.comp}
+    if(x.comp!==last){html+='<div class="league"><span>'+esc(x.comp)+'</span><small>'+esc(({foot:'Football',basket:'Basketball',hockey:'Hockey',nfl:'Football américain'})[x.sport]||'Sport')+'</small></div>';last=x.comp}
     html+='<article class="match"><button class="star '+(fav?'on':'')+'" data-fav="'+esc(x.id)+'" aria-label="'+(fav?'Retirer':'Ajouter')+' '+esc(x.home)+' – '+esc(x.away)+' des favoris" aria-pressed="'+fav+'">'+(fav?'★':'☆')+'</button><div class="clock '+(st==='live'?'live':'')+'">'+(st==='live'?'<span class="liveDot"></span>':'')+esc(label(x))+'</div><div class="teams"><div class="team"><small>'+esc(x.home.slice(0,2).toUpperCase())+'</small><b>'+esc(x.home)+'</b></div><div class="team"><small>'+esc(x.away.slice(0,2).toUpperCase())+'</small><b>'+esc(x.away)+'</b></div></div><div class="score"><span>'+(show?esc(x.score[0]??'–'):'–')+'</span><span>'+(show?esc(x.score[1]??'–'):'–')+'</span></div><button class="detailBtn" data-detail="'+esc(x.id)+'" aria-label="Détail de '+esc(x.home)+' contre '+esc(x.away)+'">↗</button></article>'}
   $('matchList').innerHTML=html||'<div class="empty">'+(DATA.length?'Aucun match pour ces filtres ce jour-là.<br>Changez de date, de compétition ou retirez un filtre.':'Chargement des scores…')+'</div>';
 }
