@@ -1,5 +1,113 @@
 [
  {
+  "id": "foot-edition-20261125-1200",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "midi",
+  "label": "JT 12 h",
+  "titre": "La Pastille Foot - Le JT du midi du 25 novembre",
+  "accroche": "Bienvenue dans La Pastille Foot, avec l'actu foot de midi.",
+  "duree": 127,
+  "date": "2026-11-25T12:33+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261125-1200.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-25T12:00:00+01:00",
+  "source_start": "2026-11-25T08:00:00+01:00",
+  "source_end": "2026-11-25T12:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-5f265a26132357751abbcd",
+    "titre": "CAF Awards 2026 : la CAF dévoile les finalistes masculins, le Cap-Vert en lice",
+    "publishedAt": "2026-11-25T10:32:22Z",
+    "createdAt": "2026-11-25T10:41:05Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/coupe-d-afrique-des-nations/les-belles-surprises-du-mondial-2026-et-les-stars-de-la-can-2025-a-l-honneur-pour-les-trophees-de-la-caf_AV-202611250495.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-d6fdedf21095db0db86339",
+    "titre": "Doué blessé au genou : le soutien de Cherki et de Kvaratskhelia au Parisien",
+    "publishedAt": "2026-11-25T10:04:54Z",
+    "createdAt": "2026-11-25T10:21:12Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/equipe-de-france/avec-lui-dans-cette-epreuve-le-message-de-soutien-de-cherki-a-doue-apres-sa-grave-blessure_AV-202611250476.html"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-007714471c3f29dddc8384",
+    "titre": "Leicester tenu en échec à Blackpool, Martin « blessé » par le nul",
+    "publishedAt": "2026-11-25T10:09:10Z",
+    "createdAt": "2026-11-25T10:21:09Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/c6y97xpqe4e5o?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-7579b02302686a9dc1d598",
+    "titre": "National 2 : Cédric Hoarau mis en retrait de son poste à Trouville Deauville Villers",
+    "publishedAt": "2026-11-25T09:32:00Z",
+    "createdAt": "2026-11-25T10:01:09Z",
+    "references": [
+     {
+      "nom": "Foot National",
+      "url": "https://www.foot-national.com/actus/national-2-las-trouville-deauville-villers-ecarte-son-entraineur-cedric-hoarau-965847"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-87871eaca0cb748ad68de4",
+    "titre": "Man City ne pourra pas porter son nouveau maillot orange en Premier League",
+    "publishedAt": "2026-11-25T09:38:16Z",
+    "createdAt": "2026-11-25T09:41:02Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cvgvezj19yyo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-317f2e533dffd371da0536",
+    "titre": "Manchester United, le nouveau Tottenham ? Une saison à risque se dessine",
+    "publishedAt": "2026-11-25T06:22:36Z",
+    "createdAt": "2026-11-25T09:01:41Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cj4gndepk312o?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-2c3c27dcadec7f76c42262",
+    "titre": "Manchester City : Ayyoub Bouaddi inscrit enfin son premier but professionnel",
+    "publishedAt": "2026-11-25T06:36:21Z",
+    "createdAt": "2026-11-25T08:01:13Z",
+    "references": [
+     {
+      "nom": "RMC Sport",
+      "url": "https://rmcsport.bfmtv.com/football/ligue-des-champions/manchester-city-fin-de-l-anomalie-pour-ayyoub-bouaddi-qui-a-marque-son-premier-but-en-professionnel_AV-202611250235.html"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "actus-edition-20261124-1900",
   "univers": "actus",
   "format": "edition",
@@ -12819,102 +12927,6 @@
      {
       "nom": "franceinfo",
       "url": "https://www.franceinfo.fr/replay-radio/l-invite-culture/philippe-hersen-je-voulais-faire-un-shrek-qui-soit-tout-sauf-broadway_8211614.html#xtor=RSS-3-%5Bgeneral%5D"
-     }
-    ]
-   }
-  ],
-  "diffusion": "youtube"
- },
- {
-  "id": "gaming-edition-20261025-1800",
-  "univers": "gaming",
-  "format": "edition",
-  "moment": "soir",
-  "label": "JT 18 h",
-  "titre": "La Pastille Gaming : édition du dimanche 25 octobre 2026",
-  "accroche": "Téléréalité, remaster, survival et test : place à La Pastille Gaming.",
-  "duree": 135,
-  "date": "2026-10-25T18:10+01:00",
-  "publie": false,
-  "voix": [
-   "piper"
-  ],
-  "speech_rate": 1.12,
-  "fichier": "gaming-edition-20261025-1800.mp4",
-  "editorial_revision": "court-v1",
-  "edition_at": "2026-10-25T18:00:00+01:00",
-  "source_start": "2026-10-25T10:00:00+01:00",
-  "source_end": "2026-10-25T18:00:00+01:00",
-  "sources": [
-   {
-    "id": "rss-v2-0903d7f0881c3a293f6415",
-    "titre": "Fallout Shelter : une téléréalité inspirée du jeu prévue sur Prime Video",
-    "publishedAt": "2026-10-25T14:03:00Z",
-    "createdAt": "2026-10-25T14:07:42Z",
-    "references": [
-     {
-      "nom": "Gamekult",
-      "url": "https://www.gamekult.com/actualite/prime-video-fait-aussi-de-fallout-un-jeu-tv-ou-les-joueurs-sont-enfermes-dans-un-abri-antiatomique-3050872583.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-036ec1d6171f7d2c03f777",
-    "titre": "Shrek 2 revient en version remasterisée, annoncée pour le 10 novembre 2026",
-    "publishedAt": "2026-10-25T12:32:00Z",
-    "createdAt": "2026-10-25T12:50:16Z",
-    "references": [
-     {
-      "nom": "Gamekult",
-      "url": "https://www.gamekult.com/actualite/le-remaster-de-shrek-2-s-annonce-imite-gta-6-et-fait-deja-un-carton-3050872582.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-b6533f95e687a4a3ab94f6",
-    "titre": "Satellite Odyssey : Jupiter, un survival-action inspiré de BioShock et Resident Evil",
-    "publishedAt": "2026-10-25T10:08:00Z",
-    "createdAt": "2026-10-25T11:41:10Z",
-    "references": [
-     {
-      "nom": "Gamekult",
-      "url": "https://www.gamekult.com/actualite/si-bioshock-rencontrait-resident-evil-dans-l-espace-ca-donnerait-satellite-odyssey-jupiter-3050872550.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-f013665ec9fd870572be55",
-    "titre": "Alien: Isolation 2 : une démo de vingt minutes testée sur PC",
-    "publishedAt": "2026-10-25T10:27:56Z",
-    "createdAt": "2026-10-25T11:09:01Z",
-    "references": [
-     {
-      "nom": "JV France",
-      "url": "https://www.jvfrance.com/preview-alien-isolation-2-285306/"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-9d3867f896284232f7826c",
-    "titre": "The Witch's Bakery : un test de JV France aux douceurs mêlées de défauts",
-    "publishedAt": "2026-10-25T10:28:08Z",
-    "createdAt": "2026-10-25T10:42:35Z",
-    "references": [
-     {
-      "nom": "JV France",
-      "url": "https://www.jvfrance.com/test-the-witchs-bakery-285259/"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-c09f50c43ac076aed5c2b4",
-    "titre": "Batman : Arkham Origins, pourquoi Gamekult le considère comme le meilleur épisode",
-    "publishedAt": "2026-10-25T08:00:00Z",
-    "createdAt": "2026-10-25T09:12:14Z",
-    "references": [
-     {
-      "nom": "Gamekult",
-      "url": "https://www.gamekult.com/actualite/voila-pourquoi-batman-arkham-origins-est-toujours-le-meilleur-episode-de-la-franchise-101-3050866091.html"
      }
     ]
    }
