@@ -1,36 +1,39 @@
-Passage actus du 2026-11-25 05:30 UTC (workflow_dispatch, main)
-Départ : 7 articles conservés et 3 flashs existants.
-RSS franceinfo / FRANCE : 27 actualités récentes.
-RSS franceinfo / POLITIQUE : 19 actualités récentes.
-RSS franceinfo / INTERNATIONAL : 20 actualités récentes.
+Passage actus du 2026-11-25 06:00 UTC (workflow_dispatch, main)
+Départ : 9 articles conservés et 5 flashs existants.
 RSS franceinfo / ECONOMIE : 20 actualités récentes.
-RSS France 24 / INTERNATIONAL : 22 actualités récentes.
+RSS franceinfo / FRANCE : 27 actualités récentes.
+RSS franceinfo / INTERNATIONAL : 20 actualités récentes.
 RSS 20 Minutes / FRANCE : 22 actualités récentes.
-RSS RFI / INTERNATIONAL : 28 actualités récentes.
-RSS franceinfo / CULTURE : 20 actualités récentes.
+RSS France 24 / INTERNATIONAL : 22 actualités récentes.
+RSS franceinfo / TECH : 18 actualités récentes.
 RSS franceinfo / SANTE : 10 actualités récentes.
+RSS RFI / INTERNATIONAL : 23 actualités récentes.
+RSS franceinfo / POLITIQUE : 19 actualités récentes.
 RSS BBC News / INTERNATIONAL : 9 actualités récentes.
+RSS franceinfo / CULTURE : 20 actualités récentes.
+RSS Euronews / INTERNATIONAL : 45 actualités récentes.
 RSS Ouest-France / REGIONS : 10 actualités récentes.
 RSS The Guardian / INTERNATIONAL : 2 actualités récentes.
-RSS Euronews / INTERNATIONAL : 45 actualités récentes.
-RSS franceinfo / TECH : 17 actualités récentes.
-271 titres collectés, 164 nouveaux liens, quota 2.
+267 titres collectés, 160 nouveaux liens, quota 2.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-Brève prête : franceinfo - PSG : Luis Enrique confiant malgré les blessures de Doué et Kvaratskhelia
-Brève prête : Ouest-France - Le contrôle coercitif, mécanisme des violences conjugales décrypté par une historienne
-Bilan : brèves_rédigées=2, source_inaccessible_ou_trop_courte=2
-Publié : 2 brèves (total 9). Flash : 5.
+Brève prête : franceinfo - Près d’un salarié sur deux travaille malgré la maladie, selon un baromètre
+Brève ignorée (RFI) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève prête : franceinfo - La CIA et le bureau du directeur du renseignement national victimes d'un piratage informat
+Bilan : brèves_rédigées=2, rejet_lecture_ou_ia=1, source_inaccessible_ou_trop_courte=2
+Publié : 2 brèves (total 11). Flash : 7.
 --- Papiers Sans Galère ---
 Départ : 1 articles conservés et 1 flashs existants.
-RSS franceinfo / TRAVAIL : 20 actualités récentes.
-RSS franceinfo / LOGEMENT : 17 actualités récentes.
-RSS franceinfo / AUTRE : 20 actualités récentes.
 RSS franceinfo / IMPOTS : 3 actualités récentes.
-RSS franceinfo / JUSTICE : 20 actualités récentes.
+RSS franceinfo / AUTRE : 20 actualités récentes.
+RSS franceinfo / LOGEMENT : 17 actualités récentes.
+RSS franceinfo / TRAVAIL : 20 actualités récentes.
 RSS franceinfo / RETRAITE : 13 actualités récentes.
-93 titres collectés, 1 nouveaux liens, quota 1.
+RSS franceinfo / JUSTICE : 20 actualités récentes.
+93 titres collectés, 3 nouveaux liens, quota 1.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-Bilan : non_pertinent=1
+Brève ignorée (franceinfo) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève ignorée (franceinfo) : ValueError - Résumé IA incomplet ou trop long : non publié
+Bilan : non_pertinent=1, rejet_lecture_ou_ia=2
 Aucune brève de qualité suffisante ; fichiers JSON inchangés.
