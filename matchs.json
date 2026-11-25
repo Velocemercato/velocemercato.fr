@@ -12,18 +12,6 @@
   ]
  },
  {
-  "id": 560649,
-  "date": "2026-11-23T20:00:00Z",
-  "competition": "Premier League",
-  "domicile": "Brentford",
-  "exterieur": "Everton",
-  "statut": "FINISHED",
-  "score": [
-   4,
-   0
-  ]
- },
- {
   "id": 564757,
   "date": "2026-11-23T20:00:00Z",
   "competition": "Liga",
@@ -33,6 +21,18 @@
   "score": [
    1,
    1
+  ]
+ },
+ {
+  "id": 560649,
+  "date": "2026-11-23T20:00:00Z",
+  "competition": "Premier League",
+  "domicile": "Brentford",
+  "exterieur": "Everton",
+  "statut": "FINISHED",
+  "score": [
+   4,
+   0
   ]
  },
  {
@@ -60,18 +60,6 @@
   ]
  },
  {
-  "id": 575398,
-  "date": "2026-11-24T20:00:00Z",
-  "competition": "Ligue des champions",
-  "domicile": "Man City",
-  "exterieur": "Napoli",
-  "statut": "FINISHED",
-  "score": [
-   2,
-   2
-  ]
- },
- {
   "id": 575400,
   "date": "2026-11-24T20:00:00Z",
   "competition": "Ligue des champions",
@@ -93,6 +81,18 @@
   "score": [
    3,
    1
+  ]
+ },
+ {
+  "id": 575398,
+  "date": "2026-11-24T20:00:00Z",
+  "competition": "Ligue des champions",
+  "domicile": "Man City",
+  "exterieur": "Napoli",
+  "statut": "FINISHED",
+  "score": [
+   2,
+   2
   ]
  },
  {
@@ -168,18 +168,6 @@
   ]
  },
  {
-  "id": 575412,
-  "date": "2026-11-25T20:00:00Z",
-  "competition": "Ligue des champions",
-  "domicile": "Shaktar",
-  "exterieur": "Fenerbahçe",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
   "id": 575408,
   "date": "2026-11-25T20:00:00Z",
   "competition": "Ligue des champions",
@@ -209,6 +197,18 @@
   "competition": "Ligue des champions",
   "domicile": "Inter",
   "exterieur": "Stuttgart",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
+  "id": 575412,
+  "date": "2026-11-25T20:00:00Z",
+  "competition": "Ligue des champions",
+  "domicile": "Shaktar",
+  "exterieur": "Fenerbahçe",
   "statut": "TIMED",
   "score": [
    null,
@@ -288,11 +288,11 @@
   ]
  },
  {
-  "id": 564765,
+  "id": 560658,
   "date": "2026-11-27T20:00:00Z",
-  "competition": "Liga",
-  "domicile": "Levante",
-  "exterieur": "Santander",
+  "competition": "Premier League",
+  "domicile": "Nottingham",
+  "exterieur": "Chelsea",
   "statut": "TIMED",
   "score": [
    null,
@@ -300,11 +300,11 @@
   ]
  },
  {
-  "id": 560658,
+  "id": 564765,
   "date": "2026-11-27T20:00:00Z",
-  "competition": "Premier League",
-  "domicile": "Nottingham",
-  "exterieur": "Chelsea",
+  "competition": "Liga",
+  "domicile": "Levante",
+  "exterieur": "Santander",
   "statut": "TIMED",
   "score": [
    null,
@@ -384,11 +384,11 @@
   ]
  },
  {
-  "id": 560655,
+  "id": 560652,
   "date": "2026-11-28T15:00:00Z",
   "competition": "Premier League",
-  "domicile": "Man United",
-  "exterieur": "Brentford",
+  "domicile": "Leeds United",
+  "exterieur": "Coventry City",
   "statut": "TIMED",
   "score": [
    null,
@@ -396,11 +396,11 @@
   ]
  },
  {
-  "id": 560652,
+  "id": 560655,
   "date": "2026-11-28T15:00:00Z",
   "competition": "Premier League",
-  "domicile": "Leeds United",
-  "exterieur": "Coventry City",
+  "domicile": "Man United",
+  "exterieur": "Brentford",
   "statut": "TIMED",
   "score": [
    null,
@@ -444,11 +444,11 @@
   ]
  },
  {
-  "id": 560653,
+  "id": 564759,
   "date": "2026-11-28T17:30:00Z",
-  "competition": "Premier League",
-  "domicile": "Ipswich Town",
-  "exterieur": "Aston Villa",
+  "competition": "Liga",
+  "domicile": "Elche",
+  "exterieur": "Atleti",
   "statut": "TIMED",
   "score": [
    null,
@@ -456,11 +456,11 @@
   ]
  },
  {
-  "id": 564759,
+  "id": 560653,
   "date": "2026-11-28T17:30:00Z",
-  "competition": "Liga",
-  "domicile": "Elche",
-  "exterieur": "Atleti",
+  "competition": "Premier League",
+  "domicile": "Ipswich Town",
+  "exterieur": "Aston Villa",
   "statut": "TIMED",
   "score": [
    null,
@@ -480,11 +480,11 @@
   ]
  },
  {
-  "id": 558518,
+  "id": 559617,
   "date": "2026-11-28T19:45:00Z",
-  "competition": "Serie A",
-  "domicile": "Inter",
-  "exterieur": "Genoa",
+  "competition": "Ligue 1",
+  "domicile": "Le Mans",
+  "exterieur": "Lille",
   "statut": "TIMED",
   "score": [
    null,
@@ -504,11 +504,11 @@
   ]
  },
  {
-  "id": 559617,
+  "id": 558518,
   "date": "2026-11-28T19:45:00Z",
-  "competition": "Ligue 1",
-  "domicile": "Le Mans",
-  "exterieur": "Lille",
+  "competition": "Serie A",
+  "domicile": "Inter",
+  "exterieur": "Genoa",
   "statut": "TIMED",
   "score": [
    null,
@@ -612,23 +612,11 @@
   ]
  },
  {
-  "id": 560659,
+  "id": 560660,
   "date": "2026-11-29T14:05:00Z",
   "competition": "Premier League",
-  "domicile": "Brighton Hove",
-  "exterieur": "Newcastle",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
-  "id": 560661,
-  "date": "2026-11-29T14:05:00Z",
-  "competition": "Premier League",
-  "domicile": "Crystal Palace",
-  "exterieur": "Hull City",
+  "domicile": "Sunderland",
+  "exterieur": "Tottenham",
   "statut": "TIMED",
   "score": [
    null,
@@ -648,11 +636,23 @@
   ]
  },
  {
-  "id": 560660,
+  "id": 560659,
   "date": "2026-11-29T14:05:00Z",
   "competition": "Premier League",
-  "domicile": "Sunderland",
-  "exterieur": "Tottenham",
+  "domicile": "Brighton Hove",
+  "exterieur": "Newcastle",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
+  "id": 560661,
+  "date": "2026-11-29T14:05:00Z",
+  "competition": "Premier League",
+  "domicile": "Crystal Palace",
+  "exterieur": "Hull City",
   "statut": "TIMED",
   "score": [
    null,
@@ -696,11 +696,11 @@
   ]
  },
  {
-  "id": 565871,
+  "id": 560654,
   "date": "2026-11-29T16:30:00Z",
-  "competition": "Bundesliga",
-  "domicile": "Hoffenheim",
-  "exterieur": "Augsburg",
+  "competition": "Premier League",
+  "domicile": "Arsenal",
+  "exterieur": "Man City",
   "statut": "TIMED",
   "score": [
    null,
@@ -708,11 +708,11 @@
   ]
  },
  {
-  "id": 560654,
+  "id": 565871,
   "date": "2026-11-29T16:30:00Z",
-  "competition": "Premier League",
-  "domicile": "Arsenal",
-  "exterieur": "Man City",
+  "competition": "Bundesliga",
+  "domicile": "Hoffenheim",
+  "exterieur": "Augsburg",
   "statut": "TIMED",
   "score": [
    null,
