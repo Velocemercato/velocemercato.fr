@@ -1,32 +1,33 @@
-Passage du 2026-11-25 08:20 UTC (workflow_dispatch)
+Passage du 2026-11-25 08:40 UTC (workflow_dispatch)
 Nettoyage : 0 breves vides retirees, 5 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
 Départ : 5 articles conservés et 4 flashs existants.
 RSS Foot National / NATIONAL : 5 actualités récentes.
 RSS Foot National / LIGUE_2 : 13 actualités récentes.
+RSS Foot National / LIGUE_1 : 3 actualités récentes.
 RSS RMC Sport / FRANCE : 24 actualités récentes.
 RSS RMC Sport / LIGUE_1 : 3 actualités récentes.
 RSS RMC Sport / INTERNATIONAL : 21 actualités récentes.
 RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
-RSS Foot Amateur / NATIONAL : 7 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 25 actualités récentes.
-RSS Foot Amateur / NATIONAL : 4 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 7 actualités récentes.
-RSS RMC Sport / BLEUS : 1 actualités récentes.
 RSS BBC Sport / FEMININ : 2 actualités récentes.
+RSS Foot Amateur / NATIONAL : 4 actualités récentes.
+RSS RMC Sport / BLEUS : 1 actualités récentes.
+RSS Foot Amateur / NATIONAL : 7 actualités récentes.
 RSS Foot01 / FRANCE : 44 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS Foot National / NATIONAL : 5 actualités récentes.
+RSS franceinfo / FRANCE : 9 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
 RSS The Guardian / ETRANGER : 1 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS franceinfo / FRANCE : 8 actualités récentes.
-RSS Foot National / LIGUE_1 : 3 actualités récentes.
-218 titres collectés, 22 nouveaux liens, quota 2.
+RSS Foot National / NATIONAL : 5 actualités récentes.
+219 titres collectés, 25 nouveaux liens, quota 2.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-Bilan : source_inaccessible_ou_trop_courte=9, sujet_deja_traite=13
+Brève ignorée (RMC Sport) : ValueError - Résumé IA incomplet ou trop long : non publié
+Bilan : rejet_lecture_ou_ia=1, source_inaccessible_ou_trop_courte=9, sujet_deja_traite=15
 Aucune brève de qualité suffisante ; fichiers JSON inchangés.
 RQ Pronos : page d'actualités publiques actualisée.
 Accueil VM : actualités inchangées.
@@ -41,27 +42,27 @@ LaLiga : 15 vidéos lues, 5 vidéos de buts gardées.
 Serie A : 15 vidéos lues, 7 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 9 vidéos de buts gardées.
 Vidéos publiées : 0.
-Fil express : actus 146, foot 54, gaming 37
+Fil express : foot 65, actus 162, gaming 40
 macommune.info  : 25 titres
 L'Est Républicain haute-saone : 14 titres
-L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
-L'Est Républicain www.estrepublicain.fr : 1 titres
 L'Est Républicain territoire-de-belfort : 11 titres
+L'Est Républicain www.estrepublicain.fr : 1 titres
+L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
 VM Belfort : 8 titres
 Auvergne-Rhône-Alpes : 83 titres
-Bourgogne-Franche-Comté : 38 titres
-Bretagne : 84 titres
+Bourgogne-Franche-Comté : 88 titres
+Bretagne : 59 titres
 Centre-Val de Loire : 16 titres
 Corse : 8 titres
-Grand Est : 85 titres
+Grand Est : 32 titres
 Hauts-de-France : 27 titres
 Île-de-France : 34 titres
 Normandie : 9 titres
 Nouvelle-Aquitaine : 73 titres
-Occitanie : 59 titres
+Occitanie : 60 titres
 Pays de la Loire : 96 titres
-Provence-Alpes-Côte d'Azur : 42 titres
-Outre-mer : 33 titres
+Provence-Alpes-Côte d'Azur : 79 titres
+Outre-mer : 77 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 18 titres
