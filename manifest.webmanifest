@@ -1,7 +1,7 @@
 {
  "id": "/?app=1",
  "name": "Véloce Mercato",
- "short_name": "VM Foot",
+ "short_name": "Véloce Mercato",
  "start_url": "/?app=1",
  "scope": "/",
  "display": "standalone",
@@ -27,6 +27,18 @@
   }
  ],
  "shortcuts": [
+  {
+   "name": "VM Foot",
+   "short_name": "Foot",
+   "url": "/foot/",
+   "icons": [
+    {
+     "src": "/app/foot-192.png",
+     "sizes": "192x192",
+     "type": "image/png"
+    }
+   ]
+  },
   {
    "name": "VM Gaming",
    "short_name": "Gaming",
