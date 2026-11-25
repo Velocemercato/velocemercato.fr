@@ -44,15 +44,20 @@
     var tous = (data && Array.isArray(data.matchs)) ? data.matchs : [];
     var rows = tous.filter(function (m) { return c[m.sport || 'foot'] !== false; });
     var now = Date.now(), lim = now + 12 * 3600 * 1000;
-    var direct = rows.filter(function (m) { return LIVE[m.statut]; });
+    var stamp=data&&(data.verifie||data.maj), checked=Date.parse(stamp), age=now-checked;
+    var fresh=Number.isFinite(checked)&&age>=-60000&&age<=40*60000;
+    function verifiedLive(m){var start=Date.parse(m.date);return fresh&&LIVE[m.statut]&&Number.isFinite(start)&&start<=now+60000&&now-start<=8*3600000;}
+    var direct = rows.filter(verifiedLive);
     var avenir = rows.filter(function (m) {
       var t = Date.parse(m.date); return SOON[m.statut] && t >= now - 5 * 60000 && t <= lim;
     }).sort(function (a, b) { return Date.parse(a.date) - Date.parse(b.date); });
     host.replaceChildren();
     if (!direct.length && !avenir.length) {
       // Des matchs existent mais pas dans les sports choisis : on garde le bouton pour changer d'avis.
-      var dispo = tous.some(function (m) { return LIVE[m.statut] || (SOON[m.statut] && Date.parse(m.date) <= lim && Date.parse(m.date) >= now - 5 * 60000); });
-      if (!dispo) { host.hidden = true; return; }
+      var dispo = tous.some(function (m) { return verifiedLive(m) || (SOON[m.statut] && Date.parse(m.date) <= lim && Date.parse(m.date) >= now - 5 * 60000); });
+      if (!dispo) { 
+        if(!fresh){host.hidden=false;var a=el('a','vlt-item','Scores indisponibles'+(Number.isFinite(checked)?' · dernière vérification '+new Date(checked).toLocaleString('fr-FR',{timeZone:'Europe/Paris'}):''));a.href='/scores/';host.appendChild(a);return;}
+        host.hidden = true; return; }
       host.hidden = false;
       var b = el('button', 'vlt-cfg', '⚙ Sports'); b.type = 'button'; b.onclick = panneau;
       host.appendChild(el('span', 'vlt-comp', 'Aucun match pour tes sports choisis.')); host.appendChild(b); return;
@@ -76,7 +81,7 @@
     var titre = el('a', 'vlt-title', direct.length ? 'EN DIRECT' : 'À VENIR'); titre.href = '/scores/';
     var vue = el('div', 'vlt-view'); vue.appendChild(rail);
     var cfg = el('button', 'vlt-cfg', '⚙ Sports'); cfg.type = 'button'; cfg.setAttribute('aria-label', 'Choisir les sports du bandeau'); cfg.onclick = panneau;
-    host.appendChild(titre); host.appendChild(vue); host.appendChild(cfg);
+    host.appendChild(titre); host.appendChild(vue); host.appendChild(cfg);host.appendChild(el('span','vlt-comp',fresh?'Vérifié '+heure(stamp):'Source ancienne : direct indisponible'));
     var dur = Math.max(20, (direct.length + avenir.length) * 6);
     rail.style.animationDuration = dur + 's';
   }
