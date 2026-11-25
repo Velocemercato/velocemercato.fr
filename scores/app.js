@@ -11,26 +11,35 @@ let comp='all',filter='all',onlyFav=false,toastTimer,DATA=[],MAJ=null,first=true
 let favorites=[];try{const s=JSON.parse(localStorage.getItem('vm-scores-fav')||'[]');favorites=Array.isArray(s)?s.map(String).slice(0,200):[]}catch{}
 const today=()=>DAYFMT.format(new Date());$('date').value=today();
 function toast(t){$('toast').textContent=t;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').textContent='',5000)}
-function state(s){return s==='IN_PLAY'||s==='PAUSED'?'live':s==='FINISHED'?'finished':'scheduled'}
-function label(x){if(x.statut==='PAUSED')return 'Mi-temps';if(x.statut==='IN_PLAY')return 'En direct';if(x.statut==='FINISHED')return 'Terminé';if(x.statut==='POSTPONED')return 'Reporté';if(x.statut==='SUSPENDED')return 'Suspendu';if(x.statut==='CANCELLED')return 'Annulé';return HM.format(new Date(x.date))}
+function state(s){if(s==='UNAVAILABLE')return 'unavailable';return s==='IN_PLAY'||s==='PAUSED'?'live':s==='FINISHED'?'finished':'scheduled'}
+function label(x){if(x.statut==='UNAVAILABLE')return 'Direct indisponible';if(x.statut==='PAUSED')return 'Mi-temps';if(x.statut==='IN_PLAY')return 'En direct';if(x.statut==='FINISHED')return 'Terminé';if(x.statut==='POSTPONED')return 'Reporté';if(x.statut==='SUSPENDED')return 'Suspendu';if(x.statut==='CANCELLED')return 'Annulé';return HM.format(new Date(x.date))}
 async function get(url){try{const r=await fetch(url+'?t='+Math.floor(Date.now()/60000),{cache:'no-store'});return r.ok?await r.json():null}catch{return null}}
+function freshRows(rows, timestamp, now=Date.now()) {
+  const checked=Date.parse(timestamp), age=now-checked;
+  const fresh=Number.isFinite(checked)&&age>=-60000&&age<=40*60000;
+  return rows.map(m=>{
+    const start=Date.parse(m.date), active=['IN_PLAY','PAUSED'].includes(m.statut);
+    const plausible=Number.isFinite(start)&&start<=now+60000&&now-start<=8*3600000;
+    return active&&(!fresh||!plausible)?{...m,statut:'UNAVAILABLE'}:m;
+  });
+}
 async function load(){
   const [live,agenda]=await Promise.all([(get('https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/scores-live/scores.json').then(function(d){return d||get('/scores.json')})),get('/matchs.json')]);
   const map=new Map();
   for(const m of (Array.isArray(agenda)?agenda:[]))map.set(String(m.id),{id:String(m.id),date:m.date,comp:m.competition,home:m.domicile,away:m.exterieur,statut:m.statut,score:m.score||[null,null]});
   for(const m of ((live&&live.matchs)||[]))map.set(String(m.id),{id:String(m.id),date:m.date,comp:m.comp,home:m.dom,away:m.ext,statut:m.statut,score:m.score||[null,null]});
-  if(!map.size&&DATA.length){$('maj').textContent='Source momentanément indisponible : derniers scores connus affichés.';return}
-  const rows=[...map.values()].sort((a,b)=>String(a.date).localeCompare(String(b.date))||String(a.comp).localeCompare(String(b.comp)));
+  if(!map.size&&DATA.length){DATA=freshRows(DATA,null);$('maj').textContent='Source momentanément indisponible : derniers scores connus affichés.';render();return}
+  const rows=freshRows([...map.values()],live&&(live.verifie||live.maj)).sort((a,b)=>String(a.date).localeCompare(String(b.date))||String(a.comp).localeCompare(String(b.comp)));
   if(!first)alerts(rows);first=false;
   prev=Object.fromEntries(rows.map(x=>[x.id,x]));DATA=rows;MAJ=live&&live.maj;
   var VER=live&&(live.verifie||live.maj),FR={dateStyle:'short',timeStyle:'short',timeZone:'Europe/Paris'};
-  var vieux=!VER||(Date.now()-Date.parse(VER))>3*3600e3;
-  $('maj').textContent=(rows.length?'Source football-data.org':'Aucun match des championnats suivis aujourd’hui (trêve ou jour sans match).')+
+  var vieux=!Number.isFinite(Date.parse(VER))||Date.now()-Date.parse(VER)>40*60000||Date.parse(VER)>Date.now()+60000;
+  $('maj').textContent=(rows.length?'Sources football-data.org / ESPN':'Aucun match des championnats suivis aujourd’hui (trêve ou jour sans match).')+
     (VER?' · vérifié le '+new Date(VER).toLocaleString('fr-FR',FR):'')+(vieux?' · ⚠ données anciennes, robot en retard':' · actualisation automatique chaque minute.');
   renderComps();render();
 }
 function alerts(rows){
-  for(const x of rows){if(!favorites.includes(x.id))continue;const o=prev[x.id];if(!o)continue;const s=x.score||[],so=o.score||[];const tag=x.home+' '+(s[0]??0)+'-'+(s[1]??0)+' '+x.away;
+  for(const x of rows){if(!favorites.includes(x.id)||x.statut==='UNAVAILABLE')continue;const o=prev[x.id];if(!o)continue;const s=x.score||[],so=o.score||[];const tag=x.home+' '+(s[0]??0)+'-'+(s[1]??0)+' '+x.away;
     if($('alertStart').checked&&state(o.statut)==='scheduled'&&state(x.statut)==='live')notify('🟢 Coup d’envoi',x.home+' – '+x.away+' · '+x.comp);
     else if($('alertScore').checked&&s[0]!=null&&so[0]!=null&&(s[0]+s[1])>(so[0]+so[1]))notify('⚽ But !',tag+' · '+x.comp);
     if($('alertEnd').checked&&o.statut!=='FINISHED'&&x.statut==='FINISHED')notify('🏁 Terminé',tag+' · '+x.comp)}
@@ -58,7 +67,7 @@ $('matchList').onclick=e=>{const b=e.target.closest('button');if(!b)return;
   if(b.dataset.fav){const id=b.dataset.fav;favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[...favorites,id].slice(-200);saveFav();render();if(favorites.includes(id))toast('Match ajouté : alertes tant que VM Scores est ouvert.')}
   if(b.dataset.detail){const x=DATA.find(x=>x.id===b.dataset.detail);if(!x)return;const st=state(x.statut),show=st!=='scheduled';
     $('detailTitle').textContent=x.comp;
-    $('detailBody').innerHTML='<h2 style="text-align:center">'+esc(x.home)+'<br><small class="muted">contre</small><br>'+esc(x.away)+'</h2><div class="bigscore">'+(show?esc(x.score[0]??'–')+' : '+esc(x.score[1]??'–'):'– : –')+'</div><p style="text-align:center">'+esc(label(x))+' · '+esc(LONG.format(new Date(x.date)))+' · '+esc(HM.format(new Date(x.date)))+'</p><div class="sep"></div><p class="note">Score officiel fourni par football-data.org. Le détail des buteurs n’est pas encore disponible.</p>';
+    $('detailBody').innerHTML='<h2 style="text-align:center">'+esc(x.home)+'<br><small class="muted">contre</small><br>'+esc(x.away)+'</h2><div class="bigscore">'+(show?esc(x.score[0]??'–')+' : '+esc(x.score[1]??'–'):'– : –')+'</div><p style="text-align:center">'+esc(label(x))+' · '+esc(LONG.format(new Date(x.date)))+' · '+esc(HM.format(new Date(x.date)))+'</p><div class="sep"></div><p class="note">Dernier score fourni par football-data.org / ESPN. Un direct indisponible ne confirme pas le résultat final. Le détail des buteurs n’est pas encore disponible.</p>';
     $('detail').showModal()}};
 $('closeDetail').onclick=()=>$('detail').close();
 async function notify(title,body){toast(title+' · '+body);const row=document.createElement('div');row.className='event';const s=document.createElement('strong');s.textContent=title;const sp=document.createElement('span');sp.textContent=body;row.append(s,sp);if($('events').querySelector('p'))$('events').replaceChildren();$('events').prepend(row);if($('events').children.length>8)$('events').lastElementChild.remove();

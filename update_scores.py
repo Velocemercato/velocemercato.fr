@@ -181,7 +181,7 @@ def main():
     rows.sort(key=lambda x: (str(x['date']), x['comp']))
     old = json.loads(OUT.read_text(encoding='utf-8')) if OUT.exists() else {}
     # La source renvoie parfois une ancienne version : on ne revient jamais en arrière
-    # (un match commencé ne redevient pas « à venir », un score ne descend pas).
+    # (un match commencé ne redevient pas « à venir »). Les corrections de score sont acceptées.
     rank = {'SCHEDULED': 0, 'TIMED': 0, 'POSTPONED': 0, 'IN_PLAY': 1, 'PAUSED': 1, 'FINISHED': 2}
     before = {m['id']: m for m in old.get('matchs') or []}
     for i, m in enumerate(rows):
@@ -190,7 +190,7 @@ def main():
             continue
         older_status = rank.get(m['statut'], 0) < rank.get(o['statut'], 0)
         lower_score = None not in o['score'] and (None in m['score'] or sum(m['score']) < sum(o['score']))
-        if older_status or lower_score:
+        if older_status:
             rows[i] = o
     new = {'matchs': rows}
     now_iso = dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds').replace('+00:00', 'Z')
