@@ -1,9 +1,31 @@
 {
-  "misAJour": "2026-11-25T06:00:43+00:00",
+  "misAJour": "2026-11-25T08:00:47+00:00",
   "fenetreJours": 1,
   "source": "Google News RSS — liens vers les éditeurs originaux",
   "sports": {
-    "nba": [],
+    "nba": [
+      {
+        "id": "nba-1795591167-nbalespistonsdominentlemagic",
+        "titre": "NBA : les Pistons dominent le Magic, les Celtics résistent aux Wizards grâce à Tatum - Le Figaro",
+        "source": "Le Figaro",
+        "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQTHk5blNEOEFCUzN4UUFxcFNYQlBBeGpQeTZqc3lLOFdfbGVoempOQzZUdzlJVkJLTERJd0U4TXVNaWRYNHFKU29wX3B1d0ZMOXlkVnl2T3NjYndNOGNrb2JRcEVQOFRscURVaUlMZXRlZ3RSNFRNTTFHblBZd2pKc1lHY2lpemd0aDZuR0VtWEFYOFJhVjZWVmYyLVA0QW9uY0JJZDgwbGVhTXZIVUNZSGdmY2d1Vl9oNlNaSUNDODhkTnQ3ejVqUzdDZC0?oc=5",
+        "date": "2026-11-25T07:19:27+00:00",
+        "rubriques": [
+          "international"
+        ]
+      },
+      {
+        "id": "nba-1795580847-labasketsurfrance5laurentdel",
+        "titre": "La basket sur France 5 : Laurent Delahousse raconte la face cachée d’un objet culte - Serie News",
+        "source": "Serie News",
+        "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQRjdvekdjRzBIdmN1ZWdIWUppTGRpSVl2Z0NEWmt3eXpwaXloUjVVdW1namNwY1JOeGxCby1oUFVQNTZSME1BdjRZcjRQNGVxRThUZm81YUUwWmJFY2pmTFJWbTdXekJ3U1FralNiZFpadjVCQVJHazd4ejByVnVSdDNGVThVb0tuQ2hWZVBuUVJ6blRtdy1DbEpWbktwQmw2dnEtdERsS1lCZ3h1cEJCaE1JMjJmbDB4YktVV3dyWHdVU0VobHY2NHF6cmE1MnI4Umc?oc=5",
+        "date": "2026-11-25T04:27:27+00:00",
+        "rubriques": [
+          "international",
+          "france"
+        ]
+      }
+    ],
     "nfl": [
       {
         "id": "nfl-1795581874-steelersaaronrodgersmissurle",
@@ -16,11 +38,46 @@
         ]
       }
     ],
-    "f1": [],
+    "f1": [
+      {
+        "id": "f1-1795586484-mekiesvoithadjargagnereneffi",
+        "titre": "Mekies voit Hadjar gagner en efficacité dans ses échanges avec Red Bull - F1 news",
+        "source": "F1 news",
+        "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE82Zl9OQ1ZFOEtDOURYZzhBckVHQVpPdjFLRWpKQmYxNHozeU9rQllVSTctbF9ULTgyR250QkZPemt4elExUjhQU2JpQ09HOGRxUXhVZVBRdkhYWkYwVDhGcVdxS3J5YkxHWUZ1a0RUZXIxX2NBZ0pwREpB?oc=5",
+        "date": "2026-11-25T06:01:24+00:00",
+        "rubriques": [
+          "international",
+          "france"
+        ]
+      }
+    ],
     "motogp": [],
     "tennis": [],
-    "rugby": [],
-    "cyclisme": [],
+    "rugby": [
+      {
+        "id": "rugby-1795583668-lagorgieremportelapremirecou",
+        "titre": "La Géorgie remporte la première Coupe des Nations après \"une finale\" largement maîtrisée contre les États-Unis - Rugbyrama",
+        "source": "Rugbyrama",
+        "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9hM2paSWtZa0hhYVBLamZtelBKVFhQNTZ4WW5kZkJvQU52cGVmaEhCWjV0Yndvc19fZ0lsTGlUdm9qZjNaZGZiZFc0ajNJeHlkQ3c?oc=5",
+        "date": "2026-11-25T05:14:28+00:00",
+        "rubriques": [
+          "international"
+        ]
+      }
+    ],
+    "cyclisme": [
+      {
+        "id": "cyclisme-1795589692-mercatocyclismefminin2027qua",
+        "titre": "Mercato cyclisme féminin 2027 : quatre annonces de transferts - Velo-Club",
+        "source": "Velo-Club",
+        "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNZ0d1bmZxVEh2dW1ZWTdsWDBQWkQwdlZaSS16NE9mUDh1MnR4VDRyTkx3QjJwcnQ1a0Fnb1pKR1pQNzVfWHlIM3N6cHNiSGRHX3U5a0VLa3ViXzdkaGpzTnRqemI4TVF0YzFUdWJid2xYNkxkMXVFdWEtRHZIOTFOeUxVanBKSjdHYjNQMg?oc=5",
+        "date": "2026-11-25T06:54:52+00:00",
+        "rubriques": [
+          "international",
+          "feminin"
+        ]
+      }
+    ],
     "nhl": [],
     "mlb": [],
     "mma": [
