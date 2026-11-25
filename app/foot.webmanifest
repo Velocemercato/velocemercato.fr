@@ -1,91 +1,29 @@
 {
- "id": "/?app=1",
- "name": "Véloce Mercato",
- "short_name": "VM Foot",
- "start_url": "/?app=1",
- "scope": "/",
- "display": "standalone",
- "background_color": "#060b1d",
- "theme_color": "#060b1d",
- "lang": "fr",
- "icons": [
-  {
-   "src": "/app/foot-192.png",
-   "sizes": "192x192",
-   "type": "image/png"
-  },
-  {
-   "src": "/app/foot-512.png",
-   "sizes": "512x512",
-   "type": "image/png"
-  },
-  {
-   "src": "/app/foot-maskable-512.png",
-   "sizes": "512x512",
-   "type": "image/png",
-   "purpose": "maskable"
-  }
- ],
- "shortcuts": [
-  {
-   "name": "VM Gaming",
-   "short_name": "Gaming",
-   "url": "/vm-gaming/",
-   "icons": [
+  "id": "/app/foot",
+  "name": "VM Foot",
+  "short_name": "VM Foot",
+  "start_url": "/foot/?app=1",
+  "scope": "/foot/",
+  "display": "standalone",
+  "background_color": "#060b1d",
+  "theme_color": "#060b1d",
+  "lang": "fr",
+  "icons": [
     {
-     "src": "/app/gaming-192.png",
-     "sizes": "192x192",
-     "type": "image/png"
-    }
-   ]
-  },
-  {
-   "name": "VM Actus",
-   "short_name": "Actus",
-   "url": "/actus/",
-   "icons": [
+      "src": "/app/foot-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
     {
-     "src": "/app/actus-192.png",
-     "sizes": "192x192",
-     "type": "image/png"
-    }
-   ]
-  },
-  {
-   "name": "La Pastille TV",
-   "short_name": "TV",
-   "url": "/studio.html#tv",
-   "icons": [
+      "src": "/app/foot-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
     {
-     "src": "/app/tv-192.png",
-     "sizes": "192x192",
-     "type": "image/png"
+      "src": "/app/foot-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
-   ]
-  },
-  {
-   "name": "Véloce Arena",
-   "short_name": "Arena",
-   "url": "/gaming.html",
-   "icons": [
-    {
-     "src": "/app/arena-192.png",
-     "sizes": "192x192",
-     "type": "image/png"
-    }
-   ]
-  },
-  {
-   "name": "VM Annonces",
-   "short_name": "Annonces",
-   "url": "/shop/",
-   "icons": [
-    {
-     "src": "/app/annonces-192.png",
-     "sizes": "192x192",
-     "type": "image/png"
-    }
-   ]
-  }
- ]
+  ]
 }
