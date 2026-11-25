@@ -1,5 +1,125 @@
 [
  {
+  "id": "foot-edition-20261125-2000",
+  "univers": "foot",
+  "format": "edition",
+  "moment": "soir",
+  "label": "JT 20 h",
+  "titre": "La Pastille Foot - 25 novembre, édition du soir",
+  "accroche": "Garnacho écarté, Leicester sauvé de la vente, et Eto'o sort les griffes.",
+  "duree": 128,
+  "date": "2026-11-25T21:42+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "foot-edition-20261125-2000.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-25T20:00:00+01:00",
+  "source_start": "2026-11-25T12:00:00+01:00",
+  "source_end": "2026-11-25T20:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-194bb1c98c179c617a027e",
+    "titre": "Garnacho écarté du groupe d'Aston Villa face à Galatasaray",
+    "publishedAt": "2026-11-25T18:12:20Z",
+    "createdAt": "2026-11-25T18:41:05Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a9040737338535784976-laventure-dalejandro-garnacho-a-aston-villa-vire-au-fiasco"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-87e349d0d17b7c8a979614",
+    "titre": "Glasner critique le niveau d'exigence de Nottingham Forest et l'anglais de certains joueurs",
+    "publishedAt": "2026-11-25T18:00:26Z",
+    "createdAt": "2026-11-25T18:21:11Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/cw20xr4d7x55o?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-78f61e3b74d02878bd6095",
+    "titre": "Brest : Giovani Versini évoque son passé à l'OM avant le choc de janvier",
+    "publishedAt": "2026-11-25T18:12:33Z",
+    "createdAt": "2026-11-25T18:21:03Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a3429971780848083691-brest-les-mots-de-giovani-versini-sur-lom"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-3886e30c9d368e5bbb636a",
+    "titre": "Leicester City ne sera finalement pas vendu, son propriétaire veut se concentrer sur la reconstruction",
+    "publishedAt": "2026-11-25T16:19:45Z",
+    "createdAt": "2026-11-25T18:01:18Z",
+    "references": [
+     {
+      "nom": "BBC Sport",
+      "url": "https://www.bbc.co.uk/sport/football/articles/ck1l0j77j43eo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-f8ab8bf9ea55b7b50fcc40",
+    "titre": "Droits TV de la Ligue 1 : Amazon serait sur le point de renoncer",
+    "publishedAt": "2026-11-25T17:30:00Z",
+    "createdAt": "2026-11-25T17:41:18Z",
+    "references": [
+     {
+      "nom": "Foot01",
+      "url": "https://www.foot01.com/tv/droits-tv-de-la-ligue-1-amazon-jette-leponge"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-8972d94f78f87c536fe5ef",
+    "titre": "Samuel Eto'o répond à Daniel Riolo et annonce soutenir Gianni Infantino",
+    "publishedAt": "2026-11-25T17:33:34Z",
+    "createdAt": "2026-11-25T17:41:11Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a2145344849835724442-samuel-etoo-cartonne-daniel-riolo"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-9be64060f5ffe4fcb6ac9b",
+    "titre": "Rennes : Kilian Belazzoug proche d'une prolongation jusqu'en 2030",
+    "publishedAt": "2026-11-25T16:22:23Z",
+    "createdAt": "2026-11-25T17:21:24Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a156542602844972370-rennes-un-espoir-du-club-va-prolonger-son-contrat"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-5984e45766d698bd5e8610",
+    "titre": "CAN 2027 : la Mauritanie dépose une réclamation contre le Burkina Faso",
+    "publishedAt": "2026-11-25T17:13:01Z",
+    "createdAt": "2026-11-25T17:21:11Z",
+    "references": [
+     {
+      "nom": "Foot Mercato",
+      "url": "https://www.footmercato.net/a5020376714770163421-can-2027-la-mauritanie-depose-une-reclamation-contre-le-burkina-faso"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261125-1200",
   "univers": "foot",
   "format": "edition",
@@ -12807,126 +12927,6 @@
      {
       "nom": "BBC Sport",
       "url": "https://www.bbc.co.uk/sport/football/articles/cq4g15392p4ro?at_medium=RSS&at_campaign=rss"
-     }
-    ]
-   }
-  ],
-  "diffusion": "youtube"
- },
- {
-  "id": "actus-edition-20261025-1900",
-  "univers": "actus",
-  "format": "edition",
-  "moment": "soir",
-  "label": "JT 19 h",
-  "titre": "La Pastille Actus : le JT du dimanche 25 octobre 2026",
-  "accroche": "Bonsoir, voici les brèves importantes de ce dimanche soir.",
-  "duree": 155,
-  "date": "2026-10-25T19:31+01:00",
-  "publie": false,
-  "voix": [
-   "piper"
-  ],
-  "speech_rate": 1.12,
-  "fichier": "actus-edition-20261025-1900.mp4",
-  "editorial_revision": "court-v1",
-  "edition_at": "2026-10-25T19:00:00+01:00",
-  "source_start": "2026-10-25T13:00:00+01:00",
-  "source_end": "2026-10-25T19:00:00+01:00",
-  "sources": [
-   {
-    "id": "rss-v2-e157018de6616c6fcfbdcb",
-    "titre": "Au moins 50 personnes tuées par des hommes armés dans le nord-est du Nigeria",
-    "publishedAt": "2026-10-25T17:23:42Z",
-    "createdAt": "2026-10-25T17:58:54Z",
-    "references": [
-     {
-      "nom": "franceinfo",
-      "url": "https://www.franceinfo.fr/monde/afrique/nigeria/des-hommes-armes-ont-tue-au-moins-50-personnes-dans-le-nord-est-du-nigeria_8253370.html#xtor=RSS-3-[lestitres]"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-6eaa8740f16c62368b8d3d",
-    "titre": "Aubervilliers : des centaines de personnes à une marche blanche en hommage à Pengo Bossio Wangi",
-    "publishedAt": "2026-10-25T17:02:34Z",
-    "createdAt": "2026-10-25T17:30:23Z",
-    "references": [
-     {
-      "nom": "franceinfo",
-      "url": "https://www.franceinfo.fr/faits-divers/terrorisme/attentat-raciste-a-trappes/reportage-tu-resteras-a-jamais-dans-nos-c-urs-a-aubervilliers-des-centaines-de-personnes-a-la-marche-blanche-en-hommage-a-pengo-bossio-wangi-tue-a-trappes_8253328.html#xtor=RSS-3-[lestitres]"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-80f09efb13983fb5967ebe",
-    "titre": "Israël : Gadi Eisenkot, défié par Nétanyahou dans les urnes, selon franceinfo",
-    "publishedAt": "2026-10-25T16:20:01Z",
-    "createdAt": "2026-10-25T16:32:28Z",
-    "references": [
-     {
-      "nom": "franceinfo",
-      "url": "https://www.franceinfo.fr/replay-radio/d-un-monde-a-l-autre/juif-sefarade-ancien-chef-d-etat-major-ministre-demissionnaire-qui-est-gadi-eisenkot-l-homme-qui-defie-netanyahou-dans-les-urnes_8211635.html#xtor=RSS-3-%5Bgeneral%5D"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-86daca04918f8b0320919a",
-    "titre": "Israël: les clés du scrutin législatif du 27 octobre 2026",
-    "publishedAt": "2026-10-25T15:53:53Z",
-    "createdAt": "2026-10-25T16:01:59Z",
-    "references": [
-     {
-      "nom": "RFI",
-      "url": "https://www.rfi.fr/fr/moyen-orient/20261025-%C3%A9lections-en-isra%C3%ABl-les-cl%C3%A9s-pour-comprendre-le-scrutin-du-27-octobre-2026"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-14184a02dfcfd362478279",
-    "titre": "Serbie : forte mobilisation aux législatives anticipées, un scrutin test pour Vucic",
-    "publishedAt": "2026-10-25T15:26:25Z",
-    "createdAt": "2026-10-25T15:31:23Z",
-    "references": [
-     {
-      "nom": "franceinfo",
-      "url": "https://www.franceinfo.fr/monde/europe/les-serbes-se-mobilisent-fortement-aux-legislatives-dans-un-scrutin-en-forme-de-referendum-anti-vucic_8253253.html#xtor=RSS-3-[lestitres]"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-7495504549c2e8e40415c1",
-    "titre": "Manifestations du 24 octobre : la justice ouvre une enquête sur des violences à Nice",
-    "publishedAt": "2026-10-25T14:58:44Z",
-    "createdAt": "2026-10-25T15:01:41Z",
-    "references": [
-     {
-      "nom": "franceinfo",
-      "url": "https://www.franceinfo.fr/societe/manifestations/direct-manifestations-du-24-octobre-142-personnes-ont-ete-interpellees-a-paris-dont-120-ont-ete-placees-en-garde-a-vue-selon-la-prefecture-de-police_8252812.html#xtor=RSS-3-%5Bgeneral%5D"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-be214f3b5ba9bd1290e8c9",
-    "titre": "La Russie accueillera les Mondiaux d'haltérophilie en 2030",
-    "publishedAt": "2026-10-25T13:30:24Z",
-    "createdAt": "2026-10-25T14:01:47Z",
-    "references": [
-     {
-      "nom": "franceinfo",
-      "url": "https://www.franceinfo.fr/sports/halterophilie/la-russie-va-accueillir-les-mondiaux-d-halterophilie-en-2030-le-premier-sport-olympique-a-revenir-dans-le-pays-depuis-2022_8253172.html#xtor=RSS-3-[lestitres]"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-d0f932cc11166a226c7153",
-    "titre": "Shrek en comédie musicale aux Folies Bergères, une adaptation fidèle au film",
-    "publishedAt": "2026-10-25T13:00:01Z",
-    "createdAt": "2026-10-25T13:12:59Z",
-    "references": [
-     {
-      "nom": "franceinfo",
-      "url": "https://www.franceinfo.fr/replay-radio/l-invite-culture/philippe-hersen-je-voulais-faire-un-shrek-qui-soit-tout-sauf-broadway_8211614.html#xtor=RSS-3-%5Bgeneral%5D"
      }
     ]
    }
