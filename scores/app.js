@@ -7,7 +7,7 @@ const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const DAYFMT=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris',year:'numeric',month:'2-digit',day:'2-digit'});
 const HM=new Intl.DateTimeFormat('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Paris'});
 const LONG=new Intl.DateTimeFormat('fr-FR',{weekday:'long',day:'numeric',month:'long',timeZone:'Europe/Paris'});
-let comp='all',filter='all',onlyFav=false,toastTimer,DATA=[],MAJ=null,first=true,prev={};
+let comp='all',filter='all',onlyFav=false,toastTimer,DATA=[],MAJ=null,first=true,prev={},loaded=false;
 let favorites=[];try{const s=JSON.parse(localStorage.getItem('vm-scores-fav')||'[]');favorites=Array.isArray(s)?s.map(String).slice(0,200):[]}catch{}
 const today=()=>DAYFMT.format(new Date());$('date').value=today();
 function toast(t){$('toast').textContent=t;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').textContent='',5000)}
@@ -26,11 +26,12 @@ function freshRows(rows, timestamp, now=Date.now()) {
 }
 async function load(){
   const [live,agenda]=await Promise.all([(get('https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/scores-live/scores.json').then(function(d){return d||get('/scores.json')})),get('/matchs.json')]);
+  loaded=true;
   const map=new Map();
   for(const m of (Array.isArray(agenda)?agenda:[]))map.set(String(m.id),{id:String(m.id),date:m.date,sport:m.sport||'foot',comp:m.competition,home:m.domicile,away:m.exterieur,statut:m.statut,score:m.score||[null,null]});
-  for(const m of ((live&&live.matchs)||[]))map.set(String(m.id),{id:String(m.id),date:m.date,sport:m.sport||'foot',comp:m.comp,home:m.dom,away:m.ext,statut:m.statut,score:m.score||[null,null]});
+  for(const m of (Array.isArray(live?.matchs)?live.matchs:[]))map.set(String(m.id),{id:String(m.id),date:m.date,sport:m.sport||'foot',comp:m.comp,home:m.dom,away:m.ext,statut:m.statut,score:m.score||[null,null]});
   if(!map.size&&DATA.length){DATA=freshRows(DATA,null);$('maj').textContent='Source momentanément indisponible : derniers scores connus affichés.';render();return}
-  const rows=freshRows([...map.values()],live&&(live.verifie||live.maj)).sort((a,b)=>String(a.date).localeCompare(String(b.date))||String(a.comp).localeCompare(String(b.comp)));
+  const rows=freshRows([...map.values()].filter(m=>Number.isFinite(Date.parse(m.date))&&typeof m.home==='string'&&typeof m.away==='string'),live&&(live.verifie||live.maj)).sort((a,b)=>String(a.date).localeCompare(String(b.date))||String(a.comp).localeCompare(String(b.comp)));
   if(!first)alerts(rows);first=false;
   prev=Object.fromEntries(rows.map(x=>[x.id,x]));DATA=rows;MAJ=live&&live.maj;
   var VER=live&&(live.verifie||live.maj),FR={dateStyle:'short',timeStyle:'short',timeZone:'Europe/Paris'};
@@ -56,10 +57,10 @@ function render(){
   $('count').textContent=rows.length+' match'+(rows.length>1?'s':'')+' · '+LONG.format(new Date(d+'T12:00:00'));
   $('sportName').textContent=(COMPS.find(x=>x[0]===comp)||COMPS[0])[2].toUpperCase();
   let html='',last='';
-  for(const x of rows){const st=state(x.statut),show=st!=='scheduled',fav=favorites.includes(x.id);
+  for(const x of rows){const st=state(x.statut),show=st==='live'||st==='finished',fav=favorites.includes(x.id);
     if(x.comp!==last){html+='<div class="league"><span>'+esc(x.comp)+'</span><small>'+esc(({foot:'Football',basket:'Basketball',hockey:'Hockey',nfl:'Football américain'})[x.sport]||'Sport')+'</small></div>';last=x.comp}
     html+='<article class="match"><button class="star '+(fav?'on':'')+'" data-fav="'+esc(x.id)+'" aria-label="'+(fav?'Retirer':'Ajouter')+' '+esc(x.home)+' – '+esc(x.away)+' des favoris" aria-pressed="'+fav+'">'+(fav?'★':'☆')+'</button><div class="clock '+(st==='live'?'live':'')+'">'+(st==='live'?'<span class="liveDot"></span>':'')+esc(label(x))+'</div><div class="teams"><div class="team"><small>'+esc(x.home.slice(0,2).toUpperCase())+'</small><b>'+esc(x.home)+'</b></div><div class="team"><small>'+esc(x.away.slice(0,2).toUpperCase())+'</small><b>'+esc(x.away)+'</b></div></div><div class="score"><span>'+(show?esc(x.score[0]??'–'):'–')+'</span><span>'+(show?esc(x.score[1]??'–'):'–')+'</span></div><button class="detailBtn" data-detail="'+esc(x.id)+'" aria-label="Détail de '+esc(x.home)+' contre '+esc(x.away)+'">↗</button></article>'}
-  $('matchList').innerHTML=html||'<div class="empty">'+(DATA.length?'Aucun match pour ces filtres ce jour-là.<br>Changez de date, de compétition ou retirez un filtre.':'Chargement des scores…')+'</div>';
+  $('matchList').innerHTML=html||'<div class="empty">'+(DATA.length?'Aucun match pour ces filtres ce jour-là.<br>Changez de date, de compétition ou retirez un filtre.':(loaded?'Aucun score disponible pour le moment.':'Chargement des scores…'))+'</div>';
 }
 $('sports').onclick=e=>{const b=e.target.closest('[data-sport]');if(b){comp=b.dataset.sport;render()}};
 document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));render()});
