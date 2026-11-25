@@ -638,6 +638,19 @@
    ]
   },
   {
+   "id": 575412,
+   "date": "2026-11-25T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Shaktar",
+   "ext": "Fenerbahçe",
+   "statut": "FINISHED",
+   "score": [
+    0,
+    1
+   ]
+  },
+  {
    "id": 575408,
    "date": "2026-11-25T20:00:00Z",
    "comp": "Ligue des champions",
@@ -677,16 +690,16 @@
    ]
   },
   {
-   "id": 575412,
+   "id": 575407,
    "date": "2026-11-25T20:00:00Z",
    "comp": "Ligue des champions",
    "sport": "foot",
-   "dom": "Shaktar",
-   "ext": "Fenerbahçe",
+   "dom": "Atleti",
+   "ext": "Viking",
    "statut": "FINISHED",
    "score": [
-    0,
-    1
+    2,
+    0
    ]
   },
   {
@@ -716,29 +729,16 @@
    ]
   },
   {
-   "id": 575407,
-   "date": "2026-11-25T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Atleti",
-   "ext": "Viking",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    0
-   ]
-  },
-  {
    "id": "espn-401909317",
    "date": "2026-11-25T22:00Z",
    "comp": "NBA",
    "sport": "basket",
    "dom": "76ers",
    "ext": "Heat",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
-    62,
-    53
+    63,
+    56
    ]
   },
   {
@@ -1574,6 +1574,6 @@
    ]
   }
  ],
- "maj": "2026-11-25T23:26:55Z",
- "verifie": "2026-11-25T23:26:55Z"
+ "maj": "2026-11-25T23:30:50Z",
+ "verifie": "2026-11-25T23:30:50Z"
 }
