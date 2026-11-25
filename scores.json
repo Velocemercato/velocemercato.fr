@@ -638,19 +638,6 @@
    ]
   },
   {
-   "id": 575398,
-   "date": "2026-11-24T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Man City",
-   "ext": "Napoli",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    2
-   ]
-  },
-  {
    "id": 575400,
    "date": "2026-11-24T20:00:00Z",
    "comp": "Ligue des champions",
@@ -677,29 +664,16 @@
    ]
   },
   {
-   "id": 575403,
+   "id": 575398,
    "date": "2026-11-24T20:00:00Z",
    "comp": "Ligue des champions",
    "sport": "foot",
-   "dom": "Como 1907",
-   "ext": "PAE AEK",
+   "dom": "Man City",
+   "ext": "Napoli",
    "statut": "FINISHED",
    "score": [
-    1,
-    0
-   ]
-  },
-  {
-   "id": 575399,
-   "date": "2026-11-24T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Arsenal",
-   "ext": "Dortmund",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    1
+    2,
+    2
    ]
   },
   {
@@ -725,6 +699,32 @@
    "statut": "FINISHED",
    "score": [
     5,
+    1
+   ]
+  },
+  {
+   "id": 575403,
+   "date": "2026-11-24T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Como 1907",
+   "ext": "PAE AEK",
+   "statut": "FINISHED",
+   "score": [
+    1,
+    0
+   ]
+  },
+  {
+   "id": 575399,
+   "date": "2026-11-24T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Arsenal",
+   "ext": "Dortmund",
+   "statut": "FINISHED",
+   "score": [
+    1,
     1
    ]
   },
@@ -807,19 +807,6 @@
    ]
   },
   {
-   "id": 575408,
-   "date": "2026-11-25T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "PSG",
-   "ext": "Roma",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
    "id": 575410,
    "date": "2026-11-25T20:00:00Z",
    "comp": "Ligue des champions",
@@ -859,12 +846,12 @@
    ]
   },
   {
-   "id": 575409,
+   "id": 575408,
    "date": "2026-11-25T20:00:00Z",
    "comp": "Ligue des champions",
    "sport": "foot",
-   "dom": "Club Brugge",
-   "ext": "Liverpool",
+   "dom": "PSG",
+   "ext": "Roma",
    "statut": "TIMED",
    "score": [
     null,
@@ -891,6 +878,19 @@
    "sport": "foot",
    "dom": "Atleti",
    "ext": "Viking",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 575409,
+   "date": "2026-11-25T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Club Brugge",
+   "ext": "Liverpool",
    "statut": "TIMED",
    "score": [
     null,
@@ -1405,6 +1405,6 @@
    ]
   }
  ],
- "maj": "2026-11-25T14:41:10Z",
- "verifie": "2026-11-25T14:41:10Z"
+ "maj": "2026-11-25T14:45:07Z",
+ "verifie": "2026-11-25T14:45:07Z"
 }
