@@ -1,11 +1,37 @@
-Passage du 2026-11-25 22:40 UTC (workflow_dispatch)
+Passage du 2026-11-25 23:00 UTC (workflow_dispatch)
 Nettoyage : 0 breves vides retirees, 49 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
 Départ : 49 articles conservés et 45 flashs existants.
-Limite de 48 brèves par jour atteinte, aucune nouvelle publication.
+RSS Foot National / LIGUE_2 : 7 actualités récentes.
+RSS Foot National / NATIONAL : 11 actualités récentes.
+RSS Foot National / LIGUE_1 : 4 actualités récentes.
+RSS RMC Sport / FRANCE : 30 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 23 actualités récentes.
+RSS RMC Sport / LIGUE_1 : 4 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 30 actualités récentes.
+RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
+RSS BBC Sport / FEMININ : 2 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 6 actualités récentes.
+RSS RMC Sport / BLEUS : 3 actualités récentes.
+RSS Foot Amateur / NATIONAL : 4 actualités récentes.
+RSS Foot01 / FRANCE : 44 actualités récentes.
+RSS franceinfo / FRANCE : 13 actualités récentes.
+RSS The Guardian / ETRANGER : 1 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS Foot Amateur / NATIONAL : 7 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 1 actualités récentes.
+RSS Foot National / NATIONAL : 7 actualités récentes.
+242 titres collectés, 34 nouveaux liens, quota 1.
+/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
+  warnings.warn(
+Brève prête : RMC Sport - PSG-Roma (2-2) : Paris enchaîne une série record d'invincibilité en Ligue des champions
+Bilan : brèves_rédigées=1, source_inaccessible_ou_trop_courte=1, sujet_deja_traite=1
+Publié : 1 brèves (total 50). Flash : 45.
 RQ Pronos : page d'actualités publiques actualisée.
-Accueil VM : actualités inchangées.
-Pages : 49 brèves avec leur propre page, sitemap à jour.
+Accueil VM : actualités sourcées visibles en HTML, mises à jour.
+Pages : 50 brèves avec leur propre page, sitemap à jour.
 Agenda : 70 matchs enregistrés.
 Ligue 1 : 15 vidéos lues, 1 vidéos de buts gardées.
 Ligue 2 : 0 vidéos lues, 0 vidéos de buts gardées.
@@ -19,26 +45,26 @@ Vidéos publiées : 3.
 Fil express : foot 200, actus 200, gaming 120
 macommune.info  : 25 titres
 L'Est Républicain haute-saone : 14 titres
+L'Est Républicain territoire-de-belfort : 13 titres
 L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
 L'Est Républicain www.estrepublicain.fr : 0 titres
-L'Est Républicain territoire-de-belfort : 13 titres
 VM Belfort : 39 titres
-Auvergne-Rhône-Alpes : 82 titres
-Bourgogne-Franche-Comté : 89 titres
-Bretagne : 84 titres
-Centre-Val de Loire : 15 titres
+Auvergne-Rhône-Alpes : 55 titres
+::warning::Bourgogne-Franche-Comté : flux muet (HTTPError)
+::warning::Bretagne : flux muet (HTTPError)
+Centre-Val de Loire : 16 titres
 Corse : 9 titres
-Grand Est : 83 titres
+Grand Est : 27 titres
 Hauts-de-France : 27 titres
-Île-de-France : 34 titres
+::warning::Île-de-France : flux muet (HTTPError)
 Normandie : 18 titres
-Nouvelle-Aquitaine : 33 titres
-Occitanie : 51 titres
+::warning::Nouvelle-Aquitaine : flux muet (HTTPError)
+Occitanie : 89 titres
 Pays de la Loire : 80 titres
-Provence-Alpes-Côte d'Azur : 46 titres
+Provence-Alpes-Côte d'Azur : 80 titres
 Outre-mer : 77 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : ARA 1, BRE 1, COR 4, CVL 15, FR 3, GES 1, NOR 11, PAC 3, PDL 3 — 42 titres
+Foot amateur : ARA 2, COR 4, CVL 15, FR 3, GES 1, NOR 12, PAC 3, PDL 2 — 42 titres
