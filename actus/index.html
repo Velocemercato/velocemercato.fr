@@ -248,7 +248,7 @@ VM Actus du jour : des brèves courtes, neutres et sourcées, rédigées avec l'
   $('more').onclick=function(){shown+=18;draw();};
   function load(){return fetch('news.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():[];}).then(function(rows){
     var ok=(Array.isArray(rows)?rows:[]).filter(function(a){return a&&a.id&&a.titre&&a.publishedAt&&!isNaN(Date.parse(a.publishedAt));}).sort(function(a,b){return String(b.publishedAt).localeCompare(String(a.publishedAt));});
-    if(ok.length||!all.length)all=ok;loaded=true;prune();draw();}).catch(function(){loaded=true;draw();});}
+    var seenIds=new Set(),seenTitles=new Set();ok=ok.filter(function(a){var id=String(a.id),title=norm(String(a.titre)).trim().replace(/\s+/g,' ');if(!title||seenIds.has(id)||seenTitles.has(title)||Date.parse(a.publishedAt)>Date.now()+300000)return false;seenIds.add(id);seenTitles.add(title);return true;});if(ok.length||!all.length)all=ok;loaded=true;prune();draw();}).catch(function(){loaded=true;draw();});}
   load().then(function(){var m=location.hash.match(/^#a=(.+)$/);if(m)open(decodeURIComponent(m[1]));});
   setInterval(load,5*60*1000);
 })();
@@ -266,7 +266,7 @@ function flash(rows){var tk=$('ticker'),run=$('tickerRun');if(!tk||!run)return;
  if(items.length){if(document.body.firstElementChild!==tk)document.body.insertBefore(tk,document.body.firstChild);tk.hidden=false}}
 function draw(){var n=Math.min(all.length,shown);$('fxList').innerHTML=all.slice(0,n).map(function(t){return '<li><a href="'+esc(safe(t.u))+'" target="_blank" rel="noopener nofollow"><time>'+hm(t.d)+'</time><span>'+esc(t.t)+'</span><em>'+esc(t.s)+' ↗</em></a></li>'}).join('');$('fxMore').hidden=n>=all.length;}
 fetch('/fil.json?v='+Math.floor(Date.now()/300000),{cache:'no-store'}).then(function(r){return r.ok?r.json():{}}).then(function(j){
- all=((j&&j.titres)||[]).filter(function(t){return t.k==='actus'&&safe(t.u)});
+ var seen=new Set();all=(Array.isArray(j&&j.titres)?j.titres:[]).filter(function(t){if(!t||t.k!=='actus'||!safe(t.u)||!t.t)return false;var key=String(t.t).trim().toLowerCase().replace(/\s+/g,' ');if(!key||seen.has(key))return false;seen.add(key);return true;});
  if(!all.length){$('presse').hidden=true;return}shown=16;draw();flash(all);
 }).catch(function(){$('presse').hidden=true});
 $('fxMore').onclick=function(){shown+=20;draw()};
