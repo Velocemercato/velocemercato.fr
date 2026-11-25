@@ -1,3 +1,5 @@
+import {creatorOperation} from './creator/service.js';
+import {creatorPage,creatorScript,creatorAdmin} from './creator/page.js';
 import { briefStudio } from './creation-service.js';
 // VM Studio (mode test) — un Worker Cloudflare + un Durable Object (SQLite) :
 //  /studio      : le client compose son site, voit le prix monter en direct et envoie sa commande ;
@@ -99,6 +101,7 @@ export class Store extends DurableObject {
     super(ctx, env);
     this.sql = ctx.storage.sql;
     this.sql.exec(`
+      CREATE TABLE IF NOT EXISTS creator_state(key TEXT PRIMARY KEY, value TEXT NOT NULL);
       CREATE TABLE IF NOT EXISTS projets(id TEXT PRIMARY KEY, nom TEXT NOT NULL, client TEXT NOT NULL DEFAULT '', doc TEXT NOT NULL,
         version INTEGER NOT NULL DEFAULT 1, salon TEXT NOT NULL UNIQUE, cree TEXT NOT NULL, maj TEXT NOT NULL);
       CREATE TABLE IF NOT EXISTS codes(hash TEXT PRIMARY KEY, projet TEXT NOT NULL, expire TEXT NOT NULL, utilise TEXT, revoque INTEGER NOT NULL DEFAULT 0);
@@ -180,6 +183,15 @@ export class Store extends DurableObject {
   }
   async fetch(req) {
     const { op, a = {} } = await req.json();
+    if(op==='creator'){
+      const store={
+        get:key=>{const r=this.rows('SELECT value FROM creator_state WHERE key=?',key)[0];return r?JSON.parse(r.value):null;},
+        put:(key,value)=>this.sql.exec('INSERT INTO creator_state(key,value) VALUES(?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value',key,JSON.stringify(value)),
+        list:prefix=>this.rows('SELECT value FROM creator_state WHERE key LIKE ?',prefix+'%').map(r=>JSON.parse(r.value))
+      };
+      const r=creatorOperation(store,a);
+      return r.html!==undefined?(r.mime.startsWith('text/css')?new Response(r.html,{headers:{'content-type':r.mime,'cache-control':'no-store',...SEC}}):html(r.html,true)):json(r.body,r.status);
+    }
     switch (op) {
       // --- Mode salon : lecture seule par jeton secret, avec numéro de version pour ne rien renvoyer si rien n'a changé.
       case 'salon': {
@@ -456,13 +468,33 @@ export default {
     const url = new URL(req.url), p = url.pathname, ip = req.headers.get('cf-connecting-ip') || 'inconnue';
     // L'adresse technique *.workers.dev redirige vers le domaine VM vérifié (mêmes chemins).
     if (url.hostname.endsWith('.workers.dev') && !env.AUTORISER_WORKERS_DEV) return Response.redirect(DOMAINE + p + url.search, 301);
+    if(p==='/creator'||p==='/creator/')return html(creatorPage);
+    if(p==='/creator/admin')return await estAdmin(req,env)?html(creatorAdmin):Response.redirect(DOMAINE+'/admin',302);
+    if(p==='/creator/app.js')return new Response(creatorScript,{headers:{'content-type':'text/javascript; charset=utf-8','cache-control':'no-store',...SEC}});
+    const cp=p.match(/^\/creator\/preview\/([a-f0-9-]{36})\/([a-z0-9-]+\.(?:html|css))$/);
+    if(cp && req.method==='GET'){
+      const token=lireCookie(req,'vma_creator')||'';
+      return appel(env,'creator',{action:'preview',id:cp[1],page:cp[2],tokenHash:token?await sha256('creator:'+token):'',admin:await estAdmin(req,env)});
+    }
+    if(p.startsWith('/creator/api/')){
+      if(req.method!=='POST'||!memeOrigine(req))return json({error:'Origine refusée.'},403);
+      const action=p.slice('/creator/api/'.length);
+      const b=await lireBriefTransmis(req);if(!b)return json({error:'Requête invalide.'},400);
+      const isCreate=action==='create',token=isCreate?jeton(32):(req.headers.get('authorization')||'').replace(/^Bearer /,'');
+      if(!token||token.length>80)return json({error:'Accès privé requis.'},401);
+      const admin=await estAdmin(req,env);
+      const r=await appel(env,'creator',{action,id:net(b.id,36),body:b,tokenHash:await sha256('creator:'+token),ipHash:await sha256('creator-ip:'+ip),admin});
+      if(action==='preview')return r;
+      const d=await r.json();if(isCreate&&r.ok)d.token=token;
+      return json(d,r.status,r.ok?{'set-cookie':cookie('vma_creator',token,8*3600)}:{});
+    }
     if (req.method === 'GET' || req.method === 'HEAD') { // HEAD (aperçus de liens, robots) : page servie, rien n'est consommé
       if (p === '/') return html(pageAccueil);
       if (p === '/robots.txt') return new Response('User-agent: *\nAllow: /$\nDisallow: /\nSitemap: ' + DOMAINE + '/sitemap.xml\n', { headers: { 'content-type': 'text/plain; charset=utf-8', ...SEC } });
       if (p === '/sitemap.xml') return new Response('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>' + DOMAINE + '/</loc></url></urlset>', { headers: { 'content-type': 'application/xml; charset=utf-8', ...SEC } });
       if (p === '/studio') return html(pageStudio);
       if (p === '/voir') return html(pageVoir);
-      if (p === '/admin') return html(pageAdmin);
+      if (p === '/admin') return html(pageAdmin.replace('<body>', '<body><p style="padding:12px;text-align:center"><a href="/creator/admin">Suivi des projets Creator</a></p>'));
       if (/^\/salon\/[A-Z0-9]{24}$/.test(p)) return html(pageSalon, true);
       if (p === '/paiement/retour') {
         const id = net(url.searchParams.get('c'), 20);

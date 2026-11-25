@@ -34,7 +34,7 @@ jobs:
       - name: Installer et vérifier
         run: |
           npm ci
-          node --test tests/creation.test.mjs tests/ia.test.mjs tests/paiement.test.mjs tests/transmission.test.mjs tests/suivi.test.mjs
+          node --test tests/creation.test.mjs tests/ia.test.mjs tests/paiement.test.mjs tests/transmission.test.mjs tests/suivi.test.mjs tests/creator.test.mjs tests/creator-routes.test.mjs
       - name: Publier une nouvelle version sans toucher au domaine ni aux déclencheurs
         shell: bash
         run: |
