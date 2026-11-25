@@ -612,19 +612,6 @@
    ]
   },
   {
-   "id": 575396,
-   "date": "2026-11-24T17:45:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Bodø/Glimt",
-   "ext": "LASK",
-   "statut": "FINISHED",
-   "score": [
-    1,
-    0
-   ]
-  },
-  {
    "id": 575395,
    "date": "2026-11-24T17:45:00Z",
    "comp": "Ligue des champions",
@@ -638,42 +625,16 @@
    ]
   },
   {
-   "id": 575400,
-   "date": "2026-11-24T20:00:00Z",
+   "id": 575396,
+   "date": "2026-11-24T17:45:00Z",
    "comp": "Ligue des champions",
    "sport": "foot",
-   "dom": "Feyenoord",
-   "ext": "Porto",
-   "statut": "IN_PLAY",
+   "dom": "Bodø/Glimt",
+   "ext": "LASK",
+   "statut": "FINISHED",
    "score": [
     1,
-    1
-   ]
-  },
-  {
-   "id": 575402,
-   "date": "2026-11-24T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "RB Leipzig",
-   "ext": "RC Lens",
-   "statut": "FINISHED",
-   "score": [
-    3,
-    1
-   ]
-  },
-  {
-   "id": 575398,
-   "date": "2026-11-24T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Man City",
-   "ext": "Napoli",
-   "statut": "FINISHED",
-   "score": [
-    2,
-    2
+    0
    ]
   },
   {
@@ -729,6 +690,45 @@
    ]
   },
   {
+   "id": 575400,
+   "date": "2026-11-24T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Feyenoord",
+   "ext": "Porto",
+   "statut": "IN_PLAY",
+   "score": [
+    1,
+    1
+   ]
+  },
+  {
+   "id": 575402,
+   "date": "2026-11-24T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "RB Leipzig",
+   "ext": "RC Lens",
+   "statut": "FINISHED",
+   "score": [
+    3,
+    1
+   ]
+  },
+  {
+   "id": 575398,
+   "date": "2026-11-24T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Man City",
+   "ext": "Napoli",
+   "statut": "FINISHED",
+   "score": [
+    2,
+    2
+   ]
+  },
+  {
    "id": "espn-401909314",
    "date": "2026-11-25T00:00Z",
    "comp": "NBA",
@@ -781,6 +781,19 @@
    ]
   },
   {
+   "id": 575405,
+   "date": "2026-11-25T17:45:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Slavia Praha",
+   "ext": "Villarreal",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
    "id": 575404,
    "date": "2026-11-25T17:45:00Z",
    "comp": "Ligue des champions",
@@ -794,12 +807,38 @@
    ]
   },
   {
-   "id": 575405,
-   "date": "2026-11-25T17:45:00Z",
+   "id": 575411,
+   "date": "2026-11-25T20:00:00Z",
    "comp": "Ligue des champions",
    "sport": "foot",
-   "dom": "Slavia Praha",
-   "ext": "Villarreal",
+   "dom": "Sporting CP",
+   "ext": "Man United",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 575407,
+   "date": "2026-11-25T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Atleti",
+   "ext": "Viking",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 575409,
+   "date": "2026-11-25T20:00:00Z",
+   "comp": "Ligue des champions",
+   "sport": "foot",
+   "dom": "Club Brugge",
+   "ext": "Liverpool",
    "statut": "TIMED",
    "score": [
     null,
@@ -852,45 +891,6 @@
    "sport": "foot",
    "dom": "PSG",
    "ext": "Roma",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 575411,
-   "date": "2026-11-25T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Sporting CP",
-   "ext": "Man United",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 575407,
-   "date": "2026-11-25T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Atleti",
-   "ext": "Viking",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
-   "id": 575409,
-   "date": "2026-11-25T20:00:00Z",
-   "comp": "Ligue des champions",
-   "sport": "foot",
-   "dom": "Club Brugge",
-   "ext": "Liverpool",
    "statut": "TIMED",
    "score": [
     null,
@@ -1405,6 +1405,6 @@
    ]
   }
  ],
- "maj": "2026-11-25T14:45:07Z",
- "verifie": "2026-11-25T14:45:07Z"
+ "maj": "2026-11-25T14:49:02Z",
+ "verifie": "2026-11-25T14:49:02Z"
 }
