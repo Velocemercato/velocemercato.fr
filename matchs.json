@@ -96,18 +96,6 @@
   ]
  },
  {
-  "id": 575399,
-  "date": "2026-11-24T20:00:00Z",
-  "competition": "Ligue des champions",
-  "domicile": "Arsenal",
-  "exterieur": "Dortmund",
-  "statut": "FINISHED",
-  "score": [
-   1,
-   1
-  ]
- },
- {
   "id": 575401,
   "date": "2026-11-24T20:00:00Z",
   "competition": "Ligue des champions",
@@ -141,6 +129,18 @@
   "score": [
    1,
    0
+  ]
+ },
+ {
+  "id": 575399,
+  "date": "2026-11-24T20:00:00Z",
+  "competition": "Ligue des champions",
+  "domicile": "Arsenal",
+  "exterieur": "Dortmund",
+  "statut": "FINISHED",
+  "score": [
+   1,
+   1
   ]
  },
  {
@@ -216,18 +216,6 @@
   ]
  },
  {
-  "id": 575409,
-  "date": "2026-11-25T20:00:00Z",
-  "competition": "Ligue des champions",
-  "domicile": "Club Brugge",
-  "exterieur": "Liverpool",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
   "id": 575411,
   "date": "2026-11-25T20:00:00Z",
   "competition": "Ligue des champions",
@@ -245,6 +233,18 @@
   "competition": "Ligue des champions",
   "domicile": "Atleti",
   "exterieur": "Viking",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
+  "id": 575409,
+  "date": "2026-11-25T20:00:00Z",
+  "competition": "Ligue des champions",
+  "domicile": "Club Brugge",
+  "exterieur": "Liverpool",
   "statut": "TIMED",
   "score": [
    null,
@@ -288,11 +288,11 @@
   ]
  },
  {
-  "id": 564765,
+  "id": 560658,
   "date": "2026-11-27T20:00:00Z",
-  "competition": "Liga",
-  "domicile": "Levante",
-  "exterieur": "Santander",
+  "competition": "Premier League",
+  "domicile": "Nottingham",
+  "exterieur": "Chelsea",
   "statut": "TIMED",
   "score": [
    null,
@@ -300,11 +300,11 @@
   ]
  },
  {
-  "id": 560658,
+  "id": 564765,
   "date": "2026-11-27T20:00:00Z",
-  "competition": "Premier League",
-  "domicile": "Nottingham",
-  "exterieur": "Chelsea",
+  "competition": "Liga",
+  "domicile": "Levante",
+  "exterieur": "Santander",
   "statut": "TIMED",
   "score": [
    null,
@@ -348,18 +348,6 @@
   ]
  },
  {
-  "id": 565866,
-  "date": "2026-11-28T14:30:00Z",
-  "competition": "Bundesliga",
-  "domicile": "1. FC Köln",
-  "exterieur": "Elversberg",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
   "id": 565868,
   "date": "2026-11-28T14:30:00Z",
   "competition": "Bundesliga",
@@ -377,6 +365,18 @@
   "competition": "Bundesliga",
   "domicile": "HSV",
   "exterieur": "Bayern",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
+  "id": 565866,
+  "date": "2026-11-28T14:30:00Z",
+  "competition": "Bundesliga",
+  "domicile": "1. FC Köln",
+  "exterieur": "Elversberg",
   "statut": "TIMED",
   "score": [
    null,
@@ -504,18 +504,6 @@
   ]
  },
  {
-  "id": 559614,
-  "date": "2026-11-28T19:45:00Z",
-  "competition": "Ligue 1",
-  "domicile": "PSG",
-  "exterieur": "Lorient",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
   "id": 559620,
   "date": "2026-11-28T19:45:00Z",
   "competition": "Ligue 1",
@@ -533,6 +521,18 @@
   "competition": "Serie A",
   "domicile": "Inter",
   "exterieur": "Genoa",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
+  "id": 559614,
+  "date": "2026-11-28T19:45:00Z",
+  "competition": "Ligue 1",
+  "domicile": "PSG",
+  "exterieur": "Lorient",
   "statut": "TIMED",
   "score": [
    null,
@@ -624,18 +624,6 @@
   ]
  },
  {
-  "id": 560659,
-  "date": "2026-11-29T14:05:00Z",
-  "competition": "Premier League",
-  "domicile": "Brighton Hove",
-  "exterieur": "Newcastle",
-  "statut": "TIMED",
-  "score": [
-   null,
-   null
-  ]
- },
- {
   "id": 560661,
   "date": "2026-11-29T14:05:00Z",
   "competition": "Premier League",
@@ -653,6 +641,18 @@
   "competition": "Premier League",
   "domicile": "Fulham",
   "exterieur": "Bournemouth",
+  "statut": "TIMED",
+  "score": [
+   null,
+   null
+  ]
+ },
+ {
+  "id": 560659,
+  "date": "2026-11-29T14:05:00Z",
+  "competition": "Premier League",
+  "domicile": "Brighton Hove",
+  "exterieur": "Newcastle",
   "statut": "TIMED",
   "score": [
    null,
