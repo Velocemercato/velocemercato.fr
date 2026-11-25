@@ -51,6 +51,29 @@ def ledger(state, account):
     return state.data.setdefault('meta' if account == 'meta' else account + '_accuses', {})
 
 
+def recent_facebook_titles(state, now):
+    """Titres publiés ou potentiellement publiés aujourd'hui sur les deux Pages VM."""
+    local_day = now.astimezone(PARIS).date()
+    statuses = {'publie_confirme', 'envoi', 'envoye_a_verifier', 'a_verifier_sans_renvoi'}
+    seen = set()
+    for account in ('meta', 'meta_pronos'):
+        for key, receipt in ledger(state, account).items():
+            if not re.fullmatch(r'editorial/facebook/(?!titre/)[^/]+/[^/]+', key):
+                continue
+            if not isinstance(receipt, dict) or receipt.get('status') not in statuses:
+                continue
+            try:
+                stamp = dt.datetime.fromisoformat(str(receipt.get('at', '')).replace('Z', '+00:00'))
+                if stamp.tzinfo is None or stamp.astimezone(PARIS).date() != local_day:
+                    continue
+            except (TypeError, ValueError):
+                continue
+            title = normal(receipt.get('title'))
+            if title:
+                seen.add(title)
+    return seen
+
+
 def slot_key(now, account, network):
     local = now.astimezone(PARIS)
     if local.hour not in SCHEDULE.get((account, network), ()) or local.minute >= SLOT_CLOSE_MINUTE:
@@ -181,7 +204,7 @@ def confirm(graph, meta, network, ident):
 
 
 def publish_target(state, graph, account, network, root=ROOT, now=None,
-                   card=instagram_card, project_card=instagram_projet_card):
+                   card=instagram_card, project_card=instagram_projet_card, seen_extra=None):
     now = now or dt.datetime.now(UTC)
     slot = slot_key(now, account, network)
     if slot is None:
@@ -191,7 +214,7 @@ def publish_target(state, graph, account, network, root=ROOT, now=None,
         return {'status': 'creneau_deja_traite', 'posts': []}
     meta = state.data.get('tokens', {}).get(account) or {}
     who = identity(graph, meta, account, network)
-    seen = current_posts(graph, meta, network)
+    seen = current_posts(graph, meta, network) + list(seen_extra or ())
     if network == 'instagram' and not instagram_room(graph, meta):
         return {'status': 'quota_atteint', 'posts': [], 'identity': who}
     choice = (select_project(root, now, done, network, seen) if account == 'meta_univers'
@@ -244,17 +267,32 @@ def publish_target(state, graph, account, network, root=ROOT, now=None,
 
 def run(state, graph, root=ROOT, now=None):
     now = now or dt.datetime.now(UTC)
+    # Scope validé : trois Pages Facebook et deux comptes Instagram.
+    # Aucun troisième Instagram n'est attendu ni signalé comme manquant.
     result = {'updated_at': now.isoformat(), 'mode': 'programme',
-              'targets': {}, 'unconnected': ['Troisième compte Instagram : identité et connexion absentes.']}
+              'targets': {}, 'unconnected': []}
     targets = [(account, network) for account, network in SCHEDULE if slot_key(now, account, network)]
     if not targets:
         return result
     ensure_meta_targets(state)
+    # Éviter qu'une même brève sorte sur les deux Pages Facebook au même jour.
+    # Les posts incertains sont également bloquants jusqu'à confirmation.
+    fb_seen = recent_facebook_titles(state, now)
     for account, network in targets:
         try:
-            result['targets'][account + '/' + network] = publish_target(state, graph, account, network, root, now)
+            extra = fb_seen if network == 'facebook' and account in ('meta', 'meta_pronos') else None
+            item = publish_target(state, graph, account, network, root, now, seen_extra=extra)
+            result['targets'][account + '/' + network] = item
+            if network == 'facebook' and account in ('meta', 'meta_pronos'):
+                # Relire le registre après chaque tentative : un envoi incertain
+                # doit aussi bloquer le même sujet sur l'autre Page.
+                fb_seen.update(recent_facebook_titles(state, now))
+                for post in item.get('posts', []):
+                    title = normal(post.get('title'))
+                    if title:
+                        fb_seen.add(title)
         except Exception as error:
-            detail = re.sub(r'EA[A-Za-z0-9]{20,}|access_token=[^&\s]+', '[masqué]', str(error))[:240]
+            detail = re.sub(r'EA[A-Za-z0-9]{20,}|access_token=[^&\\s]+', '[masqué]', str(error))[:240]
             result['targets'][account + '/' + network] = {'status': 'bloque', 'reason': type(error).__name__,
                                                           'detail': detail, 'posts': []}
     return result
