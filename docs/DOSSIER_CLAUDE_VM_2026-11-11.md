@@ -1,6 +1,6 @@
 # Dossier Claude — Véloce Mercato, site et réseaux
 
-État établi le 2026-11-26T02:01+01:00.
+État établi le 2026-11-26T15:24+01:00.
 
 Ce dossier remplace les anciennes consignes de restauration intégrale et les anciennes cadences. Il décrit le travail autorisé par Romain dans cette conversation. Les accès et conversations de ChatGPT ne sont pas automatiquement accessibles dans Claude.
 
@@ -36,8 +36,8 @@ Sur vmunivers.fr, Romain a demandé : première case à gauche Facebook https://
 | Destination | Nombre relevé dans les reçus de cette reprise |
 |---|---|
 | Véloce Mercato · facebook | 190 |
-| Véloce Mercato · instagram | 126 |
-| VM Actus et Pronos · facebook | 194 |
+| Véloce Mercato · instagram | 127 |
+| VM Actus et Pronos · facebook | 193 |
 | VM Univers · facebook | 3 |
 | VM Univers · instagram | 1 |
 
@@ -103,13 +103,13 @@ Pour Multisport, les flux français validés Sports.fr et Le Monde Sport sont ra
 
 ## Audit des pages, liens et classements
 
-- Pages HTML examinées : 2035.
-- URL interrogées : 2344.
+- Pages HTML examinées : 2064.
+- URL interrogées : 2349.
 - HTTP 404/410 confirmés : 14.
 - Cibles internes absentes du dépôt : 86.
-- Liens protégés/non vérifiables automatiquement : 823.
+- Liens protégés/non vérifiables automatiquement : 949.
 - Ancres à relire : 60. Certaines existent seulement après chargement JavaScript.
-- Classements à relire : 1.
+- Classements à relire : 0.
 
 Le détail exhaustif des contrôles effectués, avec fichiers et lignes, est dans docs/AUDIT_CLAUDE_2026-11-11.json et son résumé Markdown. Un refus 403/429 ne prouve pas un lien mort. Cet audit ne certifie pas tous les faits d’actualité, la disponibilité géographique des vidéos, les paiements ou les espaces authentifiés.
 
@@ -167,7 +167,6 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Championnat des Nations - À quelle heure et sur quelle chaîne voir le duel au sommet Angleterre - Nouvelle-Zélande - Rugbyrama — https://www.facebook.com/122106465861520366/posts/122112942219520366
 - meta/facebook — Championnat du monde de MotoGP™ | Calendrier | Résultats | Streaming en direct - MotoGP — https://www.facebook.com/122106465861520366/posts/122112787245520366
 - meta/facebook — Charlton toujours sans point en WSL après dix journées — https://www.facebook.com/122106465861520366/posts/122112876783520366
-- meta/facebook — Chelsea : Joao Pedro, l'absence qui pèse dans le jeu des Blues — https://www.facebook.com/122106465861520366/posts/122112728763520366
 - meta/facebook — Chelsea condamné à une amende de 150 000 livres pour chants discriminatoires — https://www.facebook.com/122106465861520366/posts/122112865197520366
 - meta/facebook — Cherki sur le banc ? Chanot conseille Zidane avant l'Espagne — https://www.facebook.com/122106465861520366/posts/122112944643520366
 - meta/facebook — Christian Bale cite Rossi, Márquez et Agostini, ces dieux du MotoGP qu’il rêve d’incarner - Motorcycle Sports — https://www.facebook.com/122106465861520366/posts/122112849813520366
@@ -253,7 +252,6 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — MotoGP BREAKING NEWS : Maverick Vinales ne peut plus continuer au Portugal, terrible nouvelle - Paddock GP — https://www.facebook.com/122106465861520366/posts/122112760677520366
 - meta/facebook — NBA : L'action inédite de Wembanyama, qui fait le tour du monde : Sports - Orange - Sports - Orange — https://www.facebook.com/122106465861520366/posts/122112758007520366
 - meta/facebook — NBA : Résultats des matches de jeudi - mapsport.ma — https://www.facebook.com/122106465861520366/posts/122112866715520366
-- meta/facebook — NBA: Retour fracassant pour Jonathan Kuminga avec les Minnesota Timberwolves - Actualite.cd — https://www.facebook.com/122106465861520366/posts/122112730575520366
 - meta/facebook — National 1 : Angoulême renverse Granville dans le temps additionnel — https://www.facebook.com/122106465861520366/posts/122112852015520366
 - meta/facebook — National 1 : Montlouis arrache la victoire contre Borgo dans le temps additionnel — https://www.facebook.com/122106465861520366/posts/122112780897520366
 - meta/facebook — National 2 : Cestas change d'entraîneur, Philippe Ollier remplace Vincent Bourhis — https://www.facebook.com/122106465861520366/posts/122112991263520366
@@ -263,6 +261,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — OGC Nice : Olivier Pantaloni a transformé les Aiglons, désormais 6es de Ligue 1 — https://www.facebook.com/122106465861520366/posts/122112752235520366
 - meta/facebook — OM : De Zerbi évoque des tensions entre Longoria et Benatia pendant son passage — https://www.facebook.com/122106465861520366/posts/122112976425520366
 - meta/facebook — OM : Genesio écarte toujours Valero et Leccese du groupe professionnel — https://www.facebook.com/122106465861520366/posts/122112732201520366
+- meta/facebook — Ohtani, joueur vedette de la MLB, revient sur sa saison décevante - NHKニュース — https://www.facebook.com/122106465861520366/posts/122114117247520366
 - meta/facebook — PSG : Ibrahim Rabbaj, le jeune ailier suivi de près au Mondial U17 — https://www.facebook.com/122106465861520366/posts/122112879699520366
 - meta/facebook — PSG : Rothen et Larqué émettent des réserves sur la vague de prolongations — https://www.facebook.com/122106465861520366/posts/122112814443520366
 - meta/facebook — PSG : Willian Pacho explique les raisons de sa prolongation — https://www.facebook.com/122106465861520366/posts/122112742083520366
@@ -278,6 +277,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Premier League : La légende du football américain Tom Brady devient actionnaire de Chelsea - DHnet — https://www.facebook.com/122106465861520366/posts/122112946821520366
 - meta/facebook — Premier League : la légende de la NFL Tom Brady, en discussion pour entrer au capital de Chelsea - Le Figaro — https://www.facebook.com/122106465861520366/posts/122112788919520366
 - meta/facebook — Pro D2. Dix défaites et un vestiaire à reconstruire : les coulisses du réveil de Nevers - Rugby Scope — https://www.facebook.com/122106465861520366/posts/122112955857520366
+- meta/facebook — Protoxyde d'azote dans le football : un usage jugé répandu chez les pros — https://www.facebook.com/122106465861520366/posts/122114079657520366
 - meta/facebook — Pérez durcit le ton chez Cadillac : être en F1 ne suffit plus - F1 news — https://www.facebook.com/122106465861520366/posts/122112969897520366
 - meta/facebook — Qatar : Pirelli limite chaque train de pneus à 27 tours - F1 news — https://www.facebook.com/122106465861520366/posts/122112935883520366
 - meta/facebook — Rafael Nadal proposé au conseil d'administration du Real Madrid — https://www.facebook.com/122106465861520366/posts/122112940695520366
@@ -410,6 +410,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — OM : De Zerbi évoque des tensions entre Longoria et Benatia pendant son passage — https://www.instagram.com/p/DgASh1hoanI/
 - meta/instagram — OM : Genesio écarte toujours Valero et Leccese du groupe professionnel — https://www.instagram.com/p/Df-yYbojPfi/
 - meta/instagram — PSG : Rothen et Larqué émettent des réserves sur la vague de prolongations — https://www.instagram.com/p/Df_DjAfFx65/
+- meta/instagram — PSG : Senny Mayulu impliqué sur sept buts en six matchs, selon Foot Mercato — https://www.instagram.com/p/DgM8w7PoFZZ/
 - meta/instagram — PSG : Willian Pacho explique les raisons de sa prolongation — https://www.instagram.com/p/Df-MoXvmMOV/
 - meta/instagram — Pablo Pagis impressionné par Kylian Mbappé avant sa première sélection en Bleus — https://www.instagram.com/p/Df-dzeel1dR/
 - meta/instagram — Pavlovic critique les méthodes de Conceiçao : Nutella interdit et comparaison à Hitler — https://www.instagram.com/p/Df-FxTNl0G9/
@@ -538,7 +539,6 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — L'UE et l'Indonésie signent un accord commercial visant à ouvrir leurs marchés — https://www.facebook.com/1757379583055094/posts/1783294967130222
 - meta_pronos/facebook — La CIJ reconnaît un génocide commis contre les Rohingyas en Birmanie — https://www.facebook.com/1757379583055094/posts/1782668650526187
 - meta_pronos/facebook — La NFL envisage d’instaurer des règles de déplacement pour les matchs internationaux - Flashscore.fr — https://www.facebook.com/1757379583055094/posts/1782469923879393
-- meta_pronos/facebook — La maison à la porte bleue de « Coup de foudre à Notting Hill » est à vendre — https://www.facebook.com/1757379583055094/posts/1781898683936517
 - meta_pronos/facebook — La princesse Kate partage son expérience du cancer dans le documentaire « Heal » — https://www.facebook.com/1757379583055094/posts/1783086710484381
 - meta_pronos/facebook — Lamine Camara : Liverpool prépare une offre de 70 M€ à Monaco — https://www.facebook.com/1757379583055094/posts/1783262627133456
 - meta_pronos/facebook — Lana Nusseibeh, candidate à l'ONU, promet une diplomatie infatigable — https://www.facebook.com/1757379583055094/posts/1782132500579802
@@ -571,7 +571,6 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — MotoGP BREAKING NEWS : Maverick Vinales ne peut plus continuer au Portugal, terrible nouvelle - Paddock GP — https://www.facebook.com/1757379583055094/posts/1782088323917553
 - meta_pronos/facebook — Mémoire cash : Castle of Illusion, le premier grand jeu Disney de la Mega Drive — https://www.facebook.com/1757379583055094/posts/1782544753871910
 - meta_pronos/facebook — NBA : L'action inédite de Wembanyama, qui fait le tour du monde : Sports - Orange - Sports - Orange — https://www.facebook.com/1757379583055094/posts/1782080853918300
-- meta_pronos/facebook — NBA: Retour fracassant pour Jonathan Kuminga avec les Minnesota Timberwolves - Actualite.cd — https://www.facebook.com/1757379583055094/posts/1781908567268862
 - meta_pronos/facebook — National 1 : Angoulême renverse Granville dans le temps additionnel — https://www.facebook.com/1757379583055094/posts/1782530533873332
 - meta_pronos/facebook — National 1 : Montlouis arrache la victoire contre Borgo dans le temps additionnel — https://www.facebook.com/1757379583055094/posts/1782377563888629
 - meta_pronos/facebook — Nice-PSG : Désiré Doué se blesse gravement au genou après avoir marqué — https://www.facebook.com/1757379583055094/posts/1783221723804213
@@ -600,6 +599,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Red Star - Pau : match interrompu par une panne d'éclairage au stade Bauer — https://www.facebook.com/1757379583055094/posts/1782198153906570
 - meta_pronos/facebook — Reims-ASSE : près de 1.000 supporters stéphanois empêchés d'entrer au stade — https://www.facebook.com/1757379583055094/posts/1783302440462808
 - meta_pronos/facebook — Riyad dit avoir intercepté trois missiles houthis tirés vers la capitale — https://www.facebook.com/1757379583055094/posts/1782645070528545
+- meta_pronos/facebook — Romancing SaGa 3 : Destinies United sortira le 4 février avec cinq compagnons présentés — https://www.facebook.com/1757379583055094/posts/1788757609917291
 - meta_pronos/facebook — Russell hausse le ton face à Verstappen après leur accrochage à Las Vegas - F1 news — https://www.facebook.com/1757379583055094/posts/1782652870527765
 - meta_pronos/facebook — Ryan Kavuma-McQueen, 17 ans, impressionne en prêt à Portsmouth — https://www.facebook.com/1757379583055094/posts/1782675373858848
 - meta_pronos/facebook — Saint-Étienne : des chèques-cadeaux à moitié prix pour soutenir les commerces du centre-ville — https://www.facebook.com/1757379583055094/posts/1783012130491839
