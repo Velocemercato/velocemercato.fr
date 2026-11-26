@@ -1,5 +1,5 @@
 {
-  "maj": "2026-11-26T12:01:53Z",
+  "maj": "2026-11-26T12:21:46Z",
   "regions": {
     "ARA": "Auvergne-Rhône-Alpes",
     "BFC": "Bourgogne-Franche-Comté",
@@ -17,6 +17,14 @@
     "OM": "Outre-mer"
   },
   "titres": [
+    {
+      "l": "PDL",
+      "n": "COUPE",
+      "t": "Football - Coupe de France. Un direct Nueillaubiers - FC Nantes dimanche à 16 heures sur le Courrier de l’Ouest",
+      "u": "https://news.google.com/rss/articles/CBMijwJBVV95cUxOa2ZRbTJjRGFjNnNkT0xwYzdjY2xIalNRUERRVzU4SXdXR1B4TjJBWFlKNG9HMXBRWWp0QWxCV2JZdmhPV3Z0MTBYaWN1VWFBV2FuTmkzLThmOTdSX0taalJiMzNMZHBDM0JvYkdCRTd5NlVkdEwxZGhhZHdhU0VlX2VNWnFrbUtBLU9UUnRDaThOWVVxUHU0OFRJbkN6OFEyajlmeG9XMGI2UnZiU2NrdUo4UWsyeDFWZlZMT094RnJKVUxKcE1yY3o5cHN6NFNKVFd0S0pVazdPeFlrZEtNWjdTdHQ4YlRzdnRGTHhXVmg0VHcxT1JYT3RaOTNmUDFGRFBsczBwdVg3TDFBZ0lj?oc=5",
+      "s": "Ouest-France",
+      "d": "2026-11-26T12:12:51Z"
+    },
     {
       "l": "CVL",
       "n": "JEUNES",
@@ -98,12 +106,20 @@
       "d": "2026-11-26T08:22:12Z"
     },
     {
-      "l": "COR",
-      "n": "AMATEUR",
-      "t": "Football : comment Fabien Carreras adapte la prépa physique à Furiani",
-      "u": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQc0pKMVFoR3g5bkFycnNDMFdGM1dYa25XcTY5SVBxRFYxVnl4Y05iN00yV2ZFOVhwc0hTRy1RYVV4SmFJdG9xOHRJSmwwV1MyeHRBRVI3SVE5Vlhwd0E4Y0h1bkxtcTZ5TjNWTE5WR25mRjBPVXo3X0R0RmhBTHZBZDIwbUxEMDlpLUdzSVVWNkVaTGxkSm9FMnJjNWRnSnpFd0RZZ1h1cllPZUNMUE5GcnRwSi1vMGVkYzVrSi1rcHJYUQ?oc=5",
-      "s": "Corse Matin",
-      "d": "2026-11-26T08:15:01Z"
+      "l": "NAQ",
+      "n": "REGIONAL",
+      "t": "Football (Régional 1). Les Girondins au repos, le SA Mérignac espère creuser l’écart",
+      "u": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOS1JZNzlJMkZLa25mZWczRURPMnJpMWRTS1hxY1JnLVhGUEI3NV9fdlIxcHNCal9ONWtWRlhrY2xsVWZpSDlfOWVHdGl5YTZoVHFNVkp2Vi0wUUNVWURxRDVURlc5QWllaDFwNzNaV0t4ODRRSTBxbnNUYVdSZmx2ZEtUVXU5X3JTS0FEb1JLX3VyNk5Cc0hqQzhsSUU4MWttR0JRQ0szS1NtTFp0NG5hRGpMR0diWERxQVBZMGpaVWU2MXJlYjZVQ3lUU3lIZ25SUUd2Qkc3Um8xQQ?oc=5",
+      "s": "Sud Ouest",
+      "d": "2026-11-26T08:20:16Z"
+    },
+    {
+      "l": "NOR",
+      "n": "COUPE",
+      "t": "Coupe de France. « Je ne me résigne pas » : au SM Caen, Gabin Tomé s’accroche toujours à son rêve",
+      "u": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxOTWZOdzF6YTYzSzROcEhINVJEUXVmMWlxdy1NTk1zSWw0aWQtSERTVHU3ZlNDREpvTUpfZHNNMERZelZlRDNUcHFIQnM0UUU5RDJaWDZSVzRiSHJMd1dEb29ZSDJ5b01JS0JXM1laT25leUJLb1dldEhvQUM4TjdnbzJhWHVMSExNWjFINWU4UklLMmlsak1ULTFHNXFtQnFGMVZhNHRZQ1FOaDFPUlBmLVFxbWg3ci1YNGQtdy16cGl4MnlCZVlNYnIyZ3dBWmUtQkdhNGg2bjViVHhWZGFzM3pfM1BONV81X1E?oc=5",
+      "s": "maville.com",
+      "d": "2026-11-26T07:30:00Z"
     },
     {
       "l": "PAC",
@@ -112,14 +128,6 @@
       "u": "https://news.google.com/rss/articles/CBMilgJBVV95cUxOb1lIcHpwUHY1R2FTblRHSS1LRHhpVUVJRDJYcFJDdWRRQWMyRjNmQW5JVDlnZkJYXzdNLThLcHY1SGJEbnUxNTBPSTFqeXBnejFwVlA3TWJiRnZLczJfYWJvSS1rbG00cy1RdUVINnR5MjNLR1JWQ1BsUkZWbkRyT1NVRGhJbkZJRDdYeXVjRncxTmdBMldBWHlnQzRCVmNjSHNWNnNrbVE3VjBPVGxNdWZub1d1TUJoeUhqYjRZT0E5bU55UHFRWG8xLVJSYTVwdkI3Smk1cVFQaHFRUHZ0djV1U0JaMFE2Z1dVRGFCQVpQT3JQM1AyRVc4c0xnc2hwMHhmMzhRZXRmUXM4VUVoYVZtVmoxdw?oc=5",
       "s": "L’Éveil de la Haute-Loire",
       "d": "2026-11-26T07:20:00Z"
-    },
-    {
-      "l": "NOR",
-      "n": "COUPE",
-      "t": "Coupe de France. « Je ne me résigne pas » : au SM Caen, Gabin Tomé s’accroche toujours à son rêve",
-      "u": "https://news.google.com/rss/articles/CBMihwJBVV95cUxOT1JjNFVBYWEyLVNZVDczVjU3dkVjckxmX1lHWHFXTzN4czBIYzZ3aklYa1Z6YU5KVm5vZ2txQXpBVm5fMFJRQTIyZm5yWVMtQlZhdUd5N2FBQmdVOExPRTA4R3g0NGNIb0EtUVRMWGdhMGZRVktJLXhFdGN0WV93VWo1QllLcjRheDhZMUF6X3lTNElMWHFVbHVjRjVWdHNDMW01ZFBkMUhVRmV6cDFEcFdtX2tndlBjTmFMb2lqUnlvc0hudDZUNklMd3l6WnpZLTR3eVlDYVpEZjF4M2drRml2emJmN21HT0Nhb21YN2lGSk9jWkxWZ25RcW5qSGVzZ2Utd01oVQ?oc=5",
-      "s": "Ouest-France",
-      "d": "2026-11-26T06:30:43Z"
     },
     {
       "l": "ARA",
