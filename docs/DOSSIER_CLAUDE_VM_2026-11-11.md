@@ -1,6 +1,6 @@
 # Dossier Claude — Véloce Mercato, site et réseaux
 
-État établi le 2026-11-25T18:09+01:00.
+État établi le 2026-11-26T02:01+01:00.
 
 Ce dossier remplace les anciennes consignes de restauration intégrale et les anciennes cadences. Il décrit le travail autorisé par Romain dans cette conversation. Les accès et conversations de ChatGPT ne sont pas automatiquement accessibles dans Claude.
 
@@ -35,9 +35,9 @@ Sur vmunivers.fr, Romain a demandé : première case à gauche Facebook https://
 
 | Destination | Nombre relevé dans les reçus de cette reprise |
 |---|---|
-| Véloce Mercato · facebook | 189 |
-| Véloce Mercato · instagram | 125 |
-| VM Actus et Pronos · facebook | 193 |
+| Véloce Mercato · facebook | 190 |
+| Véloce Mercato · instagram | 126 |
+| VM Actus et Pronos · facebook | 194 |
 | VM Univers · facebook | 3 |
 | VM Univers · instagram | 1 |
 
@@ -103,13 +103,13 @@ Pour Multisport, les flux français validés Sports.fr et Le Monde Sport sont ra
 
 ## Audit des pages, liens et classements
 
-- Pages HTML examinées : 2010.
-- URL interrogées : 2299.
+- Pages HTML examinées : 2035.
+- URL interrogées : 2344.
 - HTTP 404/410 confirmés : 14.
 - Cibles internes absentes du dépôt : 86.
-- Liens protégés/non vérifiables automatiquement : 800.
+- Liens protégés/non vérifiables automatiquement : 823.
 - Ancres à relire : 60. Certaines existent seulement après chargement JavaScript.
-- Classements à relire : 0.
+- Classements à relire : 1.
 
 Le détail exhaustif des contrôles effectués, avec fichiers et lignes, est dans docs/AUDIT_CLAUDE_2026-11-11.json et son résumé Markdown. Un refus 403/429 ne prouve pas un lien mort. Cet audit ne certifie pas tous les faits d’actualité, la disponibilité géographique des vidéos, les paiements ou les espaces authentifiés.
 
@@ -178,6 +178,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — DNCG : trois clubs placés en sursis à statuer, d'autres soumis à un encadrement — https://www.facebook.com/122106465861520366/posts/122113767021520366
 - meta/facebook — Daouda Weidmann, ancien du PSG, s'illustre à Twente et attire des clubs européens — https://www.facebook.com/122106465861520366/posts/122112962787520366
 - meta/facebook — David Almansa mène la séance d'entraînement Moto3 au Portugal devant Máximo Quiles de 0,048 secondes - Motorcycle Sports — https://www.facebook.com/122106465861520366/posts/122112736569520366
+- meta/facebook — Diogo Moreira, meilleur rookie MotoGP malgré sa chute au GP du Portugal - Motorcycle Sports — https://www.facebook.com/122106465861520366/posts/122113985913520366
 - meta/facebook — Dortmund : Joane Gadou rêve de l'Équipe de France et de titres avec le BVB — https://www.facebook.com/122106465861520366/posts/122112875379520366
 - meta/facebook — Décès de Roy Coyle, le manager le plus titré de l'histoire de l'Irish League — https://www.facebook.com/122106465861520366/posts/122112739665520366
 - meta/facebook — Eredivisie : Mohamed Ihattaren retrouve son football au Fortuna Sittard — https://www.facebook.com/122106465861520366/posts/122112847191520366
@@ -338,6 +339,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Ben White, de la critique au retour en force avec l'Angleterre — https://www.instagram.com/p/Df_l4RJDX6_/
 - meta/instagram — Billet d’humeur. Rugby : on attend quoi, exactement ? - Rugby Scope — https://www.instagram.com/p/Df_15aejens/
 - meta/instagram — Blackburn : Johnson salue l'impact de Mowbray, en retrait pour raisons de santé — https://www.instagram.com/p/Df-JMHTkXIw/
+- meta/instagram — Brest : Giovani Versini évoque son passé à l'OM avant le choc de janvier — https://www.instagram.com/p/DgLO44CCQmz/
 - meta/instagram — Briatore vise une Alpine à deux ou trois dixièmes de McLaren en 2027 - f1news.fr — https://www.instagram.com/p/Df-7iyqjcd3/
 - meta/instagram — Brighton : Luka Vušković, la recrue à 55 M€ qui s'impose en Premier League — https://www.instagram.com/p/DgA03PSDf4w/
 - meta/instagram — CHOC ! La légende de la NFL Tom Brady pourrait devenir un nouveau propriétaire de Chelsea après son départ de Birmingham - Dailysports — https://www.instagram.com/p/Df_TknsCWxt/
@@ -521,6 +523,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — GTA 6 sur PC : aucune annonce officielle à ce jour, selon JV France — https://www.facebook.com/1757379583055094/posts/1783316800461372
 - meta_pronos/facebook — GTA VI réalise un lancement record avec plus de 3,79 milliards de dollars en 24 heures — https://www.facebook.com/1757379583055094/posts/1783097477149971
 - meta_pronos/facebook — Glentoran s'incline 3-2 face à Cliftonville, première défaite et premier carton rouge pour Ferguson — https://www.facebook.com/1757379583055094/posts/1782266557233063
+- meta_pronos/facebook — Gran Turismo 7 à 33,49 € sur PS5 pendant le Black Friday 2026 — https://www.facebook.com/1757379583055094/posts/1788009926658726
 - meta_pronos/facebook — Grille définitive à Las Vegas : Verstappen en pole, les Ferrari 10e et 11e - F1 news — https://www.facebook.com/1757379583055094/posts/1783350653791320
 - meta_pronos/facebook — Grille définitive à Las Vegas : Verstappen en pole, les Ferrari 10e et 11e - f1news.fr — https://www.facebook.com/1757379583055094/posts/1783237563802629
 - meta_pronos/facebook — Guatemala : le gang Barrio 18 désigné auteur matériel du meurtre d'un ancien procureur — https://www.facebook.com/1757379583055094/posts/1782522963874089
