@@ -392,7 +392,36 @@ def _prepare_scores_snapshot(root):
         print("Instantané des scores indisponible : les données présentes sont conservées.")
 
 
+def _canonicaliser_metadonnees_breve(text, path):
+    """Aligner les métadonnées des anciennes brèves sur l’URL Cloudflare."""
+    if path.name == 'index.html' or 'noindex' in text[:600]:
+        return text
+    head, separator, body = text.partition('</head>')
+    if not separator:
+        return text
+    archive_url = 'https://velocemercato.fr/a/' + path.name
+    public_url = archive_url.removesuffix('.html')
+    # L’URL de cette page est utilisée dans canonical, og:url et NewsArticle.
+    head = head.replace(f'"{archive_url}"', f'"{public_url}"')
+    head = head.replace(f"'{archive_url}'", f"'{public_url}'")
+    return head + separator + body
+
+
+def _canonicaliser_sitemap(root):
+    path = root / 'sitemap.xml'
+    if not path.is_file():
+        return
+    xml = path.read_text(encoding='utf-8')
+    xml = re.sub(r'(<loc>https://velocemercato\.fr/a/[a-zA-Z0-9_-]+)\.html(</loc>)',
+                 r'\1\2', xml)
+    noindex = r'(?:/vm/|/mentions-legales(?:\.html)?|/politique-de-confidentialite(?:\.html)?)'
+    xml = re.sub(r'[ \t]*<url>\s*<loc>https://velocemercato\.fr' + noindex +
+                 r'</loc>(?:(?!</url>).)*</url>[ \t]*\n?', '', xml, flags=re.S)
+    path.write_text(xml, encoding='utf-8')
+
+
 def prepare(root):
+    _canonicaliser_sitemap(root)
     _prepare_scores_snapshot(root)
     _alleger_editorial_status(root)
     _retirer_fichiers_trop_gros(root)
@@ -407,9 +436,11 @@ def prepare(root):
         if relative.parts[0] == 'en' or any(part in {'.github', 'tests', 'tools', 'docs'} for part in relative.parts):
             continue
         text = path.read_text(encoding='utf-8')
-        if relative.parts[0] == 'a' and 'class="rel"' in text:
-            text, retires = nettoyer_articles_associes(text, articles)
-            liens_retires += retires
+        if relative.parts[0] == 'a' and len(relative.parts) == 2:
+            text = _canonicaliser_metadonnees_breve(text, path)
+            if 'class="rel"' in text:
+                text, retires = nettoyer_articles_associes(text, articles)
+                liens_retires += retires
         if path == root/'index.html':
             text = _liens_publications_meta(root, text)
         if path == root/'foot/index.html':

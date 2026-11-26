@@ -111,5 +111,5 @@ jobs:
       - name: Save articles, flashs and report
         if: always() && steps.validate.outcome == 'success'
         run: |
-          git add pronos/index.html index.html articles.json flash.json robot-log.txt sitemap.xml a/ videos.json video-channels.json matchs.json fil.json ignores.json belfort/actus.json deja-publies.json foot-amateur/actus.json
+          git add pronos/index.html index.html articles.json flash.json robot-log.txt sitemap.xml sitemap-news.xml a/ videos.json video-channels.json matchs.json fil.json ignores.json belfort/actus.json deja-publies.json foot-amateur/actus.json
           python tools/save_news_bundle.py --message "Update football news"

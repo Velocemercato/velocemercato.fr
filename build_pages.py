@@ -130,7 +130,7 @@ def main():
         if not a.get('id') or not a.get('titre') or not a.get('texte'):
             continue
         name = safe_id(a['id']) + '.html'
-        url = f'{SITE}/a/{name}'
+        url = f'{SITE}/a/{name[:-5]}'  # URL publique sans .html : Cloudflare redirige déjà .html en 308
         try:
             when = dt.datetime.fromisoformat(str(a.get('publishedAt', '')).replace('Z', '+00:00'))
         except ValueError:
@@ -246,7 +246,6 @@ def main():
              f'  <url><loc>{SITE}/web-studio.html</loc></url>',
              f'  <url><loc>{SITE}/investisseurs.html</loc></url>',
              f'  <url><loc>{SITE}/boutique/</loc></url>',
-             f'  <url><loc>{SITE}/vm/</loc></url>',
              f'  <url><loc>{SITE}/cv/</loc></url>',
              f'  <url><loc>{SITE}/menu/</loc></url>',
              f'  <url><loc>{SITE}/pro/</loc></url>',
@@ -263,20 +262,20 @@ def main():
     for path in (Path('en/index.html'), *sorted(Path('en').glob('*/index.html'))):
         if path.is_file():
             lines.append(f'  <url><loc>{SITE}/{path.parent.as_posix()}/</loc></url>')
-    for extra in ('/foot/', '/scores/', '/region/', '/vm-gaming/', '/notifications/', '/mentions-legales.html', '/politique-de-confidentialite.html'):
+    for extra in ('/foot/', '/scores/', '/region/', '/vm-gaming/', '/notifications/'):
         if Path(extra.strip('/'), 'index.html').exists() or (extra.endswith('.html') and Path(extra.strip('/')).exists()):
             lines.append(f'  <url><loc>{SITE}{extra}</loc><changefreq>hourly</changefreq></url>')
     # TOUTES les brèves conservées et indexables (et pas seulement celles du fil du moment).
     toutes = {u: d for u, d in urls}
     for dd, n, _ in archive:
-        toutes.setdefault(f'{SITE}/a/{n}', dd)
+        toutes.setdefault(f'{SITE}/a/{n[:-5] if n.endswith(".html") else n}', dd)
     lines += [f'  <url><loc>{html.escape(u)}</loc>' + (f'<lastmod>{html.escape(d[:10])}</lastmod>' if d else '') + '</url>'
               for u, d in sorted(toutes.items(), key=lambda x: x[1], reverse=True)]
     lines.append('</urlset>')
     Path('sitemap.xml').write_text('\n'.join(lines) + '\n', encoding='utf-8')
     # Sitemap Google News : brèves publiées depuis moins de 48 h (format exigé par Google News).
     limite = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=48)).isoformat()
-    recentes = [(u, d, t) for d, n, t in archive for u in [f'{SITE}/a/{n}'] if d and d >= limite][:1000]
+    recentes = [(u, d, t) for d, n, t in archive for u in [f'{SITE}/a/{n[:-5] if n.endswith(".html") else n}'] if d and d >= limite][:1000]
     news = ['<?xml version="1.0" encoding="UTF-8"?>',
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">']
     news += [f'  <url><loc>{html.escape(u)}</loc><news:news><news:publication><news:name>Véloce Mercato</news:name>'
