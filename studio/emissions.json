@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261126-1300",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "midi",
+  "label": "JT 13 h",
+  "titre": "La Pastille Actus : le JT du midi, 26 novembre",
+  "accroche": "Les infos du jour, en six brèves, sans détour.",
+  "duree": 153,
+  "date": "2026-11-26T13:58+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261126-1300.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-26T13:00:00+01:00",
+  "source_start": "2026-11-25T19:00:00+01:00",
+  "source_end": "2026-11-26T13:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-d0b00ae897bcb33f788f2d",
+    "titre": "Airbags Takata : perquisitions chez Stellantis et Joyson Safety Systems France",
+    "publishedAt": "2026-11-26T11:24:53Z",
+    "createdAt": "2026-11-26T11:31:07Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/automobile/airbags-takata/airbags-takata-stellantis-et-l-equipementier-joyson-safety-systems-france-perquisitionnes_8301195.html#xtor=RSS-3-%5Beconomie%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-918031d976b0f0aa370339",
+    "titre": "Cancers chez les jeunes : une cartographie citoyenne participative lancée en France",
+    "publishedAt": "2026-11-26T10:50:29Z",
+    "createdAt": "2026-11-26T11:01:26Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/sante/cancer/cancers-chez-les-jeunes-plusieurs-collectifs-et-ong-lancent-une-cartographie-citoyenne-et-participative-pour-mieux-comprendre-l-exposition-aux-polluants-chimiques_8300925.html#xtor=RSS-3-%5Bsante%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-3d2a3b454716bfc4aa8f98",
+    "titre": "Zambie : arrivée des premiers génériques du traitement préventif injectable contre le VIH",
+    "publishedAt": "2026-11-26T09:59:37Z",
+    "createdAt": "2026-11-26T10:01:17Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/26/en-zambie-arrivee-dun-generique-moins-cher-du-traitement-preventif-contre-le-vih"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-e14ba9fb567e08be02cf30",
+    "titre": "Un pétrolier transportant du diesel coule au large d'Ibiza, un marin mort",
+    "publishedAt": "2026-11-26T09:27:28Z",
+    "createdAt": "2026-11-26T09:31:17Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/espagne/un-navire-transportant-jusqu-a-7-000-tonnes-de-diesel-coule-au-large-de-l-ile-espagnole-d-ibiza-faisant-un-mort-parmi-les-membres-de-l-equipage_8300973.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-bf1b1b8c4eec71f657ea7d",
+    "titre": "Russia Today utilise un avatar IA de Dostoïevski pour sa propagande",
+    "publishedAt": "2026-11-26T08:53:51Z",
+    "createdAt": "2026-11-26T09:01:19Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/russie/sur-russia-today-le-kremlin-ressuscite-fiodor-dostoievski-pour-sa-propagande_8300937.html#xtor=RSS-3-%5Beconomie%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-8f7cb9820ab9bed0de5d1c",
+    "titre": "Danemark : la Cour suprême valide la résiliation de baux dans le cadre du « plan ghetto »",
+    "publishedAt": "2026-11-26T07:58:38Z",
+    "createdAt": "2026-11-26T08:01:21Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/replay-radio/le-monde-et-vous/logement-social-comment-le-danemark-applique-son-controverse-plan-ghetto_8278499.html#xtor=RSS-3-%5Bmonde%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-8d81c93482d0939c67fdb5",
+    "titre": "Sommet de Bruxelles : budget européen et aide à l'Ukraine au cœur des tensions",
+    "publishedAt": "2026-11-26T07:25:49Z",
+    "createdAt": "2026-11-26T07:31:18Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/26/sommet-de-bruxelles-tendu-sur-budget-europeen-de-2-000-milliards-et-aide-a-lukraine"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-0b519dd4a06c4286a2954c",
+    "titre": "Au Royaume-Uni, le discounter Poundland placé sous administration, 11 000 emplois menacés",
+    "publishedAt": "2026-11-26T06:58:45Z",
+    "createdAt": "2026-11-26T07:01:06Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/26/le-discounter-britannique-poundland-place-en-administration-11-000-emplois-menaces"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "foot-edition-20261125-2000",
   "univers": "foot",
   "format": "edition",
@@ -12807,126 +12927,6 @@
      {
       "nom": "Foot01",
       "url": "https://www.foot01.com/allemagne/bundesliga-les-francais-font-un-cadeau-a-kompany-le-bayern-en-tete"
-     }
-    ]
-   }
-  ],
-  "diffusion": "youtube"
- },
- {
-  "id": "foot-edition-20261025-2000",
-  "univers": "foot",
-  "format": "edition",
-  "moment": "soir",
-  "label": "JT 20 h",
-  "titre": "La Pastille Foot - Dimanche 25 octobre, 20 heures",
-  "accroche": "Bonsoir à tous, la Pastille Foot du dimanche soir commence maintenant.",
-  "duree": 139,
-  "date": "2026-10-25T20:12+01:00",
-  "publie": false,
-  "voix": [
-   "piper"
-  ],
-  "speech_rate": 1.12,
-  "fichier": "foot-edition-20261025-2000.mp4",
-  "editorial_revision": "court-v1",
-  "edition_at": "2026-10-25T20:00:00+01:00",
-  "source_start": "2026-10-25T12:00:00+01:00",
-  "source_end": "2026-10-25T20:00:00+01:00",
-  "sources": [
-   {
-    "id": "rss-v2-9e325107a959c6f5b3a7a5",
-    "titre": "Isak enfin à la hauteur de son prix, Liverpool récompense la patience",
-    "publishedAt": "2026-10-25T18:13:55Z",
-    "createdAt": "2026-10-25T18:20:00Z",
-    "references": [
-     {
-      "nom": "BBC Sport",
-      "url": "https://www.bbc.co.uk/sport/football/articles/cmj47lq7e5e7o?at_medium=RSS&at_campaign=rss"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-67f826875663c099f07dbf",
-    "titre": "Samir Nasri, Medhi Benatia et Walid Acherchour lancent l'émission « Les Affranchis »",
-    "publishedAt": "2026-10-25T17:31:02Z",
-    "createdAt": "2026-10-25T17:52:58Z",
-    "references": [
-     {
-      "nom": "Foot Mercato",
-      "url": "https://www.footmercato.net/a2153440379710795252-une-nouvelle-emission-avec-nasri-benatia-et-acherchour-va-voir-le-jour"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-38c47238553f77a70226d0",
-    "titre": "L1 : Le but controversé du Mans à Auxerre validé par la technologie",
-    "publishedAt": "2026-10-25T17:45:00Z",
-    "createdAt": "2026-10-25T17:52:53Z",
-    "references": [
-     {
-      "nom": "Foot01",
-      "url": "https://www.foot01.com/ligue1/l1-le-but-mystere-du-mans-a-auxerre-fait-scandale"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-0744a46f8a15109858968f",
-    "titre": "Benjamin Mendy relancé en Pologne, titulaire indiscutable au Pogoń Szczecin",
-    "publishedAt": "2026-10-25T17:01:36Z",
-    "createdAt": "2026-10-25T17:22:25Z",
-    "references": [
-     {
-      "nom": "Foot Mercato",
-      "url": "https://www.footmercato.net/a7941755800088932018-la-renaissance-inattendue-de-benjamin-mendy-en-pologne"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-ceaf7c4b4d45af6fa5aa38",
-    "titre": "Toulouse-Troyes : le TFC accélère, l'ESTAC sous pression à la mi-temps",
-    "publishedAt": "2026-10-25T16:55:49Z",
-    "createdAt": "2026-10-25T16:56:58Z",
-    "references": [
-     {
-      "nom": "RMC Sport",
-      "url": "https://rmcsport.bfmtv.com/football/ligue-1/direct-toulouse-troyes-suivez-en-live-le-match-de-la-8e-journee-de-ligue-1_LS-202610250239.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-62c6022f3af7f6fd398a76",
-    "titre": "Eredivisie : Hadj Moussa offre un nul 1-1 à Feyenoord face au PSV",
-    "publishedAt": "2026-10-25T15:22:41Z",
-    "createdAt": "2026-10-25T15:55:51Z",
-    "references": [
-     {
-      "nom": "Foot Mercato",
-      "url": "https://www.footmercato.net/a4321007222797250272-eredivisie-hadj-moussa-permet-a-feyenoord-daccrocher-le-nul-face-au-psv"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-2ea23ab53074e58a74c0b8",
-    "titre": "L'OL pourrait recruter un attaquant cet hiver, Fonseca n'exclut rien",
-    "publishedAt": "2026-10-25T13:50:12Z",
-    "createdAt": "2026-10-25T15:20:04Z",
-    "references": [
-     {
-      "nom": "Foot Mercato",
-      "url": "https://www.footmercato.net/a1315479816195445894-lol-ouvre-la-porte-a-un-nouvel-attaquant-cet-hiver"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-bd19ffc255abaec9ea4cd0",
-    "titre": "Sheffield Wednesday limoge son entraîneur Henrik Pedersen après 15 mois",
-    "publishedAt": "2026-10-25T14:00:15Z",
-    "createdAt": "2026-10-25T14:55:34Z",
-    "references": [
-     {
-      "nom": "BBC Sport",
-      "url": "https://www.bbc.co.uk/sport/football/articles/cq4g15392p4ro?at_medium=RSS&at_campaign=rss"
      }
     ]
    }
