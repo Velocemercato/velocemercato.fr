@@ -1,80 +1,50 @@
 {
- "id": "2026-11-25-18",
- "date": "2026-11-25T18:27:32+01:00",
+ "id": "2026-11-26-18",
+ "date": "2026-11-26T18:08:36+01:00",
  "questions": [
   {
-   "q": "Combien de matchs de suspension Yoann Le Gal a-t-il finalement écopés en appel ?",
+   "q": "Quel score le Heart of Midlothian a-t-il obtenu à Dundee, son plus large succès depuis 1957 ?",
    "choix": [
-    "Huit matchs",
-    "Cinq matchs",
-    "Trois matchs",
-    "Deux matchs"
-   ],
-   "bonne": 1,
-   "explication": "La commission d'appel de la FFF a réduit sa suspension de huit à cinq matchs, selon Foot National.",
-   "source": {
-    "titre": "National 1 : la suspension de Yoann Le Gal réduite de huit à cinq matchs en appel",
-    "id": "rss-v2-0c4fc273b42c293df2bd53"
-   }
-  },
-  {
-   "q": "Quel joueur de Man City aurait-il dû obtenir un penalty contre Monaco ?",
-   "choix": [
-    "Erling Haaland",
-    "Paris Brunner",
-    "Jérémy Doku",
-    "Omar Marmoush"
-   ],
-   "bonne": 1,
-   "explication": "La DTA a reconnu que Paris Brunner aurait dû bénéficier d'un penalty sur un duel avec Sinaly Diomandé.",
-   "source": {
-    "titre": "Monaco-Auxerre : la DTA reconnaît une erreur, un penalty aurait dû être sifflé sur Brunner",
-    "id": "rss-v2-80244a684099c147f59b24"
-   }
-  },
-  {
-   "q": "Combien de buts Romelu Lukaku a-t-il inscrits avec les Diables Rouges ?",
-   "choix": [
-    "72",
-    "84",
-    "94",
-    "102"
-   ],
-   "bonne": 2,
-   "explication": "Meilleur buteur de l'histoire des Diables Rouges, Lukaku totalise 94 buts selon Foot Mercato.",
-   "source": {
-    "titre": "Belgique : Lukaku annonce sa retraite internationale, Nainggolan évoque une « bombe »",
-    "id": "rss-v2-830e5ab47138721bfe7519"
-   }
-  },
-  {
-   "q": "Quelle est la blessure dont souffre Ffion Morgan ?",
-   "choix": [
-    "Une fracture du tibia",
-    "Une rupture des ligaments croisés antérieurs",
-    "Une entorse de la cheville",
-    "Une déchirure des ischio-jambiers"
-   ],
-   "bonne": 1,
-   "explication": "Selon BBC Sport, l'ailière galloise de West Ham a subi une rupture des ligaments croisés antérieurs et a été opérée.",
-   "source": {
-    "titre": "Ffion Morgan (West Ham) victime d'une rupture des ligaments croisés",
-    "id": "rss-v2-a8e889c77e13b082855abe"
-   }
-  },
-  {
-   "q": "Contre quelle équipe Leicester a-t-il concédé le nul 1-1 ?",
-   "choix": [
-    "Blackpool",
-    "Bristol City",
-    "Sheffield Wednesday",
-    "Wigan Athletic"
+    "8-0",
+    "6-1",
+    "5-0",
+    "4-2"
    ],
    "bonne": 0,
-   "explication": "Leicester City a été tenu en échec 1-1 sur la pelouse de Blackpool, lanterne rouge de League One, selon BBC Sport.",
+   "explication": "Selon RMC Sport, les Hearts se sont imposés 8-0 à Dundee, leur plus large succès depuis 1957.",
    "source": {
-    "titre": "Leicester tenu en échec à Blackpool, Martin « blessé » par le nul",
-    "id": "rss-v2-007714471c3f29dddc8384"
+    "titre": "Heart of Midlothian, l'adversaire de l'AS Monaco : nom atypique, stade mythique et passé de guerre",
+    "id": "rss-v2-770cf7f4327f5c0ec82101"
+   }
+  },
+  {
+   "q": "Combien de cartouches de protoxyde d'azote Raheem Sterling avait-il dans sa voiture ?",
+   "choix": [
+    "Deux",
+    "Quatre",
+    "Six",
+    "Dix"
+   ],
+   "bonne": 2,
+   "explication": "BBC Sport indique que l'ancien international avait six cartouches de gaz dans sa voiture.",
+   "source": {
+    "titre": "Protoxyde d'azote dans le football : un usage jugé répandu chez les pros",
+    "id": "rss-v2-5a3f146728ed8d30666222"
+   }
+  },
+  {
+   "q": "Quel est le nom de la société ou du club qui a obtenu le plus de buts ? Non : quel club Pellegrino Matarazzo a-t-il fait monter en Bundesliga ?",
+   "choix": [
+    "Hoffenheim",
+    "Stuttgart",
+    "Bochum",
+    "Leipzig"
+   ],
+   "bonne": 1,
+   "explication": "Selon BBC Sport, Matarazzo a fait monter et installé Stuttgart en Bundesliga avant de revenir à Hoffenheim.",
+   "source": {
+    "titre": "Pellegrino Matarazzo, premier entraîneur américain de l'histoire de la Liga",
+    "id": "rss-v2-af032f1fa89550cf5508bc"
    }
   }
  ]
