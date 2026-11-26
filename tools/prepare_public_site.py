@@ -10,6 +10,7 @@ from decimal import Decimal
 import zipfile
 from zoneinfo import ZoneInfo
 from urllib.parse import urlparse
+from urllib.request import urlopen
 
 REMOVE_CLASSES = {'vmbar', 'vmtop', 'vm-volets', 'vm-duo', 'vm-essentiel', 'promo-manga'}
 VOID = {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
@@ -362,7 +363,37 @@ def nettoyer_articles_associes(text, routes):
     return RELATED_BLOCK.sub(filtrer, text), total
 
 
+def _prepare_scores_snapshot(root):
+    source = "https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/scores-live/scores.json"
+    target = root / "scores.json"
+
+    def checked(data):
+        stamp = data.get("verifie") or data.get("maj")
+        value = dt.datetime.fromisoformat(stamp.replace("Z", "+00:00"))
+        return value.timestamp() if value.tzinfo is not None else 0.0
+
+    try:
+        with urlopen(source, timeout=8) as response:
+            payload = response.read(2_000_001)
+        if len(payload) > 2_000_000:
+            raise ValueError("taille inattendue")
+        snapshot = json.loads(payload)
+        when = checked(snapshot)
+        if not isinstance(snapshot.get("matchs"), list) or not 0 < when <= dt.datetime.now(dt.timezone.utc).timestamp() + 60:
+            raise ValueError("horodatage ou liste invalide")
+        try:
+            previous = checked(json.loads(target.read_bytes()))
+        except (OSError, ValueError, TypeError, AttributeError):
+            previous = 0.0
+        if when > previous:
+            target.write_bytes(payload)
+            print(f"Instantané des scores prêt ({len(snapshot['matchs'])} matchs).")
+    except (OSError, ValueError, TypeError, AttributeError):
+        print("Instantané des scores indisponible : les données présentes sont conservées.")
+
+
 def prepare(root):
+    _prepare_scores_snapshot(root)
     _alleger_editorial_status(root)
     _retirer_fichiers_trop_gros(root)
     _prepare_affiches(root)

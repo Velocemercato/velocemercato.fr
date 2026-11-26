@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2470'/%3E%3Ctext x='32' y='44' font-family='Impact,sans-serif' font-size='30' font-style='italic' text-anchor='middle' fill='%23f4cf55'%3EVM%3C/text%3E%3C/svg%3E">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsMediaOrganization","name":"Véloce Mercato","url":"https://velocemercato.fr/foot/","email":"velocemercato.fr@gmail.com","sameAs":["https://discord.gg/JEgfrUtJaX","https://www.tiktok.com/@velocemercato","https://www.instagram.com/veloce.mercato","https://www.youtube.com/@VeloceMercato","https://www.facebook.com/share/1DUSALoBzG/","https://www.twitch.tv/velocemercato","https://www.snapchat.com/add/velocemercato"]}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&family=Anton&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&family=Anton&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap">
 <link rel="stylesheet" href="/foot/historique-20261104/assets/home-utilities.css">
 <link rel="stylesheet" href="/foot/historique-20261104/assets/identity.css">
 <style>
@@ -674,10 +674,15 @@ fetch('/prono.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.
 var $=function(i){return document.getElementById(i)};
 function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 var HM=new Intl.DateTimeFormat('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Paris'}),DAY=new Intl.DateTimeFormat('fr-FR',{weekday:'short',timeZone:'Europe/Paris'});
-function load(){fetch('https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/scores-live/scores.json?v='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(function(r){if(!r.ok)throw Error('source');return r.json()}).catch(function(){return fetch('/scores.json?v='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(function(r){return r.ok?r.json():null})}).then(function(j){
- var checked=Date.parse(j&&(j.verifie||j.maj)),now=Date.now(),age=now-checked,fresh=Number.isFinite(checked)&&age>=-60000&&age<=40*60000;
- if(j&&j.matchs)j.matchs=j.matchs.map(function(m){var start=Date.parse(m.date);return ['IN_PLAY','PAUSED'].indexOf(m.statut)>=0&&(!fresh||!Number.isFinite(start)||now-start>8*3600000||start>now+60000)?Object.assign({},m,{statut:'UNAVAILABLE'}):m});
- var ms=((j&&j.matchs)||[]).filter(function(m){return m.comp==='Ligue 1'||m.comp==='Ligue des champions'});if(!ms.length)return;
+var scoreSource=import('/assets/vm-scores-source.mjs?v=1');
+function load(){scoreSource.then(async function(source){
+ var j=await source.loadScoreSnapshot();
+ var checked=Date.parse(source.snapshotTime(j)),now=Date.now(),fresh=source.freshSnapshot(j,now);
+ var rows=Array.isArray(j?.matchs)?j.matchs:[];
+ var ms=rows.filter(function(m){return m&&(m.comp==='Ligue 1'||m.comp==='Ligue des champions')&&Number.isFinite(Date.parse(m.date));}).map(function(m){
+  var start=Date.parse(m.date),on=m.statut==='IN_PLAY'||m.statut==='PAUSED';
+  return on&&(!fresh||now-start>8*3600000||start>now+60000)?Object.assign({},m,{statut:'UNAVAILABLE'}):m;
+ });
  var live=ms.filter(function(m){return m.statut==='IN_PLAY'||m.statut==='PAUSED'});
  var order=live.concat(ms.filter(function(m){return live.indexOf(m)<0}).sort(function(a,b){var fa=a.statut==='FINISHED',fb=b.statut==='FINISHED';if(fa!==fb)return fa?1:-1;return String(a.date).localeCompare(String(b.date))}));
  $('liveRow').innerHTML=order.map(function(m){var on=m.statut==='IN_PLAY'||m.statut==='PAUSED',fin=m.statut==='FINISHED',d=new Date(m.date),sc=m.score||[];
@@ -686,8 +691,9 @@ function load(){fetch('https://raw.githubusercontent.com/Velocemercato/velocemer
  var TK=order.filter(function(m){return m.statut!=='SCHEDULED'&&m.statut!=='POSTPONED'&&m.statut!=='UNAVAILABLE'}).map(function(m){var on=m.statut==='IN_PLAY'||m.statut==='PAUSED',fin=m.statut==='FINISHED',sc=m.score||[],d=new Date(m.date);
   var mid=(on||fin)?' '+esc(sc[0])+'-'+esc(sc[1])+' ':' – ';var tag=on?(m.statut==='PAUSED'?'⏸ MT':'🔴 LIVE'):fin?'🏁 FIN':'⏰ '+HM.format(d);
   return '<span class="'+(on?'on':'')+'"><b class="c">'+(m.comp==='Ligue 1'?'L1':'LDC')+'</b>'+tag+' · '+esc(m.dom)+mid+esc(m.ext)+'</span>'}).join('');
- if(TK){$('sRun').innerHTML=TK;$('sTicker').hidden=false;}
- $('liveMaj').textContent=(Number.isFinite(checked)?'Source football-data.org / ESPN · vérifié le '+new Date(checked).toLocaleString('fr-FR',{timeZone:'Europe/Paris'}):'Source indisponible')+(fresh?'':' · direct indisponible');$('live').hidden=false;
+ $('sRun').innerHTML=TK;$('sTicker').hidden=!TK;
+ $('liveMaj').textContent=(Number.isFinite(checked)?'Source football-data.org / ESPN · vérifié le '+new Date(checked).toLocaleString('fr-FR',{timeZone:'Europe/Paris'}):'Source indisponible')+(fresh?' · décalage possible':' · direct indisponible');
+ $('live').hidden=fresh&&!ms.length;
 }).catch(function(){});}
 load();setInterval(load,60000);
 })();

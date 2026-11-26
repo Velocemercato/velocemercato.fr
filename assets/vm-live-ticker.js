@@ -2,7 +2,7 @@
    Données : branche scores-live (aucun redéploiement du site), repli sur /scores.json. */
 (function () {
   'use strict';
-  var SOURCES = ['https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/scores-live/scores.json', '/scores.json'];
+  var scoreSource = import('/assets/vm-scores-source.mjs?v=1');
   var LIVE = { IN_PLAY: 1, PAUSED: 1 };
   var SOON = { TIMED: 1, SCHEDULED: 1 };
   var host = document.getElementById('vm-live-ticker');
@@ -14,14 +14,14 @@
     try { var v = JSON.parse(localStorage.getItem(PREF) || 'null'); if (v && typeof v === 'object') return v; } catch (e) {}
     return { foot: true, basket: true, nfl: true, hockey: true };
   }
-  var dernier = null;
+  var dernier = null, controle = NaN, frais = false;
   function panneau() {
     var old = document.getElementById('vlt-panel'); if (old) { old.remove(); return; }
     var c = choix(), p = el('div'); p.id = 'vlt-panel'; p.setAttribute('role', 'dialog'); p.setAttribute('aria-label', 'Choisir les sports du bandeau');
     p.appendChild(el('b', null, 'Mon bandeau :'));
     Object.keys(SPORTS).forEach(function (k) {
       var l = el('label'), i = el('input'); i.type = 'checkbox'; i.checked = c[k] !== false;
-      i.onchange = function () { var x = choix(); x[k] = i.checked; try { localStorage.setItem(PREF, JSON.stringify(x)); } catch (e) {} rendre(dernier); };
+      i.onchange = function () { var x = choix(); x[k] = i.checked; try { localStorage.setItem(PREF, JSON.stringify(x)); } catch (e) {} rendre(dernier, controle, frais); };
       l.appendChild(i); l.appendChild(document.createTextNode(SPORTS[k])); p.appendChild(l);
     });
     var ok = el('button', null, 'OK'); ok.type = 'button'; ok.onclick = function () { p.remove(); }; p.appendChild(ok);
@@ -32,20 +32,13 @@
   function heure(iso) {
     try { return new Date(iso).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris' }); } catch (e) { return ''; }
   }
-  function charger(i) {
-    if (i >= SOURCES.length) return Promise.resolve(null);
-    return fetch(SOURCES[i] + '?t=' + Math.floor(Date.now() / 60000), { cache: 'no-store' })
-      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-      .catch(function () { return charger(i + 1); });
-  }
-  function rendre(data) {
-    dernier = data;
+  function rendre(data, checked, fresh) {
+    dernier = data;controle = checked;frais = fresh;
     var c = choix();
     var tous = (data && Array.isArray(data.matchs)) ? data.matchs : [];
     var rows = tous.filter(function (m) { return c[m.sport || 'foot'] !== false; });
     var now = Date.now(), lim = now + 12 * 3600 * 1000;
-    var stamp=data&&(data.verifie||data.maj), checked=Date.parse(stamp), age=now-checked;
-    var fresh=Number.isFinite(checked)&&age>=-60000&&age<=40*60000;
+    var stamp=Number.isFinite(checked)?new Date(checked).toISOString():null;
     function verifiedLive(m){var start=Date.parse(m.date);return fresh&&LIVE[m.statut]&&Number.isFinite(start)&&start<=now+60000&&now-start<=8*3600000;}
     var direct = rows.filter(verifiedLive);
     var avenir = rows.filter(function (m) {
@@ -85,7 +78,12 @@
     var dur = Math.max(20, (direct.length + avenir.length) * 6);
     rail.style.animationDuration = dur + 's';
   }
-  function tick() { charger(0).then(rendre); }
+  function tick() {
+    scoreSource.then(async function(source) {
+      var data = await source.loadScoreSnapshot();
+      rendre(data, Date.parse(source.snapshotTime(data)), source.freshSnapshot(data));
+    }).catch(function(){rendre(null, NaN, false);});
+  }
   tick();
   setInterval(tick, 120000);
 })();

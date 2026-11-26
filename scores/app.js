@@ -1,6 +1,7 @@
 /* VM Scores · foot en direct.
-   Données réelles : /scores.json (direct, ~2 min) et /matchs.json (agenda de la semaine), source football-data.org.
+   Données : flux scores-live, instantané /scores.json et agenda /matchs.json (football-data.org / ESPN).
    Rien n'est inventé : si la source ne répond pas, la page le dit. */
+const scoreSource=import('/assets/vm-scores-source.mjs?v=1');
 const COMPS=[['all','⚽','Toutes'],['Ligue 1','🇫🇷','Ligue 1'],['Ligue des champions','⭐','Ligue des champions'],['Premier League','🏴','Premier League'],['Liga','🇪🇸','Liga'],['Serie A','🇮🇹','Serie A'],['Bundesliga','🇩🇪','Bundesliga'],['NBA','🏀','NBA'],['NHL','🏒','NHL'],['NFL','🏈','NFL']];
 const $=id=>document.getElementById(id);
 const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -14,9 +15,7 @@ function toast(t){$('toast').textContent=t;clearTimeout(toastTimer);toastTimer=s
 function state(s){if(['UNAVAILABLE','POSTPONED','SUSPENDED','CANCELLED'].includes(s))return 'unavailable';return s==='IN_PLAY'||s==='PAUSED'?'live':s==='FINISHED'?'finished':'scheduled'}
 function label(x){if(x.statut==='UNAVAILABLE')return 'Statut indisponible';if(x.statut==='PAUSED')return 'Mi-temps';if(x.statut==='IN_PLAY')return 'En direct';if(x.statut==='FINISHED')return 'Terminé';if(x.statut==='POSTPONED')return 'Reporté';if(x.statut==='SUSPENDED')return 'Suspendu';if(x.statut==='CANCELLED')return 'Annulé';return HM.format(new Date(x.date))}
 async function get(url){try{const r=await fetch(url+'?t='+Math.floor(Date.now()/60000),{cache:'no-store'});return r.ok?await r.json():null}catch{return null}}
-function freshRows(rows, timestamp, now=Date.now()) {
-  const checked=Date.parse(timestamp), age=now-checked;
-  const fresh=Number.isFinite(checked)&&age>=-60000&&age<=40*60000;
+function freshRows(rows, fresh, now=Date.now()) {
   return rows.map(m=>{
     const start=Date.parse(m.date), active=['IN_PLAY','PAUSED'].includes(m.statut);
     const plausible=Number.isFinite(start)&&start<=now+60000&&now-start<=8*3600000;
@@ -24,20 +23,40 @@ function freshRows(rows, timestamp, now=Date.now()) {
     return (active&&(!fresh||!plausible)||overdue)?{...m,statut:'UNAVAILABLE'}:m;
   });
 }
+function mergeRows(live, agenda, fresh, now=Date.now()){
+  const normalized=(rows, direct)=>rows.filter(m=>m&&m.id!=null).map(m=>({
+    id:String(m.id),date:m.date,sport:m.sport||'foot',comp:direct?m.comp:m.competition,
+    home:direct?m.dom:m.domicile,away:direct?m.ext:m.exterieur,
+    statut:m.statut,score:Array.isArray(m.score)?m.score:[null,null],
+  })).filter(m=>Number.isFinite(Date.parse(m.date))&&typeof m.home==='string'&&typeof m.away==='string');
+  const scheduled=normalized(Array.isArray(agenda)?agenda:[],false);
+  const reported=normalized(Array.isArray(live?.matchs)?live.matchs:[],true);
+  const map=new Map(freshRows(scheduled,false,now).map(m=>[m.id,m]));
+  for(const m of freshRows(reported,fresh,now)){
+    const previous=map.get(m.id);
+    // Un résultat final de l’agenda prime sur un statut provisoire du flux.
+    if(previous?.statut!=='FINISHED'||m.statut==='FINISHED')map.set(m.id,m);
+  }
+  return [...map.values()].sort((a,b)=>String(a.date).localeCompare(String(b.date))||String(a.comp).localeCompare(String(b.comp)));
+}
 async function load(){
-  const [live,agenda]=await Promise.all([(get('https://raw.githubusercontent.com/Velocemercato/velocemercato.fr/scores-live/scores.json').then(function(d){return d||get('/scores.json')})),get('/matchs.json')]);
+  const source=await scoreSource.catch(()=>null);
+  const [live,agenda]=await Promise.all([source?.loadScoreSnapshot()??get('/scores.json'),get('/matchs.json')]);
   loaded=true;
-  const map=new Map();
-  for(const m of (Array.isArray(agenda)?agenda:[]).filter(m=>m&&m.id!=null))map.set(String(m.id),{id:String(m.id),date:m.date,sport:m.sport||'foot',comp:m.competition,home:m.domicile,away:m.exterieur,statut:m.statut,score:Array.isArray(m.score)?m.score:[null,null]});
-  for(const m of (Array.isArray(live?.matchs)?live.matchs:[]).filter(m=>m&&m.id!=null))map.set(String(m.id),{id:String(m.id),date:m.date,sport:m.sport||'foot',comp:m.comp,home:m.dom,away:m.ext,statut:m.statut,score:Array.isArray(m.score)?m.score:[null,null]});
-  if(!map.size&&DATA.length&&(!Array.isArray(agenda)||!Array.isArray(live?.matchs))){DATA=freshRows(DATA,null);$('maj').textContent='Source momentanément indisponible : derniers scores connus affichés.';render();return}
-  const rows=freshRows([...map.values()].filter(m=>Number.isFinite(Date.parse(m.date))&&typeof m.home==='string'&&typeof m.away==='string'),live&&(live.verifie||live.maj)).sort((a,b)=>String(a.date).localeCompare(String(b.date))||String(a.comp).localeCompare(String(b.comp)));
+  const checked=Date.parse(source?.snapshotTime(live)??(live?.verifie||live?.maj));
+  const fresh=source?.freshSnapshot(live)??false;
+  const rows=mergeRows(live,agenda,fresh);
+  if(!rows.length&&DATA.length&&(!Array.isArray(agenda)||!Array.isArray(live?.matchs))){
+    DATA=freshRows(DATA,false);
+    $('maj').textContent='Source momentanément indisponible · derniers résultats finaux connus.';
+    renderComps();render();return;
+  }
   if(!first)alerts(rows);first=false;
-  prev=Object.fromEntries(rows.map(x=>[x.id,x]));DATA=rows;MAJ=live&&live.maj;
-  var VER=live&&(live.verifie||live.maj),FR={dateStyle:'short',timeStyle:'short',timeZone:'Europe/Paris'};
-  var vieux=!Number.isFinite(Date.parse(VER))||Date.now()-Date.parse(VER)>40*60000||Date.parse(VER)>Date.now()+60000;
-  $('maj').textContent=(rows.length?'Sources football-data.org / ESPN':'Aucun match des championnats suivis aujourd’hui (trêve ou jour sans match).')+
-    (Number.isFinite(Date.parse(VER))?' · vérifié le '+new Date(VER).toLocaleString('fr-FR',FR):'')+(vieux?' · ⚠ données anciennes, robot en retard':' · actualisation automatique chaque minute.');
+  prev=Object.fromEntries(rows.map(x=>[x.id,x]));DATA=rows;MAJ=live?.maj;
+  const fr={dateStyle:'short',timeStyle:'short',timeZone:'Europe/Paris'};
+  $('maj').textContent='Sources football-data.org / ESPN'+
+    (Number.isFinite(checked)?' · vérifié le '+new Date(checked).toLocaleString('fr-FR',fr):'')+
+    (fresh?' · page actualisée chaque minute, décalage possible.':' · direct indisponible. Les résultats finaux connus restent affichés.');
   renderComps();render();
 }
 function alerts(rows){
@@ -67,7 +86,7 @@ document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.da
 $('favoriteFilter').onclick=()=>{onlyFav=!onlyFav;render()};$('search').oninput=render;$('date').onchange=()=>{renderComps();render()};$('resetDate').onclick=()=>{$('date').value=today();renderComps();render()};
 $('matchList').onclick=e=>{const b=e.target.closest('button');if(!b)return;
   if(b.dataset.fav){const id=b.dataset.fav;favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[...favorites,id].slice(-200);saveFav();render();if(favorites.includes(id))toast('Match ajouté : alertes tant que VM Scores est ouvert.')}
-  if(b.dataset.detail){const x=DATA.find(x=>x.id===b.dataset.detail);if(!x)return;const st=state(x.statut),show=st!=='scheduled';
+  if(b.dataset.detail){const x=DATA.find(x=>x.id===b.dataset.detail);if(!x)return;const st=state(x.statut),show=st==='live'||st==='finished';
     $('detailTitle').textContent=x.comp;
     $('detailBody').innerHTML='<h2 style="text-align:center">'+esc(x.home)+'<br><small class="muted">contre</small><br>'+esc(x.away)+'</h2><div class="bigscore">'+(show?esc(x.score[0]??'–')+' : '+esc(x.score[1]??'–'):'– : –')+'</div><p style="text-align:center">'+esc(label(x))+' · '+esc(LONG.format(new Date(x.date)))+' · '+esc(HM.format(new Date(x.date)))+'</p><div class="sep"></div><p class="note">Dernier score fourni par football-data.org / ESPN. Un direct indisponible ne confirme pas le résultat final. Le détail des buteurs n’est pas encore disponible.</p>';
     $('detail').showModal()}};
