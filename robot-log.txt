@@ -1,38 +1,38 @@
-Passage du 2026-11-27 12:20 UTC (workflow_dispatch)
-Nettoyage : 0 breves vides retirees, 16 gardees.
+Passage du 2026-11-27 12:40 UTC (workflow_dispatch)
+Nettoyage : 0 breves vides retirees, 18 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 16 articles conservés et 14 flashs existants.
-RSS Foot National / NATIONAL : 2 actualités récentes.
-RSS Foot National / LIGUE_1 : 12 actualités récentes.
+Départ : 18 articles conservés et 16 flashs existants.
+RSS Foot National / NATIONAL : 3 actualités récentes.
 RSS Foot National / LIGUE_2 : 4 actualités récentes.
+RSS Foot National / NATIONAL : 2 actualités récentes.
 RSS RMC Sport / FRANCE : 29 actualités récentes.
 RSS RMC Sport / LIGUE_1 : 7 actualités récentes.
 RSS RMC Sport / INTERNATIONAL : 9 actualités récentes.
 RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 28 actualités récentes.
-RSS Foot Amateur / NATIONAL : 1 actualités récentes.
-RSS BBC Sport / FEMININ : 5 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 5 actualités récentes.
-RSS RMC Sport / BLEUS : 3 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 3 actualités récentes.
 RSS Foot Amateur / NATIONAL : 4 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS Foot National / NATIONAL : 3 actualités récentes.
-RSS franceinfo / FRANCE : 10 actualités récentes.
 RSS Foot01 / FRANCE : 41 actualités récentes.
-208 titres collectés, 25 nouveaux liens, quota 2.
+RSS Foot Amateur / NATIONAL : 1 actualités récentes.
+RSS RMC Sport / BLEUS : 3 actualités récentes.
+RSS franceinfo / FRANCE : 10 actualités récentes.
+RSS BBC Sport / FEMININ : 5 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS Foot National / LIGUE_1 : 12 actualités récentes.
+206 titres collectés, 24 nouveaux liens, quota 2.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-Brève prête : RMC Sport - Swansea ouvre une enquête interne après la diffusion d'une photo intime d'un joueur
-Brève prête : Foot Mercato - Manchester City veut se séparer de Gianluigi Donnarumma, selon The Athletic
-Bilan : brèves_rédigées=2
-Publié : 2 brèves (total 18). Flash : 16.
+Brève prête : BBC Sport - Ipswich Town Women officialise le transfert définitif de Princess Ademiluyi
+Brève prête : BBC Sport - Rangers : McInnes veut aborder le choc contre Falkirk sans pression pour le haut du classe
+Bilan : brèves_rédigées=2, non_pertinent=1, source_inaccessible_ou_trop_courte=1
+Publié : 2 brèves (total 20). Flash : 18.
 RQ Pronos : page d'actualités publiques actualisée.
 Accueil VM : actualités sourcées visibles en HTML, mises à jour.
-Pages : 18 brèves avec leur propre page, sitemap à jour.
+Pages : 20 brèves avec leur propre page, sitemap à jour.
 Agenda : 69 matchs enregistrés.
 Ligue 1 : 15 vidéos lues, 0 vidéos de buts gardées.
 Ligue 2 : 0 vidéos lues, 0 vidéos de buts gardées.
@@ -43,24 +43,25 @@ LaLiga : 15 vidéos lues, 2 vidéos de buts gardées.
 Serie A : 15 vidéos lues, 6 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 0 vidéos de buts gardées.
 Vidéos publiées : 3.
-Fil express : actus 200, foot 122, gaming 108
-L'Est Républicain haute-saone : 19 titres
-L'Est Républicain territoire-de-belfort : 12 titres
-L'Est Républicain www.estrepublicain.fr : 4 titres
+Flux muet Foot Mercato : HTTPError
+Fil express : actus 200, foot 99, gaming 107
+Flux muet L'Est Républicain (https://www.estrepublicain.fr/edition-belfort-hericourt-montbeliard/rss) : RemoteDisconnected
 macommune.info  : 25 titres
-L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
-VM Belfort : 19 titres
-Auvergne-Rhône-Alpes : 72 titres
-Bourgogne-Franche-Comté : 35 titres
+L'Est Républicain haute-saone : 19 titres
+L'Est Républicain territoire-de-belfort : 11 titres
+L'Est Républicain www.estrepublicain.fr : 4 titres
+VM Belfort : 13 titres
+Auvergne-Rhône-Alpes : 86 titres
+Bourgogne-Franche-Comté : 36 titres
 Bretagne : 82 titres
-Centre-Val de Loire : 19 titres
-Corse : 14 titres
+Centre-Val de Loire : 29 titres
+Corse : 12 titres
 Grand Est : 82 titres
-Hauts-de-France : 28 titres
-Île-de-France : 34 titres
-Normandie : 20 titres
+Hauts-de-France : 93 titres
+Île-de-France : 79 titres
+Normandie : 17 titres
 Nouvelle-Aquitaine : 34 titres
-Occitanie : 86 titres
+Occitanie : 88 titres
 Pays de la Loire : 78 titres
 Provence-Alpes-Côte d'Azur : 84 titres
 Outre-mer : 33 titres
@@ -68,4 +69,4 @@ Outre-mer : 33 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : ARA 6, BFC 1, BRE 5, COR 2, CVL 9, NOR 8, PAC 1, PDL 4 — 36 titres
+Foot amateur : ARA 6, BFC 1, BRE 5, COR 1, CVL 16, NOR 3, PAC 1, PDL 4 — 37 titres
