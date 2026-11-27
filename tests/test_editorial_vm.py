@@ -111,6 +111,13 @@ class EditorialTests(unittest.TestCase):
                                      mod.slot_key(start.replace(minute=49), account, network))
                     self.assertIsNone(mod.slot_key(start.replace(minute=50), account, network))
 
+    def test_univers_selects_fresh_news(self):
+        choice = mod.select_news(self.root, NOW, {}, 'meta_univers', 'facebook', [])
+        self.assertEqual(choice[0], 'foot')
+        self.assertEqual(choice[1]['id'], 'foot-test-1')
+        self.assertIsNone(mod.select_news(self.root, NOW, {}, 'meta_univers', 'facebook',
+                                         [mod.normal(self.row['titre'])]))
+
     def test_outside_slot_no_state_or_graph_access(self):
         midnight = NOW.replace(hour=1)
         self.assertEqual(mod.run(self.state, None, self.root, midnight)['targets'], {})
