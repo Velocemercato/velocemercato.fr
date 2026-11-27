@@ -1,5 +1,24 @@
 [
  {
+  "id": "actus-edition-20261127-1300",
+  "date": "2026-11-27",
+  "moment": "midi",
+  "universes": [
+   "actus"
+  ],
+  "date_publication": "2026-11-27T14:07:15+00:00",
+  "titre": "VM Actus — JT 13 h — 27/11/2026",
+  "plateformes": {
+   "youtube": {
+    "url": "https://www.youtube.com/watch?v=l2FB9zzyrX8",
+    "status": "published"
+   }
+  },
+  "edition_at": "2026-11-27T13:00:00+01:00",
+  "source_start": "2026-11-26T19:00:00+01:00",
+  "source_end": "2026-11-27T13:00:00+01:00"
+ },
+ {
   "id": "actus-edition-20261126-1300",
   "date": "2026-11-26",
   "moment": "midi",
@@ -1686,24 +1705,5 @@
   "edition_at": "2026-10-29T08:00:00+01:00",
   "source_start": "2026-10-28T20:00:00+01:00",
   "source_end": "2026-10-29T08:00:00+01:00"
- },
- {
-  "id": "foot-edition-20261028-2000",
-  "date": "2026-10-28",
-  "moment": "soir",
-  "universes": [
-   "foot"
-  ],
-  "date_publication": "2026-10-28T19:21:16+00:00",
-  "titre": "Véloce Mercato — JT 20 h — 28/10/2026",
-  "plateformes": {
-   "youtube": {
-    "url": "https://www.youtube.com/watch?v=aK0T-3cW9WY",
-    "status": "published"
-   }
-  },
-  "edition_at": "2026-10-28T20:00:00+01:00",
-  "source_start": "2026-10-28T12:00:00+01:00",
-  "source_end": "2026-10-28T20:00:00+01:00"
  }
 ]
