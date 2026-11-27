@@ -26,7 +26,8 @@ TARGETS = {
     'meta_univers': ('1349998758205153', 'VM Univers', 'vmunivers.fr'),
 }
 ROTATIONS = {'meta': ('foot', 'multisport'),
-             'meta_pronos': ('actus', 'gaming', 'multisport', 'actus', 'foot')}
+             'meta_pronos': ('actus', 'gaming', 'multisport', 'actus', 'foot'),
+             'meta_univers': ('actus', 'gaming', 'multisport', 'foot')}
 SCHEDULE = {
     ('meta', 'facebook'): (8, 12, 20),
     ('meta', 'instagram'): (12, 20),
@@ -194,8 +195,9 @@ def publish_target(state, graph, account, network, root=ROOT, now=None,
     seen = current_posts(graph, meta, network)
     if network == 'instagram' and not instagram_room(graph, meta):
         return {'status': 'quota_atteint', 'posts': [], 'identity': who}
-    choice = (select_project(root, now, done, network, seen) if account == 'meta_univers'
-              else select_news(root, now, done, account, network, seen))
+    choice = select_news(root, now, done, account, network, seen)
+    if not choice and account == 'meta_univers':
+        choice = select_project(root, now, done, network, seen)
     if not choice:
         return {'status': 'aucun_contenu_inedit', 'posts': [], 'identity': who}
     universe, row, source = choice
