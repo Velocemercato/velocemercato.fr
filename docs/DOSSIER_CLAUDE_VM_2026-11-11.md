@@ -1,6 +1,6 @@
 # Dossier Claude — Véloce Mercato, site et réseaux
 
-État établi le 2026-11-27T02:02+01:00.
+État établi le 2026-11-27T15:17+01:00.
 
 Ce dossier remplace les anciennes consignes de restauration intégrale et les anciennes cadences. Il décrit le travail autorisé par Romain dans cette conversation. Les accès et conversations de ChatGPT ne sont pas automatiquement accessibles dans Claude.
 
@@ -38,7 +38,7 @@ Sur vmunivers.fr, Romain a demandé : première case à gauche Facebook https://
 | Véloce Mercato · facebook | 190 |
 | Véloce Mercato · instagram | 127 |
 | VM Actus et Pronos · facebook | 193 |
-| VM Univers · facebook | 3 |
+| VM Univers · facebook | 5 |
 | VM Univers · instagram | 1 |
 
 Ces nombres comptent les identifiants uniques avec confirmation et URL publique. Un statut programmé, envoi ou workflow réussi ne suffit pas. Les reçus détaillés sont dans studio/editorial-status.json et dans le kit https://velocemercato.fr/studio/kit-automatique.html.
@@ -103,11 +103,11 @@ Pour Multisport, les flux français validés Sports.fr et Le Monde Sport sont ra
 
 ## Audit des pages, liens et classements
 
-- Pages HTML examinées : 2100.
-- URL interrogées : 2418.
+- Pages HTML examinées : 2125.
+- URL interrogées : 2409.
 - HTTP 404/410 confirmés : 14.
 - Cibles internes absentes du dépôt : 86.
-- Liens protégés/non vérifiables automatiquement : 840.
+- Liens protégés/non vérifiables automatiquement : 842.
 - Ancres à relire : 60. Certaines existent seulement après chargement JavaScript.
 - Classements à relire : 0.
 
@@ -156,6 +156,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Billet d’humeur. Rugby : on attend quoi, exactement ? - Rugby Scope — https://www.facebook.com/122106465861520366/posts/122112929907520366
 - meta/facebook — Blackburn : Johnson salue l'impact de Mowbray, en retrait pour raisons de santé — https://www.facebook.com/122106465861520366/posts/122112737355520366
 - meta/facebook — Bordeaux revendique près de 6.000 abonnés en Régional 1 avant Boulazac — https://www.facebook.com/122106465861520366/posts/122112964893520366
+- meta/facebook — Botman suspendu six mois du permis après une utilisation de téléphone au volant — https://www.facebook.com/122106465861520366/posts/122114313693520366
 - meta/facebook — Briatore vise une Alpine à deux ou trois dixièmes de McLaren en 2027 - f1news.fr — https://www.facebook.com/122106465861520366/posts/122112808431520366
 - meta/facebook — Brighton : Luka Vušković, la recrue à 55 M€ qui s'impose en Premier League — https://www.facebook.com/122106465861520366/posts/122113038219520366
 - meta/facebook — Bundesliga : Dortmund prend la tête, Leverkusen écrase Paderborn avec un doublé de Moreira — https://www.facebook.com/122106465861520366/posts/122113061271520366
@@ -259,6 +260,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Nice : Elye Wahi se dit épanoui et ouvert à un avenir au Gym — https://www.facebook.com/122106465861520366/posts/122112957729520366
 - meta/facebook — Nice-PSG : Désiré Doué se blesse gravement au genou après avoir marqué — https://www.facebook.com/122106465861520366/posts/122113034199520366
 - meta/facebook — Nice-PSG : Marquinhos et Dembélé de retour dans le groupe parisien — https://www.facebook.com/122106465861520366/posts/122112954357520366
+- meta/facebook — Nicolas Bruna - Lorenzo Gagliardo EN DIRECT 27/11/2026 | Tennis - Flashscore.fr — https://www.facebook.com/122106465861520366/posts/122114281779520366
 - meta/facebook — OGC Nice : Olivier Pantaloni a transformé les Aiglons, désormais 6es de Ligue 1 — https://www.facebook.com/122106465861520366/posts/122112752235520366
 - meta/facebook — OM : De Zerbi évoque des tensions entre Longoria et Benatia pendant son passage — https://www.facebook.com/122106465861520366/posts/122112976425520366
 - meta/facebook — Ohtani, joueur vedette de la MLB, revient sur sa saison décevante - NHKニュース — https://www.facebook.com/122106465861520366/posts/122114117247520366
@@ -268,7 +270,6 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Pablo Pagis impressionné par Kylian Mbappé avant sa première sélection en Bleus — https://www.facebook.com/122106465861520366/posts/122112764715520366
 - meta/facebook — Pablo Pagis, première sélection en Bleu : « Je n'ai encore rien fait » — https://www.facebook.com/122106465861520366/posts/122112873453520366
 - meta/facebook — Packers contre Bears : le match de Noël de NFL Gameday sur Netflix - Sortir à Paris — https://www.facebook.com/122106465861520366/posts/122112791325520366
-- meta/facebook — Pavlovic critique les méthodes de Conceiçao : Nutella interdit et comparaison à Hitler — https://www.facebook.com/122106465861520366/posts/122112734847520366
 - meta/facebook — Pedro Acosta a des difficultés avec la sensation du pneu avant mais fait confiance à son nouveau technicien à Portimão - Motorcycle Sports — https://www.facebook.com/122106465861520366/posts/122112772695520366
 - meta/facebook — Pedro Acosta – « Il avait déjà assez sur la moto pour atteindre le prochain virage. » - Motorcycle Sports — https://www.facebook.com/122106465861520366/posts/122113065759520366
 - meta/facebook — Penalty contre Chelsea : la décision de l'arbitre Michael Oliver expliquée — https://www.facebook.com/122106465861520366/posts/122113049685520366
@@ -302,7 +303,6 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Serie A : le Napoli s'impose 1-0 face au Torino grâce à McTominay — https://www.facebook.com/122106465861520366/posts/122113074531520366
 - meta/facebook — Stefan Bradl nommé coordinateur sportif de HRC pour 2027 - MotoGP — https://www.facebook.com/122106465861520366/posts/122112784851520366
 - meta/facebook — Stoke City - Birmingham : un choc au sommet de la Championship — https://www.facebook.com/122106465861520366/posts/122112747891520366
-- meta/facebook — Tardozzi confirme que Marc Márquez restera chez Ducati après 2026 - Motorcycle Sports — https://www.facebook.com/122106465861520366/posts/122112733503520366
 - meta/facebook — Tennis : Les joueurs ATP se partageront plus de 350 millions de dollars à partir de 2028 - Flashscore.fr — https://www.facebook.com/122106465861520366/posts/122112863961520366
 - meta/facebook — Tennis : Medvedev complète le tableau s’invite en demies du Masters ATP - Le Figaro — https://www.facebook.com/122106465861520366/posts/122112782433520366
 - meta/facebook — Tom Brady pourrait entrer au capital de Chelsea — https://www.facebook.com/122106465861520366/posts/122112792279520366
@@ -413,7 +413,6 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — PSG : Senny Mayulu impliqué sur sept buts en six matchs, selon Foot Mercato — https://www.instagram.com/p/DgM8w7PoFZZ/
 - meta/instagram — PSG : Willian Pacho explique les raisons de sa prolongation — https://www.instagram.com/p/Df-MoXvmMOV/
 - meta/instagram — Pablo Pagis impressionné par Kylian Mbappé avant sa première sélection en Bleus — https://www.instagram.com/p/Df-dzeel1dR/
-- meta/instagram — Pavlovic critique les méthodes de Conceiçao : Nutella interdit et comparaison à Hitler — https://www.instagram.com/p/Df-FxTNl0G9/
 - meta/instagram — Pedro Acosta a des difficultés avec la sensation du pneu avant mais fait confiance à son nouveau technicien à Portimão - Motorcycle Sports — https://www.instagram.com/p/Df-m8c0mF9G/
 - meta/instagram — Pedro Acosta – « Il avait déjà assez sur la moto pour atteindre le prochain virage. » - Motorcycle Sports — https://www.instagram.com/p/DgBO6QInw4d/
 - meta/instagram — Penalty contre Chelsea : la décision de l'arbitre Michael Oliver expliquée — https://www.instagram.com/p/DgA7udIDM3J/
@@ -440,6 +439,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Tennis : Medvedev complète le tableau s’invite en demies du Masters ATP - Le Figaro — https://www.instagram.com/p/Df-qXlakcIH/
 - meta/instagram — Tom Brady pourrait entrer au capital de Chelsea — https://www.instagram.com/p/Df-5P8FiV_x/
 - meta/instagram — Tom Brady, légende du football américain, souhaiterait devenir actionnaire de Chelsea, en Premier League - Ouest-France — https://www.instagram.com/p/Df-SX7Gl7Ic/
+- meta/instagram — Top 14 : Lyon a-t-il un vrai coup à jouer cette saison ? - Rugby Scope — https://www.instagram.com/p/DgPhikKDmW3/
 - meta/instagram — Troyes - Le Havre : duel de bas de classement ce vendredi à l'Aube — https://www.instagram.com/p/Df-hOL4F6UA/
 - meta/instagram — Un ancien entraineur du Top 14 estime que l’arbitre Piardi ne voulait pas faire perdre la France - Blog RCT — https://www.instagram.com/p/Df-4JiwEia7/
 - meta/instagram — Un highside à plus de 200 km/h au MotoGP du Portugal : les images du vol plané vertigineux de Diogo Moreira - Actu.fr — https://www.instagram.com/p/DgAl-QVIWzT/
@@ -582,7 +582,6 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — PSG : Willian Pacho explique les raisons de sa prolongation — https://www.facebook.com/1757379583055094/posts/1781981283928257
 - meta_pronos/facebook — Pablo Pagis impressionné par Kylian Mbappé avant sa première sélection en Bleus — https://www.facebook.com/1757379583055094/posts/1782161183910267
 - meta_pronos/facebook — Pas-de-Calais : la Canche atteint son maximum, vigilance orange aux crues — https://www.facebook.com/1757379583055094/posts/1782623533864032
-- meta_pronos/facebook — Pavlovic critique les méthodes de Conceiçao : Nutella interdit et comparaison à Hitler — https://www.facebook.com/1757379583055094/posts/1781927750600277
 - meta_pronos/facebook — Pedro Acosta a des difficultés avec la sensation du pneu avant mais fait confiance à son nouveau technicien à Portimão - Motorcycle Sports — https://www.facebook.com/1757379583055094/posts/1782181363908249
 - meta_pronos/facebook — Pedro Acosta – « Il avait déjà assez sur la moto pour atteindre le prochain virage. » - Motorcycle Sports — https://www.facebook.com/1757379583055094/posts/1783356383790747
 - meta_pronos/facebook — Premier League : La légende du football américain Tom Brady devient actionnaire de Chelsea - DHnet — https://www.facebook.com/1757379583055094/posts/1782807637178955
@@ -617,6 +616,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Tir de mortier contre la députée Farida Amrani : son auteur condamné à 18 mois de prison — https://www.facebook.com/1757379583055094/posts/1782226103903775
 - meta_pronos/facebook — Tom Brady pourrait entrer au capital de Chelsea — https://www.facebook.com/1757379583055094/posts/1782304067229312
 - meta_pronos/facebook — Tom Brady, légende du football américain, souhaiterait devenir actionnaire de Chelsea, en Premier League - Ouest-France — https://www.facebook.com/1757379583055094/posts/1782010383925347
+- meta_pronos/facebook — Top 14 : Lyon a-t-il un vrai coup à jouer cette saison ? - Rugby Scope — https://www.facebook.com/1757379583055094/posts/1789977089795343
 - meta_pronos/facebook — Treize arrestations à Shanghai pour une contrefaçon de figurine Tifa de Final Fantasy VII — https://www.facebook.com/1757379583055094/posts/1781946527265066
 - meta_pronos/facebook — Troyes - Le Havre : duel de bas de classement ce vendredi à l'Aube — https://www.facebook.com/1757379583055094/posts/1782124120580640
 - meta_pronos/facebook — Tunisie : Sihem Bensedrine condamnée à cinq ans de prison, selon RFI — https://www.facebook.com/1757379583055094/posts/1782424013883984
@@ -643,6 +643,8 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Égypte : le média indépendant Mada Masr visé par une fermeture ordonnée par la justice — https://www.facebook.com/1757379583055094/posts/1782815987178120
 - meta_pronos/facebook — États-Unis : les démocrates envisagent le budget comme levier sur la guerre en Iran — https://www.facebook.com/1757379583055094/posts/1782296633896722
 - meta_univers/facebook —  — https://www.facebook.com/122098313661535169/posts/122112986463535169
+- meta_univers/facebook — Celtic : Camilo Duran décisif face à Torreense, mais des doutes persistent — https://www.facebook.com/122098313661535169/posts/122114687643535169
+- meta_univers/facebook — Un village du Maine-et-Loire reçoit un legs de 400 000 euros pour l'entretien de son église — https://www.facebook.com/122098313661535169/posts/122114750451535169
 - meta_univers/facebook — VM Studio · Votre activité en ligne — https://www.facebook.com/122098313661535169/posts/122112997491535169
 - meta_univers/facebook — VM · Bilan du 21 novembre — https://www.facebook.com/122098313661535169/posts/122112980025535169
 - meta_univers/instagram — VM · Bilan du 21 novembre — https://www.instagram.com/p/DgDIei3CcY3/
