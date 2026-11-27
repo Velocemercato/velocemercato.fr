@@ -1,32 +1,32 @@
-Passage du 2026-11-27 01:00 UTC (workflow_dispatch)
+Passage du 2026-11-27 01:20 UTC (workflow_dispatch)
 Nettoyage : 0 breves vides retirees, 62 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
 Départ : 62 articles conservés et 45 flashs existants.
+RSS Foot National / NATIONAL : 6 actualités récentes.
+RSS Foot National / NATIONAL : 4 actualités récentes.
 RSS Foot National / LIGUE_1 : 13 actualités récentes.
 RSS Foot National / LIGUE_2 : 4 actualités récentes.
-RSS Foot National / NATIONAL : 4 actualités récentes.
-RSS Foot National / NATIONAL : 6 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 23 actualités récentes.
 RSS RMC Sport / FRANCE : 30 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 23 actualités récentes.
 RSS RMC Sport / LIGUE_1 : 8 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 5 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 24 actualités récentes.
-RSS Foot01 / FRANCE : 41 actualités récentes.
-RSS RMC Sport / BLEUS : 2 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 5 actualités récentes.
+RSS Foot Mercato / INTERNATIONAL : 45 actualités récentes.
 RSS BBC Sport / FEMININ : 4 actualités récentes.
-RSS The Guardian / ETRANGER : 1 actualités récentes.
-RSS Foot Amateur / NATIONAL : 2 actualités récentes.
-RSS Foot Amateur / NATIONAL : 4 actualités récentes.
+RSS RMC Sport / BLEUS : 2 actualités récentes.
+RSS Foot01 / FRANCE : 41 actualités récentes.
 RSS franceinfo / FRANCE : 11 actualités récentes.
+RSS Foot Amateur / NATIONAL : 4 actualités récentes.
+RSS The Guardian / ETRANGER : 1 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
+RSS Foot Amateur / NATIONAL : 2 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS inaccessible Foot Mercato : HTTPError - HTTP Error 429: Too Many Requests
-182 titres collectés, 16 nouveaux liens, quota 2.
+227 titres collectés, 18 nouveaux liens, quota 2.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-Bilan : source_inaccessible_ou_trop_courte=9, sujet_deja_traite=7
+Bilan : source_inaccessible_ou_trop_courte=10, sujet_deja_traite=8
 Aucune brève de qualité suffisante ; fichiers JSON inchangés.
 RQ Pronos : page d'actualités publiques actualisée.
 Accueil VM : actualités inchangées.
@@ -49,21 +49,21 @@ L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
 L'Est Républicain www.estrepublicain.fr : 3 titres
 VM Belfort : 47 titres
 Auvergne-Rhône-Alpes : 65 titres
-Bourgogne-Franche-Comté : 89 titres
+Bourgogne-Franche-Comté : 33 titres
 Bretagne : 45 titres
-Centre-Val de Loire : 21 titres
-Corse : 10 titres
-Grand Est : 81 titres
-Hauts-de-France : 27 titres
-Île-de-France : 34 titres
-Normandie : 10 titres
+Centre-Val de Loire : 20 titres
+Corse : 11 titres
+Grand Est : 80 titres
+Hauts-de-France : 28 titres
+Île-de-France : 78 titres
+Normandie : 18 titres
 Nouvelle-Aquitaine : 33 titres
 Occitanie : 55 titres
-Pays de la Loire : 70 titres
+Pays de la Loire : 93 titres
 Provence-Alpes-Côte d'Azur : 82 titres
-Outre-mer : 77 titres
+Outre-mer : 33 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 17 titres
 Foot National : 15 titres
-Foot amateur : ARA 7, BFC 1, BRE 3, COR 6, CVL 20, FR 3, GES 1, NAQ 1, NOR 5, OCC 1, PAC 3, PDL 5 — 56 titres
+Foot amateur : ARA 7, BFC 1, BRE 3, COR 7, CVL 19, FR 3, GES 1, NAQ 1, NOR 10, OCC 1, PAC 3, PDL 5 — 61 titres
