@@ -1,6 +1,6 @@
 # Dossier Claude — Véloce Mercato, site et réseaux
 
-État établi le 2026-11-26T17:49+01:00.
+État établi le 2026-11-27T02:02+01:00.
 
 Ce dossier remplace les anciennes consignes de restauration intégrale et les anciennes cadences. Il décrit le travail autorisé par Romain dans cette conversation. Les accès et conversations de ChatGPT ne sont pas automatiquement accessibles dans Claude.
 
@@ -103,11 +103,11 @@ Pour Multisport, les flux français validés Sports.fr et Le Monde Sport sont ra
 
 ## Audit des pages, liens et classements
 
-- Pages HTML examinées : 2068.
-- URL interrogées : 2360.
+- Pages HTML examinées : 2100.
+- URL interrogées : 2418.
 - HTTP 404/410 confirmés : 14.
 - Cibles internes absentes du dépôt : 86.
-- Liens protégés/non vérifiables automatiquement : 834.
+- Liens protégés/non vérifiables automatiquement : 840.
 - Ancres à relire : 60. Certaines existent seulement après chargement JavaScript.
 - Classements à relire : 0.
 
@@ -225,6 +225,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — La nuit des Français en NBA : Moussa Diabaté égale son record, Nolan Traoré sort sur blessure - L'Équipe — https://www.facebook.com/122106465861520366/posts/122112982869520366
 - meta/facebook — Lamine Camara : Liverpool prépare une offre de 70 M€ à Monaco — https://www.facebook.com/122106465861520366/posts/122113046115520366
 - meta/facebook — Lamine Diack, payé sans jouer depuis trois ans au FC Nantes — https://www.facebook.com/122106465861520366/posts/122112872055520366
+- meta/facebook — Lamouchi raconte son éviction express de la Tunisie après le Mondial 2026 — https://www.facebook.com/122106465861520366/posts/122114191875520366
 - meta/facebook — Las Vegas — EL3 : George Russell signe le meilleur temps - f1news.fr — https://www.facebook.com/122106465861520366/posts/122112861567520366
 - meta/facebook — Las Vegas — Qualifications : Max Verstappen signe le meilleur temps - F1 news — https://www.facebook.com/122106465861520366/posts/122112889503520366
 - meta/facebook — Le Mans : Sébastien Sirot annonce son départ du club après sept saisons — https://www.facebook.com/122106465861520366/posts/122113020237520366
@@ -260,7 +261,6 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Nice-PSG : Marquinhos et Dembélé de retour dans le groupe parisien — https://www.facebook.com/122106465861520366/posts/122112954357520366
 - meta/facebook — OGC Nice : Olivier Pantaloni a transformé les Aiglons, désormais 6es de Ligue 1 — https://www.facebook.com/122106465861520366/posts/122112752235520366
 - meta/facebook — OM : De Zerbi évoque des tensions entre Longoria et Benatia pendant son passage — https://www.facebook.com/122106465861520366/posts/122112976425520366
-- meta/facebook — OM : Genesio écarte toujours Valero et Leccese du groupe professionnel — https://www.facebook.com/122106465861520366/posts/122112732201520366
 - meta/facebook — Ohtani, joueur vedette de la MLB, revient sur sa saison décevante - NHKニュース — https://www.facebook.com/122106465861520366/posts/122114117247520366
 - meta/facebook — PSG : Ibrahim Rabbaj, le jeune ailier suivi de près au Mondial U17 — https://www.facebook.com/122106465861520366/posts/122112879699520366
 - meta/facebook — PSG : Rothen et Larqué émettent des réserves sur la vague de prolongations — https://www.facebook.com/122106465861520366/posts/122112814443520366
@@ -376,6 +376,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Jesús Owono réapparaît en public après le drame ayant coûté la vie à Jesús de Miguel — https://www.instagram.com/p/Df-krIdFyZF/
 - meta/instagram — Joan Mir quitte Honda pour Ducati et met en garde contre le succès immédiat en MotoGP - Motorcycle Sports — https://www.instagram.com/p/Df-i_iyF4Xl/
 - meta/instagram — Johnstone Burgh évite un double match en une journée après un report — https://www.instagram.com/p/Df_hTCAiRhk/
+- meta/instagram — Jordie Barrett capitaine des All Blacks contre l’Angleterre - Quinze Ovalie — https://www.instagram.com/p/DgNztl2jdxR/
 - meta/instagram — Jules Koundé de retour dans le groupe du Barça face à Villarreal — https://www.instagram.com/p/DgAc2oukpWr/
 - meta/instagram — L'OL chambre Jérémy Janot, qui répond du tac au tac — https://www.instagram.com/p/Df_UuQnkpKO/
 - meta/instagram — LOSC : Tanguy Nianzou sort en pleurs lors du match face à Lyon — https://www.instagram.com/p/DgBTwgpkocj/
@@ -399,7 +400,6 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Mercato : l'Atlético Madrid relancerait son intérêt pour Mason Greenwood — https://www.instagram.com/p/DgALoTNF4KT/
 - meta/instagram — Monaco-Auxerre : Faivre ouvre le score pour l'AJA sur une frappe puissante — https://www.instagram.com/p/DgBGBEWjXfD/
 - meta/instagram — NBA : L'action inédite de Wembanyama, qui fait le tour du monde : Sports - Orange - Sports - Orange — https://www.instagram.com/p/Df-cpDxoxlu/
-- meta/instagram — NBA: Retour fracassant pour Jonathan Kuminga avec les Minnesota Timberwolves - Actualite.cd — https://www.instagram.com/p/Df-Em0Ol5hT/
 - meta/instagram — National 1 : Angoulême renverse Granville dans le temps additionnel — https://www.instagram.com/p/Df_RSUjCbZ6/
 - meta/instagram — National 1 : Montlouis arrache la victoire contre Borgo dans le temps additionnel — https://www.instagram.com/p/Df-oG9vFxwv/
 - meta/instagram — National 2 : Cestas change d'entraîneur, Philippe Ollier remplace Vincent Bourhis — https://www.instagram.com/p/DgAZYCsFy54/
@@ -535,6 +535,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Jamal Musiala : Rummenigge doute d'un retour à son meilleur niveau au Bayern — https://www.facebook.com/1757379583055094/posts/1783119963814389
 - meta_pronos/facebook — Jesús Owono réapparaît en public après le drame ayant coûté la vie à Jesús de Miguel — https://www.facebook.com/1757379583055094/posts/1782153103911075
 - meta_pronos/facebook — Joan Mir quitte Honda pour Ducati et met en garde contre le succès immédiat en MotoGP - Motorcycle Sports — https://www.facebook.com/1757379583055094/posts/1782174683908917
+- meta_pronos/facebook — Jordie Barrett capitaine des All Blacks contre l’Angleterre - Quinze Ovalie — https://www.facebook.com/1757379583055094/posts/1789238953202490
 - meta_pronos/facebook — Jules Koundé de retour dans le groupe du Barça face à Villarreal — https://www.facebook.com/1757379583055094/posts/1783023150490737
 - meta_pronos/facebook — L'UE et l'Indonésie signent un accord commercial visant à ouvrir leurs marchés — https://www.facebook.com/1757379583055094/posts/1783294967130222
 - meta_pronos/facebook — La CIJ reconnaît un génocide commis contre les Rohingyas en Birmanie — https://www.facebook.com/1757379583055094/posts/1782668650526187
@@ -610,7 +611,6 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Soupçonné de fuites liées au RN, le préfet Hugues Moutouh demande à être relevé de ses fonctions — https://www.facebook.com/1757379583055094/posts/1783380007121718
 - meta_pronos/facebook — Star Academy 2026 : deux élèves reprennent Las Ketchup devant Georges-Alain — https://www.facebook.com/1757379583055094/posts/1782384040554648
 - meta_pronos/facebook — Stefan Bradl nommé coordinateur sportif de HRC pour 2027 - MotoGP — https://www.facebook.com/1757379583055094/posts/1782220370571015
-- meta_pronos/facebook — Tardozzi confirme que Marc Márquez restera chez Ducati après 2026 - Motorcycle Sports — https://www.facebook.com/1757379583055094/posts/1781918810601171
 - meta_pronos/facebook — TeddyBear évoque les médicaments qui aident à vivre dans son titre « Les Monstres » — https://www.facebook.com/1757379583055094/posts/1783212893805096
 - meta_pronos/facebook — Tennis : Medvedev complète le tableau s’invite en demies du Masters ATP - Le Figaro — https://www.facebook.com/1757379583055094/posts/1782213687238350
 - meta_pronos/facebook — The Chronicles of Riddick : l'annulation cachée aux développeurs — https://www.facebook.com/1757379583055094/posts/1782934730499579
