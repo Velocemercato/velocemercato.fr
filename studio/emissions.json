@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261127-1300",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "midi",
+  "label": "JT 13 h",
+  "titre": "La Pastille Actus - Édition du vendredi 27 novembre 2026, 13 heures",
+  "accroche": "Bonjour à tous, voici l'essentiel de l'actu de midi.",
+  "duree": 156,
+  "date": "2026-11-27T15:05+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261127-1300.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-27T13:00:00+01:00",
+  "source_start": "2026-11-26T19:00:00+01:00",
+  "source_end": "2026-11-27T13:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-f513c6390b304dd5f13b39",
+    "titre": "Une jatte-téton de Sèvres commandée pour Marie-Antoinette vendue près de 3 millions d'euros à Paris",
+    "publishedAt": "2026-11-27T11:15:28Z",
+    "createdAt": "2026-11-27T11:31:19Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/culture/patrimoine/une-jatte-teton-commandee-pour-marie-antoinette-vendue-pres-de-3-millions-d-euros-aux-encheres-a-paris_8302878.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-ef183571abe849fc3d99a9",
+    "titre": "Un village du Maine-et-Loire reçoit un legs de 400 000 euros pour l'entretien de son église",
+    "publishedAt": "2026-11-27T10:39:02Z",
+    "createdAt": "2026-11-27T10:46:32Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/culture/patrimoine/un-village-du-maine-et-loire-recoit-un-legs-de-400-000-euros-de-la-part-d-une-femme-decedee-depuis-quatre-ans_8302866.html#xtor=RSS-3-%5Bculture%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-cbbdbae380e1f37b489026",
+    "titre": "Enriqué, première voix du générique de Goldorak, sort l'album « Mes années Goldorak »",
+    "publishedAt": "2026-11-27T09:50:41Z",
+    "createdAt": "2026-11-27T10:01:02Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/replay-radio/le-monde-d-elodie/enrique-le-premier-chanteur-de-goldorak-voit-enfin-sa-version-sortir-c-est-une-grande-fierte_8280206.html#xtor=RSS-3-%5Bculture%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-0228234130e78bd7dc3c7a",
+    "titre": "Blocages universitaires : des étudiants étrangers en échange vivent des cours en distanciel",
+    "publishedAt": "2026-11-27T09:26:12Z",
+    "createdAt": "2026-11-27T09:31:13Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/societe/education/blocage-des-lycees/reportage-on-a-etudie-une-semaine-deux-semaines-en-presentiel-a-paris-des-etudiants-etrangers-temoignent-de-leur-isolement-depuis-les-blocages-et-fermetures-d-universite_8302596.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-e6240b177bdc2ed744e359",
+    "titre": "Présidentielle 2027 : Darmanin demande à Philippe de présenter \"un projet, une vision\"",
+    "publishedAt": "2026-11-27T08:58:14Z",
+    "createdAt": "2026-11-27T09:01:18Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/elections/direct-presidentielle-2027-marine-le-pen-va-presenter-son-programme-pour-les-outre-mer-en-pleine-tourmente-sur-les-ecrits-antisemites-attribues-a-jordan-bardella_8302521.html#xtor=RSS-3-%5Bpolitique%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-605aa259020a3cb269a213",
+    "titre": "Agriculture intensive et inondations : ce que disent les sols, selon un microbiologiste",
+    "publishedAt": "2026-11-27T07:40:02Z",
+    "createdAt": "2026-11-27T08:01:08Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/environnement/onvousrepond-climat/l-agriculture-intensive-aggrave-t-elle-les-inondations-onvousrepond-climat_8077490.html#xtor=RSS-3-%5Beconomie%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-4e10989a4638d1b48a378b",
+    "titre": "Armani ouvrira des hôtels de luxe en Arabie saoudite et en Égypte",
+    "publishedAt": "2026-11-27T07:25:36Z",
+    "createdAt": "2026-11-27T07:31:16Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/27/armani-va-ouvrir-des-hotels-de-luxe-en-arabie-saoudite-et-en-egypte"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-b5373c99308d006db16c6e",
+    "titre": "Sommet de l'UE sur le budget septennal : aucun accord à l'issue de la réunion",
+    "publishedAt": "2026-11-27T07:28:58Z",
+    "createdAt": "2026-11-27T07:31:13Z",
+    "references": [
+     {
+      "nom": "Euronews",
+      "url": "https://fr.euronews.com/2026/11/27/sommet-extraordinaire-de-lue-sur-le-budget-septennal-se-termine-sans-accord"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "actus-edition-20261126-1300",
   "univers": "actus",
   "format": "edition",
@@ -12831,102 +12951,6 @@
      {
       "nom": "Gamekult",
       "url": "https://www.gamekult.com/actualite/j-ai-echoue-dan-houser-cofondateur-de-rockstar-considere-max-payne-3-comme-son-echec-personnel-3050872584.html"
-     }
-    ]
-   }
-  ],
-  "diffusion": "youtube"
- },
- {
-  "id": "foot-edition-20261025-2300",
-  "univers": "foot",
-  "format": "edition",
-  "moment": "soir",
-  "label": "JT 23 h",
-  "titre": "La Pastille Foot - Édition du dimanche 25 octobre, 23 heures",
-  "accroche": "Ce soir, l'OM qui tremble, Camavinga qui revient et le Bayern qui reprend la tête.",
-  "duree": 136,
-  "date": "2026-10-25T23:04+01:00",
-  "publie": false,
-  "voix": [
-   "piper"
-  ],
-  "speech_rate": 1.12,
-  "fichier": "foot-edition-20261025-2300.mp4",
-  "editorial_revision": "court-v1",
-  "edition_at": "2026-10-25T23:00:00+01:00",
-  "source_start": "2026-10-25T20:00:00+01:00",
-  "source_end": "2026-10-25T23:00:00+01:00",
-  "sources": [
-   {
-    "id": "rss-v2-2033ccb2aa243c3c2089b9",
-    "titre": "OM : Amine Harit tire la leçon après la victoire 4-3 contre Le Havre",
-    "publishedAt": "2026-10-25T18:25:40Z",
-    "createdAt": "2026-10-25T20:54:18Z",
-    "references": [
-     {
-      "nom": "Foot Mercato",
-      "url": "https://www.footmercato.net/a8281105105810926635-om-la-piqure-de-rappel-damine-harit-apres-la-fin-de-match-compliquee-contre-le-havre"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-39ed002b81c711b738e30c",
-    "titre": "OL : Adil Hamdani convoqué face au PSG malgré les absences",
-    "publishedAt": "2026-10-25T20:39:41Z",
-    "createdAt": "2026-10-25T20:54:07Z",
-    "references": [
-     {
-      "nom": "Foot Mercato",
-      "url": "https://www.footmercato.net/a6689466021804464183-ol-le-groupe-avec-adil-hamdani-face-au-psg"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-39ac6ea4784fd98c39cf7b",
-    "titre": "Caroline Weir veut la Coupe du monde plus que les nominations au Ballon d'Or",
-    "publishedAt": "2026-10-25T19:34:15Z",
-    "createdAt": "2026-10-25T19:52:53Z",
-    "references": [
-     {
-      "nom": "BBC Sport",
-      "url": "https://www.bbc.co.uk/sport/football/articles/cjvgx1xw7z9xo?at_medium=RSS&at_campaign=rss"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-33225e08d0adec66cc0ffa",
-    "titre": "Real Madrid, Bleus : Rio Mavuba salue le retour de forme d'Eduardo Camavinga",
-    "publishedAt": "2026-10-25T19:00:59Z",
-    "createdAt": "2026-10-25T19:26:55Z",
-    "references": [
-     {
-      "nom": "Foot Mercato",
-      "url": "https://www.footmercato.net/a4866440174782499875-real-madrid-equipe-de-france-rio-mavuba-senflamme-pour-eduardo-camavinga"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-d3448981112d7961136c2d",
-    "titre": "Hibs : Hanley en attaquant, un choix qui interroge après la défaite contre le Celtic",
-    "publishedAt": "2026-10-25T18:14:53Z",
-    "createdAt": "2026-10-25T19:00:31Z",
-    "references": [
-     {
-      "nom": "BBC Sport",
-      "url": "https://www.bbc.co.uk/sport/football/articles/c6d93eeq27gqo?at_medium=RSS&at_campaign=rss"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-966da87161352da174925d",
-    "titre": "Bundesliga : le Bayern s'impose à Fribourg et reprend la tête",
-    "publishedAt": "2026-10-25T18:40:00Z",
-    "createdAt": "2026-10-25T19:00:18Z",
-    "references": [
-     {
-      "nom": "Foot01",
-      "url": "https://www.foot01.com/allemagne/bundesliga-les-francais-font-un-cadeau-a-kompany-le-bayern-en-tete"
      }
     ]
    }
