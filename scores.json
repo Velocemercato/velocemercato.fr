@@ -683,10 +683,10 @@
    "sport": "basket",
    "dom": "Pistons",
    "ext": "Bucks",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    108,
-    92
+    113,
+    98
    ]
   },
   {
@@ -696,10 +696,10 @@
    "sport": "basket",
    "dom": "Pacers",
    "ext": "76ers",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    81,
-    104
+    87,
+    111
    ]
   },
   {
@@ -709,10 +709,10 @@
    "sport": "basket",
    "dom": "Raptors",
    "ext": "Nets",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    113,
-    91
+    124,
+    100
    ]
   },
   {
@@ -722,7 +722,7 @@
    "sport": "hockey",
    "dom": "Islanders",
    "ext": "Jets",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     1,
     3
@@ -735,10 +735,10 @@
    "sport": "basket",
    "dom": "Celtics",
    "ext": "Hawks",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    71,
-    74
+    86,
+    87
    ]
   },
   {
@@ -748,10 +748,10 @@
    "sport": "hockey",
    "dom": "Sabres",
    "ext": "Penguins",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     3,
-    4
+    6
    ]
   },
   {
@@ -761,10 +761,10 @@
    "sport": "hockey",
    "dom": "Oilers",
    "ext": "Kraken",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     2,
-    1
+    4
    ]
   },
   {
@@ -774,10 +774,10 @@
    "sport": "basket",
    "dom": "Timberwolves",
    "ext": "Grizzlies",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    50,
-    61
+    109,
+    114
    ]
   },
   {
@@ -787,10 +787,10 @@
    "sport": "basket",
    "dom": "Suns",
    "ext": "Mavericks",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    44,
-    35
+    109,
+    113
    ]
   },
   {
@@ -800,10 +800,10 @@
    "sport": "basket",
    "dom": "Spurs",
    "ext": "Lakers",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    6,
-    10
+    99,
+    96
    ]
   },
   {
@@ -813,10 +813,10 @@
    "sport": "basket",
    "dom": "Jazz",
    "ext": "Nuggets",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    7,
-    11
+    107,
+    120
    ]
   },
   {
@@ -826,10 +826,10 @@
    "sport": "basket",
    "dom": "Clippers",
    "ext": "Pelicans",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    17,
-    6
+    104,
+    105
    ]
   },
   {
@@ -839,10 +839,10 @@
    "sport": "basket",
    "dom": "Trail Blazers",
    "ext": "Warriors",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    12,
-    3
+    116,
+    94
    ]
   },
   {
@@ -924,12 +924,12 @@
    ]
   },
   {
-   "id": 560652,
+   "id": 560655,
    "date": "2026-11-28T15:00:00Z",
    "comp": "Premier League",
    "sport": "foot",
-   "dom": "Leeds United",
-   "ext": "Coventry City",
+   "dom": "Man United",
+   "ext": "Brentford",
    "statut": "TIMED",
    "score": [
     null,
@@ -937,12 +937,12 @@
    ]
   },
   {
-   "id": 560655,
+   "id": 560652,
    "date": "2026-11-28T15:00:00Z",
    "comp": "Premier League",
    "sport": "foot",
-   "dom": "Man United",
-   "ext": "Brentford",
+   "dom": "Leeds United",
+   "ext": "Coventry City",
    "statut": "TIMED",
    "score": [
     null,
@@ -1028,19 +1028,6 @@
    ]
   },
   {
-   "id": 559620,
-   "date": "2026-11-28T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "Nice",
-   "ext": "Troyes",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
    "id": 559613,
    "date": "2026-11-28T19:45:00Z",
    "comp": "Ligue 1",
@@ -1054,12 +1041,12 @@
    ]
   },
   {
-   "id": 559617,
+   "id": 559620,
    "date": "2026-11-28T19:45:00Z",
    "comp": "Ligue 1",
    "sport": "foot",
-   "dom": "Le Mans",
-   "ext": "Lille",
+   "dom": "Nice",
+   "ext": "Troyes",
    "statut": "TIMED",
    "score": [
     null,
@@ -1073,6 +1060,19 @@
    "sport": "foot",
    "dom": "PSG",
    "ext": "Lorient",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 559617,
+   "date": "2026-11-28T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Le Mans",
+   "ext": "Lille",
    "statut": "TIMED",
    "score": [
     null,
@@ -1652,6 +1652,6 @@
    ]
   }
  ],
- "maj": "2026-11-28T02:49:59Z",
- "verifie": "2026-11-28T02:49:59Z"
+ "maj": "2026-11-28T10:26:50Z",
+ "verifie": "2026-11-28T10:26:50Z"
 }
