@@ -436,10 +436,10 @@
    "sport": "hockey",
    "dom": "Bruins",
    "ext": "Maple Leafs",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     1,
-    2
+    3
    ]
   },
   {
@@ -449,9 +449,9 @@
    "sport": "hockey",
    "dom": "Devils",
    "ext": "Flames",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    2,
+    5,
     3
    ]
   },
@@ -462,10 +462,10 @@
    "sport": "hockey",
    "dom": "Predators",
    "ext": "Mammoth",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    2,
-    3
+    5,
+    6
    ]
   },
   {
@@ -475,10 +475,10 @@
    "sport": "hockey",
    "dom": "Blues",
    "ext": "Stars",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    2,
-    0
+    5,
+    3
    ]
   },
   {
@@ -488,10 +488,10 @@
    "sport": "foot",
    "dom": "Bremen",
    "ext": "M'gladbach",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    0,
-    1
+    3,
+    3
    ]
   },
   {
@@ -501,9 +501,9 @@
    "sport": "foot",
    "dom": "Brest",
    "ext": "Paris FC",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    0,
+    1,
     0
    ]
   },
@@ -514,7 +514,7 @@
    "sport": "foot",
    "dom": "Venezia FC",
    "ext": "Bologna",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     0,
     0
@@ -527,10 +527,10 @@
    "sport": "foot",
    "dom": "Levante",
    "ext": "Santander",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    1,
+    3
    ]
   },
   {
@@ -540,10 +540,10 @@
    "sport": "foot",
    "dom": "Nottingham",
    "ext": "Chelsea",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    3,
+    2
    ]
   },
   {
@@ -553,10 +553,10 @@
    "sport": "nfl",
    "dom": "Steelers",
    "ext": "Broncos",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
-    0,
-    0
+    27,
+    5
    ]
   },
   {
@@ -566,10 +566,10 @@
    "sport": "hockey",
    "dom": "Lightning",
    "ext": "Senators",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    2,
+    6
    ]
   },
   {
@@ -579,10 +579,10 @@
    "sport": "hockey",
    "dom": "Flyers",
    "ext": "Canucks",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    5,
+    2
    ]
   },
   {
@@ -592,10 +592,10 @@
    "sport": "hockey",
    "dom": "Capitals",
    "ext": "Panthers",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    2,
+    3
    ]
   },
   {
@@ -605,10 +605,10 @@
    "sport": "hockey",
    "dom": "Blue Jackets",
    "ext": "Red Wings",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    0,
+    2
    ]
   },
   {
@@ -618,10 +618,10 @@
    "sport": "hockey",
    "dom": "Wild",
    "ext": "Avalanche",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    3,
+    4
    ]
   },
   {
@@ -631,10 +631,10 @@
    "sport": "hockey",
    "dom": "Ducks",
    "ext": "Kings",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    3,
+    5
    ]
   },
   {
@@ -644,10 +644,10 @@
    "sport": "hockey",
    "dom": "Sharks",
    "ext": "Golden Knights",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    4,
+    1
    ]
   },
   {
@@ -657,10 +657,10 @@
    "sport": "hockey",
    "dom": "Blackhawks",
    "ext": "Rangers",
-   "statut": "TIMED",
+   "statut": "FINISHED",
    "score": [
-    null,
-    null
+    2,
+    1
    ]
   },
   {
@@ -670,10 +670,10 @@
    "sport": "basket",
    "dom": "Knicks",
    "ext": "Heat",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    85,
+    89
    ]
   },
   {
@@ -683,10 +683,10 @@
    "sport": "basket",
    "dom": "Pistons",
    "ext": "Bucks",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    71,
+    66
    ]
   },
   {
@@ -696,10 +696,10 @@
    "sport": "basket",
    "dom": "Pacers",
    "ext": "76ers",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    49,
+    66
    ]
   },
   {
@@ -709,10 +709,10 @@
    "sport": "basket",
    "dom": "Raptors",
    "ext": "Nets",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    72,
+    64
    ]
   },
   {
@@ -722,10 +722,10 @@
    "sport": "hockey",
    "dom": "Islanders",
    "ext": "Jets",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    3
    ]
   },
   {
@@ -735,10 +735,10 @@
    "sport": "basket",
    "dom": "Celtics",
    "ext": "Hawks",
-   "statut": "TIMED",
+   "statut": "PAUSED",
    "score": [
-    null,
-    null
+    51,
+    39
    ]
   },
   {
@@ -748,10 +748,10 @@
    "sport": "hockey",
    "dom": "Sabres",
    "ext": "Penguins",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    2,
+    2
    ]
   },
   {
@@ -761,10 +761,10 @@
    "sport": "hockey",
    "dom": "Oilers",
    "ext": "Kraken",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    0,
+    1
    ]
   },
   {
@@ -774,10 +774,10 @@
    "sport": "basket",
    "dom": "Timberwolves",
    "ext": "Grizzlies",
-   "statut": "TIMED",
+   "statut": "IN_PLAY",
    "score": [
-    null,
-    null
+    25,
+    30
    ]
   },
   {
@@ -839,6 +839,266 @@
    "sport": "basket",
    "dom": "Trail Blazers",
    "ext": "Warriors",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 564760,
+   "date": "2026-11-28T13:00:00Z",
+   "comp": "Liga",
+   "sport": "foot",
+   "dom": "Real Betis",
+   "ext": "Rayo Vallecano",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 558513,
+   "date": "2026-11-28T14:00:00Z",
+   "comp": "Serie A",
+   "sport": "foot",
+   "dom": "Frosinone",
+   "ext": "Parma",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 565874,
+   "date": "2026-11-28T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "HSV",
+   "ext": "Bayern",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 565867,
+   "date": "2026-11-28T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "Mainz",
+   "ext": "Union Berlin",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 565866,
+   "date": "2026-11-28T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "1. FC Köln",
+   "ext": "Elversberg",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 565868,
+   "date": "2026-11-28T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "SC Paderborn",
+   "ext": "Schalke",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 560652,
+   "date": "2026-11-28T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Leeds United",
+   "ext": "Coventry City",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 560655,
+   "date": "2026-11-28T15:00:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Man United",
+   "ext": "Brentford",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 564767,
+   "date": "2026-11-28T15:15:00Z",
+   "comp": "Liga",
+   "sport": "foot",
+   "dom": "Málaga",
+   "ext": "Athletic",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 559612,
+   "date": "2026-11-28T16:15:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Angers SCO",
+   "ext": "RC Lens",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 558514,
+   "date": "2026-11-28T17:00:00Z",
+   "comp": "Serie A",
+   "sport": "foot",
+   "dom": "Torino",
+   "ext": "Lazio",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 565870,
+   "date": "2026-11-28T17:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "Stuttgart",
+   "ext": "Frankfurt",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 564759,
+   "date": "2026-11-28T17:30:00Z",
+   "comp": "Liga",
+   "sport": "foot",
+   "dom": "Elche",
+   "ext": "Atleti",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 560653,
+   "date": "2026-11-28T17:30:00Z",
+   "comp": "Premier League",
+   "sport": "foot",
+   "dom": "Ipswich Town",
+   "ext": "Aston Villa",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 559614,
+   "date": "2026-11-28T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "PSG",
+   "ext": "Lorient",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 559617,
+   "date": "2026-11-28T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Le Mans",
+   "ext": "Lille",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 559620,
+   "date": "2026-11-28T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Nice",
+   "ext": "Troyes",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 559613,
+   "date": "2026-11-28T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Le Havre",
+   "ext": "Strasbourg",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 558518,
+   "date": "2026-11-28T19:45:00Z",
+   "comp": "Serie A",
+   "sport": "foot",
+   "dom": "Inter",
+   "ext": "Genoa",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 564762,
+   "date": "2026-11-28T20:00:00Z",
+   "comp": "Liga",
+   "sport": "foot",
+   "dom": "Real Madrid",
+   "ext": "Alavés",
    "statut": "TIMED",
    "score": [
     null,
@@ -1158,6 +1418,58 @@
    ]
   },
   {
+   "id": "espn-401892823",
+   "date": "2026-11-29T19:00Z",
+   "comp": "NHL",
+   "sport": "hockey",
+   "dom": "Blackhawks",
+   "ext": "Wild",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "espn-401910054",
+   "date": "2026-11-29T20:30Z",
+   "comp": "NBA",
+   "sport": "basket",
+   "dom": "Cavaliers",
+   "ext": "Heat",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "espn-401910051",
+   "date": "2026-11-29T21:00Z",
+   "comp": "NBA",
+   "sport": "basket",
+   "dom": "Grizzlies",
+   "ext": "Lakers",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "espn-401910052",
+   "date": "2026-11-29T21:00Z",
+   "comp": "NBA",
+   "sport": "basket",
+   "dom": "Spurs",
+   "ext": "Celtics",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
    "id": "espn-401873093",
    "date": "2026-11-29T21:05Z",
    "comp": "NFL",
@@ -1197,12 +1509,116 @@
    ]
   },
   {
+   "id": "espn-401910053",
+   "date": "2026-11-29T22:00Z",
+   "comp": "NBA",
+   "sport": "basket",
+   "dom": "Jazz",
+   "ext": "Suns",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "espn-401892824",
+   "date": "2026-11-29T22:00Z",
+   "comp": "NHL",
+   "sport": "hockey",
+   "dom": "Bruins",
+   "ext": "Canucks",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "espn-401910055",
+   "date": "2026-11-29T23:00Z",
+   "comp": "NBA",
+   "sport": "basket",
+   "dom": "Pistons",
+   "ext": "Magic",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "espn-401910056",
+   "date": "2026-11-29T23:00Z",
+   "comp": "NBA",
+   "sport": "basket",
+   "dom": "Knicks",
+   "ext": "Hawks",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "espn-401910057",
+   "date": "2026-11-29T23:00Z",
+   "comp": "NBA",
+   "sport": "basket",
+   "dom": "Raptors",
+   "ext": "Nuggets",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "espn-401910058",
+   "date": "2026-11-29T23:00Z",
+   "comp": "NBA",
+   "sport": "basket",
+   "dom": "Trail Blazers",
+   "ext": "Pelicans",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
    "id": "espn-401873086",
    "date": "2026-11-30T01:20Z",
    "comp": "NFL",
    "sport": "nfl",
    "dom": "Browns",
    "ext": "Raiders",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "espn-401910059",
+   "date": "2026-11-30T01:30Z",
+   "comp": "NBA",
+   "sport": "basket",
+   "dom": "Warriors",
+   "ext": "Clippers",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "espn-401910060",
+   "date": "2026-11-30T02:00Z",
+   "comp": "NBA",
+   "sport": "basket",
+   "dom": "Kings",
+   "ext": "Timberwolves",
    "statut": "TIMED",
    "score": [
     null,
@@ -1236,6 +1652,6 @@
    ]
   }
  ],
- "maj": "2026-11-27T20:04:42Z",
- "verifie": "2026-11-27T20:04:42Z"
+ "maj": "2026-11-28T02:06:14Z",
+ "verifie": "2026-11-28T02:06:14Z"
 }
