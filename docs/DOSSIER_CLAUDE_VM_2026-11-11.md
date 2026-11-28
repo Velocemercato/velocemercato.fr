@@ -1,6 +1,6 @@
 # Dossier Claude — Véloce Mercato, site et réseaux
 
-État établi le 2026-11-27T17:35+01:00.
+État établi le 2026-11-28T01:33+01:00.
 
 Ce dossier remplace les anciennes consignes de restauration intégrale et les anciennes cadences. Il décrit le travail autorisé par Romain dans cette conversation. Les accès et conversations de ChatGPT ne sont pas automatiquement accessibles dans Claude.
 
@@ -38,8 +38,8 @@ Sur vmunivers.fr, Romain a demandé : première case à gauche Facebook https://
 | Véloce Mercato · facebook | 190 |
 | Véloce Mercato · instagram | 127 |
 | VM Actus et Pronos · facebook | 193 |
-| VM Univers · facebook | 5 |
-| VM Univers · instagram | 1 |
+| VM Univers · facebook | 6 |
+| VM Univers · instagram | 2 |
 
 Ces nombres comptent les identifiants uniques avec confirmation et URL publique. Un statut programmé, envoi ou workflow réussi ne suffit pas. Les reçus détaillés sont dans studio/editorial-status.json et dans le kit https://velocemercato.fr/studio/kit-automatique.html.
 
@@ -103,11 +103,11 @@ Pour Multisport, les flux français validés Sports.fr et Le Monde Sport sont ra
 
 ## Audit des pages, liens et classements
 
-- Pages HTML examinées : 2132.
-- URL interrogées : 2419.
+- Pages HTML examinées : 2156.
+- URL interrogées : 2467.
 - HTTP 404/410 confirmés : 14.
 - Cibles internes absentes du dépôt : 86.
-- Liens protégés/non vérifiables automatiquement : 867.
+- Liens protégés/non vérifiables automatiquement : 1034.
 - Ancres à relire : 60. Certaines existent seulement après chargement JavaScript.
 - Classements à relire : 0.
 
@@ -177,7 +177,6 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Coventry réclame l'équité après un penalty refusé face à Everton — https://www.facebook.com/122106465861520366/posts/122112809877520366
 - meta/facebook — DNCG : trois clubs placés en sursis à statuer, d'autres soumis à un encadrement — https://www.facebook.com/122106465861520366/posts/122113767021520366
 - meta/facebook — Daouda Weidmann, ancien du PSG, s'illustre à Twente et attire des clubs européens — https://www.facebook.com/122106465861520366/posts/122112962787520366
-- meta/facebook — David Almansa mène la séance d'entraînement Moto3 au Portugal devant Máximo Quiles de 0,048 secondes - Motorcycle Sports — https://www.facebook.com/122106465861520366/posts/122112736569520366
 - meta/facebook — Diogo Moreira, meilleur rookie MotoGP malgré sa chute au GP du Portugal - Motorcycle Sports — https://www.facebook.com/122106465861520366/posts/122113985913520366
 - meta/facebook — Dortmund : Joane Gadou rêve de l'Équipe de France et de titres avec le BVB — https://www.facebook.com/122106465861520366/posts/122112875379520366
 - meta/facebook — Décès de Roy Coyle, le manager le plus titré de l'histoire de l'Irish League — https://www.facebook.com/122106465861520366/posts/122112739665520366
@@ -314,6 +313,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/facebook — Un highside à plus de 200 km/h au MotoGP du Portugal : les images du vol plané vertigineux de Diogo Moreira - Actu.fr — https://www.facebook.com/122106465861520366/posts/122113001997520366
 - meta/facebook — VM · Bilan du 21 novembre — https://www.facebook.com/122106465861520366/posts/122113255347520366
 - meta/facebook — Verstappen à Antonelli : rester bien entouré pour continuer à gagner - F1 news — https://www.facebook.com/122106465861520366/posts/122112805401520366
+- meta/facebook — XV de France : Thomas Ramos avoue avoir « failli arrêter » - Quinze Ovalie — https://www.facebook.com/122106465861520366/posts/122114392587520366
 - meta/facebook — XV de France : vers un forfait de Jean-Baptiste Gros, Rodrigue Neti titulaire ? - Rugby Scope — https://www.facebook.com/122106465861520366/posts/122113044321520366
 - meta/facebook — Yan Diomandé, de Leganés au Real Madrid en moins de deux ans selon RMC Sport — https://www.facebook.com/122106465861520366/posts/122112923895520366
 - meta/facebook — Zverev - Alcaraz, ATP Finals, Masters (Turin), Finale, match en direct le 22-11-2026 - L'Équipe — https://www.facebook.com/122106465861520366/posts/122113207611520366
@@ -328,6 +328,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Affaire Negreira : Florentino Pérez attaque le Barça et Javier Tebas — https://www.instagram.com/p/DgAPEzcl3vK/
 - meta/instagram — Alex Marquez prend la tête des essais MotoGP au Portugal lors de son retour après une opération de l'épaule - Motorcycle Sports — https://www.instagram.com/p/Df-gFwhmGk7/
 - meta/instagram — Alexandre Lafitte prend en charge Al-Hilal au Soudan, dans un contexte de guerre civile — https://www.instagram.com/p/Df_sv5RjuAp/
+- meta/instagram — Andy Delort rejoint le FC Eccica Suarella en Régional 2, comme joueur et directeur sportif — https://www.instagram.com/p/DgQYfUpo9WZ/
 - meta/instagram — Angers SCO : Mael Gernigon, 17 ans, déjà titulaire face à l'OM en Ligue 1 — https://www.instagram.com/p/DgAjsGLjRWd/
 - meta/instagram — Aprilia Racing remporte le Championnat des Équipes MotoGP grâce à la victoire de Bezzecchi lors du sprint au Portugal - Motorcycle Sports — https://www.instagram.com/p/DgAs2BPlybq/
 - meta/instagram — Auxerre : Will Still salue la réaction de ses joueurs après le nul à Monaco — https://www.instagram.com/p/DgCpkiElfGy/
@@ -435,7 +436,6 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta/instagram — Senny Mayulu raconte sa première sélection en équipe de France et son échange avec Zidane — https://www.instagram.com/p/Df-W7ICFSlN/
 - meta/instagram — Serie A : le Napoli s'impose 1-0 face au Torino grâce à McTominay — https://www.instagram.com/p/DgBQTzECX8i/
 - meta/instagram — Stefan Bradl nommé coordinateur sportif de HRC pour 2027 - MotoGP — https://www.instagram.com/p/Df-tz9XGoyU/
-- meta/instagram — Tardozzi confirme que Marc Márquez restera chez Ducati après 2026 - Motorcycle Sports — https://www.instagram.com/p/Df-IDK6lDLC/
 - meta/instagram — Tennis : Medvedev complète le tableau s’invite en demies du Masters ATP - Le Figaro — https://www.instagram.com/p/Df-qXlakcIH/
 - meta/instagram — Tom Brady pourrait entrer au capital de Chelsea — https://www.instagram.com/p/Df-5P8FiV_x/
 - meta/instagram — Tom Brady, légende du football américain, souhaiterait devenir actionnaire de Chelsea, en Premier League - Ouest-France — https://www.instagram.com/p/Df-SX7Gl7Ic/
@@ -471,7 +471,6 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — Ben White, de la critique au retour en force avec l'Angleterre — https://www.facebook.com/1757379583055094/posts/1782600290533023
 - meta_pronos/facebook — Berlin : des jeunes manifestent contre le réarmement et le retour possible du service militaire — https://www.facebook.com/1757379583055094/posts/1782259090567143
 - meta_pronos/facebook — Billet d’humeur. Rugby : on attend quoi, exactement ? - Rugby Scope — https://www.facebook.com/1757379583055094/posts/1782691300523922
-- meta_pronos/facebook — Blackburn : Johnson salue l'impact de Mowbray, en retrait pour raisons de santé — https://www.facebook.com/1757379583055094/posts/1781936707266048
 - meta_pronos/facebook — Briatore vise une Alpine à deux ou trois dixièmes de McLaren en 2027 - f1news.fr — https://www.facebook.com/1757379583055094/posts/1782324667227252
 - meta_pronos/facebook — Brésil : une quinzaine d'Awás-Guajás sort de l'isolement en Amazonie, selon franceinfo — https://www.facebook.com/1757379583055094/posts/1783329560460096
 - meta_pronos/facebook — Budget de l'UE : Antonio Costa propose 204 milliards d'euros d'économies, rejeté par la France — https://www.facebook.com/1757379583055094/posts/1782859657173753
@@ -496,6 +495,7 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — En Espagne, Santiago Abascal (Vox) en position de faiseur de roi avant les législatives — https://www.facebook.com/1757379583055094/posts/1784440650348987
 - meta_pronos/facebook — Eredivisie : Mohamed Ihattaren retrouve son football au Fortuna Sittard — https://www.facebook.com/1757379583055094/posts/1782514180541634
 - meta_pronos/facebook — Eric Perrot, « oui, je gagne très bien ma vie » - www.ski-nordique.net — https://www.facebook.com/1757379583055094/posts/1783344410458611
+- meta_pronos/facebook — Europe : la droite et l'extrême droite veulent réviser les directives Oiseaux et Habitats — https://www.facebook.com/1757379583055094/posts/1790445703081815
 - meta_pronos/facebook — Exclu Midol. Transferts/Top 14 - L’international italien, Paolo Garbisi, prolonge l’aventure avec Perpignan - Rugbyrama — https://www.facebook.com/1757379583055094/posts/1783033177156401
 - meta_pronos/facebook — Exportations d'armes vers Israël : une association devant la cour administrative d'appel — https://www.facebook.com/1757379583055094/posts/1782572810535771
 - meta_pronos/facebook — Fallout 1 : un fan développe un remaster HD complet, seul — https://www.facebook.com/1757379583055094/posts/1783229937136725
@@ -644,7 +644,9 @@ Lire docs/CLAUDE_VIDEO_VM_2026-11-11.md : référence fournie, storyboard, parol
 - meta_pronos/facebook — États-Unis : les démocrates envisagent le budget comme levier sur la guerre en Iran — https://www.facebook.com/1757379583055094/posts/1782296633896722
 - meta_univers/facebook —  — https://www.facebook.com/122098313661535169/posts/122112986463535169
 - meta_univers/facebook — Celtic : Camilo Duran décisif face à Torreense, mais des doutes persistent — https://www.facebook.com/122098313661535169/posts/122114687643535169
+- meta_univers/facebook — GTA 6 : où trouver Christine, la voiture maléfique inspirée de Stephen King — https://www.facebook.com/122098313661535169/posts/122114851599535169
 - meta_univers/facebook — Un village du Maine-et-Loire reçoit un legs de 400 000 euros pour l'entretien de son église — https://www.facebook.com/122098313661535169/posts/122114750451535169
 - meta_univers/facebook — VM Studio · Votre activité en ligne — https://www.facebook.com/122098313661535169/posts/122112997491535169
 - meta_univers/facebook — VM · Bilan du 21 novembre — https://www.facebook.com/122098313661535169/posts/122112980025535169
+- meta_univers/instagram — Savio absent des fêtes de Noël avec Tottenham après une nouvelle blessure — https://www.instagram.com/p/DgQKvykHIVR/
 - meta_univers/instagram — VM · Bilan du 21 novembre — https://www.instagram.com/p/DgDIei3CcY3/
