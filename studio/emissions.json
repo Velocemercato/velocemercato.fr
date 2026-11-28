@@ -1,5 +1,125 @@
 [
  {
+  "id": "actus-edition-20261128-1300",
+  "univers": "actus",
+  "format": "edition",
+  "moment": "midi",
+  "label": "JT 13 h",
+  "titre": "La Pastille Actus - JT du midi, 28 novembre 2026",
+  "accroche": "Un python royal retrouvé après trois mois de cavale !",
+  "duree": 160,
+  "date": "2026-11-28T14:23+01:00",
+  "publie": false,
+  "voix": [
+   "piper"
+  ],
+  "speech_rate": 1.12,
+  "fichier": "actus-edition-20261128-1300.mp4",
+  "editorial_revision": "court-v1",
+  "edition_at": "2026-11-28T13:00:00+01:00",
+  "source_start": "2026-11-27T19:00:00+01:00",
+  "source_end": "2026-11-28T13:00:00+01:00",
+  "sources": [
+   {
+    "id": "rss-v2-6f99d1387c03dc6f32148e",
+    "titre": "Cherbourg : un python royal disparu depuis trois mois retrouvé dans une salle de bain",
+    "publishedAt": "2026-11-28T11:14:10Z",
+    "createdAt": "2026-11-28T11:31:09Z",
+    "references": [
+     {
+      "nom": "20 Minutes",
+      "url": "https://www.20minutes.fr/faits_divers/4266468-20261128-cherbourg-python-royal-porte-disparu-depuis-trois-mois-retrouve-salle-bain?at_medium=display&at_campaign=149"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-317226f290c20de259a4ce",
+    "titre": "Catastrophe naturelle reconnue pour 227 communes du Pas-de-Calais",
+    "publishedAt": "2026-11-28T10:50:41Z",
+    "createdAt": "2026-11-28T11:01:14Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/environnement/evenements-meteorologiques-extremes/inondations-et-crues/l-etat-de-catastrophe-naturelle-reconnu-pour-227-communes-du-pas-de-calais-apres-les-intemperies-du-mois-de-novembre_8304426.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-351d67bcf5d81db1d72b41",
+    "titre": "Affaire JonBenét Ramsey : une mini-série Netflix relance un crime non élucidé",
+    "publishedAt": "2026-11-28T09:57:14Z",
+    "createdAt": "2026-11-28T10:01:09Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/culture/series/netflix/le-petit-gregory-americain-on-vous-raconte-l-histoire-du-meurtre-non-elucide-de-jonbenet-ramsey-6-ans-au-c-ur-d-une-nouvelle-serie-netflix_8301855.html#xtor=RSS-3-%5Bculture%5D"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-015661d9a8625ad8a71fe7",
+    "titre": "Séoul surveille une possible visite de Kim Jong-un en Chine",
+    "publishedAt": "2026-11-28T09:23:10Z",
+    "createdAt": "2026-11-28T09:31:08Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/monde/coree-du-nord/la-coree-du-sud-surveille-les-signes-d-une-eventuelle-visite-de-kim-jong-un-en-chine_8304330.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-5e91b341e2c3d043809d0e",
+    "titre": "L'Inter Miami de Messi éliminé dès le premier tour des playoffs de MLS",
+    "publishedAt": "2026-11-28T08:47:13Z",
+    "createdAt": "2026-11-28T09:01:06Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/sports/foot/lionel-messi/champion-en-titre-l-inter-miami-de-lionel-messi-elimine-des-le-premier-tour-des-playoffs-de-mls_8304381.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-0b772fe4d75540caf2508e",
+    "titre": "Au Louvre Abou Dhabi, l'exposition « Héritages vivants » retrace le travail de la fondation ALIPH",
+    "publishedAt": "2026-11-28T08:28:51Z",
+    "createdAt": "2026-11-28T08:31:01Z",
+    "references": [
+     {
+      "nom": "RFI",
+      "url": "https://www.rfi.fr/fr/culture/20261128-h%C3%A9ritages-vivants-au-louvre-abu-dhabi-le-patrimoine-sauv%C3%A9-et-rassembl%C3%A9-par-la-fondation-aliph-et-ses-alli%C3%A9s"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-1e5ca2529b9ac09859a5ba",
+    "titre": "S&P maintient la note de la France à A+ mais passe la perspective en négatif",
+    "publishedAt": "2026-11-28T07:47:25Z",
+    "createdAt": "2026-11-28T08:01:19Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/economie/crise/crise-de-la-dette/roland-lescure-voit-un-avertissement-dans-la-decision-de-s-p-et-maintient-l-objectif-d-un-deficit-public-a-5-en-2027_8304339.html#xtor=RSS-3-[lestitres]"
+     }
+    ]
+   },
+   {
+    "id": "rss-v2-c2929a673a80fa8de48ac6",
+    "titre": "Des micro-franges qualifiées de « politiques » sur les réseaux sociaux",
+    "publishedAt": "2026-11-28T07:48:11Z",
+    "createdAt": "2026-11-28T08:01:16Z",
+    "references": [
+     {
+      "nom": "franceinfo",
+      "url": "https://www.franceinfo.fr/replay-radio/l-il-de-julie/tout-est-politique-meme-nos-coupes-de-cheveux_8281871.html#xtor=RSS-3-%5Binternet%5D"
+     }
+    ]
+   }
+  ],
+  "diffusion": "youtube"
+ },
+ {
   "id": "actus-edition-20261127-1300",
   "univers": "actus",
   "format": "edition",
@@ -12903,54 +13023,6 @@
      {
       "nom": "20 Minutes",
       "url": "https://www.20minutes.fr/faits_divers/faits-divers-lille/4257405-20261026-homme-blesse-chute-arbre-parcours-marathon-lille?at_medium=display&at_campaign=149"
-     }
-    ]
-   }
-  ],
-  "diffusion": "youtube"
- },
- {
-  "id": "gaming-edition-20261026-0000",
-  "univers": "gaming",
-  "format": "edition",
-  "moment": "soir",
-  "label": "JT 00 h",
-  "titre": "La Pastille Gaming : PS5 jailbreakée et Max Payne 3",
-  "accroche": "Au menu : une PS5 jailbreakée et un regret signé Rockstar.",
-  "duree": 68,
-  "date": "2026-10-26T00:04+01:00",
-  "publie": false,
-  "voix": [
-   "piper"
-  ],
-  "speech_rate": 1.12,
-  "fichier": "gaming-edition-20261026-0000.mp4",
-  "editorial_revision": "court-v1",
-  "edition_at": "2026-10-26T00:00:00+01:00",
-  "source_start": "2026-10-25T18:00:00+01:00",
-  "source_end": "2026-10-26T00:00:00+01:00",
-  "sources": [
-   {
-    "id": "rss-v2-4804c51833d6d16df98917",
-    "titre": "Un outil gratuit permet de lancer des jeux Steam sur une PS5 jailbreakée",
-    "publishedAt": "2026-10-25T21:45:00Z",
-    "createdAt": "2026-10-25T22:05:49Z",
-    "references": [
-     {
-      "nom": "Les Numériques",
-      "url": "https://www.lesnumeriques.com/console-de-jeu/un-developpeur-a-trouve-comment-jailbreaker-sa-playstation-5-pour-pouvoir-installer-toute-sa-bibliotheque-steam-et-jouer-en-local-sur-la-console-de-sony-n263773.html"
-     }
-    ]
-   },
-   {
-    "id": "rss-v2-5eef257e0c65f334cd6712",
-    "titre": "Dan Houser juge Max Payne 3 comme son échec personnel",
-    "publishedAt": "2026-10-25T17:21:00Z",
-    "createdAt": "2026-10-25T17:41:14Z",
-    "references": [
-     {
-      "nom": "Gamekult",
-      "url": "https://www.gamekult.com/actualite/j-ai-echoue-dan-houser-cofondateur-de-rockstar-considere-max-payne-3-comme-son-echec-personnel-3050872584.html"
      }
     ]
    }
