@@ -670,10 +670,10 @@
    "sport": "basket",
    "dom": "Knicks",
    "ext": "Heat",
-   "statut": "IN_PLAY",
+   "statut": "FINISHED",
    "score": [
     105,
-    106
+    108
    ]
   },
   {
@@ -685,7 +685,7 @@
    "ext": "Bucks",
    "statut": "IN_PLAY",
    "score": [
-    106,
+    108,
     92
    ]
   },
@@ -698,7 +698,7 @@
    "ext": "76ers",
    "statut": "IN_PLAY",
    "score": [
-    77,
+    81,
     104
    ]
   },
@@ -711,8 +711,8 @@
    "ext": "Nets",
    "statut": "IN_PLAY",
    "score": [
-    111,
-    87
+    113,
+    91
    ]
   },
   {
@@ -737,8 +737,8 @@
    "ext": "Hawks",
    "statut": "IN_PLAY",
    "score": [
-    69,
-    70
+    71,
+    74
    ]
   },
   {
@@ -774,7 +774,7 @@
    "sport": "basket",
    "dom": "Timberwolves",
    "ext": "Grizzlies",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
     50,
     61
@@ -789,8 +789,8 @@
    "ext": "Mavericks",
    "statut": "IN_PLAY",
    "score": [
-    40,
-    30
+    44,
+    35
    ]
   },
   {
@@ -803,7 +803,7 @@
    "statut": "IN_PLAY",
    "score": [
     6,
-    2
+    10
    ]
   },
   {
@@ -815,8 +815,8 @@
    "ext": "Nuggets",
    "statut": "IN_PLAY",
    "score": [
-    2,
-    7
+    7,
+    11
    ]
   },
   {
@@ -828,8 +828,8 @@
    "ext": "Pelicans",
    "statut": "IN_PLAY",
    "score": [
-    10,
-    2
+    17,
+    6
    ]
   },
   {
@@ -841,8 +841,8 @@
    "ext": "Warriors",
    "statut": "IN_PLAY",
    "score": [
-    9,
-    2
+    12,
+    3
    ]
   },
   {
@@ -872,19 +872,6 @@
    ]
   },
   {
-   "id": 565868,
-   "date": "2026-11-28T14:30:00Z",
-   "comp": "Bundesliga",
-   "sport": "foot",
-   "dom": "SC Paderborn",
-   "ext": "Schalke",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
    "id": 565866,
    "date": "2026-11-28T14:30:00Z",
    "comp": "Bundesliga",
@@ -898,12 +885,12 @@
    ]
   },
   {
-   "id": 565867,
+   "id": 565868,
    "date": "2026-11-28T14:30:00Z",
    "comp": "Bundesliga",
    "sport": "foot",
-   "dom": "Mainz",
-   "ext": "Union Berlin",
+   "dom": "SC Paderborn",
+   "ext": "Schalke",
    "statut": "TIMED",
    "score": [
     null,
@@ -917,6 +904,19 @@
    "sport": "foot",
    "dom": "HSV",
    "ext": "Bayern",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 565867,
+   "date": "2026-11-28T14:30:00Z",
+   "comp": "Bundesliga",
+   "sport": "foot",
+   "dom": "Mainz",
+   "ext": "Union Berlin",
    "statut": "TIMED",
    "score": [
     null,
@@ -1652,6 +1652,6 @@
    ]
   }
  ],
- "maj": "2026-11-28T02:46:01Z",
- "verifie": "2026-11-28T02:46:01Z"
+ "maj": "2026-11-28T02:49:59Z",
+ "verifie": "2026-11-28T02:49:59Z"
 }
