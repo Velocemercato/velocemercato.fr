@@ -1,5 +1,5 @@
 {
-  "maj": "2026-11-28T03:22:10Z",
+  "maj": "2026-11-28T03:42:12Z",
   "regions": {
     "ARA": "Auvergne-Rhône-Alpes",
     "BFC": "Bourgogne-Franche-Comté",
@@ -84,6 +84,14 @@
     {
       "l": "CVL",
       "n": "COUPE",
+      "t": "Coupe de France. Les résultats complets du 8e tour de la compétition",
+      "u": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPQmJ1bVNBN2dGVDItcHRiQW5waEI5Z2dVcUloNFpvZnhIWHZMZDJzNVFiUVZydE80Z3RIV2FubEtBTWk1MHM2SndROXV1TmVhUzNzM1hoRHBldnRJQjV4V3l4YkFPcThkWDBRczAwRjduNnlPenZnQ3FKbEd6SldndjVhWW9ZNjY2MWd2SWs3NUUxckk4TzVaZVc5SEEwOFhNLXJ1UW1NVzFZRnBDVThKblpNS1F0YjZraGQydVpqNlZCZEVNeFA3aw?oc=5",
+      "s": "maville.com",
+      "d": "2026-11-27T22:04:00Z"
+    },
+    {
+      "l": "CVL",
+      "n": "COUPE",
       "t": "Le SM Caen humilié par une équipe de Régional 1 : la Coupe de France s'arrête au huitième tour",
       "u": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxObHFaS2dnOFBOaGwwVnNxNUtQbnpoMElsMndqdVI0ajM1NFpEaXIxeFBGSmdtbEh6WG80bVZQQzlISVZoRDFvWkRqNkJqN2kyTjdINVltcEduWW1raGc0VlVoQ3Y5U0ptSmU5WE1VMmFpWDlqWVUzV3huX3YzUG5CNHEwak00cXY3bnowVnBBRFc5aGlPc2ViUEpGSU9CMWgwSzBGbks2R2VGaXRGbm5ma2x3WWExalI1bjJKRUw2OWdYcmF1UWVnLTRzVGJneVd5WXg0OHF0Ty1QUQ?oc=5",
       "s": "Actu.fr",
@@ -120,14 +128,6 @@
       "u": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNbFdiRWN2X3NBWnE0aEZUQkpsM2lFWFVVa0pkQ0xPV2VjNVB5ckVUV3hBNmJ0a0hsN19nNGprOHdmU214RGhHQURPdmVfQU9Nc3pSbU1YbElDV2dMSW5Odks1SzhjeDdTNndUOHRseHRHUy0xOHh4RjJtVTZGYmNuS0FrUkE2NnVRcmtzbEhpcHJ5UXhSR0lLZ2NBMUpMYWlQX3lmem5ZRnZFTk56QVQ2eVNjZV80Um0zak5YVUpnTkMwemVpQS1qY3lqcE5SVGJpNDlLamNBT1Axdw?oc=5",
       "s": "L'Équipe",
       "d": "2026-11-27T21:14:36Z"
-    },
-    {
-      "l": "ARA",
-      "n": "COUPE",
-      "t": "Coupe de France. Les résultats complets du 8e tour de la compétition",
-      "u": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQUzBhSXZxdWRXZlBLMEJLbE5jTW94QjZSQWczbnBfcmsxN2xnaHE0WDNRY0Jqb3R3TnAtTVdOOXl0M2RTbk9fUUdMM3pwQTJ4R1I2T0Jydk5VVG5YTGNBSmRZWllkVzM1WGFEMFp4UjZZRVJrRGtYcktXWGx3NWpHMUgxeEVkQUluTENpVWZJYUN5aEo1UnRPV0JMZTdVZUpFbUYzeTE3WlVPc0RNNnNFdzJZZFFhMFpwZE5GR2ZBOEEyMmlXSW1TZlNOeW9Lc21LUUp2dTlSREVPMWFxOUtBT3g0NEVtLUZDeFZsR3JiN2lNWnUyUXc?oc=5",
-      "s": "Ouest-France",
-      "d": "2026-11-27T21:04:00Z"
     },
     {
       "l": "NOR",
@@ -544,14 +544,6 @@
       "u": "https://news.google.com/rss/articles/CBMixwJBVV95cUxNVlgyNzRmWFhwQUhGUHY1c2FKVVdqMmNJbnUwdjZ6TWhSemk0dHY4SjFFd0IwVl9IZlRfcWxRRXlHeEZHbzFSWF85blY2Q24td3V1TWJOQnBzeFd6ancxamZ3Y0FhTWVuSFFPX3RINF91aXJhS2RWZmljbGFQRWpET0lBZVpZdVAtZnAxNEx2OUE3Q2xicGFLSzFXNkZTak5pN0RmUlpabTB5bG1GMktheVYteGwwdTFiQkFKRDBnZlZfRjdLS3EtV210aGNDNFYtV3NjNUdjdFVHcTNLZTFaa0QtRXZzMUEyWXNVQVVtb0lvQ3ZSNFluSENhWGRjYTVwOTR5Z0JwQlhTM0dTYkltMmIxSDRnMHpwWEdNS3ZOQTNDeUw3cVBZanB6VVc1U1ZFVE9mNGw1TmExRUF2SEZ5dUQ1MWozYTQ?oc=5",
       "s": "Ouest-France",
       "d": "2026-11-27T10:53:58Z"
-    },
-    {
-      "l": "PDL",
-      "n": "COUPE",
-      "t": "Sports. Retour en images sur le match de football entre Le Mans FC et Tours en Coupe de France",
-      "u": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxNaFk4b2dEcnZwa19jbVJCNi1VdXZuanRSc3JxSGJwMjJXQmI4LU1tSXE4eVhMZ0pfbXdTQUZrdldZM0wzVy0wZG4yYUcwcjVSQ3h3VmJNYk5kTzBBNHNQOXVGbnJmYmR2OE1fWHRWUVlJSURMazFFeTdEYzU4dmd5NHpja3hUdzdJSFAwdE16NDVJSzFVaTFjOUV1QkoxMGFWSUhCLVRrOXFVb1FmU25iRllzbll4U29meGdnVVktRzczbjlKSmctay1WSlhxaXA0Y01leHJ3MFRSQl9hZEcyRWhRcWRYRndNN0VHUWkxUXpyTE0zU2dEXw?oc=5",
-      "s": "maville.com",
-      "d": "2026-11-27T10:33:17Z"
     },
     {
       "l": "ARA",
