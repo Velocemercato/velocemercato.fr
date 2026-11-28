@@ -1,38 +1,39 @@
-Passage actus du 2026-11-28 00:30 UTC (workflow_dispatch, main)
-Départ : 43 articles conservés et 39 flashs existants.
-RSS franceinfo / ECONOMIE : 20 actualités récentes.
-RSS franceinfo / SANTE : 10 actualités récentes.
+Passage actus du 2026-11-28 01:00 UTC (workflow_dispatch, main)
+Départ : 45 articles conservés et 41 flashs existants.
+RSS franceinfo / POLITIQUE : 20 actualités récentes.
 RSS franceinfo / CULTURE : 18 actualités récentes.
 RSS franceinfo / FRANCE : 26 actualités récentes.
-RSS franceinfo / POLITIQUE : 20 actualités récentes.
-RSS franceinfo / TECH : 11 actualités récentes.
+RSS franceinfo / ECONOMIE : 20 actualités récentes.
 RSS franceinfo / INTERNATIONAL : 20 actualités récentes.
-RSS RFI / INTERNATIONAL : 23 actualités récentes.
 RSS France 24 / INTERNATIONAL : 24 actualités récentes.
+RSS RFI / INTERNATIONAL : 23 actualités récentes.
+RSS 20 Minutes / FRANCE : 26 actualités récentes.
+RSS franceinfo / SANTE : 10 actualités récentes.
 RSS BBC News / INTERNATIONAL : 13 actualités récentes.
 RSS Euronews / INTERNATIONAL : 45 actualités récentes.
-RSS 20 Minutes / FRANCE : 26 actualités récentes.
-RSS Ouest-France / REGIONS : 10 actualités récentes.
+RSS franceinfo / TECH : 11 actualités récentes.
 RSS The Guardian / INTERNATIONAL : 4 actualités récentes.
-270 titres collectés, 189 nouveaux liens, quota 2.
+RSS Ouest-France / REGIONS : 10 actualités récentes.
+270 titres collectés, 186 nouveaux liens, quota 2.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-Brève ignorée (BBC News) : ValueError - Résumé IA incomplet ou trop long : non publié
-Brève prête : 20 Minutes - Fuites présumées vers le RN : perquisitions chez l’ex-directeur de cabinet de Marine Le Pe
-Brève prête : RFI - Le musée d'Orsay consacre une rétrospective à la peintre américaine Mary Cassatt
-Bilan : brèves_rédigées=2, rejet_lecture_ou_ia=1, source_inaccessible_ou_trop_courte=3
-Publié : 2 brèves (total 45). Flash : 41.
+Brève ignorée (RFI) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève prête : RFI - Guerre au Moyen-Orient : des entreprises se forment au risque maritime
+Brève prête : RFI - Yémen : Jan Egeland décrit une situation humanitaire « catastrophique »
+Bilan : brèves_rédigées=2, rejet_lecture_ou_ia=1, source_inaccessible_ou_trop_courte=10, sujet_deja_traite=1
+Publié : 2 brèves (total 47). Flash : 43.
 --- Papiers Sans Galère ---
-Départ : 8 articles conservés et 8 flashs existants.
-RSS franceinfo / LOGEMENT : 13 actualités récentes.
+Départ : 9 articles conservés et 9 flashs existants.
 RSS franceinfo / JUSTICE : 19 actualités récentes.
-RSS franceinfo / AUTRE : 20 actualités récentes.
 RSS franceinfo / IMPOTS : 3 actualités récentes.
-RSS franceinfo / TRAVAIL : 20 actualités récentes.
 RSS franceinfo / RETRAITE : 11 actualités récentes.
-86 titres collectés, 16 nouveaux liens, quota 1.
+RSS franceinfo / AUTRE : 20 actualités récentes.
+RSS franceinfo / TRAVAIL : 20 actualités récentes.
+RSS franceinfo / LOGEMENT : 13 actualités récentes.
+86 titres collectés, 15 nouveaux liens, quota 1.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-Brève prête : franceinfo - Assurances : hausses prévues en 2027 pour mutuelle, auto et habitation
-Bilan : brèves_rédigées=1
-Publié : 1 brèves (total 9). Flash : 9.
+Brève ignorée (franceinfo) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève prête : franceinfo - France en récession technique : le PIB a reculé sur trois trimestres en 2026
+Bilan : brèves_rédigées=1, non_pertinent=3, rejet_lecture_ou_ia=1
+Publié : 1 brèves (total 10). Flash : 10.
