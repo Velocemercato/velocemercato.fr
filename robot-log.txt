@@ -1,38 +1,37 @@
-Passage du 2026-11-28 16:20 UTC (workflow_dispatch)
-Nettoyage : 0 breves vides retirees, 25 gardees.
+Passage du 2026-11-28 16:40 UTC (workflow_dispatch)
+Nettoyage : 0 breves vides retirees, 27 gardees.
 Secret ANTHROPIC_API_KEY present (106 caracteres).
-Départ : 25 articles conservés et 20 flashs existants.
-RSS Foot National / NATIONAL : 5 actualités récentes.
-RSS Foot National / LIGUE_2 : 4 actualités récentes.
+Départ : 27 articles conservés et 22 flashs existants.
+RSS Foot National / LIGUE_1 : 13 actualités récentes.
 RSS Foot National / NATIONAL : 4 actualités récentes.
-RSS Foot National / LIGUE_1 : 14 actualités récentes.
-RSS RMC Sport / INTERNATIONAL : 2 actualités récentes.
+RSS Foot National / NATIONAL : 4 actualités récentes.
 RSS RMC Sport / FRANCE : 27 actualités récentes.
+RSS RMC Sport / INTERNATIONAL : 2 actualités récentes.
 RSS RMC Sport / LIGUE_1 : 15 actualités récentes.
-RSS BBC Sport / INTERNATIONAL : 24 actualités récentes.
 RSS Foot Mercato / INTERNATIONAL : 44 actualités récentes.
-RSS Foot Amateur / NATIONAL : 0 actualités récentes.
+RSS BBC Sport / INTERNATIONAL : 24 actualités récentes.
 RSS BBC Sport / INTERNATIONAL : 1 actualités récentes.
-RSS RMC Sport / BLEUS : 1 actualités récentes.
-RSS Foot01 / FRANCE : 43 actualités récentes.
 RSS BBC Sport / FEMININ : 3 actualités récentes.
+RSS RMC Sport / BLEUS : 1 actualités récentes.
+RSS Foot Amateur / NATIONAL : 0 actualités récentes.
+RSS Foot01 / FRANCE : 43 actualités récentes.
+RSS Foot Amateur / NATIONAL : 9 actualités récentes.
 RSS franceinfo / FRANCE : 17 actualités récentes.
+RSS The Guardian / ETRANGER : 0 actualités récentes.
 RSS The Guardian / ETRANGER : 1 actualités récentes.
-RSS Foot Amateur / NATIONAL : 10 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
 RSS The Guardian / ETRANGER : 0 actualités récentes.
-RSS The Guardian / ETRANGER : 0 actualités récentes.
-215 titres collectés, 24 nouveaux liens, quota 2.
+RSS Foot National / LIGUE_2 : 4 actualités récentes.
+212 titres collectés, 24 nouveaux liens, quota 2.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-Brève prête : Foot Mercato - Angers : Saïd Chabane écarte un changement d’entraîneur malgré la crise
-Brève prête : Foot Mercato - Arsenal serait intéressé par Joane Gadou, Dortmund réclamerait 80 M€
-Bilan : brèves_rédigées=2
-Publié : 2 brèves (total 27). Flash : 22.
+Brève prête : Foot Mercato - Bundesliga : le Bayern accroché à Hambourg, Kimmich expulsé et Karl blessé
+Bilan : brèves_rédigées=1, non_pertinent=1, source_inaccessible_ou_trop_courte=16, sujet_deja_traite=6
+Publié : 1 brèves (total 28). Flash : 23.
 RQ Pronos : page d'actualités publiques actualisée.
 Accueil VM : actualités sourcées visibles en HTML, mises à jour.
-Pages : 27 brèves avec leur propre page, sitemap à jour.
+Pages : 28 brèves avec leur propre page, sitemap à jour.
 Agenda : 64 matchs enregistrés.
 Ligue 1 : 15 vidéos lues, 0 vidéos de buts gardées.
 Ligue 2 : 0 vidéos lues, 0 vidéos de buts gardées.
@@ -43,29 +42,29 @@ LaLiga : 15 vidéos lues, 2 vidéos de buts gardées.
 Serie A : 15 vidéos lues, 6 vidéos de buts gardées.
 Bundesliga : 15 vidéos lues, 2 vidéos de buts gardées.
 Vidéos publiées : 4.
-Fil express : foot 157, actus 200, gaming 77
+Fil express : actus 200, foot 162, gaming 79
 macommune.info  : 24 titres
 L'Est Républicain territoire-de-belfort : 10 titres
+L'Est Républicain haute-saone : 19 titres
 L'Est Républicain edition-belfort-hericourt-montbeliard : 20 titres
 L'Est Républicain www.estrepublicain.fr : 1 titres
-L'Est Républicain haute-saone : 19 titres
 VM Belfort : 27 titres
-Auvergne-Rhône-Alpes : 85 titres
-Bourgogne-Franche-Comté : 87 titres
-::warning::Bretagne : flux muet (HTTPError)
-Centre-Val de Loire : 26 titres
-Corse : 17 titres
-Grand Est : 31 titres
-Hauts-de-France : 29 titres
+Auvergne-Rhône-Alpes : 81 titres
+Bourgogne-Franche-Comté : 36 titres
+Bretagne : 81 titres
+Centre-Val de Loire : 18 titres
+Corse : 20 titres
+Grand Est : 78 titres
+Hauts-de-France : 96 titres
 Île-de-France : 79 titres
 Normandie : 26 titres
 Nouvelle-Aquitaine : 77 titres
-Occitanie : 87 titres
-Pays de la Loire : 91 titres
-Provence-Alpes-Côte d'Azur : 86 titres
+Occitanie : 88 titres
+Pays de la Loire : 87 titres
+Provence-Alpes-Côte d'Azur : 85 titres
 Outre-mer : 33 titres
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/feed/) : flux muet (ParseError)
 ::warning::Ouest-France Foot Amateur (https://footamateur.ouest-france.fr/categories/nationaux/feed) : flux muet (ParseError)
 Foot National : 16 titres
-Foot National : 16 titres
-Foot amateur : ARA 12, BFC 2, COR 11, CVL 14, FR 2, GES 5, HDF 1, NOR 7, OCC 3, PAC 2, PDL 9 — 68 titres
+Foot National : 15 titres
+Foot amateur : ARA 12, BFC 2, BRE 6, COR 14, CVL 11, FR 1, GES 5, HDF 1, NOR 2, OCC 3, PAC 2, PDL 8 — 67 titres
