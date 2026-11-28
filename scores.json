@@ -672,8 +672,8 @@
    "ext": "Heat",
    "statut": "IN_PLAY",
    "score": [
-    87,
-    91
+    94,
+    95
    ]
   },
   {
@@ -685,8 +685,8 @@
    "ext": "Bucks",
    "statut": "IN_PLAY",
    "score": [
-    84,
-    73
+    90,
+    76
    ]
   },
   {
@@ -698,8 +698,8 @@
    "ext": "76ers",
    "statut": "IN_PLAY",
    "score": [
-    52,
-    72
+    54,
+    76
    ]
   },
   {
@@ -712,7 +712,7 @@
    "statut": "IN_PLAY",
    "score": [
     91,
-    73
+    78
    ]
   },
   {
@@ -735,10 +735,10 @@
    "sport": "basket",
    "dom": "Celtics",
    "ext": "Hawks",
-   "statut": "PAUSED",
+   "statut": "IN_PLAY",
    "score": [
     51,
-    39
+    41
    ]
   },
   {
@@ -751,7 +751,7 @@
    "statut": "IN_PLAY",
    "score": [
     2,
-    3
+    4
    ]
   },
   {
@@ -776,8 +776,8 @@
    "ext": "Grizzlies",
    "statut": "IN_PLAY",
    "score": [
-    35,
-    45
+    37,
+    47
    ]
   },
   {
@@ -789,8 +789,8 @@
    "ext": "Mavericks",
    "statut": "IN_PLAY",
    "score": [
-    5,
-    14
+    10,
+    18
    ]
   },
   {
@@ -924,12 +924,12 @@
    ]
   },
   {
-   "id": 560652,
+   "id": 560655,
    "date": "2026-11-28T15:00:00Z",
    "comp": "Premier League",
    "sport": "foot",
-   "dom": "Leeds United",
-   "ext": "Coventry City",
+   "dom": "Man United",
+   "ext": "Brentford",
    "statut": "TIMED",
    "score": [
     null,
@@ -937,12 +937,12 @@
    ]
   },
   {
-   "id": 560655,
+   "id": 560652,
    "date": "2026-11-28T15:00:00Z",
    "comp": "Premier League",
    "sport": "foot",
-   "dom": "Man United",
-   "ext": "Brentford",
+   "dom": "Leeds United",
+   "ext": "Coventry City",
    "statut": "TIMED",
    "score": [
     null,
@@ -1054,12 +1054,12 @@
    ]
   },
   {
-   "id": 559620,
+   "id": 559613,
    "date": "2026-11-28T19:45:00Z",
    "comp": "Ligue 1",
    "sport": "foot",
-   "dom": "Nice",
-   "ext": "Troyes",
+   "dom": "Le Havre",
+   "ext": "Strasbourg",
    "statut": "TIMED",
    "score": [
     null,
@@ -1067,12 +1067,12 @@
    ]
   },
   {
-   "id": 559613,
+   "id": 559620,
    "date": "2026-11-28T19:45:00Z",
    "comp": "Ligue 1",
    "sport": "foot",
-   "dom": "Le Havre",
-   "ext": "Strasbourg",
+   "dom": "Nice",
+   "ext": "Troyes",
    "statut": "TIMED",
    "score": [
     null,
@@ -1652,6 +1652,6 @@
    ]
   }
  ],
- "maj": "2026-11-28T02:18:11Z",
- "verifie": "2026-11-28T02:18:11Z"
+ "maj": "2026-11-28T02:22:09Z",
+ "verifie": "2026-11-28T02:22:09Z"
 }
