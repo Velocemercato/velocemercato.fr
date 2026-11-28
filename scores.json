@@ -898,12 +898,12 @@
    ]
   },
   {
-   "id": 565868,
+   "id": 565866,
    "date": "2026-11-28T14:30:00Z",
    "comp": "Bundesliga",
    "sport": "foot",
-   "dom": "SC Paderborn",
-   "ext": "Schalke",
+   "dom": "1. FC Köln",
+   "ext": "Elversberg",
    "statut": "TIMED",
    "score": [
     null,
@@ -911,12 +911,12 @@
    ]
   },
   {
-   "id": 565866,
+   "id": 565868,
    "date": "2026-11-28T14:30:00Z",
    "comp": "Bundesliga",
    "sport": "foot",
-   "dom": "1. FC Köln",
-   "ext": "Elversberg",
+   "dom": "SC Paderborn",
+   "ext": "Schalke",
    "statut": "TIMED",
    "score": [
     null,
@@ -1028,19 +1028,6 @@
    ]
   },
   {
-   "id": 559617,
-   "date": "2026-11-28T19:45:00Z",
-   "comp": "Ligue 1",
-   "sport": "foot",
-   "dom": "Le Mans",
-   "ext": "Lille",
-   "statut": "TIMED",
-   "score": [
-    null,
-    null
-   ]
-  },
-  {
    "id": 559614,
    "date": "2026-11-28T19:45:00Z",
    "comp": "Ligue 1",
@@ -1054,12 +1041,12 @@
    ]
   },
   {
-   "id": 559620,
+   "id": 559617,
    "date": "2026-11-28T19:45:00Z",
    "comp": "Ligue 1",
    "sport": "foot",
-   "dom": "Nice",
-   "ext": "Troyes",
+   "dom": "Le Mans",
+   "ext": "Lille",
    "statut": "TIMED",
    "score": [
     null,
@@ -1073,6 +1060,19 @@
    "sport": "foot",
    "dom": "Le Havre",
    "ext": "Strasbourg",
+   "statut": "TIMED",
+   "score": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": 559620,
+   "date": "2026-11-28T19:45:00Z",
+   "comp": "Ligue 1",
+   "sport": "foot",
+   "dom": "Nice",
+   "ext": "Troyes",
    "statut": "TIMED",
    "score": [
     null,
@@ -1652,6 +1652,6 @@
    ]
   }
  ],
- "maj": "2026-11-28T11:02:20Z",
- "verifie": "2026-11-28T11:02:20Z"
+ "maj": "2026-11-28T11:06:18Z",
+ "verifie": "2026-11-28T11:06:18Z"
 }
