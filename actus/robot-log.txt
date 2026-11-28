@@ -1,27 +1,30 @@
-Passage actus du 2026-11-28 06:30 UTC (workflow_dispatch, main)
-Départ : 7 articles conservés et 4 flashs existants.
-RSS franceinfo / SANTE : 8 actualités récentes.
-RSS franceinfo / ECONOMIE : 20 actualités récentes.
-RSS franceinfo / FRANCE : 26 actualités récentes.
-RSS franceinfo / POLITIQUE : 20 actualités récentes.
+Passage actus du 2026-11-28 07:00 UTC (workflow_dispatch, main)
+Départ : 9 articles conservés et 6 flashs existants.
+RSS franceinfo / POLITIQUE : 19 actualités récentes.
 RSS franceinfo / CULTURE : 19 actualités récentes.
-RSS franceinfo / INTERNATIONAL : 20 actualités récentes.
-RSS franceinfo / TECH : 10 actualités récentes.
-RSS France 24 / INTERNATIONAL : 24 actualités récentes.
-RSS RFI / INTERNATIONAL : 23 actualités récentes.
+RSS franceinfo / FRANCE : 27 actualités récentes.
+RSS franceinfo / ECONOMIE : 20 actualités récentes.
 RSS 20 Minutes / FRANCE : 23 actualités récentes.
-RSS The Guardian / INTERNATIONAL : 3 actualités récentes.
-RSS Euronews / INTERNATIONAL : 45 actualités récentes.
+RSS franceinfo / SANTE : 7 actualités récentes.
+RSS franceinfo / INTERNATIONAL : 20 actualités récentes.
+RSS France 24 / INTERNATIONAL : 24 actualités récentes.
+RSS franceinfo / TECH : 11 actualités récentes.
+RSS RFI / INTERNATIONAL : 23 actualités récentes.
+RSS The Guardian / INTERNATIONAL : 4 actualités récentes.
 RSS BBC News / INTERNATIONAL : 11 actualités récentes.
+RSS Euronews / INTERNATIONAL : 45 actualités récentes.
 RSS Ouest-France / REGIONS : 10 actualités récentes.
-262 titres collectés, 137 nouveaux liens, quota 2.
+263 titres collectés, 130 nouveaux liens, quota 2.
 /opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
   warnings.warn(
-Brève prête : RFI - Serbie : Radomir Saicic désigné candidat du mouvement étudiant à la présidentielle
-Brève ignorée (Euronews) : ValueError - Résumé IA incomplet ou trop long : non publié
-Brève prête : France 24 - L'armée américaine assure que ses systèmes informatiques sont sûrs après une possible cybe
-Bilan : brèves_rédigées=2, non_pertinent=3, rejet_lecture_ou_ia=1, source_inaccessible_ou_trop_courte=7
-Publié : 2 brèves (total 9). Flash : 6.
+Claude indisponible (Ouest-France) : HTTP 403
+Brève ignorée (franceinfo) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève ignorée (franceinfo) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève ignorée (franceinfo) : ValueError - Résumé IA incomplet ou trop long : non publié
+Brève prête : franceinfo - Espagne : l'immigration au cœur de la campagne des législatives de dimanche
+Brève prête : franceinfo - Mont-Saint-Vincent (Saône-et-Loire) : un réseau de chaleur au bois remplace les chaudières
+Bilan : brèves_rédigées=2, non_pertinent=1, rejet_lecture_ou_ia=4, source_inaccessible_ou_trop_courte=8
+Publié : 2 brèves (total 11). Flash : 8.
 --- Papiers Sans Galère ---
 Départ : 11 articles conservés et 11 flashs existants.
 RSS franceinfo / JUSTICE : 19 actualités récentes.
@@ -30,6 +33,8 @@ RSS franceinfo / IMPOTS : 3 actualités récentes.
 RSS franceinfo / LOGEMENT : 13 actualités récentes.
 RSS franceinfo / TRAVAIL : 20 actualités récentes.
 RSS franceinfo / RETRAITE : 11 actualités récentes.
-86 titres collectés, 0 nouveaux liens, quota 1.
-Bilan : 
+86 titres collectés, 1 nouveaux liens, quota 1.
+/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/contrib/socks.py:50: DependencyWarning: SOCKS support in urllib3 requires the installation of optional dependencies: specifically, PySocks.  For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#socks-proxies
+  warnings.warn(
+Bilan : non_pertinent=1
 Aucune brève de qualité suffisante ; fichiers JSON inchangés.
